@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "woostify-block/first-block",
+	"version": "0.1.0",
+	"title": "First Block",
+	"category": "woostify-block",
+	"icon": "smiley",
+	"description": "Example block written with ESNext standard and JSX support – build step required.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "woostify-block",
+	"editorScript": "file:../../../build/js/first-block/first-block.js",
+	"editorStyle": "file:../../../build/css/first-block.css",
+	"style": "file:../../../build/css/style-first-block.css"
+}

@@ -1,0 +1,31 @@
+{
+  "name": "woostify-block",
+  "version": "1.0.0",
+  "description": "Advanced blocks for Gutenberg editor",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "wp-scripts build",
+    "format": "wp-scripts format",
+    "lint:css": "wp-scripts lint-style",
+    "lint:js": "wp-scripts lint-js",
+    "start": "wp-scripts start",
+    "packages-update": "wp-scripts packages-update"
+  },
+  "author": "Woostify",
+  "license": "GPL-2.0-or-later",
+  "dependencies": {
+    "@wordpress/block-editor": "^8.1.0",
+    "@wordpress/blocks": "^11.2.0",
+    "@wordpress/i18n": "^4.3.0"
+  },
+  "devDependencies": {
+    "@wordpress/dependency-extraction-webpack-plugin": "^3.3.0",
+    "@wordpress/scripts": "^20.0.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.5.1",
+    "mini-css-extract-plugin": "^2.4.4",
+    "sass-loader": "^12.3.0",
+    "style-loader": "^3.3.1",
+    "webpack-livereload-plugin": "^3.0.2"
+  }
+}
