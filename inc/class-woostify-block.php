@@ -66,7 +66,7 @@ if ( ! class_exists( 'Woostify_Block' ) ) {
 			);
 
 			foreach ( $blocks as $block ) {
-				register_block_type( plugin_dir_path( __FILE__ ) . '/src/blocks/' . $block );
+				register_block_type( WOOSTIFY_BLOCK_PATH . 'src/blocks/' . $block );
 			}
 		}
 
