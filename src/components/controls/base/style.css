@@ -1,0 +1,6 @@
+.wb-control-label {
+    align-items: center;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    margin-bottom: 8px;
+}

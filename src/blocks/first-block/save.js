@@ -1,12 +1,15 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps } from '@wordpress/block-editor';
-export default function save() {
+export default function save( { attributes } ) {
 	return (
-		<p { ...useBlockProps.save() }>
-			{ __(
-				'First Block – hello from the saved content!',
-				'woostify-block'
-			) }
-		</p>
+		<div
+			{ ...useBlockProps.save() }
+			style={ {
+				backgroundColor: attributes.bg_color,
+				color: attributes.text_color,
+			} }
+		>
+			{ attributes.message }
+		</div>
 	);
 }

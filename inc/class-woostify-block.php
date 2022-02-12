@@ -44,6 +44,9 @@ if ( ! class_exists( 'Woostify_Block' ) ) {
 
 			// Register block category.
 			add_filter( 'block_categories_all', array( $this, 'register_block_category' ), 10, 2 );
+
+			// Enqueue block editor assets.
+			//add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ) );
 		}
 
 		/**
@@ -55,6 +58,16 @@ if ( ! class_exists( 'Woostify_Block' ) ) {
 			}
 
 			load_plugin_textdomain( 'woostify-block', false, WOOSTIFY_BLOCK_PATH . 'languages/' );
+		}
+
+		public function enqueue_block_editor_assets() {
+			wp_enqueue_script(
+				'live-reload-js',
+				WOOSTIFY_BLOCK_URI . 'node_modules/livereload-js/dist/livereload.js',
+				array(),
+				'',
+				true
+			);
 		}
 
 		/**
