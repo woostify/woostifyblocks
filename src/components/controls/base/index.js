@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
-import { Fragment, Component } from '@wordpress/element';
+import { Component } from '@wordpress/element';
 
-import { ButtonGroup, Tooltip, Button } from '@wordpress/components';
+import { Tooltip, Button } from '@wordpress/components';
 
 import './style.css';
 

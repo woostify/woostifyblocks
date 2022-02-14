@@ -11,6 +11,7 @@ import {
 	PanelBody,
 	BaseControl,
 	Button,
+	__experimentalBoxControl as BoxControl,
 } from '@wordpress/components';
 import { useState, useEffect } from 'react';
 import { withSelect, withDispatch } from '@wordpress/data';
@@ -18,12 +19,22 @@ import { withSelect, withDispatch } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 
 import WoostifyBaseControl from '../../components/controls/base';
+import WoostifyDimensionsControl from '../../components/controls/dimensions';
 
 import './editor.scss';
 
+const { Visualizer } = BoxControl;
+
 function Edit( props ) {
+	const [ selectedDevice, setSelectedDevice ] = useState( 'Desktop' );
+	const [ values, setValues ] = useState( {
+		top: '50px',
+		left: '10%',
+		right: '10%',
+		bottom: '50px',
+	} );
+
 	const { attributes, setAttributes, clientId } = props;
-	const [ selectedDevice, setSelectedDevice ] = useState();
 	const { uniqueId } = attributes;
 
 	useEffect( () => {
@@ -44,10 +55,10 @@ function Edit( props ) {
 		let deviceSuffix = '';
 		let currDevice = getDeviceType();
 		if ( 'Tablet' === currDevice ) {
-			deviceSuffix = '_tablet';
+			deviceSuffix = 'Tablet';
 		}
 		if ( 'Mobile' === currDevice ) {
-			deviceSuffix = '_mobile';
+			deviceSuffix = 'Mobile';
 		}
 
 		return deviceSuffix;
@@ -64,17 +75,6 @@ function Edit( props ) {
 		<div { ...useBlockProps() }>
 			<InspectorControls>
 				<PanelBody title={ __( 'General Settings', 'woostify-block' ) }>
-					<BaseControl label={ __( 'Button', 'woostify-block' ) }>
-						{ 'Desktop' === getDeviceType() && (
-							<Button variant="secondary">Desktop</Button>
-						) }
-						{ 'Tablet' === getDeviceType() && (
-							<Button variant="secondary">Tablet</Button>
-						) }
-						{ 'Mobile' === getDeviceType() && (
-							<Button variant="secondary">Mobile</Button>
-						) }
-					</BaseControl>
 					<WoostifyBaseControl
 						label={ __( 'Background Color', 'woostify-block' ) }
 						help={ __(
@@ -85,14 +85,14 @@ function Edit( props ) {
 						responsive={ [ 'desktop', 'tablet', 'mobile' ] }
 						selectedDevice={ getDeviceType() }
 						selectedUnit={
-							attributes[ 'bg_unit' + getDeviceSuffix() ]
+							attributes[ 'bgUnit' + getDeviceSuffix() ]
 						}
 						onResponsiveToggleClick={ ( device ) =>
 							setDeviceType( device )
 						}
 						onUnitClick={ ( unit ) =>
 							setAttributes( {
-								[ 'bg_unit' + getDeviceSuffix() ]: unit,
+								[ 'bgUnit' + getDeviceSuffix() ]: unit,
 							} )
 						}
 					>
@@ -108,14 +108,14 @@ function Edit( props ) {
 						units={ [ 'px', 'rem' ] }
 						selectedDevice={ getDeviceType() }
 						selectedUnit={
-							attributes[ 'text_color_unit' + getDeviceSuffix() ]
+							attributes[ 'textColorUnit' + getDeviceSuffix() ]
 						}
 						onResponsiveToggleClick={ ( device ) =>
 							setDeviceType( device )
 						}
 						onUnitClick={ ( unit ) =>
 							setAttributes( {
-								[ 'text_color_unit' + getDeviceSuffix() ]: unit,
+								[ 'textColorUnit' + getDeviceSuffix() ]: unit,
 							} )
 						}
 					>
@@ -123,6 +123,62 @@ function Edit( props ) {
 							onChange={ ( val ) =>
 								setAttributes( { text_color: val } )
 							}
+						/>
+					</WoostifyBaseControl>
+					<WoostifyBaseControl
+						label={ __( 'Padding', 'woostify-block' ) }
+						responsive={ [ 'desktop', 'tablet', 'mobile' ] }
+						units={ [ 'px', 'rem' ] }
+						selectedDevice={ getDeviceType() }
+						selectedUnit={
+							attributes[ 'paddingUnit' + getDeviceSuffix() ]
+						}
+						onResponsiveToggleClick={ ( device ) =>
+							setDeviceType( device )
+						}
+						onUnitClick={ ( unit ) =>
+							setAttributes( {
+								[ 'paddingUnit' + getDeviceSuffix() ]: unit,
+							} )
+						}
+					>
+						<WoostifyDimensionsControl
+							{ ...props }
+							device={ getDeviceType() }
+							type={ 'padding' }
+							attrTop={ 'paddingTop' }
+							attrRight={ 'paddingRight' }
+							attrBottom={ 'paddingBottom' }
+							attrLeft={ 'paddingLeft' }
+							attrUnit={ 'paddingUnit' }
+						/>
+					</WoostifyBaseControl>
+					<WoostifyBaseControl
+						label={ __( 'Margin', 'woostify-block' ) }
+						responsive={ [ 'desktop', 'tablet', 'mobile' ] }
+						units={ [ 'px', 'rem' ] }
+						selectedDevice={ getDeviceType() }
+						selectedUnit={
+							attributes[ 'marginUnit' + getDeviceSuffix() ]
+						}
+						onResponsiveToggleClick={ ( device ) =>
+							setDeviceType( device )
+						}
+						onUnitClick={ ( unit ) =>
+							setAttributes( {
+								[ 'marginUnit' + getDeviceSuffix() ]: unit,
+							} )
+						}
+					>
+						<WoostifyDimensionsControl
+							{ ...props }
+							device={ getDeviceType() }
+							type={ 'margin' }
+							attrTop={ 'marginTop' + getDeviceSuffix() }
+							attrRight={ 'marginRight' + getDeviceSuffix() }
+							attrBottom={ 'marginBottom' + getDeviceSuffix() }
+							attrLeft={ 'marginLeft' + getDeviceSuffix() }
+							attrUnit={ 'marginUnit' + getDeviceSuffix() }
 						/>
 					</WoostifyBaseControl>
 				</PanelBody>
@@ -139,11 +195,6 @@ function Edit( props ) {
 						color: attributes.text_color,
 					} }
 				/>
-				{ attributes.bg_unit +
-					',' +
-					attributes.bg_unit_tablet +
-					',' +
-					attributes.bg_unit_mobile }
 			</div>
 		</div>
 	);

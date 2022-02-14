@@ -61,6 +61,15 @@ if ( ! class_exists( 'Woostify_Block' ) ) {
 		}
 
 		public function enqueue_block_editor_assets() {
+			// General editor style.
+			wp_enqueue_style(
+				'woostify-block-editor',
+				WOOSTIFY_BLOCK_URI . 'assets/css/block-editor.css',
+				array(),
+				'',
+				'all'
+			);
+
 			wp_enqueue_script(
 				'woostify-block-editor',
 				WOOSTIFY_BLOCK_URI . 'assets/js/block-editor.js',

@@ -4,27 +4,99 @@
 			"type": "string",
 			"default": ""
 		},
-		"text_color_unit": {
+		"paddingTop": {
+			"type": "string",
+			"default": ""
+		},
+		"paddingRight": {
+			"type": "string",
+			"default": ""
+		},
+		"paddingBottom": {
+			"type": "string",
+			"default": ""
+		},
+		"paddingLeft": {
+			"type": "string",
+			"default": ""
+		},
+		"paddingUnit": {
 			"type": "string",
 			"default": "px"
 		},
-		"text_color_unit_tablet": {
+		"paddingUnitTablet": {
 			"type": "string",
 			"default": "px"
 		},
-		"text_color_unit_mobile": {
+		"paddingUnitMobile": {
 			"type": "string",
 			"default": "px"
 		},
-		"bg_unit": {
+		"marginTop": {
+			"type": "string",
+			"default": ""
+		},
+		"marginRight": {
+			"type": "string",
+			"default": ""
+		},
+		"marginBottom": {
+			"type": "string",
+			"default": ""
+		},
+		"marginLeft": {
+			"type": "string",
+			"default": ""
+		},
+		"marginTopTablet": {
+			"type": "string",
+			"default": ""
+		},
+		"marginRightTablet": {
+			"type": "string",
+			"default": ""
+		},
+		"marginBottomTablet": {
+			"type": "string",
+			"default": ""
+		},
+		"marginLeftTablet": {
+			"type": "string",
+			"default": ""
+		},
+		"marginUnit": {
 			"type": "string",
 			"default": "px"
 		},
-		"bg_unit_tablet": {
+		"marginUnitTablet": {
 			"type": "string",
 			"default": "px"
 		},
-		"bg_unit_mobile": {
+		"marginUnitMobile": {
+			"type": "string",
+			"default": "px"
+		},
+		"textColorUnit": {
+			"type": "string",
+			"default": "px"
+		},
+		"textColorUnitTablet": {
+			"type": "string",
+			"default": "px"
+		},
+		"textColorUnitMobile": {
+			"type": "string",
+			"default": "px"
+		},
+		"bgUnit": {
+			"type": "string",
+			"default": "px"
+		},
+		"bgUnitTablet": {
+			"type": "string",
+			"default": "px"
+		},
+		"bgUnitMobile": {
 			"type": "string",
 			"default": "px"
 		},
