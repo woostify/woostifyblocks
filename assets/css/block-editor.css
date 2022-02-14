@@ -9,5 +9,26 @@
     height: 30px;
 }
 .wb-dimensions-control-inputs > input:first-child {
-    border-radius: 2px 0 0 2px;
+    border-radius: 4px 0 0 4px;
+}
+.wb-dimensions-control-inputs .components-button {
+    width: 30px;
+    padding: 0;
+    height: 30px;
+    justify-content: center;
+    border: 1px solid #8c8f94;
+    border-radius: 0 4px 4px 0;
+    overflow: hidden;
+    box-shadow: none !important;
+}
+.wb-dimensions-control-inputs .components-button.is-primary {
+    border-color: var(--wp-admin-theme-color);
+}
+.wb-dimensions-control-inputs .components-button.is-primary:focus:not(:disabled) {
+    box-shadow: none;
+}
+.wb-dimensions-control-inputs .components-button .dashicons {
+    width: 14px;
+    height: 14px;
+    font-size: 14px;
 }

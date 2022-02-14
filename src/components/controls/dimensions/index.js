@@ -13,6 +13,8 @@ class WoostifyDimensionsControl extends Component {
 
 		this.onReset = this.onReset.bind( this );
 		this.onChangeAttr = this.onChangeAttr.bind( this );
+		this.onChangeAttr = this.onChangeAttr.bind( this );
+		this.onChangeLinkedValues = this.onChangeLinkedValues.bind( this );
 	}
 
 	onReset( type ) {
@@ -21,6 +23,28 @@ class WoostifyDimensionsControl extends Component {
 
 	onChangeAttr( value, attr ) {
 		this.props.setAttributes( { [ this.props[ attr ] ]: value } ); // eslint-disable-line dot-notation
+		this.setLinkedValues( value );
+	}
+
+	setLinkedValues( value ) {
+		if ( this.state.isLinkedValues ) {
+			this.props.setAttributes( { [ this.props['attrTop'] ]: value } );
+			this.props.setAttributes( { [ this.props['attrBottom'] ]: value } );
+			this.props.setAttributes( { [ this.props['attrRight'] ]: value } );
+			this.props.setAttributes( { [ this.props['attrLeft'] ]: value } );
+		}
+	}
+
+	componentDidUpdate() {
+		let value = this.props.attributes[this.props['attrTop']];
+		if ( '' === value ) {
+			value = '0';
+		}
+		this.setLinkedValues( value );
+	}
+
+	onChangeLinkedValues() {
+		this.setState( { isLinkedValues: ! this.state.isLinkedValues } )
 	}
 
 	render() {
@@ -113,7 +137,11 @@ class WoostifyDimensionsControl extends Component {
 					<Tooltip
 						text={ __( 'Link values together', 'woostify-block' ) }
 					>
-						<Button>
+						<Button
+                            isSmall
+							isPrimary={ this.state.isLinkedValues }
+							onClick={ this.onChangeLinkedValues }
+                        >
 							<span className="dashicons dashicons-admin-links"></span>
 						</Button>
 					</Tooltip>
