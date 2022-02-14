@@ -46,7 +46,7 @@ if ( ! class_exists( 'Woostify_Block' ) ) {
 			add_filter( 'block_categories_all', array( $this, 'register_block_category' ), 10, 2 );
 
 			// Enqueue block editor assets.
-			//add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ) );
+			add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ) );
 		}
 
 		/**
@@ -62,11 +62,17 @@ if ( ! class_exists( 'Woostify_Block' ) ) {
 
 		public function enqueue_block_editor_assets() {
 			wp_enqueue_script(
-				'live-reload-js',
-				WOOSTIFY_BLOCK_URI . 'node_modules/livereload-js/dist/livereload.js',
+				'woostify-block-editor',
+				WOOSTIFY_BLOCK_URI . 'assets/js/block-editor.js',
 				array(),
 				'',
-				true
+				false
+			);
+
+			wp_localize_script(
+				'woostify-block-editor',
+				'woostify_block',
+				array()
 			);
 		}
 

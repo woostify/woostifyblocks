@@ -1,4 +1,48 @@
 {
+	"attributes": {
+		"uniqueId": {
+			"type": "string",
+			"default": ""
+		},
+		"text_color_unit": {
+			"type": "string",
+			"default": "px"
+		},
+		"text_color_unit_tablet": {
+			"type": "string",
+			"default": "px"
+		},
+		"text_color_unit_mobile": {
+			"type": "string",
+			"default": "px"
+		},
+		"bg_unit": {
+			"type": "string",
+			"default": "px"
+		},
+		"bg_unit_tablet": {
+			"type": "string",
+			"default": "px"
+		},
+		"bg_unit_mobile": {
+			"type": "string",
+			"default": "px"
+		},
+		"message": {
+			"type": "string",
+			"source": "text",
+			"selector": "div",
+			"default": ""
+		},
+		"bg_color": { 
+			"type": "string", 
+			"default": "#000000"
+		},
+		"text_color": { 
+			"type": "string", 
+			"default": "#ffffff"
+		}
+	},
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
 	"name": "woostify-block/first-block",
