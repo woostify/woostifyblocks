@@ -11,7 +11,7 @@ import {
 	PanelBody,
 	BaseControl,
 	Button,
-	__experimentalBoxControl as BoxControl,
+	RangeControl,
 } from '@wordpress/components';
 import { useState, useEffect } from 'react';
 import { withSelect, withDispatch } from '@wordpress/data';
@@ -23,16 +23,9 @@ import WoostifyDimensionsControl from '../../components/controls/dimensions';
 
 import './editor.scss';
 
-const { Visualizer } = BoxControl;
-
 function Edit( props ) {
 	const [ selectedDevice, setSelectedDevice ] = useState( 'Desktop' );
-	const [ values, setValues ] = useState( {
-		top: '50px',
-		left: '10%',
-		right: '10%',
-		bottom: '50px',
-	} );
+	const [ columns, setColumns ] = useState( 2 );
 
 	const { attributes, setAttributes, clientId } = props;
 	const { uniqueId } = attributes;
@@ -75,6 +68,34 @@ function Edit( props ) {
 		<div { ...useBlockProps() }>
 			<InspectorControls>
 				<PanelBody title={ __( 'General Settings', 'woostify-block' ) }>
+					<WoostifyBaseControl
+						label={ __( 'Background Color', 'woostify-block' ) }
+						help={ __(
+							'Vestibulum ullamcorper mauris at ligula',
+							'woostify-block'
+						) }
+						units={ [ 'px', 'rem', '%' ] }
+						responsive={ [ 'desktop', 'tablet', 'mobile' ] }
+						selectedDevice={ getDeviceType() }
+						selectedUnit={
+							attributes[ 'bgUnit' + getDeviceSuffix() ]
+						}
+						onResponsiveToggleClick={ ( device ) =>
+							setDeviceType( device )
+						}
+						onUnitClick={ ( unit ) =>
+							setAttributes( {
+								[ 'bgUnit' + getDeviceSuffix() ]: unit,
+							} )
+						}
+					>
+						<RangeControl
+							value={ columns }
+							min={ 2 }
+							onChange={ ( value ) => setColumns( value ) }
+							max={ 10 }
+						/>
+					</WoostifyBaseControl>
 					<WoostifyBaseControl
 						label={ __( 'Background Color', 'woostify-block' ) }
 						help={ __(
@@ -179,6 +200,10 @@ function Edit( props ) {
 							attrBottom={ 'marginBottom' + getDeviceSuffix() }
 							attrLeft={ 'marginLeft' + getDeviceSuffix() }
 							attrUnit={ 'marginUnit' + getDeviceSuffix() }
+							labelTop={ __( 'T-Left', 'woostify-block' ) }
+							labelRight={ __( 'T-Right', 'woostify-blocks' ) }
+							labelBottom={ __( 'B-Right', 'woostify-block' ) }
+							labelLeft={ __( 'B-Left', 'woostify-block' ) }
 						/>
 					</WoostifyBaseControl>
 				</PanelBody>

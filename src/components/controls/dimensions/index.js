@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { Fragment, Component } from '@wordpress/element';
 
-import { Tooltip, Button } from '@wordpress/components';
+import { Tooltip, Button, Dashicon } from '@wordpress/components';
 
 class WoostifyDimensionsControl extends Component {
 	constructor( props ) {
@@ -28,23 +28,19 @@ class WoostifyDimensionsControl extends Component {
 
 	setLinkedValues( value ) {
 		if ( this.state.isLinkedValues ) {
-			this.props.setAttributes( { [ this.props['attrTop'] ]: value } );
-			this.props.setAttributes( { [ this.props['attrBottom'] ]: value } );
-			this.props.setAttributes( { [ this.props['attrRight'] ]: value } );
-			this.props.setAttributes( { [ this.props['attrLeft'] ]: value } );
+			this.props.setAttributes( { [ this.props[ 'attrTop' ] ]: value } );
+			this.props.setAttributes( {
+				[ this.props[ 'attrBottom' ] ]: value,
+			} );
+			this.props.setAttributes( {
+				[ this.props[ 'attrRight' ] ]: value,
+			} );
+			this.props.setAttributes( { [ this.props[ 'attrLeft' ] ]: value } );
 		}
-	}
-
-	componentDidUpdate() {
-		let value = this.props.attributes[this.props['attrTop']];
-		if ( '' === value ) {
-			value = '0';
-		}
-		this.setLinkedValues( value );
 	}
 
 	onChangeLinkedValues() {
-		this.setState( { isLinkedValues: ! this.state.isLinkedValues } )
+		this.setState( { isLinkedValues: ! this.state.isLinkedValues } );
 	}
 
 	render() {
@@ -138,13 +134,28 @@ class WoostifyDimensionsControl extends Component {
 						text={ __( 'Link values together', 'woostify-block' ) }
 					>
 						<Button
-                            isSmall
+							isSmall
 							isPrimary={ this.state.isLinkedValues }
 							onClick={ this.onChangeLinkedValues }
-                        >
-							<span className="dashicons dashicons-admin-links"></span>
+						>
+							<Dashicon icon="admin-links" />
 						</Button>
 					</Tooltip>
+				</div>
+				<div className="wb-dimensions-control-labels">
+					<span className="wb-dimensions-control-input-label">
+						{ labelTop }
+					</span>
+					<span className="wb-dimensions-control-input-label">
+						{ labelRight }
+					</span>
+					<span className="wb-dimensions-control-input-label">
+						{ labelBottom }
+					</span>
+					<span className="wb-dimensions-control-input-label">
+						{ labelLeft }
+					</span>
+					<span className="wb-dimensions-control-input-label blank"></span>
 				</div>
 			</Fragment>
 		);

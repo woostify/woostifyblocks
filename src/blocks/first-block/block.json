@@ -4,6 +4,18 @@
 			"type": "string",
 			"default": ""
 		},
+		"column": {
+			"type": "number",
+			"default": 2
+		},
+		"columnTablet": {
+			"type": "number",
+			"default": 2
+		},
+		"columnMobile": {
+			"type": "number",
+			"default": 2
+		},
 		"paddingTop": {
 			"type": "string",
 			"default": ""

@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
 
-import { Tooltip, Button } from '@wordpress/components';
+import { Tooltip, Button, Dashicon } from '@wordpress/components';
 
 import './style.css';
 
@@ -55,13 +55,13 @@ class WoostifyBaseControl extends Component {
 									className="wb-current-device"
 									onClick={ () => this.showDevices() }
 								>
-									<span
-										className={ `dashicons dashicons-${
+									<Dashicon
+										icon={
 											'Mobile' === selectedDevice
 												? 'smartphone'
 												: selectedDevice.toLowerCase()
-										}` }
-									></span>
+										}
+									/>
 								</Button>
 							</Tooltip>
 							{ this.state.showDevices && (
@@ -104,9 +104,7 @@ class WoostifyBaseControl extends Component {
 														);
 													} }
 												>
-													<span
-														className={ `dashicons dashicons-${ device }` }
-													></span>
+													<Dashicon icon={ device } />
 												</Button>
 											</Tooltip>
 										);

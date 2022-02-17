@@ -1,6 +1,15 @@
 .wb-dimensions-control-inputs {
     display: flex;
 }
+.wb-dimensions-control-labels {
+    display: flex;
+}
+.wb-dimensions-control-labels .wb-dimensions-control-input-label {
+    width: calc(25% - 5px);
+}
+.wb-dimensions-control-labels .wb-dimensions-control-input-label.blank {
+    width: 30px;
+}
 .wb-dimensions-control-inputs .wb-dimensions-control-input-number {
     width: calc(25% - 5px);
     margin: 0 -1px 0 0;
