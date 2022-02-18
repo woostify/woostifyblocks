@@ -165,13 +165,11 @@ function Edit( props ) {
 					>
 						<WoostifyDimensionsControl
 							{ ...props }
-							device={ getDeviceType() }
 							type={ 'padding' }
 							attrTop={ 'paddingTop' }
 							attrRight={ 'paddingRight' }
 							attrBottom={ 'paddingBottom' }
 							attrLeft={ 'paddingLeft' }
-							attrUnit={ 'paddingUnit' }
 						/>
 					</WoostifyBaseControl>
 					<WoostifyBaseControl
@@ -193,17 +191,16 @@ function Edit( props ) {
 					>
 						<WoostifyDimensionsControl
 							{ ...props }
-							device={ getDeviceType() }
 							type={ 'margin' }
 							attrTop={ 'marginTop' + getDeviceSuffix() }
 							attrRight={ 'marginRight' + getDeviceSuffix() }
 							attrBottom={ 'marginBottom' + getDeviceSuffix() }
 							attrLeft={ 'marginLeft' + getDeviceSuffix() }
-							attrUnit={ 'marginUnit' + getDeviceSuffix() }
 							labelTop={ __( 'T-Left', 'woostify-block' ) }
 							labelRight={ __( 'T-Right', 'woostify-blocks' ) }
 							labelBottom={ __( 'B-Right', 'woostify-block' ) }
 							labelLeft={ __( 'B-Left', 'woostify-block' ) }
+							disableInputs={ [ 'marginRight', 'marginLeft' ] }
 						/>
 					</WoostifyBaseControl>
 				</PanelBody>

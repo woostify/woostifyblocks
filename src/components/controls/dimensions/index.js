@@ -19,6 +19,7 @@ class WoostifyDimensionsControl extends Component {
 
 	onReset( type ) {
 		this.props.setAttributes( { [ this.props[ type ] ]: '' } );
+		this.setLinkedValues( '' );
 	}
 
 	onChangeAttr( value, attr ) {
@@ -28,19 +29,52 @@ class WoostifyDimensionsControl extends Component {
 
 	setLinkedValues( value ) {
 		if ( this.state.isLinkedValues ) {
-			this.props.setAttributes( { [ this.props[ 'attrTop' ] ]: value } );
-			this.props.setAttributes( {
-				[ this.props[ 'attrBottom' ] ]: value,
-			} );
-			this.props.setAttributes( {
-				[ this.props[ 'attrRight' ] ]: value,
-			} );
-			this.props.setAttributes( { [ this.props[ 'attrLeft' ] ]: value } );
+			if (
+				! this.props[ 'disableInputs' ].includes(
+					this.props[ 'attrTop' ]
+				)
+			) {
+				this.props.setAttributes( {
+					[ this.props[ 'attrTop' ] ]: value,
+				} );
+			}
+			if (
+				! this.props[ 'disableInputs' ].includes(
+					this.props[ 'attrBottom' ]
+				)
+			) {
+				this.props.setAttributes( {
+					[ this.props[ 'attrBottom' ] ]: value,
+				} );
+			}
+			if (
+				! this.props[ 'disableInputs' ].includes(
+					this.props[ 'attrRight' ]
+				)
+			) {
+				this.props.setAttributes( {
+					[ this.props[ 'attrRight' ] ]: value,
+				} );
+			}
+			if (
+				! this.props[ 'disableInputs' ].includes(
+					this.props[ 'attrLeft' ]
+				)
+			) {
+				this.props.setAttributes( {
+					[ this.props[ 'attrLeft' ] ]: value,
+				} );
+			}
 		}
 	}
 
 	onChangeLinkedValues() {
 		this.setState( { isLinkedValues: ! this.state.isLinkedValues } );
+	}
+
+	checkDisableInput( attr ) {
+		if ( ! this.props[ 'disableInputs' ] ) return false;
+		return this.props[ 'disableInputs' ].includes( this.props[ attr ] );
 	}
 
 	render() {
@@ -51,13 +85,14 @@ class WoostifyDimensionsControl extends Component {
 			attrRight,
 			attrBottom,
 			attrLeft,
-			attrUnit,
 			labelTop = __( 'Top', 'woostify-block' ),
 			labelRight = __( 'Right', 'woostify-block' ),
 			labelBottom = __( 'Bottom', 'woostify-block' ),
 			labelLeft = __( 'Left', 'woostify-block' ),
-			device,
+			disableInputs,
 		} = this.props;
+
+		console.log( this.props );
 
 		const onChangeInputValue = ( event, attr ) => {
 			let newValue = event.target.value;
@@ -89,6 +124,7 @@ class WoostifyDimensionsControl extends Component {
 						onChange={ ( val ) =>
 							onChangeInputValue( val, 'attrTop' )
 						}
+						disabled={ this.checkDisableInput( 'attrTop' ) }
 					/>
 					<input
 						className="wb-dimensions-control-input-number"
@@ -103,6 +139,7 @@ class WoostifyDimensionsControl extends Component {
 						onChange={ ( val ) =>
 							onChangeInputValue( val, 'attrRight' )
 						}
+						disabled={ this.checkDisableInput( 'attrRight' ) }
 					/>
 					<input
 						className="wb-dimensions-control-input-number"
@@ -117,6 +154,7 @@ class WoostifyDimensionsControl extends Component {
 						onChange={ ( val ) =>
 							onChangeInputValue( val, 'attrBottom' )
 						}
+						disabled={ this.checkDisableInput( 'attrBottom' ) }
 					/>
 					<input
 						className="wb-dimensions-control-input-number"
@@ -129,6 +167,7 @@ class WoostifyDimensionsControl extends Component {
 						onChange={ ( val ) =>
 							onChangeInputValue( val, 'attrLeft' )
 						}
+						disabled={ this.checkDisableInput( 'attrLeft' ) }
 					/>
 					<Tooltip
 						text={ __( 'Link values together', 'woostify-block' ) }

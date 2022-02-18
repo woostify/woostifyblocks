@@ -3,6 +3,7 @@
 }
 .wb-dimensions-control-labels {
     display: flex;
+    font-size: 11px;
 }
 .wb-dimensions-control-labels .wb-dimensions-control-input-label {
     width: calc(25% - 5px);
@@ -16,6 +17,10 @@
     border-radius: 0;
     padding: 5px;
     height: 30px;
+}
+.wb-dimensions-control-inputs input.wb-dimensions-control-input-number:disabled {
+    border-color: #8c8f94;
+    background: #f5f5f5;
 }
 .wb-dimensions-control-inputs > input:first-child {
     border-radius: 4px 0 0 4px;
