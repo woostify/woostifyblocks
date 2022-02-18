@@ -200,7 +200,10 @@ function Edit( props ) {
 							labelRight={ __( 'T-Right', 'woostify-blocks' ) }
 							labelBottom={ __( 'B-Right', 'woostify-block' ) }
 							labelLeft={ __( 'B-Left', 'woostify-block' ) }
-							disableInputs={ [ 'marginRight', 'marginLeft' ] }
+							disableInputs={ [
+								'marginLeft' + getDeviceSuffix(),
+								'marginRight' + getDeviceSuffix(),
+							] }
 						/>
 					</WoostifyBaseControl>
 				</PanelBody>
