@@ -28,43 +28,25 @@ class WoostifyDimensionsControl extends Component {
 	}
 
 	setLinkedValues( value ) {
+		const attrArr = [ 'attrTop', 'attrRight', 'attrBottom', 'attrLeft' ];
 		if ( this.state.isLinkedValues ) {
-			if (
-				! this.props[ 'disableInputs' ].includes(
-					this.props[ 'attrTop' ]
-				)
-			) {
-				this.props.setAttributes( {
-					[ this.props[ 'attrTop' ] ]: value,
-				} );
-			}
-			if (
-				! this.props[ 'disableInputs' ].includes(
-					this.props[ 'attrBottom' ]
-				)
-			) {
-				this.props.setAttributes( {
-					[ this.props[ 'attrBottom' ] ]: value,
-				} );
-			}
-			if (
-				! this.props[ 'disableInputs' ].includes(
-					this.props[ 'attrRight' ]
-				)
-			) {
-				this.props.setAttributes( {
-					[ this.props[ 'attrRight' ] ]: value,
-				} );
-			}
-			if (
-				! this.props[ 'disableInputs' ].includes(
-					this.props[ 'attrLeft' ]
-				)
-			) {
-				this.props.setAttributes( {
-					[ this.props[ 'attrLeft' ] ]: value,
-				} );
-			}
+			attrArr.map( ( attrItem ) => {
+				if ( this.props[ 'disableInputs' ] ) {
+					if (
+						! this.props[ 'disableInputs' ].includes(
+							this.props[ attrItem ]
+						)
+					) {
+						this.props.setAttributes( {
+							[ this.props[ attrItem ] ]: value,
+						} );
+					}
+				} else {
+					this.props.setAttributes( {
+						[ this.props[ attrItem ] ]: value,
+					} );
+				}
+			} );
 		}
 	}
 
@@ -89,10 +71,7 @@ class WoostifyDimensionsControl extends Component {
 			labelRight = __( 'Right', 'woostify-block' ),
 			labelBottom = __( 'Bottom', 'woostify-block' ),
 			labelLeft = __( 'Left', 'woostify-block' ),
-			disableInputs,
 		} = this.props;
-
-		console.log( this.props );
 
 		const onChangeInputValue = ( event, attr ) => {
 			let newValue = event.target.value;

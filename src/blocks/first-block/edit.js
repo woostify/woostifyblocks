@@ -20,6 +20,8 @@ import { compose } from '@wordpress/compose';
 
 import WoostifyBaseControl from '../../components/controls/base';
 import WoostifyDimensionsControl from '../../components/controls/dimensions';
+import WoostifyButtonPopoverControl from '../../components/controls/button-popover';
+import WoostifyTypoControl from '../../components/controls/typography';
 
 import './editor.scss';
 
@@ -96,33 +98,66 @@ function Edit( props ) {
 							max={ 10 }
 						/>
 					</WoostifyBaseControl>
-					<WoostifyBaseControl
-						label={ __( 'Background Color', 'woostify-block' ) }
-						help={ __(
-							'Vestibulum ullamcorper mauris at ligula',
-							'woostify-block'
-						) }
-						units={ [ 'px', 'rem', '%' ] }
-						responsive={ [ 'desktop', 'tablet', 'mobile' ] }
-						selectedDevice={ getDeviceType() }
-						selectedUnit={
-							attributes[ 'bgUnit' + getDeviceSuffix() ]
-						}
-						onResponsiveToggleClick={ ( device ) =>
-							setDeviceType( device )
-						}
-						onUnitClick={ ( unit ) =>
-							setAttributes( {
-								[ 'bgUnit' + getDeviceSuffix() ]: unit,
-							} )
-						}
-					>
-						<ColorPalette
-							onChange={ ( val ) =>
-								setAttributes( { bg_color: val } )
+
+					<WoostifyButtonPopoverControl>
+						<WoostifyBaseControl
+							label={ __( 'Background Color', 'woostify-block' ) }
+							help={ __(
+								'Vestibulum ullamcorper mauris at ligula',
+								'woostify-block'
+							) }
+							units={ [ 'px', 'rem', '%' ] }
+							responsive={ [ 'desktop', 'tablet', 'mobile' ] }
+							selectedDevice={ getDeviceType() }
+							selectedUnit={
+								attributes[ 'bgUnit' + getDeviceSuffix() ]
 							}
-						/>
-					</WoostifyBaseControl>
+							onResponsiveToggleClick={ ( device ) =>
+								setDeviceType( device )
+							}
+							onUnitClick={ ( unit ) =>
+								setAttributes( {
+									[ 'bgUnit' + getDeviceSuffix() ]: unit,
+								} )
+							}
+						>
+							<ColorPalette
+								onChange={ ( val ) =>
+									setAttributes( { bg_color: val } )
+								}
+							/>
+						</WoostifyBaseControl>
+
+						<WoostifyBaseControl
+							label={ __( 'Background Color', 'woostify-block' ) }
+							help={ __(
+								'Vestibulum ullamcorper mauris at ligula',
+								'woostify-block'
+							) }
+							units={ [ 'px', 'rem', '%' ] }
+							responsive={ [ 'desktop', 'tablet', 'mobile' ] }
+							selectedDevice={ getDeviceType() }
+							selectedUnit={
+								attributes[ 'bgUnit' + getDeviceSuffix() ]
+							}
+							onResponsiveToggleClick={ ( device ) =>
+								setDeviceType( device )
+							}
+							onUnitClick={ ( unit ) =>
+								setAttributes( {
+									[ 'bgUnit' + getDeviceSuffix() ]: unit,
+								} )
+							}
+						>
+							<RangeControl
+								value={ columns }
+								min={ 2 }
+								onChange={ ( value ) => setColumns( value ) }
+								max={ 10 }
+							/>
+						</WoostifyBaseControl>
+					</WoostifyButtonPopoverControl>
+
 					<WoostifyBaseControl
 						label={ __( 'Text Color', 'woostify-block' ) }
 						responsive={ [ 'desktop', 'tablet', 'mobile' ] }
@@ -166,10 +201,10 @@ function Edit( props ) {
 						<WoostifyDimensionsControl
 							{ ...props }
 							type={ 'padding' }
-							attrTop={ 'paddingTop' }
-							attrRight={ 'paddingRight' }
-							attrBottom={ 'paddingBottom' }
-							attrLeft={ 'paddingLeft' }
+							attrTop={ 'paddingTop' + getDeviceSuffix() }
+							attrRight={ 'paddingRight' + getDeviceSuffix() }
+							attrBottom={ 'paddingBottom' + getDeviceSuffix() }
+							attrLeft={ 'paddingLeft' + getDeviceSuffix() }
 						/>
 					</WoostifyBaseControl>
 					<WoostifyBaseControl

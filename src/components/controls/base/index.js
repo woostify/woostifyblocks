@@ -3,8 +3,6 @@ import { Component } from '@wordpress/element';
 
 import { Tooltip, Button, Dashicon } from '@wordpress/components';
 
-import './style.css';
-
 class WoostifyBaseControl extends Component {
 	constructor( props ) {
 		super( ...arguments );

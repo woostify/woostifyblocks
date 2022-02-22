@@ -1,3 +1,72 @@
+/* BASE CONTROL STYLE */
+.wb-control-label {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    margin-bottom: 5px;
+}
+.wb-control-label > * { align-self: center }
+.wb-control-label .components-button {
+    box-shadow: none !important;
+}
+.wb-base-control__responsive {
+    position: relative;
+    margin-left: 5px;
+}
+.wb-current-device {
+    border: 1px solid transparent;
+    box-sizing: content-box;
+}
+.wb-base-control-toggle__wrapper {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    left: 0;
+    background: #fff;
+    border: 1px solid var(--wp-admin-theme-color);
+}
+.wb-base-control__responsive .components-button {
+    padding: 0;
+    height: 24px;
+    width: 24px;
+    justify-content: center;
+    border-radius: 0;
+}
+.wb-base-control__responsive .components-button.is-pressed,
+.wb-base-control__responsive .components-button.is-pressed:hover:not(:disabled) {
+    background: var(--wp-admin-theme-color);
+}
+.wb-base-control__responsive .components-button .dashicons {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+}
+.wb-base-control__units .components-button {
+    padding: 0 4px;
+    font-size: 10px;
+}
+.wb-base-control__units .components-button.is-primary {
+    background: #fff;
+    color: var(--wp-admin-theme-color);
+    cursor: default;
+    z-index: 1;
+    font-weight: bold;
+}
+.wb-base-control__units .components-button.is-primary:hover:not(:disabled) {
+    background: #fff;
+    color: var(--wp-admin-theme-color);
+}
+.wb-base-content {
+    margin-bottom: 5px;
+}
+.wb-base-help p {
+    font-size: 12px;
+    font-style: italic;
+    color: rgb(117, 117, 117);
+}
+/* END BASE CONTROL STYLE */
+
+/* DIMENSIONS CONTROL STYLE */
 .wb-dimensions-control-inputs {
     display: flex;
 }
@@ -45,4 +114,17 @@
     width: 14px;
     height: 14px;
     font-size: 14px;
+}
+/* END DIMENSIONS CONTROL STYLE */
+
+/* BUTTON POPOVER */
+.wb-base-control--grid .components-base-control__field {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+.wb-base-control--grid .components-base-control__field > * {
+    align-self:  center;
+}
+.wb-button-popover .components-popover__content {
+    width: 254px;
 }
