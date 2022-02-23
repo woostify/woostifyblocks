@@ -125,6 +125,18 @@
 		"text_color": { 
 			"type": "string", 
 			"default": "#ffffff"
+		},
+		"fontFamily": {
+			"type": "string",
+			"default": ""
+		},
+		"fontWeight": {
+			"type": "string",
+			"default": ""
+		},
+		"fontSize": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"$schema": "https://schemas.wp.org/trunk/block.json",

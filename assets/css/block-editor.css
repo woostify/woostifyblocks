@@ -128,3 +128,6 @@
 .wb-button-popover .components-popover__content {
     width: 254px;
 }
+.wb-button-popover .components-panel__body > .components-panel__body-title {
+    padding: 16px;
+}

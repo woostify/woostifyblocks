@@ -12,6 +12,7 @@ import {
 	BaseControl,
 	Button,
 	RangeControl,
+	TabPanel,
 } from '@wordpress/components';
 import { useState, useEffect } from 'react';
 import { withSelect, withDispatch } from '@wordpress/data';
@@ -21,7 +22,7 @@ import { compose } from '@wordpress/compose';
 import WoostifyBaseControl from '../../components/controls/base';
 import WoostifyDimensionsControl from '../../components/controls/dimensions';
 import WoostifyButtonPopoverControl from '../../components/controls/button-popover';
-import WoostifyTypoControl from '../../components/controls/typography';
+import WoostifyFontFamilyPicker from '../../components/controls/font-family-picker';
 
 import './editor.scss';
 
@@ -66,6 +67,14 @@ function Edit( props ) {
 		}
 	};
 
+	const onSelect = ( tabName ) => {};
+
+	const handleSelectFont = ( selectedFont ) => {
+		setAttributes( {
+			fontFamily: selectedFont,
+		} );
+	};
+
 	return (
 		<div { ...useBlockProps() }>
 			<InspectorControls>
@@ -99,63 +108,116 @@ function Edit( props ) {
 						/>
 					</WoostifyBaseControl>
 
-					<WoostifyButtonPopoverControl>
-						<WoostifyBaseControl
-							label={ __( 'Background Color', 'woostify-block' ) }
-							help={ __(
-								'Vestibulum ullamcorper mauris at ligula',
-								'woostify-block'
-							) }
-							units={ [ 'px', 'rem', '%' ] }
-							responsive={ [ 'desktop', 'tablet', 'mobile' ] }
-							selectedDevice={ getDeviceType() }
-							selectedUnit={
-								attributes[ 'bgUnit' + getDeviceSuffix() ]
-							}
-							onResponsiveToggleClick={ ( device ) =>
-								setDeviceType( device )
-							}
-							onUnitClick={ ( unit ) =>
-								setAttributes( {
-									[ 'bgUnit' + getDeviceSuffix() ]: unit,
-								} )
-							}
-						>
-							<ColorPalette
-								onChange={ ( val ) =>
-									setAttributes( { bg_color: val } )
-								}
-							/>
-						</WoostifyBaseControl>
+					<TabPanel
+						className="my-tab-panel"
+						activeClass="active-tab"
+						onSelect={ onSelect }
+						tabs={ [
+							{
+								name: 'normal',
+								title: 'Normal',
+								className: 'tab-one',
+							},
+							{
+								name: 'active',
+								title: 'Active',
+								className: 'tab-two',
+							},
+						] }
+					>
+						{ ( tab ) => (
+							<PanelBody>
+								{ 'normal' === tab.name && (
+									<WoostifyBaseControl
+										label={ __(
+											'Background Color',
+											'woostify-block'
+										) }
+										help={ __(
+											'Vestibulum ullamcorper mauris at ligula',
+											'woostify-block'
+										) }
+										units={ [ 'px', 'rem', '%' ] }
+										responsive={ [
+											'desktop',
+											'tablet',
+											'mobile',
+										] }
+										selectedDevice={ getDeviceType() }
+										selectedUnit={
+											attributes[
+												'bgUnit' + getDeviceSuffix()
+											]
+										}
+										onResponsiveToggleClick={ ( device ) =>
+											setDeviceType( device )
+										}
+										onUnitClick={ ( unit ) =>
+											setAttributes( {
+												[ 'bgUnit' +
+												getDeviceSuffix() ]: unit,
+											} )
+										}
+									>
+										<RangeControl
+											value={ columns }
+											min={ 2 }
+											onChange={ ( value ) =>
+												setColumns( value )
+											}
+											max={ 10 }
+										/>
+									</WoostifyBaseControl>
+								) }
+								{ 'active' === tab.name && (
+									<WoostifyBaseControl
+										label={ __(
+											'Text Color',
+											'woostify-block'
+										) }
+										responsive={ [
+											'desktop',
+											'tablet',
+											'mobile',
+										] }
+										units={ [ 'px', 'rem' ] }
+										selectedDevice={ getDeviceType() }
+										selectedUnit={
+											attributes[
+												'textColorUnit' +
+													getDeviceSuffix()
+											]
+										}
+										onResponsiveToggleClick={ ( device ) =>
+											setDeviceType( device )
+										}
+										onUnitClick={ ( unit ) =>
+											setAttributes( {
+												[ 'textColorUnit' +
+												getDeviceSuffix() ]: unit,
+											} )
+										}
+									>
+										<ColorPalette
+											onChange={ ( val ) =>
+												setAttributes( {
+													text_color: val,
+												} )
+											}
+										/>
+									</WoostifyBaseControl>
+								) }
+							</PanelBody>
+						) }
+					</TabPanel>
 
-						<WoostifyBaseControl
-							label={ __( 'Background Color', 'woostify-block' ) }
-							help={ __(
-								'Vestibulum ullamcorper mauris at ligula',
-								'woostify-block'
-							) }
-							units={ [ 'px', 'rem', '%' ] }
-							responsive={ [ 'desktop', 'tablet', 'mobile' ] }
-							selectedDevice={ getDeviceType() }
-							selectedUnit={
-								attributes[ 'bgUnit' + getDeviceSuffix() ]
-							}
-							onResponsiveToggleClick={ ( device ) =>
-								setDeviceType( device )
-							}
-							onUnitClick={ ( unit ) =>
-								setAttributes( {
-									[ 'bgUnit' + getDeviceSuffix() ]: unit,
-								} )
-							}
-						>
-							<RangeControl
-								value={ columns }
-								min={ 2 }
-								onChange={ ( value ) => setColumns( value ) }
-								max={ 10 }
-							/>
-						</WoostifyBaseControl>
+					<WoostifyButtonPopoverControl
+						popoverHeading={ __( 'Typography', 'woostify-block' ) }
+					>
+						<WoostifyFontFamilyPicker
+							selectedFont={ attributes.fontFamily }
+							onSelectFont={ handleSelectFont }
+						/>
 					</WoostifyButtonPopoverControl>
 
 					<WoostifyBaseControl

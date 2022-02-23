@@ -2,12 +2,13 @@ import { __ } from '@wordpress/i18n';
 import { Fragment, Component } from '@wordpress/element';
 import { BaseControl, Button, Popover, PanelBody } from '@wordpress/components';
 
+const popoverStatus = {};
 class WoostifyButtonPopoverControl extends Component {
 	constructor( props ) {
 		super( ...arguments );
 
 		this.state = {
-			isVisible: false,
+			isVisible: popoverStatus[ this.props.popoverHeading ] || false,
 			isMouseOutside: true,
 		};
 
@@ -52,6 +53,11 @@ class WoostifyButtonPopoverControl extends Component {
 	}
 
 	componentWillUnmount() {
+		popoverStatus[ this.props.popoverHeading ] = this.state.isVisible;
+		setTimeout( () => {
+			delete popoverStatus[ this.props.popoverHeading ];
+		}, 500 );
+
 		// Remove event listener for moousedown.
 		document.removeEventListener( 'mousedown', this.handleOnClickOutside );
 	}
@@ -63,6 +69,7 @@ class WoostifyButtonPopoverControl extends Component {
 
 	render() {
 		const { isVisible } = this.state;
+		const { attributes, children } = this.props;
 		return (
 			<Fragment>
 				<BaseControl
@@ -82,7 +89,14 @@ class WoostifyButtonPopoverControl extends Component {
 							onMouseLeave={ this.handleMouseLeave }
 							onMouseEnter={ this.handleMouseEnter }
 						>
-							<PanelBody>{ this.props.children }</PanelBody>
+							<PanelBody>
+								{ !! this.props.popoverHeading && (
+									<h2 className="components-panel__body-title">
+										{ this.props.popoverHeading }
+									</h2>
+								) }
+								{ children }
+							</PanelBody>
 						</Popover>
 					) }
 				</BaseControl>
