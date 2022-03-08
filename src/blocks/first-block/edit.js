@@ -4,6 +4,7 @@ import {
 	ColorPalette,
 	InspectorControls,
 	PanelColorSettings,
+	RichText,
 } from '@wordpress/block-editor';
 import {
 	Placeholder,
@@ -13,6 +14,7 @@ import {
 	Button,
 	RangeControl,
 	TabPanel,
+	SelectControl,
 } from '@wordpress/components';
 import { useState, useEffect } from 'react';
 import { withSelect, withDispatch } from '@wordpress/data';
@@ -23,6 +25,7 @@ import WoostifyBaseControl from '../../components/controls/base';
 import WoostifyDimensionsControl from '../../components/controls/dimensions';
 import WoostifyButtonPopoverControl from '../../components/controls/button-popover';
 import WoostifyFontFamilyPicker from '../../components/controls/font-family-picker';
+import WoostifyTypographyControl from '../../components/controls/typography';
 
 import './editor.scss';
 
@@ -67,13 +70,14 @@ function Edit( props ) {
 		}
 	};
 
-	const onSelect = ( tabName ) => {};
-
-	const handleSelectFont = ( selectedFont ) => {
-		setAttributes( {
-			fontFamily: selectedFont,
-		} );
-	};
+	let lineHeightCSS =
+		attributes[ 'lineHeight' + getDeviceSuffix() ] +
+		attributes[ 'lineHeightUnit' + getDeviceSuffix() ];
+	let fontSizeCSS =
+		attributes[ 'fontSize' + getDeviceSuffix() ] +
+		attributes[ 'fontSizeUnit' + getDeviceSuffix() ];
+	let letterSpacingCSS =
+		attributes[ 'letterSpacing' + getDeviceSuffix() ] + 'px';
 
 	return (
 		<div { ...useBlockProps() }>
@@ -111,7 +115,6 @@ function Edit( props ) {
 					<TabPanel
 						className="my-tab-panel"
 						activeClass="active-tab"
-						onSelect={ onSelect }
 						tabs={ [
 							{
 								name: 'normal',
@@ -214,9 +217,19 @@ function Edit( props ) {
 					<WoostifyButtonPopoverControl
 						popoverHeading={ __( 'Typography', 'woostify-block' ) }
 					>
-						<WoostifyFontFamilyPicker
-							selectedFont={ attributes.fontFamily }
-							onSelectFont={ handleSelectFont }
+						<WoostifyTypographyControl
+							{ ...props }
+							attrFontFamily={ 'fontFamily' }
+							attrFontWeight={ 'fontWeight' }
+							attrTextTransform={ 'fontTransform' }
+							attrFontStyle={ 'fontStyle' }
+							attrLineHeight={ 'lineHeight' }
+							attrLineHeightUnit={ 'lineHeightUnit' }
+							attrLetterSpacing={ 'letterSpacing' }
+							attrFontSize={ 'fontSize' }
+							attrFontSizeUnit={ 'fontSizeUnit' }
+							fontSizeUnits={ [ 'px', 'em', 'rem' ] }
+							lineHeightUnits={ [ 'px', 'em' ] }
 						/>
 					</WoostifyButtonPopoverControl>
 
@@ -309,7 +322,20 @@ function Edit( props ) {
 				className="woostify-block"
 				id={ `woostify-block-${ uniqueId }` }
 			>
-				<TextControl
+				<style>
+					{ `#woostify-block-${ uniqueId } .woostify-block-text {
+							font-family: ${ attributes.fontFamily };
+							font-weight: ${ attributes.fontWeight };
+							text-transform: ${ attributes.fontTransform };
+							font-style: ${ attributes.fontStyle };
+							line-height: ${ lineHeightCSS };
+							font-size: ${ fontSizeCSS };
+							letter-spacing: ${ letterSpacingCSS };
+						}` }
+				</style>
+				<RichText
+					tagName="h2"
+					className="woostify-block-text"
 					value={ attributes.message }
 					onChange={ ( val ) => setAttributes( { message: val } ) }
 					style={ {

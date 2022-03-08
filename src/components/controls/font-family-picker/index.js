@@ -14,38 +14,62 @@ class WoostifyFontFamilyPicker extends Component {
 	}
 
 	render() {
-		const { selectedFont, onSelectFont } = this.props;
+		const { selectedFont, onChangeFontFamily } = this.props;
 
-		const fonts = [
-			{ value: '', label: __( 'Select font', 'generateblocks' ) },
+		const systemFonts = [
 			{ value: 'Arial', label: 'Arial' },
 			{ value: 'Helvetica', label: 'Helvetica' },
 			{ value: 'Times New Roman', label: 'Times New Roman' },
 			{ value: 'Georgia', label: 'Georgia' },
 		];
 
+		const googleFontsList = [];
+
 		Object.keys( googleFonts ).forEach( ( k ) => {
-			fonts.push( { value: k, label: k } );
+			googleFontsList.push( { value: k, label: k } );
 		} );
 
 		return (
 			<Fragment>
 				<SelectControl
-					label="Font Family"
+					label={ __( 'Font Family', 'woostify-block' ) }
 					value={ this.state.fontFamily }
 					onChange={ ( newFont ) => {
 						this.setState( { fontFamily: newFont } );
-						onSelectFont( newFont );
+						onChangeFontFamily( newFont );
 					} }
 				>
-					{ fonts.map( ( option, index ) => (
-						<option
-							key={ `${ option.label }-${ option.value }-${ index }` }
-							value={ option.value }
+					<option value="">
+						{ __( 'Select font', 'woostify-block' ) }
+					</option>
+					{ systemFonts.length > 0 && (
+						<optgroup
+							label={ __( 'System fonts', 'woostify-block' ) }
 						>
-							{ option.label }
-						</option>
-					) ) }
+							{ systemFonts.map( ( option, index ) => (
+								<option
+									key={ `${ option.label }-${ option.value }-${ index }` }
+									value={ option.value }
+								>
+									{ option.label }
+								</option>
+							) ) }
+						</optgroup>
+					) }
+					{ googleFontsList.length > 0 && (
+						<optgroup
+							label={ __( 'Google fonts', 'woostify-block' ) }
+						>
+							{ googleFontsList.map( ( option, index ) => (
+								<option
+									key={ `${ option.label }-${ option.value }-${ index }` }
+									value={ option.value }
+								>
+									{ option.label }
+								</option>
+							) ) }
+						</optgroup>
+					) }
 				</SelectControl>
 			</Fragment>
 		);

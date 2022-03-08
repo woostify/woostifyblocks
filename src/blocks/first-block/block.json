@@ -134,8 +134,72 @@
 			"type": "string",
 			"default": ""
 		},
-		"fontSize": {
+		"fontTransform": {
 			"type": "string",
+			"default": ""
+		},
+		"fontStyle": {
+			"type": "string",
+			"default": ""
+		},
+		"lineHeight": {
+			"type": "number",
+			"default": ""
+		},
+		"lineHeightTablet": {
+			"type": "number",
+			"default": ""
+		},
+		"lineHeightMobile": {
+			"type": "number",
+			"default": ""
+		},
+		"lineHeightUnit": {
+			"type": "string",
+			"default": "px"
+		},
+		"lineHeightUnitTablet": {
+			"type": "string",
+			"default": "px"
+		},
+		"lineHeightUnitMobile": {
+			"type": "string",
+			"default": "px"
+		},
+		"fontSize": {
+			"type": "number",
+			"default": ""
+		},
+		"fontSizeTablet": {
+			"type": "number",
+			"default": ""
+		},
+		"fontSizeMobile": {
+			"type": "number",
+			"default": ""
+		},
+		"fontSizeUnit": {
+			"type": "string",
+			"default": "px"
+		},
+		"fontSizeUnitTablet": {
+			"type": "string",
+			"default": "px"
+		},
+		"fontSizeUnitMobile": {
+			"type": "string",
+			"default": "px"
+		},
+		"letterSpacing": {
+			"type": "number",
+			"default": ""
+		},
+		"letterSpacingTablet": {
+			"type": "number",
+			"default": ""
+		},
+		"letterSpacingMobile": {
+			"type": "number",
 			"default": ""
 		}
 	},
