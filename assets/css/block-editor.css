@@ -17,12 +17,13 @@
     box-sizing: content-box;
 }
 .wb-base-control-toggle__wrapper {
-    position: absolute;
     display: inline-flex;
     align-items: center;
+    flex-direction: column;
     left: 0;
     background: #fff;
-    border: 1px solid var(--wp-admin-theme-color);
+    z-index: 2;
+    position: absolute;
 }
 .wb-base-control__responsive .components-button {
     padding: 0;
@@ -31,9 +32,20 @@
     justify-content: center;
     border-radius: 0;
 }
-.wb-base-control__responsive .components-button.is-pressed,
-.wb-base-control__responsive .components-button.is-pressed:hover:not(:disabled) {
+.wb-base-control__responsive .wb-base-control-responsive-toggle {
+    height: 24px;
+    width: 24px;
+    overflow: hidden;
+    position: relative;
+}
+.wb-base-control__responsive .wb-base-control-responsive-toggle.is-open {
+    overflow: visible;
+}
+.wb-base-control__responsive .wb-base-control-responsive-toggle.is-open .components-button.is-pressed:hover:not(:disabled) {
     background: var(--wp-admin-theme-color);
+}
+.wb-base-control__responsive .wb-base-control-responsive-toggle.is-open .wb-base-control-toggle__wrapper {
+    outline: 1px solid var(--wp-admin-theme-color);
 }
 .wb-base-control__responsive .components-button .dashicons {
     font-size: 14px;
@@ -63,6 +75,19 @@
     font-size: 12px;
     font-style: italic;
     color: rgb(117, 117, 117);
+}
+.wb-responsive-toggle-popover .components-popover__content {
+    border: none;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.wb-responsive-toggle-popover .components-popover__content > div {
+    position: relative;
+    background: #111;
+    color: #fff;
+    padding: 0 8px;
+    line-height: 24px;
+    height: 24px;
 }
 /* END BASE CONTROL STYLE */
 

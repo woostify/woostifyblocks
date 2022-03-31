@@ -257,6 +257,7 @@ function Edit( props ) {
 						/>
 					</WoostifyBaseControl>
 					<WoostifyBaseControl
+						{ ...props }
 						label={ __( 'Padding', 'woostify-block' ) }
 						responsive={ [ 'desktop', 'tablet', 'mobile' ] }
 						units={ [ 'px', 'rem' ] }
@@ -331,6 +332,8 @@ function Edit( props ) {
 							line-height: ${ lineHeightCSS };
 							font-size: ${ fontSizeCSS };
 							letter-spacing: ${ letterSpacingCSS };
+							backgroundColor: ${attributes.bg_color},
+							color: ${attributes.text_color},
 						}` }
 				</style>
 				<RichText
@@ -338,10 +341,6 @@ function Edit( props ) {
 					className="woostify-block-text"
 					value={ attributes.message }
 					onChange={ ( val ) => setAttributes( { message: val } ) }
-					style={ {
-						backgroundColor: attributes.bg_color,
-						color: attributes.text_color,
-					} }
 				/>
 			</div>
 		</div>

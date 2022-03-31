@@ -58,7 +58,7 @@ class WoostifyButtonPopoverControl extends Component {
 			delete popoverStatus[ this.props.popoverHeading ];
 		}, 500 );
 
-		// Remove event listener for moousedown.
+		// Remove event listener for mousedown.
 		document.removeEventListener( 'mousedown', this.handleOnClickOutside );
 	}
 

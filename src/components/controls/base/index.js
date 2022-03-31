@@ -1,24 +1,50 @@
 import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
 
-import { Tooltip, Button, Dashicon } from '@wordpress/components';
+import { Tooltip, Button, Dashicon, Popover } from '@wordpress/components';
 
+var classNames = require('classnames')
 class WoostifyBaseControl extends Component {
 	constructor( props ) {
 		super( ...arguments );
 		this.props = props;
 
+		this.deviceButtonRef = React.createRef();
+
 		this.state = {
-			showDevices: false,
+			isMouseHover: false,
+			isOpenResponsiveToggle: false,
+			selectedDevice: '',
 		};
+
+		this.handleOnClickOutside = this.handleOnClickOutside.bind( this );
+	}
+
+	componentDidMount() {
+		document.addEventListener( 'click', this.handleOnClickOutside );
+	}
+
+	componentWillUnmount() {
+		// Remove event listener for click.
+		document.removeEventListener( 'click', this.handleOnClickOutside );
+	}
+	
+	handleOnClickOutside( ev ) {
+		// Do not do anything if the Media Manager is open.
+		if ( window.wp?.media?.frame?.el?.clientHeight ) {
+			return;
+		}
+
+		if ( this.state.isOpenResponsiveToggle ) {
+			const closest = ev.target?.closest( '.wb-base-control-responsive-toggle' )
+			if ( closest !== this.deviceButtonRef.current ) {
+				this.setState({ isOpenResponsiveToggle: false });
+			}
+		}
 	}
 
 	capitalizeFirstLetter( string ) {
 		return string.charAt( 0 ).toUpperCase() + string.slice( 1 );
-	}
-
-	showDevices() {
-		this.setState( { showDevices: ! this.state.showDevices } );
 	}
 
 	render() {
@@ -34,13 +60,16 @@ class WoostifyBaseControl extends Component {
 			children,
 		} = this.props;
 
-		let currDeviceTooltip = __( 'Desktop', 'woostify-block' );
-		if ( 'tablet' === selectedDevice.toLowerCase() ) {
-			currDeviceTooltip = __( 'Tablet', 'woostify-block' );
+		const toggleBtnClassName = classNames( 'wb-base-control-responsive-toggle', { 'is-open': this.state.isOpenResponsiveToggle } )
+
+		
+
+		const getResponsiveToggleOffset = () => {
+			const index = responsive.findIndex( el => el.value === selectedDevice )
+			return index / responsive.length * 100
 		}
-		if ( 'mobile' === selectedDevice.toLowerCase() ) {
-			currDeviceTooltip = __( 'Mobile', 'woostify-block' );
-		}
+
+		console.log( getResponsiveToggleOffset() );
 
 		return (
 			<div className="components-base-control components-woostify-base-control">
@@ -48,25 +77,16 @@ class WoostifyBaseControl extends Component {
 					<div className="wb-base-control__label">{ label }</div>
 					{ !! responsive && Array.isArray( responsive ) && (
 						<div className="wb-base-control__responsive">
-							<Tooltip text={ currDeviceTooltip }>
-								<Button
-									className="wb-current-device"
-									onClick={ () => this.showDevices() }
+							<div 
+							className={ toggleBtnClassName }
+							ref={this.deviceButtonRef}
+							>
+								<div 
+								className="wb-base-control-toggle__wrapper"
+								style={ { transform: `translateY( ${ getResponsiveToggleOffset() }%)` } }
 								>
-									<Dashicon
-										icon={
-											'Mobile' === selectedDevice
-												? 'smartphone'
-												: selectedDevice.toLowerCase()
-										}
-									/>
-								</Button>
-							</Tooltip>
-							{ this.state.showDevices && (
-								<div className="wb-base-control-toggle__wrapper">
 									{ responsive.map( ( v, i ) => {
-										let device =
-											'mobile' === v ? 'smartphone' : v;
+										let device = 'mobile' === v ? 'smartphone' : v;
 										let tooltip = __(
 											'Desktop',
 											'woostify-block'
@@ -84,31 +104,38 @@ class WoostifyBaseControl extends Component {
 											);
 										}
 										return (
-											<Tooltip text={ tooltip }>
+											<div
+												onMouseEnter={ () => this.setState({ isMouseHover: v }) }
+												onMouseLeave={ () => this.setState({ isMouseHover: false }) }
+											>
 												<Button
-													isPressed={
-														this.capitalizeFirstLetter(
-															v
-														) === selectedDevice
-															? true
-															: false
-													}
+													className={ this.capitalizeFirstLetter(v) === selectedDevice ? 'is-active' : '' }
 													onClick={ () => {
-														this.showDevices();
-														onResponsiveToggleClick(
-															this.capitalizeFirstLetter(
-																v
-															)
-														);
+														if ( ! this.state.isOpenResponsiveToggle ) {
+															this.setState({ isOpenResponsiveToggle: true })
+														} else {
+															onResponsiveToggleClick(
+																this.capitalizeFirstLetter(v)
+															);
+															this.setState({ isOpenResponsiveToggle: false, selectedDevice: this.capitalizeFirstLetter(v) })
+														}
 													} }
 												>
 													<Dashicon icon={ device } />
 												</Button>
-											</Tooltip>
+												{ tooltip && this.state.isMouseHover === v &&
+													<Popover
+														position='middle right'
+														className='wb-responsive-toggle-popover'
+													>
+													{tooltip}
+													</Popover>
+												}
+											</div>
 										);
 									} ) }
 								</div>
-							) }
+							</div>
 						</div>
 					) }
 					{ !! units && Array.isArray( units ) && (
