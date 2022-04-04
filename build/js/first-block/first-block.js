@@ -431,7 +431,6 @@ class WoostifyBaseControl extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0_
       return index / responsive.length * 100;
     };
 
-    console.log(getResponsiveToggleOffset());
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "components-base-control components-woostify-base-control"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {

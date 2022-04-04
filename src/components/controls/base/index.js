@@ -69,8 +69,6 @@ class WoostifyBaseControl extends Component {
 			return index / responsive.length * 100
 		}
 
-		console.log( getResponsiveToggleOffset() );
-
 		return (
 			<div className="components-base-control components-woostify-base-control">
 				<div className="wb-control-label">
