@@ -5,8 +5,8 @@ import { Fragment, Component } from '@wordpress/element';
 import { SelectControl } from '@wordpress/components';
 
 class WoostifyFontFamilyPicker extends Component {
-	constructor( props ) {
-		super( ...arguments );
+	constructor(props) {
+		super(...arguments);
 
 		this.state = {
 			fontFamily: this.props.selectedFont || '',
@@ -25,51 +25,47 @@ class WoostifyFontFamilyPicker extends Component {
 
 		const googleFontsList = [];
 
-		Object.keys( googleFonts ).forEach( ( k ) => {
-			googleFontsList.push( { value: k, label: k } );
-		} );
+		Object.keys(googleFonts).forEach((k) => {
+			googleFontsList.push({ value: k, label: k });
+		});
 
 		return (
 			<Fragment>
 				<SelectControl
-					label={ __( 'Font Family', 'woostify-block' ) }
-					value={ this.state.fontFamily }
-					onChange={ ( newFont ) => {
-						this.setState( { fontFamily: newFont } );
-						onChangeFontFamily( newFont );
-					} }
+					label={__('Font Family', 'woostify-block')}
+					value={this.state.fontFamily}
+					onChange={(newFont) => {
+						this.setState({ fontFamily: newFont });
+						onChangeFontFamily(newFont);
+					}}
 				>
 					<option value="">
-						{ __( 'Select font', 'woostify-block' ) }
+						{__('Select font', 'woostify-block')}
 					</option>
-					{ systemFonts.length > 0 && (
-						<optgroup
-							label={ __( 'System fonts', 'woostify-block' ) }
-						>
-							{ systemFonts.map( ( option, index ) => (
+					{systemFonts.length > 0 && (
+						<optgroup label={__('System fonts', 'woostify-block')}>
+							{systemFonts.map((option, index) => (
 								<option
-									key={ `${ option.label }-${ option.value }-${ index }` }
-									value={ option.value }
+									key={`${option.label}-${option.value}-${index}`}
+									value={option.value}
 								>
-									{ option.label }
+									{option.label}
 								</option>
-							) ) }
+							))}
 						</optgroup>
-					) }
-					{ googleFontsList.length > 0 && (
-						<optgroup
-							label={ __( 'Google fonts', 'woostify-block' ) }
-						>
-							{ googleFontsList.map( ( option, index ) => (
+					)}
+					{googleFontsList.length > 0 && (
+						<optgroup label={__('Google fonts', 'woostify-block')}>
+							{googleFontsList.map((option, index) => (
 								<option
-									key={ `${ option.label }-${ option.value }-${ index }` }
-									value={ option.value }
+									key={`${option.label}-${option.value}-${index}`}
+									value={option.value}
 								>
-									{ option.label }
+									{option.label}
 								</option>
-							) ) }
+							))}
 						</optgroup>
-					) }
+					)}
 				</SelectControl>
 			</Fragment>
 		);

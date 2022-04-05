@@ -7,7 +7,7 @@ import './style.scss';
 import Edit from './edit';
 import save from './save';
 
-registerBlockType( 'woostify-block/first-block', {
+registerBlockType('woostify-block/first-block', {
 	/**
 	 * @see ./edit.js
 	 */
@@ -17,4 +17,4 @@ registerBlockType( 'woostify-block/first-block', {
 	 * @see ./save.js
 	 */
 	save,
-} );
+});
