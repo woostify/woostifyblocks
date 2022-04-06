@@ -65,7 +65,7 @@ const IconToggleControl = (props) => {
 			>
 				{options.length > 1 &&
 					options.map((option, i) => {
-						const label = option.value || option.label;
+						const label = option.label || option.value;
 						const tooltip = !isOpenContent
 							? props.label || label
 							: props.buttonsLabel
@@ -73,6 +73,7 @@ const IconToggleControl = (props) => {
 							: '';
 						return (
 							<div
+								key={i}
 								onMouseEnter={() =>
 									setIsMouseHover(option.value)
 								}
@@ -104,7 +105,7 @@ const IconToggleControl = (props) => {
 										position={`middle ${labelPosition}`}
 										className="wb-responsive-toggle-popover"
 									>
-										{tooltip || label}
+										{option.tooltip || tooltip}
 									</Popover>
 								)}
 							</div>

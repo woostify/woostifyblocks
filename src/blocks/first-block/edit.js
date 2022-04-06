@@ -20,8 +20,6 @@ import './editor.scss';
 function Edit(props) {
 	const deviceSuffix = getDeviceSuffix();
 
-	const [columns, setColumns] = useState(2);
-
 	const { attributes, setAttributes, clientId } = props;
 	const { uniqueId } = attributes;
 
@@ -30,8 +28,6 @@ function Edit(props) {
 			uniqueId: clientId.substr(2, 9).replace('-', ''),
 		});
 	});
-
-	console.log(deviceSuffix);
 
 	let lineHeightCSS =
 		attributes['lineHeight' + deviceSuffix] +
@@ -68,7 +64,7 @@ function Edit(props) {
 						{...props}
 						label={__('Padding', 'woostify-block')}
 						responsive={['desktop', 'tablet', 'mobile']}
-						units={['px', 'rem']}
+						units={['px', 'em', 'rem', '%']}
 						selectedUnit={attributes['paddingUnit' + deviceSuffix]}
 						onUnitClick={(unit) =>
 							setAttributes({

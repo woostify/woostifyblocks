@@ -60,7 +60,6 @@ class WoostifyDimensionsControl extends Component {
 	}
 
 	render() {
-		console.log(this.props);
 		const {
 			attributes,
 			type = 'margin',
