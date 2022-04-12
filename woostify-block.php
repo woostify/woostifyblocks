@@ -23,5 +23,13 @@ define( 'WOOSTIFY_BLOCK_PLUGIN_BASE', plugin_basename( WOOSTIFY_BLOCK_FILE ) );
 define( 'WOOSTIFY_BLOCK_PATH', plugin_dir_path( WOOSTIFY_BLOCK_FILE ) );
 define( 'WOOSTIFY_BLOCK_URI', plugins_url( '/', WOOSTIFY_BLOCK_FILE ) );
 
+// Helper functions.
+require_once WOOSTIFY_BLOCK_PATH . 'inc/helpers.php';
+
 // Main Woostify Block Class.
 require_once WOOSTIFY_BLOCK_PATH . 'inc/class-woostify-block.php';
+
+// Admin.
+if ( is_admin() ) {
+	require_once WOOSTIFY_BLOCK_PATH . 'inc/admin/class-woostify-block-admin.php';
+}

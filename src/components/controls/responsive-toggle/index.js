@@ -60,6 +60,7 @@ const ResponsiveToggle = (props) => {
 			value={deviceType}
 			options={devices}
 			onChange={(device) => setDeviceType(device)}
+			buttonsLabel={true}
 		/>
 	);
 };
