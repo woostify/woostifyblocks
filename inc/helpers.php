@@ -2,7 +2,7 @@
 /**
  * Woostify block helper functions.
  *
- * @package woostify-block
+ * @package Woostify Block
  */
 
 defined( 'ABSPATH' ) || exit;
