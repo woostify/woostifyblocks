@@ -19,6 +19,15 @@ if ( ! class_exists( 'Woostify_Block' ) ) {
 		 */
 		private static $instance;
 
+		private $dependencies = array(
+			'wp-plugins',
+			'wp-edit-post',
+			'wp-element',
+			'wp-components',
+			'wp-data',
+			'wp-dom-ready'
+		);
+
 		/**
 		 *  Initiator
 		 */
@@ -61,6 +70,8 @@ if ( ! class_exists( 'Woostify_Block' ) ) {
 		}
 
 		public function enqueue_block_editor_assets() {
+			global $pagenow;
+
 			// General editor style.
 			wp_enqueue_style(
 				'woostify-block-editor',
@@ -83,6 +94,18 @@ if ( ! class_exists( 'Woostify_Block' ) ) {
 				'woostify_block',
 				array()
 			);
+
+			// Plugin sidebar script.
+			wp_register_script(
+				'woostify-block-sidebar',
+				WOOSTIFY_BLOCK_URI . 'assets/js/plugin-sidebar.js',
+				$this->dependencies
+			);
+
+			if ( $pagenow !== 'widgets.php' ) {
+				wp_enqueue_script( 'woostify-block-sidebar' );
+			}
+
 		}
 
 		/**

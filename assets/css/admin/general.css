@@ -107,7 +107,7 @@ body[class*="woostify-welcome"] #wpcontent, body[class*="woostify-options_page"]
 
 /* Woostify options page Navigation */
 .woostify-welcome-container {
-  max-width: 960px;
+  max-width: 1140px;
   margin: 0 auto;
   padding: 0 15px;
 }
@@ -223,29 +223,4 @@ body[class*="woostify-welcome"] #wpcontent, body[class*="woostify-options_page"]
 .woostify-welcome-nav li {
   display: inline-block;
   margin: 0;
-}
-.woostify-featured-setting .woostify-settings-content {
-  background-color: #fff;
-  border: 1px solid #d8e2e9;
-}
-.woostify-featured-setting .woostify-settings-section-title {
-  padding: 20px 25px;
-  border-bottom: 1px solid #d8e2e9;
-  margin: 0;
-  font-size: 1.2em;
-}
-.woostify-featured-setting .woostify-settings-section-content {
-  padding: 0 25px 5px 25px;
-  margin: 20px 0;
-}
-.woostify-featured-setting .woostify-settings-section-footer, .woostify-featured-setting .woostify-settings-section-header {
-  padding: 20px 25px;
-  border-top: 1px solid #d8e2e9;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  background: #fff;
-}
-body[class*="woostifyblock"] #wpcontent {
-  padding: 0;
 }

@@ -68,9 +68,9 @@ const IconToggleControl = (props) => {
 						const label = option.label || option.value;
 						const tooltip = !isOpenContent
 							? props.label || label
-							: ( props.buttonsLabel
+							: props.buttonsLabel
 							? label
-							: '' );
+							: '';
 						return (
 							<div
 								key={i}
