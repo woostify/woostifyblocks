@@ -21,35 +21,55 @@ function getEntries() {
 	return out;
 }
 
-module.exports = {
-	...defaultConfig,
-	entry: getEntries,
-	output: {
-		filename: 'js/[name]/[name].js',
-		path: path.resolve(process.cwd(), 'build'),
-	},
-	module: {
-		...defaultConfig.module,
-		rules: [
-			...defaultConfig.module.rules,
-			{
-				test: /\.(sc|sa)ss$/,
-				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-			},
-		],
-	},
-	plugins: [
-		new CleanWebpackPlugin({
-			cleanAfterEveryBuildPatterns: ['!fonts/**', '!images/**'],
-		}),
-		new MiniCssExtractPlugin({
-			filename: 'css/[name].css',
-		}),
-		process.env.WP_BUNDLE_ANALYZER && new BundleAnalyzerPlugin(),
-		!isProduction &&
-			new LiveReloadPlugin({
-				port: getLiveReloadPort(process.env.WP_LIVE_RELOAD_PORT),
+module.exports = [
+	{
+		...defaultConfig,
+		entry: getEntries,
+		output: {
+			filename: 'js/[name]/[name].js',
+			path: path.resolve(process.cwd(), 'build'),
+		},
+		module: {
+			...defaultConfig.module,
+			rules: [
+				...defaultConfig.module.rules,
+				{
+					test: /\.(sc|sa)ss$/,
+					use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+				},
+			],
+		},
+		plugins: [
+			new CleanWebpackPlugin({
+				cleanAfterEveryBuildPatterns: ['!fonts/**', '!images/**'],
 			}),
-		!process.env.WP_NO_EXTERNALS && new DependencyExtractionWebpackPlugin(),
-	].filter(Boolean),
-};
+			new MiniCssExtractPlugin({
+				filename: 'css/[name].css',
+			}),
+			process.env.WP_BUNDLE_ANALYZER && new BundleAnalyzerPlugin(),
+			!isProduction &&
+				new LiveReloadPlugin({
+					port: getLiveReloadPort(process.env.WP_LIVE_RELOAD_PORT),
+				}),
+			!process.env.WP_NO_EXTERNALS && new DependencyExtractionWebpackPlugin(),
+		].filter(Boolean),
+	},
+	{
+		...defaultConfig,
+		entry: glob.sync(
+            "./src/plugin/sidebar.js",
+            ),
+        devtool: 'source-map',
+        output: {
+            path: path.join(__dirname, "assets", "js", "plugins"),
+            filename: "sidebar.js"
+        },
+
+        module: {
+            rules: [
+				...defaultConfig.module.rules
+            ]
+        }
+	}
+];
+

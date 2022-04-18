@@ -25,7 +25,8 @@ if ( ! class_exists( 'Woostify_Block' ) ) {
 			'wp-element',
 			'wp-components',
 			'wp-data',
-			'wp-dom-ready'
+			'wp-dom-ready',
+			'wp-hooks'
 		);
 
 		/**
@@ -98,7 +99,7 @@ if ( ! class_exists( 'Woostify_Block' ) ) {
 			// Plugin sidebar script.
 			wp_register_script(
 				'woostify-block-sidebar',
-				WOOSTIFY_BLOCK_URI . 'assets/js/plugin-sidebar.js',
+				WOOSTIFY_BLOCK_URI . 'assets/js/plugins/sidebar.js',
 				$this->dependencies
 			);
 
