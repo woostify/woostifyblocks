@@ -1,6 +1,6 @@
 <?php
 /**
- * Dynamic Css Class
+ * Main Dynamic Css Class
  *
  * @package Woostify Block
  */
@@ -8,6 +8,9 @@
 defined( 'ABSPATH' ) || exit;
 
 if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
+	/**
+	 * Woostify Block Dynamic CSS Class
+	 */
 	class Woostify_Block_Dynamic_Css {
 		/**
 		 * Instance
@@ -16,6 +19,11 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 		 */
 		private static $instance;
 
+		/**
+		 * Stylesheet ID
+		 *
+		 * @var string
+		 */
 		public $stylesheet_id;
 
 		/**
@@ -28,6 +36,9 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 			return self::$instance;
 		}
 
+		/**
+		 * Construct
+		 */
 		public function __construct() {
 			// Replace with the ID of your own stylesheet.
 			// Usually defined in your theme.
@@ -42,7 +53,7 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 		}
 
 		/**
-		 * get the current page ID.
+		 * Get the current page ID.
 		 */
 		public function page_id() {
 
@@ -67,7 +78,7 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 			$mode = 'file';
 
 			// Additional checks for file mode.
-			if ( 'file' == $mode && $this->needs_update() ) {
+			if ( 'file' === $mode && $this->needs_update() ) {
 				// Only allow processing 1 file every 5 seconds.
 				$current_time = (int) time();
 				$last_time    = (int) get_option( 'dynamic_css_time' );
@@ -75,7 +86,7 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 					// Attempt to write to the file.
 					$mode = ( $this->can_write() && $this->make_css() ) ? 'file' : 'inline';
 					// Does again if the file exists.
-					if ( 'file' == $mode ) {
+					if ( 'file' === $mode ) {
 						$mode = ( file_exists( $this->file( 'path' ) ) ) ? 'file' : 'inline';
 					}
 				}
@@ -90,16 +101,19 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 		 */
 		public function enqueue_dynamic_css() {
 
-			if ( 'file' == $this->mode() ) {
+			if ( 'file' === $this->mode() ) {
 				// Yay! we're using a file for our CSS, so enqueue it.
-				wp_enqueue_style( 'dynamic-css', $this->file( 'uri' ) );
+				wp_enqueue_style( 'dynamic-css', $this->file( 'uri' ), array(), WOOSTIFY_BLOCK_VERSION ); // phpcs:ignore.
 				// Bah, no file mode... add inline to the head.
-			} elseif ( 'inline' == $this->mode() ) {
+			} elseif ( 'inline' === $this->mode() ) {
 				wp_add_inline_style( $this->stylesheet_id, apply_filters( 'dynamic_css', '' ) );
 			}
 
 		}
 
+		/**
+		 * Make css file content with compiled
+		 */
 		public function make_css() {
 
 			global $wp_filesystem;
@@ -112,7 +126,7 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 
 			$content = "/********* Compiled - Do not edit *********/\n" . apply_filters( 'dynamic_css', '' );
 
-			// Take care of domain mapping
+			// Take care of domain mapping.
 			if ( defined( 'DOMAIN_MAPPING' ) && DOMAIN_MAPPING ) {
 
 				if ( function_exists( 'domain_mapping_siteurl' ) && function_exists( 'get_original_url' ) ) {
@@ -130,7 +144,7 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 				}
 			}
 
-			// Strip protocols
+			// Strip protocols.
 			$content = str_replace( 'https://', '//', $content );
 			$content = str_replace( 'http://', '//', $content );
 
@@ -168,11 +182,11 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 
 			// Get the upload directory for this site.
 			$upload_dir = wp_upload_dir();
-			// If this is a multisite installation, append the blogid to the filename
-			$blog_id = ( is_multisite() && $blog_id > 1 ) ? '_blog-' . $blog_id : null;
-			$page_id = ( $this->page_id() ) ? $this->page_id() : 'global';
+			// If this is a multisite installation, append the blogid to the filename.
+			$new_blog_id = ( is_multisite() && 1 < $blog_id ) ? '_blog-' . $blog_id : null;
+			$page_id     = ( $this->page_id() ) ? $this->page_id() : 'global';
 
-			$file_name   = '/dynamic-css' . $blog_id . '-' . $page_id . '.css';
+			$file_name   = '/dynamic-css' . $new_blog_id . '-' . $page_id . '.css';
 			$folder_path = $upload_dir['basedir'] . DIRECTORY_SEPARATOR . 'dynamic-styles';
 
 			// Does the folder exist?
@@ -199,7 +213,7 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 						// File exists.
 						// Is it writable?
 						if ( ! is_writable( $folder_path . $file_name ) ) {
-							// Nope, it's not writable
+							// Nope, it's not writable.
 							return false;
 						}
 					}
@@ -215,11 +229,10 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 
 		}
 
-
 		/**
-		 * Gets the css path or url to the stylesheet
+		 * Gets the css path or url to the stylesheet.
 		 *
-		 * @var  string  path/url
+		 * @param string $target path/url.
 		 */
 		public function file( $target = 'path' ) {
 
@@ -227,21 +240,21 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 
 			// Get the upload directory for this site.
 			$upload_dir = wp_upload_dir();
-			// If this is a multisite installation, append the blogid to the filename
-			$blog_id = ( is_multisite() && $blog_id > 1 ) ? '_blog-' . $blog_id : null;
-			$page_id = ( $this->page_id() ) ? $this->page_id() : 'global';
+			// If this is a multisite installation, append the blogid to the filename.
+			$new_blog_id = ( is_multisite() && $blog_id > 1 ) ? '_blog-' . $blog_id : null;
+			$page_id     = ( $this->page_id() ) ? $this->page_id() : 'global';
 
-			$file_name   = 'dynamic-css' . $blog_id . '-' . $page_id . '.css';
+			$file_name   = 'dynamic-css' . $new_blog_id . '-' . $page_id . '.css';
 			$folder_path = $upload_dir['basedir'] . DIRECTORY_SEPARATOR . 'dynamic-styles';
 
 			// The complete path to the file.
 			$file_path = $folder_path . DIRECTORY_SEPARATOR . $file_name;
-			// Get the URL directory of the stylesheet
+			// Get the URL directory of the stylesheet.
 			$css_uri_folder = $upload_dir['baseurl'];
 
 			$css_uri = trailingslashit( $css_uri_folder ) . 'dynamic-styles/' . $file_name;
 
-			// Take care of domain mapping
+			// Take care of domain mapping.
 			if ( defined( 'DOMAIN_MAPPING' ) && DOMAIN_MAPPING ) {
 				if ( function_exists( 'domain_mapping_siteurl' ) && function_exists( 'get_original_url' ) ) {
 					$mapped_domain   = domain_mapping_siteurl( false );
@@ -249,13 +262,13 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 					$css_uri         = str_replace( $original_domain, $mapped_domain, $css_uri );
 				}
 			}
-			// Strip protocols
+			// Strip protocols.
 			$css_uri = str_replace( 'https://', '//', $css_uri );
 			$css_uri = str_replace( 'http://', '//', $css_uri );
 
-			if ( 'path' == $target ) {
+			if ( 'path' === $target ) {
 				return $file_path;
-			} elseif ( 'url' == $target || 'uri' == $target ) {
+			} elseif ( 'url' === $target || 'uri' === $target ) {
 				$timestamp = ( file_exists( $file_path ) ) ? '?timestamp=' . filemtime( $file_path ) : '';
 				return $css_uri . $timestamp;
 			}
@@ -267,14 +280,16 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 		public function reset_all_transients() {
 
 			global $wpdb;
-			// Build the query to delete all dynamic-css transients and execute the required SQL
+			// Build the query to delete all dynamic-css transients and execute the required SQL.
 			$sql   = "DELETE FROM $wpdb->options WHERE option_name LIKE '_transient_dynamic_css_%'";
-			$clean = $wpdb->query( $sql );
+			$clean = $wpdb->query( $sql ); // phpcs:ignore.
 
 		}
 
 		/**
 		 * Reset the dynamic CSS transient for a post.
+		 *
+		 * @param int $post_id Post ID.
 		 */
 		public function reset_post_transient( $post_id ) {
 			delete_transient( 'dynamic_css_' . $post_id );
@@ -297,6 +312,8 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 
 		/**
 		 * Update the dynamic_css_posts option when a post is saved.
+		 *
+		 * @param int $post_id Post ID.
 		 */
 		public function post_update_option( $post_id ) {
 			$option             = get_option( 'dynamic_css_posts', array() );

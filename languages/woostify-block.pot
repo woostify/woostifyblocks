@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: inc/class-woostify-block.php:133
+#: inc/class-woostify-block.php:134
 msgid "Woostify Block"
 msgstr ""
 

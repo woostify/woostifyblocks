@@ -68,13 +68,17 @@ class WoostifyButtonPopoverControl extends Component {
 	}
 
 	render() {
-		const { isVisible } = this.state;
-		const { attributes, children } = this.props;
+		const { isVisible } = this.state
+		const { 
+			attributes,
+			children,
+			buttonLabel = __( 'Typography', 'woostify-block' )
+		} = this.props
 		return (
 			<Fragment>
 				<BaseControl
 					className="wb-base-control--grid"
-					label="Typography"
+					label={buttonLabel}
 				>
 					<Button
 						className="wb-button-popover-icon"

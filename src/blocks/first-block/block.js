@@ -1,13 +1,11 @@
 import { registerBlockType } from '@wordpress/blocks';
-import './style.scss';
 
-/**
- * Internal dependencies
- */
+import blockAttributes from './attributes';
 import Edit from './edit';
 import save from './save';
 
 registerBlockType('woostify-block/first-block', {
+	attributes: blockAttributes,
 	/**
 	 * @see ./edit.js
 	 */

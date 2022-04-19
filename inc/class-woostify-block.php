@@ -18,15 +18,23 @@ if ( ! class_exists( 'Woostify_Block' ) ) {
 		 * @var instance
 		 */
 		private static $instance;
-
+		/**
+		 * Default block dependencies
+		 *
+		 * @var array
+		 */
 		private $dependencies = array(
+			'wp-editor',
 			'wp-plugins',
 			'wp-edit-post',
 			'wp-element',
 			'wp-components',
 			'wp-data',
 			'wp-dom-ready',
-			'wp-hooks'
+			'wp-hooks',
+			'wp-blocks',
+			'wp-i18n',
+			'wp-api-fetch',
 		);
 
 		/**
@@ -70,41 +78,67 @@ if ( ! class_exists( 'Woostify_Block' ) ) {
 			load_plugin_textdomain( 'woostify-block', false, WOOSTIFY_BLOCK_PATH . 'languages/' );
 		}
 
+		/**
+		 * Enqueue scripts for block editor
+		 */
 		public function enqueue_block_editor_assets() {
 			global $pagenow;
+
+			if ( 'widgets.php' === $pagenow ) {
+				unset( $this->dependencies[0] );
+			}
+
+			// Blocks scripts.
+			wp_register_script(
+				'woostify_block-blocks-scripts',
+				WOOSTIFY_BLOCK_URI . 'dist/blocks.js',
+				$this->dependencies,
+				WOOSTIFY_BLOCK_VERSION,
+				true
+			);
+
+			wp_register_style(
+				'woostify_block-editor-style',
+				WOOSTIFY_BLOCK_URI . 'dist/style-blocks.css',
+				array( 'wp-edit-blocks' ),
+				WOOSTIFY_BLOCK_VERSION
+			);
+
+			wp_register_style(
+				'woostify_block-front-end-style',
+				WOOSTIFY_BLOCK_URI . 'dist/blocks.css',
+				array(),
+				WOOSTIFY_BLOCK_VERSION
+			);
+			// End blocks script.
 
 			// General editor style.
 			wp_enqueue_style(
 				'woostify-block-editor',
 				WOOSTIFY_BLOCK_URI . 'assets/css/block-editor.css',
 				array(),
-				'',
+				WOOSTIFY_BLOCK_VERSION,
 				'all'
-			);
-
-			wp_enqueue_script(
-				'woostify-block-editor',
-				WOOSTIFY_BLOCK_URI . 'assets/js/block-editor.js',
-				array(),
-				'',
-				false
 			);
 
 			wp_localize_script(
 				'woostify-block-editor',
 				'woostify_block',
-				array()
+				array(),
+				WOOSTIFY_BLOCK_VERSION
 			);
 
 			// Plugin sidebar script.
 			wp_register_script(
-				'woostify-block-sidebar',
-				WOOSTIFY_BLOCK_URI . 'assets/js/plugins/sidebar.js',
-				$this->dependencies
+				'woostify_block-sidebar',
+				WOOSTIFY_BLOCK_URI . 'dist/sidebar.js',
+				$this->dependencies,
+				WOOSTIFY_BLOCK_VERSION,
+				true,
 			);
 
-			if ( $pagenow !== 'widgets.php' ) {
-				wp_enqueue_script( 'woostify-block-sidebar' );
+			if ( 'widgets.php' !== $pagenow ) {
+				wp_enqueue_script( 'woostify_block-sidebar' );
 			}
 
 		}
@@ -114,11 +148,18 @@ if ( ! class_exists( 'Woostify_Block' ) ) {
 		 */
 		public function register_blocks() {
 			$blocks = array(
-				'first-block',
+				array(
+					'slug'  => 'first-block',
+					'title' => __( 'First Block', 'woostify-block' ),
+				),
+				array(
+					'slug'  => 'second-block',
+					'title' => __( 'Second Block', 'woostify-block' ),
+				),
 			);
 
 			foreach ( $blocks as $block ) {
-				register_block_type( WOOSTIFY_BLOCK_PATH . 'src/blocks/' . $block );
+				woostify_block_regitser_block_type( $block['slug'], array( 'title' => $block['title'] ) );
 			}
 		}
 

@@ -54,22 +54,5 @@ module.exports = [
 			!process.env.WP_NO_EXTERNALS && new DependencyExtractionWebpackPlugin(),
 		].filter(Boolean),
 	},
-	{
-		...defaultConfig,
-		entry: glob.sync(
-            "./src/plugin/sidebar.js",
-            ),
-        devtool: 'source-map',
-        output: {
-            path: path.join(__dirname, "assets", "js", "plugins"),
-            filename: "sidebar.js"
-        },
-
-        module: {
-            rules: [
-				...defaultConfig.module.rules
-            ]
-        }
-	}
 ];
 
