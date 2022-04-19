@@ -28,3 +28,6 @@ config.codekit
 # FTP
 *ftp*
 package-lock.json
+
+# phpintel
+.phpintel

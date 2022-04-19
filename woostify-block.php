@@ -26,6 +26,9 @@ define( 'WOOSTIFY_BLOCK_URI', plugins_url( '/', WOOSTIFY_BLOCK_FILE ) );
 // Helper functions.
 require_once WOOSTIFY_BLOCK_PATH . 'inc/helpers.php';
 
+// Global Settings.
+require_once WOOSTIFY_BLOCK_PATH . 'inc/class-wcb-global-settings.php';
+
 // Woostify Block Dynamic CSS Class.
 require_once WOOSTIFY_BLOCK_PATH . 'inc/class-woostify-block-dynamic-css.php';
 

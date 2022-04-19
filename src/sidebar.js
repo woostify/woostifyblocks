@@ -7,12 +7,27 @@ import { PanelBody } from '@wordpress/components'
 import WoostifyButtonPopoverControl from './components/controls/button-popover';
 import WoostifyTypographyControl from './components/controls/typography';
 
+import { loadPromise, models } from '@wordpress/api'
+import {
+    useEffect,
+    useState,
+} from '@wordpress/element'
+
 const sidebarName  = "woostify-block-sidebar"
 const sidebarTitle = __( 'Woostify Block Settings', 'woostify-block' )
 const sidebarIcon  = 'smiley'
 
 
 const WoostifyBlockSidebarContent = ( props ) => {
+    useEffect( () => {
+        // Get settings.
+        loadPromise.then( () => {
+            const settings = new models.Settings()
+            settings.fetch().then( response => {
+                console.log( response )
+            } )
+        } )
+    }, [] );
     return (
         <Fragment>
             <PanelBody 
