@@ -17,17 +17,51 @@ const sidebarName  = "woostify-block-sidebar"
 const sidebarTitle = __( 'Woostify Block Settings', 'woostify-block' )
 const sidebarIcon  = 'smiley'
 
+let saveSettingsTime = null
 
 const WoostifyBlockSidebarContent = ( props ) => {
+    const [ typoSettings, setTypoSettings ] = useState( [] )
+
+    const TYPO_LIST = [
+        { 'label': 'Heading 1', 'tag': 'h1' },
+        { 'label': 'Heading 2', 'tag': 'h2' },
+        { 'label': 'Heading 3', 'tag': 'h3' },
+        { 'label': 'Heading 4', 'tag': 'h4' },
+        { 'label': 'Heading 5', 'tag': 'h5' },
+        { 'label': 'Heading 6', 'tag': 'h6' },
+    ];
     useEffect( () => {
         // Get settings.
         loadPromise.then( () => {
             const settings = new models.Settings()
             settings.fetch().then( response => {
-                console.log( response )
+                setTypoSettings( ( ( head( response.wcb_global_typography ) ) || {} ) );
             } )
         } )
     }, [] );
+
+    const handleChangeGlobalSettings = ( selector, styles ) => {
+        Object.keys( styles ).forEach( key => {
+			if ( styles[ key ] === '' ) {
+				delete styles[ key ]
+			}
+		} )
+
+		const newSettings = {
+			...typoSettings,
+			[ selector ]: styles,
+		}
+		setTypoSettings( newSettings )
+
+        clearTimeout( saveSettingsTime )
+		saveSettingsTime = setTimeout( () => {
+			const model = new models.Settings( {
+				wcb_global_typography: [ newSettings ], // eslint-disable-line
+			} )
+			model.save()
+		}, 500 )
+    }
+
     return (
         <Fragment>
             <PanelBody 
@@ -40,120 +74,29 @@ const WoostifyBlockSidebarContent = ( props ) => {
             title={__('Global Typography', 'woostify-block')}
             initialOpen={ true }
             >
-                <WoostifyButtonPopoverControl
-                    buttonLabel={__('H1', 'woostify-block')}
-                    popoverHeading={__('Typography', 'woostify-block')}
-                >
-                    <WoostifyTypographyControl
-                        {...props}
-                        attrFontFamily={'fontFamily'}
-                        attrFontWeight={'fontWeight'}
-                        attrTextTransform={'fontTransform'}
-                        attrFontStyle={'fontStyle'}
-                        attrLineHeight={'lineHeight'}
-                        attrLineHeightUnit={'lineHeightUnit'}
-                        attrLetterSpacing={'letterSpacing'}
-                        attrFontSize={'fontSize'}
-                        attrFontSizeUnit={'fontSizeUnit'}
-                        fontSizeUnits={['px', 'em', 'rem']}
-                        lineHeightUnits={['px', 'em']}
-                    />
-                </WoostifyButtonPopoverControl>
-                <WoostifyButtonPopoverControl
-                    buttonLabel={__('H2', 'woostify-block')}
-                    popoverHeading={__('Typography', 'woostify-block')}
-                >
-                    <WoostifyTypographyControl
-                        {...props}
-                        attrFontFamily={'fontFamily'}
-                        attrFontWeight={'fontWeight'}
-                        attrTextTransform={'fontTransform'}
-                        attrFontStyle={'fontStyle'}
-                        attrLineHeight={'lineHeight'}
-                        attrLineHeightUnit={'lineHeightUnit'}
-                        attrLetterSpacing={'letterSpacing'}
-                        attrFontSize={'fontSize'}
-                        attrFontSizeUnit={'fontSizeUnit'}
-                        fontSizeUnits={['px', 'em', 'rem']}
-                        lineHeightUnits={['px', 'em']}
-                    />
-                </WoostifyButtonPopoverControl>
-                <WoostifyButtonPopoverControl
-                    buttonLabel={__('H3', 'woostify-block')}
-                    popoverHeading={__('Typography', 'woostify-block')}
-                >
-                    <WoostifyTypographyControl
-                        {...props}
-                        attrFontFamily={'fontFamily'}
-                        attrFontWeight={'fontWeight'}
-                        attrTextTransform={'fontTransform'}
-                        attrFontStyle={'fontStyle'}
-                        attrLineHeight={'lineHeight'}
-                        attrLineHeightUnit={'lineHeightUnit'}
-                        attrLetterSpacing={'letterSpacing'}
-                        attrFontSize={'fontSize'}
-                        attrFontSizeUnit={'fontSizeUnit'}
-                        fontSizeUnits={['px', 'em', 'rem']}
-                        lineHeightUnits={['px', 'em']}
-                    />
-                </WoostifyButtonPopoverControl>
-                <WoostifyButtonPopoverControl
-                    buttonLabel={__('H4', 'woostify-block')}
-                    popoverHeading={__('Typography', 'woostify-block')}
-                >
-                    <WoostifyTypographyControl
-                        {...props}
-                        attrFontFamily={'fontFamily'}
-                        attrFontWeight={'fontWeight'}
-                        attrTextTransform={'fontTransform'}
-                        attrFontStyle={'fontStyle'}
-                        attrLineHeight={'lineHeight'}
-                        attrLineHeightUnit={'lineHeightUnit'}
-                        attrLetterSpacing={'letterSpacing'}
-                        attrFontSize={'fontSize'}
-                        attrFontSizeUnit={'fontSizeUnit'}
-                        fontSizeUnits={['px', 'em', 'rem']}
-                        lineHeightUnits={['px', 'em']}
-                    />
-                </WoostifyButtonPopoverControl>
-                <WoostifyButtonPopoverControl
-                    buttonLabel={__('H5', 'woostify-block')}
-                    popoverHeading={__('Typography', 'woostify-block')}
-                >
-                    <WoostifyTypographyControl
-                        {...props}
-                        attrFontFamily={'fontFamily'}
-                        attrFontWeight={'fontWeight'}
-                        attrTextTransform={'fontTransform'}
-                        attrFontStyle={'fontStyle'}
-                        attrLineHeight={'lineHeight'}
-                        attrLineHeightUnit={'lineHeightUnit'}
-                        attrLetterSpacing={'letterSpacing'}
-                        attrFontSize={'fontSize'}
-                        attrFontSizeUnit={'fontSizeUnit'}
-                        fontSizeUnits={['px', 'em', 'rem']}
-                        lineHeightUnits={['px', 'em']}
-                    />
-                </WoostifyButtonPopoverControl>
-                <WoostifyButtonPopoverControl
-                    buttonLabel={__('H6', 'woostify-block')}
-                    popoverHeading={__('Typography', 'woostify-block')}
-                >
-                    <WoostifyTypographyControl
-                        {...props}
-                        attrFontFamily={'fontFamily'}
-                        attrFontWeight={'fontWeight'}
-                        attrTextTransform={'fontTransform'}
-                        attrFontStyle={'fontStyle'}
-                        attrLineHeight={'lineHeight'}
-                        attrLineHeightUnit={'lineHeightUnit'}
-                        attrLetterSpacing={'letterSpacing'}
-                        attrFontSize={'fontSize'}
-                        attrFontSizeUnit={'fontSizeUnit'}
-                        fontSizeUnits={['px', 'em', 'rem']}
-                        lineHeightUnits={['px', 'em']}
-                    />
-                </WoostifyButtonPopoverControl>
+            { TYPO_LIST.map( (typo) => {
+                return (
+                    <WoostifyButtonPopoverControl
+                        buttonLabel={typo.label}
+                        popoverHeading={__('Typography', 'woostify-block')}
+                    >
+                        <WoostifyTypographyControl
+                            {...props}
+                            attrFontFamily={'fontFamily'}
+                            attrFontWeight={'fontWeight'}
+                            attrTextTransform={'fontTransform'}
+                            attrFontStyle={'fontStyle'}
+                            attrLineHeight={'lineHeight'}
+                            attrLineHeightUnit={'lineHeightUnit'}
+                            attrLetterSpacing={'letterSpacing'}
+                            attrFontSize={'fontSize'}
+                            attrFontSizeUnit={'fontSizeUnit'}
+                            fontSizeUnits={['px', 'em', 'rem']}
+                            lineHeightUnits={['px', 'em']}
+                        />
+                    </WoostifyButtonPopoverControl>
+                )
+            })}
             </PanelBody>
         </Fragment>
     )
