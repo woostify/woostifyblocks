@@ -10,13 +10,13 @@ import { head } from 'lodash';
 import WCBTypoPicker from './typo/picker';
 
 const sidebarName = 'woostify-block-sidebar';
-const sidebarTitle = __('Woostify Block Settings', 'woostify-block');
+const sidebarTitle = __( 'Woostify Block Settings', 'woostify-block' );
 const sidebarIcon = 'smiley';
 
 let saveSettingsTime = null;
 
-const WoostifyBlockSidebarContent = (props) => {
-	const [typoSettings, setTypoSettings] = useState([]);
+const WoostifyBlockSidebarContent = ( props ) => {
+	const [ typoSettings, setTypoSettings ] = useState( [] );
 
 	const TYPO_LIST = [
 		{ label: 'Heading 1', tag: 'h1' },
@@ -26,61 +26,61 @@ const WoostifyBlockSidebarContent = (props) => {
 		{ label: 'Heading 5', tag: 'h5' },
 		{ label: 'Heading 6', tag: 'h6' },
 	];
-	useEffect(() => {
+	useEffect( () => {
 		// Get settings.
-		loadPromise.then(() => {
+		loadPromise.then( () => {
 			const settings = new models.Settings();
-			settings.fetch().then((response) => {
-				setTypoSettings(head(response.wcb_global_typography) || {});
-			});
-		});
-	}, []);
+			settings.fetch().then( ( response ) => {
+				setTypoSettings( head( response.wcb_global_typography ) || {} );
+			} );
+		} );
+	}, [] );
 
-	const handleOnChangeValue = (selector, styles) => {
-		Object.keys(styles).forEach((key) => {
-			if (styles[key] === '') {
-				delete styles[key];
+	const handleOnChangeValue = ( selector, styles ) => {
+		Object.keys( styles ).forEach( ( key ) => {
+			if ( styles[ key ] === '' ) {
+				delete styles[ key ];
 			}
-		});
+		} );
 
 		const newSettings = {
 			...typoSettings,
-			[selector]: styles,
+			[ selector ]: styles,
 		};
-		setTypoSettings(newSettings);
+		setTypoSettings( newSettings );
 
-		clearTimeout(saveSettingsTime);
-		saveSettingsTime = setTimeout(() => {
-			const model = new models.Settings({
-				wcb_global_typography: [newSettings], // eslint-disable-line
-			});
+		clearTimeout( saveSettingsTime );
+		saveSettingsTime = setTimeout( () => {
+			const model = new models.Settings( {
+				wcb_global_typography: [ newSettings ], // eslint-disable-line
+			} );
 			model.save();
-		}, 500);
+		}, 500 );
 	};
 
 	return (
 		<Fragment>
 			<PanelBody
-				title={__('Global Color Palette', 'woostify-block')}
-				initialOpen={false}
+				title={ __( 'Global Color Palette', 'woostify-block' ) }
+				initialOpen={ false }
 			></PanelBody>
 			<PanelBody
-				title={__('Global Typography', 'woostify-block')}
-				initialOpen={true}
+				title={ __( 'Global Typography', 'woostify-block' ) }
+				initialOpen={ true }
 			>
-				{TYPO_LIST.map(({ label, tag }, index) => {
+				{ TYPO_LIST.map( ( { label, tag }, index ) => {
 					return (
 						<WCBTypoPicker
-							label={label}
-							key={index}
-							selector={tag}
-							value={typoSettings[tag] || {}}
-							onChange={(value) =>
-								handleOnChangeValue(tag, value)
+							label={ label }
+							key={ index }
+							selector={ tag }
+							value={ typoSettings[ tag ] || {} }
+							onChange={ ( value ) =>
+								handleOnChangeValue( tag, value )
 							}
 						/>
 					);
-				})}
+				} ) }
 			</PanelBody>
 		</Fragment>
 	);
@@ -89,13 +89,16 @@ const WoostifyBlockSidebarContent = (props) => {
 const WoostifyBlockPluginSidebar = () => {
 	return (
 		<Fragment>
-			<PluginSidebarMoreMenuItem target={sidebarName} icon={sidebarIcon}>
-				{sidebarTitle}
+			<PluginSidebarMoreMenuItem
+				target={ sidebarName }
+				icon={ sidebarIcon }
+			>
+				{ sidebarTitle }
 			</PluginSidebarMoreMenuItem>
 			<PluginSidebar
-				name={sidebarName}
-				title={sidebarTitle}
-				icon={sidebarIcon}
+				name={ sidebarName }
+				title={ sidebarTitle }
+				icon={ sidebarIcon }
 			>
 				<div className="woostify-block-sidebar-content">
 					<WoostifyBlockSidebarContent />
@@ -105,6 +108,6 @@ const WoostifyBlockPluginSidebar = () => {
 	);
 };
 
-registerPlugin(sidebarName, {
+registerPlugin( sidebarName, {
 	render: WoostifyBlockPluginSidebar,
-});
+} );

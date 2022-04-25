@@ -1,6 +1,6 @@
 const wb_helpers = {
-	capitalizeFirstLetter: (string) => {
-		return string.charAt(0).toUpperCase() + string.slice(1);
+	capitalizeFirstLetter: ( string ) => {
+		return string.charAt( 0 ).toUpperCase() + string.slice( 1 );
 	},
 };
 

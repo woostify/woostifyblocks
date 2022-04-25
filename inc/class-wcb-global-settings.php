@@ -86,7 +86,7 @@ if ( ! class_exists( 'WCB_Global_Settings' ) ) {
                     "fontWeight" => array(
                         "type" => "string"
                     ),
-                    "fontTransform" => array(
+                    "textTransform" => array(
                         "type" => "string"
                     ),
                     "fontStyle" => array(
