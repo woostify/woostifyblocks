@@ -62,6 +62,25 @@ function Edit(props) {
 						/>
 					</WoostifyButtonPopoverControl>
 
+					<WoostifyButtonPopoverControl
+						popoverHeading={__('Typography 2', 'woostify-block')}
+					>
+						<WoostifyTypographyControl
+							{...props}
+							attrFontFamily={'fontFamily'}
+							attrFontWeight={'fontWeight'}
+							attrTextTransform={'fontTransform'}
+							attrFontStyle={'fontStyle'}
+							attrLineHeight={'lineHeight'}
+							attrLineHeightUnit={'lineHeightUnit'}
+							attrLetterSpacing={'letterSpacing'}
+							attrFontSize={'fontSize'}
+							attrFontSizeUnit={'fontSizeUnit'}
+							fontSizeUnits={['px', 'em', 'rem']}
+							lineHeightUnits={['px', 'em']}
+						/>
+					</WoostifyButtonPopoverControl>
+
 					<WoostifyBaseControl
 						{...props}
 						label={__('Padding', 'woostify-block')}

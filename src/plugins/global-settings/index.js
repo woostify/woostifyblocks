@@ -5,7 +5,7 @@ import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
 import { PanelBody } from '@wordpress/components';
 import { loadPromise, models } from '@wordpress/api';
 import { useEffect, useState } from '@wordpress/element';
-import { omit, head } from 'lodash';
+import { head } from 'lodash';
 
 import WCBTypoPicker from './typo/picker';
 
@@ -71,6 +71,7 @@ const WoostifyBlockSidebarContent = (props) => {
 				{TYPO_LIST.map(({ label, tag }, index) => {
 					return (
 						<WCBTypoPicker
+							label={label}
 							key={index}
 							selector={tag}
 							value={typoSettings[tag] || {}}

@@ -18,11 +18,39 @@ const WCBTypoPicker = (props) => {
 
 	return (
 		<Fragment>
-			<WoostifyButtonPopoverControl popoverHeading={null}>
+			<WoostifyButtonPopoverControl
+				buttonLabel={props.label}
+				popoverHeading={null}
+			>
 				<WCBTypographyControl
+					fontSizeUnits={['px', 'em', 'rem']}
+					fontSize={value.fontSize}
+					fontSizeTablet={value.fontSizeTablet}
+					fontSizeMobile={value.fontSizeMobile}
+					fontSizeUnit={value.fontSizeUnit}
+					fontSizeUnitTablet={value.fontSizeUnitTablet}
+					fontSizeUnitMobile={value.fontSizeUnitMobile}
 					fontFamily={value.fontFamily}
 					onChangeFontFamily={(value) =>
 						handleOnChangeSetting('fontFamily', value)
+					}
+					onChangeFontSize={(value) =>
+						handleOnChangeSetting('fontSize', value)
+					}
+					onChangeFontSizeTablet={(value) =>
+						handleOnChangeSetting('fontSizeTablet', value)
+					}
+					onChangeFontSizeMobile={(value) =>
+						handleOnChangeSetting('fontSizeMobile', value)
+					}
+					onChangeFontSizeUnit={(value) =>
+						handleOnChangeSetting('fontSizeUnit', value)
+					}
+					onChangeFontSizeUnitTablet={(value) =>
+						handleOnChangeSetting('fontSizeUnitTablet', value)
+					}
+					onChangeFontSizeUnitMobile={(value) =>
+						handleOnChangeSetting('fontSizeUnitMobile', value)
 					}
 				/>
 			</WoostifyButtonPopoverControl>
