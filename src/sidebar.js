@@ -1,3 +1,6 @@
+import './plugins/global-settings';
+
+/*
 import { registerPlugin } from '@wordpress/plugins'
 import { __ } from '@wordpress/i18n'
 import { Fragment } from '@wordpress/element'
@@ -127,3 +130,4 @@ const WoostifyBlockPluginSidebar = () => {
 registerPlugin( sidebarName, {
 	render: WoostifyBlockPluginSidebar,
 } )
+*/

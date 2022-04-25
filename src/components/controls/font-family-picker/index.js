@@ -36,7 +36,7 @@ class WoostifyFontFamilyPicker extends Component {
 					value={this.state.fontFamily}
 					onChange={(newFont) => {
 						this.setState({ fontFamily: newFont });
-						onChangeFontFamily(newFont);
+						this.props.onChange(newFont);
 					}}
 				>
 					<option value="">

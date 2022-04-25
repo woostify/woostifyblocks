@@ -15,7 +15,7 @@ import { getDeviceSuffix } from '../../components/get-device-type';
 import WoostifyBaseControl from '../../components/controls/base';
 import WoostifyDimensionsControl from '../../components/controls/dimensions';
 import WoostifyButtonPopoverControl from '../../components/controls/button-popover';
-import WoostifyTypographyControl from '../../components/controls/typography';
+import WoostifyTypographyControl from '../../components/controls/typography/index2';
 
 import './editor.scss';
 
