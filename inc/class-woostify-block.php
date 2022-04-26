@@ -97,6 +97,15 @@ if ( ! class_exists( 'Woostify_Block' ) ) {
 				true
 			);
 
+			wp_localize_script(
+				'woostify_block-blocks-scripts',
+				'wcb_params',
+				array(
+					'global_colors'     => get_option( 'wcb_global_colors', '' ),
+					'global_typography' => get_option( 'wcb_global_typography', '' ),
+				),
+			);
+
 			wp_register_style(
 				'woostify_block-editor-style',
 				WOOSTIFY_BLOCK_URI . 'dist/style-blocks.css',
