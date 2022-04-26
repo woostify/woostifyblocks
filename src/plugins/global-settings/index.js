@@ -8,6 +8,7 @@ import { useEffect, useState } from '@wordpress/element';
 import { head } from 'lodash';
 
 import WCBTypoPicker from './typo/picker';
+import WCBGlobalColors from './colors';
 
 const sidebarName = 'woostify-block-sidebar';
 const sidebarTitle = __('Woostify Block Settings', 'woostify-block');
@@ -62,11 +63,13 @@ const WoostifyBlockSidebarContent = (props) => {
 		<Fragment>
 			<PanelBody
 				title={__('Global Color Palette', 'woostify-block')}
-				initialOpen={false}
-			></PanelBody>
+				initialOpen={true}
+			>
+			<WCBGlobalColors/>
+			</PanelBody>
 			<PanelBody
 				title={__('Global Typography', 'woostify-block')}
-				initialOpen={true}
+				initialOpen={false}
 			>
 				{TYPO_LIST.map(({ label, tag }, index) => {
 					return (

@@ -17,7 +17,8 @@
   "author": "Woostify",
   "license": "GPL-2.0-or-later",
   "dependencies": {
-    "classnames": "^2.3.1"
+    "classnames": "^2.3.1",
+    "color-rgba": "^2.4.0"
   },
   "devDependencies": {
     "@wordpress/api-fetch": "^6.3.0",

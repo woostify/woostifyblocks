@@ -1,4 +1,5 @@
 export * from './font';
+export * from './color';
 
 /**
  * Capitalize the first letter in string
