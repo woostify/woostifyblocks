@@ -120,6 +120,14 @@ if ( ! class_exists( 'Woostify_Block' ) ) {
 				WOOSTIFY_BLOCK_VERSION
 			);
 			// End blocks script.
+			
+			wp_register_style(
+				'woostify_block-sidebar-style',
+				WOOSTIFY_BLOCK_URI . 'dist/sidebar.css',
+				array(),
+				WOOSTIFY_BLOCK_VERSION
+			);
+			// End blocks script.
 
 			// General editor style.
 			wp_enqueue_style(
@@ -148,6 +156,7 @@ if ( ! class_exists( 'Woostify_Block' ) ) {
 
 			if ( 'widgets.php' !== $pagenow ) {
 				wp_enqueue_script( 'woostify_block-sidebar' );
+				wp_enqueue_style( 'woostify_block-sidebar-style' );
 			}
 
 		}

@@ -12,8 +12,6 @@ const WCBTypographyHelperControl = (props) => {
 
 	const { attributes, setAttributes } = props;
 
-	console.log(props);
-
 	return (
 		<Fragment>
 			<WoostifyButtonPopoverControl

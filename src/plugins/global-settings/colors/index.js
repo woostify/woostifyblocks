@@ -1,5 +1,11 @@
+import './color-palette-updater'
+import './store';
+
+import './editor.scss';
+
+import classnames from 'classnames'
 import {
-	Fragment, useState, useMemo,
+	Fragment, useState, useMemo, useEffect
 } from '@wordpress/element'
 import {
 	select, dispatch, useSelect,
@@ -87,7 +93,10 @@ const WCBGlobalColors = props => {
 			settings.save()
 		}, 300 )
 		
-		dispatch( 'core/block-editor' ).updateSettings( { colors: newColors } )
+		// Update our store.
+		dispatch( 'wcb/global-colors' ).updateSettings( {
+			wcbColors: updatedColors,
+		} )
 	}
 
 	// Called when adding a new color.
@@ -112,9 +121,16 @@ const WCBGlobalColors = props => {
 		setSelectedIndex( newIndex - 1 )
 	}
 
+	const classNames = classnames(
+		'wcb-global-settings-color-picker',
+		'components-circular-option-picker',
+		'editor-color-palette-control__color-palette',
+		props.className
+	)
+
 	return (
 		<Fragment>
-		<BaseControl>
+		<BaseControl className={ classNames }>
 		{ colors.map( ( color, index ) => {
 			if ( ! isPlainObject( color ) ) {
 				return null

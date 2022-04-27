@@ -1,0 +1,17 @@
+.wcb-global-settings-color-picker {
+	.components-circular-option-picker__option-wrapper {
+		margin: 0 12px 12px 0;
+	}
+}
+
+.wcb-global-settings-color-picker__add-icon {
+	&.components-button {
+		&.has-icon {
+			margin: 0 12px 12px 0;
+		    border-radius: 50%;
+		    padding: 0;
+		    min-width: 28px;
+		    height: 28px;
+		}
+	}
+}

@@ -24,6 +24,9 @@ function Edit(props) {
 	const { attributes, setAttributes, clientId } = props;
 	const { uniqueId } = attributes;
 
+	const [ bgColor, setBgColor ] = useState( attributes.bg_color || '' )
+
+
 	useEffect(() => {
 		setAttributes({
 			uniqueId: clientId.substr(2, 9).replace('-', ''),
@@ -42,6 +45,13 @@ function Edit(props) {
 		<div {...useBlockProps()}>
 			<InspectorControls>
 				<PanelBody title={__('General Settings', 'woostify-block')}>
+				<ColorPalette
+		            value={ bgColor }
+		            onChange={ val => {
+		            	setBgColor( val ) 
+		            	setAttributes({bg_color: val})
+		            }}
+		        />
 					<WCBTypographyHelperControl
 						{...props}
 						label={__('Typography', 'woostify-block')}
@@ -108,8 +118,8 @@ function Edit(props) {
 							line-height: ${lineHeightCSS};
 							font-size: ${fontSizeCSS};
 							letter-spacing: ${letterSpacingCSS};
-							backgroundColor: ${attributes.bg_color},
-							color: ${attributes.text_color},
+							background-color: ${bgColor};
+							color: ${attributes.text_color};
 						}`}
 				</style>
 				<RichText
