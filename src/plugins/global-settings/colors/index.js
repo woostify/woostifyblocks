@@ -1,5 +1,5 @@
-import './color-palette-updater'
-import './store';
+//import './color-palette-updater'
+//import './store';
 
 import './editor.scss';
 
@@ -7,13 +7,12 @@ import classnames from 'classnames'
 import {
 	Fragment, useState, useMemo, useEffect
 } from '@wordpress/element'
-import {
-	select, dispatch, useSelect,
-} from '@wordpress/data'
+import { select, dispatch, useSelect, withSelect, withDispatch } from '@wordpress/data';
+import { compose } from '@wordpress/compose';
 import { ColorPicker, Popover, BaseControl, Button, ButtonGroup } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
-import { cloneDeep, isPlainObject } from 'lodash'
+import { cloneDeep, isPlainObject, get, uniqueId, map } from 'lodash'
 
 import { wcbCreateColor, wcbGetRgb } from '../../../utils'
 
@@ -72,53 +71,50 @@ let saveTimeout = null
 const WCBGlobalColors = props => {
 	const [ selectedIndex, setSelectedIndex ] = useState( null )
 
-	const _colors = useSelect( select => select( 'core/block-editor' ).getSettings().colors ) || []
-	const colors = Array.isArray( _colors ) ? _colors : []
-
-	/**
-	 * Function used to update the colors in @wordpress/data,
-	 *
-	 * @param {Array} newColors colors passed.
-	 */
-	const handleUpdateColors = newColors => {
-		const updatedColors = newColors.filter( color => color.slug.match( /^wcb-global-color/ ) )
-
-		// Update the blocks in our page.
-		//updateFallbackBlockAttributes( updatedColors )
-
-		// Save settings.
-		clearTimeout( saveTimeout )
-		saveTimeout = setTimeout( () => {
-			const settings = new models.Settings( { wcb_global_colors: [ updatedColors ] } ) // eslint-disable-line camelcase
-			settings.save()
-		}, 300 )
-		
-		// Update our store.
-		dispatch( 'wcb/global-colors' ).updateSettings( {
-			wcbColors: updatedColors,
-		} )
+	const [ isSaving, setIsSaving ] = useState( false )
+	const [ wcbColors, setWCBColors] = useState( wcb_params.global_colors )
+	const [ currColors, setCurrColors ] = useState( props.baseColors )
+	const [ showMessage, setShowMessage ] = useState( false )
+	
+	const saveConfig = () => {
+		if ( false === isSaving ) {
+			setIsSaving( true )
+			const config = wcbColors;
+			const settingModel = new models.Settings( { wcb_global_colors: config } );
+			settingModel.save().then( response => {
+				setIsSaving( false )
+				setWCBColors( config )
+				wcb_params.global_colors = JSON.stringify( config );
+				props.updateSettings( { colors: currColors } );
+			} );
+		}
 	}
 
 	// Called when adding a new color.
 	const handleOnAddColor = () => {
-		const newIndex = ( colors && Array.isArray( colors ) ) ? colors.length + 1 : 1
-		const slugId = Math.floor( Math.random() * new Date().getTime() ) % 100000
+		if ( isSaving ) {
+			return;
+		}
+		
 		const color = wcbCreateColor()
 
-		const updatedColors = [
-			...select( 'core/block-editor' ).getSettings().colors,
-			{
-				name: sprintf( __( 'Custom Color %s', 'woostify-block' ), newIndex ),
-				slug: `wcb-global-color-${ slugId }`,
-				color,
-				rgb: wcbGetRgb( color ),
-			},
-		]
+		const newIndex = ( currColors && Array.isArray( currColors ) ) ? currColors.length + 1 : 1
+		const slugId = Math.floor( Math.random() * new Date().getTime() ) % 100000
 
-		// Update the colors.
-		handleUpdateColors( updatedColors )
-
-		setSelectedIndex( newIndex - 1 )
+		wcbColors.push( {
+			color,
+			name: __( 'Color' ) + ' ' + ( newIndex ),
+			slug: `wcb-global-color-${ slugId }`,
+		} );
+		currColors.push( {
+			color,
+			name: __( 'Color' ) + ' ' + ( newIndex ),
+			slug: `wcb-global-color-${ slugId }`,
+			rgba: wcbGetRgb( color )
+		} );
+		setWCBColors( wcbColors )
+		setCurrColors( currColors );
+		saveConfig();
 	}
 
 	const classNames = classnames(
@@ -131,7 +127,7 @@ const WCBGlobalColors = props => {
 	return (
 		<Fragment>
 		<BaseControl className={ classNames }>
-		{ colors.map( ( color, index ) => {
+		{ currColors.map( ( color, index ) => {
 			if ( ! isPlainObject( color ) ) {
 				return null
 			}
@@ -154,4 +150,21 @@ const WCBGlobalColors = props => {
 	)
 }
 
-export default WCBGlobalColors
+export default compose( [
+	withSelect( ( select, ownProps ) => {
+		const { getSettings } = select( 'core/block-editor' );
+		const settings = getSettings();
+		return {
+			baseColors: get( settings, [ 'colors' ], [] ),
+			disableCustomColors: settings.disableCustomColors !== undefined ? settings.disableCustomColors : false,
+		};
+	} ),
+	withDispatch( ( dispatch ) => {
+		const {
+			updateSettings,
+		} = dispatch( 'core/block-editor' );
+		return {
+			updateSettings,
+		};
+	} ),
+] )( WCBGlobalColors );

@@ -31,7 +31,7 @@ function Edit(props) {
 		setAttributes({
 			uniqueId: clientId.substr(2, 9).replace('-', ''),
 		});
-	});
+	}, []);
 
 	let lineHeightCSS =
 		attributes['lineHeight' + deviceSuffix] +
