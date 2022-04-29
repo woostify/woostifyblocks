@@ -45,20 +45,19 @@ function Edit(props) {
 		<div {...useBlockProps()}>
 			<InspectorControls>
 				<PanelBody title={__('General Settings', 'woostify-block')}>
-				<ColorPalette
-		            value={ bgColor }
-		            onChange={ val => {
-		            	setBgColor( val ) 
-		            	setAttributes({bg_color: val})
-		            }}
-		        />
+					<ColorPalette
+						value={ bgColor }
+						onChange={ val => {
+							setBgColor( val ) 
+							setAttributes({bg_color: val})
+						}}
+					/>
 					<WCBTypographyHelperControl
 						{...props}
 						label={__('Typography', 'woostify-block')}
 						popoverHeading={__('Heading', 'woostify-block')}
 					/>
 					<WoostifyBaseControl
-						{...props}
 						label={__('Padding', 'woostify-block')}
 						responsive={['desktop', 'tablet', 'mobile']}
 						units={['px', 'em', 'rem', '%']}

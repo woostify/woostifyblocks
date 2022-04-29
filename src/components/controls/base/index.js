@@ -1,5 +1,7 @@
+import classnames from 'classnames'
+
 import { __ } from '@wordpress/i18n';
-import { useMemo, useCallback } from '@wordpress/element';
+import { useMemo } from '@wordpress/element';
 
 import IconToggleControl from './../icon-toggle';
 import ResponsiveToggle from '../responsive-toggle';
@@ -18,8 +20,15 @@ const WoostifyBaseControl = (props) => {
 	const hasResponsive = !!props.responsive?.length;
 	const hasUnit = !!props.units?.length;
 
+	const classNames = classnames(
+		'components-base-control',
+		'components-woostify-base-control',
+		'components-wcb-base-control',
+		props.className
+	)
+
 	return (
-		<div className="components-base-control components-woostify-base-control">
+		<div className={classNames}>
 			<div className="wb-control-label">
 				<div className="wb-base-control__label">{props.label}</div>
 				<div className="wb-base-control__responsive">

@@ -35,6 +35,7 @@ if ( ! class_exists( 'Woostify_Block' ) ) {
 			'wp-blocks',
 			'wp-i18n',
 			'wp-api-fetch',
+			'wp-api',
 		);
 
 		/**
