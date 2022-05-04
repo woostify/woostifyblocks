@@ -1,4 +1,4 @@
-import classnames from 'classnames'
+import classnames from 'classnames';
 
 import { __ } from '@wordpress/i18n';
 import { useMemo } from '@wordpress/element';
@@ -25,7 +25,7 @@ const WoostifyBaseControl = (props) => {
 		'components-woostify-base-control',
 		'components-wcb-base-control',
 		props.className
-	)
+	);
 
 	return (
 		<div className={classNames}>

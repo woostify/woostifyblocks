@@ -10,6 +10,8 @@ import { head } from 'lodash';
 import WCBTypoPicker from './typo/picker';
 import WCBGlobalColors from './colors';
 
+import { renderGlobalStyle } from '../../utils';
+
 const sidebarName = 'woostify-block-sidebar';
 const sidebarTitle = __('Woostify Block Settings', 'woostify-block');
 const sidebarIcon = 'smiley';
@@ -56,6 +58,8 @@ const WoostifyBlockSidebarContent = (props) => {
 				wcb_global_typography: [newSettings], // eslint-disable-line
 			});
 			model.save();
+
+			renderGlobalStyle();
 		}, 500);
 	};
 
@@ -65,7 +69,7 @@ const WoostifyBlockSidebarContent = (props) => {
 				title={__('Global Color Palette', 'woostify-block')}
 				initialOpen={true}
 			>
-			<WCBGlobalColors/>
+				<WCBGlobalColors />
 			</PanelBody>
 			<PanelBody
 				title={__('Global Typography', 'woostify-block')}

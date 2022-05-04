@@ -24,8 +24,7 @@ function Edit(props) {
 	const { attributes, setAttributes, clientId } = props;
 	const { uniqueId } = attributes;
 
-	const [ bgColor, setBgColor ] = useState( attributes.bg_color || '' )
-
+	const [bgColor, setBgColor] = useState(attributes.bg_color || '');
 
 	useEffect(() => {
 		setAttributes({
@@ -46,10 +45,10 @@ function Edit(props) {
 			<InspectorControls>
 				<PanelBody title={__('General Settings', 'woostify-block')}>
 					<ColorPalette
-						value={ bgColor }
-						onChange={ val => {
-							setBgColor( val ) 
-							setAttributes({bg_color: val})
+						value={bgColor}
+						onChange={(val) => {
+							setBgColor(val);
+							setAttributes({ bg_color: val });
 						}}
 					/>
 					<WCBTypographyHelperControl
