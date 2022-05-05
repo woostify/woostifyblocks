@@ -39,8 +39,6 @@ export const convertToResponsiveStyle = () => {
                     }
                 }
 			}
-
-            console.log( responsiveJson)
             
             return responsiveJson;
 		});

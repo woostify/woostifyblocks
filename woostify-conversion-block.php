@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name:       Woostify Block
+ * Plugin Name:       Woostify Conversion Block
  * Description:       Advanced blocks for Gutenberg editor.
  * Requires at least: 5.8
  * Requires PHP:      7.0
@@ -11,7 +11,7 @@
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       woostify-block
  *
- * @package           Woostify Block
+ * @package           Woostify Conversion Block
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -29,13 +29,13 @@ require_once WOOSTIFY_BLOCK_PATH . 'inc/helpers.php';
 // Global Settings.
 require_once WOOSTIFY_BLOCK_PATH . 'inc/class-wcb-global-settings.php';
 
-// Woostify Block Dynamic CSS Class.
-require_once WOOSTIFY_BLOCK_PATH . 'inc/class-woostify-block-dynamic-css.php';
-
 // Main Woostify Block Class.
-require_once WOOSTIFY_BLOCK_PATH . 'inc/class-woostify-block.php';
+require_once WOOSTIFY_BLOCK_PATH . 'inc/class-wcb.php';
+
+// Woostify Block Dynamic CSS Class.
+require_once WOOSTIFY_BLOCK_PATH . 'inc/class-wcb-dynamic-css.php';
 
 // Admin.
 if ( is_admin() ) {
-	require_once WOOSTIFY_BLOCK_PATH . 'inc/admin/class-woostify-block-admin.php';
+	require_once WOOSTIFY_BLOCK_PATH . 'inc/admin/class-wcb-admin.php';
 }

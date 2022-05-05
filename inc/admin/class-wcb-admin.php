@@ -1,16 +1,16 @@
 <?php
 /**
- * Woostify Block Admin Class
+ * Woostify Conversion Block Admin Class
  *
- * @package  woostify-block
+ * @package  Woostify Conversion Block
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Woostify_Block_Admin' ) ) :
-    class Woostify_Block_Admin {
+if ( ! class_exists( 'WCB_Admin' ) ) :
+    class WCB_Admin {
         /**
          * Instance
          *
@@ -142,6 +142,6 @@ if ( ! class_exists( 'Woostify_Block_Admin' ) ) :
 
     }
 
-    Woostify_Block_Admin::get_instance();
+    WCB_Admin::get_instance();
 
 endif;

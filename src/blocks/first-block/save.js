@@ -1,17 +1,15 @@
 import './style.scss';
 
 import { __ } from '@wordpress/i18n';
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, RichText } from '@wordpress/block-editor';
 export default function save({ attributes }) {
 	return (
 		<div
 			{...useBlockProps.save()}
-			style={{
-				backgroundColor: attributes.bg_color,
-				color: attributes.text_color,
-			}}
+			className="woostify-block" 
+			id={`woostify-block-${attributes.uniqueId}`}
 		>
-			{attributes.message}
+		<RichText.Content { ...blockProps } tagName="h2" value={attributes.message} />
 		</div>
 	);
 }

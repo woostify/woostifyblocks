@@ -2,16 +2,16 @@
 /**
  * Main Dynamic Css Class
  *
- * @package Woostify Block
+ * @package Woostify Conversion Block
  */
 
 defined( 'ABSPATH' ) || exit;
 
 if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 	/**
-	 * Woostify Block Dynamic CSS Class
+	 * Woostify Conversion Dynamic CSS Class
 	 */
-	class Woostify_Block_Dynamic_Css {
+	class WCB_Dynamic_Css {
 		/**
 		 * Instance
 		 *
@@ -25,6 +25,8 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 		 * @var string
 		 */
 		public $stylesheet_id;
+
+		public $sub_folder_name = 'wcb-styles';
 
 		/**
 		 *  Initiator
@@ -42,7 +44,7 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 		public function __construct() {
 			// Replace with the ID of your own stylesheet.
 			// Usually defined in your theme.
-			$this->stylesheet_id = 'post';
+			$this->stylesheet_id = 'woostify_block-front-end';
 
 			$this->add_options();
 
@@ -75,7 +77,7 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 
 			// Check if we're using file mode or inline mode.
 			// Default to file mode and fallback to inline if file mode is not possible.
-			$mode = 'file';
+			$mode = 'inline';
 
 			// Additional checks for file mode.
 			if ( 'file' === $mode && $this->needs_update() ) {
@@ -103,10 +105,10 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 
 			if ( 'file' === $this->mode() ) {
 				// Yay! we're using a file for our CSS, so enqueue it.
-				wp_enqueue_style( 'dynamic-css', $this->file( 'uri' ), array(), WOOSTIFY_BLOCK_VERSION ); // phpcs:ignore.
+				wp_enqueue_style( 'wcb-dynamic-post-css', $this->file( 'uri' ), array(), WOOSTIFY_BLOCK_VERSION ); // phpcs:ignore.
 				// Bah, no file mode... add inline to the head.
 			} elseif ( 'inline' === $this->mode() ) {
-				wp_add_inline_style( $this->stylesheet_id, apply_filters( 'dynamic_css', '' ) );
+				wp_add_inline_style( $this->stylesheet_id, apply_filters( 'wcb_post_dynamic_css', '' ) );
 			}
 
 		}
@@ -124,7 +126,7 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 				WP_Filesystem();
 			}
 
-			$content = "/********* Compiled - Do not edit *********/\n" . apply_filters( 'dynamic_css', '' );
+			$content = "/********* Compiled - Do not edit *********/\n" . apply_filters( 'wcb_post_dynamic_css', '' );
 
 			// Take care of domain mapping.
 			if ( defined( 'DOMAIN_MAPPING' ) && DOMAIN_MAPPING ) {
@@ -186,8 +188,8 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 			$new_blog_id = ( is_multisite() && 1 < $blog_id ) ? '_blog-' . $blog_id : null;
 			$page_id     = ( $this->page_id() ) ? $this->page_id() : 'global';
 
-			$file_name   = '/dynamic-css' . $new_blog_id . '-' . $page_id . '.css';
-			$folder_path = $upload_dir['basedir'] . DIRECTORY_SEPARATOR . 'dynamic-styles';
+			$file_name   = '/post-css' . $new_blog_id . '-' . $page_id . '.css';
+			$folder_path = $upload_dir['basedir'] . DIRECTORY_SEPARATOR . $this->sub_folder_name;
 
 			// Does the folder exist?
 			if ( file_exists( $folder_path ) ) {
@@ -244,15 +246,15 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 			$new_blog_id = ( is_multisite() && $blog_id > 1 ) ? '_blog-' . $blog_id : null;
 			$page_id     = ( $this->page_id() ) ? $this->page_id() : 'global';
 
-			$file_name   = 'dynamic-css' . $new_blog_id . '-' . $page_id . '.css';
-			$folder_path = $upload_dir['basedir'] . DIRECTORY_SEPARATOR . 'dynamic-styles';
+			$file_name   = 'post-css' . $new_blog_id . '-' . $page_id . '.css';
+			$folder_path = $upload_dir['basedir'] . DIRECTORY_SEPARATOR . $this->sub_folder_name;
 
 			// The complete path to the file.
 			$file_path = $folder_path . DIRECTORY_SEPARATOR . $file_name;
 			// Get the URL directory of the stylesheet.
 			$css_uri_folder = $upload_dir['baseurl'];
 
-			$css_uri = trailingslashit( $css_uri_folder ) . 'dynamic-styles/' . $file_name;
+			$css_uri = trailingslashit( $css_uri_folder ) . $this->sub_folder_name . '/' . $file_name;
 
 			// Take care of domain mapping.
 			if ( defined( 'DOMAIN_MAPPING' ) && DOMAIN_MAPPING ) {
@@ -322,7 +324,7 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 		}
 
 		/**
-		 * Update the dynemic_css_posts option when the theme options are saved.
+		 * Update the dynamic_css_posts option when the theme options are saved.
 		 */
 		public function global_reset_option() {
 			update_option( 'dynamic_css_posts', array() );
@@ -353,5 +355,5 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 
 	}
 
-	Woostify_Block_Dynamic_Css::get_instance();
+	WCB_Dynamic_Css::get_instance();
 endif;

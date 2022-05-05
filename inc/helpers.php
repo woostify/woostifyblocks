@@ -32,7 +32,7 @@ if ( ! function_exists( 'woostify_block_regitser_block_type' ) ) {
 				array(
 					'editor_script' => 'woostify_block-blocks-scripts',
 					'editor_style'  => 'woostify_block-editor-style',
-					'style'         => 'woostify_block-front-end-style',
+					'style'         => 'woostify_block-front-end',
 				),
 				$options
 			)

@@ -35,7 +35,75 @@ if ( ! class_exists( 'WCB_Global_Settings' ) ) {
         function __construct() {
             // Register settings.
             add_action( 'init', array( $this, 'register_settings' ) );
+
+            if ( ! is_admin() ) {
+				add_filter( 'wcb_post_dynamic_css', array( $this, 'color_add_global_styles' ) );
+			}
         }
+
+        /**
+		 * Add our global color styles in the frontend.
+		 *
+		 * @param String $current_css
+		 * @return String
+		 */
+		public function color_add_global_styles( $current_css ) {
+			// Don't do anything if we doon't have any global color.
+			$colors = get_option( 'wcb_global_colors' );
+			if ( ! $colors || ! is_array( $colors ) ) {
+				return $current_css;
+			}
+
+			$css = array();
+			$core_css = array();
+
+			foreach( $colors as $color_palette ) {
+				if ( ! is_array( $color_palette ) ) {
+					continue;
+				}
+
+				foreach( $color_palette as $color ) {
+					if ( ! is_array( $color ) ) {
+						continue;
+					}
+					if ( ! array_key_exists( 'slug', $color ) || ! array_key_exists( 'color', $color ) || ! array_key_exists( 'rgb', $color ) ) {
+						continue;
+					}
+
+					$color_name = strtolower( $color['slug'] );
+
+					// Convert the name to kebab casing,
+					$color_typography_name = 'body .has-' . implode( '-', explode( ' ', $color_name ) ) . '-color';
+					$color_background_name = 'body .has-' . implode( '-', explode( ' ', $color_name ) ) . '-background-color';
+
+					// Only do this for our global colors.
+					if ( $color['color'] && $color['slug'] ) {
+						// Add the custom css property.
+						$css[] = '--' . $color['slug'] . ': ' . $color['color'] . ';';
+						$css[] = '--' . $color['slug'] . '-rgba: ' . $color['rgb'] . ';';
+
+						// Add custom css class rule for other blocks.
+						// For typography colors.
+						$core_css[] = $color_typography_name . ' { color: ' . $color['color'] . ' !important; }';
+
+						// For background colors.
+						$core_css[] = $color_background_name . ' { background-color: ' . $color['color'] . ' !important; }';
+					}
+				}
+			}
+
+			if ( count( $css ) ) {
+				$generated_color_css = "/* Global colors */\n";
+				$generated_color_css .= ':root {' . implode( ' ', $css ) . '}';
+				$current_css .= $generated_color_css;
+			}
+
+			if ( count( $core_css ) ) {
+				$current_css .= implode( ' ', $core_css );
+			}
+
+			return $current_css;
+		}
 
         /**
          * Register the settings we need for global settings.
