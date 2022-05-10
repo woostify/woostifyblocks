@@ -77,7 +77,7 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 
 			// Check if we're using file mode or inline mode.
 			// Default to file mode and fallback to inline if file mode is not possible.
-			$mode = 'inline';
+			$mode = 'file';
 
 			// Additional checks for file mode.
 			if ( 'file' === $mode && $this->needs_update() ) {
@@ -188,7 +188,7 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 			$new_blog_id = ( is_multisite() && 1 < $blog_id ) ? '_blog-' . $blog_id : null;
 			$page_id     = ( $this->page_id() ) ? $this->page_id() : 'global';
 
-			$file_name   = '/post-css' . $new_blog_id . '-' . $page_id . '.css';
+			$file_name   = '/post-' . $new_blog_id . '-' . $page_id . '.css';
 			$folder_path = $upload_dir['basedir'] . DIRECTORY_SEPARATOR . $this->sub_folder_name;
 
 			// Does the folder exist?
@@ -246,7 +246,7 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 			$new_blog_id = ( is_multisite() && $blog_id > 1 ) ? '_blog-' . $blog_id : null;
 			$page_id     = ( $this->page_id() ) ? $this->page_id() : 'global';
 
-			$file_name   = 'post-css' . $new_blog_id . '-' . $page_id . '.css';
+			$file_name   = 'post' . $new_blog_id . '-' . $page_id . '.css';
 			$folder_path = $upload_dir['basedir'] . DIRECTORY_SEPARATOR . $this->sub_folder_name;
 
 			// The complete path to the file.

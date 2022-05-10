@@ -25,6 +25,7 @@ function Edit(props) {
 	const { uniqueId } = attributes;
 
 	const [bgColor, setBgColor] = useState(attributes.bg_color || '');
+	const [textColor, setTextColor] = useState(attributes.text_color || '');
 
 	useEffect(() => {
 		setAttributes({
@@ -44,13 +45,28 @@ function Edit(props) {
 		<div {...useBlockProps()}>
 			<InspectorControls>
 				<PanelBody title={__('General Settings', 'woostify-block')}>
-					<ColorPalette
-						value={bgColor}
-						onChange={(val) => {
-							setBgColor(val);
-							setAttributes({ bg_color: val });
-						}}
-					/>
+					<WoostifyBaseControl
+						label={__('Background Color', 'woostify-block')}
+					>
+						<ColorPalette
+							value={bgColor}
+							onChange={(val) => {
+								setBgColor(val);
+								setAttributes({ bg_color: val });
+							}}
+						/>
+					</WoostifyBaseControl>
+					<WoostifyBaseControl
+						label={__('Text Color', 'woostify-block')}
+					>
+						<ColorPalette
+							value={textColor}
+							onChange={(val) => {
+								setTextColor(val);
+								setAttributes({ text_color: val });
+							}}
+						/>
+					</WoostifyBaseControl>
 					<WCBTypographyHelperControl
 						{...props}
 						label={__('Typography', 'woostify-block')}

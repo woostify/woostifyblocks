@@ -2,18 +2,18 @@
 /**
  * Woostify block helper functions.
  *
- * @package Woostify Block
+ * @package Woostify Conversion Block
  */
 
 defined( 'ABSPATH' ) || exit;
 
-if ( ! function_exists( 'woostify_block_version' ) ) {
+if ( ! function_exists( 'wcb_version' ) ) {
 	/**
-	 * Woostify block Version
+	 * Woostify conversion block Version
 	 *
-	 * @return string Woostify Block Version.
+	 * @return string Woostify Conversion Block Version.
 	 */
-	function woostify_block_version() {
+	function wcb_version() {
 		return esc_attr( WOOSTIFY_BLOCK_VERSION );
 	}
 }
@@ -37,5 +37,18 @@ if ( ! function_exists( 'woostify_block_regitser_block_type' ) ) {
 				$options
 			)
 		);
+	}
+}
+
+if ( ! function_exists( 'wcb_suffix' ) ) {
+	/**
+	 * Define Script debug.
+	 *
+	 * @return     string $suffix
+	 */
+	function wcb_suffix() {
+		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+
+		return $suffix;
 	}
 }

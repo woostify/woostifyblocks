@@ -9,7 +9,7 @@ export default function save({ attributes }) {
 			className="woostify-block" 
 			id={`woostify-block-${attributes.uniqueId}`}
 		>
-		<RichText.Content { ...blockProps } tagName="h2" value={attributes.message} />
+		<RichText.Content tagName="h2" value={attributes.message} />
 		</div>
 	);
 }
