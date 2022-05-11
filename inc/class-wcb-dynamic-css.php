@@ -196,7 +196,7 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 
 			if ( 'file' === $this->mode() ) {
 				// Yay! we're using a file for our CSS, so enqueue it.
-				wp_enqueue_style( 'wcb-dynamic-post-css', $this->file( 'uri' ), array(), 'wcb'_VERSION ); // phpcs:ignore.
+				wp_enqueue_style( 'wcb-dynamic-post-css', $this->file( 'uri' ), array(), WCB_VERSION ); // phpcs:ignore.
 				// Bah, no file mode... add inline to the head.
 			} elseif ( 'inline' === $this->mode() ) {
 				wp_add_inline_style( $this->stylesheet_id, apply_filters( 'wcb_post_dynamic_css', '' ) );

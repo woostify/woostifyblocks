@@ -102,7 +102,7 @@ if ( ! class_exists( 'WCB' ) ) {
 				return;
 			}
 
-			load_plugin_textdomain( 'wcb', false, 'wcb'_PATH . 'languages/' );
+			load_plugin_textdomain( 'wcb', false, WCB_PATH . 'languages/' );
 		}
 
 		/**

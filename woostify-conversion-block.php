@@ -20,7 +20,7 @@ define( 'WCB_VERSION', '0.1.0' );
 define( 'WCB_FILE', __FILE__ );
 define( 'WCB_PLUGIN_BASE', plugin_basename( WCB_FILE ) );
 define( 'WCB_PATH', plugin_dir_path( WCB_FILE ) );
-define( 'WCB_URI', plugins_url( '/', 'wcb'_FILE ) );
+define( 'WCB_URI', plugins_url( '/', WCB_FILE ) );
 
 // Helper functions.
 require_once WCB_PATH . 'inc/helpers.php';
