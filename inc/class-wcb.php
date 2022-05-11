@@ -7,19 +7,17 @@
 
 defined( 'ABSPATH' ) || exit;
 
-if ( ! class_exists( 'Woostify_Conversion_Block' ) ) {
+if ( ! class_exists( 'WCB' ) ) {
 	/**
 	 * Woostify Conversion Block class
 	 */
-	class Woostify_Conversion_Block {
+	class WCB {
 		/**
 		 * Instance
 		 *
 		 * @var instance
 		 */
 		private static $instance;
-
-		public $block_styles;
 		/**
 		 * Default block dependencies
 		 *
@@ -74,18 +72,24 @@ if ( ! class_exists( 'Woostify_Conversion_Block' ) ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_block_frontend_assets' ) );
 
 			if ( ! is_admin() ) {
-				add_filter( 'wcb_post_dynamic_css', array( $this, 'get_block_styles' ) );
+				add_filter( 'wcb_post_dynamic_css', array( $this, 'update_blocks_styles' ) );
 			}
 		}
 
-		public function get_block_styles( $current_css ) {
+		/**
+		 * Update blocks css
+		 *
+		 * @param String $current_css Current css content in css file.
+		 * @return String
+		 */
+		public function update_blocks_styles( $current_css ) {
 			global $post;
 
 			$style = '';
 
 			$blocks = parse_blocks( $post->post_content );
 			foreach ( $blocks as $block ) {
-				$style .= $this->get_blocks_style( $block['blockName'], $block['attrs'] );
+				$style .= $this->get_blocks_styles( $block['blockName'], $block['attrs'] );
 			}
 			return $style;
 		}
@@ -94,22 +98,24 @@ if ( ! class_exists( 'Woostify_Conversion_Block' ) ) {
 		 * Plugin sets up.
 		 */
 		public function setup() {
-			if ( ! defined( 'WOOSTIFY_BLOCK_VERSION' ) ) {
+			if ( ! defined( 'WCB_VERSION' ) ) {
 				return;
 			}
 
-			load_plugin_textdomain( 'woostify-block', false, WOOSTIFY_BLOCK_PATH . 'languages/' );
+			load_plugin_textdomain( 'wcb', false, 'wcb'_PATH . 'languages/' );
 		}
 
-		public function get_blocks_style( $block_name, $block_attrs ) {
-			$available_blocks = array(
-				'woostify-block/first-block',
-			);
-
+		/**
+		 * Get style from blocks
+		 *
+		 * @param string $block_name Block name.
+		 * @param array  $block_attrs Block attributes.
+		 */
+		public function get_blocks_styles( $block_name, $block_attrs ) {
 			$blocks_style = '';
 
 			switch ( $block_name ) {
-				case 'woostify-block/first-block':
+				case 'wcb/first-block':
 					$blocks_style .= $this->generate_block_style( $block_attrs );
 					break;
 				default:
@@ -119,6 +125,11 @@ if ( ! class_exists( 'Woostify_Conversion_Block' ) ) {
 			return $blocks_style;
 		}
 
+		/**
+		 * Generate block style from attributes
+		 *
+		 * @param array $block_attrs Block attributes.
+		 */
 		public function generate_block_style( $block_attrs = array() ) {
 			$block_style    = '';
 			$block_class    = $block_attrs['uniqueId'];
@@ -126,7 +137,7 @@ if ( ! class_exists( 'Woostify_Conversion_Block' ) ) {
 			$text_color     = isset( $block_attrs['text_color'] ) ? esc_html( $block_attrs['text_color'] ) : '';
 			$font_size_unit = isset( $block_attrs['fontSizeUnit'] ) ? esc_html( $block_attrs['fontSizeUnit'] ) : 'px';
 
-			$block_style     .= '#woostify-block-' . $block_class . ' h2 {';
+			$block_style     .= '#wcb-' . $block_class . ' h2 {';
 				$block_style .= 'background-color: ' . $bg_color . ';';
 				$block_style .= 'color: ' . $text_color . ';';
 			if ( isset( $block_attrs['fontFamily'] ) ) {
@@ -155,15 +166,15 @@ if ( ! class_exists( 'Woostify_Conversion_Block' ) ) {
 
 			// Blocks scripts.
 			wp_register_script(
-				'woostify_block-blocks-scripts',
-				WOOSTIFY_BLOCK_URI . 'dist/blocks.js',
+				'wcb-blocks-scripts',
+				WCB_URI . 'dist/blocks.js',
 				$this->dependencies,
-				WOOSTIFY_BLOCK_VERSION,
+				WCB_VERSION,
 				true
 			);
 
 			wp_localize_script(
-				'woostify_block-blocks-scripts',
+				'wcb-blocks-scripts',
 				'wcb_params',
 				array(
 					'global_colors'     => get_option( 'wcb_global_colors', '' ),
@@ -172,62 +183,58 @@ if ( ! class_exists( 'Woostify_Conversion_Block' ) ) {
 			);
 
 			wp_register_style(
-				'woostify_block-editor-style',
-				WOOSTIFY_BLOCK_URI . 'dist/style-blocks.css',
+				'wcb-editor-style',
+				WCB_URI . 'dist/style-blocks.css',
 				array( 'wp-edit-blocks' ),
-				WOOSTIFY_BLOCK_VERSION
+				WCB_VERSION
 			);
 			// End blocks script.
 
 			wp_register_style(
-				'woostify_block-sidebar-style',
-				WOOSTIFY_BLOCK_URI . 'dist/sidebar.css',
+				'wcb-sidebar-style',
+				WCB_URI . 'dist/sidebar.css',
 				array(),
-				WOOSTIFY_BLOCK_VERSION
+				WCB_VERSION
 			);
 			// End blocks script.
 
 			// General editor style.
 			wp_enqueue_style(
-				'woostify-block-editor',
-				WOOSTIFY_BLOCK_URI . 'assets/css/block-editor.css',
+				'wcb-block-editor',
+				WCB_URI . 'assets/css/block-editor.css',
 				array(),
-				WOOSTIFY_BLOCK_VERSION,
+				WCB_VERSION,
 				'all'
-			);
-
-			wp_localize_script(
-				'woostify-block-editor',
-				'woostify_block',
-				array(),
-				WOOSTIFY_BLOCK_VERSION
 			);
 
 			// Plugin sidebar script.
 			wp_register_script(
-				'woostify_block-sidebar',
-				WOOSTIFY_BLOCK_URI . 'dist/sidebar.js',
+				'wcb-sidebar',
+				WCB_URI . 'dist/sidebar.js',
 				$this->dependencies,
-				WOOSTIFY_BLOCK_VERSION,
+				WCB_VERSION,
 				true,
 			);
 
 			if ( 'widgets.php' !== $pagenow ) {
-				wp_enqueue_script( 'woostify_block-sidebar' );
-				wp_enqueue_style( 'woostify_block-sidebar-style' );
+				wp_enqueue_script( 'wcb-sidebar' );
+				wp_enqueue_style( 'wcb-sidebar-style' );
 			}
 
 		}
 
+		/**
+		 * Enqueue scripts for font end
+		 */
 		public function enqueue_block_frontend_assets() {
 			wp_register_style(
-				'woostify_block-front-end',
-				WOOSTIFY_BLOCK_URI . 'dist/blocks.css',
+				'wcb-front-end',
+				WCB_URI . 'dist/blocks.css',
 				array(),
-				WOOSTIFY_BLOCK_VERSION
+				WCB_VERSION
 			);
 
-			wp_enqueue_style( 'woostify_block-front-end' );
+			wp_enqueue_style( 'wcb-front-end' );
 		}
 
 		/**
@@ -237,16 +244,16 @@ if ( ! class_exists( 'Woostify_Conversion_Block' ) ) {
 			$blocks = array(
 				array(
 					'slug'  => 'first-block',
-					'title' => __( 'First Block', 'woostify-block' ),
+					'title' => __( 'First Block', 'wcb' ),
 				),
 				array(
 					'slug'  => 'second-block',
-					'title' => __( 'Second Block', 'woostify-block' ),
+					'title' => __( 'Second Block', 'wcb' ),
 				),
 			);
 
 			foreach ( $blocks as $block ) {
-				woostify_block_regitser_block_type( $block['slug'], array( 'title' => $block['title'] ) );
+				wcb_regitser_block_type( $block['slug'], array( 'title' => $block['title'] ) );
 			}
 		}
 
@@ -258,8 +265,8 @@ if ( ! class_exists( 'Woostify_Conversion_Block' ) ) {
 		 */
 		public function register_block_category( $block_categories, $block_editor_context ) {
 			$new_category = array(
-				'slug'  => 'woostify-block',
-				'title' => __( 'Woostify Block', 'woostify-block' ),
+				'slug'  => 'wcb',
+				'title' => __( 'Woostify Block', 'wcb' ),
 				'icon'  => 'wordpress', // Slug of a WordPress Dashicon or custom SVG.
 			);
 
@@ -271,5 +278,5 @@ if ( ! class_exists( 'Woostify_Conversion_Block' ) ) {
 
 	}
 
-	Woostify_Conversion_Block::get_instance();
+	WCB::get_instance();
 }

@@ -4,7 +4,7 @@ import blockAttributes from './attributes';
 import Edit from './edit';
 import save from './save';
 
-registerBlockType('woostify-block/first-block', {
+registerBlockType('wcb/first-block', {
 	attributes: blockAttributes,
 	/**
 	 * @see ./edit.js

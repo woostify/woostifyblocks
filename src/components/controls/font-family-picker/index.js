@@ -34,7 +34,7 @@ class WoostifyFontFamilyPicker extends Component {
 		return (
 			<Fragment>
 				<SelectControl
-					label={__('Font Family', 'woostify-block')}
+					label={__('Font Family', 'wcb')}
 					value={this.state.fontFamily}
 					onChange={(newFont) => {
 						this.setState({ fontFamily: newFont });
@@ -50,10 +50,10 @@ class WoostifyFontFamilyPicker extends Component {
 					}}
 				>
 					<option value="">
-						{__('Select font', 'woostify-block')}
+						{__('Select font', 'wcb')}
 					</option>
 					{systemFonts.length > 0 && (
-						<optgroup label={__('System fonts', 'woostify-block')}>
+						<optgroup label={__('System fonts', 'wcb')}>
 							{systemFonts.map((option, index) => (
 								<option
 									key={`${option.label}-${option.value}-${index}`}
@@ -65,7 +65,7 @@ class WoostifyFontFamilyPicker extends Component {
 						</optgroup>
 					)}
 					{googleFontsList.length > 0 && (
-						<optgroup label={__('Google fonts', 'woostify-block')}>
+						<optgroup label={__('Google fonts', 'wcb')}>
 							{googleFontsList.map((option, index) => (
 								<option
 									key={`${option.label}-${option.value}-${index}`}

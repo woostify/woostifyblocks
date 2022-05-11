@@ -10,6 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'WCB_Admin' ) ) :
+	/**
+	 * Woostify Conversion Block Admin class
+	 */
 	class WCB_Admin {
 		/**
 		 * Instance
@@ -28,7 +31,9 @@ if ( ! class_exists( 'WCB_Admin' ) ) :
 			return self::$instance;
 		}
 
-		// Setup.
+		/**
+		 * Constructor
+		 */
 		public function __construct() {
 			add_action( 'admin_menu', array( $this, 'register_menu' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
@@ -44,39 +49,42 @@ if ( ! class_exists( 'WCB_Admin' ) ) :
 		public function enqueue_scripts() {
 			wp_enqueue_style(
 				'wcb-general',
-				WOOSTIFY_BLOCK_URI . 'assets/css/admin/general.css',
+				WCB_URI . 'assets/css/admin/general.css',
 				array(),
 				wcb_version()
 			);
 			wp_enqueue_style(
 				'wcb-dashboard',
-				WOOSTIFY_BLOCK_URI . 'assets/css/admin/dashboard.css',
+				WCB_URI . 'assets/css/admin/dashboard.css',
 				array(),
 				wcb_version()
 			);
 
-            wp_enqueue_script(
-                'wcb-edit-screen',
-                WOOSTIFY_BLOCK_URI . 'assets/js/edit-screen.js',
-                array(),
-                wcb_version(),
-                true
-            );
+			wp_enqueue_script(
+				'wcb-edit-screen',
+				WCB_URI . 'assets/js/edit-screen.js',
+				array(),
+				wcb_version(),
+				true
+			);
 
-            $data = array(
-                'save'          => __( 'Save', 'wcb' ),
-                'saving'        => __( 'Saving', 'wcb' ),
-                'saved'         => __( 'Saved', 'wcb' ),
-                'saved_success' => __( 'Saved successfully', 'wcb' ),
-            );
+			$data = array(
+				'save'          => __( 'Save', 'wcb' ),
+				'saving'        => __( 'Saving', 'wcb' ),
+				'saved'         => __( 'Saved', 'wcb' ),
+				'saved_success' => __( 'Saved successfully', 'wcb' ),
+			);
 
-            wp_localize_script(
-                'wcb-edit-screen',
-                'wcb_edit_screen',
-                $data
-            );
+			wp_localize_script(
+				'wcb-edit-screen',
+				'wcb_edit_screen',
+				$data
+			);
 		}
 
+		/**
+		 * Save setting values.
+		 */
 		public function save_options() {
 			if ( ! current_user_can( 'edit_theme_options' ) ) {
 				wp_send_json_error();
@@ -129,14 +137,17 @@ if ( ! class_exists( 'WCB_Admin' ) ) :
 			add_submenu_page( 'wcb', 'Woostify Conversion Block Settings', 'Settings', 'manage_options', 'wcb-settings', array( $this, 'settings_screen' ) );
 		}
 
+		/**
+		 * Layout for header of plugin setting page
+		 */
 		public function dashboard_header_section() {
 			$plugin_url = 'https://woostify.com';
 			?>
 				<section class="woostify-welcome-nav">
 					<div class="woostify-welcome-container">
 						<a class="woostify-welcome-theme-brand" href="<?php echo esc_url( $plugin_url ); ?>" target="_blank" rel="noopener">
-							<img class="woostify-welcome-theme-icon" src="<?php echo esc_url( WOOSTIFY_BLOCK_URI . 'assets/images/logo.svg' ); ?>" alt="<?php esc_attr_e( 'Woostify Block Logo', 'woostify-block' ); ?>">
-							<span class="woostify-welcome-theme-title"><?php esc_html_e( 'Woostify', 'woostify-block' ); ?></span>
+							<img class="woostify-welcome-theme-icon" src="<?php echo esc_url( WCB_URI . 'assets/images/logo.svg' ); ?>" alt="<?php esc_attr_e( 'Woostify Block Logo', 'wcb' ); ?>">
+							<span class="woostify-welcome-theme-title"><?php esc_html_e( 'Woostify', 'wcb' ); ?></span>
 						</a>
 
 						<span class="woostify-welcome-theme-version"><?php echo esc_html( wcb_version() ); ?></span>
@@ -145,6 +156,9 @@ if ( ! class_exists( 'WCB_Admin' ) ) :
 			<?php
 		}
 
+		/**
+		 * Layout for dashboard screen of plugin setting page
+		 */
 		public function dashboard_screen() {
 			?>
 			<div class="woostify-options-wrap admin-welcome-screen">
@@ -153,10 +167,13 @@ if ( ! class_exists( 'WCB_Admin' ) ) :
 			<?php
 		}
 
+		/**
+		 * Layout for settings screen of plugin setting page
+		 */
 		public function settings_screen() {
 			$print_mode = get_option( 'wcb_settings_css_print_mode', 'file' );
 			?>
-			<div class="woostify-options-wrap woostify-featured-setting woostify-block-setting" data-id="settings" data-nonce="<?php echo esc_attr( wp_create_nonce( 'wcb-settings-nonce' ) ); ?>">
+			<div class="woostify-options-wrap woostify-featured-setting wcb-setting" data-id="settings" data-nonce="<?php echo esc_attr( wp_create_nonce( 'wcb-settings-nonce' ) ); ?>">
 				<?php $this->dashboard_header_section(); ?>
 				<div class="wrap woostify-settings-box">
 					<div class="woostify-welcome-container">
@@ -166,7 +183,7 @@ if ( ! class_exists( 'WCB_Admin' ) ) :
 						<div class="woostify-settings-content">
 							<div class="woostify-settings-section-head">
 								<h4 class="woostify-settings-section-title">
-									<?php esc_html_e( 'Settings', 'woostify-block' ); ?>
+									<?php esc_html_e( 'Settings', 'wcb' ); ?>
 								</h4>
 							</div>
 							<div class="woostify-settings-section-content">
@@ -176,19 +193,19 @@ if ( ! class_exists( 'WCB_Admin' ) ) :
 											<th>CSS Print Method</th>
 											<td>
 												<select name="wcb_settings_css_print_mode" id="wcb_settings_css_print_mode">
-													<option value="file" <?php selected( $print_mode, 'file' ); ?>><?php esc_html_e( 'External File', 'woostify-block' ); ?></option>
-													<option value="inline" <?php selected( $print_mode, 'inline' ); ?>><?php esc_html_e( 'Inline Embedding', 'woostify-block' ); ?></option>
+													<option value="file" <?php selected( $print_mode, 'file' ); ?>><?php esc_html_e( 'External File', 'wcb' ); ?></option>
+													<option value="inline" <?php selected( $print_mode, 'inline' ); ?>><?php esc_html_e( 'Inline Embedding', 'wcb' ); ?></option>
 												</select>
-												<p class="woostify-setting-description"><?php esc_html_e( 'Use external CSS files for all generated stylesheets. Choose this setting for better performance (recommended).', 'woostify-block' ); ?></p>
-												<button type="button" class="button button-secondary button-large" style="margin-top:1em"><?php esc_html_e( 'Regenerate CSS Files', 'woostify-block' ); ?></button>
-												<p class="woostify-setting-description"><?php esc_html_e( 'Force your external CSS files to regenerate next time their page is loaded.', 'woostify-block' ); ?></p>
+												<p class="woostify-setting-description"><?php esc_html_e( 'Use external CSS files for all generated stylesheets. Choose this setting for better performance (recommended).', 'wcb' ); ?></p>
+												<button type="button" class="button button-secondary button-large" style="margin-top:1em"><?php esc_html_e( 'Regenerate CSS Files', 'wcb' ); ?></button>
+												<p class="woostify-setting-description"><?php esc_html_e( 'Force your external CSS files to regenerate next time their page is loaded.', 'wcb' ); ?></p>
 											</td>
 										</tr>
 									</tbody>
 								</table>
 							</div>
 							<div class="woostify-settings-section-footer position-sticky">
-								<span class="save-options button button-primary"><?php esc_html_e( 'Save', 'woostify-block' ); ?></span>
+								<span class="save-options button button-primary"><?php esc_html_e( 'Save', 'wcb' ); ?></span>
 							</div>
 						</div>
 					</div>

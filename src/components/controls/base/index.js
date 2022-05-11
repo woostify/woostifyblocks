@@ -43,7 +43,7 @@ const WoostifyBaseControl = (props) => {
 							options={units}
 							onChange={(unit) => props.onUnitClick(unit)}
 							labelPosition="left"
-							label={__('Unit', 'woostify-block')}
+							label={__('Unit', 'wcb')}
 							buttonsLabel={false}
 						/>
 					)}

@@ -67,10 +67,10 @@ class WoostifyDimensionsControl extends Component {
 			attrRight,
 			attrBottom,
 			attrLeft,
-			labelTop = __('Top', 'woostify-block'),
-			labelRight = __('Right', 'woostify-block'),
-			labelBottom = __('Bottom', 'woostify-block'),
-			labelLeft = __('Left', 'woostify-block'),
+			labelTop = __('Top', 'wcb'),
+			labelRight = __('Right', 'wcb'),
+			labelBottom = __('Bottom', 'wcb'),
+			labelLeft = __('Left', 'wcb'),
 		} = this.props;
 
 		const onChangeInputValue = (event, attr) => {
@@ -135,7 +135,7 @@ class WoostifyDimensionsControl extends Component {
 						disabled={this.checkDisableInput('attrLeft')}
 					/>
 					<Tooltip
-						text={__('Link values together', 'woostify-block')}
+						text={__('Link values together', 'wcb')}
 					>
 						<Button
 							isSmall

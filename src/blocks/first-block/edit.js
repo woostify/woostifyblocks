@@ -44,9 +44,9 @@ function Edit(props) {
 	return (
 		<div {...useBlockProps()}>
 			<InspectorControls>
-				<PanelBody title={__('General Settings', 'woostify-block')}>
+				<PanelBody title={__('General Settings', 'wcb')}>
 					<WoostifyBaseControl
-						label={__('Background Color', 'woostify-block')}
+						label={__('Background Color', 'wcb')}
 					>
 						<ColorPalette
 							value={bgColor}
@@ -57,7 +57,7 @@ function Edit(props) {
 						/>
 					</WoostifyBaseControl>
 					<WoostifyBaseControl
-						label={__('Text Color', 'woostify-block')}
+						label={__('Text Color', 'wcb')}
 					>
 						<ColorPalette
 							value={textColor}
@@ -69,11 +69,11 @@ function Edit(props) {
 					</WoostifyBaseControl>
 					<WCBTypographyHelperControl
 						{...props}
-						label={__('Typography', 'woostify-block')}
-						popoverHeading={__('Heading', 'woostify-block')}
+						label={__('Typography', 'wcb')}
+						popoverHeading={__('Heading', 'wcb')}
 					/>
 					<WoostifyBaseControl
-						label={__('Padding', 'woostify-block')}
+						label={__('Padding', 'wcb')}
 						responsive={['desktop', 'tablet', 'mobile']}
 						units={['px', 'em', 'rem', '%']}
 						selectedUnit={attributes['paddingUnit' + deviceSuffix]}
@@ -93,7 +93,7 @@ function Edit(props) {
 						/>
 					</WoostifyBaseControl>
 					<WoostifyBaseControl
-						label={__('Margin', 'woostify-block')}
+						label={__('Margin', 'wcb')}
 						responsive={['desktop', 'tablet', 'mobile']}
 						units={['px', 'rem']}
 						selectedUnit={attributes['marginUnit' + deviceSuffix]}
@@ -110,10 +110,10 @@ function Edit(props) {
 							attrRight={'marginRight' + deviceSuffix}
 							attrBottom={'marginBottom' + deviceSuffix}
 							attrLeft={'marginLeft' + deviceSuffix}
-							labelTop={__('T-Left', 'woostify-block')}
-							labelRight={__('T-Right', 'woostify-blocks')}
-							labelBottom={__('B-Right', 'woostify-block')}
-							labelLeft={__('B-Left', 'woostify-block')}
+							labelTop={__('T-Left', 'wcb')}
+							labelRight={__('T-Right', 'wcbs')}
+							labelBottom={__('B-Right', 'wcb')}
+							labelLeft={__('B-Left', 'wcb')}
 							disableInputs={[
 								'marginLeft' + deviceSuffix,
 								'marginRight' + deviceSuffix,
@@ -122,9 +122,9 @@ function Edit(props) {
 					</WoostifyBaseControl>
 				</PanelBody>
 			</InspectorControls>
-			<div className="woostify-block" id={`woostify-block-${uniqueId}`}>
+			<div className="wcb-block-wrapper" id={`wcb-${uniqueId}`}>
 				<style>
-					{`#woostify-block-${uniqueId} .woostify-block-text {
+					{`#wcb-${uniqueId} .wcb-text {
 							font-family: ${attributes.fontFamily};
 							font-weight: ${attributes.fontWeight};
 							text-transform: ${attributes.fontTransform};
@@ -138,7 +138,7 @@ function Edit(props) {
 				</style>
 				<RichText
 					tagName="h2"
-					className="woostify-block-text"
+					className="wcb-text"
 					value={attributes.message}
 					onChange={(val) => setAttributes({ message: val })}
 				/>

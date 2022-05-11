@@ -69,7 +69,7 @@ class WoostifyButtonPopoverControl extends Component {
 
 	render() {
 		const { isVisible } = this.state;
-		const { children, buttonLabel = __('Typography', 'woostify-block') } =
+		const { children, buttonLabel = __('Typography', 'wcb') } =
 			this.props;
 		return (
 			<Fragment>

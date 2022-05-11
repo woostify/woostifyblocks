@@ -32,7 +32,7 @@ if ( ! class_exists( 'WCB_Global_Settings' ) ) {
 		/**
 		 * Initialize
 		 */
-		function __construct() {
+		public function __construct() {
 			// Register settings.
 			add_action( 'init', array( $this, 'register_settings' ) );
 
@@ -44,7 +44,7 @@ if ( ! class_exists( 'WCB_Global_Settings' ) ) {
 		/**
 		 * Add our global color styles in the frontend.
 		 *
-		 * @param String $current_css
+		 * @param String $current_css Current css content in css file.
 		 * @return String
 		 */
 		public function color_add_global_styles( $current_css ) {
@@ -72,7 +72,7 @@ if ( ! class_exists( 'WCB_Global_Settings' ) ) {
 
 					$color_name = strtolower( $color['slug'] );
 
-					// Convert the name to kebab casing,
+					// Convert the name to kebab casing.
 					$color_typography_name = 'body .has-' . implode( '-', explode( ' ', $color_name ) ) . '-color';
 					$color_background_name = 'body .has-' . implode( '-', explode( ' ', $color_name ) ) . '-background-color';
 
@@ -233,6 +233,12 @@ if ( ! class_exists( 'WCB_Global_Settings' ) ) {
 			);
 		}
 
+		/**
+		 * Sanitize array setting value
+		 *
+		 * @param String|Array $input Input value.
+		 * @return Array
+		 */
 		public function sanitize_array_setting( $input ) {
 			return ! is_array( $input ) ? array( array() ) : $input;
 		}

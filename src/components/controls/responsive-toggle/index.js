@@ -15,17 +15,17 @@ const DEVICE_TYPES = {
 
 const DEVICE_TYPES_OPTIONS = [
 	{
-		label: __('Desktop', 'woostify-block'),
+		label: __('Desktop', 'wcb'),
 		value: 'desktop',
 		icon: 'desktop',
 	},
 	{
-		label: __('Tablet', 'woostify-block'),
+		label: __('Tablet', 'wcb'),
 		value: 'tablet',
 		icon: 'tablet',
 	},
 	{
-		label: __('Mobile', 'woostify-block'),
+		label: __('Mobile', 'wcb'),
 		value: 'mobile',
 		icon: 'smartphone',
 	},

@@ -6,8 +6,8 @@ export default function save({ attributes }) {
 	return (
 		<div
 			{...useBlockProps.save()}
-			className="woostify-block" 
-			id={`woostify-block-${attributes.uniqueId}`}
+			className="wcb" 
+			id={`wcb-${attributes.uniqueId}`}
 		>
 		<RichText.Content tagName="h2" value={attributes.message} />
 		</div>

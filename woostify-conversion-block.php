@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Plugin Name:       Woostify Conversion Block
  * Description:       Advanced blocks for Gutenberg editor.
@@ -9,7 +8,7 @@
  * Author:            Woostify
  * License:           GNU General Public License v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       woostify-block
+ * Text Domain:       wcb
  *
  * @package           Woostify Conversion Block
  */
@@ -17,25 +16,25 @@
 defined( 'ABSPATH' ) || exit;
 
 // Define Constants.
-define( 'WOOSTIFY_BLOCK_VERSION', '0.1.0' );
-define( 'WOOSTIFY_BLOCK_FILE', __FILE__ );
-define( 'WOOSTIFY_BLOCK_PLUGIN_BASE', plugin_basename( WOOSTIFY_BLOCK_FILE ) );
-define( 'WOOSTIFY_BLOCK_PATH', plugin_dir_path( WOOSTIFY_BLOCK_FILE ) );
-define( 'WOOSTIFY_BLOCK_URI', plugins_url( '/', WOOSTIFY_BLOCK_FILE ) );
+define( 'WCB_VERSION', '0.1.0' );
+define( 'WCB_FILE', __FILE__ );
+define( 'WCB_PLUGIN_BASE', plugin_basename( WCB_FILE ) );
+define( 'WCB_PATH', plugin_dir_path( WCB_FILE ) );
+define( 'WCB_URI', plugins_url( '/', 'wcb'_FILE ) );
 
 // Helper functions.
-require_once WOOSTIFY_BLOCK_PATH . 'inc/helpers.php';
+require_once WCB_PATH . 'inc/helpers.php';
 
 // Global Settings.
-require_once WOOSTIFY_BLOCK_PATH . 'inc/class-wcb-global-settings.php';
+require_once WCB_PATH . 'inc/class-wcb-global-settings.php';
 
 // Main Woostify Block Class.
-require_once WOOSTIFY_BLOCK_PATH . 'inc/class-wcb.php';
+require_once WCB_PATH . 'inc/class-wcb.php';
 
 // Woostify Block Dynamic CSS Class.
-require_once WOOSTIFY_BLOCK_PATH . 'inc/class-wcb-dynamic-css.php';
+require_once WCB_PATH . 'inc/class-wcb-dynamic-css.php';
 
 // Admin.
 if ( is_admin() ) {
-	require_once WOOSTIFY_BLOCK_PATH . 'inc/admin/class-wcb-admin.php';
+	require_once WCB_PATH . 'inc/admin/class-wcb-admin.php';
 }

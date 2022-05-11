@@ -13,7 +13,7 @@ import WCBGlobalColors from './colors';
 import { renderGlobalStyle } from '../../utils';
 
 const sidebarName = 'woostify-block-sidebar';
-const sidebarTitle = __('Woostify Block Settings', 'woostify-block');
+const sidebarTitle = __('Woostify Block Settings', 'wcb');
 const sidebarIcon = 'smiley';
 
 let saveSettingsTime = null;
@@ -66,13 +66,13 @@ const WoostifyBlockSidebarContent = (props) => {
 	return (
 		<Fragment>
 			<PanelBody
-				title={__('Global Color Palette', 'woostify-block')}
+				title={__('Global Color Palette', 'wcb')}
 				initialOpen={true}
 			>
 				<WCBGlobalColors />
 			</PanelBody>
 			<PanelBody
-				title={__('Global Typography', 'woostify-block')}
+				title={__('Global Typography', 'wcb')}
 				initialOpen={false}
 			>
 				{TYPO_LIST.map(({ label, tag }, index) => {
