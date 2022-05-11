@@ -172,6 +172,8 @@ if ( ! class_exists( 'WCB_Admin' ) ) :
 		 */
 		public function settings_screen() {
 			$print_mode = get_option( 'wcb_settings_css_print_mode', 'file' );
+			$tablet_breakpoint = get_option( 'wcb_settings_tablet_breakpoint', '1024' );
+			$mobile_breakpoint = get_option( 'wcb_settings_mobile_breakpoint', '767' );
 			?>
 			<div class="woostify-options-wrap woostify-featured-setting wcb-setting" data-id="settings" data-nonce="<?php echo esc_attr( wp_create_nonce( 'wcb-settings-nonce' ) ); ?>">
 				<?php $this->dashboard_header_section(); ?>
@@ -190,7 +192,7 @@ if ( ! class_exists( 'WCB_Admin' ) ) :
 								<table class="form-table woostify-setting-tab-content">
 									<tbody>
 										<tr>
-											<th>CSS Print Method</th>
+											<th><?php esc_html_e( 'CSS Print Method', 'wcb' ); ?></th>
 											<td>
 												<select name="wcb_settings_css_print_mode" id="wcb_settings_css_print_mode">
 													<option value="file" <?php selected( $print_mode, 'file' ); ?>><?php esc_html_e( 'External File', 'wcb' ); ?></option>
@@ -199,6 +201,19 @@ if ( ! class_exists( 'WCB_Admin' ) ) :
 												<p class="woostify-setting-description"><?php esc_html_e( 'Use external CSS files for all generated stylesheets. Choose this setting for better performance (recommended).', 'wcb' ); ?></p>
 												<button type="button" class="button button-secondary button-large" style="margin-top:1em"><?php esc_html_e( 'Regenerate CSS Files', 'wcb' ); ?></button>
 												<p class="woostify-setting-description"><?php esc_html_e( 'Force your external CSS files to regenerate next time their page is loaded.', 'wcb' ); ?></p>
+											</td>
+										</tr>
+										<tr>
+											<th><?php esc_html_e( 'Responsive Breakpoints', 'wcb' ); ?></th>
+											<td>
+												<div class="input-group" style="margin-bottom:1em">
+													<label for="wcb_settings_tablet_breakpoint"><?php esc_html_e( 'Tablet', 'wcb' ); ?></label>
+													<input type="number" class="small-text no-arrows" name="wcb_settings_tablet_breakpoint" id="wcb_settings_tablet_breakpoint" value="<?php echo (int) $tablet_breakpoint; ?>" />px
+												</div>
+												<div class="input-group">
+													<label for="wcb_settings_mobile_breakpoint"><?php esc_html_e( 'Mobile', 'wcb' ); ?></label>
+													<input type="number" class="small-text no-arrows" name="wcb_settings_mobile_breakpoint" id="wcb_settings_mobile_breakpoint" value="<?php echo (int) $mobile_breakpoint; ?>" />px
+												</div>
 											</td>
 										</tr>
 									</tbody>

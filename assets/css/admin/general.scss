@@ -810,3 +810,19 @@ th.table-setting-heading {
 .hidden {
 	display: none;
 }
+
+.no-arrows {
+	/* Chrome, Safari, Edge, Opera */
+	&::-webkit-outer-spin-button,
+	&::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+}
+
+/* Firefox */
+input[type=number] {
+	&.no-arrows {
+		-moz-appearance: textfield;
+	}
+}

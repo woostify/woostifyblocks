@@ -31,7 +31,7 @@ let handleError = function (e) {
 
 // Create .pot file.
 let _pot = (done) => {
-	gulp.src('**/*.php')
+	gulp.src(['**/*.php'])
 		.pipe(
 			wpPot({
 				domain: domain,
