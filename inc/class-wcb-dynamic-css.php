@@ -77,7 +77,7 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 
 			// Check if we're using file mode or inline mode.
 			// Default to file mode and fallback to inline if file mode is not possible.
-			$mode = 'file';
+			$mode = get_option( 'wcb_settings_css_print_mode', 'file' );
 
 			// Additional checks for file mode.
 			if ( 'file' === $mode && $this->needs_update() ) {
@@ -161,10 +161,10 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 
 					// Update the opion in the db so that we know the css for this post has been successfully generated.
 					$page_id            = ( $this->page_id() ) ? $this->page_id() : 'global';
-					$option             = get_option( 'dynamic_css_posts', array() );
+					$option             = get_option( 'wcb_dynamic_css_posts', array() );
 					$option[ $page_id ] = true;
-					update_option( '_dynamic_css_posts', $option );
-					// Update the 'dynamic_css_time' option.
+					update_option( '_wcb_dynamic_css_posts', $option );
+					// Update the 'wcb_dynamic_css_time' option.
 					$this->update_saved_time();
 
 					// Success!
@@ -294,7 +294,7 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 		 * @param int $post_id Post ID.
 		 */
 		public function reset_post_transient( $post_id ) {
-			delete_transient( 'dynamic_css_' . $post_id );
+			delete_transient( 'wcb_dynamic_css_' . $post_id );
 		}
 
 		/**
@@ -302,14 +302,14 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 		 */
 		public function add_options() {
 			/**
-			 * The 'dynamic_css_posts' option will hold an array of posts that have had their css generated.
+			 * The 'wcb_dynamic_css_posts' option will hold an array of posts that have had their css generated.
 			 * We can use that to keep track of which pages need their CSS to be recreated and which don't.
 			 */
-			add_option( 'dynamic_css_time', array(), '', 'yes' );
+			add_option( 'wcb_dynamic_css_time', array(), '', 'yes' );
 			/**
-			 * The 'dynamic_css_time' option holds the time the file writer was last used.
+			 * The 'wcb_dynamic_css_time' option holds the time the file writer was last used.
 			 */
-			add_option( 'dynamic_css_time', time(), '', 'yes' );
+			add_option( 'wcb_dynamic_css_time', time(), '', 'yes' );
 		}
 
 		/**
@@ -318,23 +318,23 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 		 * @param int $post_id Post ID.
 		 */
 		public function post_update_option( $post_id ) {
-			$option             = get_option( 'dynamic_css_posts', array() );
+			$option             = get_option( 'wcb_dynamic_css_posts', array() );
 			$option[ $post_id ] = false;
-			update_option( 'dynamic_css_posts', $option );
+			update_option( 'wcb_dynamic_css_posts', $option );
 		}
 
 		/**
 		 * Update the dynamic_css_posts option when the theme options are saved.
 		 */
 		public function global_reset_option() {
-			update_option( 'dynamic_css_posts', array() );
+			update_option( 'wcb_dynamic_css_posts', array() );
 		}
 
 		/**
 		 * Do we need to update the CSS file?
 		 */
 		public function needs_update() {
-			$option  = get_option( 'dynamic_css_posts', array() );
+			$option  = get_option( 'wcb_dynamic_css_posts', array() );
 			$page_id = ( $this->page_id() ) ? $this->page_id() : 'global';
 
 			// If the CSS file does not exist then we definitely need to regenerate the CSS.

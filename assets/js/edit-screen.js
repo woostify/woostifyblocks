@@ -535,7 +535,7 @@ var woostifySaveOptions = function() {
 
 				var t        = this,
 					likeId   = _id.replace( /-/g, '_' ), // Same id but replare '-' to '_'.
-					options  = box.querySelectorAll( '[name*=woostify_' + likeId + ']' ),
+					options  = box.querySelectorAll( '[name*=wcb_' + likeId + ']' ),
 					value    = {},
 					required = box.querySelectorAll( '[required="required"]' ),
 					isEmpty  = false;
@@ -616,7 +616,7 @@ var woostifySaveOptions = function() {
 					ajaxurl,
 					{
 						method: 'POST',
-						body: 'action=woostify_save_' + likeId + '_options&security_nonce=' + _nonce + '&setting_id=' + _id + '&options=' + JSON.stringify( value ),
+						body: 'action=save_' + likeId + '_options&security_nonce=' + _nonce + '&setting_id=' + _id + '&options=' + JSON.stringify( value ),
 						credentials: 'same-origin',
 						headers: new Headers(
 							{

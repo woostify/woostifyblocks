@@ -32,6 +32,8 @@ if ( ! class_exists( 'WCB_Admin' ) ) :
 		public function __construct() {
 			add_action( 'admin_menu', array( $this, 'register_menu' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+
+			add_action( 'wp_ajax_save_settings_options', array( $this, 'save_options' ) );
 		}
 
 		/**
@@ -73,6 +75,39 @@ if ( ! class_exists( 'WCB_Admin' ) ) :
                 'wcb_edit_screen',
                 $data
             );
+		}
+
+		public function save_options() {
+			if ( ! current_user_can( 'edit_theme_options' ) ) {
+				wp_send_json_error();
+			}
+
+			$setting_id = isset( $_POST['setting_id'] ) ? sanitize_text_field( wp_unslash( $_POST['setting_id'] ) ) : '';
+			$nonce      = 'wcb-' . $setting_id . '-nonce';
+			check_ajax_referer( $nonce, 'security_nonce' );
+
+			$options = isset( $_POST['options'] ) ? json_decode( sanitize_text_field( wp_unslash( $_POST['options'] ) ), true ) : array();
+
+			if ( ! empty( $options ) ) {
+				$array = array();
+
+				foreach ( $options as $k => $v ) {
+					$value = sanitize_textarea_field( wp_unslash( $v ) );
+
+					if ( false !== strpos( $k, '[]' ) ) {
+						array_push( $array, $value );
+
+						// Get option name.
+						$name = strstr( $k, '[', true ) . '[]';
+
+						update_option( $name, implode( '@_sn', $array ) );
+					} else {
+						update_option( $k, $value );
+					}
+				}
+			}
+
+			wp_send_json_success();
 		}
 
 		/**
@@ -119,8 +154,9 @@ if ( ! class_exists( 'WCB_Admin' ) ) :
 		}
 
 		public function settings_screen() {
+			$print_mode = get_option( 'wcb_settings_css_print_mode', 'file' );
 			?>
-			<div class="woostify-options-wrap woostify-featured-setting woostify-block-setting" data-id="settings" data-nonce="<?php echo esc_attr( wp_create_nonce( 'woostify-block-setting-nonce' ) ); ?>">
+			<div class="woostify-options-wrap woostify-featured-setting woostify-block-setting" data-id="settings" data-nonce="<?php echo esc_attr( wp_create_nonce( 'wcb-settings-nonce' ) ); ?>">
 				<?php $this->dashboard_header_section(); ?>
 				<div class="wrap woostify-settings-box">
 					<div class="woostify-welcome-container">
@@ -139,9 +175,9 @@ if ( ! class_exists( 'WCB_Admin' ) ) :
 										<tr>
 											<th>CSS Print Method</th>
 											<td>
-												<select name="wb_css_print_mode" id="wb_css_print_mode">
-													<option value="file" selected><?php esc_html_e( 'External File', 'woostify-block' ); ?></option>
-													<option value="inline"><?php esc_html_e( 'Inline Embedding', 'woostify-block' ); ?></option>
+												<select name="wcb_settings_css_print_mode" id="wcb_settings_css_print_mode">
+													<option value="file" <?php selected( $print_mode, 'file' ); ?>><?php esc_html_e( 'External File', 'woostify-block' ); ?></option>
+													<option value="inline" <?php selected( $print_mode, 'inline' ); ?>><?php esc_html_e( 'Inline Embedding', 'woostify-block' ); ?></option>
 												</select>
 												<p class="woostify-setting-description"><?php esc_html_e( 'Use external CSS files for all generated stylesheets. Choose this setting for better performance (recommended).', 'woostify-block' ); ?></p>
 												<button type="button" class="button button-secondary button-large" style="margin-top:1em"><?php esc_html_e( 'Regenerate CSS Files', 'woostify-block' ); ?></button>
