@@ -18,6 +18,70 @@ var woostifySearchDelay = function() {
 	};
 }();
 
+var wcbRegenerateCssFiles = function() {
+	var button = document.querySelector( '.js-button-regenerate-css-files' );
+	if ( ! button ) {
+		return
+	}
+
+	var button_icon = button.querySelector('.dashicons');
+
+	button.onclick = function() {
+		if ( button.getAttribute( 'disabled' ) || button.classList.contains( 'loading' ) ) {
+			return;
+		}
+
+		var request = new Request(
+			wcb_edit_screen.ajax_url,
+			{
+				method: 'POST',
+				body: 'action=regenerate_css_files&wcb_settings_form_nonce=' + wcb_edit_screen.settings_form_nonce,
+				credentials: 'same-origin',
+				headers: new Headers(
+					{
+						'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+					}
+				)
+			}
+		);
+
+		button.setAttribute( 'disabled', 'disabled' );
+		button.classList.add( 'loading' );
+		button_icon.setAttribute('class', 'dashicons dashicons-update-alt');
+
+		fetch( request ).then(function( res ) {
+			if ( 200 !== res.status ) {
+				button.classList.remove( 'loading' );
+				button.removeAttribute('disabled');
+				button_icon.setAttribute('class', 'dashicons dashicons-update-alt');
+				return;
+			}
+
+			return res.json();
+		})
+		.then(
+			function( r ) {
+				if ( !r.success) {
+					return;
+				}
+				button.removeAttribute('disabled');
+				button.classList.remove( 'loading' );
+				button_icon.setAttribute('class', 'dashicons dashicons-saved');
+			}
+		)
+		.catch(
+			function( err ) {
+				console.log( err );
+			}
+		).finally(
+			function() {
+				button.removeAttribute('disabled');
+				button.classList.remove( 'loading' );
+			}
+		);
+	}
+}
+
 // Multi select.
 var woostifyMultiSelect = function() {
 	var meta = document.querySelectorAll( '.woostify-multi-selection' );
@@ -636,9 +700,9 @@ var woostifySaveOptions = function() {
 							}
 
 							// Update success status.
-							let infoSuccess = box.querySelector( '.woostify-settings-section-footer .info-seuccess' );
+							let infoSuccess = box.querySelector( '.woostify-settings-section-footer .info-success' );
 							if ( ! infoSuccess ) {
-								button.insertAdjacentHTML( 'afterend', '<span class="info-seuccess">' + wcb_edit_screen.saved_success + '</span>' );
+								button.insertAdjacentHTML( 'afterend', '<span class="info-success">' + wcb_edit_screen.saved_success + '</span>' );
 							}
 
 							// Remove loading.
@@ -1074,5 +1138,6 @@ document.addEventListener(
 		woostifySaleNotificationRemoveMessage();
 		woostifyHeaderFooterBuilderSelectTemplate();
 		woostifyChangeDisplayOption();
+		wcbRegenerateCssFiles();
 	}
 );

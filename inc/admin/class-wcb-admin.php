@@ -39,6 +39,8 @@ if ( ! class_exists( 'WCB_Admin' ) ) :
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
 			add_action( 'wp_ajax_save_settings_options', array( $this, 'save_options' ) );
+
+			add_action( 'wp_ajax_regenerate_css_files', array( $this, 'regenerate_css_files' ) );
 		}
 
 		/**
@@ -73,6 +75,8 @@ if ( ! class_exists( 'WCB_Admin' ) ) :
 				'saving'        => __( 'Saving', 'wcb' ),
 				'saved'         => __( 'Saved', 'wcb' ),
 				'saved_success' => __( 'Saved successfully', 'wcb' ),
+				'ajax_url' => admin_url( 'admin-ajax.php' ),
+				'settings_form_nonce' => wp_create_nonce( 'wcb_settings_form_nonce' ),
 			);
 
 			wp_localize_script(
@@ -199,7 +203,9 @@ if ( ! class_exists( 'WCB_Admin' ) ) :
 													<option value="inline" <?php selected( $print_mode, 'inline' ); ?>><?php esc_html_e( 'Inline Embedding', 'wcb' ); ?></option>
 												</select>
 												<p class="woostify-setting-description"><?php esc_html_e( 'Use external CSS files for all generated stylesheets. Choose this setting for better performance (recommended).', 'wcb' ); ?></p>
-												<button type="button" class="button button-secondary button-large" style="margin-top:1em"><?php esc_html_e( 'Regenerate CSS Files', 'wcb' ); ?></button>
+												<button type="button" class="js-button-regenerate-css-files button button-secondary button-large" style="margin-top:1em">
+													<span class="dashicons dashicons-update-alt"></span><?php esc_html_e( 'Regenerate CSS Files', 'wcb' ); ?>
+												</button>
 												<p class="woostify-setting-description"><?php esc_html_e( 'Force your external CSS files to regenerate next time their page is loaded.', 'wcb' ); ?></p>
 											</td>
 										</tr>
@@ -208,11 +214,11 @@ if ( ! class_exists( 'WCB_Admin' ) ) :
 											<td>
 												<div class="input-group" style="margin-bottom:1em">
 													<label for="wcb_settings_tablet_breakpoint"><?php esc_html_e( 'Tablet', 'wcb' ); ?></label>
-													<input type="number" class="small-text no-arrows" name="wcb_settings_tablet_breakpoint" id="wcb_settings_tablet_breakpoint" value="<?php echo (int) $tablet_breakpoint; ?>" />px
+													<input type="number" class="small-text no-arrows" name="wcb_settings_tablet_breakpoint" id="wcb_settings_tablet_breakpoint" value="<?php echo (int) $tablet_breakpoint; ?>" />
 												</div>
 												<div class="input-group">
 													<label for="wcb_settings_mobile_breakpoint"><?php esc_html_e( 'Mobile', 'wcb' ); ?></label>
-													<input type="number" class="small-text no-arrows" name="wcb_settings_mobile_breakpoint" id="wcb_settings_mobile_breakpoint" value="<?php echo (int) $mobile_breakpoint; ?>" />px
+													<input type="number" class="small-text no-arrows" name="wcb_settings_mobile_breakpoint" id="wcb_settings_mobile_breakpoint" value="<?php echo (int) $mobile_breakpoint; ?>" />
 												</div>
 											</td>
 										</tr>
@@ -227,6 +233,16 @@ if ( ! class_exists( 'WCB_Admin' ) ) :
 				</div>
 			</div>
 			<?php
+		}
+
+		public function regenerate_css_files() {
+			/*Do another nonce check*/
+			check_ajax_referer( 'wcb_settings_form_nonce', 'wcb_settings_form_nonce' );
+
+			$wcb_dynamic_css = new WCB_Dynamic_Css();
+			$wcb_dynamic_css->delete_dynamic_stylesheet_folder();
+
+			wp_send_json_success();
 		}
 
 	}

@@ -457,6 +457,7 @@ if ( ! class_exists( 'Woostify_Dynamic_Css' ) ) :
 		 * @return bool
 		 */
 		public function delete_dynamic_stylesheet_folder() {
+			$this->reset_all_transients();
 			return $this->get_filesystem()->delete( $this->get_style_folder(), true );
 		}
 

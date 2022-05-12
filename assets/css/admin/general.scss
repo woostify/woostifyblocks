@@ -244,7 +244,7 @@ body{
 				visibility: visible;
 			}
 
-			.info-seuccess {
+			.info-success {
 				display: none;
 			}
 		}
@@ -403,7 +403,6 @@ body{
 }
 
 .woostify-settings-section-tab {
-	.woostify-setting-tab-head {}
 
 	.tab-head-button {
 		padding: 10px 20px;
@@ -438,57 +437,17 @@ body{
 	}
 }
 
-// Smart filter.
-.admin-product-filter,
-.woostify-options-wrap {
-	[type="checkbox"] {
-		position: relative;
-		border-radius: 2px;
-		border-width: 2px;
-
-		&:focus {
-			box-shadow: none;
+.woostify-setting-tab-content {
+	.input-group {
+		label {
+			min-width: 60px;
+			display: inline-block;
+			color: #666;
+			font-weight: 500;
 		}
-
-		&:checked {
-			border-color: #1e8cbe;
-
-			&:before {
-				content: '';
-				background-color: #1e8cbe;
-				position: absolute;
-				top: 2px;
-				bottom: 2px;
-				left: 2px;
-				right: 2px;
-				border-radius: 2px;
-				width: auto;
-				height: auto;
-				margin: 0;
-			}
+		input {
+			min-width: 100px;
 		}
-	}
-
-	// Index button
-	.index-button-wrap {
-		display: flex;
-		align-items: center;
-
-		.spinner {
-			margin-top: 0;
-		}
-
-		&.loading {
-			.spinner {
-				visibility: visible;
-			}
-		}
-	}
-
-	// Info success
-	.info-seuccess {
-		margin-left: 10px;
-		color: #28a745;
 	}
 }
 
@@ -554,123 +513,6 @@ th.table-setting-heading {
 	.woostify-multi-dependency-item {
 		&:not(.active) {
 			display: none;
-		}
-	}
-}
-
-/* Countdown urgency */
-.woostify-countdown-urgency-setting {
-	[name=woostify_countdown_urgency_apply_for],
-	[name=woostify_countdown_urgency_style] {
-		min-width: 300px;
-	}
-
-	.countdown-urgency-time-duration {
-		display: inline-flex;
-		width: 100%;
-		align-items: center;
-
-		@media (min-width: 992px) {
-			max-width: 50%;
-		}
-
-		@media (max-width: 767px) {
-			flex-direction: column;
-
-			input {
-				width: 100%;
-				margin-bottom: 15px;
-			}
-		}
-
-		input {
-			flex-grow: 1;
-			margin-right: 5px;
-		}
-	}
-
-	.countdown-urgency-label {
-		display: flex;
-		justify-content: space-between;
-
-		@media (max-width: 600px) {
-			flex-direction: column;
-		}
-
-		label {
-			flex-basis: 24%;
-
-			@media (max-width: 600px) {
-				flex-basis: 100%;
-
-				+label {
-					margin-top: 10px;
-				}
-			}
-		}
-
-		input {
-			width: 100%;
-			margin-top: 5px;
-		}
-	}
-}
-
-/* Variation swatches */
-.woostify-variation-swatches-setting {
-	[name=woostify_variation_swatches_size] {
-		max-width: 75px;
-	}
-}
-
-/* Sale notification */
-.woostify-sale-notification-setting {
-	select {
-		min-width: 170px;
-	}
-
-	input {
-		&[type="text"],
-		&[type="number"] {
-			min-width: 170px;
-		}
-	}
-}
-
-.woostify-sale-notification-box-message {
-	.woostify-sale-notification-message-inner {
-		display: flex;
-		align-items: center;
-		margin-bottom: 15px;
-	}
-
-	.woostify-sale-notification-remove-message {
-		margin-left: 20px;
-	}
-}
-
-/* Size guide */
-/* For metabox size-guide */
-.woostify-metabox-option-content {
-	.woostify-multi-select-selection {
-	
-		.woostify-multi-select-id {
-			padding: 3px 6px;
-		}
-
-		.woostify-multi-select-search {
-			border: 0;
-			box-shadow: none;
-
-			&:focus {
-				box-shadow: none;
-			}
-		}
-	}
-
-	.woostify-multi-select-dropdown {
-		.woostify-multi-select-id {
-			padding: 5px 8px;
 		}
 	}
 }
@@ -825,4 +667,9 @@ input[type=number] {
 	&.no-arrows {
 		-moz-appearance: textfield;
 	}
+}
+
+.js-button-regenerate-css-files {
+	display: flex !important;
+	align-items: center;
 }
