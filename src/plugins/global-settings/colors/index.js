@@ -246,7 +246,7 @@ const WCBGlobalColors = (props) => {
 										className="components-color-picker__input-field"
 										label={__(
 											'Color Name',
-											wcb
+											'wcb'
 										)}
 									>
 										<input

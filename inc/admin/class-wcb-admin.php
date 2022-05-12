@@ -177,7 +177,7 @@ if ( ! class_exists( 'WCB_Admin' ) ) :
 		public function settings_screen() {
 			$print_mode = get_option( 'wcb_settings_css_print_mode', 'file' );
 			$tablet_breakpoint = get_option( 'wcb_settings_tablet_breakpoint', '1024' );
-			$mobile_breakpoint = get_option( 'wcb_settings_mobile_breakpoint', '767' );
+			$mobile_breakpoint = get_option( 'wcb_settings_mobile_breakpoint', '768' );
 			?>
 			<div class="woostify-options-wrap woostify-featured-setting wcb-setting" data-id="settings" data-nonce="<?php echo esc_attr( wp_create_nonce( 'wcb-settings-nonce' ) ); ?>">
 				<?php $this->dashboard_header_section(); ?>

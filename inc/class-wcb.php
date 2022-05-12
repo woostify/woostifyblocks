@@ -103,6 +103,8 @@ if ( ! class_exists( 'WCB' ) ) {
 			}
 
 			load_plugin_textdomain( 'wcb', false, WCB_PATH . 'languages/' );
+
+			wp_set_script_translations( 'wcb-blocks-scripts', 'wcb', WCB_PATH . 'languages/' );
 		}
 
 		/**
@@ -114,12 +116,8 @@ if ( ! class_exists( 'WCB' ) ) {
 		public function get_blocks_styles( $block_name, $block_attrs ) {
 			$blocks_style = '';
 
-			switch ( $block_name ) {
-				case 'wcb/first-block':
-					$blocks_style .= $this->generate_block_style( $block_attrs );
-					break;
-				default:
-					break;
+			if ( str_contains( $block_name, 'wcb' ) ) {
+				$blocks_style .= $this->generate_block_style( $block_name, $block_attrs );
 			}
 
 			return $blocks_style;
@@ -128,30 +126,61 @@ if ( ! class_exists( 'WCB' ) ) {
 		/**
 		 * Generate block style from attributes
 		 *
-		 * @param array $block_attrs Block attributes.
+		 * @param string $block_name Block name.
+		 * @param array  $block_attrs Block attributes.
+		 * @return string
 		 */
-		public function generate_block_style( $block_attrs = array() ) {
-			$block_style    = '';
-			$block_class    = $block_attrs['uniqueId'];
-			$bg_color       = isset( $block_attrs['bg_color'] ) ? esc_html( $block_attrs['bg_color'] ) : '';
-			$text_color     = isset( $block_attrs['text_color'] ) ? esc_html( $block_attrs['text_color'] ) : '';
-			$font_size_unit = isset( $block_attrs['fontSizeUnit'] ) ? esc_html( $block_attrs['fontSizeUnit'] ) : 'px';
+		public function generate_block_style( $block_name = '', $block_attrs = array() ) {
+			$tablet_breakpoint = get_option( 'wcb_settings_tablet_breakpoint', '1024' );
+			$mobile_breakpoint = get_option( 'wcb_settings_mobile_breakpoint', '768' );
 
-			$block_style     .= '#wcb-' . $block_class . ' h2 {';
-				$block_style .= 'background-color: ' . $bg_color . ';';
-				$block_style .= 'color: ' . $text_color . ';';
-			if ( isset( $block_attrs['fontFamily'] ) ) {
-				$block_style .= 'font-family: ' . $block_attrs['fontFamily'] . ', sans-serif;';
-			}
-			if ( isset( $block_attrs['fontWeight'] ) ) {
-				$block_style .= 'font-weight: ' . $block_attrs['fontWeight'] . ';';
-			}
-			if ( isset( $block_attrs['fontSize'] ) ) {
-				$block_style .= 'font-size: ' . $block_attrs['fontSize'] . $font_size_unit . ';';
-			}
-			$block_style .= '}';
+			$block_style  = '';
+			$tablet_style = '';
+			$mobile_style = '';
 
-			return $block_style;
+			$block_class = $block_attrs['uniqueId'];
+			if ( 'wcb/first-block' === $block_name ) {
+				$bg_color              = isset( $block_attrs['bg_color'] ) ? esc_html( $block_attrs['bg_color'] ) : '';
+				$text_color            = isset( $block_attrs['text_color'] ) ? esc_html( $block_attrs['text_color'] ) : '';
+				$font_size_unit        = isset( $block_attrs['fontSizeUnit'] ) ? esc_html( $block_attrs['fontSizeUnit'] ) : 'px';
+				$font_size_unit_tablet = isset( $block_attrs['fontSizeUnitTablet'] ) ? esc_html( $block_attrs['fontSizeUnitTablet'] ) : 'px';
+				$font_size_unit_mobile = isset( $block_attrs['fontSizeUnitMobile'] ) ? esc_html( $block_attrs['fontSizeUnitMobile'] ) : 'px';
+
+				// Desktop style.
+				$block_style     .= '#wcb-' . $block_class . ' h2 {';
+					$block_style .= 'background-color: ' . $bg_color . ';';
+					$block_style .= 'color: ' . $text_color . ';';
+				if ( isset( $block_attrs['fontFamily'] ) ) {
+					$block_style .= 'font-family: ' . $block_attrs['fontFamily'] . ', sans-serif;';
+				}
+				if ( isset( $block_attrs['fontWeight'] ) ) {
+					$block_style .= 'font-weight: ' . $block_attrs['fontWeight'] . ';';
+				}
+				if ( isset( $block_attrs['fontSize'] ) ) {
+					$block_style .= 'font-size: ' . $block_attrs['fontSize'] . $font_size_unit . ';';
+				}
+				$block_style .= '}';
+
+				// Tablet style.
+				$tablet_style     .= '@media (max-width:' . $tablet_breakpoint . 'px) {';
+					$tablet_style .= '#wcb-' . $block_class . ' h2 {';
+				if ( isset( $block_attrs['fontSizeTablet'] ) ) {
+					$tablet_style .= 'font-size: ' . $block_attrs['fontSizeTablet'] . $font_size_unit_tablet . ';';
+				}
+					$tablet_style .= '}';
+				$tablet_style     .= '}';
+
+				// Mobile Style.
+				$mobile_style     .= '@media (max-width:' . $mobile_breakpoint . 'px) {';
+					$mobile_style .= '#wcb-' . $block_class . ' h2 {';
+				if ( isset( $block_attrs['fontSizeMobile'] ) ) {
+					$mobile_style .= 'font-size: ' . $block_attrs['fontSizeMobile'] . $font_size_unit_mobile . ';';
+				}
+					$mobile_style .= '}';
+				$mobile_style     .= '}';
+			}
+
+			return $block_style . $tablet_style . $mobile_style;
 		}
 
 		/**
