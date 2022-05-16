@@ -1,0 +1,469 @@
+# Copyright (C) 2022 Woostify
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Woostify Conversion Block 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woostify-block\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-05-12T17:10:27+07:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.6.0\n"
+"X-Domain: wcb\n"
+
+#. Plugin Name of the plugin
+msgid "Woostify Conversion Block"
+msgstr ""
+
+#. Description of the plugin
+msgid "Advanced blocks for Gutenberg editor."
+msgstr ""
+
+#. Author of the plugin
+#: inc/admin/class-wcb-admin.php:154
+msgid "Woostify"
+msgstr ""
+
+#: inc/admin/class-wcb-admin.php:74
+#: inc/admin/class-wcb-admin.php:229
+msgid "Save"
+msgstr ""
+
+#: inc/admin/class-wcb-admin.php:75
+msgid "Saving"
+msgstr ""
+
+#: inc/admin/class-wcb-admin.php:76
+msgid "Saved"
+msgstr ""
+
+#: inc/admin/class-wcb-admin.php:77
+msgid "Saved successfully"
+msgstr ""
+
+#: inc/admin/class-wcb-admin.php:153
+msgid "Woostify Block Logo"
+msgstr ""
+
+#: inc/admin/class-wcb-admin.php:192
+msgid "Settings"
+msgstr ""
+
+#: inc/admin/class-wcb-admin.php:199
+msgid "CSS Print Method"
+msgstr ""
+
+#: inc/admin/class-wcb-admin.php:202
+msgid "External File"
+msgstr ""
+
+#: inc/admin/class-wcb-admin.php:203
+msgid "Inline Embedding"
+msgstr ""
+
+#: inc/admin/class-wcb-admin.php:205
+msgid "Use external CSS files for all generated stylesheets. Choose this setting for better performance (recommended)."
+msgstr ""
+
+#: inc/admin/class-wcb-admin.php:207
+msgid "Regenerate CSS Files"
+msgstr ""
+
+#: inc/admin/class-wcb-admin.php:209
+msgid "Force your external CSS files to regenerate next time their page is loaded."
+msgstr ""
+
+#: inc/admin/class-wcb-admin.php:213
+msgid "Responsive Breakpoints"
+msgstr ""
+
+#: inc/admin/class-wcb-admin.php:216
+#: dist/blocks.js:1039
+#: dist/sidebar.js:424
+#: src/components/controls/responsive-toggle/index.js:23
+#: dist/blocks.js:968
+#: dist/sidebar.js:403
+msgid "Tablet"
+msgstr ""
+
+#: inc/admin/class-wcb-admin.php:220
+#: dist/blocks.js:1043
+#: dist/sidebar.js:428
+#: src/components/controls/responsive-toggle/index.js:28
+#: dist/blocks.js:973
+#: dist/sidebar.js:408
+msgid "Mobile"
+msgstr ""
+
+#: inc/class-wcb.php:275
+msgid "First Block"
+msgstr ""
+
+#: inc/class-wcb.php:279
+msgid "Second Block"
+msgstr ""
+
+#: inc/class-wcb.php:297
+msgid "Woostify Block"
+msgstr ""
+
+#: dist/blocks.js:325
+#: src/blocks/first-block/edit.js:47
+#: dist/blocks.js:275
+msgid "General Settings"
+msgstr ""
+
+#: dist/blocks.js:327
+#: src/blocks/first-block/edit.js:49
+#: dist/blocks.js:277
+msgid "Background Color"
+msgstr ""
+
+#: dist/blocks.js:337
+#: src/blocks/first-block/edit.js:60
+#: dist/blocks.js:288
+msgid "Text Color"
+msgstr ""
+
+#: dist/blocks.js:347
+#: dist/blocks.js:611
+#: dist/sidebar.js:167
+#: src/blocks/first-block/edit.js:72
+#: src/components/controls/button-popover/index.js:72
+#: dist/blocks.js:300
+#: dist/blocks.js:532
+#: dist/sidebar.js:137
+msgid "Typography"
+msgstr ""
+
+#: dist/blocks.js:348
+#: src/blocks/first-block/edit.js:73
+#: dist/blocks.js:301
+msgid "Heading"
+msgstr ""
+
+#: dist/blocks.js:350
+#: src/blocks/first-block/edit.js:76
+#: dist/blocks.js:304
+msgid "Padding"
+msgstr ""
+
+#: dist/blocks.js:364
+#: src/blocks/first-block/edit.js:96
+#: dist/blocks.js:324
+msgid "Margin"
+msgstr ""
+
+#: dist/blocks.js:377
+#: src/blocks/first-block/edit.js:113
+#: dist/blocks.js:341
+msgid "T-Left"
+msgstr ""
+
+#: dist/blocks.js:379
+#: src/blocks/first-block/edit.js:115
+#: dist/blocks.js:343
+msgid "B-Right"
+msgstr ""
+
+#: dist/blocks.js:380
+#: src/blocks/first-block/edit.js:116
+#: dist/blocks.js:344
+msgid "B-Left"
+msgstr ""
+
+#: dist/blocks.js:503
+#: dist/sidebar.js:59
+#: src/components/controls/base/index.js:46
+#: dist/blocks.js:441
+#: dist/sidebar.js:46
+msgid "Unit"
+msgstr ""
+
+#: dist/blocks.js:723
+#: src/components/controls/dimensions/index.js:70
+#: dist/blocks.js:640
+msgid "Top"
+msgstr ""
+
+#: dist/blocks.js:724
+#: src/components/controls/dimensions/index.js:71
+#: dist/blocks.js:641
+msgid "Right"
+msgstr ""
+
+#: dist/blocks.js:725
+#: src/components/controls/dimensions/index.js:72
+#: dist/blocks.js:642
+msgid "Bottom"
+msgstr ""
+
+#: dist/blocks.js:726
+#: src/components/controls/dimensions/index.js:73
+#: dist/blocks.js:643
+msgid "Left"
+msgstr ""
+
+#: dist/blocks.js:780
+#: src/components/controls/dimensions/index.js:138
+#: dist/blocks.js:708
+msgid "Link values together"
+msgstr ""
+
+#: dist/blocks.js:865
+#: dist/sidebar.js:250
+#: src/components/controls/font-family-picker/index.js:37
+#: dist/blocks.js:777
+#: dist/sidebar.js:212
+msgid "Font Family"
+msgstr ""
+
+#: dist/blocks.js:884
+#: dist/sidebar.js:269
+#: src/components/controls/font-family-picker/index.js:53
+#: dist/blocks.js:793
+#: dist/sidebar.js:228
+msgid "Select font"
+msgstr ""
+
+#: dist/blocks.js:885
+#: dist/sidebar.js:270
+#: src/components/controls/font-family-picker/index.js:56
+#: dist/blocks.js:796
+#: dist/sidebar.js:231
+msgid "System fonts"
+msgstr ""
+
+#: dist/blocks.js:890
+#: dist/sidebar.js:275
+#: src/components/controls/font-family-picker/index.js:68
+#: dist/blocks.js:808
+#: dist/sidebar.js:243
+msgid "Google fonts"
+msgstr ""
+
+#: dist/blocks.js:1035
+#: dist/sidebar.js:420
+#: src/components/controls/responsive-toggle/index.js:18
+#: dist/blocks.js:963
+#: dist/sidebar.js:398
+msgid "Desktop"
+msgstr ""
+
+#: dist/blocks.js:1234
+#: dist/blocks.js:1244
+#: dist/blocks.js:1334
+#: dist/sidebar.js:541
+#: dist/sidebar.js:551
+#: dist/sidebar.js:641
+#: src/components/controls/typography/index.js:43
+#: src/components/controls/typography/index.js:49
+#: src/components/controls/typography/index.js:149
+#: dist/blocks.js:1157
+#: dist/blocks.js:1163
+#: dist/blocks.js:1263
+#: dist/sidebar.js:491
+#: dist/sidebar.js:497
+#: dist/sidebar.js:597
+msgid "Default"
+msgstr ""
+
+#: dist/blocks.js:1237
+#: dist/blocks.js:1256
+#: dist/blocks.js:1337
+#: dist/sidebar.js:544
+#: dist/sidebar.js:563
+#: dist/sidebar.js:644
+#: src/components/controls/typography/index.js:44
+#: src/components/controls/typography/index.js:56
+#: src/components/controls/typography/index.js:151
+#: dist/blocks.js:1158
+#: dist/blocks.js:1170
+#: dist/blocks.js:1265
+#: dist/sidebar.js:492
+#: dist/sidebar.js:504
+#: dist/sidebar.js:599
+msgid "Normal"
+msgstr ""
+
+#: dist/blocks.js:1240
+#: dist/sidebar.js:547
+#: src/components/controls/typography/index.js:45
+#: dist/blocks.js:1159
+#: dist/sidebar.js:493
+msgid "Bold"
+msgstr ""
+
+#: dist/blocks.js:1247
+#: dist/sidebar.js:554
+#: src/components/controls/typography/index.js:50
+#: dist/blocks.js:1164
+#: dist/sidebar.js:498
+msgid "Uppercase"
+msgstr ""
+
+#: dist/blocks.js:1250
+#: dist/sidebar.js:557
+#: src/components/controls/typography/index.js:51
+#: dist/blocks.js:1165
+#: dist/sidebar.js:499
+msgid "Lowercase"
+msgstr ""
+
+#: dist/blocks.js:1253
+#: dist/sidebar.js:560
+#: src/components/controls/typography/index.js:53
+#: dist/blocks.js:1167
+#: dist/sidebar.js:501
+msgid "Capitalize"
+msgstr ""
+
+#: dist/blocks.js:1266
+#: dist/blocks.js:1283
+#: dist/blocks.js:1300
+#: dist/sidebar.js:573
+#: dist/sidebar.js:590
+#: dist/sidebar.js:607
+#: src/components/controls/typography/index.js:69
+#: src/components/controls/typography/index.js:89
+#: src/components/controls/typography/index.js:109
+#: dist/blocks.js:1183
+#: dist/blocks.js:1203
+#: dist/blocks.js:1223
+#: dist/sidebar.js:517
+#: dist/sidebar.js:537
+#: dist/sidebar.js:557
+msgid "Size"
+msgstr ""
+
+#: dist/blocks.js:1316
+#: dist/sidebar.js:623
+#: src/components/controls/typography/index.js:129
+#: dist/blocks.js:1243
+#: dist/sidebar.js:577
+msgid "Weight"
+msgstr ""
+
+#: dist/blocks.js:1324
+#: dist/sidebar.js:631
+#: src/components/controls/typography/index.js:138
+#: dist/blocks.js:1252
+#: dist/sidebar.js:586
+msgid "Transform"
+msgstr ""
+
+#: dist/blocks.js:1332
+#: dist/sidebar.js:639
+#: src/components/controls/typography/index.js:147
+#: dist/blocks.js:1261
+#: dist/sidebar.js:595
+msgid "Style"
+msgstr ""
+
+#: dist/blocks.js:1340
+#: dist/sidebar.js:647
+#: src/components/controls/typography/index.js:155
+#: dist/blocks.js:1269
+#: dist/sidebar.js:603
+msgid "Italic"
+msgstr ""
+
+#: dist/blocks.js:1343
+#: dist/sidebar.js:650
+#: src/components/controls/typography/index.js:159
+#: dist/blocks.js:1273
+#: dist/sidebar.js:607
+msgid "Oblique"
+msgstr ""
+
+#: dist/blocks.js:1351
+#: dist/blocks.js:1368
+#: dist/blocks.js:1385
+#: dist/sidebar.js:658
+#: dist/sidebar.js:675
+#: dist/sidebar.js:692
+#: src/components/controls/typography/index.js:170
+#: src/components/controls/typography/index.js:190
+#: src/components/controls/typography/index.js:210
+#: dist/blocks.js:1284
+#: dist/blocks.js:1304
+#: dist/blocks.js:1324
+#: dist/sidebar.js:618
+#: dist/sidebar.js:638
+msgid "Line-Height"
+msgstr ""
+
+#: dist/blocks.js:1400
+#: dist/blocks.js:1415
+#: dist/blocks.js:1430
+#: dist/sidebar.js:707
+#: dist/sidebar.js:722
+#: dist/sidebar.js:737
+#: src/components/controls/typography/index.js:230
+#: src/components/controls/typography/index.js:248
+#: src/components/controls/typography/index.js:266
+#: dist/blocks.js:1344
+#: dist/blocks.js:1362
+#: dist/blocks.js:1380
+#: dist/sidebar.js:678
+#: dist/sidebar.js:696
+#: dist/sidebar.js:714
+msgid "Letter Spacing"
+msgstr ""
+
+#: dist/sidebar.js:950
+#: src/plugins/global-settings/colors/index.js:58
+#: dist/sidebar.js:890
+msgid "Untitled"
+msgstr ""
+
+#: dist/sidebar.js:958
+#: src/plugins/global-settings/colors/index.js:68
+#: dist/sidebar.js:900
+msgid "Add New Color"
+msgstr ""
+
+#: dist/sidebar.js:999
+#: src/plugins/global-settings/colors/index.js:123
+#: dist/sidebar.js:955
+msgid "Custom Color %s"
+msgstr ""
+
+#: dist/sidebar.js:1038
+#: src/plugins/global-settings/colors/index.js:181
+#: dist/sidebar.js:1013
+msgid "Default Colors"
+msgstr ""
+
+#: dist/sidebar.js:1057
+#: src/plugins/global-settings/colors/index.js:209
+#: dist/sidebar.js:1041
+msgid "WCB Custom Colors"
+msgstr ""
+
+#: dist/sidebar.js:1083
+#: src/plugins/global-settings/colors/index.js:247
+#: dist/sidebar.js:1079
+msgid "Color Name"
+msgstr ""
+
+#: dist/sidebar.js:1249
+#: src/plugins/global-settings/index.js:16
+#: dist/sidebar.js:1216
+msgid "Woostify Block Settings"
+msgstr ""
+
+#: dist/sidebar.js:1307
+#: src/plugins/global-settings/index.js:69
+#: dist/sidebar.js:1269
+msgid "Global Color Palette"
+msgstr ""
+
+#: dist/sidebar.js:1310
+#: src/plugins/global-settings/index.js:75
+#: dist/sidebar.js:1275
+msgid "Global Typography"
+msgstr ""
