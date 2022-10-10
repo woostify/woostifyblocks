@@ -17,6 +17,7 @@ import WoostifyBaseControl from "../components/controls/WCBBaseControl/WCBBaseCo
 import "./editor.scss";
 import { Blokc1Attrs } from "./attributes";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
+import MyBackgroundControl from "../components/controls/MyBackgroundControl/MyBackgroundControl";
 
 export type EditProps<T> = {
 	attributes: T;
@@ -47,6 +48,12 @@ const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 							color={attributes.color}
 						/>
 					</div>
+					<div className="my-8">
+						<MyBackgroundControl
+						// onChange={(color) => setAttributes({ color })}
+						// color={attributes.color}
+						/>
+					</div>
 				</PanelBody>
 			</InspectorControls>
 			<div className="wcb-block-wrapper" id={`wcb-${uniqueId}`}>
@@ -65,7 +72,7 @@ const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 				</style> */}
 				<RichText
 					tagName="h2"
-					className="wcb-text"
+					className="wcb-text p-5 bg-sky-500 rounded-2xl"
 					value={attributes.message}
 					onChange={(val) => setAttributes({ message: val })}
 					style={{

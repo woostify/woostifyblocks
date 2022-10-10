@@ -20,7 +20,8 @@ import "./style.scss";
 import Edit from "./Edit";
 import save from "./Save";
 import metadata from "./block.json";
-
+const { Fragment } = wp.element;
+const { withSelect } = wp.data;
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 import "../style.css";
 import "../styles/index.scss";
@@ -28,12 +29,12 @@ import "../styles/index.scss";
 console.log(11111, "-----BECOME AUTHOR BLOCK - MAIN CSS ----------");
 
 registerBlockType(metadata.name, {
-	/**
-	 * @see ./edit.js
-	 */
-	edit: Edit,
-	/**
-	 * @see ./save.js
-	 */
+	edit: withSelect((select, props) => {
+		return {
+			media: props.attributes.mediaId
+				? select("core").getMedia(props.attributes.mediaId)
+				: undefined,
+		};
+	})((props) => <Edit {...props} />),
 	save,
 });
