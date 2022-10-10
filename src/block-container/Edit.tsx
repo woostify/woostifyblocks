@@ -1,5 +1,3 @@
-import "./editor.scss";
-
 import { __ } from "@wordpress/i18n";
 import {
 	useBlockProps,
@@ -8,36 +6,32 @@ import {
 	RichText,
 } from "@wordpress/block-editor";
 import { PanelBody, RangeControl, TabPanel } from "@wordpress/components";
-import React, { useState, useEffect } from "react";
-
-import "./editor.scss";
+import React, { useState, useEffect, FC } from "react";
 import { getDeviceSuffix } from "../utils/get-device-type";
-import WoostifyBaseControl from "../components/controls/base";
-import WCBTypographyHelperControl from "../components/controls/typography-helper";
-import WoostifyDimensionsControl from "../components/controls/dimensions";
+import WoostifyBaseControl from "../components/controls/WCBBaseControl/WCBBaseControl";
+import WCBTypographyHelperControl from "../components/controls/WCBTypographyHelperControl/WCBTypographyHelperControl";
+import WcbDimensions from "../components/controls/WcbDimensions/WcbDimensions";
+import "./editor.scss";
+import { Blokc1Attrs } from "./attributes";
 
-function Edit(props) {
+export type EditProps<T> = {
+	attributes: T;
+	setAttributes: (newAttributes: Partial<T>) => void;
+	clientId: string;
+};
+
+const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 	const deviceSuffix = getDeviceSuffix();
 
 	const { attributes, setAttributes, clientId } = props;
 	const { uniqueId } = attributes;
 
-	const [bgColor, setBgColor] = useState(attributes.bg_color || "");
-	const [textColor, setTextColor] = useState(attributes.text_color || "");
-
+	//
 	useEffect(() => {
 		setAttributes({
 			uniqueId: clientId.substr(2, 9).replace("-", ""),
 		});
 	}, []);
-
-	let lineHeightCSS =
-		attributes["lineHeight" + deviceSuffix] +
-		attributes["lineHeightUnit" + deviceSuffix];
-	let fontSizeCSS =
-		attributes["fontSize" + deviceSuffix] +
-		attributes["fontSizeUnit" + deviceSuffix];
-	let letterSpacingCSS = attributes["letterSpacing" + deviceSuffix] + "px";
 
 	return (
 		<div {...useBlockProps()}>
@@ -45,17 +39,25 @@ function Edit(props) {
 				<PanelBody title={__("General Settings", "wcb")}>
 					<WoostifyBaseControl label={__("Background Color", "wcb")}>
 						<ColorPalette
-							colors={bgColor}
-							value={bgColor}
+							colors={[
+								{ name: "red", color: "#f00" },
+								{ name: "white", color: "#fff" },
+								{ name: "blue", color: "#00f" },
+							]}
+							value={attributes.bg_color}
 							onChange={(val) => {
-								setBgColor(val);
 								setAttributes({ bg_color: val });
 							}}
 						/>
 					</WoostifyBaseControl>
+					{/*  */}
 					<WoostifyBaseControl label={__("Text Color", "wcb")}>
 						<ColorPalette
-							colors={textColor}
+							colors={[
+								{ name: "red", color: "#f00" },
+								{ name: "white", color: "#fff" },
+								{ name: "blue", color: "#00f" },
+							]}
 							value={textColor}
 							onChange={(val) => {
 								setTextColor(val);
@@ -63,23 +65,23 @@ function Edit(props) {
 							}}
 						/>
 					</WoostifyBaseControl>
-					<WCBTypographyHelperControl
+					{/* <WCBTypographyHelperControl
 						{...props}
 						label={__("Typography", "wcb")}
 						popoverHeading={__("Heading", "wcb")}
-					/>
+					/> */}
 					<WoostifyBaseControl
 						label={__("Padding", "wcb")}
-						responsive={["desktop", "tablet", "mobile"]}
-						units={["px", "em", "rem", "%"]}
-						selectedUnit={attributes["paddingUnit" + deviceSuffix]}
-						onUnitClick={(unit) =>
-							setAttributes({
-								["paddingUnit" + deviceSuffix]: unit,
-							})
-						}
+						// responsive={["desktop", "tablet", "mobile"]}
+						// units={["px", "em", "rem", "%"]}
+						// selectedUnit={attributes["paddingUnit" + deviceSuffix]}
+						// onUnitClick={(unit) =>
+						// 	setAttributes({
+						// 		["paddingUnit" + deviceSuffix]: unit,
+						// 	})
+						// }
 					>
-						<WoostifyDimensionsControl
+						<WcbDimensions
 							{...props}
 							type={"padding"}
 							attrTop={"paddingTop" + deviceSuffix}
@@ -90,16 +92,16 @@ function Edit(props) {
 					</WoostifyBaseControl>
 					<WoostifyBaseControl
 						label={__("Margin", "wcb")}
-						responsive={["desktop", "tablet", "mobile"]}
-						units={["px", "rem"]}
-						selectedUnit={attributes["marginUnit" + deviceSuffix]}
-						onUnitClick={(unit) =>
-							setAttributes({
-								["marginUnit" + deviceSuffix]: unit,
-							})
-						}
+						// responsive={["desktop", "tablet", "mobile"]}
+						// units={["px", "rem"]}
+						// selectedUnit={attributes["marginUnit" + deviceSuffix]}
+						// onUnitClick={(unit) =>
+						// 	setAttributes({
+						// 		["marginUnit" + deviceSuffix]: unit,
+						// 	})
+						// }
 					>
-						<WoostifyDimensionsControl
+						<WcbDimensions
 							{...props}
 							type={"margin"}
 							attrTop={"marginTop" + deviceSuffix}
@@ -119,7 +121,7 @@ function Edit(props) {
 				</PanelBody>
 			</InspectorControls>
 			<div className="wcb-block-wrapper" id={`wcb-${uniqueId}`}>
-				<style>
+				{/* <style>
 					{`#wcb-${uniqueId} .wcb-text {
 							font-family: ${attributes.fontFamily};
 							font-weight: ${attributes.fontWeight};
@@ -128,19 +130,19 @@ function Edit(props) {
 							line-height: ${lineHeightCSS};
 							font-size: ${fontSizeCSS};
 							letter-spacing: ${letterSpacingCSS};
-							background-color: ${bgColor};
+							background-color: ${attributes.bg_color};
 							color: ${attributes.text_color};
 						}`}
-				</style>
+				</style> */}
 				<RichText
 					tagName="h2"
-					className="wcb-text"
+					className="wcb-text text-red-500"
 					value={attributes.message}
 					onChange={(val) => setAttributes({ message: val })}
 				/>
 			</div>
 		</div>
 	);
-}
+};
 
 export default Edit;

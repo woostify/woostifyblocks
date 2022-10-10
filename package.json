@@ -18,6 +18,7 @@
 		"@wordpress/scripts": "^24.0.0"
 	},
 	"dependencies": {
+		"@headlessui/react": "^1.7.3",
 		"@types/wordpress__block-editor": "^7.0.0",
 		"@wordpress/api-fetch": "^6.16.0",
 		"@wordpress/block-editor": "^10.2.0",
@@ -26,6 +27,7 @@
 		"@wordpress/hooks": "^3.19.0",
 		"@wordpress/i18n": "^4.16.0",
 		"autoprefixer": "^10.4.8",
+		"classnames": "^2.3.2",
 		"color-rgba": "^2.4.0",
 		"lodash": "^4.17.21",
 		"postcss": "^8.4.16",

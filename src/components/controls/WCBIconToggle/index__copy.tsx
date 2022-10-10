@@ -1,5 +1,5 @@
-import { __ } from '@wordpress/i18n';
-import { Button, Dashicon, Popover } from '@wordpress/components';
+import { __ } from "@wordpress/i18n";
+import { Button, Dashicon, Popover } from "@wordpress/components";
 import {
 	useState,
 	useCallback,
@@ -7,12 +7,13 @@ import {
 	useMemo,
 	useRef,
 	useEffect,
-} from '@wordpress/element';
+} from "@wordpress/element";
 
-var classNames = require('classnames');
+import classNames from "classNames";
+import React from "react";
 
 const IconToggleControl = (props) => {
-	const { value, options, labelPosition = 'right' } = props;
+	const { value, options, labelPosition = "right" } = props;
 
 	const [isMouseHover, setIsMouseHover] = useState(false);
 	const [isOpenContent, setIsOpenContent] = useState(false);
@@ -20,41 +21,44 @@ const IconToggleControl = (props) => {
 
 	const toggleOffset = useMemo(() => {
 		const index = props.options.findIndex(
-			(el) => el.value === value.toLowerCase()
+			(el) => el.value === value?.toLowerCase()
 		);
 		return (index / options.length) * 100;
 	}, [options, value]);
 
 	// Close the toggle content if the user clicks outside.
-	const handleOnClickOutside = useCallback((event) => {
-		// Do not do anything if the Media Manager is open.
-		if (window.wp?.media?.frame?.el?.clientHeight) {
-			return;
-		}
-
-		if (isOpenContent) {
-			const closest = event.target?.closest(
-				'.wb-base-control-responsive-toggle'
-			);
-			if (closest !== buttonRef.current) {
-				setIsOpenContent(false);
+	const handleOnClickOutside = useCallback(
+		(event) => {
+			// Do not do anything if the Media Manager is open.
+			if (window.wp?.media?.frame?.el?.clientHeight) {
+				return;
 			}
-		}
-	});
+
+			if (isOpenContent) {
+				const closest = event.target?.closest(
+					".wb-base-control-responsive-toggle"
+				);
+				if (closest !== buttonRef.current) {
+					setIsOpenContent(false);
+				}
+			}
+		},
+		[props]
+	);
 
 	// Assign the outside click listener.
 	useEffect(() => {
-		document.body.addEventListener('click', handleOnClickOutside);
+		document.body.addEventListener("click", handleOnClickOutside);
 		return () =>
-			document.body.removeEventListener('click', handleOnClickOutside);
+			document.body.removeEventListener("click", handleOnClickOutside);
 	}, [handleOnClickOutside]);
 
 	if (options.length <= 1) {
 		return null;
 	}
 
-	const toggleBtnClassName = classNames('wb-base-control-responsive-toggle', {
-		'is-open': isOpenContent,
+	const toggleBtnClassName = classNames("wb-base-control-responsive-toggle", {
+		"is-open": isOpenContent,
 	});
 
 	return (
@@ -70,20 +74,16 @@ const IconToggleControl = (props) => {
 							? props.label || label
 							: props.buttonsLabel
 							? label
-							: '';
+							: "";
 						return (
 							<div
 								key={i}
-								onMouseEnter={() =>
-									setIsMouseHover(option.value)
-								}
+								onMouseEnter={() => setIsMouseHover(option.value)}
 								onMouseLeave={() => setIsMouseHover(false)}
 							>
 								<Button
 									className={
-										value.toLowerCase() === option.value
-											? 'is-active'
-											: ''
+										value.toLowerCase() === option.value ? "is-active" : ""
 									}
 									onClick={() => {
 										if (!isOpenContent) {
@@ -94,15 +94,11 @@ const IconToggleControl = (props) => {
 										}
 									}}
 								>
-									{option.icon ? (
-										<Dashicon icon={option.icon} />
-									) : (
-										label
-									)}
+									{option.icon ? <Dashicon icon={option.icon} /> : label}
 								</Button>
 								{tooltip && isMouseHover === option.value && (
 									<Popover
-										position={`middle ${labelPosition}`}
+										position={`middle ${labelPosition}` as Popover.Position}
 										className="wb-responsive-toggle-popover"
 									>
 										{option.tooltip || tooltip}
@@ -115,4 +111,4 @@ const IconToggleControl = (props) => {
 		</div>
 	);
 };
-export default memo(IconToggleControl);
+export default IconToggleControl;

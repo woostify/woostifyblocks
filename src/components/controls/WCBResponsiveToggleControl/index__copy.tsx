@@ -1,33 +1,34 @@
-import { getDeviceType } from '../../../utils/get-device-type';
+import { getDeviceType } from "../../../utils/get-device-type";
 
-import IconToggleControl from './../icon-toggle';
+import IconToggleControl from "./../icon-toggle";
 
-import { __ } from '@wordpress/i18n';
-import { useCallback, memo, useMemo } from '@wordpress/element';
+import { __ } from "@wordpress/i18n";
+import { useCallback, memo, useMemo } from "@wordpress/element";
 
-import { dispatch } from '@wordpress/data';
+import { dispatch } from "@wordpress/data";
+import React from "react";
 
 const DEVICE_TYPES = {
-	desktop: 'Desktop',
-	tablet: 'Tablet',
-	mobile: 'Mobile',
+	desktop: "Desktop",
+	tablet: "Tablet",
+	mobile: "Mobile",
 };
 
 const DEVICE_TYPES_OPTIONS = [
 	{
-		label: __('Desktop', 'wcb'),
-		value: 'desktop',
-		icon: 'desktop',
+		label: __("Desktop", "wcb"),
+		value: "desktop",
+		icon: "desktop",
 	},
 	{
-		label: __('Tablet', 'wcb'),
-		value: 'tablet',
-		icon: 'tablet',
+		label: __("Tablet", "wcb"),
+		value: "tablet",
+		icon: "tablet",
 	},
 	{
-		label: __('Mobile', 'wcb'),
-		value: 'mobile',
-		icon: 'smartphone',
+		label: __("Mobile", "wcb"),
+		value: "mobile",
+		icon: "smartphone",
 	},
 ];
 
@@ -36,7 +37,7 @@ const ResponsiveToggle = (props) => {
 
 	const setDeviceType = useCallback((device) => {
 		const { __experimentalSetPreviewDeviceType: setPreviewDeviceType } =
-			dispatch('core/edit-post');
+			dispatch("core/edit-post");
 
 		setPreviewDeviceType(DEVICE_TYPES[device]);
 	}, []);

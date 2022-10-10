@@ -1,6 +1,7 @@
-import { __ } from '@wordpress/i18n';
-import { Fragment, Component } from '@wordpress/element';
-import { BaseControl, Button, Popover, PanelBody } from '@wordpress/components';
+import { __ } from "@wordpress/i18n";
+import { Fragment, Component } from "@wordpress/element";
+import { BaseControl, Button, Popover, PanelBody } from "@wordpress/components";
+import React from "react";
 
 const popoverStatus = {};
 class WoostifyButtonPopoverControl extends Component {
@@ -43,9 +44,9 @@ class WoostifyButtonPopoverControl extends Component {
 
 		if (this.state.isVisible) {
 			if (
-				!ev.target.closest('.wb-button-popover') &&
-				!ev.target.closest('.wb-button-popover-icon') &&
-				!ev.target.closest('.components-color-picker')
+				!ev.target.closest(".wb-button-popover") &&
+				!ev.target.closest(".wb-button-popover-icon") &&
+				!ev.target.closest(".components-color-picker")
 			) {
 				this.handleClose();
 			}
@@ -59,24 +60,20 @@ class WoostifyButtonPopoverControl extends Component {
 		}, 500);
 
 		// Remove event listener for mousedown.
-		document.removeEventListener('mousedown', this.handleOnClickOutside);
+		document.removeEventListener("mousedown", this.handleOnClickOutside);
 	}
 
 	componentDidMount() {
 		// Added event listener for mousedown.
-		document.addEventListener('mousedown', this.handleOnClickOutside);
+		document.addEventListener("mousedown", this.handleOnClickOutside);
 	}
 
 	render() {
 		const { isVisible } = this.state;
-		const { children, buttonLabel = __('Typography', 'wcb') } =
-			this.props;
+		const { children, buttonLabel = __("Typography", "wcb") } = this.props;
 		return (
 			<Fragment>
-				<BaseControl
-					className="wb-base-control--grid"
-					label={buttonLabel}
-				>
+				<BaseControl className="wb-base-control--grid" label={buttonLabel}>
 					<Button
 						className="wb-button-popover-icon"
 						variant="secondary"
@@ -91,12 +88,14 @@ class WoostifyButtonPopoverControl extends Component {
 							onMouseEnter={this.handleMouseEnter}
 						>
 							<PanelBody>
-								{!!this.props.popoverHeading && (
-									<h2 className="components-panel__body-title">
-										{this.props.popoverHeading}
-									</h2>
-								)}
-								{children}
+								<>
+									{!!this.props.popoverHeading && (
+										<h2 className="components-panel__body-title">
+											{this.props.popoverHeading}
+										</h2>
+									)}
+									{children}
+								</>
 							</PanelBody>
 						</Popover>
 					)}

@@ -21,12 +21,11 @@ import Edit from "./Edit";
 import save from "./Save";
 import metadata from "./block.json";
 
-//------------------ TAILWINDCSS AND COMMON CSS -----------------
-import "../style.css";
-import "../styles/index.scss";
-//-----------------------------------------
-console.log(11111, "-----BECOME AUTHOR BLOCK - MAIN CSS ----------");
-
+/**
+ * Every block starts by registering a new block type definition.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
+ */
 registerBlockType(metadata.name, {
 	/**
 	 * @see ./edit.js
