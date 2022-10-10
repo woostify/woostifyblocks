@@ -1,0 +1,24 @@
+/* FONT DEFAULT  */
+:root {
+	--font-display: Poppins;
+	--font-body: Poppins;
+}
+
+/*  ---------body ------ */
+html body,
+html body .editor-styles-wrapper {
+	@apply font-body antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	@apply font-display;
+}
+
+.prose {
+	h1 + * {
+		@apply mt-0;
+	}
+}
