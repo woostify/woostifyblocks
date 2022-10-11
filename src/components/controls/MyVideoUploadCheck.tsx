@@ -36,7 +36,7 @@ const MyVideoUploadCheck: FC<Props> = ({
 	};
 
 	return (
-		<div className={`editor-post-featured-image my-3 w-full ${className}`}>
+		<div className={`editor-post-featured-image w-full ${className}`}>
 			<MediaUploadCheck>
 				<MediaUpload
 					onSelect={onSelectMedia}
@@ -45,7 +45,9 @@ const MyVideoUploadCheck: FC<Props> = ({
 					render={({ open }) => (
 						<Button
 							className={`h-auto rounded-lg ring-1 ring-black/10 editor-post-featured-image__toggle flex items-center justify-center ${
-								mediaId == 0 ? "editor-post-featured-image__toggle" : ""
+								mediaId == 0
+									? "editor-post-featured-image__toggle hover:bg-slate-100"
+									: ""
 							}`}
 							onClick={open}
 						>

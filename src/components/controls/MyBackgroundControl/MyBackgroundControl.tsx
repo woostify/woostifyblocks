@@ -4,7 +4,6 @@ import {
 	PanelRow,
 	// @ts-ignore
 	GradientPicker,
-	FocalPointPicker,
 } from "@wordpress/components";
 import React, {
 	FC,
@@ -22,24 +21,22 @@ import {
 	FunnelIcon,
 	VideoCameraIcon,
 } from "@heroicons/react/24/outline";
-import MyMediaUploadCheck, { MediaUploadData } from "../MyMediaUploadCheck";
-import MySelect from "../MySelect";
+import { MediaUploadData } from "../MyMediaUploadCheck";
 import {
 	BackgroundControlType,
-	BG_ATTACHMENT_OPTIONS,
 	BgImageAttachment,
 	BgImageRepeat,
-	BG_REPEAT_OPTIONS,
 	BgImageSize,
-	BG_SIZE_OPTIONS,
 	GRADIENT_DEFAULT,
 	BgImageOverlayType,
+	BgImageFocalPoint,
 } from "./types";
 import MyTabs from "../MyTabs";
 import { Tab } from "@headlessui/react";
 import MyVideoUploadCheck, {
 	VideoMediaUploadData,
 } from "../MyVideoUploadCheck";
+import ControlBgImage from "./ControlBgImage";
 
 interface Props {
 	className?: string;
@@ -55,8 +52,10 @@ const BG_TYPES: {
 	{ name: "video", icon: VideoCameraIcon },
 ];
 
+const OVERLAY_TYPES: BgImageOverlayType[] = ["none", "color", "gradient"];
+
 const MyBackgroundControl: FC<Props> = ({ className = "" }) => {
-	const [bgType, setBgType] = useState<BackgroundControlType>("video");
+	const [bgType, setBgType] = useState<BackgroundControlType>("color");
 	const [gradient, setGradient] = useState(null);
 	const [color, setColor] = useState("");
 	//
@@ -73,7 +72,7 @@ const MyBackgroundControl: FC<Props> = ({ className = "" }) => {
 		mediaId: 0,
 		mediaUrl: "",
 	});
-	const [focalPoint, setFocalPoint] = useState({
+	const [focalPoint, setFocalPoint] = useState<BgImageFocalPoint>({
 		x: 0.5,
 		y: 0.5,
 	});
@@ -115,15 +114,13 @@ const MyBackgroundControl: FC<Props> = ({ className = "" }) => {
 	};
 
 	const renderOverlaySettings = () => {
-		{
-			/* Background Overlay setting */
-		}
 		return (
 			<PanelRow className="w-full ">
 				<MyTabs
-					tabs={[__("None", "wcb"), __("Color", "wcb"), __("Gradient", "wcb")]}
-					label="Overlay Type"
+					tabs={OVERLAY_TYPES}
+					label={__("Overlay Type", "wcb")}
 					tabSelected={overlayType}
+					onChangeSelected={(index) => setOverlayType(OVERLAY_TYPES[index])}
 				>
 					<Tab.Panel
 						className={"absolute -inset-1.5 bg-white z-10"}
@@ -182,79 +179,26 @@ const MyBackgroundControl: FC<Props> = ({ className = "" }) => {
 	const renderContentImage = () => {
 		return (
 			<>
-				<PanelRow className="w-full">
-					<MyMediaUploadCheck
-						mediaId={imageData.mediaId}
-						mediaUrl={imageData.mediaUrl}
-						onChange={(data) => setImageData(data)}
-						mediaSrcSet={imageData.mediaSrcSet}
-					/>
-				</PanelRow>
-				{imageData.mediaId ? (
-					<>
-						<PanelRow className="w-full">
-							<div className="w-full ">
-								<p>Image Position</p>
-								<FocalPointPicker
-									className="mt-2.5"
-									url={imageData.mediaUrl}
-									value={focalPoint}
-									// @ts-ignore
-									onDragStart={setFocalPoint}
-									onDrag={setFocalPoint}
-									onChange={setFocalPoint}
-								/>
-								{/* FOR DISPLAY */}
-								{/* <div style={FOCAL_STYLE} /> */}
-							</div>
-						</PanelRow>
-
-						{/* Background attachment select setting */}
-						<PanelRow className="w-full ">
-							<MySelect
-								label="Attachment"
-								hideLabelFromVision
-								options={BG_ATTACHMENT_OPTIONS}
-								onChange={(value) =>
-									setBgImageAttachment((value as BgImageAttachment) || "local")
-								}
-							/>
-						</PanelRow>
-
-						{/* Background repeat select setting */}
-						<PanelRow className="w-full ">
-							<MySelect
-								label="Repeat"
-								hideLabelFromVision
-								options={BG_REPEAT_OPTIONS}
-								onChange={(value) =>
-									setBgImageRepeat((value as BgImageRepeat) || "no-repeat")
-								}
-							/>
-						</PanelRow>
-
-						{/* Background Size select setting */}
-						<PanelRow className="w-full ">
-							<MySelect
-								label="Size"
-								hideLabelFromVision
-								options={BG_SIZE_OPTIONS}
-								onChange={(value) =>
-									setBgImageSize((value as BgImageSize) || "cover")
-								}
-							/>
-						</PanelRow>
-
-						{renderOverlaySettings()}
-					</>
-				) : null}
+				<ControlBgImage
+					bgImageAttachment={bgImageAttachment}
+					bgImageRepeat={bgImageRepeat}
+					focalPoint={focalPoint}
+					imageData={imageData}
+					setBgImageAttachment={setBgImageAttachment}
+					setBgImageRepeat={setBgImageRepeat}
+					setBgImageSize={setBgImageSize}
+					setFocalPoint={setFocalPoint}
+					setImageData={setImageData}
+					bgImageSize={bgImageSize}
+				/>
+				{imageData.mediaId ? <>{renderOverlaySettings()}</> : null}
 			</>
 		);
 	};
 
 	const renderContentGradient = () => {
 		return (
-			<PanelRow className="w-full">
+			<PanelRow className="w-full pt-2.5">
 				<GradientPicker
 					__nextHasNoMargin
 					value={gradient}
@@ -267,7 +211,7 @@ const MyBackgroundControl: FC<Props> = ({ className = "" }) => {
 
 	const renderContentColor = () => {
 		return (
-			<PanelRow className="w-full">
+			<PanelRow className="w-full pt-2">
 				<MyColorPicker onChange={(color) => setColor(color)} color={color} />
 			</PanelRow>
 		);

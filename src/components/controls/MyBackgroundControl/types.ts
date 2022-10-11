@@ -3,6 +3,10 @@ export type BgImageAttachment = "fixed" | "local" | "scroll";
 export type BgImageRepeat = "repeat" | "no-repeat" | "repeat-x" | "repeat-y";
 export type BgImageSize = "auto" | "cover" | "contain";
 export type BgImageOverlayType = "none" | "color" | "gradient";
+export interface BgImageFocalPoint {
+	x: number;
+	y: number;
+}
 
 export const BG_ATTACHMENT_OPTIONS: {
 	value: BgImageAttachment;

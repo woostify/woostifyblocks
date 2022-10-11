@@ -34,7 +34,7 @@ const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 	//
 	useEffect(() => {
 		setAttributes({
-			uniqueId: clientId.substr(2, 9).replace("-", ""),
+			uniqueId: clientId.substring(2, 9).replace("-", ""),
 		});
 	}, []);
 
@@ -75,7 +75,7 @@ const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 				</style> */}
 				<RichText
 					tagName="h2"
-					className="wcb-text p-5 bg-sky-500 rounded-2xl"
+					className="wcb-text p-8 rounded-2xl border border-slate-500"
 					value={attributes.message}
 					onChange={(val) => setAttributes({ message: val })}
 					style={{

@@ -1,4 +1,8 @@
 .wcb-inspectorControls__panelBody {
+	.components-panel {
+		@apply z-[1];
+	}
+
 	.components-focal-point-picker,
 	.components-focal-point-picker__media {
 		@apply rounded-lg;

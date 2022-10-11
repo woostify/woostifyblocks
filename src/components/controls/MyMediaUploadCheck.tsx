@@ -50,7 +50,7 @@ const MyMediaUploadCheck: FC<Props> = ({
 	};
 
 	return (
-		<div className={`editor-post-featured-image my-3 w-full ${className}`}>
+		<div className={`editor-post-featured-image w-full ${className}`}>
 			<MediaUploadCheck>
 				<MediaUpload
 					onSelect={onSelectMedia}
@@ -60,7 +60,7 @@ const MyMediaUploadCheck: FC<Props> = ({
 						<Button
 							className={`h-auto rounded-lg ring-1 ring-black/10 ${
 								mediaId == 0
-									? "editor-post-featured-image__toggle"
+									? "editor-post-featured-image__toggle hover:bg-slate-100"
 									: "editor-post-featured-image__preview"
 							}`}
 							onClick={open}

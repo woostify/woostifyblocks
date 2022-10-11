@@ -29,7 +29,7 @@ const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 	//
 	useEffect(() => {
 		setAttributes({
-			uniqueId: clientId.substr(2, 9).replace("-", ""),
+			uniqueId: clientId.substring(2, 9).replace("-", ""),
 		});
 	}, []);
 
