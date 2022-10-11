@@ -1,5 +1,5 @@
 import { SelectControl } from "@wordpress/components";
-import React, { SelectHTMLAttributes, FC } from "react";
+import React, { FC } from "react";
 
 interface Props extends SelectControl.Props<string> {}
 

@@ -1,43 +1,30 @@
+import { more, plus, captureVideo } from "@wordpress/icons";
 import { MediaUpload, MediaUploadCheck } from "@wordpress/block-editor";
-import { plus } from "@wordpress/icons";
 import { Button, Icon } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { useState, useEffect, FC } from "react";
 import MyButton from "./MyButton";
 
-interface Props extends MediaUploadData {
+interface Props extends VideoMediaUploadData {
 	className?: string;
 	onChange: (T: Omit<Props, "onChange">) => void;
 }
 
-export interface MediaUploadData {
+export interface VideoMediaUploadData {
 	mediaId: number;
 	mediaUrl: string;
-	mediaSrcSet?: string;
 }
 
-const MyMediaUploadCheck: FC<Props> = ({
+const MyVideoUploadCheck: FC<Props> = ({
 	className = "",
 	mediaId,
-	mediaSrcSet,
 	mediaUrl,
 	onChange,
 }) => {
-	// const [mediaState, setMediaState] = useState({});
-
-	// useEffect(() => {
-	// 	setMediaState({
-	// 		mediaId,
-	// 		mediaUrl,
-	// 		mediaSrcSet,
-	// 	});
-	// }, [mediaId, mediaUrl, mediaSrcSet]);
-
 	const removeMedia = () => {
 		onChange({
 			mediaId: 0,
 			mediaUrl: "",
-			mediaSrcSet: undefined,
 		});
 	};
 
@@ -45,7 +32,6 @@ const MyMediaUploadCheck: FC<Props> = ({
 		onChange({
 			mediaId: media.id,
 			mediaUrl: media.url,
-			mediaSrcSet: `${media.url} ${media.width}w, ${media.sizes?.medium?.url} ${media.sizes?.medium?.width}w, ${media.sizes?.full?.url} ${media.sizes?.full?.width}w, ${media.sizes?.large?.url} ${media.sizes?.large?.width}w`,
 		});
 	};
 
@@ -55,30 +41,21 @@ const MyMediaUploadCheck: FC<Props> = ({
 				<MediaUpload
 					onSelect={onSelectMedia}
 					value={mediaId}
-					allowedTypes={["image"]}
+					allowedTypes={["video"]}
 					render={({ open }) => (
 						<Button
-							className={`h-auto rounded-lg ring-1 ring-black/10 ${
-								mediaId == 0
-									? "editor-post-featured-image__toggle"
-									: "editor-post-featured-image__preview"
+							className={`h-auto rounded-lg ring-1 ring-black/10 editor-post-featured-image__toggle flex items-center justify-center ${
+								mediaId == 0 ? "editor-post-featured-image__toggle" : ""
 							}`}
 							onClick={open}
 						>
 							{mediaId == 0 && (
 								<div className="text-center flex flex-col items-center justify-center">
 									<Icon icon={plus} className="text-slate-700" />
-									<span className="mt-0.5">{__("Choose an image", "wcb")}</span>
+									<span className="mt-0.5">{__("Choose an video", "wcb")}</span>
 								</div>
 							)}
-							{!!mediaUrl && (
-								<img
-									src={mediaUrl}
-									className="w-full block"
-									sizes="250px"
-									srcSet={mediaSrcSet || undefined}
-								/>
-							)}
+							{!!mediaUrl && <Icon icon={captureVideo} />}
 						</Button>
 					)}
 				/>
@@ -87,10 +64,10 @@ const MyMediaUploadCheck: FC<Props> = ({
 				<div className="flex justify-between gap-2 mt-2">
 					<MediaUploadCheck>
 						<MediaUpload
-							title={__("Replace image", "wcb")}
+							title={__("Replace Video", "wcb")}
 							value={mediaId}
 							onSelect={onSelectMedia}
-							allowedTypes={["image"]}
+							allowedTypes={["video"]}
 							render={({ open }) => (
 								<MyButton
 									className="flex-1 my-0 flex justify-center"
@@ -104,6 +81,7 @@ const MyMediaUploadCheck: FC<Props> = ({
 					</MediaUploadCheck>
 					<MediaUploadCheck>
 						<MyButton
+							title={__("Remove Video", "wcb")}
 							className="flex-1 my-0"
 							onClick={removeMedia}
 							isDestructive
@@ -117,4 +95,4 @@ const MyMediaUploadCheck: FC<Props> = ({
 	);
 };
 
-export default MyMediaUploadCheck;
+export default MyVideoUploadCheck;

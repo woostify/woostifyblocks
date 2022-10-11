@@ -41,7 +41,10 @@ const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 	return (
 		<div {...useBlockProps()}>
 			<InspectorControls>
-				<PanelBody title={__("General Settings", "wcb")}>
+				<PanelBody
+					className="wcb-inspectorControls__panelBody"
+					title={__("General Settings", "wcb")}
+				>
 					<div className="">
 						<MyColorPicker
 							onChange={(color) => setAttributes({ color })}

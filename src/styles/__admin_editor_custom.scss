@@ -1,11 +1,34 @@
-.components-focal-point-picker,
-.components-focal-point-picker__media {
-	@apply rounded-lg;
-}
+.wcb-inspectorControls__panelBody {
+	.components-focal-point-picker,
+	.components-focal-point-picker__media {
+		@apply rounded-lg;
+	}
 
-.wcb-MySelect {
-	.components-base-control__field,
-	.components-base-control {
-		@apply mb-0 #{!important};
+	.wcb-MySelect {
+		.components-base-control__field,
+		.components-base-control {
+			@apply mb-0 #{!important};
+		}
+	}
+
+	.components-custom-gradient-picker__gradient-bar,
+	.components-select-control__input {
+		@apply rounded-lg;
+	}
+
+	.components-input-control__backdrop {
+		@apply rounded-lg border-slate-200;
+	}
+
+	.components-input-control__container {
+		@apply rounded-lg;
+	}
+
+	.components-custom-gradient-picker {
+		.components-input-control__container {
+			input.components-input-control__input {
+				@apply px-2 #{!important};
+			}
+		}
 	}
 }
