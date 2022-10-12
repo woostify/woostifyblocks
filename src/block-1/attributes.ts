@@ -4,6 +4,7 @@ import {
 	INIT_VIDEO_DATA_UPLOAD_DEMO,
 } from "../components/controls/MyBackgroundControl/MyBackgroundControl";
 import {
+	AttrsTypeForBackground,
 	BackgroundControlType,
 	BgImageAttachment,
 	BgImageFocalPoint,
@@ -60,40 +61,10 @@ export interface AttrForBackgroundSettings {
 	videoData: GenericAttrType<VideoMediaUploadData>;
 }
 
-export interface Blokc1Attrs {
+export interface Blokc1Attrs extends AttrsTypeForBackground {
 	uniqueId: string;
 	message: string;
 	color: string;
-	//
-	bgType: BackgroundControlType;
-	gradient: string;
-	bgColor: string;
-	//
-	overlayType: BgImageOverlayType;
-	overlayGradient: string;
-	overlayColor: string;
-	//
-	imageData_Desktop: MediaUploadData;
-	imageData_Tablet: MediaUploadData;
-	imageData_Mobile: MediaUploadData;
-	//
-	focalPoint_Desktop: BgImageFocalPoint;
-	focalPoint_Tablet: BgImageFocalPoint;
-	focalPoint_Mobile: BgImageFocalPoint;
-	//
-	bgImageAttachment_Desktop: BgImageAttachment;
-	bgImageAttachment_Tablet: BgImageAttachment;
-	bgImageAttachment_Mobile: BgImageAttachment;
-	//
-	bgImageRepeat_Desktop: BgImageRepeat;
-	bgImageRepeat_Tablet: BgImageRepeat;
-	bgImageRepeat_Mobile: BgImageRepeat;
-	//
-	bgImageSize_Desktop: BgImageSize;
-	bgImageSize_Tablet: BgImageSize;
-	bgImageSize_Mobile: BgImageSize;
-	//
-	videoData: VideoMediaUploadData;
 }
 
 export const ATTRS_FOR_BACKGROUND_SETTINGS: AttrForBackgroundSettings = {
@@ -103,7 +74,8 @@ export const ATTRS_FOR_BACKGROUND_SETTINGS: AttrForBackgroundSettings = {
 	},
 	gradient: {
 		type: "string",
-		default: "",
+		default:
+			"linear-gradient(104deg, rgb(93, 206, 231) 0%, rgb(244, 119, 127) 100%)",
 	},
 	bgColor: {
 		type: "string",

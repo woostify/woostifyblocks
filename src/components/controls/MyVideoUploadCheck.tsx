@@ -44,10 +44,10 @@ const MyVideoUploadCheck: FC<Props> = ({
 					allowedTypes={["video"]}
 					render={({ open }) => (
 						<Button
-							className={`h-auto rounded-lg ring-1 ring-black/10 editor-post-featured-image__toggle flex items-center justify-center ${
+							className={`h-auto rounded-lg ring-1 ring-black/10  flex items-center justify-center ${
 								mediaId == 0
 									? "editor-post-featured-image__toggle hover:bg-slate-100"
-									: ""
+									: "editor-post-featured-image__toggle hover:bg-slate-100"
 							}`}
 							onClick={open}
 						>

@@ -1,3 +1,6 @@
+import { MediaUploadData } from "../MyMediaUploadCheck";
+import { VideoMediaUploadData } from "../MyVideoUploadCheck";
+
 export type BackgroundControlType = "color" | "gradient" | "image" | "video";
 export type BgImageAttachment = "fixed" | "local" | "scroll";
 export type BgImageRepeat = "repeat" | "no-repeat" | "repeat-x" | "repeat-y";
@@ -6,6 +9,38 @@ export type BgImageOverlayType = "none" | "color" | "gradient";
 export interface BgImageFocalPoint {
 	x: number;
 	y: number;
+}
+
+export interface AttrsTypeForBackground {
+	bgType: BackgroundControlType;
+	gradient: string;
+	bgColor: string;
+	//
+	overlayType: BgImageOverlayType;
+	overlayGradient: string;
+	overlayColor: string;
+	//
+	imageData_Desktop: MediaUploadData;
+	imageData_Tablet?: MediaUploadData;
+	imageData_Mobile?: MediaUploadData;
+	//
+	focalPoint_Desktop: BgImageFocalPoint;
+	focalPoint_Tablet?: BgImageFocalPoint;
+	focalPoint_Mobile?: BgImageFocalPoint;
+	//
+	bgImageAttachment_Desktop: BgImageAttachment;
+	bgImageAttachment_Tablet?: BgImageAttachment;
+	bgImageAttachment_Mobile?: BgImageAttachment;
+	//
+	bgImageRepeat_Desktop: BgImageRepeat;
+	bgImageRepeat_Tablet?: BgImageRepeat;
+	bgImageRepeat_Mobile?: BgImageRepeat;
+	//
+	bgImageSize_Desktop: BgImageSize;
+	bgImageSize_Tablet?: BgImageSize;
+	bgImageSize_Mobile?: BgImageSize;
+	//
+	videoData: VideoMediaUploadData;
 }
 
 export const BG_ATTACHMENT_OPTIONS: {

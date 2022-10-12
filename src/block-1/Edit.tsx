@@ -1,23 +1,16 @@
 import { __ } from "@wordpress/i18n";
 import {
 	useBlockProps,
-	ColorPalette,
 	InspectorControls,
 	RichText,
 } from "@wordpress/block-editor";
-import {
-	ColorPicker,
-	PanelBody,
-	RangeControl,
-	TabPanel,
-} from "@wordpress/components";
+import { PanelBody } from "@wordpress/components";
 import React, { useState, useEffect, FC } from "react";
-import { getDeviceSuffix } from "../utils/get-device-type";
-import WoostifyBaseControl from "../components/controls/WCBBaseControl/WCBBaseControl";
 import "./editor.scss";
 import { Blokc1Attrs } from "./attributes";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 import MyBackgroundControl from "../components/controls/MyBackgroundControl/MyBackgroundControl";
+import HOCHasBackgroundSettings from "../components/HOCHasBackgroundSettings";
 
 export type EditProps<T> = {
 	attributes: T;
@@ -35,6 +28,7 @@ const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 			uniqueId: clientId.substring(2, 9).replace("-", ""),
 		});
 	}, []);
+	//
 
 	return (
 		<div {...useBlockProps()}>
@@ -132,31 +126,14 @@ const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 					</div>
 				</PanelBody>
 			</InspectorControls>
-			<div className="wcb-block-wrapper" id={`wcb-${uniqueId}`}>
-				{/* <style>
-					{`#wcb-${uniqueId} .wcb-text {
-							font-family: ${attributes.fontFamily};
-							font-weight: ${attributes.fontWeight};
-							text-transform: ${attributes.fontTransform};
-							font-style: ${attributes.fontStyle};
-							line-height: ${lineHeightCSS};
-							font-size: ${fontSizeCSS};
-							letter-spacing: ${letterSpacingCSS};
-							background-color: ${attributes.bg_color};
-							color: ${attributes.text_color};
-						}`}
-				</style> */}
+			<HOCHasBackgroundSettings attributes={attributes}>
 				<RichText
 					tagName="h2"
-					className="wcb-text p-8 rounded-2xl border border-slate-500"
+					className="wcb-text "
 					value={attributes.message}
 					onChange={(val) => setAttributes({ message: val })}
-					style={{
-						color: attributes.color,
-						backgroundColor: attributes.bgColor,
-					}}
 				/>
-			</div>
+			</HOCHasBackgroundSettings>
 		</div>
 	);
 };
