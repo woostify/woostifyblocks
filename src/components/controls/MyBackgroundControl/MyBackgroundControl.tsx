@@ -364,14 +364,10 @@ const MyBackgroundControl: FC<Props> = ({
 
 	return (
 		<div className={className}>
-			<Panel>
-				<PanelBody title="Background" initialOpen={true}>
-					<>
-						{renderTypeGroupBtn()}
-						{renderContent()}
-					</>
-				</PanelBody>
-			</Panel>
+			<>
+				{renderTypeGroupBtn()}
+				{renderContent()}
+			</>
 		</div>
 	);
 };

@@ -1,4 +1,14 @@
-.wcb-inspectorControls__panelBody {
+.wcb-inspectorControls__panel {
+	.components-tab-panel__tabs {
+		@apply bg-neutral-200/80 text-neutral-700 p-1;
+		.components-button {
+			@apply shadow-none focus:shadow-none;
+			&.active-tab {
+				@apply bg-white shadow-lg rounded-md text-black;
+			}
+		}
+	}
+
 	.components-panel {
 		@apply z-[1];
 	}
