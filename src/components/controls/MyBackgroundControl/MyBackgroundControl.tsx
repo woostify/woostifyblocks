@@ -5,15 +5,8 @@ import {
 	// @ts-ignore
 	GradientPicker,
 } from "@wordpress/components";
-import React, {
-	FC,
-	useState,
-	useEffect,
-	ReactNode,
-	ComponentType,
-} from "react";
+import React, { FC, ComponentType } from "react";
 import MyColorPicker from "../MyColorPicker/MyColorPicker";
-import { wordpress } from "@wordpress/icons";
 import { __ } from "@wordpress/i18n";
 import {
 	PaintBrushIcon,
@@ -37,10 +30,8 @@ import MyVideoUploadCheck, {
 	VideoMediaUploadData,
 } from "../MyVideoUploadCheck";
 import ControlBgImage from "./ControlBgImage";
-
-interface Props {
-	className?: string;
-}
+import { ResponsiveDevices } from "../MyResponsiveToggle/MyResponsiveToggle";
+import useGetDeviceType from "../../../hooks/useGetDeviceType";
 
 const BG_TYPES: {
 	name: BackgroundControlType;
@@ -53,39 +44,191 @@ const BG_TYPES: {
 ];
 
 const OVERLAY_TYPES: BgImageOverlayType[] = ["none", "color", "gradient"];
+//
+export const INIT_IMAGE_DATA_UPLOAD_DEMO: MediaUploadData = {
+	mediaId: 0,
+	mediaUrl: "",
+	mediaSrcSet: undefined,
+};
+export const INIT_VIDEO_DATA_UPLOAD_DEMO: VideoMediaUploadData = {
+	mediaId: 0,
+	mediaUrl: "",
+};
+export const INIT_FOCAL_POINT_DEMO: BgImageFocalPoint = {
+	x: 0.5,
+	y: 0.5,
+};
 
-const MyBackgroundControl: FC<Props> = ({ className = "" }) => {
-	const [bgType, setBgType] = useState<BackgroundControlType>("color");
-	const [gradient, setGradient] = useState(null);
-	const [color, setColor] = useState("");
+interface Props {
+	className?: string;
+	bgType: BackgroundControlType;
+	setBgType: (value: BackgroundControlType) => void;
+	gradient: string;
+	setGradient: (value: string) => void;
+	color: string;
+	setColor: (value: string) => void;
 	//
-	const [overlayType, setOverlayType] = useState<BgImageOverlayType>("none");
-	const [overlayGradient, setOverlayGradient] = useState(null);
-	const [overlayColor, setOverlayColor] = useState("");
+	overlayType: BgImageOverlayType;
+	setOverlayType: (value: BgImageOverlayType) => void;
+	overlayGradient: string;
+	setOverlayGradient: (value: string) => void;
+	overlayColor: string;
+	setOverlayColor: (value: string) => void;
 	//
-	const [imageData, setImageData] = useState<MediaUploadData>({
-		mediaId: 0,
-		mediaUrl: "",
-		mediaSrcSet: undefined,
-	});
-	const [videoData, setVideoData] = useState<VideoMediaUploadData>({
-		mediaId: 0,
-		mediaUrl: "",
-	});
-	const [focalPoint, setFocalPoint] = useState<BgImageFocalPoint>({
-		x: 0.5,
-		y: 0.5,
-	});
-	const [bgImageAttachment, setBgImageAttachment] =
-		useState<BgImageAttachment>("local");
-	const [bgImageRepeat, setBgImageRepeat] =
-		useState<BgImageRepeat>("no-repeat");
-	const [bgImageSize, setBgImageSize] = useState<BgImageSize>("cover");
+	imageData_Desktop: MediaUploadData;
+	setImageData_Desktop: (value: MediaUploadData) => void;
+	imageData_Tablet?: MediaUploadData;
+	setImageData_Tablet: (value: MediaUploadData) => void;
+	imageData_Mobile?: MediaUploadData;
+	setImageData_Mobile: (value: MediaUploadData) => void;
+	//
+	focalPoint_Desktop: BgImageFocalPoint;
+	setFocalPoint_Desktop: (value: BgImageFocalPoint) => void;
+	focalPoint_Tablet?: BgImageFocalPoint;
+	setFocalPoint_Tablet: (value: BgImageFocalPoint) => void;
+	focalPoint_Mobile?: BgImageFocalPoint;
+	setFocalPoint_Mobile: (value: BgImageFocalPoint) => void;
+	//
+	bgImageAttachment_Desktop: BgImageAttachment;
+	setBgImageAttachment_Desktop: (value: BgImageAttachment) => void;
+	bgImageAttachment_Tablet?: BgImageAttachment;
+	setBgImageAttachment_Tablet: (value: BgImageAttachment) => void;
+	bgImageAttachment_Mobile?: BgImageAttachment;
+	setBgImageAttachment_Mobile: (value: BgImageAttachment) => void;
+	//
+	bgImageRepeat_Desktop: BgImageRepeat;
+	setBgImageRepeat_Desktop: (value: BgImageRepeat) => void;
+	bgImageRepeat_Tablet?: BgImageRepeat;
+	setBgImageRepeat_Tablet: (value: BgImageRepeat) => void;
+	bgImageRepeat_Mobile?: BgImageRepeat;
+	setBgImageRepeat_Mobile: (value: BgImageRepeat) => void;
+	//
+	bgImageSize_Desktop: BgImageSize;
+	setBgImageSize_Desktop: (value: BgImageSize) => void;
+	bgImageSize_Tablet?: BgImageSize;
+	setBgImageSize_Tablet: (value: BgImageSize) => void;
+	bgImageSize_Mobile?: BgImageSize;
+	setBgImageSize_Mobile: (value: BgImageSize) => void;
+	//
+	videoData: VideoMediaUploadData;
+	setVideoData: (value: VideoMediaUploadData) => void;
+}
 
-	const FOCAL_STYLE = {
-		backgroundImage: `url(${imageData.mediaUrl})`,
-		backgroundPosition: `${focalPoint.x * 100}% ${focalPoint.y * 100}%`,
-	};
+const MyBackgroundControl: FC<Props> = ({
+	className = "",
+	bgImageAttachment_Desktop = "local",
+	bgImageAttachment_Tablet,
+	bgImageAttachment_Mobile,
+	bgImageRepeat_Desktop = "no-repeat",
+	bgImageRepeat_Mobile,
+	bgImageRepeat_Tablet,
+	bgImageSize_Desktop = "cover",
+	bgImageSize_Mobile,
+	bgImageSize_Tablet,
+	bgType = "color",
+	color,
+	focalPoint_Desktop = INIT_FOCAL_POINT_DEMO,
+	focalPoint_Tablet,
+	focalPoint_Mobile,
+	gradient,
+	imageData_Desktop = INIT_IMAGE_DATA_UPLOAD_DEMO,
+	imageData_Mobile,
+	imageData_Tablet,
+	overlayColor,
+	overlayGradient,
+	overlayType,
+	videoData = INIT_VIDEO_DATA_UPLOAD_DEMO,
+	setBgImageAttachment_Desktop,
+	setBgImageAttachment_Mobile,
+	setBgImageAttachment_Tablet,
+	setBgImageRepeat_Desktop,
+	setBgImageRepeat_Mobile,
+	setBgImageRepeat_Tablet,
+	setBgImageSize_Desktop,
+	setBgImageSize_Mobile,
+	setBgImageSize_Tablet,
+	setBgType,
+	setColor,
+	setFocalPoint_Desktop,
+	setFocalPoint_Mobile,
+	setFocalPoint_Tablet,
+	setGradient,
+	setImageData_Desktop,
+	setImageData_Mobile,
+	setImageData_Tablet,
+	setOverlayColor,
+	setOverlayGradient,
+	setOverlayType,
+	setVideoData,
+}) => {
+	//
+	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
+	//
+	let IMAGE_DATA = imageData_Desktop,
+		FUNC_SET_IMAGE_DATA = setImageData_Desktop,
+		FOCAL_POINT = focalPoint_Desktop,
+		FUNC_SET_FOCAL_POINT = setFocalPoint_Desktop,
+		IMAGE_ATTACMENT = bgImageAttachment_Desktop,
+		FUNC_SET_IMAGE_ATTACMENT = setBgImageAttachment_Desktop,
+		IMAGE_REPEAT = bgImageRepeat_Desktop,
+		FUNC_SET_IMAGE_REPEAT = setBgImageRepeat_Desktop,
+		IMAGE_SIZE: BgImageSize = bgImageSize_Desktop,
+		FUNC_SET_IMAGE_SIZE = setBgImageSize_Desktop;
+	//
+	switch (deviceType) {
+		case "Tablet":
+			IMAGE_DATA = imageData_Tablet?.mediaId
+				? imageData_Tablet
+				: imageData_Desktop;
+			FUNC_SET_IMAGE_DATA = setImageData_Tablet;
+			//
+			FOCAL_POINT = focalPoint_Tablet || focalPoint_Desktop;
+			FUNC_SET_FOCAL_POINT = setFocalPoint_Tablet;
+			//
+			IMAGE_ATTACMENT = bgImageAttachment_Tablet || bgImageAttachment_Desktop;
+			FUNC_SET_IMAGE_ATTACMENT = setBgImageAttachment_Tablet;
+			//
+			IMAGE_REPEAT = bgImageRepeat_Tablet || bgImageRepeat_Desktop;
+			FUNC_SET_IMAGE_REPEAT = setBgImageRepeat_Tablet;
+			//
+			IMAGE_SIZE = bgImageSize_Tablet || bgImageSize_Desktop;
+			FUNC_SET_IMAGE_SIZE = setBgImageSize_Tablet;
+			break;
+		case "Mobile":
+			IMAGE_DATA = imageData_Mobile?.mediaId
+				? imageData_Mobile
+				: imageData_Tablet?.mediaId
+				? imageData_Tablet
+				: imageData_Desktop;
+			FUNC_SET_IMAGE_DATA = setImageData_Mobile;
+			//
+			FOCAL_POINT =
+				focalPoint_Mobile || focalPoint_Tablet || focalPoint_Desktop;
+			FUNC_SET_FOCAL_POINT = setFocalPoint_Mobile;
+			//
+			IMAGE_ATTACMENT =
+				bgImageAttachment_Mobile ||
+				bgImageAttachment_Tablet ||
+				bgImageAttachment_Desktop;
+			FUNC_SET_IMAGE_ATTACMENT = setBgImageAttachment_Mobile;
+			//
+			IMAGE_REPEAT =
+				bgImageRepeat_Mobile || bgImageRepeat_Tablet || bgImageRepeat_Desktop;
+			FUNC_SET_IMAGE_REPEAT = setBgImageRepeat_Mobile;
+			//
+			IMAGE_SIZE =
+				bgImageSize_Mobile || bgImageSize_Tablet || bgImageSize_Desktop;
+			FUNC_SET_IMAGE_SIZE = setBgImageSize_Mobile;
+			break;
+
+		default:
+			break;
+	}
+	//
+	// const FOCAL_STYLE = {
+	// 	backgroundImage: `url(${IMAGE_DATA.mediaUrl})`,
+	// 	backgroundPosition: `${FOCAL_POINT.x * 100}% ${FOCAL_POINT.y * 100}%`,
+	// };
 
 	const renderTypeGroupBtn = () => {
 		return (
@@ -180,18 +323,18 @@ const MyBackgroundControl: FC<Props> = ({ className = "" }) => {
 		return (
 			<>
 				<ControlBgImage
-					bgImageAttachment={bgImageAttachment}
-					bgImageRepeat={bgImageRepeat}
-					focalPoint={focalPoint}
-					imageData={imageData}
-					setBgImageAttachment={setBgImageAttachment}
-					setBgImageRepeat={setBgImageRepeat}
-					setBgImageSize={setBgImageSize}
-					setFocalPoint={setFocalPoint}
-					setImageData={setImageData}
-					bgImageSize={bgImageSize}
+					bgImageAttachment={IMAGE_ATTACMENT}
+					bgImageRepeat={IMAGE_REPEAT}
+					focalPoint={FOCAL_POINT}
+					imageData={IMAGE_DATA}
+					bgImageSize={IMAGE_SIZE}
+					setBgImageAttachment={FUNC_SET_IMAGE_ATTACMENT}
+					setBgImageRepeat={FUNC_SET_IMAGE_REPEAT}
+					setBgImageSize={FUNC_SET_IMAGE_SIZE}
+					setFocalPoint={FUNC_SET_FOCAL_POINT}
+					setImageData={FUNC_SET_IMAGE_DATA}
 				/>
-				{imageData.mediaId ? <>{renderOverlaySettings()}</> : null}
+				{IMAGE_DATA.mediaId ? <>{renderOverlaySettings()}</> : null}
 			</>
 		);
 	};
@@ -202,7 +345,9 @@ const MyBackgroundControl: FC<Props> = ({ className = "" }) => {
 				<GradientPicker
 					__nextHasNoMargin
 					value={gradient}
-					onChange={(currentGradient) => setGradient(currentGradient)}
+					onChange={(currentGradient) => {
+						setGradient(currentGradient);
+					}}
 					gradients={GRADIENT_DEFAULT}
 				/>
 			</PanelRow>

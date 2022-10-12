@@ -3,6 +3,7 @@
 //============================================= block 1 ===============================================================
 function wcb_render_callback_block_1($attributes)
 {
+    die;
     ob_start();
 ?>
     <div class="<?php echo esc_attr(!empty($attributes['className']) ? $attributes['className'] : ''); ?>">

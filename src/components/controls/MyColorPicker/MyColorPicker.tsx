@@ -2,6 +2,7 @@ import { Button, ColorPicker } from "@wordpress/components";
 import React, { FC, Fragment, useEffect, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import ResetButton from "../ResetButton";
+import { __ } from "@wordpress/i18n";
 
 interface Props extends Omit<ColorPicker.Props, "onChangeComplete"> {
 	className?: string;
@@ -11,7 +12,8 @@ interface Props extends Omit<ColorPicker.Props, "onChangeComplete"> {
 
 const MyColorPicker: FC<Props> = ({
 	className = "",
-	label = "Color",
+	label = __("Color", "wcb"),
+	// default value color - co the la cac gia tri hex string
 	color,
 	disableAlpha,
 	oldHue,

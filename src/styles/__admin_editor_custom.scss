@@ -31,7 +31,10 @@
 	.components-custom-gradient-picker {
 		.components-input-control__container {
 			input.components-input-control__input {
-				@apply px-2 #{!important};
+				@apply pl-1 pr-0.5 text-center #{!important};
+			}
+			.components-input-control__suffix .components-truncate.components-text {
+				@apply mr-2 #{!important};
 			}
 		}
 	}

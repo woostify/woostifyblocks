@@ -27,9 +27,7 @@ const MyResponsiveToggle: FC<Props> = ({
 	className = "",
 	devices = Object.values(DEVICE_TYPES),
 }) => {
-	const deviceType = useGetDeviceType() || "desktoppp";
-
-	console.log(11, { deviceType });
+	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
 	const { __experimentalSetPreviewDeviceType: setPreviewDeviceType } =
 		dispatch("core/edit-post");
@@ -56,15 +54,13 @@ const MyResponsiveToggle: FC<Props> = ({
 
 	return (
 		<Menu as="div" className={`relative inline-block text-left ${className}`}>
-			<div>
-				<Menu.Button
-					className="inline-flex w-full items-center justify-center rounded-md p-1.5 focus:outline-none focus-visible:ring-0 transition-colors text-slate-600 border border-slate-200 hover:border-slate-400"
-					title={deviceType}
-				>
-					{renderDeviceIcon(deviceType)}
-					<ChevronDownIcon className={"w-2.5 h-2.5 ml-1"} aria-hidden="true" />
-				</Menu.Button>
-			</div>
+			<Menu.Button
+				className="inline-flex w-full items-center justify-center rounded-md p-1.5 focus:outline-none focus-visible:ring-0 transition-colors text-slate-600 border border-slate-200 hover:border-slate-400"
+				title={deviceType}
+			>
+				{renderDeviceIcon(deviceType)}
+				<ChevronDownIcon className={"w-2.5 h-2.5 ml-1"} aria-hidden="true" />
+			</Menu.Button>
 			<Transition
 				as={Fragment}
 				enter="transition ease-out duration-100"

@@ -16,15 +16,15 @@ import MyLabelControl from "../MyLabelControl/MyLabelControl";
 
 interface Props {
 	imageData: MediaUploadData;
-	setImageData: React.Dispatch<React.SetStateAction<MediaUploadData>>;
+	setImageData: (value: MediaUploadData) => void;
 	focalPoint: BgImageFocalPoint;
-	setFocalPoint: React.Dispatch<React.SetStateAction<BgImageFocalPoint>>;
+	setFocalPoint: (value: BgImageFocalPoint) => void;
 	bgImageAttachment: BgImageAttachment;
-	setBgImageAttachment: React.Dispatch<React.SetStateAction<BgImageAttachment>>;
+	setBgImageAttachment: (value: BgImageAttachment) => void;
 	bgImageRepeat: BgImageRepeat;
-	setBgImageRepeat: React.Dispatch<React.SetStateAction<BgImageRepeat>>;
+	setBgImageRepeat: (value: BgImageRepeat) => void;
 	bgImageSize: BgImageSize;
-	setBgImageSize: React.Dispatch<React.SetStateAction<BgImageSize>>;
+	setBgImageSize: (value: BgImageSize) => void;
 }
 
 const ControlBgImage: FC<Props> = ({
@@ -82,6 +82,7 @@ const ControlBgImage: FC<Props> = ({
 								hideLabelFromVision
 								options={BG_ATTACHMENT_OPTIONS}
 								defaultValue={bgImageAttachment}
+								value={bgImageAttachment}
 								onChange={(value) =>
 									setBgImageAttachment((value as BgImageAttachment) || "local")
 								}
@@ -95,6 +96,7 @@ const ControlBgImage: FC<Props> = ({
 								hasResponsive
 								hideLabelFromVision
 								defaultValue={bgImageRepeat}
+								value={bgImageRepeat}
 								options={BG_REPEAT_OPTIONS}
 								onChange={(value) =>
 									setBgImageRepeat((value as BgImageRepeat) || "no-repeat")
@@ -109,6 +111,7 @@ const ControlBgImage: FC<Props> = ({
 								hasResponsive
 								hideLabelFromVision
 								defaultValue={bgImageSize}
+								value={bgImageSize}
 								options={BG_SIZE_OPTIONS}
 								onChange={(value) =>
 									setBgImageSize((value as BgImageSize) || "cover")

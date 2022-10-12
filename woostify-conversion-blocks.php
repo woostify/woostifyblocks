@@ -41,10 +41,10 @@ function wcb_create_blocks_gutenberg_init()
 	register_block_type(
 		__DIR__ . '/build/block-1',
 		[
-			"render_callback" 	=> "render_callback_block_1",
-			"attributes"		=> array_merge(
-				[],
-			),
+			// "render_callback" 	=> "render_callback_block_1",
+			// "attributes"		=> array_merge(
+			// 	[],
+			// ),
 		]
 	);
 }
