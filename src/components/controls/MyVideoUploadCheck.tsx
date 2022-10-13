@@ -7,7 +7,7 @@ import MyButton from "./MyButton";
 
 interface Props extends VideoMediaUploadData {
 	className?: string;
-	onChange: (T: Omit<Props, "onChange">) => void;
+	onChange: (T: VideoMediaUploadData) => void;
 }
 
 export interface VideoMediaUploadData {

@@ -1,18 +1,18 @@
 import React, { FC, ReactNode } from "react";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import getBgImageStyleBySettings from "./controls/MyBackgroundControl/getBgImageStyleBySettings";
-import { AttrsTypeForBackground } from "./controls/MyBackgroundControl/types";
+import { BackgroundControlData } from "./controls/MyBackgroundControl/MyBackgroundControl";
 import { ResponsiveDevices } from "./controls/MyResponsiveToggle/MyResponsiveToggle";
 
 interface Props {
 	className?: string;
-	attributes: AttrsTypeForBackground;
+	backgroundControlAttrs: BackgroundControlData;
 	children: ReactNode;
 }
 
-const HOCHasBackgroundSettings: FC<Props> = ({
+const WithBackgroundSettings: FC<Props> = ({
 	className = "",
-	attributes,
+	backgroundControlAttrs,
 	children,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
@@ -21,22 +21,22 @@ const HOCHasBackgroundSettings: FC<Props> = ({
 	const getStyleForBackground = () => {
 		let BG_STYLE: React.CSSProperties = {};
 		// Backgroud color
-		if (attributes.bgType === "color") {
+		if (backgroundControlAttrs.bgType === "color") {
 			BG_STYLE = {
-				backgroundColor: attributes.bgColor,
+				backgroundColor: backgroundControlAttrs.color,
 			};
 			return BG_STYLE;
 		}
 		// Backgroud gradient
-		if (attributes.bgType === "gradient") {
+		if (backgroundControlAttrs.bgType === "gradient") {
 			BG_STYLE = {
-				backgroundImage: attributes.gradient,
+				backgroundImage: backgroundControlAttrs.gradient,
 			};
 			return BG_STYLE;
 		}
 
 		// Bakground video
-		if (attributes.bgType === "video") {
+		if (backgroundControlAttrs.bgType === "video") {
 			return {};
 		}
 
@@ -44,10 +44,13 @@ const HOCHasBackgroundSettings: FC<Props> = ({
 	};
 
 	const renderVideoBg = () => {
-		if (attributes.bgType !== "video" || !attributes.videoData?.mediaId) {
+		if (
+			backgroundControlAttrs.bgType !== "video" ||
+			!backgroundControlAttrs.videoData?.mediaId
+		) {
 			return null;
 		}
-		const SRC = attributes.videoData?.mediaUrl || "";
+		const SRC = backgroundControlAttrs.videoData?.mediaUrl || "";
 
 		return (
 			<div className="wcb-container__video-wrap absolute inset-0 z-0 overflow-hidden">
@@ -58,7 +61,7 @@ const HOCHasBackgroundSettings: FC<Props> = ({
 					controls={false}
 					className="absolute inset-0 w-full"
 					title={SRC}
-					data-id={attributes.videoData.mediaId}
+					data-id={backgroundControlAttrs.videoData.mediaId}
 					src={SRC}
 				></video>
 			</div>
@@ -66,11 +69,11 @@ const HOCHasBackgroundSettings: FC<Props> = ({
 	};
 
 	const renderImageBg = () => {
-		if (attributes.bgType !== "image") {
+		if (backgroundControlAttrs.bgType !== "image") {
 			return null;
 		}
 		const BG_IMAGE_STLYE = getBgImageStyleBySettings({
-			...attributes,
+			...backgroundControlAttrs,
 			deviceType,
 		});
 
@@ -83,10 +86,13 @@ const HOCHasBackgroundSettings: FC<Props> = ({
 	};
 
 	const renderBgOverlay = () => {
-		if (attributes.overlayType === "none") {
+		if (backgroundControlAttrs.overlayType === "none") {
 			return null;
 		}
-		if (attributes.bgType !== "video" && attributes.bgType !== "image") {
+		if (
+			backgroundControlAttrs.bgType !== "video" &&
+			backgroundControlAttrs.bgType !== "image"
+		) {
 			return null;
 		}
 
@@ -95,12 +101,12 @@ const HOCHasBackgroundSettings: FC<Props> = ({
 				className="wcb-container__overlay-wrap absolute inset-0 z-0 "
 				style={{
 					backgroundColor:
-						attributes.overlayType === "color"
-							? attributes.overlayColor
+						backgroundControlAttrs.overlayType === "color"
+							? backgroundControlAttrs.overlayColor
 							: undefined,
 					backgroundImage:
-						attributes.overlayType === "gradient"
-							? attributes.overlayGradient
+						backgroundControlAttrs.overlayType === "gradient"
+							? backgroundControlAttrs.overlayGradient
 							: undefined,
 				}}
 			></div>
@@ -109,7 +115,7 @@ const HOCHasBackgroundSettings: FC<Props> = ({
 
 	return (
 		<div
-			className={`wcb-block-wrapper relative --- p-8 rounded-2xl border border-slate-500 ${className}`}
+			className={`WithBackgroundSettings wcb-block-wrapper relative --- p-8 rounded-2xl border border-slate-500 ${className}`}
 			style={getStyleForBackground()}
 		>
 			{renderImageBg()}
@@ -120,4 +126,4 @@ const HOCHasBackgroundSettings: FC<Props> = ({
 	);
 };
 
-export default HOCHasBackgroundSettings;
+export default WithBackgroundSettings;

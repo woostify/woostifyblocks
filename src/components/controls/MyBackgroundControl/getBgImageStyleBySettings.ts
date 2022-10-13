@@ -1,67 +1,51 @@
 import { ResponsiveDevices } from "../MyResponsiveToggle/MyResponsiveToggle";
+import { BackgroundControlData } from "./MyBackgroundControl";
 import {
-	AttrsTypeForBackground,
 	BgImageAttachment,
 	BgImageFocalPoint,
 	BgImageRepeat,
 	BgImageSize,
 } from "./types";
 
-interface Params extends AttrsTypeForBackground {
+interface Params
+	extends Pick<
+		BackgroundControlData,
+		| "bgImageAttachment"
+		| "bgImageRepeat"
+		| "bgImageSize"
+		| "focalPoint"
+		| "imageData"
+	> {
 	deviceType: ResponsiveDevices;
 }
 
 const getBgImageStyleBySettings = (params: Params): React.CSSProperties => {
 	const {
-		imageData_Desktop,
-		imageData_Mobile,
-		imageData_Tablet,
-		bgImageRepeat_Desktop,
-		bgImageRepeat_Tablet,
-		bgImageRepeat_Mobile,
-		bgImageAttachment_Desktop,
-		bgImageAttachment_Tablet,
-		bgImageAttachment_Mobile,
-		bgImageSize_Desktop,
-		bgImageSize_Tablet,
-		bgImageSize_Mobile,
-		focalPoint_Desktop,
-		focalPoint_Tablet,
-		focalPoint_Mobile,
+		bgImageAttachment,
+		bgImageRepeat,
+		bgImageSize,
+		focalPoint,
+		imageData,
 		//
 		deviceType,
 	} = params;
 
-	let SRC = imageData_Desktop.mediaUrl;
-	let BG_REPEAT: BgImageRepeat = bgImageRepeat_Desktop;
-	let BG_ATTACHMENT: BgImageAttachment = bgImageAttachment_Desktop;
-	let BG_SIZE: BgImageSize = bgImageSize_Desktop;
-	let BG_FOCAL: BgImageFocalPoint = focalPoint_Desktop;
-	//
+	const SRC: string =
+		imageData[deviceType]?.mediaUrl ||
+		imageData.Tablet?.mediaUrl ||
+		imageData.Desktop?.mediaUrl;
+	const BG_REPEAT: BgImageRepeat =
+		bgImageRepeat[deviceType] || bgImageRepeat.Tablet || bgImageRepeat.Desktop;
+	const BG_ATTACHMENT: BgImageAttachment =
+		bgImageAttachment[deviceType] ||
+		bgImageAttachment.Tablet ||
+		bgImageAttachment.Desktop;
+	const BG_SIZE: BgImageSize =
+		bgImageSize[deviceType] || bgImageSize.Tablet || bgImageSize.Desktop;
+	const BG_FOCAL: BgImageFocalPoint =
+		focalPoint[deviceType] || focalPoint.Tablet || focalPoint.Desktop;
 
-	if (deviceType === "Tablet") {
-		SRC = imageData_Tablet?.mediaUrl || imageData_Desktop.mediaUrl;
-		BG_REPEAT = bgImageRepeat_Tablet || bgImageRepeat_Desktop;
-		BG_ATTACHMENT = bgImageAttachment_Tablet || bgImageAttachment_Desktop;
-		BG_SIZE = bgImageSize_Tablet || bgImageSize_Desktop;
-		BG_FOCAL = focalPoint_Tablet || focalPoint_Desktop;
-	}
-	if (deviceType === "Mobile") {
-		SRC =
-			imageData_Mobile?.mediaUrl ||
-			imageData_Tablet?.mediaUrl ||
-			imageData_Desktop.mediaUrl;
-		BG_REPEAT =
-			bgImageRepeat_Mobile || bgImageRepeat_Tablet || bgImageRepeat_Desktop;
-		BG_ATTACHMENT =
-			bgImageAttachment_Mobile ||
-			bgImageAttachment_Tablet ||
-			bgImageAttachment_Desktop;
-		BG_SIZE = bgImageSize_Mobile || bgImageSize_Tablet || bgImageSize_Desktop;
-		BG_FOCAL = focalPoint_Mobile || focalPoint_Tablet || focalPoint_Desktop;
-	}
-
-	let BG_POSITION = `${BG_FOCAL.x * 100}% ${BG_FOCAL.y * 100}%`;
+	const BG_POSITION = `${BG_FOCAL.x * 100}% ${BG_FOCAL.y * 100}%`;
 
 	return {
 		backgroundImage: `url(${SRC})`,

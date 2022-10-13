@@ -1,15 +1,19 @@
 import { __ } from "@wordpress/i18n";
 import { useBlockProps, RichText } from "@wordpress/block-editor";
 import { PanelBody } from "@wordpress/components";
-import React, { useState, useEffect, FC } from "react";
-import "./editor.scss";
+import React, { useEffect, FC } from "react";
 import { Blokc1Attrs } from "./attributes";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 import MyBackgroundControl from "../components/controls/MyBackgroundControl/MyBackgroundControl";
-import HOCHasBackgroundSettings from "../components/HOCHasBackgroundSettings";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
 } from "../components/HOCInspectorControls";
+import WithBackgroundSettings from "../components/WithBackgroundSettings";
+import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
+import "./editor.scss";
+import getBorderStyleBySettings from "../components/controls/MyBorderControl/getBorderStyleBySettings";
+import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
+import useGetDeviceType from "../hooks/useGetDeviceType";
 
 export type EditProps<T> = {
 	attributes: T;
@@ -21,6 +25,7 @@ const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 	const { uniqueId } = attributes;
 
+	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	//
 	useEffect(() => {
 		setAttributes({
@@ -33,8 +38,8 @@ const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 		return (
 			<PanelBody initialOpen={false} className="" title={__("Color", "wcb")}>
 				<MyColorPicker
-					onChange={(color) => setAttributes({ color })}
-					color={attributes.color}
+					onChange={(color) => setAttributes({ styles_color: color })}
+					color={attributes.styles_color}
 				/>
 			</PanelBody>
 		);
@@ -44,73 +49,30 @@ const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 		return (
 			<PanelBody initialOpen={false} title={__("Background", "wcb")}>
 				<MyBackgroundControl
-					// -------- ALL ATTRIBUTES FOR BACKGROUND SETTINGS
-					setBgType={(e) => setAttributes({ bgType: e })}
-					setGradient={(e) => setAttributes({ gradient: e })}
-					setColor={(e) => setAttributes({ bgColor: e })}
-					setOverlayType={(e) => setAttributes({ overlayType: e })}
-					setOverlayGradient={(e) => setAttributes({ overlayGradient: e })}
-					setOverlayColor={(e) => setAttributes({ overlayColor: e })}
-					setImageData_Desktop={(e) => setAttributes({ imageData_Desktop: e })}
-					setImageData_Tablet={(e) => setAttributes({ imageData_Tablet: e })}
-					setImageData_Mobile={(e) => setAttributes({ imageData_Mobile: e })}
-					setFocalPoint_Desktop={(e) =>
-						setAttributes({ focalPoint_Desktop: e })
+					backgroundControl={attributes.styles_background}
+					setAttrs__backgroundControl={(data) =>
+						setAttributes({ styles_background: data })
 					}
-					setFocalPoint_Tablet={(e) => setAttributes({ focalPoint_Tablet: e })}
-					setFocalPoint_Mobile={(e) => setAttributes({ focalPoint_Mobile: e })}
-					setBgImageAttachment_Desktop={(e) =>
-						setAttributes({ bgImageAttachment_Desktop: e })
-					}
-					setBgImageAttachment_Tablet={(e) =>
-						setAttributes({ bgImageAttachment_Tablet: e })
-					}
-					setBgImageAttachment_Mobile={(e) =>
-						setAttributes({ bgImageAttachment_Mobile: e })
-					}
-					setBgImageRepeat_Desktop={(e) =>
-						setAttributes({ bgImageRepeat_Desktop: e })
-					}
-					setBgImageRepeat_Tablet={(e) =>
-						setAttributes({ bgImageRepeat_Tablet: e })
-					}
-					setBgImageRepeat_Mobile={(e) =>
-						setAttributes({ bgImageRepeat_Mobile: e })
-					}
-					setBgImageSize_Desktop={(e) =>
-						setAttributes({ bgImageSize_Desktop: e })
-					}
-					setBgImageSize_Tablet={(e) =>
-						setAttributes({ bgImageSize_Tablet: e })
-					}
-					setBgImageSize_Mobile={(e) =>
-						setAttributes({ bgImageSize_Mobile: e })
-					}
-					setVideoData={(e) => setAttributes({ videoData: e })}
-					// {...attributes}
-					bgImageAttachment_Desktop={attributes.bgImageAttachment_Desktop}
-					bgImageAttachment_Mobile={attributes.bgImageAttachment_Mobile}
-					bgImageAttachment_Tablet={attributes.bgImageAttachment_Tablet}
-					bgImageRepeat_Mobile={attributes.bgImageRepeat_Mobile}
-					bgImageRepeat_Desktop={attributes.bgImageRepeat_Desktop}
-					bgImageRepeat_Tablet={attributes.bgImageRepeat_Tablet}
-					bgImageSize_Desktop={attributes.bgImageSize_Desktop}
-					bgImageSize_Mobile={attributes.bgImageSize_Mobile}
-					bgImageSize_Tablet={attributes.bgImageSize_Tablet}
-					bgType={attributes.bgType}
-					color={attributes.bgColor}
-					focalPoint_Desktop={attributes.focalPoint_Desktop}
-					focalPoint_Mobile={attributes.focalPoint_Mobile}
-					focalPoint_Tablet={attributes.focalPoint_Tablet}
-					gradient={attributes.gradient}
-					imageData_Desktop={attributes.imageData_Desktop}
-					imageData_Mobile={attributes.imageData_Mobile}
-					imageData_Tablet={attributes.imageData_Tablet}
-					overlayColor={attributes.overlayColor}
-					overlayGradient={attributes.overlayGradient}
-					overlayType={attributes.overlayType}
-					videoData={attributes.videoData}
-					// -------- END ALL ATTRIBUTES FOR BACKGROUND SETTINGS
+				/>
+			</PanelBody>
+		);
+	};
+
+	const renderPanelBorder = () => {
+		// const borderStyles = getBorderStyleBySettings({
+		// 	deviceType,
+		// 	...attributes.styles_border,
+		// });
+
+		return (
+			<PanelBody
+				initialOpen={false}
+				className="space-y-2.5"
+				title={__("Border", "wcb")}
+			>
+				<MyBorderControl
+					borderControl={attributes.styles_border}
+					setAttrs__border={(data) => setAttributes({ styles_border: data })}
 				/>
 			</PanelBody>
 		);
@@ -121,8 +83,9 @@ const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 			case "Styles":
 				return (
 					<>
-						{renderPanelColor()}
 						{renderPanelBackground()}
+						{renderPanelColor()}
+						{renderPanelBorder()}
 					</>
 				);
 
@@ -134,14 +97,16 @@ const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 	return (
 		<div {...useBlockProps()}>
 			<HOCInspectorControls renderTabPanels={renderTabBodyPanels} />
-			<HOCHasBackgroundSettings attributes={attributes}>
+			<WithBackgroundSettings
+				backgroundControlAttrs={attributes.styles_background}
+			>
 				<RichText
 					tagName="h2"
 					className="wcb-text "
 					value={attributes.message}
 					onChange={(val) => setAttributes({ message: val })}
 				/>
-			</HOCHasBackgroundSettings>
+			</WithBackgroundSettings>
 		</div>
 	);
 };
