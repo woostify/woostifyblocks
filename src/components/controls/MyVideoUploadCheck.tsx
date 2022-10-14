@@ -4,10 +4,12 @@ import { Button, Icon } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { useState, useEffect, FC } from "react";
 import MyButton from "./MyButton";
+import MyLabelControl from "./MyLabelControl/MyLabelControl";
 
 interface Props extends VideoMediaUploadData {
 	className?: string;
 	onChange: (T: VideoMediaUploadData) => void;
+	label?: string;
 }
 
 export interface VideoMediaUploadData {
@@ -17,6 +19,7 @@ export interface VideoMediaUploadData {
 
 const MyVideoUploadCheck: FC<Props> = ({
 	className = "",
+	label = __("Video", "wcb"),
 	mediaId,
 	mediaUrl,
 	onChange,
@@ -37,6 +40,7 @@ const MyVideoUploadCheck: FC<Props> = ({
 
 	return (
 		<div className={`editor-post-featured-image w-full ${className}`}>
+			<MyLabelControl>{label}</MyLabelControl>
 			<MediaUploadCheck>
 				<MediaUpload
 					onSelect={onSelectMedia}

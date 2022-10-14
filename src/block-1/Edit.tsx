@@ -15,6 +15,9 @@ import getBorderStyleBySettings from "../components/controls/MyBorderControl/get
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyBoxShadowControl from "../components/controls/MyBoxShadowControl/MyBoxShadowControl";
+import MyDimensionsControl from "../components/controls/MyDimensionsControl/MyDimensionsControl";
+import MyResponsiveConditionControl from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
+import MyZIndexControl from "../components/controls/MyZIndexControl/MyZIndexControl";
 
 export type EditProps<T> = {
 	attributes: T;
@@ -83,6 +86,19 @@ const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 		);
 	};
 
+	const renderPanelDimensions = () => {
+		return (
+			<PanelBody initialOpen={false} title={__("Dimension", "wcb")}>
+				<MyDimensionsControl
+					dimensionControl={attributes.styles_dimensions}
+					setAttrs__dimensions={(data) =>
+						setAttributes({ styles_dimensions: data })
+					}
+				/>
+			</PanelBody>
+		);
+	};
+
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
 		switch (tab.name) {
 			case "Styles":
@@ -92,6 +108,33 @@ const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 						{renderPanelColor()}
 						{renderPanelBorder()}
 						{renderPanelBoxShadow()}
+						{renderPanelDimensions()}
+					</>
+				);
+			case "Advances":
+				return (
+					<>
+						<PanelBody
+							initialOpen={false}
+							title={__("Responsive Conditions", "wcb")}
+						>
+							<MyResponsiveConditionControl
+								responsiveConditionControl={
+									attributes.advance_responsiveCondition
+								}
+								setAttrs__responsiveCondition={(data) =>
+									setAttributes({ advance_responsiveCondition: data })
+								}
+							/>
+						</PanelBody>
+						<PanelBody initialOpen={false} title={__("Z-Index", "wcb")}>
+							<MyZIndexControl
+								zIndexControl={attributes.advance_zIndex}
+								setAttrs__zIndex={(data) =>
+									setAttributes({ advance_zIndex: data })
+								}
+							/>
+						</PanelBody>
 					</>
 				);
 

@@ -2,12 +2,25 @@ import {
 	BackgroundControlData,
 	STYLES_BG_DEMO,
 } from "../components/controls/MyBackgroundControl/MyBackgroundControl";
+import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import {
 	MyBorderControlData,
 	MY_BORDER_CONTROL_DEMO,
 } from "../components/controls/MyBorderControl/types";
 import { MyBoxShadowControlData } from "../components/controls/MyBoxShadowControl/MyBoxShadowControl";
 import { MY_BOX_SHADOW_CONTROL_DEMO } from "../components/controls/MyBoxShadowControl/types";
+import {
+	MyDimensionsControlData,
+	MY_DIMENSIONS_CONTROL_DEMO,
+} from "../components/controls/MyDimensionsControl/types";
+import {
+	MyResponsiveConditionControlData,
+	RESPONSIVE_CONDITON_DEMO,
+} from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
+import {
+	MyZIndexControlData,
+	Z_INDEX_DEMO,
+} from "../components/controls/MyZIndexControl/MyZIndexControl";
 
 export interface Blokc1Attrs {
 	uniqueId: string;
@@ -16,6 +29,9 @@ export interface Blokc1Attrs {
 	styles_background: BackgroundControlData;
 	styles_border: MyBorderControlData;
 	styles_boxShadow: MyBoxShadowControlData;
+	styles_dimensions: MyDimensionsControlData;
+	advance_responsiveCondition: MyResponsiveConditionControlData;
+	advance_zIndex: MyZIndexControlData;
 }
 
 type AttrsGenericType<T> = {
@@ -53,6 +69,18 @@ const blokc1Attrs: AttrsGenericType<Blokc1Attrs> = {
 	styles_boxShadow: {
 		type: "object",
 		default: MY_BOX_SHADOW_CONTROL_DEMO,
+	},
+	styles_dimensions: {
+		type: "object",
+		default: MY_DIMENSIONS_CONTROL_DEMO,
+	},
+	advance_responsiveCondition: {
+		type: "object",
+		default: RESPONSIVE_CONDITON_DEMO,
+	},
+	advance_zIndex: {
+		type: "object",
+		default: Z_INDEX_DEMO,
 	},
 };
 

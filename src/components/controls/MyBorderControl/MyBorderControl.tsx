@@ -25,7 +25,7 @@ interface Props {
 }
 
 const MyBorderControl: FC<Props> = ({
-	className = "space-y-5",
+	className = "space-y-3",
 	borderControl = MY_BORDER_CONTROL_DEMO,
 	setAttrs__border,
 }) => {
@@ -74,11 +74,12 @@ const MyBorderControl: FC<Props> = ({
 			/>
 
 			<div>
-				<MyLabelControl hasResponsive>
-					{__("Border radius", "wcb")}
-				</MyLabelControl>
 				<BoxControl
-					label=""
+					label={
+						<MyLabelControl hasResponsive>
+							{__("Border radius", "wcb")}
+						</MyLabelControl>
+					}
 					values={RADIUS}
 					allowReset={false}
 					onChange={handleChangeBorderRadius}

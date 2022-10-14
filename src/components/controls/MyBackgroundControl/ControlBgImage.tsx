@@ -69,8 +69,6 @@ const ControlBgImage: FC<Props> = ({
 									onDrag={setFocalPoint}
 									onChange={setFocalPoint}
 								/>
-								{/* FOR DISPLAY */}
-								{/* <div style={FOCAL_STYLE} /> */}
 							</div>
 						</PanelRow>
 
