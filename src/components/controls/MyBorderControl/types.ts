@@ -5,13 +5,14 @@ export interface BorderMainSingleSide {
 	style: string;
 	width: string;
 }
-
-export interface BorderMainSettings {
+export interface BorderMain4Side {
 	top: BorderMainSingleSide;
 	right: BorderMainSingleSide;
 	bottom: BorderMainSingleSide;
 	left: BorderMainSingleSide;
 }
+
+export type BorderMainSettings = BorderMain4Side | BorderMainSingleSide;
 
 export interface BorderRadiusSettings {
 	top: string;
@@ -33,12 +34,8 @@ export const DEFAULT_BORDER_MAIN_SINGLE_SIDE: BorderMainSingleSide = {
 	width: "1px",
 };
 
-export const DEFAULT_BORDER_MAINS: BorderMainSettings = {
-	top: DEFAULT_BORDER_MAIN_SINGLE_SIDE,
-	right: DEFAULT_BORDER_MAIN_SINGLE_SIDE,
-	bottom: DEFAULT_BORDER_MAIN_SINGLE_SIDE,
-	left: DEFAULT_BORDER_MAIN_SINGLE_SIDE,
-};
+export const DEFAULT_BORDER_MAINS: BorderMainSettings =
+	DEFAULT_BORDER_MAIN_SINGLE_SIDE;
 
 export interface MyBorderControlData {
 	mainSettings: BorderMainSettings;

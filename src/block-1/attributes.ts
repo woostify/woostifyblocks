@@ -6,6 +6,8 @@ import {
 	MyBorderControlData,
 	MY_BORDER_CONTROL_DEMO,
 } from "../components/controls/MyBorderControl/types";
+import { MyBoxShadowControlData } from "../components/controls/MyBoxShadowControl/MyBoxShadowControl";
+import { MY_BOX_SHADOW_CONTROL_DEMO } from "../components/controls/MyBoxShadowControl/types";
 
 export interface Blokc1Attrs {
 	uniqueId: string;
@@ -13,6 +15,7 @@ export interface Blokc1Attrs {
 	styles_color: string;
 	styles_background: BackgroundControlData;
 	styles_border: MyBorderControlData;
+	styles_boxShadow: MyBoxShadowControlData;
 }
 
 type AttrsGenericType<T> = {
@@ -46,6 +49,10 @@ const blokc1Attrs: AttrsGenericType<Blokc1Attrs> = {
 	styles_border: {
 		type: "object",
 		default: MY_BORDER_CONTROL_DEMO,
+	},
+	styles_boxShadow: {
+		type: "object",
+		default: MY_BOX_SHADOW_CONTROL_DEMO,
 	},
 };
 

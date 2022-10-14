@@ -38,8 +38,6 @@ const MyBorderControl: FC<Props> = ({
 	} = borderControl;
 
 	const handleChangeBorder = (newBorders: BorderMainSettings) => {
-		console.log(11, { newBorders });
-		return;
 		setAttrs__border({
 			...borderControl,
 			mainSettings: newBorders,

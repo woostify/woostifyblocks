@@ -8,6 +8,14 @@
 			}
 		}
 	}
+	.wcb-bodyControls__panel {
+		.components-tab-panel__tabs {
+			@apply bg-neutral-200/60 text-neutral-700 p-2 rounded-lg mb-5;
+		}
+		.components-tab-panel__tabs-item {
+			@apply h-10;
+		}
+	}
 
 	.components-panel {
 		@apply z-[1];

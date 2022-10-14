@@ -2,18 +2,22 @@ import React, { FC, ReactNode } from "react";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import getBgImageStyleBySettings from "./controls/MyBackgroundControl/getBgImageStyleBySettings";
 import { BackgroundControlData } from "./controls/MyBackgroundControl/MyBackgroundControl";
+import getBorderStyleBySettings from "./controls/MyBorderControl/getBorderStyleBySettings";
+import { MyBorderControlData } from "./controls/MyBorderControl/types";
 import { ResponsiveDevices } from "./controls/MyResponsiveToggle/MyResponsiveToggle";
 
 interface Props {
 	className?: string;
 	backgroundControlAttrs: BackgroundControlData;
 	children: ReactNode;
+	borderControlAttrs?: MyBorderControlData;
 }
 
 const WithBackgroundSettings: FC<Props> = ({
 	className = "",
 	backgroundControlAttrs,
 	children,
+	borderControlAttrs,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	//
@@ -113,10 +117,20 @@ const WithBackgroundSettings: FC<Props> = ({
 		);
 	};
 
+	let BORDER_STYLES: React.CSSProperties = {};
+	let BG_STYLES: React.CSSProperties = {};
+	BG_STYLES = getStyleForBackground();
+
+	if (borderControlAttrs) {
+		BORDER_STYLES = getBorderStyleBySettings({
+			deviceType,
+			...borderControlAttrs,
+		});
+	}
 	return (
 		<div
-			className={`WithBackgroundSettings wcb-block-wrapper relative --- p-8 rounded-2xl border border-slate-500 ${className}`}
-			style={getStyleForBackground()}
+			className={`WithBackgroundSettings wcb-block-wrapper relative --- p-8 ${className}`}
+			style={{ ...BG_STYLES, ...BORDER_STYLES }}
 		>
 			{renderImageBg()}
 			{renderVideoBg()}

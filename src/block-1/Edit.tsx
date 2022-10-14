@@ -14,6 +14,7 @@ import "./editor.scss";
 import getBorderStyleBySettings from "../components/controls/MyBorderControl/getBorderStyleBySettings";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
+import MyBoxShadowControl from "../components/controls/MyBoxShadowControl/MyBoxShadowControl";
 
 export type EditProps<T> = {
 	attributes: T;
@@ -59,20 +60,24 @@ const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 	};
 
 	const renderPanelBorder = () => {
-		// const borderStyles = getBorderStyleBySettings({
-		// 	deviceType,
-		// 	...attributes.styles_border,
-		// });
-
 		return (
-			<PanelBody
-				initialOpen={false}
-				className="space-y-2.5"
-				title={__("Border", "wcb")}
-			>
+			<PanelBody initialOpen={false} title={__("Border", "wcb")}>
 				<MyBorderControl
 					borderControl={attributes.styles_border}
 					setAttrs__border={(data) => setAttributes({ styles_border: data })}
+				/>
+			</PanelBody>
+		);
+	};
+
+	const renderPanelBoxShadow = () => {
+		return (
+			<PanelBody initialOpen={false} title={__("Box Shadow", "wcb")}>
+				<MyBoxShadowControl
+					boxShadowControl={attributes.styles_boxShadow}
+					setAttrs__boxShadow={(data) =>
+						setAttributes({ styles_boxShadow: data })
+					}
 				/>
 			</PanelBody>
 		);
@@ -86,6 +91,7 @@ const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 						{renderPanelBackground()}
 						{renderPanelColor()}
 						{renderPanelBorder()}
+						{renderPanelBoxShadow()}
 					</>
 				);
 
@@ -99,6 +105,7 @@ const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 			<HOCInspectorControls renderTabPanels={renderTabBodyPanels} />
 			<WithBackgroundSettings
 				backgroundControlAttrs={attributes.styles_background}
+				borderControlAttrs={attributes.styles_border}
 			>
 				<RichText
 					tagName="h2"
