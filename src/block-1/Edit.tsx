@@ -11,7 +11,6 @@ import HOCInspectorControls, {
 import WithBackgroundSettings from "../components/WithBackgroundSettings";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
 import "./editor.scss";
-import getBorderStyleBySettings from "../components/controls/MyBorderControl/getBorderStyleBySettings";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyBoxShadowControl from "../components/controls/MyBoxShadowControl/MyBoxShadowControl";
@@ -19,6 +18,7 @@ import MyDimensionsControl from "../components/controls/MyDimensionsControl/MyDi
 import MyResponsiveConditionControl from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
 import MyZIndexControl from "../components/controls/MyZIndexControl/MyZIndexControl";
 import MyContainerControl from "../components/controls/MyContainerControl/MyContainerControl";
+import MyFlexPropertiesControl from "../components/controls/MyFlexPropertiesControl/MyFlexPropertiesControl";
 
 export type EditProps<T> = {
 	attributes: T;
@@ -114,7 +114,12 @@ const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 							/>
 						</PanelBody>
 						<PanelBody initialOpen={false} title={__("Flex Properties", "wcb")}>
-							Flexxx
+							<MyFlexPropertiesControl
+								flexPropertiesControl={attributes.general_flexProperties}
+								setAttrs__flexProperties={(data) =>
+									setAttributes({ general_flexProperties: data })
+								}
+							/>
 						</PanelBody>
 					</>
 				);

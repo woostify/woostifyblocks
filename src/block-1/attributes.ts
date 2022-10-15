@@ -18,6 +18,10 @@ import {
 	MY_DIMENSIONS_CONTROL_DEMO,
 } from "../components/controls/MyDimensionsControl/types";
 import {
+	FLEX_PROPERTIES_CONTROL_DEMO,
+	MyFlexPropertiesControlData,
+} from "../components/controls/MyFlexPropertiesControl/types";
+import {
 	MyResponsiveConditionControlData,
 	RESPONSIVE_CONDITON_DEMO,
 } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
@@ -30,6 +34,7 @@ export interface Blokc1Attrs {
 	uniqueId: string;
 	message: string;
 	general_container: MyContainerControlData;
+	general_flexProperties: MyFlexPropertiesControlData;
 	styles_color: string;
 	styles_background: BackgroundControlData;
 	styles_border: MyBorderControlData;
@@ -62,6 +67,10 @@ const blokc1Attrs: AttrsGenericType<Blokc1Attrs> = {
 	general_container: {
 		type: "object",
 		default: CONTAINER_CONTROL_DEMO,
+	},
+	general_flexProperties: {
+		type: "object",
+		default: FLEX_PROPERTIES_CONTROL_DEMO,
 	},
 	styles_color: {
 		type: "string",
