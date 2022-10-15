@@ -44,6 +44,8 @@ const MyZIndexControl: FC<Props> = ({
 					"Above setting will only take effect once you are on the live page, and not while you're editing.",
 					"wcb"
 				)}
+				// @ts-ignore
+				value={undefined}
 				label={
 					<MyLabelControl hasResponsive>{__("Z-Index", "wcb")}</MyLabelControl>
 				}

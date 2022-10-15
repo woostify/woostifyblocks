@@ -61,4 +61,17 @@
 	.component-box-control__linked-button {
 		@apply rounded-md;
 	}
+
+	.components-button-group {
+		@apply inline-flex;
+		.components-button {
+			@apply mr-1.5 mb-1.5 rounded-lg ring-1 border-0 shadow-none;
+			&.is-primary {
+				@apply bg-sky-500 ring-sky-500 text-white shadow-none;
+			}
+			&.is-secondary {
+				@apply bg-white text-slate-700 ring-slate-300 hover:ring-slate-400 hover:shadow-none;
+			}
+		}
+	}
 }

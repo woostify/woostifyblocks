@@ -18,6 +18,7 @@ import MyBoxShadowControl from "../components/controls/MyBoxShadowControl/MyBoxS
 import MyDimensionsControl from "../components/controls/MyDimensionsControl/MyDimensionsControl";
 import MyResponsiveConditionControl from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
 import MyZIndexControl from "../components/controls/MyZIndexControl/MyZIndexControl";
+import MyContainerControl from "../components/controls/MyContainerControl/MyContainerControl";
 
 export type EditProps<T> = {
 	attributes: T;
@@ -101,6 +102,22 @@ const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
 		switch (tab.name) {
+			case "General":
+				return (
+					<>
+						<PanelBody initialOpen={false} title={__("Container", "wcb")}>
+							<MyContainerControl
+								containerControl={attributes.general_container}
+								setAttrs__container={(data) =>
+									setAttributes({ general_container: data })
+								}
+							/>
+						</PanelBody>
+						<PanelBody initialOpen={false} title={__("Flex Properties", "wcb")}>
+							Flexxx
+						</PanelBody>
+					</>
+				);
 			case "Styles":
 				return (
 					<>

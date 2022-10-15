@@ -10,6 +10,10 @@ import {
 import { MyBoxShadowControlData } from "../components/controls/MyBoxShadowControl/MyBoxShadowControl";
 import { MY_BOX_SHADOW_CONTROL_DEMO } from "../components/controls/MyBoxShadowControl/types";
 import {
+	CONTAINER_CONTROL_DEMO,
+	MyContainerControlData,
+} from "../components/controls/MyContainerControl/MyContainerControl";
+import {
 	MyDimensionsControlData,
 	MY_DIMENSIONS_CONTROL_DEMO,
 } from "../components/controls/MyDimensionsControl/types";
@@ -25,6 +29,7 @@ import {
 export interface Blokc1Attrs {
 	uniqueId: string;
 	message: string;
+	general_container: MyContainerControlData;
 	styles_color: string;
 	styles_background: BackgroundControlData;
 	styles_border: MyBorderControlData;
@@ -53,6 +58,10 @@ const blokc1Attrs: AttrsGenericType<Blokc1Attrs> = {
 		source: "text",
 		selector: "div",
 		default: "Clik to edit heading here!",
+	},
+	general_container: {
+		type: "object",
+		default: CONTAINER_CONTROL_DEMO,
 	},
 	styles_color: {
 		type: "string",
