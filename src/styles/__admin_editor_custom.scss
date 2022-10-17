@@ -2,9 +2,9 @@
 	.components-tab-panel__tabs {
 		@apply bg-neutral-200/80 text-neutral-700 p-1;
 		.components-button {
-			@apply shadow-none focus:shadow-none;
+			@apply shadow-none focus:shadow-none rounded-md;
 			&.active-tab {
-				@apply bg-white shadow-lg rounded-md text-black;
+				@apply bg-white shadow-lg text-black;
 			}
 		}
 	}
@@ -33,9 +33,14 @@
 		}
 	}
 
+	.components-toggle-group-control,
+	.components-toggle-group-control-option-base,
 	.components-custom-gradient-picker__gradient-bar,
 	.components-select-control__input {
 		@apply rounded-lg;
+	}
+	.components-toggle-group-control > [role="presentation"] {
+		@apply rounded-md;
 	}
 
 	.components-input-control__backdrop {
@@ -73,5 +78,18 @@
 				@apply bg-white text-slate-700 ring-slate-300 hover:ring-slate-400 hover:shadow-none;
 			}
 		}
+	}
+
+	.components-button {
+		@apply rounded-md;
+		&.active-tab {
+		}
+	}
+	select.components-unit-control__select {
+		@apply rounded-r-lg #{!important};
+	}
+
+	.components-font-size-picker__controls {
+		@apply mb-0;
 	}
 }

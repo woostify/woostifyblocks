@@ -19,6 +19,7 @@ import MyResponsiveConditionControl from "../components/controls/MyResponsiveCon
 import MyZIndexControl from "../components/controls/MyZIndexControl/MyZIndexControl";
 import MyContainerControl from "../components/controls/MyContainerControl/MyContainerControl";
 import MyFlexPropertiesControl from "../components/controls/MyFlexPropertiesControl/MyFlexPropertiesControl";
+import MyTypographyControl from "../components/controls/MyTypographyControl/MyTypographyControl";
 
 export type EditProps<T> = {
 	attributes: T;
@@ -118,6 +119,14 @@ const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 								flexPropertiesControl={attributes.general_flexProperties}
 								setAttrs__flexProperties={(data) =>
 									setAttributes({ general_flexProperties: data })
+								}
+							/>
+						</PanelBody>
+						<PanelBody initialOpen={false} title={__("Typography", "wcb")}>
+							<MyTypographyControl
+								typographyControl={attributes.general_typography}
+								setAttrs__typography={(data) =>
+									setAttributes({ general_typography: data })
 								}
 							/>
 						</PanelBody>

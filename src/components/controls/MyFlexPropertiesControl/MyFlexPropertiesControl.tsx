@@ -172,7 +172,7 @@ const MyFlexPropertiesControl: FC<Props> = ({
 			<RadioGroup value={JUSTIFY_CONTENT} onChange={handleChangeJustifyContent}>
 				<RadioGroup.Label className="">
 					<MyLabelControl hasResponsive>
-						{__("Align Items", "wcb")}
+						{__("Justify Content", "wcb")}
 					</MyLabelControl>
 				</RadioGroup.Label>
 				<div className="mt-3 relative grid grid-cols-4 gap-1.5">

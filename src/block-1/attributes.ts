@@ -26,6 +26,10 @@ import {
 	RESPONSIVE_CONDITON_DEMO,
 } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
 import {
+	MyTypographyControlData,
+	TYPOGRAPHY_CONTROL_DEMO,
+} from "../components/controls/MyTypographyControl/types";
+import {
 	MyZIndexControlData,
 	Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
@@ -35,6 +39,7 @@ export interface Blokc1Attrs {
 	message: string;
 	general_container: MyContainerControlData;
 	general_flexProperties: MyFlexPropertiesControlData;
+	general_typography: MyTypographyControlData;
 	styles_color: string;
 	styles_background: BackgroundControlData;
 	styles_border: MyBorderControlData;
@@ -71,6 +76,10 @@ const blokc1Attrs: AttrsGenericType<Blokc1Attrs> = {
 	general_flexProperties: {
 		type: "object",
 		default: FLEX_PROPERTIES_CONTROL_DEMO,
+	},
+	general_typography: {
+		type: "object",
+		default: TYPOGRAPHY_CONTROL_DEMO,
 	},
 	styles_color: {
 		type: "string",
