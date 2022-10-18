@@ -1,17 +1,8 @@
 import { __ } from "@wordpress/i18n";
-import {
-	useBlockProps,
-	InnerBlocks,
-	// @ts-ignore
-	useInnerBlocksProps,
-	// @ts-ignore
-	__experimentalBlockVariationPicker as BlockVariationPicker,
-	store as blockEditorStore,
-} from "@wordpress/block-editor";
+import { useBlockProps, RichText, InnerBlocks } from "@wordpress/block-editor";
 import { PanelBody } from "@wordpress/components";
-import { get } from "lodash";
 import React, { useEffect, FC } from "react";
-import { BlokcWCBContainerAttrs } from "./attributes";
+import { BlokcWCBContainerBox } from "./attributes";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 import MyBackgroundControl from "../components/controls/MyBackgroundControl/MyBackgroundControl";
 import HOCInspectorControls, {
@@ -20,6 +11,8 @@ import HOCInspectorControls, {
 import WithBackgroundSettings from "../components/WithBackgroundSettings";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
 import "./editor.scss";
+import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
+import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyBoxShadowControl from "../components/controls/MyBoxShadowControl/MyBoxShadowControl";
 import MyDimensionsControl from "../components/controls/MyDimensionsControl/MyDimensionsControl";
 import MyResponsiveConditionControl from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
@@ -27,14 +20,7 @@ import MyZIndexControl from "../components/controls/MyZIndexControl/MyZIndexCont
 import MyContainerControl from "../components/controls/MyContainerControl/MyContainerControl";
 import MyFlexPropertiesControl from "../components/controls/MyFlexPropertiesControl/MyFlexPropertiesControl";
 import MyTypographyControl from "../components/controls/MyTypographyControl/MyTypographyControl";
-import { withDispatch, useDispatch, useSelect } from "@wordpress/data";
-import {
-	createBlock,
-	// @ts-ignore
-	createBlocksFromInnerBlocksTemplate,
-	// @ts-ignore
-	store as blocksStore,
-} from "@wordpress/blocks";
+import { PlusCircleIcon } from "@heroicons/react/24/outline";
 
 export type EditProps<T> = {
 	attributes: T;
@@ -42,21 +28,11 @@ export type EditProps<T> = {
 	clientId: string;
 };
 
-export type ContainerLayout =
-	| "layout-1"
-	| "layout-2"
-	| "layout-3"
-	| "layout-4"
-	| "layout-5"
-	| "layout-6"
-	| "layout-7"
-	| "layout-8"
-	| "layout-9";
-
-const Edit: FC<EditProps<BlokcWCBContainerAttrs>> = (props) => {
+const Edit: FC<EditProps<BlokcWCBContainerBox>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
-	const { uniqueId } = attributes;
+	const { uniqueId, classNameWrap: classNameWrap } = attributes;
 
+	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	//
 	useEffect(() => {
 		setAttributes({
@@ -198,76 +174,20 @@ const Edit: FC<EditProps<BlokcWCBContainerAttrs>> = (props) => {
 				return <div></div>;
 		}
 	};
+	console.log(234, { classNameWrap });
 
-	const ALLOWED_BLOCKS = ["wcb/container-box"];
-	const classes = attributes.wrapClassName || "flex gap-8";
-
-	const blockProps = useBlockProps({
-		className: classes,
-	});
-	const innerBlocksProps = useInnerBlocksProps(blockProps, {
-		allowedBlocks: ALLOWED_BLOCKS,
-		renderAppender: () => null,
-	});
+	const blockProps = useBlockProps({ className: classNameWrap });
 	return (
-		<>
-			<div {...innerBlocksProps} />
+		<div {...blockProps}>
 			<HOCInspectorControls renderTabPanels={renderTabBodyPanels} />
-		</>
-	);
-};
-
-const Placeholder = ({ attributes, setAttributes, name, clientId }) => {
-	const { blockType, defaultVariation, variations } = useSelect(
-		(select) => {
-			const { getBlockVariations, getBlockType, getDefaultBlockVariation } =
-				select(blocksStore) as any;
-
-			return {
-				blockType: getBlockType(name),
-				defaultVariation: getDefaultBlockVariation(name, "block"),
-				variations: getBlockVariations(name, "block"),
-			};
-		},
-		[name]
-	);
-	const { replaceInnerBlocks } = useDispatch(blockEditorStore);
-
-	return (
-		<div {...useBlockProps()}>
-			<BlockVariationPicker
-				icon={get(blockType, ["icon", "src"])}
-				label={get(blockType, ["title"])}
-				instructions={__("Select a variation to start with.")}
-				onSelect={(nextVariation = defaultVariation) => {
-					if (typeof nextVariation.attributes === "object") {
-						setAttributes({ ...attributes, ...nextVariation.attributes });
-					}
-					if (nextVariation.innerBlocks) {
-						replaceInnerBlocks(
-							clientId,
-							createBlocksFromInnerBlocksTemplate(nextVariation.innerBlocks),
-							true
-						);
-					}
-				}}
-				variations={variations}
-				allowSkip
-			/>
+			<WithBackgroundSettings
+				backgroundControlAttrs={attributes.styles_background}
+				borderControlAttrs={attributes.styles_border}
+			>
+				<InnerBlocks renderAppender={InnerBlocks.ButtonBlockAppender} />
+			</WithBackgroundSettings>
 		</div>
 	);
 };
 
-const ContainerEdit = (props) => {
-	const { clientId } = props;
-	const hasInnerBlocks = useSelect(
-		(select) =>
-			(select(blockEditorStore) as any).getBlocks(clientId).length > 0,
-		[clientId]
-	);
-	const Component = hasInnerBlocks ? Edit : Placeholder;
-
-	return <Component {...props} />;
-};
-
-export default ContainerEdit;
+export default Edit;

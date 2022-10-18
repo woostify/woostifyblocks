@@ -39,7 +39,16 @@ add_action('init', 'wcb_create_blocks_gutenberg_init');
 function wcb_create_blocks_gutenberg_init()
 {
 	register_block_type(
-		__DIR__ . '/build/block-1',
+		__DIR__ . '/build/block-container-box',
+		[
+			// "render_callback" 	=> "render_callback_block_1",
+			// "attributes"		=> array_merge(
+			// 	[],
+			// ),
+		]
+	);
+	register_block_type(
+		__DIR__ . '/build/block-container',
 		[
 			// "render_callback" 	=> "render_callback_block_1",
 			// "attributes"		=> array_merge(

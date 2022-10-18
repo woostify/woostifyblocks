@@ -1,7 +1,9 @@
+import { AttrsGenericType } from "../block-container/attributes";
 import {
 	BackgroundControlData,
 	STYLES_BG_DEMO,
 } from "../components/controls/MyBackgroundControl/MyBackgroundControl";
+import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import {
 	MyBorderControlData,
 	MY_BORDER_CONTROL_DEMO,
@@ -32,11 +34,11 @@ import {
 	MyZIndexControlData,
 	Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
-import { ContainerLayout } from "./Edit";
 
-export interface BlokcWCBContainerAttrs {
+export interface BlokcWCBContainerBox {
 	uniqueId: string;
-	wrapClassName: string;
+	message: string;
+	classNameWrap: string;
 	general_container: MyContainerControlData;
 	general_flexProperties: MyFlexPropertiesControlData;
 	general_typography: MyTypographyControlData;
@@ -49,23 +51,20 @@ export interface BlokcWCBContainerAttrs {
 	advance_zIndex: MyZIndexControlData;
 }
 
-export type AttrsGenericType<T> = {
-	[k in keyof T]: {
-		type: string;
-		default?: T[k];
-		source?: string;
-		selector?: string;
-	};
-};
-
-const blokc1Attrs: AttrsGenericType<BlokcWCBContainerAttrs> = {
+const blokc1Attrs: AttrsGenericType<BlokcWCBContainerBox> = {
 	uniqueId: {
 		type: "string",
 		default: "",
 	},
-	wrapClassName: {
+	classNameWrap: {
 		type: "string",
-		default: "flex gap-8",
+		default: "flex-1",
+	},
+	message: {
+		type: "string",
+		source: "text",
+		selector: "div",
+		default: "Clik to edit heading here!",
 	},
 	general_container: {
 		type: "object",

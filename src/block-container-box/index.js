@@ -22,11 +22,10 @@ import save from "./Save";
 import metadata from "./block.json";
 const { Fragment } = wp.element;
 const { withSelect } = wp.data;
-import blokc1Attrs from "./attributes";
-import variations from "./variations";
+import attributes from "./attributes";
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
-import "../style.css";
-import "../styles/index.scss";
+// import "../style.css";
+// import "../styles/index.scss";
 //-----------------------------------------
 
 registerBlockType(metadata.name, {
@@ -38,6 +37,5 @@ registerBlockType(metadata.name, {
 		};
 	})((props) => <Edit {...props} />),
 	save,
-	attributes: blokc1Attrs,
-	variations: variations,
+	attributes: attributes,
 });
