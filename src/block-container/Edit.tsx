@@ -11,7 +11,7 @@ import {
 import { PanelBody } from "@wordpress/components";
 import { get } from "lodash";
 import React, { useEffect, FC } from "react";
-import { BlokcWCBContainerAttrs } from "./attributes";
+import { BlockWCBContainerAttrs } from "./attributes";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 import MyBackgroundControl from "../components/controls/MyBackgroundControl/MyBackgroundControl";
 import HOCInspectorControls, {
@@ -53,7 +53,7 @@ export type ContainerLayout =
 	| "layout-8"
 	| "layout-9";
 
-const Edit: FC<EditProps<BlokcWCBContainerAttrs>> = (props) => {
+const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 	const { uniqueId } = attributes;
 
@@ -211,7 +211,12 @@ const Edit: FC<EditProps<BlokcWCBContainerAttrs>> = (props) => {
 	});
 	return (
 		<>
-			<div {...innerBlocksProps} />
+			<div
+				{...innerBlocksProps}
+				style={{
+					flexWrap: attributes.general_flexProperties.flexWrap.Desktop,
+				}}
+			/>
 			<HOCInspectorControls renderTabPanels={renderTabBodyPanels} />
 		</>
 	);

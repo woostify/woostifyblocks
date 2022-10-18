@@ -34,7 +34,7 @@ import {
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
 import { ContainerLayout } from "./Edit";
 
-export interface BlokcWCBContainerAttrs {
+export interface BlockWCBContainerAttrs {
 	uniqueId: string;
 	wrapClassName: string;
 	general_container: MyContainerControlData;
@@ -58,7 +58,7 @@ export type AttrsGenericType<T> = {
 	};
 };
 
-const blokc1Attrs: AttrsGenericType<BlokcWCBContainerAttrs> = {
+export const blokcContainerAttrs: AttrsGenericType<BlockWCBContainerAttrs> = {
 	uniqueId: {
 		type: "string",
 		default: "",
@@ -109,4 +109,4 @@ const blokc1Attrs: AttrsGenericType<BlokcWCBContainerAttrs> = {
 	},
 };
 
-export default blokc1Attrs;
+export default blokcContainerAttrs;

@@ -3,7 +3,22 @@
  */
 import { Path, SVG } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
-import React from "react";
+import React, { ReactNode } from "react";
+import blokcContainerBoxAttrs, {
+	BlockWCBContainerBoxAttrs,
+} from "../block-container-box/attributes";
+import {
+	ContainerBox_Container_Control,
+	CONTAINER_BOX_CONTAINER_CONTROL_DEMO,
+} from "../block-container-box/ContainerControl";
+import {
+	FLEX_PROPERTIES_CONTROL_DEMO,
+	MyFlexPropertiesControlData,
+} from "../components/controls/MyFlexPropertiesControl/types";
+import blokcContainerAttrs, {
+	AttrsGenericType,
+	BlockWCBContainerAttrs,
+} from "./attributes";
 
 /** @typedef {import('@wordpress/blocks').WPBlockVariation} WPBlockVariation */
 
@@ -12,26 +27,78 @@ import React from "react";
  *
  * @type {WPBlockVariation[]}
  */
-export const variations = [
+
+const RenderIcon = (props) => {
+	return (
+		<div className="w-16 h-12 flex items-center justify-center">
+			<div className="flex flex-wrap w-14 h-8 border border-[#007cba] rounded-sm">
+				{props.children}
+			</div>
+		</div>
+	);
+};
+
+const getContainerAttrsByFlexWrap = (
+	flexWrap: React.CSSProperties["flexWrap"] = "nowrap"
+): BlockWCBContainerAttrs => {
+	const attrsDefault = Object.keys(blokcContainerAttrs).reduce(
+		(previousValue, currentValue, currentIndex: number) => {
+			return {
+				...previousValue,
+				[currentValue]: blokcContainerAttrs[currentValue].default,
+			};
+		},
+		{}
+	);
+	return {
+		...attrsDefault,
+		general_flexProperties: {
+			...FLEX_PROPERTIES_CONTROL_DEMO,
+			flexWrap: {
+				Desktop: flexWrap,
+			},
+		},
+	} as any;
+};
+
+const getContainerBoxAttrsByWidth = (
+	width: string
+): {
+	general_container: ContainerBox_Container_Control;
+} => {
+	return {
+		general_container: {
+			...CONTAINER_BOX_CONTAINER_CONTROL_DEMO,
+			customWidth: {
+				Desktop: width,
+			},
+		},
+	};
+};
+
+export const variations: {
+	name: string;
+	title: string;
+	description: string;
+	icon: any;
+	innerBlocks: [
+		"wcb/container-box",
+		{ general_container: ContainerBox_Container_Control } | undefined
+	][];
+	scope: string[];
+	isDefault?: boolean;
+	attributes?: any;
+}[] = [
 	{
 		name: "one-column-full",
 		title: __("100"),
 		description: __("One column"),
 		icon: (
-			<SVG
-				width="48"
-				height="48"
-				viewBox="0 0 48 48"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<Path
-					fillRule="evenodd"
-					clipRule="evenodd"
-					d="m39.0625 14h-30.0625v20.0938h30.0625zm-30.0625-2c-1.10457 0-2 .8954-2 2v20.0938c0 1.1045.89543 2 2 2h30.0625c1.1046 0 2-.8955 2-2v-20.0938c0-1.1046-.8954-2-2-2z"
-				/>
-			</SVG>
+			<RenderIcon>
+				<div className="flex-1 border border-[#007cba]"></div>
+			</RenderIcon>
 		),
-		innerBlocks: [["wcb/container-box", { width: "100%" }]],
+		innerBlocks: [["wcb/container-box", getContainerBoxAttrsByWidth("100%")]],
 		scope: ["block"],
 		isDefault: true,
 	},
@@ -40,46 +107,31 @@ export const variations = [
 		title: __("50 / 50"),
 		description: __("Two columns; equal split"),
 		icon: (
-			<SVG
-				width="48"
-				height="48"
-				viewBox="0 0 48 48"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<Path
-					fillRule="evenodd"
-					clipRule="evenodd"
-					d="M39 12C40.1046 12 41 12.8954 41 14V34C41 35.1046 40.1046 36 39 36H9C7.89543 36 7 35.1046 7 34V14C7 12.8954 7.89543 12 9 12H39ZM39 34V14H25V34H39ZM23 34H9V14H23V34Z"
-				/>
-			</SVG>
+			<RenderIcon>
+				<div className="flex-1 border border-[#007cba]"></div>
+				<div className="flex-1 border border-[#007cba]"></div>
+			</RenderIcon>
 		),
 		innerBlocks: [
-			["wcb/container-box", { width: "50%" }],
-			["wcb/container-box", { width: "50%" }],
+			["wcb/container-box", getContainerBoxAttrsByWidth("50%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("50%")],
 		],
 		scope: ["block"],
+		// attributes: {}
 	},
 	{
 		name: "two-columns-one-third-two-thirds",
 		title: __("33 / 66"),
 		description: __("Two columns; one-third, two-thirds split"),
 		icon: (
-			<SVG
-				width="48"
-				height="48"
-				viewBox="0 0 48 48"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<Path
-					fillRule="evenodd"
-					clipRule="evenodd"
-					d="M39 12C40.1046 12 41 12.8954 41 14V34C41 35.1046 40.1046 36 39 36H9C7.89543 36 7 35.1046 7 34V14C7 12.8954 7.89543 12 9 12H39ZM39 34V14H20V34H39ZM18 34H9V14H18V34Z"
-				/>
-			</SVG>
+			<RenderIcon>
+				<div className="border border-[#007cba] w-1/3" />
+				<div className="flex-1 border border-[#007cba]" />
+			</RenderIcon>
 		),
 		innerBlocks: [
-			["wcb/container-box", { width: "33.33%" }],
-			["wcb/container-box", { width: "66.66%" }],
+			["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("66.66%")],
 		],
 		scope: ["block"],
 	},
@@ -88,22 +140,14 @@ export const variations = [
 		title: __("66 / 33"),
 		description: __("Two columns; two-thirds, one-third split"),
 		icon: (
-			<SVG
-				width="48"
-				height="48"
-				viewBox="0 0 48 48"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<Path
-					fillRule="evenodd"
-					clipRule="evenodd"
-					d="M39 12C40.1046 12 41 12.8954 41 14V34C41 35.1046 40.1046 36 39 36H9C7.89543 36 7 35.1046 7 34V14C7 12.8954 7.89543 12 9 12H39ZM39 34V14H30V34H39ZM28 34H9V14H28V34Z"
-				/>
-			</SVG>
+			<RenderIcon>
+				<div className="flex-1 border border-[#007cba]" />
+				<div className="border border-[#007cba] w-1/3" />
+			</RenderIcon>
 		),
 		innerBlocks: [
-			["wcb/container-box", { width: "66.66%" }],
-			["wcb/container-box", { width: "33.33%" }],
+			["wcb/container-box", getContainerBoxAttrsByWidth("66.66%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")],
 		],
 		scope: ["block"],
 	},
@@ -112,22 +156,16 @@ export const variations = [
 		title: __("33 / 33 / 33"),
 		description: __("Three columns; equal split"),
 		icon: (
-			<SVG
-				width="48"
-				height="48"
-				viewBox="0 0 48 48"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<Path
-					fillRule="evenodd"
-					d="M41 14a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h30a2 2 0 0 0 2-2V14zM28.5 34h-9V14h9v20zm2 0V14H39v20h-8.5zm-13 0H9V14h8.5v20z"
-				/>
-			</SVG>
+			<RenderIcon>
+				<div className="flex-1 border border-[#007cba]" />
+				<div className="flex-1 border border-[#007cba]" />
+				<div className="flex-1 border border-[#007cba]" />
+			</RenderIcon>
 		),
 		innerBlocks: [
-			["wcb/container-box"],
-			["wcb/container-box"],
-			["wcb/container-box"],
+			["wcb/container-box", undefined],
+			["wcb/container-box", undefined],
+			["wcb/container-box", undefined],
 		],
 		scope: ["block"],
 	},
@@ -136,24 +174,39 @@ export const variations = [
 		title: __("25 / 50 / 25"),
 		description: __("Three columns; wide center column"),
 		icon: (
-			<SVG
-				width="48"
-				height="48"
-				viewBox="0 0 48 48"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<Path
-					fillRule="evenodd"
-					d="M41 14a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h30a2 2 0 0 0 2-2V14zM31 34H17V14h14v20zm2 0V14h6v20h-6zm-18 0H9V14h6v20z"
-				/>
-			</SVG>
+			<RenderIcon>
+				<div className="border border-[#007cba] w-1/4" />
+				<div className="border border-[#007cba] w-2/4" />
+				<div className="flex-1 border border-[#007cba] " />
+			</RenderIcon>
 		),
 		innerBlocks: [
-			["wcb/container-box", { width: "25%" }],
-			["wcb/container-box", { width: "50%" }],
-			["wcb/container-box", { width: "25%" }],
+			["wcb/container-box", getContainerBoxAttrsByWidth("25%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("50%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("25%")],
 		],
 		scope: ["block"],
+	},
+	{
+		name: "layout-wider-center",
+		title: __("25 / 50 / 25"),
+		description: __("Three columns; wide center column"),
+		icon: (
+			<RenderIcon>
+				<div className="border border-[#007cba] w-1/3" />
+				<div className="border border-[#007cba] w-2/3" />
+				<div className="border border-[#007cba] w-2/3" />
+				<div className="border border-[#007cba] w-1/3" />
+			</RenderIcon>
+		),
+		innerBlocks: [
+			["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("66.66%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("66.66%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")],
+		],
+		scope: ["block"],
+		attributes: getContainerAttrsByFlexWrap("wrap"),
 	},
 ];
 

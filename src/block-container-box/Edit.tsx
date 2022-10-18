@@ -2,7 +2,7 @@ import { __ } from "@wordpress/i18n";
 import { useBlockProps, RichText, InnerBlocks } from "@wordpress/block-editor";
 import { PanelBody } from "@wordpress/components";
 import React, { useEffect, FC } from "react";
-import { BlokcWCBContainerBox } from "./attributes";
+import { BlockWCBContainerBoxAttrs } from "./attributes";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 import MyBackgroundControl from "../components/controls/MyBackgroundControl/MyBackgroundControl";
 import HOCInspectorControls, {
@@ -21,6 +21,7 @@ import MyContainerControl from "../components/controls/MyContainerControl/MyCont
 import MyFlexPropertiesControl from "../components/controls/MyFlexPropertiesControl/MyFlexPropertiesControl";
 import MyTypographyControl from "../components/controls/MyTypographyControl/MyTypographyControl";
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
+import ContainerControl from "./ContainerControl";
 
 export type EditProps<T> = {
 	attributes: T;
@@ -28,9 +29,9 @@ export type EditProps<T> = {
 	clientId: string;
 };
 
-const Edit: FC<EditProps<BlokcWCBContainerBox>> = (props) => {
+const Edit: FC<EditProps<BlockWCBContainerBoxAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
-	const { uniqueId, classNameWrap: classNameWrap } = attributes;
+	const { uniqueId, general_container } = attributes;
 
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	//
@@ -40,6 +41,11 @@ const Edit: FC<EditProps<BlokcWCBContainerBox>> = (props) => {
 		});
 	}, []);
 	//
+
+	const CUSTOM_WIDTH =
+		general_container.customWidth[deviceType] ||
+		general_container.customWidth.Tablet ||
+		general_container.customWidth.Desktop;
 
 	const renderPanelColor = () => {
 		return (
@@ -108,7 +114,7 @@ const Edit: FC<EditProps<BlokcWCBContainerBox>> = (props) => {
 				return (
 					<>
 						<PanelBody initialOpen={false} title={__("Container", "wcb")}>
-							<MyContainerControl
+							<ContainerControl
 								containerControl={attributes.general_container}
 								setAttrs__container={(data) =>
 									setAttributes({ general_container: data })
@@ -174,19 +180,26 @@ const Edit: FC<EditProps<BlokcWCBContainerBox>> = (props) => {
 				return <div></div>;
 		}
 	};
-	console.log(234, { classNameWrap });
 
-	const blockProps = useBlockProps({ className: classNameWrap });
+	const blockProps = useBlockProps();
 	return (
-		<div {...blockProps}>
+		<>
 			<HOCInspectorControls renderTabPanels={renderTabBodyPanels} />
-			<WithBackgroundSettings
+			{/* <WithBackgroundSettings
 				backgroundControlAttrs={attributes.styles_background}
 				borderControlAttrs={attributes.styles_border}
+			> */}
+			<div
+				{...blockProps}
+				style={{
+					// flexBasis: "100%",
+					flexBasis: CUSTOM_WIDTH,
+				}}
 			>
 				<InnerBlocks renderAppender={InnerBlocks.ButtonBlockAppender} />
-			</WithBackgroundSettings>
-		</div>
+			</div>
+			{/* </WithBackgroundSettings> */}
+		</>
 	);
 };
 
