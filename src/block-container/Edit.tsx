@@ -10,7 +10,7 @@ import {
 } from "@wordpress/block-editor";
 import { PanelBody } from "@wordpress/components";
 import { get } from "lodash";
-import React, { useEffect, FC } from "react";
+import React, { useEffect, FC, CSSProperties } from "react";
 import { BlockWCBContainerAttrs } from "./attributes";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 import MyBackgroundControl from "../components/controls/MyBackgroundControl/MyBackgroundControl";
@@ -199,24 +199,61 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		}
 	};
 
+	const {
+		general_container,
+		general_flexProperties,
+		styles_background,
+		styles_dimensions,
+		styles_border,
+	} = attributes;
 	const ALLOWED_BLOCKS = ["wcb/container-box"];
-	const classes = attributes.wrapClassName || "flex gap-8";
+	// const classes = attributes.wrapClassName || "flex relative";
 
 	const blockProps = useBlockProps({
-		className: classes,
+		className: "flex flex-col md:flex-row relative w-full h-full",
 	});
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
 		renderAppender: () => null,
 	});
+
+	// ====== CLASSES
+	const containerWidthTypeClass =
+		general_container.containerWidthType === "Full Width"
+			? "alignfull"
+			: general_container.containerWidthType === "Boxed"
+			? "alignwide"
+			: "";
+
+	const minHeightClass = `min-h-[var(--my-container-minHeight-mobile)] md:min-h-[var(--my-container-minHeight-tablet)] lg:min-h-[var(--my-container-minHeight-desktop)]`;
+	// ====== END CLASSES
+
 	return (
 		<>
-			<div
-				{...innerBlocksProps}
-				style={{
-					flexWrap: attributes.general_flexProperties.flexWrap.Desktop,
+			<WithBackgroundSettings
+				backgroundControlAttrs={styles_background}
+				borderControlAttrs={styles_border}
+				wrapStyles={{
+					// @ts-ignore
+					"--my-container-minHeight-desktop":
+						general_container.minHeight.Desktop,
+					"--my-container-minHeight-tablet": general_container.minHeight.Tablet,
+					"--my-container-minHeight-mobile": general_container.minHeight.Mobile,
+					overflow: general_container.overflow,
 				}}
-			/>
+				className={`${containerWidthTypeClass} ${minHeightClass}`}
+			>
+				<div
+					{...innerBlocksProps}
+					style={{
+						"--my-container-gap-x": styles_dimensions.colunmGap.Desktop,
+						"--my-container-gap-y": styles_dimensions.rowGap.Desktop,
+						flexWrap: general_flexProperties.flexWrap.Desktop,
+						rowGap: "var(--my-container-gap-y)",
+						columnGap: "var(--my-container-gap-x)",
+					}}
+				/>
+			</WithBackgroundSettings>
 			<HOCInspectorControls renderTabPanels={renderTabBodyPanels} />
 		</>
 	);

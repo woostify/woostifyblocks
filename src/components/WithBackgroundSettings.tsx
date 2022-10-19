@@ -1,4 +1,5 @@
 import React, { FC, ReactNode } from "react";
+import _ from "lodash";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import getBgImageStyleBySettings from "./controls/MyBackgroundControl/getBgImageStyleBySettings";
 import { BackgroundControlData } from "./controls/MyBackgroundControl/MyBackgroundControl";
@@ -8,18 +9,40 @@ import { ResponsiveDevices } from "./controls/MyResponsiveToggle/MyResponsiveTog
 
 interface Props {
 	className?: string;
+	contentClassName?: string;
 	backgroundControlAttrs: BackgroundControlData;
 	children: ReactNode;
 	borderControlAttrs?: MyBorderControlData;
+	wrapStyles?: React.CSSProperties;
+	contentStyles?: React.CSSProperties;
 }
 
 const WithBackgroundSettings: FC<Props> = ({
 	className = "",
+	contentClassName = "",
 	backgroundControlAttrs,
 	children,
 	borderControlAttrs,
+	wrapStyles = {},
+	contentStyles = {},
+	...props
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
+	//
+	const v_borderTopLeftRadius_desktop = "--" + _.uniqueId();
+	const v_borderTopRightRadius_desktop = "--" + _.uniqueId();
+	const v_borderBottomRightRadius_desktop = "--" + _.uniqueId();
+	const v_borderBottomLeftRadius_desktop = "--" + _.uniqueId();
+	//
+	const v_borderTopLeftRadius_tablet = "--" + _.uniqueId();
+	const v_borderTopRightRadius_tablet = "--" + _.uniqueId();
+	const v_borderBottomRightRadius_tablet = "--" + _.uniqueId();
+	const v_borderBottomLeftRadius_tablet = "--" + _.uniqueId();
+	//
+	const v_borderTopLeftRadius_mobile = "--" + _.uniqueId();
+	const v_borderTopRightRadius_mobile = "--" + _.uniqueId();
+	const v_borderBottomRightRadius_mobile = "--" + _.uniqueId();
+	const v_borderBottomLeftRadius_mobile = "--" + _.uniqueId();
 	//
 
 	const getStyleForBackground = () => {
@@ -118,6 +141,8 @@ const WithBackgroundSettings: FC<Props> = ({
 	};
 
 	let BORDER_STYLES: React.CSSProperties = {};
+	let BORDER_RADIUS: React.CSSProperties = {};
+	let BORDER_RADIUS_CLASSES = "";
 	let BG_STYLES: React.CSSProperties = {};
 	BG_STYLES = getStyleForBackground();
 
@@ -126,16 +151,47 @@ const WithBackgroundSettings: FC<Props> = ({
 			deviceType,
 			...borderControlAttrs,
 		});
+		const radiusDesktop = borderControlAttrs.radius?.Desktop;
+		const radiusTablet = borderControlAttrs.radius?.Tablet;
+		const radiusMobile = borderControlAttrs.radius?.Mobile;
+		BORDER_RADIUS = {
+			[v_borderTopLeftRadius_desktop]: radiusDesktop?.top,
+			[v_borderTopRightRadius_desktop]: radiusDesktop?.right,
+			[v_borderBottomLeftRadius_desktop]: radiusDesktop?.bottom,
+			[v_borderBottomRightRadius_desktop]: radiusDesktop?.left,
+			// @ts-ignore
+			[v_borderTopLeftRadius_tablet]: radiusTablet?.top,
+			[v_borderTopRightRadius_tablet]: radiusTablet?.right,
+			[v_borderBottomLeftRadius_tablet]: radiusTablet?.bottom,
+			[v_borderBottomRightRadius_tablet]: radiusTablet?.left,
+			// @ts-ignore
+			[v_borderTopLeftRadius_mobile]: radiusMobile?.top,
+			[v_borderTopRightRadius_mobile]: radiusMobile?.right,
+			[v_borderBottomLeftRadius_mobile]: radiusMobile?.bottom,
+			[v_borderBottomRightRadius_mobile]: radiusMobile?.left,
+		};
+		BORDER_RADIUS_CLASSES = `rounded-tl-[var(--my-${v_borderTopLeftRadius_desktop})] rounded-tr-[var(--my-${v_borderTopRightRadius_desktop})] rounded-bl-[var(--my-${v_borderBottomLeftRadius_desktop})] rounded-br-[var(--my-${v_borderBottomRightRadius_desktop})]`;
 	}
 	return (
 		<div
-			className={`WithBackgroundSettings wcb-block-wrapper relative --- p-8 ${className}`}
-			style={{ ...BG_STYLES, ...BORDER_STYLES }}
+			className={`WithBackgroundSettings wcb-block-wrapper relative flex ${BORDER_RADIUS_CLASSES} ${className}`}
+			style={{
+				...BG_STYLES,
+				...BORDER_STYLES,
+				...BORDER_RADIUS,
+				...wrapStyles,
+			}}
+			{...props}
 		>
 			{renderImageBg()}
 			{renderVideoBg()}
 			{renderBgOverlay()}
-			<div className="relative z-[1]">{children}</div>
+			<div
+				className={`relative z-[1] flex-1 ${contentClassName}`}
+				style={contentStyles}
+			>
+				{children}
+			</div>
 		</div>
 	);
 };

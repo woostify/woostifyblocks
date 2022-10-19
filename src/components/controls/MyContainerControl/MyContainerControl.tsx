@@ -24,10 +24,10 @@ export type MyContainerControlData = {
 	overflow: React.CSSProperties["overflow"];
 };
 export const CONTAINER_CONTROL_DEMO: MyContainerControlData = {
-	containerWidthType: "Full Width",
+	containerWidthType: "Boxed",
 	contentWidthType: "Full Width",
-	customWidth: { Desktop: "1140px" },
-	contentBoxWidth: { Desktop: "1140px" },
+	customWidth: { Desktop: "100%" },
+	contentBoxWidth: { Desktop: "100%" },
 	minHeight: { Desktop: undefined },
 	htmlTag: "div",
 	overflow: "visible",
@@ -199,8 +199,8 @@ const MyContainerControl: FC<Props> = ({
 	const renderContentBoxWidth = () => {
 		const units = [
 			{ value: "px", label: "px", default: 1140 },
-			{ value: "%", label: "%", default: 10 },
-			{ value: "vw", label: "vw", default: 0 },
+			{ value: "%", label: "%", default: 100 },
+			{ value: "vw", label: "vw", default: 10 },
 		];
 		return (
 			<div className="flex items-center justify-between">
@@ -220,8 +220,8 @@ const MyContainerControl: FC<Props> = ({
 	const renderCustomWidth = () => {
 		const units = [
 			{ value: "px", label: "px", default: 1140 },
-			{ value: "%", label: "%", default: 10 },
-			{ value: "vw", label: "vw", default: 0 },
+			{ value: "%", label: "%", default: 100 },
+			{ value: "vw", label: "vw", default: 10 },
 		];
 		return (
 			<div className="flex items-center justify-between">
@@ -240,7 +240,7 @@ const MyContainerControl: FC<Props> = ({
 
 	const renderMinimumHeight = () => {
 		const units = [
-			{ value: "px", label: "px", default: 1140 },
+			{ value: "px", label: "px", default: 0 },
 			{ value: "vh", label: "vh", default: 0 },
 		];
 		return (
@@ -299,9 +299,11 @@ const MyContainerControl: FC<Props> = ({
 	return (
 		<div className={className}>
 			{renderContainerWidthType()}
-			{renderContenWidthType()}
-			{renderCustomWidth()}
-			{renderContentBoxWidth()}
+			{containerWidthType === "Custom" ? renderCustomWidth() : null}
+			{containerWidthType === "Full Width" ? renderContenWidthType() : null}
+			{containerWidthType === "Full Width" && contentWidthType === "Boxed"
+				? renderContentBoxWidth()
+				: null}
 			{renderMinimumHeight()}
 			{renderHTMLTag()}
 			{renderOverflow()}

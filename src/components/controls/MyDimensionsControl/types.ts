@@ -1,8 +1,8 @@
 import { HasResponsive } from "../MyBackgroundControl/types";
 
 export interface MyDimensionsControlData {
-	rowGap: HasResponsive<number>;
-	colunmGap: HasResponsive<number>;
+	rowGap: HasResponsive<string>;
+	colunmGap: HasResponsive<string>;
 	padding: HasResponsive<DimensionSettings>;
 	margin: HasResponsive<DimensionSettings>;
 }
@@ -21,8 +21,8 @@ export const DEFAULT_DIMENSION: string | DimensionSettings = {
 };
 
 export const MY_DIMENSIONS_CONTROL_DEMO: MyDimensionsControlData = {
-	colunmGap: { Desktop: 0 },
-	rowGap: { Desktop: 0 },
+	colunmGap: { Desktop: "2rem" },
+	rowGap: { Desktop: "2rem" },
 	margin: {
 		Desktop: {
 			top: "0",

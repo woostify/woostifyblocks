@@ -13,7 +13,10 @@ const getBorderStyleBySettings = (params: Params): React.CSSProperties => {
 	const { hoverColor, mainSettings, radius, deviceType } = params;
 
 	let BORDER_STYLES: React.CSSProperties;
-	if ((mainSettings as BorderMain4Side).top) {
+	if (!mainSettings) {
+		return {};
+	}
+	if ((mainSettings as BorderMain4Side)?.top) {
 		const { bottom, left, right, top } = mainSettings as BorderMain4Side;
 		BORDER_STYLES = {
 			borderTop: `${top.width} ${top.style} ${top.color}`,

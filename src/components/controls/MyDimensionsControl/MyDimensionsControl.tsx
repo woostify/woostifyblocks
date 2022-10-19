@@ -3,6 +3,8 @@ import {
 	RangeControl,
 	// @ts-ignore
 	__experimentalBoxControl as BoxControl,
+	// @ts-ignore
+	__experimentalUnitControl as UnitControl,
 } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import MyLabelControl from "../MyLabelControl/MyLabelControl";
@@ -82,28 +84,37 @@ const MyDimensionsControl: FC<Props> = ({
 		});
 	};
 
+	const MY_GAP_UNITS = [
+		{ value: "px", label: "px", default: 32 },
+		{ value: "rem", label: "rem", default: 2 },
+		{ value: "%", label: "%", default: 10 },
+	];
+
 	return (
 		<div className={className}>
-			<RangeControl
-				label={
-					<MyLabelControl hasResponsive>{__("Row Gap", "wcb")}</MyLabelControl>
-				}
-				value={rowGap || 0}
-				onChange={setRowGrap}
-				min={0}
-				max={100}
-			/>
-			<RangeControl
-				label={
-					<MyLabelControl hasResponsive>
-						{__("Column Gap", "wcb")}
-					</MyLabelControl>
-				}
-				value={colunmGap || 0}
-				onChange={setColumnGap}
-				min={0}
-				max={100}
-			/>
+			<div className="flex items-center justify-center space-x-3">
+				<MyLabelControl className="flex-shrink-0" hasResponsive>
+					{__("Row Gap", "wcb")}
+				</MyLabelControl>
+				<UnitControl
+					units={MY_GAP_UNITS}
+					onChange={setRowGrap}
+					value={rowGap}
+					label=""
+				/>
+			</div>
+
+			<div className="flex items-center justify-center space-x-3">
+				<MyLabelControl className="flex-shrink-0" hasResponsive>
+					{__("Column Gap", "wcb")}
+				</MyLabelControl>
+				<UnitControl
+					onChange={setColumnGap}
+					value={colunmGap}
+					label=""
+					units={MY_GAP_UNITS}
+				/>
+			</div>
 			<BoxControl
 				label={
 					<MyLabelControl hasResponsive>{__("Padding", "wcb")}</MyLabelControl>

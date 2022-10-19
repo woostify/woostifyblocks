@@ -192,8 +192,7 @@ const Edit: FC<EditProps<BlockWCBContainerBoxAttrs>> = (props) => {
 			<div
 				{...blockProps}
 				style={{
-					// flexBasis: "100%",
-					flexBasis: CUSTOM_WIDTH,
+					flexBasis: `calc(${CUSTOM_WIDTH} - (var(--my-container-gap-x) / 2))`,
 				}}
 			>
 				<InnerBlocks renderAppender={InnerBlocks.ButtonBlockAppender} />

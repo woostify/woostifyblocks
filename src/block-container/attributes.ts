@@ -65,7 +65,7 @@ export const blokcContainerAttrs: AttrsGenericType<BlockWCBContainerAttrs> = {
 	},
 	wrapClassName: {
 		type: "string",
-		default: "flex gap-8",
+		default: "flex",
 	},
 	general_container: {
 		type: "object",

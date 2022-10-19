@@ -12,7 +12,10 @@ export interface BorderMain4Side {
 	left: BorderMainSingleSide;
 }
 
-export type BorderMainSettings = BorderMain4Side | BorderMainSingleSide;
+export type BorderMainSettings =
+	| BorderMain4Side
+	| BorderMainSingleSide
+	| undefined;
 
 export interface BorderRadiusSettings {
 	top: string;
@@ -34,18 +37,17 @@ export const DEFAULT_BORDER_MAIN_SINGLE_SIDE: BorderMainSingleSide = {
 	width: "1px",
 };
 
-export const DEFAULT_BORDER_MAINS: BorderMainSettings =
-	DEFAULT_BORDER_MAIN_SINGLE_SIDE;
+export const DEFAULT_BORDER_MAINS: BorderMainSettings = undefined;
 
 export interface MyBorderControlData {
-	mainSettings: BorderMainSettings;
-	hoverColor: string;
+	mainSettings?: BorderMainSettings;
+	hoverColor?: string;
 	radius: HasResponsive<BorderRadiusSettings>;
 }
 
 export const MY_BORDER_CONTROL_DEMO: MyBorderControlData = {
 	mainSettings: DEFAULT_BORDER_MAINS,
-	hoverColor: "#d1d5db",
+	hoverColor: undefined,
 	radius: {
 		Desktop: DEFAULT_BORDER_RADIUS,
 		Tablet: DEFAULT_BORDER_RADIUS,

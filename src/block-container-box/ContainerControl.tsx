@@ -23,7 +23,7 @@ export type ContainerBox_Container_Control = {
 };
 export const CONTAINER_BOX_CONTAINER_CONTROL_DEMO: ContainerBox_Container_Control =
 	{
-		customWidth: { Desktop: "1140px" },
+		customWidth: { Desktop: "100%" },
 		minHeight: { Desktop: undefined },
 		htmlTag: "div",
 		overflow: "visible",
@@ -121,9 +121,10 @@ const ContainerControl: FC<Props> = ({
 
 	const renderCustomWidth = () => {
 		const units = [
+			{ value: "%", label: "%", default: 100 },
 			{ value: "px", label: "px", default: 1140 },
-			{ value: "%", label: "%", default: 10 },
-			{ value: "vw", label: "vw", default: 0 },
+			{ value: "rem", label: "rem", default: 10 },
+			{ value: "vw", label: "vw", default: 10 },
 		];
 		return (
 			<div className="flex items-center justify-between">
@@ -142,7 +143,7 @@ const ContainerControl: FC<Props> = ({
 
 	const renderMinimumHeight = () => {
 		const units = [
-			{ value: "px", label: "px", default: 1140 },
+			{ value: "px", label: "px", default: 0 },
 			{ value: "vh", label: "vh", default: 0 },
 		];
 		return (
