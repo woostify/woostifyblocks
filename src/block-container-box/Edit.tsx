@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { useBlockProps, RichText, InnerBlocks } from "@wordpress/block-editor";
+import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
 import { PanelBody } from "@wordpress/components";
 import React, { useEffect, FC } from "react";
 import { BlockWCBContainerBoxAttrs } from "./attributes";
@@ -17,10 +17,8 @@ import MyBoxShadowControl from "../components/controls/MyBoxShadowControl/MyBoxS
 import MyDimensionsControl from "../components/controls/MyDimensionsControl/MyDimensionsControl";
 import MyResponsiveConditionControl from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
 import MyZIndexControl from "../components/controls/MyZIndexControl/MyZIndexControl";
-import MyContainerControl from "../components/controls/MyContainerControl/MyContainerControl";
 import MyFlexPropertiesControl from "../components/controls/MyFlexPropertiesControl/MyFlexPropertiesControl";
 import MyTypographyControl from "../components/controls/MyTypographyControl/MyTypographyControl";
-import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import ContainerControl from "./ContainerControl";
 
 export type EditProps<T> = {
@@ -41,11 +39,6 @@ const Edit: FC<EditProps<BlockWCBContainerBoxAttrs>> = (props) => {
 		});
 	}, []);
 	//
-
-	const CUSTOM_WIDTH =
-		general_container.customWidth[deviceType] ||
-		general_container.customWidth.Tablet ||
-		general_container.customWidth.Desktop;
 
 	const renderPanelColor = () => {
 		return (
@@ -182,6 +175,13 @@ const Edit: FC<EditProps<BlockWCBContainerBoxAttrs>> = (props) => {
 	};
 
 	const blockProps = useBlockProps();
+	let {
+		Desktop: customWidth_LG,
+		Tablet: customWidth_MD,
+		Mobile: customWidth,
+	} = general_container.customWidth;
+	customWidth = customWidth || customWidth_MD || customWidth_LG;
+	customWidth_MD = customWidth_MD || customWidth_LG;
 	return (
 		<>
 			<HOCInspectorControls renderTabPanels={renderTabBodyPanels} />
@@ -191,8 +191,15 @@ const Edit: FC<EditProps<BlockWCBContainerBoxAttrs>> = (props) => {
 			> */}
 			<div
 				{...blockProps}
+				className={
+					blockProps?.className +
+					` basis-[var(--wcb-basic)] md:basis-[var(--md-wcb-basic)] lg:basis-[var(--lg-wcb-basic)]`
+				}
 				style={{
-					flexBasis: `calc(${CUSTOM_WIDTH} - (var(--my-container-gap-x) / 2))`,
+					// @ts-ignore
+					"--wcb-basic": `calc(${customWidth} - (var(--wcb-gap-x) / 2))`,
+					"--md-wcb-basic": `calc(${customWidth_MD} - (var(--wcb-gap-x) / 2))`,
+					"--lg-wcb-basic": `calc(${customWidth_LG} - (var(--wcb-gap-x) / 2))`,
 				}}
 			>
 				<InnerBlocks renderAppender={InnerBlocks.ButtonBlockAppender} />

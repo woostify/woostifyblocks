@@ -18,6 +18,9 @@
 		"@wordpress/scripts": "^24.0.0"
 	},
 	"dependencies": {
+		"@emotion/core": "^11.0.0",
+		"@emotion/react": "^11.10.4",
+		"@emotion/styled": "^11.10.4",
 		"@headlessui/react": "^1.7.3",
 		"@heroicons/react": "^2.0.12",
 		"@types/wordpress__block-editor": "^7.0.0",
@@ -33,6 +36,12 @@
 		"lodash": "^4.17.21",
 		"postcss": "^8.4.16",
 		"sass": "^1.54.8",
-		"tailwindcss": "^3.1.8"
+		"tailwindcss": "^3.2.0",
+		"twin.macro": "^2.8.2"
+	},
+	"babelMacros": {
+		"twin": {
+			"config": "tailwind.config.js"
+		}
 	}
 }

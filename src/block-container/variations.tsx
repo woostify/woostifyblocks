@@ -51,14 +51,16 @@ const getContainerAttrsByFlexWrap = (
 		{}
 	);
 	return {
-		...attrsDefault,
+		...(attrsDefault as any),
 		general_flexProperties: {
 			...FLEX_PROPERTIES_CONTROL_DEMO,
 			flexWrap: {
 				Desktop: flexWrap,
+				Tablet: flexWrap,
+				Mobile: flexWrap,
 			},
 		},
-	} as any;
+	};
 };
 
 const getContainerBoxAttrsByWidth = (

@@ -207,17 +207,16 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		styles_border,
 	} = attributes;
 	const ALLOWED_BLOCKS = ["wcb/container-box"];
-	// const classes = attributes.wrapClassName || "flex relative";
-
-	const blockProps = useBlockProps({
-		className: "flex flex-col md:flex-row relative w-full h-full",
-	});
-	const innerBlocksProps = useInnerBlocksProps(blockProps, {
-		allowedBlocks: ALLOWED_BLOCKS,
-		renderAppender: () => null,
-	});
 
 	// ====== CLASSES
+	const WRAP_STYLES: React.CSSProperties = {
+		// @ts-ignore
+		"--lg-wcb-min-h": general_container.minHeight.Desktop,
+		"--md-wcb-min-h": general_container.minHeight.Tablet,
+		"--wcb-min-h": general_container.minHeight.Mobile,
+		overflow: general_container.overflow,
+	};
+
 	const containerWidthTypeClass =
 		general_container.containerWidthType === "Full Width"
 			? "alignfull"
@@ -225,34 +224,49 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 			? "alignwide"
 			: "";
 
-	const minHeightClass = `min-h-[var(--my-container-minHeight-mobile)] md:min-h-[var(--my-container-minHeight-tablet)] lg:min-h-[var(--my-container-minHeight-desktop)]`;
+	const minHeightClass = `min-h-[var(--wcb-min-h)] md:min-h-[var(--md-wcb-min-h)] lg:min-h-[var(--lg-wcb-min-h)]`;
 	// ====== END CLASSES
+
+	const { colunmGap, rowGap } = styles_dimensions;
+	const CONTENT_STYLES: React.CSSProperties = {
+		// @ts-ignore
+		"--wcb-gap-x": colunmGap.Mobile || colunmGap.Tablet || colunmGap.Desktop,
+		"--wcb-gap-y": rowGap.Mobile || rowGap.Tablet || rowGap.Desktop,
+		"--md-wcb-gap-x": colunmGap.Tablet || colunmGap.Desktop,
+		"--md-wcb-gap-y": rowGap.Tablet || rowGap.Desktop,
+		"--lg-wcb-gap-x": colunmGap.Desktop,
+		"--lg-wcb-gap-y": rowGap.Desktop,
+	};
+
+	//
+	const flexWrap = general_flexProperties?.flexWrap;
+	const blockProps = useBlockProps({
+		className: `flex flex-col md:flex-row relative w-full h-full
+			gap-x-[var(--wcb-gap-x)]
+			gap-y-[var(--wcb-gap-y)]
+			md:gap-x-[var(--md-wcb-gap-x)]
+			md:gap-y-[var(--md-wcb-gap-y)]
+			lg:gap-x-[var(--lg-wcb-gap-x)]
+			lg:gap-y-[var(--lg-wcb-gap-y)]
+			${flexWrap?.Mobile ? `flex-${flexWrap?.Mobile}` : ""} 
+			${flexWrap?.Tablet ? `md:flex-${flexWrap?.Tablet}` : ""}
+			${flexWrap?.Desktop ? `lg:flex-${flexWrap?.Desktop}` : ""}
+			`,
+	});
+	const innerBlocksProps = useInnerBlocksProps(blockProps, {
+		allowedBlocks: ALLOWED_BLOCKS,
+		renderAppender: () => null,
+	});
 
 	return (
 		<>
 			<WithBackgroundSettings
 				backgroundControlAttrs={styles_background}
 				borderControlAttrs={styles_border}
-				wrapStyles={{
-					// @ts-ignore
-					"--my-container-minHeight-desktop":
-						general_container.minHeight.Desktop,
-					"--my-container-minHeight-tablet": general_container.minHeight.Tablet,
-					"--my-container-minHeight-mobile": general_container.minHeight.Mobile,
-					overflow: general_container.overflow,
-				}}
-				className={`${containerWidthTypeClass} ${minHeightClass}`}
+				wrapStyles={WRAP_STYLES}
+				className={`${containerWidthTypeClass} ${minHeightClass} `}
 			>
-				<div
-					{...innerBlocksProps}
-					style={{
-						"--my-container-gap-x": styles_dimensions.colunmGap.Desktop,
-						"--my-container-gap-y": styles_dimensions.rowGap.Desktop,
-						flexWrap: general_flexProperties.flexWrap.Desktop,
-						rowGap: "var(--my-container-gap-y)",
-						columnGap: "var(--my-container-gap-x)",
-					}}
-				/>
+				<div {...innerBlocksProps} style={CONTENT_STYLES} />
 			</WithBackgroundSettings>
 			<HOCInspectorControls renderTabPanels={renderTabBodyPanels} />
 		</>

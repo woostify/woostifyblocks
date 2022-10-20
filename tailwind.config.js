@@ -15,6 +15,10 @@ function customColors(cssVar) {
 
 const safelist = [
 	{
+		pattern: /flex-(wrap|no-wrap|wrap-reverse)/,
+		variants: ["sm", "md", "lg", "xl", "2xl"],
+	},
+	{
 		pattern: /grid-cols-(1|2|3|4|5|6|7|8|12)/,
 		variants: ["sm", "md", "lg", "xl", "2xl"],
 	},
@@ -43,13 +47,6 @@ const safelist = [
 		variants: ["sm", "md", "lg", "xl", "2xl"],
 	},
 	//
-	"sm:container",
-	"md:container",
-	//
-	"lg:pl-10",
-	"xl:pl-0",
-	"xl:pr-14",
-	"flex-1",
 ];
 
 module.exports = {
