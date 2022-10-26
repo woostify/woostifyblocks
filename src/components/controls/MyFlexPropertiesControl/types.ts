@@ -2,10 +2,14 @@ import { HasResponsive } from "../MyBackgroundControl/types";
 import React, { FC, CSSProperties } from "react";
 
 export type MyFlexPropertiesControlData = {
-	flexDirection: HasResponsive<CSSProperties["flexDirection"]>;
-	alignItems: HasResponsive<CSSProperties["alignItems"]>;
-	justifyContent: HasResponsive<CSSProperties["justifyContent"]>;
-	flexWrap: HasResponsive<CSSProperties["flexWrap"]>;
+	flexDirection: HasResponsive<"col" | "row" | "row-reverse" | "col-reverse">;
+	alignItems: HasResponsive<
+		"start" | "end" | "center" | "baseline" | "stretch"
+	>;
+	justifyContent: HasResponsive<
+		"start" | "end" | "center" | "between" | "around" | "evenly"
+	>;
+	flexWrap: HasResponsive<"wrap" | "wrap-reverse" | "nowrap">;
 };
 export const FLEX_PROPERTIES_CONTROL_DEMO: MyFlexPropertiesControlData = {
 	flexDirection: { Desktop: "row" },
@@ -15,7 +19,7 @@ export const FLEX_PROPERTIES_CONTROL_DEMO: MyFlexPropertiesControlData = {
 };
 
 export const FLEX_DIRECTIONS_DEMO: {
-	name: CSSProperties["flexDirection"];
+	name: "col" | "row" | "row-reverse" | "col-reverse";
 	icon: string;
 }[] = [
 	{
@@ -29,7 +33,7 @@ export const FLEX_DIRECTIONS_DEMO: {
     `,
 	},
 	{
-		name: "column",
+		name: "col",
 		icon: `<svg width="24" height="38" viewBox="0 0 24 38" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M19.9 13.5L4.1 13.5C2.6 13.5 2 14.14 2 15.73L2 19.77C2 21.36 2.6 22 4.1 22L19.9 22C21.4 22 22 21.36 22 19.77L22 15.73C22 14.14 21.4 13.5 19.9 13.5Z" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M19.9 2L4.1 2C2.6 2 2 2.64 2 4.23L2 8.27C2 9.86 2.6 10.5 4.1 10.5L19.9 10.5C21.4 10.5 22 9.86 22 8.27L22 4.23C22 2.64 21.4 2 19.9 2Z" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
@@ -49,7 +53,7 @@ export const FLEX_DIRECTIONS_DEMO: {
     `,
 	},
 	{
-		name: "column-reverse",
+		name: "col-reverse",
 		icon: `<svg width="24" height="38" viewBox="0 0 24 38" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M4.1 24.5L19.9 24.5C21.4 24.5 22 23.86 22 22.27L22 18.23C22 16.64 21.4 16 19.9 16L4.1 16C2.6 16 2 16.64 2 18.23L2 22.27C2 23.86 2.6 24.5 4.1 24.5Z" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M4.1 36L19.9 36C21.4 36 22 35.36 22 33.77L22 29.73C22 28.14 21.4 27.5 19.9 27.5L4.1 27.5C2.6 27.5 2 28.14 2 29.73L2 33.77C2 35.36 2.6 36 4.1 36Z" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
@@ -61,11 +65,11 @@ export const FLEX_DIRECTIONS_DEMO: {
 ];
 
 export const FLEX_ALIGNITEMS_DEMO: {
-	name: CSSProperties["alignItems"];
+	name: "start" | "end" | "center" | "baseline" | "stretch";
 	icon: string;
 }[] = [
 	{
-		name: "flex-start",
+		name: "start",
 		icon: ` <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M19.26 5.1001V16.9001C19.26 18.4001 18.62 19.0001 17.03 19.0001H15.99C14.4 19.0001 13.76 18.4001 13.76 16.9001V5.1001" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M5.26 5.1001V11.9001C5.26 13.4001 5.9 14.0001 7.49 14.0001H8.53C10.12 14.0001 10.76 13.4001 10.76 11.9001V5.1001" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -86,7 +90,7 @@ export const FLEX_ALIGNITEMS_DEMO: {
     `,
 	},
 	{
-		name: "flex-end",
+		name: "end",
 		icon: ` <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M19.26 18.9V7.1C19.26 5.6 18.62 5 17.03 5H15.99C14.4 5 13.76 5.6 13.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M5.25999 18.9V12.1C5.25999 10.6 5.89999 10 7.48999 10H8.52999C10.12 10 10.76 10.6 10.76 12.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -120,11 +124,11 @@ export const FLEX_ALIGNITEMS_DEMO: {
 ];
 
 export const FLEX_JUSTIFY_CONTENT_DEMO: {
-	name: CSSProperties["justifyContent"];
+	name: "start" | "end" | "center" | "between" | "around" | "evenly";
 	icon: string;
 }[] = [
 	{
-		name: "flex-start",
+		name: "start",
 		icon: `<svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M15.26 18.9V7.1C15.26 5.6 14.62 5 13.03 5H11.99C10.4 5 9.76001 5.6 9.76001 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M7.26001 18.9V7.1C7.26001 5.6 6.62001 5 5.03001 5H3.99001C2.40001 5 1.76001 5.6 1.76001 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -133,7 +137,7 @@ export const FLEX_JUSTIFY_CONTENT_DEMO: {
     `,
 	},
 	{
-		name: "flex-end",
+		name: "end",
 		icon: `<svg width="29" height="24" viewBox="0 0 29 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M27.26 18.9V7.1C27.26 5.6 26.62 5 25.03 5H23.99C22.4 5 21.76 5.6 21.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M19.26 18.9V7.1C19.26 5.6 18.62 5 17.03 5H15.99C14.4 5 13.76 5.6 13.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -151,7 +155,7 @@ export const FLEX_JUSTIFY_CONTENT_DEMO: {
     `,
 	},
 	{
-		name: "space-between",
+		name: "between",
 		icon: `<svg width="29" height="24" viewBox="0 0 29 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M27.26 18.9V7.1C27.26 5.6 26.62 5 25.03 5H23.99C22.4 5 21.76 5.6 21.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M7.26001 18.9V7.1C7.26001 5.6 6.62001 5 5.03001 5H3.99001C2.40001 5 1.76001 5.6 1.76001 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -160,7 +164,7 @@ export const FLEX_JUSTIFY_CONTENT_DEMO: {
     `,
 	},
 	{
-		name: "space-around",
+		name: "around",
 		icon: `<svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M24.26 18.9V7.1C24.26 5.6 23.62 5 22.03 5H20.99C19.4 5 18.76 5.6 18.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M10.26 18.9V7.1C10.26 5.6 9.62001 5 8.03001 5H6.99001C5.40001 5 4.76001 5.6 4.76001 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -169,7 +173,7 @@ export const FLEX_JUSTIFY_CONTENT_DEMO: {
     `,
 	},
 	{
-		name: "space-evenly",
+		name: "evenly",
 		icon: `<svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M22.26 18.9V7.1C22.26 5.6 21.62 5 20.03 5H18.99C17.4 5 16.76 5.6 16.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M12.26 18.9V7.1C12.26 5.6 11.62 5 10.03 5H8.99001C7.40001 5 6.76001 5.6 6.76001 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -180,7 +184,7 @@ export const FLEX_JUSTIFY_CONTENT_DEMO: {
 ];
 
 export const FLEX_WRAP_DEMO: {
-	name: CSSProperties["flexWrap"];
+	name: "wrap" | "wrap-reverse" | "nowrap";
 	icon: string;
 }[] = [
 	{

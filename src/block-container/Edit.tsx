@@ -35,6 +35,7 @@ import {
 	// @ts-ignore
 	store as blocksStore,
 } from "@wordpress/blocks";
+import getBoxShadowStyles from "../components/controls/MyBoxShadowControl/getBoxShadowStyles";
 
 export type EditProps<T> = {
 	attributes: T;
@@ -205,10 +206,12 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		styles_background,
 		styles_dimensions,
 		styles_border,
+		styles_color,
+		styles_boxShadow,
 	} = attributes;
 	const ALLOWED_BLOCKS = ["wcb/container-box"];
 
-	// ====== CLASSES
+	// ====== WRAP CLASSES
 	const WRAP_STYLES: React.CSSProperties = {
 		// @ts-ignore
 		"--lg-wcb-min-h": general_container.minHeight.Desktop,
@@ -225,10 +228,16 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 			: "";
 
 	const minHeightClass = `min-h-[var(--wcb-min-h)] md:min-h-[var(--md-wcb-min-h)] lg:min-h-[var(--lg-wcb-min-h)]`;
-	// ====== END CLASSES
+	// ====== END WRAP CLASSES
 
-	const { colunmGap, rowGap } = styles_dimensions;
-	const CONTENT_STYLES: React.CSSProperties = {
+	// MAIN STYLES - CLASSES
+	const { colunmGap, rowGap, padding, margin } = styles_dimensions;
+	const { Mobile: pMobile, Tablet: pTablet, Desktop: pDesktop } = padding;
+	const { Mobile: mMobile, Tablet: mTablet, Desktop: mDesktop } = margin;
+	//
+	const { styles: boxShadowStyles, className: boxShadowClasses } =
+		getBoxShadowStyles(styles_boxShadow);
+	const MAIN_STYLES: React.CSSProperties = {
 		// @ts-ignore
 		"--wcb-gap-x": colunmGap.Mobile || colunmGap.Tablet || colunmGap.Desktop,
 		"--wcb-gap-y": rowGap.Mobile || rowGap.Tablet || rowGap.Desktop,
@@ -236,23 +245,97 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		"--md-wcb-gap-y": rowGap.Tablet || rowGap.Desktop,
 		"--lg-wcb-gap-x": colunmGap.Desktop,
 		"--lg-wcb-gap-y": rowGap.Desktop,
+		// PADING
+		"--wcb-pt": pMobile?.top || pTablet?.top || pDesktop?.top,
+		"--md-wcb-pt": pTablet?.top || pDesktop?.top,
+		"--lg-wcb-pt": pDesktop?.top,
+		"--wcb-pb": pMobile?.bottom || pTablet?.bottom || pDesktop?.bottom,
+		"--md-wcb-pb": pTablet?.bottom || pDesktop?.bottom,
+		"--lg-wcb-pb": pDesktop?.bottom,
+		"--wcb-pl": pMobile?.left || pTablet?.left || pDesktop?.left,
+		"--md-wcb-pl": pTablet?.left || pDesktop?.left,
+		"--lg-wcb-pl": pDesktop?.left,
+		"--wcb-pr": pMobile?.right || pTablet?.right || pDesktop?.right,
+		"--md-wcb-pr": pTablet?.right || pDesktop?.right,
+		"--lg-wcb-pr": pDesktop?.right,
+		// MARGIN
+		"--wcb-mt": mMobile?.top || mTablet?.top || mDesktop?.top,
+		"--md-wcb-mt": mTablet?.top || mDesktop?.top,
+		"--lg-wcb-mt": mDesktop?.top,
+		"--wcb-mb": mMobile?.bottom || mTablet?.bottom || mDesktop?.bottom,
+		"--md-wcb-mb": mTablet?.bottom || mDesktop?.bottom,
+		"--lg-wcb-mb": mDesktop?.bottom,
+		"--wcb-ml": mMobile?.left || mTablet?.left || mDesktop?.left,
+		"--md-wcb-ml": mTablet?.left || mDesktop?.left,
+		"--lg-wcb-ml": mDesktop?.left,
+		"--wcb-mr": mMobile?.right || mTablet?.right || mDesktop?.right,
+		"--md-wcb-mr": mTablet?.right || mDesktop?.right,
+		"--lg-wcb-mr": mDesktop?.right,
+		// COLOR
+		"--wcb-text-color": styles_color,
+		//
+		...boxShadowStyles,
 	};
-
 	//
-	const flexWrap = general_flexProperties?.flexWrap;
+	const { flexWrap, flexDirection, alignItems, justifyContent } =
+		general_flexProperties;
 	const blockProps = useBlockProps({
-		className: `flex flex-col md:flex-row relative w-full h-full
+		className: `flex relative w-full h-full
 			gap-x-[var(--wcb-gap-x)]
 			gap-y-[var(--wcb-gap-y)]
 			md:gap-x-[var(--md-wcb-gap-x)]
 			md:gap-y-[var(--md-wcb-gap-y)]
 			lg:gap-x-[var(--lg-wcb-gap-x)]
 			lg:gap-y-[var(--lg-wcb-gap-y)]
+			
+			pt-[var(--wcb-pt)]
+			md:pt-[var(--md-wcb-pt)]
+			lg:pt-[var(--lg-wcb-pt)]
+			pb-[var(--wcb-pb)]
+			md:pb-[var(--md-wcb-pb)]
+			lg:pb-[var(--lg-wcb-pb)]
+			pl-[var(--wcb-pl)]
+			md:pl-[var(--md-wcb-pl)]
+			lg:pl-[var(--lg-wcb-pl)]
+			pr-[var(--wcb-pr)]
+			md:pr-[var(--md-wcb-pr)]
+			lg:pr-[var(--lg-wcb-pr)]
+
+			mt-[var(--wcb-mt)]
+			md:mt-[var(--md-wcb-mt)]
+			lg:mt-[var(--lg-wcb-mt)]
+			mb-[var(--wcb-mb)]
+			md:mb-[var(--md-wcb-mb)]
+			lg:mb-[var(--lg-wcb-mb)]
+			ml-[var(--wcb-ml)]
+			md:ml-[var(--md-wcb-ml)]
+			lg:ml-[var(--lg-wcb-ml)]
+			mr-[var(--wcb-mr)]
+			md:mr-[var(--md-wcb-mr)]
+			lg:mr-[var(--lg-wcb-mr)]
+
+			text-[color:var(--wcb-text-color)]
+
 			${flexWrap?.Mobile ? `flex-${flexWrap?.Mobile}` : ""} 
 			${flexWrap?.Tablet ? `md:flex-${flexWrap?.Tablet}` : ""}
 			${flexWrap?.Desktop ? `lg:flex-${flexWrap?.Desktop}` : ""}
+			
+			${flexDirection?.Mobile ? `flex-${flexDirection?.Mobile}` : "flex-col"} 
+			${flexDirection?.Tablet ? `md:flex-${flexDirection?.Tablet}` : "md:flex-row"}
+			${flexDirection?.Desktop ? `lg:flex-${flexDirection?.Desktop}` : ""}
+
+			${alignItems?.Mobile ? `items-${alignItems?.Mobile}` : ""} 
+			${alignItems?.Tablet ? `md:items-${alignItems?.Tablet}` : ""}
+			${alignItems?.Desktop ? `lg:items-${alignItems?.Desktop}` : ""}
+
+			${justifyContent?.Mobile ? `justify-${justifyContent?.Mobile}` : ""} 
+			${justifyContent?.Tablet ? `md:justify-${justifyContent?.Tablet}` : ""}
+			${justifyContent?.Desktop ? `lg:justify-${justifyContent?.Desktop}` : ""}
+
+			${boxShadowClasses}
 			`,
 	});
+	// END MAIN STYLES - CLASSES
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
 		renderAppender: () => null,
@@ -266,7 +349,7 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 				wrapStyles={WRAP_STYLES}
 				className={`${containerWidthTypeClass} ${minHeightClass} `}
 			>
-				<div {...innerBlocksProps} style={CONTENT_STYLES} />
+				<div {...innerBlocksProps} style={MAIN_STYLES} />
 			</WithBackgroundSettings>
 			<HOCInspectorControls renderTabPanels={renderTabBodyPanels} />
 		</>

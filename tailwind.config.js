@@ -15,7 +15,11 @@ function customColors(cssVar) {
 
 const safelist = [
 	{
-		pattern: /flex-(wrap|no-wrap|wrap-reverse)/,
+		pattern: /shadow/,
+		variants: ["sm", "md", "lg", "xl", "2xl"],
+	},
+	{
+		pattern: /flex-(wrap|nowrap|wrap-reverse|row|col)/,
 		variants: ["sm", "md", "lg", "xl", "2xl"],
 	},
 	{

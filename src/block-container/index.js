@@ -24,9 +24,6 @@ const { Fragment } = wp.element;
 const { withSelect } = wp.data;
 import blokc1Attrs from "./attributes";
 import variations from "./variations";
-//------------------ TAILWINDCSS AND COMMON CSS -----------------
-import "../style.css";
-import "../styles/index.scss";
 //-----------------------------------------
 
 registerBlockType(metadata.name, {

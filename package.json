@@ -15,6 +15,7 @@
 		"start": "wp-scripts start"
 	},
 	"devDependencies": {
+		"@types/node": "^18.11.3",
 		"@wordpress/scripts": "^24.0.0"
 	},
 	"dependencies": {
@@ -36,12 +37,6 @@
 		"lodash": "^4.17.21",
 		"postcss": "^8.4.16",
 		"sass": "^1.54.8",
-		"tailwindcss": "^3.2.0",
-		"twin.macro": "^2.8.2"
-	},
-	"babelMacros": {
-		"twin": {
-			"config": "tailwind.config.js"
-		}
+		"tailwindcss": "^3.2.0"
 	}
 }
