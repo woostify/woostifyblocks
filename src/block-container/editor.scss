@@ -1,9 +1,41 @@
-/**
- * The following styles get applied inside the editor only.
- *
- * Replace them with your own styles or remove the file completely.
- */
+.wcb-container__wrap {
+	/* color: red; */
+}
 
-.wp-block-create-block-ncmaz-core {
-	border: 1px dotted #f00;
+.wcb-container__inner__OLD {
+	@apply flex relative w-full h-full
+	gap-x-[var(--wcb-gap-x)]
+	gap-y-[var(--wcb-gap-y)]
+	md:gap-x-[var(--md-wcb-gap-x)]
+	md:gap-y-[var(--md-wcb-gap-y)]
+	lg:gap-x-[var(--lg-wcb-gap-x)]
+	lg:gap-y-[var(--lg-wcb-gap-y)]
+	
+	pt-[var(--wcb-pt)]
+	md:pt-[var(--md-wcb-pt)]
+	lg:pt-[var(--lg-wcb-pt)]
+	pb-[var(--wcb-pb)]
+	md:pb-[var(--md-wcb-pb)]
+	lg:pb-[var(--lg-wcb-pb)]
+	pl-[var(--wcb-pl)]
+	md:pl-[var(--md-wcb-pl)]
+	lg:pl-[var(--lg-wcb-pl)]
+	pr-[var(--wcb-pr)]
+	md:pr-[var(--md-wcb-pr)]
+	lg:pr-[var(--lg-wcb-pr)]
+
+	mt-[var(--wcb-mt)]
+	md:mt-[var(--md-wcb-mt)]
+	lg:mt-[var(--lg-wcb-mt)]
+	mb-[var(--wcb-mb)]
+	md:mb-[var(--md-wcb-mb)]
+	lg:mb-[var(--lg-wcb-mb)]
+	ml-[var(--wcb-ml)]
+	md:ml-[var(--md-wcb-ml)]
+	lg:ml-[var(--lg-wcb-ml)]
+	mr-[var(--wcb-mr)]
+	md:mr-[var(--md-wcb-mr)]
+	lg:mr-[var(--lg-wcb-mr)]
+
+	text-[color:var(--wcb-text-color)];
 }

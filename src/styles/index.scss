@@ -1,10 +1,14 @@
+@import "./_theme_var";
+@import "./_theme_colors";
+
+/*  */
+//
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 //
-@import "./_theme_var";
+
+/*  */
 @import "./_theme_fonts";
-@import "./_theme_colors";
 @import "./_theme_custom";
 @import "./_admin_editor_custom";
-//

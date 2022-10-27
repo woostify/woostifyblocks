@@ -87,7 +87,6 @@ const WithBackgroundSettings: FC<Props> = ({
 		}
 		const BG_IMAGE_STLYE = getBgImageStyleBySettings({
 			...backgroundControlAttrs,
-			deviceType,
 		});
 
 		return (

@@ -1,7 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import {
 	useBlockProps,
-	InnerBlocks,
 	// @ts-ignore
 	useInnerBlocksProps,
 	// @ts-ignore
@@ -10,14 +9,13 @@ import {
 } from "@wordpress/block-editor";
 import { PanelBody } from "@wordpress/components";
 import { get } from "lodash";
-import React, { useEffect, FC, CSSProperties } from "react";
+import React, { FC, CSSProperties } from "react";
 import { BlockWCBContainerAttrs } from "./attributes";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 import MyBackgroundControl from "../components/controls/MyBackgroundControl/MyBackgroundControl";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
 } from "../components/HOCInspectorControls";
-import WithBackgroundSettings from "../components/WithBackgroundSettings";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
 import "./editor.scss";
 import MyBoxShadowControl from "../components/controls/MyBoxShadowControl/MyBoxShadowControl";
@@ -27,15 +25,20 @@ import MyZIndexControl from "../components/controls/MyZIndexControl/MyZIndexCont
 import MyContainerControl from "../components/controls/MyContainerControl/MyContainerControl";
 import MyFlexPropertiesControl from "../components/controls/MyFlexPropertiesControl/MyFlexPropertiesControl";
 import MyTypographyControl from "../components/controls/MyTypographyControl/MyTypographyControl";
-import { withDispatch, useDispatch, useSelect } from "@wordpress/data";
+import { useDispatch, useSelect } from "@wordpress/data";
 import {
-	createBlock,
 	// @ts-ignore
 	createBlocksFromInnerBlocksTemplate,
 	// @ts-ignore
 	store as blocksStore,
 } from "@wordpress/blocks";
 import getBoxShadowStyles from "../components/controls/MyBoxShadowControl/getBoxShadowStyles";
+import GlobalCss from "./GlobalCss";
+import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
+import useGetDeviceType from "../hooks/useGetDeviceType";
+import { useEffect, useRef } from "@wordpress/element";
+import createCache from "@emotion/cache";
+import { CacheProvider } from "@emotion/react";
 
 export type EditProps<T> = {
 	attributes: T;
@@ -54,14 +57,19 @@ export type ContainerLayout =
 	| "layout-8"
 	| "layout-9";
 
+const XXXXXXX = document.createElement("code");
+let X = 0;
+
 const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 	const { uniqueId } = attributes;
+	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
 	//
+
 	useEffect(() => {
 		setAttributes({
-			uniqueId: clientId.substring(2, 9).replace("-", ""),
+			uniqueId: "wcb-container-" + clientId.substring(2, 9).replace("-", ""),
 		});
 	}, []);
 	//
@@ -212,13 +220,6 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 	const ALLOWED_BLOCKS = ["wcb/container-box"];
 
 	// ====== WRAP CLASSES
-	const WRAP_STYLES: React.CSSProperties = {
-		// @ts-ignore
-		"--lg-wcb-min-h": general_container.minHeight.Desktop,
-		"--md-wcb-min-h": general_container.minHeight.Tablet,
-		"--wcb-min-h": general_container.minHeight.Mobile,
-		overflow: general_container.overflow,
-	};
 
 	const containerWidthTypeClass =
 		general_container.containerWidthType === "Full Width"
@@ -227,7 +228,6 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 			? "alignwide"
 			: "";
 
-	const minHeightClass = `min-h-[var(--wcb-min-h)] md:min-h-[var(--md-wcb-min-h)] lg:min-h-[var(--lg-wcb-min-h)]`;
 	// ====== END WRAP CLASSES
 
 	// MAIN STYLES - CLASSES
@@ -277,63 +277,9 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		...boxShadowStyles,
 	};
 	//
-	const { flexWrap, flexDirection, alignItems, justifyContent } =
-		general_flexProperties;
+
 	const blockProps = useBlockProps({
-		className: `flex relative w-full h-full
-			gap-x-[var(--wcb-gap-x)]
-			gap-y-[var(--wcb-gap-y)]
-			md:gap-x-[var(--md-wcb-gap-x)]
-			md:gap-y-[var(--md-wcb-gap-y)]
-			lg:gap-x-[var(--lg-wcb-gap-x)]
-			lg:gap-y-[var(--lg-wcb-gap-y)]
-			
-			pt-[var(--wcb-pt)]
-			md:pt-[var(--md-wcb-pt)]
-			lg:pt-[var(--lg-wcb-pt)]
-			pb-[var(--wcb-pb)]
-			md:pb-[var(--md-wcb-pb)]
-			lg:pb-[var(--lg-wcb-pb)]
-			pl-[var(--wcb-pl)]
-			md:pl-[var(--md-wcb-pl)]
-			lg:pl-[var(--lg-wcb-pl)]
-			pr-[var(--wcb-pr)]
-			md:pr-[var(--md-wcb-pr)]
-			lg:pr-[var(--lg-wcb-pr)]
-
-			mt-[var(--wcb-mt)]
-			md:mt-[var(--md-wcb-mt)]
-			lg:mt-[var(--lg-wcb-mt)]
-			mb-[var(--wcb-mb)]
-			md:mb-[var(--md-wcb-mb)]
-			lg:mb-[var(--lg-wcb-mb)]
-			ml-[var(--wcb-ml)]
-			md:ml-[var(--md-wcb-ml)]
-			lg:ml-[var(--lg-wcb-ml)]
-			mr-[var(--wcb-mr)]
-			md:mr-[var(--md-wcb-mr)]
-			lg:mr-[var(--lg-wcb-mr)]
-
-			text-[color:var(--wcb-text-color)]
-
-			${flexWrap?.Mobile ? `flex-${flexWrap?.Mobile}` : ""} 
-			${flexWrap?.Tablet ? `md:flex-${flexWrap?.Tablet}` : ""}
-			${flexWrap?.Desktop ? `lg:flex-${flexWrap?.Desktop}` : ""}
-			
-			${flexDirection?.Mobile ? `flex-${flexDirection?.Mobile}` : "flex-col"} 
-			${flexDirection?.Tablet ? `md:flex-${flexDirection?.Tablet}` : "md:flex-row"}
-			${flexDirection?.Desktop ? `lg:flex-${flexDirection?.Desktop}` : ""}
-
-			${alignItems?.Mobile ? `items-${alignItems?.Mobile}` : ""} 
-			${alignItems?.Tablet ? `md:items-${alignItems?.Tablet}` : ""}
-			${alignItems?.Desktop ? `lg:items-${alignItems?.Desktop}` : ""}
-
-			${justifyContent?.Mobile ? `justify-${justifyContent?.Mobile}` : ""} 
-			${justifyContent?.Tablet ? `md:justify-${justifyContent?.Tablet}` : ""}
-			${justifyContent?.Desktop ? `lg:justify-${justifyContent?.Desktop}` : ""}
-
-			${boxShadowClasses}
-			`,
+		className: `wcb-container__inner ${boxShadowClasses} `,
 	});
 	// END MAIN STYLES - CLASSES
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
@@ -341,18 +287,81 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		renderAppender: () => null,
 	});
 
+	//
+	const ref = useRef<HTMLDivElement>(null);
+	useEffect(() => {
+		if (!ref.current) {
+			return;
+		}
+		const { ownerDocument } = ref.current;
+		const { defaultView } = ownerDocument;
+		// Set ownerDocument.title for example.
+	}, []);
+
+	const myCache = createCache({
+		key: "wcb-custom-cache-key",
+		container: ref.current || undefined,
+	});
+
+	const renderVideoBg = () => {
+		if (
+			styles_background.bgType !== "video" ||
+			!styles_background.videoData?.mediaId
+		) {
+			return null;
+		}
+		const SRC = styles_background.videoData?.mediaUrl || "";
+		return (
+			<div className="wcb-container__video">
+				<video
+					autoPlay
+					loop
+					muted
+					controls={false}
+					title={SRC}
+					data-id={styles_background.videoData.mediaId}
+					src={SRC}
+				></video>
+			</div>
+		);
+	};
+
+	const renderBgOverlay = () => {
+		if (styles_background.overlayType === "none") {
+			return null;
+		}
+		if (
+			styles_background.bgType !== "video" &&
+			styles_background.bgType !== "image"
+		) {
+			return null;
+		}
+
+		return <div className="wcb-container__overlay "></div>;
+	};
+
 	return (
-		<>
-			<WithBackgroundSettings
+		<CacheProvider value={myCache}>
+			<div
+				{...useBlockProps({ ref })}
+				className={`wcb-container__wrap ${uniqueId} ${containerWidthTypeClass}`}
+				id={uniqueId}
+			>
+				<GlobalCss {...attributes} />
+				{/*  */}
+				{/* <WithBackgroundSettings
 				backgroundControlAttrs={styles_background}
 				borderControlAttrs={styles_border}
 				wrapStyles={WRAP_STYLES}
 				className={`${containerWidthTypeClass} ${minHeightClass} `}
-			>
+			> */}
+				{renderVideoBg()}
+				{renderBgOverlay()}
 				<div {...innerBlocksProps} style={MAIN_STYLES} />
-			</WithBackgroundSettings>
-			<HOCInspectorControls renderTabPanels={renderTabBodyPanels} />
-		</>
+				{/* </WithBackgroundSettings> */}
+				<HOCInspectorControls renderTabPanels={renderTabBodyPanels} />
+			</div>
+		</CacheProvider>
 	);
 };
 

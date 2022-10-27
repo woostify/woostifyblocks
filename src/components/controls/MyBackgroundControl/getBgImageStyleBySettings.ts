@@ -1,4 +1,3 @@
-import { ResponsiveDevices } from "../MyResponsiveToggle/MyResponsiveToggle";
 import { BackgroundControlData } from "./MyBackgroundControl";
 import {
 	BgImageAttachment,
@@ -15,9 +14,7 @@ interface Params
 		| "bgImageSize"
 		| "focalPoint"
 		| "imageData"
-	> {
-	deviceType: ResponsiveDevices;
-}
+	> {}
 
 const getBgImageStyleBySettings = (params: Params): React.CSSProperties => {
 	const {
@@ -27,25 +24,49 @@ const getBgImageStyleBySettings = (params: Params): React.CSSProperties => {
 		focalPoint,
 		imageData,
 		//
-		deviceType,
 	} = params;
 
 	const SRC: string =
-		imageData[deviceType]?.mediaUrl ||
+		imageData.Mobile?.mediaUrl ||
 		imageData.Tablet?.mediaUrl ||
 		imageData.Desktop?.mediaUrl;
+	const SRC__TABLET: string =
+		imageData.Tablet?.mediaUrl || imageData.Desktop?.mediaUrl;
+	const SRC__DESKTOP: string = imageData.Desktop?.mediaUrl;
+
 	const BG_REPEAT: BgImageRepeat =
-		bgImageRepeat[deviceType] || bgImageRepeat.Tablet || bgImageRepeat.Desktop;
+		bgImageRepeat.Mobile || bgImageRepeat.Tablet || bgImageRepeat.Desktop;
+	const BG_REPEAT__TABLET: BgImageRepeat =
+		bgImageRepeat.Tablet || bgImageRepeat.Desktop;
+	const BG_REPEAT__DESKTOP: BgImageRepeat = bgImageRepeat.Desktop;
+
 	const BG_ATTACHMENT: BgImageAttachment =
-		bgImageAttachment[deviceType] ||
+		bgImageAttachment.Mobile ||
 		bgImageAttachment.Tablet ||
 		bgImageAttachment.Desktop;
+	const BG_ATTACHMENT__TABLET: BgImageAttachment =
+		bgImageAttachment.Tablet || bgImageAttachment.Desktop;
+	const BG_ATTACHMENT__DESKTOP: BgImageAttachment = bgImageAttachment.Desktop;
+
 	const BG_SIZE: BgImageSize =
-		bgImageSize[deviceType] || bgImageSize.Tablet || bgImageSize.Desktop;
+		bgImageSize.Mobile || bgImageSize.Tablet || bgImageSize.Desktop;
+	const BG_SIZE__TABLET: BgImageSize =
+		bgImageSize.Tablet || bgImageSize.Desktop;
+	const BG_SIZE__DESKTOP: BgImageSize = bgImageSize.Desktop;
+
 	const BG_FOCAL: BgImageFocalPoint =
-		focalPoint[deviceType] || focalPoint.Tablet || focalPoint.Desktop;
+		focalPoint.Mobile || focalPoint.Tablet || focalPoint.Desktop;
+	const BG_FOCAL__TABLET: BgImageFocalPoint =
+		focalPoint.Tablet || focalPoint.Desktop;
+	const BG_FOCAL__DESKTOP: BgImageFocalPoint = focalPoint.Desktop;
 
 	const BG_POSITION = `${BG_FOCAL.x * 100}% ${BG_FOCAL.y * 100}%`;
+	const BG_POSITION__TABLET = `${BG_FOCAL__TABLET.x * 100}% ${
+		BG_FOCAL__TABLET.y * 100
+	}%`;
+	const BG_POSITION__DESKTOP = `${BG_FOCAL__DESKTOP.x * 100}% ${
+		BG_FOCAL__DESKTOP.y * 100
+	}%`;
 
 	return {
 		backgroundImage: `url(${SRC})`,

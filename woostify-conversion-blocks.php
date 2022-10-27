@@ -31,6 +31,11 @@ require plugin_dir_path(__FILE__) . 'inc/wcb-blocks-render-callback.php';
 // end
 require plugin_dir_path(__FILE__) . 'inc/wcb-enqueue-scripts.php';
 
+
+// 
+wp_enqueue_style('wcb-frontend-css', plugin_dir_url(__FILE__) . 'public/css/frontend.css');
+// 
+
 //============================================================================================================================================
 // START REGISTER GUTENBERG BLOCKS
 //======================================================================================================================================
@@ -59,10 +64,40 @@ function wcb_create_blocks_gutenberg_init()
 	register_block_type(
 		__DIR__ . '/build/block-container',
 		[
-			// "render_callback" 	=> "render_callback_block_1",
+			"render_callback" 	=> "renderCallback",
 			// "attributes"		=> array_merge(
 			// 	[],
 			// ),
 		]
 	);
+}
+
+
+function renderCallback($attributes, $content)
+{
+
+	if (!is_admin()) {
+		wp_enqueue_script('boilerplateFrontendScript', plugin_dir_url(__FILE__) . 'build/block-container/FrontendStyles.js', array('wp-element'), null, true);
+	}
+
+	$containerWidthTypeClass = "";
+	if ($attributes['general_container']['containerWidthType'] === "Full Width") {
+		$containerWidthTypeClass = "alignfull";
+	}
+	if ($attributes['general_container']['containerWidthType'] === "Boxed") {
+		$containerWidthTypeClass = "alignwide";
+	}
+
+
+	ob_start(); ?>
+	<div id="<?php echo esc_attr($attributes['uniqueId']); ?>" class="wcb-container__wrap wcb-update-div <?php echo esc_attr($attributes['uniqueId'] . ' ' . $containerWidthTypeClass); ?>">
+
+		<!-- INNER BLOCK HERE -->
+		<?php echo $content; ?>
+
+		<!--  -->
+		<div data-wcb-global-styles></div>
+		<pre data-wcb-block-attrs style="display: none;"><?php echo wp_json_encode($attributes) ?></pre>
+	</div>
+<?php return ob_get_clean();
 }

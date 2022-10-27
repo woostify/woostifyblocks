@@ -9,10 +9,51 @@ export default function save({
 }: {
 	attributes: BlockWCBContainerAttrs;
 }) {
-	const className = "";
-
-	const blockProps = useBlockProps.save({ className });
+	const { styles_background, styles_border } = attributes;
+	const blockProps = useBlockProps.save({ className: "wcb-container__inner" });
 	const innerBlocksProps = useInnerBlocksProps.save(blockProps);
 
-	return <div {...innerBlocksProps} />;
+	const renderVideoBg = () => {
+		if (
+			styles_background.bgType !== "video" ||
+			!styles_background.videoData?.mediaId
+		) {
+			return null;
+		}
+		const SRC = styles_background.videoData?.mediaUrl || "";
+		return (
+			<div className="wcb-container__video">
+				<video
+					autoPlay
+					loop
+					muted
+					controls={false}
+					title={SRC}
+					data-id={styles_background.videoData.mediaId}
+					src={SRC}
+				></video>
+			</div>
+		);
+	};
+
+	const renderBgOverlay = () => {
+		if (styles_background.overlayType === "none") {
+			return null;
+		}
+		if (
+			styles_background.bgType !== "video" &&
+			styles_background.bgType !== "image"
+		) {
+			return null;
+		}
+
+		return <div className="wcb-container__overlay "></div>;
+	};
+	return (
+		<>
+			{renderBgOverlay()}
+			{renderVideoBg()}
+			<div {...innerBlocksProps} />;
+		</>
+	);
 }

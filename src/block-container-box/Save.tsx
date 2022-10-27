@@ -8,8 +8,6 @@ export default function save({
 }: {
 	attributes: BlockWCBContainerBoxAttrs;
 }) {
-	console.log(111, { attributes });
-
 	return (
 		<div {...useBlockProps.save()} className="wcb">
 			<RichText.Content tagName="h2" value={attributes.message} />
