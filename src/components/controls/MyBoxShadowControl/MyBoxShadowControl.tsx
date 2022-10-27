@@ -1,4 +1,5 @@
-import { RadioGroup } from "@headlessui/react";
+import { Disclosure, RadioGroup } from "@headlessui/react";
+import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
 import {
 	// @ts-ignore
 	__experimentalRadio as WPRadio,
@@ -7,10 +8,9 @@ import {
 } from "@wordpress/components";
 import { RangeControl, TabPanel } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState } from "react";
 import CheckIcon from "../../CheckIcon";
 import MyColorPicker from "../MyColorPicker/MyColorPicker";
-import MyLabelControl from "../MyLabelControl/MyLabelControl";
 import ResetButton from "../ResetButton";
 import {
 	MY_BOX_SHADOW_CONTROL_DEMO,
@@ -60,13 +60,12 @@ const MyBoxShadowControl: FC<Props> = ({
 		boxShadowControl[currentTab];
 
 	//
-
-	const handleChangePosition = (bPosition: BoxShadowPostion) => {
+	const setShadowPreset = (preClass: TwShadowPreset) => {
 		setAttrs__boxShadow({
 			...boxShadowControl,
 			[currentTab]: {
 				...boxShadowControl[currentTab],
-				position: bPosition,
+				presetClass: preClass,
 			},
 		});
 	};
@@ -79,12 +78,14 @@ const MyBoxShadowControl: FC<Props> = ({
 			},
 		});
 	};
-	const setShadowPreset = (preClass: TwShadowPreset) => {
+	// custoM
+	const handleChangePosition = (bPosition: BoxShadowPostion) => {
 		setAttrs__boxShadow({
 			...boxShadowControl,
 			[currentTab]: {
 				...boxShadowControl[currentTab],
-				presetClass: preClass,
+				position: bPosition,
+				presetClass: "",
 			},
 		});
 	};
@@ -94,6 +95,7 @@ const MyBoxShadowControl: FC<Props> = ({
 			[currentTab]: {
 				...boxShadowControl[currentTab],
 				horizontal: value,
+				presetClass: "",
 			},
 		});
 	};
@@ -103,6 +105,7 @@ const MyBoxShadowControl: FC<Props> = ({
 			[currentTab]: {
 				...boxShadowControl[currentTab],
 				vertical: value,
+				presetClass: "",
 			},
 		});
 	};
@@ -112,6 +115,7 @@ const MyBoxShadowControl: FC<Props> = ({
 			[currentTab]: {
 				...boxShadowControl[currentTab],
 				blur: value,
+				presetClass: "",
 			},
 		});
 	};
@@ -121,10 +125,12 @@ const MyBoxShadowControl: FC<Props> = ({
 			[currentTab]: {
 				...boxShadowControl[currentTab],
 				spread: value,
+				presetClass: "",
 			},
 		});
 	};
 
+	// RENDER
 	const renderRadioPresetShadow = () => {
 		return (
 			<RadioGroup value={presetClass} onChange={setShadowPreset}>
@@ -221,7 +227,6 @@ const MyBoxShadowControl: FC<Props> = ({
 			</div>
 		);
 	};
-
 	const renderShadowColorPicker = () => {
 		return (
 			<MyColorPicker
@@ -237,13 +242,27 @@ const MyBoxShadowControl: FC<Props> = ({
 			<div className="space-y-5">
 				{renderRadioPresetShadow()}
 				{renderShadowColorPicker()}
-				<div className="space-y-2.5">
-					{renderHorizontalRange()}
-					{renderVerticalRange()}
-					{renderBlurRange()}
-					{renderSpreadRange()}
-				</div>
-				{renderPositionRadioGroup()}
+				<Disclosure>
+					{({ open }) => (
+						<div>
+							<Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2.5 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+								<span>{__("Customize", "wcb")}</span>
+								<AdjustmentsHorizontalIcon
+									className={`h-5 w-5 text-purple-600`}
+								/>
+							</Disclosure.Button>
+							<Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500 border border-slate-300 rounded-lg mt-2">
+								<div className="space-y-3">
+									{renderHorizontalRange()}
+									{renderVerticalRange()}
+									{renderBlurRange()}
+									{renderSpreadRange()}
+									{renderPositionRadioGroup()}
+								</div>
+							</Disclosure.Panel>
+						</div>
+					)}
+				</Disclosure>
 			</div>
 		);
 	};

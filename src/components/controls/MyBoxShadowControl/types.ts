@@ -22,7 +22,7 @@ export const TW_SHADOW_PRESET: TwShadowPreset[] = [
 
 export const MY_BOX_SHADOW_CONTROL_DEMO: MyBoxShadowControlData = {
 	Normal: {
-		color: "#00000070",
+		color: "",
 		presetClass: "",
 		blur: 0,
 		horizontal: 0,
@@ -31,7 +31,7 @@ export const MY_BOX_SHADOW_CONTROL_DEMO: MyBoxShadowControlData = {
 		position: "outset",
 	},
 	Hover: {
-		color: "#00000070",
+		color: "",
 		presetClass: "",
 		blur: 0,
 		horizontal: 0,

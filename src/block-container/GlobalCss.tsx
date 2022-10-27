@@ -4,6 +4,7 @@ import {
 	BorderMain4Side,
 	BorderMainSingleSide,
 } from "../components/controls/MyBorderControl/types";
+import { getShadowStyleValueFromTwPreset } from "../components/controls/MyBoxShadowControl/getBoxShadowStyles";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { BlockWCBContainerAttrs } from "./attributes";
 
@@ -65,7 +66,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		`;
 	};
 
-	const getDivWrapStylesBackgroundColorORGradient = () => {
+	const getDivWrapStyles__BgColor_Gradient = () => {
 		const { bgType, color, gradient } = styles_background;
 
 		if (bgType !== "color" && bgType !== "gradient") {
@@ -95,7 +96,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		`;
 	};
 
-	const getDivWrapStylesBackgroundImage = () => {
+	const getDivWrapStyles__BackgroundImage = () => {
 		const {
 			bgImageAttachment,
 			bgImageRepeat,
@@ -164,7 +165,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		`;
 	};
 
-	const getDivWrapStylesBgVideo = () => {
+	const getDivWrapStyles__BgVideo = () => {
 		const { bgType } = styles_background;
 		if (bgType !== "video") {
 			return;
@@ -189,7 +190,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		`;
 	};
 
-	const getDivWrapStylesOverlay = () => {
+	const getDivWrapStyles__Overlay = () => {
 		const { overlayColor, overlayGradient, overlayType } = styles_background;
 
 		if (overlayType !== "color" && overlayType !== "gradient") {
@@ -220,7 +221,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		`;
 	};
 
-	const getDivWrapStylesBorderRadius = () => {
+	const getDivWrapStyles__BorderRadius = () => {
 		const { radius } = styles_border;
 		//
 		const radiusDesktop = radius?.Desktop;
@@ -249,7 +250,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 			}
 		`;
 	};
-	const getDivWrapStylesBorder = () => {
+
+	const getDivWrapStyles__Border = () => {
 		const { hoverColor, mainSettings } = styles_border;
 		//
 		if (!mainSettings) {
@@ -281,6 +283,49 @@ const GlobalCss: FC<Props> = (attrs) => {
 				}
 			`;
 		}
+	};
+
+	const getDivWrapStyles__BoxShadow = () => {
+		const { Hover, Normal } = styles_boxShadow;
+		const { presetClass, blur, color, horizontal, position, spread, vertical } =
+			Normal;
+		const {
+			presetClass: presetClass_h,
+			blur: blur_h,
+			color: color_h,
+			horizontal: horizontal_h,
+			position: position_h,
+			spread: spread_h,
+			vertical: vertical_h,
+		} = Hover;
+		//
+		let VALUE = "";
+		let VALUE_H = "";
+		//
+		if (presetClass) {
+			VALUE = getShadowStyleValueFromTwPreset(presetClass, color);
+		} else {
+			VALUE = `${horizontal}px ${vertical}px ${blur}px ${spread}px ${color} ${
+				position === "inset" ? position : ""
+			}`;
+		}
+		//
+		if (presetClass_h) {
+			VALUE_H = getShadowStyleValueFromTwPreset(presetClass_h, color_h);
+		} else {
+			VALUE_H = `${horizontal_h}px ${vertical_h}px ${blur_h}px ${spread_h}px ${color_h} ${
+				position_h === "inset" ? position_h : ""
+			}`;
+		}
+
+		return css`
+			${WRAP_CLASSNAME} {
+				box-shadow: ${VALUE};
+				&:hover {
+					box-shadow: ${VALUE_H};
+				}
+			}
+		`;
 	};
 
 	// ------------------- END WRAP DIV
@@ -384,12 +429,13 @@ const GlobalCss: FC<Props> = (attrs) => {
 	return (
 		<>
 			<Global styles={getDivWrapStyles()} />
-			<Global styles={getDivWrapStylesBackgroundImage()} />
-			<Global styles={getDivWrapStylesBackgroundColorORGradient()} />
-			<Global styles={getDivWrapStylesBgVideo()} />
-			<Global styles={getDivWrapStylesOverlay()} />
-			<Global styles={getDivWrapStylesBorderRadius()} />
-			<Global styles={getDivWrapStylesBorder()} />
+			<Global styles={getDivWrapStyles__BgColor_Gradient()} />
+			<Global styles={getDivWrapStyles__BackgroundImage()} />
+			<Global styles={getDivWrapStyles__BgVideo()} />
+			<Global styles={getDivWrapStyles__Overlay()} />
+			<Global styles={getDivWrapStyles__BorderRadius()} />
+			<Global styles={getDivWrapStyles__Border()} />
+			<Global styles={getDivWrapStyles__BoxShadow()} />
 			{/*  */}
 			<Global styles={getDivInnerStyles()} />
 			<Global styles={getInner__contentCustomWidth()} />

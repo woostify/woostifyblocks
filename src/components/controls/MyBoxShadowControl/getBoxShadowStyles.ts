@@ -1,49 +1,34 @@
-import { MyBoxShadowControlData } from "./MyBoxShadowControl";
+import { TwShadowPreset } from "./types";
 
-export default function getBoxShadowStyles(boxShadow: MyBoxShadowControlData): {
-	styles: React.CSSProperties;
-	className: string;
-} {
-	const { Hover, Normal } = boxShadow;
-	const { presetClass, blur, color, horizontal, position, spread, vertical } =
-		Normal;
-	const {
-		presetClass: presetClass_h,
-		blur: blur_h,
-		color: color_h,
-		horizontal: horizontal_h,
-		position: position_h,
-		spread: spread_h,
-		vertical: vertical_h,
-	} = Hover;
-	if (presetClass) {
-		return {
-			styles: {},
-			className: `${presetClass} hover:${presetClass_h}`,
-		};
+export const getShadowStyleValueFromTwPreset = (
+	presetClass: TwShadowPreset,
+	color: string = ""
+) => {
+	switch (presetClass) {
+		case "shadow-sm":
+			return `0 1px 2px 0 ${color || "rgb(0 0 0 / 0.05)"}`;
+		case "shadow":
+			return `0 1px 3px 0 ${color || "rgb(0 0 0 / 0.1)"}, 0 1px 2px -1px ${
+				color || "rgb(0 0 0 / 0.1)"
+			}`;
+		case "shadow-md":
+			return `0 4px 6px -1px ${color || "rgb(0 0 0 / 0.1)"}, 0 2px 4px -2px ${
+				color || "rgb(0 0 0 / 0.1)"
+			}`;
+		case "shadow-lg":
+			return `0 10px 15px -3px ${color || "rgb(0 0 0 / 0.1)"}, 0 4px 6px -4px ${
+				color || "rgb(0 0 0 / 0.1)"
+			}`;
+		case "shadow-xl":
+			return `0 20px 25px -5px ${
+				color || "rgb(0 0 0 / 0.1)"
+			}, 0 8px 10px -6px ${color || "rgb(0 0 0 / 0.1)"}`;
+		case "shadow-2xl":
+			return `0 25px 50px -12px ${color || "rgb(0 0 0 / 0.25)"}`;
+		case "shadow-inner":
+			return `inset 0 2px 4px 0 ${color || "rgb(0 0 0 / 0.05)"}`;
+
+		default:
+			return "";
 	}
-
-	const MAIN_STYLES: React.CSSProperties = {
-		// box-shadow: none|h-offset v-offset blur spread color |inset|initial|inherit;
-		// @ts-ignore
-		"--wcb-shadow-h": horizontal,
-		"--wcb-shadow-v": vertical,
-		"--wcb-shadow-blur": blur,
-		"--wcb-shadow-spread": spread,
-		"--wcb-shadow-color": color,
-		"--wcb-shadow-position": position,
-		//
-		"--hover-wcb-shadow-h": horizontal_h,
-		"--hover-wcb-shadow-v": vertical_h,
-		"--hover-wcb-shadow-blur": blur_h,
-		"--hover-wcb-shadow-spread": spread_h,
-		"--hover-wcb-shadow-color": color_h,
-		"--hover-wcb-shadow-position": position_h,
-		// boxShadow: `${horizontal}_${vertical}_${blur}_${spread}_${color}_${position}`
-	};
-
-	return {
-		styles: MAIN_STYLES,
-		className: `shadow-[shadow:var(--wcb-shadow-h)_var(--wcb-shadow-v)_var(--wcb-shadow-blur)_var(--wcb-shadow-spread)_var(--wcb-shadow-color)_var(--wcb-shadow-position)] hover:shadow-[var(--hover-wcb-shadow-h)_var(--hover-wcb-shadow-v)_var(--hover-wcb-shadow-blur)_var(--hover-wcb-shadow-spread)_var(--hover-wcb-shadow-color)_var(--hover-wcb-shadow-position)] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]`,
-	};
-}
+};

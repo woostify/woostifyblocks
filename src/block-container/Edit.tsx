@@ -32,7 +32,6 @@ import {
 	// @ts-ignore
 	store as blocksStore,
 } from "@wordpress/blocks";
-import getBoxShadowStyles from "../components/controls/MyBoxShadowControl/getBoxShadowStyles";
 import GlobalCss from "./GlobalCss";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
@@ -235,8 +234,7 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 	const { Mobile: pMobile, Tablet: pTablet, Desktop: pDesktop } = padding;
 	const { Mobile: mMobile, Tablet: mTablet, Desktop: mDesktop } = margin;
 	//
-	const { styles: boxShadowStyles, className: boxShadowClasses } =
-		getBoxShadowStyles(styles_boxShadow);
+
 	const MAIN_STYLES: React.CSSProperties = {
 		// @ts-ignore
 		"--wcb-gap-x": colunmGap.Mobile || colunmGap.Tablet || colunmGap.Desktop,
@@ -274,12 +272,11 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		// COLOR
 		"--wcb-text-color": styles_color,
 		//
-		...boxShadowStyles,
 	};
 	//
 
 	const blockProps = useBlockProps({
-		className: `wcb-container__inner ${boxShadowClasses} `,
+		className: `wcb-container__inner`,
 	});
 	// END MAIN STYLES - CLASSES
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {

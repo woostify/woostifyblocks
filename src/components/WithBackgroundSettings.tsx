@@ -1,9 +1,7 @@
 import React, { FC, ReactNode } from "react";
 import _ from "lodash";
 import useGetDeviceType from "../hooks/useGetDeviceType";
-import getBgImageStyleBySettings from "./controls/MyBackgroundControl/getBgImageStyleBySettings";
 import { BackgroundControlData } from "./controls/MyBackgroundControl/MyBackgroundControl";
-import getBorderStyleBySettings from "./controls/MyBorderControl/getBorderStyleBySettings";
 import { MyBorderControlData } from "./controls/MyBorderControl/types";
 import { ResponsiveDevices } from "./controls/MyResponsiveToggle/MyResponsiveToggle";
 
@@ -85,15 +83,9 @@ const WithBackgroundSettings: FC<Props> = ({
 		if (backgroundControlAttrs.bgType !== "image") {
 			return null;
 		}
-		const BG_IMAGE_STLYE = getBgImageStyleBySettings({
-			...backgroundControlAttrs,
-		});
 
 		return (
-			<div
-				className="wcb-container__video-wrap absolute inset-0 z-0 overflow-hidden"
-				style={BG_IMAGE_STLYE}
-			></div>
+			<div className="wcb-container__video-wrap absolute inset-0 z-0 overflow-hidden"></div>
 		);
 	};
 
@@ -130,11 +122,6 @@ const WithBackgroundSettings: FC<Props> = ({
 	let BG_STYLES: React.CSSProperties = {};
 	BG_STYLES = getStyleForBackground();
 
-	if (borderControlAttrs) {
-		const borderStyles = getBorderStyleBySettings(borderControlAttrs);
-		BORDER_CLASSES = borderStyles.className;
-		BORDER_STYLES = borderStyles.styles;
-	}
 	return (
 		<div
 			className={`WithBackgroundSettings wcb-block-wrapper relative flex ${BORDER_CLASSES} ${className}`}
