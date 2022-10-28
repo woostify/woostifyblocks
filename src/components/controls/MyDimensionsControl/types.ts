@@ -21,8 +21,8 @@ export const DEFAULT_DIMENSION: string | DimensionSettings = {
 };
 
 export const MY_DIMENSIONS_CONTROL_DEMO: MyDimensionsControlData = {
-	colunmGap: { Desktop: "2rem" },
-	rowGap: { Desktop: "2rem" },
+	colunmGap: { Desktop: "1.5rem" },
+	rowGap: { Desktop: "1.5rem" },
 	margin: {
 		Desktop: {
 			top: "0",
@@ -33,10 +33,10 @@ export const MY_DIMENSIONS_CONTROL_DEMO: MyDimensionsControlData = {
 	},
 	padding: {
 		Desktop: {
-			top: "0",
-			left: "0",
-			right: "0",
-			bottom: "0",
+			top: "1rem",
+			left: "1rem",
+			right: "1rem",
+			bottom: "1rem",
 		},
 	},
 };

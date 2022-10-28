@@ -25,7 +25,6 @@ import MyResponsiveConditionControl from "../components/controls/MyResponsiveCon
 import MyZIndexControl from "../components/controls/MyZIndexControl/MyZIndexControl";
 import MyContainerControl from "../components/controls/MyContainerControl/MyContainerControl";
 import MyFlexPropertiesControl from "../components/controls/MyFlexPropertiesControl/MyFlexPropertiesControl";
-import MyTypographyControl from "../components/controls/MyTypographyControl/MyTypographyControl";
 import { useDispatch, useSelect } from "@wordpress/data";
 import {
 	// @ts-ignore
@@ -38,23 +37,13 @@ import { CacheProvider } from "@emotion/react";
 import useCreateCacheEmotion from "../hooks/useCreateCacheEmotion";
 import VideoBackgroundByBgControl from "../components/VideoBackgroundByBgControl";
 import OverlayBackgroundByBgControl from "../components/OverlayBackgroundByBgControl";
+import { FLEX_PROPERTIES_CONTROL_DEMO } from "../components/controls/MyFlexPropertiesControl/types";
 
 export type EditProps<T> = {
 	attributes: T;
 	setAttributes: (newAttributes: Partial<T>) => void;
 	clientId: string;
 };
-
-export type ContainerLayout =
-	| "layout-1"
-	| "layout-2"
-	| "layout-3"
-	| "layout-4"
-	| "layout-5"
-	| "layout-6"
-	| "layout-7"
-	| "layout-8"
-	| "layout-9";
 
 export const getGapStyleFromGapjObj = ({ colunmGap, rowGap }) => {
 	const MAIN_STYLES: React.CSSProperties = {
@@ -269,7 +258,22 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 	);
 };
 
-const Placeholder = ({ attributes, setAttributes, name, clientId }) => {
+interface TPlaceholder extends EditProps<BlockWCBContainerAttrs> {
+	name: string;
+}
+const Placeholder: FC<TPlaceholder> = ({
+	attributes,
+	setAttributes,
+	name,
+	clientId,
+}) => {
+	// RESET FLEX PROPERTIES
+	useEffect(() => {
+		setAttributes({
+			general_flexProperties: FLEX_PROPERTIES_CONTROL_DEMO,
+		});
+	}, []);
+
 	const { blockType, defaultVariation, variations } = useSelect(
 		(select) => {
 			const { getBlockVariations, getBlockType, getDefaultBlockVariation } =

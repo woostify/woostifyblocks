@@ -32,7 +32,6 @@ import {
 	MyZIndexControlData,
 	Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
-import { ContainerLayout } from "./Edit";
 
 export interface BlockWCBContainerAttrs {
 	uniqueId: string;

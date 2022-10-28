@@ -18,7 +18,7 @@ import blokcContainerAttrs, { BlockWCBContainerAttrs } from "./attributes";
 const RenderIcon = (props) => {
 	return (
 		<div className="w-16 h-12 flex items-center justify-center ">
-			<div className="flex flex-wrap w-14 h-8 border border-[#007cba] bg-[#007cba] rounded-sm">
+			<div className="grid grid-rows-2 grid-cols-12 w-14 h-8 p-0.5 bg-[#007cba] gap-0.5 rounded-sm">
 				{props.children}
 			</div>
 		</div>
@@ -43,8 +43,8 @@ const getContainerAttrsByFlexWrap = (
 			...FLEX_PROPERTIES_CONTROL_DEMO,
 			flexWrap: {
 				Desktop: flexWrap,
-				Tablet: flexWrap,
-				Mobile: flexWrap,
+				Tablet: "wrap",
+				Mobile: "wrap",
 			},
 		},
 	};
@@ -84,7 +84,7 @@ export const variations: {
 		description: __("One column"),
 		icon: (
 			<RenderIcon>
-				<div className="flex-1 border border-[#007cba] bg-white"></div>
+				<div className="col-span-12 row-span-2 bg-white"></div>
 			</RenderIcon>
 		),
 		innerBlocks: [["wcb/container-box", getContainerBoxAttrsByWidth("100%")]],
@@ -97,8 +97,8 @@ export const variations: {
 		description: __("Two columns; equal split"),
 		icon: (
 			<RenderIcon>
-				<div className="flex-1 border border-[#007cba] bg-white"></div>
-				<div className="flex-1 border border-[#007cba] bg-white"></div>
+				<div className="col-span-6 row-span-2 bg-white"></div>
+				<div className="col-span-6 row-span-2 bg-white"></div>
 			</RenderIcon>
 		),
 		innerBlocks: [
@@ -109,13 +109,13 @@ export const variations: {
 		// attributes: {}
 	},
 	{
-		name: "two-columns-one-third-two-thirds",
+		name: "two-columns-33-66",
 		title: __("33 / 66"),
 		description: __("Two columns; one-third, two-thirds split"),
 		icon: (
 			<RenderIcon>
-				<div className="border border-[#007cba] bg-white w-1/3" />
-				<div className="flex-1 border border-[#007cba] bg-white" />
+				<div className="row-span-2 col-span-4 bg-white" />
+				<div className="row-span-2 col-span-8 bg-white" />
 			</RenderIcon>
 		),
 		innerBlocks: [
@@ -125,13 +125,13 @@ export const variations: {
 		scope: ["block"],
 	},
 	{
-		name: "two-columns-two-thirds-one-third",
+		name: "two-columns-66-33",
 		title: __("66 / 33"),
 		description: __("Two columns; two-thirds, one-third split"),
 		icon: (
 			<RenderIcon>
-				<div className="flex-1 border border-[#007cba] bg-white" />
-				<div className="border border-[#007cba] bg-white w-1/3" />
+				<div className="row-span-2 col-span-8 bg-white" />
+				<div className="row-span-2 col-span-4 bg-white" />
 			</RenderIcon>
 		),
 		innerBlocks: [
@@ -146,9 +146,9 @@ export const variations: {
 		description: __("Three columns; equal split"),
 		icon: (
 			<RenderIcon>
-				<div className="flex-1 border border-[#007cba] bg-white" />
-				<div className="flex-1 border border-[#007cba] bg-white" />
-				<div className="flex-1 border border-[#007cba] bg-white" />
+				<div className="row-span-2 col-span-4 bg-white" />
+				<div className="row-span-2 col-span-4 bg-white" />
+				<div className="row-span-2 col-span-4 bg-white" />
 			</RenderIcon>
 		),
 		innerBlocks: [
@@ -159,14 +159,34 @@ export const variations: {
 		scope: ["block"],
 	},
 	{
-		name: "three-columns-wider-center",
+		name: "four-columns-equal",
+		title: __("25 / 25 / 25 / 25"),
+		description: __("Three columns; equal split"),
+		icon: (
+			<RenderIcon>
+				<div className="row-span-2 col-span-3 bg-white" />
+				<div className="row-span-2 col-span-3 bg-white" />
+				<div className="row-span-2 col-span-3 bg-white" />
+				<div className="row-span-2 col-span-3 bg-white" />
+			</RenderIcon>
+		),
+		innerBlocks: [
+			["wcb/container-box", undefined],
+			["wcb/container-box", undefined],
+			["wcb/container-box", undefined],
+			["wcb/container-box", undefined],
+		],
+		scope: ["block"],
+	},
+	{
+		name: "three-columns-25-50-25",
 		title: __("25 / 50 / 25"),
 		description: __("Three columns; wide center column"),
 		icon: (
 			<RenderIcon>
-				<div className="border border-[#007cba] bg-white w-1/4" />
-				<div className="border border-[#007cba] bg-white w-2/4" />
-				<div className="flex-1 border border-[#007cba] bg-white " />
+				<div className="row-span-2 col-span-3 bg-white" />
+				<div className="row-span-2 col-span-6 bg-white" />
+				<div className="row-span-2 col-span-3 bg-white" />
 			</RenderIcon>
 		),
 		innerBlocks: [
@@ -176,22 +196,175 @@ export const variations: {
 		],
 		scope: ["block"],
 	},
+
+	// TWO ROW - FLEX WRAP
 	{
-		name: "layout-wider-center",
-		title: __("25 / 50 / 25"),
+		name: "two-rows-equal",
+		title: __("100 / 100 / x2"),
 		description: __("Three columns; wide center column"),
 		icon: (
 			<RenderIcon>
-				<div className="border border-[#007cba] bg-white w-1/3" />
-				<div className="border border-[#007cba] bg-white w-2/3" />
-				<div className="border border-[#007cba] bg-white w-2/3" />
-				<div className="border border-[#007cba] bg-white w-1/3" />
+				<div className="col-span-12 bg-white" />
+				<div className="col-span-12 bg-white" />
+			</RenderIcon>
+		),
+		innerBlocks: [
+			["wcb/container-box", getContainerBoxAttrsByWidth("100%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("100%")],
+		],
+		scope: ["block"],
+		attributes: getContainerAttrsByFlexWrap("wrap"),
+	},
+	{
+		name: "two-rows-50-50-2full",
+		title: __("50 / 50 / 100"),
+		description: __("Three columns; wide center column"),
+		icon: (
+			<RenderIcon>
+				<div className="col-span-6 bg-white" />
+				<div className="col-span-6 bg-white" />
+				<div className="col-span-12 bg-white" />
+			</RenderIcon>
+		),
+		innerBlocks: [
+			["wcb/container-box", getContainerBoxAttrsByWidth("50%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("50%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("100%")],
+		],
+		scope: ["block"],
+		attributes: getContainerAttrsByFlexWrap("wrap"),
+	},
+	{
+		name: "two-rows-33-33-33-50x2",
+		title: __("33 x 3 / 50 x 2"),
+		description: __("Three columns; wide center column"),
+		icon: (
+			<RenderIcon>
+				<div className="col-span-4 bg-white" />
+				<div className="col-span-4 bg-white" />
+				<div className="col-span-4 bg-white" />
+				<div className="col-span-6 bg-white" />
+				<div className="col-span-6 bg-white" />
+			</RenderIcon>
+		),
+		innerBlocks: [
+			["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("50%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("50%")],
+		],
+		scope: ["block"],
+		attributes: getContainerAttrsByFlexWrap("wrap"),
+	},
+	{
+		name: "two-rows-33-66",
+		title: __("33 / 66 / x2"),
+		description: __("Three columns; wide center column"),
+		icon: (
+			<RenderIcon>
+				<div className="col-span-4 bg-white" />
+				<div className="col-span-8 bg-white" />
+				<div className="col-span-8 bg-white" />
+				<div className="col-span-4 bg-white" />
 			</RenderIcon>
 		),
 		innerBlocks: [
 			["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")],
 			["wcb/container-box", getContainerBoxAttrsByWidth("66.66%")],
 			["wcb/container-box", getContainerBoxAttrsByWidth("66.66%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")],
+		],
+		scope: ["block"],
+		attributes: getContainerAttrsByFlexWrap("wrap"),
+	},
+	{
+		name: "two-rows-50-50",
+		title: __("50 / 50 / x2"),
+		description: __("Three columns; wide center column"),
+		icon: (
+			<RenderIcon>
+				<div className="col-span-6 bg-white" />
+				<div className="col-span-6 bg-white" />
+				<div className="col-span-6 bg-white" />
+				<div className="col-span-6 bg-white" />
+			</RenderIcon>
+		),
+		innerBlocks: [
+			["wcb/container-box", getContainerBoxAttrsByWidth("50%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("50%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("50%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("50%")],
+		],
+		scope: ["block"],
+		attributes: getContainerAttrsByFlexWrap("wrap"),
+	},
+	{
+		name: "two-rows-66-33",
+		title: __("66 / 33 / x2"),
+		description: __("Three columns; wide center column"),
+		icon: (
+			<RenderIcon>
+				<div className="col-span-8 bg-white" />
+				<div className="col-span-4 bg-white" />
+				<div className="col-span-4 bg-white" />
+				<div className="col-span-8 bg-white" />
+			</RenderIcon>
+		),
+		innerBlocks: [
+			["wcb/container-box", getContainerBoxAttrsByWidth("66.66%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("66.66%")],
+		],
+		scope: ["block"],
+		attributes: getContainerAttrsByFlexWrap("wrap"),
+	},
+	{
+		name: "two-rows-25-50-25",
+		title: __("25 / 50 / 25 / x2"),
+		description: __("Three columns; wide center column"),
+		icon: (
+			<RenderIcon>
+				<div className="col-span-3 bg-white" />
+				<div className="col-span-6 bg-white" />
+				<div className="col-span-3 bg-white" />
+				<div className="col-span-3 bg-white" />
+				<div className="col-span-6 bg-white" />
+				<div className="col-span-3 bg-white" />
+			</RenderIcon>
+		),
+		innerBlocks: [
+			["wcb/container-box", getContainerBoxAttrsByWidth("25%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("50%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("25%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("25%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("50%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("25%")],
+		],
+		scope: ["block"],
+		attributes: getContainerAttrsByFlexWrap("wrap"),
+	},
+	{
+		name: "two-rows-33-equal",
+		title: __("33 / 33 / 33 "),
+		description: __("Three columns; wide center column"),
+		icon: (
+			<RenderIcon>
+				<div className="col-span-4 bg-white" />
+				<div className="col-span-4 bg-white" />
+				<div className="col-span-4 bg-white" />
+				<div className="col-span-4 bg-white" />
+				<div className="col-span-4 bg-white" />
+				<div className="col-span-4 bg-white" />
+			</RenderIcon>
+		),
+		innerBlocks: [
+			["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")],
+			["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")],
 			["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")],
 		],
 		scope: ["block"],
