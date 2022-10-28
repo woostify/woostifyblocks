@@ -1,5 +1,8 @@
 import React from "react";
 import { __ } from "@wordpress/i18n";
+// @ts-ignore
+import _ from "lodash";
+// @ts-ignore
 import { useInnerBlocksProps, useBlockProps } from "@wordpress/block-editor";
 import { BlockWCBContainerAttrs } from "./attributes";
 import "./style.scss";
@@ -9,7 +12,7 @@ export default function save({
 }: {
 	attributes: BlockWCBContainerAttrs;
 }) {
-	const { styles_background, styles_border } = attributes;
+	const { styles_background, uniqueId, general_container } = attributes;
 	const blockProps = useBlockProps.save({ className: "wcb-container__inner" });
 	const innerBlocksProps = useInnerBlocksProps.save(blockProps);
 
@@ -49,11 +52,27 @@ export default function save({
 
 		return <div className="wcb-container__overlay "></div>;
 	};
+
+	const containerWidthTypeClass =
+		general_container.containerWidthType === "Full Width"
+			? "alignfull"
+			: general_container.containerWidthType === "Boxed"
+			? "alignwide"
+			: "";
+
 	return (
-		<>
+		<div
+			className={`wcb-container__wrap wcb-update-div ${uniqueId} ${containerWidthTypeClass}`}
+			id={uniqueId}
+		>
 			{renderBgOverlay()}
 			{renderVideoBg()}
-			<div {...innerBlocksProps} />;
-		</>
+			<div {...innerBlocksProps} />
+			{/*  */}
+			<div data-wcb-global-styles={uniqueId}></div>
+			<pre data-wcb-block-attrs={uniqueId} style={{ display: "none" }}>
+				{_.escape(JSON.stringify(attributes))}
+			</pre>
+		</div>
 	);
 }

@@ -1,5 +1,9 @@
 import { __ } from "@wordpress/i18n";
-import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
+import {
+	useBlockProps,
+	InnerBlocks,
+	useInnerBlocksProps,
+} from "@wordpress/block-editor";
 import { PanelBody } from "@wordpress/components";
 import React, { useEffect, FC } from "react";
 import { BlockWCBContainerBoxAttrs } from "./attributes";
@@ -8,11 +12,8 @@ import MyBackgroundControl from "../components/controls/MyBackgroundControl/MyBa
 import HOCInspectorControls, {
 	InspectorControlsTabs,
 } from "../components/HOCInspectorControls";
-import WithBackgroundSettings from "../components/WithBackgroundSettings";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
 import "./editor.scss";
-import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
-import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyBoxShadowControl from "../components/controls/MyBoxShadowControl/MyBoxShadowControl";
 import MyDimensionsControl from "../components/controls/MyDimensionsControl/MyDimensionsControl";
 import MyResponsiveConditionControl from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
@@ -20,22 +21,22 @@ import MyZIndexControl from "../components/controls/MyZIndexControl/MyZIndexCont
 import MyFlexPropertiesControl from "../components/controls/MyFlexPropertiesControl/MyFlexPropertiesControl";
 import MyTypographyControl from "../components/controls/MyTypographyControl/MyTypographyControl";
 import ContainerControl from "./ContainerControl";
-
-export type EditProps<T> = {
-	attributes: T;
-	setAttributes: (newAttributes: Partial<T>) => void;
-	clientId: string;
-};
+import { EditProps } from "../block-container/Edit";
+import { CacheProvider } from "@emotion/react";
+import useCreateCacheEmotion from "../hooks/useCreateCacheEmotion";
+import GlobalCss from "./GlobalCss";
 
 const Edit: FC<EditProps<BlockWCBContainerBoxAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 	const { uniqueId, general_container } = attributes;
 
-	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
+	const { myCache, ref } = useCreateCacheEmotion("wcb-container-box-key");
+
 	//
 	useEffect(() => {
 		setAttributes({
-			uniqueId: clientId.substring(2, 9).replace("-", ""),
+			uniqueId:
+				"wcb-container-box-" + clientId.substring(2, 9).replace("-", ""),
 		});
 	}, []);
 	//
@@ -174,7 +175,6 @@ const Edit: FC<EditProps<BlockWCBContainerBoxAttrs>> = (props) => {
 		}
 	};
 
-	const blockProps = useBlockProps();
 	let {
 		Desktop: customWidth_LG,
 		Tablet: customWidth_MD,
@@ -182,30 +182,23 @@ const Edit: FC<EditProps<BlockWCBContainerBoxAttrs>> = (props) => {
 	} = general_container.customWidth;
 	customWidth = customWidth || customWidth_MD || customWidth_LG;
 	customWidth_MD = customWidth_MD || customWidth_LG;
+
+	const wrapBlockProps = useBlockProps({ ref });
 	return (
-		<>
+		<CacheProvider value={myCache}>
 			<HOCInspectorControls renderTabPanels={renderTabBodyPanels} />
-			{/* <WithBackgroundSettings
-				backgroundControlAttrs={attributes.styles_background}
-				borderControlAttrs={attributes.styles_border}
-			> */}
+
 			<div
-				{...blockProps}
-				className={
-					blockProps?.className +
-					` basis-[var(--wcb-basic)] md:basis-[var(--md-wcb-basic)] lg:basis-[var(--lg-wcb-basic)]`
-				}
-				style={{
-					// @ts-ignore
-					"--wcb-basic": `calc(${customWidth} - (var(--wcb-gap-x) / 2))`,
-					"--md-wcb-basic": `calc(${customWidth_MD} - (var(--wcb-gap-x) / 2))`,
-					"--lg-wcb-basic": `calc(${customWidth_LG} - (var(--wcb-gap-x) / 2))`,
-				}}
+				{...wrapBlockProps}
+				className={`${wrapBlockProps?.className} wcb-container-box__wrap ${uniqueId}`}
+				id={uniqueId}
 			>
+				{/*  */}
+				<GlobalCss {...attributes} />
+				{/*  */}
 				<InnerBlocks renderAppender={InnerBlocks.ButtonBlockAppender} />
 			</div>
-			{/* </WithBackgroundSettings> */}
-		</>
+		</CacheProvider>
 	);
 };
 

@@ -37,7 +37,6 @@ import {
 
 export interface BlockWCBContainerBoxAttrs {
 	uniqueId: string;
-	message: string;
 	general_container: ContainerBox_Container_Control;
 	general_flexProperties: MyFlexPropertiesControlData;
 	general_typography: MyTypographyControlData;
@@ -55,12 +54,6 @@ export const blokcContainerBoxAttrs: AttrsGenericType<BlockWCBContainerBoxAttrs>
 		uniqueId: {
 			type: "string",
 			default: "",
-		},
-		message: {
-			type: "string",
-			source: "text",
-			selector: "div",
-			default: "Clik to edit heading here!",
 		},
 		general_container: {
 			type: "object",

@@ -86,7 +86,7 @@ export const STYLES_BG_DEMO: BackgroundControlData = {
 	bgImageRepeat: { Desktop: "no-repeat" },
 	bgImageSize: { Desktop: "cover" },
 	bgType: "color",
-	color: "#fff",
+	color: "",
 	focalPoint: { Desktop: INIT_FOCAL_POINT_DEMO },
 	gradient:
 		"linear-gradient(104deg, rgb(93, 206, 231) 0%, rgb(244, 119, 127) 100%)",

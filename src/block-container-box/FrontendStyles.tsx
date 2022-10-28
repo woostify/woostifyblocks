@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import ReactDOM from "react-dom";
-import { BlockWCBContainerAttrs } from "./attributes";
+import { BlockWCBContainerBoxAttrs } from "./attributes";
 import GlobalCss from "./GlobalCss";
 
-interface Props extends BlockWCBContainerAttrs {}
+interface Props extends BlockWCBContainerBoxAttrs {}
 
 const FrontendStyles: FC<Props> = (attrs) => {
 	return <GlobalCss {...attrs} />;
@@ -11,7 +11,7 @@ const FrontendStyles: FC<Props> = (attrs) => {
 
 //
 const divsToUpdate = document.querySelectorAll(
-	".wcb-container__wrap.wcb-update-div"
+	".wcb-container-box__wrap.wcb-update-div"
 );
 divsToUpdate.forEach((div) => {
 	const preEl = div.querySelector(

@@ -55,7 +55,7 @@ function wcb_create_blocks_gutenberg_init()
 	register_block_type(
 		__DIR__ . '/build/block-container-box',
 		[
-			// "render_callback" 	=> "render_callback_block_1",
+			"render_callback" 	=> "wcb_block_container_box__renderCallback",
 			// "attributes"		=> array_merge(
 			// 	[],
 			// ),
@@ -64,7 +64,7 @@ function wcb_create_blocks_gutenberg_init()
 	register_block_type(
 		__DIR__ . '/build/block-container',
 		[
-			"render_callback" 	=> "renderCallback",
+			"render_callback" 	=> "wcb_block_container__renderCallback",
 			// "attributes"		=> array_merge(
 			// 	[],
 			// ),
@@ -73,31 +73,18 @@ function wcb_create_blocks_gutenberg_init()
 }
 
 
-function renderCallback($attributes, $content)
+function wcb_block_container_box__renderCallback($attributes, $content)
 {
-
 	if (!is_admin()) {
-		wp_enqueue_script('boilerplateFrontendScript', plugin_dir_url(__FILE__) . 'build/block-container/FrontendStyles.js', array('wp-element'), null, true);
+		wp_enqueue_script('wcb_block_container_box__renderCallbackScript', plugin_dir_url(__FILE__) . 'build/block-container-box/FrontendStyles.js', array('wp-element'), null, true);
 	}
+	return $content;
+}
 
-	$containerWidthTypeClass = "";
-	if ($attributes['general_container']['containerWidthType'] === "Full Width") {
-		$containerWidthTypeClass = "alignfull";
+function wcb_block_container__renderCallback($attributes, $content)
+{
+	if (!is_admin()) {
+		wp_enqueue_script('wcb_block_container__renderCallbackScript', plugin_dir_url(__FILE__) . 'build/block-container/FrontendStyles.js', array('wp-element'), null, true);
 	}
-	if ($attributes['general_container']['containerWidthType'] === "Boxed") {
-		$containerWidthTypeClass = "alignwide";
-	}
-
-
-	ob_start(); ?>
-	<div id="<?php echo esc_attr($attributes['uniqueId']); ?>" class="wcb-container__wrap wcb-update-div <?php echo esc_attr($attributes['uniqueId'] . ' ' . $containerWidthTypeClass); ?>">
-
-		<!-- INNER BLOCK HERE -->
-		<?php echo $content; ?>
-
-		<!--  -->
-		<div data-wcb-global-styles></div>
-		<pre data-wcb-block-attrs style="display: none;"><?php echo wp_json_encode($attributes) ?></pre>
-	</div>
-<?php return ob_get_clean();
+	return $content;
 }

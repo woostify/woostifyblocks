@@ -8,7 +8,6 @@ import MyBackgroundControl from "../components/controls/MyBackgroundControl/MyBa
 import HOCInspectorControls, {
 	InspectorControlsTabs,
 } from "../components/HOCInspectorControls";
-import WithBackgroundSettings from "../components/WithBackgroundSettings";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
 import "./editor.scss";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
@@ -177,17 +176,13 @@ const Edit: FC<EditProps<Blokc1Attrs>> = (props) => {
 	return (
 		<div {...useBlockProps()}>
 			<HOCInspectorControls renderTabPanels={renderTabBodyPanels} />
-			<WithBackgroundSettings
-				backgroundControlAttrs={attributes.styles_background}
-				borderControlAttrs={attributes.styles_border}
-			>
-				<RichText
-					tagName="h2"
-					className="wcb-text "
-					value={attributes.message}
-					onChange={(val) => setAttributes({ message: val })}
-				/>
-			</WithBackgroundSettings>
+
+			<RichText
+				tagName="h2"
+				className="wcb-text "
+				value={attributes.message}
+				onChange={(val) => setAttributes({ message: val })}
+			/>
 		</div>
 	);
 };

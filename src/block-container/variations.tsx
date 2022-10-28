@@ -1,24 +1,11 @@
-/**
- * WordPress dependencies
- */
-import { Path, SVG } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { ReactNode } from "react";
-import blokcContainerBoxAttrs, {
-	BlockWCBContainerBoxAttrs,
-} from "../block-container-box/attributes";
 import {
 	ContainerBox_Container_Control,
 	CONTAINER_BOX_CONTAINER_CONTROL_DEMO,
 } from "../block-container-box/ContainerControl";
-import {
-	FLEX_PROPERTIES_CONTROL_DEMO,
-	MyFlexPropertiesControlData,
-} from "../components/controls/MyFlexPropertiesControl/types";
-import blokcContainerAttrs, {
-	AttrsGenericType,
-	BlockWCBContainerAttrs,
-} from "./attributes";
+import { FLEX_PROPERTIES_CONTROL_DEMO } from "../components/controls/MyFlexPropertiesControl/types";
+import blokcContainerAttrs, { BlockWCBContainerAttrs } from "./attributes";
 
 /** @typedef {import('@wordpress/blocks').WPBlockVariation} WPBlockVariation */
 
@@ -30,8 +17,8 @@ import blokcContainerAttrs, {
 
 const RenderIcon = (props) => {
 	return (
-		<div className="w-16 h-12 flex items-center justify-center">
-			<div className="flex flex-wrap w-14 h-8 border border-[#007cba] rounded-sm">
+		<div className="w-16 h-12 flex items-center justify-center ">
+			<div className="flex flex-wrap w-14 h-8 border border-[#007cba] bg-[#007cba] rounded-sm">
 				{props.children}
 			</div>
 		</div>
@@ -97,7 +84,7 @@ export const variations: {
 		description: __("One column"),
 		icon: (
 			<RenderIcon>
-				<div className="flex-1 border border-[#007cba]"></div>
+				<div className="flex-1 border border-[#007cba] bg-white"></div>
 			</RenderIcon>
 		),
 		innerBlocks: [["wcb/container-box", getContainerBoxAttrsByWidth("100%")]],
@@ -110,8 +97,8 @@ export const variations: {
 		description: __("Two columns; equal split"),
 		icon: (
 			<RenderIcon>
-				<div className="flex-1 border border-[#007cba]"></div>
-				<div className="flex-1 border border-[#007cba]"></div>
+				<div className="flex-1 border border-[#007cba] bg-white"></div>
+				<div className="flex-1 border border-[#007cba] bg-white"></div>
 			</RenderIcon>
 		),
 		innerBlocks: [
@@ -127,8 +114,8 @@ export const variations: {
 		description: __("Two columns; one-third, two-thirds split"),
 		icon: (
 			<RenderIcon>
-				<div className="border border-[#007cba] w-1/3" />
-				<div className="flex-1 border border-[#007cba]" />
+				<div className="border border-[#007cba] bg-white w-1/3" />
+				<div className="flex-1 border border-[#007cba] bg-white" />
 			</RenderIcon>
 		),
 		innerBlocks: [
@@ -143,8 +130,8 @@ export const variations: {
 		description: __("Two columns; two-thirds, one-third split"),
 		icon: (
 			<RenderIcon>
-				<div className="flex-1 border border-[#007cba]" />
-				<div className="border border-[#007cba] w-1/3" />
+				<div className="flex-1 border border-[#007cba] bg-white" />
+				<div className="border border-[#007cba] bg-white w-1/3" />
 			</RenderIcon>
 		),
 		innerBlocks: [
@@ -159,9 +146,9 @@ export const variations: {
 		description: __("Three columns; equal split"),
 		icon: (
 			<RenderIcon>
-				<div className="flex-1 border border-[#007cba]" />
-				<div className="flex-1 border border-[#007cba]" />
-				<div className="flex-1 border border-[#007cba]" />
+				<div className="flex-1 border border-[#007cba] bg-white" />
+				<div className="flex-1 border border-[#007cba] bg-white" />
+				<div className="flex-1 border border-[#007cba] bg-white" />
 			</RenderIcon>
 		),
 		innerBlocks: [
@@ -177,9 +164,9 @@ export const variations: {
 		description: __("Three columns; wide center column"),
 		icon: (
 			<RenderIcon>
-				<div className="border border-[#007cba] w-1/4" />
-				<div className="border border-[#007cba] w-2/4" />
-				<div className="flex-1 border border-[#007cba] " />
+				<div className="border border-[#007cba] bg-white w-1/4" />
+				<div className="border border-[#007cba] bg-white w-2/4" />
+				<div className="flex-1 border border-[#007cba] bg-white " />
 			</RenderIcon>
 		),
 		innerBlocks: [
@@ -195,10 +182,10 @@ export const variations: {
 		description: __("Three columns; wide center column"),
 		icon: (
 			<RenderIcon>
-				<div className="border border-[#007cba] w-1/3" />
-				<div className="border border-[#007cba] w-2/3" />
-				<div className="border border-[#007cba] w-2/3" />
-				<div className="border border-[#007cba] w-1/3" />
+				<div className="border border-[#007cba] bg-white w-1/3" />
+				<div className="border border-[#007cba] bg-white w-2/3" />
+				<div className="border border-[#007cba] bg-white w-2/3" />
+				<div className="border border-[#007cba] bg-white w-1/3" />
 			</RenderIcon>
 		),
 		innerBlocks: [

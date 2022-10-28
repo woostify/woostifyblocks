@@ -8,8 +8,9 @@ import {
 	store as blockEditorStore,
 } from "@wordpress/block-editor";
 import { PanelBody } from "@wordpress/components";
+// @ts-ignore
 import { get } from "lodash";
-import React, { FC, CSSProperties } from "react";
+import React, { FC } from "react";
 import { BlockWCBContainerAttrs } from "./attributes";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 import MyBackgroundControl from "../components/controls/MyBackgroundControl/MyBackgroundControl";
@@ -33,11 +34,10 @@ import {
 	store as blocksStore,
 } from "@wordpress/blocks";
 import GlobalCss from "./GlobalCss";
-import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
-import useGetDeviceType from "../hooks/useGetDeviceType";
 import { useEffect, useRef } from "@wordpress/element";
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
+import useCreateCacheEmotion from "../hooks/useCreateCacheEmotion";
 
 export type EditProps<T> = {
 	attributes: T;
@@ -56,16 +56,13 @@ export type ContainerLayout =
 	| "layout-8"
 	| "layout-9";
 
-const XXXXXXX = document.createElement("code");
-let X = 0;
-
 const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 	const { uniqueId } = attributes;
-	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
+
+	const { myCache, ref } = useCreateCacheEmotion();
 
 	//
-
 	useEffect(() => {
 		setAttributes({
 			uniqueId: "wcb-container-" + clientId.substring(2, 9).replace("-", ""),
@@ -207,34 +204,21 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		}
 	};
 
-	const {
-		general_container,
-		general_flexProperties,
-		styles_background,
-		styles_dimensions,
-		styles_border,
-		styles_color,
-		styles_boxShadow,
-	} = attributes;
+	const { general_container, styles_background, styles_dimensions } =
+		attributes;
 	const ALLOWED_BLOCKS = ["wcb/container-box"];
 
 	// ====== WRAP CLASSES
-
 	const containerWidthTypeClass =
 		general_container.containerWidthType === "Full Width"
 			? "alignfull"
 			: general_container.containerWidthType === "Boxed"
 			? "alignwide"
 			: "";
-
 	// ====== END WRAP CLASSES
 
 	// MAIN STYLES - CLASSES
-	const { colunmGap, rowGap, padding, margin } = styles_dimensions;
-	const { Mobile: pMobile, Tablet: pTablet, Desktop: pDesktop } = padding;
-	const { Mobile: mMobile, Tablet: mTablet, Desktop: mDesktop } = margin;
-	//
-
+	const { colunmGap, rowGap } = styles_dimensions;
 	const MAIN_STYLES: React.CSSProperties = {
 		// @ts-ignore
 		"--wcb-gap-x": colunmGap.Mobile || colunmGap.Tablet || colunmGap.Desktop,
@@ -243,62 +227,17 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		"--md-wcb-gap-y": rowGap.Tablet || rowGap.Desktop,
 		"--lg-wcb-gap-x": colunmGap.Desktop,
 		"--lg-wcb-gap-y": rowGap.Desktop,
-		// PADING
-		"--wcb-pt": pMobile?.top || pTablet?.top || pDesktop?.top,
-		"--md-wcb-pt": pTablet?.top || pDesktop?.top,
-		"--lg-wcb-pt": pDesktop?.top,
-		"--wcb-pb": pMobile?.bottom || pTablet?.bottom || pDesktop?.bottom,
-		"--md-wcb-pb": pTablet?.bottom || pDesktop?.bottom,
-		"--lg-wcb-pb": pDesktop?.bottom,
-		"--wcb-pl": pMobile?.left || pTablet?.left || pDesktop?.left,
-		"--md-wcb-pl": pTablet?.left || pDesktop?.left,
-		"--lg-wcb-pl": pDesktop?.left,
-		"--wcb-pr": pMobile?.right || pTablet?.right || pDesktop?.right,
-		"--md-wcb-pr": pTablet?.right || pDesktop?.right,
-		"--lg-wcb-pr": pDesktop?.right,
-		// MARGIN
-		"--wcb-mt": mMobile?.top || mTablet?.top || mDesktop?.top,
-		"--md-wcb-mt": mTablet?.top || mDesktop?.top,
-		"--lg-wcb-mt": mDesktop?.top,
-		"--wcb-mb": mMobile?.bottom || mTablet?.bottom || mDesktop?.bottom,
-		"--md-wcb-mb": mTablet?.bottom || mDesktop?.bottom,
-		"--lg-wcb-mb": mDesktop?.bottom,
-		"--wcb-ml": mMobile?.left || mTablet?.left || mDesktop?.left,
-		"--md-wcb-ml": mTablet?.left || mDesktop?.left,
-		"--lg-wcb-ml": mDesktop?.left,
-		"--wcb-mr": mMobile?.right || mTablet?.right || mDesktop?.right,
-		"--md-wcb-mr": mTablet?.right || mDesktop?.right,
-		"--lg-wcb-mr": mDesktop?.right,
-		// COLOR
-		"--wcb-text-color": styles_color,
-		//
 	};
 	//
 
 	const blockProps = useBlockProps({
 		className: `wcb-container__inner`,
 	});
-	// END MAIN STYLES - CLASSES
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
 		renderAppender: () => null,
 	});
-
 	//
-	const ref = useRef<HTMLDivElement>(null);
-	useEffect(() => {
-		if (!ref.current) {
-			return;
-		}
-		const { ownerDocument } = ref.current;
-		const { defaultView } = ownerDocument;
-		// Set ownerDocument.title for example.
-	}, []);
-
-	const myCache = createCache({
-		key: "wcb-custom-cache-key",
-		container: ref.current || undefined,
-	});
 
 	const renderVideoBg = () => {
 		if (
@@ -337,25 +276,24 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		return <div className="wcb-container__overlay "></div>;
 	};
 
+	const blockWrapProps = useBlockProps({
+		ref,
+		className: `wcb-container__wrap ${uniqueId} ${containerWidthTypeClass}`,
+	});
 	return (
 		<CacheProvider value={myCache}>
 			<div
-				{...useBlockProps({ ref })}
-				className={`wcb-container__wrap ${uniqueId} ${containerWidthTypeClass}`}
+				{...blockWrapProps}
+				className={`${blockWrapProps.className} `}
 				id={uniqueId}
 			>
+				{/*  */}
 				<GlobalCss {...attributes} />
 				{/*  */}
-				{/* <WithBackgroundSettings
-				backgroundControlAttrs={styles_background}
-				borderControlAttrs={styles_border}
-				wrapStyles={WRAP_STYLES}
-				className={`${containerWidthTypeClass} ${minHeightClass} `}
-			> */}
+
 				{renderVideoBg()}
 				{renderBgOverlay()}
 				<div {...innerBlocksProps} style={MAIN_STYLES} />
-				{/* </WithBackgroundSettings> */}
 				<HOCInspectorControls renderTabPanels={renderTabBodyPanels} />
 			</div>
 		</CacheProvider>
