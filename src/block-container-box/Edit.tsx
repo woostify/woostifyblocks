@@ -2,6 +2,7 @@ import { __ } from "@wordpress/i18n";
 import {
 	useBlockProps,
 	InnerBlocks,
+	// @ts-ignore
 	useInnerBlocksProps,
 } from "@wordpress/block-editor";
 import { PanelBody } from "@wordpress/components";
@@ -25,12 +26,14 @@ import { EditProps } from "../block-container/Edit";
 import { CacheProvider } from "@emotion/react";
 import useCreateCacheEmotion from "../hooks/useCreateCacheEmotion";
 import GlobalCss from "./GlobalCss";
+import VideoBackgroundByBgControl from "../components/VideoBackgroundByBgControl";
+import OverlayBackgroundByBgControl from "../components/OverlayBackgroundByBgControl";
 
 const Edit: FC<EditProps<BlockWCBContainerBoxAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
-	const { uniqueId, general_container } = attributes;
+	const { uniqueId, general_container, styles_background } = attributes;
 
-	const { myCache, ref } = useCreateCacheEmotion("wcb-container-box-key");
+	const { myCache, ref } = useCreateCacheEmotion();
 
 	//
 	useEffect(() => {
@@ -123,14 +126,6 @@ const Edit: FC<EditProps<BlockWCBContainerBoxAttrs>> = (props) => {
 								}
 							/>
 						</PanelBody>
-						<PanelBody initialOpen={false} title={__("Typography", "wcb")}>
-							<MyTypographyControl
-								typographyControl={attributes.general_typography}
-								setAttrs__typography={(data) =>
-									setAttributes({ general_typography: data })
-								}
-							/>
-						</PanelBody>
 					</>
 				);
 			case "Styles":
@@ -175,6 +170,16 @@ const Edit: FC<EditProps<BlockWCBContainerBoxAttrs>> = (props) => {
 		}
 	};
 
+	const renderInnerDiv = () => {
+		const blockProps = useBlockProps({
+			className: `wcb-container-box__inner`,
+		});
+		const innerBlocksProps = useInnerBlocksProps(blockProps, {
+			renderAppender: () => <InnerBlocks.ButtonBlockAppender />,
+		});
+		return <div {...innerBlocksProps} />;
+	};
+
 	let {
 		Desktop: customWidth_LG,
 		Tablet: customWidth_MD,
@@ -184,6 +189,8 @@ const Edit: FC<EditProps<BlockWCBContainerBoxAttrs>> = (props) => {
 	customWidth_MD = customWidth_MD || customWidth_LG;
 
 	const wrapBlockProps = useBlockProps({ ref });
+	//
+	const { htmlTag: HtmlTag = "div" } = general_container;
 	return (
 		<CacheProvider value={myCache}>
 			<HOCInspectorControls renderTabPanels={renderTabBodyPanels} />
@@ -195,8 +202,19 @@ const Edit: FC<EditProps<BlockWCBContainerBoxAttrs>> = (props) => {
 			>
 				{/*  */}
 				<GlobalCss {...attributes} />
+
 				{/*  */}
-				<InnerBlocks renderAppender={InnerBlocks.ButtonBlockAppender} />
+				<VideoBackgroundByBgControl
+					bgType={styles_background.bgType}
+					videoData={styles_background.videoData}
+				/>
+				<OverlayBackgroundByBgControl
+					bgType={styles_background.bgType}
+					overlayType={styles_background.overlayType}
+				/>
+
+				{/*  */}
+				{renderInnerDiv()}
 			</div>
 		</CacheProvider>
 	);

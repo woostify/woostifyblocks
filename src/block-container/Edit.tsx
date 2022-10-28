@@ -10,7 +10,7 @@ import {
 import { PanelBody } from "@wordpress/components";
 // @ts-ignore
 import { get } from "lodash";
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { BlockWCBContainerAttrs } from "./attributes";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 import MyBackgroundControl from "../components/controls/MyBackgroundControl/MyBackgroundControl";
@@ -34,10 +34,10 @@ import {
 	store as blocksStore,
 } from "@wordpress/blocks";
 import GlobalCss from "./GlobalCss";
-import { useEffect, useRef } from "@wordpress/element";
-import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
 import useCreateCacheEmotion from "../hooks/useCreateCacheEmotion";
+import VideoBackgroundByBgControl from "../components/VideoBackgroundByBgControl";
+import OverlayBackgroundByBgControl from "../components/OverlayBackgroundByBgControl";
 
 export type EditProps<T> = {
 	attributes: T;
@@ -55,6 +55,19 @@ export type ContainerLayout =
 	| "layout-7"
 	| "layout-8"
 	| "layout-9";
+
+export const getGapStyleFromGapjObj = ({ colunmGap, rowGap }) => {
+	const MAIN_STYLES: React.CSSProperties = {
+		// @ts-ignore
+		"--wcb-gap-x": colunmGap.Mobile || colunmGap.Tablet || colunmGap.Desktop,
+		"--wcb-gap-y": rowGap.Mobile || rowGap.Tablet || rowGap.Desktop,
+		"--md-wcb-gap-x": colunmGap.Tablet || colunmGap.Desktop,
+		"--md-wcb-gap-y": rowGap.Tablet || rowGap.Desktop,
+		"--lg-wcb-gap-x": colunmGap.Desktop,
+		"--lg-wcb-gap-y": rowGap.Desktop,
+	};
+	return MAIN_STYLES;
+};
 
 const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -152,14 +165,6 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 								}
 							/>
 						</PanelBody>
-						<PanelBody initialOpen={false} title={__("Typography", "wcb")}>
-							<MyTypographyControl
-								typographyControl={attributes.general_typography}
-								setAttrs__typography={(data) =>
-									setAttributes({ general_typography: data })
-								}
-							/>
-						</PanelBody>
 					</>
 				);
 			case "Styles":
@@ -209,25 +214,18 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 	const ALLOWED_BLOCKS = ["wcb/container-box"];
 
 	// ====== WRAP CLASSES
+	const { htmlTag: HtmlTag = "div", containerWidthType } = general_container;
 	const containerWidthTypeClass =
-		general_container.containerWidthType === "Full Width"
+		containerWidthType === "Full Width"
 			? "alignfull"
-			: general_container.containerWidthType === "Boxed"
+			: containerWidthType === "Boxed"
 			? "alignwide"
 			: "";
 	// ====== END WRAP CLASSES
 
 	// MAIN STYLES - CLASSES
 	const { colunmGap, rowGap } = styles_dimensions;
-	const MAIN_STYLES: React.CSSProperties = {
-		// @ts-ignore
-		"--wcb-gap-x": colunmGap.Mobile || colunmGap.Tablet || colunmGap.Desktop,
-		"--wcb-gap-y": rowGap.Mobile || rowGap.Tablet || rowGap.Desktop,
-		"--md-wcb-gap-x": colunmGap.Tablet || colunmGap.Desktop,
-		"--md-wcb-gap-y": rowGap.Tablet || rowGap.Desktop,
-		"--lg-wcb-gap-x": colunmGap.Desktop,
-		"--lg-wcb-gap-y": rowGap.Desktop,
-	};
+	const GAPS_VARIABLES = getGapStyleFromGapjObj({ colunmGap, rowGap });
 	//
 
 	const blockProps = useBlockProps({
@@ -238,43 +236,6 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		renderAppender: () => null,
 	});
 	//
-
-	const renderVideoBg = () => {
-		if (
-			styles_background.bgType !== "video" ||
-			!styles_background.videoData?.mediaId
-		) {
-			return null;
-		}
-		const SRC = styles_background.videoData?.mediaUrl || "";
-		return (
-			<div className="wcb-container__video">
-				<video
-					autoPlay
-					loop
-					muted
-					controls={false}
-					title={SRC}
-					data-id={styles_background.videoData.mediaId}
-					src={SRC}
-				></video>
-			</div>
-		);
-	};
-
-	const renderBgOverlay = () => {
-		if (styles_background.overlayType === "none") {
-			return null;
-		}
-		if (
-			styles_background.bgType !== "video" &&
-			styles_background.bgType !== "image"
-		) {
-			return null;
-		}
-
-		return <div className="wcb-container__overlay "></div>;
-	};
 
 	const blockWrapProps = useBlockProps({
 		ref,
@@ -291,9 +252,17 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 				<GlobalCss {...attributes} />
 				{/*  */}
 
-				{renderVideoBg()}
-				{renderBgOverlay()}
-				<div {...innerBlocksProps} style={MAIN_STYLES} />
+				<VideoBackgroundByBgControl
+					bgType={styles_background.bgType}
+					videoData={styles_background.videoData}
+				/>
+				<OverlayBackgroundByBgControl
+					bgType={styles_background.bgType}
+					overlayType={styles_background.overlayType}
+				/>
+				{/*  */}
+
+				<div {...innerBlocksProps} style={GAPS_VARIABLES} />
 				<HOCInspectorControls renderTabPanels={renderTabBodyPanels} />
 			</div>
 		</CacheProvider>

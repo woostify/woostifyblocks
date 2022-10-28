@@ -1,7 +1,6 @@
 import { FormToggle } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC } from "react";
-import MyLabelControl from "../MyLabelControl/MyLabelControl";
 
 export interface MyResponsiveConditionControlData {
 	isHiddenOnDesktop: boolean;
@@ -29,9 +28,24 @@ const MyResponsiveConditionControl: FC<Props> = ({
 	const { isHiddenOnDesktop, isHiddenOnMobile, isHiddenOnTablet } =
 		responsiveConditionControl;
 
-	const toggleHiddenOnDesktop = () => {};
-	const toggleHiddenOnTablet = () => {};
-	const toggleHiddenOnMobile = () => {};
+	const toggleHiddenOnDesktop = (e: React.FormEvent<HTMLInputElement>) => {
+		setAttrs__responsiveCondition({
+			...responsiveConditionControl,
+			isHiddenOnDesktop: e.currentTarget.checked,
+		});
+	};
+	const toggleHiddenOnTablet = (e: React.FormEvent<HTMLInputElement>) => {
+		setAttrs__responsiveCondition({
+			...responsiveConditionControl,
+			isHiddenOnTablet: e.currentTarget.checked,
+		});
+	};
+	const toggleHiddenOnMobile = (e: React.FormEvent<HTMLInputElement>) => {
+		setAttrs__responsiveCondition({
+			...responsiveConditionControl,
+			isHiddenOnMobile: e.currentTarget.checked,
+		});
+	};
 	return (
 		<div className={className}>
 			<div className="flex justify-between items-center">

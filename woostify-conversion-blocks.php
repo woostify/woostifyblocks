@@ -33,7 +33,7 @@ require plugin_dir_path(__FILE__) . 'inc/wcb-enqueue-scripts.php';
 
 
 // 
-wp_enqueue_style('wcb-frontend-css', plugin_dir_url(__FILE__) . 'public/css/frontend.css');
+wp_enqueue_style('wcb-frontend-css', plugin_dir_url(__FILE__) . 'build/block-common-css/style-index.css');
 // 
 
 //============================================================================================================================================
@@ -44,30 +44,19 @@ add_action('init', 'wcb_create_blocks_gutenberg_init');
 function wcb_create_blocks_gutenberg_init()
 {
 	register_block_type(
-		__DIR__ . '/build/block-1',
-		[
-			// "render_callback" 	=> "render_callback_block_1",
-			// "attributes"		=> array_merge(
-			// 	[],
-			// ),
-		]
+		__DIR__ . '/build/block-common-css',
+		[]
 	);
 	register_block_type(
 		__DIR__ . '/build/block-container-box',
 		[
 			"render_callback" 	=> "wcb_block_container_box__renderCallback",
-			// "attributes"		=> array_merge(
-			// 	[],
-			// ),
 		]
 	);
 	register_block_type(
 		__DIR__ . '/build/block-container',
 		[
 			"render_callback" 	=> "wcb_block_container__renderCallback",
-			// "attributes"		=> array_merge(
-			// 	[],
-			// ),
 		]
 	);
 }

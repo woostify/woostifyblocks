@@ -1,5 +1,6 @@
 import { Global, css } from "@emotion/react";
 import React, { FC } from "react";
+import { getAdvanveDivWrapStyles } from "../block-container/getAdvanveStyles";
 import {
 	BorderMain4Side,
 	BorderMainSingleSide,
@@ -17,7 +18,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 		general_flexProperties,
 		styles_background,
 		styles_border,
-		general_typography,
 		styles_boxShadow,
 		styles_color,
 		styles_dimensions,
@@ -28,7 +28,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		DEMO_WCB_GLOBAL_VARIABLES;
 
 	const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
-	const INNER_CLASSNAME = `${WRAP_CLASSNAME} .block-editor-block-list__layout`;
+	const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-container-box__inner`;
 
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = () => {
@@ -159,31 +159,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 		`;
 	};
 
-	const getDivWrapStyles__BgVideo = () => {
-		const { bgType } = styles_background;
-		if (bgType !== "video") {
-			return;
-		}
-
-		return css`
-			${WRAP_CLASSNAME} {
-				.wcb-container__video {
-					position: absolute;
-					inset: 0;
-					z-index: 0;
-					overflow: hidden;
-					video {
-						position: absolute;
-						inset: 0;
-						z-index: 0;
-						width: 100%;
-						height: 100%;
-					}
-				}
-			}
-		`;
-	};
-
 	const getDivWrapStyles__Overlay = () => {
 		const { overlayColor, overlayGradient, overlayType } = styles_background;
 
@@ -205,7 +180,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 
 		return css`
 			${WRAP_CLASSNAME} {
-				.wcb-container__overlay {
+				.wcb-OverlayBackgroundByBgControl {
 					${preBgName}: ${bgValue};
 					position: absolute;
 					inset: 0;
@@ -369,18 +344,111 @@ const GlobalCss: FC<Props> = (attrs) => {
 	};
 	// ------------------- END WRAP DIV
 
+	// ------------------- INNER DIV
+	const getDivInnerStyles = () => {
+		return css`
+			${INNER_CLASSNAME} {
+				display: flex;
+				flex: 1 1 0%;
+				position: relative;
+			}
+		`;
+	};
+
+	const getInner__flexProperties = () => {
+		const { alignItems, flexDirection, flexWrap, justifyContent } =
+			general_flexProperties;
+
+		const flexDirection_Desktop = flexDirection.Desktop;
+		const flexDirection_Tablet = flexDirection.Tablet || flexDirection_Desktop;
+		const flexDirection_Mobile = flexDirection.Mobile || flexDirection_Tablet;
+		//
+		const alignItems_Desktop = alignItems.Desktop;
+		const alignItems_Tablet = alignItems.Tablet || alignItems_Desktop;
+		const alignItems_Mobile = alignItems.Mobile || alignItems_Tablet;
+		//
+		const flexWrap_Desktop = flexWrap.Desktop;
+		const flexWrap_Tablet = flexWrap.Tablet || flexWrap_Desktop;
+		const flexWrap_Mobile = flexWrap.Mobile || flexWrap_Tablet;
+		//
+		const justifyContent_Desktop = justifyContent.Desktop;
+		const justifyContent_Tablet =
+			justifyContent.Tablet || justifyContent_Desktop;
+		const justifyContent_Mobile =
+			justifyContent.Mobile || justifyContent_Tablet;
+		//
+
+		return css`
+			${INNER_CLASSNAME} {
+				flex-direction: ${flexDirection_Mobile};
+				align-items: ${alignItems_Mobile};
+				flex-wrap: ${flexWrap_Mobile};
+				justify-content: ${justifyContent_Mobile};
+				@media (min-width: ${media__tabletMinWidth}) {
+					flex-direction: ${flexDirection_Tablet};
+					align-items: ${alignItems_Tablet};
+					flex-wrap: ${flexWrap_Tablet};
+					justify-content: ${justifyContent_Tablet};
+				}
+				@media (min-width: ${media__desktopMinWidth}) {
+					flex-direction: ${flexDirection_Desktop};
+					align-items: ${alignItems_Desktop};
+					flex-wrap: ${flexWrap_Desktop};
+					justify-content: ${justifyContent_Desktop};
+				}
+			}
+		`;
+	};
+
+	const getInner__flexGaps = () => {
+		const { colunmGap, rowGap } = styles_dimensions;
+		//
+		const colunmGap_Desktop = colunmGap.Desktop;
+		const colunmGap_Tablet = colunmGap.Tablet || colunmGap_Desktop;
+		const colunmGap_Mobile = colunmGap.Mobile || colunmGap_Tablet;
+		//
+		const rowGap_Desktop = rowGap.Desktop;
+		const rowGap_Tablet = rowGap.Tablet || rowGap_Desktop;
+		const rowGap_Mobile = rowGap.Mobile || rowGap_Tablet;
+		//
+
+		return css`
+			${INNER_CLASSNAME} {
+				column-gap: ${colunmGap_Mobile};
+				row-gap: ${rowGap_Mobile};
+				@media (min-width: ${media__tabletMinWidth}) {
+					column-gap: ${colunmGap_Tablet};
+					row-gap: ${rowGap_Tablet};
+				}
+				@media (min-width: ${media__desktopMinWidth}) {
+					column-gap: ${colunmGap_Desktop};
+					row-gap: ${rowGap_Desktop};
+				}
+			}
+		`;
+	};
+
 	return (
 		<>
 			<Global styles={getDivWrapStyles()} />
 			<Global styles={getDivWrapStyles__BgColor_Gradient()} />
 			<Global styles={getDivWrapStyles__BackgroundImage()} />
-			<Global styles={getDivWrapStyles__BgVideo()} />
 			<Global styles={getDivWrapStyles__Overlay()} />
 			<Global styles={getDivWrapStyles__BorderRadius()} />
 			<Global styles={getDivWrapStyles__Border()} />
 			<Global styles={getDivWrapStyles__BoxShadow()} />
 			<Global styles={getDivWrapStyles__PaddingMargin()} />
+			<Global
+				styles={getAdvanveDivWrapStyles({
+					advance_responsiveCondition,
+					advance_zIndex,
+					className: WRAP_CLASSNAME,
+				})}
+			/>
 			{/*  */}
+			<Global styles={getDivInnerStyles()} />
+			<Global styles={getInner__flexProperties()} />
+			<Global styles={getInner__flexGaps()} />
 		</>
 	);
 };

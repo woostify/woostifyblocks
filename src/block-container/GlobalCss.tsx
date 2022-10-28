@@ -7,6 +7,7 @@ import {
 import { getShadowStyleValueFromTwPreset } from "../components/controls/MyBoxShadowControl/getBoxShadowStyles";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { BlockWCBContainerAttrs } from "./attributes";
+import { getAdvanveDivWrapStyles } from "./getAdvanveStyles";
 
 interface Props extends BlockWCBContainerAttrs {}
 
@@ -17,11 +18,9 @@ const GlobalCss: FC<Props> = (attrs) => {
 		general_flexProperties,
 		styles_background,
 		styles_border,
-		general_typography,
 		styles_boxShadow,
 		styles_color,
 		styles_dimensions,
-		wrapClassName,
 		advance_responsiveCondition,
 		advance_zIndex,
 	} = attrs;
@@ -47,21 +46,33 @@ const GlobalCss: FC<Props> = (attrs) => {
 		const minHeightDesktop = minHeight.Desktop;
 		const minHeightTablet = minHeight.Tablet || minHeightDesktop;
 		const minHeightMobile = minHeight.Mobile || minHeightTablet;
+		//
+		const zIndexDesktop = advance_zIndex.Desktop;
+		const zIndexTablet = advance_zIndex.Tablet || zIndexDesktop;
+		const zIndexMobile = advance_zIndex.Mobile || zIndexTablet;
+		//
+		const { isHiddenOnDesktop, isHiddenOnMobile, isHiddenOnTablet } =
+			advance_responsiveCondition;
 		return css`
 			${WRAP_CLASSNAME} {
 				position: relative;
-				display: flex;
+				display: ${isHiddenOnMobile ? "hidden" : "flex"};
 				color: ${styles_color};
 				overflow: ${overflow};
 				max-width: ${containerWidthType === "Custom" ? cWidthMobile : ""};
 				min-height: ${minHeightMobile};
+				z-index: ${zIndexMobile};
 				@media (min-width: ${media__tabletMinWidth}) {
 					max-width: ${cWidthTablet};
 					min-height: ${minHeightTablet};
+					z-index: ${zIndexTablet};
+					display: ${isHiddenOnTablet ? "hidden" : "flex"};
 				}
 				@media (min-width: ${media__desktopMinWidth}) {
 					max-width: ${cWidthDesktop};
 					min-height: ${minHeightDesktop};
+					z-index: ${zIndexDesktop};
+					display: ${isHiddenOnDesktop ? "hidden" : "flex"};
 				}
 			}
 		`;
@@ -166,31 +177,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 		`;
 	};
 
-	const getDivWrapStyles__BgVideo = () => {
-		const { bgType } = styles_background;
-		if (bgType !== "video") {
-			return;
-		}
-
-		return css`
-			${WRAP_CLASSNAME} {
-				.wcb-container__video {
-					position: absolute;
-					inset: 0;
-					z-index: 0;
-					overflow: hidden;
-					video {
-						position: absolute;
-						inset: 0;
-						z-index: 0;
-						width: 100%;
-						height: 100%;
-					}
-				}
-			}
-		`;
-	};
-
 	const getDivWrapStyles__Overlay = () => {
 		const { overlayColor, overlayGradient, overlayType } = styles_background;
 
@@ -212,7 +198,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 
 		return css`
 			${WRAP_CLASSNAME} {
-				.wcb-container__overlay {
+				.wcb-OverlayBackgroundByBgControl {
 					${preBgName}: ${bgValue};
 					position: absolute;
 					inset: 0;
@@ -488,22 +474,28 @@ const GlobalCss: FC<Props> = (attrs) => {
 	};
 
 	return (
-		<div className="xxxxx">
+		<>
 			<Global styles={getDivWrapStyles()} />
 			<Global styles={getDivWrapStyles__BgColor_Gradient()} />
 			<Global styles={getDivWrapStyles__BackgroundImage()} />
-			<Global styles={getDivWrapStyles__BgVideo()} />
 			<Global styles={getDivWrapStyles__Overlay()} />
 			<Global styles={getDivWrapStyles__BorderRadius()} />
 			<Global styles={getDivWrapStyles__Border()} />
 			<Global styles={getDivWrapStyles__BoxShadow()} />
 			<Global styles={getDivWrapStyles__PaddingMargin()} />
+			<Global
+				styles={getAdvanveDivWrapStyles({
+					advance_responsiveCondition,
+					advance_zIndex,
+					className: WRAP_CLASSNAME,
+				})}
+			/>
 			{/*  */}
 			<Global styles={getDivInnerStyles()} />
 			<Global styles={getInner__contentCustomWidth()} />
 			<Global styles={getInner__flexProperties()} />
 			<Global styles={getInner__flexGaps()} />
-		</div>
+		</>
 	);
 };
 

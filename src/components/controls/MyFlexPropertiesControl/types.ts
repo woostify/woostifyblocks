@@ -2,7 +2,9 @@ import { HasResponsive } from "../MyBackgroundControl/types";
 import React, { FC, CSSProperties } from "react";
 
 export type MyFlexPropertiesControlData = {
-	flexDirection: HasResponsive<"col" | "row" | "row-reverse" | "col-reverse">;
+	flexDirection: HasResponsive<
+		"column" | "row" | "row-reverse" | "column-reverse"
+	>;
 	alignItems: HasResponsive<
 		"start" | "end" | "center" | "baseline" | "stretch"
 	>;
@@ -12,14 +14,14 @@ export type MyFlexPropertiesControlData = {
 	flexWrap: HasResponsive<"wrap" | "wrap-reverse" | "nowrap">;
 };
 export const FLEX_PROPERTIES_CONTROL_DEMO: MyFlexPropertiesControlData = {
-	flexDirection: { Desktop: "row" },
+	flexDirection: { Desktop: "row", Tablet: "column" },
 	alignItems: { Desktop: "center" },
 	justifyContent: { Desktop: "center" },
 	flexWrap: { Desktop: "nowrap" },
 };
 
 export const FLEX_DIRECTIONS_DEMO: {
-	name: "col" | "row" | "row-reverse" | "col-reverse";
+	name: "column" | "row" | "row-reverse" | "column-reverse";
 	icon: string;
 }[] = [
 	{
@@ -33,7 +35,7 @@ export const FLEX_DIRECTIONS_DEMO: {
     `,
 	},
 	{
-		name: "col",
+		name: "column",
 		icon: `<svg width="24" height="38" viewBox="0 0 24 38" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M19.9 13.5L4.1 13.5C2.6 13.5 2 14.14 2 15.73L2 19.77C2 21.36 2.6 22 4.1 22L19.9 22C21.4 22 22 21.36 22 19.77L22 15.73C22 14.14 21.4 13.5 19.9 13.5Z" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M19.9 2L4.1 2C2.6 2 2 2.64 2 4.23L2 8.27C2 9.86 2.6 10.5 4.1 10.5L19.9 10.5C21.4 10.5 22 9.86 22 8.27L22 4.23C22 2.64 21.4 2 19.9 2Z" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
@@ -53,7 +55,7 @@ export const FLEX_DIRECTIONS_DEMO: {
     `,
 	},
 	{
-		name: "col-reverse",
+		name: "column-reverse",
 		icon: `<svg width="24" height="38" viewBox="0 0 24 38" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M4.1 24.5L19.9 24.5C21.4 24.5 22 23.86 22 22.27L22 18.23C22 16.64 21.4 16 19.9 16L4.1 16C2.6 16 2 16.64 2 18.23L2 22.27C2 23.86 2.6 24.5 4.1 24.5Z" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M4.1 36L19.9 36C21.4 36 22 35.36 22 33.77L22 29.73C22 28.14 21.4 27.5 19.9 27.5L4.1 27.5C2.6 27.5 2 28.14 2 29.73L2 33.77C2 35.36 2.6 36 4.1 36Z" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>

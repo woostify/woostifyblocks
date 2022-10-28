@@ -36,10 +36,8 @@ import { ContainerLayout } from "./Edit";
 
 export interface BlockWCBContainerAttrs {
 	uniqueId: string;
-	wrapClassName: string;
 	general_container: MyContainerControlData;
 	general_flexProperties: MyFlexPropertiesControlData;
-	general_typography: MyTypographyControlData;
 	styles_color: string;
 	styles_background: BackgroundControlData;
 	styles_border: MyBorderControlData;
@@ -63,10 +61,7 @@ export const blokcContainerAttrs: AttrsGenericType<BlockWCBContainerAttrs> = {
 		type: "string",
 		default: "",
 	},
-	wrapClassName: {
-		type: "string",
-		default: "flex",
-	},
+
 	general_container: {
 		type: "object",
 		default: CONTAINER_CONTROL_DEMO,
@@ -74,10 +69,6 @@ export const blokcContainerAttrs: AttrsGenericType<BlockWCBContainerAttrs> = {
 	general_flexProperties: {
 		type: "object",
 		default: FLEX_PROPERTIES_CONTROL_DEMO,
-	},
-	general_typography: {
-		type: "object",
-		default: TYPOGRAPHY_CONTROL_DEMO,
 	},
 	styles_color: {
 		type: "string",

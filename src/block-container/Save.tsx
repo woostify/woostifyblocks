@@ -1,78 +1,55 @@
 import React from "react";
 import { __ } from "@wordpress/i18n";
-// @ts-ignore
 import _ from "lodash";
 // @ts-ignore
 import { useInnerBlocksProps, useBlockProps } from "@wordpress/block-editor";
 import { BlockWCBContainerAttrs } from "./attributes";
 import "./style.scss";
+import { getGapStyleFromGapjObj } from "./Edit";
+import VideoBackgroundByBgControl from "../components/VideoBackgroundByBgControl";
+import OverlayBackgroundByBgControl from "../components/OverlayBackgroundByBgControl";
 
 export default function save({
 	attributes,
 }: {
 	attributes: BlockWCBContainerAttrs;
 }) {
-	const { styles_background, uniqueId, general_container } = attributes;
+	const { styles_background, uniqueId, general_container, styles_dimensions } =
+		attributes;
 	const blockProps = useBlockProps.save({ className: "wcb-container__inner" });
 	const innerBlocksProps = useInnerBlocksProps.save(blockProps);
 
-	const renderVideoBg = () => {
-		if (
-			styles_background.bgType !== "video" ||
-			!styles_background.videoData?.mediaId
-		) {
-			return null;
-		}
-		const SRC = styles_background.videoData?.mediaUrl || "";
-		return (
-			<div className="wcb-container__video">
-				<video
-					autoPlay
-					loop
-					muted
-					controls={false}
-					title={SRC}
-					data-id={styles_background.videoData.mediaId}
-					src={SRC}
-				></video>
-			</div>
-		);
-	};
-
-	const renderBgOverlay = () => {
-		if (styles_background.overlayType === "none") {
-			return null;
-		}
-		if (
-			styles_background.bgType !== "video" &&
-			styles_background.bgType !== "image"
-		) {
-			return null;
-		}
-
-		return <div className="wcb-container__overlay "></div>;
-	};
-
+	const { htmlTag: HtmlTag = "div", containerWidthType } = general_container;
 	const containerWidthTypeClass =
-		general_container.containerWidthType === "Full Width"
+		containerWidthType === "Full Width"
 			? "alignfull"
-			: general_container.containerWidthType === "Boxed"
+			: containerWidthType === "Boxed"
 			? "alignwide"
 			: "";
-
+	const { colunmGap, rowGap } = styles_dimensions;
+	const GAPS_VARIABLES = getGapStyleFromGapjObj({ colunmGap, rowGap });
 	return (
-		<div
+		<HtmlTag
 			className={`wcb-container__wrap wcb-update-div ${uniqueId} ${containerWidthTypeClass}`}
 			id={uniqueId}
 		>
-			{renderBgOverlay()}
-			{renderVideoBg()}
-			<div {...innerBlocksProps} />
+			{/*  */}
+			<VideoBackgroundByBgControl
+				bgType={styles_background.bgType}
+				videoData={styles_background.videoData}
+			/>
+			<OverlayBackgroundByBgControl
+				bgType={styles_background.bgType}
+				overlayType={styles_background.overlayType}
+			/>
+			{/*  */}
+
+			<div {...innerBlocksProps} style={GAPS_VARIABLES} />
 			{/*  */}
 			<div data-wcb-global-styles={uniqueId}></div>
 			<pre data-wcb-block-attrs={uniqueId} style={{ display: "none" }}>
 				{_.escape(JSON.stringify(attributes))}
 			</pre>
-		</div>
+		</HtmlTag>
 	);
 }

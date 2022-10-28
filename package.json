@@ -24,6 +24,7 @@
 		"@emotion/styled": "^11.10.4",
 		"@headlessui/react": "^1.7.3",
 		"@heroicons/react": "^2.0.12",
+		"@types/lodash": "^4.14.186",
 		"@types/wordpress__block-editor": "^7.0.0",
 		"@wordpress/api-fetch": "^6.16.0",
 		"@wordpress/block-editor": "^10.2.0",

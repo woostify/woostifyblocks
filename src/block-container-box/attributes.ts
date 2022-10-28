@@ -14,10 +14,7 @@ import {
 	MyDimensionsControlData,
 	MY_DIMENSIONS_CONTROL_DEMO,
 } from "../components/controls/MyDimensionsControl/types";
-import {
-	FLEX_PROPERTIES_CONTROL_DEMO,
-	MyFlexPropertiesControlData,
-} from "../components/controls/MyFlexPropertiesControl/types";
+import { MyFlexPropertiesControlData } from "../components/controls/MyFlexPropertiesControl/types";
 import {
 	MyResponsiveConditionControlData,
 	RESPONSIVE_CONDITON_DEMO,
@@ -39,7 +36,7 @@ export interface BlockWCBContainerBoxAttrs {
 	uniqueId: string;
 	general_container: ContainerBox_Container_Control;
 	general_flexProperties: MyFlexPropertiesControlData;
-	general_typography: MyTypographyControlData;
+	// general_typography: MyTypographyControlData;
 	styles_color: string;
 	styles_background: BackgroundControlData;
 	styles_border: MyBorderControlData;
@@ -61,12 +58,14 @@ export const blokcContainerBoxAttrs: AttrsGenericType<BlockWCBContainerBoxAttrs>
 		},
 		general_flexProperties: {
 			type: "object",
-			default: FLEX_PROPERTIES_CONTROL_DEMO,
+			default: {
+				flexDirection: { Desktop: "column" },
+				alignItems: { Desktop: "start" },
+				justifyContent: { Desktop: "start" },
+				flexWrap: { Desktop: "wrap" },
+			},
 		},
-		general_typography: {
-			type: "object",
-			default: TYPOGRAPHY_CONTROL_DEMO,
-		},
+
 		styles_color: {
 			type: "string",
 			default: "#000",
