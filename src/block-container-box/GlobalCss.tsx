@@ -46,14 +46,16 @@ const GlobalCss: FC<Props> = (attrs) => {
 				position: relative;
 				color: ${styles_color};
 				overflow: ${overflow};
-				flex-basis: calc(${cWidthMobile} - (var(--wcb-gap-x) / 2));
 				min-height: ${minHeightMobile};
+				flex-basis: calc(${cWidthMobile} - (var(--wcb-gap-x)));
+				flex-grow: 1;
+				flex-shrink: 1;
 				@media (min-width: ${media__tabletMinWidth}) {
-					flex-basis: calc(${cWidthTablet} - (var(--wcb-gap-x) / 2));
+					flex-basis: calc(${cWidthTablet} - (var(--wcb-gap-x)));
 					min-height: ${minHeightTablet};
 				}
 				@media (min-width: ${media__desktopMinWidth}) {
-					flex-basis: calc(${cWidthDesktop} - (var(--wcb-gap-x) / 2));
+					flex-basis: calc(${cWidthDesktop} - (var(--wcb-gap-x)));
 					min-height: ${minHeightDesktop};
 				}
 			}
