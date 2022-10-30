@@ -22,6 +22,7 @@ import SelectFontAppearance, {
 import MyTextDecorationControl from "../MyTextDecorationControl/MyTextDecorationControl";
 import MyTextTransformControl from "../MyTextTransformControl/MyTextTransformControl";
 import WcbFontFamilyPicker from "../WcbFontFamilyPicker/WcbFontFamilyPicker";
+import MyDisclosure from "../MyDisclosure";
 
 interface Props {
 	className?: string;
@@ -206,21 +207,23 @@ const MyTypographyControl: FC<Props> = ({
 	};
 
 	return (
-		<div className={className}>
-			{renderFontFamily()}
-			{renderFontsizePicker()}
-			{renderAppearance()}
-			<MyTextDecorationControl
-				value={textDecoration}
-				onChange={handleChangeTextDecoration}
-			/>
-			<MyTextTransformControl
-				value={textTransform}
-				onChange={handleChangeTextTransform}
-			/>
-			{renderLineHeight()}
-			{renderLetterSpacing()}
-		</div>
+		<MyDisclosure label="Typography">
+			<div className={className}>
+				{renderFontFamily()}
+				{renderFontsizePicker()}
+				{renderAppearance()}
+				<MyTextDecorationControl
+					value={textDecoration}
+					onChange={handleChangeTextDecoration}
+				/>
+				<MyTextTransformControl
+					value={textTransform}
+					onChange={handleChangeTextTransform}
+				/>
+				{renderLineHeight()}
+				{renderLetterSpacing()}
+			</div>
+		</MyDisclosure>
 	);
 };
 

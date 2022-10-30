@@ -1,13 +1,7 @@
-import {
-	FormToggle,
-	PanelBody,
-	// @ts-ignore
-	__experimentalBorderBoxControl as BorderBoxControl,
-} from "@wordpress/components";
+import { FormToggle, PanelBody } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
 import { EditProps } from "../block-container/Edit";
-import { BorderMainSettings } from "../components/controls/MyBorderControl/types";
 import MyHeadingTagControl from "../components/controls/MyHeadingTagControl/MyHeadingTagControl";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import MyTextAlignControl from "../components/controls/MyTextAlignControl/MyTextAlignControl";
@@ -28,7 +22,6 @@ const PanelContentControl: FC<EditProps<WcbBlokcHeadingAttrs>> = ({
 	//
 	const handleChangeTextAlignment = (select: CSSProperties["textAlign"]) => {};
 	const handleChangeTag = (select: keyof JSX.IntrinsicElements) => {};
-	const handleChangeBorder = (newBorders: BorderMainSettings) => {};
 	const toggleSubHeading = (checked: React.FormEvent<HTMLInputElement>) => {};
 	const toggleSeparator = (checked: React.FormEvent<HTMLInputElement>) => {};
 	//

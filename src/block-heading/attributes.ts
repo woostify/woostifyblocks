@@ -20,6 +20,14 @@ import {
 } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
 import { TextAlignment } from "../components/controls/MyTextAlignControl/MyTextAlignControl";
 import {
+	TextColorControlData,
+	TEXT_COLOR_CONTROL_DEMO,
+} from "../components/controls/MyTextColorControl/MyTextColorControl";
+import {
+	MyTextShadowControlData,
+	MY_TEXT_SHADOW_CONTROL_DEMO,
+} from "../components/controls/MyTextShadowControl/MyTextShadowControl";
+import {
 	MyTypographyControlData,
 	TYPOGRAPHY_CONTROL_DEMO,
 } from "../components/controls/MyTypographyControl/types";
@@ -31,14 +39,16 @@ import {
 export interface WcbBlokcHeadingAttrs {
 	uniqueId: string;
 	content: string;
-	general_typography: MyTypographyControlData;
 	general_content: {
 		textAlignment: HasResponsive<TextAlignment>;
 	};
 	//
+	styles_typography: MyTypographyControlData;
+	styles_textColor: TextColorControlData;
+	styles_textShadow: MyTextShadowControlData;
+	styles_separatorBorder: MyBorderControlData;
 	// styles_color: string;
 	// styles_background: BackgroundControlData;
-	// styles_border: MyBorderControlData;
 	// styles_dimensions: MyDimensionsControlData;
 	//
 	advance_responsiveCondition: MyResponsiveConditionControlData;
@@ -64,9 +74,21 @@ const blokc1Attrs: AttrsGenericType<WcbBlokcHeadingAttrs> = {
 			},
 		},
 	},
-	general_typography: {
+	styles_typography: {
 		type: "object",
 		default: TYPOGRAPHY_CONTROL_DEMO,
+	},
+	styles_textColor: {
+		type: "object",
+		default: TEXT_COLOR_CONTROL_DEMO,
+	},
+	styles_textShadow: {
+		type: "object",
+		default: MY_TEXT_SHADOW_CONTROL_DEMO,
+	},
+	styles_separatorBorder: {
+		type: "object",
+		default: MY_BORDER_CONTROL_DEMO,
 	},
 	// styles_color: {
 	// 	type: "string",
@@ -75,10 +97,6 @@ const blokc1Attrs: AttrsGenericType<WcbBlokcHeadingAttrs> = {
 	// styles_background: {
 	// 	type: "object",
 	// 	default: STYLES_BG_DEMO,
-	// },
-	// styles_border: {
-	// 	type: "object",
-	// 	default: MY_BORDER_CONTROL_DEMO,
 	// },
 
 	// styles_dimensions: {
