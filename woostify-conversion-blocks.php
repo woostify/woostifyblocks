@@ -59,6 +59,12 @@ function wcb_create_blocks_gutenberg_init()
 			"render_callback" 	=> "wcb_block_container__renderCallback",
 		]
 	);
+	register_block_type(
+		__DIR__ . '/build/block-heading',
+		[
+			// "render_callback" 	=> "wcb_block_container__renderCallback",
+		]
+	);
 }
 
 

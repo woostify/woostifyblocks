@@ -12,6 +12,7 @@ import {
 	MyFlexPropertiesControlData,
 } from "./types";
 import { RadioGroup } from "@headlessui/react";
+import MyRadioGroup from "../MyRadioGroup";
 
 interface Props {
 	className?: string;
@@ -92,148 +93,49 @@ const MyFlexPropertiesControl: FC<Props> = ({
 	//
 	const renderFlexDirectionType = () => {
 		return (
-			<RadioGroup
-				value={FLEX_DIRECTION}
+			<MyRadioGroup
+				label={__("Flex Direction", "wcb")}
+				// @ts-ignore
 				onChange={handleChangeFlexDirectionType}
-			>
-				<RadioGroup.Label className="">
-					<MyLabelControl hasResponsive>
-						{__("Flex Direction", "wcb")}
-					</MyLabelControl>
-				</RadioGroup.Label>
-				<div className="mt-3 relative flex gap-1.5">
-					{FLEX_DIRECTIONS_DEMO.map((item) => {
-						return (
-							<RadioGroup.Option
-								key={item.name}
-								value={item.name}
-								as={Fragment}
-							>
-								{({ checked }) => (
-									<div
-										title={item.name}
-										className={`flex flex-1 items-center justify-center p-1 max-w-xs bg-white border rounded-lg cursor-pointer ${
-											checked
-												? "bg-sky-50 border-sky-400 text-sky-500"
-												: "text-slate-300 border-slate-300 hover:border-slate-400"
-										}`}
-									>
-										<div
-											className="scale-75"
-											dangerouslySetInnerHTML={{ __html: item.icon }}
-										></div>
-									</div>
-								)}
-							</RadioGroup.Option>
-						);
-					})}
-				</div>
-			</RadioGroup>
+				plans={FLEX_DIRECTIONS_DEMO}
+				value={FLEX_DIRECTION}
+			/>
 		);
 	};
 
 	const renderFlexAlignItems = () => {
 		return (
-			<RadioGroup value={ALIGN_ITEMS} onChange={handleChangeAlignItems}>
-				<RadioGroup.Label className="">
-					<MyLabelControl hasResponsive>
-						{__("Align Items", "wcb")}
-					</MyLabelControl>
-				</RadioGroup.Label>
-				<div className="mt-3 relative flex gap-1.5">
-					{FLEX_ALIGNITEMS_DEMO.map((item) => {
-						return (
-							<RadioGroup.Option
-								key={item.name}
-								value={item.name}
-								as={Fragment}
-							>
-								{({ checked }) => (
-									<div
-										title={item.name}
-										className={`flex flex-1 items-center justify-center p-1 max-w-xs bg-white border rounded-lg cursor-pointer ${
-											checked
-												? "bg-sky-50 border-sky-400 text-sky-500"
-												: "text-slate-300 border-slate-300 hover:border-slate-400"
-										}`}
-										dangerouslySetInnerHTML={{ __html: item.icon }}
-									></div>
-								)}
-							</RadioGroup.Option>
-						);
-					})}
-				</div>
-			</RadioGroup>
+			<MyRadioGroup
+				label={__("Align Items", "wcb")}
+				// @ts-ignore
+				onChange={handleChangeAlignItems}
+				plans={FLEX_ALIGNITEMS_DEMO}
+				value={ALIGN_ITEMS}
+			/>
 		);
 	};
 
 	const renderFlexJustifyContent = () => {
 		return (
-			<RadioGroup value={JUSTIFY_CONTENT} onChange={handleChangeJustifyContent}>
-				<RadioGroup.Label className="">
-					<MyLabelControl hasResponsive>
-						{__("Justify Content", "wcb")}
-					</MyLabelControl>
-				</RadioGroup.Label>
-				<div className="mt-3 relative grid grid-cols-4 gap-1.5">
-					{FLEX_JUSTIFY_CONTENT_DEMO.map((item) => {
-						return (
-							<RadioGroup.Option
-								key={item.name}
-								value={item.name}
-								as={Fragment}
-							>
-								{({ checked }) => (
-									<div
-										title={item.name}
-										className={`flex flex-1 items-center justify-center p-1 max-w-xs bg-white border rounded-lg cursor-pointer ${
-											checked
-												? "bg-sky-50 border-sky-400 text-sky-500"
-												: "text-slate-300 border-slate-300 hover:border-slate-400"
-										}`}
-										dangerouslySetInnerHTML={{ __html: item.icon }}
-									></div>
-								)}
-							</RadioGroup.Option>
-						);
-					})}
-				</div>
-			</RadioGroup>
+			<MyRadioGroup
+				label={__("Justify Content", "wcb")}
+				// @ts-ignore
+				onChange={handleChangeJustifyContent}
+				plans={FLEX_JUSTIFY_CONTENT_DEMO}
+				value={JUSTIFY_CONTENT}
+			/>
 		);
 	};
 
 	const renderFlexWrap = () => {
 		return (
-			<RadioGroup value={FLEX_WRAP} onChange={handleChangeFlexWrap}>
-				<RadioGroup.Label className="">
-					<MyLabelControl hasResponsive>
-						{__("Flex Wrap", "wcb")}
-					</MyLabelControl>
-				</RadioGroup.Label>
-				<div className="mt-3 relative grid grid-cols-4 gap-1.5">
-					{FLEX_WRAP_DEMO.map((item) => {
-						return (
-							<RadioGroup.Option
-								key={item.name}
-								value={item.name}
-								as={Fragment}
-							>
-								{({ checked }) => (
-									<div
-										title={item.name}
-										className={`flex flex-1 items-center justify-center p-1 max-w-xs bg-white border rounded-lg cursor-pointer ${
-											checked
-												? "bg-sky-50 border-sky-400 text-sky-500"
-												: "text-slate-300 border-slate-300 hover:border-slate-400"
-										}`}
-										dangerouslySetInnerHTML={{ __html: item.icon }}
-									></div>
-								)}
-							</RadioGroup.Option>
-						);
-					})}
-				</div>
-			</RadioGroup>
+			<MyRadioGroup
+				label={__("Flex Wrap", "wcb")}
+				// @ts-ignore
+				onChange={handleChangeFlexWrap}
+				plans={FLEX_WRAP_DEMO}
+				value={FLEX_WRAP}
+			/>
 		);
 	};
 
