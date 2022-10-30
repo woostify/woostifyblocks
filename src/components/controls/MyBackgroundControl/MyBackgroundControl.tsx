@@ -32,7 +32,7 @@ import ControlBgImage from "./ControlBgImage";
 import { ResponsiveDevices } from "../MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../../../hooks/useGetDeviceType";
 
-const BG_TYPES: {
+const BG_TYPES_PLANS: {
 	name: BackgroundType;
 	icon: ComponentType<any>;
 }[] = [
@@ -73,12 +73,14 @@ export interface BackgroundControlData {
 	bgImageSize: HasResponsive<BgImageSize>;
 	//
 	videoData: VideoMediaUploadData;
+	//
 }
 
 interface Props {
 	className?: string;
 	backgroundControl: BackgroundControlData;
 	setAttrs__backgroundControl: (data: BackgroundControlData) => void;
+	bgTypesPlans?: typeof BG_TYPES_PLANS;
 }
 
 export const STYLES_BG_DEMO: BackgroundControlData = {
@@ -102,6 +104,7 @@ const MyBackgroundControl: FC<Props> = ({
 	className = "",
 	backgroundControl = STYLES_BG_DEMO,
 	setAttrs__backgroundControl,
+	bgTypesPlans = BG_TYPES_PLANS,
 }) => {
 	//
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
@@ -216,7 +219,7 @@ const MyBackgroundControl: FC<Props> = ({
 			<PanelRow className="w-full flex justify-between items-center">
 				<p className="flex-1">{__("Type", "wcb")}</p>
 				<div className="flex gap-1">
-					{BG_TYPES.map((item) => {
+					{bgTypesPlans.map((item) => {
 						const active = item.name === bgType;
 						return (
 							<div

@@ -6,6 +6,9 @@ export interface MyDimensionsControlData {
 	padding: HasResponsive<DimensionSettings>;
 	margin: HasResponsive<DimensionSettings>;
 }
+
+export interface MyDimensionsNoGapControlData
+	extends Pick<MyDimensionsControlData, "padding" | "margin"> {}
 export interface DimensionSettings {
 	top: string;
 	left: string;
@@ -23,6 +26,24 @@ export const DEFAULT_DIMENSION: string | DimensionSettings = {
 export const MY_DIMENSIONS_CONTROL_DEMO: MyDimensionsControlData = {
 	colunmGap: { Desktop: "1.5rem" },
 	rowGap: { Desktop: "1.5rem" },
+	margin: {
+		Desktop: {
+			top: "0",
+			left: "0",
+			right: "0",
+			bottom: "0",
+		},
+	},
+	padding: {
+		Desktop: {
+			top: "1rem",
+			left: "1rem",
+			right: "1rem",
+			bottom: "1rem",
+		},
+	},
+};
+export const MY_DIMENSIONS_NO_GAP_CONTROL_DEMO: MyDimensionsNoGapControlData = {
 	margin: {
 		Desktop: {
 			top: "0",

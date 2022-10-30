@@ -13,6 +13,10 @@ import {
 	MyDimensionsControlData,
 	MY_DIMENSIONS_CONTROL_DEMO,
 } from "../components/controls/MyDimensionsControl/types";
+import {
+	MyLinkColorControlData,
+	MY_LINK_COLOR_CONTROL_DEMO,
+} from "../components/controls/MyLinkColorControl/MyLinkColorControl";
 
 import {
 	MyResponsiveConditionControlData,
@@ -45,8 +49,11 @@ export interface WcbBlokcHeadingAttrs {
 	//
 	styles_typography: MyTypographyControlData;
 	styles_textColor: TextColorControlData;
+	styles_typography_subHeading: MyTypographyControlData;
+	styles_textColor_subHeading: TextColorControlData;
 	styles_textShadow: MyTextShadowControlData;
 	styles_separatorBorder: MyBorderControlData;
+	styles_linkColor: MyLinkColorControlData;
 	// styles_color: string;
 	// styles_background: BackgroundControlData;
 	// styles_dimensions: MyDimensionsControlData;
@@ -82,6 +89,14 @@ const blokc1Attrs: AttrsGenericType<WcbBlokcHeadingAttrs> = {
 		type: "object",
 		default: TEXT_COLOR_CONTROL_DEMO,
 	},
+	styles_typography_subHeading: {
+		type: "object",
+		default: TYPOGRAPHY_CONTROL_DEMO,
+	},
+	styles_textColor_subHeading: {
+		type: "object",
+		default: TEXT_COLOR_CONTROL_DEMO,
+	},
 	styles_textShadow: {
 		type: "object",
 		default: MY_TEXT_SHADOW_CONTROL_DEMO,
@@ -89,6 +104,10 @@ const blokc1Attrs: AttrsGenericType<WcbBlokcHeadingAttrs> = {
 	styles_separatorBorder: {
 		type: "object",
 		default: MY_BORDER_CONTROL_DEMO,
+	},
+	styles_linkColor: {
+		type: "object",
+		default: MY_LINK_COLOR_CONTROL_DEMO,
 	},
 	// styles_color: {
 	// 	type: "string",

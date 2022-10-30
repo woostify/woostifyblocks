@@ -10,10 +10,13 @@
 	}
 	.wcb-bodyControls__panel {
 		.components-tab-panel__tabs {
-			@apply bg-neutral-200/60 text-neutral-700 p-2 rounded-lg mb-5;
+			@apply bg-neutral-200/60 text-neutral-700 p-2 rounded-t-lg mb-0;
 		}
 		.components-tab-panel__tabs-item {
 			@apply h-10;
+		}
+		.components-tab-panel__tab-content {
+			@apply border-2 bottom-0 border-slate-200/60 rounded-b-lg py-3 px-2 mt-0;
 		}
 	}
 

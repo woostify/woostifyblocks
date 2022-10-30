@@ -13,7 +13,7 @@ import MyResponsiveConditionControl from "../components/controls/MyResponsiveCon
 import MyZIndexControl from "../components/controls/MyZIndexControl/MyZIndexControl";
 import { EditProps } from "../block-container/Edit";
 import PanelContentControl from "./PanelContentControl";
-import PanelBodyStylesControl from "./PanelBodyStylesControl";
+import GroupPanelStylesControl from "./GroupPanelStylesControl";
 
 const Edit: FC<EditProps<WcbBlokcHeadingAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -37,7 +37,7 @@ const Edit: FC<EditProps<WcbBlokcHeadingAttrs>> = (props) => {
 					</>
 				);
 			case "Styles":
-				return <PanelBodyStylesControl {...props} />;
+				return <GroupPanelStylesControl {...props} />;
 			case "Advances":
 				return (
 					<>
