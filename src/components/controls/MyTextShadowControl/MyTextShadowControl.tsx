@@ -1,16 +1,6 @@
-import {
-	// @ts-ignore
-	__experimentalRadio as WPRadio,
-	// @ts-ignore
-	__experimentalRadioGroup as WPRadioGroup,
-} from "@wordpress/components";
 import { RangeControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC } from "react";
-import {
-	BoxShadowPostion,
-	BOX_SHADOW_POSITON,
-} from "../MyBoxShadowControl/MyBoxShadowControl";
 import MyColorPicker from "../MyColorPicker/MyColorPicker";
 import MyDisclosure from "../MyDisclosure";
 
@@ -25,17 +15,13 @@ export type MyTextShadowControlData = {
 	horizontal: number;
 	vertical: number;
 	blur: number;
-	spread: number;
-	position: BoxShadowPostion;
 };
 
 export const MY_TEXT_SHADOW_CONTROL_DEMO: MyTextShadowControlData = {
 	color: "",
 	blur: 0,
 	horizontal: 0,
-	spread: 0,
 	vertical: 0,
-	position: "outset",
 };
 
 const MyTextShadowControl: FC<Props> = ({
@@ -43,8 +29,7 @@ const MyTextShadowControl: FC<Props> = ({
 	setAttrs__textShadow,
 	className,
 }) => {
-	const { blur, color, horizontal, position, spread, vertical } =
-		textShadowControl;
+	const { blur, color, horizontal, vertical } = textShadowControl;
 
 	const handleChangeColor = (colorHex: string) => {
 		setAttrs__textShadow({
@@ -53,12 +38,7 @@ const MyTextShadowControl: FC<Props> = ({
 		});
 	};
 	// custoM
-	const handleChangePosition = (bPosition: BoxShadowPostion) => {
-		setAttrs__textShadow({
-			...textShadowControl,
-			position: bPosition,
-		});
-	};
+
 	const setHorizontal = (value: number | undefined) => {
 		setAttrs__textShadow({
 			...textShadowControl,
@@ -77,12 +57,6 @@ const MyTextShadowControl: FC<Props> = ({
 			blur: value || 0,
 		});
 	};
-	const setSpread = (value: number | undefined) => {
-		setAttrs__textShadow({
-			...textShadowControl,
-			spread: value || 0,
-		});
-	};
 
 	const renderBlurRange = () => {
 		return (
@@ -95,17 +69,7 @@ const MyTextShadowControl: FC<Props> = ({
 			/>
 		);
 	};
-	const renderSpreadRange = () => {
-		return (
-			<RangeControl
-				label={__("Spread", "wcb")}
-				value={spread}
-				onChange={setSpread}
-				min={-100}
-				max={100}
-			/>
-		);
-	};
+
 	const renderVerticalRange = () => {
 		return (
 			<RangeControl
@@ -129,20 +93,7 @@ const MyTextShadowControl: FC<Props> = ({
 			/>
 		);
 	};
-	const renderPositionRadioGroup = () => {
-		return (
-			<div className="flex items-center justify-between">
-				<p>{__("Position", "wcb")}</p>
-				<WPRadioGroup onChange={handleChangePosition} checked={position}>
-					{BOX_SHADOW_POSITON.map((item) => (
-						<WPRadio value={item} key={item} className="capitalize">
-							{item}
-						</WPRadio>
-					))}
-				</WPRadioGroup>
-			</div>
-		);
-	};
+
 	const renderShadowColorPicker = () => {
 		return (
 			<MyColorPicker
@@ -159,8 +110,6 @@ const MyTextShadowControl: FC<Props> = ({
 			{renderHorizontalRange()}
 			{renderVerticalRange()}
 			{renderBlurRange()}
-			{renderSpreadRange()}
-			{renderPositionRadioGroup()}
 		</MyDisclosure>
 	);
 };

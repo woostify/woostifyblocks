@@ -15,7 +15,7 @@ export type MyTypographyControlData = {
 	fontFamily: CSSProperties["fontFamily"];
 };
 export const TYPOGRAPHY_CONTROL_DEMO: MyTypographyControlData = {
-	fontSizes: { Desktop: "16px" },
+	fontSizes: { Desktop: "" },
 	appearance: FONT_APPEARANCE_OPTIONS[0],
 	textDecoration: undefined,
 	textTransform: undefined,

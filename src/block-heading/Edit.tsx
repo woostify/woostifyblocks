@@ -1,12 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import classnames from "classnames";
-import { useDispatch, useSelect } from "@wordpress/data";
-import {
-	RichText,
-	useBlockProps,
-	store as blockEditorStore,
-	BlockControls,
-} from "@wordpress/block-editor";
+import { RichText, useBlockProps } from "@wordpress/block-editor";
 import { PanelBody } from "@wordpress/components";
 import React, { useEffect, FC } from "react";
 import { WcbBlockHeadingAttrs } from "./attributes";
@@ -27,7 +20,6 @@ import WcbHeadingPanelDimension from "./WcbHeadingPanelDimension";
 import "./editor.scss";
 import useCreateCacheEmotion from "../hooks/useCreateCacheEmotion";
 import { CacheProvider } from "@emotion/react";
-import { createBlock, getDefaultBlockName } from "@wordpress/blocks";
 import GlobalCss from "./GlobalCss";
 
 const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {

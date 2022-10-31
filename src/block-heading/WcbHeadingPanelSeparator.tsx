@@ -73,17 +73,19 @@ const WcbHeadingPanelSeparator: FC<Props> = ({
 	//
 	return (
 		<PanelBody initialOpen={false} title={__("Separator", "wcb")}>
-			{renderCustomWidth()}
-			<BorderControl
-				label={__("Border styles")}
-				onChange={(border: BorderMainSingleSide) => {
-					setAttr__panelSeparator({
-						...panelSeparator,
-						border,
-					});
-				}}
-				value={border}
-			/>
+			<div className="space-y-5">
+				{renderCustomWidth()}
+				<BorderControl
+					label={__("Border styles")}
+					onChange={(border: BorderMainSingleSide) => {
+						setAttr__panelSeparator({
+							...panelSeparator,
+							border,
+						});
+					}}
+					value={border}
+				/>
+			</div>
 		</PanelBody>
 	);
 };

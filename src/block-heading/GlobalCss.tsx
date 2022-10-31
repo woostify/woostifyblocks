@@ -1,14 +1,10 @@
-import { Global, css, Interpolation, Theme, CSSObject } from "@emotion/react";
+import { Global, CSSObject } from "@emotion/react";
 import React, { FC } from "react";
 import { getAdvanveDivWrapStyles } from "../block-container/getAdvanveStyles";
-import {
-	BorderMain4Side,
-	BorderMainSingleSide,
-} from "../components/controls/MyBorderControl/types";
-import { getShadowStyleValueFromTwPreset } from "../components/controls/MyBoxShadowControl/getBoxShadowStyles";
 import getBackgroundColorGradientStyles from "../utils/getBackgroundColorGradientStyles";
 import getBorderRadiusStyles from "../utils/getBorderRadiusStyles";
 import getBorderStyles from "../utils/getBorderStyles";
+import getColorAndGradientStyles from "../utils/getColorAndGradientStyles";
 import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
 import getTypographyStyles from "../utils/getTypographyStyles";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
@@ -33,20 +29,13 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
 	const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
-	// const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-heading__inner`;
 	const HEADING_CLASSNAME = `${WRAP_CLASSNAME} .wcb-heading__heading`;
 	const SUB_HEADING_CLASSNAME = `${WRAP_CLASSNAME} .wcb-heading__subHeading`;
 	const SEPARATOR_CLASSNAME = `${WRAP_CLASSNAME} .wcb-heading__separator`;
 
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject => {
-		const {
-			headingTag,
-			showHeading,
-			showSeparator,
-			showSubHeading,
-			textAlignment,
-		} = general_content;
+		const { textAlignment } = general_content;
 
 		let textAlign_Desktop = textAlignment.Desktop;
 		let textAlign_Tablet = textAlignment.Tablet || textAlign_Desktop;
@@ -149,7 +138,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		let width_Mobile = width.Mobile || width_Tablet;
 		//
 		return {
-			[`${WRAP_CLASSNAME} .wcb-heading__separator`]: {
+			[`${SEPARATOR_CLASSNAME}`]: {
 				width: width_Mobile,
 				[`@media (min-width: ${media_tablet})`]: {
 					width: width_Tablet,
@@ -167,94 +156,49 @@ const GlobalCss: FC<Props> = (attrs) => {
 			border: {
 				mainSettings: border,
 			},
-			className: `${WRAP_CLASSNAME} .wcb-heading__separator`,
+			className: `${SEPARATOR_CLASSNAME}`,
 		});
 	};
 
-	// ------------------- END WRAP DIV
+	// ------------------- HEADING STYLE
+	const getInner__Heading_typography = () => {
+		const { typography } = styles_heading;
 
-	// ------------------- INNER DIV
-	const getDivInnerStyles = () => {
-		return css`
-			${INNER_CLASSNAME} {
-				display: flex;
-				flex: 1 1 0%;
-				position: relative;
-			}
-		`;
+		return getTypographyStyles({
+			typography,
+			className: HEADING_CLASSNAME,
+		});
 	};
-
-	const getInner__flexProperties = () => {
-		const { alignItems, flexDirection, flexWrap, justifyContent } =
-			general_flexProperties;
-
-		const flexDirection_Desktop = flexDirection.Desktop;
-		const flexDirection_Tablet = flexDirection.Tablet || flexDirection_Desktop;
-		const flexDirection_Mobile = flexDirection.Mobile || flexDirection_Tablet;
-		//
-		const alignItems_Desktop = alignItems.Desktop;
-		const alignItems_Tablet = alignItems.Tablet || alignItems_Desktop;
-		const alignItems_Mobile = alignItems.Mobile || alignItems_Tablet;
-		//
-		const flexWrap_Desktop = flexWrap.Desktop;
-		const flexWrap_Tablet = flexWrap.Tablet || flexWrap_Desktop;
-		const flexWrap_Mobile = flexWrap.Mobile || flexWrap_Tablet;
-		//
-		const justifyContent_Desktop = justifyContent.Desktop;
-		const justifyContent_Tablet =
-			justifyContent.Tablet || justifyContent_Desktop;
-		const justifyContent_Mobile =
-			justifyContent.Mobile || justifyContent_Tablet;
-		//
-
-		return css`
-			${INNER_CLASSNAME} {
-				flex-direction: ${flexDirection_Mobile};
-				align-items: ${alignItems_Mobile};
-				flex-wrap: ${flexWrap_Mobile};
-				justify-content: ${justifyContent_Mobile};
-				@media (min-width: ${media__tabletMinWidth}) {
-					flex-direction: ${flexDirection_Tablet};
-					align-items: ${alignItems_Tablet};
-					flex-wrap: ${flexWrap_Tablet};
-					justify-content: ${justifyContent_Tablet};
-				}
-				@media (min-width: ${media__desktopMinWidth}) {
-					flex-direction: ${flexDirection_Desktop};
-					align-items: ${alignItems_Desktop};
-					flex-wrap: ${flexWrap_Desktop};
-					justify-content: ${justifyContent_Desktop};
-				}
-			}
-		`;
+	const getInner__Heading_color = () => {
+		const { textColor } = styles_heading;
+		return getColorAndGradientStyles({
+			textColor,
+			className: HEADING_CLASSNAME,
+		});
 	};
-
-	const getInner__flexGaps = () => {
-		const { colunmGap, rowGap } = styles_dimensions;
-		//
-		const colunmGap_Desktop = colunmGap.Desktop;
-		const colunmGap_Tablet = colunmGap.Tablet || colunmGap_Desktop;
-		const colunmGap_Mobile = colunmGap.Mobile || colunmGap_Tablet;
-		//
-		const rowGap_Desktop = rowGap.Desktop;
-		const rowGap_Tablet = rowGap.Tablet || rowGap_Desktop;
-		const rowGap_Mobile = rowGap.Mobile || rowGap_Tablet;
-		//
-
-		return css`
-			${INNER_CLASSNAME} {
-				column-gap: ${colunmGap_Mobile};
-				row-gap: ${rowGap_Mobile};
-				@media (min-width: ${media__tabletMinWidth}) {
-					column-gap: ${colunmGap_Tablet};
-					row-gap: ${rowGap_Tablet};
-				}
-				@media (min-width: ${media__desktopMinWidth}) {
-					column-gap: ${colunmGap_Desktop};
-					row-gap: ${rowGap_Desktop};
-				}
-			}
-		`;
+	const getInner__Heading__textShadow = (): CSSObject => {
+		const { textShadow } = styles_heading;
+		const { blur, color, horizontal, vertical } = textShadow;
+		return {
+			[`${HEADING_CLASSNAME}`]: {
+				textShadow: `${horizontal}px ${vertical}px ${blur}px ${color}`,
+			},
+		};
+	};
+	// ------------------- SUB-HEADING STYLE
+	const getInner__subHeading_typography = () => {
+		const { typography } = styles_subHeading;
+		return getTypographyStyles({
+			typography,
+			className: SUB_HEADING_CLASSNAME,
+		});
+	};
+	const getInner__subHeading_color = () => {
+		const { textColor } = styles_subHeading;
+		return getColorAndGradientStyles({
+			textColor,
+			className: SUB_HEADING_CLASSNAME,
+		});
 	};
 
 	return (
@@ -272,24 +216,21 @@ const GlobalCss: FC<Props> = (attrs) => {
 			<Global styles={getDivWrapStyles__Separator_width()} />
 			<Global styles={getDivWrapStyles__Separator()} />
 			{/*  */}
-			{/* <Global styles={getDivWrapStyles__BgColor_Gradient()} />
-			<Global styles={getDivWrapStyles__BackgroundImage()} />
-			<Global styles={getDivWrapStyles__Overlay()} />
-			<Global styles={getDivWrapStyles__BorderRadius()} />
-			<Global styles={getDivWrapStyles__Border()} />
-			<Global styles={getDivWrapStyles__BoxShadow()} />
-			<Global styles={getDivWrapStyles__PaddingMargin()} />
+			<Global styles={getInner__Heading_typography()} />
+			<Global styles={getInner__Heading_color()} />
+			<Global styles={getInner__Heading__textShadow()} />
+			{/*  */}
+			<Global styles={getInner__subHeading_typography()} />
+			<Global styles={getInner__subHeading_color()} />
+			{/*  */}
 			<Global
 				styles={getAdvanveDivWrapStyles({
 					advance_responsiveCondition,
 					advance_zIndex,
 					className: WRAP_CLASSNAME,
+					defaultDisplay: "block",
 				})}
-			/> */}
-			{/*  */}
-			{/* <Global styles={getDivInnerStyles()} />
-			<Global styles={getInner__flexProperties()} />
-			<Global styles={getInner__flexGaps()} /> */}
+			/>
 		</>
 	);
 };
