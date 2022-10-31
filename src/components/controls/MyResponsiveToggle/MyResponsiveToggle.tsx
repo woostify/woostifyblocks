@@ -55,7 +55,7 @@ const MyResponsiveToggle: FC<Props> = ({
 	return (
 		<Menu as="div" className={`relative inline-block text-left ${className}`}>
 			<Menu.Button
-				className="inline-flex w-full items-center justify-center rounded-md p-1.5 focus:outline-none focus-visible:ring-0 transition-colors text-slate-600 border border-slate-200 hover:border-slate-400"
+				className="inline-flex w-full items-center justify-center rounded-md p-1 focus:outline-none focus-visible:ring-0 transition-colors text-slate-600 border border-slate-200 hover:border-slate-400"
 				title={deviceType}
 			>
 				{renderDeviceIcon(deviceType)}

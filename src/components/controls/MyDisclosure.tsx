@@ -23,9 +23,7 @@ const MyDisclosure: FC<Props> = ({
 			{({ open }) => (
 				<div
 					className={
-						open
-							? "ring-2 ring-offset-2 rounded-lg overflow-hidden ring-purple-200 mb-4"
-							: ""
+						open ? "ring-2 ring-offset-2 rounded-lg ring-purple-200 mb-4" : ""
 					}
 				>
 					<Disclosure.Button

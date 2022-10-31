@@ -26,7 +26,6 @@ const { withSelect } = wp.data;
 import "../style.css";
 import "../styles/index.scss";
 //-----------------------------------------
-console.log(11111, "-----BECOME AUTHOR BLOCK - MAIN CSS ----------");
 
 registerBlockType(metadata.name, {
 	edit: Edit,

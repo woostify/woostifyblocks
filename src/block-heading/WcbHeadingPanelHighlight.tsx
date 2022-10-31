@@ -1,35 +1,71 @@
 import {
-	FormToggle,
 	PanelBody,
 	// @ts-ignore
 	__experimentalBoxControl as BoxControl,
-	// @ts-ignore
-	__experimentalUnitControl as UnitControl,
 } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
-import React, { FC, CSSProperties } from "react";
-import { EditProps } from "../block-container/Edit";
+import React, { FC } from "react";
+import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
+import {
+	MyBorderControlData,
+	MY_BORDER_CONTROL_DEMO,
+} from "../components/controls/MyBorderControl/types";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
+import { DimensionSettings } from "../components/controls/MyDimensionsControl/types";
 import MyDisclosure from "../components/controls/MyDisclosure";
 import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import MyTypographyControl from "../components/controls/MyTypographyControl/MyTypographyControl";
+import {
+	MyTypographyControlData,
+	TYPOGRAPHY_CONTROL_DEMO,
+} from "../components/controls/MyTypographyControl/types";
 import useGetDeviceType from "../hooks/useGetDeviceType";
-import { WcbBlokcHeadingAttrs } from "./attributes";
 
-const WcbHeadingPanelHighlight: FC<EditProps<WcbBlokcHeadingAttrs>> = ({
-	attributes,
-	clientId,
-	setAttributes,
+export interface WCB_HEADING_PANEL_HIGHLIGHT {
+	typography: MyTypographyControlData;
+	textColor: string;
+	bgColor: string;
+	padding: HasResponsive<DimensionSettings>;
+	border: MyBorderControlData;
+}
+
+export const WCB_HEADING_PANEL_HIGHLIGHT_DEMO: WCB_HEADING_PANEL_HIGHLIGHT = {
+	typography: TYPOGRAPHY_CONTROL_DEMO,
+	textColor: "",
+	bgColor: "",
+	padding: {
+		Desktop: {
+			top: "",
+			left: "",
+			right: "",
+			bottom: "",
+		},
+	},
+	border: MY_BORDER_CONTROL_DEMO,
+};
+
+interface Props {
+	panelData: WCB_HEADING_PANEL_HIGHLIGHT;
+	setAttr__: (data: WCB_HEADING_PANEL_HIGHLIGHT) => void;
+}
+
+const WcbHeadingPanelHighlight: FC<Props> = ({
+	panelData = WCB_HEADING_PANEL_HIGHLIGHT_DEMO,
+	setAttr__,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
-	const { textAlignment } = attributes.general_content;
-	const TEXT_ALIGNMENT =
-		textAlignment[deviceType] || textAlignment.Tablet || textAlignment.Desktop;
-
-	//
+	const {
+		typography,
+		textColor,
+		bgColor,
+		padding: paddingProps,
+		border,
+	} = panelData;
+	const padding =
+		paddingProps[deviceType] || paddingProps.Tablet || paddingProps.Desktop;
 
 	//
 
@@ -37,25 +73,21 @@ const WcbHeadingPanelHighlight: FC<EditProps<WcbBlokcHeadingAttrs>> = ({
 		<PanelBody initialOpen={false} title={__("Highlight", "wcb")}>
 			<div className="space-y-2.5">
 				<MyTypographyControl
-				// typographyControl={styles_typography}
-				// setAttrs__typography={(data) =>
-				// 	setAttributes({ styles_typography: data })
-				// }
+					typographyControl={typography}
+					setAttrs__typography={(typography) =>
+						setAttr__({ ...panelData, typography })
+					}
 				/>
 				<MyDisclosure label="Custom styles">
 					<MyColorPicker
-						label="Background"
-						// textColorControl={styles_textColor}
-						// setAttrs__textColorControl={(data) =>
-						// 	setAttributes({ styles_textColor: data })
-						// }
+						label="Color"
+						color={textColor}
+						onChange={(textColor) => setAttr__({ ...panelData, textColor })}
 					/>
 					<MyColorPicker
-						label="Color"
-						// textShadowControl={styles_textShadow}
-						// setAttrs__textShadow={(data) =>
-						// 	setAttributes({ styles_textShadow: data })
-						// }
+						label="Background"
+						color={bgColor}
+						onChange={(bgColor) => setAttr__({ ...panelData, bgColor })}
 					/>
 					<BoxControl
 						label={
@@ -63,12 +95,28 @@ const WcbHeadingPanelHighlight: FC<EditProps<WcbBlokcHeadingAttrs>> = ({
 								{__("Padding", "wcb")}
 							</MyLabelControl>
 						}
-						// values={padding}
-						// onChange={handleChangePadding}
+						values={padding}
+						onChange={(value: DimensionSettings) => {
+							setAttr__({
+								...panelData,
+								padding: {
+									...paddingProps,
+									[deviceType]: value,
+								},
+							});
+						}}
 					/>
 				</MyDisclosure>
 				<MyDisclosure label="Border">
-					<MyBorderControl />
+					<MyBorderControl
+						borderControl={border}
+						setAttrs__border={(border: MyBorderControlData) => {
+							setAttr__({
+								...panelData,
+								border,
+							});
+						}}
+					/>
 				</MyDisclosure>
 			</div>
 		</PanelBody>

@@ -64,7 +64,7 @@ const MyRadioGroup: FC<Props> = ({
 	hasResponsive = true,
 	isWrap = false,
 }) => {
-	const [selected, setSelected] = useState(plans[0].name);
+	const [selected, setSelected] = useState(value || plans[0].name);
 
 	useEffect(() => {
 		if (selected !== value) {

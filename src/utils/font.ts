@@ -24,11 +24,13 @@ export const loadGoogleFont = (fontName) => {
 
 				const link = createLinkTagWithGoogleFont(fontName);
 				head.appendChild(link);
+				console.log(321, "________load-gg-font_____", { fontName, link });
 			}
 		};
 
 		const headElement = getDocumentHead();
 		_loadGoogleFont(headElement);
+
 		if (headElement !== document.querySelector("head")) {
 			_loadGoogleFont(document.querySelector("head"));
 		}

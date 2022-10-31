@@ -1,10 +1,10 @@
 import { Global, css } from "@emotion/react";
 import React, { FC } from "react";
-import {
-	BorderMain4Side,
-	BorderMainSingleSide,
-} from "../components/controls/MyBorderControl/types";
 import { getShadowStyleValueFromTwPreset } from "../components/controls/MyBoxShadowControl/getBoxShadowStyles";
+import getBackgroundColorGradientStyles from "../utils/getBackgroundColorGradientStyles";
+import getBorderRadiusStyles from "../utils/getBorderRadiusStyles";
+import getBorderStyles from "../utils/getBorderStyles";
+import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { BlockWCBContainerAttrs } from "./attributes";
 import { getAdvanveDivWrapStyles } from "./getAdvanveStyles";
@@ -24,8 +24,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		advance_responsiveCondition,
 		advance_zIndex,
 	} = attrs;
-	const { media__desktopMinWidth, media__tabletMinWidth } =
-		DEMO_WCB_GLOBAL_VARIABLES;
+	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
 	const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
 	const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-container__inner`;
@@ -62,13 +61,13 @@ const GlobalCss: FC<Props> = (attrs) => {
 				max-width: ${containerWidthType === "Custom" ? cWidthMobile : ""};
 				min-height: ${minHeightMobile};
 				z-index: ${zIndexMobile};
-				@media (min-width: ${media__tabletMinWidth}) {
+				@media (min-width: ${media_tablet}) {
 					max-width: ${cWidthTablet};
 					min-height: ${minHeightTablet};
 					z-index: ${zIndexTablet};
 					display: ${isHiddenOnTablet ? "hidden" : "flex"};
 				}
-				@media (min-width: ${media__desktopMinWidth}) {
+				@media (min-width: ${media_desktop}) {
 					max-width: ${cWidthDesktop};
 					min-height: ${minHeightDesktop};
 					z-index: ${zIndexDesktop};
@@ -80,32 +79,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 
 	const getDivWrapStyles__BgColor_Gradient = () => {
 		const { bgType, color, gradient } = styles_background;
-
-		if (bgType !== "color" && bgType !== "gradient") {
-			return;
-		}
-
-		let preBgName = "";
-		let bgValue = "";
-		if (bgType === "color") {
-			preBgName = "background-color";
-			bgValue = color;
-		}
-		// Backgroud gradient
-		if (bgType === "gradient") {
-			preBgName = "background-image";
-			bgValue = gradient;
-		}
-		//
-		return css`
-			${WRAP_CLASSNAME} {
-				${preBgName}: ${bgValue};
-				@media (min-width: ${media__tabletMinWidth}) {
-				}
-				@media (min-width: ${media__desktopMinWidth}) {
-				}
-			}
-		`;
+		return getBackgroundColorGradientStyles({
+			background: styles_background,
+			className: WRAP_CLASSNAME,
+		});
 	};
 
 	const getDivWrapStyles__BackgroundImage = () => {
@@ -159,14 +136,14 @@ const GlobalCss: FC<Props> = (attrs) => {
 				background-attachment: ${BG_ATTACHMENT};
 				background-size: ${BG_SIZE};
 				background-position: ${BG_POSITION};
-				@media (min-width: ${media__tabletMinWidth}) {
+				@media (min-width: ${media_tablet}) {
 					background-image: url(${SRC__TABLET});
 					background-repeat: ${BG_REPEAT__TABLET};
 					background-attachment: ${BG_ATTACHMENT__TABLET};
 					background-size: ${BG_SIZE__TABLET};
 					background-position: ${BG_POSITION__TABLET};
 				}
-				@media (min-width: ${media__desktopMinWidth}) {
+				@media (min-width: ${media_desktop}) {
 					background-image: url(${SRC__DESKTOP});
 					background-repeat: ${BG_REPEAT__DESKTOP};
 					background-attachment: ${BG_ATTACHMENT__DESKTOP};
@@ -211,65 +188,19 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const getDivWrapStyles__BorderRadius = () => {
 		const { radius } = styles_border;
 		//
-		const radiusDesktop = radius?.Desktop;
-		const radiusTablet = radius?.Tablet || radiusDesktop;
-		const radiusMobile = radius?.Mobile || radiusTablet;
-
-		return css`
-			${WRAP_CLASSNAME} {
-				border-top-left-radius: ${radiusMobile.top};
-				border-top-right-radius: ${radiusMobile.right};
-				border-bottom-right-radius: ${radiusMobile.bottom};
-				border-bottom-left-radius: ${radiusMobile.left};
-
-				@media (min-width: ${media__tabletMinWidth}) {
-					border-top-left-radius: ${radiusTablet.top};
-					border-top-right-radius: ${radiusTablet.right};
-					border-bottom-right-radius: ${radiusTablet.bottom};
-					border-bottom-left-radius: ${radiusTablet.left};
-				}
-				@media (min-width: ${media__desktopMinWidth}) {
-					border-top-left-radius: ${radiusDesktop.top};
-					border-top-right-radius: ${radiusDesktop.right};
-					border-bottom-right-radius: ${radiusDesktop.bottom};
-					border-bottom-left-radius: ${radiusDesktop.left};
-				}
-			}
-		`;
+		return getBorderRadiusStyles({
+			radius: radius,
+			className: WRAP_CLASSNAME,
+		});
 	};
 
 	const getDivWrapStyles__Border = () => {
 		const { hoverColor, mainSettings } = styles_border;
 		//
-		if (!mainSettings) {
-			return;
-		}
-
-		if ((mainSettings as BorderMain4Side)?.top) {
-			const { bottom, left, right, top } = mainSettings as BorderMain4Side;
-			return css`
-				${WRAP_CLASSNAME} {
-					border-top: ${top.width} ${top.style} ${top.color};
-					border-left: ${left.width} ${left.style} ${left.color};
-					border-right: ${right.width} ${right.style} ${right.color};
-					border-bottom: ${bottom.width} ${bottom.style} ${bottom.color};
-					&:hover {
-						border-color: ${hoverColor};
-					}
-				}
-			`;
-		} else {
-			const { color, style, width } = mainSettings as BorderMainSingleSide;
-
-			return css`
-				${WRAP_CLASSNAME} {
-					border: ${width} ${style} ${color};
-					&:hover {
-						border-color: ${hoverColor};
-					}
-				}
-			`;
-		}
+		return getBorderStyles({
+			border: styles_border,
+			className: WRAP_CLASSNAME,
+		});
 	};
 
 	const getDivWrapStyles__BoxShadow = () => {
@@ -317,48 +248,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 
 	const getDivWrapStyles__PaddingMargin = () => {
 		const { margin, padding } = styles_dimensions;
-
-		const margin_Desktop = margin.Desktop;
-		const margin_Tablet = margin.Tablet || margin_Desktop;
-		const margin_Mobile = margin.Mobile || margin_Tablet;
-		//
-		const padding_Desktop = padding.Desktop;
-		const padding_Tablet = padding.Tablet || padding_Desktop;
-		const padding_Mobile = padding.Mobile || padding_Tablet;
-		//
-
-		return css`
-			${WRAP_CLASSNAME} {
-				padding-top: ${padding_Mobile.top};
-				padding-right: ${padding_Mobile.right};
-				padding-bottom: ${padding_Mobile.bottom};
-				padding-left: ${padding_Mobile.left};
-				margin-top: ${margin_Mobile.top};
-				margin-right: ${margin_Mobile.right};
-				margin-bottom: ${margin_Mobile.bottom};
-				margin-left: ${margin_Mobile.left};
-				@media (min-width: ${media__tabletMinWidth}) {
-					padding-top: ${padding_Tablet.top};
-					padding-right: ${padding_Tablet.right};
-					padding-bottom: ${padding_Tablet.bottom};
-					padding-left: ${padding_Tablet.left};
-					margin-top: ${margin_Tablet.top};
-					margin-right: ${margin_Tablet.right};
-					margin-bottom: ${margin_Tablet.bottom};
-					margin-left: ${margin_Tablet.left};
-				}
-				@media (min-width: ${media__desktopMinWidth}) {
-					padding-top: ${padding_Desktop.top};
-					padding-right: ${padding_Desktop.right};
-					padding-bottom: ${padding_Desktop.bottom};
-					padding-left: ${padding_Desktop.left};
-					margin-top: ${margin_Desktop.top};
-					margin-right: ${margin_Desktop.right};
-					margin-bottom: ${margin_Desktop.bottom};
-					margin-left: ${margin_Desktop.left};
-				}
-			}
-		`;
+		return getPaddingMarginStyles({
+			margin,
+			padding,
+			className: WRAP_CLASSNAME,
+		});
 	};
 	// ------------------- END WRAP DIV
 
@@ -390,10 +284,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 		return css`
 			${INNER_CLASSNAME} {
 				max-width: ${contentBoxWidthMobile};
-				@media (min-width: ${media__tabletMinWidth}) {
+				@media (min-width: ${media_tablet}) {
 					max-width: ${contentBoxWidthTablet};
 				}
-				@media (min-width: ${media__desktopMinWidth}) {
+				@media (min-width: ${media_desktop}) {
 					max-width: ${contentBoxWidthDesktop};
 				}
 			}
@@ -429,13 +323,13 @@ const GlobalCss: FC<Props> = (attrs) => {
 				align-items: ${alignItems_Mobile};
 				flex-wrap: ${flexWrap_Mobile};
 				justify-content: ${justifyContent_Mobile};
-				@media (min-width: ${media__tabletMinWidth}) {
+				@media (min-width: ${media_tablet}) {
 					flex-direction: ${flexDirection_Tablet};
 					align-items: ${alignItems_Tablet};
 					flex-wrap: ${flexWrap_Tablet};
 					justify-content: ${justifyContent_Tablet};
 				}
-				@media (min-width: ${media__desktopMinWidth}) {
+				@media (min-width: ${media_desktop}) {
 					flex-direction: ${flexDirection_Desktop};
 					align-items: ${alignItems_Desktop};
 					flex-wrap: ${flexWrap_Desktop};
@@ -461,11 +355,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 			${INNER_CLASSNAME} {
 				column-gap: ${colunmGap_Mobile};
 				row-gap: ${rowGap_Mobile};
-				@media (min-width: ${media__tabletMinWidth}) {
+				@media (min-width: ${media_tablet}) {
 					column-gap: ${colunmGap_Tablet};
 					row-gap: ${rowGap_Tablet};
 				}
-				@media (min-width: ${media__desktopMinWidth}) {
+				@media (min-width: ${media_desktop}) {
 					column-gap: ${colunmGap_Desktop};
 					row-gap: ${rowGap_Desktop};
 				}

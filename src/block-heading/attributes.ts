@@ -1,127 +1,115 @@
 import { AttrsGenericType } from "../block-container/attributes";
 import {
-	BackgroundControlData,
-	STYLES_BG_DEMO,
-} from "../components/controls/MyBackgroundControl/MyBackgroundControl";
-import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
-import {
-	MyBorderControlData,
-	MY_BORDER_CONTROL_DEMO,
-} from "../components/controls/MyBorderControl/types";
-
-import {
-	MyDimensionsControlData,
-	MY_DIMENSIONS_CONTROL_DEMO,
-} from "../components/controls/MyDimensionsControl/types";
-import {
-	MyLinkColorControlData,
-	MY_LINK_COLOR_CONTROL_DEMO,
-} from "../components/controls/MyLinkColorControl/MyLinkColorControl";
-
-import {
 	MyResponsiveConditionControlData,
 	RESPONSIVE_CONDITON_DEMO,
 } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
-import { TextAlignment } from "../components/controls/MyTextAlignControl/MyTextAlignControl";
-import {
-	TextColorControlData,
-	TEXT_COLOR_CONTROL_DEMO,
-} from "../components/controls/MyTextColorControl/MyTextColorControl";
-import {
-	MyTextShadowControlData,
-	MY_TEXT_SHADOW_CONTROL_DEMO,
-} from "../components/controls/MyTextShadowControl/MyTextShadowControl";
-import {
-	MyTypographyControlData,
-	TYPOGRAPHY_CONTROL_DEMO,
-} from "../components/controls/MyTypographyControl/types";
 import {
 	MyZIndexControlData,
 	Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
+import {
+	WCB_HEADING_PANEL_BACKGROUND,
+	WCB_HEADING_PANEL_BACKGROUND_DEMO,
+} from "./WcbHeadingPanelBackground";
+import {
+	WCB_HEADING_PANEL_CONTENT,
+	WCB_HEADING_PANEL_CONTENT_DEMO,
+} from "./WcbHeadingPanelContent";
+import {
+	WCB_HEADING_PANEL_DIMENSION,
+	WCB_HEADING_PANEL_DIMENSION_DEMO,
+} from "./WcbHeadingPanelDimension";
+import {
+	WCB_HEADING_PANEL_HEADING,
+	WCB_HEADING_PANEL_HEADING_DEMO,
+} from "./WcbHeadingPanelHeading";
+import {
+	WCB_HEADING_PANEL_HIGHLIGHT,
+	WCB_HEADING_PANEL_HIGHLIGHT_DEMO,
+} from "./WcbHeadingPanelHighlight";
+import {
+	WCB_HEADING_PANEL_LINK,
+	WCB_HEADING_PANEL_LINK_DEMO,
+} from "./WcbHeadingPanelLink";
+import {
+	WCB_HEADING_PANEL_SEPARATOR,
+	WCB_HEADING_PANEL_SEPARATOR_DEMO,
+} from "./WcbHeadingPanelSeparator";
+import {
+	WCB_HEADING_PANEL_SUB_HEADING,
+	WCB_HEADING_PANEL_SUB_HEADING_DEMO,
+} from "./WcbHeadingPanelSubHeading";
 
-export interface WcbBlokcHeadingAttrs {
+export interface WcbBlockHeadingAttrs {
 	uniqueId: string;
-	content: string;
-	general_content: {
-		textAlignment: HasResponsive<TextAlignment>;
-	};
+	heading: string;
+	subHeading: string;
+	general_content: WCB_HEADING_PANEL_CONTENT;
 	//
-	styles_typography: MyTypographyControlData;
-	styles_textColor: TextColorControlData;
-	styles_typography_subHeading: MyTypographyControlData;
-	styles_textColor_subHeading: TextColorControlData;
-	styles_textShadow: MyTextShadowControlData;
-	styles_separatorBorder: MyBorderControlData;
-	styles_linkColor: MyLinkColorControlData;
-	// styles_color: string;
-	// styles_background: BackgroundControlData;
-	// styles_dimensions: MyDimensionsControlData;
+	styles_heading: WCB_HEADING_PANEL_HEADING;
+	styles_separator: WCB_HEADING_PANEL_SEPARATOR;
+	styles_subHeading: WCB_HEADING_PANEL_SUB_HEADING;
+	styles_link: WCB_HEADING_PANEL_LINK;
+	styles_highlight: WCB_HEADING_PANEL_HIGHLIGHT;
+	styles_background: WCB_HEADING_PANEL_BACKGROUND;
+	styles_dimensions: WCB_HEADING_PANEL_DIMENSION;
 	//
+
 	advance_responsiveCondition: MyResponsiveConditionControlData;
 	advance_zIndex: MyZIndexControlData;
 }
 
-const blokc1Attrs: AttrsGenericType<WcbBlokcHeadingAttrs> = {
+const blokc1Attrs: AttrsGenericType<WcbBlockHeadingAttrs> = {
 	uniqueId: {
 		type: "string",
 		default: "",
 	},
-	content: {
+	heading: {
 		type: "string",
-		source: "text",
-		selector: "div",
-		default: "Clik to edit heading here!",
+		source: "html",
+		selector: ".wcb-heading__heading",
+		default: "Clik to edit HEADING",
 	},
+	subHeading: {
+		type: "string",
+		source: "html",
+		selector: ".wcb-heading__subHeading",
+		default: "Clik to edit SUB HEADING",
+	},
+	//
 	general_content: {
 		type: "object",
-		default: {
-			textAlignment: {
-				Desktop: "left",
-			},
-		},
+		default: WCB_HEADING_PANEL_CONTENT_DEMO,
 	},
-	styles_typography: {
+	//
+	styles_heading: {
 		type: "object",
-		default: TYPOGRAPHY_CONTROL_DEMO,
+		default: WCB_HEADING_PANEL_HEADING_DEMO,
 	},
-	styles_textColor: {
+	styles_separator: {
 		type: "object",
-		default: TEXT_COLOR_CONTROL_DEMO,
+		default: WCB_HEADING_PANEL_SEPARATOR_DEMO,
 	},
-	styles_typography_subHeading: {
+	styles_subHeading: {
 		type: "object",
-		default: TYPOGRAPHY_CONTROL_DEMO,
+		default: WCB_HEADING_PANEL_SUB_HEADING_DEMO,
 	},
-	styles_textColor_subHeading: {
+	styles_link: {
 		type: "object",
-		default: TEXT_COLOR_CONTROL_DEMO,
+		default: WCB_HEADING_PANEL_LINK_DEMO,
 	},
-	styles_textShadow: {
+	styles_highlight: {
 		type: "object",
-		default: MY_TEXT_SHADOW_CONTROL_DEMO,
+		default: WCB_HEADING_PANEL_HIGHLIGHT_DEMO,
 	},
-	styles_separatorBorder: {
+	styles_background: {
 		type: "object",
-		default: MY_BORDER_CONTROL_DEMO,
+		default: WCB_HEADING_PANEL_BACKGROUND_DEMO,
 	},
-	styles_linkColor: {
+	styles_dimensions: {
 		type: "object",
-		default: MY_LINK_COLOR_CONTROL_DEMO,
+		default: WCB_HEADING_PANEL_DIMENSION_DEMO,
 	},
-	// styles_color: {
-	// 	type: "string",
-	// 	default: "#000",
-	// },
-	// styles_background: {
-	// 	type: "object",
-	// 	default: STYLES_BG_DEMO,
-	// },
-
-	// styles_dimensions: {
-	// 	type: "object",
-	// 	default: MY_DIMENSIONS_CONTROL_DEMO,
-	// },
 	//
 	advance_responsiveCondition: {
 		type: "object",

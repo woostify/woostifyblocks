@@ -46,12 +46,14 @@ const TAGS_PLANS: MyRadioItem<keyof JSX.IntrinsicElements>[] = [
 const MyHeadingTagControl: FC<Props> = ({ onChange, tag, className }) => {
 	return (
 		<MyRadioGroup
+			label="Heading tag"
 			className={className}
 			// @ts-ignore
 			onChange={onChange}
 			value={tag}
 			plans={TAGS_PLANS}
 			isWrap
+			hasResponsive={false}
 		/>
 	);
 };
