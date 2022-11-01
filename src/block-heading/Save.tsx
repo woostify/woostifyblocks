@@ -50,17 +50,23 @@ export default function save({
 			{...blockProps}
 		>
 			<>
-				<RichText.Content
-					tagName="h2"
-					className="wcb-heading__heading"
-					value={heading}
-				/>
-				<div className="wcb-heading__separator"></div>
-				<RichText.Content
-					tagName="p"
-					className="wcb-heading__subHeading"
-					value={subHeading}
-				/>
+				{general_content.showHeading ? (
+					<RichText.Content
+						tagName={general_content.headingTag || "h2"}
+						className="wcb-heading__heading"
+						value={heading}
+					/>
+				) : null}
+				{general_content.showSeparator ? (
+					<div className="wcb-heading__separator"></div>
+				) : null}
+				{general_content.showSubHeading ? (
+					<RichText.Content
+						tagName="p"
+						className="wcb-heading__subHeading"
+						value={subHeading}
+					/>
+				) : null}
 			</>
 		</SaveCommon>
 	);

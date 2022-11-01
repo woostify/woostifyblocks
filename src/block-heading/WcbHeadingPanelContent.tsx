@@ -21,8 +21,8 @@ export const WCB_HEADING_PANEL_CONTENT_DEMO: WCB_HEADING_PANEL_CONTENT = {
 	textAlignment: { Desktop: "left" },
 	headingTag: "h2",
 	showHeading: true,
-	showSeparator: false,
-	showSubHeading: false,
+	showSeparator: true,
+	showSubHeading: true,
 };
 
 interface Props {

@@ -39,6 +39,7 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 		styles_background,
 		styles_dimensions,
 		//
+		general_content,
 	} = attributes;
 
 	//
@@ -151,21 +152,27 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 
 				{/*  */}
 				<GlobalCss {...attributes} />
-				<RichText
-					identifier="heading"
-					tagName="h2"
-					className="wcb-heading__heading"
-					value={heading}
-					onChange={(heading) => setAttributes({ heading })}
-				/>
-				<div className="wcb-heading__separator"></div>
-				<RichText
-					identifier="subHeading"
-					tagName="p"
-					className="wcb-heading__subHeading"
-					value={subHeading}
-					onChange={(subHeading) => setAttributes({ subHeading })}
-				/>
+				{general_content.showHeading ? (
+					<RichText
+						identifier="heading"
+						tagName={general_content.headingTag || "h2"}
+						className="wcb-heading__heading"
+						value={heading}
+						onChange={(heading) => setAttributes({ heading })}
+					/>
+				) : null}
+				{general_content.showSeparator ? (
+					<div className="wcb-heading__separator"></div>
+				) : null}
+				{general_content.showSubHeading ? (
+					<RichText
+						identifier="subHeading"
+						tagName="p"
+						className="wcb-heading__subHeading"
+						value={subHeading}
+						onChange={(subHeading) => setAttributes({ subHeading })}
+					/>
+				) : null}
 			</div>
 		</CacheProvider>
 	);
