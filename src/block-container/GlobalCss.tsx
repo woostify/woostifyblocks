@@ -4,6 +4,7 @@ import { getShadowStyleValueFromTwPreset } from "../components/controls/MyBoxSha
 import getBackgroundColorGradientStyles from "../utils/getBackgroundColorGradientStyles";
 import getBorderRadiusStyles from "../utils/getBorderRadiusStyles";
 import getBorderStyles from "../utils/getBorderStyles";
+import getFlexPropertiesStyles from "../utils/getFlexPropertiesStyles";
 import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { BlockWCBContainerAttrs } from "./attributes";
@@ -295,76 +296,16 @@ const GlobalCss: FC<Props> = (attrs) => {
 	};
 
 	const getInner__flexProperties = () => {
-		const { alignItems, flexDirection, flexWrap, justifyContent } =
-			general_flexProperties;
-
-		const flexDirection_Desktop = flexDirection.Desktop;
-		const flexDirection_Tablet = flexDirection.Tablet || flexDirection_Desktop;
-		const flexDirection_Mobile = flexDirection.Mobile || flexDirection_Tablet;
-		//
-		const alignItems_Desktop = alignItems.Desktop;
-		const alignItems_Tablet = alignItems.Tablet || alignItems_Desktop;
-		const alignItems_Mobile = alignItems.Mobile || alignItems_Tablet;
-		//
-		const flexWrap_Desktop = flexWrap.Desktop;
-		const flexWrap_Tablet = flexWrap.Tablet || flexWrap_Desktop;
-		const flexWrap_Mobile = flexWrap.Mobile || flexWrap_Tablet;
-		//
-		const justifyContent_Desktop = justifyContent.Desktop;
-		const justifyContent_Tablet =
-			justifyContent.Tablet || justifyContent_Desktop;
-		const justifyContent_Mobile =
-			justifyContent.Mobile || justifyContent_Tablet;
-		//
-
-		return css`
-			${INNER_CLASSNAME} {
-				flex-direction: ${flexDirection_Mobile};
-				align-items: ${alignItems_Mobile};
-				flex-wrap: ${flexWrap_Mobile};
-				justify-content: ${justifyContent_Mobile};
-				@media (min-width: ${media_tablet}) {
-					flex-direction: ${flexDirection_Tablet};
-					align-items: ${alignItems_Tablet};
-					flex-wrap: ${flexWrap_Tablet};
-					justify-content: ${justifyContent_Tablet};
-				}
-				@media (min-width: ${media_desktop}) {
-					flex-direction: ${flexDirection_Desktop};
-					align-items: ${alignItems_Desktop};
-					flex-wrap: ${flexWrap_Desktop};
-					justify-content: ${justifyContent_Desktop};
-				}
-			}
-		`;
-	};
-
-	const getInner__flexGaps = () => {
+		const {} = general_flexProperties;
 		const { colunmGap, rowGap } = styles_dimensions;
-		//
-		const colunmGap_Desktop = colunmGap.Desktop;
-		const colunmGap_Tablet = colunmGap.Tablet || colunmGap_Desktop;
-		const colunmGap_Mobile = colunmGap.Mobile || colunmGap_Tablet;
-		//
-		const rowGap_Desktop = rowGap.Desktop;
-		const rowGap_Tablet = rowGap.Tablet || rowGap_Desktop;
-		const rowGap_Mobile = rowGap.Mobile || rowGap_Tablet;
-		//
-
-		return css`
-			${INNER_CLASSNAME} {
-				column-gap: ${colunmGap_Mobile};
-				row-gap: ${rowGap_Mobile};
-				@media (min-width: ${media_tablet}) {
-					column-gap: ${colunmGap_Tablet};
-					row-gap: ${rowGap_Tablet};
-				}
-				@media (min-width: ${media_desktop}) {
-					column-gap: ${colunmGap_Desktop};
-					row-gap: ${rowGap_Desktop};
-				}
-			}
-		`;
+		return getFlexPropertiesStyles({
+			flexProperties: {
+				...general_flexProperties,
+				colunmGap,
+				rowGap,
+			},
+			className: INNER_CLASSNAME,
+		});
 	};
 
 	return (
@@ -388,7 +329,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 			<Global styles={getDivInnerStyles()} />
 			<Global styles={getInner__contentCustomWidth()} />
 			<Global styles={getInner__flexProperties()} />
-			<Global styles={getInner__flexGaps()} />
 		</>
 	);
 };

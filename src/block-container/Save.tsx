@@ -8,14 +8,26 @@ import "./style.scss";
 import { getGapStyleFromGapjObj } from "./Edit";
 import VideoBackgroundByBgControl from "../components/VideoBackgroundByBgControl";
 import OverlayBackgroundByBgControl from "../components/OverlayBackgroundByBgControl";
+import SaveCommon from "../components/SaveCommon";
 
 export default function save({
 	attributes,
 }: {
 	attributes: BlockWCBContainerAttrs;
 }) {
-	const { styles_background, uniqueId, general_container, styles_dimensions } =
-		attributes;
+	const {
+		styles_background,
+		uniqueId,
+		general_container,
+		styles_dimensions,
+		advance_responsiveCondition,
+		advance_zIndex,
+		general_flexProperties,
+		styles_border,
+		styles_boxShadow,
+		styles_color,
+	} = attributes;
+
 	const blockProps = useBlockProps.save({ className: "wcb-container__inner" });
 	const innerBlocksProps = useInnerBlocksProps.save(blockProps);
 
@@ -28,28 +40,40 @@ export default function save({
 			: "";
 	const { colunmGap, rowGap } = styles_dimensions;
 	const GAPS_VARIABLES = getGapStyleFromGapjObj({ colunmGap, rowGap });
-	return (
-		<HtmlTag
-			className={`wcb-container__wrap wcb-update-div ${uniqueId} ${containerWidthTypeClass}`}
-			id={uniqueId}
-		>
-			{/*  */}
-			<VideoBackgroundByBgControl
-				bgType={styles_background.bgType}
-				videoData={styles_background.videoData}
-			/>
-			<OverlayBackgroundByBgControl
-				bgType={styles_background.bgType}
-				overlayType={styles_background.overlayType}
-			/>
-			{/*  */}
 
-			<div {...innerBlocksProps} style={GAPS_VARIABLES} />
-			{/*  */}
-			<div data-wcb-global-styles={uniqueId}></div>
-			<pre data-wcb-block-attrs={uniqueId} style={{ display: "none" }}>
-				{_.escape(JSON.stringify(attributes))}
-			</pre>
-		</HtmlTag>
+	const newAttrs: BlockWCBContainerAttrs = {
+		styles_background,
+		uniqueId,
+		general_container,
+		styles_dimensions,
+		advance_responsiveCondition,
+		advance_zIndex,
+		general_flexProperties,
+		styles_border,
+		styles_boxShadow,
+		styles_color,
+	};
+	return (
+		<SaveCommon
+			attributes={newAttrs}
+			uniqueId={uniqueId}
+			HtmlTag={HtmlTag}
+			className={`wcb-container__wrap ${containerWidthTypeClass}`}
+		>
+			<>
+				{/*  */}
+				<VideoBackgroundByBgControl
+					bgType={styles_background.bgType}
+					videoData={styles_background.videoData}
+				/>
+				<OverlayBackgroundByBgControl
+					bgType={styles_background.bgType}
+					overlayType={styles_background.overlayType}
+				/>
+				{/*  */}
+
+				<div {...innerBlocksProps} style={GAPS_VARIABLES} />
+			</>
+		</SaveCommon>
 	);
 }
