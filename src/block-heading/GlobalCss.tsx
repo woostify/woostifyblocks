@@ -1,12 +1,14 @@
 import { Global, CSSObject } from "@emotion/react";
 import React, { FC } from "react";
 import { getAdvanveDivWrapStyles } from "../block-container/getAdvanveStyles";
+import { DimensionSettings } from "../components/controls/MyDimensionsControl/types";
 import getBackgroundColorGradientStyles from "../utils/getBackgroundColorGradientStyles";
 import getBorderRadiusStyles from "../utils/getBorderRadiusStyles";
 import getBorderStyles from "../utils/getBorderStyles";
 import getColorAndGradientStyles from "../utils/getColorAndGradientStyles";
 import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
 import getTypographyStyles from "../utils/getTypographyStyles";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { WcbBlockHeadingAttrs } from "./attributes";
 
@@ -36,20 +38,21 @@ const GlobalCss: FC<Props> = (attrs) => {
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject => {
 		const { textAlignment } = general_content;
-
-		let textAlign_Desktop = textAlignment.Desktop;
-		let textAlign_Tablet = textAlignment.Tablet || textAlign_Desktop;
-		let textAlign_Mobile = textAlignment.Mobile || textAlign_Tablet;
+		const { value_Desktop, value_Mobile, value_Tablet } =
+			getValueFromAttrsResponsives<React.CSSProperties["textAlign"]>(
+				textAlignment
+			);
+		//
 
 		return {
 			[`${WRAP_CLASSNAME}`]: {
-				textAlign: textAlign_Mobile,
+				textAlign: value_Mobile,
 
 				[`@media (min-width: ${media_tablet})`]: {
-					textAlign: textAlign_Tablet,
+					textAlign: value_Tablet,
 				},
 				[`@media (min-width: ${media_desktop})`]: {
-					textAlign: textAlign_Desktop,
+					textAlign: value_Desktop,
 				},
 			},
 		};
@@ -84,11 +87,13 @@ const GlobalCss: FC<Props> = (attrs) => {
 	};
 	// HIGHLIGHT STYLES
 	const getDivWrapStyles__Highlight = (): CSSObject => {
-		const { bgColor, padding, textColor, typography } = styles_highlight;
+		const { bgColor, padding, textColor } = styles_highlight;
+		const {
+			value_Desktop: padding_Desktop,
+			value_Mobile: padding_Mobile,
+			value_Tablet: padding_Tablet,
+		} = getValueFromAttrsResponsives<DimensionSettings>(padding);
 
-		let padding_Desktop = padding.Desktop;
-		let padding_Tablet = padding.Tablet || padding_Desktop;
-		let padding_Mobile = padding.Mobile || padding_Tablet;
 		//
 		return {
 			[`${WRAP_CLASSNAME} mark`]: {
@@ -132,19 +137,17 @@ const GlobalCss: FC<Props> = (attrs) => {
 	// SEPARATOR STYLES
 	const getDivWrapStyles__Separator_width = (): CSSObject => {
 		const { width } = styles_separator;
-
-		let width_Desktop = width.Desktop;
-		let width_Tablet = width.Tablet || width_Desktop;
-		let width_Mobile = width.Mobile || width_Tablet;
+		const { value_Desktop, value_Mobile, value_Tablet } =
+			getValueFromAttrsResponsives<string>(width);
 		//
 		return {
 			[`${SEPARATOR_CLASSNAME}`]: {
-				width: width_Mobile,
+				width: value_Mobile,
 				[`@media (min-width: ${media_tablet})`]: {
-					width: width_Tablet,
+					width: value_Tablet,
 				},
 				[`@media (min-width: ${media_desktop})`]: {
-					width: width_Desktop,
+					width: value_Desktop,
 				},
 			},
 		};
