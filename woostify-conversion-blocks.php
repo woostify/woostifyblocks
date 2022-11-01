@@ -33,7 +33,12 @@ require plugin_dir_path(__FILE__) . 'inc/wcb-enqueue-scripts.php';
 
 
 // 
-wp_enqueue_style('wcb-frontend-css', plugin_dir_url(__FILE__) . 'build/block-common-css/style-index.css');
+
+function __my_scripts_method()
+{
+	wp_enqueue_style('wcb-frontend-css', plugin_dir_url(__FILE__) . 'build/block-common-css/style-index.css');
+}
+add_action('wp_enqueue_scripts', '__my_scripts_method');
 // 
 
 //============================================================================================================================================
