@@ -2,7 +2,7 @@ import { __ } from "@wordpress/i18n";
 import { useBlockProps } from "@wordpress/block-editor";
 import { PanelBody } from "@wordpress/components";
 import React, { useEffect, FC } from "react";
-import { WcbBlockHeadingAttrs } from "./attributes";
+import { WcbBlockPostsGridAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
 } from "../components/HOCInspectorControls";
@@ -13,8 +13,9 @@ import useCreateCacheEmotion from "../hooks/useCreateCacheEmotion";
 import { CacheProvider } from "@emotion/react";
 import GlobalCss from "./GlobalCss";
 import "./editor.scss";
+import WcbPostsGridPanelSortingAndFiltering from "./WcbPostsGridPanelSortingAndFiltering";
 
-const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
+const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 
 	//  COMMON HOOKS
@@ -29,12 +30,24 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
-		const { advance_responsiveCondition, advance_zIndex, heading, uniqueId } =
-			attributes;
-
+		const {
+			general_sortingAndFiltering,
+			advance_responsiveCondition,
+			advance_zIndex,
+			uniqueId,
+		} = attributes;
 		switch (tab.name) {
 			case "General":
-				return <></>;
+				return (
+					<>
+						<WcbPostsGridPanelSortingAndFiltering
+							setAttr__={(data) => {
+								setAttributes({ general_sortingAndFiltering: data });
+							}}
+							panelData={general_sortingAndFiltering}
+						/>
+					</>
+				);
 			case "Styles":
 				return <></>;
 			case "Advances":
@@ -80,7 +93,7 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 				<GlobalCss {...attributes} />
 
 				{/* CHILD CONTENT  */}
-				<div>CHILD CONTENT </div>
+				<div className="h-32 bg-slate-200 my-5">CHILD CONTENT </div>
 			</div>
 		</CacheProvider>
 	);

@@ -12,13 +12,15 @@ const MySelect: FC<Props> = ({ label, hasResponsive, devices, ...props }) => {
 	return (
 		<div className="wcb-MySelect w-full flex justify-between items-center">
 			<MyLabelControl
-				className=""
+				className="flex-1"
 				hasResponsive={hasResponsive}
 				devices={devices}
 			>
 				{label}
 			</MyLabelControl>
-			<SelectControl hideLabelFromVision {...props} />
+			<div className="flex-1">
+				<SelectControl hideLabelFromVision {...props} />
+			</div>
 		</div>
 	);
 };

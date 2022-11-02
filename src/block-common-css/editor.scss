@@ -40,7 +40,8 @@
 	.components-toggle-group-control,
 	.components-toggle-group-control-option-base,
 	.components-custom-gradient-picker__gradient-bar,
-	.components-select-control__input {
+	.components-select-control__input,
+	.components-form-token-field__input-container {
 		@apply rounded-lg;
 	}
 	.components-toggle-group-control > [role="presentation"] {

@@ -7,26 +7,29 @@ import {
 	MyZIndexControlData,
 	Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
-export interface WcbBlockHeadingAttrs {
+import {
+	WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING,
+	WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING_DEMO,
+} from "./WcbPostsGridPanelSortingAndFiltering";
+export interface WcbBlockPostsGridAttrs {
 	uniqueId: string;
-	heading: string;
+	//
+	general_sortingAndFiltering: WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING;
 	//
 	advance_responsiveCondition: MyResponsiveConditionControlData;
 	advance_zIndex: MyZIndexControlData;
 }
 
-const blokc1Attrs: AttrsGenericType<WcbBlockHeadingAttrs> = {
+const blokc1Attrs: AttrsGenericType<WcbBlockPostsGridAttrs> = {
 	uniqueId: {
 		type: "string",
 		default: "",
 	},
 
 	// THE ATTRS OF BLOCK HERE
-	heading: {
-		type: "string",
-		source: "html",
-		selector: ".wcb-heading__heading",
-		default: "Clik to edit HEADING",
+	general_sortingAndFiltering: {
+		type: "object",
+		default: WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING_DEMO,
 	},
 
 	// ADVANCE

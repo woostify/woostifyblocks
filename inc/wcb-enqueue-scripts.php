@@ -1,1 +1,7 @@
 <?php
+function wcb__my_scripts_method()
+{
+    wp_enqueue_style('wcb-frontend-css', plugin_dir_url(WCB_FILE) . 'build/block-common-css/style-index.css');
+}
+add_action('wp_enqueue_scripts', 'wcb__my_scripts_method');
+// 

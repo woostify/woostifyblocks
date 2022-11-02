@@ -1,16 +1,36 @@
 <?php
 
 //============================================= block 1 ===============================================================
-function wcb_render_callback_block_1($attributes)
+function wcb_block_posts_grid__renderCallback($attributes, $content)
 {
-    die;
-    ob_start();
-?>
-    <div class="<?php echo esc_attr(!empty($attributes['className']) ? $attributes['className'] : ''); ?>">
-        TEST BLOCK 1
-    </div>
-<?php
-    $output = ob_get_contents();
-    ob_end_clean();
-    return $output;
+    if (!is_admin()) {
+        wp_enqueue_script('wcb_block_posts_grid__renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-posts-grid/FrontendStyles.js', array('wp-element'), null, true);
+    }
+    return $content;
+}
+//============================================= block 1 ===============================================================
+function wcb_block_heading__renderCallback($attributes, $content)
+{
+    if (!is_admin()) {
+        wp_enqueue_script('wcb_block_heading__renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-heading/FrontendStyles.js', array('wp-element'), null, true);
+    }
+    return $content;
+}
+
+//============================================= block 1 ===============================================================
+function wcb_block_container_box__renderCallback($attributes, $content)
+{
+    if (!is_admin()) {
+        wp_enqueue_script('wcb_block_container_box__renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-container-box/FrontendStyles.js', array('wp-element'), null, true);
+    }
+    return $content;
+}
+
+//============================================= block 1 ===============================================================
+function wcb_block_container__renderCallback($attributes, $content)
+{
+    if (!is_admin()) {
+        wp_enqueue_script('wcb_block_container__renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-container/FrontendStyles.js', array('wp-element'), null, true);
+    }
+    return $content;
 }
