@@ -22,7 +22,7 @@ const Edit = () => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "Edit d");
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Edit);
+/* harmony default export */ __webpack_exports__["default"] = (Edit); //
 
 /***/ }),
 
@@ -99,7 +99,7 @@ const {
   edit: _Edit__WEBPACK_IMPORTED_MODULE_2__["default"],
   save: _Save__WEBPACK_IMPORTED_MODULE_3__["default"],
   attributes: []
-});
+}); //
 
 /***/ }),
 

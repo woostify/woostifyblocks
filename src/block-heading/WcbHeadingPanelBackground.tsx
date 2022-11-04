@@ -14,7 +14,8 @@ export const WCB_HEADING_PANEL_BACKGROUND_DEMO: WCB_HEADING_PANEL_BACKGROUND = {
 	background: STYLES_BG_NO_IMAGE_DEMO,
 };
 
-interface Props {
+interface Props
+	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
 	panelData: WCB_HEADING_PANEL_BACKGROUND;
 	setAttr__: (data: WCB_HEADING_PANEL_BACKGROUND) => void;
 }
@@ -22,12 +23,20 @@ interface Props {
 const WcbHeadingPanelBackground: FC<Props> = ({
 	panelData = WCB_HEADING_PANEL_BACKGROUND_DEMO,
 	setAttr__,
+	initialOpen,
+	onToggle,
+	opened,
 }) => {
 	const { background } = panelData;
 
 	//
 	return (
-		<PanelBody initialOpen={false} title={__("Background", "wcb")}>
+		<PanelBody
+			initialOpen={initialOpen}
+			onToggle={onToggle}
+			opened={opened}
+			title={__("Background", "wcb")}
+		>
 			<MyBackgroundNoImageControl
 				backgroundControl={background}
 				setAttrs__backgroundControl={(background) => setAttr__({ background })}

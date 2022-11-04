@@ -32,3 +32,5 @@ registerBlockType(metadata.name, {
 	save: save,
 	attributes: [],
 });
+
+//

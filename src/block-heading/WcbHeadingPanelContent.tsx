@@ -1,4 +1,4 @@
-import { FormToggle, PanelBody } from "@wordpress/components";
+import { PanelBody, ToggleControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
@@ -25,7 +25,8 @@ export const WCB_HEADING_PANEL_CONTENT_DEMO: WCB_HEADING_PANEL_CONTENT = {
 	showSubHeading: true,
 };
 
-interface Props {
+interface Props
+	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
 	panelContentData: WCB_HEADING_PANEL_CONTENT;
 	setAttr__panelContentData: (data: WCB_HEADING_PANEL_CONTENT) => void;
 }
@@ -33,6 +34,9 @@ interface Props {
 const WcbHeadingPanelContent: FC<Props> = ({
 	panelContentData = WCB_HEADING_PANEL_CONTENT_DEMO,
 	setAttr__panelContentData,
+	onToggle,
+	opened,
+	initialOpen,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
@@ -62,22 +66,22 @@ const WcbHeadingPanelContent: FC<Props> = ({
 			headingTag: selected,
 		});
 	};
-	const toggleHeading = (e: React.FormEvent<HTMLInputElement>) => {
+	const toggleHeading = (e: boolean) => {
 		setAttr__panelContentData({
 			...panelContentData,
-			showHeading: e.currentTarget.checked,
+			showHeading: e,
 		});
 	};
-	const toggleSubHeading = (e: React.FormEvent<HTMLInputElement>) => {
+	const toggleSubHeading = (e: boolean) => {
 		setAttr__panelContentData({
 			...panelContentData,
-			showSubHeading: e.currentTarget.checked,
+			showSubHeading: e,
 		});
 	};
-	const toggleSeparator = (e: React.FormEvent<HTMLInputElement>) => {
+	const toggleSeparator = (e: boolean) => {
 		setAttr__panelContentData({
 			...panelContentData,
-			showSeparator: e.currentTarget.checked,
+			showSeparator: e,
 		});
 	};
 	//
@@ -85,8 +89,10 @@ const WcbHeadingPanelContent: FC<Props> = ({
 	return (
 		<PanelBody
 			className={"space-y-5"}
-			initialOpen={false}
 			title={__("Content", "wcb")}
+			initialOpen={initialOpen}
+			onToggle={onToggle}
+			opened={opened}
 		>
 			<MyTextAlignControl
 				textAlignment={TEXT_ALIGNMENT}
@@ -95,19 +101,22 @@ const WcbHeadingPanelContent: FC<Props> = ({
 			{/*  */}
 			<MyHeadingTagControl tag={headingTag} onChange={handleChangeTag} />
 			{/*  */}
-			<div className="flex justify-between items-center">
-				<p>{__("Show Heading", "wcb")}</p>
-				<FormToggle checked={showHeading} onChange={toggleHeading} />
-			</div>
-			<div className="flex justify-between items-center">
-				<p>{__("Show Sub-heading", "wcb")}</p>
-				<FormToggle checked={showSubHeading} onChange={toggleSubHeading} />
-			</div>
-			{/*  */}
-			<div className="flex justify-between items-center">
-				<p>{__("Show Separator", "wcb")}</p>
-				<FormToggle checked={showSeparator} onChange={toggleSeparator} />
-			</div>
+			<ToggleControl
+				label={__("Show Heading", "wcb")}
+				checked={showHeading}
+				onChange={toggleHeading}
+			/>
+
+			<ToggleControl
+				label={__("Show Sub-heading", "wcb")}
+				checked={showSubHeading}
+				onChange={toggleSubHeading}
+			/>
+			<ToggleControl
+				label={__("Show Separator", "wcb")}
+				checked={showSeparator}
+				onChange={toggleSeparator}
+			/>
 		</PanelBody>
 	);
 };

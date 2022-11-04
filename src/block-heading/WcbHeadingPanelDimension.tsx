@@ -15,7 +15,8 @@ export const WCB_HEADING_PANEL_DIMENSION_DEMO: WCB_HEADING_PANEL_DIMENSION = {
 	dimension: MY_DIMENSIONS_NO_GAP_CONTROL_DEMO,
 };
 
-interface Props {
+interface Props
+	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
 	panelData: WCB_HEADING_PANEL_DIMENSION;
 	setAttr__: (data: WCB_HEADING_PANEL_DIMENSION) => void;
 }
@@ -23,12 +24,20 @@ interface Props {
 const WcbHeadingPanelDimension: FC<Props> = ({
 	panelData = WCB_HEADING_PANEL_DIMENSION_DEMO,
 	setAttr__,
+	initialOpen,
+	onToggle,
+	opened,
 }) => {
 	const { dimension } = panelData;
 
 	//
 	return (
-		<PanelBody initialOpen={false} title={__("Dimension", "wcb")}>
+		<PanelBody
+			initialOpen={initialOpen}
+			onToggle={onToggle}
+			opened={opened}
+			title={__("Dimension", "wcb")}
+		>
 			<MyDimensionsNoGapControl
 				dimensionControl={dimension}
 				setAttrs__dimensions={(dimension) => setAttr__({ dimension })}

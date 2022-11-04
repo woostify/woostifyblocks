@@ -27,7 +27,8 @@ export const WCB_HEADING_PANEL_HEADING_DEMO: WCB_HEADING_PANEL_HEADING = {
 	textShadow: MY_TEXT_SHADOW_CONTROL_DEMO,
 };
 
-interface Props {
+interface Props
+	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
 	panelHeading: WCB_HEADING_PANEL_HEADING;
 	setAttr__panelHeading: (data: WCB_HEADING_PANEL_HEADING) => void;
 }
@@ -35,12 +36,20 @@ interface Props {
 const WcbHeadingPanelHeading: FC<Props> = ({
 	panelHeading = WCB_HEADING_PANEL_HEADING_DEMO,
 	setAttr__panelHeading,
+	initialOpen,
+	onToggle,
+	opened,
 }) => {
 	const { typography, textColor, textShadow } = panelHeading;
 
 	//
 	return (
-		<PanelBody initialOpen={false} title={__("Heading", "wcb")}>
+		<PanelBody
+			initialOpen={initialOpen}
+			onToggle={onToggle}
+			opened={opened}
+			title={__("Heading", "wcb")}
+		>
 			<div className="space-y-2.5">
 				<MyTypographyControl
 					typographyControl={typography}

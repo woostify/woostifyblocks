@@ -41,7 +41,9 @@ const MyLabelControl: FC<MyLabelControlProps> = ({
 	// const __hasUnit = !!units?.length;
 
 	return (
-		<div className={className}>
+		<div
+			className={`components-base-control__label font-medium uppercase text-[11px] ${className}`}
+		>
 			<div className="wb-control-label flex items-center">
 				<div className="wb-base-control__label">{children}</div>
 				<div className="wb-base-control__responsive ml-2">

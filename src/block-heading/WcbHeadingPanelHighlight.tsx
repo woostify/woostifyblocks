@@ -46,7 +46,8 @@ export const WCB_HEADING_PANEL_HIGHLIGHT_DEMO: WCB_HEADING_PANEL_HIGHLIGHT = {
 	border: MY_BORDER_CONTROL_DEMO,
 };
 
-interface Props {
+interface Props
+	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
 	panelData: WCB_HEADING_PANEL_HIGHLIGHT;
 	setAttr__: (data: WCB_HEADING_PANEL_HIGHLIGHT) => void;
 }
@@ -54,6 +55,9 @@ interface Props {
 const WcbHeadingPanelHighlight: FC<Props> = ({
 	panelData = WCB_HEADING_PANEL_HIGHLIGHT_DEMO,
 	setAttr__,
+	initialOpen,
+	onToggle,
+	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
@@ -70,7 +74,12 @@ const WcbHeadingPanelHighlight: FC<Props> = ({
 	//
 
 	return (
-		<PanelBody initialOpen={false} title={__("Highlight", "wcb")}>
+		<PanelBody
+			initialOpen={initialOpen}
+			onToggle={onToggle}
+			opened={opened}
+			title={__("Highlight", "wcb")}
+		>
 			<div className="space-y-2.5">
 				<MyTypographyControl
 					typographyControl={typography}

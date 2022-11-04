@@ -21,11 +21,8 @@ import MyBorderControl from "../components/controls/MyBorderControl/MyBorderCont
 import "./editor.scss";
 import MyBoxShadowControl from "../components/controls/MyBoxShadowControl/MyBoxShadowControl";
 import MyDimensionsControl from "../components/controls/MyDimensionsControl/MyDimensionsControl";
-import MyResponsiveConditionControl from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
-import MyZIndexControl from "../components/controls/MyZIndexControl/MyZIndexControl";
 import MyContainerControl from "../components/controls/MyContainerControl/MyContainerControl";
 import MyFlexPropertiesControl from "../components/controls/MyFlexPropertiesControl/MyFlexPropertiesControl";
-import { useDispatch, useSelect } from "@wordpress/data";
 import {
 	// @ts-ignore
 	createBlocksFromInnerBlocksTemplate,
@@ -38,6 +35,9 @@ import useCreateCacheEmotion from "../hooks/useCreateCacheEmotion";
 import VideoBackgroundByBgControl from "../components/VideoBackgroundByBgControl";
 import OverlayBackgroundByBgControl from "../components/OverlayBackgroundByBgControl";
 import { FLEX_PROPERTIES_CONTROL_DEMO } from "../components/controls/MyFlexPropertiesControl/types";
+import { useSelect, useDispatch } from "@wordpress/data";
+import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
+import AdvancePanelCommon from "../components/AdvancePanelCommon";
 
 export type EditProps<T> = {
 	attributes: T;
@@ -63,6 +63,13 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 	const { uniqueId } = attributes;
 
 	const { myCache, ref } = useCreateCacheEmotion();
+	const {
+		tabIsOpen,
+		tabAdvancesIsPanelOpen,
+		tabGeneralIsPanelOpen,
+		tabStylesIsPanelOpen,
+		handleTogglePanel,
+	} = useSetBlockPanelInfo(uniqueId);
 
 	//
 	useEffect(() => {
@@ -70,22 +77,18 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 			uniqueId: "wcb-container-" + clientId.substring(2, 9).replace("-", ""),
 		});
 	}, []);
-	//
-
-	const renderPanelColor = () => {
-		return (
-			<PanelBody initialOpen={false} className="" title={__("Color", "wcb")}>
-				<MyColorPicker
-					onChange={(color) => setAttributes({ styles_color: color })}
-					color={attributes.styles_color}
-				/>
-			</PanelBody>
-		);
-	};
 
 	const renderPanelBackground = () => {
 		return (
-			<PanelBody initialOpen={false} title={__("Background", "wcb")}>
+			<PanelBody
+				onToggle={() => handleTogglePanel("Styles", "Background", true)}
+				initialOpen={
+					tabStylesIsPanelOpen === "Background" ||
+					tabStylesIsPanelOpen === "first"
+				}
+				opened={tabStylesIsPanelOpen === "Background" || undefined}
+				title={__("Background", "wcb")}
+			>
 				<MyBackgroundControl
 					backgroundControl={attributes.styles_background}
 					setAttrs__backgroundControl={(data) =>
@@ -96,9 +99,30 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		);
 	};
 
+	const renderPanelColor = () => {
+		return (
+			<PanelBody
+				initialOpen={tabStylesIsPanelOpen === "Color"}
+				title={__("Color", "wcb")}
+				onToggle={() => handleTogglePanel("Styles", "Color")}
+				opened={tabStylesIsPanelOpen === "Styles" || undefined}
+			>
+				<MyColorPicker
+					onChange={(color) => setAttributes({ styles_color: color })}
+					color={attributes.styles_color}
+				/>
+			</PanelBody>
+		);
+	};
+
 	const renderPanelBorder = () => {
 		return (
-			<PanelBody initialOpen={false} title={__("Border", "wcb")}>
+			<PanelBody
+				onToggle={() => handleTogglePanel("Styles", "Border")}
+				initialOpen={tabStylesIsPanelOpen === "Border"}
+				opened={tabStylesIsPanelOpen === "Border" || undefined}
+				title={__("Border", "wcb")}
+			>
 				<MyBorderControl
 					borderControl={attributes.styles_border}
 					setAttrs__border={(data) => setAttributes({ styles_border: data })}
@@ -109,7 +133,12 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 
 	const renderPanelBoxShadow = () => {
 		return (
-			<PanelBody initialOpen={false} title={__("Box Shadow", "wcb")}>
+			<PanelBody
+				onToggle={() => handleTogglePanel("Styles", "Box Shadow")}
+				initialOpen={tabStylesIsPanelOpen === "Box Shadow"}
+				opened={tabStylesIsPanelOpen === "Box Shadow" || undefined}
+				title={__("Box Shadow", "wcb")}
+			>
 				<MyBoxShadowControl
 					boxShadowControl={attributes.styles_boxShadow}
 					setAttrs__boxShadow={(data) =>
@@ -122,7 +151,12 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 
 	const renderPanelDimensions = () => {
 		return (
-			<PanelBody initialOpen={false} title={__("Dimension", "wcb")}>
+			<PanelBody
+				onToggle={() => handleTogglePanel("Styles", "Dimension")}
+				initialOpen={tabStylesIsPanelOpen === "Dimension"}
+				opened={tabStylesIsPanelOpen === "Dimension" || undefined}
+				title={__("Dimension", "wcb")}
+			>
 				<MyDimensionsControl
 					dimensionControl={attributes.styles_dimensions}
 					setAttrs__dimensions={(data) =>
@@ -138,7 +172,15 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 			case "General":
 				return (
 					<>
-						<PanelBody initialOpen={false} title={__("Container", "wcb")}>
+						<PanelBody
+							title={__("Container", "wcb")}
+							onToggle={() => handleTogglePanel("General", "Container", true)}
+							initialOpen={
+								tabGeneralIsPanelOpen === "Container" ||
+								tabGeneralIsPanelOpen === "first"
+							}
+							opened={tabGeneralIsPanelOpen === "Container" || undefined}
+						>
 							<MyContainerControl
 								containerControl={attributes.general_container}
 								setAttrs__container={(data) =>
@@ -146,7 +188,12 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 								}
 							/>
 						</PanelBody>
-						<PanelBody initialOpen={false} title={__("Flex Properties", "wcb")}>
+						<PanelBody
+							onToggle={() => handleTogglePanel("General", "Flex Properties")}
+							initialOpen={tabGeneralIsPanelOpen === "Flex Properties"}
+							opened={tabGeneralIsPanelOpen === "Flex Properties" || undefined}
+							title={__("Flex Properties", "wcb")}
+						>
 							<MyFlexPropertiesControl
 								flexPropertiesControl={attributes.general_flexProperties}
 								setAttrs__flexProperties={(data) =>
@@ -169,27 +216,15 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 			case "Advances":
 				return (
 					<>
-						<PanelBody
-							initialOpen={false}
-							title={__("Responsive Conditions", "wcb")}
-						>
-							<MyResponsiveConditionControl
-								responsiveConditionControl={
-									attributes.advance_responsiveCondition
-								}
-								setAttrs__responsiveCondition={(data) =>
-									setAttributes({ advance_responsiveCondition: data })
-								}
-							/>
-						</PanelBody>
-						<PanelBody initialOpen={false} title={__("Z-Index", "wcb")}>
-							<MyZIndexControl
-								zIndexControl={attributes.advance_zIndex}
-								setAttrs__zIndex={(data) =>
-									setAttributes({ advance_zIndex: data })
-								}
-							/>
-						</PanelBody>
+						<AdvancePanelCommon
+							advance_responsiveCondition={
+								attributes.advance_responsiveCondition
+							}
+							advance_zIndex={attributes.advance_zIndex}
+							handleTogglePanel={handleTogglePanel}
+							setAttributes={setAttributes}
+							tabAdvancesIsPanelOpen={tabAdvancesIsPanelOpen}
+						/>
 					</>
 				);
 
@@ -252,7 +287,14 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 				{/*  */}
 
 				<div {...innerBlocksProps} style={GAPS_VARIABLES} />
-				<HOCInspectorControls renderTabPanels={renderTabBodyPanels} />
+				<HOCInspectorControls
+					uniqueId={uniqueId}
+					renderTabPanels={renderTabBodyPanels}
+					onChangeActive={(tab) => {
+						handleTogglePanel(tab);
+					}}
+					tabDefaultActive={tabIsOpen}
+				/>
 			</div>
 		</CacheProvider>
 	);

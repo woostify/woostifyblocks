@@ -12,17 +12,21 @@ import {
 	store as blockEditorStore,
 } from "@wordpress/block-editor";
 import { useSelect, useDispatch } from "@wordpress/data";
-import { pin, list, grid } from "@wordpress/icons";
 import { store as coreStore } from "@wordpress/core-data";
+import { pin, list, grid } from "@wordpress/icons";
 import { store as noticeStore } from "@wordpress/notices";
 import { useInstanceId } from "@wordpress/compose";
 import CategorySelect from "./CategorySelect";
 import AuthorSelect from "./AuthorSelect";
 import {
+	FormToggle,
 	FormTokenField,
 	RangeControl,
 	SelectControl,
+	ToggleControl,
 } from "@wordpress/components";
+// @ts-ignore
+import { __experimentalNumberControl as NumberControl } from "@wordpress/components";
 import {
 	CATEGORIES_LIST_QUERY,
 	MY_ORDER_OPTIONS,
@@ -32,12 +36,14 @@ import {
 	USERS_LIST_QUERY,
 } from "./types";
 import MySelect from "../MySelect";
+import HelpText from "../HelpText";
+import MyLabelControl from "../MyLabelControl/MyLabelControl";
 
 const DEFAULT_MIN_ITEMS = 1;
 const DEFAULT_MAX_ITEMS = 100;
 const MAX_CATEGORIES_SUGGESTIONS = 20;
 
-interface Props {
+interface MyQueryControlData {
 	postType: string;
 	taxonomy: string;
 	//
@@ -52,37 +58,50 @@ interface Props {
 	//
 	featuredImageSizeSlug: string;
 	//
-	onNumberOfItemsChange?: (number: number) => void;
-	onAuthorChange?: () => void;
-	onCategoryChange?: () => void;
-	onOrderChange?: (newOrder: Order) => void;
-	onOrderByChange?: (newOrderBy: Orderby) => void;
-	onPostTypeChange?: (postType: string) => void;
-	onTaxonomyChange?: (postType: string) => void;
+}
+interface Props {
+	className?: string;
+	queriesControl: MyQueryControlData;
+	setAttrs__queries: (data: MyQueryControlData) => void;
 }
 
+export const MY_QUERIES_DEMO_DATA: MyQueryControlData = {
+	// postType,
+	// 	taxonomy,
+	// 	//
+	// 	featuredImageSizeSlug,
+	// 	selectedAuthorId,
+	// 	selectedCategoryId,
+	// 	selectedCategories,
+	// 	numberOfItems,
+	// 	order,
+	// 	orderBy,
+	// 	maxItems = DEFAULT_MAX_ITEMS,
+	// 	minItems = DEFAULT_MIN_ITEMS,
+	// 	//
+};
+
 const MyQueryControls: FC<Props> = ({
-	postType,
-	taxonomy,
-	//
-	featuredImageSizeSlug,
-	selectedAuthorId,
-	selectedCategoryId,
-	selectedCategories,
-	numberOfItems,
-	order,
-	orderBy,
-	maxItems = DEFAULT_MAX_ITEMS,
-	minItems = DEFAULT_MIN_ITEMS,
-	//
-	onNumberOfItemsChange = () => {},
-	onAuthorChange = () => {},
-	onCategoryChange = () => {},
-	onOrderChange = () => {},
-	onOrderByChange = () => {},
-	onPostTypeChange = () => {},
-	onTaxonomyChange = () => {},
+	queriesControl = MY_QUERIES_DEMO_DATA,
+	setAttrs__queries,
+	className,
 }) => {
+	const {
+		postType,
+		taxonomy,
+		//
+		featuredImageSizeSlug,
+		selectedAuthorId,
+		selectedCategoryId,
+		selectedCategories,
+		numberOfItems,
+		order,
+		orderBy,
+		maxItems = DEFAULT_MAX_ITEMS,
+		minItems = DEFAULT_MIN_ITEMS,
+		//
+	} = queriesControl;
+
 	const {
 		typesList,
 		authorList,
@@ -171,7 +190,14 @@ const MyQueryControls: FC<Props> = ({
 			}),
 			{}
 		) ?? {};
-
+	//
+	const onNumberOfItemsChange = (number: number) => {};
+	const onAuthorChange = () => {};
+	const onCategoryChange = () => {};
+	const onOrderChange = (newOrder: Order) => {};
+	const onOrderByChange = (newOrderBy: Orderby) => {};
+	const onPostTypeChange = (postType: string) => {};
+	const onTaxonomyChange = (postType: string) => {};
 	const handleSelectCategories = (tokens) => {
 		const hasNoSuggestion = tokens.some(
 			(token) => typeof token === "string" && !categorySuggestions[token]
@@ -187,7 +213,7 @@ const MyQueryControls: FC<Props> = ({
 		}
 		onCategoryChange({ categories: allCategories });
 	};
-
+	//
 	return (
 		<>
 			<MySelect
@@ -209,7 +235,6 @@ const MyQueryControls: FC<Props> = ({
 			/>
 
 			{/* ------- */}
-
 			{onOrderChange && onOrderByChange && (
 				<SelectControl
 					label={__("Order by")}
@@ -254,6 +279,37 @@ const MyQueryControls: FC<Props> = ({
 					onChange={onAuthorChange}
 				/>
 			)}
+
+			{/*  */}
+			<ToggleControl label={__("Exclude Current Post", "wcb")} />
+
+			{/*  */}
+			<ToggleControl
+				label={__("Offset starting post", "wcb")}
+				help={
+					<>
+						{__(
+							"Note: Enabling this will disable the Pagination. Setting the offset parameter overrides/ignores the paged parameter and breaks pagination."
+						)}
+						<a
+							href="https://developer.wordpress.org/reference/classes/wp_query/#pagination-parameters:~:text=Warning%3A%20Setting%20the%20offset%20parameter%20overrides/ignores%20the%20paged%20parameter%20and%20breaks%20pagination.%20The%20%27offset%27%20parameter%20is%20ignored%20when%20%27posts_per_page%27%3D%3E%2D1%20(show%20all%20posts)%20is%20used."
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							Read more{" "}
+						</a>
+					</>
+				}
+			/>
+
+			<NumberControl
+				label={__("Offset By")}
+				labelPosition="edeg"
+				min={0}
+				isShiftStepEnabled={true}
+				value={1}
+				shiftStep={10}
+			/>
 
 			{/*  */}
 			{onNumberOfItemsChange && (

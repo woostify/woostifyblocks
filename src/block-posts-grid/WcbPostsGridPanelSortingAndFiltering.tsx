@@ -19,7 +19,8 @@ export const WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING_DEMO: WCB_POSTS_GRID_PANEL
 		headingTag: "h2",
 	};
 
-interface Props {
+interface Props
+	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
 	panelData: WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING;
 	setAttr__: (data: WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING) => void;
 }
@@ -27,6 +28,9 @@ interface Props {
 const WcbPostsGridPanelSortingAndFiltering: FC<Props> = ({
 	panelData = WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING_DEMO,
 	setAttr__,
+	initialOpen,
+	onToggle,
+	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	//
@@ -49,7 +53,9 @@ const WcbPostsGridPanelSortingAndFiltering: FC<Props> = ({
 	return (
 		<PanelBody
 			className={"space-y-5"}
-			initialOpen
+			initialOpen={initialOpen}
+			onToggle={onToggle}
+			opened={opened}
 			title={__("Sorting and filtering", "wcb")}
 		>
 			<MyQueryControls />

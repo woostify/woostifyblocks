@@ -20,10 +20,6 @@ import {
 	RESPONSIVE_CONDITON_DEMO,
 } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
 import {
-	MyTypographyControlData,
-	TYPOGRAPHY_CONTROL_DEMO,
-} from "../components/controls/MyTypographyControl/types";
-import {
 	MyZIndexControlData,
 	Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";

@@ -1,26 +1,39 @@
 import { __ } from "@wordpress/i18n";
 import { useBlockProps } from "@wordpress/block-editor";
-import { PanelBody } from "@wordpress/components";
 import React, { useEffect, FC } from "react";
 import { WcbBlockPostsGridAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
 } from "../components/HOCInspectorControls";
-import MyResponsiveConditionControl from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
-import MyZIndexControl from "../components/controls/MyZIndexControl/MyZIndexControl";
 import { EditProps } from "../block-container/Edit";
 import useCreateCacheEmotion from "../hooks/useCreateCacheEmotion";
 import { CacheProvider } from "@emotion/react";
 import GlobalCss from "./GlobalCss";
 import "./editor.scss";
 import WcbPostsGridPanelSortingAndFiltering from "./WcbPostsGridPanelSortingAndFiltering";
+import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
+import AdvancePanelCommon from "../components/AdvancePanelCommon";
 
 const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
-
+	const {
+		general_sortingAndFiltering,
+		advance_responsiveCondition,
+		advance_zIndex,
+		uniqueId,
+	} = attributes;
 	//  COMMON HOOKS
 	const { myCache, ref } = useCreateCacheEmotion();
 	const wrapBlockProps = useBlockProps({ ref });
+
+	const {
+		tabIsOpen,
+		tabAdvancesIsPanelOpen,
+		tabGeneralIsPanelOpen,
+		tabStylesIsPanelOpen,
+		handleTogglePanel,
+	} = useSetBlockPanelInfo(uniqueId);
+
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
 		setAttributes({
@@ -30,12 +43,6 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
-		const {
-			general_sortingAndFiltering,
-			advance_responsiveCondition,
-			advance_zIndex,
-			uniqueId,
-		} = attributes;
 		switch (tab.name) {
 			case "General":
 				return (
@@ -45,6 +52,16 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 								setAttributes({ general_sortingAndFiltering: data });
 							}}
 							panelData={general_sortingAndFiltering}
+							onToggle={() =>
+								handleTogglePanel("Styles", "SortingAndFiltering", true)
+							}
+							initialOpen={
+								tabGeneralIsPanelOpen === "SortingAndFiltering" ||
+								tabGeneralIsPanelOpen === "first"
+							}
+							opened={
+								tabGeneralIsPanelOpen === "SortingAndFiltering" || undefined
+							}
 						/>
 					</>
 				);
@@ -53,25 +70,15 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 			case "Advances":
 				return (
 					<>
-						<PanelBody
-							initialOpen={false}
-							title={__("Responsive Conditions", "wcb")}
-						>
-							<MyResponsiveConditionControl
-								responsiveConditionControl={advance_responsiveCondition}
-								setAttrs__responsiveCondition={(data) =>
-									setAttributes({ advance_responsiveCondition: data })
-								}
-							/>
-						</PanelBody>
-						<PanelBody initialOpen={false} title={__("Z-Index", "wcb")}>
-							<MyZIndexControl
-								zIndexControl={advance_zIndex}
-								setAttrs__zIndex={(data) =>
-									setAttributes({ advance_zIndex: data })
-								}
-							/>
-						</PanelBody>
+						<AdvancePanelCommon
+							advance_responsiveCondition={
+								attributes.advance_responsiveCondition
+							}
+							advance_zIndex={attributes.advance_zIndex}
+							handleTogglePanel={handleTogglePanel}
+							setAttributes={setAttributes}
+							tabAdvancesIsPanelOpen={tabAdvancesIsPanelOpen}
+						/>
 					</>
 				);
 
@@ -87,7 +94,10 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 				className={`${wrapBlockProps?.className} wcb-default__wrap ${UNIQUE_ID}`}
 			>
 				{/* CONTROL SETTINGS */}
-				<HOCInspectorControls renderTabPanels={renderTabBodyPanels} />
+				<HOCInspectorControls
+					tabDefaultActive={tabIsOpen}
+					renderTabPanels={renderTabBodyPanels}
+				/>
 
 				{/* CSS IN JS */}
 				<GlobalCss {...attributes} />

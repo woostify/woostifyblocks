@@ -1,4 +1,4 @@
-import { FormToggle } from "@wordpress/components";
+import { FormToggle, ToggleControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC } from "react";
 
@@ -21,54 +21,49 @@ interface Props {
 	) => void;
 }
 const MyResponsiveConditionControl: FC<Props> = ({
-	className = "space-y-3",
+	className = "space-y-4",
 	responsiveConditionControl = RESPONSIVE_CONDITON_DEMO,
 	setAttrs__responsiveCondition,
 }) => {
 	const { isHiddenOnDesktop, isHiddenOnMobile, isHiddenOnTablet } =
 		responsiveConditionControl;
 
-	const toggleHiddenOnDesktop = (e: React.FormEvent<HTMLInputElement>) => {
+	const toggleHiddenOnDesktop = (e: boolean) => {
 		setAttrs__responsiveCondition({
 			...responsiveConditionControl,
-			isHiddenOnDesktop: e.currentTarget.checked,
+			isHiddenOnDesktop: e,
 		});
 	};
-	const toggleHiddenOnTablet = (e: React.FormEvent<HTMLInputElement>) => {
+	const toggleHiddenOnTablet = (e: boolean) => {
 		setAttrs__responsiveCondition({
 			...responsiveConditionControl,
-			isHiddenOnTablet: e.currentTarget.checked,
+			isHiddenOnTablet: e,
 		});
 	};
-	const toggleHiddenOnMobile = (e: React.FormEvent<HTMLInputElement>) => {
+	const toggleHiddenOnMobile = (e: boolean) => {
 		setAttrs__responsiveCondition({
 			...responsiveConditionControl,
-			isHiddenOnMobile: e.currentTarget.checked,
+			isHiddenOnMobile: e,
 		});
 	};
 	return (
 		<div className={className}>
-			<div className="flex justify-between items-center">
-				<p>{__("Hide on Desktop", "wcb")}</p>
-				<FormToggle
-					checked={isHiddenOnDesktop}
-					onChange={toggleHiddenOnDesktop}
-				/>
-			</div>
-			<div className="flex justify-between items-center">
-				<p>{__("Hide on Tablet", "wcb")}</p>
-				<FormToggle
-					checked={isHiddenOnTablet}
-					onChange={toggleHiddenOnTablet}
-				/>
-			</div>
-			<div className="flex justify-between items-center">
-				<p>{__("Hide on Mobile", "wcb")}</p>
-				<FormToggle
-					checked={isHiddenOnMobile}
-					onChange={toggleHiddenOnMobile}
-				/>
-			</div>
+			<ToggleControl
+				label={__("Hide on Desktop", "wcb")}
+				checked={isHiddenOnDesktop}
+				onChange={toggleHiddenOnDesktop}
+				className="mb-0"
+			/>
+			<ToggleControl
+				label={__("Hide on Tablet", "wcb")}
+				checked={isHiddenOnTablet}
+				onChange={toggleHiddenOnTablet}
+			/>
+			<ToggleControl
+				label={__("Hide on Mobile", "wcb")}
+				checked={isHiddenOnMobile}
+				onChange={toggleHiddenOnMobile}
+			/>
 		</div>
 	);
 };

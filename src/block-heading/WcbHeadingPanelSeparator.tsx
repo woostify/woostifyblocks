@@ -26,7 +26,8 @@ export const WCB_HEADING_PANEL_SEPARATOR_DEMO: WCB_HEADING_PANEL_SEPARATOR = {
 	width: { Desktop: "10%" },
 };
 
-interface Props {
+interface Props
+	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
 	panelSeparator: WCB_HEADING_PANEL_SEPARATOR;
 	setAttr__panelSeparator: (data: WCB_HEADING_PANEL_SEPARATOR) => void;
 }
@@ -34,6 +35,9 @@ interface Props {
 const WcbHeadingPanelSeparator: FC<Props> = ({
 	panelSeparator = WCB_HEADING_PANEL_SEPARATOR_DEMO,
 	setAttr__panelSeparator,
+	initialOpen,
+	onToggle,
+	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
@@ -72,7 +76,12 @@ const WcbHeadingPanelSeparator: FC<Props> = ({
 	};
 	//
 	return (
-		<PanelBody initialOpen={false} title={__("Separator", "wcb")}>
+		<PanelBody
+			initialOpen={initialOpen}
+			onToggle={onToggle}
+			opened={opened}
+			title={__("Separator", "wcb")}
+		>
 			<div className="space-y-5">
 				{renderCustomWidth()}
 				<BorderControl

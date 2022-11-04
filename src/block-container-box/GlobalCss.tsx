@@ -1,4 +1,4 @@
-import { Global, css } from "@emotion/react";
+import { Global, css, CSSObject } from "@emotion/react";
 import React, { FC } from "react";
 import { getAdvanveDivWrapStyles } from "../block-container/getAdvanveStyles";
 import { getShadowStyleValueFromTwPreset } from "../components/controls/MyBoxShadowControl/getBoxShadowStyles";
@@ -244,14 +244,43 @@ const GlobalCss: FC<Props> = (attrs) => {
 	// ------------------- END WRAP DIV
 
 	// ------------------- INNER DIV
-	const getDivInnerStyles = () => {
-		return css`
-			${INNER_CLASSNAME} {
-				display: flex;
-				flex: 1 1 0%;
-				position: relative;
-			}
-		`;
+	const getDivInnerStyles = (): CSSObject => {
+		const { padding } = styles_dimensions;
+		//
+		const padding_Desktop = padding?.Desktop;
+		const padding_Tablet = padding?.Tablet || padding_Desktop;
+		const padding_Mobile = padding?.Mobile || padding_Tablet;
+
+		return {
+			[`${INNER_CLASSNAME}`]: {
+				display: "flex",
+				flex: "1 1 0%",
+				position: "relative",
+				// PHAN NAY KHONG CO TAC DUNG O FRONTEND, MUC DICH CHI FOCUS TREN EDITOR
+				"&:after": {
+					top: `calc(-${padding_Mobile.top} + 1px) !important`,
+					right: `calc(-${padding_Mobile.right} + 1px) !important`,
+					bottom: `calc(-${padding_Mobile.bottom} + 1px) !important`,
+					left: `calc(-${padding_Mobile.left} + 1px) !important`,
+				},
+				[`@media (min-width: ${media_tablet})`]: {
+					"&:after": {
+						top: `calc(-${padding_Tablet.top} + 1px) !important`,
+						right: `calc(-${padding_Tablet.right} + 1px) !important`,
+						bottom: `calc(-${padding_Tablet.bottom} + 1px) !important`,
+						left: `calc(-${padding_Tablet.left} + 1px) !important`,
+					},
+				},
+				[`@media (min-width: ${media_desktop})`]: {
+					"&:after": {
+						top: `calc(-${padding_Desktop.top} + 1px) !important`,
+						right: `calc(-${padding_Desktop.right} + 1px) !important`,
+						bottom: `calc(-${padding_Desktop.bottom} + 1px) !important`,
+						left: `calc(-${padding_Desktop.left} + 1px) !important`,
+					},
+				},
+			},
+		};
 	};
 
 	const getInner__flexProperties = () => {

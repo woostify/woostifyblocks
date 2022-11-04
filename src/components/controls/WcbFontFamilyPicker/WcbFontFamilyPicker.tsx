@@ -3,6 +3,8 @@ import { __ } from "@wordpress/i18n";
 import { loadGoogleFont } from "../../../utils";
 import React, { FC, Fragment, useState, useEffect } from "react";
 import { SelectControl } from "@wordpress/components";
+import MyCombobox from "../MyCombobox";
+import MyLabelControl from "../MyLabelControl/MyLabelControl";
 
 interface Props {
 	onChangeFontFamily: (font: string) => void;
@@ -47,15 +49,29 @@ const WcbFontFamilyPicker: FC<Props> = ({
 		loadGoogleFont("");
 	};
 
+	const FONTS = [
+		{
+			value: "",
+			label: "Default",
+		},
+		...systemFonts,
+		...googleFontsList,
+	];
 	return (
-		<div>
-			<Fragment>
-				<SelectControl
+		<>
+			<MyLabelControl>{__("Font Family", "wcb")}</MyLabelControl>
+			<MyCombobox
+				value={FONTS.filter((item) => item.value === fontFamily)[0]}
+				options={FONTS}
+				onChange={handleChangeFont}
+			/>
+
+			{/* <SelectControl
 					label={__("Font Family", "wcb")}
 					value={fontFamily}
 					onChange={handleChangeFont}
 				>
-					<option value="">{__("Select font", "wcb")}</option>
+					<option value="">{__("Default", "wcb")}</option>
 					{systemFonts.length > 0 && (
 						<optgroup label={__("System fonts", "wcb")}>
 							{systemFonts.map((option, index) => (
@@ -80,9 +96,8 @@ const WcbFontFamilyPicker: FC<Props> = ({
 							))}
 						</optgroup>
 					)}
-				</SelectControl>
-			</Fragment>
-		</div>
+				</SelectControl> */}
+		</>
 	);
 };
 

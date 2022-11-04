@@ -22,7 +22,8 @@ export const WCB_HEADING_PANEL_SUB_HEADING_DEMO: WCB_HEADING_PANEL_SUB_HEADING =
 		textColor: TEXT_COLOR_CONTROL_DEMO,
 	};
 
-interface Props {
+interface Props
+	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
 	panelData: WCB_HEADING_PANEL_SUB_HEADING;
 	setAttr__: (data: WCB_HEADING_PANEL_SUB_HEADING) => void;
 }
@@ -30,12 +31,20 @@ interface Props {
 const WcbHeadingPanelSubHeading: FC<Props> = ({
 	panelData = WCB_HEADING_PANEL_SUB_HEADING_DEMO,
 	setAttr__,
+	initialOpen,
+	onToggle,
+	opened,
 }) => {
 	const { typography, textColor } = panelData;
 
 	//
 	return (
-		<PanelBody initialOpen={false} title={__("Sub Heading", "wcb")}>
+		<PanelBody
+			initialOpen={initialOpen}
+			onToggle={onToggle}
+			opened={opened}
+			title={__("Sub Heading", "wcb")}
+		>
 			<div className="space-y-2.5">
 				<MyTypographyControl
 					typographyControl={typography}

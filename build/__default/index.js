@@ -2311,30 +2311,64 @@ const INSPECTOR_CONTROLS_TABS = [{
 const HOCInspectorControls = _ref => {
   let {
     renderTabPanels,
-    tabs = INSPECTOR_CONTROLS_TABS
+    tabs = INSPECTOR_CONTROLS_TABS,
+    uniqueId = "",
+    tabDefaultActive = "General",
+    onChangeActive
   } = _ref;
+  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
+    setTimeout(() => {
+      const tabIsOpenEl = document.querySelector(".components-panel__body.is-opened");
 
-  // HIDE THE ADVANCE TAB PANEL
-  const handleChageTab = tabName => {
+      if (!tabIsOpenEl) {
+        return;
+      }
+
+      tabIsOpenEl.scrollIntoView({
+        behavior: "smooth"
+      });
+    }, 500);
+  }, []); // HIDDEN PANEL ADVANCE DEFAULT OF WP
+
+  const handleTooglePanelAdvanceDefaultWp = () => {
     const advancedPanel = document.querySelector(".components-panel__body.block-editor-block-inspector__advanced");
+    const elAdvancesbtn = document.querySelector("button.active-tab");
+    const isAdvanceTabActive = !!(elAdvancesbtn !== null && elAdvancesbtn !== void 0 && elAdvancesbtn.id.includes("-Advances"));
 
     if (!advancedPanel) {
       return;
     }
 
-    if (tabName === "Advances") {
-      advancedPanel.style.display = "block";
-    } else {
-      advancedPanel.style.display = "none";
-    }
+    advancedPanel.style.display = isAdvanceTabActive ? "block" : "none";
   };
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TabPanel, {
-    className: "wcb-inspectorControls__panel",
-    activeClass: "active-tab",
-    tabs: tabs,
-    onSelect: handleChageTab
-  }, tab => renderTabPanels(tab)));
+  const handleChageTab = tabName => {
+    onChangeActive && onChangeActive(tabName);
+  };
+
+  const renderContent2 = () => {
+    !!uniqueId && setTimeout(() => {
+      handleTooglePanelAdvanceDefaultWp();
+    }, 50);
+    return null;
+  };
+
+  const renderContent = () => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TabPanel, {
+      className: `wcb-inspectorControls__panel ${uniqueId}`,
+      activeClass: "active-tab",
+      tabs: tabs,
+      onSelect: handleChageTab,
+      initialTabName: tabDefaultActive
+    }, tab => {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        key: tab.name,
+        className: tab.name
+      }, renderTabPanels(tab));
+    });
+  };
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, renderContent(), renderContent2());
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (HOCInspectorControls);
@@ -2436,7 +2470,7 @@ const MyLabelControl = _ref => {
   // 	) || [];
   // const __hasUnit = !!units?.length;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: className
+    className: `components-base-control__label font-medium uppercase text-[11px] ${className}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wb-control-label flex items-center"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -2486,7 +2520,7 @@ const RESPONSIVE_CONDITON_DEMO = {
 
 const MyResponsiveConditionControl = _ref => {
   let {
-    className = "space-y-3",
+    className = "space-y-4",
     responsiveConditionControl = RESPONSIVE_CONDITON_DEMO,
     setAttrs__responsiveCondition
   } = _ref;
@@ -2498,40 +2532,38 @@ const MyResponsiveConditionControl = _ref => {
 
   const toggleHiddenOnDesktop = e => {
     setAttrs__responsiveCondition({ ...responsiveConditionControl,
-      isHiddenOnDesktop: e.currentTarget.checked
+      isHiddenOnDesktop: e
     });
   };
 
   const toggleHiddenOnTablet = e => {
     setAttrs__responsiveCondition({ ...responsiveConditionControl,
-      isHiddenOnTablet: e.currentTarget.checked
+      isHiddenOnTablet: e
     });
   };
 
   const toggleHiddenOnMobile = e => {
     setAttrs__responsiveCondition({ ...responsiveConditionControl,
-      isHiddenOnMobile: e.currentTarget.checked
+      isHiddenOnMobile: e
     });
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: className
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "flex justify-between items-center"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Hide on Desktop", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.FormToggle, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Hide on Desktop", "wcb"),
     checked: isHiddenOnDesktop,
-    onChange: toggleHiddenOnDesktop
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "flex justify-between items-center"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Hide on Tablet", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.FormToggle, {
+    onChange: toggleHiddenOnDesktop,
+    className: "mb-0"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Hide on Tablet", "wcb"),
     checked: isHiddenOnTablet,
     onChange: toggleHiddenOnTablet
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "flex justify-between items-center"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Hide on Mobile", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.FormToggle, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Hide on Mobile", "wcb"),
     checked: isHiddenOnMobile,
     onChange: toggleHiddenOnMobile
-  })));
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MyResponsiveConditionControl);
