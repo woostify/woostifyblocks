@@ -1,22 +1,17 @@
 import { PanelBody } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
-import React, { FC, CSSProperties, useState } from "react";
-import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
-import MyQueryControls from "../components/controls/MyQueryControls/MyQueryControls";
-import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
-import MyTextAlignControl, {
-	TextAlignment,
-} from "../components/controls/MyTextAlignControl/MyTextAlignControl";
-import useGetDeviceType from "../hooks/useGetDeviceType";
+import React, { FC } from "react";
+import MyQueryControls, {
+	MyQueryControlData,
+	MY_QUERIES_DEMO_DATA,
+} from "../components/controls/MyQueryControls/MyQueryControls";
 
 export interface WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING {
-	textAlignment: HasResponsive<TextAlignment>;
-	headingTag: keyof JSX.IntrinsicElements;
+	queries: MyQueryControlData;
 }
 export const WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING_DEMO: WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING =
 	{
-		textAlignment: { Desktop: "left" },
-		headingTag: "h2",
+		queries: MY_QUERIES_DEMO_DATA,
 	};
 
 interface Props
@@ -32,24 +27,6 @@ const WcbPostsGridPanelSortingAndFiltering: FC<Props> = ({
 	onToggle,
 	opened,
 }) => {
-	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	//
-	const { textAlignment } = panelData;
-	const TEXT_ALIGNMENT =
-		textAlignment[deviceType] || textAlignment.Tablet || textAlignment.Desktop;
-
-	//
-	const handleChangeTextAlignment = (selected: CSSProperties["textAlign"]) => {
-		setAttr__({
-			...panelData,
-			textAlignment: {
-				...textAlignment,
-				[deviceType]: selected,
-			},
-		});
-	};
-	//
-
 	return (
 		<PanelBody
 			className={"space-y-5"}
@@ -58,12 +35,12 @@ const WcbPostsGridPanelSortingAndFiltering: FC<Props> = ({
 			opened={opened}
 			title={__("Sorting and filtering", "wcb")}
 		>
-			<MyQueryControls />
-
-			{/* <MyTextAlignControl
-				textAlignment={TEXT_ALIGNMENT}
-				onChange={handleChangeTextAlignment}
-			/> */}
+			<MyQueryControls
+				queriesControl={panelData.queries}
+				setAttrs__queries={(queries) => {
+					setAttr__({ ...panelData, queries });
+				}}
+			/>
 		</PanelBody>
 	);
 };

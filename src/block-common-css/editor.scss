@@ -96,6 +96,22 @@
 	.components-font-size-picker__controls {
 		@apply mb-0;
 	}
+
+	.components-form-token-field__token {
+		.components-form-token-field__remove-token {
+			@apply rounded-l-none rounded-r-lg #{!important};
+		}
+
+		.components-form-token-field__token-text {
+			@apply rounded-r-none rounded-l-lg #{!important};
+		}
+	}
+
+	.components-toggle-control {
+		label {
+			@apply select-none;
+		}
+	}
 }
 
 /*  */

@@ -11,15 +11,19 @@ interface Props {
 	className?: string;
 	label?: string;
 	children: ReactNode;
+	defaultOpen?: boolean;
+	as?: React.ElementType<any>;
 }
 
 const MyDisclosure: FC<Props> = ({
 	className = "space-y-3",
 	label = "Customize",
 	children,
+	defaultOpen,
+	as,
 }) => {
 	return (
-		<Disclosure>
+		<Disclosure defaultOpen={defaultOpen} as={as}>
 			{({ open }) => (
 				<div
 					className={

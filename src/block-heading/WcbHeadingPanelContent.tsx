@@ -11,7 +11,7 @@ import useGetDeviceType from "../hooks/useGetDeviceType";
 
 export interface WCB_HEADING_PANEL_CONTENT {
 	textAlignment: HasResponsive<TextAlignment>;
-	headingTag: keyof JSX.IntrinsicElements;
+	headingTag: React.ElementType<any>;
 	showHeading: boolean;
 	showSubHeading: boolean;
 	showSeparator: boolean;
@@ -60,7 +60,7 @@ const WcbHeadingPanelContent: FC<Props> = ({
 			},
 		});
 	};
-	const handleChangeTag = (selected: keyof JSX.IntrinsicElements) => {
+	const handleChangeTag = (selected: React.ElementType<any>) => {
 		setAttr__panelContentData({
 			...panelContentData,
 			headingTag: selected,

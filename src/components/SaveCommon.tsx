@@ -5,7 +5,7 @@ import _ from "lodash";
 interface Props {
 	className?: string;
 	uniqueId: string;
-	HtmlTag?: keyof JSX.IntrinsicElements;
+	HtmlTag?: React.ElementType<any>;
 	children: ReactNode;
 	attributes: Object;
 }

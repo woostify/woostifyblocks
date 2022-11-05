@@ -13,6 +13,9 @@ import "./editor.scss";
 import WcbPostsGridPanelSortingAndFiltering from "./WcbPostsGridPanelSortingAndFiltering";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
+import WcbPostGridPanelPostContent from "./WcbPostGridPanelPostContent";
+import WcbPostGridPanelPostMeta from "./WcbPostGridPanelPostMeta";
+import WcbPostGridPanelPostFeaturedImage from "./WcbPostGridPanelPostFeaturedImage";
 
 const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -21,6 +24,9 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 		advance_responsiveCondition,
 		advance_zIndex,
 		uniqueId,
+		general_postContent,
+		general_postMeta,
+		general_postFeaturedImage,
 	} = attributes;
 	//  COMMON HOOKS
 	const { myCache, ref } = useCreateCacheEmotion();
@@ -48,12 +54,8 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 				return (
 					<>
 						<WcbPostsGridPanelSortingAndFiltering
-							setAttr__={(data) => {
-								setAttributes({ general_sortingAndFiltering: data });
-							}}
-							panelData={general_sortingAndFiltering}
 							onToggle={() =>
-								handleTogglePanel("Styles", "SortingAndFiltering", true)
+								handleTogglePanel("General", "SortingAndFiltering", true)
 							}
 							initialOpen={
 								tabGeneralIsPanelOpen === "SortingAndFiltering" ||
@@ -62,6 +64,46 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 							opened={
 								tabGeneralIsPanelOpen === "SortingAndFiltering" || undefined
 							}
+							//
+							setAttr__={(data) => {
+								setAttributes({ general_sortingAndFiltering: data });
+							}}
+							panelData={general_sortingAndFiltering}
+						/>
+
+						<WcbPostGridPanelPostContent
+							onToggle={() => handleTogglePanel("General", "PostContent")}
+							initialOpen={tabGeneralIsPanelOpen === "PostContent"}
+							opened={tabGeneralIsPanelOpen === "PostContent" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ general_postContent: data });
+							}}
+							panelData={general_postContent}
+						/>
+
+						<WcbPostGridPanelPostMeta
+							onToggle={() => handleTogglePanel("General", "PostMeta")}
+							initialOpen={tabGeneralIsPanelOpen === "PostMeta"}
+							opened={tabGeneralIsPanelOpen === "PostMeta" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ general_postMeta: data });
+							}}
+							panelData={general_postMeta}
+						/>
+
+						<WcbPostGridPanelPostFeaturedImage
+							onToggle={() => handleTogglePanel("General", "PostFeaturedImage")}
+							initialOpen={tabGeneralIsPanelOpen === "PostFeaturedImage"}
+							opened={
+								tabGeneralIsPanelOpen === "PostFeaturedImage" || undefined
+							}
+							//
+							setAttr__={(data) => {
+								setAttributes({ general_postFeaturedImage: data });
+							}}
+							panelData={general_postFeaturedImage}
 						/>
 					</>
 				);

@@ -13,13 +13,25 @@ import useCreateCacheEmotion from "../hooks/useCreateCacheEmotion";
 import { CacheProvider } from "@emotion/react";
 import GlobalCss from "./GlobalCss";
 import "./editor.scss";
+import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
+import AdvancePanelCommon from "../components/AdvancePanelCommon";
+import WcbHeadingPanelHeading from "./WcbHeadingPanelHeading";
 
 const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
-
+	const { advance_responsiveCondition, advance_zIndex, heading, uniqueId } =
+		attributes;
 	//  COMMON HOOKS
 	const { myCache, ref } = useCreateCacheEmotion();
 	const wrapBlockProps = useBlockProps({ ref });
+	const {
+		tabIsOpen,
+		tabAdvancesIsPanelOpen,
+		tabGeneralIsPanelOpen,
+		tabStylesIsPanelOpen,
+		handleTogglePanel,
+	} = useSetBlockPanelInfo(uniqueId);
+
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
 		setAttributes({
@@ -29,36 +41,39 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
-		const { advance_responsiveCondition, advance_zIndex, heading, uniqueId } =
-			attributes;
-
 		switch (tab.name) {
 			case "General":
-				return <></>;
+				return (
+					<>
+						<WcbHeadingPanelHeading
+							onToggle={() => handleTogglePanel("General", "Heading", true)}
+							initialOpen={
+								tabGeneralIsPanelOpen === "Heading" ||
+								tabGeneralIsPanelOpen === "first"
+							}
+							opened={tabGeneralIsPanelOpen === "Heading" || undefined}
+							//
+							// setAttr__={(data) => {
+							// 	setAttributes({ general_sortingAndFiltering: data });
+							// }}
+							// panelData={general_sortingAndFiltering}
+						/>
+					</>
+				);
 			case "Styles":
 				return <></>;
 			case "Advances":
 				return (
 					<>
-						<PanelBody
-							initialOpen={false}
-							title={__("Responsive Conditions", "wcb")}
-						>
-							<MyResponsiveConditionControl
-								responsiveConditionControl={advance_responsiveCondition}
-								setAttrs__responsiveCondition={(data) =>
-									setAttributes({ advance_responsiveCondition: data })
-								}
-							/>
-						</PanelBody>
-						<PanelBody initialOpen={false} title={__("Z-Index", "wcb")}>
-							<MyZIndexControl
-								zIndexControl={advance_zIndex}
-								setAttrs__zIndex={(data) =>
-									setAttributes({ advance_zIndex: data })
-								}
-							/>
-						</PanelBody>
+						<AdvancePanelCommon
+							advance_responsiveCondition={
+								attributes.advance_responsiveCondition
+							}
+							advance_zIndex={attributes.advance_zIndex}
+							handleTogglePanel={handleTogglePanel}
+							setAttributes={setAttributes}
+							tabAdvancesIsPanelOpen={tabAdvancesIsPanelOpen}
+						/>
 					</>
 				);
 

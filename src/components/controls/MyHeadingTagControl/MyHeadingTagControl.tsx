@@ -4,11 +4,12 @@ import MyRadioGroup, { MyRadioItem } from "../MyRadioGroup";
 
 interface Props {
 	className?: string;
-	tag?: keyof JSX.IntrinsicElements;
-	onChange?: (select: keyof JSX.IntrinsicElements) => void;
+	tag?: React.ElementType<any>;
+	onChange?: (select: React.ElementType<any>) => void;
+	label?: string;
 }
 
-const TAGS_PLANS: MyRadioItem<keyof JSX.IntrinsicElements>[] = [
+const TAGS_PLANS: MyRadioItem<React.ElementType<any>>[] = [
 	{
 		name: "h1",
 		icon: "H1",
@@ -43,15 +44,20 @@ const TAGS_PLANS: MyRadioItem<keyof JSX.IntrinsicElements>[] = [
 	},
 ];
 
-const MyHeadingTagControl: FC<Props> = ({ onChange, tag, className }) => {
+const MyHeadingTagControl: FC<Props> = ({
+	onChange,
+	tag,
+	className,
+	label = __("Heading tag", "wcb"),
+}) => {
 	return (
 		<MyRadioGroup
-			label="Heading tag"
+			label={label}
 			className={className}
 			// @ts-ignore
 			onChange={onChange}
-			value={tag}
-			plans={TAGS_PLANS}
+			value={tag as string}
+			plans={TAGS_PLANS as any[]}
 			isWrap
 			hasResponsive={false}
 		/>

@@ -12,6 +12,8 @@ export interface MyRadioItem<T = string> {
 
 interface Props {
 	className?: string;
+	labelClassName?: string;
+	contentClassName?: string;
 	value?: string;
 	onChange?: (slected: string) => void;
 	plans?: MyRadioItem[];
@@ -63,6 +65,8 @@ const MyRadioGroup: FC<Props> = ({
 	label = __("Alignment", "wcb"),
 	hasResponsive = true,
 	isWrap = false,
+	labelClassName,
+	contentClassName = "mt-3",
 }) => {
 	const [selected, setSelected] = useState(value || plans[0].name);
 
@@ -84,9 +88,18 @@ const MyRadioGroup: FC<Props> = ({
 			onChange={handleChangeRadio}
 		>
 			<RadioGroup.Label className="">
-				<MyLabelControl hasResponsive={hasResponsive}>{label}</MyLabelControl>
+				<MyLabelControl
+					className={labelClassName}
+					hasResponsive={hasResponsive}
+				>
+					{label}
+				</MyLabelControl>
 			</RadioGroup.Label>
-			<div className={`mt-3 relative flex gap-1 ${isWrap ? "flex-wrap" : ""}`}>
+			<div
+				className={`${contentClassName} relative flex gap-1 ${
+					isWrap ? "flex-wrap" : ""
+				}`}
+			>
 				{plans.map((item) => {
 					return (
 						<RadioGroup.Option key={item.name} value={item.name} as={Fragment}>

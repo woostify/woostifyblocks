@@ -10,7 +10,7 @@ import useGetDeviceType from "../hooks/useGetDeviceType";
 
 export interface WCB_HEADING_PANEL_HEADING {
 	textAlignment: HasResponsive<TextAlignment>;
-	headingTag: keyof JSX.IntrinsicElements;
+	headingTag: React.ElementType<any>;
 }
 
 export const WCB_HEADING_PANEL_HEADING_DEMO: WCB_HEADING_PANEL_HEADING = {
@@ -18,7 +18,8 @@ export const WCB_HEADING_PANEL_HEADING_DEMO: WCB_HEADING_PANEL_HEADING = {
 	headingTag: "h2",
 };
 
-interface Props {
+interface Props
+	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
 	panelData: WCB_HEADING_PANEL_HEADING;
 	setAttr__: (data: WCB_HEADING_PANEL_HEADING) => void;
 }
@@ -26,6 +27,9 @@ interface Props {
 const WcbHeadingPanelHeading: FC<Props> = ({
 	panelData = WCB_HEADING_PANEL_HEADING_DEMO,
 	setAttr__,
+	initialOpen,
+	onToggle,
+	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
@@ -47,14 +51,17 @@ const WcbHeadingPanelHeading: FC<Props> = ({
 
 	return (
 		<PanelBody
-			className={"space-y-5"}
-			initialOpen={false}
+			initialOpen={initialOpen}
+			onToggle={onToggle}
+			opened={opened}
 			title={__("Panel Heading", "wcb")}
 		>
-			<MyTextAlignControl
-				textAlignment={TEXT_ALIGNMENT}
-				onChange={handleChangeTextAlignment}
-			/>
+			<div className={"space-y-5"}>
+				<MyTextAlignControl
+					textAlignment={TEXT_ALIGNMENT}
+					onChange={handleChangeTextAlignment}
+				/>
+			</div>
 		</PanelBody>
 	);
 };

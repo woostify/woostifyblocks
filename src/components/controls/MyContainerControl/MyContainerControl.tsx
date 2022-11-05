@@ -20,7 +20,7 @@ export type MyContainerControlData = {
 	customWidth: HasResponsive<string>;
 	contentBoxWidth: HasResponsive<string>;
 	minHeight: HasResponsive<string | undefined>;
-	htmlTag: keyof JSX.IntrinsicElements;
+	htmlTag: React.ElementType<any>;
 	overflow: React.CSSProperties["overflow"];
 };
 export const CONTAINER_CONTROL_DEMO: MyContainerControlData = {
@@ -260,8 +260,8 @@ const MyContainerControl: FC<Props> = ({
 
 	const renderHTMLTag = () => {
 		const options: {
-			label: keyof JSX.IntrinsicElements;
-			value: keyof JSX.IntrinsicElements;
+			label: React.ElementType<any>;
+			value: React.ElementType<any>;
 		}[] = [
 			{ label: "div", value: "div" },
 			{ label: "header", value: "header" },
@@ -284,9 +284,9 @@ const MyContainerControl: FC<Props> = ({
 					</MyLabelControl>
 					<SelectControl
 						label={""}
-						value={htmlTag}
-						options={options}
-						onChange={handleChangeHtmlTag}
+						value={htmlTag as string}
+						options={options as any}
+						onChange={handleChangeHtmlTag as any}
 						// @ts-ignore
 						__nextHasNoMarginBottom={true}
 						help={""}
