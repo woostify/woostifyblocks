@@ -8,7 +8,12 @@ interface Props
 	extends SelectControl.Props<string>,
 		Pick<MyLabelControlProps, "hasResponsive" | "devices"> {}
 
-const MySelect: FC<Props> = ({ label, hasResponsive, devices, ...props }) => {
+const MySelect: FC<Props> = ({
+	label = "My select",
+	hasResponsive,
+	devices,
+	...props
+}) => {
 	return (
 		<div className="wcb-MySelect w-full flex justify-between items-center">
 			<MyLabelControl

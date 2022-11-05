@@ -16,6 +16,8 @@ import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import WcbPostGridPanelPostContent from "./WcbPostGridPanelPostContent";
 import WcbPostGridPanelPostMeta from "./WcbPostGridPanelPostMeta";
 import WcbPostGridPanelPostFeaturedImage from "./WcbPostGridPanelPostFeaturedImage";
+import WcbPostGridPanelReadMoreLink from "./WcbPostGridPanelReadMoreLink";
+import WcbPostGridPanelPagination from "./WcbPostGridPanelPagination";
 
 const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -27,6 +29,8 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 		general_postContent,
 		general_postMeta,
 		general_postFeaturedImage,
+		general_readmoreLink,
+		general_pagination,
 	} = attributes;
 	//  COMMON HOOKS
 	const { myCache, ref } = useCreateCacheEmotion();
@@ -104,6 +108,28 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 								setAttributes({ general_postFeaturedImage: data });
 							}}
 							panelData={general_postFeaturedImage}
+						/>
+
+						<WcbPostGridPanelReadMoreLink
+							onToggle={() => handleTogglePanel("General", "ReadMoreLink")}
+							initialOpen={tabGeneralIsPanelOpen === "ReadMoreLink"}
+							opened={tabGeneralIsPanelOpen === "ReadMoreLink" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ general_readmoreLink: data });
+							}}
+							panelData={general_readmoreLink}
+						/>
+
+						<WcbPostGridPanelPagination
+							onToggle={() => handleTogglePanel("General", "Pagination")}
+							initialOpen={tabGeneralIsPanelOpen === "Pagination"}
+							opened={tabGeneralIsPanelOpen === "Pagination" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ general_pagination: data });
+							}}
+							panelData={general_pagination}
 						/>
 					</>
 				);

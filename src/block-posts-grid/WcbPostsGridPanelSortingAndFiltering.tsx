@@ -5,13 +5,17 @@ import MyQueryControls, {
 	MyQueryControlData,
 	MY_QUERIES_DEMO_DATA,
 } from "../components/controls/MyQueryControls/MyQueryControls";
+// @ts-ignore
+import { __experimentalInputControl as InputControl } from "@wordpress/components";
 
 export interface WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING {
 	queries: MyQueryControlData;
+	emptyMessage: string;
 }
 export const WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING_DEMO: WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING =
 	{
 		queries: MY_QUERIES_DEMO_DATA,
+		emptyMessage: "No post found!",
 	};
 
 interface Props
@@ -40,6 +44,14 @@ const WcbPostsGridPanelSortingAndFiltering: FC<Props> = ({
 				setAttrs__queries={(queries) => {
 					setAttr__({ ...panelData, queries });
 				}}
+			/>
+
+			<InputControl
+				value={panelData.emptyMessage}
+				label={__("Message when Posts Not Found", "wcb")}
+				onChange={(nextValue) =>
+					setAttr__({ ...panelData, emptyMessage: nextValue })
+				}
 			/>
 		</PanelBody>
 	);

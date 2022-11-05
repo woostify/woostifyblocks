@@ -8,6 +8,10 @@ import {
 	Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
 import {
+	WCB_POST_GRID_PANEL_PAGINATION,
+	WCB_POST_GRID_PANEL_PAGINATION_DEMO,
+} from "./WcbPostGridPanelPagination";
+import {
 	WCB_POST_GRID_PANEL_POST_CONTENT,
 	WCB_POST_GRID_PANEL_POST_CONTENT_DEMO,
 } from "./WcbPostGridPanelPostContent";
@@ -20,6 +24,10 @@ import {
 	WCB_POST_GRID_PANEL_POST_META_DEMO,
 } from "./WcbPostGridPanelPostMeta";
 import {
+	WCB_POST_GRID_PANEL_READMORE_LINK,
+	WCB_POST_GRID_PANEL_READMORE_LINK_DEMO,
+} from "./WcbPostGridPanelReadMoreLink";
+import {
 	WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING,
 	WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING_DEMO,
 } from "./WcbPostsGridPanelSortingAndFiltering";
@@ -30,6 +38,8 @@ export interface WcbBlockPostsGridAttrs {
 	general_postContent: WCB_POST_GRID_PANEL_POST_CONTENT;
 	general_postMeta: WCB_POST_GRID_PANEL_POST_META;
 	general_postFeaturedImage: WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE;
+	general_readmoreLink: WCB_POST_GRID_PANEL_READMORE_LINK;
+	general_pagination: WCB_POST_GRID_PANEL_PAGINATION;
 	//
 	advance_responsiveCondition: MyResponsiveConditionControlData;
 	advance_zIndex: MyZIndexControlData;
@@ -57,6 +67,14 @@ const blokc1Attrs: AttrsGenericType<WcbBlockPostsGridAttrs> = {
 	general_postFeaturedImage: {
 		type: "object",
 		default: WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE_DEMO,
+	},
+	general_readmoreLink: {
+		type: "object",
+		default: WCB_POST_GRID_PANEL_READMORE_LINK_DEMO,
+	},
+	general_pagination: {
+		type: "object",
+		default: WCB_POST_GRID_PANEL_PAGINATION_DEMO,
 	},
 
 	// ADVANCE

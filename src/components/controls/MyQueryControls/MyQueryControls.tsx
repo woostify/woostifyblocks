@@ -158,15 +158,6 @@ const MyQueryControls: FC<Props> = ({
 		(item) => item.value === taxonomyValue
 	)[0]?.label;
 
-	console.log(123, {
-		queriesControl,
-		taxonomyLabel,
-		taxonomyOptions,
-		taxonomy,
-		taxonomiesAvailables,
-		taxonomiesList,
-	});
-
 	//
 	const handlePostTypeChange = (postType: string) => {
 		setAttrs__queries({

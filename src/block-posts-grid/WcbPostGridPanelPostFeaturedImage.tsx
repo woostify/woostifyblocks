@@ -1,17 +1,24 @@
 import { PanelBody, ToggleControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
-import { HtmlTagsType } from "../block-common-css/types";
-import MyDisclosure from "../components/controls/MyDisclosure";
-import MyHeadingTagControl from "../components/controls/MyHeadingTagControl/MyHeadingTagControl";
+import MySelect from "../components/controls/MySelect";
+import { useSelect, useDispatch } from "@wordpress/data";
+import { store as blockEditorStore } from "@wordpress/block-editor";
+import MyRadioGroup from "../components/controls/MyRadioGroup";
 
 export interface WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE {
 	isShowFeaturedImage: boolean;
+	featuredImageSize: string;
+	featuredImagePosition: "top" | "background";
+	linkCompleteBox: boolean;
 }
 
 export const WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE_DEMO: WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE =
 	{
 		isShowFeaturedImage: true,
+		featuredImageSize: "large",
+		featuredImagePosition: "top",
+		linkCompleteBox: false,
 	};
 
 interface Props
@@ -27,7 +34,25 @@ const WcbPostGridPanelPostFeaturedImage: FC<Props> = ({
 	onToggle,
 	opened,
 }) => {
-	const { isShowFeaturedImage } = panelData;
+	const {
+		isShowFeaturedImage,
+		featuredImageSize,
+		featuredImagePosition,
+		linkCompleteBox,
+	} = panelData;
+
+	const { imageSizes } = useSelect((select) => {
+		const settings = select(blockEditorStore).getSettings();
+		return {
+			imageSizes: settings.imageSizes as any[],
+		};
+	}, []);
+
+	const imageSizeOptions =
+		imageSizes?.map(({ name, slug }) => ({
+			value: slug,
+			label: name,
+		})) || [];
 
 	return (
 		<PanelBody
@@ -44,6 +69,52 @@ const WcbPostGridPanelPostFeaturedImage: FC<Props> = ({
 					}
 					checked={isShowFeaturedImage}
 				/>
+
+				{isShowFeaturedImage ? (
+					<MySelect
+						value={featuredImageSize}
+						options={imageSizeOptions}
+						label={__("Image size", "wcb")}
+						onChange={(size) => {
+							setAttr__({ ...panelData, featuredImageSize: size });
+						}}
+					/>
+				) : null}
+
+				{isShowFeaturedImage ? (
+					<MyRadioGroup
+						label="Position"
+						labelClassName=""
+						className="flex items-center justify-between space-x-3"
+						contentClassName="flex-shrink-0 flex-1"
+						onChange={(selected) =>
+							setAttr__({
+								...panelData,
+								featuredImagePosition: selected as any,
+							})
+						}
+						value={featuredImagePosition}
+						plans={[
+							{ name: "top", icon: "Top" },
+							{ name: "background", icon: "Background" },
+						]}
+						hasResponsive={false}
+					/>
+				) : null}
+
+				{isShowFeaturedImage ? (
+					<ToggleControl
+						label={__("Link Complete Box", "wcb")}
+						onChange={(checked) =>
+							setAttr__({ ...panelData, linkCompleteBox: checked })
+						}
+						checked={linkCompleteBox}
+						help={__(
+							"When enabled, the link to the article page will cover the entire card",
+							"wcb"
+						)}
+					/>
+				) : null}
 			</div>
 		</PanelBody>
 	);

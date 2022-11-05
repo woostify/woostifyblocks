@@ -6331,7 +6331,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const MySelect = _ref => {
   let {
-    label,
+    label = "My select",
     hasResponsive,
     devices,
     ...props
