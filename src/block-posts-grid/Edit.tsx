@@ -1,5 +1,5 @@
+import { get, pickBy } from "lodash";
 import { __ } from "@wordpress/i18n";
-import { useBlockProps } from "@wordpress/block-editor";
 import React, { useEffect, FC } from "react";
 import { WcbBlockPostsGridAttrs } from "./attributes";
 import HOCInspectorControls, {
@@ -18,6 +18,30 @@ import WcbPostGridPanelPostMeta from "./WcbPostGridPanelPostMeta";
 import WcbPostGridPanelPostFeaturedImage from "./WcbPostGridPanelPostFeaturedImage";
 import WcbPostGridPanelReadMoreLink from "./WcbPostGridPanelReadMoreLink";
 import WcbPostGridPanelPagination from "./WcbPostGridPanelPagination";
+import WcbPostGridPanel_StyleLayout from "./WcbPostGridPanel_StyleLayout";
+import WcbPostGridPanel_StyleTitle from "./WcbPostGridPanel_StyleTitle";
+import WcbPostGridPanel_StyleExcerpt from "./WcbPostGridPanel_StyleExcerpt";
+import WcbPostGridPanel_StyleMeta from "./WcbPostGridPanel_StyleMeta";
+import WcbPostGridPanel_StyleReadmoreLink from "./WcbPostGridPanel_StyleReadmoreLink";
+import WcbPostGridPanel_StylePagination from "./WcbPostGridPanel_StylePagination";
+import WcbPostGridPanel_StyleFeaturedImage from "./WcbPostGridPanel_StyleFeaturedImage";
+import { PanelBody } from "@wordpress/components";
+import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
+import MyBoxShadowControl from "../components/controls/MyBoxShadowControl/MyBoxShadowControl";
+import PostCard from "./PostCard";
+import { dateI18n, format, getSettings } from "@wordpress/date";
+import {
+	InspectorControls,
+	BlockAlignmentToolbar,
+	BlockControls,
+	__experimentalImageSizeControl as ImageSizeControl,
+	useBlockProps,
+	store as blockEditorStore,
+} from "@wordpress/block-editor";
+import { useSelect, useDispatch } from "@wordpress/data";
+import { pin, list, grid } from "@wordpress/icons";
+import { store as coreStore } from "@wordpress/core-data";
+import { useInstanceId } from "@wordpress/compose";
 
 const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -31,6 +55,15 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 		general_postFeaturedImage,
 		general_readmoreLink,
 		general_pagination,
+		style_layout,
+		style_title,
+		style_excerpt,
+		style_meta,
+		style_readmoreLink,
+		style_pagination,
+		style_featuredImage,
+		style_border,
+		style_boxShadow,
 	} = attributes;
 	//  COMMON HOOKS
 	const { myCache, ref } = useCreateCacheEmotion();
@@ -50,6 +83,63 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 			uniqueId: UNIQUE_ID,
 		});
 	}, [UNIQUE_ID]);
+	//
+
+	//
+
+	const { emptyMessage, queries } = general_sortingAndFiltering;
+	const {
+		isExcludeCurrentPost,
+		isOffsetStartingPost,
+		numberOfColumn,
+		numberOfItems,
+		offsetPost,
+		order,
+		orderBy,
+		postType,
+		selectedAuthorId,
+		selectedTerms,
+		taxonomy,
+	} = queries;
+	const { listPosts } = useSelect(
+		(select) => {
+			const { getEntityRecords, getUsers, getAuthors } = select(coreStore);
+			const settings = select(blockEditorStore).getSettings();
+			const catIds =
+				selectedTerms && selectedTerms.length > 0
+					? selectedTerms.map((cat) => cat.id)
+					: [];
+			const listPostsQuery = pickBy(
+				{
+					categories: catIds,
+					author: selectedAuthorId || undefined,
+					order: order || undefined,
+					orderby: orderBy || undefined,
+					per_page: numberOfItems || undefined,
+					_embed: "wp:featuredmedia",
+				},
+				(value) => typeof value !== "undefined"
+			);
+
+			return {
+				listPosts: getEntityRecords("postType", postType, listPostsQuery),
+			};
+		},
+		[
+			isExcludeCurrentPost,
+			isOffsetStartingPost,
+			numberOfItems,
+			offsetPost,
+			order,
+			orderBy,
+			postType,
+			selectedAuthorId,
+			selectedTerms,
+			taxonomy,
+		]
+	);
+	console.log(123, { listPosts });
+
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
@@ -134,15 +224,111 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 					</>
 				);
 			case "Styles":
-				return <></>;
+				return (
+					<>
+						<WcbPostGridPanel_StyleLayout
+							onToggle={() => handleTogglePanel("Styles", "StyleLayout", true)}
+							initialOpen={
+								tabStylesIsPanelOpen === "StyleLayout" ||
+								tabStylesIsPanelOpen === "first"
+							}
+							opened={tabStylesIsPanelOpen === "StyleLayout" || undefined}
+							//
+							panelData={style_layout}
+							setAttr__={(data) => setAttributes({ style_layout: data })}
+						/>
+
+						<WcbPostGridPanel_StyleTitle
+							onToggle={() => handleTogglePanel("Styles", "StyleTitle")}
+							initialOpen={tabStylesIsPanelOpen === "StyleTitle"}
+							opened={tabStylesIsPanelOpen === "StyleTitle" || undefined}
+							//
+							panelData={style_title}
+							setAttr__={(data) => setAttributes({ style_title: data })}
+						/>
+
+						<WcbPostGridPanel_StyleExcerpt
+							onToggle={() => handleTogglePanel("Styles", "StyleExcerpt")}
+							initialOpen={tabStylesIsPanelOpen === "StyleExcerpt"}
+							opened={tabStylesIsPanelOpen === "StyleExcerpt" || undefined}
+							//
+							panelData={style_excerpt}
+							setAttr__={(data) => setAttributes({ style_excerpt: data })}
+						/>
+
+						<WcbPostGridPanel_StyleMeta
+							onToggle={() => handleTogglePanel("Styles", "StyleMeta")}
+							initialOpen={tabStylesIsPanelOpen === "StyleMeta"}
+							opened={tabStylesIsPanelOpen === "StyleMeta" || undefined}
+							//
+							panelData={style_meta}
+							setAttr__={(data) => setAttributes({ style_meta: data })}
+						/>
+
+						<WcbPostGridPanel_StyleReadmoreLink
+							onToggle={() => handleTogglePanel("Styles", "StyleReadmoreLink")}
+							initialOpen={tabStylesIsPanelOpen === "StyleReadmoreLink"}
+							opened={tabStylesIsPanelOpen === "StyleReadmoreLink" || undefined}
+							//
+							panelData={style_readmoreLink}
+							setAttr__={(data) => setAttributes({ style_readmoreLink: data })}
+						/>
+
+						<WcbPostGridPanel_StylePagination
+							onToggle={() => handleTogglePanel("Styles", "StylePagination")}
+							initialOpen={tabStylesIsPanelOpen === "StylePagination"}
+							opened={tabStylesIsPanelOpen === "StylePagination" || undefined}
+							//
+							panelData={style_pagination}
+							setAttr__={(data) => setAttributes({ style_pagination: data })}
+						/>
+
+						<WcbPostGridPanel_StyleFeaturedImage
+							onToggle={() => handleTogglePanel("Styles", "StyleFeaturedImage")}
+							initialOpen={tabStylesIsPanelOpen === "StyleFeaturedImage"}
+							opened={
+								tabStylesIsPanelOpen === "StyleFeaturedImage" || undefined
+							}
+							//
+							panelData={style_featuredImage}
+							setAttr__={(data) => setAttributes({ style_featuredImage: data })}
+						/>
+
+						<PanelBody
+							onToggle={() => handleTogglePanel("Styles", "StyleBorder")}
+							initialOpen={tabStylesIsPanelOpen === "StyleBorder"}
+							opened={tabStylesIsPanelOpen === "StyleBorder" || undefined}
+							title={__("Border", "wcb")}
+						>
+							<MyBorderControl
+								borderControl={style_border}
+								setAttrs__border={(data) =>
+									setAttributes({ style_border: data })
+								}
+							/>
+						</PanelBody>
+
+						<PanelBody
+							onToggle={() => handleTogglePanel("Styles", "StyleBoxShadow")}
+							initialOpen={tabStylesIsPanelOpen === "StyleBoxShadow"}
+							opened={tabStylesIsPanelOpen === "StyleBoxShadow" || undefined}
+							title={__("Box Shadow", "wcb")}
+						>
+							<MyBoxShadowControl
+								boxShadowControl={style_boxShadow}
+								setAttrs__boxShadow={(data) =>
+									setAttributes({ style_boxShadow: data })
+								}
+							/>
+						</PanelBody>
+					</>
+				);
 			case "Advances":
 				return (
 					<>
 						<AdvancePanelCommon
-							advance_responsiveCondition={
-								attributes.advance_responsiveCondition
-							}
-							advance_zIndex={attributes.advance_zIndex}
+							advance_responsiveCondition={advance_responsiveCondition}
+							advance_zIndex={advance_zIndex}
 							handleTogglePanel={handleTogglePanel}
 							setAttributes={setAttributes}
 							tabAdvancesIsPanelOpen={tabAdvancesIsPanelOpen}
@@ -157,21 +343,24 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 
 	return (
 		<CacheProvider value={myCache}>
+			{/* CONTROL SETTINGS */}
+			<HOCInspectorControls
+				tabDefaultActive={tabIsOpen}
+				renderTabPanels={renderTabBodyPanels}
+			/>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-default__wrap ${UNIQUE_ID}`}
+				className={`${wrapBlockProps?.className} wcb-posts-grid__wrap ${UNIQUE_ID}`}
 			>
-				{/* CONTROL SETTINGS */}
-				<HOCInspectorControls
-					tabDefaultActive={tabIsOpen}
-					renderTabPanels={renderTabBodyPanels}
-				/>
-
 				{/* CSS IN JS */}
 				<GlobalCss {...attributes} />
 
 				{/* CHILD CONTENT  */}
-				<div className="h-32 bg-slate-200 my-5">CHILD CONTENT </div>
+				<>
+					<PostCard />
+					<PostCard />
+					<PostCard />
+				</>
 			</div>
 		</CacheProvider>
 	);

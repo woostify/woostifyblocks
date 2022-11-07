@@ -17,14 +17,34 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
 	const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
-	const HEADING_CLASSNAME = `${WRAP_CLASSNAME} .wcb-heading__heading`;
+	const POST_CARD_CLASS = `${WRAP_CLASSNAME} .wcbPostCard`;
 
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject => {
 		return {
 			[`${WRAP_CLASSNAME}`]: {
-				[`@media (min-width: ${media_tablet})`]: {},
-				[`@media (min-width: ${media_desktop})`]: {},
+				display: "grid",
+				gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+				gap: "2rem",
+				// [`@media (min-width: ${media_tablet})`]: {},
+				// [`@media (min-width: ${media_desktop})`]: {},
+			},
+		};
+	};
+
+	const getPostCardWrapStyles = (): CSSObject => {
+		return {
+			[`${POST_CARD_CLASS}`]: {
+				display: "flex",
+				flexDirection: "column",
+				".wcbPostCard__featuredImage": {
+					position: "relative",
+					img: {
+						display: "block",
+						position: "relative",
+						width: "100%",
+					},
+				},
 			},
 		};
 	};
@@ -32,6 +52,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 	return (
 		<>
 			<Global styles={getDivWrapStyles()} />
+			{/*  */}
+			<Global styles={getPostCardWrapStyles()} />
 
 			{/* ADVANCE  */}
 			<Global
@@ -39,7 +61,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 					advance_responsiveCondition,
 					advance_zIndex,
 					className: WRAP_CLASSNAME,
-					defaultDisplay: "block",
+					defaultDisplay: "grid",
 				})}
 			/>
 		</>

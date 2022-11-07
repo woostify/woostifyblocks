@@ -57,14 +57,18 @@ const MyDimensionsNoGapControl: FC<Props> = ({
 		<div className={className}>
 			<BoxControl
 				label={
-					<MyLabelControl hasResponsive>{__("Padding", "wcb")}</MyLabelControl>
+					<MyLabelControl hasResponsive className="">
+						{__("Padding", "wcb")}
+					</MyLabelControl>
 				}
 				values={padding}
 				onChange={handleChangePadding}
 			/>
 			<BoxControl
 				label={
-					<MyLabelControl hasResponsive>{__("Margin", "wcb")}</MyLabelControl>
+					<MyLabelControl className="" hasResponsive>
+						{__("Margin", "wcb")}
+					</MyLabelControl>
 				}
 				values={margin}
 				onChange={handleChangeMargin}

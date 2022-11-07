@@ -1994,13 +1994,33 @@ const GlobalCss = attrs => {
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_3__.DEMO_WCB_GLOBAL_VARIABLES;
   const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
-  const HEADING_CLASSNAME = `${WRAP_CLASSNAME} .wcb-heading__heading`; // ------------------- WRAP DIV
+  const POST_CARD_CLASS = `${WRAP_CLASSNAME} .wcbPostCard`; // ------------------- WRAP DIV
 
   const getDivWrapStyles = () => {
     return {
       [`${WRAP_CLASSNAME}`]: {
-        [`@media (min-width: ${media_tablet})`]: {},
-        [`@media (min-width: ${media_desktop})`]: {}
+        display: "grid",
+        gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+        gap: "2rem" // [`@media (min-width: ${media_tablet})`]: {},
+        // [`@media (min-width: ${media_desktop})`]: {},
+
+      }
+    };
+  };
+
+  const getPostCardWrapStyles = () => {
+    return {
+      [`${POST_CARD_CLASS}`]: {
+        display: "flex",
+        flexDirection: "column",
+        ".wcbPostCard__featuredImage": {
+          position: "relative",
+          img: {
+            display: "block",
+            position: "relative",
+            width: "100%"
+          }
+        }
       }
     };
   };
@@ -2008,11 +2028,13 @@ const GlobalCss = attrs => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_4__.Global, {
     styles: getDivWrapStyles()
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_4__.Global, {
+    styles: getPostCardWrapStyles()
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_4__.Global, {
     styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__.getAdvanveDivWrapStyles)({
       advance_responsiveCondition,
       advance_zIndex,
       className: WRAP_CLASSNAME,
-      defaultDisplay: "block"
+      defaultDisplay: "grid"
     })
   }));
 };

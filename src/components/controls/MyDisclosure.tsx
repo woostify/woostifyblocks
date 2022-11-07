@@ -16,7 +16,7 @@ interface Props {
 }
 
 const MyDisclosure: FC<Props> = ({
-	className = "space-y-3",
+	className = "space-y-3.5",
 	label = "Customize",
 	children,
 	defaultOpen,
@@ -27,7 +27,7 @@ const MyDisclosure: FC<Props> = ({
 			{({ open }) => (
 				<div
 					className={
-						open ? "ring-2 ring-offset-2 rounded-lg ring-purple-200 mb-4" : ""
+						open ? "ring-2 ring-offset-1 rounded-lg ring-purple-200 mb-4" : ""
 					}
 				>
 					<Disclosure.Button

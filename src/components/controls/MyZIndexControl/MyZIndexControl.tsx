@@ -47,7 +47,9 @@ const MyZIndexControl: FC<Props> = ({
 				// @ts-ignore
 				value={undefined}
 				label={
-					<MyLabelControl hasResponsive>{__("Z-Index", "wcb")}</MyLabelControl>
+					<MyLabelControl className="" hasResponsive>
+						{__("Z-Index", "wcb")}
+					</MyLabelControl>
 				}
 				allowReset
 				max={1000}

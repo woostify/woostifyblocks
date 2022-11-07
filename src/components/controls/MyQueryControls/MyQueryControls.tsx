@@ -21,7 +21,7 @@ import {
 	USERS_LIST_QUERY,
 } from "./types";
 import MySelect from "../MySelect";
-import { Option } from "../../../block-common-css/types";
+import { Option } from "../../../types";
 
 const DEFAULT_MIN_ITEMS = 1;
 const DEFAULT_MAX_ITEMS = 100;
@@ -31,7 +31,7 @@ export interface MyQueryControlData {
 	postType: string;
 	taxonomy: string;
 	//
-	selectedAuthorId: number[];
+	selectedAuthorId: number;
 	selectedTerms: any[];
 	numberOfItems: number;
 	numberOfColumn: number;
@@ -54,7 +54,7 @@ interface Props {
 export const MY_QUERIES_DEMO_DATA: MyQueryControlData = {
 	postType: "post",
 	taxonomy: "category",
-	selectedAuthorId: [],
+	selectedAuthorId: 0,
 	selectedTerms: [],
 	numberOfItems: 10,
 	order: "ASC",

@@ -1,20 +1,12 @@
 import { TabPanel } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, useState } from "react";
+import { MyTabsForColor } from "../../../types";
+import { PANEL_COLOR_TABS } from "../MyColorBackgroundColorControl/MyColorBackgroundColorControl";
 import MyColorPicker from "../MyColorPicker/MyColorPicker";
 
-type TabsHere = "Normal" | "Hover";
-
-const PanelTab: {
-	name: TabsHere;
-	title: string;
-}[] = [
-	{ name: "Normal", title: __("Normal", "wcb") },
-	{ name: "Hover", title: __("Hover", "wcb") },
-];
-
 export type MyLinkColorControlData = {
-	[K in TabsHere]: {
+	[K in MyTabsForColor]: {
 		color: string;
 	};
 };
@@ -39,10 +31,7 @@ const MyLinkColorControl: FC<Props> = ({
 	linkColorControl = MY_LINK_COLOR_CONTROL_DEMO,
 	setAttrs__linkColor,
 }) => {
-	const [currentTab, setCurrentTab] = useState<TabsHere>("Normal");
-	const { color } = linkColorControl[currentTab];
-
-	const handleChangeColor = (colorHex: string) => {
+	const handleChangeColor = (currentTab: MyTabsForColor, colorHex: string) => {
 		setAttrs__linkColor({
 			...linkColorControl,
 			[currentTab]: {
@@ -52,11 +41,13 @@ const MyLinkColorControl: FC<Props> = ({
 		});
 	};
 
-	const renderShadowColorPicker = () => {
+	const renderShadowColorPicker = (tab: TabPanel.Tab) => {
+		const tabName = tab.name as MyTabsForColor;
+		const { color } = linkColorControl[tabName];
 		return (
 			<MyColorPicker
 				label={__("Color", "wcb")}
-				onChange={handleChangeColor}
+				onChange={(value) => handleChangeColor(tabName, value)}
 				color={color}
 			/>
 		);
@@ -66,11 +57,10 @@ const MyLinkColorControl: FC<Props> = ({
 		<TabPanel
 			className={`wcb-bodyControls__panel ${className}`}
 			activeClass="active-tab"
-			onSelect={(tab) => setCurrentTab(tab as TabsHere)}
 			initialTabName="Normal"
-			tabs={PanelTab}
+			tabs={PANEL_COLOR_TABS}
 		>
-			{(_) => renderShadowColorPicker()}
+			{renderShadowColorPicker}
 		</TabPanel>
 	);
 };

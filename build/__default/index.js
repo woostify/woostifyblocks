@@ -2588,21 +2588,8 @@ const MyLabelControl = _ref => {
     className = "mb-2",
     help,
     hasResponsive,
-    devices // selectedUnit,
-    // hasUnit,
-    // units,
-
+    devices
   } = _ref;
-  // const __units =
-  // 	useMemo(
-  // 		() =>
-  // 			units &&
-  // 			units?.map((unit) => {
-  // 				return { value: unit };
-  // 			}),
-  // 		[units]
-  // 	) || [];
-  // const __hasUnit = !!units?.length;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `components-base-control__label font-medium uppercase text-[11px] ${className}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -2610,7 +2597,7 @@ const MyLabelControl = _ref => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wb-base-control__label"
   }, children), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wb-base-control__responsive ml-2"
+    className: "wb-base-control__responsive ml-1.5"
   }, hasResponsive && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyResponsiveToggle_MyResponsiveToggle__WEBPACK_IMPORTED_MODULE_2__["default"], {
     devices: devices
   }))), !!help && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -3024,6 +3011,7 @@ const MyZIndexControl = _ref => {
     ,
     value: undefined,
     label: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      className: "",
       hasResponsive: true
     }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Z-Index", "wcb")),
     allowReset: true,

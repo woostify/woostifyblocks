@@ -9,6 +9,10 @@ export interface MyDimensionsControlData {
 
 export interface MyDimensionsNoGapControlData
 	extends Pick<MyDimensionsControlData, "padding" | "margin"> {}
+export interface MyDimensionsNoMarginControlData
+	extends Omit<MyDimensionsControlData, "margin"> {}
+export interface MyDimensionsNoPaddingControlData
+	extends Omit<MyDimensionsControlData, "padding"> {}
 export interface DimensionSettings {
 	top: string;
 	left: string;
@@ -61,3 +65,29 @@ export const MY_DIMENSIONS_NO_GAP_CONTROL_DEMO: MyDimensionsNoGapControlData = {
 		},
 	},
 };
+export const MY_DIMENSIONS_NO_MARGIN_CONTROL_DEMO: MyDimensionsNoMarginControlData =
+	{
+		colunmGap: { Desktop: "1.5rem" },
+		rowGap: { Desktop: "1.5rem" },
+		padding: {
+			Desktop: {
+				top: "1rem",
+				left: "1rem",
+				right: "1rem",
+				bottom: "1rem",
+			},
+		},
+	};
+export const MY_DIMENSIONS_NO_PADDING_CONTROL_DEMO: MyDimensionsNoPaddingControlData =
+	{
+		colunmGap: { Desktop: "1.5rem" },
+		rowGap: { Desktop: "1.5rem" },
+		margin: {
+			Desktop: {
+				top: "0",
+				left: "0",
+				right: "0",
+				bottom: "0",
+			},
+		},
+	};

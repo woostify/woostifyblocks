@@ -1,9 +1,9 @@
 import { PanelBody, ToggleControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
-import { HtmlTagsType } from "../block-common-css/types";
 import MyDisclosure from "../components/controls/MyDisclosure";
 import MyHeadingTagControl from "../components/controls/MyHeadingTagControl/MyHeadingTagControl";
+import { HtmlTagsType } from "../types";
 
 export interface WCB_POST_GRID_PANEL_POST_META {
 	isShowTitle: boolean;

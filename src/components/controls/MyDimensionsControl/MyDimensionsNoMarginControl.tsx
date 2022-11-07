@@ -9,33 +9,29 @@ import { ResponsiveDevices } from "../MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../../../hooks/useGetDeviceType";
 import {
 	DimensionSettings,
-	MyDimensionsControlData,
-	MY_DIMENSIONS_CONTROL_DEMO,
+	MyDimensionsNoMarginControlData,
+	MY_DIMENSIONS_NO_MARGIN_CONTROL_DEMO,
 } from "./types";
 import MyUnitControl from "../MyUnitControl";
 
 interface Props {
 	className?: string;
-	dimensionControl: MyDimensionsControlData;
-	setAttrs__dimensions: (data: MyDimensionsControlData) => void;
+	dimensionControl: MyDimensionsNoMarginControlData;
+	setAttrs__dimensions: (data: MyDimensionsNoMarginControlData) => void;
+	paddingLabel?: string;
 }
 
-export const MY_GAP_UNITS = [
-	{ value: "px", label: "px", default: 32 },
-	{ value: "rem", label: "rem", default: 2 },
-];
-
-const MyDimensionsControl: FC<Props> = ({
+const MyDimensionsNoMarginControl: FC<Props> = ({
 	className = "space-y-5",
-	dimensionControl = MY_DIMENSIONS_CONTROL_DEMO,
+	dimensionControl = MY_DIMENSIONS_NO_MARGIN_CONTROL_DEMO,
 	setAttrs__dimensions,
+	paddingLabel = __("Padding", "wcb"),
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	//
 	const {
 		colunmGap: colunmGapProps,
 		rowGap: rowGapProps,
-		margin: marginProps,
 		padding: paddingProps,
 	} = dimensionControl;
 
@@ -45,8 +41,7 @@ const MyDimensionsControl: FC<Props> = ({
 		colunmGapProps.Desktop;
 	const rowGap =
 		rowGapProps[deviceType] || rowGapProps.Tablet || rowGapProps.Desktop;
-	const margin =
-		marginProps[deviceType] || marginProps.Tablet || marginProps.Desktop;
+
 	const padding =
 		paddingProps[deviceType] || paddingProps.Tablet || paddingProps.Desktop;
 	//
@@ -68,15 +63,7 @@ const MyDimensionsControl: FC<Props> = ({
 			},
 		});
 	};
-	const handleChangeMargin = (value: DimensionSettings) => {
-		setAttrs__dimensions({
-			...dimensionControl,
-			margin: {
-				...marginProps,
-				[deviceType]: value,
-			},
-		});
-	};
+
 	const handleChangePadding = (value: DimensionSettings) => {
 		setAttrs__dimensions({
 			...dimensionControl,
@@ -86,6 +73,11 @@ const MyDimensionsControl: FC<Props> = ({
 			},
 		});
 	};
+
+	const MY_GAP_UNITS = [
+		{ value: "px", label: "px", default: 32 },
+		{ value: "rem", label: "rem", default: 2 },
+	];
 
 	return (
 		<div className={className}>
@@ -108,23 +100,14 @@ const MyDimensionsControl: FC<Props> = ({
 			<BoxControl
 				label={
 					<MyLabelControl className="" hasResponsive>
-						{__("Padding", "wcb")}
+						{paddingLabel}
 					</MyLabelControl>
 				}
 				values={padding}
 				onChange={handleChangePadding}
 			/>
-			<BoxControl
-				label={
-					<MyLabelControl className="" hasResponsive>
-						{__("Margin", "wcb")}
-					</MyLabelControl>
-				}
-				values={margin}
-				onChange={handleChangeMargin}
-			/>
 		</div>
 	);
 };
 
-export default MyDimensionsControl;
+export default MyDimensionsNoMarginControl;
