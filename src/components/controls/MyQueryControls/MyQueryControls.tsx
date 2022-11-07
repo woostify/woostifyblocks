@@ -57,7 +57,7 @@ export const MY_QUERIES_DEMO_DATA: MyQueryControlData = {
 	selectedAuthorId: 0,
 	selectedTerms: [],
 	numberOfItems: 10,
-	order: "ASC",
+	order: "asc",
 	orderBy: "date",
 	maxItems: DEFAULT_MAX_ITEMS,
 	minItems: DEFAULT_MIN_ITEMS,

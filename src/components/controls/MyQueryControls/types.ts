@@ -1,6 +1,6 @@
 import { __ } from "@wordpress/i18n";
 
-export type Order = "ASC" | "DESC";
+export type Order = "asc" | "desc";
 export type Orderby =
 	| "none"
 	| "ID"
@@ -116,8 +116,8 @@ export const OrderOptions: {
 	label: string;
 	value: Order;
 }[] = [
-	{ label: "ASC", value: "ASC" },
-	{ label: "DESC", value: "DESC" },
+	{ label: "ASC", value: "asc" },
+	{ label: "DESC", value: "desc" },
 ];
 
 export const MY_ORDER_OPTIONS = [
@@ -162,6 +162,6 @@ export const CATEGORIES_LIST_QUERY = {
 };
 export const USERS_LIST_QUERY = {
 	per_page: -1,
-	has_published_posts: ["post"],
+	// has_published_posts: ["post"],
 	context: "view",
 };

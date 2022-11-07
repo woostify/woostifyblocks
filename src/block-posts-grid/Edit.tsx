@@ -29,19 +29,15 @@ import { PanelBody } from "@wordpress/components";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
 import MyBoxShadowControl from "../components/controls/MyBoxShadowControl/MyBoxShadowControl";
 import PostCard from "./PostCard";
-import { dateI18n, format, getSettings } from "@wordpress/date";
 import {
-	InspectorControls,
-	BlockAlignmentToolbar,
-	BlockControls,
-	__experimentalImageSizeControl as ImageSizeControl,
 	useBlockProps,
 	store as blockEditorStore,
 } from "@wordpress/block-editor";
 import { useSelect, useDispatch } from "@wordpress/data";
-import { pin, list, grid } from "@wordpress/icons";
 import { store as coreStore } from "@wordpress/core-data";
-import { useInstanceId } from "@wordpress/compose";
+import { PostRoot } from "./types";
+import { CategoryRoot } from "./CategoryType";
+import { AuthorRoot } from "./AuthorType";
 
 const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -101,10 +97,10 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 		selectedTerms,
 		taxonomy,
 	} = queries;
-	const { listPosts } = useSelect(
+	const { listPosts, categoriesList, authorList } = useSelect(
 		(select) => {
-			const { getEntityRecords, getUsers, getAuthors } = select(coreStore);
-			const settings = select(blockEditorStore).getSettings();
+			const { getEntityRecords, getUsers } = select(coreStore);
+			// const settings = select(blockEditorStore).getSettings();
 			const catIds =
 				selectedTerms && selectedTerms.length > 0
 					? selectedTerms.map((cat) => cat.id)
@@ -122,7 +118,17 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 			);
 
 			return {
-				listPosts: getEntityRecords("postType", postType, listPostsQuery),
+				listPosts: getEntityRecords("postType", postType, listPostsQuery) as
+					| PostRoot[]
+					| undefined,
+				categoriesList: getEntityRecords("taxonomy", "category", {
+					per_page: -1,
+					context: "view",
+				}) as CategoryRoot[] | undefined,
+				authorList: getUsers({
+					per_page: -1,
+					context: "view",
+				}) as AuthorRoot[] | undefined,
 			};
 		},
 		[
@@ -138,8 +144,8 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 			taxonomy,
 		]
 	);
-	console.log(123, { listPosts });
 
+	console.log(123, { listPosts, categoriesList, authorList });
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
@@ -357,9 +363,14 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 
 				{/* CHILD CONTENT  */}
 				<>
-					<PostCard />
-					<PostCard />
-					<PostCard />
+					{listPosts?.map((post) => (
+						<PostCard
+							key={post.id}
+							postData={post}
+							authors={authorList || []}
+							categories={categoriesList || []}
+						/>
+					))}
 				</>
 			</div>
 		</CacheProvider>
