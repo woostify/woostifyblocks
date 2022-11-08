@@ -1,10 +1,9 @@
-import React, { FC, useCallback } from "react";
+import React, { FC } from "react";
 import { __ } from "@wordpress/i18n";
-import { useSelect, useDispatch } from "@wordpress/data";
+import { useSelect } from "@wordpress/data";
 import { store as coreStore } from "@wordpress/core-data";
 import AuthorSelect from "./AuthorSelect";
 import {
-	FormToggle,
 	FormTokenField,
 	RangeControl,
 	SelectControl,
@@ -29,7 +28,8 @@ const MAX_CATEGORIES_SUGGESTIONS = 20;
 
 export interface MyQueryControlData {
 	postType: string;
-	taxonomy: string;
+	taxonomySlug: string;
+	taxonomyRestbase: string;
 	//
 	selectedAuthorId: number;
 	selectedTerms: any[];
@@ -53,7 +53,8 @@ interface Props {
 
 export const MY_QUERIES_DEMO_DATA: MyQueryControlData = {
 	postType: "post",
-	taxonomy: "category",
+	taxonomySlug: "category",
+	taxonomyRestbase: "categories",
 	selectedAuthorId: 0,
 	selectedTerms: [],
 	numberOfItems: 10,
@@ -74,12 +75,13 @@ const MyQueryControls: FC<Props> = ({
 }) => {
 	const {
 		postType = "post",
-		taxonomy = "category",
+		taxonomySlug = "category",
+		taxonomyRestbase = "categories",
 		//
 		selectedAuthorId = [],
 		selectedTerms = [],
 		numberOfItems = 10,
-		order = "ASC",
+		order = "asc",
 		orderBy = "date",
 		maxItems = DEFAULT_MAX_ITEMS,
 		minItems = DEFAULT_MIN_ITEMS,
@@ -106,21 +108,23 @@ const MyQueryControls: FC<Props> = ({
 			}: SelectCoreTypes = select(coreStore) as SelectCoreTypes;
 
 			// const settings = select(blockEditorStore).getSettings();
-			const termList: any[] | undefined = getEntityRecords(
+			const termList = getEntityRecords(
 				"taxonomy",
-				taxonomy,
+				taxonomySlug,
 				CATEGORIES_LIST_QUERY
-			);
-			const termSuggestionList = termList?.map((item) => item.name);
+			) as any[] | undefined;
+			const termSuggestionList = termList?.map((item) => item.name) as
+				| any[]
+				| undefined;
 			return {
-				postTypesList: getPostTypes(),
-				authorList: getUsers(USERS_LIST_QUERY),
-				taxonomiesList: getTaxonomies(),
+				postTypesList: getPostTypes() as any[] | undefined,
+				authorList: getUsers(USERS_LIST_QUERY) as any[] | undefined,
+				taxonomiesList: getTaxonomies() as any[] | undefined,
 				termSuggestionList,
 				termList,
 			};
 		},
-		[taxonomy]
+		[taxonomySlug]
 	);
 
 	const postTypeOptions: Option[] =
@@ -133,7 +137,7 @@ const MyQueryControls: FC<Props> = ({
 				value: item.slug,
 			})) || [];
 
-	const getTaxonomiesAvailablsesByPostType = (type = postType): string[] => {
+	const getTaxonomySlugsAvailablsesByPostType = (type = postType): string[] => {
 		return (
 			postTypesList?.filter((item) => {
 				return item?.slug === type;
@@ -141,37 +145,46 @@ const MyQueryControls: FC<Props> = ({
 		);
 	};
 
-	const taxonomiesAvailables = getTaxonomiesAvailablsesByPostType();
+	const taxonomySlugsAvailables = getTaxonomySlugsAvailablsesByPostType();
 
 	const taxonomyOptions: Option[] =
 		taxonomiesList
 			?.filter((item) => {
-				return taxonomiesAvailables.includes(item?.slug);
+				return taxonomySlugsAvailables.includes(item?.slug);
 			})
 			?.map((item) => ({
 				label: item.name,
 				value: item.slug,
 			})) || [];
 
-	const taxonomyValue = taxonomy || taxonomiesAvailables[0];
 	const taxonomyLabel = taxonomyOptions?.filter(
-		(item) => item.value === taxonomyValue
+		(item) => item.value === (taxonomySlug || taxonomySlugsAvailables[0])
 	)[0]?.label;
 
 	//
 	const handlePostTypeChange = (postType: string) => {
+		const taxonomySlug =
+			getTaxonomySlugsAvailablsesByPostType(postType)[0] || "";
+		const taxonomyRestbase =
+			taxonomiesList?.filter((item) => item.slug === taxonomySlug)[0]
+				?.rest_base || "";
 		setAttrs__queries({
 			...queriesControl,
 			postType,
-			taxonomy: getTaxonomiesAvailablsesByPostType(postType)[0] || "",
+			taxonomySlug,
+			taxonomyRestbase,
 			selectedTerms: [],
 		});
 	};
 
-	const handleTaxonomyChange = (taxonomy: string) => {
+	const handleTaxonomyChange = (taxonomySlug: string) => {
+		const taxonomyRestbase =
+			taxonomiesList?.filter((item) => item.slug === taxonomySlug)[0]
+				?.rest_base || "";
 		setAttrs__queries({
 			...queriesControl,
-			taxonomy,
+			taxonomySlug,
+			taxonomyRestbase,
 			selectedTerms: [],
 		});
 	};
@@ -273,7 +286,7 @@ const MyQueryControls: FC<Props> = ({
 			{taxonomyOptions && taxonomyOptions.length ? (
 				<MySelect
 					label={__("Taxonomy", "wcb")}
-					value={taxonomy}
+					value={taxonomySlug}
 					options={taxonomyOptions}
 					onChange={handleTaxonomyChange}
 				/>
@@ -281,7 +294,9 @@ const MyQueryControls: FC<Props> = ({
 
 			{termSuggestionList && termSuggestionList.length ? (
 				<FormTokenField
+					// @ts-ignore
 					label={__(taxonomyLabel, "wcb")}
+					__experimentalExpandOnFocus
 					value={
 						selectedTerms &&
 						selectedTerms.map((item) => ({

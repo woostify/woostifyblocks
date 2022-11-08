@@ -1,0 +1,16 @@
+/* use for bot editor and frontend */
+.wcb-posts-grid__wrap {
+	@apply grid;
+	.wcbPostCard {
+		@apply flex flex-col;
+		.wcbPostCard__featuredImage {
+			@apply relative;
+			img {
+				@apply block w-full rounded-lg;
+			}
+		}
+		.wcbPostCard__title {
+			@apply my-0;
+		}
+	}
+}

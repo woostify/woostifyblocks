@@ -4,6 +4,9 @@ import React, { FC, CSSProperties } from "react";
 import MyDisclosure from "../components/controls/MyDisclosure";
 import MyHeadingTagControl from "../components/controls/MyHeadingTagControl/MyHeadingTagControl";
 import { HtmlTagsType } from "../types";
+// @ts-ignore
+import { __experimentalInputControl as InputControl } from "@wordpress/components";
+import MyRadioGroup from "../components/controls/MyRadioGroup";
 
 export interface WCB_POST_GRID_PANEL_POST_META {
 	isShowTitle: boolean;
@@ -11,8 +14,14 @@ export interface WCB_POST_GRID_PANEL_POST_META {
 	isShowAuthor: boolean;
 	isShowDate: boolean;
 	isShowComment: boolean;
-	isShowTaxonomy: boolean;
 	isShowMetaIcon: boolean;
+	isShowTaxonomy: boolean;
+	taxonomyPosition:
+		| "Above featured image"
+		| "Inside featured image"
+		| "Below featured image";
+	taxonomyDivider: string;
+	taxonomyStyle: "Normal" | "Highlighted";
 }
 
 export const WCB_POST_GRID_PANEL_POST_META_DEMO: WCB_POST_GRID_PANEL_POST_META =
@@ -24,6 +33,9 @@ export const WCB_POST_GRID_PANEL_POST_META_DEMO: WCB_POST_GRID_PANEL_POST_META =
 		isShowDate: true,
 		isShowTaxonomy: true,
 		isShowMetaIcon: true,
+		taxonomyPosition: "Inside featured image",
+		taxonomyDivider: ",",
+		taxonomyStyle: "Normal",
 	};
 
 interface Props
@@ -47,6 +59,8 @@ const WcbPostGridPanelPostMeta: FC<Props> = ({
 		isShowTitle,
 		titleHtmlTag,
 		isShowMetaIcon,
+		taxonomyDivider,
+		taxonomyStyle,
 	} = panelData;
 
 	const renderTaxonomy = () => {
@@ -58,6 +72,34 @@ const WcbPostGridPanelPostMeta: FC<Props> = ({
 						setAttr__({ ...panelData, isShowTaxonomy: checked })
 					}
 					checked={isShowTaxonomy}
+				/>
+
+				<MyRadioGroup
+					label="Style"
+					labelClassName=""
+					className="flex items-center justify-between space-x-3"
+					contentClassName="flex-shrink-0 flex-1"
+					onChange={(selected) =>
+						setAttr__({
+							...panelData,
+							taxonomyStyle: selected as any,
+						})
+					}
+					value={taxonomyStyle}
+					plans={[
+						// "Normal" | "Highlighted"
+						{ name: "Normal", icon: "Normal" },
+						{ name: "Highlighted", icon: "Highlighted" },
+					]}
+					hasResponsive={false}
+				/>
+
+				<InputControl
+					value={taxonomyDivider}
+					label={__("Divider", "wcb")}
+					onChange={(value) =>
+						setAttr__({ ...panelData, taxonomyDivider: value })
+					}
 				/>
 			</MyDisclosure>
 		);

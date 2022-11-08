@@ -95,23 +95,26 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 		postType,
 		selectedAuthorId,
 		selectedTerms,
-		taxonomy,
+		taxonomyRestbase,
+		taxonomySlug,
 	} = queries;
 	const { listPosts, categoriesList, authorList } = useSelect(
 		(select) => {
 			const { getEntityRecords, getUsers } = select(coreStore);
 			// const settings = select(blockEditorStore).getSettings();
-			const catIds =
+			const termIds =
 				selectedTerms && selectedTerms.length > 0
 					? selectedTerms.map((cat) => cat.id)
 					: [];
+
 			const listPostsQuery = pickBy(
 				{
-					categories: catIds,
+					[taxonomyRestbase]: termIds,
 					author: selectedAuthorId || undefined,
 					order: order || undefined,
 					orderby: orderBy || undefined,
 					per_page: numberOfItems || undefined,
+					offset: offsetPost || undefined,
 					_embed: "wp:featuredmedia",
 				},
 				(value) => typeof value !== "undefined"
@@ -141,12 +144,9 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 			postType,
 			selectedAuthorId,
 			selectedTerms,
-			taxonomy,
+			taxonomyRestbase,
 		]
 	);
-
-	console.log(123, { listPosts, categoriesList, authorList });
-	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
 		switch (tab.name) {
@@ -363,14 +363,28 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 
 				{/* CHILD CONTENT  */}
 				<>
-					{listPosts?.map((post) => (
-						<PostCard
-							key={post.id}
-							postData={post}
-							authors={authorList || []}
-							categories={categoriesList || []}
-						/>
-					))}
+					{listPosts && categoriesList && authorList && listPosts.length
+						? listPosts?.map((post) => (
+								<PostCard
+									key={post.id}
+									postData={post}
+									authors={authorList || []}
+									categories={categoriesList || []}
+									postMetaSettings={general_postMeta}
+									postContentSettings={general_postContent}
+									featuredImageSettings={general_postFeaturedImage}
+									general_readmoreLink={general_readmoreLink}
+								/>
+						  ))
+						: null}
+
+					{!listPosts?.length ? (
+						<div className="py-5">
+							<p className="wcb-posts-grid__emptyMessage ">
+								{general_sortingAndFiltering.emptyMessage}
+							</p>
+						</div>
+					) : null}
 				</>
 			</div>
 		</CacheProvider>
