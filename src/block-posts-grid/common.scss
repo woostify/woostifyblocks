@@ -1,16 +1,124 @@
-/* use for bot editor and frontend */
 .wcb-posts-grid__wrap {
-	@apply grid;
-	.wcbPostCard {
-		@apply flex flex-col;
+}
+
+.wcbPostCard {
+	&--image-left {
+		display: flex;
+		flex-direction: row;
+	}
+	&--image-right {
+		display: flex;
+		flex-direction: row-reverse;
+	}
+	&--image-right,
+	&--image-left {
 		.wcbPostCard__featuredImage {
-			@apply relative;
-			img {
-				@apply block w-full rounded-lg;
-			}
+			flex-shrink: 0;
+			flex-basis: 25%;
 		}
-		.wcbPostCard__title {
-			@apply my-0;
+		.wcbPostCard__content {
+			flex: 1;
 		}
 	}
+
+	&--image-background {
+		.wcbPostCard__featuredImage {
+			position: absolute;
+			inset: 0;
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+	}
+}
+
+.wcbPostCard__featuredImage {
+	img {
+		display: block;
+		width: 100%;
+		border-radius: 10px;
+	}
+}
+
+.wcbPostCard__featuredImage-overlay {
+	position: absolute;
+	inset: 0;
+}
+
+.wcbPostCard__title,
+.wcbPostCard__excerpt {
+	margin-top: 0;
+}
+
+.wcbPostCard__taxonomies {
+	overflow-wrap: normal;
+	&--highlighted {
+		> a {
+			display: inline-block;
+			margin-right: 4px;
+			margin-bottom: 4px;
+			padding: 4px 10px;
+			font-size: 12px;
+			border-radius: 8px;
+			text-decoration: none;
+		}
+	}
+}
+
+.wcb-posts-grid__pagination-number,
+.wcb-posts-grid__pagination {
+	display: flex;
+	@apply space-x-1.5;
+}
+.wcb-posts-grid__pagination {
+	.page-numbers {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-decoration: none;
+		@apply space-x-1 py-1 px-3;
+	}
+}
+
+.wcbPostCard__readmoreLink {
+	display: inline-flex;
+}
+
+.wcbPostCard__meta {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.wcbPostCard__meta-author {
+	display: flex;
+	align-items: center;
+	margin-right: 1rem;
+}
+
+.wcbPostCard__meta-author-name {
+	text-transform: capitalize;
+}
+
+.wcbPostCard__meta-icon {
+	margin-right: 4px;
+	display: inline-flex;
+	align-items: center;
+}
+
+.wcbPostCard__meta-date-and-comments {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-start;
+	@apply space-x-2;
+}
+
+.wcbPostCard__meta-date,
+.wcbPostCard__meta-comment {
+	display: inline-flex;
+	align-items: center;
 }

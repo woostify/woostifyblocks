@@ -9,6 +9,9 @@ interface Params {
 }
 
 const getTypographyStyles = ({ typography, className }: Params): CSSObject => {
+	if (!typography || !className) {
+		return {};
+	}
 	const {
 		appearance,
 		fontFamily,

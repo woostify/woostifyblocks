@@ -17,19 +17,16 @@ export type BorderMainSettings =
 	| BorderMainSingleSide
 	| undefined;
 
-export interface BorderRadiusSettings {
-	top: string;
-	left: string;
-	right: string;
-	bottom: string;
-}
+export type BorderRadiusSettings =
+	| {
+			bottomLeft?: string;
+			bottomRight?: string;
+			topLeft?: string;
+			topRight?: string;
+	  }
+	| string;
 
-export const DEFAULT_BORDER_RADIUS: BorderRadiusSettings = {
-	top: "12px",
-	left: "12px",
-	right: "12px",
-	bottom: "12px",
-};
+export const DEFAULT_BORDER_RADIUS: BorderRadiusSettings = "12px";
 
 export const DEFAULT_BORDER_MAIN_SINGLE_SIDE: BorderMainSingleSide = {
 	color: "#d1d5db",

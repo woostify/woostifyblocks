@@ -28,12 +28,14 @@ interface Props {
 	className?: string;
 	typographyControl: MyTypographyControlData;
 	setAttrs__typography: (data: MyTypographyControlData) => void;
+	label?: string;
 }
 
 const MyTypographyControl: FC<Props> = ({
 	className = "space-y-5",
 	typographyControl = TYPOGRAPHY_CONTROL_DEMO,
 	setAttrs__typography = () => {},
+	label = "Typography",
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
@@ -207,7 +209,7 @@ const MyTypographyControl: FC<Props> = ({
 	};
 
 	return (
-		<MyDisclosure label="Typography">
+		<MyDisclosure label={label}>
 			<div className={className}>
 				{renderFontFamily()}
 				{renderFontsizePicker()}

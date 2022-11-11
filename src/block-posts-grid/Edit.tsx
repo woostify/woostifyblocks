@@ -17,7 +17,9 @@ import WcbPostGridPanelPostContent from "./WcbPostGridPanelPostContent";
 import WcbPostGridPanelPostMeta from "./WcbPostGridPanelPostMeta";
 import WcbPostGridPanelPostFeaturedImage from "./WcbPostGridPanelPostFeaturedImage";
 import WcbPostGridPanelReadMoreLink from "./WcbPostGridPanelReadMoreLink";
-import WcbPostGridPanelPagination from "./WcbPostGridPanelPagination";
+import WcbPostGridPanelPagination, {
+	WCB_POSTS_GRID_PAGINATION_PLANS_ICONS,
+} from "./WcbPostGridPanelPagination";
 import WcbPostGridPanel_StyleLayout from "./WcbPostGridPanel_StyleLayout";
 import WcbPostGridPanel_StyleTitle from "./WcbPostGridPanel_StyleTitle";
 import WcbPostGridPanel_StyleExcerpt from "./WcbPostGridPanel_StyleExcerpt";
@@ -28,7 +30,7 @@ import WcbPostGridPanel_StyleFeaturedImage from "./WcbPostGridPanel_StyleFeature
 import { PanelBody } from "@wordpress/components";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
 import MyBoxShadowControl from "../components/controls/MyBoxShadowControl/MyBoxShadowControl";
-import PostCard from "./PostCard";
+import WcbPostCard from "./WcbPostCard";
 import {
 	useBlockProps,
 	store as blockEditorStore,
@@ -38,6 +40,7 @@ import { store as coreStore } from "@wordpress/core-data";
 import { PostRoot } from "./types";
 import { CategoryRoot } from "./CategoryType";
 import { AuthorRoot } from "./AuthorType";
+import WcbPostGridPanel_StyleTaxonomy from "./WcbPostGridPanel_StyleTaxonomy";
 
 const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -60,6 +63,7 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 		style_featuredImage,
 		style_border,
 		style_boxShadow,
+		style_taxonomy,
 	} = attributes;
 	//  COMMON HOOKS
 	const { myCache, ref } = useCreateCacheEmotion();
@@ -82,12 +86,10 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	//
 
 	//
-
 	const { emptyMessage, queries } = general_sortingAndFiltering;
 	const {
 		isExcludeCurrentPost,
 		isOffsetStartingPost,
-		numberOfColumn,
 		numberOfItems,
 		offsetPost,
 		order,
@@ -100,7 +102,11 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	} = queries;
 	const { listPosts, categoriesList, authorList } = useSelect(
 		(select) => {
-			const { getEntityRecords, getUsers } = select(coreStore);
+			const {
+				getEntityRecords,
+				//  @ts-ignore
+				getUsers,
+			} = select(coreStore);
 			// const settings = select(blockEditorStore).getSettings();
 			const termIds =
 				selectedTerms && selectedTerms.length > 0
@@ -121,13 +127,15 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 			);
 
 			return {
-				listPosts: getEntityRecords("postType", postType, listPostsQuery) as
-					| PostRoot[]
-					| undefined,
-				categoriesList: getEntityRecords("taxonomy", "category", {
+				listPosts: getEntityRecords<PostRoot>(
+					"postType",
+					postType,
+					listPostsQuery
+				),
+				categoriesList: getEntityRecords<CategoryRoot>("taxonomy", "category", {
 					per_page: -1,
 					context: "view",
-				}) as CategoryRoot[] | undefined,
+				}),
 				authorList: getUsers({
 					per_page: -1,
 					context: "view",
@@ -147,6 +155,8 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 			taxonomyRestbase,
 		]
 	);
+
+	// console.log(11, { listPosts });
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
 		switch (tab.name) {
@@ -244,6 +254,17 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 							setAttr__={(data) => setAttributes({ style_layout: data })}
 						/>
 
+						<WcbPostGridPanel_StyleFeaturedImage
+							onToggle={() => handleTogglePanel("Styles", "StyleFeaturedImage")}
+							initialOpen={tabStylesIsPanelOpen === "StyleFeaturedImage"}
+							opened={
+								tabStylesIsPanelOpen === "StyleFeaturedImage" || undefined
+							}
+							//
+							panelData={style_featuredImage}
+							setAttr__={(data) => setAttributes({ style_featuredImage: data })}
+						/>
+
 						<WcbPostGridPanel_StyleTitle
 							onToggle={() => handleTogglePanel("Styles", "StyleTitle")}
 							initialOpen={tabStylesIsPanelOpen === "StyleTitle"}
@@ -260,6 +281,15 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 							//
 							panelData={style_excerpt}
 							setAttr__={(data) => setAttributes({ style_excerpt: data })}
+						/>
+
+						<WcbPostGridPanel_StyleTaxonomy
+							onToggle={() => handleTogglePanel("Styles", "StyleTaxonomy")}
+							initialOpen={tabStylesIsPanelOpen === "StyleTaxonomy"}
+							opened={tabStylesIsPanelOpen === "StyleTaxonomy" || undefined}
+							//
+							panelData={style_taxonomy}
+							setAttr__={(data) => setAttributes({ style_taxonomy: data })}
 						/>
 
 						<WcbPostGridPanel_StyleMeta
@@ -287,17 +317,6 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 							//
 							panelData={style_pagination}
 							setAttr__={(data) => setAttributes({ style_pagination: data })}
-						/>
-
-						<WcbPostGridPanel_StyleFeaturedImage
-							onToggle={() => handleTogglePanel("Styles", "StyleFeaturedImage")}
-							initialOpen={tabStylesIsPanelOpen === "StyleFeaturedImage"}
-							opened={
-								tabStylesIsPanelOpen === "StyleFeaturedImage" || undefined
-							}
-							//
-							panelData={style_featuredImage}
-							setAttr__={(data) => setAttributes({ style_featuredImage: data })}
 						/>
 
 						<PanelBody
@@ -347,6 +366,25 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 		}
 	};
 
+	const renderPaginationIcon = (isLeft = false) => {
+		const iconName = general_pagination.iconName;
+		if (iconName === "none") {
+			return null;
+		}
+		const svgIcon = WCB_POSTS_GRID_PAGINATION_PLANS_ICONS.filter(
+			(item) => item.name === iconName
+		)[0]?.icon;
+		if (!svgIcon) {
+			return null;
+		}
+		return (
+			<div
+				className={isLeft ? "rotate-180" : ""}
+				dangerouslySetInnerHTML={{ __html: svgIcon }}
+			></div>
+		);
+	};
+
 	return (
 		<CacheProvider value={myCache}>
 			{/* CONTROL SETTINGS */}
@@ -357,32 +395,64 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 			<div
 				{...wrapBlockProps}
 				className={`${wrapBlockProps?.className} wcb-posts-grid__wrap ${UNIQUE_ID}`}
+				data-uniqueid={UNIQUE_ID}
 			>
 				{/* CSS IN JS */}
 				<GlobalCss {...attributes} />
 
 				{/* CHILD CONTENT  */}
 				<>
-					{listPosts && categoriesList && authorList && listPosts.length
-						? listPosts?.map((post) => (
-								<PostCard
-									key={post.id}
-									postData={post}
-									authors={authorList || []}
-									categories={categoriesList || []}
-									postMetaSettings={general_postMeta}
-									postContentSettings={general_postContent}
-									featuredImageSettings={general_postFeaturedImage}
-									general_readmoreLink={general_readmoreLink}
-								/>
-						  ))
-						: null}
+					<div className="wcb-posts-grid__list-posts">
+						{listPosts && categoriesList && authorList && listPosts.length
+							? listPosts?.map((post) => (
+									<WcbPostCard
+										key={post.id}
+										postData={post}
+										authors={authorList || []}
+										categories={categoriesList || []}
+										postMetaSettings={general_postMeta}
+										postContentSettings={general_postContent}
+										featuredImageSettings={general_postFeaturedImage}
+										general_readmoreLink={general_readmoreLink}
+									/>
+							  ))
+							: null}
+					</div>
 
 					{!listPosts?.length ? (
 						<div className="py-5">
-							<p className="wcb-posts-grid__emptyMessage ">
-								{general_sortingAndFiltering.emptyMessage}
-							</p>
+							<p className="wcb-posts-grid__emptyMessage ">{emptyMessage}</p>
+						</div>
+					) : null}
+
+					{/* PAGINATIOn */}
+					{general_pagination.isShowPagination ? (
+						<div className="wcb-posts-grid__pagination">
+							<a href="" className="page-numbers is-prev">
+								{renderPaginationIcon(true)}
+								{!!general_pagination.previousText && (
+									<span>{general_pagination.previousText}</span>
+								)}
+							</a>
+							<div className="wcb-posts-grid__pagination-number">
+								<a className="page-numbers" href="">
+									{__("1", "wcb")}
+								</a>
+								<span className="page-numbers is-active">{__("2", "wcb")}</span>
+								<a className="page-numbers" href="">
+									{__("3", "wcb")}
+								</a>
+								<span className="page-numbers dot">{__("...", "wcb")}</span>
+								<a className="page-numbers" href="">
+									{__("8", "wcb")}
+								</a>
+							</div>
+							<a href="" className="page-numbers is-next">
+								{!!general_pagination.nextText && (
+									<span>{general_pagination.nextText}</span>
+								)}
+								{renderPaginationIcon()}
+							</a>
 						</div>
 					) : null}
 				</>

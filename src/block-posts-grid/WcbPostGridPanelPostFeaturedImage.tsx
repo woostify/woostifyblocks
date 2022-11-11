@@ -4,12 +4,12 @@ import React, { FC, CSSProperties } from "react";
 import MySelect from "../components/controls/MySelect";
 import { useSelect, useDispatch } from "@wordpress/data";
 import { store as blockEditorStore } from "@wordpress/block-editor";
-import MyRadioGroup from "../components/controls/MyRadioGroup";
+import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
 
 export interface WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE {
 	isShowFeaturedImage: boolean;
 	featuredImageSize: string;
-	featuredImagePosition: "top" | "background";
+	featuredImagePosition: "top" | "left" | "right" | "background";
 	linkCompleteBox: boolean;
 }
 
@@ -54,6 +54,15 @@ const WcbPostGridPanelPostFeaturedImage: FC<Props> = ({
 			label: name,
 		})) || [];
 
+	const POSTION_PLANS: MyRadioItem<
+		WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE["featuredImagePosition"]
+	>[] = [
+		{ name: "top", icon: "Top" },
+		{ name: "left", icon: "Left" },
+		{ name: "right", icon: "Right" },
+		{ name: "background", icon: "Background" },
+	];
+
 	return (
 		<PanelBody
 			initialOpen={initialOpen}
@@ -61,7 +70,7 @@ const WcbPostGridPanelPostFeaturedImage: FC<Props> = ({
 			opened={opened}
 			title={__("Featured image settings", "wcb")}
 		>
-			<div className={"space-y-5"}>
+			<div className={"space-y-5 "}>
 				<ToggleControl
 					label={__("Show featured image", "wcb")}
 					onChange={(checked) =>
@@ -84,9 +93,9 @@ const WcbPostGridPanelPostFeaturedImage: FC<Props> = ({
 				{isShowFeaturedImage ? (
 					<MyRadioGroup
 						label="Position"
-						labelClassName=""
-						className="flex items-center justify-between space-x-3"
-						contentClassName="flex-shrink-0 flex-1"
+						// labelClassName=""
+						// className="flex items-center justify-between space-x-3"
+						// contentClassName="flex-shrink-0 flex-1"
 						onChange={(selected) =>
 							setAttr__({
 								...panelData,
@@ -94,11 +103,9 @@ const WcbPostGridPanelPostFeaturedImage: FC<Props> = ({
 							})
 						}
 						value={featuredImagePosition}
-						plans={[
-							{ name: "top", icon: "Top" },
-							{ name: "background", icon: "Background" },
-						]}
+						plans={POSTION_PLANS}
 						hasResponsive={false}
+						isWrap
 					/>
 				) : null}
 

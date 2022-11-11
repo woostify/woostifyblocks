@@ -11,7 +11,7 @@ const FrontendStyles: FC<Props> = (attrs) => {
 
 //
 const divsToUpdate = document.querySelectorAll(
-	".wcb-heading__wrap.wcb-update-div"
+	".wcb-posts-grid__wrap.wcb-update-div"
 );
 divsToUpdate.forEach((div) => {
 	const preEl = div.querySelector(

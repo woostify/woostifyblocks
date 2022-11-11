@@ -172,6 +172,7 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 			<div
 				{...wrapBlockProps}
 				className={`${wrapBlockProps?.className} wcb-heading__wrap ${UNIQUE_ID}`}
+				data-uniqueid={UNIQUE_ID}
 			>
 				<HOCInspectorControls
 					tabDefaultActive={tabIsOpen}

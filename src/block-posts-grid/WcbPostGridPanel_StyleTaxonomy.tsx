@@ -6,52 +6,44 @@ import {
 	MyTypographyControlData,
 	TYPOGRAPHY_CONTROL_DEMO,
 } from "../components/controls/MyTypographyControl/types";
-import MyDisclosure from "../components/controls/MyDisclosure";
 import MyUnitControl from "../components/controls/MyUnitControl";
 import { MY_GAP_UNITS } from "../components/controls/MyDimensionsControl/MyDimensionsControl";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
+import MyDisclosure from "../components/controls/MyDisclosure";
 
-export interface WCB_POST_GRID_PANEL_STYLE_META {
-	authorTypography: MyTypographyControlData;
-	dateTypography: MyTypographyControlData;
-	authorTextColor: string;
-	dateTextColor: string;
+export interface WCB_POST_GRID_PANEL_STYLE_TAXONOMY {
+	typography: MyTypographyControlData;
+	textColor: string;
+	backgroundColor: string;
 	marginBottom: HasResponsive<string>;
 }
 
-export const WCB_POST_GRID_PANEL_STYLE_META_DEMO: WCB_POST_GRID_PANEL_STYLE_META =
+export const WCB_POST_GRID_PANEL_STYLE_TAXONOMY_DEMO: WCB_POST_GRID_PANEL_STYLE_TAXONOMY =
 	{
-		authorTypography: TYPOGRAPHY_CONTROL_DEMO,
-		dateTypography: TYPOGRAPHY_CONTROL_DEMO,
-		authorTextColor: "",
-		dateTextColor: "",
+		typography: TYPOGRAPHY_CONTROL_DEMO,
+		textColor: "",
+		backgroundColor: "",
 		marginBottom: { Desktop: "1rem" },
 	};
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
-	panelData: WCB_POST_GRID_PANEL_STYLE_META;
-	setAttr__: (data: WCB_POST_GRID_PANEL_STYLE_META) => void;
+	panelData: WCB_POST_GRID_PANEL_STYLE_TAXONOMY;
+	setAttr__: (data: WCB_POST_GRID_PANEL_STYLE_TAXONOMY) => void;
 }
 
-const WcbPostGridPanel_StyleMeta: FC<Props> = ({
-	panelData = WCB_POST_GRID_PANEL_STYLE_META_DEMO,
+const WcbPostGridPanel_StyleTaxonomy: FC<Props> = ({
+	panelData = WCB_POST_GRID_PANEL_STYLE_TAXONOMY_DEMO,
 	setAttr__,
 	initialOpen,
 	onToggle,
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const {
-		authorTypography,
-		dateTypography,
-		authorTextColor,
-		dateTextColor,
-		marginBottom,
-	} = panelData;
+	const { typography, textColor, marginBottom, backgroundColor } = panelData;
 	const MARGIN_BOTTOM =
 		marginBottom[deviceType] || marginBottom.Tablet || marginBottom.Desktop;
 
@@ -61,50 +53,40 @@ const WcbPostGridPanel_StyleMeta: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Meta", "wcb")}
+			title={__("Taxonomy", "wcb")}
 		>
 			<div className="space-y-2.5">
 				<MyTypographyControl
-					label="Author typography"
-					typographyControl={authorTypography}
+					typographyControl={typography}
 					setAttrs__typography={(typography) => {
 						setAttr__({
 							...panelData,
-							authorTypography: typography,
-						});
-					}}
-				/>
-				<MyTypographyControl
-					label="Date typography"
-					typographyControl={dateTypography}
-					setAttrs__typography={(typography) => {
-						setAttr__({
-							...panelData,
-							dateTypography: typography,
+							typography,
 						});
 					}}
 				/>
 
 				<MyDisclosure defaultOpen label="More styles">
 					<MyColorPicker
-						label={__("Author color", "wcb")}
+						label={__("Color", "wcb")}
 						onChange={(color) => {
 							setAttr__({
 								...panelData,
-								authorTextColor: color,
+								textColor: color,
 							});
 						}}
-						color={authorTextColor}
+						color={textColor}
 					/>
+
 					<MyColorPicker
-						label={__("Date/comment color", "wcb")}
+						label={__("Background", "wcb")}
 						onChange={(color) => {
 							setAttr__({
 								...panelData,
-								dateTextColor: color,
+								backgroundColor: color,
 							});
 						}}
-						color={dateTextColor}
+						color={backgroundColor}
 					/>
 
 					<MyUnitControl
@@ -129,4 +111,4 @@ const WcbPostGridPanel_StyleMeta: FC<Props> = ({
 	);
 };
 
-export default WcbPostGridPanel_StyleMeta;
+export default WcbPostGridPanel_StyleTaxonomy;

@@ -1,4 +1,4 @@
-import { PanelBody } from "@wordpress/components";
+import { PanelBody, RangeControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC } from "react";
 import MyQueryControls, {
@@ -11,11 +11,13 @@ import { __experimentalInputControl as InputControl } from "@wordpress/component
 export interface WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING {
 	queries: MyQueryControlData;
 	emptyMessage: string;
+	numberOfColumn: number;
 }
 export const WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING_DEMO: WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING =
 	{
 		queries: MY_QUERIES_DEMO_DATA,
 		emptyMessage: "No post found!",
+		numberOfColumn: 2,
 	};
 
 interface Props
@@ -44,6 +46,18 @@ const WcbPostsGridPanelSortingAndFiltering: FC<Props> = ({
 				setAttrs__queries={(queries) => {
 					setAttr__({ ...panelData, queries });
 				}}
+			/>
+
+			{/*  */}
+			<RangeControl
+				label={__("Columns", "wcb")}
+				value={panelData.numberOfColumn}
+				onChange={(number) => {
+					setAttr__({ ...panelData, numberOfColumn: number || 2 });
+				}}
+				min={1}
+				max={6}
+				required
 			/>
 
 			<InputControl

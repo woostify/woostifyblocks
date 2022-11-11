@@ -2,10 +2,9 @@ import React, { FC } from "react";
 import {
 	// @ts-ignore
 	__experimentalBorderBoxControl as BorderBoxControl,
-	// @ts-ignore
-	__experimentalBoxControl as BoxControl,
 } from "@wordpress/components";
-
+// @ts-ignore
+import { __experimentalBorderRadiusControl as BorderRadiusControl } from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n";
 import MyColorPicker from "../MyColorPicker/MyColorPicker";
 import MyLabelControl from "../MyLabelControl/MyLabelControl";
@@ -49,6 +48,7 @@ const MyBorderControl: FC<Props> = ({
 			hoverColor,
 		});
 	};
+
 	const handleChangeBorderRadius = (newRadius: BorderRadiusSettings) => {
 		setAttrs__border({
 			...borderControl,
@@ -66,7 +66,16 @@ const MyBorderControl: FC<Props> = ({
 				label={__("Border")}
 				onChange={handleChangeBorder}
 				value={mainSettingsProps}
+				colors={[]}
+				enableAlpha={false}
+				// enableStyle={ showBorderStyle }
+				popoverOffset={40}
+				popoverPlacement="left-start"
+				__experimentalHasMultipleOrigins={true}
+				__experimentalIsRenderedInSidebar={true}
+				size={"__unstable-large"}
 			/>
+
 			<MyColorPicker
 				label={__("Hover border color", "wcb")}
 				onChange={handleChangeBorderHoverColor}
@@ -74,7 +83,18 @@ const MyBorderControl: FC<Props> = ({
 			/>
 
 			<div>
-				<BoxControl
+				<BorderRadiusControl
+					values={RADIUS}
+					onChange={(value) => {
+						handleChangeBorderRadius(value);
+					}}
+					label={
+						<MyLabelControl className="" hasResponsive>
+							{__("Border radius", "wcb")}
+						</MyLabelControl>
+					}
+				/>
+				{/* <BoxControl
 					label={
 						<MyLabelControl className="" hasResponsive>
 							{__("Border radius", "wcb")}
@@ -82,8 +102,10 @@ const MyBorderControl: FC<Props> = ({
 					}
 					values={RADIUS}
 					allowReset={false}
-					onChange={handleChangeBorderRadius}
-				/>
+					onChange={(e) => {
+						handleChangeBorderRadius(e);
+					}}
+				/> */}
 			</div>
 		</div>
 	);

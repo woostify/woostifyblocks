@@ -2,7 +2,6 @@ import { Global, css } from "@emotion/react";
 import React, { FC } from "react";
 import { getShadowStyleValueFromTwPreset } from "../components/controls/MyBoxShadowControl/getBoxShadowStyles";
 import getBackgroundColorGradientStyles from "../utils/getBackgroundColorGradientStyles";
-import getBorderRadiusStyles from "../utils/getBorderRadiusStyles";
 import getBorderStyles from "../utils/getBorderStyles";
 import getFlexPropertiesStyles from "../utils/getFlexPropertiesStyles";
 import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
@@ -186,21 +185,13 @@ const GlobalCss: FC<Props> = (attrs) => {
 		`;
 	};
 
-	const getDivWrapStyles__BorderRadius = () => {
-		const { radius } = styles_border;
-		//
-		return getBorderRadiusStyles({
-			radius: radius,
-			className: WRAP_CLASSNAME,
-		});
-	};
-
 	const getDivWrapStyles__Border = () => {
-		const { hoverColor, mainSettings } = styles_border;
+		const {} = styles_border;
 		//
 		return getBorderStyles({
 			border: styles_border,
 			className: WRAP_CLASSNAME,
+			isWithRadius: true,
 		});
 	};
 
@@ -314,7 +305,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 			<Global styles={getDivWrapStyles__BgColor_Gradient()} />
 			<Global styles={getDivWrapStyles__BackgroundImage()} />
 			<Global styles={getDivWrapStyles__Overlay()} />
-			<Global styles={getDivWrapStyles__BorderRadius()} />
 			<Global styles={getDivWrapStyles__Border()} />
 			<Global styles={getDivWrapStyles__BoxShadow()} />
 			<Global styles={getDivWrapStyles__PaddingMargin()} />

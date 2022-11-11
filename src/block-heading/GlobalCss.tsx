@@ -3,7 +3,6 @@ import React, { FC } from "react";
 import { getAdvanveDivWrapStyles } from "../block-container/getAdvanveStyles";
 import { DimensionSettings } from "../components/controls/MyDimensionsControl/types";
 import getBackgroundColorGradientStyles from "../utils/getBackgroundColorGradientStyles";
-import getBorderRadiusStyles from "../utils/getBorderRadiusStyles";
 import getBorderStyles from "../utils/getBorderStyles";
 import getColorAndGradientStyles from "../utils/getColorAndGradientStyles";
 import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
@@ -123,14 +122,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		return getBorderStyles({
 			border,
 			className: `${WRAP_CLASSNAME} mark`,
-		});
-	};
-	const getDivWrapStyles__Highlight_borderRadius = () => {
-		const { border } = styles_highlight;
-
-		return getBorderRadiusStyles({
-			radius: border.radius,
-			className: `${WRAP_CLASSNAME} mark`,
+			isWithRadius: true,
 		});
 	};
 
@@ -213,7 +205,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 			<Global styles={getDivWrapStyles__Highlight()} />
 			<Global styles={getDivWrapStyles__Highlight_typography()} />
 			<Global styles={getDivWrapStyles__Highlight_border()} />
-			<Global styles={getDivWrapStyles__Highlight_borderRadius()} />
 			<Global styles={getDivWrapStyles__PaddingMargin()} />
 			{/*  */}
 			<Global styles={getDivWrapStyles__Separator_width()} />

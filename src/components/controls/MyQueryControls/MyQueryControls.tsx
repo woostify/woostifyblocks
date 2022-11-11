@@ -2,7 +2,6 @@ import React, { FC } from "react";
 import { __ } from "@wordpress/i18n";
 import { useSelect } from "@wordpress/data";
 import { store as coreStore } from "@wordpress/core-data";
-import AuthorSelect from "./AuthorSelect";
 import {
 	FormTokenField,
 	RangeControl,
@@ -21,6 +20,7 @@ import {
 } from "./types";
 import MySelect from "../MySelect";
 import { Option } from "../../../types";
+import AuthorSelect from "./AuthorSelect";
 
 const DEFAULT_MIN_ITEMS = 1;
 const DEFAULT_MAX_ITEMS = 100;
@@ -34,7 +34,6 @@ export interface MyQueryControlData {
 	selectedAuthorId: number;
 	selectedTerms: any[];
 	numberOfItems: number;
-	numberOfColumn: number;
 	offsetPost: number;
 	order: Order;
 	orderBy: Orderby;
@@ -62,7 +61,6 @@ export const MY_QUERIES_DEMO_DATA: MyQueryControlData = {
 	orderBy: "date",
 	maxItems: DEFAULT_MAX_ITEMS,
 	minItems: DEFAULT_MIN_ITEMS,
-	numberOfColumn: 2,
 	isExcludeCurrentPost: true,
 	isOffsetStartingPost: false,
 	offsetPost: 0,
@@ -198,6 +196,9 @@ const MyQueryControls: FC<Props> = ({
 				}),
 				{}
 			) ?? {};
+
+		console.log(111, { termSuggestions, tokens });
+
 		const hasNoSuggestion = tokens.some(
 			(token) => typeof token === "string" && !termSuggestions[token]
 		);
@@ -205,7 +206,18 @@ const MyQueryControls: FC<Props> = ({
 			return;
 		}
 		const selectedTerms = tokens.map((token) => {
-			return typeof token === "string" ? termSuggestions[token] : token;
+			return typeof token === "string"
+				? termSuggestions[token]
+					? {
+							id: termSuggestions[token].id,
+							name: termSuggestions[token].name,
+							slug: termSuggestions[token].slug,
+							taxonomy: termSuggestions[token].taxonomy,
+							link: termSuggestions[token].link,
+							count: termSuggestions[token].count,
+					  }
+					: null
+				: token;
 		});
 		if (selectedTerms.includes(null)) {
 			return false;
@@ -234,13 +246,6 @@ const MyQueryControls: FC<Props> = ({
 		setAttrs__queries({
 			...queriesControl,
 			selectedAuthorId: authorId,
-		});
-	};
-
-	const handleNumberOfColumnChange = (numberOfColumn: number) => {
-		setAttrs__queries({
-			...queriesControl,
-			numberOfColumn,
 		});
 	};
 
@@ -300,7 +305,7 @@ const MyQueryControls: FC<Props> = ({
 					value={
 						selectedTerms &&
 						selectedTerms.map((item) => ({
-							id: item.id,
+							...item,
 							value: item.name || item.value,
 						}))
 					}
@@ -383,16 +388,6 @@ const MyQueryControls: FC<Props> = ({
 				onChange={handleNumberOfItemsChange}
 				min={minItems}
 				max={maxItems}
-				required
-			/>
-
-			{/*  */}
-			<RangeControl
-				label={__("Columns", "wcb")}
-				value={numberOfColumn}
-				onChange={handleNumberOfColumnChange}
-				min={minItems}
-				max={numberOfItems <= 6 ? numberOfItems : 6}
 				required
 			/>
 		</>

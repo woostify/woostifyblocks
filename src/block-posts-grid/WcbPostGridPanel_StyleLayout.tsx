@@ -56,6 +56,7 @@ const WcbPostGridPanel_StyleLayout: FC<Props> = ({
 			textAlignment: selected,
 		});
 	};
+
 	const handleChangeBgColor = (color: string) => {
 		setAttr__({
 			...panelData,
@@ -75,6 +76,7 @@ const WcbPostGridPanel_StyleLayout: FC<Props> = ({
 				<MyTextAlignControl
 					textAlignment={textAlignment}
 					onChange={handleChangeTextAlignment}
+					hasResponsive={false}
 				/>
 
 				<MyColorPicker

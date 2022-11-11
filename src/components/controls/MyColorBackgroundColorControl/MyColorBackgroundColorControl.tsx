@@ -58,7 +58,7 @@ const MyColorBackgroundColorControl: FC<Props> = ({
 			...controlData,
 			[currentTab]: {
 				...controlData[currentTab],
-				color: colorHex,
+				backgroundColor: colorHex,
 			},
 		});
 	};

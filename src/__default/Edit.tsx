@@ -87,6 +87,7 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 			<div
 				{...wrapBlockProps}
 				className={`${wrapBlockProps?.className} wcb-default__wrap ${UNIQUE_ID}`}
+				data-uniqueid={UNIQUE_ID}
 			>
 				{/* CONTROL SETTINGS */}
 				<HOCInspectorControls renderTabPanels={renderTabBodyPanels} />

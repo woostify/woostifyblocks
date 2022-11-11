@@ -1,31 +1,22 @@
 import { __ } from "@wordpress/i18n";
-import { PanelBody, RangeControl } from "@wordpress/components";
+import { PanelBody } from "@wordpress/components";
 import React, { FC } from "react";
-import MyTypographyControl from "../components/controls/MyTypographyControl/MyTypographyControl";
-import {
-	MyTypographyControlData,
-	TYPOGRAPHY_CONTROL_DEMO,
-} from "../components/controls/MyTypographyControl/types";
-import MyDisclosure from "../components/controls/MyDisclosure";
 import MyUnitControl from "../components/controls/MyUnitControl";
 import { MY_GAP_UNITS } from "../components/controls/MyDimensionsControl/MyDimensionsControl";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
-import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
 
 export interface WCB_POST_GRID_PANEL_STYLE_FEATURED_IMAGE {
 	marginBottom: HasResponsive<string>;
 	backgroundOverlay: string;
-	overlayOpacity: number;
 }
 
 export const WCB_POST_GRID_PANEL_STYLE_FEATURED_IMAGE_DEMO: WCB_POST_GRID_PANEL_STYLE_FEATURED_IMAGE =
 	{
 		marginBottom: { Desktop: "1rem" },
 		backgroundOverlay: "",
-		overlayOpacity: 50,
 	};
 
 interface Props
@@ -42,7 +33,7 @@ const WcbPostGridPanel_StyleFeaturedImage: FC<Props> = ({
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { marginBottom, backgroundOverlay, overlayOpacity } = panelData;
+	const { marginBottom, backgroundOverlay } = panelData;
 	const MARGIN_BOTTOM =
 		marginBottom[deviceType] || marginBottom.Tablet || marginBottom.Desktop;
 	//
@@ -63,22 +54,6 @@ const WcbPostGridPanel_StyleFeaturedImage: FC<Props> = ({
 						});
 					}}
 					color={backgroundOverlay}
-				/>
-
-				<RangeControl
-					value={overlayOpacity}
-					label={
-						<MyLabelControl className="" hasResponsive>
-							{__("Overlay opacity", "wcb")}
-						</MyLabelControl>
-					}
-					allowReset
-					max={100}
-					min={0}
-					initialPosition={overlayOpacity}
-					onChange={(value) => {
-						setAttr__({ ...panelData, overlayOpacity: value || 50 });
-					}}
 				/>
 
 				<MyUnitControl

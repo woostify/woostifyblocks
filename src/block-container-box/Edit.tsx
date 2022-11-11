@@ -238,6 +238,7 @@ const Edit: FC<EditProps<BlockWCBContainerBoxAttrs>> = (props) => {
 				{...wrapBlockProps}
 				className={`${wrapBlockProps?.className} wcb-container-box__wrap ${uniqueId}`}
 				id={uniqueId}
+				data-uniqueid={uniqueId}
 			>
 				{/*  */}
 				<GlobalCss {...attributes} />

@@ -16,7 +16,7 @@
 	},
 	"devDependencies": {
 		"@types/node": "^18.11.3",
-		"@wordpress/scripts": "^24.0.0"
+		"@wordpress/scripts": "^24.5.0"
 	},
 	"dependencies": {
 		"@emotion/core": "^11.0.0",

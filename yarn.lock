@@ -3008,7 +3008,7 @@
     memize "^1.1.0"
     rememo "^4.0.0"
 
-"@wordpress/scripts@^24.0.0":
+"@wordpress/scripts@^24.5.0":
   version "24.5.0"
   resolved "https://registry.yarnpkg.com/@wordpress/scripts/-/scripts-24.5.0.tgz#25af79e755c6da9faf8dc5164a5403f47ff67a82"
   integrity sha512-FwXkN/tpMQ6bprmLDTqL1jvUe+M4H1wGNIxFgzBnpy3UahhVfssLhGV4H5wa2ruwP1cJ9YDJf5wWScC9JI4Rew==

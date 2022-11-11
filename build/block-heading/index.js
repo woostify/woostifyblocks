@@ -2298,7 +2298,8 @@ const Edit = props => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_18__.C, {
     value: myCache
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
-    className: `${wrapBlockProps === null || wrapBlockProps === void 0 ? void 0 : wrapBlockProps.className} wcb-heading__wrap ${UNIQUE_ID}`
+    className: `${wrapBlockProps === null || wrapBlockProps === void 0 ? void 0 : wrapBlockProps.className} wcb-heading__wrap ${UNIQUE_ID}`,
+    "data-uniqueid": UNIQUE_ID
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_4__["default"], {
     tabDefaultActive: tabIsOpen,
     renderTabPanels: renderTabBodyPanels
@@ -2336,19 +2337,17 @@ const Edit = props => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../block-container/getAdvanveStyles */ "./src/block-container/getAdvanveStyles.ts");
 /* harmony import */ var _utils_getBackgroundColorGradientStyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getBackgroundColorGradientStyles */ "./src/utils/getBackgroundColorGradientStyles.ts");
-/* harmony import */ var _utils_getBorderRadiusStyles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/getBorderRadiusStyles */ "./src/utils/getBorderRadiusStyles.ts");
-/* harmony import */ var _utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/getBorderStyles */ "./src/utils/getBorderStyles.ts");
-/* harmony import */ var _utils_getColorAndGradientStyles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/getColorAndGradientStyles */ "./src/utils/getColorAndGradientStyles.ts");
-/* harmony import */ var _utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/getPaddingMarginStyles */ "./src/utils/getPaddingMarginStyles.ts");
-/* harmony import */ var _utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/getTypographyStyles */ "./src/utils/getTypographyStyles.ts");
-/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
-
+/* harmony import */ var _utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/getBorderStyles */ "./src/utils/getBorderStyles.ts");
+/* harmony import */ var _utils_getColorAndGradientStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/getColorAndGradientStyles */ "./src/utils/getColorAndGradientStyles.ts");
+/* harmony import */ var _utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/getPaddingMarginStyles */ "./src/utils/getPaddingMarginStyles.ts");
+/* harmony import */ var _utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/getTypographyStyles */ "./src/utils/getTypographyStyles.ts");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
 
 
 
@@ -2378,7 +2377,7 @@ const GlobalCss = attrs => {
   const {
     media_desktop,
     media_tablet
-  } = ___WEBPACK_IMPORTED_MODULE_10__.DEMO_WCB_GLOBAL_VARIABLES;
+  } = ___WEBPACK_IMPORTED_MODULE_9__.DEMO_WCB_GLOBAL_VARIABLES;
   const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
   const HEADING_CLASSNAME = `${WRAP_CLASSNAME} .wcb-heading__heading`;
   const SUB_HEADING_CLASSNAME = `${WRAP_CLASSNAME} .wcb-heading__subHeading`;
@@ -2392,7 +2391,7 @@ const GlobalCss = attrs => {
       value_Desktop,
       value_Mobile,
       value_Tablet
-    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_9__["default"])(textAlignment); //
+    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_8__["default"])(textAlignment); //
 
     return {
       [`${WRAP_CLASSNAME}`]: {
@@ -2439,7 +2438,7 @@ const GlobalCss = attrs => {
       margin,
       padding
     } = dimension;
-    return (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_7__["default"])({
+    return (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_6__["default"])({
       margin,
       padding,
       className: WRAP_CLASSNAME
@@ -2457,7 +2456,7 @@ const GlobalCss = attrs => {
       value_Desktop: padding_Desktop,
       value_Mobile: padding_Mobile,
       value_Tablet: padding_Tablet
-    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_9__["default"])(padding); //
+    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_8__["default"])(padding); //
 
     return {
       [`${WRAP_CLASSNAME} mark`]: {
@@ -2478,7 +2477,7 @@ const GlobalCss = attrs => {
     const {
       typography
     } = styles_highlight;
-    return (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_8__["default"])({
+    return (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_7__["default"])({
       typography,
       className: `${WRAP_CLASSNAME} mark`
     });
@@ -2488,19 +2487,10 @@ const GlobalCss = attrs => {
     const {
       border
     } = styles_highlight;
-    return (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
+    return (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
       border,
-      className: `${WRAP_CLASSNAME} mark`
-    });
-  };
-
-  const getDivWrapStyles__Highlight_borderRadius = () => {
-    const {
-      border
-    } = styles_highlight;
-    return (0,_utils_getBorderRadiusStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
-      radius: border.radius,
-      className: `${WRAP_CLASSNAME} mark`
+      className: `${WRAP_CLASSNAME} mark`,
+      isWithRadius: true
     });
   }; // SEPARATOR STYLES
 
@@ -2513,7 +2503,7 @@ const GlobalCss = attrs => {
       value_Desktop,
       value_Mobile,
       value_Tablet
-    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_9__["default"])(width); //
+    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_8__["default"])(width); //
 
     return {
       [`${SEPARATOR_CLASSNAME}`]: {
@@ -2532,7 +2522,7 @@ const GlobalCss = attrs => {
     const {
       border
     } = styles_separator;
-    return (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
+    return (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
       border: {
         mainSettings: border
       },
@@ -2545,7 +2535,7 @@ const GlobalCss = attrs => {
     const {
       typography
     } = styles_heading;
-    return (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_8__["default"])({
+    return (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_7__["default"])({
       typography,
       className: HEADING_CLASSNAME
     });
@@ -2555,7 +2545,7 @@ const GlobalCss = attrs => {
     const {
       textColor
     } = styles_heading;
-    return (0,_utils_getColorAndGradientStyles__WEBPACK_IMPORTED_MODULE_6__["default"])({
+    return (0,_utils_getColorAndGradientStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
       textColor,
       className: HEADING_CLASSNAME
     });
@@ -2583,7 +2573,7 @@ const GlobalCss = attrs => {
     const {
       typography
     } = styles_subHeading;
-    return (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_8__["default"])({
+    return (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_7__["default"])({
       typography,
       className: SUB_HEADING_CLASSNAME
     });
@@ -2593,43 +2583,41 @@ const GlobalCss = attrs => {
     const {
       textColor
     } = styles_subHeading;
-    return (0,_utils_getColorAndGradientStyles__WEBPACK_IMPORTED_MODULE_6__["default"])({
+    return (0,_utils_getColorAndGradientStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
       textColor,
       className: SUB_HEADING_CLASSNAME
     });
   };
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getDivWrapStyles()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getDivWrapStyles__background()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getDivWrapStyles__Link()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getDivWrapStyles__Highlight()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getDivWrapStyles__Highlight_typography()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getDivWrapStyles__Highlight_border()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
-    styles: getDivWrapStyles__Highlight_borderRadius()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getDivWrapStyles__PaddingMargin()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getDivWrapStyles__Separator_width()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getDivWrapStyles__Separator()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getInner__Heading_typography()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getInner__Heading_color()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getInner__Heading__textShadow()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getInner__subHeading_typography()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getInner__subHeading_color()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__.getAdvanveDivWrapStyles)({
       advance_responsiveCondition,
       advance_zIndex,
@@ -3754,7 +3742,8 @@ const SaveCommon = _ref => {
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(HtmlTag, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
     className: `${className} ${uniqueId} wcb-update-div`,
-    id: uniqueId
+    id: uniqueId,
+    "data-uniqueid": uniqueId
   }), children, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     "data-wcb-global-styles": uniqueId
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("pre", {
@@ -3984,13 +3973,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../MyColorPicker/MyColorPicker */ "./src/components/controls/MyColorPicker/MyColorPicker.tsx");
-/* harmony import */ var _MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
-/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./types */ "./src/components/controls/MyBorderControl/types.ts");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../MyColorPicker/MyColorPicker */ "./src/components/controls/MyColorPicker/MyColorPicker.tsx");
+/* harmony import */ var _MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
+/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./types */ "./src/components/controls/MyBorderControl/types.ts");
 
+
+ // @ts-ignore
 
 
 
@@ -4002,10 +3995,10 @@ __webpack_require__.r(__webpack_exports__);
 const MyBorderControl = _ref => {
   let {
     className = "space-y-4",
-    borderControl = _types__WEBPACK_IMPORTED_MODULE_7__.MY_BORDER_CONTROL_DEMO,
+    borderControl = _types__WEBPACK_IMPORTED_MODULE_8__.MY_BORDER_CONTROL_DEMO,
     setAttrs__border
   } = _ref;
-  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_6__["default"])() || "Desktop"; //
+  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_7__["default"])() || "Desktop"; //
 
   const {
     mainSettings: mainSettingsProps,
@@ -4038,21 +4031,30 @@ const MyBorderControl = _ref => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: className
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalBorderBoxControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Border"),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Border"),
     onChange: handleChangeBorder,
-    value: mainSettingsProps
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Hover border color", "wcb"),
+    value: mainSettingsProps,
+    colors: [],
+    enableAlpha: false // enableStyle={ showBorderStyle }
+    ,
+    popoverOffset: 40,
+    popoverPlacement: "left-start",
+    __experimentalHasMultipleOrigins: true,
+    __experimentalIsRenderedInSidebar: true,
+    size: "__unstable-large"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Hover border color", "wcb"),
     onChange: handleChangeBorderHoverColor,
     color: hoverColorProps
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalBoxControl, {
-    label: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.__experimentalBorderRadiusControl, {
+    values: RADIUS,
+    onChange: value => {
+      handleChangeBorderRadius(value);
+    },
+    label: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_6__["default"], {
       className: "",
       hasResponsive: true
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Border radius", "wcb")),
-    values: RADIUS,
-    allowReset: false,
-    onChange: handleChangeBorderRadius
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Border radius", "wcb"))
   })));
 };
 
@@ -4073,12 +4075,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "DEFAULT_BORDER_RADIUS": function() { return /* binding */ DEFAULT_BORDER_RADIUS; },
 /* harmony export */   "MY_BORDER_CONTROL_DEMO": function() { return /* binding */ MY_BORDER_CONTROL_DEMO; }
 /* harmony export */ });
-const DEFAULT_BORDER_RADIUS = {
-  top: "12px",
-  left: "12px",
-  right: "12px",
-  bottom: "12px"
-};
+const DEFAULT_BORDER_RADIUS = "12px";
 const DEFAULT_BORDER_MAIN_SINGLE_SIDE = {
   color: "#d1d5db",
   style: "solid",
@@ -4158,7 +4155,7 @@ const MyColorBackgroundColorControl = _ref => {
   const handleChangeBackgroundColor = (currentTab, colorHex) => {
     setAttrs__control({ ...controlData,
       [currentTab]: { ...controlData[currentTab],
-        color: colorHex
+        backgroundColor: colorHex
       }
     });
   };
@@ -5107,13 +5104,15 @@ const MyTextAlignControl = _ref => {
   let {
     onChange,
     textAlignment,
-    className
+    className,
+    hasResponsive
   } = _ref;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyRadioGroup__WEBPACK_IMPORTED_MODULE_2__["default"], {
     className: className // @ts-ignore
     ,
     onChange: onChange,
-    value: textAlignment || ""
+    value: textAlignment || "",
+    hasResponsive: hasResponsive
   });
 };
 
@@ -5564,7 +5563,8 @@ const MyTypographyControl = _ref => {
   let {
     className = "space-y-5",
     typographyControl = _types__WEBPACK_IMPORTED_MODULE_5__.TYPOGRAPHY_CONTROL_DEMO,
-    setAttrs__typography = () => {}
+    setAttrs__typography = () => {},
+    label = "Typography"
   } = _ref;
   const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_3__["default"])() || "Desktop";
   const {
@@ -5712,7 +5712,7 @@ const MyTypographyControl = _ref => {
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyDisclosure__WEBPACK_IMPORTED_MODULE_11__["default"], {
-    label: "Typography"
+    label: label
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: className
   }, renderFontFamily(), renderFontsizePicker(), renderAppearance(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyTextDecorationControl_MyTextDecorationControl__WEBPACK_IMPORTED_MODULE_8__["default"], {
@@ -6557,9 +6557,7 @@ const getBackgroundColorGradientStyles = _ref => {
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
-
 
 
 const getBorderRadiusStyles = _ref => {
@@ -6572,30 +6570,46 @@ const getBorderRadiusStyles = _ref => {
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES; //
 
-  const radiusDesktop = radius === null || radius === void 0 ? void 0 : radius.Desktop;
-  const radiusTablet = (radius === null || radius === void 0 ? void 0 : radius.Tablet) || radiusDesktop;
-  const radiusMobile = (radius === null || radius === void 0 ? void 0 : radius.Mobile) || radiusTablet;
-  return _emotion_react__WEBPACK_IMPORTED_MODULE_1__.css`
-		${className} {
-			border-top-left-radius: ${radiusMobile.top};
-			border-top-right-radius: ${radiusMobile.right};
-			border-bottom-right-radius: ${radiusMobile.bottom};
-			border-bottom-left-radius: ${radiusMobile.left};
+  let radiusDesktop = radius === null || radius === void 0 ? void 0 : radius.Desktop;
+  let radiusTablet = (radius === null || radius === void 0 ? void 0 : radius.Tablet) || radiusDesktop;
+  let radiusMobile = (radius === null || radius === void 0 ? void 0 : radius.Mobile) || radiusTablet;
 
-			@media (min-width: ${media_tablet}) {
-				border-top-left-radius: ${radiusTablet.top};
-				border-top-right-radius: ${radiusTablet.right};
-				border-bottom-right-radius: ${radiusTablet.bottom};
-				border-bottom-left-radius: ${radiusTablet.left};
-			}
-			@media (min-width: ${media_desktop}) {
-				border-top-left-radius: ${radiusDesktop.top};
-				border-top-right-radius: ${radiusDesktop.right};
-				border-bottom-right-radius: ${radiusDesktop.bottom};
-				border-bottom-left-radius: ${radiusDesktop.left};
-			}
-		}
-	`;
+  const converttted = radiusValue => {
+    if (typeof radiusValue === "string") {
+      radiusValue = {
+        bottomLeft: radiusValue,
+        bottomRight: radiusValue,
+        topLeft: radiusValue,
+        topRight: radiusValue
+      };
+    }
+
+    return radiusValue;
+  };
+
+  radiusDesktop = converttted(radiusDesktop);
+  radiusTablet = converttted(radiusDesktop);
+  radiusMobile = converttted(radiusDesktop);
+  return {
+    [`${className}`]: {
+      borderTopLeftRadius: `${radiusMobile.topLeft}`,
+      borderTopRightRadius: `${radiusMobile.topRight}`,
+      borderBottomRightRadius: `${radiusMobile.bottomRight}`,
+      borderBottomLeftRadius: `${radiusMobile.bottomLeft}`,
+      [`@media (min-width: ${media_tablet})`]: {
+        borderTopLeftRadius: `${radiusTablet.topLeft}`,
+        borderTopRightRadius: ` ${radiusTablet.topRight}`,
+        borderBottomRightRadius: `${radiusTablet.bottomRight}`,
+        borderBottomLeftRadius: `${radiusTablet.bottomLeft}`
+      },
+      [`@media (min-width: ${media_desktop})`]: {
+        borderTopLeftRadius: `${radiusDesktop.topLeft}`,
+        borderTopRightRadius: `${radiusDesktop.topRight}`,
+        borderBottomRightRadius: `${radiusDesktop.bottomRight}`,
+        borderBottomLeftRadius: `${radiusDesktop.bottomLeft}`
+      }
+    }
+  };
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (getBorderRadiusStyles);
@@ -6609,53 +6623,91 @@ const getBorderRadiusStyles = _ref => {
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _getBorderRadiusStyles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getBorderRadiusStyles */ "./src/utils/getBorderRadiusStyles.ts");
+
+
 const getBorderStyles = _ref => {
   let {
     border,
-    className
+    className,
+    isWithRadius = false
   } = _ref;
   const {
     hoverColor,
-    mainSettings
+    mainSettings,
+    radius
   } = border; //
+  // MAIN BORDER
 
-  if (!mainSettings) {
-    return {};
+  let CSSObject = {
+    [`${className}`]: {}
+  };
+
+  if (mainSettings) {
+    if (mainSettings !== null && mainSettings !== void 0 && mainSettings.top) {
+      const {
+        bottom,
+        left,
+        right,
+        top
+      } = mainSettings;
+      CSSObject = {
+        [`${className}`]: {
+          borderTop: `${top.width} ${top.style} ${top.color}`,
+          borderLeft: `${left.width} ${left.style} ${left.color}`,
+          borderRight: `${right.width} ${right.style} ${right.color}`,
+          borderBottom: `${bottom.width} ${bottom.style} ${bottom.color}`,
+          "&:hover": {
+            borderColor: `${hoverColor}`
+          }
+        }
+      };
+    } else {
+      const {
+        color,
+        style,
+        width
+      } = mainSettings;
+      CSSObject = {
+        [`${className}`]: {
+          border: `${width} ${style} ${color}`,
+          "&:hover": {
+            borderColor: `${hoverColor}`
+          }
+        }
+      };
+    }
+  } // RAIDUS
+
+
+  let radiusCSSObject = {
+    [`${className}`]: {}
+  };
+
+  if (isWithRadius && radius) {
+    radiusCSSObject = (0,_getBorderRadiusStyles__WEBPACK_IMPORTED_MODULE_0__["default"])({
+      radius,
+      className
+    });
+  } //
+
+
+  let a = {};
+  let b = {};
+
+  if (typeof CSSObject[className] === "object") {
+    a = CSSObject[className] || {};
   }
 
-  if (mainSettings !== null && mainSettings !== void 0 && mainSettings.top) {
-    const {
-      bottom,
-      left,
-      right,
-      top
-    } = mainSettings;
-    return {
-      [`${className}`]: {
-        borderTop: `${top.width} ${top.style} ${top.color}`,
-        borderLeft: `${left.width} ${left.style} ${left.color}`,
-        borderRight: `${right.width} ${right.style} ${right.color}`,
-        borderBottom: `${bottom.width} ${bottom.style} ${bottom.color}`,
-        "&:hover": {
-          borderColor: `${hoverColor}`
-        }
-      }
-    };
-  } else {
-    const {
-      color,
-      style,
-      width
-    } = mainSettings;
-    return {
-      [`${className}`]: {
-        border: `${width} ${style} ${color}`,
-        "&:hover": {
-          borderColor: `${hoverColor}`
-        }
-      }
-    };
+  if (typeof radiusCSSObject[className] === "object") {
+    b = radiusCSSObject[className] || {};
   }
+
+  return {
+    [`${className}`]: { ...a,
+      ...b
+    }
+  };
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (getBorderStyles);
@@ -6799,6 +6851,11 @@ const getTypographyStyles = _ref => {
     typography,
     className
   } = _ref;
+
+  if (!typography || !className) {
+    return {};
+  }
+
   const {
     appearance,
     fontFamily,

@@ -7,6 +7,7 @@ import { HtmlTagsType } from "../types";
 // @ts-ignore
 import { __experimentalInputControl as InputControl } from "@wordpress/components";
 import MyRadioGroup from "../components/controls/MyRadioGroup";
+import MySelect from "../components/controls/MySelect";
 
 export interface WCB_POST_GRID_PANEL_POST_META {
 	isShowTitle: boolean;
@@ -15,14 +16,20 @@ export interface WCB_POST_GRID_PANEL_POST_META {
 	isShowDate: boolean;
 	isShowComment: boolean;
 	isShowMetaIcon: boolean;
+	isShowTaxonomyIcon: boolean;
 	isShowTaxonomy: boolean;
-	taxonomyPosition:
-		| "Above featured image"
-		| "Inside featured image"
-		| "Below featured image";
+	taxonomyPosition: "Inside featured image" | "Below featured image";
 	taxonomyDivider: string;
 	taxonomyStyle: "Normal" | "Highlighted";
 }
+
+const TAXONOMY_POSITION_OPTIONS: {
+	value: WCB_POST_GRID_PANEL_POST_META["taxonomyPosition"];
+	label: string;
+}[] = [
+	{ value: "Inside featured image", label: "Inside featured image" },
+	{ value: "Below featured image", label: "Below featured image" },
+];
 
 export const WCB_POST_GRID_PANEL_POST_META_DEMO: WCB_POST_GRID_PANEL_POST_META =
 	{
@@ -33,8 +40,9 @@ export const WCB_POST_GRID_PANEL_POST_META_DEMO: WCB_POST_GRID_PANEL_POST_META =
 		isShowDate: true,
 		isShowTaxonomy: true,
 		isShowMetaIcon: true,
-		taxonomyPosition: "Inside featured image",
-		taxonomyDivider: ",",
+		isShowTaxonomyIcon: false,
+		taxonomyPosition: "Below featured image",
+		taxonomyDivider: `, `,
 		taxonomyStyle: "Normal",
 	};
 
@@ -61,6 +69,8 @@ const WcbPostGridPanelPostMeta: FC<Props> = ({
 		isShowMetaIcon,
 		taxonomyDivider,
 		taxonomyStyle,
+		taxonomyPosition,
+		isShowTaxonomyIcon,
 	} = panelData;
 
 	const renderTaxonomy = () => {
@@ -94,12 +104,36 @@ const WcbPostGridPanelPostMeta: FC<Props> = ({
 					hasResponsive={false}
 				/>
 
-				<InputControl
-					value={taxonomyDivider}
-					label={__("Divider", "wcb")}
-					onChange={(value) =>
-						setAttr__({ ...panelData, taxonomyDivider: value })
+				<MySelect
+					onChange={(value) => {
+						setAttr__({
+							...panelData,
+							taxonomyPosition:
+								value as WCB_POST_GRID_PANEL_POST_META["taxonomyPosition"],
+						});
+					}}
+					value={taxonomyPosition}
+					options={TAXONOMY_POSITION_OPTIONS}
+					hasResponsive={false}
+					label={__("Position", "")}
+				/>
+
+				{taxonomyStyle === "Normal" ? (
+					<InputControl
+						value={taxonomyDivider}
+						label={__("Separator", "wcb")}
+						onChange={(value) =>
+							setAttr__({ ...panelData, taxonomyDivider: value })
+						}
+					/>
+				) : null}
+
+				<ToggleControl
+					label={__("Show icon", "wcb")}
+					onChange={(checked) =>
+						setAttr__({ ...panelData, isShowTaxonomyIcon: checked })
 					}
+					checked={isShowTaxonomyIcon}
 				/>
 			</MyDisclosure>
 		);
@@ -153,8 +187,6 @@ const WcbPostGridPanelPostMeta: FC<Props> = ({
 					checked={isShowComment}
 				/>
 
-				{renderTaxonomy()}
-
 				<ToggleControl
 					label={__("Show Meta icon", "wcb")}
 					onChange={(checked) =>
@@ -162,6 +194,8 @@ const WcbPostGridPanelPostMeta: FC<Props> = ({
 					}
 					checked={isShowMetaIcon}
 				/>
+
+				{renderTaxonomy()}
 			</div>
 		</PanelBody>
 	);

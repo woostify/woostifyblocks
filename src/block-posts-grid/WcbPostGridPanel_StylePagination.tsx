@@ -5,7 +5,7 @@ import {
 	__experimentalBoxControl as BoxControl,
 } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
-import React, { FC } from "react";
+import React, { FC, CSSProperties } from "react";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
 import {
@@ -18,6 +18,7 @@ import { MyTabsForActive } from "../types";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 import MyUnitControl from "../components/controls/MyUnitControl";
 import { MY_GAP_UNITS } from "../components/controls/MyDimensionsControl/MyDimensionsControl";
+import MyRadioGroup from "../components/controls/MyRadioGroup";
 
 type PostGridPagiantionType = {
 	[K in MyTabsForActive]: {
@@ -43,12 +44,14 @@ const MY_POST_GRID_MAIN_STYLE_DEMO: PostGridPagiantionType = {
 export interface WCB_POST_GRID_PANEL_STYLE_PAGINATION {
 	mainStyle: PostGridPagiantionType;
 	marginTop: HasResponsive<string>;
+	justifyContent: CSSProperties["justifyContent"];
 }
 
 export const WCB_POST_GRID_PANEL_STYLE_PAGINATION_DEMO: WCB_POST_GRID_PANEL_STYLE_PAGINATION =
 	{
 		mainStyle: MY_POST_GRID_MAIN_STYLE_DEMO,
 		marginTop: { Desktop: "1rem" },
+		justifyContent: "center",
 	};
 
 interface Props
@@ -65,7 +68,7 @@ const WcbPostGridPanel_StylePagination: FC<Props> = ({
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { mainStyle, marginTop } = panelData;
+	const { mainStyle, marginTop, justifyContent } = panelData;
 	const MARGIN_TOP =
 		marginTop[deviceType] || marginTop.Tablet || marginTop.Desktop;
 	//
@@ -92,6 +95,7 @@ const WcbPostGridPanel_StylePagination: FC<Props> = ({
 							mainStyle: {
 								...mainStyle,
 								[tabName]: {
+									...mainStyle[tabName],
 									color: value,
 								},
 							},
@@ -107,6 +111,7 @@ const WcbPostGridPanel_StylePagination: FC<Props> = ({
 							mainStyle: {
 								...mainStyle,
 								[tabName]: {
+									...mainStyle[tabName],
 									backgroundColor: value,
 								},
 							},
@@ -123,6 +128,7 @@ const WcbPostGridPanel_StylePagination: FC<Props> = ({
 							mainStyle: {
 								...mainStyle,
 								[tabName]: {
+									...mainStyle[tabName],
 									border,
 								},
 							},
@@ -149,6 +155,18 @@ const WcbPostGridPanel_StylePagination: FC<Props> = ({
 				>
 					{renderTabContent}
 				</TabPanel>
+
+				<MyRadioGroup
+					label={__("Justify content", "wcb")}
+					hasResponsive={false}
+					onChange={(value) => {
+						setAttr__({
+							...panelData,
+							justifyContent: value,
+						});
+					}}
+					value={justifyContent}
+				/>
 
 				<MyUnitControl
 					onChange={(value) => {

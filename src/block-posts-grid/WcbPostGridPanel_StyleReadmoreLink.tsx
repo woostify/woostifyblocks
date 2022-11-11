@@ -26,12 +26,15 @@ import MyColorBackgroundColorControl, {
 	MY_COLOR_BGCOLOR_CONTROL_DEMO,
 } from "../components/controls/MyColorBackgroundColorControl/MyColorBackgroundColorControl";
 import { MyTabsForColor } from "../types";
+import MyUnitControl from "../components/controls/MyUnitControl";
+import { MY_GAP_UNITS } from "../components/controls/MyDimensionsControl/MyDimensionsControl";
 
 export interface WCB_POST_GRID_PANEL_STYLE_READMORE_LINK {
 	colorAndBackgroundColor: MyColorBackgroundColorControlData;
 	typography: MyTypographyControlData;
 	padding: HasResponsive<DimensionSettings>;
 	border: MyBorderControlData;
+	marginBottom: HasResponsive<string>;
 }
 
 export const WCB_POST_GRID_PANEL_STYLE_READMORE_LINK_DEMO: WCB_POST_GRID_PANEL_STYLE_READMORE_LINK =
@@ -47,6 +50,7 @@ export const WCB_POST_GRID_PANEL_STYLE_READMORE_LINK_DEMO: WCB_POST_GRID_PANEL_S
 			},
 		},
 		border: MY_BORDER_CONTROL_DEMO,
+		marginBottom: { Desktop: "1rem" },
 	};
 
 interface Props
@@ -69,10 +73,12 @@ const WcbPostGridPanel_StyleReadmoreLink: FC<Props> = ({
 		padding: paddingProps,
 		border,
 		colorAndBackgroundColor,
+		marginBottom = { Desktop: "1rem" },
 	} = panelData;
 	const padding =
 		paddingProps[deviceType] || paddingProps.Tablet || paddingProps.Desktop;
-
+	const MARGIN_BOTTOM =
+		marginBottom[deviceType] || marginBottom.Tablet || marginBottom.Desktop;
 	//
 
 	return (
@@ -99,7 +105,7 @@ const WcbPostGridPanel_StyleReadmoreLink: FC<Props> = ({
 					/>
 				</MyDisclosure>
 
-				<MyDisclosure label="Border & padding">
+				<MyDisclosure label="Border & Dimensions">
 					<MyBorderControl
 						borderControl={border}
 						setAttrs__border={(border: MyBorderControlData) => {
@@ -125,6 +131,22 @@ const WcbPostGridPanel_StyleReadmoreLink: FC<Props> = ({
 								},
 							});
 						}}
+					/>
+
+					<MyUnitControl
+						onChange={(value) => {
+							setAttr__({
+								...panelData,
+								marginBottom: {
+									...marginBottom,
+									[deviceType]: value,
+								},
+							});
+						}}
+						value={MARGIN_BOTTOM}
+						units={MY_GAP_UNITS}
+						label={__("Margin bottom", "wcb")}
+						hasResponsive
 					/>
 				</MyDisclosure>
 			</div>

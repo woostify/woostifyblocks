@@ -58,6 +58,10 @@ import {
 	WCB_POST_GRID_PANEL_STYLE_READMORE_LINK_DEMO,
 } from "./WcbPostGridPanel_StyleReadmoreLink";
 import {
+	WCB_POST_GRID_PANEL_STYLE_TAXONOMY,
+	WCB_POST_GRID_PANEL_STYLE_TAXONOMY_DEMO,
+} from "./WcbPostGridPanel_StyleTaxonomy";
+import {
 	WCB_POST_GRID_PANEL_STYLE_TITLE,
 	WCB_POST_GRID_PANEL_STYLE_TITLE_DEMO,
 } from "./WcbPostGridPanel_StyleTitle";
@@ -78,6 +82,7 @@ export interface WcbBlockPostsGridAttrs {
 	style_layout: WCB_POST_GRID_PANEL_STYLE_LAYOUT;
 	style_title: WCB_POST_GRID_PANEL_STYLE_TITLE;
 	style_excerpt: WCB_POST_GRID_PANEL_STYLE_EXCERPT;
+	style_taxonomy: WCB_POST_GRID_PANEL_STYLE_TAXONOMY;
 	style_meta: WCB_POST_GRID_PANEL_STYLE_META;
 	style_readmoreLink: WCB_POST_GRID_PANEL_STYLE_READMORE_LINK;
 	style_pagination: WCB_POST_GRID_PANEL_STYLE_PAGINATION;
@@ -132,6 +137,10 @@ const blokc1Attrs: AttrsGenericType<WcbBlockPostsGridAttrs> = {
 	style_excerpt: {
 		type: "object",
 		default: WCB_POST_GRID_PANEL_STYLE_EXCERPT_DEMO,
+	},
+	style_taxonomy: {
+		type: "object",
+		default: WCB_POST_GRID_PANEL_STYLE_TAXONOMY_DEMO,
 	},
 	style_meta: {
 		type: "object",

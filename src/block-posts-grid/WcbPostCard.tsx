@@ -10,6 +10,13 @@ import { WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE } from "./WcbPostGridPanelPostF
 import { WCB_POST_GRID_PANEL_POST_META } from "./WcbPostGridPanelPostMeta";
 import { WCB_POST_GRID_PANEL_READMORE_LINK } from "./WcbPostGridPanelReadMoreLink";
 import useRedirectionPreventedNotice from "../hooks/useRedirectionPreventedNotice";
+import {
+	CalendarIcon,
+	ChatBubbleBottomCenterTextIcon,
+	ClockIcon,
+	TagIcon,
+	UserCircleIcon,
+} from "@heroicons/react/24/outline";
 
 export const getCategoriesOfPost = (
 	post: PostRoot,
@@ -33,7 +40,7 @@ interface Props {
 	general_readmoreLink: WCB_POST_GRID_PANEL_READMORE_LINK;
 }
 
-const PostCard: FC<Props> = ({
+const WcbPostCard: FC<Props> = ({
 	postData,
 	authors,
 	categories,
@@ -65,7 +72,7 @@ const PostCard: FC<Props> = ({
 	//
 	// If a user clicks to a link prevent redirection and show a warning.
 	const { showRedirectionPreventedNotice } = useRedirectionPreventedNotice({
-		ComponentName: PostCard,
+		ComponentName: WcbPostCard,
 		uniqueNoticeId: "wcb/posts-grid/PostCard/redirection-prevented",
 	});
 	//
@@ -101,21 +108,38 @@ const PostCard: FC<Props> = ({
 		return isShowDate && date_gmt ? (
 			<>
 				<span className="wcbPostCard__meta-date">
-					<time
-						dateTime={format("c", date_gmt)}
-						className="wp-block-latest-posts__post-date"
-					>
+					{isEnableMetaIcon && (
+						<span className="wcbPostCard__meta-icon">
+							<ClockIcon className="w-3.5 h-3.5" />
+						</span>
+					)}
+					<time dateTime={format("c", date_gmt)}>
+						{/* @ts-ignore */}
 						{dateI18n(dateFormat, date_gmt)}
 					</time>
 				</span>
-				<span className="wcbPostCard__meta-dot">·</span>
+				<span className="wcbPostCard__meta-dot">{` / `}</span>
 			</>
 		) : null;
 	};
 
 	const renderTaxonomies = () => {
 		return (
-			<div className="wcbPostCard__taxonomies">
+			<div
+				className={`wcbPostCard__taxonomies wcbPostCard__taxonomies--${taxonomyPosition.replace(
+					/ /g,
+					""
+				)} ${
+					taxonomyStyle === "Highlighted"
+						? "wcbPostCard__taxonomies--highlighted"
+						: ""
+				}`}
+			>
+				{postMetaSettings.isShowTaxonomyIcon && (
+					<span className="wcbPostCard__meta-icon">
+						<TagIcon className="w-4 h-4" />
+					</span>
+				)}
 				{cats.map((cat, index) => (
 					<>
 						<a
@@ -129,38 +153,51 @@ const PostCard: FC<Props> = ({
 							href={cat.link}
 						>
 							{cat.name}
+							{index < cats.length - 1 && taxonomyStyle === "Normal" ? (
+								<span>{taxonomyDivider}</span>
+							) : null}
 						</a>
-						{index < cats.length - 1 && taxonomyStyle === "Normal" ? (
-							<span>
-								{taxonomyDivider}
-								{` `}
-							</span>
-						) : null}
 					</>
 				))}
 			</div>
 		);
 	};
 
+	const isEnableMetaIcon = postMetaSettings.isShowMetaIcon;
+
 	return (
-		<div className="wcbPostCard">
+		<div
+			className={`wcbPostCard wcbPostCard--image-${featuredImageSettings.featuredImagePosition}`}
+		>
+			{/* LINK COMPLETE BOX */}
 			<a
 				onClick={showRedirectionPreventedNotice}
 				className="wcbPostCard__completeLink"
 				href={link}
 			></a>
-			<div className="wcbPostCard__featuredImage">
-				{featuredImageSettings.isShowFeaturedImage ? (
+
+			{/* FEATURED IMAGE */}
+			{featuredImageSettings.isShowFeaturedImage && !!freaturedImage?.url ? (
+				<div className="wcbPostCard__featuredImage">
+					<div className="wcbPostCard__featuredImage-overlay"></div>
 					<img
 						src={freaturedImage?.url || ""}
 						alt={freaturedImage?.alt || ""}
 					/>
-				) : null}
-			</div>
-
-			{isShowTaxonomy ? renderTaxonomies() : null}
+					{/* TAXONOMY */}
+					{isShowTaxonomy && taxonomyPosition === "Inside featured image"
+						? renderTaxonomies()
+						: null}
+				</div>
+			) : null}
 
 			<div className="wcbPostCard__content">
+				{/* TAXONOMY */}
+				{isShowTaxonomy && taxonomyPosition !== "Below featured image"
+					? renderTaxonomies()
+					: null}
+
+				{/* TITLE */}
 				{isShowTitle ? (
 					<TitleTag className="wcbPostCard__title">
 						<a
@@ -171,10 +208,32 @@ const PostCard: FC<Props> = ({
 					</TitleTag>
 				) : null}
 
+				{postContentSettings.isShowPostContent && (
+					<>
+						{/* CONTENT */}
+						{postContentSettings.contentType === "Full post" ? (
+							<div
+								className="wcbPostCard__fullContent"
+								dangerouslySetInnerHTML={{ __html: content.raw.trim() }}
+							></div>
+						) : null}
+
+						{/* EXCERPT */}
+						{postContentSettings.contentType === "excerpt"
+							? renderExcerpt()
+							: null}
+					</>
+				)}
+
 				<div className="wcbPostCard__meta">
+					{/* AUTHOR */}
 					{isShowAuthor ? (
 						<div className="wcbPostCard__meta-author">
-							<span className="wcbPostCard__meta-author-by">by {` `}</span>
+							{isEnableMetaIcon && (
+								<span className="wcbPostCard__meta-icon">
+									<UserCircleIcon className="w-4 h-4" />
+								</span>
+							)}
 							<a
 								onClick={showRedirectionPreventedNotice}
 								className="wcbPostCard__meta-author-name"
@@ -184,23 +243,21 @@ const PostCard: FC<Props> = ({
 							</a>
 						</div>
 					) : null}
-					<div>
+					{/* DATE AND COMMENT */}
+					<div className="wcbPostCard__meta-date-and-comments">
 						{renderDate()}
-
 						{isShowComment ? (
-							<span className="wcbPostCard__meta-comment">{10} comments</span>
+							<span className="wcbPostCard__meta-comment">
+								<span className="wcbPostCard__meta-icon">
+									<ChatBubbleBottomCenterTextIcon className="w-3.5 h-3.5" />
+								</span>
+								10
+							</span>
 						) : null}
 					</div>
 				</div>
 
-				{postContentSettings.contentType === "Full post" ? (
-					<div
-						className="wcbPostCard__fullContent"
-						dangerouslySetInnerHTML={{ __html: content.raw.trim() }}
-					></div>
-				) : null}
-				{postContentSettings.contentType === "excerpt" ? renderExcerpt() : null}
-
+				{/* READMORE BUTTON */}
 				{general_readmoreLink.isShowReadmore ? (
 					<a
 						className="wcbPostCard__readmoreLink"
@@ -217,4 +274,4 @@ const PostCard: FC<Props> = ({
 	);
 };
 
-export default PostCard;
+export default WcbPostCard;
