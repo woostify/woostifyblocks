@@ -43,7 +43,7 @@ export const WCB_POST_GRID_PANEL_POST_META_DEMO: WCB_POST_GRID_PANEL_POST_META =
 		isShowTaxonomyIcon: false,
 		taxonomyPosition: "Below featured image",
 		taxonomyDivider: `, `,
-		taxonomyStyle: "Normal",
+		taxonomyStyle: "Highlighted",
 	};
 
 interface Props

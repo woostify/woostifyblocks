@@ -28,16 +28,32 @@ type PostGridPagiantionType = {
 	};
 };
 
-const MY_POST_GRID_MAIN_STYLE_DEMO: PostGridPagiantionType = {
+const MY_POST_GRID_MAIN_STYLE_PAGINATION_DEMO: PostGridPagiantionType = {
 	Normal: {
-		color: "",
-		backgroundColor: "",
-		border: MY_BORDER_CONTROL_DEMO,
+		color: "#171717",
+		backgroundColor: "#fff",
+		border: {
+			...MY_BORDER_CONTROL_DEMO,
+			radius: { Desktop: "8px" },
+			mainSettings: {
+				color: "#cbd5e1",
+				style: "solid",
+				width: "1px",
+			},
+		},
 	},
 	Active: {
-		color: "",
-		backgroundColor: "",
-		border: MY_BORDER_CONTROL_DEMO,
+		color: "#fff",
+		backgroundColor: "#0ea5e9",
+		border: {
+			...MY_BORDER_CONTROL_DEMO,
+			radius: { Desktop: "8px" },
+			mainSettings: {
+				color: "#0ea5e9",
+				style: "solid",
+				width: "1px",
+			},
+		},
 	},
 };
 
@@ -49,9 +65,9 @@ export interface WCB_POST_GRID_PANEL_STYLE_PAGINATION {
 
 export const WCB_POST_GRID_PANEL_STYLE_PAGINATION_DEMO: WCB_POST_GRID_PANEL_STYLE_PAGINATION =
 	{
-		mainStyle: MY_POST_GRID_MAIN_STYLE_DEMO,
-		marginTop: { Desktop: "1rem" },
-		justifyContent: "center",
+		mainStyle: MY_POST_GRID_MAIN_STYLE_PAGINATION_DEMO,
+		marginTop: { Desktop: "2rem" },
+		justifyContent: "left",
 	};
 
 interface Props
@@ -69,6 +85,8 @@ const WcbPostGridPanel_StylePagination: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	const { mainStyle, marginTop, justifyContent } = panelData;
+	console.log(1, { mainStyle });
+
 	const MARGIN_TOP =
 		marginTop[deviceType] || marginTop.Tablet || marginTop.Desktop;
 	//

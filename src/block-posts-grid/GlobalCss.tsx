@@ -94,7 +94,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 					color: style_pagination.mainStyle.Normal.color,
 					backgroundColor: style_pagination.mainStyle.Normal.backgroundColor,
 				},
-				[`.page-numbers.is-active`]: {
+				[`.page-numbers.current`]: {
 					color: style_pagination.mainStyle.Active.color,
 					backgroundColor: style_pagination.mainStyle.Active.backgroundColor,
 				},
@@ -153,12 +153,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 
 				textAlign: style_layout.textAlignment,
 				backgroundColor: style_layout.backgroundColor,
-				".wcbPostCard__content": {
-					position:
-						general_postFeaturedImage.featuredImagePosition === "background"
-							? "relative"
-							: "unset",
-				},
+				".wcbPostCard__content": {},
 
 				".wcbPostCard__title": {
 					marginBottom: titleMarginBottom_mobile,
@@ -292,7 +287,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 					/>
 					<Global
 						styles={getBorderStyles({
-							className: `${WRAP_CLASSNAME} .wcb-posts-grid__pagination .page-numbers.is-active`,
+							className: `${WRAP_CLASSNAME} .wcb-posts-grid__pagination .page-numbers.current`,
 							border: style_pagination.mainStyle.Active.border,
 							isWithRadius: true,
 						})}

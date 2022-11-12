@@ -28,7 +28,15 @@ export const WCB_POST_GRID_PANEL_STYLE_LAYOUT_DEMO: WCB_POST_GRID_PANEL_STYLE_LA
 	{
 		...MY_DIMENSIONS_NO_MARGIN_CONTROL_DEMO,
 		textAlignment: "left",
-		backgroundColor: "",
+		backgroundColor: "#fafafa",
+		padding: {
+			Desktop: {
+				bottom: "1rem",
+				top: "1rem",
+				left: "1rem",
+				right: "1rem",
+			},
+		},
 	};
 
 interface Props

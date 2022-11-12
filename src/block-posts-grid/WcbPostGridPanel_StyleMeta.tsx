@@ -24,11 +24,25 @@ export interface WCB_POST_GRID_PANEL_STYLE_META {
 
 export const WCB_POST_GRID_PANEL_STYLE_META_DEMO: WCB_POST_GRID_PANEL_STYLE_META =
 	{
-		authorTypography: TYPOGRAPHY_CONTROL_DEMO,
-		dateTypography: TYPOGRAPHY_CONTROL_DEMO,
-		authorTextColor: "",
-		dateTextColor: "",
-		marginBottom: { Desktop: "1rem" },
+		authorTypography: {
+			...TYPOGRAPHY_CONTROL_DEMO,
+			fontSizes: { Desktop: "14px" },
+			textDecoration: "none",
+			appearance: {
+				...TYPOGRAPHY_CONTROL_DEMO.appearance,
+				style: {
+					...TYPOGRAPHY_CONTROL_DEMO.appearance.style,
+					fontWeight: "500",
+				},
+			},
+		},
+		dateTypography: {
+			...TYPOGRAPHY_CONTROL_DEMO,
+			fontSizes: { Desktop: "14px" },
+		},
+		authorTextColor: "#171717",
+		dateTextColor: "#a3a3a3",
+		marginBottom: { Desktop: "2rem" },
 	};
 
 interface Props

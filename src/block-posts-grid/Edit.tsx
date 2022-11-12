@@ -428,8 +428,8 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 					{/* PAGINATIOn */}
 					{general_pagination.isShowPagination ? (
 						<div className="wcb-posts-grid__pagination">
-							<a href="" className="page-numbers is-prev">
-								{renderPaginationIcon(true)}
+							<a href="" className="page-numbers prev">
+								{renderPaginationIcon()}
 								{!!general_pagination.previousText && (
 									<span>{general_pagination.previousText}</span>
 								)}
@@ -438,16 +438,16 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 								<a className="page-numbers" href="">
 									{__("1", "wcb")}
 								</a>
-								<span className="page-numbers is-active">{__("2", "wcb")}</span>
+								<span className="page-numbers current">{__("2", "wcb")}</span>
 								<a className="page-numbers" href="">
 									{__("3", "wcb")}
 								</a>
-								<span className="page-numbers dot">{__("...", "wcb")}</span>
+								<span className="page-numbers dots">{__("...", "wcb")}</span>
 								<a className="page-numbers" href="">
 									{__("8", "wcb")}
 								</a>
 							</div>
-							<a href="" className="page-numbers is-next">
+							<a href="" className="page-numbers next">
 								{!!general_pagination.nextText && (
 									<span>{general_pagination.nextText}</span>
 								)}

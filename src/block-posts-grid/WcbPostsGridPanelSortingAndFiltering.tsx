@@ -17,7 +17,7 @@ export const WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING_DEMO: WCB_POSTS_GRID_PANEL
 	{
 		queries: MY_QUERIES_DEMO_DATA,
 		emptyMessage: "No post found!",
-		numberOfColumn: 2,
+		numberOfColumn: 1,
 	};
 
 interface Props

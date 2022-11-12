@@ -22,9 +22,19 @@ export interface WCB_POST_GRID_PANEL_STYLE_TITLE {
 
 export const WCB_POST_GRID_PANEL_STYLE_TITLE_DEMO: WCB_POST_GRID_PANEL_STYLE_TITLE =
 	{
-		typography: TYPOGRAPHY_CONTROL_DEMO,
-		textColor: "",
-		marginBottom: { Desktop: "1rem" },
+		typography: {
+			...TYPOGRAPHY_CONTROL_DEMO,
+			fontSizes: { Desktop: "2rem" },
+			appearance: {
+				...TYPOGRAPHY_CONTROL_DEMO.appearance,
+				style: {
+					...TYPOGRAPHY_CONTROL_DEMO.appearance.style,
+					fontWeight: "500",
+				},
+			},
+		},
+		textColor: "#171717",
+		marginBottom: { Desktop: "0.5rem" },
 	};
 
 interface Props

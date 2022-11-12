@@ -15,8 +15,8 @@ export interface WCB_POST_GRID_PANEL_STYLE_FEATURED_IMAGE {
 
 export const WCB_POST_GRID_PANEL_STYLE_FEATURED_IMAGE_DEMO: WCB_POST_GRID_PANEL_STYLE_FEATURED_IMAGE =
 	{
-		marginBottom: { Desktop: "1rem" },
-		backgroundOverlay: "",
+		marginBottom: { Desktop: "0" },
+		backgroundOverlay: "#FFFFFFE6",
 	};
 
 interface Props

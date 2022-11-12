@@ -24,6 +24,7 @@ import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyColorBackgroundColorControl, {
 	MyColorBackgroundColorControlData,
 	MY_COLOR_BGCOLOR_CONTROL_DEMO,
+	MY_COLOR_BGCOLOR_CONTROL_FOR_BUTTON_DEMO,
 } from "../components/controls/MyColorBackgroundColorControl/MyColorBackgroundColorControl";
 import { MyTabsForColor } from "../types";
 import MyUnitControl from "../components/controls/MyUnitControl";
@@ -39,18 +40,21 @@ export interface WCB_POST_GRID_PANEL_STYLE_READMORE_LINK {
 
 export const WCB_POST_GRID_PANEL_STYLE_READMORE_LINK_DEMO: WCB_POST_GRID_PANEL_STYLE_READMORE_LINK =
 	{
-		colorAndBackgroundColor: MY_COLOR_BGCOLOR_CONTROL_DEMO,
-		typography: TYPOGRAPHY_CONTROL_DEMO,
+		colorAndBackgroundColor: MY_COLOR_BGCOLOR_CONTROL_FOR_BUTTON_DEMO,
+		typography: {
+			...TYPOGRAPHY_CONTROL_DEMO,
+			fontSizes: { Desktop: "1rem" },
+		},
 		padding: {
 			Desktop: {
-				top: "",
-				left: "",
-				right: "",
-				bottom: "",
+				top: "10px",
+				left: "20px",
+				right: "20px",
+				bottom: "10px",
 			},
 		},
 		border: MY_BORDER_CONTROL_DEMO,
-		marginBottom: { Desktop: "1rem" },
+		marginBottom: { Desktop: "0" },
 	};
 
 interface Props

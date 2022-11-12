@@ -68,6 +68,7 @@ const WcbPostCard: FC<Props> = ({
 	);
 
 	const { date, content, excerpt, link, title, date_gmt } = postData;
+	const isEnableMetaIcon = postMetaSettings.isShowMetaIcon;
 
 	//
 	// If a user clicks to a link prevent redirection and show a warning.
@@ -118,18 +119,14 @@ const WcbPostCard: FC<Props> = ({
 						{dateI18n(dateFormat, date_gmt)}
 					</time>
 				</span>
-				<span className="wcbPostCard__meta-dot">{` / `}</span>
 			</>
 		) : null;
 	};
 
-	const renderTaxonomies = () => {
+	const renderTaxonomies = (modified = "") => {
 		return (
 			<div
-				className={`wcbPostCard__taxonomies wcbPostCard__taxonomies--${taxonomyPosition.replace(
-					/ /g,
-					""
-				)} ${
+				className={`wcbPostCard__taxonomies wcbPostCard__taxonomies--${modified} ${
 					taxonomyStyle === "Highlighted"
 						? "wcbPostCard__taxonomies--highlighted"
 						: ""
@@ -163,7 +160,22 @@ const WcbPostCard: FC<Props> = ({
 		);
 	};
 
-	const isEnableMetaIcon = postMetaSettings.isShowMetaIcon;
+	const hasFeaturedImage =
+		featuredImageSettings.isShowFeaturedImage && !!freaturedImage?.url;
+	const renderFeaturedImage = () => {
+		const showTaxnomy =
+			isShowTaxonomy &&
+			taxonomyPosition === "Inside featured image" &&
+			featuredImageSettings.featuredImagePosition !== "background";
+
+		return hasFeaturedImage ? (
+			<div className="wcbPostCard__featuredImage">
+				<img src={freaturedImage?.url || ""} alt={freaturedImage?.alt || ""} />
+				{/* TAXONOMY */}
+				{showTaxnomy ? renderTaxonomies("Insidefeaturedimage") : null}
+			</div>
+		) : null;
+	};
 
 	return (
 		<div
@@ -177,23 +189,15 @@ const WcbPostCard: FC<Props> = ({
 			></a>
 
 			{/* FEATURED IMAGE */}
-			{featuredImageSettings.isShowFeaturedImage && !!freaturedImage?.url ? (
-				<div className="wcbPostCard__featuredImage">
-					<div className="wcbPostCard__featuredImage-overlay"></div>
-					<img
-						src={freaturedImage?.url || ""}
-						alt={freaturedImage?.alt || ""}
-					/>
-					{/* TAXONOMY */}
-					{isShowTaxonomy && taxonomyPosition === "Inside featured image"
-						? renderTaxonomies()
-						: null}
-				</div>
-			) : null}
+			{renderFeaturedImage()}
+			<div className="wcbPostCard__featuredImage-overlay"></div>
 
 			<div className="wcbPostCard__content">
 				{/* TAXONOMY */}
-				{isShowTaxonomy && taxonomyPosition !== "Below featured image"
+				{isShowTaxonomy &&
+				(taxonomyPosition === "Below featured image" ||
+					!hasFeaturedImage ||
+					featuredImageSettings.featuredImagePosition === "background")
 					? renderTaxonomies()
 					: null}
 
@@ -246,6 +250,11 @@ const WcbPostCard: FC<Props> = ({
 					{/* DATE AND COMMENT */}
 					<div className="wcbPostCard__meta-date-and-comments">
 						{renderDate()}
+
+						{isShowComment && isShowDate ? (
+							<span className="wcbPostCard__meta-dot">{` / `}</span>
+						) : null}
+
 						{isShowComment ? (
 							<span className="wcbPostCard__meta-comment">
 								<span className="wcbPostCard__meta-icon">

@@ -16,8 +16,8 @@ export const WCB_POST_GRID_PANEL_PAGINATION_DEMO: WCB_POST_GRID_PANEL_PAGINATION
 	{
 		isShowPagination: true,
 		pageLimit: 10,
-		previousText: "Previous",
-		nextText: "Next",
+		previousText: "",
+		nextText: "",
 		iconName: "arrow",
 	};
 

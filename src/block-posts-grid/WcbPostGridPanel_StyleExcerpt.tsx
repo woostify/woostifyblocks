@@ -22,8 +22,11 @@ export interface WCB_POST_GRID_PANEL_STYLE_EXCERPT {
 
 export const WCB_POST_GRID_PANEL_STYLE_EXCERPT_DEMO: WCB_POST_GRID_PANEL_STYLE_EXCERPT =
 	{
-		typography: TYPOGRAPHY_CONTROL_DEMO,
-		textColor: "",
+		typography: {
+			...TYPOGRAPHY_CONTROL_DEMO,
+			fontSizes: { Desktop: "1rem" },
+		},
+		textColor: "#737373",
 		marginBottom: { Desktop: "1rem" },
 	};
 

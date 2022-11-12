@@ -23,10 +23,21 @@ export interface WCB_POST_GRID_PANEL_STYLE_TAXONOMY {
 
 export const WCB_POST_GRID_PANEL_STYLE_TAXONOMY_DEMO: WCB_POST_GRID_PANEL_STYLE_TAXONOMY =
 	{
-		typography: TYPOGRAPHY_CONTROL_DEMO,
-		textColor: "",
-		backgroundColor: "",
-		marginBottom: { Desktop: "1rem" },
+		typography: {
+			...TYPOGRAPHY_CONTROL_DEMO,
+			fontSizes: { Desktop: "12px" },
+			textDecoration: "none",
+			appearance: {
+				...TYPOGRAPHY_CONTROL_DEMO.appearance,
+				style: {
+					...TYPOGRAPHY_CONTROL_DEMO.appearance.style,
+					fontWeight: "500",
+				},
+			},
+		},
+		textColor: "#0c4a6e",
+		backgroundColor: "#f0f9ff",
+		marginBottom: { Desktop: "0.5rem" },
 	};
 
 interface Props
