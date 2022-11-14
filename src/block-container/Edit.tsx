@@ -8,7 +8,6 @@ import {
 	store as blockEditorStore,
 } from "@wordpress/block-editor";
 import { PanelBody } from "@wordpress/components";
-// @ts-ignore
 import { get } from "lodash";
 import React, { FC, useEffect } from "react";
 import { BlockWCBContainerAttrs } from "./attributes";
@@ -301,9 +300,10 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 	);
 };
 
-interface TPlaceholder extends EditProps<BlockWCBContainerAttrs> {
+export interface TPlaceholder extends EditProps<BlockWCBContainerAttrs> {
 	name: string;
 }
+
 const Placeholder: FC<TPlaceholder> = ({
 	attributes,
 	setAttributes,

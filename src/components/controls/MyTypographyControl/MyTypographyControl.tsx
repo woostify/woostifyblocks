@@ -182,6 +182,7 @@ const MyTypographyControl: FC<Props> = ({
 					step={0.1}
 					min={0}
 					max={100}
+					placeholder={__("1.5", "wcb")}
 				/>
 			</div>
 		);

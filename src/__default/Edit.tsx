@@ -1,13 +1,10 @@
 import { __ } from "@wordpress/i18n";
 import { useBlockProps } from "@wordpress/block-editor";
-import { PanelBody } from "@wordpress/components";
 import React, { useEffect, FC } from "react";
-import { WcbBlockHeadingAttrs } from "./attributes";
+import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
 } from "../components/HOCInspectorControls";
-import MyResponsiveConditionControl from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
-import MyZIndexControl from "../components/controls/MyZIndexControl/MyZIndexControl";
 import { EditProps } from "../block-container/Edit";
 import useCreateCacheEmotion from "../hooks/useCreateCacheEmotion";
 import { CacheProvider } from "@emotion/react";
@@ -17,7 +14,7 @@ import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import WcbHeadingPanelHeading from "./WcbHeadingPanelHeading";
 
-const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
+const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 	const { advance_responsiveCondition, advance_zIndex, heading, uniqueId } =
 		attributes;

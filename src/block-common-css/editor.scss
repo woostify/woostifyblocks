@@ -1,4 +1,8 @@
 .wcb-inspectorControls__panel {
+	.components-notice {
+		@apply rounded-sm;
+	}
+
 	.components-tab-panel__tabs {
 		@apply bg-neutral-200/80 text-neutral-700 p-1;
 		.components-button {

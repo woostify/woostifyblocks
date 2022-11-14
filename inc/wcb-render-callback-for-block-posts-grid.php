@@ -5,7 +5,6 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
     if (!is_admin()) {
         wp_enqueue_script('wcb_block_posts_grid__renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-posts-grid/FrontendStyles.js', array('wp-element'), null, true);
     }
-
     // wcb_var_dump($attributes);
 
     $DEFAULT_ATTRS = [
@@ -27,19 +26,269 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
                 'offsetPost'            => 0,
             ],
             'emptyMessage' => 'No post found!',
-            'numberOfColumn' => 2,
+            'numberOfColumn' => 1,
         ],
+        'general_postContent' => array(
+            'isShowPostContent' => true,
+            'contentType' => 'excerpt',
+            'excerptWordsNumber' => 16,
+        ),
+        'general_postMeta' => array(
+            'isShowTitle' => true,
+            'titleHtmlTag' => 'h4',
+            'isShowComment' => true,
+            'isShowAuthor' => true,
+            'isShowDate' => true,
+            'isShowTaxonomy' => true,
+            'isShowMetaIcon' => true,
+            'isShowTaxonomyIcon' => false,
+            'taxonomyPosition' => 'Below featured image',
+            'taxonomyDivider' => ', ',
+            'taxonomyStyle' => 'Highlighted',
+        ),
+        'general_postFeaturedImage' => array(
+            'isShowFeaturedImage' => true,
+            'featuredImageSize' => 'large',
+            'featuredImagePosition' => 'top',
+            'linkCompleteBox' => true,
+        ),
+        'general_readmoreLink' => array(
+            'isShowReadmore' => true,
+            'isOpenInNewTab' => false,
+            'text' => 'Read more',
+        ),
+        'general_pagination' => array(
+            'isShowPagination' => true,
+            'pageLimit' => 10,
+            'previousText' => '',
+            'nextText' => '',
+            'iconName' => 'arrow',
+        ),
+        'style_layout' => array(
+            'colunmGap' => array(
+                'Desktop' => '1.5rem',
+            ),
+            'rowGap' => array(
+                'Desktop' => '1.5rem',
+            ),
+            'padding' => array(
+                'Desktop' => array(
+                    'bottom' => '1rem',
+                    'top' => '1rem',
+                    'left' => '1rem',
+                    'right' => '1rem',
+                ),
+            ),
+            'textAlignment' => 'left',
+            'backgroundColor' => '',
+        ),
+        'style_title' => array(
+            'typography' => array(
+                'fontSizes' => array(
+                    'Desktop' => '2rem',
+                ),
+                'appearance' => array(
+                    'key' => 'default',
+                    'name' => 'Default',
+                    'style' => array(
+                        'fontWeight' => '500',
+                        'fontStyle' => 'normal',
+                    ),
+                ),
+                'lineHeight' => array(),
+                'letterSpacing' => array(),
+            ),
+            'textColor' => '#171717',
+            'marginBottom' => array(
+                'Desktop' => '0.5rem',
+            ),
+        ),
+        'style_excerpt' => array(
+            'typography' => array(
+                'fontSizes' => array(
+                    'Desktop' => '1rem',
+                ),
+                'appearance' => array(
+                    'key' => 'default',
+                    'name' => 'Default',
+                    'style' => array(
+                        'fontWeight' => 'normal',
+                        'fontStyle' => 'normal',
+                    ),
+                ),
+                'lineHeight' => array(),
+                'letterSpacing' => array(),
+            ),
+            'textColor' => '#737373',
+            'marginBottom' => array(
+                'Desktop' => '1rem',
+            ),
+        ),
+        'style_taxonomy' => array(
+            'typography' => array(
+                'fontSizes' => array(
+                    'Desktop' => '12px',
+                ),
+                'appearance' => array(
+                    'key' => 'default',
+                    'name' => 'Default',
+                    'style' => array(
+                        'fontWeight' => '500',
+                        'fontStyle' => 'normal',
+                    ),
+                ),
+                'textDecoration' => 'none',
+                'lineHeight' => array(),
+                'letterSpacing' => array(),
+            ),
+            'textColor' => '#0c4a6e',
+            'backgroundColor' => '#f0f9ff',
+            'marginBottom' => array(
+                'Desktop' => '0.5rem',
+            ),
+        ),
+        'style_meta' => array(
+            'authorTypography' => array(
+                'fontSizes' => array(
+                    'Desktop' => '14px',
+                ),
+                'appearance' => array(
+                    'key' => 'default',
+                    'name' => 'Default',
+                    'style' => array(
+                        'fontWeight' => '500',
+                        'fontStyle' => 'normal',
+                    ),
+                ),
+                'textDecoration' => 'none',
+                'lineHeight' => array(),
+                'letterSpacing' => array(),
+            ),
+            'dateTypography' => array(
+                'fontSizes' => array(
+                    'Desktop' => '14px',
+                ),
+                'appearance' => array(
+                    'key' => 'default',
+                    'name' => 'Default',
+                    'style' => array(
+                        'fontWeight' => 'normal',
+                        'fontStyle' => 'normal',
+                    ),
+                ),
+                'lineHeight' => array(),
+                'letterSpacing' => array(),
+            ),
+            'authorTextColor' => '#171717',
+            'dateTextColor' => '#a3a3a3',
+            'marginBottom' => array(
+                'Desktop' => '1.5rem',
+            ),
+        ),
+        'style_readmoreLink' => array(
+            'colorAndBackgroundColor' => array(
+                'Normal' => array(
+                    'color' => '#fff',
+                    'backgroundColor' => '#0ea5e9',
+                ),
+                'Hover' => array(
+                    'color' => '#fff',
+                    'backgroundColor' => '#0284c7',
+                ),
+            ),
+            'typography' => array(
+                'fontSizes' => array(
+                    'Desktop' => '1rem',
+                ),
+                'appearance' => array(
+                    'key' => 'default',
+                    'name' => 'Default',
+                    'style' => array(
+                        'fontWeight' => 'normal',
+                        'fontStyle' => 'normal',
+                    ),
+                ),
+                'lineHeight' => array(),
+                'letterSpacing' => array(),
+            ),
+            'padding' => array(
+                'Desktop' => array(
+                    'top' => '10px',
+                    'left' => '20px',
+                    'right' => '20px',
+                    'bottom' => '10px',
+                ),
+            ),
+            'border' => array(
+                'radius' => array(
+                    'Desktop' => '12px',
+                    'Tablet' => '12px',
+                    'Mobile' => '12px',
+                ),
+            ),
+            'marginBottom' => array(
+                'Desktop' => '0px',
+            ),
+        ),
+        'style_pagination' => array(
+            'mainStyle' => array(
+                'Normal' => array(
+                    'color' => '#171717',
+                    'backgroundColor' => '#fff',
+                    'border' => array(
+                        'mainSettings' => array(
+                            'color' => '#cbd5e1',
+                            'style' => 'solid',
+                            'width' => '1px',
+                        ),
+                        'radius' => array(
+                            'Desktop' => '8px',
+                        ),
+                    ),
+                ),
+                'Active' => array(
+                    'color' => '#fff',
+                    'backgroundColor' => '#0ea5e9',
+                    'border' => array(
+                        'mainSettings' => array(
+                            'color' => '#0ea5e9',
+                            'style' => 'solid',
+                            'width' => '1px',
+                        ),
+                        'radius' => array(
+                            'Desktop' => '8px',
+                        ),
+                    ),
+                ),
+            ),
+            'marginTop' => array(
+                'Desktop' => '2rem',
+            ),
+            'justifyContent' => 'left',
+        ),
+        'style_featuredImage' => array(
+            'marginBottom' => array(
+                'Desktop' => '0px',
+            ),
+            'backgroundOverlay' => '#FFFFFFE6',
+        ),
+        'style_border' => array(
+            'radius' => array(
+                'Desktop' => '11px',
+                'Tablet' => '12px',
+                'Mobile' => '12px',
+            ),
+        ),
     ];
+
     $uniqueId =  $attributes['uniqueId'];
 
     $sortingAndFiltering = isset($attributes["general_sortingAndFiltering"]) ? $attributes["general_sortingAndFiltering"] :  $DEFAULT_ATTRS["general_sortingAndFiltering"];
     $queries = isset($sortingAndFiltering["queries"]) ? $sortingAndFiltering["queries"] : $DEFAULT_ATTRS["general_sortingAndFiltering"]["queries"];
 
-
     $aTermsId = array_map(function ($item) {
         return $item['id'];
     }, $queries["selectedTerms"]);
-
 
     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
     $the_query = new WP_Query([
@@ -60,9 +309,8 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
         'paged'             => $paged
     ]);
 
-
     if (!function_exists("wcb_block_posts_grid__render_taxonomy")) {
-        function wcb_block_posts_grid__render_taxonomy($queries, $attributes)
+        function wcb_block_posts_grid__render_taxonomy($queries, $attributes, $modifiedClass = "")
         {
             $isShow = boolval($attributes['general_postMeta']['isShowTaxonomy'] ?? false);
             if (!$isShow) {
@@ -81,15 +329,34 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
                     $all_terms = join(', ', $term_links);
                 };
 
-                echo '<div class="wcbPostCard__taxonomies wcbPostCard__taxonomies--' . esc_attr(str_replace(' ', '', $attributes['general_postMeta']['taxonomyPosition'] ?? "")) . esc_attr($attributes['general_postMeta']['taxonomyStyle'] === "Highlighted" ? " wcbPostCard__taxonomies--highlighted" : "") . '">' . __($all_terms) . '</div>';
+                echo '<div class="wcbPostCard__taxonomies wcbPostCard__taxonomies--' . esc_attr($modifiedClass) . esc_attr($attributes['general_postMeta']['taxonomyStyle'] === "Highlighted" ? " wcbPostCard__taxonomies--highlighted" : "") . '">' . __($all_terms) . '</div>';
 
             endif;
         }
     }
 
     if (!function_exists("wcb_pagination_bar")) {
-        function wcb_pagination_bar($custom_query)
+        function wcb_pagination_bar($custom_query, $attributes)
         {
+            $nextPreIcons =  [
+                "none" => 'None',
+                "arrow" => '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16px" height="16px">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                          </svg>',
+                "chevron" => '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16px" height="16px">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                          </svg>',
+                "chevron-double" => '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16px" height="16px"><path stroke-linecap="round" stroke-linejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" /></svg>',
+            ];
+            $icon =   $nextPreIcons[$attributes['general_pagination']['iconName'] ?? "arrow"];
+
+            $nextText =  $attributes['general_pagination']['nextText'] ?? "";
+            $previousIcon =  $attributes['general_pagination']['previousIcon'] ?? "";
+
+            $nextHtml = !empty($nextText) ? '<span>' . $nextText . '</span>' . $icon : $icon;
+            $prevHtml = !empty($previousIcon) ? '<span>' . $previousIcon . '</span>' . $icon : $icon;
+
+
             $total_pages = $custom_query->max_num_pages;
             $big = 999999999; // need an unlikely integer
             if ($total_pages > 1) {
@@ -99,6 +366,8 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
                     'format' => '?paged=%#%',
                     'current' => $current_page,
                     'total' => $total_pages,
+                    'next_text' => $nextHtml,
+                    'prev_text' => $prevHtml
                 ));
             }
         }
@@ -111,123 +380,172 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
 
     <!-- RENDER FOLLOW BY EDIT.TSX -->
     <div class="wcb-posts-grid__wrap <?php echo esc_attr($uniqueId); ?> " data-uniqueid="<?php echo esc_attr($uniqueId); ?>">
-        <?php if ($the_query->have_posts()) : ?>
+        <div class="wcb-posts-grid__list-posts">
+            <?php if ($the_query->have_posts()) : ?>
+                <!-- the loop -->
+                <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
 
-            <!-- the loop -->
-            <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
-                <div class="wcbPostCard wcbPostCard--image-<?php echo esc_attr($attributes['general_postFeaturedImage']['featuredImagePosition'] ?? ""); ?>">
+                    <?php
+                    $hasFeaturedImage = !empty(get_the_post_thumbnail_url()) && boolval($attributes['general_postFeaturedImage']['isShowFeaturedImage'] ?? true);
+                    $featuredImagePosition = $attributes['general_postFeaturedImage']['featuredImagePosition'] ?? "top";
+                    $isShowMetaIcon = boolval($attributes['general_postMeta']['isShowMetaIcon'] ?? true);
+                    ?>
 
-                    <!-- card - FUll link  -->
-                    <a class="wcbPostCard__completeLink" href="<?php echo get_permalink(); ?>"></a>
+                    <div class="wcbPostCard wcbPostCard--image-<?php echo esc_attr($featuredImagePosition); ?>">
 
-                    <!-- Post Thumbnail -->
-                    <?php if (boolval($attributes['general_postFeaturedImage']['isShowFeaturedImage'] ?? false)) : ?>
-                        <div class="wcbPostCard__featuredImage">
-                            <?php echo get_the_post_thumbnail(); ?>
-                        </div>
-                    <?php endif; ?>
+                        <!-- card - FUll link  -->
+                        <a class="wcbPostCard__completeLink" href="<?php echo get_permalink(); ?>"></a>
 
-                    <!-- Post content -->
-                    <div class="wcbPostCard__content">
+                        <!-- Post Thumbnail -->
+                        <?php if ($hasFeaturedImage) : ?>
+                            <div class="wcbPostCard__featuredImage">
+                                <?php echo get_the_post_thumbnail(null, $attributes['general_postFeaturedImage']['featuredImageSize'] ?? "post-thumbnail"); ?>
 
-                        <!-- TAXONOMIES ON TOP -->
-                        <?php if ($attributes['general_postMeta']['taxonomyPosition'] !== "With meta") {
-                            wcb_block_posts_grid__render_taxonomy($queries, $attributes);
-                        }; ?>
+                                <!-- TAXONOMIES  -->
+                                <?php if (($attributes['general_postMeta']["isShowTaxonomy"] ?? true) &&
+                                    ($attributes['general_postMeta']["taxonomyPosition"] ?? "Inside featured image") === "Inside featured image" &&
+                                    $featuredImagePosition !== "background"
+                                ) {
+                                    wcb_block_posts_grid__render_taxonomy($queries, $attributes, "Insidefeaturedimage");
+                                }; ?>
 
-                        <!-- TITLE -->
-                        <h2 class="wcbPostCard__title">
-                            <a href="<?php the_permalink(); ?>">
-                                <?php the_title(); ?>
-                            </a>
-                        </h2>
+                            </div>
+                        <?php endif; ?>
+                        <div class="wcbPostCard__featuredImage-overlay"></div>
 
-                        <!-- META -->
-                        <div class="wcbPostCard__meta">
 
-                            <!-- AUTHOR -->
-                            <?php if (boolval($attributes['general_postMeta']['isShowAuthor'] ?? false)) : ?>
-                                <div class="wcbPostCard__meta-author">
-                                    <span class="wcbPostCard__meta-author-by"><?php echo esc_html("by "); ?></span>
-                                    <a class="wcbPostCard__meta-author-name" href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>" title="<?php echo esc_attr(get_the_author()); ?>"><?php the_author(); ?></a>
-                                </div>
-                            <?php endif; ?>
+                        <!-- Post content -->
+                        <div class="wcbPostCard__content">
 
-                            <!-- TAXONOMIES  -->
-                            <?php if ($attributes['general_postMeta']['taxonomyPosition'] === "With meta") {
-                                wcb_block_posts_grid__render_taxonomy($queries, $attributes);
+                            <!-- TAXONOMIES ON TOP -->
+                            <?php
+
+                            if (($attributes['general_postMeta']['taxonomyPosition'] ?? "Below featured image") === "Below featured image" || !$hasFeaturedImage ||  $featuredImagePosition === 'background') {
+                                wcb_block_posts_grid__render_taxonomy($queries, $attributes,);
                             }; ?>
 
-                            <!-- DATE AND COMMENT -->
-                            <div>
+                            <!-- TITLE -->
+                            <?php if ($attributes['general_postMeta']['isShowTitle'] ?? true) : ?>
+                                <?php echo '<' . ($attributes['general_postMeta']['titleHtmlTag'] ?? "h4") . ' class="wcbPostCard__title" >' ?>
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php the_title(); ?>
+                                </a>
+                                <?php echo '</' . ($attributes['general_postMeta']['titleHtmlTag'] ?? "h4") . '>' ?>
+                            <?php endif; ?>
 
-                                <!-- DATE -->
-                                <?php if (boolval($attributes['general_postMeta']['isShowDate'] ?? false)) : ?>
-                                    <span class="wcbPostCard__meta-date">
-                                        <time datetime="<?php echo get_the_date('c'); ?>" itemprop="datePublished"><?php echo get_the_date(); ?></time>
-                                    </span>
-                                    <span class="wcbPostCard__meta-dot">·</span>
+
+                            <?php if ($attributes['general_postContent']['isShowPostContent'] ?? true) : ?>
+                                <!-- FULL POST CONTENT -->
+                                <?php if (($attributes['general_postContent']['contentType'] ?? "excerpt") === "Full post") {
+                                    echo '<div class="wcbPostCard__fullContent">';
+                                    echo the_content();
+                                    echo '</div>';
+                                };  ?>
+
+                                <!-- EXCERPT -->
+                                <?php if (($attributes['general_postContent']['contentType'] ?? "excerpt") === "excerpt") {
+                                    $excerpt = get_the_excerpt();
+                                    $split = explode(" ", $excerpt); //convert string to array
+                                    $len = count($split); //get number of words
+                                    $words_to_show_first = $attributes['general_postContent']['excerptWordsNumber'] ?? 15; //Word to be dsiplayed first
+                                    if ($len > $words_to_show_first) { //check if it's longer the than first part
+                                        $firsthalf = array_slice($split, 0, $words_to_show_first);
+                                        $output = '<p class="wcbPostCard__excerpt" >';
+                                        $output .= implode(' ', $firsthalf);
+                                        $output .= esc_html__('...');
+                                        $output .= '</p>';
+                                    } else {
+                                        $output = '<p class="wcbPostCard__excerpt">'  .   $excerpt . '</p>';
+                                    }
+                                    echo $output;
+                                }; ?>
+                            <?php endif; ?>
+
+
+
+
+                            <!-- META -->
+                            <div class="wcbPostCard__meta">
+
+                                <!-- AUTHOR -->
+                                <?php if (boolval($attributes['general_postMeta']['isShowAuthor'] ?? true)) : ?>
+                                    <div class="wcbPostCard__meta-author">
+                                        <?php if (boolval($attributes['general_postMeta']['isShowMetaIcon'] ?? true)) : ?>
+                                            <span class="wcbPostCard__meta-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16px" height="16px">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                </svg>
+
+                                            </span>
+                                        <?php endif; ?>
+                                        <a class="wcbPostCard__meta-author-name" href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>" title="<?php echo esc_attr(get_the_author()); ?>"><?php the_author(); ?></a>
+                                    </div>
                                 <?php endif; ?>
 
-                                <!-- COMMENTS -->
-                                <?php if (boolval($attributes['general_postMeta']['isShowComment'] ?? false)) : ?>
-                                    <span class="wcbPostCard__meta-comment">
-                                        <?php echo get_comments_number(); ?>
-                                    </span>
-                                <?php endif; ?>
+
+                                <!-- DATE AND COMMENT -->
+                                <div class="wcbPostCard__meta-date-and-comments">
+
+                                    <!-- DATE -->
+                                    <?php if (boolval($attributes['general_postMeta']['isShowDate'] ?? true)) : ?>
+                                        <span class="wcbPostCard__meta-date">
+                                            <?php if ($isShowMetaIcon) : ?>
+                                                <span class="wcbPostCard__meta-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="14px" height="14px">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                    </svg>
+                                                </span>
+                                            <?php endif; ?>
+                                            <time datetime="<?php echo get_the_date('c'); ?>" itemprop="datePublished"><?php echo get_the_date(); ?></time>
+                                        </span>
+                                    <?php endif; ?>
+
+                                    <?php
+                                    if (($attributes['general_postMeta']['isShowComment'] ?? true) && ($attributes['general_postMeta']['isShowDate'] ?? true)) : ?>
+                                        <span class="wcbPostCard__meta-dot"> / </span>
+                                    <?php endif; ?>
+
+
+                                    <!-- COMMENTS -->
+                                    <?php if (boolval($attributes['general_postMeta']['isShowComment'] ?? true)) : ?>
+                                        <span class="wcbPostCard__meta-comment">
+                                            <span class="wcbPostCard__meta-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="14px" height="14px">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                                                </svg>
+
+                                            </span>
+                                            <?php echo get_comments_number(); ?>
+                                        </span>
+                                    <?php endif; ?>
+                                </div>
 
                             </div>
 
+                            <!-- READMORE BUTTON -->
+                            <?php if (boolval($attributes['general_readmoreLink']['isShowReadmore'] ?? true)) : ?>
+                                <a class="wcbPostCard__readmoreLink" href="<?php echo esc_url(the_permalink()); ?>" rel="noopener noreferrer" target="<?php echo esc_attr(($attributes['general_readmoreLink']['isOpenInNewTab'] ?? false) ? "_blank" : "_self") ?>">
+                                    <?php echo esc_html($attributes['general_readmoreLink']['text'] ?? "Read more"); ?>
+                                </a>
+                            <?php endif; ?>
+
                         </div>
-
-                        <!-- FULL POST CONTENT -->
-                        <?php if (($attributes['general_postContent']['contentType'] ?? "") === "Full post") {
-                            echo '<div class="wcbPostCard__fullContent">';
-                            echo the_content();
-                            echo '</div>';
-                        };  ?>
-
-                        <!-- EXCERPT -->
-                        <?php if (($attributes['general_postContent']['contentType'] ?? "") === "excerpt") {
-                            $excerpt = get_the_excerpt();
-                            $split = explode(" ", $excerpt); //convert string to array
-                            $len = count($split); //get number of words
-                            $words_to_show_first = $attributes['general_postContent']['excerptWordsNumber'] ?? 15; //Word to be dsiplayed first
-                            if ($len > $words_to_show_first) { //check if it's longer the than first part
-                                $firsthalf = array_slice($split, 0, $words_to_show_first);
-                                $output = '<p class="wcbPostCard__excerpt" >';
-                                $output .= implode(' ', $firsthalf);
-                                $output .= esc_html__('...');
-                                $output .= '</p>';
-                            } else {
-                                $output = '<p class="wcbPostCard__excerpt">'  .   $excerpt . '</p>';
-                            }
-                            echo $output;
-                        }; ?>
-
-                        <!-- READMORE BUTTON -->
-                        <?php if (boolval($attributes['general_readmoreLink']['isShowReadmore'] ?? false)) : ?>
-                            <a class="wcbPostCard__readmoreLink" href="<?php echo esc_url(the_permalink()); ?>" rel="noopener noreferrer" target="<?php echo esc_attr(($attributes['general_readmoreLink']['isOpenInNewTab'] ?? false) ? "_blank" : "_self") ?>">
-                                <?php echo esc_html($attributes['general_readmoreLink']['text'] ?? "Read more"); ?>
-                            </a>
-                        <?php endif; ?>
-
                     </div>
-                </div>
-            <?php endwhile; ?>
-            <!-- end of the loop -->
+                <?php endwhile; ?>
+                <!-- end of the loop -->
+        </div>
 
-            <!-- pagination here -->
-            <nav class="pagination">
-                <?php wcb_pagination_bar($the_query); ?>
-            </nav>
+        <!-- pagination here -->
+        <div class="wcb-posts-grid__pagination">
+            <?php wcb_pagination_bar($the_query, $attributes); ?>
+        </div>
 
-            <!-- reset post here -->
-            <?php wp_reset_postdata(); ?>
+        <!-- reset post here -->
+        <?php wp_reset_postdata(); ?>
 
-        <?php else : ?>
-            <p><?php echo esc_html($sortingAndFiltering['emptyMessage'] ?? "No post found!"); ?></p>
-        <?php endif; ?>
+    <?php else : ?>
+        <p class="wcb-posts-grid__emptyMessage"><?php echo esc_html($sortingAndFiltering['emptyMessage'] ?? "No post found!"); ?></p>
+    <?php endif; ?>
     </div>
 <?php
 

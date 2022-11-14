@@ -3657,7 +3657,7 @@ const HOCInspectorControls = _ref => {
 
   const handleTooglePanelAdvanceDefaultWp = () => {
     const advancedPanel = document.querySelector(".components-panel__body.block-editor-block-inspector__advanced");
-    const elAdvancesbtn = document.querySelector("button.active-tab");
+    const elAdvancesbtn = document.querySelector(".HOCInspectorControls__ative-tab");
     const isAdvanceTabActive = !!(elAdvancesbtn !== null && elAdvancesbtn !== void 0 && elAdvancesbtn.id.includes("-Advances"));
 
     if (!advancedPanel) {
@@ -3669,19 +3669,15 @@ const HOCInspectorControls = _ref => {
 
   const handleChageTab = tabName => {
     onChangeActive && onChangeActive(tabName);
-  };
-
-  const renderContent2 = () => {
-    !!uniqueId && setTimeout(() => {
+    setTimeout(() => {
       handleTooglePanelAdvanceDefaultWp();
-    }, 50);
-    return null;
+    }, 100);
   };
 
   const renderContent = () => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TabPanel, {
       className: `wcb-inspectorControls__panel ${uniqueId}`,
-      activeClass: "active-tab",
+      activeClass: "HOCInspectorControls__ative-tab active-tab",
       tabs: tabs,
       onSelect: handleChageTab,
       initialTabName: tabDefaultActive
@@ -3691,6 +3687,13 @@ const HOCInspectorControls = _ref => {
         className: tab.name
       }, renderTabPanels(tab));
     });
+  };
+
+  const renderContent2 = () => {
+    !!uniqueId && setTimeout(() => {
+      handleTooglePanelAdvanceDefaultWp();
+    }, 100);
+    return null;
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, renderContent(), renderContent2());
@@ -4103,6 +4106,7 @@ const MY_BORDER_CONTROL_DEMO = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "MY_COLOR_BGCOLOR_CONTROL_DEMO": function() { return /* binding */ MY_COLOR_BGCOLOR_CONTROL_DEMO; },
+/* harmony export */   "MY_COLOR_BGCOLOR_CONTROL_FOR_BUTTON_DEMO": function() { return /* binding */ MY_COLOR_BGCOLOR_CONTROL_FOR_BUTTON_DEMO; },
 /* harmony export */   "PANEL_COLOR_TABS": function() { return /* binding */ PANEL_COLOR_TABS; }
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
@@ -4134,6 +4138,16 @@ const MY_COLOR_BGCOLOR_CONTROL_DEMO = {
   Hover: {
     color: "",
     backgroundColor: ""
+  }
+};
+const MY_COLOR_BGCOLOR_CONTROL_FOR_BUTTON_DEMO = {
+  Normal: {
+    color: "#fff",
+    backgroundColor: "#0ea5e9"
+  },
+  Hover: {
+    color: "#fff",
+    backgroundColor: "#0284c7"
   }
 };
 
@@ -5681,7 +5695,8 @@ const MyTypographyControl = _ref => {
       value: LINE_HEIGHT,
       step: 0.1,
       min: 0,
-      max: 100
+      max: 100,
+      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("1.5", "wcb")
     }));
   };
 

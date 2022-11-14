@@ -1,6 +1,9 @@
 /*!*********************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/block-common-css/editor.scss ***!
   \*********************************************************************************************************************************************************************************************************************************************************/
+.wcb-inspectorControls__panel .components-notice {
+  border-radius: var(--radius-sm);
+}
 .wcb-inspectorControls__panel .components-tab-panel__tabs {
   background-color: rgba(var(--c-neutral-200), 0.8);
   padding: 0.25rem;
@@ -1237,6 +1240,9 @@ video {
 .-m-3\.5 {
   margin: -0.875rem !important;
 }
+.m-0 {
+  margin: 0px !important;
+}
 .my-1 {
   margin-top: 0.25rem !important;
   margin-bottom: 0.25rem !important;
@@ -1244,6 +1250,10 @@ video {
 .my-0 {
   margin-top: 0px !important;
   margin-bottom: 0px !important;
+}
+.my-5 {
+  margin-top: 1.25rem !important;
+  margin-bottom: 1.25rem !important;
 }
 .mt-0 {
   margin-top: 0px !important;
@@ -1308,6 +1318,9 @@ video {
 .mt-1 {
   margin-top: 0.25rem !important;
 }
+.mb-5 {
+  margin-bottom: 1.25rem !important;
+}
 .block {
   display: block !important;
 }
@@ -1356,11 +1369,11 @@ video {
 .h-4 {
   height: 1rem !important;
 }
-.h-5 {
-  height: 1.25rem !important;
-}
 .h-7 {
   height: 1.75rem !important;
+}
+.h-5 {
+  height: 1.25rem !important;
 }
 .h-auto {
   height: auto !important;
@@ -1413,14 +1426,14 @@ video {
 .w-4 {
   width: 1rem !important;
 }
-.w-5 {
-  width: 1.25rem !important;
-}
 .w-7 {
   width: 1.75rem !important;
 }
 .w-full {
   width: 100% !important;
+}
+.w-5 {
+  width: 1.25rem !important;
 }
 .w-6 {
   width: 1.5rem !important;
@@ -1966,6 +1979,9 @@ video {
 }
 .p-3 {
   padding: 0.75rem !important;
+}
+.p-10 {
+  padding: 2.5rem !important;
 }
 .py-5 {
   padding-top: 1.25rem !important;

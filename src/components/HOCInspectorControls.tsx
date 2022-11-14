@@ -57,33 +57,28 @@ const HOCInspectorControls: FC<Props> = ({
 		const advancedPanel = document.querySelector(
 			".components-panel__body.block-editor-block-inspector__advanced"
 		) as HTMLElement | null;
-
-		const elAdvancesbtn = document.querySelector("button.active-tab");
+		const elAdvancesbtn = document.querySelector(
+			".HOCInspectorControls__ative-tab"
+		);
 		const isAdvanceTabActive = !!elAdvancesbtn?.id.includes("-Advances");
-
 		if (!advancedPanel) {
 			return;
 		}
-
 		advancedPanel.style.display = isAdvanceTabActive ? "block" : "none";
 	};
 
 	const handleChageTab = (tabName: InspectorControlsTabs[number]["name"]) => {
 		onChangeActive && onChangeActive(tabName);
+		setTimeout(() => {
+			handleTooglePanelAdvanceDefaultWp();
+		}, 100);
 	};
 
-	const renderContent2 = () => {
-		!!uniqueId &&
-			setTimeout(() => {
-				handleTooglePanelAdvanceDefaultWp();
-			}, 50);
-		return null;
-	};
 	const renderContent = () => {
 		return (
 			<TabPanel
 				className={`wcb-inspectorControls__panel ${uniqueId}`}
-				activeClass="active-tab"
+				activeClass="HOCInspectorControls__ative-tab active-tab"
 				tabs={tabs}
 				onSelect={handleChageTab}
 				initialTabName={tabDefaultActive}
@@ -97,6 +92,14 @@ const HOCInspectorControls: FC<Props> = ({
 				}}
 			</TabPanel>
 		);
+	};
+
+	const renderContent2 = () => {
+		!!uniqueId &&
+			setTimeout(() => {
+				handleTooglePanelAdvanceDefaultWp();
+			}, 100);
+		return null;
 	};
 
 	return (

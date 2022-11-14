@@ -2467,7 +2467,7 @@ const HOCInspectorControls = _ref => {
 
   const handleTooglePanelAdvanceDefaultWp = () => {
     const advancedPanel = document.querySelector(".components-panel__body.block-editor-block-inspector__advanced");
-    const elAdvancesbtn = document.querySelector("button.active-tab");
+    const elAdvancesbtn = document.querySelector(".HOCInspectorControls__ative-tab");
     const isAdvanceTabActive = !!(elAdvancesbtn !== null && elAdvancesbtn !== void 0 && elAdvancesbtn.id.includes("-Advances"));
 
     if (!advancedPanel) {
@@ -2479,19 +2479,15 @@ const HOCInspectorControls = _ref => {
 
   const handleChageTab = tabName => {
     onChangeActive && onChangeActive(tabName);
-  };
-
-  const renderContent2 = () => {
-    !!uniqueId && setTimeout(() => {
+    setTimeout(() => {
       handleTooglePanelAdvanceDefaultWp();
-    }, 50);
-    return null;
+    }, 100);
   };
 
   const renderContent = () => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TabPanel, {
       className: `wcb-inspectorControls__panel ${uniqueId}`,
-      activeClass: "active-tab",
+      activeClass: "HOCInspectorControls__ative-tab active-tab",
       tabs: tabs,
       onSelect: handleChageTab,
       initialTabName: tabDefaultActive
@@ -2501,6 +2497,13 @@ const HOCInspectorControls = _ref => {
         className: tab.name
       }, renderTabPanels(tab));
     });
+  };
+
+  const renderContent2 = () => {
+    !!uniqueId && setTimeout(() => {
+      handleTooglePanelAdvanceDefaultWp();
+    }, 100);
+    return null;
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, renderContent(), renderContent2());

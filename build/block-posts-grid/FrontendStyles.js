@@ -2074,7 +2074,7 @@ const GlobalCss = attrs => {
           color: style_pagination.mainStyle.Normal.color,
           backgroundColor: style_pagination.mainStyle.Normal.backgroundColor
         },
-        [`.page-numbers.is-active`]: {
+        [`.page-numbers.current`]: {
           color: style_pagination.mainStyle.Active.color,
           backgroundColor: style_pagination.mainStyle.Active.backgroundColor
         },
@@ -2132,9 +2132,7 @@ const GlobalCss = attrs => {
         },
         textAlign: style_layout.textAlignment,
         backgroundColor: style_layout.backgroundColor,
-        ".wcbPostCard__content": {
-          position: general_postFeaturedImage.featuredImagePosition === "background" ? "relative" : "unset"
-        },
+        ".wcbPostCard__content": {},
         ".wcbPostCard__title": {
           marginBottom: titleMarginBottom_mobile,
           ">a": {
@@ -2267,7 +2265,7 @@ const GlobalCss = attrs => {
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
     styles: (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
-      className: `${WRAP_CLASSNAME} .wcb-posts-grid__pagination .page-numbers.is-active`,
+      className: `${WRAP_CLASSNAME} .wcb-posts-grid__pagination .page-numbers.current`,
       border: style_pagination.mainStyle.Active.border,
       isWithRadius: true
     })

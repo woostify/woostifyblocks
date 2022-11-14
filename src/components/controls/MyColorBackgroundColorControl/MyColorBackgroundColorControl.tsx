@@ -30,6 +30,17 @@ export const MY_COLOR_BGCOLOR_CONTROL_DEMO = {
 	},
 };
 
+export const MY_COLOR_BGCOLOR_CONTROL_FOR_BUTTON_DEMO = {
+	Normal: {
+		color: "#fff",
+		backgroundColor: "#0ea5e9",
+	},
+	Hover: {
+		color: "#fff",
+		backgroundColor: "#0284c7",
+	},
+};
+
 interface Props {
 	className?: string;
 	controlData: MyColorBackgroundColorControlData;
