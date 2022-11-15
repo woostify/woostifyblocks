@@ -42,6 +42,7 @@ export type EditProps<T> = {
 	attributes: T;
 	setAttributes: (newAttributes: Partial<T>) => void;
 	clientId: string;
+	isSelected: boolean;
 };
 
 export const getGapStyleFromGapjObj = ({ colunmGap, rowGap }) => {

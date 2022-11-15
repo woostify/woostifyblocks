@@ -1,0 +1,57 @@
+/*!**************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/block-form/style.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************/
+.wcb-form__wrap [type=text],
+.wcb-form__wrap [type=email],
+.wcb-form__wrap [type=url],
+.wcb-form__wrap [type=password],
+.wcb-form__wrap [type=number],
+.wcb-form__wrap [type=date],
+.wcb-form__wrap [type=datetime-local],
+.wcb-form__wrap [type=month],
+.wcb-form__wrap [type=search],
+.wcb-form__wrap [type=tel],
+.wcb-form__wrap [type=time],
+.wcb-form__wrap [type=week],
+.wcb-form__wrap [multiple],
+.wcb-form__wrap textarea,
+.wcb-form__wrap select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  border-color: #6b7280;
+  border-width: 1px;
+  border-radius: 0px;
+  padding-top: 0.5rem;
+  padding-right: 0.75rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  /*  */
+  width: 100%;
+}
+.wcb-form__wrap button,
+.wcb-form__wrap input,
+.wcb-form__wrap optgroup,
+.wcb-form__wrap select,
+.wcb-form__wrap textarea {
+  font-family: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+.wcb-form__wrap .wcb-form__label {
+  display: block;
+  color: #374151;
+}
+.wcb-form__wrap .wcb-form__label.required::after {
+  color: #f00;
+  content: " *";
+}
+
+/*# sourceMappingURL=style-index.css.map*/

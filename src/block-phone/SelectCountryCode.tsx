@@ -1,13 +1,13 @@
 import React, { FC } from "react";
 
 interface Props extends Pick<HTMLSelectElement, "value"> {
-	onChange: (value: string) => void;
+	onChange?: (value: string) => void;
 	className?: string;
 }
 
 const SelectCountryCode: FC<Props> = ({
 	className = "",
-	onChange,
+	onChange = () => {},
 	...props
 }) => {
 	const data = [

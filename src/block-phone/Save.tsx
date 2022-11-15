@@ -11,7 +11,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const { uniqueId, general_general, label } = attributes;
 
 	//
-	const blockProps = useBlockProps.save({ className: "wcb-email__wrap" });
+	const blockProps = useBlockProps.save({ className: "wcb-phone__wrap" });
 
 	return (
 		<label {...blockProps} data-uniqueid={uniqueId}>
@@ -20,13 +20,14 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 				isRequired={general_general.isRequired}
 			/>
 			<div className="wcb-phone__inner">
-				{/* <SelectCountryCode value={} /> */}
+				<SelectCountryCode value={attributes.countryCode} />
 				<input
 					className="wcb-phone__tel-input"
 					type="tel"
 					placeholder={general_general.placeholder}
 					required={general_general.isRequired}
 					autoComplete={general_general.autocomplete}
+					pattern={general_general.pattern}
 				/>
 			</div>
 		</label>

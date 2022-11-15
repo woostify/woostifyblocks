@@ -1639,7 +1639,8 @@ const Edit = props => {
     type: "tel",
     placeholder: general_general.placeholder,
     required: general_general.isRequired,
-    autoComplete: general_general.autocomplete
+    autoComplete: general_general.autocomplete,
+    pattern: general_general.pattern
   }))));
 };
 
@@ -1666,10 +1667,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "./src/block-phone/style.scss");
 /* harmony import */ var _block_form_FormInputLabelRichTextContent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../block-form/FormInputLabelRichTextContent */ "./src/block-form/FormInputLabelRichTextContent.tsx");
+/* harmony import */ var _SelectCountryCode__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SelectCountryCode */ "./src/block-phone/SelectCountryCode.tsx");
 
 
 
 // @ts-ignore
+
 
 
 
@@ -1684,7 +1687,7 @@ function save(_ref) {
   } = attributes; //
 
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-    className: "wcb-email__wrap"
+    className: "wcb-phone__wrap"
   });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, blockProps, {
     "data-uniqueid": uniqueId
@@ -1693,12 +1696,15 @@ function save(_ref) {
     isRequired: general_general.isRequired
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "wcb-phone__inner"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_SelectCountryCode__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    value: attributes.countryCode
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
     className: "wcb-phone__tel-input",
     type: "tel",
     placeholder: general_general.placeholder,
     required: general_general.isRequired,
-    autoComplete: general_general.autocomplete
+    autoComplete: general_general.autocomplete,
+    pattern: general_general.pattern
   })));
 }
 
@@ -1723,7 +1729,7 @@ __webpack_require__.r(__webpack_exports__);
 const SelectCountryCode = _ref => {
   let {
     className = "",
-    onChange,
+    onChange = () => {},
     ...props
   } = _ref;
   const data = [{
@@ -2732,7 +2738,8 @@ __webpack_require__.r(__webpack_exports__);
 const WCB_PHONE_PANEL_GENERAL_DEMO = {
   autocomplete: "tel-national",
   isRequired: true,
-  placeholder: "123 45 678"
+  placeholder: "123 45 678",
+  pattern: "[0-9]{3}-[0-9]{3}-[0-9]{4}"
 };
 
 const WcbPhonePanelGeneral = _ref => {
@@ -2746,7 +2753,8 @@ const WcbPhonePanelGeneral = _ref => {
   const {
     autocomplete,
     isRequired,
-    placeholder
+    placeholder,
+    pattern
   } = panelData;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     initialOpen: initialOpen,
@@ -2769,7 +2777,25 @@ const WcbPhonePanelGeneral = _ref => {
     value: "off"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Off", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("option", {
     value: "tel-national"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Phone", "wcb"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalInputControl, {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Phone", "wcb"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Pattern", "wcb"),
+    value: pattern,
+    onChange: selection => {
+      setAttr__({ ...panelData,
+        pattern: selection
+      });
+    } // @ts-ignore
+    ,
+    __nextHasNoMarginBottom: true
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("option", {
+    value: ""
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("None", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("option", {
+    value: "[0-9]{3}-?[0-9]{2}-?[0-9]{3}"
+  }, "123-45-678"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("option", {
+    value: "[0-9]{3}-?[0-9]{3}-?[0-9]{4}"
+  }, "123-456-7890"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("option", {
+    value: "[0-9]{3}s?[0-9]{3}s?[0-9]{4}"
+  }, "123 456 7890")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalInputControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("PLACEHOLDER", "wcb"),
     value: placeholder,
     onChange: nextValue => {

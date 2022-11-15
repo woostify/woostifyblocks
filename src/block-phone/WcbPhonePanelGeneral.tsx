@@ -12,6 +12,7 @@ import { MyInputAutocomplete } from "./types";
 export interface WCB_PHONE_PANEL_GENERAL {
 	autocomplete: MyInputAutocomplete;
 	placeholder: string;
+	pattern: string;
 	isRequired: boolean;
 }
 
@@ -19,6 +20,7 @@ export const WCB_PHONE_PANEL_GENERAL_DEMO: WCB_PHONE_PANEL_GENERAL = {
 	autocomplete: "tel-national",
 	isRequired: true,
 	placeholder: "123 45 678",
+	pattern: "[0-9]{3}-[0-9]{3}-[0-9]{4}",
 };
 
 interface Props
@@ -34,7 +36,7 @@ const WcbPhonePanelGeneral: FC<Props> = ({
 	onToggle,
 	opened,
 }) => {
-	const { autocomplete, isRequired, placeholder } = panelData;
+	const { autocomplete, isRequired, placeholder, pattern } = panelData;
 
 	return (
 		<PanelBody
@@ -58,6 +60,24 @@ const WcbPhonePanelGeneral: FC<Props> = ({
 				>
 					<option value="off">{__("Off", "wcb")}</option>
 					<option value="tel-national">{__("Phone", "wcb")}</option>
+				</SelectControl>
+
+				<SelectControl
+					label={__("Pattern", "wcb")}
+					value={pattern}
+					onChange={(selection) => {
+						setAttr__({
+							...panelData,
+							pattern: selection,
+						});
+					}}
+					// @ts-ignore
+					__nextHasNoMarginBottom
+				>
+					<option value="">{__("None", "wcb")}</option>
+					<option value="[0-9]{3}-?[0-9]{2}-?[0-9]{3}">123-45-678</option>
+					<option value="[0-9]{3}-?[0-9]{3}-?[0-9]{4}">123-456-7890</option>
+					<option value="[0-9]{3}s?[0-9]{3}s?[0-9]{4}">123 456 7890</option>
 				</SelectControl>
 
 				<InputControl

@@ -103,6 +103,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 						placeholder={general_general.placeholder}
 						required={general_general.isRequired}
 						autoComplete={general_general.autocomplete}
+						pattern={general_general.pattern}
 					/>
 				</div>
 			</div>
