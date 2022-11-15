@@ -2,9 +2,9 @@ import { Global, CSSObject } from "@emotion/react";
 import React, { FC } from "react";
 import { getAdvanveDivWrapStyles } from "../block-container/getAdvanveStyles";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
-import { WcbBlockHeadingAttrs } from "./attributes";
+import { WcbAttrs } from "./attributes";
 
-interface Props extends WcbBlockHeadingAttrs {}
+interface Props extends WcbAttrs {}
 
 const GlobalCss: FC<Props> = (attrs) => {
 	const {

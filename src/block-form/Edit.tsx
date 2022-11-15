@@ -34,6 +34,10 @@ import WcbFormPanelAction from "./WcbFormPanelAction";
 import WcbFormPanelGoogleRecaptcha from "./WcbFormPanelGoogleRecaptcha";
 import WcbFormPanel_StyleLabel from "./WcbFormPanel_StyleLabel";
 import WcbFormPanel_StyleInput from "./WcbFormPanel_StyleInput";
+import WcbFormPanel_StyleCheckBoxRadio from "./WcbFormPanel_StyleCheckBoxRadio";
+import WcbPostGridPanel_StyleSubmitButton from "./WcbPostGridPanel_StyleSubmitButton";
+import WcbPostGridPanel_StyleMessages from "./WcbPostGridPanel_StyleMessages";
+import WcbFormPanel_StyleSpacing from "./WcbFormPanel_StyleSpacing";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -47,6 +51,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		general_gg_recaptcha,
 		style_label,
 		style_input,
+		style_checkbox_radio_toggle,
+		style_submit_button,
+		style_messages,
+		style_spacing,
 	} = attributes;
 	//  COMMON HOOKS
 	const { myCache, ref } = useCreateCacheEmotion();
@@ -126,10 +134,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 						<WcbFormPanel_StyleLabel
 							onToggle={() => handleTogglePanel("Styles", "_StyleLabel", true)}
 							initialOpen={
-								tabGeneralIsPanelOpen === "_StyleLabel" ||
-								tabGeneralIsPanelOpen === "first"
+								tabStylesIsPanelOpen === "_StyleLabel" ||
+								tabStylesIsPanelOpen === "first"
 							}
-							opened={tabGeneralIsPanelOpen === "_StyleLabel" || undefined}
+							opened={tabStylesIsPanelOpen === "_StyleLabel" || undefined}
 							//
 							setAttr__={(data) => {
 								setAttributes({ style_label: data });
@@ -139,13 +147,63 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 						<WcbFormPanel_StyleInput
 							onToggle={() => handleTogglePanel("Styles", "_StyleInput")}
-							initialOpen={tabGeneralIsPanelOpen === "_StyleInput"}
-							opened={tabGeneralIsPanelOpen === "_StyleInput" || undefined}
+							initialOpen={tabStylesIsPanelOpen === "_StyleInput"}
+							opened={tabStylesIsPanelOpen === "_StyleInput" || undefined}
 							//
 							setAttr__={(data) => {
 								setAttributes({ style_input: data });
 							}}
 							panelData={style_input}
+						/>
+
+						<WcbFormPanel_StyleCheckBoxRadio
+							onToggle={() =>
+								handleTogglePanel("Styles", "_StyleCheckBoxRadio")
+							}
+							initialOpen={tabStylesIsPanelOpen === "_StyleCheckBoxRadio"}
+							opened={
+								tabStylesIsPanelOpen === "_StyleCheckBoxRadio" || undefined
+							}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_checkbox_radio_toggle: data });
+							}}
+							panelData={style_checkbox_radio_toggle}
+						/>
+
+						<WcbPostGridPanel_StyleSubmitButton
+							onToggle={() => handleTogglePanel("Styles", "_StyleSubmitButton")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleSubmitButton"}
+							opened={
+								tabStylesIsPanelOpen === "_StyleSubmitButton" || undefined
+							}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_submit_button: data });
+							}}
+							panelData={style_submit_button}
+						/>
+
+						<WcbPostGridPanel_StyleMessages
+							onToggle={() => handleTogglePanel("Styles", "_StyleMessages")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleMessages"}
+							opened={tabStylesIsPanelOpen === "_StyleMessages" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_messages: data });
+							}}
+							panelData={style_messages}
+						/>
+
+						<WcbFormPanel_StyleSpacing
+							onToggle={() => handleTogglePanel("Styles", "_StyleSpacing")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleSpacing"}
+							opened={tabStylesIsPanelOpen === "_StyleSpacing" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_spacing: data });
+							}}
+							panelData={style_spacing}
 						/>
 					</>
 				);
@@ -170,7 +228,17 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	};
 
 	const {} = attributes;
-	const ALLOWED_BLOCKS = ["wcb/input"];
+	const ALLOWED_BLOCKS = [
+		"wcb/input",
+		"wcb/email",
+		"wcb/phone",
+		"wcb/textarea",
+		"wcb/toggle",
+		"wcb/checkbox",
+		"wcb/radio",
+		"wcb/password",
+		"wcb/select",
+	];
 
 	const blockProps = useBlockProps({
 		className: `wcb-form__inner`,

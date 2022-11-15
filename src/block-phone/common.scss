@@ -1,0 +1,12 @@
+.wcb-phone__inner {
+	display: flex;
+	@apply space-x-2;
+}
+
+.wcb-phone__country-code-select {
+	flex: 1;
+}
+
+.wcb-phone__tel-input {
+	flex: 2;
+}

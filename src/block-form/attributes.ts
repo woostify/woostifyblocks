@@ -24,6 +24,10 @@ import {
 	WCB_FORM_PANEL_SUBMIT_BUTTON_DEMO,
 } from "./WcbFormPanelSubmitButton";
 import {
+	WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE,
+	WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO,
+} from "./WcbFormPanel_StyleCheckBoxRadio";
+import {
 	WCB_FORM_PANEL_STYLE_INPUT,
 	WCB_FORM_PANEL_STYLE_INPUT_DEMO,
 } from "./WcbFormPanel_StyleInput";
@@ -31,6 +35,18 @@ import {
 	WCB_FORM_PANEL_STYLE_LABEL,
 	WCB_FORM_PANEL_STYLE_LABEL_DEMO,
 } from "./WcbFormPanel_StyleLabel";
+import {
+	WCB_FORM_PANEL_STYLE_SPACING,
+	WCB_FORM_PANEL_STYLE_SPACING_DEMO,
+} from "./WcbFormPanel_StyleSpacing";
+import {
+	WCB_FORM_PANEL_STYLE_MESSAGES,
+	WCB_FORM_PANEL_STYLE_MESSAGES_DEMO,
+} from "./WcbPostGridPanel_StyleMessages";
+import {
+	WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON,
+	WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON_DEMO,
+} from "./WcbPostGridPanel_StyleSubmitButton";
 export interface WcbAttrs {
 	uniqueId: string;
 	//
@@ -41,6 +57,10 @@ export interface WcbAttrs {
 	//
 	style_label: WCB_FORM_PANEL_STYLE_LABEL;
 	style_input: WCB_FORM_PANEL_STYLE_INPUT;
+	style_checkbox_radio_toggle: WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE;
+	style_submit_button: WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON;
+	style_messages: WCB_FORM_PANEL_STYLE_MESSAGES;
+	style_spacing: WCB_FORM_PANEL_STYLE_SPACING;
 	//
 	advance_responsiveCondition: MyResponsiveConditionControlData;
 	advance_zIndex: MyZIndexControlData;
@@ -77,6 +97,22 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	style_input: {
 		type: "object",
 		default: WCB_FORM_PANEL_STYLE_INPUT_DEMO,
+	},
+	style_checkbox_radio_toggle: {
+		type: "object",
+		default: WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO,
+	},
+	style_submit_button: {
+		type: "object",
+		default: WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON_DEMO,
+	},
+	style_messages: {
+		type: "object",
+		default: WCB_FORM_PANEL_STYLE_MESSAGES_DEMO,
+	},
+	style_spacing: {
+		type: "object",
+		default: WCB_FORM_PANEL_STYLE_SPACING_DEMO,
 	},
 
 	// ADVANCE

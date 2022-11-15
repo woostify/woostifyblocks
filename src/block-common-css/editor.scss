@@ -39,6 +39,9 @@
 			@apply mb-0 #{!important};
 		}
 	}
+
+	.components-input-control__container,
+	.components-textarea-control__input,
 	.components-combobox-control__suggestions-container,
 	.components-toggle-group-control,
 	.components-toggle-group-control-option-base,
@@ -47,16 +50,13 @@
 	.components-form-token-field__input-container {
 		@apply rounded-lg;
 	}
+
 	.components-toggle-group-control > [role="presentation"] {
 		@apply rounded-md;
 	}
 
 	.components-input-control__backdrop {
 		@apply rounded-lg border-slate-200;
-	}
-
-	.components-input-control__container {
-		@apply rounded-lg;
 	}
 
 	.components-custom-gradient-picker {

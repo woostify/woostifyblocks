@@ -86,6 +86,7 @@ const WcbFormPanel_StyleInput: FC<Props> = ({
 		{ name: "Hover", title: __("Hover", "wcb") },
 		{ name: "Active", title: __("Active", "wcb") },
 	];
+	const initialTabName: TabsHere = "Normal";
 
 	return (
 		<PanelBody
@@ -94,17 +95,17 @@ const WcbFormPanel_StyleInput: FC<Props> = ({
 			opened={opened}
 			title={__("Input", "wcb")}
 		>
-			<div className={"space-y-5"}>
+			<div className={"space-y-4"}>
 				<TabPanel
 					className={`wcb-bodyControls__panel `}
 					activeClass="active-tab"
-					initialTabName="Normal"
+					initialTabName={initialTabName}
 					tabs={PanelTab}
 				>
 					{(tab) => (
-						<>
+						<div className="space-y-3.5">
 							<MyColorPicker
-								label={__("Placeholder Color", "wcb")}
+								label={__("Placeholder color", "wcb")}
 								color={bgAndPlaceholder[tab.name as TabsHere].placeholderColor}
 								onChange={(value) => {
 									setAttr__({
@@ -119,7 +120,7 @@ const WcbFormPanel_StyleInput: FC<Props> = ({
 								}}
 							/>
 							<MyColorPicker
-								label={__("Background Color", "wcb")}
+								label={__("Background color", "wcb")}
 								color={bgAndPlaceholder[tab.name as TabsHere].backgroundColor}
 								onChange={(value) => {
 									setAttr__({
@@ -133,7 +134,7 @@ const WcbFormPanel_StyleInput: FC<Props> = ({
 									});
 								}}
 							/>
-						</>
+						</div>
 					)}
 				</TabPanel>
 				<div className={"space-y-3.5"}>

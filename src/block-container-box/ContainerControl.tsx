@@ -152,10 +152,11 @@ const ContainerControl: FC<Props> = ({
 					{__("Minimum Height", "wcb")}
 				</MyLabelControl>
 				<UnitControl
-					className="flex-grow ml-3"
+					className="components-spacing-sizes-control__custom-value-input flex-grow ml-3"
 					units={units}
 					value={MIN_HEIGHT}
 					onChange={handleChangeMinHeight}
+					// size={"__unstable-large"}
 				/>
 			</div>
 		);

@@ -41,15 +41,19 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
         );
         register_block_type(
             WCB_BUILD_PATH . '/block-form',
-            [
-                // "render_callback"     => "",
-            ]
+            []
         );
         register_block_type(
             WCB_BUILD_PATH . '/block-input',
-            [
-                // "render_callback"     => "",
-            ]
+            []
+        );
+        register_block_type(
+            WCB_BUILD_PATH . '/block-email',
+            []
+        );
+        register_block_type(
+            WCB_BUILD_PATH . '/block-phone',
+            []
         );
     }
 }

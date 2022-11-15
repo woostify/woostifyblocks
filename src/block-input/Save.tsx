@@ -1,29 +1,29 @@
 import React from "react";
 import { __ } from "@wordpress/i18n";
-import { useBlockProps } from "@wordpress/block-editor";
+// @ts-ignore
+import { RichText, useBlockProps } from "@wordpress/block-editor";
 import { WcbAttrs } from "./attributes";
-import SaveCommon from "../components/SaveCommon";
 import "./style.scss";
+import { FormInputLabelRichTextContent } from "../block-form/FormInputLabelRichTextContent";
 
 export default function save({ attributes }: { attributes: WcbAttrs }) {
-	const { uniqueId, advance_responsiveCondition, advance_zIndex } = attributes;
-	//
+	const { uniqueId, general_general } = attributes;
 
-	const newAttrForSave: Omit<WcbAttrs, "heading" | "subHeading"> = {
-		uniqueId,
-		advance_responsiveCondition,
-		advance_zIndex,
-	};
 	//
-	const blockProps = useBlockProps.save({ className: "wcb-default__wrap" });
+	const blockProps = useBlockProps.save({ className: "wcb-input__wrap" });
+
 	return (
-		<SaveCommon
-			attributes={newAttrForSave}
-			className="wcb-default__wrap"
-			uniqueId={uniqueId}
-			{...blockProps}
-		>
-			<div>CHILD</div>
-		</SaveCommon>
+		<label {...blockProps} data-uniqueid={uniqueId}>
+			<FormInputLabelRichTextContent
+				value={attributes.label}
+				isRequired={general_general.isRequired}
+			/>
+			<input
+				type="text"
+				placeholder={general_general.placeholder}
+				required={general_general.isRequired}
+				autoComplete={general_general.autocomplete}
+			/>
+		</label>
 	);
 }

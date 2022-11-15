@@ -8,11 +8,10 @@
 	"icon": "heart",
 	"description": "Example static block scaffolded with Create Block tool.",
 	"supports": {
-		"html": false
+		"__experimentalSelector": "span,label"
 	},
 	"textdomain": "wcb-blocks",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
-	"style": "file:./style-index.css",
-	"viewScript": "file:./FrontendStyles.js"
+	"style": "file:./style-index.css"
 }

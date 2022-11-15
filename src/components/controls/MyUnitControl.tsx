@@ -39,7 +39,13 @@ const MyUnitControl: FC<Props> = ({
 				{label}
 			</MyLabelControl>
 			<div className="flex-1">
-				<UnitControl onChange={onChange} value={value} label="" units={units} />
+				<UnitControl
+					onChange={onChange}
+					value={value}
+					label=""
+					units={units}
+					// size={"__unstable-large"}
+				/>
 			</div>
 		</div>
 	);

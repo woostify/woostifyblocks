@@ -43,7 +43,7 @@ const WcbFormPanel_StyleLabel: FC<Props> = ({
 			opened={opened}
 			title={__("Label", "wcb")}
 		>
-			<div className={"space-y-5"}>
+			<div className={"space-y-4"}>
 				<MyTypographyControl
 					typographyControl={typography}
 					setAttrs__typography={(typography) => {
