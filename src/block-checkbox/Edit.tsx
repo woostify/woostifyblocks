@@ -1,5 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import { RichText, useBlockProps } from "@wordpress/block-editor";
+import _ from "lodash";
 import React, { useEffect, FC } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
@@ -14,10 +15,12 @@ import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import WcbCheckboxPanelGeneral from "./WcbCheckboxPanelGeneral";
 import { FormInputLabelRichText } from "../block-form/FormInputLabelRichText";
 import { PencilIcon, PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import converUniqueId from "../utils/converUniqueId";
 
 export interface MyCheckboxOption {
 	label: string;
 	value: string;
+	disabled?: boolean;
 }
 export const MY_CHECK_BOX_OPTIONS_DEMO: MyCheckboxOption[] = [
 	{ label: "Checkbox label", value: "checkbox-value" },
@@ -38,11 +41,18 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	} = useSetBlockPanelInfo(uniqueId);
 
 	const UNIQUE_ID = wrapBlockProps.id;
+	const CHECKBOX_NAME = converUniqueId(uniqueId, "checkbox");
+
 	useEffect(() => {
 		setAttributes({
 			uniqueId: UNIQUE_ID,
 		});
 	}, [UNIQUE_ID]);
+
+	//
+	const converValueFromString = (text: string) => {
+		return text.replace(/ /g, "-");
+	};
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
@@ -77,49 +87,134 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 	const renderCheckboxOptions = () => {
 		return (attributes.options || []).map((item) => (
-			<>
+			<div>
 				<label className="wcb-checkbox__option">
 					<input
 						type="checkbox"
 						className="wcb-checkbox__option-input"
 						value={item.value}
-						name="xxx"
+						required={general_general.isRequired}
+						name={CHECKBOX_NAME}
 					/>
 					<span className="wcb-checkbox__option-label">{item.label}</span>
 				</label>
-				<br />
-			</>
+			</div>
 		));
+	};
+
+	const renderAddnewButton = () => {
+		return (
+			<div className="py-3 flex justify-center ">
+				<button
+					type="button"
+					className="relative flex w-full max-w-md items-center justify-center rounded-lg px-5 h-10 bg-sky-100/80 hover:bg-sky-100 text-sky-900 text-sm font-medium"
+					onClick={(e) => {
+						e.preventDefault();
+						setAttributes({
+							options: [
+								...(attributes.options || []),
+								MY_CHECK_BOX_OPTIONS_DEMO[0],
+							],
+						});
+					}}
+				>
+					<PlusIcon className="w-5 h-5" />
+					<span className="ml-2.5">{__("Add option", "wcb")}</span>
+				</button>
+			</div>
+		);
+	};
+
+	const renderCheckBoxEditItem = (item: MyCheckboxOption, index: number) => {
+		return (
+			<div
+				key={index + "-"}
+				className="flex items-center justify-between space-x-2"
+			>
+				<label className="wcb-checkbox__option flex-shrink-0">
+					<input
+						type="checkbox"
+						className="wcb-checkbox__option-input"
+						name={CHECKBOX_NAME}
+					/>
+				</label>
+				<div className="flex-1 flex space-x-2">
+					<label className="flex-1 flex ">
+						<RichText
+							onChange={(value) => {
+								setAttributes({
+									options: attributes.options.map((item, j) => {
+										if (j !== index) {
+											return item;
+										}
+										return {
+											...item,
+											label: value || "",
+										};
+									}),
+								});
+							}}
+							value={item.label}
+							tagName="span"
+							className="block flex-1 p-2 rounded-lg border border-slate-300 text-slate-500 text-sm"
+						/>
+					</label>
+					<label className="flex-1 flex">
+						<RichText
+							onChange={(value) => {
+								setAttributes({
+									options: attributes.options.map((item, j) => {
+										if (j !== index) {
+											return item;
+										}
+										return {
+											...item,
+											value: converValueFromString(value || ""),
+										};
+									}),
+								});
+							}}
+							value={item.value}
+							tagName="span"
+							className="block flex-1 p-2 rounded-lg border border-slate-300 text-slate-500 text-sm"
+						/>
+					</label>
+				</div>
+				<button
+					className="flex-shrink-0 inline-flex items-center justify-center rounded-md h-8 w-8 bg-red-50 hover:bg-red-100 text-red-600"
+					title={__("Remove", "wcb")}
+					onClick={() => {
+						setAttributes({
+							options: attributes.options.filter((_, j) => j !== index),
+						});
+					}}
+				>
+					<XMarkIcon className="w-5 h-5" />
+				</button>
+			</div>
+		);
 	};
 
 	const renderCheckboxOptionsEditing = () => {
 		return (
-			<div className="w-full flex flex-col divide-y">
-				{(attributes.options || []).map((item) => (
-					<>
-						<div className="flex items-center justify-between group">
-							<label className="wcb-checkbox__option py-2">
-								<input
-									type="checkbox"
-									className="wcb-checkbox__option-input"
-									value={item.value}
-									name="xxx"
-								/>
-								<span className="wcb-checkbox__option-label truncate">
-									{item.label}
-								</span>
-							</label>
-							<div className="hidden group-hover:inline-flex space-x-1 flex-shrink-0">
-								<button className="flex items-center justify-center w-8 h-8 rounded-md bg-sky-500 text-white">
-									<PencilIcon className="w-4 h-4" />
-								</button>
-								<button className="flex items-center justify-center w-8 h-8 rounded-md bg-red-500 text-white">
-									<XMarkIcon className="w-4 h-4" />
-								</button>
-							</div>
-						</div>
-					</>
-				))}
+			<div className="w-full flex flex-col space-y-2 p-4 my-2.5 rounded-lg border border-slate-300">
+				{/* LABEL */}
+				<div className="flex items-center justify-between space-x-2">
+					<label className="wcb-checkbox__option ">
+						<input type="checkbox" className="opacity-0" />
+					</label>
+					<div className="flex-1 flex space-x-2 text-base font-medium">
+						<label className="flex-1">{__("Label", "wcb")}</label>
+						<label className="flex-1">{__("Value", "wcb")}</label>
+						<button className=" w-8 opacity-0"></button>
+					</div>
+				</div>
+
+				{/* LOOP */}
+				{(attributes.options || []).map(renderCheckBoxEditItem)}
+
+				{/* BTN ADDNEW */}
+				{renderAddnewButton()}
 			</div>
 		);
 	};
@@ -149,32 +244,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				/>
 
 				{isSelected ? renderCheckboxOptionsEditing() : renderCheckboxOptions()}
-
-				<hr className="w-full mt-4 mb-2" />
-				<div className="my-2 flex items-end space-x-2">
-					<label className="flex-1">
-						<span>Option label</span>
-						<input className="w-full rounded-lg" type="text" />
-					</label>
-					<label className="flex-1">
-						<span>Option value</span>
-						<input className="w-full rounded-lg" type="text" />
-					</label>
-					<button
-						className="flex-shrink-0 inline-flex items-center justify-center rounded-lg transition-colors text-base font-medium px-3 h-11 bg-sky-600 text-white "
-						onClick={() => {
-							setAttributes({
-								options: [
-									...(attributes.options || []),
-									MY_CHECK_BOX_OPTIONS_DEMO[0],
-								],
-							});
-						}}
-					>
-						<PlusIcon className="w-5 h-5" />
-						<span className="ml-2">Add</span>
-					</button>
-				</div>
 			</div>
 		</CacheProvider>
 	);

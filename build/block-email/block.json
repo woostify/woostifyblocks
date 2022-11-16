@@ -3,6 +3,9 @@
   "apiVersion": 2,
   "name": "wcb/email",
   "version": "0.1.0",
+  "parent": [
+    "wcb/form"
+  ],
   "title": "Email",
   "category": "wcb-blocks",
   "icon": "heart",

@@ -3,6 +3,9 @@
   "apiVersion": 2,
   "name": "wcb/textarea",
   "version": "0.1.0",
+  "parent": [
+    "wcb/form"
+  ],
   "title": "Textarea",
   "category": "wcb-blocks",
   "icon": "heart",

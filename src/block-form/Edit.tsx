@@ -9,6 +9,7 @@ import {
 } from "@wordpress/block-editor";
 import { get } from "lodash";
 import { PanelBody } from "@wordpress/components";
+import { useInstanceId } from "@wordpress/compose";
 import React, { useEffect, FC } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
@@ -238,6 +239,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		"wcb/radio",
 		"wcb/password",
 		"wcb/select",
+		"wcb/url",
+		"wcb/hidden",
+		"wcb/date",
+		"wcb/accept",
 	];
 
 	const blockProps = useBlockProps({
@@ -249,23 +254,19 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	});
 	//
 
-	const blockWrapProps = useBlockProps({
-		ref,
-		className: `wcb-form__wrap p-10 ${uniqueId}`,
-	});
 	return (
 		<CacheProvider value={myCache}>
 			<div
-				{...blockWrapProps}
-				className={`${blockWrapProps.className} `}
-				id={uniqueId}
+				{...wrapBlockProps}
+				className={`wcb-form__wrap p-10 ${uniqueId} ${wrapBlockProps.className} `}
+				// id={uniqueId}
 				data-uniqueid={uniqueId}
 			>
 				{/*  */}
 				<GlobalCss {...attributes} />
 				{/*  */}
 
-				<div {...innerBlocksProps} />
+				<form {...innerBlocksProps} name={useInstanceId(Edit)} />
 				<HOCInspectorControls
 					uniqueId={uniqueId}
 					renderTabPanels={renderTabBodyPanels}

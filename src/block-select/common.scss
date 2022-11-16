@@ -1,0 +1,13 @@
+.wcb-select__wrap {
+	label {
+		@apply select-none;
+	}
+}
+
+.wcb-select__option {
+	@apply inline-flex items-center;
+}
+
+.wcb-select__option-label {
+	@apply ml-2;
+}

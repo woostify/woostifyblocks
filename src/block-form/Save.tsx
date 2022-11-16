@@ -25,7 +25,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			uniqueId={uniqueId}
 			{...blockProps}
 		>
-			<div {...innerBlocksProps} />
+			<form {...innerBlocksProps} />
 		</SaveCommon>
 	);
 }

@@ -2,6 +2,9 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 2,
   "name": "wcb/input",
+  "parent": [
+    "wcb/form"
+  ],
   "version": "0.1.0",
   "title": "Input",
   "category": "wcb-blocks",

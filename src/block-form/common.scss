@@ -53,4 +53,11 @@
 			content: " *";
 		}
 	}
+	.wcb-checkbox__option-label {
+		color: #374151;
+		&.required::after {
+			color: #f00;
+			content: " *";
+		}
+	}
 }

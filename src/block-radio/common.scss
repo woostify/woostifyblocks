@@ -1,0 +1,13 @@
+.wcb-radio__wrap {
+	label {
+		@apply select-none;
+	}
+}
+
+.wcb-radio__option {
+	@apply inline-flex items-center;
+}
+
+.wcb-radio__option-label {
+	@apply ml-2;
+}

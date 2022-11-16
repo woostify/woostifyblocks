@@ -1458,20 +1458,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/HOCInspectorControls */ "./src/components/HOCInspectorControls.tsx");
-/* harmony import */ var _hooks_useCreateCacheEmotion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/useCreateCacheEmotion */ "./src/hooks/useCreateCacheEmotion.ts");
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-element-6a883da9.browser.esm.js");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./editor.scss */ "./src/block-checkbox/editor.scss");
-/* harmony import */ var _hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/useSetBlockPanelInfo */ "./src/hooks/useSetBlockPanelInfo.ts");
-/* harmony import */ var _WcbCheckboxPanelGeneral__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WcbCheckboxPanelGeneral */ "./src/block-checkbox/WcbCheckboxPanelGeneral.tsx");
-/* harmony import */ var _block_form_FormInputLabelRichText__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../block-form/FormInputLabelRichText */ "./src/block-form/FormInputLabelRichText.tsx");
-/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/esm/PencilIcon.js");
-/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/esm/XMarkIcon.js");
-/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/esm/PlusIcon.js");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/HOCInspectorControls */ "./src/components/HOCInspectorControls.tsx");
+/* harmony import */ var _hooks_useCreateCacheEmotion__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hooks/useCreateCacheEmotion */ "./src/hooks/useCreateCacheEmotion.ts");
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-element-6a883da9.browser.esm.js");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./editor.scss */ "./src/block-checkbox/editor.scss");
+/* harmony import */ var _hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../hooks/useSetBlockPanelInfo */ "./src/hooks/useSetBlockPanelInfo.ts");
+/* harmony import */ var _WcbCheckboxPanelGeneral__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./WcbCheckboxPanelGeneral */ "./src/block-checkbox/WcbCheckboxPanelGeneral.tsx");
+/* harmony import */ var _block_form_FormInputLabelRichText__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../block-form/FormInputLabelRichText */ "./src/block-form/FormInputLabelRichText.tsx");
+/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/esm/PlusIcon.js");
+/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/esm/XMarkIcon.js");
+/* harmony import */ var _utils_converUniqueId__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../utils/converUniqueId */ "./src/utils/converUniqueId.ts");
+
+
 
 
 
@@ -1505,8 +1509,8 @@ const Edit = props => {
   const {
     myCache,
     ref
-  } = (0,_hooks_useCreateCacheEmotion__WEBPACK_IMPORTED_MODULE_5__["default"])();
-  const wrapBlockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
+  } = (0,_hooks_useCreateCacheEmotion__WEBPACK_IMPORTED_MODULE_6__["default"])();
+  const wrapBlockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
     ref
   });
   const {
@@ -1515,18 +1519,24 @@ const Edit = props => {
     tabGeneralIsPanelOpen,
     tabStylesIsPanelOpen,
     handleTogglePanel
-  } = (0,_hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_7__["default"])(uniqueId);
+  } = (0,_hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_8__["default"])(uniqueId);
   const UNIQUE_ID = wrapBlockProps.id;
-  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
+  const CHECKBOX_NAME = (0,_utils_converUniqueId__WEBPACK_IMPORTED_MODULE_11__["default"])(uniqueId, "checkbox");
+  (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
     setAttributes({
       uniqueId: UNIQUE_ID
     });
   }, [UNIQUE_ID]); //
 
+  const converValueFromString = text => {
+    return text.replace(/ /g, "-");
+  }; //
+
+
   const renderTabBodyPanels = tab => {
     switch (tab.name) {
       case "General":
-        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbCheckboxPanelGeneral__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbCheckboxPanelGeneral__WEBPACK_IMPORTED_MODULE_9__["default"], {
           onToggle: () => handleTogglePanel("General", "General", true),
           initialOpen: tabGeneralIsPanelOpen === "General" || tabGeneralIsPanelOpen === "first",
           opened: tabGeneralIsPanelOpen === "General" || undefined //
@@ -1550,54 +1560,131 @@ const Edit = props => {
   };
 
   const renderCheckboxOptions = () => {
-    return (attributes.options || []).map(item => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
+    return (attributes.options || []).map(item => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
       className: "wcb-checkbox__option"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
       type: "checkbox",
       className: "wcb-checkbox__option-input",
       value: item.value,
-      name: "xxx"
+      required: general_general.isRequired,
+      name: CHECKBOX_NAME
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
       className: "wcb-checkbox__option-label"
-    }, item.label)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("br", null)));
+    }, item.label))));
+  };
+
+  const renderAddnewButton = () => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "py-3 flex justify-center "
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
+      type: "button",
+      className: "relative flex w-full max-w-md items-center justify-center rounded-lg px-5 h-10 bg-sky-100/80 hover:bg-sky-100 text-sky-900 text-sm font-medium",
+      onClick: e => {
+        e.preventDefault();
+        setAttributes({
+          options: [...(attributes.options || []), MY_CHECK_BOX_OPTIONS_DEMO[0]]
+        });
+      }
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      className: "w-5 h-5"
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
+      className: "ml-2.5"
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Add option", "wcb"))));
+  };
+
+  const renderCheckBoxEditItem = (item, index) => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      key: index + "-",
+      className: "flex items-center justify-between space-x-2"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
+      className: "wcb-checkbox__option flex-shrink-0"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
+      type: "checkbox",
+      className: "wcb-checkbox__option-input",
+      name: CHECKBOX_NAME
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "flex-1 flex space-x-2"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
+      className: "flex-1 flex "
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, {
+      onChange: value => {
+        setAttributes({
+          options: attributes.options.map((item, j) => {
+            if (j !== index) {
+              return item;
+            }
+
+            return { ...item,
+              label: value || ""
+            };
+          })
+        });
+      },
+      value: item.label,
+      tagName: "span",
+      className: "block flex-1 p-2 rounded-lg border border-slate-300 text-slate-500 text-sm"
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
+      className: "flex-1 flex"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, {
+      onChange: value => {
+        setAttributes({
+          options: attributes.options.map((item, j) => {
+            if (j !== index) {
+              return item;
+            }
+
+            return { ...item,
+              value: converValueFromString(value || "")
+            };
+          })
+        });
+      },
+      value: item.value,
+      tagName: "span",
+      className: "block flex-1 p-2 rounded-lg border border-slate-300 text-slate-500 text-sm"
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
+      className: "flex-shrink-0 inline-flex items-center justify-center rounded-md h-8 w-8 bg-red-50 hover:bg-red-100 text-red-600",
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Remove", "wcb"),
+      onClick: () => {
+        setAttributes({
+          options: attributes.options.filter((_, j) => j !== index)
+        });
+      }
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      className: "w-5 h-5"
+    })));
   };
 
   const renderCheckboxOptionsEditing = () => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-      className: "w-full flex flex-col divide-y"
-    }, (attributes.options || []).map(item => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-      className: "flex items-center justify-between group"
+      className: "w-full flex flex-col space-y-2 p-4 my-2.5 rounded-lg border border-slate-300"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "flex items-center justify-between space-x-2"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
-      className: "wcb-checkbox__option py-2"
+      className: "wcb-checkbox__option "
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
       type: "checkbox",
-      className: "wcb-checkbox__option-input",
-      value: item.value,
-      name: "xxx"
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
-      className: "wcb-checkbox__option-label truncate"
-    }, item.label)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-      className: "hidden group-hover:inline-flex space-x-1 flex-shrink-0"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
-      className: "flex items-center justify-center w-8 h-8 rounded-md bg-sky-500 text-white"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      className: "w-4 h-4"
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
-      className: "flex items-center justify-center w-8 h-8 rounded-md bg-red-500 text-white"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_11__["default"], {
-      className: "w-4 h-4"
-    })))))));
+      className: "opacity-0"
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "flex-1 flex space-x-2 text-base font-medium"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
+      className: "flex-1"
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Label", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
+      className: "flex-1"
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Value", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
+      className: " w-8 opacity-0"
+    }))), (attributes.options || []).map(renderCheckBoxEditItem), renderAddnewButton());
   };
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_12__.C, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_14__.C, {
     value: myCache
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
     className: `${wrapBlockProps === null || wrapBlockProps === void 0 ? void 0 : wrapBlockProps.className} wcb-checkbox__wrap ${UNIQUE_ID}`,
     "data-uniqueid": UNIQUE_ID
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    tabs: _components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_4__.INSPECTOR_CONTROLS_TABS.filter(item => item.name !== "Styles"),
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    tabs: _components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_5__.INSPECTOR_CONTROLS_TABS.filter(item => item.name !== "Styles"),
     renderTabPanels: renderTabBodyPanels
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_block_form_FormInputLabelRichText__WEBPACK_IMPORTED_MODULE_9__.FormInputLabelRichText, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_block_form_FormInputLabelRichText__WEBPACK_IMPORTED_MODULE_10__.FormInputLabelRichText, {
     value: label,
     isRequired: general_general.isRequired,
     onChange: value => {
@@ -1605,32 +1692,7 @@ const Edit = props => {
         label: value
       });
     }
-  }), isSelected ? renderCheckboxOptionsEditing() : renderCheckboxOptions(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", {
-    className: "w-full mt-4 mb-2"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "my-2 flex items-end space-x-2"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
-    className: "flex-1"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, "Option label"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
-    className: "w-full rounded-lg",
-    type: "text"
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
-    className: "flex-1"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, "Option value"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
-    className: "w-full rounded-lg",
-    type: "text"
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
-    className: "flex-shrink-0 inline-flex items-center justify-center rounded-lg transition-colors text-base font-medium px-3 h-11 bg-sky-600 text-white ",
-    onClick: () => {
-      setAttributes({
-        options: [...(attributes.options || []), MY_CHECK_BOX_OPTIONS_DEMO[0]]
-      });
-    }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_13__["default"], {
-    className: "w-5 h-5"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
-    className: "ml-2"
-  }, "Add")))));
+  }), isSelected ? renderCheckboxOptionsEditing() : renderCheckboxOptions()));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Edit);
@@ -1656,10 +1718,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "./src/block-checkbox/style.scss");
 /* harmony import */ var _block_form_FormInputLabelRichTextContent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../block-form/FormInputLabelRichTextContent */ "./src/block-form/FormInputLabelRichTextContent.tsx");
+/* harmony import */ var _utils_converUniqueId__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/converUniqueId */ "./src/utils/converUniqueId.ts");
 
 
 
 // @ts-ignore
+
 
 
 
@@ -1670,22 +1734,33 @@ function save(_ref) {
   const {
     uniqueId,
     general_general
-  } = attributes; //
+  } = attributes;
+  const CHECKBOX_NAME = (0,_utils_converUniqueId__WEBPACK_IMPORTED_MODULE_6__["default"])(uniqueId, "checkbox"); //
 
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
     className: "wcb-checkbox__wrap"
   });
+
+  const renderCheckboxOptions = () => {
+    return (attributes.options || []).map(item => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
+      className: "wcb-checkbox__option"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
+      type: "checkbox",
+      className: "wcb-checkbox__option-input",
+      value: item.value,
+      required: general_general.isRequired,
+      name: CHECKBOX_NAME
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
+      className: "wcb-checkbox__option-label"
+    }, item.label))));
+  };
+
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, blockProps, {
     "data-uniqueid": uniqueId
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_block_form_FormInputLabelRichTextContent__WEBPACK_IMPORTED_MODULE_5__.FormInputLabelRichTextContent, {
     value: attributes.label,
     isRequired: general_general.isRequired
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
-    type: "text",
-    placeholder: general_general.placeholder,
-    required: general_general.isRequired,
-    autoComplete: general_general.autocomplete
-  }));
+  }), renderCheckboxOptions());
 }
 
 /***/ }),
@@ -2220,6 +2295,28 @@ const useSetBlockPanelInfo = uniqueId => {
 
 /***/ }),
 
+/***/ "./src/utils/converUniqueId.ts":
+/*!*************************************!*\
+  !*** ./src/utils/converUniqueId.ts ***!
+  \*************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ converUniqueId; }
+/* harmony export */ });
+function converUniqueId(text) {
+  let prefix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+  if (!text) {
+    return prefix + "converUniqueIdReturnNull";
+  }
+
+  return prefix + text.replace(/-/g, "").replace(/block/g, "");
+}
+
+/***/ }),
+
 /***/ "./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js":
 /*!**********************************************************************************!*\
   !*** ./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js ***!
@@ -2659,44 +2756,6 @@ function _extends() {
   };
   return _extends.apply(this, arguments);
 }
-
-/***/ }),
-
-/***/ "./node_modules/@heroicons/react/24/outline/esm/PencilIcon.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/@heroicons/react/24/outline/esm/PencilIcon.js ***!
-  \********************************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-
-
-function PencilIcon({
-  title,
-  titleId,
-  ...props
-}, svgRef) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", Object.assign({
-    xmlns: "http://www.w3.org/2000/svg",
-    fill: "none",
-    viewBox: "0 0 24 24",
-    strokeWidth: 1.5,
-    stroke: "currentColor",
-    "aria-hidden": "true",
-    ref: svgRef,
-    "aria-labelledby": titleId
-  }, props), title ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("title", {
-    id: titleId
-  }, title) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    d: "M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
-  }));
-}
-
-const ForwardRef = react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(PencilIcon);
-/* harmony default export */ __webpack_exports__["default"] = (ForwardRef);
 
 /***/ }),
 
@@ -3789,7 +3848,7 @@ function combine (array, callback) {
   \***************************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/checkbox","version":"0.1.0","title":"Checkbox","category":"wcb-blocks","icon":"heart","description":"Example static block scaffolded with Create Block tool.","supports":{"__experimentalSelector":"span,label"},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"parent":["wcb/form"],"name":"wcb/checkbox","version":"0.1.0","title":"Checkbox","category":"wcb-blocks","icon":"heart","description":"Example static block scaffolded with Create Block tool.","supports":{"__experimentalSelector":"span,label"},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

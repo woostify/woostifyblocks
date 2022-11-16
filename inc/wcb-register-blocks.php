@@ -63,5 +63,29 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
             WCB_BUILD_PATH . '/block-checkbox',
             []
         );
+        register_block_type(
+            WCB_BUILD_PATH . '/block-radio',
+            []
+        );
+        register_block_type(
+            WCB_BUILD_PATH . '/block-url',
+            []
+        );
+        register_block_type(
+            WCB_BUILD_PATH . '/block-select',
+            []
+        );
+        register_block_type(
+            WCB_BUILD_PATH . '/block-toggle',
+            []
+        );
+        register_block_type(
+            WCB_BUILD_PATH . '/block-date',
+            []
+        );
+        register_block_type(
+            WCB_BUILD_PATH . '/block-accept',
+            []
+        );
     }
 }
