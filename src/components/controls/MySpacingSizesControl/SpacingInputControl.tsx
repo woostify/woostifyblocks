@@ -58,20 +58,6 @@ const SpacingInputControl: FC<Props> = ({
 
 	return (
 		<div className={`${className} flex items-center space-x-2.5`}>
-			<div className="flex-1">
-				<UnitControl
-					onChange={(newSize: string) => {
-						setCurrentValue(newSize);
-						onChange(newSize);
-					}}
-					value={currentValue}
-					units={units}
-					min={minCustomValue}
-					hideLabelFromVision={true}
-					// size={"__unstable-large"}
-				/>
-			</div>
-
 			<div className="flex-[1.5]">
 				<RangeControl
 					value={customRangeValue}
@@ -89,6 +75,19 @@ const SpacingInputControl: FC<Props> = ({
 					withInputField={false}
 					onChange={handleCustomValueSliderChange}
 					className="m-0"
+				/>
+			</div>
+			<div className="flex-1">
+				<UnitControl
+					onChange={(newSize: string) => {
+						setCurrentValue(newSize);
+						onChange(newSize);
+					}}
+					value={currentValue}
+					units={units}
+					min={minCustomValue}
+					hideLabelFromVision={true}
+					// size={"__unstable-large"}
 				/>
 			</div>
 		</div>

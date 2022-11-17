@@ -6,6 +6,7 @@ import {
 	// @ts-ignore
 	__experimentalBlockVariationPicker as BlockVariationPicker,
 	store as blockEditorStore,
+	RichText,
 } from "@wordpress/block-editor";
 import { get } from "lodash";
 import { PanelBody } from "@wordpress/components";
@@ -256,9 +257,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 	return (
 		<CacheProvider value={myCache}>
-			<div
+			<form
 				{...wrapBlockProps}
-				className={`wcb-form__wrap p-10 ${uniqueId} ${wrapBlockProps.className} `}
+				className={`wcb-form__wrap ${uniqueId} ${wrapBlockProps.className} `}
 				// id={uniqueId}
 				data-uniqueid={uniqueId}
 			>
@@ -266,7 +267,22 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				<GlobalCss {...attributes} />
 				{/*  */}
 
-				<form {...innerBlocksProps} name={useInstanceId(Edit)} />
+				<div {...innerBlocksProps} name={useInstanceId(Edit)} />
+				<RichText
+					className="wcb-form__btn-submit"
+					tagName="div" // The tag here is the element output and editable in the admin
+					value={attributes.btnSubmitText} // Any existing content, either from the database or an attribute default
+					allowedFormats={["core/bold", "core/italic"]} // Allow the content to be made bold or italic, but do not allow other formatting options
+					onChange={(content) => setAttributes({ btnSubmitText: content })} // Store updated content as a block attribute
+					placeholder={__("Submit", "wcb")} // Display this text before any content has been added by the user
+				/>
+				<p className="wcb-form__successMessageText">
+					{attributes.general_general.successMessageText}
+				</p>
+				<p className="wcb-form__errorMessageText">
+					{attributes.general_general.errorMessageText}
+				</p>
+
 				<HOCInspectorControls
 					uniqueId={uniqueId}
 					renderTabPanels={renderTabBodyPanels}
@@ -275,7 +291,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					}}
 					tabDefaultActive={tabIsOpen}
 				/>
-			</div>
+			</form>
 		</CacheProvider>
 	);
 };

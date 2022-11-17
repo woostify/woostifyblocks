@@ -49,6 +49,7 @@ import {
 } from "./WcbPostGridPanel_StyleSubmitButton";
 export interface WcbAttrs {
 	uniqueId: string;
+	btnSubmitText: string;
 	//
 	general_general: WCB_FORM_PANEL_GENERAL;
 	general_submit_button: WCB_FORM_PANEL_SUBMIT_BUTTON;
@@ -70,6 +71,12 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	uniqueId: {
 		type: "string",
 		default: "",
+	},
+	btnSubmitText: {
+		type: "string",
+		source: "html",
+		selector: "button.wcb-form__btn-submit",
+		default: "Submit",
 	},
 
 	// THE ATTRS OF BLOCK HERE

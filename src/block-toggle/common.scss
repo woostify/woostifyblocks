@@ -52,8 +52,8 @@ input:checked + .wcb-toggle__slider:before {
 
 /* Rounded sliders */
 .wcb-toggle__slider.round {
-	border-radius: 34px;
+	border-radius: 9999px !important;
 	&:before {
-		border-radius: 50%;
+		border-radius: 9999px !important;
 	}
 }

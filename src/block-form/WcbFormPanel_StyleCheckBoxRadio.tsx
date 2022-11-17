@@ -1,6 +1,12 @@
-import { PanelBody, TabPanel } from "@wordpress/components";
+import {
+	Notice,
+	PanelBody,
+	RangeControl,
+	TabPanel,
+} from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
+import HelpText from "../components/controls/HelpText";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
 import {
@@ -18,24 +24,24 @@ type TabsHere = "Normal" | "Active";
 export interface WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE {
 	colors: {
 		[K in TabsHere]: {
-			color: string;
+			// color: string;
 			backgroundColor: string;
 		};
 	};
 	border: MyBorderControlData;
 	checkboxRadioSize: HasResponsive<string>;
-	toggleSize: HasResponsive<string>;
+	toggleSize: HasResponsive<number>;
 }
 
 export const WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO: WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE =
 	{
 		colors: {
-			Active: { backgroundColor: "", color: "" },
-			Normal: { backgroundColor: "", color: "" },
+			Active: { backgroundColor: "" },
+			Normal: { backgroundColor: "" },
 		},
 		border: MY_BORDER_CONTROL_DEMO,
 		checkboxRadioSize: { Desktop: "1rem" },
-		toggleSize: { Desktop: "1rem" },
+		toggleSize: { Desktop: 1 },
 	};
 
 interface Props
@@ -90,18 +96,21 @@ const WcbFormPanel_StyleCheckBoxRadio: FC<Props> = ({
 							});
 						}}
 					/>
-					<MySpacingSizesControl
-						value={toggleSizeCurrent || "1rem"}
+					<RangeControl
 						label={__("Toggle size", "wcb")}
-						onChange={(value) => {
+						value={toggleSizeCurrent || 1}
+						step={0.1}
+						onChange={(value) =>
 							setAttr__({
 								...panelData,
 								toggleSize: {
 									...toggleSize,
 									[deviceType]: value,
 								},
-							});
-						}}
+							})
+						}
+						min={1}
+						max={10}
 					/>
 				</MyDisclosure>
 
@@ -115,7 +124,7 @@ const WcbFormPanel_StyleCheckBoxRadio: FC<Props> = ({
 						{(tab) => (
 							<div className="space-y-4">
 								<MyColorPicker
-									label={__("Background color", "wcb")}
+									label={__("Color", "wcb")}
 									color={colors[tab.name as TabsHere].backgroundColor}
 									onChange={(value) => {
 										setAttr__({
@@ -123,13 +132,14 @@ const WcbFormPanel_StyleCheckBoxRadio: FC<Props> = ({
 											colors: {
 												...colors,
 												[tab.name as TabsHere]: {
+													...colors[tab.name],
 													backgroundColor: value,
 												},
 											},
 										});
 									}}
 								/>
-								<MyColorPicker
+								{/* <MyColorPicker
 									label={__("Element color", "wcb")}
 									color={colors[tab.name as TabsHere].color}
 									onChange={(value) => {
@@ -138,27 +148,36 @@ const WcbFormPanel_StyleCheckBoxRadio: FC<Props> = ({
 											colors: {
 												...colors,
 												[tab.name as TabsHere]: {
+													...colors[tab.name],
 													color: value,
 												},
 											},
 										});
 									}}
-								/>
+								/> */}
 							</div>
 						)}
 					</TabPanel>
 				</MyDisclosure>
 
-				<MyDisclosure label="Border" className="space-y-5">
-					<MyBorderControl
-						borderControl={border}
-						setAttrs__border={(data) =>
-							setAttr__({
-								...panelData,
-								border: data,
-							})
-						}
-					/>
+				<MyDisclosure label="Border" className="space-y-2.5">
+					<div className="space-y-5">
+						<MyBorderControl
+							borderControl={border}
+							setAttrs__border={(data) =>
+								setAttr__({
+									...panelData,
+									border: data,
+								})
+							}
+						/>
+					</div>
+					<HelpText>
+						{__(
+							"Border radius will be applied to Radio & Toggle only when the layout for those blocks is set to Square.",
+							"wcb"
+						)}
+					</HelpText>
 				</MyDisclosure>
 			</div>
 		</PanelBody>

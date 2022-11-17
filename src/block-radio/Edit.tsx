@@ -92,7 +92,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				<label className="wcb-radio__option">
 					<input
 						type="radio"
-						className="wcb-radio__option-input"
+						className={`wcb-radio__option-input ${general_general.layout}`}
 						value={item.value}
 						name={RADIO_NAME}
 					/>
@@ -134,7 +134,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				<label className="wcb-radio__option flex-shrink-0">
 					<input
 						type="radio"
-						className="wcb-radio__option-input"
+						className={`wcb-radio__option-input ${general_general.layout}`}
 						name={RADIO_NAME}
 					/>
 				</label>

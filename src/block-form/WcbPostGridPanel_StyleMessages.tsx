@@ -82,6 +82,7 @@ const WcbPostGridPanel_StyleMessages: FC<Props> = ({
 								setAttr__({
 									...panelData,
 									[tab.name]: {
+										...panelData[tab.name],
 										color: value,
 									},
 								});
@@ -94,6 +95,7 @@ const WcbPostGridPanel_StyleMessages: FC<Props> = ({
 								setAttr__({
 									...panelData,
 									[tab.name]: {
+										...panelData[tab.name],
 										backgroundColor: value,
 									},
 								});

@@ -113,6 +113,7 @@ const WcbFormPanel_StyleInput: FC<Props> = ({
 										bgAndPlaceholder: {
 											...bgAndPlaceholder,
 											[tab.name]: {
+												...(bgAndPlaceholder[tab.name] || []),
 												placeholderColor: value,
 											},
 										},
@@ -128,6 +129,7 @@ const WcbFormPanel_StyleInput: FC<Props> = ({
 										bgAndPlaceholder: {
 											...bgAndPlaceholder,
 											[tab.name as TabsHere]: {
+												...(bgAndPlaceholder[tab.name] || []),
 												backgroundColor: value,
 											},
 										},

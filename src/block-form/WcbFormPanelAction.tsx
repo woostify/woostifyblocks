@@ -83,6 +83,7 @@ const WcbFormPanelAction: FC<Props> = ({
 									main: {
 										...main,
 										[tab.name]: {
+											...main[tab.name],
 											email: nextValue,
 										},
 									},

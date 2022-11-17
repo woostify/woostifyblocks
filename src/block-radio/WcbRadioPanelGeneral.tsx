@@ -7,13 +7,16 @@ import {
 } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
+import MyRadioGroup from "../components/controls/MyRadioGroup";
 
 export interface WCB_RADIO_PANEL_GENERAL {
 	isRequired: boolean;
+	layout: "square" | "round";
 }
 
 export const WCB_RADIO_PANEL_GENERAL_DEMO: WCB_RADIO_PANEL_GENERAL = {
 	isRequired: true,
+	layout: "round",
 };
 
 interface Props
@@ -29,7 +32,7 @@ const WcbRadioPanelGeneral: FC<Props> = ({
 	onToggle,
 	opened,
 }) => {
-	const { isRequired } = panelData;
+	const { isRequired, layout } = panelData;
 
 	return (
 		<PanelBody
@@ -39,6 +42,21 @@ const WcbRadioPanelGeneral: FC<Props> = ({
 			title={__("General", "wcb")}
 		>
 			<div className={"space-y-5"}>
+				<MyRadioGroup
+					label={__("Layout", "wcb")}
+					value={layout}
+					onChange={(value) => {
+						setAttr__({
+							...panelData,
+							layout: value as WCB_RADIO_PANEL_GENERAL["layout"],
+						});
+					}}
+					plans={[
+						{ name: "square", icon: "Square" },
+						{ name: "round", icon: "Round" },
+					]}
+					hasResponsive={false}
+				/>
 				<ToggleControl
 					label={__("Required", "wcb")}
 					checked={isRequired}

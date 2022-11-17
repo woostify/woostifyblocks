@@ -16,7 +16,8 @@
 .wcb-form__wrap [multiple],
 .wcb-form__wrap textarea,
 .wcb-form__wrap select {
-  -webkit-appearance: none;
+  width: 100%;
+  /* -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background-color: #fff;
@@ -29,21 +30,19 @@
   padding-left: 0.75rem;
   font-size: 1rem;
   line-height: 1.5rem;
-  /*  */
-  width: 100%;
+  width: 100%; */
 }
-.wcb-form__wrap button,
-.wcb-form__wrap input,
-.wcb-form__wrap optgroup,
-.wcb-form__wrap select,
-.wcb-form__wrap textarea {
-  font-family: inherit;
-  font-size: 100%;
-  font-weight: inherit;
-  line-height: inherit;
-  color: inherit;
-  margin: 0;
-  padding: 0;
+.wcb-form__wrap [type=checkbox]:checked {
+  background-image: url("data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27white%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3cpath d=%27M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z%27/%3e%3c/svg%3e");
+}
+.wcb-form__wrap [type=checkbox]:checked::before {
+  display: none;
+}
+.wcb-form__wrap [type=radio]:checked {
+  background-image: url("data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27white%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3ccircle cx=%278%27 cy=%278%27 r=%273%27/%3e%3c/svg%3e");
+}
+.wcb-form__wrap [type=radio]:checked::before {
+  display: none;
 }
 .wcb-form__wrap .wcb-form__label {
   display: block;
@@ -59,6 +58,23 @@
 .wcb-form__wrap .wcb-checkbox__option-label.required::after {
   color: #f00;
   content: " *";
+}
+
+.wcb-form__btn-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.wcb-form__successMessageText,
+.wcb-form__errorMessageText {
+  padding: 1.25rem;
 }
 /*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/components/controls/MySpacingSizesControl/styles.scss ***!

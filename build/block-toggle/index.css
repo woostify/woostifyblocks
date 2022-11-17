@@ -51,10 +51,10 @@ input:checked + .wcb-toggle__slider:before {
 
 /* Rounded sliders */
 .wcb-toggle__slider.round {
-  border-radius: 34px;
+  border-radius: 9999px !important;
 }
 .wcb-toggle__slider.round:before {
-  border-radius: 50%;
+  border-radius: 9999px !important;
 }
 
 /*# sourceMappingURL=index.css.map*/

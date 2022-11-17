@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import ReactDOM from "react-dom";
-import { WcbBlockHeadingAttrs } from "./attributes";
+import { WcbAttrs } from "./attributes";
 import GlobalCss from "./GlobalCss";
 
-interface Props extends WcbBlockHeadingAttrs {}
+interface Props extends WcbAttrs {}
 
 const FrontendStyles: FC<Props> = (attrs) => {
 	return <GlobalCss {...attrs} />;
@@ -11,8 +11,9 @@ const FrontendStyles: FC<Props> = (attrs) => {
 
 //
 const divsToUpdate = document.querySelectorAll(
-	".wcb-heading__wrap.wcb-update-div"
+	".wcb-form__wrap.wcb-update-div"
 );
+
 divsToUpdate.forEach((div) => {
 	const preEl = div.querySelector(
 		`pre[data-wcb-block-attrs=${div.id}]`

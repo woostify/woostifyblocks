@@ -7,6 +7,7 @@ import {
 import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
+import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
 import {
 	MyBorderControlData,
 	MY_BORDER_CONTROL_DEMO,
@@ -95,6 +96,16 @@ const WcbFormPanel_StyleSpacing: FC<Props> = ({
 							},
 						});
 					}}
+				/>
+
+				<MyBorderControl
+					borderControl={border}
+					setAttrs__border={(data) =>
+						setAttr__({
+							...panelData,
+							border: data,
+						})
+					}
 				/>
 
 				<MySpacingSizesControl

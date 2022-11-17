@@ -23,7 +23,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 				<label className="wcb-radio__option">
 					<input
 						type="radio"
-						className="wcb-radio__option-input"
+						className={`wcb-radio__option-input ${general_general.layout}`}
 						value={item.value}
 						required={general_general.isRequired}
 						name={RADIO_NAME}

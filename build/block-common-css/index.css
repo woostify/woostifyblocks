@@ -1327,6 +1327,12 @@ video {
 .mt-1 {
   margin-top: 0.25rem !important;
 }
+.-mt-3 {
+  margin-top: -0.75rem !important;
+}
+.\!-mt-3 {
+  margin-top: -0.75rem !important;
+}
 .block {
   display: block !important;
 }
@@ -1997,9 +2003,6 @@ video {
 }
 .p-0 {
   padding: 0px !important;
-}
-.p-10 {
-  padding: 2.5rem !important;
 }
 .p-1\.5 {
   padding: 0.375rem !important;
