@@ -268,20 +268,22 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				{/*  */}
 
 				<div {...innerBlocksProps} name={useInstanceId(Edit)} />
-				<RichText
-					className="wcb-form__btn-submit"
-					tagName="div" // The tag here is the element output and editable in the admin
-					value={attributes.btnSubmitText} // Any existing content, either from the database or an attribute default
-					allowedFormats={["core/bold", "core/italic"]} // Allow the content to be made bold or italic, but do not allow other formatting options
-					onChange={(content) => setAttributes({ btnSubmitText: content })} // Store updated content as a block attribute
-					placeholder={__("Submit", "wcb")} // Display this text before any content has been added by the user
-				/>
-				<p className="wcb-form__successMessageText">
-					{attributes.general_general.successMessageText}
-				</p>
-				<p className="wcb-form__errorMessageText">
-					{attributes.general_general.errorMessageText}
-				</p>
+				<div className="wcb-form__btn-submit-wrap">
+					<RichText
+						className="wcb-form__btn-submit"
+						tagName="div" // The tag here is the element output and editable in the admin
+						value={attributes.btnSubmitText} // Any existing content, either from the database or an attribute default
+						allowedFormats={["core/bold", "core/italic"]} // Allow the content to be made bold or italic, but do not allow other formatting options
+						onChange={(content) => setAttributes({ btnSubmitText: content })} // Store updated content as a block attribute
+						placeholder={__("Submit", "wcb")} // Display this text before any content has been added by the user
+					/>
+				</div>
+				<div className="wcb-form__successMessageText">
+					<span>{attributes.general_general.successMessageText}</span>
+				</div>
+				<div className="wcb-form__errorMessageText">
+					<span>{attributes.general_general.errorMessageText}</span>
+				</div>
 
 				<HOCInspectorControls
 					uniqueId={uniqueId}

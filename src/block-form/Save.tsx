@@ -56,11 +56,13 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			HtmlTag="form"
 		>
 			<div {...innerBlocksProps} />
-			<RichText.Content
-				className="wcb-form__btn-submit"
-				value={attributes.btnSubmitText}
-				tagName="button"
-			/>
+			<div className="wcb-form__btn-submit-wrap">
+				<RichText.Content
+					className="wcb-form__btn-submit"
+					value={attributes.btnSubmitText}
+					tagName="button"
+				/>
+			</div>
 		</SaveCommon>
 	);
 }

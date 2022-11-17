@@ -29,7 +29,12 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 					data-falsestate={attributes.general_general?.falseState}
 					name={UNIQUE_NAME}
 				/>
-				<input type="checkbox" name={UNIQUE_NAME} />
+				<input
+					type="checkbox"
+					name={UNIQUE_NAME}
+					checked={attributes.general_general?.isDefaultON}
+					required={attributes.general_general?.isRequired}
+				/>
 				<span
 					className={`wcb-toggle__slider ${
 						attributes.general_general?.layout === "round" ? "round" : ""

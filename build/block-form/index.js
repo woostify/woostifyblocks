@@ -2362,7 +2362,9 @@ const Edit = props => {
     "data-uniqueid": uniqueId
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_9__["default"], attributes), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, innerBlocksProps, {
     name: (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__.useInstanceId)(Edit)
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "wcb-form__btn-submit-wrap"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, {
     className: "wcb-form__btn-submit",
     tagName: "div" // The tag here is the element output and editable in the admin
     ,
@@ -2376,11 +2378,11 @@ const Edit = props => {
     ,
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Submit", "wcb") // Display this text before any content has been added by the user
 
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "wcb-form__successMessageText"
-  }, attributes.general_general.successMessageText), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, attributes.general_general.successMessageText)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "wcb-form__errorMessageText"
-  }, attributes.general_general.errorMessageText), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, attributes.general_general.errorMessageText)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_7__["default"], {
     uniqueId: uniqueId,
     renderTabPanels: renderTabBodyPanels,
     onChangeActive: tab => {
@@ -2516,12 +2518,24 @@ const GlobalCss = attrs => {
 
   const getDivWrapStyles = () => {
     const {
-      labelBottomMargin
-    } = style_spacing;
+      textAlignment
+    } = general_general;
+    const {
+      value_desktop: textAlignment_desktop,
+      value_mobile: textAlignment_mobile,
+      value_tablet: textAlignment_tablet
+    } = (0,_utils_getCssProperyHasResponsive__WEBPACK_IMPORTED_MODULE_7__["default"])({
+      cssProperty: textAlignment
+    });
     return {
       [`${WRAP_CLASSNAME}`]: {
-        [`@media (min-width: ${media_tablet})`]: {},
-        [`@media (min-width: ${media_desktop})`]: {}
+        textAlign: textAlignment_mobile,
+        [`@media (min-width: ${media_tablet})`]: {
+          textAlign: textAlignment_tablet
+        },
+        [`@media (min-width: ${media_desktop})`]: {
+          textAlign: textAlignment_desktop
+        }
       }
     };
   };
@@ -2612,8 +2626,7 @@ const GlobalCss = attrs => {
     });
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
       styles: {
-        [`${INNER_CLASSNAME}`]: {
-          display: "grid",
+        [`${INNER_CLASSNAME}, ${WRAP_CLASSNAME}`]: {
           rowGap: rowGap_mobile,
           [`@media (min-width: ${media_tablet})`]: {
             rowGap: rowGap_tablet
@@ -2671,6 +2684,7 @@ const GlobalCss = attrs => {
     styles: {
       [`${WRAP_CLASSNAME} .wcb-form__label`]: {
         color: style_label.textColor,
+        display: general_general.isShowLabel ? "block" : "none",
         ":hover": {
           color: style_label.textColorHover
         }
@@ -2799,7 +2813,7 @@ const GlobalCss = attrs => {
       advance_responsiveCondition,
       advance_zIndex,
       className: WRAP_CLASSNAME,
-      defaultDisplay: "block"
+      defaultDisplay: "grid"
     })
   }));
 };
@@ -2877,11 +2891,13 @@ function save(_ref) {
     className: "wcb-form__wrap",
     uniqueId: uniqueId,
     HtmlTag: "form"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "wcb-form__btn-submit-wrap"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
     className: "wcb-form__btn-submit",
     value: attributes.btnSubmitText,
     tagName: "button"
-  }));
+  })));
 }
 
 /***/ }),

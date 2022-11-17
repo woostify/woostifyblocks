@@ -42,11 +42,23 @@ const GlobalCss: FC<Props> = (attrs) => {
 
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject => {
-		const { labelBottomMargin } = style_spacing;
+		const { textAlignment } = general_general;
+		const {
+			value_desktop: textAlignment_desktop,
+			value_mobile: textAlignment_mobile,
+			value_tablet: textAlignment_tablet,
+		} = getCssProperyHasResponsive({
+			cssProperty: textAlignment,
+		});
 		return {
 			[`${WRAP_CLASSNAME}`]: {
-				[`@media (min-width: ${media_tablet})`]: {},
-				[`@media (min-width: ${media_desktop})`]: {},
+				textAlign: textAlignment_mobile,
+				[`@media (min-width: ${media_tablet})`]: {
+					textAlign: textAlignment_tablet,
+				},
+				[`@media (min-width: ${media_desktop})`]: {
+					textAlign: textAlignment_desktop,
+				},
 			},
 		};
 	};
@@ -143,8 +155,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		return (
 			<Global
 				styles={{
-					[`${INNER_CLASSNAME}`]: {
-						display: "grid",
+					[`${INNER_CLASSNAME}, ${WRAP_CLASSNAME}`]: {
 						rowGap: rowGap_mobile,
 						[`@media (min-width: ${media_tablet})`]: {
 							rowGap: rowGap_tablet,
@@ -212,6 +223,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 				styles={{
 					[`${WRAP_CLASSNAME} .wcb-form__label`]: {
 						color: style_label.textColor,
+						display: general_general.isShowLabel ? "block" : "none",
 						":hover": {
 							color: style_label.textColorHover,
 						},
@@ -378,7 +390,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 					advance_responsiveCondition,
 					advance_zIndex,
 					className: WRAP_CLASSNAME,
-					defaultDisplay: "block",
+					defaultDisplay: "grid",
 				})}
 			/>
 		</>

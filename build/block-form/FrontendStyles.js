@@ -2025,12 +2025,24 @@ const GlobalCss = attrs => {
 
   const getDivWrapStyles = () => {
     const {
-      labelBottomMargin
-    } = style_spacing;
+      textAlignment
+    } = general_general;
+    const {
+      value_desktop: textAlignment_desktop,
+      value_mobile: textAlignment_mobile,
+      value_tablet: textAlignment_tablet
+    } = (0,_utils_getCssProperyHasResponsive__WEBPACK_IMPORTED_MODULE_7__["default"])({
+      cssProperty: textAlignment
+    });
     return {
       [`${WRAP_CLASSNAME}`]: {
-        [`@media (min-width: ${media_tablet})`]: {},
-        [`@media (min-width: ${media_desktop})`]: {}
+        textAlign: textAlignment_mobile,
+        [`@media (min-width: ${media_tablet})`]: {
+          textAlign: textAlignment_tablet
+        },
+        [`@media (min-width: ${media_desktop})`]: {
+          textAlign: textAlignment_desktop
+        }
       }
     };
   };
@@ -2121,8 +2133,7 @@ const GlobalCss = attrs => {
     });
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
       styles: {
-        [`${INNER_CLASSNAME}`]: {
-          display: "grid",
+        [`${INNER_CLASSNAME}, ${WRAP_CLASSNAME}`]: {
           rowGap: rowGap_mobile,
           [`@media (min-width: ${media_tablet})`]: {
             rowGap: rowGap_tablet
@@ -2180,6 +2191,7 @@ const GlobalCss = attrs => {
     styles: {
       [`${WRAP_CLASSNAME} .wcb-form__label`]: {
         color: style_label.textColor,
+        display: general_general.isShowLabel ? "block" : "none",
         ":hover": {
           color: style_label.textColorHover
         }
@@ -2308,7 +2320,7 @@ const GlobalCss = attrs => {
       advance_responsiveCondition,
       advance_zIndex,
       className: WRAP_CLASSNAME,
-      defaultDisplay: "block"
+      defaultDisplay: "grid"
     })
   }));
 };

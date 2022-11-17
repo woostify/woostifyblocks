@@ -1,6 +1,10 @@
 /*!***************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/block-form/editor.scss ***!
   \***************************************************************************************************************************************************************************************************************************************************/
+.wcb-form__wrap {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
 .wcb-form__wrap [type=text],
 .wcb-form__wrap [type=email],
 .wcb-form__wrap [type=url],
@@ -17,20 +21,6 @@
 .wcb-form__wrap textarea,
 .wcb-form__wrap select {
   width: 100%;
-  /* -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-color: #fff;
-  border-color: #6b7280;
-  border-width: 1px;
-  border-radius: 0px;
-  padding-top: 0.5rem;
-  padding-right: 0.75rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  width: 100%; */
 }
 .wcb-form__wrap [type=checkbox]:checked {
   background-image: url("data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27white%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3cpath d=%27M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z%27/%3e%3c/svg%3e");
@@ -44,20 +34,26 @@
 .wcb-form__wrap [type=radio]:checked::before {
   display: none;
 }
-.wcb-form__wrap .wcb-form__label {
+
+.wcb-form__label {
   display: block;
   color: #374151;
 }
-.wcb-form__wrap .wcb-form__label.required::after {
+.wcb-form__label.required::after {
   color: #f00;
   content: " *";
 }
-.wcb-form__wrap .wcb-checkbox__option-label {
+
+.wcb-checkbox__option-label {
   color: #374151;
 }
-.wcb-form__wrap .wcb-checkbox__option-label.required::after {
+.wcb-checkbox__option-label.required::after {
   color: #f00;
   content: " *";
+}
+
+.wcb-form__inner {
+  display: grid;
 }
 
 .wcb-form__btn-submit {
@@ -68,8 +64,6 @@
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  font-size: 1rem;
-  line-height: 1.5rem;
 }
 
 .wcb-form__successMessageText,

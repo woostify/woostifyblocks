@@ -1,4 +1,6 @@
 .wcb-form__wrap {
+	@apply text-base;
+
 	[type="text"],
 	[type="email"],
 	[type="url"],
@@ -15,20 +17,6 @@
 	textarea,
 	select {
 		width: 100%;
-		/* -webkit-appearance: none;
-		-moz-appearance: none;
-		appearance: none;
-		background-color: #fff;
-		border-color: #6b7280;
-		border-width: 1px;
-		border-radius: 0px;
-		padding-top: 0.5rem;
-		padding-right: 0.75rem;
-		padding-bottom: 0.5rem;
-		padding-left: 0.75rem;
-		font-size: 1rem;
-		line-height: 1.5rem;
-		width: 100%; */
 	}
 
 	[type="checkbox"]:checked {
@@ -43,26 +31,31 @@
 			display: none;
 		}
 	}
+}
 
-	.wcb-form__label {
-		display: block;
-		color: #374151;
-		&.required::after {
-			color: #f00;
-			content: " *";
-		}
-	}
-	.wcb-checkbox__option-label {
-		color: #374151;
-		&.required::after {
-			color: #f00;
-			content: " *";
-		}
+.wcb-form__label {
+	display: block;
+	color: #374151;
+	&.required::after {
+		color: #f00;
+		content: " *";
 	}
 }
 
+.wcb-checkbox__option-label {
+	color: #374151;
+	&.required::after {
+		color: #f00;
+		content: " *";
+	}
+}
+
+.wcb-form__inner {
+	display: grid;
+}
+
 .wcb-form__btn-submit {
-	@apply inline-flex items-center justify-center px-4 py-2 text-base;
+	@apply inline-flex items-center justify-center px-4 py-2;
 }
 
 .wcb-form__successMessageText,

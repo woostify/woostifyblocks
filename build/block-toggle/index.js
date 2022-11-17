@@ -1551,7 +1551,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const Edit = props => {
-  var _attributes$general_g, _attributes$general_g2, _attributes$general_g3;
+  var _attributes$general_g, _attributes$general_g2, _attributes$general_g3, _attributes$general_g4, _attributes$general_g5;
 
   const {
     attributes,
@@ -1638,9 +1638,18 @@ const Edit = props => {
     name: UNIQUE_NAME
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
     type: "checkbox",
-    name: UNIQUE_NAME
+    name: UNIQUE_NAME,
+    checked: (_attributes$general_g3 = attributes.general_general) === null || _attributes$general_g3 === void 0 ? void 0 : _attributes$general_g3.isDefaultON,
+    onChange: e => {
+      setAttributes({
+        general_general: { ...attributes.general_general,
+          isDefaultON: e.currentTarget.checked
+        }
+      });
+    },
+    required: (_attributes$general_g4 = attributes.general_general) === null || _attributes$general_g4 === void 0 ? void 0 : _attributes$general_g4.isRequired
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
-    className: `wcb-toggle__slider ${((_attributes$general_g3 = attributes.general_general) === null || _attributes$general_g3 === void 0 ? void 0 : _attributes$general_g3.layout) === "round" ? "round" : ""}`
+    className: `wcb-toggle__slider ${((_attributes$general_g5 = attributes.general_general) === null || _attributes$general_g5 === void 0 ? void 0 : _attributes$general_g5.layout) === "round" ? "round" : ""}`
   }))));
 };
 
@@ -1677,7 +1686,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function save(_ref) {
-  var _attributes$general_g, _attributes$general_g2, _attributes$general_g3;
+  var _attributes$general_g, _attributes$general_g2, _attributes$general_g3, _attributes$general_g4, _attributes$general_g5;
 
   let {
     attributes
@@ -1706,9 +1715,11 @@ function save(_ref) {
     name: UNIQUE_NAME
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
     type: "checkbox",
-    name: UNIQUE_NAME
+    name: UNIQUE_NAME,
+    checked: (_attributes$general_g3 = attributes.general_general) === null || _attributes$general_g3 === void 0 ? void 0 : _attributes$general_g3.isDefaultON,
+    required: (_attributes$general_g4 = attributes.general_general) === null || _attributes$general_g4 === void 0 ? void 0 : _attributes$general_g4.isRequired
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
-    className: `wcb-toggle__slider ${((_attributes$general_g3 = attributes.general_general) === null || _attributes$general_g3 === void 0 ? void 0 : _attributes$general_g3.layout) === "round" ? "round" : ""}`
+    className: `wcb-toggle__slider ${((_attributes$general_g5 = attributes.general_general) === null || _attributes$general_g5 === void 0 ? void 0 : _attributes$general_g5.layout) === "round" ? "round" : ""}`
   })));
 }
 

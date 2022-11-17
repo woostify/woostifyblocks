@@ -101,7 +101,20 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 						data-falsestate={attributes.general_general?.falseState}
 						name={UNIQUE_NAME}
 					/>
-					<input type="checkbox" name={UNIQUE_NAME} />
+					<input
+						type="checkbox"
+						name={UNIQUE_NAME}
+						checked={attributes.general_general?.isDefaultON}
+						onChange={(e) => {
+							setAttributes({
+								general_general: {
+									...attributes.general_general,
+									isDefaultON: e.currentTarget.checked,
+								},
+							});
+						}}
+						required={attributes.general_general?.isRequired}
+					/>
 					<span
 						className={`wcb-toggle__slider ${
 							attributes.general_general?.layout === "round" ? "round" : ""
