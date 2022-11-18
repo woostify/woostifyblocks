@@ -14,6 +14,7 @@ import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import WcbInputPanelGeneral from "./WcbInputPanelGeneral";
 import { FormInputLabelRichText } from "../block-form/FormInputLabelRichText";
+import converUniqueId from "../utils/converUniqueId";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -30,6 +31,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	} = useSetBlockPanelInfo(uniqueId);
 
 	const UNIQUE_ID = wrapBlockProps.id;
+	const UNIQUE_NAME = converUniqueId(uniqueId, "text");
 	useEffect(() => {
 		setAttributes({
 			uniqueId: UNIQUE_ID,
@@ -92,6 +94,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				/>
 				<input
 					type="text"
+					name={UNIQUE_NAME}
 					placeholder={general_general.placeholder}
 					required={general_general.isRequired}
 					autoComplete={general_general.autocomplete}

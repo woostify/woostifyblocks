@@ -9,7 +9,7 @@ import converUniqueId from "../utils/converUniqueId";
 
 export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const { uniqueId, general_general } = attributes;
-	const UNIQUE_NAME = converUniqueId(uniqueId, "input-url");
+	const UNIQUE_NAME = converUniqueId(uniqueId, "url");
 
 	//
 	const blockProps = useBlockProps.save({ className: "wcb-url__wrap" });

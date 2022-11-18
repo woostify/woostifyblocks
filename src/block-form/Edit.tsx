@@ -41,6 +41,21 @@ import WcbPostGridPanel_StyleSubmitButton from "./WcbPostGridPanel_StyleSubmitBu
 import WcbPostGridPanel_StyleMessages from "./WcbPostGridPanel_StyleMessages";
 import WcbFormPanel_StyleSpacing from "./WcbFormPanel_StyleSpacing";
 
+export type FormChildAllowed =
+	| "wcb/input"
+	| "wcb/email"
+	| "wcb/phone"
+	| "wcb/textarea"
+	| "wcb/toggle"
+	| "wcb/checkbox"
+	| "wcb/radio"
+	| "wcb/password"
+	| "wcb/select"
+	| "wcb/url"
+	| "wcb/hidden"
+	| "wcb/date"
+	| "wcb/accept";
+
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 	const {
@@ -230,7 +245,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	};
 
 	const {} = attributes;
-	const ALLOWED_BLOCKS = [
+	const ALLOWED_BLOCKS: FormChildAllowed[] = [
 		"wcb/input",
 		"wcb/email",
 		"wcb/phone",

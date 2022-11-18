@@ -1591,13 +1591,12 @@ const Edit = props => {
     handleTogglePanel
   } = (0,_hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_8__["default"])(uniqueId);
   const UNIQUE_ID = wrapBlockProps.id;
+  const UNIQUE_NAME = (0,_utils_converUniqueId__WEBPACK_IMPORTED_MODULE_11__["default"])(uniqueId, "select");
   (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
     setAttributes({
       uniqueId: UNIQUE_ID
     });
   }, [UNIQUE_ID]); //
-
-  const UNIQUE_NAME = (0,_utils_converUniqueId__WEBPACK_IMPORTED_MODULE_11__["default"])(uniqueId, "select"); //
 
   const converValueFromString = text => {
     return text.replace(/ /g, "-");
@@ -1839,7 +1838,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const WCB_SELECT_PANEL_GENERAL_DEMO = {
-  isRequired: true
+  isRequired: false
 };
 
 const WcbRadioPanelGeneral = _ref => {
@@ -2293,7 +2292,7 @@ function converUniqueId(text) {
     return prefix + "converUniqueIdReturnNull";
   }
 
-  return prefix + text.replace(/-/g, "").replace(/block/g, "");
+  return prefix + text.replace(/-/g, "").replace(/ /g, "");
 }
 
 /***/ }),

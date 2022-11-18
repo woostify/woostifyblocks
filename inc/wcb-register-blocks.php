@@ -4,6 +4,7 @@
 // START REGISTER GUTENBERG BLOCKS
 //======================================================================================================================================
 require WCB_PATH . 'inc/wcb-render-callback-for-block-posts-grid.php';
+require WCB_PATH . 'inc/wcb-ajax-for-block-form.php';
 // 
 
 

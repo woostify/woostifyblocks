@@ -14,6 +14,7 @@ import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import WcbPhonePanelGeneral from "./WcbPhonePanelGeneral";
 import { FormInputLabelRichText } from "../block-form/FormInputLabelRichText";
 import SelectCountryCode from "./SelectCountryCode";
+import converUniqueId from "../utils/converUniqueId";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -30,6 +31,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	} = useSetBlockPanelInfo(uniqueId);
 
 	const UNIQUE_ID = wrapBlockProps.id;
+	const UNIQUE_NAME = converUniqueId(uniqueId, "phone");
 	useEffect(() => {
 		setAttributes({
 			uniqueId: UNIQUE_ID,
@@ -104,6 +106,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 						required={general_general.isRequired}
 						autoComplete={general_general.autocomplete}
 						pattern={general_general.pattern}
+						name={UNIQUE_NAME}
 					/>
 				</div>
 			</div>

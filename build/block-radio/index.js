@@ -1861,7 +1861,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const WCB_RADIO_PANEL_GENERAL_DEMO = {
-  isRequired: true,
+  isRequired: false,
   layout: "round"
 };
 
@@ -2648,7 +2648,7 @@ function converUniqueId(text) {
     return prefix + "converUniqueIdReturnNull";
   }
 
-  return prefix + text.replace(/-/g, "").replace(/block/g, "");
+  return prefix + text.replace(/-/g, "").replace(/ /g, "");
 }
 
 /***/ }),

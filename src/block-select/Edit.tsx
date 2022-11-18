@@ -41,14 +41,12 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	} = useSetBlockPanelInfo(uniqueId);
 
 	const UNIQUE_ID = wrapBlockProps.id;
+	const UNIQUE_NAME = converUniqueId(uniqueId, "select");
 	useEffect(() => {
 		setAttributes({
 			uniqueId: UNIQUE_ID,
 		});
 	}, [UNIQUE_ID]);
-
-	//
-	const UNIQUE_NAME = converUniqueId(uniqueId, "select");
 
 	//
 	const converValueFromString = (text: string) => {

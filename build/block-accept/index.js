@@ -1655,7 +1655,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const WCB_ACCEPT_PANEL_GENERAL_DEMO = {
-  isRequired: true,
+  isRequired: false,
   acceptanceText: "I have read and agree to the Privacy Policy.",
   enablePrivacyLink: true,
   linkHref: "#",
@@ -2187,7 +2187,7 @@ function converUniqueId(text) {
     return prefix + "converUniqueIdReturnNull";
   }
 
-  return prefix + text.replace(/-/g, "").replace(/block/g, "");
+  return prefix + text.replace(/-/g, "").replace(/ /g, "");
 }
 
 /***/ }),

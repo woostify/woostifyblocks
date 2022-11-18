@@ -19,7 +19,7 @@ export interface WCB_TOGGLE_PANEL_GENERAL {
 }
 
 export const WCB_TOGGLE_PANEL_GENERAL_DEMO: WCB_TOGGLE_PANEL_GENERAL = {
-	isRequired: true,
+	isRequired: false,
 	falseState: "off",
 	trueState: "on",
 	isDefaultON: true,

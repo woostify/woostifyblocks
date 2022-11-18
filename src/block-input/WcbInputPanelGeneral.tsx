@@ -17,7 +17,7 @@ export interface WCB_INPUT_PANEL_GENERAL {
 
 export const WCB_INPUT_PANEL_GENERAL_DEMO: WCB_INPUT_PANEL_GENERAL = {
 	autocomplete: "name",
-	isRequired: true,
+	isRequired: false,
 	placeholder: "Firt name",
 };
 

@@ -17,7 +17,7 @@ export interface WCB_DATE_PANEL_GENERAL {
 }
 
 export const WCB_DATE_PANEL_GENERAL_DEMO: WCB_DATE_PANEL_GENERAL = {
-	isRequired: true,
+	isRequired: false,
 	additionalValidation: true,
 };
 

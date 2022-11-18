@@ -31,6 +31,8 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 				/>
 				<input
 					type="checkbox"
+					data-truestate={attributes.general_general?.trueState}
+					data-falsestate={attributes.general_general?.falseState}
 					name={UNIQUE_NAME}
 					checked={attributes.general_general?.isDefaultON}
 					required={attributes.general_general?.isRequired}

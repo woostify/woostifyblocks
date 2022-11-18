@@ -1686,7 +1686,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function save(_ref) {
-  var _attributes$general_g, _attributes$general_g2, _attributes$general_g3, _attributes$general_g4, _attributes$general_g5;
+  var _attributes$general_g, _attributes$general_g2, _attributes$general_g3, _attributes$general_g4, _attributes$general_g5, _attributes$general_g6, _attributes$general_g7;
 
   let {
     attributes
@@ -1715,11 +1715,13 @@ function save(_ref) {
     name: UNIQUE_NAME
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
     type: "checkbox",
+    "data-truestate": (_attributes$general_g3 = attributes.general_general) === null || _attributes$general_g3 === void 0 ? void 0 : _attributes$general_g3.trueState,
+    "data-falsestate": (_attributes$general_g4 = attributes.general_general) === null || _attributes$general_g4 === void 0 ? void 0 : _attributes$general_g4.falseState,
     name: UNIQUE_NAME,
-    checked: (_attributes$general_g3 = attributes.general_general) === null || _attributes$general_g3 === void 0 ? void 0 : _attributes$general_g3.isDefaultON,
-    required: (_attributes$general_g4 = attributes.general_general) === null || _attributes$general_g4 === void 0 ? void 0 : _attributes$general_g4.isRequired
+    checked: (_attributes$general_g5 = attributes.general_general) === null || _attributes$general_g5 === void 0 ? void 0 : _attributes$general_g5.isDefaultON,
+    required: (_attributes$general_g6 = attributes.general_general) === null || _attributes$general_g6 === void 0 ? void 0 : _attributes$general_g6.isRequired
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
-    className: `wcb-toggle__slider ${((_attributes$general_g5 = attributes.general_general) === null || _attributes$general_g5 === void 0 ? void 0 : _attributes$general_g5.layout) === "round" ? "round" : ""}`
+    className: `wcb-toggle__slider ${((_attributes$general_g7 = attributes.general_general) === null || _attributes$general_g7 === void 0 ? void 0 : _attributes$general_g7.layout) === "round" ? "round" : ""}`
   })));
 }
 
@@ -1750,7 +1752,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const WCB_TOGGLE_PANEL_GENERAL_DEMO = {
-  isRequired: true,
+  isRequired: false,
   falseState: "off",
   trueState: "on",
   isDefaultON: true,
@@ -2560,7 +2562,7 @@ function converUniqueId(text) {
     return prefix + "converUniqueIdReturnNull";
   }
 
-  return prefix + text.replace(/-/g, "").replace(/block/g, "");
+  return prefix + text.replace(/-/g, "").replace(/ /g, "");
 }
 
 /***/ }),

@@ -29,7 +29,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
-	const UNIQUE_NAME = converUniqueId(uniqueId, "input-url");
+	const UNIQUE_NAME = converUniqueId(uniqueId, "url");
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
 		setAttributes({

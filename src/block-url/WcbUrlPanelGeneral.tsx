@@ -17,7 +17,7 @@ export interface WCB_URL_PANEL_GENERAL {
 
 export const WCB_URL_PANEL_GENERAL_DEMO: WCB_URL_PANEL_GENERAL = {
 	autocomplete: "url",
-	isRequired: true,
+	isRequired: false,
 	placeholder: "https/example.net",
 };
 

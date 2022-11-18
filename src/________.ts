@@ -1,9 +1,14 @@
+import "jquery";
 declare global {
 	var wcbGlobalVariables: {
 		media__tabletMinWidth: string;
 		media__desktopMinWidth: string;
 		media_tablet: string;
 		media_desktop: string;
+	};
+	var wcbFrontendAjaxObject: {
+		ajaxurl: string;
+		homeUrl: string;
 	};
 }
 

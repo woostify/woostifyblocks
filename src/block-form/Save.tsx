@@ -61,6 +61,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 					className="wcb-form__btn-submit"
 					value={attributes.btnSubmitText}
 					tagName="button"
+					type="submit"
 				/>
 			</div>
 		</SaveCommon>

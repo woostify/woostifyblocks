@@ -15,7 +15,7 @@ export interface WCB_RADIO_PANEL_GENERAL {
 }
 
 export const WCB_RADIO_PANEL_GENERAL_DEMO: WCB_RADIO_PANEL_GENERAL = {
-	isRequired: true,
+	isRequired: false,
 	layout: "round",
 };
 

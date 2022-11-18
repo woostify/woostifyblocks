@@ -13,6 +13,7 @@ import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import WcbEmailPanelGeneral from "./WcbEmailPanelGeneral";
 import { FormInputLabelRichText } from "../block-form/FormInputLabelRichText";
+import converUniqueId from "../utils/converUniqueId";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -29,6 +30,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	} = useSetBlockPanelInfo(uniqueId);
 
 	const UNIQUE_ID = wrapBlockProps.id;
+	const UNIQUE_NAME = converUniqueId(uniqueId, "email");
 	useEffect(() => {
 		setAttributes({
 			uniqueId: UNIQUE_ID,
@@ -94,6 +96,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					placeholder={general_general.placeholder}
 					required={general_general.isRequired}
 					autoComplete={general_general.autocomplete}
+					name={UNIQUE_NAME}
 				/>
 			</div>
 		</CacheProvider>

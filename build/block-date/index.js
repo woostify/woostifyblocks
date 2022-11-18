@@ -1649,7 +1649,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const WCB_DATE_PANEL_GENERAL_DEMO = {
-  isRequired: true,
+  isRequired: false,
   additionalValidation: true
 };
 
@@ -2200,7 +2200,7 @@ function converUniqueId(text) {
     return prefix + "converUniqueIdReturnNull";
   }
 
-  return prefix + text.replace(/-/g, "").replace(/block/g, "");
+  return prefix + text.replace(/-/g, "").replace(/ /g, "");
 }
 
 /***/ }),

@@ -17,7 +17,7 @@ export interface WCB_EMAIL_PANEL_GENERAL {
 
 export const WCB_EMAIL_PANEL_GENERAL_DEMO: WCB_EMAIL_PANEL_GENERAL = {
 	autocomplete: "email",
-	isRequired: true,
+	isRequired: false,
 	placeholder: "john@example.com",
 };
 

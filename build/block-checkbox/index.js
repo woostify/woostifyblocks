@@ -1788,7 +1788,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const WCB_CHECKBOX_PANEL_GENERAL_DEMO = {
-  isRequired: true
+  isRequired: false
 };
 
 const WcbCheckboxPanelGeneral = _ref => {
@@ -2312,7 +2312,7 @@ function converUniqueId(text) {
     return prefix + "converUniqueIdReturnNull";
   }
 
-  return prefix + text.replace(/-/g, "").replace(/block/g, "");
+  return prefix + text.replace(/-/g, "").replace(/ /g, "");
 }
 
 /***/ }),

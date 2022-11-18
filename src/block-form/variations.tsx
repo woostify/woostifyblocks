@@ -1,5 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import React, { ReactNode } from "react";
+import { FormChildAllowed } from "./Edit";
 
 /** @typedef {import('@wordpress/blocks').WPBlockVariation} WPBlockVariation */
 
@@ -24,7 +25,7 @@ export const variations: {
 	title: string;
 	description: string;
 	icon: any;
-	innerBlocks: ["wcb/input", {} | undefined][];
+	innerBlocks: [FormChildAllowed, {} | undefined][];
 	scope: string[];
 	isDefault?: boolean;
 	attributes?: any;
@@ -39,9 +40,18 @@ export const variations: {
 			</RenderIcon>
 		),
 		innerBlocks: [
+			["wcb/accept", undefined],
+			["wcb/checkbox", undefined],
+			["wcb/date", undefined],
+			["wcb/email", undefined],
+			["wcb/hidden", undefined],
 			["wcb/input", undefined],
-			["wcb/input", undefined],
-			["wcb/input", undefined],
+			["wcb/phone", undefined],
+			["wcb/radio", undefined],
+			["wcb/select", undefined],
+			["wcb/textarea", undefined],
+			["wcb/toggle", undefined],
+			["wcb/url", undefined],
 		],
 		scope: ["block"],
 		isDefault: true,

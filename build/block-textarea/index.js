@@ -1531,11 +1531,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/HOCInspectorControls */ "./src/components/HOCInspectorControls.tsx");
 /* harmony import */ var _hooks_useCreateCacheEmotion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/useCreateCacheEmotion */ "./src/hooks/useCreateCacheEmotion.ts");
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-element-6a883da9.browser.esm.js");
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-element-6a883da9.browser.esm.js");
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./editor.scss */ "./src/block-textarea/editor.scss");
 /* harmony import */ var _hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/useSetBlockPanelInfo */ "./src/hooks/useSetBlockPanelInfo.ts");
 /* harmony import */ var _WcbTextareaPanelGeneral__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WcbTextareaPanelGeneral */ "./src/block-textarea/WcbTextareaPanelGeneral.tsx");
 /* harmony import */ var _block_form_FormInputLabelRichText__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../block-form/FormInputLabelRichText */ "./src/block-form/FormInputLabelRichText.tsx");
+/* harmony import */ var _utils_converUniqueId__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utils/converUniqueId */ "./src/utils/converUniqueId.ts");
+
 
 
 
@@ -1575,6 +1577,7 @@ const Edit = props => {
     handleTogglePanel
   } = (0,_hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_7__["default"])(uniqueId);
   const UNIQUE_ID = wrapBlockProps.id;
+  const UNIQUE_NAME = (0,_utils_converUniqueId__WEBPACK_IMPORTED_MODULE_10__["default"])(uniqueId, "textarea");
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
     setAttributes({
       uniqueId: UNIQUE_ID
@@ -1607,7 +1610,7 @@ const Edit = props => {
     }
   };
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.C, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.C, {
     value: myCache
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
     className: `${wrapBlockProps === null || wrapBlockProps === void 0 ? void 0 : wrapBlockProps.className} wcb-textarea__wrap ${UNIQUE_ID}`,
@@ -1627,7 +1630,8 @@ const Edit = props => {
     placeholder: general_general.placeholder,
     required: general_general.isRequired,
     autoComplete: general_general.autocomplete,
-    rows: general_general.rows || 10
+    rows: general_general.rows || 10,
+    name: UNIQUE_NAME
   })));
 };
 
@@ -1654,10 +1658,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "./src/block-textarea/style.scss");
 /* harmony import */ var _block_form_FormInputLabelRichTextContent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../block-form/FormInputLabelRichTextContent */ "./src/block-form/FormInputLabelRichTextContent.tsx");
+/* harmony import */ var _utils_converUniqueId__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/converUniqueId */ "./src/utils/converUniqueId.ts");
 
 
 
 // @ts-ignore
+
 
 
 
@@ -1668,7 +1674,8 @@ function save(_ref) {
   const {
     uniqueId,
     general_general
-  } = attributes; //
+  } = attributes;
+  const UNIQUE_NAME = (0,_utils_converUniqueId__WEBPACK_IMPORTED_MODULE_6__["default"])(uniqueId, "textarea"); //
 
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
     className: "wcb-textarea__wrap"
@@ -1682,7 +1689,8 @@ function save(_ref) {
     placeholder: general_general.placeholder,
     required: general_general.isRequired,
     autoComplete: general_general.autocomplete,
-    rows: general_general.rows || 10
+    rows: general_general.rows || 10,
+    name: UNIQUE_NAME
   }));
 }
 
@@ -2177,6 +2185,28 @@ const useSetBlockPanelInfo = uniqueId => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (useSetBlockPanelInfo);
+
+/***/ }),
+
+/***/ "./src/utils/converUniqueId.ts":
+/*!*************************************!*\
+  !*** ./src/utils/converUniqueId.ts ***!
+  \*************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ converUniqueId; }
+/* harmony export */ });
+function converUniqueId(text) {
+  let prefix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+  if (!text) {
+    return prefix + "converUniqueIdReturnNull";
+  }
+
+  return prefix + text.replace(/-/g, "").replace(/ /g, "");
+}
 
 /***/ }),
 

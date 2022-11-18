@@ -2037,6 +2037,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "DEMO_WCB_GLOBAL_VARIABLES": function() { return /* binding */ DEMO_WCB_GLOBAL_VARIABLES; }
 /* harmony export */ });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
 const DEMO_WCB_GLOBAL_VARIABLES = {
   media__desktopMinWidth: "1024px",
   media__tabletMinWidth: "768px",
@@ -2896,7 +2899,8 @@ function save(_ref) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
     className: "wcb-form__btn-submit",
     value: attributes.btnSubmitText,
-    tagName: "button"
+    tagName: "button",
+    type: "submit"
   })));
 }
 
@@ -4280,6 +4284,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /** @typedef {import('@wordpress/blocks').WPBlockVariation} WPBlockVariation */
 
 /**
@@ -4287,7 +4292,6 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @type {WPBlockVariation[]}
  */
-
 const RenderIcon = props => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "w-16 h-12 flex items-center justify-center "
@@ -4303,7 +4307,7 @@ const variations = [{
   icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RenderIcon, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "col-span-12 row-span-2 bg-white"
   })),
-  innerBlocks: [["wcb/input", undefined], ["wcb/input", undefined], ["wcb/input", undefined]],
+  innerBlocks: [["wcb/accept", undefined], ["wcb/checkbox", undefined], ["wcb/date", undefined], ["wcb/email", undefined], ["wcb/hidden", undefined], ["wcb/input", undefined], ["wcb/phone", undefined], ["wcb/radio", undefined], ["wcb/select", undefined], ["wcb/textarea", undefined], ["wcb/toggle", undefined], ["wcb/url", undefined]],
   scope: ["block"],
   isDefault: true
 }];
@@ -8061,6 +8065,16 @@ if (false) {} else {
 /***/ (function(module) {
 
 module.exports = window["React"];
+
+/***/ }),
+
+/***/ "jquery":
+/*!*************************!*\
+  !*** external "jQuery" ***!
+  \*************************/
+/***/ (function(module) {
+
+module.exports = window["jQuery"];
 
 /***/ }),
 

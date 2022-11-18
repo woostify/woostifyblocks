@@ -20,7 +20,7 @@ export interface WCB_ACCEPT_PANEL_GENERAL {
 }
 
 export const WCB_ACCEPT_PANEL_GENERAL_DEMO: WCB_ACCEPT_PANEL_GENERAL = {
-	isRequired: true,
+	isRequired: false,
 	acceptanceText: "I have read and agree to the Privacy Policy.",
 	enablePrivacyLink: true,
 	linkHref: "#",

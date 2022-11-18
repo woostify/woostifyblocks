@@ -1576,7 +1576,7 @@ const Edit = props => {
     tabStylesIsPanelOpen,
     handleTogglePanel
   } = (0,_hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_7__["default"])(uniqueId);
-  const UNIQUE_NAME = (0,_utils_converUniqueId__WEBPACK_IMPORTED_MODULE_10__["default"])(uniqueId, "input-url");
+  const UNIQUE_NAME = (0,_utils_converUniqueId__WEBPACK_IMPORTED_MODULE_10__["default"])(uniqueId, "url");
   const UNIQUE_ID = wrapBlockProps.id;
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
     setAttributes({
@@ -1675,7 +1675,7 @@ function save(_ref) {
     uniqueId,
     general_general
   } = attributes;
-  const UNIQUE_NAME = (0,_utils_converUniqueId__WEBPACK_IMPORTED_MODULE_6__["default"])(uniqueId, "input-url"); //
+  const UNIQUE_NAME = (0,_utils_converUniqueId__WEBPACK_IMPORTED_MODULE_6__["default"])(uniqueId, "url"); //
 
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
     className: "wcb-url__wrap"
@@ -1720,7 +1720,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const WCB_URL_PANEL_GENERAL_DEMO = {
   autocomplete: "url",
-  isRequired: true,
+  isRequired: false,
   placeholder: "https/example.net"
 };
 
@@ -2192,7 +2192,7 @@ function converUniqueId(text) {
     return prefix + "converUniqueIdReturnNull";
   }
 
-  return prefix + text.replace(/-/g, "").replace(/block/g, "");
+  return prefix + text.replace(/-/g, "").replace(/ /g, "");
 }
 
 /***/ }),

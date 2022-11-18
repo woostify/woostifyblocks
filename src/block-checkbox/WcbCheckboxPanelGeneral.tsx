@@ -13,7 +13,7 @@ export interface WCB_CHECKBOX_PANEL_GENERAL {
 }
 
 export const WCB_CHECKBOX_PANEL_GENERAL_DEMO: WCB_CHECKBOX_PANEL_GENERAL = {
-	isRequired: true,
+	isRequired: false,
 };
 
 interface Props

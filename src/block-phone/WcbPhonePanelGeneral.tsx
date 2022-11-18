@@ -18,7 +18,7 @@ export interface WCB_PHONE_PANEL_GENERAL {
 
 export const WCB_PHONE_PANEL_GENERAL_DEMO: WCB_PHONE_PANEL_GENERAL = {
 	autocomplete: "tel-national",
-	isRequired: true,
+	isRequired: false,
 	placeholder: "123 45 678",
 	pattern: "[0-9]{3}-[0-9]{3}-[0-9]{4}",
 };
