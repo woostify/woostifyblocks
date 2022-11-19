@@ -97,6 +97,7 @@
 .wcb-form__successMessageText,
 .wcb-form__errorMessageText {
   padding: 1.25rem;
+  display: none;
 }
 
 /*# sourceMappingURL=style-index.css.map*/

@@ -2938,7 +2938,11 @@ function save(_ref) {
     value: attributes.btnSubmitText,
     tagName: "button",
     type: "submit"
-  })));
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "wcb-form__successMessageText"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, attributes.general_general.successMessageText)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "wcb-form__errorMessageText"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, attributes.general_general.errorMessageText)));
 }
 
 /***/ }),

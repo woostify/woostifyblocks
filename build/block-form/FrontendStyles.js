@@ -5094,9 +5094,13 @@ function handleSubmitForm(formId, props) {
         success: function (response) {
           // This is OK code
           console.log(99, "-----------OK");
+          $(".wcb-form__successMessageText").css("display", "block");
+          $(".wcb-form__errorMessageText").css("display", "none");
         },
         error: function (jqXHR, textStatus, errorThrown) {
           console.log("The following error occured: " + textStatus, errorThrown);
+          $(".wcb-form__successMessageText").css("display", "none");
+          $(".wcb-form__errorMessageText").css("display", "block");
         }
       });
     }; // ------------------------------------------------------------------------------------

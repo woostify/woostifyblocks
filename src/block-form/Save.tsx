@@ -79,6 +79,13 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 					type="submit"
 				/>
 			</div>
+
+			<div className="wcb-form__successMessageText">
+				<span>{attributes.general_general.successMessageText}</span>
+			</div>
+			<div className="wcb-form__errorMessageText">
+				<span>{attributes.general_general.errorMessageText}</span>
+			</div>
 		</SaveCommon>
 	);
 }
