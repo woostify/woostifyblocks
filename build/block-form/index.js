@@ -2128,7 +2128,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/HOCInspectorControls */ "./src/components/HOCInspectorControls.tsx");
 /* harmony import */ var _hooks_useCreateCacheEmotion__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../hooks/useCreateCacheEmotion */ "./src/hooks/useCreateCacheEmotion.ts");
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-element-6a883da9.browser.esm.js");
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-element-6a883da9.browser.esm.js");
 /* harmony import */ var _GlobalCss__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./GlobalCss */ "./src/block-form/GlobalCss.tsx");
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./editor.scss */ "./src/block-form/editor.scss");
 /* harmony import */ var _hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../hooks/useSetBlockPanelInfo */ "./src/hooks/useSetBlockPanelInfo.ts");
@@ -2147,6 +2147,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _WcbPostGridPanel_StyleSubmitButton__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./WcbPostGridPanel_StyleSubmitButton */ "./src/block-form/WcbPostGridPanel_StyleSubmitButton.tsx");
 /* harmony import */ var _WcbPostGridPanel_StyleMessages__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./WcbPostGridPanel_StyleMessages */ "./src/block-form/WcbPostGridPanel_StyleMessages.tsx");
 /* harmony import */ var _WcbFormPanel_StyleSpacing__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./WcbFormPanel_StyleSpacing */ "./src/block-form/WcbFormPanel_StyleSpacing.tsx");
+/* harmony import */ var _components_controls_HelpText__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../components/controls/HelpText */ "./src/components/controls/HelpText.tsx");
+
 
 
 
@@ -2384,7 +2386,7 @@ const Edit = props => {
     renderAppender: () => null
   }); //
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_25__.C, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_26__.C, {
     value: myCache
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("form", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
     className: `wcb-form__wrap ${uniqueId} ${wrapBlockProps.className} ` // id={uniqueId}
@@ -2408,11 +2410,11 @@ const Edit = props => {
     ,
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Submit", "wcb") // Display this text before any content has been added by the user
 
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "wcb-form__successMessageText"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, attributes.general_general.successMessageText)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, attributes.general_general.successMessageText)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_controls_HelpText__WEBPACK_IMPORTED_MODULE_25__["default"], null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("(Success message: Only show on the frontend when the form submit is successful.)", "wcb"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "wcb-form__errorMessageText"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, attributes.general_general.errorMessageText)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, attributes.general_general.errorMessageText)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_controls_HelpText__WEBPACK_IMPORTED_MODULE_25__["default"], null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("(Error message: Only show on the frontend when the form submit is error.)", "wcb"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_7__["default"], {
     uniqueId: uniqueId,
     renderTabPanels: renderTabBodyPanels,
     onChangeActive: tab => {
@@ -4487,15 +4489,68 @@ const RenderIcon = props => {
 };
 
 const variations = [{
-  name: "one-column-full",
-  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("100"),
-  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("One column"),
+  name: "test-full",
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Test Full Form"),
+  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Test Full Form"),
   icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RenderIcon, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "col-span-12 row-span-2 bg-white"
   })),
-  innerBlocks: [["wcb/email", undefined], ["wcb/date", undefined], ["wcb/input", undefined], ["wcb/phone", undefined], ["wcb/toggle", undefined], ["wcb/url", undefined], ["wcb/checkbox", undefined], ["wcb/radio", undefined], ["wcb/select", undefined], ["wcb/textarea", undefined], ["wcb/hidden", undefined], ["wcb/accept", undefined]],
+  innerBlocks: [["wcb/input", {
+    label: "First Name"
+  }], ["wcb/email", {
+    label: "Email"
+  }], ["wcb/phone", undefined], ["wcb/toggle", undefined], ["wcb/url", undefined], ["wcb/checkbox", undefined], ["wcb/radio", undefined], ["wcb/select", undefined], ["wcb/textarea", undefined], ["wcb/hidden", undefined], ["wcb/accept", undefined]],
   scope: ["block"],
   isDefault: true
+}, {
+  name: "SimpleContactForm",
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Simple Contact Form"),
+  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Simple Contact Form"),
+  icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RenderIcon, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "col-span-12 row-span-2 bg-white"
+  })),
+  innerBlocks: [["wcb/input", {
+    label: "First Name"
+  }], ["wcb/input", {
+    label: "Last Name"
+  }], ["wcb/email", {
+    label: "Email"
+  }], ["wcb/textarea", {
+    label: "Message"
+  }]],
+  scope: ["block"]
+}, {
+  name: "NewsletterForm",
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Newsletter Form"),
+  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Newsletter Form"),
+  icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RenderIcon, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "col-span-12 row-span-2 bg-white"
+  })),
+  innerBlocks: [["wcb/input", {
+    label: "Name"
+  }], ["wcb/email", {
+    label: "Email"
+  }], ["wcb/radio", {
+    label: "Some question with below listed option?"
+  }], ["wcb/input", {
+    label: "Subject"
+  }], ["wcb/textarea", {
+    label: "Message"
+  }]],
+  scope: ["block"]
+}, {
+  name: "SuggestionForm",
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Suggestion Form"),
+  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Suggestion Form"),
+  icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RenderIcon, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "col-span-12 row-span-2 bg-white"
+  })),
+  innerBlocks: [["wcb/input", {
+    label: "Name"
+  }], ["wcb/email", {
+    label: "Email"
+  }]],
+  scope: ["block"]
 }];
 /* harmony default export */ __webpack_exports__["default"] = (variations);
 

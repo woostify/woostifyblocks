@@ -47,6 +47,7 @@ import WcbFormPanel_StyleCheckBoxRadio, {
 import WcbPostGridPanel_StyleSubmitButton from "./WcbPostGridPanel_StyleSubmitButton";
 import WcbPostGridPanel_StyleMessages from "./WcbPostGridPanel_StyleMessages";
 import WcbFormPanel_StyleSpacing from "./WcbFormPanel_StyleSpacing";
+import HelpText from "../components/controls/HelpText";
 
 export type FormChildAllowed =
 	| "wcb/input"
@@ -326,11 +327,27 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 						placeholder={__("Submit", "wcb")} // Display this text before any content has been added by the user
 					/>
 				</div>
-				<div className="wcb-form__successMessageText">
-					<span>{attributes.general_general.successMessageText}</span>
+				<div>
+					<div className="wcb-form__successMessageText">
+						<span>{attributes.general_general.successMessageText}</span>
+					</div>
+					<HelpText>
+						{__(
+							"(Success message: Only show on the frontend when the form submit is successful.)",
+							"wcb"
+						)}
+					</HelpText>
 				</div>
-				<div className="wcb-form__errorMessageText">
-					<span>{attributes.general_general.errorMessageText}</span>
+				<div>
+					<div className="wcb-form__errorMessageText">
+						<span>{attributes.general_general.errorMessageText}</span>
+					</div>
+					<HelpText>
+						{__(
+							"(Error message: Only show on the frontend when the form submit is error.)",
+							"wcb"
+						)}
+					</HelpText>
 				</div>
 
 				<HOCInspectorControls

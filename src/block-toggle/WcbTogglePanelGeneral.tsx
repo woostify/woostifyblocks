@@ -23,7 +23,7 @@ export const WCB_TOGGLE_PANEL_GENERAL_DEMO: WCB_TOGGLE_PANEL_GENERAL = {
 	falseState: "off",
 	trueState: "on",
 	isDefaultON: true,
-	layout: "square",
+	layout: "round",
 };
 
 interface Props

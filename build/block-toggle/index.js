@@ -1759,7 +1759,7 @@ const WCB_TOGGLE_PANEL_GENERAL_DEMO = {
   falseState: "off",
   trueState: "on",
   isDefaultON: true,
-  layout: "square"
+  layout: "round"
 };
 
 const WcbTogglePanelGeneral = _ref => {

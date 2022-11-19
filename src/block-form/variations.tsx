@@ -31,18 +31,17 @@ export const variations: {
 	attributes?: any;
 }[] = [
 	{
-		name: "one-column-full",
-		title: __("100"),
-		description: __("One column"),
+		name: "test-full",
+		title: __("Test Full Form"),
+		description: __("Test Full Form"),
 		icon: (
 			<RenderIcon>
 				<div className="col-span-12 row-span-2 bg-white"></div>
 			</RenderIcon>
 		),
 		innerBlocks: [
-			["wcb/email", undefined],
-			["wcb/date", undefined],
-			["wcb/input", undefined],
+			["wcb/input", { label: "First Name" }],
+			["wcb/email", { label: "Email" }],
 			["wcb/phone", undefined],
 			["wcb/toggle", undefined],
 			["wcb/url", undefined],
@@ -55,6 +54,56 @@ export const variations: {
 		],
 		scope: ["block"],
 		isDefault: true,
+	},
+	{
+		name: "SimpleContactForm",
+		title: __("Simple Contact Form"),
+		description: __("Simple Contact Form"),
+		icon: (
+			<RenderIcon>
+				<div className="col-span-12 row-span-2 bg-white"></div>
+			</RenderIcon>
+		),
+		innerBlocks: [
+			["wcb/input", { label: "First Name" }],
+			["wcb/input", { label: "Last Name" }],
+			["wcb/email", { label: "Email" }],
+			["wcb/textarea", { label: "Message" }],
+		],
+		scope: ["block"],
+	},
+	{
+		name: "NewsletterForm",
+		title: __("Newsletter Form"),
+		description: __("Newsletter Form"),
+		icon: (
+			<RenderIcon>
+				<div className="col-span-12 row-span-2 bg-white"></div>
+			</RenderIcon>
+		),
+		innerBlocks: [
+			["wcb/input", { label: "Name" }],
+			["wcb/email", { label: "Email" }],
+			["wcb/radio", { label: "Some question with below listed option?" }],
+			["wcb/input", { label: "Subject" }],
+			["wcb/textarea", { label: "Message" }],
+		],
+		scope: ["block"],
+	},
+	{
+		name: "SuggestionForm",
+		title: __("Suggestion Form"),
+		description: __("Suggestion Form"),
+		icon: (
+			<RenderIcon>
+				<div className="col-span-12 row-span-2 bg-white"></div>
+			</RenderIcon>
+		),
+		innerBlocks: [
+			["wcb/input", { label: "Name" }],
+			["wcb/email", { label: "Email" }],
+		],
+		scope: ["block"],
 	},
 ];
 
