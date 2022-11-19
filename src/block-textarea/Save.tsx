@@ -19,6 +19,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			<FormInputLabelRichTextContent
 				value={attributes.label}
 				isRequired={general_general.isRequired}
+				uniqueName={UNIQUE_NAME}
 			/>
 			<textarea
 				placeholder={general_general.placeholder}

@@ -24,6 +24,8 @@ export interface MyRadioOption {
 }
 export const MY_RADIO_OPTIONS_DEMO: MyRadioOption[] = [
 	{ label: "Radio label", value: "radio-value" },
+	{ label: "Radio label 2", value: "radio-value-2" },
+	{ label: "Radio label 3", value: "radio-value-3" },
 ];
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {

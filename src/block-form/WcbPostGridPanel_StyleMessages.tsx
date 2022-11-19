@@ -24,13 +24,13 @@ export type WCB_FORM_PANEL_STYLE_MESSAGES = {
 export const WCB_FORM_PANEL_STYLE_MESSAGES_DEMO: WCB_FORM_PANEL_STYLE_MESSAGES =
 	{
 		Success: {
-			color: "",
-			backgroundColor: "",
+			color: "#0c4a6e",
+			backgroundColor: "#f0f9ff",
 			border: MY_BORDER_CONTROL_DEMO,
 		},
 		Error: {
-			color: "",
-			backgroundColor: "",
+			color: "#ef4444",
+			backgroundColor: "#fef2f2",
 			border: MY_BORDER_CONTROL_DEMO,
 		},
 	};

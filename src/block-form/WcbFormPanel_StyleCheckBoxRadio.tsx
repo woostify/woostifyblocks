@@ -33,16 +33,60 @@ export interface WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE {
 	toggleSize: HasResponsive<number>;
 }
 
-export const WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO: WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE =
+export const WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SIMPLE: WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE =
 	{
 		colors: {
-			Active: { backgroundColor: "" },
 			Normal: { backgroundColor: "" },
+			Active: { backgroundColor: "#0284c7" },
 		},
-		border: MY_BORDER_CONTROL_DEMO,
+		border: {
+			...MY_BORDER_CONTROL_DEMO,
+			mainSettings: {
+				color: "#d1d5db",
+				style: "solid",
+				width: "1px",
+			},
+			radius: {
+				Desktop: {
+					bottomLeft: "0.25rem",
+					bottomRight: "0.25rem",
+					topLeft: "0.25rem",
+					topRight: "0.25rem",
+				},
+			},
+		},
 		checkboxRadioSize: { Desktop: "1rem" },
 		toggleSize: { Desktop: 1 },
 	};
+
+export const WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SOLID: WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE =
+	{
+		colors: {
+			Normal: { backgroundColor: "#e5e7eb" },
+			Active: { backgroundColor: "#374151" },
+		},
+		border: {
+			...MY_BORDER_CONTROL_DEMO,
+			mainSettings: {
+				color: "",
+				style: "solid",
+				width: "0px",
+			},
+			radius: {
+				Desktop: {
+					bottomLeft: "0.25rem",
+					bottomRight: "0.25rem",
+					topLeft: "0.25rem",
+					topRight: "0.25rem",
+				},
+			},
+		},
+		checkboxRadioSize: { Desktop: "1rem" },
+		toggleSize: { Desktop: 1 },
+	};
+
+export const WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO =
+	WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SIMPLE;
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {

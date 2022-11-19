@@ -10,7 +10,7 @@ import converUniqueId from "../utils/converUniqueId";
 export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const { uniqueId, general_general } = attributes;
 
-	const CHECKBOX_NAME = converUniqueId(uniqueId, "checkbox");
+	const UNIQUE_NAME = converUniqueId(uniqueId, "checkbox");
 	//
 	const blockProps = useBlockProps.save({ className: "wcb-checkbox__wrap" });
 
@@ -23,7 +23,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 						className="wcb-checkbox__option-input"
 						value={item.value}
 						required={general_general.isRequired}
-						name={CHECKBOX_NAME}
+						name={UNIQUE_NAME}
 					/>
 					<span className="wcb-checkbox__option-label">{item.label}</span>
 				</label>
@@ -36,6 +36,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			<FormInputLabelRichTextContent
 				value={attributes.label}
 				isRequired={general_general.isRequired}
+				uniqueName={UNIQUE_NAME}
 			/>
 			{renderCheckboxOptions()}
 		</label>

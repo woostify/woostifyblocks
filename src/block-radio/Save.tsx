@@ -10,11 +10,11 @@ import converUniqueId from "../utils/converUniqueId";
 
 export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const { uniqueId, general_general } = attributes;
-	const RADIO_NAME = converUniqueId(uniqueId, "radio");
+	const UNIQUE_NAME = converUniqueId(uniqueId, "radio");
 
 	//
 	const blockProps = useBlockProps.save({
-		className: "wcb-radio__wrap " + RADIO_NAME,
+		className: "wcb-radio__wrap ",
 	});
 
 	const renderRadioOptions = () => {
@@ -26,7 +26,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 						className={`wcb-radio__option-input ${general_general.layout}`}
 						value={item.value}
 						required={general_general.isRequired}
-						name={RADIO_NAME}
+						name={UNIQUE_NAME}
 					/>
 					<span className="wcb-radio__option-label">{item.label}</span>
 				</label>
@@ -39,6 +39,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			<FormInputLabelRichTextContent
 				value={attributes.label}
 				isRequired={general_general.isRequired}
+				uniqueName={UNIQUE_NAME}
 			/>
 			{renderRadioOptions()}
 		</label>

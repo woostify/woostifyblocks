@@ -9,11 +9,11 @@ import MyTextAlignControl, {
 import useGetDeviceType from "../hooks/useGetDeviceType";
 
 export interface WCB_FORM_PANEL_SUBMIT_BUTTON {
-	textAlignment: HasResponsive<TextAlignment>;
+	textAlignment: TextAlignment;
 }
 
 export const WCB_FORM_PANEL_SUBMIT_BUTTON_DEMO: WCB_FORM_PANEL_SUBMIT_BUTTON = {
-	textAlignment: { Desktop: "left" },
+	textAlignment: "left",
 };
 
 interface Props
@@ -32,8 +32,6 @@ const WcbFormPanelSubmitButton: FC<Props> = ({
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
 	const { textAlignment } = panelData;
-	const TEXT_ALIGNMENT =
-		textAlignment[deviceType] || textAlignment.Tablet || textAlignment.Desktop;
 
 	return (
 		<PanelBody
@@ -44,14 +42,11 @@ const WcbFormPanelSubmitButton: FC<Props> = ({
 		>
 			<div className={"space-y-5"}>
 				<MyTextAlignControl
-					textAlignment={TEXT_ALIGNMENT}
+					textAlignment={textAlignment}
 					onChange={(value) => {
 						setAttr__({
 							...panelData,
-							textAlignment: {
-								...textAlignment,
-								[deviceType]: value,
-							},
+							textAlignment: value,
 						});
 					}}
 					hasResponsive={false}

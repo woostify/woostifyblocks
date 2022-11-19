@@ -33,10 +33,10 @@ export const WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON_DEMO: WCB_FORM_PANEL_STYLE_SUBMI
 		colorAndBackgroundColor: MY_COLOR_BGCOLOR_CONTROL_FOR_BUTTON_DEMO,
 		padding: {
 			Desktop: {
-				top: "10px",
-				left: "20px",
-				right: "20px",
-				bottom: "10px",
+				top: "1rem",
+				left: "2rem",
+				right: "2rem",
+				bottom: "1rem",
 			},
 		},
 		border: MY_BORDER_CONTROL_DEMO,

@@ -76,6 +76,7 @@ const WcbFormPanelAction: FC<Props> = ({
 						<InputControl
 							label={__("Email", "wcb")}
 							type="email"
+							placeholder={__("email@example.com", "wcb")}
 							value={main[tab.name as TabsHere].email}
 							onChange={(nextValue) => {
 								setAttr__({

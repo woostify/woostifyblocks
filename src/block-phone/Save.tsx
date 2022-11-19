@@ -20,6 +20,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			<FormInputLabelRichTextContent
 				value={attributes.label}
 				isRequired={general_general.isRequired}
+				uniqueName={UNIQUE_NAME}
 			/>
 			<div className="wcb-phone__inner">
 				<SelectCountryCode value={attributes.countryCode} />

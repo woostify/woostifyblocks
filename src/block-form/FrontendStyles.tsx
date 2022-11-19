@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import ReactDOM from "react-dom";
 import { WcbAttrs } from "./attributes";
 import GlobalCss from "./GlobalCss";
+import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 
 interface Props extends WcbAttrs {}
 
@@ -15,9 +16,6 @@ const divsToUpdate = document.querySelectorAll(
 );
 
 divsToUpdate.forEach((div) => {
-	// Handle when submit this Form
-	handleSubmitForm(div.id);
-
 	// Handle CSS IN JS THIS block
 	const preEl = div.querySelector(
 		`pre[data-wcb-block-attrs=${div.id}]`
@@ -30,8 +28,11 @@ divsToUpdate.forEach((div) => {
 	if (!preEl || !preEl.innerText || !divRenderCssEl) {
 		return;
 	}
-	//
+
 	const props = JSON.parse(preEl?.innerText);
+	//
+	// Handle when submit this Form
+	handleSubmitForm(div.id, props);
 	//
 	ReactDOM.render(<FrontendStyles {...props} />, divRenderCssEl);
 	//
@@ -40,41 +41,71 @@ divsToUpdate.forEach((div) => {
 });
 
 // --------------------------- FORM AJAX
-function handleSubmitForm(formId: string) {
+function handleSubmitForm(formId: string, props: Props) {
 	let $ = jQuery;
 	if (typeof jQuery !== "function") {
 		return;
 	}
 	$("#" + formId).on("submit", function (event) {
-		const formData = $(this).serializeArray();
-		console.log(123, { formData });
 		event.preventDefault();
-		return;
-		$.ajax({
-			type: "post", //Phương thức truyền post hoặc get
-			dataType: "json", //Dạng dữ liệu trả về xml, json, script, or html
-			url: wcbFrontendAjaxObject.ajaxurl, //Đường dẫn chứa hàm xử lý dữ liệu. Mặc định của WP như vậy
-			data: {
-				action: "thongbao", //Tên action
-				formData: "levantoan.com", //Biến truyền vào xử lý. $_POST['website']
-			},
-			context: this,
-			beforeSend: function () {
-				//Làm gì đó trước khi gửi dữ liệu vào xử lý
-			},
-			success: function (response) {
-				//Làm gì đó khi dữ liệu đã được xử lý
-				if (response.success) {
-					alert(response.data);
-				} else {
-					alert("Đã có lỗi xảy ra");
-				}
-			},
-			error: function (jqXHR, textStatus, errorThrown) {
-				//Làm gì đó khi có lỗi xảy ra
-				console.log("The following error occured: " + textStatus, errorThrown);
-			},
-		});
+
+		// ----------------------------
+		const handleAjaxAction = () => {
+			let formData = $(this).serializeArray();
+			formData = formData.map((item) => {
+				const fieldLabel = $(`[data-label-for='${item.name}']`).text();
+				return {
+					name: fieldLabel,
+					value: item.value,
+				};
+			});
+
+			const mailInfo = {
+				subject: props.general_action.subject || "",
+				to: props.general_action.main.To.email || "",
+				cc: props.general_action.main.CC.email || "",
+				bcc: props.general_action.main.BCC.email || "",
+			};
+			$.ajax({
+				type: "post", //Phương thức truyền post hoặc get
+				dataType: "json", //Dạng dữ liệu trả về xml, json, script, or html
+				url: wcbFrontendAjaxObject.ajaxurl, //Đường dẫn chứa hàm xử lý dữ liệu. Mặc định của WP như vậy
+				data: {
+					action: "wcbform_action", //Tên action
+					formData,
+					mailInfo,
+				},
+				context: this,
+				beforeSend: function () {},
+				success: function (response) {
+					// This is OK code
+					console.log(99, "-----------OK");
+				},
+				error: function (jqXHR, textStatus, errorThrown) {
+					console.log(
+						"The following error occured: " + textStatus,
+						errorThrown
+					);
+				},
+			});
+		};
+
+		// ------------------------------------------------------------------------------------
+		if (!!grecaptcha) {
+			grecaptcha.ready(function () {
+				grecaptcha
+					.execute(DEMO_WCB_GLOBAL_VARIABLES.reCAPTCHA_site_key, {
+						action: "submit",
+					})
+					.then(function (token) {
+						console.log(123, { token });
+						handleAjaxAction();
+					});
+			});
+		} else {
+			handleAjaxAction();
+		}
+
 		return false;
 	});
 }

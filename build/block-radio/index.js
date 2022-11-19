@@ -1504,12 +1504,14 @@ const FormInputLabelRichTextContent = _ref => {
   let {
     isRequired,
     value,
-    className = ""
+    className = "",
+    uniqueName
   } = _ref;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     value: value,
     className: `wcb-form__label ${className} ${isRequired ? "required" : ""}`,
-    tagName: "span"
+    tagName: "span",
+    "data-label-for": uniqueName
   });
 };
 
@@ -1561,6 +1563,12 @@ __webpack_require__.r(__webpack_exports__);
 const MY_RADIO_OPTIONS_DEMO = [{
   label: "Radio label",
   value: "radio-value"
+}, {
+  label: "Radio label 2",
+  value: "radio-value-2"
+}, {
+  label: "Radio label 3",
+  value: "radio-value-3"
 }];
 
 const Edit = props => {
@@ -1806,10 +1814,10 @@ function save(_ref) {
     uniqueId,
     general_general
   } = attributes;
-  const RADIO_NAME = (0,_utils_converUniqueId__WEBPACK_IMPORTED_MODULE_6__["default"])(uniqueId, "radio"); //
+  const UNIQUE_NAME = (0,_utils_converUniqueId__WEBPACK_IMPORTED_MODULE_6__["default"])(uniqueId, "radio"); //
 
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-    className: "wcb-radio__wrap " + RADIO_NAME
+    className: "wcb-radio__wrap "
   });
 
   const renderRadioOptions = () => {
@@ -1820,7 +1828,7 @@ function save(_ref) {
       className: `wcb-radio__option-input ${general_general.layout}`,
       value: item.value,
       required: general_general.isRequired,
-      name: RADIO_NAME
+      name: UNIQUE_NAME
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
       className: "wcb-radio__option-label"
     }, item.label))));
@@ -1830,7 +1838,8 @@ function save(_ref) {
     "data-uniqueid": uniqueId
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_block_form_FormInputLabelRichTextContent__WEBPACK_IMPORTED_MODULE_5__.FormInputLabelRichTextContent, {
     value: attributes.label,
-    isRequired: general_general.isRequired
+    isRequired: general_general.isRequired,
+    uniqueName: UNIQUE_NAME
   }), renderRadioOptions());
 }
 

@@ -20,7 +20,6 @@ export interface WCB_FORM_PANEL_GENERAL {
 	isShowLabel: boolean;
 	formStyle: "simple" | "underline" | "solid";
 	confirmationType: "message" | "url-text";
-	hiddenFieldLabel: string;
 	successMessageText: string;
 	errorMessageText: string;
 	successRedirectUrl: string;
@@ -30,7 +29,6 @@ export const WCB_FORM_PANEL_GENERAL_DEMO: WCB_FORM_PANEL_GENERAL = {
 	textAlignment: { Desktop: "left" },
 	isShowLabel: true,
 	formStyle: "simple",
-	hiddenFieldLabel: "Woostify form",
 	confirmationType: "message",
 	successMessageText: "The form has been submitted successfully!",
 	errorMessageText:
@@ -61,7 +59,6 @@ const WcbFormPanelGeneral: FC<Props> = ({
 		errorMessageText,
 		successMessageText,
 		successRedirectUrl,
-		hiddenFieldLabel,
 	} = panelData;
 	const TEXT_ALIGNMENT =
 		textAlignment[deviceType] || textAlignment.Tablet || textAlignment.Desktop;
@@ -95,17 +92,6 @@ const WcbFormPanelGeneral: FC<Props> = ({
 						setAttr__({
 							...panelData,
 							isShowLabel: e,
-						});
-					}}
-				/>
-
-				<InputControl
-					label={__("HIDDEN FIELD LABEL", "wcb")}
-					value={hiddenFieldLabel}
-					onChange={(value) => {
-						setAttr__({
-							...panelData,
-							hiddenFieldLabel: value,
 						});
 					}}
 				/>

@@ -35,8 +35,15 @@ import WcbFormPanelSubmitButton from "./WcbFormPanelSubmitButton";
 import WcbFormPanelAction from "./WcbFormPanelAction";
 import WcbFormPanelGoogleRecaptcha from "./WcbFormPanelGoogleRecaptcha";
 import WcbFormPanel_StyleLabel from "./WcbFormPanel_StyleLabel";
-import WcbFormPanel_StyleInput from "./WcbFormPanel_StyleInput";
-import WcbFormPanel_StyleCheckBoxRadio from "./WcbFormPanel_StyleCheckBoxRadio";
+import WcbFormPanel_StyleInput, {
+	WCB_FORM_PANEL_STYLE_INPUT_DEMO__SIMPLE,
+	WCB_FORM_PANEL_STYLE_INPUT_DEMO__SOLID,
+	WCB_FORM_PANEL_STYLE_INPUT_DEMO__UNDERLINE,
+} from "./WcbFormPanel_StyleInput";
+import WcbFormPanel_StyleCheckBoxRadio, {
+	WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SIMPLE,
+	WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SOLID,
+} from "./WcbFormPanel_StyleCheckBoxRadio";
 import WcbPostGridPanel_StyleSubmitButton from "./WcbPostGridPanel_StyleSubmitButton";
 import WcbPostGridPanel_StyleMessages from "./WcbPostGridPanel_StyleMessages";
 import WcbFormPanel_StyleSpacing from "./WcbFormPanel_StyleSpacing";
@@ -90,6 +97,32 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			uniqueId: UNIQUE_ID,
 		});
 	}, [UNIQUE_ID]);
+	//
+	useEffect(() => {
+		console.log(111111);
+
+		if (general_general.formStyle === "simple") {
+			setAttributes({
+				style_input: WCB_FORM_PANEL_STYLE_INPUT_DEMO__SIMPLE,
+				style_checkbox_radio_toggle:
+					WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SIMPLE,
+			});
+		}
+		if (general_general.formStyle === "solid") {
+			setAttributes({
+				style_input: WCB_FORM_PANEL_STYLE_INPUT_DEMO__SOLID,
+				style_checkbox_radio_toggle:
+					WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SOLID,
+			});
+		}
+		if (general_general.formStyle === "underline") {
+			setAttributes({
+				style_input: WCB_FORM_PANEL_STYLE_INPUT_DEMO__UNDERLINE,
+				style_checkbox_radio_toggle:
+					WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SIMPLE,
+			});
+		}
+	}, [general_general.formStyle]);
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {

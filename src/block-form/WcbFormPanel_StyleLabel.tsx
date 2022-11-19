@@ -16,7 +16,16 @@ export interface WCB_FORM_PANEL_STYLE_LABEL {
 }
 
 export const WCB_FORM_PANEL_STYLE_LABEL_DEMO: WCB_FORM_PANEL_STYLE_LABEL = {
-	typography: TYPOGRAPHY_CONTROL_DEMO,
+	typography: {
+		...TYPOGRAPHY_CONTROL_DEMO,
+		appearance: {
+			...TYPOGRAPHY_CONTROL_DEMO.appearance,
+			style: {
+				...TYPOGRAPHY_CONTROL_DEMO.appearance.style,
+				fontWeight: 500,
+			},
+		},
+	},
 	textColor: "",
 	textColorHover: "",
 };

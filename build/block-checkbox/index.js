@@ -1491,6 +1491,12 @@ __webpack_require__.r(__webpack_exports__);
 const MY_CHECK_BOX_OPTIONS_DEMO = [{
   label: "Checkbox label",
   value: "checkbox-value"
+}, {
+  label: "Checkbox label 2",
+  value: "checkbox-value-2"
+}, {
+  label: "Checkbox label 3",
+  value: "checkbox-value-3"
 }];
 
 const Edit = props => {
@@ -1735,7 +1741,7 @@ function save(_ref) {
     uniqueId,
     general_general
   } = attributes;
-  const CHECKBOX_NAME = (0,_utils_converUniqueId__WEBPACK_IMPORTED_MODULE_6__["default"])(uniqueId, "checkbox"); //
+  const UNIQUE_NAME = (0,_utils_converUniqueId__WEBPACK_IMPORTED_MODULE_6__["default"])(uniqueId, "checkbox"); //
 
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
     className: "wcb-checkbox__wrap"
@@ -1749,7 +1755,7 @@ function save(_ref) {
       className: "wcb-checkbox__option-input",
       value: item.value,
       required: general_general.isRequired,
-      name: CHECKBOX_NAME
+      name: UNIQUE_NAME
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
       className: "wcb-checkbox__option-label"
     }, item.label))));
@@ -1759,7 +1765,8 @@ function save(_ref) {
     "data-uniqueid": uniqueId
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_block_form_FormInputLabelRichTextContent__WEBPACK_IMPORTED_MODULE_5__.FormInputLabelRichTextContent, {
     value: attributes.label,
-    isRequired: general_general.isRequired
+    isRequired: general_general.isRequired,
+    uniqueName: UNIQUE_NAME
   }), renderCheckboxOptions());
 }
 
@@ -1972,12 +1979,14 @@ const FormInputLabelRichTextContent = _ref => {
   let {
     isRequired,
     value,
-    className = ""
+    className = "",
+    uniqueName
   } = _ref;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     value: value,
     className: `wcb-form__label ${className} ${isRequired ? "required" : ""}`,
-    tagName: "span"
+    tagName: "span",
+    "data-label-for": uniqueName
   });
 };
 

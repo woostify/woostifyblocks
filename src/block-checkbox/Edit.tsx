@@ -24,6 +24,8 @@ export interface MyCheckboxOption {
 }
 export const MY_CHECK_BOX_OPTIONS_DEMO: MyCheckboxOption[] = [
 	{ label: "Checkbox label", value: "checkbox-value" },
+	{ label: "Checkbox label 2", value: "checkbox-value-2" },
+	{ label: "Checkbox label 3", value: "checkbox-value-3" },
 ];
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {

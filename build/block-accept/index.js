@@ -1585,13 +1585,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "./src/block-accept/style.scss");
-/* harmony import */ var _block_form_FormInputLabelRichTextContent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../block-form/FormInputLabelRichTextContent */ "./src/block-form/FormInputLabelRichTextContent.tsx");
-/* harmony import */ var _utils_converUniqueId__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/converUniqueId */ "./src/utils/converUniqueId.ts");
+/* harmony import */ var _utils_converUniqueId__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/converUniqueId */ "./src/utils/converUniqueId.ts");
 
 
 
 // @ts-ignore
-
 
 
 
@@ -1603,16 +1601,13 @@ function save(_ref) {
     uniqueId,
     general_general
   } = attributes;
-  const UNIQUE_NAME = (0,_utils_converUniqueId__WEBPACK_IMPORTED_MODULE_6__["default"])(uniqueId, "accept"); //
+  const UNIQUE_NAME = (0,_utils_converUniqueId__WEBPACK_IMPORTED_MODULE_5__["default"])(uniqueId, "accept"); //
 
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
     className: "wcb-accept__wrap"
   });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, blockProps, {
     "data-uniqueid": uniqueId
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_block_form_FormInputLabelRichTextContent__WEBPACK_IMPORTED_MODULE_5__.FormInputLabelRichTextContent, {
-    value: attributes.label,
-    isRequired: general_general.isRequired
   }), general_general.enablePrivacyLink && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
     href: general_general.linkHref,
     target: general_general.openInNewTab ? "_blank" : "_self",
@@ -1626,7 +1621,8 @@ function save(_ref) {
     required: general_general.isRequired,
     name: UNIQUE_NAME
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
-    className: `wcb-checkbox__option-label ${general_general.isRequired ? "required" : ""}`
+    className: `wcb-checkbox__option-label ${general_general.isRequired ? "required" : ""}`,
+    "data-label-for": UNIQUE_NAME
   }, general_general.acceptanceText)));
 }
 
@@ -1821,40 +1817,6 @@ const {
   save: _Save__WEBPACK_IMPORTED_MODULE_3__["default"],
   attributes: _attributes__WEBPACK_IMPORTED_MODULE_5__["default"]
 });
-
-/***/ }),
-
-/***/ "./src/block-form/FormInputLabelRichTextContent.tsx":
-/*!**********************************************************!*\
-  !*** ./src/block-form/FormInputLabelRichTextContent.tsx ***!
-  \**********************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FormInputLabelRichTextContent": function() { return /* binding */ FormInputLabelRichTextContent; }
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-
-
-
-const FormInputLabelRichTextContent = _ref => {
-  let {
-    isRequired,
-    value,
-    className = ""
-  } = _ref;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
-    value: value,
-    className: `wcb-form__label ${className} ${isRequired ? "required" : ""}`,
-    tagName: "span"
-  });
-};
 
 /***/ }),
 

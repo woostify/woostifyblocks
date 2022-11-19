@@ -1900,11 +1900,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
-const DEMO_WCB_GLOBAL_VARIABLES = {
+const DEMO_WCB_GLOBAL_VARIABLES = window.wcbGlobalVariables || {
   media__desktopMinWidth: "1024px",
   media__tabletMinWidth: "768px",
   media_tablet: "768px",
-  media_desktop: "1024px"
+  media_desktop: "1024px",
+  reCAPTCHA_site_key: "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
+  reCAPTCHA_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
 }; // ----------------
 
 /* harmony default export */ __webpack_exports__["default"] = (null);

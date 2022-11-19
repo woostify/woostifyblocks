@@ -42,25 +42,114 @@ export interface WCB_FORM_PANEL_STYLE_INPUT {
 	padding: HasResponsive<DimensionSettings>;
 }
 
-export const WCB_FORM_PANEL_STYLE_INPUT_DEMO: WCB_FORM_PANEL_STYLE_INPUT = {
-	typography: TYPOGRAPHY_CONTROL_DEMO,
-	textColor: "",
-	bgAndPlaceholder: {
-		Active: { backgroundColor: "", placeholderColor: "" },
-		Hover: { backgroundColor: "", placeholderColor: "" },
-		Normal: { backgroundColor: "", placeholderColor: "" },
-	},
-	border: MY_BORDER_CONTROL_DEMO,
-	padding: {
-		Desktop: {
-			top: "0.5rem",
-			left: "0.5rem",
-			right: "0.5rem",
-			bottom: "0.5rem",
+export const WCB_FORM_PANEL_STYLE_INPUT_DEMO__SIMPLE: WCB_FORM_PANEL_STYLE_INPUT =
+	{
+		typography: TYPOGRAPHY_CONTROL_DEMO,
+		textColor: "",
+		bgAndPlaceholder: {
+			Active: { backgroundColor: "#fff", placeholderColor: "" },
+			Hover: { backgroundColor: "#fff", placeholderColor: "" },
+			Normal: { backgroundColor: "#fff", placeholderColor: "" },
 		},
-	},
-};
+		border: {
+			...MY_BORDER_CONTROL_DEMO,
+			mainSettings: {
+				color: "#d1d5db",
+				style: "solid",
+				width: "1px",
+			},
+		},
+		padding: {
+			Desktop: {
+				top: "0.5rem",
+				left: "0.75rem",
+				right: "0.75rem",
+				bottom: "0.5rem",
+			},
+		},
+	};
 
+export const WCB_FORM_PANEL_STYLE_INPUT_DEMO__SOLID: WCB_FORM_PANEL_STYLE_INPUT =
+	{
+		typography: TYPOGRAPHY_CONTROL_DEMO,
+		textColor: "",
+		bgAndPlaceholder: {
+			Normal: { backgroundColor: "#f9fafb", placeholderColor: "" },
+			Hover: { backgroundColor: "#f9fafb", placeholderColor: "" },
+			Active: { backgroundColor: "#fff", placeholderColor: "" },
+		},
+		border: {
+			...MY_BORDER_CONTROL_DEMO,
+			mainSettings: {
+				color: "#f9fafb",
+				style: "solid",
+				width: "1px",
+			},
+		},
+		padding: {
+			Desktop: {
+				top: "0.5rem",
+				left: "0.75rem",
+				right: "0.75rem",
+				bottom: "0.5rem",
+			},
+		},
+	};
+
+export const WCB_FORM_PANEL_STYLE_INPUT_DEMO__UNDERLINE: WCB_FORM_PANEL_STYLE_INPUT =
+	{
+		typography: TYPOGRAPHY_CONTROL_DEMO,
+		textColor: "",
+		bgAndPlaceholder: {
+			Normal: { backgroundColor: "#fff", placeholderColor: "" },
+			Hover: { backgroundColor: "#fff", placeholderColor: "" },
+			Active: { backgroundColor: "#fff", placeholderColor: "" },
+		},
+		border: {
+			...MY_BORDER_CONTROL_DEMO,
+			radius: {
+				Desktop: {
+					bottomLeft: "0",
+					bottomRight: "0",
+					topLeft: "0",
+					topRight: "0",
+				},
+			},
+			mainSettings: {
+				bottom: {
+					color: "#e5e7eb",
+					style: "solid",
+					width: "2px",
+				},
+				left: {
+					color: "",
+					style: "solid",
+					width: "0",
+				},
+				right: {
+					color: "",
+					style: "solid",
+					width: "0",
+				},
+				top: {
+					color: "",
+					style: "solid",
+					width: "0",
+				},
+			},
+		},
+		padding: {
+			Desktop: {
+				top: "0.5rem",
+				left: "0rem",
+				right: "0rem",
+				bottom: "0.5rem",
+			},
+		},
+	};
+
+export const WCB_FORM_PANEL_STYLE_INPUT_DEMO =
+	WCB_FORM_PANEL_STYLE_INPUT_DEMO__UNDERLINE;
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
 	panelData: WCB_FORM_PANEL_STYLE_INPUT;

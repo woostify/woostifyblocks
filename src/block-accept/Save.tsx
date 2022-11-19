@@ -4,7 +4,6 @@ import { __ } from "@wordpress/i18n";
 import { RichText, useBlockProps } from "@wordpress/block-editor";
 import { WcbAttrs } from "./attributes";
 import "./style.scss";
-import { FormInputLabelRichTextContent } from "../block-form/FormInputLabelRichTextContent";
 import converUniqueId from "../utils/converUniqueId";
 
 export default function save({ attributes }: { attributes: WcbAttrs }) {
@@ -16,10 +15,6 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 	return (
 		<div {...blockProps} data-uniqueid={uniqueId}>
-			<FormInputLabelRichTextContent
-				value={attributes.label}
-				isRequired={general_general.isRequired}
-			/>
 			{/* CHILD CONTENT  */}
 			{general_general.enablePrivacyLink && (
 				<div>
@@ -44,6 +39,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 					className={`wcb-checkbox__option-label ${
 						general_general.isRequired ? "required" : ""
 					}`}
+					data-label-for={UNIQUE_NAME}
 				>
 					{general_general.acceptanceText}
 				</span>

@@ -17,7 +17,7 @@ export interface WCB_FORM_PANEL_GOOGLE_RECAPTCHA {
 export const WCB_FORM_PANEL_GOOGLE_RECAPTCHA_DEMO: WCB_FORM_PANEL_GOOGLE_RECAPTCHA =
 	{
 		enableReCaptcha: true,
-		version: "v3",
+		version: "v2",
 	};
 
 interface Props

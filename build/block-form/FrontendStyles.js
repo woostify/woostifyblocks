@@ -1900,11 +1900,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
-const DEMO_WCB_GLOBAL_VARIABLES = {
+const DEMO_WCB_GLOBAL_VARIABLES = window.wcbGlobalVariables || {
   media__desktopMinWidth: "1024px",
   media__tabletMinWidth: "768px",
   media_tablet: "768px",
-  media_desktop: "1024px"
+  media_desktop: "1024px",
+  reCAPTCHA_site_key: "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
+  reCAPTCHA_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
 }; // ----------------
 
 /* harmony default export */ __webpack_exports__["default"] = (null);
@@ -2045,6 +2047,9 @@ const GlobalCss = attrs => {
         },
         [`@media (min-width: ${media_desktop})`]: {
           textAlign: textAlignment_desktop
+        },
+        ".wcb-form__btn-submit-wrap": {
+          justifyContent: general_submit_button.textAlignment
         }
       }
     };
@@ -5013,6 +5018,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "react-dom");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _GlobalCss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./GlobalCss */ "./src/block-form/GlobalCss.tsx");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+
 
 
 
@@ -5025,18 +5032,18 @@ const FrontendStyles = attrs => {
 
 const divsToUpdate = document.querySelectorAll(".wcb-form__wrap.wcb-update-div");
 divsToUpdate.forEach(div => {
-  // Handle when submit this Form
-  handleSubmitForm(div.id); // Handle CSS IN JS THIS block
-
+  // Handle CSS IN JS THIS block
   const preEl = div.querySelector(`pre[data-wcb-block-attrs=${div.id}]`);
   const divRenderCssEl = div.querySelector(`div[data-wcb-global-styles=${div.id}]`);
 
   if (!preEl || !preEl.innerText || !divRenderCssEl) {
     return;
-  } //
-
+  }
 
   const props = JSON.parse(preEl === null || preEl === void 0 ? void 0 : preEl.innerText); //
+  // Handle when submit this Form
+
+  handleSubmitForm(div.id, props); //
 
   react_dom__WEBPACK_IMPORTED_MODULE_2___default().render((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(FrontendStyles, props), divRenderCssEl); //
 
@@ -5044,7 +5051,7 @@ divsToUpdate.forEach(div => {
   preEl.remove();
 }); // --------------------------- FORM AJAX
 
-function handleSubmitForm(formId) {
+function handleSubmitForm(formId, props) {
   let $ = jQuery;
 
   if (typeof jQuery !== "function") {
@@ -5052,41 +5059,64 @@ function handleSubmitForm(formId) {
   }
 
   $("#" + formId).on("submit", function (event) {
-    const formData = $(this).serializeArray();
-    console.log(123, {
-      formData
-    });
-    event.preventDefault();
-    return;
-    $.ajax({
-      type: "post",
-      //Phương thức truyền post hoặc get
-      dataType: "json",
-      //Dạng dữ liệu trả về xml, json, script, or html
-      url: wcbFrontendAjaxObject.ajaxurl,
-      //Đường dẫn chứa hàm xử lý dữ liệu. Mặc định của WP như vậy
-      data: {
-        action: "thongbao",
-        //Tên action
-        formData: "levantoan.com" //Biến truyền vào xử lý. $_POST['website']
+    event.preventDefault(); // ----------------------------
 
-      },
-      context: this,
-      beforeSend: function () {//Làm gì đó trước khi gửi dữ liệu vào xử lý
-      },
-      success: function (response) {
-        //Làm gì đó khi dữ liệu đã được xử lý
-        if (response.success) {
-          alert(response.data);
-        } else {
-          alert("Đã có lỗi xảy ra");
+    const handleAjaxAction = () => {
+      let formData = $(this).serializeArray();
+      formData = formData.map(item => {
+        const fieldLabel = $(`[data-label-for='${item.name}']`).text();
+        return {
+          name: fieldLabel,
+          value: item.value
+        };
+      });
+      const mailInfo = {
+        subject: props.general_action.subject || "",
+        to: props.general_action.main.To.email || "",
+        cc: props.general_action.main.CC.email || "",
+        bcc: props.general_action.main.BCC.email || ""
+      };
+      $.ajax({
+        type: "post",
+        //Phương thức truyền post hoặc get
+        dataType: "json",
+        //Dạng dữ liệu trả về xml, json, script, or html
+        url: wcbFrontendAjaxObject.ajaxurl,
+        //Đường dẫn chứa hàm xử lý dữ liệu. Mặc định của WP như vậy
+        data: {
+          action: "wcbform_action",
+          //Tên action
+          formData,
+          mailInfo
+        },
+        context: this,
+        beforeSend: function () {},
+        success: function (response) {
+          // This is OK code
+          console.log(99, "-----------OK");
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+          console.log("The following error occured: " + textStatus, errorThrown);
         }
-      },
-      error: function (jqXHR, textStatus, errorThrown) {
-        //Làm gì đó khi có lỗi xảy ra
-        console.log("The following error occured: " + textStatus, errorThrown);
-      }
-    });
+      });
+    }; // ------------------------------------------------------------------------------------
+
+
+    if (!!grecaptcha) {
+      grecaptcha.ready(function () {
+        grecaptcha.execute(___WEBPACK_IMPORTED_MODULE_4__.DEMO_WCB_GLOBAL_VARIABLES.reCAPTCHA_site_key, {
+          action: "submit"
+        }).then(function (token) {
+          console.log(123, {
+            token
+          });
+          handleAjaxAction();
+        });
+      });
+    } else {
+      handleAjaxAction();
+    }
+
     return false;
   });
 }

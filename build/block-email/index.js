@@ -1614,7 +1614,8 @@ function save(_ref) {
     "data-uniqueid": uniqueId
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_block_form_FormInputLabelRichTextContent__WEBPACK_IMPORTED_MODULE_5__.FormInputLabelRichTextContent, {
     value: attributes.label,
-    isRequired: general_general.isRequired
+    isRequired: general_general.isRequired,
+    uniqueName: UNIQUE_NAME
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
     type: "email",
     placeholder: general_general.placeholder,
@@ -1852,12 +1853,14 @@ const FormInputLabelRichTextContent = _ref => {
   let {
     isRequired,
     value,
-    className = ""
+    className = "",
+    uniqueName
   } = _ref;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     value: value,
     className: `wcb-form__label ${className} ${isRequired ? "required" : ""}`,
-    tagName: "span"
+    tagName: "span",
+    "data-label-for": uniqueName
   });
 };
 

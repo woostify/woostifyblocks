@@ -59,6 +59,9 @@ const GlobalCss: FC<Props> = (attrs) => {
 				[`@media (min-width: ${media_desktop})`]: {
 					textAlign: textAlignment_desktop,
 				},
+				".wcb-form__btn-submit-wrap": {
+					justifyContent: general_submit_button.textAlignment,
+				},
 			},
 		};
 	};

@@ -1,5 +1,4 @@
 import {
-	ColorPicker,
 	PanelBody,
 	// @ts-ignore
 	__experimentalBoxControl as BoxControl,
@@ -12,9 +11,7 @@ import {
 	MyBorderControlData,
 	MY_BORDER_CONTROL_DEMO,
 } from "../components/controls/MyBorderControl/types";
-import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 import { DimensionSettings } from "../components/controls/MyDimensionsControl/types";
-import MyDisclosure from "../components/controls/MyDisclosure";
 import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
@@ -31,15 +28,22 @@ export interface WCB_FORM_PANEL_STYLE_SPACING {
 export const WCB_FORM_PANEL_STYLE_SPACING_DEMO: WCB_FORM_PANEL_STYLE_SPACING = {
 	padding: {
 		Desktop: {
-			top: "1rem",
-			left: "1rem",
-			right: "1rem",
-			bottom: "1rem",
+			top: "1.75rem",
+			left: "1.75rem",
+			right: "1.75rem",
+			bottom: "1.75rem",
 		},
 	},
-	border: MY_BORDER_CONTROL_DEMO,
-	rowGap: { Desktop: "1rem" },
-	labelBottomMargin: { Desktop: "1rem" },
+	border: {
+		...MY_BORDER_CONTROL_DEMO,
+		mainSettings: {
+			color: "#38bdf8",
+			style: "solid",
+			width: "1px",
+		},
+	},
+	rowGap: { Desktop: "1.75rem" },
+	labelBottomMargin: { Desktop: "0.5rem" },
 };
 
 interface Props

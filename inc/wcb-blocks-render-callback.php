@@ -2,11 +2,31 @@
 
 //============================================= block 1 ===============================================================
 function wcb_block_form__renderCallback($attributes, $content)
+// LƯU Ý - PHẦN NÀY CHƯA CÓ DỮ LIỆU CHO RECAPTCHA KEY, CẦN CẬP NHẬT SAU KHI CÓ DỮ LIỆU
 {
     if (!is_admin()) {
         wp_enqueue_script('wcb_block_form__renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-form/FrontendStyles.js', array('wp-element'), null, true);
     }
-    return $content;
+    ob_start();
+    echo $content;
+?>
+    <!-- general_gg_recaptcha.enableReCaptcha -->
+    <?php if (boolval($attributes['general_gg_recaptcha']['enableReCaptcha'] ?? true)) : ?>
+
+        <!-- V2 -->
+        <?php if (($attributes['general_gg_recaptcha']['version'] ?? 'v2') === 'v2') : ?>
+            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <?php endif; ?>
+
+        <!-- V3 -->
+        <?php if (($attributes['general_gg_recaptcha']['version'] ?? 'v2') === 'v3') : ?>
+            <script src="https://www.google.com/recaptcha/api.js?render=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" async defer></script>
+        <?php endif; ?>
+
+    <?php endif; ?>
+
+<?php
+    return ob_get_clean();
 }
 
 //============================================= block 1 ===============================================================
