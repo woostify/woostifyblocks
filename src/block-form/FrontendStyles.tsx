@@ -46,6 +46,21 @@ function handleSubmitForm(formId: string, props: Props) {
 	if (typeof jQuery !== "function") {
 		return;
 	}
+
+	const reCaptchaV2 =
+		props.general_gg_recaptcha?.enableReCaptcha &&
+		props.general_gg_recaptcha?.version === "v2";
+	const reCaptchaV3 =
+		props.general_gg_recaptcha?.enableReCaptcha &&
+		props.general_gg_recaptcha?.version === "v3";
+
+	if (reCaptchaV2) {
+		$(`#${formId} .g-recaptcha`).attr(
+			"data-sitekey",
+			DEMO_WCB_GLOBAL_VARIABLES.reCAPTCHA_site_key || ""
+		);
+	}
+
 	$("#" + formId).on("submit", function (event) {
 		event.preventDefault();
 
@@ -79,9 +94,15 @@ function handleSubmitForm(formId: string, props: Props) {
 				beforeSend: function () {},
 				success: function (response) {
 					// This is OK code
-					console.log(99, "-----------OK");
+					console.log(99, "-----------OK", { props });
 					$(".wcb-form__successMessageText").css("display", "block");
 					$(".wcb-form__errorMessageText").css("display", "none");
+					if (
+						props?.general_general?.confirmationType === "url-text" &&
+						props?.general_general?.successRedirectUrl
+					) {
+						window.location.href = props?.general_general?.successRedirectUrl;
+					}
 				},
 				error: function (jqXHR, textStatus, errorThrown) {
 					console.log(
@@ -95,14 +116,17 @@ function handleSubmitForm(formId: string, props: Props) {
 		};
 
 		// ------------------------------------------------------------------------------------
-		if (!!grecaptcha) {
+		if (typeof grecaptcha === "object" && reCaptchaV3) {
 			grecaptcha.ready(function () {
 				grecaptcha
 					.execute(DEMO_WCB_GLOBAL_VARIABLES.reCAPTCHA_site_key, {
 						action: "submit",
 					})
 					.then(function (token) {
-						console.log(123, { token });
+						console.log(123, {
+							token,
+							key: DEMO_WCB_GLOBAL_VARIABLES.reCAPTCHA_site_key,
+						});
 						handleAjaxAction();
 					});
 			});

@@ -67,7 +67,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			{reCaptchaV2 && (
 				<div
 					className="g-recaptcha"
-					data-sitekey={DEMO_WCB_GLOBAL_VARIABLES.reCAPTCHA_site_key}
+					// data-sitekey= key se duoc jQuery add o Frontend.tsx
 				></div>
 			)}
 

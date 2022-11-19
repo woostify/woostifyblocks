@@ -5052,10 +5052,19 @@ divsToUpdate.forEach(div => {
 }); // --------------------------- FORM AJAX
 
 function handleSubmitForm(formId, props) {
+  var _props$general_gg_rec, _props$general_gg_rec2, _props$general_gg_rec3, _props$general_gg_rec4;
+
   let $ = jQuery;
 
   if (typeof jQuery !== "function") {
     return;
+  }
+
+  const reCaptchaV2 = ((_props$general_gg_rec = props.general_gg_recaptcha) === null || _props$general_gg_rec === void 0 ? void 0 : _props$general_gg_rec.enableReCaptcha) && ((_props$general_gg_rec2 = props.general_gg_recaptcha) === null || _props$general_gg_rec2 === void 0 ? void 0 : _props$general_gg_rec2.version) === "v2";
+  const reCaptchaV3 = ((_props$general_gg_rec3 = props.general_gg_recaptcha) === null || _props$general_gg_rec3 === void 0 ? void 0 : _props$general_gg_rec3.enableReCaptcha) && ((_props$general_gg_rec4 = props.general_gg_recaptcha) === null || _props$general_gg_rec4 === void 0 ? void 0 : _props$general_gg_rec4.version) === "v3";
+
+  if (reCaptchaV2) {
+    $(`#${formId} .g-recaptcha`).attr("data-sitekey", ___WEBPACK_IMPORTED_MODULE_4__.DEMO_WCB_GLOBAL_VARIABLES.reCAPTCHA_site_key || "");
   }
 
   $("#" + formId).on("submit", function (event) {
@@ -5092,10 +5101,20 @@ function handleSubmitForm(formId, props) {
         context: this,
         beforeSend: function () {},
         success: function (response) {
+          var _props$general_genera, _props$general_genera2;
+
           // This is OK code
-          console.log(99, "-----------OK");
+          console.log(99, "-----------OK", {
+            props
+          });
           $(".wcb-form__successMessageText").css("display", "block");
           $(".wcb-form__errorMessageText").css("display", "none");
+
+          if ((props === null || props === void 0 ? void 0 : (_props$general_genera = props.general_general) === null || _props$general_genera === void 0 ? void 0 : _props$general_genera.confirmationType) === "url-text" && props !== null && props !== void 0 && (_props$general_genera2 = props.general_general) !== null && _props$general_genera2 !== void 0 && _props$general_genera2.successRedirectUrl) {
+            var _props$general_genera3;
+
+            window.location.href = props === null || props === void 0 ? void 0 : (_props$general_genera3 = props.general_general) === null || _props$general_genera3 === void 0 ? void 0 : _props$general_genera3.successRedirectUrl;
+          }
         },
         error: function (jqXHR, textStatus, errorThrown) {
           console.log("The following error occured: " + textStatus, errorThrown);
@@ -5106,13 +5125,14 @@ function handleSubmitForm(formId, props) {
     }; // ------------------------------------------------------------------------------------
 
 
-    if (!!grecaptcha) {
+    if (typeof grecaptcha === "object" && reCaptchaV3) {
       grecaptcha.ready(function () {
         grecaptcha.execute(___WEBPACK_IMPORTED_MODULE_4__.DEMO_WCB_GLOBAL_VARIABLES.reCAPTCHA_site_key, {
           action: "submit"
         }).then(function (token) {
           console.log(123, {
-            token
+            token,
+            key: ___WEBPACK_IMPORTED_MODULE_4__.DEMO_WCB_GLOBAL_VARIABLES.reCAPTCHA_site_key
           });
           handleAjaxAction();
         });

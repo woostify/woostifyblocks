@@ -70,18 +70,20 @@ const WcbFormPanelGoogleRecaptcha: FC<Props> = ({
 					}}
 				/>
 
-				<MyRadioGroup
-					label="Select Version"
-					value={version}
-					plans={reCaptcha_plans}
-					onChange={(value) => {
-						setAttr__({
-							...panelData,
-							version: value as WCB_FORM_PANEL_GOOGLE_RECAPTCHA["version"],
-						});
-					}}
-					hasResponsive={false}
-				/>
+				{enableReCaptcha && (
+					<MyRadioGroup
+						label="Select Version"
+						value={version}
+						plans={reCaptcha_plans}
+						onChange={(value) => {
+							setAttr__({
+								...panelData,
+								version: value as WCB_FORM_PANEL_GOOGLE_RECAPTCHA["version"],
+							});
+						}}
+						hasResponsive={false}
+					/>
+				)}
 			</div>
 		</PanelBody>
 	);
