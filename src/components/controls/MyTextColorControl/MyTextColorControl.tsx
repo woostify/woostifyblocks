@@ -71,10 +71,11 @@ const MyTextColorControl: FC<Props> = ({
 			<div className="w-full flex justify-between items-center">
 				<p className="flex-1">{__("Text color", "wcb")}</p>
 				<div className="flex gap-1">
-					{TEXT_COLOR_TYPES.map((item) => {
+					{TEXT_COLOR_TYPES.map((item, index) => {
 						const active = item.name === colorType;
 						return (
 							<div
+								key={index + item.name}
 								className={`p-2 rounded-lg border  ${
 									active
 										? "text-sky-600 bg-sky-50 border-sky-400"

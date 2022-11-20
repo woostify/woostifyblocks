@@ -1229,7 +1229,7 @@ const SelectCountryCode: FC<Props> = ({
 			onChange={(e) => onChange(e.currentTarget.value)}
 		>
 			{data.map((item) => (
-				<option value={item.dial_code}>
+				<option key={item.dial_code} value={item.dial_code}>
 					{item.name} ({item.dial_code} )
 				</option>
 			))}

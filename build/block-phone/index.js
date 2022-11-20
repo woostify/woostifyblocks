@@ -2716,6 +2716,7 @@ const SelectCountryCode = _ref => {
     className: `wcb-phone__country-code-select ${className}`,
     onChange: e => onChange(e.currentTarget.value)
   }), data.map(item => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("option", {
+    key: item.dial_code,
     value: item.dial_code
   }, item.name, " (", item.dial_code, " )")));
 };

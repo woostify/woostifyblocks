@@ -72,9 +72,9 @@ const MyResponsiveToggle: FC<Props> = ({
 			>
 				<Menu.Items className="absolute z-50 inset-x-0 mt-1 rounded-lg bg-white shadow-lg ring-1 ring-black/10 focus:outline-none">
 					<div className="p-1 space-y-0.5">
-						{devices.map((item) => {
+						{devices.map((item, index) => {
 							return (
-								<Menu.Item>
+								<Menu.Item key={index + item}>
 									{({ active }) => {
 										const isActive = active || item === deviceType;
 										return (

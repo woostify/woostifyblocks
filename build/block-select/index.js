@@ -1636,7 +1636,8 @@ const Edit = props => {
       className: "wcb-select__select",
       name: UNIQUE_NAME,
       id: ""
-    }, (attributes.options || []).map(item => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("option", {
+    }, (attributes.options || []).map((item, index) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("option", {
+      key: index + "-" + item.value,
       value: item.value
     }, item.label)));
   };
@@ -1802,7 +1803,8 @@ function save(_ref) {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("select", {
       className: "wcb-select__select",
       name: UNIQUE_NAME
-    }, (attributes.options || []).map(item => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("option", {
+    }, (attributes.options || []).map((item, index) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("option", {
+      key: index + "-" + item.value,
       value: item.value
     }, item.label)));
   };

@@ -1566,7 +1566,9 @@ const Edit = props => {
   };
 
   const renderCheckboxOptions = () => {
-    return (attributes.options || []).map(item => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
+    return (attributes.options || []).map((item, index) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      key: index + "-" + item.value
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
       className: "wcb-checkbox__option"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
       type: "checkbox",
@@ -1748,7 +1750,9 @@ function save(_ref) {
   });
 
   const renderCheckboxOptions = () => {
-    return (attributes.options || []).map(item => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
+    return (attributes.options || []).map((item, index) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      key: index + "-" + item.value
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
       className: "wcb-checkbox__option"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
       type: "checkbox",

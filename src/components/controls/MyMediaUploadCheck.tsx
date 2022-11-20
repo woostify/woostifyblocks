@@ -23,16 +23,6 @@ const MyMediaUploadCheck: FC<Props> = ({
 	mediaUrl,
 	onChange,
 }) => {
-	// const [mediaState, setMediaState] = useState({});
-
-	// useEffect(() => {
-	// 	setMediaState({
-	// 		mediaId,
-	// 		mediaUrl,
-	// 		mediaSrcSet,
-	// 	});
-	// }, [mediaId, mediaUrl, mediaSrcSet]);
-
 	const removeMedia = () => {
 		onChange({
 			mediaId: 0,

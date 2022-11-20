@@ -83,6 +83,7 @@ const MyBackgroundNoImageControl: FC<Props> = ({
 						const active = item.name === bgType;
 						return (
 							<div
+								key={item.name}
 								className={`p-2 rounded-lg border  ${
 									active
 										? "text-sky-600 bg-sky-50 border-sky-400"

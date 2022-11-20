@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import ReactDOM from "react-dom";
-import { WcbBlockHeadingAttrs } from "./attributes";
+import { WcbAttrs } from "./attributes";
 import GlobalCss from "./GlobalCss";
 
-interface Props extends WcbBlockHeadingAttrs {}
+interface Props extends WcbAttrs {}
 
 const FrontendStyles: FC<Props> = (attrs) => {
 	return <GlobalCss {...attrs} />;

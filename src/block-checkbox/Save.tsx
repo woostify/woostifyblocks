@@ -15,8 +15,8 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const blockProps = useBlockProps.save({ className: "wcb-checkbox__wrap" });
 
 	const renderCheckboxOptions = () => {
-		return (attributes.options || []).map((item) => (
-			<div>
+		return (attributes.options || []).map((item, index) => (
+			<div key={index + "-" + item.value}>
 				<label className="wcb-checkbox__option">
 					<input
 						type="checkbox"

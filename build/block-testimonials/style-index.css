@@ -1,0 +1,32 @@
+/*!**********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/block-testimonials/style.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************/
+.glide {
+  position: relative;
+}
+
+.glide__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.glide__arrow--left {
+  right: 100%;
+}
+.glide__arrow--right {
+  left: 100%;
+}
+
+.glide__bullet {
+  margin-left: 0.375rem;
+  margin-right: 0.375rem;
+  height: 0.5rem;
+  width: 0.5rem;
+  background-color: gray;
+  border-radius: 999px;
+}
+.glide__bullet.glide__bullet--active {
+  background-color: black;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

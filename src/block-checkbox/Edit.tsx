@@ -88,8 +88,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	};
 
 	const renderCheckboxOptions = () => {
-		return (attributes.options || []).map((item) => (
-			<div>
+		return (attributes.options || []).map((item, index) => (
+			<div key={index + "-" + item.value}>
 				<label className="wcb-checkbox__option">
 					<input
 						type="checkbox"

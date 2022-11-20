@@ -1,0 +1,24 @@
+.glide {
+	position: relative;
+}
+
+.glide__arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	&--left {
+		right: 100%;
+	}
+	&--right {
+		left: 100%;
+	}
+}
+
+.glide__bullet {
+	@apply w-2 h-2 mx-1.5;
+	background-color: gray;
+	border-radius: 999px;
+	&.glide__bullet--active {
+		background-color: black;
+	}
+}

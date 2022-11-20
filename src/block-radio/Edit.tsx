@@ -89,8 +89,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	};
 
 	const renderRadioOptions = () => {
-		return (attributes.options || []).map((item) => (
-			<div>
+		return (attributes.options || []).map((item, index) => (
+			<div key={index + "-" + item.value}>
 				<label className="wcb-radio__option">
 					<input
 						type="radio"

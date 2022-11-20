@@ -1639,7 +1639,9 @@ const Edit = props => {
   };
 
   const renderRadioOptions = () => {
-    return (attributes.options || []).map(item => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
+    return (attributes.options || []).map((item, index) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      key: index + "-" + item.value
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
       className: "wcb-radio__option"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
       type: "radio",
@@ -1821,7 +1823,9 @@ function save(_ref) {
   });
 
   const renderRadioOptions = () => {
-    return (attributes.options || []).map(item => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
+    return (attributes.options || []).map((item, index) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      key: index + "-" + item.value
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
       className: "wcb-radio__option"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
       type: "radio",
@@ -2376,8 +2380,10 @@ const MyResponsiveToggle = _ref => {
     className: "absolute z-50 inset-x-0 mt-1 rounded-lg bg-white shadow-lg ring-1 ring-black/10 focus:outline-none"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "p-1 space-y-0.5"
-  }, devices.map(item => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_7__.Menu.Item, null, _ref2 => {
+  }, devices.map((item, index) => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_7__.Menu.Item, {
+      key: index + item
+    }, _ref2 => {
       let {
         active
       } = _ref2;

@@ -4164,6 +4164,7 @@ const MyBackgroundControl = _ref => {
     }, bgTypesPlans.map(item => {
       const active = item.name === bgType;
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        key: item.name,
         className: `p-2 rounded-lg border  ${active ? "text-sky-600 bg-sky-50 border-sky-400" : "border-slate-300 hover:border-slate-500 cursor-pointer"}`,
         onClick: () => handleChangeBgType(item.name),
         title: item.name
@@ -5903,14 +5904,6 @@ const MyMediaUploadCheck = _ref => {
     onChange
   } = _ref;
 
-  // const [mediaState, setMediaState] = useState({});
-  // useEffect(() => {
-  // 	setMediaState({
-  // 		mediaId,
-  // 		mediaUrl,
-  // 		mediaSrcSet,
-  // 	});
-  // }, [mediaId, mediaUrl, mediaSrcSet]);
   const removeMedia = () => {
     onChange({
       mediaId: 0,
@@ -6279,8 +6272,10 @@ const MyResponsiveToggle = _ref => {
     className: "absolute z-50 inset-x-0 mt-1 rounded-lg bg-white shadow-lg ring-1 ring-black/10 focus:outline-none"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "p-1 space-y-0.5"
-  }, devices.map(item => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_7__.Menu.Item, null, _ref2 => {
+  }, devices.map((item, index) => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_7__.Menu.Item, {
+      key: index + item
+    }, _ref2 => {
       let {
         active
       } = _ref2;

@@ -87,8 +87,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const renderSelect = () => {
 		return (
 			<select className="wcb-select__select" name={UNIQUE_NAME} id="">
-				{(attributes.options || []).map((item) => (
-					<option value={item.value}>{item.label}</option>
+				{(attributes.options || []).map((item, index) => (
+					<option key={index + "-" + item.value} value={item.value}>
+						{item.label}
+					</option>
 				))}
 			</select>
 		);
