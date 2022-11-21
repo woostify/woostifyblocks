@@ -11,14 +11,33 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_general,
+		general_carousel,
+		general_images,
+		style_arrowAndDots,
+		style_backgroundAndBorder,
+		style_company,
+		style_content,
+		style_dimension,
+		style_image,
+		style_name,
+		testimonials,
 	} = attributes;
 	//
 
-	const newAttrForSave: Omit<WcbAttrs, "heading" | "subHeading"> = {
+	const newAttrForSave: Omit<WcbAttrs, "testimonials"> = {
 		uniqueId,
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_general,
+		general_carousel,
+		general_images,
+		style_arrowAndDots,
+		style_backgroundAndBorder,
+		style_company,
+		style_content,
+		style_dimension,
+		style_image,
+		style_name,
 	};
 	//
 	const blockProps = useBlockProps.save({

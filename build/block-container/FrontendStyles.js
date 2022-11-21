@@ -1922,16 +1922,18 @@ const DEMO_WCB_GLOBAL_VARIABLES = window.wcbGlobalVariables || {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_controls_MyBoxShadowControl_getBoxShadowStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/controls/MyBoxShadowControl/getBoxShadowStyles */ "./src/components/controls/MyBoxShadowControl/getBoxShadowStyles.ts");
-/* harmony import */ var _utils_getBackgroundColorGradientStyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getBackgroundColorGradientStyles */ "./src/utils/getBackgroundColorGradientStyles.ts");
-/* harmony import */ var _utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/getBorderStyles */ "./src/utils/getBorderStyles.ts");
-/* harmony import */ var _utils_getFlexPropertiesStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/getFlexPropertiesStyles */ "./src/utils/getFlexPropertiesStyles.ts");
-/* harmony import */ var _utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/getPaddingMarginStyles */ "./src/utils/getPaddingMarginStyles.ts");
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
-/* harmony import */ var _getAdvanveStyles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./getAdvanveStyles */ "./src/block-container/getAdvanveStyles.ts");
+/* harmony import */ var _utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getBorderStyles */ "./src/utils/getBorderStyles.ts");
+/* harmony import */ var _utils_getFlexPropertiesStyles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/getFlexPropertiesStyles */ "./src/utils/getFlexPropertiesStyles.ts");
+/* harmony import */ var _utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/getPaddingMarginStyles */ "./src/utils/getPaddingMarginStyles.ts");
+/* harmony import */ var _utils_getStyleBackground__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/getStyleBackground */ "./src/utils/getStyleBackground.tsx");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _getAdvanveStyles__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./getAdvanveStyles */ "./src/block-container/getAdvanveStyles.ts");
+
 
 
 
@@ -1959,7 +1961,7 @@ const GlobalCss = attrs => {
   const {
     media_desktop,
     media_tablet
-  } = ___WEBPACK_IMPORTED_MODULE_7__.DEMO_WCB_GLOBAL_VARIABLES;
+  } = ___WEBPACK_IMPORTED_MODULE_8__.DEMO_WCB_GLOBAL_VARIABLES;
   const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
   const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-container__inner`; // ------------------- WRAP DIV
 
@@ -1971,9 +1973,11 @@ const GlobalCss = attrs => {
       overflow,
       minHeight
     } = general_container;
-    let cWidthDesktop = customWidth.Desktop;
-    let cWidthTablet = customWidth.Tablet || cWidthDesktop;
-    let cWidthMobile = customWidth.Mobile || cWidthTablet;
+    let {
+      value_Desktop: cWidthDesktop,
+      value_Tablet: cWidthTablet,
+      value_Mobile: cWidthMobile
+    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__["default"])(customWidth);
 
     if (containerWidthType !== "Custom") {
       cWidthDesktop = "";
@@ -1982,20 +1986,24 @@ const GlobalCss = attrs => {
     } //
 
 
-    const minHeightDesktop = minHeight.Desktop;
-    const minHeightTablet = minHeight.Tablet || minHeightDesktop;
-    const minHeightMobile = minHeight.Mobile || minHeightTablet; //
+    const {
+      value_Desktop: minHeightDesktop,
+      value_Tablet: minHeightTablet,
+      value_Mobile: minHeightMobile
+    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__["default"])(minHeight); //
 
-    const zIndexDesktop = advance_zIndex.Desktop;
-    const zIndexTablet = advance_zIndex.Tablet || zIndexDesktop;
-    const zIndexMobile = advance_zIndex.Mobile || zIndexTablet; //
+    const {
+      value_Desktop: zIndexDesktop,
+      value_Tablet: zIndexTablet,
+      value_Mobile: zIndexMobile
+    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__["default"])(advance_zIndex); //
 
     const {
       isHiddenOnDesktop,
       isHiddenOnMobile,
       isHiddenOnTablet
     } = advance_responsiveCondition;
-    return _emotion_react__WEBPACK_IMPORTED_MODULE_9__.css`
+    return _emotion_react__WEBPACK_IMPORTED_MODULE_10__.css`
 			${WRAP_CLASSNAME} {
 				position: relative;
 				display: ${isHiddenOnMobile ? "hidden" : "flex"};
@@ -2020,125 +2028,10 @@ const GlobalCss = attrs => {
 		`;
   };
 
-  const getDivWrapStyles__BgColor_Gradient = () => {
-    const {
-      bgType,
-      color,
-      gradient
-    } = styles_background;
-    return (0,_utils_getBackgroundColorGradientStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
-      background: styles_background,
-      className: WRAP_CLASSNAME
-    });
-  };
-
-  const getDivWrapStyles__BackgroundImage = () => {
-    var _imageData$Desktop, _imageData$Tablet, _imageData$Mobile;
-
-    const {
-      bgImageAttachment,
-      bgImageRepeat,
-      bgImageSize,
-      bgType,
-      focalPoint,
-      imageData
-    } = styles_background;
-
-    if (bgType !== "image") {
-      return;
-    } //
-
-
-    const SRC__DESKTOP = (_imageData$Desktop = imageData.Desktop) === null || _imageData$Desktop === void 0 ? void 0 : _imageData$Desktop.mediaUrl;
-    const SRC__TABLET = ((_imageData$Tablet = imageData.Tablet) === null || _imageData$Tablet === void 0 ? void 0 : _imageData$Tablet.mediaUrl) || SRC__DESKTOP;
-    const SRC = ((_imageData$Mobile = imageData.Mobile) === null || _imageData$Mobile === void 0 ? void 0 : _imageData$Mobile.mediaUrl) || SRC__TABLET; //
-
-    const BG_REPEAT__DESKTOP = bgImageRepeat.Desktop;
-    const BG_REPEAT__TABLET = bgImageRepeat.Tablet || BG_REPEAT__DESKTOP;
-    const BG_REPEAT = bgImageRepeat.Mobile || BG_REPEAT__TABLET; //
-
-    const BG_ATTACHMENT__DESKTOP = bgImageAttachment.Desktop;
-    const BG_ATTACHMENT__TABLET = bgImageAttachment.Tablet || BG_ATTACHMENT__DESKTOP;
-    const BG_ATTACHMENT = bgImageAttachment.Mobile || BG_ATTACHMENT__TABLET; //
-
-    const BG_SIZE__DESKTOP = bgImageSize.Desktop;
-    const BG_SIZE__TABLET = bgImageSize.Tablet || BG_SIZE__DESKTOP;
-    const BG_SIZE = bgImageSize.Mobile || BG_SIZE__TABLET; //
-
-    const BG_FOCAL__DESKTOP = focalPoint.Desktop;
-    const BG_FOCAL__TABLET = focalPoint.Tablet || BG_FOCAL__DESKTOP;
-    const BG_FOCAL = focalPoint.Mobile || BG_FOCAL__TABLET; //
-
-    const BG_POSITION = `${BG_FOCAL.x * 100}% ${BG_FOCAL.y * 100}%`;
-    const BG_POSITION__TABLET = `${BG_FOCAL__TABLET.x * 100}% ${BG_FOCAL__TABLET.y * 100}%`;
-    const BG_POSITION__DESKTOP = `${BG_FOCAL__DESKTOP.x * 100}% ${BG_FOCAL__DESKTOP.y * 100}%`; //
-
-    return _emotion_react__WEBPACK_IMPORTED_MODULE_9__.css`
-			${WRAP_CLASSNAME} {
-				background-image: url(${SRC});
-				background-repeat: ${BG_REPEAT};
-				background-attachment: ${BG_ATTACHMENT};
-				background-size: ${BG_SIZE};
-				background-position: ${BG_POSITION};
-				@media (min-width: ${media_tablet}) {
-					background-image: url(${SRC__TABLET});
-					background-repeat: ${BG_REPEAT__TABLET};
-					background-attachment: ${BG_ATTACHMENT__TABLET};
-					background-size: ${BG_SIZE__TABLET};
-					background-position: ${BG_POSITION__TABLET};
-				}
-				@media (min-width: ${media_desktop}) {
-					background-image: url(${SRC__DESKTOP});
-					background-repeat: ${BG_REPEAT__DESKTOP};
-					background-attachment: ${BG_ATTACHMENT__DESKTOP};
-					background-size: ${BG_SIZE__DESKTOP};
-					background-position: ${BG_POSITION__DESKTOP};
-				}
-			}
-		`;
-  };
-
-  const getDivWrapStyles__Overlay = () => {
-    const {
-      overlayColor,
-      overlayGradient,
-      overlayType
-    } = styles_background;
-
-    if (overlayType !== "color" && overlayType !== "gradient") {
-      return;
-    }
-
-    let preBgName = "";
-    let bgValue = "";
-
-    if (overlayType === "color") {
-      preBgName = "background-color";
-      bgValue = overlayColor;
-    } // Backgroud gradient
-
-
-    if (overlayType === "gradient") {
-      preBgName = "background-image";
-      bgValue = overlayGradient;
-    }
-
-    return _emotion_react__WEBPACK_IMPORTED_MODULE_9__.css`
-			${WRAP_CLASSNAME} {
-				.wcb-OverlayBackgroundByBgControl {
-					${preBgName}: ${bgValue};
-					position: absolute;
-					inset: 0;
-					z-index: 0;
-				}
-			}
-		`;
-  };
-
   const getDivWrapStyles__Border = () => {
     const {} = styles_border; //
 
-    return (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
+    return (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
       border: styles_border,
       className: WRAP_CLASSNAME,
       isWithRadius: true
@@ -2185,7 +2078,7 @@ const GlobalCss = attrs => {
       VALUE_H = `${horizontal_h}px ${vertical_h}px ${blur_h}px ${spread_h}px ${color_h} ${position_h === "inset" ? position_h : ""}`;
     }
 
-    return _emotion_react__WEBPACK_IMPORTED_MODULE_9__.css`
+    return _emotion_react__WEBPACK_IMPORTED_MODULE_10__.css`
 			${WRAP_CLASSNAME} {
 				box-shadow: ${VALUE};
 				&:hover {
@@ -2200,7 +2093,7 @@ const GlobalCss = attrs => {
       margin,
       padding
     } = styles_dimensions;
-    return (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_6__["default"])({
+    return (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
       margin,
       padding,
       className: WRAP_CLASSNAME
@@ -2210,7 +2103,7 @@ const GlobalCss = attrs => {
 
 
   const getDivInnerStyles = () => {
-    return _emotion_react__WEBPACK_IMPORTED_MODULE_9__.css`
+    return _emotion_react__WEBPACK_IMPORTED_MODULE_10__.css`
 			${INNER_CLASSNAME} {
 				display: flex;
 				flex: 1 1 0%;
@@ -2231,10 +2124,12 @@ const GlobalCss = attrs => {
       return;
     }
 
-    const contentBoxWidthDesktop = contentBoxWidth.Desktop;
-    const contentBoxWidthTablet = contentBoxWidth.Tablet || contentBoxWidthDesktop;
-    const contentBoxWidthMobile = contentBoxWidth.Mobile || contentBoxWidthTablet;
-    return _emotion_react__WEBPACK_IMPORTED_MODULE_9__.css`
+    const {
+      value_Desktop: contentBoxWidthDesktop,
+      value_Tablet: contentBoxWidthTablet,
+      value_Mobile: contentBoxWidthMobile
+    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__["default"])(contentBoxWidth);
+    return _emotion_react__WEBPACK_IMPORTED_MODULE_10__.css`
 			${INNER_CLASSNAME} {
 				max-width: ${contentBoxWidthMobile};
 				@media (min-width: ${media_tablet}) {
@@ -2253,7 +2148,7 @@ const GlobalCss = attrs => {
       colunmGap,
       rowGap
     } = styles_dimensions;
-    return (0,_utils_getFlexPropertiesStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
+    return (0,_utils_getFlexPropertiesStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
       flexProperties: { ...general_flexProperties,
         colunmGap,
         rowGap
@@ -2262,31 +2157,30 @@ const GlobalCss = attrs => {
     });
   };
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getDivWrapStyles()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
-    styles: getDivWrapStyles__BgColor_Gradient()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
-    styles: getDivWrapStyles__BackgroundImage()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
-    styles: getDivWrapStyles__Overlay()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+    styles: (0,_utils_getStyleBackground__WEBPACK_IMPORTED_MODULE_6__["default"])({
+      className: WRAP_CLASSNAME,
+      styles_background
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getDivWrapStyles__Border()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getDivWrapStyles__BoxShadow()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getDivWrapStyles__PaddingMargin()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
-    styles: (0,_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_8__.getAdvanveDivWrapStyles)({
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+    styles: (0,_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_9__.getAdvanveDivWrapStyles)({
       advance_responsiveCondition,
       advance_zIndex,
       className: WRAP_CLASSNAME
     })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getDivInnerStyles()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getInner__contentCustomWidth()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getInner__flexProperties()
   }));
 };
@@ -2397,9 +2291,6 @@ const getShadowStyleValueFromTwPreset = function (presetClass) {
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
-
-
 const getBackgroundColorGradientStyles = _ref => {
   let {
     className,
@@ -2412,29 +2303,29 @@ const getBackgroundColorGradientStyles = _ref => {
   } = background;
 
   if (bgType !== "color" && bgType !== "gradient") {
-    return;
+    return {};
   }
 
   let preBgName = "";
   let bgValue = "";
 
   if (bgType === "color") {
-    preBgName = "background-color";
+    preBgName = "backgroundColor";
     bgValue = color;
   } // Backgroud gradient
 
 
   if (bgType === "gradient") {
-    preBgName = "background-image";
+    preBgName = "backgroundImage";
     bgValue = gradient;
   } //
 
 
-  return _emotion_react__WEBPACK_IMPORTED_MODULE_0__.css`
-		${className} {
-			${preBgName}: ${bgValue};
-		}
-	`;
+  return {
+    [`${className}`]: {
+      [`${preBgName}`]: `${bgValue}`
+    }
+  };
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (getBackgroundColorGradientStyles);
@@ -2449,9 +2340,13 @@ const getBackgroundColorGradientStyles = _ref => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
 
 
 const getBorderRadiusStyles = _ref => {
+  var _radiusMobile, _radiusMobile2, _radiusMobile3, _radiusMobile4, _radiusTablet, _radiusTablet2, _radiusTablet3, _radiusTablet4, _radiusDesktop, _radiusDesktop2, _radiusDesktop3, _radiusDesktop4;
+
   let {
     className,
     radius
@@ -2461,9 +2356,11 @@ const getBorderRadiusStyles = _ref => {
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES; //
 
-  let radiusDesktop = radius === null || radius === void 0 ? void 0 : radius.Desktop;
-  let radiusTablet = (radius === null || radius === void 0 ? void 0 : radius.Tablet) || radiusDesktop;
-  let radiusMobile = (radius === null || radius === void 0 ? void 0 : radius.Mobile) || radiusTablet;
+  let {
+    value_Desktop: radiusDesktop,
+    value_Tablet: radiusTablet,
+    value_Mobile: radiusMobile
+  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(radius);
 
   const converttted = radiusValue => {
     if (typeof radiusValue === "string") {
@@ -2483,21 +2380,21 @@ const getBorderRadiusStyles = _ref => {
   radiusMobile = converttted(radiusDesktop);
   return {
     [`${className}`]: {
-      borderTopLeftRadius: `${radiusMobile.topLeft}`,
-      borderTopRightRadius: `${radiusMobile.topRight}`,
-      borderBottomRightRadius: `${radiusMobile.bottomRight}`,
-      borderBottomLeftRadius: `${radiusMobile.bottomLeft}`,
+      borderTopLeftRadius: `${(_radiusMobile = radiusMobile) === null || _radiusMobile === void 0 ? void 0 : _radiusMobile.topLeft}`,
+      borderTopRightRadius: `${(_radiusMobile2 = radiusMobile) === null || _radiusMobile2 === void 0 ? void 0 : _radiusMobile2.topRight}`,
+      borderBottomRightRadius: `${(_radiusMobile3 = radiusMobile) === null || _radiusMobile3 === void 0 ? void 0 : _radiusMobile3.bottomRight}`,
+      borderBottomLeftRadius: `${(_radiusMobile4 = radiusMobile) === null || _radiusMobile4 === void 0 ? void 0 : _radiusMobile4.bottomLeft}`,
       [`@media (min-width: ${media_tablet})`]: {
-        borderTopLeftRadius: `${radiusTablet.topLeft}`,
-        borderTopRightRadius: ` ${radiusTablet.topRight}`,
-        borderBottomRightRadius: `${radiusTablet.bottomRight}`,
-        borderBottomLeftRadius: `${radiusTablet.bottomLeft}`
+        borderTopLeftRadius: `${(_radiusTablet = radiusTablet) === null || _radiusTablet === void 0 ? void 0 : _radiusTablet.topLeft}`,
+        borderTopRightRadius: ` ${(_radiusTablet2 = radiusTablet) === null || _radiusTablet2 === void 0 ? void 0 : _radiusTablet2.topRight}`,
+        borderBottomRightRadius: `${(_radiusTablet3 = radiusTablet) === null || _radiusTablet3 === void 0 ? void 0 : _radiusTablet3.bottomRight}`,
+        borderBottomLeftRadius: `${(_radiusTablet4 = radiusTablet) === null || _radiusTablet4 === void 0 ? void 0 : _radiusTablet4.bottomLeft}`
       },
       [`@media (min-width: ${media_desktop})`]: {
-        borderTopLeftRadius: `${radiusDesktop.topLeft}`,
-        borderTopRightRadius: `${radiusDesktop.topRight}`,
-        borderBottomRightRadius: `${radiusDesktop.bottomRight}`,
-        borderBottomLeftRadius: `${radiusDesktop.bottomLeft}`
+        borderTopLeftRadius: `${(_radiusDesktop = radiusDesktop) === null || _radiusDesktop === void 0 ? void 0 : _radiusDesktop.topLeft}`,
+        borderTopRightRadius: `${(_radiusDesktop2 = radiusDesktop) === null || _radiusDesktop2 === void 0 ? void 0 : _radiusDesktop2.topRight}`,
+        borderBottomRightRadius: `${(_radiusDesktop3 = radiusDesktop) === null || _radiusDesktop3 === void 0 ? void 0 : _radiusDesktop3.bottomRight}`,
+        borderBottomLeftRadius: `${(_radiusDesktop4 = radiusDesktop) === null || _radiusDesktop4 === void 0 ? void 0 : _radiusDesktop4.bottomLeft}`
       }
     }
   };
@@ -2613,6 +2510,8 @@ const getBorderStyles = _ref => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
 
 
 const getFlexPropertiesStyles = _ref => {
@@ -2634,29 +2533,41 @@ const getFlexPropertiesStyles = _ref => {
     rowGap
   } = flexProperties; //
 
-  const flexDirection_Desktop = flexDirection === null || flexDirection === void 0 ? void 0 : flexDirection.Desktop;
-  const flexDirection_Tablet = (flexDirection === null || flexDirection === void 0 ? void 0 : flexDirection.Tablet) || flexDirection_Desktop;
-  const flexDirection_Mobile = (flexDirection === null || flexDirection === void 0 ? void 0 : flexDirection.Mobile) || flexDirection_Tablet; //
+  const {
+    value_Desktop: flexDirection_Desktop,
+    value_Tablet: flexDirection_Tablet,
+    value_Mobile: flexDirection_Mobile
+  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(flexDirection); //
 
-  const alignItems_Desktop = alignItems === null || alignItems === void 0 ? void 0 : alignItems.Desktop;
-  const alignItems_Tablet = (alignItems === null || alignItems === void 0 ? void 0 : alignItems.Tablet) || alignItems_Desktop;
-  const alignItems_Mobile = (alignItems === null || alignItems === void 0 ? void 0 : alignItems.Mobile) || alignItems_Tablet; //
+  const {
+    value_Desktop: alignItems_Desktop,
+    value_Tablet: alignItems_Tablet,
+    value_Mobile: alignItems_Mobile
+  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(alignItems); //
 
-  const flexWrap_Desktop = flexWrap === null || flexWrap === void 0 ? void 0 : flexWrap.Desktop;
-  const flexWrap_Tablet = (flexWrap === null || flexWrap === void 0 ? void 0 : flexWrap.Tablet) || flexWrap_Desktop;
-  const flexWrap_Mobile = (flexWrap === null || flexWrap === void 0 ? void 0 : flexWrap.Mobile) || flexWrap_Tablet; //
+  const {
+    value_Desktop: flexWrap_Desktop,
+    value_Tablet: flexWrap_Tablet,
+    value_Mobile: flexWrap_Mobile
+  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(flexWrap); //
 
-  const justifyContent_Desktop = justifyContent === null || justifyContent === void 0 ? void 0 : justifyContent.Desktop;
-  const justifyContent_Tablet = (justifyContent === null || justifyContent === void 0 ? void 0 : justifyContent.Tablet) || justifyContent_Desktop;
-  const justifyContent_Mobile = (justifyContent === null || justifyContent === void 0 ? void 0 : justifyContent.Mobile) || justifyContent_Tablet; //
+  const {
+    value_Desktop: justifyContent_Desktop,
+    value_Tablet: justifyContent_Tablet,
+    value_Mobile: justifyContent_Mobile
+  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(justifyContent); //
 
-  const colunmGap_Desktop = colunmGap === null || colunmGap === void 0 ? void 0 : colunmGap.Desktop;
-  const colunmGap_Tablet = (colunmGap === null || colunmGap === void 0 ? void 0 : colunmGap.Tablet) || colunmGap_Desktop;
-  const colunmGap_Mobile = (colunmGap === null || colunmGap === void 0 ? void 0 : colunmGap.Mobile) || colunmGap_Tablet; //
+  const {
+    value_Desktop: colunmGap_Desktop,
+    value_Tablet: colunmGap_Tablet,
+    value_Mobile: colunmGap_Mobile
+  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(colunmGap); //
 
-  const rowGap_Desktop = rowGap === null || rowGap === void 0 ? void 0 : rowGap.Desktop;
-  const rowGap_Tablet = (rowGap === null || rowGap === void 0 ? void 0 : rowGap.Tablet) || rowGap_Desktop;
-  const rowGap_Mobile = (rowGap === null || rowGap === void 0 ? void 0 : rowGap.Mobile) || rowGap_Tablet; //
+  const {
+    value_Desktop: rowGap_Desktop,
+    value_Tablet: rowGap_Tablet,
+    value_Mobile: rowGap_Mobile
+  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(rowGap); //
 
   return {
     [`${className}`]: {
@@ -2697,8 +2608,10 @@ const getFlexPropertiesStyles = _ref => {
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
 
 
 
@@ -2712,15 +2625,19 @@ const getPaddingMarginStyles = _ref => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES;
-  const margin_Desktop = margin === null || margin === void 0 ? void 0 : margin.Desktop;
-  const margin_Tablet = (margin === null || margin === void 0 ? void 0 : margin.Tablet) || margin_Desktop;
-  const margin_Mobile = (margin === null || margin === void 0 ? void 0 : margin.Mobile) || margin_Tablet; //
+  const {
+    value_Desktop: margin_Desktop,
+    value_Tablet: margin_Tablet,
+    value_Mobile: margin_Mobile
+  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(margin); //
 
-  const padding_Desktop = padding === null || padding === void 0 ? void 0 : padding.Desktop;
-  const padding_Tablet = (padding === null || padding === void 0 ? void 0 : padding.Tablet) || padding_Desktop;
-  const padding_Mobile = (padding === null || padding === void 0 ? void 0 : padding.Mobile) || padding_Tablet; //
+  const {
+    value_Desktop: padding_Desktop,
+    value_Tablet: padding_Tablet,
+    value_Mobile: padding_Mobile
+  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(padding); //
 
-  return _emotion_react__WEBPACK_IMPORTED_MODULE_1__.css`
+  return _emotion_react__WEBPACK_IMPORTED_MODULE_2__.css`
 		${className} {
 			padding-top: ${padding_Mobile === null || padding_Mobile === void 0 ? void 0 : padding_Mobile.top};
 			padding-right: ${padding_Mobile === null || padding_Mobile === void 0 ? void 0 : padding_Mobile.right};
@@ -2755,6 +2672,189 @@ const getPaddingMarginStyles = _ref => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (getPaddingMarginStyles);
+
+/***/ }),
+
+/***/ "./src/utils/getStyleBackground.tsx":
+/*!******************************************!*\
+  !*** ./src/utils/getStyleBackground.tsx ***!
+  \******************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ getStyleBackground; }
+/* harmony export */ });
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _getBackgroundColorGradientStyles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getBackgroundColorGradientStyles */ "./src/utils/getBackgroundColorGradientStyles.ts");
+/* harmony import */ var _getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
+
+
+function getStyleBackground(_ref) {
+  let {
+    styles_background,
+    className
+  } = _ref;
+  const WRAP_CLASSNAME = className;
+  const {
+    media_desktop,
+    media_tablet
+  } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES;
+
+  const getDivWrapStyles__BgColor_Gradient = () => {
+    const {} = styles_background;
+    return (0,_getBackgroundColorGradientStyles__WEBPACK_IMPORTED_MODULE_1__["default"])({
+      background: styles_background,
+      className: WRAP_CLASSNAME
+    });
+  };
+
+  const getDivWrapStyles__BackgroundImage = () => {
+    var _imageData$Desktop, _imageData$Tablet, _imageData$Mobile;
+
+    const {
+      bgImageAttachment,
+      bgImageRepeat,
+      bgImageSize,
+      bgType,
+      focalPoint,
+      imageData
+    } = styles_background;
+
+    if (bgType !== "image") {
+      return {};
+    } //
+
+
+    const SRC__DESKTOP = (_imageData$Desktop = imageData.Desktop) === null || _imageData$Desktop === void 0 ? void 0 : _imageData$Desktop.mediaUrl;
+    const SRC__TABLET = ((_imageData$Tablet = imageData.Tablet) === null || _imageData$Tablet === void 0 ? void 0 : _imageData$Tablet.mediaUrl) || SRC__DESKTOP;
+    const SRC = ((_imageData$Mobile = imageData.Mobile) === null || _imageData$Mobile === void 0 ? void 0 : _imageData$Mobile.mediaUrl) || SRC__TABLET; //
+
+    const {
+      value_Desktop: BG_REPEAT__DESKTOP,
+      value_Tablet: BG_REPEAT__TABLET,
+      value_Mobile: BG_REPEAT
+    } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_2__["default"])(bgImageRepeat); //
+
+    const {
+      value_Desktop: BG_ATTACHMENT__DESKTOP,
+      value_Tablet: BG_ATTACHMENT__TABLET,
+      value_Mobile: BG_ATTACHMENT
+    } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_2__["default"])(bgImageAttachment); //
+
+    const {
+      value_Desktop: BG_SIZE__DESKTOP,
+      value_Tablet: BG_SIZE__TABLET,
+      value_Mobile: BG_SIZE
+    } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_2__["default"])(bgImageSize); //
+
+    const {
+      value_Desktop: BG_FOCAL__DESKTOP,
+      value_Tablet: BG_FOCAL__TABLET,
+      value_Mobile: BG_FOCAL
+    } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_2__["default"])(focalPoint); //
+
+    const BG_POSITION = BG_FOCAL ? `${BG_FOCAL.x * 100}% ${BG_FOCAL.y * 100}%` : "";
+    const BG_POSITION__TABLET = BG_FOCAL__TABLET ? `${BG_FOCAL__TABLET.x * 100}% ${BG_FOCAL__TABLET.y * 100}%` : "";
+    const BG_POSITION__DESKTOP = BG_FOCAL__DESKTOP ? `${BG_FOCAL__DESKTOP.x * 100}% ${BG_FOCAL__DESKTOP.y * 100}%` : ""; //
+
+    return {
+      [`${WRAP_CLASSNAME}`]: {
+        backgroundImage: `url(${SRC})`,
+        backgroundRepeat: `${BG_REPEAT}`,
+        backgroundAttachment: `${BG_ATTACHMENT}`,
+        backgroundSize: `${BG_SIZE}`,
+        backgroundPosition: `${BG_POSITION}`,
+        [`@media (min-width: ${media_tablet})`]: {
+          backgroundImage: `url(${SRC__TABLET})`,
+          backgroundRepeat: `${BG_REPEAT__TABLET}`,
+          backgroundAttachment: `${BG_ATTACHMENT__TABLET}`,
+          backgroundSize: `${BG_SIZE__TABLET}`,
+          backgroundPosition: `${BG_POSITION__TABLET}`
+        },
+        [`@media (min-width: ${media_desktop})`]: {
+          backgroundImage: `url(${SRC__DESKTOP})`,
+          backgroundRepeat: `${BG_REPEAT__DESKTOP}`,
+          backgroundAttachment: `${BG_ATTACHMENT__DESKTOP}`,
+          backgroundSize: `${BG_SIZE__DESKTOP}`,
+          backgroundPosition: `${BG_POSITION__DESKTOP}`
+        }
+      }
+    };
+  };
+
+  const getDivWrapStyles__Overlay = () => {
+    const {
+      overlayColor,
+      overlayGradient,
+      overlayType
+    } = styles_background;
+
+    if (overlayType !== "color" && overlayType !== "gradient") {
+      return {};
+    }
+
+    let preBgName = "";
+    let bgValue = "";
+
+    if (overlayType === "color") {
+      preBgName = "backgroundColor";
+      bgValue = overlayColor;
+    } // Backgroud gradient
+
+
+    if (overlayType === "gradient") {
+      preBgName = "backgroundImage";
+      bgValue = overlayGradient;
+    }
+
+    return {
+      [`${WRAP_CLASSNAME}`]: {
+        ".wcb-OverlayBackgroundByBgControl": {
+          [`${preBgName}`]: `${bgValue}`,
+          position: "absolute",
+          inset: 0,
+          zIndex: 0
+        }
+      }
+    };
+  };
+
+  return [getDivWrapStyles__BgColor_Gradient(), getDivWrapStyles__BackgroundImage(), getDivWrapStyles__Overlay()];
+}
+
+/***/ }),
+
+/***/ "./src/utils/getValueFromAttrsResponsives.ts":
+/*!***************************************************!*\
+  !*** ./src/utils/getValueFromAttrsResponsives.ts ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+const getValueFromAttrsResponsives = function (properties, currentDevice) {
+  // let value_Desktop = properties.Desktop;
+  // let value_Tablet = properties.Tablet || value_Desktop;
+  // let value_Mobile = properties.Mobile || value_Tablet;
+  const v_Desktop = properties === null || properties === void 0 ? void 0 : properties.Desktop;
+  const v_Tablet = typeof (properties === null || properties === void 0 ? void 0 : properties.Tablet) !== "undefined" && (properties === null || properties === void 0 ? void 0 : properties.Tablet) !== null ? properties === null || properties === void 0 ? void 0 : properties.Tablet : v_Desktop;
+  const v_Mobile = typeof (properties === null || properties === void 0 ? void 0 : properties.Mobile) !== "undefined" && (properties === null || properties === void 0 ? void 0 : properties.Mobile) !== null ? properties === null || properties === void 0 ? void 0 : properties.Mobile : v_Tablet;
+  let currentDeviceValue = undefined;
+
+  if (currentDevice) {
+    currentDeviceValue = currentDevice === "Desktop" ? v_Desktop : currentDevice === "Tablet" ? v_Tablet : v_Mobile;
+  }
+
+  return {
+    value_Desktop: v_Desktop,
+    value_Tablet: v_Tablet,
+    value_Mobile: v_Mobile,
+    currentDeviceValue
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (getValueFromAttrsResponsives);
 
 /***/ }),
 

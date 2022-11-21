@@ -1975,13 +1975,23 @@ const getAdvanveDivWrapStyles = _ref => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../block-container/getAdvanveStyles */ "./src/block-container/getAdvanveStyles.ts");
-/* harmony import */ var _utils_getSingleDimensionStyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getSingleDimensionStyles */ "./src/utils/getSingleDimensionStyles.ts");
-/* harmony import */ var _utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/getTypographyStyles */ "./src/utils/getTypographyStyles.ts");
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getPaddingMarginStyles */ "./src/utils/getPaddingMarginStyles.ts");
+/* harmony import */ var _utils_getSingleDimensionStyles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/getSingleDimensionStyles */ "./src/utils/getSingleDimensionStyles.ts");
+/* harmony import */ var _utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/getTypographyStyles */ "./src/utils/getTypographyStyles.ts");
+/* harmony import */ var _utils_getBorderRadiusStyles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/getBorderRadiusStyles */ "./src/utils/getBorderRadiusStyles.ts");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/getBorderStyles */ "./src/utils/getBorderStyles.ts");
+/* harmony import */ var _utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/getStyleObjectFromResponsiveAttr */ "./src/utils/getStyleObjectFromResponsiveAttr.ts");
+/* harmony import */ var _utils_getStyleBackground__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utils/getStyleBackground */ "./src/utils/getStyleBackground.tsx");
+
+
+
+
+
 
 
 
@@ -1994,6 +2004,7 @@ const GlobalCss = attrs => {
   const {
     uniqueId,
     // ATTRS OF BLOCK
+    general_general,
     style_arrowAndDots,
     style_backgroundAndBorder,
     style_company,
@@ -2001,7 +2012,6 @@ const GlobalCss = attrs => {
     style_dimension,
     style_image,
     style_name,
-    testimonials,
     //
     advance_responsiveCondition,
     advance_zIndex
@@ -2009,28 +2019,43 @@ const GlobalCss = attrs => {
   const {
     media_desktop,
     media_tablet
-  } = ___WEBPACK_IMPORTED_MODULE_5__.DEMO_WCB_GLOBAL_VARIABLES;
+  } = ___WEBPACK_IMPORTED_MODULE_7__.DEMO_WCB_GLOBAL_VARIABLES;
   const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+  const ITEM_CLASSNAME = `${WRAP_CLASSNAME} .wcb-testimonials__item`;
   const ITEM_NAME = `${WRAP_CLASSNAME} .wcb-testimonials__item-name`;
   const ITEM_CONTENT = `${WRAP_CLASSNAME} .wcb-testimonials__item-content`;
-  const ITEM_COMPANY = `${WRAP_CLASSNAME} .wcb-testimonials__item-company`; // ------------------- WRAP DIV
+  const ITEM_COMPANY = `${WRAP_CLASSNAME} .wcb-testimonials__item-company`;
+  const ITEM_IMAGE = `${WRAP_CLASSNAME} .wcb-testimonials__item-image`;
+  const GLIDE_ARROW = `${WRAP_CLASSNAME} .glide__arrow`;
+  const GLIDE_DOTS = `${WRAP_CLASSNAME} .glide__bullets`; // ------------------- WRAP DIV
 
   const getDivWrapStyles = () => {
-    return {
+    return [{
       [`${WRAP_CLASSNAME}`]: {
+        ".glide": {
+          padding: "1rem"
+        },
         [`@media (min-width: ${media_tablet})`]: {},
-        [`@media (min-width: ${media_desktop})`]: {}
+        [`@media (min-width: ${media_desktop})`]: {
+          ".glide": {
+            padding: "1.75rem"
+          }
+        }
       }
-    };
+    }, (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_9__["default"])({
+      value: general_general.textAlignment,
+      className: `${ITEM_CLASSNAME}`,
+      prefix: "textAlign"
+    })];
   };
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_6__.Global, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
     styles: getDivWrapStyles()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_6__.Global, {
-    styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+    styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
       typography: style_name.typography,
       className: ITEM_NAME
-    }), (0,_utils_getSingleDimensionStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
+    }), (0,_utils_getSingleDimensionStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
       value: style_name.marginBottom,
       className: ITEM_NAME,
       prefix: "marginBottom"
@@ -2039,11 +2064,11 @@ const GlobalCss = attrs => {
         color: style_name.textColor
       }
     }]
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_6__.Global, {
-    styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+    styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
       typography: style_content.typography,
       className: ITEM_CONTENT
-    }), (0,_utils_getSingleDimensionStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
+    }), (0,_utils_getSingleDimensionStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
       value: style_content.marginBottom,
       className: ITEM_CONTENT,
       prefix: "marginBottom"
@@ -2052,8 +2077,8 @@ const GlobalCss = attrs => {
         color: style_content.textColor
       }
     }]
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_6__.Global, {
-    styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+    styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
       typography: style_company.typography,
       className: ITEM_COMPANY
     }), {
@@ -2061,7 +2086,52 @@ const GlobalCss = attrs => {
         color: style_company.textColor
       }
     }]
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_6__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+    styles: [(0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
+      padding: style_image.padding,
+      className: ITEM_IMAGE
+    }), (0,_utils_getBorderRadiusStyles__WEBPACK_IMPORTED_MODULE_6__["default"])({
+      radius: style_image.radius,
+      className: `${ITEM_IMAGE} img`
+    })]
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+    styles: [(0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_8__["default"])({
+      border: style_arrowAndDots.border,
+      className: GLIDE_ARROW,
+      isWithRadius: true
+    }), {
+      [`${GLIDE_ARROW} svg`]: {
+        width: style_arrowAndDots.arrowSize,
+        height: style_arrowAndDots.arrowSize,
+        color: style_arrowAndDots.color
+      }
+    }, (0,_utils_getSingleDimensionStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
+      value: style_arrowAndDots.dotsMarginTop,
+      className: GLIDE_DOTS,
+      prefix: "marginTop"
+    }), {
+      [`${GLIDE_DOTS} .glide__bullet`]: {
+        backgroundColor: style_arrowAndDots.color,
+        opacity: 0.3,
+        "&.glide__bullet--active": {
+          backgroundColor: style_arrowAndDots.color,
+          opacity: 1
+        }
+      }
+    }]
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+    styles: [(0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_8__["default"])({
+      border: style_backgroundAndBorder.border,
+      className: ITEM_CLASSNAME,
+      isWithRadius: true
+    }), (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
+      className: `${ITEM_CLASSNAME}`,
+      padding: style_dimension.padding
+    }), (0,_utils_getStyleBackground__WEBPACK_IMPORTED_MODULE_10__["default"])({
+      className: `${ITEM_CLASSNAME}`,
+      styles_background: style_backgroundAndBorder.background
+    })]
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
     styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__.getAdvanveDivWrapStyles)({
       advance_responsiveCondition,
       advance_zIndex,
@@ -2180,6 +2250,298 @@ const isGoogleFontEnqueued = function (fontName) {
 
 /***/ }),
 
+/***/ "./src/utils/getBackgroundColorGradientStyles.ts":
+/*!*******************************************************!*\
+  !*** ./src/utils/getBackgroundColorGradientStyles.ts ***!
+  \*******************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+const getBackgroundColorGradientStyles = _ref => {
+  let {
+    className,
+    background
+  } = _ref;
+  const {
+    bgType,
+    color,
+    gradient
+  } = background;
+
+  if (bgType !== "color" && bgType !== "gradient") {
+    return {};
+  }
+
+  let preBgName = "";
+  let bgValue = "";
+
+  if (bgType === "color") {
+    preBgName = "backgroundColor";
+    bgValue = color;
+  } // Backgroud gradient
+
+
+  if (bgType === "gradient") {
+    preBgName = "backgroundImage";
+    bgValue = gradient;
+  } //
+
+
+  return {
+    [`${className}`]: {
+      [`${preBgName}`]: `${bgValue}`
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (getBackgroundColorGradientStyles);
+
+/***/ }),
+
+/***/ "./src/utils/getBorderRadiusStyles.ts":
+/*!********************************************!*\
+  !*** ./src/utils/getBorderRadiusStyles.ts ***!
+  \********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
+
+
+const getBorderRadiusStyles = _ref => {
+  var _radiusMobile, _radiusMobile2, _radiusMobile3, _radiusMobile4, _radiusTablet, _radiusTablet2, _radiusTablet3, _radiusTablet4, _radiusDesktop, _radiusDesktop2, _radiusDesktop3, _radiusDesktop4;
+
+  let {
+    className,
+    radius
+  } = _ref;
+  const {
+    media_desktop,
+    media_tablet
+  } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES; //
+
+  let {
+    value_Desktop: radiusDesktop,
+    value_Tablet: radiusTablet,
+    value_Mobile: radiusMobile
+  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(radius);
+
+  const converttted = radiusValue => {
+    if (typeof radiusValue === "string") {
+      radiusValue = {
+        bottomLeft: radiusValue,
+        bottomRight: radiusValue,
+        topLeft: radiusValue,
+        topRight: radiusValue
+      };
+    }
+
+    return radiusValue;
+  };
+
+  radiusDesktop = converttted(radiusDesktop);
+  radiusTablet = converttted(radiusDesktop);
+  radiusMobile = converttted(radiusDesktop);
+  return {
+    [`${className}`]: {
+      borderTopLeftRadius: `${(_radiusMobile = radiusMobile) === null || _radiusMobile === void 0 ? void 0 : _radiusMobile.topLeft}`,
+      borderTopRightRadius: `${(_radiusMobile2 = radiusMobile) === null || _radiusMobile2 === void 0 ? void 0 : _radiusMobile2.topRight}`,
+      borderBottomRightRadius: `${(_radiusMobile3 = radiusMobile) === null || _radiusMobile3 === void 0 ? void 0 : _radiusMobile3.bottomRight}`,
+      borderBottomLeftRadius: `${(_radiusMobile4 = radiusMobile) === null || _radiusMobile4 === void 0 ? void 0 : _radiusMobile4.bottomLeft}`,
+      [`@media (min-width: ${media_tablet})`]: {
+        borderTopLeftRadius: `${(_radiusTablet = radiusTablet) === null || _radiusTablet === void 0 ? void 0 : _radiusTablet.topLeft}`,
+        borderTopRightRadius: ` ${(_radiusTablet2 = radiusTablet) === null || _radiusTablet2 === void 0 ? void 0 : _radiusTablet2.topRight}`,
+        borderBottomRightRadius: `${(_radiusTablet3 = radiusTablet) === null || _radiusTablet3 === void 0 ? void 0 : _radiusTablet3.bottomRight}`,
+        borderBottomLeftRadius: `${(_radiusTablet4 = radiusTablet) === null || _radiusTablet4 === void 0 ? void 0 : _radiusTablet4.bottomLeft}`
+      },
+      [`@media (min-width: ${media_desktop})`]: {
+        borderTopLeftRadius: `${(_radiusDesktop = radiusDesktop) === null || _radiusDesktop === void 0 ? void 0 : _radiusDesktop.topLeft}`,
+        borderTopRightRadius: `${(_radiusDesktop2 = radiusDesktop) === null || _radiusDesktop2 === void 0 ? void 0 : _radiusDesktop2.topRight}`,
+        borderBottomRightRadius: `${(_radiusDesktop3 = radiusDesktop) === null || _radiusDesktop3 === void 0 ? void 0 : _radiusDesktop3.bottomRight}`,
+        borderBottomLeftRadius: `${(_radiusDesktop4 = radiusDesktop) === null || _radiusDesktop4 === void 0 ? void 0 : _radiusDesktop4.bottomLeft}`
+      }
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (getBorderRadiusStyles);
+
+/***/ }),
+
+/***/ "./src/utils/getBorderStyles.ts":
+/*!**************************************!*\
+  !*** ./src/utils/getBorderStyles.ts ***!
+  \**************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _getBorderRadiusStyles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getBorderRadiusStyles */ "./src/utils/getBorderRadiusStyles.ts");
+
+
+const getBorderStyles = _ref => {
+  let {
+    border,
+    className,
+    isWithRadius = false
+  } = _ref;
+  const {
+    hoverColor,
+    mainSettings,
+    radius
+  } = border; //
+  // MAIN BORDER
+
+  let CSSObject = {
+    [`${className}`]: {}
+  };
+
+  if (mainSettings) {
+    if (mainSettings !== null && mainSettings !== void 0 && mainSettings.top) {
+      const {
+        bottom,
+        left,
+        right,
+        top
+      } = mainSettings;
+      CSSObject = {
+        [`${className}`]: {
+          borderTop: `${top.width} ${top.style} ${top.color}`,
+          borderLeft: `${left.width} ${left.style} ${left.color}`,
+          borderRight: `${right.width} ${right.style} ${right.color}`,
+          borderBottom: `${bottom.width} ${bottom.style} ${bottom.color}`,
+          "&:hover": {
+            borderColor: `${hoverColor}`
+          }
+        }
+      };
+    } else {
+      const {
+        color,
+        style,
+        width
+      } = mainSettings;
+      CSSObject = {
+        [`${className}`]: {
+          border: `${width} ${style} ${color}`,
+          "&:hover": {
+            borderColor: `${hoverColor}`
+          }
+        }
+      };
+    }
+  } // RAIDUS
+
+
+  let radiusCSSObject = {
+    [`${className}`]: {}
+  };
+
+  if (isWithRadius && radius) {
+    radiusCSSObject = (0,_getBorderRadiusStyles__WEBPACK_IMPORTED_MODULE_0__["default"])({
+      radius,
+      className
+    });
+  } //
+
+
+  let a = {};
+  let b = {};
+
+  if (typeof CSSObject[className] === "object") {
+    a = CSSObject[className] || {};
+  }
+
+  if (typeof radiusCSSObject[className] === "object") {
+    b = radiusCSSObject[className] || {};
+  }
+
+  return {
+    [`${className}`]: { ...a,
+      ...b
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (getBorderStyles);
+
+/***/ }),
+
+/***/ "./src/utils/getPaddingMarginStyles.ts":
+/*!*********************************************!*\
+  !*** ./src/utils/getPaddingMarginStyles.ts ***!
+  \*********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
+
+
+
+const getPaddingMarginStyles = _ref => {
+  let {
+    className,
+    padding,
+    margin
+  } = _ref;
+  const {
+    media_desktop,
+    media_tablet
+  } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES;
+  const {
+    value_Desktop: margin_Desktop,
+    value_Tablet: margin_Tablet,
+    value_Mobile: margin_Mobile
+  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(margin); //
+
+  const {
+    value_Desktop: padding_Desktop,
+    value_Tablet: padding_Tablet,
+    value_Mobile: padding_Mobile
+  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(padding); //
+
+  return _emotion_react__WEBPACK_IMPORTED_MODULE_2__.css`
+		${className} {
+			padding-top: ${padding_Mobile === null || padding_Mobile === void 0 ? void 0 : padding_Mobile.top};
+			padding-right: ${padding_Mobile === null || padding_Mobile === void 0 ? void 0 : padding_Mobile.right};
+			padding-bottom: ${padding_Mobile === null || padding_Mobile === void 0 ? void 0 : padding_Mobile.bottom};
+			padding-left: ${padding_Mobile === null || padding_Mobile === void 0 ? void 0 : padding_Mobile.left};
+			margin-top: ${margin_Mobile === null || margin_Mobile === void 0 ? void 0 : margin_Mobile.top};
+			margin-right: ${margin_Mobile === null || margin_Mobile === void 0 ? void 0 : margin_Mobile.right};
+			margin-bottom: ${margin_Mobile === null || margin_Mobile === void 0 ? void 0 : margin_Mobile.bottom};
+			margin-left: ${margin_Mobile === null || margin_Mobile === void 0 ? void 0 : margin_Mobile.left};
+			@media (min-width: ${media_tablet}) {
+				padding-top: ${padding_Tablet === null || padding_Tablet === void 0 ? void 0 : padding_Tablet.top};
+				padding-right: ${padding_Tablet === null || padding_Tablet === void 0 ? void 0 : padding_Tablet.right};
+				padding-bottom: ${padding_Tablet === null || padding_Tablet === void 0 ? void 0 : padding_Tablet.bottom};
+				padding-left: ${padding_Tablet === null || padding_Tablet === void 0 ? void 0 : padding_Tablet.left};
+				margin-top: ${margin_Tablet === null || margin_Tablet === void 0 ? void 0 : margin_Tablet.top};
+				margin-right: ${margin_Tablet === null || margin_Tablet === void 0 ? void 0 : margin_Tablet.right};
+				margin-bottom: ${margin_Tablet === null || margin_Tablet === void 0 ? void 0 : margin_Tablet.bottom};
+				margin-left: ${margin_Tablet === null || margin_Tablet === void 0 ? void 0 : margin_Tablet.left};
+			}
+			@media (min-width: ${media_desktop}) {
+				padding-top: ${padding_Desktop === null || padding_Desktop === void 0 ? void 0 : padding_Desktop.top};
+				padding-right: ${padding_Desktop === null || padding_Desktop === void 0 ? void 0 : padding_Desktop.right};
+				padding-bottom: ${padding_Desktop === null || padding_Desktop === void 0 ? void 0 : padding_Desktop.bottom};
+				padding-left: ${padding_Desktop === null || padding_Desktop === void 0 ? void 0 : padding_Desktop.left};
+				margin-top: ${margin_Desktop === null || margin_Desktop === void 0 ? void 0 : margin_Desktop.top};
+				margin-right: ${margin_Desktop === null || margin_Desktop === void 0 ? void 0 : margin_Desktop.right};
+				margin-bottom: ${margin_Desktop === null || margin_Desktop === void 0 ? void 0 : margin_Desktop.bottom};
+				margin-left: ${margin_Desktop === null || margin_Desktop === void 0 ? void 0 : margin_Desktop.left};
+			}
+		}
+	`;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (getPaddingMarginStyles);
+
+/***/ }),
+
 /***/ "./src/utils/getSingleDimensionStyles.ts":
 /*!***********************************************!*\
   !*** ./src/utils/getSingleDimensionStyles.ts ***!
@@ -2187,10 +2549,190 @@ const isGoogleFontEnqueued = function (fontName) {
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getStyleObjectFromResponsiveAttr */ "./src/utils/getStyleObjectFromResponsiveAttr.ts");
 
 
 const getSingleDimensionStyles = _ref => {
+  let {
+    className,
+    prefix,
+    value
+  } = _ref;
+  return (0,_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    className,
+    prefix,
+    value
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (getSingleDimensionStyles);
+
+/***/ }),
+
+/***/ "./src/utils/getStyleBackground.tsx":
+/*!******************************************!*\
+  !*** ./src/utils/getStyleBackground.tsx ***!
+  \******************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ getStyleBackground; }
+/* harmony export */ });
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _getBackgroundColorGradientStyles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getBackgroundColorGradientStyles */ "./src/utils/getBackgroundColorGradientStyles.ts");
+/* harmony import */ var _getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
+
+
+function getStyleBackground(_ref) {
+  let {
+    styles_background,
+    className
+  } = _ref;
+  const WRAP_CLASSNAME = className;
+  const {
+    media_desktop,
+    media_tablet
+  } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES;
+
+  const getDivWrapStyles__BgColor_Gradient = () => {
+    const {} = styles_background;
+    return (0,_getBackgroundColorGradientStyles__WEBPACK_IMPORTED_MODULE_1__["default"])({
+      background: styles_background,
+      className: WRAP_CLASSNAME
+    });
+  };
+
+  const getDivWrapStyles__BackgroundImage = () => {
+    var _imageData$Desktop, _imageData$Tablet, _imageData$Mobile;
+
+    const {
+      bgImageAttachment,
+      bgImageRepeat,
+      bgImageSize,
+      bgType,
+      focalPoint,
+      imageData
+    } = styles_background;
+
+    if (bgType !== "image") {
+      return {};
+    } //
+
+
+    const SRC__DESKTOP = (_imageData$Desktop = imageData.Desktop) === null || _imageData$Desktop === void 0 ? void 0 : _imageData$Desktop.mediaUrl;
+    const SRC__TABLET = ((_imageData$Tablet = imageData.Tablet) === null || _imageData$Tablet === void 0 ? void 0 : _imageData$Tablet.mediaUrl) || SRC__DESKTOP;
+    const SRC = ((_imageData$Mobile = imageData.Mobile) === null || _imageData$Mobile === void 0 ? void 0 : _imageData$Mobile.mediaUrl) || SRC__TABLET; //
+
+    const {
+      value_Desktop: BG_REPEAT__DESKTOP,
+      value_Tablet: BG_REPEAT__TABLET,
+      value_Mobile: BG_REPEAT
+    } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_2__["default"])(bgImageRepeat); //
+
+    const {
+      value_Desktop: BG_ATTACHMENT__DESKTOP,
+      value_Tablet: BG_ATTACHMENT__TABLET,
+      value_Mobile: BG_ATTACHMENT
+    } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_2__["default"])(bgImageAttachment); //
+
+    const {
+      value_Desktop: BG_SIZE__DESKTOP,
+      value_Tablet: BG_SIZE__TABLET,
+      value_Mobile: BG_SIZE
+    } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_2__["default"])(bgImageSize); //
+
+    const {
+      value_Desktop: BG_FOCAL__DESKTOP,
+      value_Tablet: BG_FOCAL__TABLET,
+      value_Mobile: BG_FOCAL
+    } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_2__["default"])(focalPoint); //
+
+    const BG_POSITION = BG_FOCAL ? `${BG_FOCAL.x * 100}% ${BG_FOCAL.y * 100}%` : "";
+    const BG_POSITION__TABLET = BG_FOCAL__TABLET ? `${BG_FOCAL__TABLET.x * 100}% ${BG_FOCAL__TABLET.y * 100}%` : "";
+    const BG_POSITION__DESKTOP = BG_FOCAL__DESKTOP ? `${BG_FOCAL__DESKTOP.x * 100}% ${BG_FOCAL__DESKTOP.y * 100}%` : ""; //
+
+    return {
+      [`${WRAP_CLASSNAME}`]: {
+        backgroundImage: `url(${SRC})`,
+        backgroundRepeat: `${BG_REPEAT}`,
+        backgroundAttachment: `${BG_ATTACHMENT}`,
+        backgroundSize: `${BG_SIZE}`,
+        backgroundPosition: `${BG_POSITION}`,
+        [`@media (min-width: ${media_tablet})`]: {
+          backgroundImage: `url(${SRC__TABLET})`,
+          backgroundRepeat: `${BG_REPEAT__TABLET}`,
+          backgroundAttachment: `${BG_ATTACHMENT__TABLET}`,
+          backgroundSize: `${BG_SIZE__TABLET}`,
+          backgroundPosition: `${BG_POSITION__TABLET}`
+        },
+        [`@media (min-width: ${media_desktop})`]: {
+          backgroundImage: `url(${SRC__DESKTOP})`,
+          backgroundRepeat: `${BG_REPEAT__DESKTOP}`,
+          backgroundAttachment: `${BG_ATTACHMENT__DESKTOP}`,
+          backgroundSize: `${BG_SIZE__DESKTOP}`,
+          backgroundPosition: `${BG_POSITION__DESKTOP}`
+        }
+      }
+    };
+  };
+
+  const getDivWrapStyles__Overlay = () => {
+    const {
+      overlayColor,
+      overlayGradient,
+      overlayType
+    } = styles_background;
+
+    if (overlayType !== "color" && overlayType !== "gradient") {
+      return {};
+    }
+
+    let preBgName = "";
+    let bgValue = "";
+
+    if (overlayType === "color") {
+      preBgName = "backgroundColor";
+      bgValue = overlayColor;
+    } // Backgroud gradient
+
+
+    if (overlayType === "gradient") {
+      preBgName = "backgroundImage";
+      bgValue = overlayGradient;
+    }
+
+    return {
+      [`${WRAP_CLASSNAME}`]: {
+        ".wcb-OverlayBackgroundByBgControl": {
+          [`${preBgName}`]: `${bgValue}`,
+          position: "absolute",
+          inset: 0,
+          zIndex: 0
+        }
+      }
+    };
+  };
+
+  return [getDivWrapStyles__BgColor_Gradient(), getDivWrapStyles__BackgroundImage(), getDivWrapStyles__Overlay()];
+}
+
+/***/ }),
+
+/***/ "./src/utils/getStyleObjectFromResponsiveAttr.ts":
+/*!*******************************************************!*\
+  !*** ./src/utils/getStyleObjectFromResponsiveAttr.ts ***!
+  \*******************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
+
+
+function getStyleObjectFromResponsiveAttr(_ref) {
   let {
     className,
     prefix,
@@ -2200,24 +2742,26 @@ const getSingleDimensionStyles = _ref => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES;
-  const v_Desktop = value === null || value === void 0 ? void 0 : value.Desktop;
-  const v_Tablet = (value === null || value === void 0 ? void 0 : value.Tablet) || v_Desktop;
-  const v_Mobile = (value === null || value === void 0 ? void 0 : value.Mobile) || v_Tablet; //
+  const {
+    value_Desktop,
+    value_Mobile,
+    value_Tablet
+  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(value); //
 
   return {
     [className]: {
-      [prefix]: `${v_Mobile}`,
+      [prefix]: `${value_Tablet}`,
       [`@media (min-width: ${media_tablet})`]: {
-        [prefix]: `${v_Tablet}`
+        [prefix]: `${value_Mobile}`
       },
       [`@media (min-width: ${media_desktop})`]: {
-        [prefix]: `${v_Desktop}`
+        [prefix]: `${value_Desktop}`
       }
     }
   };
-};
+}
 
-/* harmony default export */ __webpack_exports__["default"] = (getSingleDimensionStyles);
+/* harmony default export */ __webpack_exports__["default"] = (getStyleObjectFromResponsiveAttr);
 
 /***/ }),
 
@@ -2301,6 +2845,38 @@ const getTypographyStyles = _ref => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (getTypographyStyles);
+
+/***/ }),
+
+/***/ "./src/utils/getValueFromAttrsResponsives.ts":
+/*!***************************************************!*\
+  !*** ./src/utils/getValueFromAttrsResponsives.ts ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+const getValueFromAttrsResponsives = function (properties, currentDevice) {
+  // let value_Desktop = properties.Desktop;
+  // let value_Tablet = properties.Tablet || value_Desktop;
+  // let value_Mobile = properties.Mobile || value_Tablet;
+  const v_Desktop = properties === null || properties === void 0 ? void 0 : properties.Desktop;
+  const v_Tablet = typeof (properties === null || properties === void 0 ? void 0 : properties.Tablet) !== "undefined" && (properties === null || properties === void 0 ? void 0 : properties.Tablet) !== null ? properties === null || properties === void 0 ? void 0 : properties.Tablet : v_Desktop;
+  const v_Mobile = typeof (properties === null || properties === void 0 ? void 0 : properties.Mobile) !== "undefined" && (properties === null || properties === void 0 ? void 0 : properties.Mobile) !== null ? properties === null || properties === void 0 ? void 0 : properties.Mobile : v_Tablet;
+  let currentDeviceValue = undefined;
+
+  if (currentDevice) {
+    currentDeviceValue = currentDevice === "Desktop" ? v_Desktop : currentDevice === "Tablet" ? v_Tablet : v_Mobile;
+  }
+
+  return {
+    value_Desktop: v_Desktop,
+    value_Tablet: v_Tablet,
+    value_Mobile: v_Mobile,
+    currentDeviceValue
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (getValueFromAttrsResponsives);
 
 /***/ }),
 

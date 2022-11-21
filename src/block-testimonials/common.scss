@@ -6,12 +6,17 @@
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
+	padding: 0.5rem;
 	&--left {
-		right: 100%;
+		left: -1rem;
 	}
 	&--right {
-		left: 100%;
+		right: -1rem;
 	}
+}
+
+.glide__bullets {
+	text-align: center;
 }
 
 .glide__bullet {
@@ -24,13 +29,17 @@
 }
 
 /*  */
-
 .wcb-testimonials__item {
 	display: flex;
+	position: relative;
 }
+
 .wcb-testimonials__item-image {
+	display: inline-flex;
+	align-items: flex-start;
 	flex-shrink: 0;
 }
-.wcb-testimonials__item-body {
-	flex: 1;
+.wcb-testimonials__item-user {
+	display: inline-flex;
+	align-items: center;
 }

@@ -27,6 +27,8 @@ import WcbTestimonialsPanel_StyleBackground from "./WcbTestimonialsPanel_StyleBa
 import WcbTestimonialsPanel_StyleDimension from "./WcbTestimonialsPanel_StyleDimension";
 import getImageUrlBySize from "../utils/getImageUrlBySize";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import OverlayBackgroundByBgControl from "../components/OverlayBackgroundByBgControl";
+import VideoBackgroundByBgControl from "../components/VideoBackgroundByBgControl";
 
 const TESTIMONIAL_ITEM_DEMO: TestimonialItem = {
 	name: "Drink Water",
@@ -71,10 +73,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		});
 	}, [UNIQUE_ID]);
 	//
+	const {
+		value_Desktop: colGap_Desktop,
+		value_Tablet: colGap_Tablet,
+		value_Mobile: colGap_Mobile,
+	} = getValueFromAttrsResponsives(general_general.colGap);
 
 	const options: Glide.Options = {
 		perView: general_general.columns.Desktop || 1,
-		gap: 32,
+		gap: colGap_Desktop,
 		bound: true,
 		autoplay: general_carousel.isAutoPlay
 			? general_carousel.autoplaySpeed
@@ -85,9 +92,11 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		breakpoints: {
 			[parseInt(DEMO_WCB_GLOBAL_VARIABLES.media_desktop)]: {
 				perView: general_general.columns.Tablet || 1,
+				gap: colGap_Tablet,
 			},
 			[parseInt(DEMO_WCB_GLOBAL_VARIABLES.media_tablet)]: {
 				perView: general_general.columns.Mobile || 1,
+				gap: colGap_Mobile,
 			},
 		},
 	};
@@ -101,7 +110,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		}
 
 		const slider = new Glide(`[data-uniqueid=${UNIQUE_ID}] .glide`, options);
-		console.log(333, { slider });
+		console.log(333, { slider, options, UNIQUE_ID });
 		slider.mount();
 		// @ts-ignore
 		return () => slider.destroy();
@@ -363,26 +372,37 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				className="glide__slide wcb-testimonials__item"
 				key={index + "-" + item.name}
 			>
+				<div className=""></div>
+				<VideoBackgroundByBgControl
+					bgType={style_backgroundAndBorder.background.bgType}
+					videoData={style_backgroundAndBorder.background.videoData}
+				/>
+				<OverlayBackgroundByBgControl
+					bgType={style_backgroundAndBorder.background.bgType}
+					overlayType={style_backgroundAndBorder.background.overlayType}
+				/>
 				{/* IMAGE */}
 				{imagePosition === "left" && renderTestimonialItemImage(item, index)}
 
-				<div>
+				<div className="wcb-testimonials__item-inner">
 					{/* IMAGE */}
 					{imagePosition === "top" && renderTestimonialItemImage(item, index)}
 
 					{/* CONTENT */}
 					{renderTestimonialItemContent(item, index)}
 
-					<div className="wcb-testimonials__item-body">
+					<div className="wcb-testimonials__item-user">
 						{/* IMAGE */}
 						{imagePosition === "bottom" &&
 							renderTestimonialItemImage(item, index)}
 
-						{/* NAME */}
-						{renderTestimonialItemName(item, index)}
+						<div className="wcb-testimonials__item-nameandcompany">
+							{/* NAME */}
+							{renderTestimonialItemName(item, index)}
 
-						{/* COMPANY */}
-						{renderTestimonialItemCompany(item, index)}
+							{/* COMPANY */}
+							{renderTestimonialItemCompany(item, index)}
+						</div>
 					</div>
 				</div>
 
@@ -396,10 +416,12 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		return (
 			<div className="glide">
 				{/* CONTENT */}
-				<div className="glide__track" data-glide-el="track">
-					<ul className="glide__slides">
-						{CURRENT_DATA.map(renderTestimonialItem)}
-					</ul>
+				<div className="glide__track-wrap">
+					<div className="glide__track" data-glide-el="track">
+						<ul className="glide__slides">
+							{CURRENT_DATA.map(renderTestimonialItem)}
+						</ul>
+					</div>
 				</div>
 
 				{/* ARROW */}
@@ -416,7 +438,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								viewBox="0 0 24 24"
 								strokeWidth={1.5}
 								stroke="currentColor"
-								className="w-6 h-6"
 							>
 								<path
 									strokeLinecap="round"
@@ -435,7 +456,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								viewBox="0 0 24 24"
 								strokeWidth={1.5}
 								stroke="currentColor"
-								className="w-6 h-6"
 							>
 								<path
 									strokeLinecap="round"

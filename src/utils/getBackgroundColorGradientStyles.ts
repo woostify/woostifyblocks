@@ -1,4 +1,4 @@
-import { css } from "@emotion/react";
+import { css, CSSObject } from "@emotion/react";
 import { BackgroundNoImageControlData } from "../components/controls/MyBackgroundControl/MyBackgroundNoImageControl";
 
 interface Params {
@@ -9,30 +9,30 @@ interface Params {
 const getBackgroundColorGradientStyles = ({
 	className,
 	background,
-}: Params) => {
+}: Params): CSSObject => {
 	const { bgType, color, gradient } = background;
 
 	if (bgType !== "color" && bgType !== "gradient") {
-		return;
+		return {};
 	}
 
 	let preBgName = "";
 	let bgValue = "";
 	if (bgType === "color") {
-		preBgName = "background-color";
+		preBgName = "backgroundColor";
 		bgValue = color;
 	}
 	// Backgroud gradient
 	if (bgType === "gradient") {
-		preBgName = "background-image";
+		preBgName = "backgroundImage";
 		bgValue = gradient;
 	}
 	//
-	return css`
-		${className} {
-			${preBgName}: ${bgValue};
-		}
-	`;
+	return {
+		[`${className}`]: {
+			[`${preBgName}`]: `${bgValue}`,
+		},
+	};
 };
 
 export default getBackgroundColorGradientStyles;

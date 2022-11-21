@@ -1,6 +1,6 @@
 import { css, CSSObject } from "@emotion/react";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
-import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
+import getStyleObjectFromResponsiveAttr from "./getStyleObjectFromResponsiveAttr";
 
 interface Params {
 	value: HasResponsive<string>;
@@ -9,15 +9,15 @@ interface Params {
 		| "paddingTop"
 		| "paddingLeft"
 		| "paddingRight"
-		| "marrginTop"
+		| "marginTop"
 		| "marginBottom"
 		| "marginLeft"
 		| "marginRight"
 		| "margin"
 		| "padding"
 		| "gap"
-		| "gapX"
-		| "gapY"
+		| "rowGap"
+		| "columnGap"
 		| "top"
 		| "right"
 		| "left"
@@ -30,24 +30,11 @@ const getSingleDimensionStyles = ({
 	prefix,
 	value,
 }: Params): CSSObject => {
-	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
-
-	const v_Desktop = value?.Desktop;
-	const v_Tablet = value?.Tablet || v_Desktop;
-	const v_Mobile = value?.Mobile || v_Tablet;
-	//
-
-	return {
-		[className]: {
-			[prefix]: `${v_Mobile}`,
-			[`@media (min-width: ${media_tablet})`]: {
-				[prefix]: `${v_Tablet}`,
-			},
-			[`@media (min-width: ${media_desktop})`]: {
-				[prefix]: `${v_Desktop}`,
-			},
-		},
-	};
+	return getStyleObjectFromResponsiveAttr({
+		className,
+		prefix,
+		value,
+	});
 };
 
 export default getSingleDimensionStyles;

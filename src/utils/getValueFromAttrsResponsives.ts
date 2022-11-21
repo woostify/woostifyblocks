@@ -2,26 +2,37 @@ import { HasResponsive } from "../components/controls/MyBackgroundControl/types"
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 
 const getValueFromAttrsResponsives = function <T>(
-	properties: HasResponsive<T>,
+	properties?: HasResponsive<T>,
 	currentDevice?: ResponsiveDevices
 ) {
-	let value_Desktop = properties.Desktop;
-	let value_Tablet = properties.Tablet || value_Desktop;
-	let value_Mobile = properties.Mobile || value_Tablet;
-	let currentDeviceValue: T | null = null;
+	// let value_Desktop = properties.Desktop;
+	// let value_Tablet = properties.Tablet || value_Desktop;
+	// let value_Mobile = properties.Mobile || value_Tablet;
+
+	const v_Desktop = properties?.Desktop;
+	const v_Tablet =
+		typeof properties?.Tablet !== "undefined" && properties?.Tablet !== null
+			? properties?.Tablet
+			: v_Desktop;
+	const v_Mobile =
+		typeof properties?.Mobile !== "undefined" && properties?.Mobile !== null
+			? properties?.Mobile
+			: v_Tablet;
+
+	let currentDeviceValue: T | undefined = undefined;
 	if (currentDevice) {
 		currentDeviceValue =
 			currentDevice === "Desktop"
-				? value_Desktop
+				? v_Desktop
 				: currentDevice === "Tablet"
-				? value_Tablet
-				: value_Mobile;
+				? v_Tablet
+				: v_Mobile;
 	}
 
 	return {
-		value_Desktop,
-		value_Tablet,
-		value_Mobile,
+		value_Desktop: v_Desktop,
+		value_Tablet: v_Tablet,
+		value_Mobile: v_Mobile,
 		currentDeviceValue,
 	};
 };

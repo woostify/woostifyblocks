@@ -16,7 +16,6 @@ import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/
 
 export interface WCB_TESTIMONIALS_PANEL_STYLE_DIMENSION {
 	padding: HasResponsive<DimensionSettings>;
-	colGap: HasResponsive<string>;
 }
 export const WCB_TESTIMONIALS_PANEL_STYLE_DIMENSION_DEMO: WCB_TESTIMONIALS_PANEL_STYLE_DIMENSION =
 	{
@@ -27,9 +26,6 @@ export const WCB_TESTIMONIALS_PANEL_STYLE_DIMENSION_DEMO: WCB_TESTIMONIALS_PANEL
 				right: "1rem",
 				bottom: "1rem",
 			},
-		},
-		colGap: {
-			Desktop: "2rem",
 		},
 	};
 
@@ -47,13 +43,9 @@ const WcbTestimonialsPanel_StyleDimension: FC<Props> = ({
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { padding, colGap } = panelData;
+	const { padding } = panelData;
 	const { currentDeviceValue: currentPadding } = getValueFromAttrsResponsives(
 		padding,
-		deviceType
-	);
-	const { currentDeviceValue: currentColGap } = getValueFromAttrsResponsives(
-		colGap,
 		deviceType
 	);
 
@@ -66,21 +58,6 @@ const WcbTestimonialsPanel_StyleDimension: FC<Props> = ({
 			title={__("Dimension", "wcb")}
 		>
 			<div className="space-y-5">
-				<MySpacingSizesControl
-					onChange={(value) => {
-						setAttr__({
-							...panelData,
-							colGap: {
-								...colGap,
-								[deviceType]: value,
-							},
-						});
-					}}
-					value={currentColGap || "2rem"}
-					hasResponsive
-					label={__("Column Gap", "wcb")}
-				/>
-
 				<BoxControl
 					label={
 						<MyLabelControl className="" hasResponsive>

@@ -7161,9 +7161,13 @@ const isGoogleFontEnqueued = function (fontName) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
 
 
 const getBorderRadiusStyles = _ref => {
+  var _radiusMobile, _radiusMobile2, _radiusMobile3, _radiusMobile4, _radiusTablet, _radiusTablet2, _radiusTablet3, _radiusTablet4, _radiusDesktop, _radiusDesktop2, _radiusDesktop3, _radiusDesktop4;
+
   let {
     className,
     radius
@@ -7173,9 +7177,11 @@ const getBorderRadiusStyles = _ref => {
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES; //
 
-  let radiusDesktop = radius === null || radius === void 0 ? void 0 : radius.Desktop;
-  let radiusTablet = (radius === null || radius === void 0 ? void 0 : radius.Tablet) || radiusDesktop;
-  let radiusMobile = (radius === null || radius === void 0 ? void 0 : radius.Mobile) || radiusTablet;
+  let {
+    value_Desktop: radiusDesktop,
+    value_Tablet: radiusTablet,
+    value_Mobile: radiusMobile
+  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(radius);
 
   const converttted = radiusValue => {
     if (typeof radiusValue === "string") {
@@ -7195,21 +7201,21 @@ const getBorderRadiusStyles = _ref => {
   radiusMobile = converttted(radiusDesktop);
   return {
     [`${className}`]: {
-      borderTopLeftRadius: `${radiusMobile.topLeft}`,
-      borderTopRightRadius: `${radiusMobile.topRight}`,
-      borderBottomRightRadius: `${radiusMobile.bottomRight}`,
-      borderBottomLeftRadius: `${radiusMobile.bottomLeft}`,
+      borderTopLeftRadius: `${(_radiusMobile = radiusMobile) === null || _radiusMobile === void 0 ? void 0 : _radiusMobile.topLeft}`,
+      borderTopRightRadius: `${(_radiusMobile2 = radiusMobile) === null || _radiusMobile2 === void 0 ? void 0 : _radiusMobile2.topRight}`,
+      borderBottomRightRadius: `${(_radiusMobile3 = radiusMobile) === null || _radiusMobile3 === void 0 ? void 0 : _radiusMobile3.bottomRight}`,
+      borderBottomLeftRadius: `${(_radiusMobile4 = radiusMobile) === null || _radiusMobile4 === void 0 ? void 0 : _radiusMobile4.bottomLeft}`,
       [`@media (min-width: ${media_tablet})`]: {
-        borderTopLeftRadius: `${radiusTablet.topLeft}`,
-        borderTopRightRadius: ` ${radiusTablet.topRight}`,
-        borderBottomRightRadius: `${radiusTablet.bottomRight}`,
-        borderBottomLeftRadius: `${radiusTablet.bottomLeft}`
+        borderTopLeftRadius: `${(_radiusTablet = radiusTablet) === null || _radiusTablet === void 0 ? void 0 : _radiusTablet.topLeft}`,
+        borderTopRightRadius: ` ${(_radiusTablet2 = radiusTablet) === null || _radiusTablet2 === void 0 ? void 0 : _radiusTablet2.topRight}`,
+        borderBottomRightRadius: `${(_radiusTablet3 = radiusTablet) === null || _radiusTablet3 === void 0 ? void 0 : _radiusTablet3.bottomRight}`,
+        borderBottomLeftRadius: `${(_radiusTablet4 = radiusTablet) === null || _radiusTablet4 === void 0 ? void 0 : _radiusTablet4.bottomLeft}`
       },
       [`@media (min-width: ${media_desktop})`]: {
-        borderTopLeftRadius: `${radiusDesktop.topLeft}`,
-        borderTopRightRadius: `${radiusDesktop.topRight}`,
-        borderBottomRightRadius: `${radiusDesktop.bottomRight}`,
-        borderBottomLeftRadius: `${radiusDesktop.bottomLeft}`
+        borderTopLeftRadius: `${(_radiusDesktop = radiusDesktop) === null || _radiusDesktop === void 0 ? void 0 : _radiusDesktop.topLeft}`,
+        borderTopRightRadius: `${(_radiusDesktop2 = radiusDesktop) === null || _radiusDesktop2 === void 0 ? void 0 : _radiusDesktop2.topRight}`,
+        borderBottomRightRadius: `${(_radiusDesktop3 = radiusDesktop) === null || _radiusDesktop3 === void 0 ? void 0 : _radiusDesktop3.bottomRight}`,
+        borderBottomLeftRadius: `${(_radiusDesktop4 = radiusDesktop) === null || _radiusDesktop4 === void 0 ? void 0 : _radiusDesktop4.bottomLeft}`
       }
     }
   };
@@ -7324,13 +7330,21 @@ const getBorderStyles = _ref => {
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
+
 function getCssProperyHasResponsive(_ref) {
   let {
     cssProperty
   } = _ref;
-  const value_desktop = cssProperty.Desktop;
-  const value_tablet = cssProperty.Tablet || value_desktop;
-  const value_mobile = cssProperty.Mobile || value_tablet;
+  const {
+    value_Desktop: value_desktop,
+    value_Tablet: value_tablet,
+    value_Mobile: value_mobile
+  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_0__["default"])(cssProperty); // const value_desktop = cssProperty.Desktop;
+  // const value_tablet = cssProperty.Tablet || value_desktop;
+  // const value_mobile = cssProperty.Mobile || value_tablet;
+
   return {
     value_desktop,
     value_tablet,
@@ -7349,8 +7363,10 @@ function getCssProperyHasResponsive(_ref) {
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
 
 
 
@@ -7364,15 +7380,19 @@ const getPaddingMarginStyles = _ref => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES;
-  const margin_Desktop = margin === null || margin === void 0 ? void 0 : margin.Desktop;
-  const margin_Tablet = (margin === null || margin === void 0 ? void 0 : margin.Tablet) || margin_Desktop;
-  const margin_Mobile = (margin === null || margin === void 0 ? void 0 : margin.Mobile) || margin_Tablet; //
+  const {
+    value_Desktop: margin_Desktop,
+    value_Tablet: margin_Tablet,
+    value_Mobile: margin_Mobile
+  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(margin); //
 
-  const padding_Desktop = padding === null || padding === void 0 ? void 0 : padding.Desktop;
-  const padding_Tablet = (padding === null || padding === void 0 ? void 0 : padding.Tablet) || padding_Desktop;
-  const padding_Mobile = (padding === null || padding === void 0 ? void 0 : padding.Mobile) || padding_Tablet; //
+  const {
+    value_Desktop: padding_Desktop,
+    value_Tablet: padding_Tablet,
+    value_Mobile: padding_Mobile
+  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(padding); //
 
-  return _emotion_react__WEBPACK_IMPORTED_MODULE_1__.css`
+  return _emotion_react__WEBPACK_IMPORTED_MODULE_2__.css`
 		${className} {
 			padding-top: ${padding_Mobile === null || padding_Mobile === void 0 ? void 0 : padding_Mobile.top};
 			padding-right: ${padding_Mobile === null || padding_Mobile === void 0 ? void 0 : padding_Mobile.right};
@@ -7501,19 +7521,22 @@ const getTypographyStyles = _ref => {
 
 __webpack_require__.r(__webpack_exports__);
 const getValueFromAttrsResponsives = function (properties, currentDevice) {
-  let value_Desktop = properties.Desktop;
-  let value_Tablet = properties.Tablet || value_Desktop;
-  let value_Mobile = properties.Mobile || value_Tablet;
-  let currentDeviceValue = null;
+  // let value_Desktop = properties.Desktop;
+  // let value_Tablet = properties.Tablet || value_Desktop;
+  // let value_Mobile = properties.Mobile || value_Tablet;
+  const v_Desktop = properties === null || properties === void 0 ? void 0 : properties.Desktop;
+  const v_Tablet = typeof (properties === null || properties === void 0 ? void 0 : properties.Tablet) !== "undefined" && (properties === null || properties === void 0 ? void 0 : properties.Tablet) !== null ? properties === null || properties === void 0 ? void 0 : properties.Tablet : v_Desktop;
+  const v_Mobile = typeof (properties === null || properties === void 0 ? void 0 : properties.Mobile) !== "undefined" && (properties === null || properties === void 0 ? void 0 : properties.Mobile) !== null ? properties === null || properties === void 0 ? void 0 : properties.Mobile : v_Tablet;
+  let currentDeviceValue = undefined;
 
   if (currentDevice) {
-    currentDeviceValue = currentDevice === "Desktop" ? value_Desktop : currentDevice === "Tablet" ? value_Tablet : value_Mobile;
+    currentDeviceValue = currentDevice === "Desktop" ? v_Desktop : currentDevice === "Tablet" ? v_Tablet : v_Mobile;
   }
 
   return {
-    value_Desktop,
-    value_Tablet,
-    value_Mobile,
+    value_Desktop: v_Desktop,
+    value_Tablet: v_Tablet,
+    value_Mobile: v_Mobile,
     currentDeviceValue
   };
 };

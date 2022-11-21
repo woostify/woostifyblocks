@@ -2,6 +2,7 @@ import { css, CSSObject } from "@emotion/react";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import { BorderRadiusSettings } from "../components/controls/MyBorderControl/types";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
+import getValueFromAttrsResponsives from "./getValueFromAttrsResponsives";
 
 interface Params {
 	radius: HasResponsive<BorderRadiusSettings>;
@@ -11,11 +12,14 @@ interface Params {
 const getBorderRadiusStyles = ({ className, radius }: Params): CSSObject => {
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 	//
-	let radiusDesktop = radius?.Desktop;
-	let radiusTablet = radius?.Tablet || radiusDesktop;
-	let radiusMobile = radius?.Mobile || radiusTablet;
 
-	const converttted = (radiusValue: BorderRadiusSettings) => {
+	let {
+		value_Desktop: radiusDesktop,
+		value_Tablet: radiusTablet,
+		value_Mobile: radiusMobile,
+	} = getValueFromAttrsResponsives(radius);
+
+	const converttted = (radiusValue?: BorderRadiusSettings) => {
 		if (typeof radiusValue === "string") {
 			radiusValue = {
 				bottomLeft: radiusValue,
@@ -33,22 +37,22 @@ const getBorderRadiusStyles = ({ className, radius }: Params): CSSObject => {
 
 	return {
 		[`${className}`]: {
-			borderTopLeftRadius: `${radiusMobile.topLeft}`,
-			borderTopRightRadius: `${radiusMobile.topRight}`,
-			borderBottomRightRadius: `${radiusMobile.bottomRight}`,
-			borderBottomLeftRadius: `${radiusMobile.bottomLeft}`,
+			borderTopLeftRadius: `${radiusMobile?.topLeft}`,
+			borderTopRightRadius: `${radiusMobile?.topRight}`,
+			borderBottomRightRadius: `${radiusMobile?.bottomRight}`,
+			borderBottomLeftRadius: `${radiusMobile?.bottomLeft}`,
 
 			[`@media (min-width: ${media_tablet})`]: {
-				borderTopLeftRadius: `${radiusTablet.topLeft}`,
-				borderTopRightRadius: ` ${radiusTablet.topRight}`,
-				borderBottomRightRadius: `${radiusTablet.bottomRight}`,
-				borderBottomLeftRadius: `${radiusTablet.bottomLeft}`,
+				borderTopLeftRadius: `${radiusTablet?.topLeft}`,
+				borderTopRightRadius: ` ${radiusTablet?.topRight}`,
+				borderBottomRightRadius: `${radiusTablet?.bottomRight}`,
+				borderBottomLeftRadius: `${radiusTablet?.bottomLeft}`,
 			},
 			[`@media (min-width: ${media_desktop})`]: {
-				borderTopLeftRadius: `${radiusDesktop.topLeft}`,
-				borderTopRightRadius: `${radiusDesktop.topRight}`,
-				borderBottomRightRadius: `${radiusDesktop.bottomRight}`,
-				borderBottomLeftRadius: `${radiusDesktop.bottomLeft}`,
+				borderTopLeftRadius: `${radiusDesktop?.topLeft}`,
+				borderTopRightRadius: `${radiusDesktop?.topRight}`,
+				borderBottomRightRadius: `${radiusDesktop?.bottomRight}`,
+				borderBottomLeftRadius: `${radiusDesktop?.bottomLeft}`,
 			},
 		},
 	};

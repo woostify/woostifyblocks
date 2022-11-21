@@ -2,6 +2,7 @@ import { CSSObject } from "@emotion/react";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import { MyFlexPropertiesControlData } from "../components/controls/MyFlexPropertiesControl/types";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
+import getValueFromAttrsResponsives from "./getValueFromAttrsResponsives";
 
 interface FlexProperties extends Partial<MyFlexPropertiesControlData> {
 	colunmGap?: HasResponsive<string>;
@@ -30,30 +31,48 @@ const getFlexPropertiesStyles = ({
 	} = flexProperties;
 	//
 
-	const flexDirection_Desktop = flexDirection?.Desktop;
-	const flexDirection_Tablet = flexDirection?.Tablet || flexDirection_Desktop;
-	const flexDirection_Mobile = flexDirection?.Mobile || flexDirection_Tablet;
+	const {
+		value_Desktop: flexDirection_Desktop,
+		value_Tablet: flexDirection_Tablet,
+		value_Mobile: flexDirection_Mobile,
+	} = getValueFromAttrsResponsives(flexDirection);
 	//
-	const alignItems_Desktop = alignItems?.Desktop;
-	const alignItems_Tablet = alignItems?.Tablet || alignItems_Desktop;
-	const alignItems_Mobile = alignItems?.Mobile || alignItems_Tablet;
+
+	const {
+		value_Desktop: alignItems_Desktop,
+		value_Tablet: alignItems_Tablet,
+		value_Mobile: alignItems_Mobile,
+	} = getValueFromAttrsResponsives(alignItems);
 	//
-	const flexWrap_Desktop = flexWrap?.Desktop;
-	const flexWrap_Tablet = flexWrap?.Tablet || flexWrap_Desktop;
-	const flexWrap_Mobile = flexWrap?.Mobile || flexWrap_Tablet;
+
+	const {
+		value_Desktop: flexWrap_Desktop,
+		value_Tablet: flexWrap_Tablet,
+		value_Mobile: flexWrap_Mobile,
+	} = getValueFromAttrsResponsives(flexWrap);
 	//
-	const justifyContent_Desktop = justifyContent?.Desktop;
-	const justifyContent_Tablet =
-		justifyContent?.Tablet || justifyContent_Desktop;
-	const justifyContent_Mobile = justifyContent?.Mobile || justifyContent_Tablet;
+
+	const {
+		value_Desktop: justifyContent_Desktop,
+		value_Tablet: justifyContent_Tablet,
+		value_Mobile: justifyContent_Mobile,
+	} = getValueFromAttrsResponsives(justifyContent);
+
 	//
-	const colunmGap_Desktop = colunmGap?.Desktop;
-	const colunmGap_Tablet = colunmGap?.Tablet || colunmGap_Desktop;
-	const colunmGap_Mobile = colunmGap?.Mobile || colunmGap_Tablet;
+
+	const {
+		value_Desktop: colunmGap_Desktop,
+		value_Tablet: colunmGap_Tablet,
+		value_Mobile: colunmGap_Mobile,
+	} = getValueFromAttrsResponsives(colunmGap);
+
 	//
-	const rowGap_Desktop = rowGap?.Desktop;
-	const rowGap_Tablet = rowGap?.Tablet || rowGap_Desktop;
-	const rowGap_Mobile = rowGap?.Mobile || rowGap_Tablet;
+
+	const {
+		value_Desktop: rowGap_Desktop,
+		value_Tablet: rowGap_Tablet,
+		value_Mobile: rowGap_Mobile,
+	} = getValueFromAttrsResponsives(rowGap);
 	//
 	return {
 		[`${className}`]: {

@@ -14,6 +14,7 @@ export interface WCB_TESTIMONIALS_PANEL_GENERAL {
 	textAlignment: HasResponsive<TextAlignment>;
 	numberofTestimonials: number;
 	columns: HasResponsive<number>;
+	colGap: HasResponsive<number>;
 }
 
 export const WCB_TESTIMONIALS_PANEL_GENERAL_DEMO: WCB_TESTIMONIALS_PANEL_GENERAL =
@@ -21,6 +22,7 @@ export const WCB_TESTIMONIALS_PANEL_GENERAL_DEMO: WCB_TESTIMONIALS_PANEL_GENERAL
 		textAlignment: { Desktop: "left" },
 		numberofTestimonials: 4,
 		columns: { Desktop: 1, Tablet: 1, Mobile: 1 },
+		colGap: { Desktop: 32 },
 	};
 
 interface Props
@@ -38,14 +40,17 @@ const WcbTestimonialsPanelGeneral: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
-	const { textAlignment, columns, numberofTestimonials } = panelData;
+	const { textAlignment, columns, numberofTestimonials, colGap } = panelData;
 	const { currentDeviceValue: currentTextAlignment } =
 		getValueFromAttrsResponsives(textAlignment, deviceType);
 	const { currentDeviceValue: currentColumns } = getValueFromAttrsResponsives(
 		columns,
 		deviceType
 	);
-
+	const { currentDeviceValue: currentColGap } = getValueFromAttrsResponsives(
+		colGap,
+		deviceType
+	);
 	//
 	const handleChangeTextAlignment = (selected: CSSProperties["textAlign"]) => {
 		setAttr__({
@@ -94,6 +99,24 @@ const WcbTestimonialsPanelGeneral: FC<Props> = ({
 					}}
 					min={1}
 					max={3}
+				/>
+
+				<RangeControl
+					label={
+						<MyLabelControl hasResponsive>{__("Gap", "wcb")}</MyLabelControl>
+					}
+					value={currentColGap || 1}
+					onChange={(value) => {
+						setAttr__({
+							...panelData,
+							colGap: {
+								...colGap,
+								[deviceType]: value,
+							},
+						});
+					}}
+					min={0}
+					max={100}
 				/>
 
 				<MyTextAlignControl

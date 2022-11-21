@@ -1,10 +1,11 @@
 import { Global, css } from "@emotion/react";
 import React, { FC } from "react";
 import { getShadowStyleValueFromTwPreset } from "../components/controls/MyBoxShadowControl/getBoxShadowStyles";
-import getBackgroundColorGradientStyles from "../utils/getBackgroundColorGradientStyles";
 import getBorderStyles from "../utils/getBorderStyles";
 import getFlexPropertiesStyles from "../utils/getFlexPropertiesStyles";
 import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
+import getStyleBackground from "../utils/getStyleBackground";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { BlockWCBContainerAttrs } from "./attributes";
 import { getAdvanveDivWrapStyles } from "./getAdvanveStyles";
@@ -33,22 +34,32 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const getDivWrapStyles = () => {
 		const { containerWidthType, customWidth, htmlTag, overflow, minHeight } =
 			general_container;
-		let cWidthDesktop = customWidth.Desktop;
-		let cWidthTablet = customWidth.Tablet || cWidthDesktop;
-		let cWidthMobile = customWidth.Mobile || cWidthTablet;
+
+		let {
+			value_Desktop: cWidthDesktop,
+			value_Tablet: cWidthTablet,
+			value_Mobile: cWidthMobile,
+		} = getValueFromAttrsResponsives(customWidth);
+
 		if (containerWidthType !== "Custom") {
 			cWidthDesktop = "";
 			cWidthTablet = "";
 			cWidthMobile = "";
 		}
 		//
-		const minHeightDesktop = minHeight.Desktop;
-		const minHeightTablet = minHeight.Tablet || minHeightDesktop;
-		const minHeightMobile = minHeight.Mobile || minHeightTablet;
+
+		const {
+			value_Desktop: minHeightDesktop,
+			value_Tablet: minHeightTablet,
+			value_Mobile: minHeightMobile,
+		} = getValueFromAttrsResponsives(minHeight);
 		//
-		const zIndexDesktop = advance_zIndex.Desktop;
-		const zIndexTablet = advance_zIndex.Tablet || zIndexDesktop;
-		const zIndexMobile = advance_zIndex.Mobile || zIndexTablet;
+
+		const {
+			value_Desktop: zIndexDesktop,
+			value_Tablet: zIndexTablet,
+			value_Mobile: zIndexMobile,
+		} = getValueFromAttrsResponsives(advance_zIndex);
 		//
 		const { isHiddenOnDesktop, isHiddenOnMobile, isHiddenOnTablet } =
 			advance_responsiveCondition;
@@ -72,114 +83,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 					min-height: ${minHeightDesktop};
 					z-index: ${zIndexDesktop};
 					display: ${isHiddenOnDesktop ? "hidden" : "flex"};
-				}
-			}
-		`;
-	};
-
-	const getDivWrapStyles__BgColor_Gradient = () => {
-		const { bgType, color, gradient } = styles_background;
-		return getBackgroundColorGradientStyles({
-			background: styles_background,
-			className: WRAP_CLASSNAME,
-		});
-	};
-
-	const getDivWrapStyles__BackgroundImage = () => {
-		const {
-			bgImageAttachment,
-			bgImageRepeat,
-			bgImageSize,
-			bgType,
-			focalPoint,
-			imageData,
-		} = styles_background;
-
-		if (bgType !== "image") {
-			return;
-		}
-		//
-		const SRC__DESKTOP: string = imageData.Desktop?.mediaUrl;
-		const SRC__TABLET: string = imageData.Tablet?.mediaUrl || SRC__DESKTOP;
-		const SRC: string = imageData.Mobile?.mediaUrl || SRC__TABLET;
-		//
-		const BG_REPEAT__DESKTOP = bgImageRepeat.Desktop;
-		const BG_REPEAT__TABLET = bgImageRepeat.Tablet || BG_REPEAT__DESKTOP;
-		const BG_REPEAT = bgImageRepeat.Mobile || BG_REPEAT__TABLET;
-		//
-		const BG_ATTACHMENT__DESKTOP = bgImageAttachment.Desktop;
-		const BG_ATTACHMENT__TABLET =
-			bgImageAttachment.Tablet || BG_ATTACHMENT__DESKTOP;
-		const BG_ATTACHMENT = bgImageAttachment.Mobile || BG_ATTACHMENT__TABLET;
-		//
-		const BG_SIZE__DESKTOP = bgImageSize.Desktop;
-		const BG_SIZE__TABLET = bgImageSize.Tablet || BG_SIZE__DESKTOP;
-		const BG_SIZE = bgImageSize.Mobile || BG_SIZE__TABLET;
-		//
-
-		const BG_FOCAL__DESKTOP = focalPoint.Desktop;
-		const BG_FOCAL__TABLET = focalPoint.Tablet || BG_FOCAL__DESKTOP;
-		const BG_FOCAL = focalPoint.Mobile || BG_FOCAL__TABLET;
-		//
-		const BG_POSITION = `${BG_FOCAL.x * 100}% ${BG_FOCAL.y * 100}%`;
-		const BG_POSITION__TABLET = `${BG_FOCAL__TABLET.x * 100}% ${
-			BG_FOCAL__TABLET.y * 100
-		}%`;
-		const BG_POSITION__DESKTOP = `${BG_FOCAL__DESKTOP.x * 100}% ${
-			BG_FOCAL__DESKTOP.y * 100
-		}%`;
-		//
-		return css`
-			${WRAP_CLASSNAME} {
-				background-image: url(${SRC});
-				background-repeat: ${BG_REPEAT};
-				background-attachment: ${BG_ATTACHMENT};
-				background-size: ${BG_SIZE};
-				background-position: ${BG_POSITION};
-				@media (min-width: ${media_tablet}) {
-					background-image: url(${SRC__TABLET});
-					background-repeat: ${BG_REPEAT__TABLET};
-					background-attachment: ${BG_ATTACHMENT__TABLET};
-					background-size: ${BG_SIZE__TABLET};
-					background-position: ${BG_POSITION__TABLET};
-				}
-				@media (min-width: ${media_desktop}) {
-					background-image: url(${SRC__DESKTOP});
-					background-repeat: ${BG_REPEAT__DESKTOP};
-					background-attachment: ${BG_ATTACHMENT__DESKTOP};
-					background-size: ${BG_SIZE__DESKTOP};
-					background-position: ${BG_POSITION__DESKTOP};
-				}
-			}
-		`;
-	};
-
-	const getDivWrapStyles__Overlay = () => {
-		const { overlayColor, overlayGradient, overlayType } = styles_background;
-
-		if (overlayType !== "color" && overlayType !== "gradient") {
-			return;
-		}
-
-		let preBgName = "";
-		let bgValue = "";
-		if (overlayType === "color") {
-			preBgName = "background-color";
-			bgValue = overlayColor;
-		}
-		// Backgroud gradient
-		if (overlayType === "gradient") {
-			preBgName = "background-image";
-			bgValue = overlayGradient;
-		}
-
-		return css`
-			${WRAP_CLASSNAME} {
-				.wcb-OverlayBackgroundByBgControl {
-					${preBgName}: ${bgValue};
-					position: absolute;
-					inset: 0;
-					z-index: 0;
 				}
 			}
 		`;
@@ -267,11 +170,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 			return;
 		}
 
-		const contentBoxWidthDesktop = contentBoxWidth.Desktop;
-		const contentBoxWidthTablet =
-			contentBoxWidth.Tablet || contentBoxWidthDesktop;
-		const contentBoxWidthMobile =
-			contentBoxWidth.Mobile || contentBoxWidthTablet;
+		const {
+			value_Desktop: contentBoxWidthDesktop,
+			value_Tablet: contentBoxWidthTablet,
+			value_Mobile: contentBoxWidthMobile,
+		} = getValueFromAttrsResponsives(contentBoxWidth);
 
 		return css`
 			${INNER_CLASSNAME} {
@@ -302,9 +205,12 @@ const GlobalCss: FC<Props> = (attrs) => {
 	return (
 		<>
 			<Global styles={getDivWrapStyles()} />
-			<Global styles={getDivWrapStyles__BgColor_Gradient()} />
-			<Global styles={getDivWrapStyles__BackgroundImage()} />
-			<Global styles={getDivWrapStyles__Overlay()} />
+			<Global
+				styles={getStyleBackground({
+					className: WRAP_CLASSNAME,
+					styles_background,
+				})}
+			/>
 			<Global styles={getDivWrapStyles__Border()} />
 			<Global styles={getDivWrapStyles__BoxShadow()} />
 			<Global styles={getDivWrapStyles__PaddingMargin()} />
