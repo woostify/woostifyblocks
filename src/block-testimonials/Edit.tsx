@@ -23,6 +23,10 @@ import WcbTestimonialsPanel_StyleContent from "./WcbTestimonialsPanel_StyleConte
 import WcbTestimonialsPanel_StyleCompany from "./WcbTestimonialsPanel_StyleCompany";
 import WcbTestimonialsPanel_StyleImage from "./WcbTestimonialsPanel_StyleImage";
 import WcbTestimonialsPanel_StyleArrowDots from "./WcbTestimonialsPanel_StyleArrowDots";
+import WcbTestimonialsPanel_StyleBackground from "./WcbTestimonialsPanel_StyleBackground";
+import WcbTestimonialsPanel_StyleDimension from "./WcbTestimonialsPanel_StyleDimension";
+import getImageUrlBySize from "../utils/getImageUrlBySize";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 
 const TESTIMONIAL_ITEM_DEMO: TestimonialItem = {
 	name: "Drink Water",
@@ -46,6 +50,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_company,
 		style_image,
 		style_arrowAndDots,
+		style_backgroundAndBorder,
+		style_dimension,
 	} = attributes;
 	//  COMMON HOOKS
 	const { myCache, ref } = useCreateCacheEmotion();
@@ -100,6 +106,11 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		// @ts-ignore
 		return () => slider.destroy();
 	}, [options, UNIQUE_ID]);
+
+	//
+	let CURRENT_DATA = [
+		...Array(general_general.numberofTestimonials || 3).keys(),
+	].map((_, index) => testimonials[index] || TESTIMONIAL_ITEM_DEMO);
 
 	//
 
@@ -202,6 +213,26 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							}}
 							panelData={style_arrowAndDots}
 						/>
+						<WcbTestimonialsPanel_StyleBackground
+							onToggle={() => handleTogglePanel("Styles", "_StyleBackground")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleBackground"}
+							opened={tabStylesIsPanelOpen === "_StyleBackground" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_backgroundAndBorder: data });
+							}}
+							panelData={style_backgroundAndBorder}
+						/>
+						<WcbTestimonialsPanel_StyleDimension
+							onToggle={() => handleTogglePanel("Styles", "_StyleDimension")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleDimension"}
+							opened={tabStylesIsPanelOpen === "_StyleDimension" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_dimension: data });
+							}}
+							panelData={style_dimension}
+						/>
 					</>
 				);
 			case "Advances":
@@ -224,80 +255,150 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		}
 	};
 
-	const renderEditContent = () => {
-		let CURRENT_DATA = [
-			...Array(general_general.numberofTestimonials || 3).keys(),
-		].map((_, index) => testimonials[index] || TESTIMONIAL_ITEM_DEMO);
+	const renderTestimonialItemContent = (
+		item: TestimonialItem,
+		index: number
+	) => {
+		return (
+			<RichText
+				tagName="div"
+				className="wcb-testimonials__item-content"
+				value={item.content}
+				onChange={(content) =>
+					setAttributes({
+						testimonials: CURRENT_DATA.map((item, j) => {
+							if (j === index) {
+								return {
+									...item,
+									content: content,
+								};
+							}
+							return item;
+						}),
+					})
+				}
+				placeholder={__("Content of testimonials")}
+			/>
+		);
+	};
 
+	const renderTestimonialItemName = (item: TestimonialItem, index: number) => {
+		return (
+			<RichText
+				tagName="div"
+				className="wcb-testimonials__item-name"
+				value={item.name}
+				onChange={(content) =>
+					setAttributes({
+						testimonials: CURRENT_DATA.map((item, j) => {
+							if (j === index) {
+								return {
+									...item,
+									name: content,
+								};
+							}
+							return item;
+						}),
+					})
+				}
+				placeholder={__("Name")}
+			/>
+		);
+	};
+
+	const renderTestimonialItemCompany = (
+		item: TestimonialItem,
+		index: number
+	) => {
+		return (
+			<RichText
+				tagName="div"
+				className="wcb-testimonials__item-company"
+				value={item.companyName}
+				onChange={(content) =>
+					setAttributes({
+						testimonials: CURRENT_DATA.map((item, j) => {
+							if (j === index) {
+								return {
+									...item,
+									companyName: content,
+								};
+							}
+							return item;
+						}),
+					})
+				}
+				placeholder={__("Company Name")}
+			/>
+		);
+	};
+
+	const renderTestimonialItemImage = (item: TestimonialItem, index: number) => {
+		const { images, isShowImage, imageSize } = general_images;
+		const { imageSize: imageSizeAttr } = style_image;
+		const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
+		const { mediaId, mediaSrcSet } = images[index] || {};
+		if (!isShowImage || !mediaId) {
+			return null;
+		}
+		const { value_Desktop, value_Mobile, value_Tablet } =
+			getValueFromAttrsResponsives(imageSizeAttr);
+		const url = getImageUrlBySize(images[index], imageSize);
+		return (
+			<div className="wcb-testimonials__item-image">
+				<img
+					src={url}
+					alt=""
+					srcSet={mediaSrcSet}
+					sizes={`(max-width: ${media_tablet}) ${value_Mobile}, (max-width: ${media_desktop}) ${value_Tablet}, ${value_Desktop}`}
+				/>
+			</div>
+		);
+	};
+
+	const renderTestimonialItem = (item: TestimonialItem, index: number) => {
+		const { imagePosition } = general_images;
+		return (
+			<li
+				className="glide__slide wcb-testimonials__item"
+				key={index + "-" + item.name}
+			>
+				{/* IMAGE */}
+				{imagePosition === "left" && renderTestimonialItemImage(item, index)}
+
+				<div>
+					{/* IMAGE */}
+					{imagePosition === "top" && renderTestimonialItemImage(item, index)}
+
+					{/* CONTENT */}
+					{renderTestimonialItemContent(item, index)}
+
+					<div className="wcb-testimonials__item-body">
+						{/* IMAGE */}
+						{imagePosition === "bottom" &&
+							renderTestimonialItemImage(item, index)}
+
+						{/* NAME */}
+						{renderTestimonialItemName(item, index)}
+
+						{/* COMPANY */}
+						{renderTestimonialItemCompany(item, index)}
+					</div>
+				</div>
+
+				{/* IMAGE */}
+				{imagePosition === "right" && renderTestimonialItemImage(item, index)}
+			</li>
+		);
+	};
+
+	const renderEditContent = () => {
 		return (
 			<div className="glide">
 				{/* CONTENT */}
 				<div className="glide__track" data-glide-el="track">
 					<ul className="glide__slides">
-						{CURRENT_DATA.map((item, index) => {
-							return (
-								<li className="glide__slide" key={index + "-" + item.name}>
-									{/* CONTENT */}
-									<RichText
-										tagName="div"
-										value={item.content}
-										onChange={(content) =>
-											setAttributes({
-												testimonials: CURRENT_DATA.map((item, j) => {
-													if (j === index) {
-														return {
-															...item,
-															content: content,
-														};
-													}
-													return item;
-												}),
-											})
-										}
-										placeholder={__("Content of testimonials")}
-									/>
-
-									{/* NAME */}
-									<RichText
-										tagName="div"
-										value={item.name}
-										onChange={(content) =>
-											setAttributes({
-												testimonials: CURRENT_DATA.map((item, j) => {
-													if (j === index) {
-														return {
-															...item,
-															name: content,
-														};
-													}
-													return item;
-												}),
-											})
-										}
-										placeholder={__("Name")}
-									/>
-									{/* COMPANY */}
-									<RichText
-										tagName="div"
-										value={item.companyName}
-										onChange={(content) =>
-											setAttributes({
-												testimonials: CURRENT_DATA.map((item, j) => {
-													if (j === index) {
-														return {
-															...item,
-															companyName: content,
-														};
-													}
-													return item;
-												}),
-											})
-										}
-										placeholder={__("Company Name")}
-									/>
-								</li>
-							);
-						})}
+						{CURRENT_DATA.map(renderTestimonialItem)}
 					</ul>
 				</div>
 
@@ -309,13 +410,39 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							className="glide__arrow glide__arrow--left"
 							data-glide-dir="<"
 						>
-							prev
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								strokeWidth={1.5}
+								stroke="currentColor"
+								className="w-6 h-6"
+							>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									d="M15.75 19.5L8.25 12l7.5-7.5"
+								/>
+							</svg>
 						</button>
 						<button
 							className="glide__arrow glide__arrow--right"
 							data-glide-dir=">"
 						>
-							next
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								strokeWidth={1.5}
+								stroke="currentColor"
+								className="w-6 h-6"
+							>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									d="M8.25 4.5l7.5 7.5-7.5 7.5"
+								/>
+							</svg>
 						</button>
 					</div>
 				)}
@@ -353,7 +480,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				<GlobalCss {...attributes} />
 
 				{/* CHILD CONTENT  */}
-				<div>{renderEditContent()}</div>
+				{renderEditContent()}
 			</div>
 		</CacheProvider>
 	);

@@ -22,3 +22,15 @@
 		background-color: black;
 	}
 }
+
+/*  */
+
+.wcb-testimonials__item {
+	display: flex;
+}
+.wcb-testimonials__item-image {
+	flex-shrink: 0;
+}
+.wcb-testimonials__item-body {
+	flex: 1;
+}

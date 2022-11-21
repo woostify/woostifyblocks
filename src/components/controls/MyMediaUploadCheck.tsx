@@ -10,10 +10,22 @@ interface Props extends MediaUploadData {
 	onChange: (T: Omit<Props, "onChange">) => void;
 }
 
+export interface MediaUploadDataSizeItem {
+	height: number;
+	width: number;
+	orientation: string;
+	url: string;
+}
 export interface MediaUploadData {
 	mediaId: number;
 	mediaUrl: string;
 	mediaSrcSet?: string;
+	sizes?: {
+		full?: MediaUploadDataSizeItem;
+		large?: MediaUploadDataSizeItem;
+		medium?: MediaUploadDataSizeItem;
+		thumbnail?: MediaUploadDataSizeItem;
+	};
 }
 
 const MyMediaUploadCheck: FC<Props> = ({
@@ -36,6 +48,7 @@ const MyMediaUploadCheck: FC<Props> = ({
 			mediaId: media.id,
 			mediaUrl: media.url,
 			mediaSrcSet: `${media.url} ${media.width}w, ${media.sizes?.medium?.url} ${media.sizes?.medium?.width}w, ${media.sizes?.full?.url} ${media.sizes?.full?.width}w, ${media.sizes?.large?.url} ${media.sizes?.large?.width}w`,
+			sizes: media.sizes,
 		});
 	};
 

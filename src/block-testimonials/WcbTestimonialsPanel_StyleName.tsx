@@ -8,11 +8,10 @@ import {
 } from "../components/controls/MyTypographyControl/types";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
-import MyUnitControl from "../components/controls/MyUnitControl";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
-import { MY_GAP_UNITS } from "../components/controls/MyDimensionsControl/MyDimensionsControl";
+import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
 
 export interface WCB_TESTIMONIALS_PANEL_STYLE_NAME {
 	typography: MyTypographyControlData;
@@ -73,7 +72,8 @@ const WcbTestimonialsPanel_StyleName: FC<Props> = ({
 						});
 					}}
 				/>
-				<MyUnitControl
+
+				<MySpacingSizesControl
 					onChange={(value) => {
 						setAttr__({
 							...panelData,
@@ -84,10 +84,7 @@ const WcbTestimonialsPanel_StyleName: FC<Props> = ({
 						});
 					}}
 					value={currentMarginBottom || ""}
-					units={MY_GAP_UNITS}
 					label={__("Margin bottom", "wcb")}
-					hasResponsive
-					className="flex-col space-y-2"
 				/>
 			</div>
 		</PanelBody>

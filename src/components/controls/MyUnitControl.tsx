@@ -17,7 +17,7 @@ interface Props {
 	units?: MyUnit[];
 	label?: string;
 	hasResponsive?: boolean;
-	onChange: (value: number) => void;
+	onChange: (value: string) => void;
 	value: string;
 }
 

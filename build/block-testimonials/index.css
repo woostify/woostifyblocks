@@ -28,6 +28,19 @@
 .glide__bullet.glide__bullet--active {
   background-color: black;
 }
+
+/*  */
+.wcb-testimonials__item {
+  display: flex;
+}
+
+.wcb-testimonials__item-image {
+  flex-shrink: 0;
+}
+
+.wcb-testimonials__item-body {
+  flex: 1;
+}
 /*!*************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./node_modules/@glidejs/glide/dist/css/glide.core.min.css ***!
   \*************************************************************************************************************************************************************************************************************/

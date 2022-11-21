@@ -2,19 +2,13 @@ import { __ } from "@wordpress/i18n";
 import { PanelBody } from "@wordpress/components";
 import React, { FC } from "react";
 import MyTypographyControl from "../components/controls/MyTypographyControl/MyTypographyControl";
-import {
-	MyTypographyControlData,
-	TYPOGRAPHY_CONTROL_DEMO,
-} from "../components/controls/MyTypographyControl/types";
-import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
+import { TYPOGRAPHY_CONTROL_DEMO } from "../components/controls/MyTypographyControl/types";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
-import MyUnitControl from "../components/controls/MyUnitControl";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
-import { MY_GAP_UNITS } from "../components/controls/MyDimensionsControl/MyDimensionsControl";
 import { WCB_TESTIMONIALS_PANEL_STYLE_NAME } from "./WcbTestimonialsPanel_StyleName";
-import MyDisclosure from "../components/controls/MyDisclosure";
+import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
 
 export const WCB_TESTIMONIALS_PANEL_STYLE_CONTENT_DEMO: WCB_TESTIMONIALS_PANEL_STYLE_NAME =
 	{
@@ -71,7 +65,7 @@ const WcbTestimonialsPanel_StyleContent: FC<Props> = ({
 					}}
 				/>
 
-				<MyUnitControl
+				<MySpacingSizesControl
 					onChange={(value) => {
 						setAttr__({
 							...panelData,
@@ -82,10 +76,7 @@ const WcbTestimonialsPanel_StyleContent: FC<Props> = ({
 						});
 					}}
 					value={currentMarginBottom || ""}
-					units={MY_GAP_UNITS}
 					label={__("Margin bottom", "wcb")}
-					hasResponsive
-					className="flex-col space-y-2"
 				/>
 			</div>
 		</PanelBody>

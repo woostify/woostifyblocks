@@ -1,45 +1,31 @@
 import { __ } from "@wordpress/i18n";
-import {
-	PanelBody,
-	// @ts-ignore
-	__experimentalBoxControl as BoxControl,
-} from "@wordpress/components";
-// @ts-ignore
-import { __experimentalBorderRadiusControl as BorderRadiusControl } from "@wordpress/block-editor";
+import { PanelBody } from "@wordpress/components";
 import React, { FC } from "react";
-import MyTypographyControl from "../components/controls/MyTypographyControl/MyTypographyControl";
-import {
-	MyTypographyControlData,
-	TYPOGRAPHY_CONTROL_DEMO,
-} from "../components/controls/MyTypographyControl/types";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
-import { DimensionSettings } from "../components/controls/MyDimensionsControl/types";
-import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
 import {
-	BorderRadiusSettings,
 	MyBorderControlData,
 	MY_BORDER_CONTROL_DEMO,
 } from "../components/controls/MyBorderControl/types";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
-import { MY_GAP_UNITS } from "../components/controls/MyDimensionsControl/MyDimensionsControl";
-import MyUnitControl from "../components/controls/MyUnitControl";
 import MyDisclosure from "../components/controls/MyDisclosure";
 
 export interface WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS {
 	arrowSize: string;
 	border: MyBorderControlData;
 	dotsMarginTop: HasResponsive<string>;
+	color: string;
 }
 export const WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS_DEMO: WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS =
 	{
 		arrowSize: "1.75rem",
 		border: MY_BORDER_CONTROL_DEMO,
 		dotsMarginTop: { Desktop: "2rem" },
+		color: "",
 	};
 
 interface Props
@@ -56,7 +42,7 @@ const WcbTestimonialsPanel_StyleArrowDots: FC<Props> = ({
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { arrowSize, border, dotsMarginTop } = panelData;
+	const { arrowSize, border, dotsMarginTop, color } = panelData;
 	const { currentDeviceValue: currentDotsMarginTop } =
 		getValueFromAttrsResponsives(dotsMarginTop, deviceType);
 	//
@@ -92,7 +78,7 @@ const WcbTestimonialsPanel_StyleArrowDots: FC<Props> = ({
 					/>
 				</MyDisclosure>
 
-				<MyUnitControl
+				<MySpacingSizesControl
 					onChange={(value) => {
 						setAttr__({
 							...panelData,
@@ -103,9 +89,17 @@ const WcbTestimonialsPanel_StyleArrowDots: FC<Props> = ({
 						});
 					}}
 					value={currentDotsMarginTop || "2rem"}
-					units={MY_GAP_UNITS}
 					label={__("Dots Margin top", "wcb")}
-					hasResponsive
+				/>
+
+				<MyColorPicker
+					onChange={(value) => {
+						setAttr__({
+							...panelData,
+							color: value,
+						});
+					}}
+					color={color}
 				/>
 			</div>
 		</PanelBody>

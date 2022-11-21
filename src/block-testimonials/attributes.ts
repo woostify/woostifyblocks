@@ -24,10 +24,18 @@ import {
 	WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS_DEMO,
 } from "./WcbTestimonialsPanel_StyleArrowDots";
 import {
+	WCB_TESTIMONIALS_PANEL_STYLE_BACKGROUND_BORDER,
+	WCB_TESTIMONIALS_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
+} from "./WcbTestimonialsPanel_StyleBackground";
+import {
 	WCB_TESTIMONIALS_PANEL_STYLE_COMPANY,
 	WCB_TESTIMONIALS_PANEL_STYLE_COMPANY_DEMO,
 } from "./WcbTestimonialsPanel_StyleCompany";
 import { WCB_TESTIMONIALS_PANEL_STYLE_CONTENT_DEMO } from "./WcbTestimonialsPanel_StyleContent";
+import {
+	WCB_TESTIMONIALS_PANEL_STYLE_DIMENSION,
+	WCB_TESTIMONIALS_PANEL_STYLE_DIMENSION_DEMO,
+} from "./WcbTestimonialsPanel_StyleDimension";
 import {
 	WCB_TESTIMONIALS_PANEL_STYLE_IMAGE,
 	WCB_TESTIMONIALS_PANEL_STYLE_IMAGE_DEMO,
@@ -56,6 +64,8 @@ export interface WcbAttrs {
 	style_company: WCB_TESTIMONIALS_PANEL_STYLE_COMPANY;
 	style_image: WCB_TESTIMONIALS_PANEL_STYLE_IMAGE;
 	style_arrowAndDots: WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS;
+	style_backgroundAndBorder: WCB_TESTIMONIALS_PANEL_STYLE_BACKGROUND_BORDER;
+	style_dimension: WCB_TESTIMONIALS_PANEL_STYLE_DIMENSION;
 	//
 	advance_responsiveCondition: MyResponsiveConditionControlData;
 	advance_zIndex: MyZIndexControlData;
@@ -105,6 +115,14 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	style_arrowAndDots: {
 		type: "object",
 		default: WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS_DEMO,
+	},
+	style_backgroundAndBorder: {
+		type: "object",
+		default: WCB_TESTIMONIALS_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
+	},
+	style_dimension: {
+		type: "object",
+		default: WCB_TESTIMONIALS_PANEL_STYLE_DIMENSION_DEMO,
 	},
 	// ADVANCE
 	advance_responsiveCondition: {

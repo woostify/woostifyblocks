@@ -12,7 +12,7 @@ import {
 	MyDimensionsControlData,
 	MY_DIMENSIONS_CONTROL_DEMO,
 } from "./types";
-import MyUnitControl from "../MyUnitControl";
+import MySpacingSizesControl from "../MySpacingSizesControl/MySpacingSizesControl";
 
 interface Props {
 	className?: string;
@@ -50,7 +50,7 @@ const MyDimensionsControl: FC<Props> = ({
 	const padding =
 		paddingProps[deviceType] || paddingProps.Tablet || paddingProps.Desktop;
 	//
-	const setRowGrap = (value: number) => {
+	const setRowGrap = (value: string) => {
 		setAttrs__dimensions({
 			...dimensionControl,
 			rowGap: {
@@ -59,7 +59,7 @@ const MyDimensionsControl: FC<Props> = ({
 			},
 		});
 	};
-	const setColumnGap = (value: number) => {
+	const setColumnGap = (value: string) => {
 		setAttrs__dimensions({
 			...dimensionControl,
 			colunmGap: {
@@ -89,20 +89,15 @@ const MyDimensionsControl: FC<Props> = ({
 
 	return (
 		<div className={className}>
-			<MyUnitControl
+			<MySpacingSizesControl
 				onChange={setRowGrap}
 				value={rowGap}
-				units={MY_GAP_UNITS}
 				label={__("Row Gap", "wcb")}
-				hasResponsive
 			/>
-
-			<MyUnitControl
+			<MySpacingSizesControl
 				onChange={setColumnGap}
 				value={colunmGap}
-				units={MY_GAP_UNITS}
 				label={__("Column Gap", "wcb")}
-				hasResponsive
 			/>
 
 			<BoxControl
