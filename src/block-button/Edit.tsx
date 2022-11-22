@@ -13,6 +13,7 @@ import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import WcbButtonPanelPreset from "./WcbButtonPanelPreset";
+import WcbButtonPanelContent from "./WcbButtonPanelContent";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -21,6 +22,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		advance_zIndex,
 		uniqueId,
 		general_preset,
+		general_content,
 	} = attributes;
 	//  COMMON HOOKS
 	const { myCache, ref } = useCreateCacheEmotion();
@@ -58,6 +60,17 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								setAttributes({ general_preset: data });
 							}}
 							panelData={general_preset}
+						/>
+
+						<WcbButtonPanelContent
+							onToggle={() => handleTogglePanel("General", "Content")}
+							initialOpen={tabGeneralIsPanelOpen === "Content"}
+							opened={tabGeneralIsPanelOpen === "Content" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ general_content: data });
+							}}
+							panelData={general_content}
 						/>
 					</>
 				);

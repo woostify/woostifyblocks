@@ -8,6 +8,10 @@ import {
 	Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
 import {
+	WCB_BUTTON_PANEL_CONTENT,
+	WCB_BUTTON_PANEL_CONTENT_DEMO,
+} from "./WcbButtonPanelContent";
+import {
 	WCB_BUTTON_PANEL_PRESET,
 	WCB_BUTTON_PANEL_PRESET_DEMO,
 } from "./WcbButtonPanelPreset";
@@ -16,6 +20,7 @@ export interface WcbAttrs {
 	content: string;
 	//
 	general_preset: WCB_BUTTON_PANEL_PRESET;
+	general_content: WCB_BUTTON_PANEL_CONTENT;
 	//
 	advance_responsiveCondition: MyResponsiveConditionControlData;
 	advance_zIndex: MyZIndexControlData;
@@ -37,6 +42,10 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	general_preset: {
 		type: "object",
 		default: WCB_BUTTON_PANEL_PRESET_DEMO,
+	},
+	general_content: {
+		type: "object",
+		default: WCB_BUTTON_PANEL_CONTENT_DEMO,
 	},
 
 	// ADVANCE
