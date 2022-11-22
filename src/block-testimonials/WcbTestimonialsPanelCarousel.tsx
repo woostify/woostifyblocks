@@ -14,8 +14,8 @@ export interface WCB_TESTIMONIALS_PANEL_CAROUSEL {
 
 export const WCB_TESTIMONIALS_PANEL_CAROUSEL_DEMO: WCB_TESTIMONIALS_PANEL_CAROUSEL =
 	{
-		animationDuration: 400,
-		autoplaySpeed: 2000,
+		animationDuration: 500,
+		autoplaySpeed: 3000,
 		hoverpause: true,
 		isAutoPlay: true,
 		rewind: true,
@@ -100,7 +100,7 @@ const WcbTestimonialsPanelCarousel: FC<Props> = ({
 					onChange={(value) => {
 						setAttr__({ ...panelData, animationDuration: value || 1 });
 					}}
-					min={1000}
+					min={100}
 					max={5000}
 				/>
 

@@ -15,8 +15,6 @@ import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import WcbTestimonialsPanelGeneral from "./WcbTestimonialsPanelGeneral";
 import WcbTestimonialsPanelImages from "./WcbTestimonialsPanelImages";
 import WcbTestimonialsPanelCarousel from "./WcbTestimonialsPanelCarousel";
-import "@glidejs/glide/dist/css/glide.core.min.css";
-import Glide from "@glidejs/glide";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import WcbTestimonialsPanel_StyleName from "./WcbTestimonialsPanel_StyleName";
 import WcbTestimonialsPanel_StyleContent from "./WcbTestimonialsPanel_StyleContent";
@@ -29,8 +27,9 @@ import getImageUrlBySize from "../utils/getImageUrlBySize";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import OverlayBackgroundByBgControl from "../components/OverlayBackgroundByBgControl";
 import VideoBackgroundByBgControl from "../components/VideoBackgroundByBgControl";
+import useGlide from "./useGlide";
 
-const TESTIMONIAL_ITEM_DEMO: TestimonialItem = {
+export const TESTIMONIAL_ITEM_DEMO: TestimonialItem = {
 	name: "Drink Water",
 	companyName: "CEO of Meta",
 	content:
@@ -38,7 +37,7 @@ const TESTIMONIAL_ITEM_DEMO: TestimonialItem = {
 };
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
-	const { attributes, setAttributes, clientId } = props;
+	const { attributes, setAttributes, clientId, isSelected } = props;
 	const {
 		advance_responsiveCondition,
 		advance_zIndex,
@@ -73,49 +72,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		});
 	}, [UNIQUE_ID]);
 	//
-	const {
-		value_Desktop: colGap_Desktop,
-		value_Tablet: colGap_Tablet,
-		value_Mobile: colGap_Mobile,
-	} = getValueFromAttrsResponsives(general_general.colGap);
-
-	const options: Glide.Options = {
-		perView: general_general.columns.Desktop || 1,
-		gap: colGap_Desktop,
-		bound: true,
-		autoplay: general_carousel.isAutoPlay
-			? general_carousel.autoplaySpeed
-			: false,
-		hoverpause: general_carousel.hoverpause,
-		animationDuration: general_carousel.animationDuration || undefined,
-		rewind: general_carousel.rewind,
-		breakpoints: {
-			[parseInt(DEMO_WCB_GLOBAL_VARIABLES.media_desktop)]: {
-				perView: general_general.columns.Tablet || 1,
-				gap: colGap_Tablet,
-			},
-			[parseInt(DEMO_WCB_GLOBAL_VARIABLES.media_tablet)]: {
-				perView: general_general.columns.Mobile || 1,
-				gap: colGap_Mobile,
-			},
-		},
-	};
-
-	useEffect(() => {
-		const glideEL = document.querySelector(
-			`[data-uniqueid=${UNIQUE_ID}] .glide`
-		);
-		if (!glideEL) {
-			return;
-		}
-
-		const slider = new Glide(`[data-uniqueid=${UNIQUE_ID}] .glide`, options);
-		console.log(333, { slider, options, UNIQUE_ID });
-		slider.mount();
-		// @ts-ignore
-		return () => slider.destroy();
-	}, [options, UNIQUE_ID]);
-
+	useGlide({ general_carousel, general_general, UNIQUE_ID });
 	//
 	let CURRENT_DATA = [
 		...Array(general_general.numberofTestimonials || 3).keys(),

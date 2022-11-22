@@ -19,10 +19,10 @@ export interface WCB_TESTIMONIALS_PANEL_GENERAL {
 
 export const WCB_TESTIMONIALS_PANEL_GENERAL_DEMO: WCB_TESTIMONIALS_PANEL_GENERAL =
 	{
-		textAlignment: { Desktop: "left" },
-		numberofTestimonials: 4,
+		textAlignment: { Desktop: "center" },
+		numberofTestimonials: 3,
 		columns: { Desktop: 1, Tablet: 1, Mobile: 1 },
-		colGap: { Desktop: 32 },
+		colGap: { Desktop: 16 },
 	};
 
 interface Props

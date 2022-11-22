@@ -21,9 +21,18 @@ export interface WCB_TESTIMONIALS_PANEL_STYLE_NAME {
 
 export const WCB_TESTIMONIALS_PANEL_STYLE_NAME_DEMO: WCB_TESTIMONIALS_PANEL_STYLE_NAME =
 	{
-		typography: TYPOGRAPHY_CONTROL_DEMO,
+		typography: {
+			...TYPOGRAPHY_CONTROL_DEMO,
+			appearance: {
+				...TYPOGRAPHY_CONTROL_DEMO.appearance,
+				style: {
+					...TYPOGRAPHY_CONTROL_DEMO.appearance.style,
+					fontWeight: 500,
+				},
+			},
+		},
 		textColor: "",
-		marginBottom: { Desktop: "0.25rem" },
+		marginBottom: { Desktop: "0.5rem" },
 	};
 
 interface Props

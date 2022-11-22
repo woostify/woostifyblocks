@@ -12,9 +12,12 @@ import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/
 
 export const WCB_TESTIMONIALS_PANEL_STYLE_CONTENT_DEMO: WCB_TESTIMONIALS_PANEL_STYLE_NAME =
 	{
-		typography: TYPOGRAPHY_CONTROL_DEMO,
+		typography: {
+			...TYPOGRAPHY_CONTROL_DEMO,
+			lineHeight: { Desktop: 1.75 },
+		},
 		textColor: "",
-		marginBottom: { Desktop: "0.25rem" },
+		marginBottom: { Desktop: "1.5rem" },
 	};
 
 interface Props

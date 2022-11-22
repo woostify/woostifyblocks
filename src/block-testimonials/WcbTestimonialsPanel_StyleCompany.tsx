@@ -15,7 +15,7 @@ export interface WCB_TESTIMONIALS_PANEL_STYLE_COMPANY {
 export const WCB_TESTIMONIALS_PANEL_STYLE_COMPANY_DEMO: WCB_TESTIMONIALS_PANEL_STYLE_COMPANY =
 	{
 		typography: TYPOGRAPHY_CONTROL_DEMO,
-		textColor: "",
+		textColor: "#6b7280",
 	};
 
 interface Props

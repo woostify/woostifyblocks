@@ -2,11 +2,14 @@ import React, { FC } from "react";
 import ReactDOM from "react-dom";
 import { WcbAttrs } from "./attributes";
 import GlobalCss from "./GlobalCss";
-import "@glidejs/glide/dist/css/glide.core.min.css";
+import useGlide from "./useGlide";
 
 interface Props extends WcbAttrs {}
 
 const FrontendStyles: FC<Props> = (attrs) => {
+	const { general_carousel, general_general, uniqueId } = attrs;
+	useGlide({ general_carousel, general_general, UNIQUE_ID: uniqueId });
+
 	return <GlobalCss {...attrs} />;
 };
 

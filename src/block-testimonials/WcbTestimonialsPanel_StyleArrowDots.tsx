@@ -22,10 +22,20 @@ export interface WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS {
 }
 export const WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS_DEMO: WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS =
 	{
-		arrowSize: "1.75rem",
-		border: MY_BORDER_CONTROL_DEMO,
-		dotsMarginTop: { Desktop: "2rem" },
-		color: "",
+		arrowSize: "1.5rem",
+		border: {
+			...MY_BORDER_CONTROL_DEMO,
+			mainSettings: {
+				...MY_BORDER_CONTROL_DEMO.mainSettings,
+				style: "solid",
+				width: "1px",
+				color: "#d1d5db",
+			},
+			hoverColor: "#6b7280",
+			radius: { Desktop: "99px" },
+		},
+		dotsMarginTop: { Desktop: "1rem" },
+		color: "#6b7280",
 	};
 
 interface Props

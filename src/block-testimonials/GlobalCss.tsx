@@ -134,6 +134,12 @@ const GlobalCss: FC<Props> = (attrs) => {
 						radius: style_image.radius,
 						className: `${ITEM_IMAGE} img`,
 					}),
+					getStyleObjectFromResponsiveAttr({
+						className: `${ITEM_IMAGE} img`,
+						prefix: "height",
+						prefix_2: "width",
+						value: style_image.imageSize,
+					}),
 				]}
 			/>
 
