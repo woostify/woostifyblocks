@@ -101,5 +101,18 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
                 "render_callback"     => "wcb_block_testimonials__renderCallback",
             ]
         );
+        // 
+        register_block_type(
+            WCB_BUILD_PATH . '/block-buttons',
+            [
+                // "render_callback"     => "wcb_block_testimonials__renderCallback",
+            ]
+        );
+        register_block_type(
+            WCB_BUILD_PATH . '/block-button',
+            [
+                // "render_callback"     => "wcb_block_testimonials__renderCallback",
+            ]
+        );
     }
 }

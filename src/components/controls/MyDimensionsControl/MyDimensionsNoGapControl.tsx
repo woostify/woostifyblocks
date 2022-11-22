@@ -12,6 +12,7 @@ import {
 	MyDimensionsNoGapControlData,
 	MY_DIMENSIONS_NO_GAP_CONTROL_DEMO,
 } from "./types";
+import getValueFromAttrsResponsives from "../../../utils/getValueFromAttrsResponsives";
 
 interface Props {
 	className?: string;
@@ -28,10 +29,16 @@ const MyDimensionsNoGapControl: FC<Props> = ({
 	//
 	const { margin: marginProps, padding: paddingProps } = dimensionControl;
 
-	const margin =
-		marginProps[deviceType] || marginProps.Tablet || marginProps.Desktop;
-	const padding =
-		paddingProps[deviceType] || paddingProps.Tablet || paddingProps.Desktop;
+	const { currentDeviceValue: margin } = getValueFromAttrsResponsives(
+		marginProps,
+		deviceType
+	);
+
+	const { currentDeviceValue: padding } = getValueFromAttrsResponsives(
+		paddingProps,
+		deviceType
+	);
+
 	//
 
 	const handleChangeMargin = (value: DimensionSettings) => {

@@ -14,6 +14,7 @@ import {
 } from "./types";
 import MyUnitControl from "../MyUnitControl";
 import MySpacingSizesControl from "../MySpacingSizesControl/MySpacingSizesControl";
+import getValueFromAttrsResponsives from "../../../utils/getValueFromAttrsResponsives";
 
 interface Props {
 	className?: string;
@@ -36,15 +37,21 @@ const MyDimensionsNoMarginControl: FC<Props> = ({
 		padding: paddingProps,
 	} = dimensionControl;
 
-	const colunmGap =
-		colunmGapProps[deviceType] ||
-		colunmGapProps.Tablet ||
-		colunmGapProps.Desktop;
-	const rowGap =
-		rowGapProps[deviceType] || rowGapProps.Tablet || rowGapProps.Desktop;
+	const { currentDeviceValue: colunmGap } = getValueFromAttrsResponsives(
+		colunmGapProps,
+		deviceType
+	);
 
-	const padding =
-		paddingProps[deviceType] || paddingProps.Tablet || paddingProps.Desktop;
+	const { currentDeviceValue: rowGap } = getValueFromAttrsResponsives(
+		rowGapProps,
+		deviceType
+	);
+
+	const { currentDeviceValue: padding } = getValueFromAttrsResponsives(
+		paddingProps,
+		deviceType
+	);
+
 	//
 	const setRowGrap = (value: string) => {
 		setAttrs__dimensions({
@@ -84,12 +91,12 @@ const MyDimensionsNoMarginControl: FC<Props> = ({
 		<div className={className}>
 			<MySpacingSizesControl
 				onChange={setRowGrap}
-				value={rowGap}
+				value={rowGap || "0"}
 				label={__("Row Gap", "wcb")}
 			/>
 			<MySpacingSizesControl
 				onChange={setColumnGap}
-				value={colunmGap}
+				value={colunmGap || "0"}
 				label={__("Column Gap", "wcb")}
 			/>
 

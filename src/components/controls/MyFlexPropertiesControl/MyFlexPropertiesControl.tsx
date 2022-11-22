@@ -13,6 +13,7 @@ import {
 } from "./types";
 import { RadioGroup } from "@headlessui/react";
 import MyRadioGroup from "../MyRadioGroup";
+import getValueFromAttrsResponsives from "../../../utils/getValueFromAttrsResponsives";
 
 interface Props {
 	className?: string;
@@ -33,20 +34,25 @@ const MyFlexPropertiesControl: FC<Props> = ({
 		flexWrap: flexWrapProps,
 	} = flexPropertiesControl;
 
-	const FLEX_DIRECTION =
-		flexDirectionProps[deviceType] ||
-		flexDirectionProps.Tablet ||
-		flexDirectionProps.Desktop;
-	const ALIGN_ITEMS =
-		alignItemsProps[deviceType] ||
-		alignItemsProps.Tablet ||
-		alignItemsProps.Desktop;
-	const JUSTIFY_CONTENT =
-		justifyContentProps[deviceType] ||
-		justifyContentProps.Tablet ||
-		justifyContentProps.Desktop;
-	const FLEX_WRAP =
-		flexWrapProps[deviceType] || flexWrapProps.Tablet || flexWrapProps.Desktop;
+	const { currentDeviceValue: FLEX_DIRECTION } = getValueFromAttrsResponsives(
+		flexDirectionProps,
+		deviceType
+	);
+
+	const { currentDeviceValue: ALIGN_ITEMS } = getValueFromAttrsResponsives(
+		alignItemsProps,
+		deviceType
+	);
+
+	const { currentDeviceValue: JUSTIFY_CONTENT } = getValueFromAttrsResponsives(
+		justifyContentProps,
+		deviceType
+	);
+
+	const { currentDeviceValue: FLEX_WRAP } = getValueFromAttrsResponsives(
+		flexWrapProps,
+		deviceType
+	);
 
 	//
 	const handleChangeFlexDirectionType = (

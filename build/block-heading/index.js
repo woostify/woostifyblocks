@@ -4366,6 +4366,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
 /* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
 /* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./types */ "./src/components/controls/MyDimensionsControl/types.ts");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
 
 
 
@@ -4386,8 +4388,12 @@ const MyDimensionsNoGapControl = _ref => {
     margin: marginProps,
     padding: paddingProps
   } = dimensionControl;
-  const margin = marginProps[deviceType] || marginProps.Tablet || marginProps.Desktop;
-  const padding = paddingProps[deviceType] || paddingProps.Tablet || paddingProps.Desktop; //
+  const {
+    currentDeviceValue: margin
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__["default"])(marginProps, deviceType);
+  const {
+    currentDeviceValue: padding
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__["default"])(paddingProps, deviceType); //
 
   const handleChangeMargin = value => {
     setAttrs__dimensions({ ...dimensionControl,

@@ -72,6 +72,7 @@ const SpacingInputControl: FC<Props> = ({
 							selectedUnit as keyof typeof MY_CUSTOM_UNITS_VALUE_SETTINGS
 						].steps
 					}
+					// @ts-ignore
 					withInputField={false}
 					onChange={handleCustomValueSliderChange}
 					className="m-0"

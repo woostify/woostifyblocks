@@ -4398,6 +4398,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
 /* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./types */ "./src/components/controls/MyDimensionsControl/types.ts");
 /* harmony import */ var _MySpacingSizesControl_MySpacingSizesControl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../MySpacingSizesControl/MySpacingSizesControl */ "./src/components/controls/MySpacingSizesControl/MySpacingSizesControl.tsx");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
 
 
 
@@ -4430,10 +4432,18 @@ const MyDimensionsControl = _ref => {
     margin: marginProps,
     padding: paddingProps
   } = dimensionControl;
-  const colunmGap = colunmGapProps[deviceType] || colunmGapProps.Tablet || colunmGapProps.Desktop;
-  const rowGap = rowGapProps[deviceType] || rowGapProps.Tablet || rowGapProps.Desktop;
-  const margin = marginProps[deviceType] || marginProps.Tablet || marginProps.Desktop;
-  const padding = paddingProps[deviceType] || paddingProps.Tablet || paddingProps.Desktop; //
+  const {
+    currentDeviceValue: colunmGap
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_8__["default"])(colunmGapProps, deviceType);
+  const {
+    currentDeviceValue: rowGap
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_8__["default"])(rowGapProps, deviceType);
+  const {
+    currentDeviceValue: margin
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_8__["default"])(marginProps, deviceType);
+  const {
+    currentDeviceValue: padding
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_8__["default"])(paddingProps, deviceType); //
 
   const setRowGrap = value => {
     setAttrs__dimensions({ ...dimensionControl,
@@ -4471,11 +4481,11 @@ const MyDimensionsControl = _ref => {
     className: className
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MySpacingSizesControl_MySpacingSizesControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
     onChange: setRowGrap,
-    value: rowGap,
+    value: rowGap || "0",
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Row Gap", "wcb")
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MySpacingSizesControl_MySpacingSizesControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
     onChange: setColumnGap,
-    value: colunmGap,
+    value: colunmGap || "0",
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Column Gap", "wcb")
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalBoxControl, {
     label: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -4690,6 +4700,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
 /* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./types */ "./src/components/controls/MyFlexPropertiesControl/types.ts");
 /* harmony import */ var _MyRadioGroup__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../MyRadioGroup */ "./src/components/controls/MyRadioGroup.tsx");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
 
 
 
@@ -4710,10 +4722,18 @@ const MyFlexPropertiesControl = _ref => {
     justifyContent: justifyContentProps,
     flexWrap: flexWrapProps
   } = flexPropertiesControl;
-  const FLEX_DIRECTION = flexDirectionProps[deviceType] || flexDirectionProps.Tablet || flexDirectionProps.Desktop;
-  const ALIGN_ITEMS = alignItemsProps[deviceType] || alignItemsProps.Tablet || alignItemsProps.Desktop;
-  const JUSTIFY_CONTENT = justifyContentProps[deviceType] || justifyContentProps.Tablet || justifyContentProps.Desktop;
-  const FLEX_WRAP = flexWrapProps[deviceType] || flexWrapProps.Tablet || flexWrapProps.Desktop; //
+  const {
+    currentDeviceValue: FLEX_DIRECTION
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(flexDirectionProps, deviceType);
+  const {
+    currentDeviceValue: ALIGN_ITEMS
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(alignItemsProps, deviceType);
+  const {
+    currentDeviceValue: JUSTIFY_CONTENT
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(justifyContentProps, deviceType);
+  const {
+    currentDeviceValue: FLEX_WRAP
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(flexWrapProps, deviceType); //
 
   const handleChangeFlexDirectionType = value => {
     setAttrs__flexProperties({ ...flexPropertiesControl,
@@ -5636,7 +5656,8 @@ const SpacingInputControl = _ref => {
     value: customRangeValue,
     min: minCustomValue,
     max: MY_CUSTOM_UNITS_VALUE_SETTINGS[selectedUnit].max,
-    step: MY_CUSTOM_UNITS_VALUE_SETTINGS[selectedUnit].steps,
+    step: MY_CUSTOM_UNITS_VALUE_SETTINGS[selectedUnit].steps // @ts-ignore
+    ,
     withInputField: false,
     onChange: handleCustomValueSliderChange,
     className: "m-0"

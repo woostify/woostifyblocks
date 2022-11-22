@@ -1,0 +1,1 @@
+{"version":3,"file":"block-button/style-index.css","mappings":";;;AAAA;EACC;EACA;EACA;AACD,C","sources":["webpack://woostify-blocks/./src/block-button/style.scss"],"sourcesContent":[".wcb-button__main {\r\n\tdisplay: flex;\r\n\talign-items: center;\r\n\tjustify-content: center;\r\n}\r\n"],"names":[],"sourceRoot":""}
