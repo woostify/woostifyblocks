@@ -1,4 +1,8 @@
 .wcb-inspectorControls__panel {
+	.components-panel__row > .components-spacer {
+		width: 100%;
+	}
+
 	.components-notice {
 		@apply rounded-sm;
 	}
@@ -48,6 +52,23 @@
 	.components-custom-gradient-picker__gradient-bar,
 	.components-select-control__input,
 	.components-form-token-field__input-container {
+		@apply rounded-lg;
+	}
+
+	.components-text-control__input,
+	.components-text-control__input[type="color"],
+	.components-text-control__input[type="date"],
+	.components-text-control__input[type="datetime-local"],
+	.components-text-control__input[type="datetime"],
+	.components-text-control__input[type="email"],
+	.components-text-control__input[type="month"],
+	.components-text-control__input[type="number"],
+	.components-text-control__input[type="password"],
+	.components-text-control__input[type="tel"],
+	.components-text-control__input[type="text"],
+	.components-text-control__input[type="time"],
+	.components-text-control__input[type="url"],
+	.components-text-control__input[type="week"] {
 		@apply rounded-lg;
 	}
 

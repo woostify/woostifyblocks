@@ -18,6 +18,7 @@ import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyR
 import MyTextAlignControl, {
 	TextAlignment,
 } from "../components/controls/MyTextAlignControl/MyTextAlignControl";
+import ResetButton from "../components/controls/ResetButton";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import { ICONS_KEYS } from "./types";
 
@@ -91,14 +92,29 @@ const WcbButtonPanelContent: FC<Props> = ({
 
 				<Dropdown
 					position="middle left"
+					className="w-full"
 					renderToggle={({ isOpen, onToggle }) => (
-						<button
-							className="py-3 px-6 flex items-center justify-center ring-2 ring-slate-200 hover:ring-slate-300 rounded-lg "
-							onClick={onToggle}
-						>
-							<span className="mr-3">{__("Icon:", "wcb")}</span>
-							{iconName && <Dashicon size={20} icon={iconName} />}
-						</button>
+						<div className="flex items-center space-x-4">
+							<button
+								className="py-3 px-6 flex items-center justify-center ring-2 ring-slate-200 hover:ring-slate-300 rounded-lg "
+								onClick={onToggle}
+							>
+								<span className="mr-3">{__("Icon:", "wcb")}</span>
+								{iconName ? (
+									<Dashicon size={20} icon={iconName} />
+								) : (
+									<strong>{__("None", "wcb")}</strong>
+								)}
+							</button>
+							<ResetButton
+								onClick={() => {
+									setAttr__({
+										...panelData,
+										iconName: undefined,
+									});
+								}}
+							/>
+						</div>
 					)}
 					renderContent={({ onToggle, onClose }) => (
 						<div className="p-2.5 max-h-96 w-72 overflow-auto bg-gray-900 grid grid-cols-3 gap-2">
@@ -113,7 +129,7 @@ const WcbButtonPanelContent: FC<Props> = ({
 											...panelData,
 											iconName: item === iconName ? undefined : item,
 										});
-										onClose();
+										// onClose();
 									}}
 								>
 									<div className="grid">
