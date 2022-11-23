@@ -1,6 +1,10 @@
 import React from "react";
 import { __ } from "@wordpress/i18n";
-import { useBlockProps } from "@wordpress/block-editor";
+import {
+	useBlockProps,
+	// @ts-ignore
+	useInnerBlocksProps,
+} from "@wordpress/block-editor";
 import { WcbAttrs } from "./attributes";
 import SaveCommon from "../components/SaveCommon";
 import "./style.scss";
@@ -15,15 +19,16 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		advance_zIndex,
 	};
 	//
-	const blockProps = useBlockProps.save({ className: "wcb-buttons__wrap" });
+	const blockProps = useBlockProps.save({ className: "wcb-buttons__inner" });
+	const innerBlocksProps = useInnerBlocksProps.save(blockProps);
+
 	return (
 		<SaveCommon
 			attributes={newAttrForSave}
-			className="wcb-default__wrap"
+			className="wcb-buttons__wrap"
 			uniqueId={uniqueId}
-			{...blockProps}
 		>
-			<div>CHILD</div>
+			<div {...innerBlocksProps} />
 		</SaveCommon>
 	);
 }

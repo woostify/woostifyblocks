@@ -9,15 +9,8 @@ import {
 } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
-import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
-import MyButtonPresetControl, {
-	ButtonPreset,
-} from "../components/controls/MyButtonPresetControl/MyButtonPresetControl";
 import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
-import MyTextAlignControl, {
-	TextAlignment,
-} from "../components/controls/MyTextAlignControl/MyTextAlignControl";
 import ResetButton from "../components/controls/ResetButton";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import { ICONS_KEYS } from "./types";
@@ -38,7 +31,7 @@ export const WCB_BUTTON_PANEL_CONTENT_DEMO: WCB_BUTTON_PANEL_CONTENT = {
 	iconPosition: "left",
 	link: "#",
 	openInNewWindow: false,
-	isHiddenText: true,
+	isHiddenText: false,
 	addNofollowToLink: true,
 };
 

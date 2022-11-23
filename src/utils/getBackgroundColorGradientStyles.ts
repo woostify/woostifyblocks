@@ -3,14 +3,21 @@ import { BackgroundNoImageControlData } from "../components/controls/MyBackgroun
 
 interface Params {
 	background: BackgroundNoImageControlData;
+	backgroundHover?: BackgroundNoImageControlData;
 	className: string;
 }
 
 const getBackgroundColorGradientStyles = ({
 	className,
 	background,
+	backgroundHover,
 }: Params): CSSObject => {
 	const { bgType, color, gradient } = background;
+	const {
+		bgType: bgType_h,
+		color: color_h,
+		gradient: gradient_h,
+	} = backgroundHover || {};
 
 	if (bgType !== "color" && bgType !== "gradient") {
 		return {};
@@ -28,9 +35,26 @@ const getBackgroundColorGradientStyles = ({
 		bgValue = gradient;
 	}
 	//
+	//
+	let preBgName_h = "";
+	let bgValue_h = "";
+	if (bgType_h === "color") {
+		preBgName_h = "backgroundColor";
+		bgValue_h = color_h || "";
+	}
+	// Backgroud gradient
+	if (bgType_h === "gradient") {
+		preBgName_h = "backgroundImage";
+		bgValue_h = gradient_h || "";
+	}
+	//
+	//
 	return {
 		[`${className}`]: {
 			[`${preBgName}`]: `${bgValue}`,
+			":hover": {
+				[`${preBgName_h}`]: `${bgValue_h || null}`,
+			},
 		},
 	};
 };

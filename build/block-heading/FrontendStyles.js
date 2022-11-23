@@ -2384,13 +2384,19 @@ __webpack_require__.r(__webpack_exports__);
 const getBackgroundColorGradientStyles = _ref => {
   let {
     className,
-    background
+    background,
+    backgroundHover
   } = _ref;
   const {
     bgType,
     color,
     gradient
   } = background;
+  const {
+    bgType: bgType_h,
+    color: color_h,
+    gradient: gradient_h
+  } = backgroundHover || {};
 
   if (bgType !== "color" && bgType !== "gradient") {
     return {};
@@ -2409,11 +2415,31 @@ const getBackgroundColorGradientStyles = _ref => {
     preBgName = "backgroundImage";
     bgValue = gradient;
   } //
+  //
+
+
+  let preBgName_h = "";
+  let bgValue_h = "";
+
+  if (bgType_h === "color") {
+    preBgName_h = "backgroundColor";
+    bgValue_h = color_h || "";
+  } // Backgroud gradient
+
+
+  if (bgType_h === "gradient") {
+    preBgName_h = "backgroundImage";
+    bgValue_h = gradient_h || "";
+  } //
+  //
 
 
   return {
     [`${className}`]: {
-      [`${preBgName}`]: `${bgValue}`
+      [`${preBgName}`]: `${bgValue}`,
+      ":hover": {
+        [`${preBgName_h}`]: `${bgValue_h || null}`
+      }
     }
   };
 };

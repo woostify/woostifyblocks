@@ -1,5 +1,43 @@
 .wcb-button__main {
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+	@apply px-6 py-3 rounded-lg space-x-2;
+	&--primary,
+	&--with_leading_icon,
+	&--with_trailing_icons,
+	&--round,
+	&--circular {
+		background-color: #0284c7;
+		color: white;
+		border: 1px solid #0284c7;
+	}
+	&--secondary {
+		background-color: #e0f2fe;
+		color: #0284c7;
+		border: 1px solid #e0f2fe;
+	}
+	&--white {
+		background-color: #fff;
+		color: #111827;
+		border: 1px solid #d1d5db;
+	}
+	&--round {
+		border-radius: 999px;
+	}
+	&--circular {
+		border-radius: 999px;
+		@apply px-3 py-3;
+		.wcb-button__text {
+			@apply sr-only;
+		}
+	}
+}
+
+.wcb-button__text {
+	font-weight: 500;
+}
+
+.wcb-button__icon {
+	flex-shrink: 0;
 }

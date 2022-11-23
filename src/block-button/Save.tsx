@@ -5,6 +5,8 @@ import { WcbAttrs } from "./attributes";
 import SaveCommon from "../components/SaveCommon";
 import "./style.scss";
 
+export interface WcbAttrsForSave extends Omit<WcbAttrs, "content"> {}
+
 export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const {
 		content,
@@ -22,7 +24,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	} = attributes;
 	//
 
-	const newAttrForSave: Omit<WcbAttrs, "content"> = {
+	const newAttrForSave: WcbAttrsForSave = {
 		uniqueId,
 		advance_responsiveCondition,
 		advance_zIndex,

@@ -39,7 +39,7 @@ export const variations: {
 			</RenderIcon>
 		),
 		innerBlocks: [
-			["wcb/button", undefined],
+			// ["wcb/button", undefined],
 			["wcb/button", undefined],
 		],
 		scope: ["block"],

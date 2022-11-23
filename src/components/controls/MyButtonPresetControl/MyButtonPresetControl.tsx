@@ -22,11 +22,11 @@ const BUTTON_PRESET: {
 }[] = [
 	{
 		name: "primary",
-		btnTwClass: " px-5 py-2 text-white bg-cyan-600 ring-cyan-600",
+		btnTwClass: " px-5 py-2 text-white bg-sky-600 ring-sky-600",
 	},
 	{
 		name: "secondary",
-		btnTwClass: " px-5 py-2 text-cyan-600 bg-cyan-100 ring-cyan-100",
+		btnTwClass: " px-5 py-2 text-sky-600 bg-sky-100 ring-sky-100",
 	},
 	{
 		name: "white",
@@ -34,20 +34,20 @@ const BUTTON_PRESET: {
 	},
 	{
 		name: "round",
-		btnTwClass: " px-5 py-2 text-white bg-cyan-600 ring-cyan-600 !rounded-full",
+		btnTwClass: " px-5 py-2 text-white bg-sky-600 ring-sky-600 !rounded-full",
 	},
 	{
 		name: "with_leading_icon",
-		btnTwClass: " px-5 py-2 text-white bg-cyan-600 ring-cyan-600",
+		btnTwClass: " px-5 py-2 text-white bg-sky-600 ring-sky-600",
 	},
 	{
 		name: "with_trailing_icons",
-		btnTwClass: " px-5 py-2 text-white bg-cyan-600 ring-cyan-600",
+		btnTwClass: " px-5 py-2 text-white bg-sky-600 ring-sky-600",
 	},
 
 	{
 		name: "circular",
-		btnTwClass: " text-white bg-cyan-600 ring-cyan-600 !rounded-full w-10 h-10",
+		btnTwClass: " text-white bg-sky-600 ring-sky-600 !rounded-full w-10 h-10",
 	},
 ];
 

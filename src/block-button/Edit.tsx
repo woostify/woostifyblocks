@@ -20,6 +20,12 @@ import WcbButtonPanel_StyleBackground from "./WcbButtonPanel_StyleBackground";
 import WcbButtonPanel_StyleBorder from "./WcbButtonPanel_StyleBorder";
 import WcbButtonPanel_StyleBoxshadow from "./WcbButtonPanel_StyleBoxshadow";
 import WcbButtonPanel_StyleDemension from "./WcbButtonPanel_StyleDimension";
+import { ButtonPreset } from "../components/controls/MyButtonPresetControl/MyButtonPresetControl";
+import { HeartIcon, PlusIcon } from "@heroicons/react/24/solid";
+import { Dashicon } from "@wordpress/components";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
+import useGetDeviceType from "../hooks/useGetDeviceType";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -47,6 +53,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		tabStylesIsPanelOpen,
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
+	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
@@ -180,11 +187,48 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		}
 	};
 
+	const renderIcon = () => {
+		if (!general_content.iconName || !general_content.enableIcon) {
+			return null;
+		}
+		return (
+			<Dashicon
+				className="wcb-button__icon"
+				size={27}
+				icon={general_content.iconName}
+			/>
+		);
+	};
+
+	const renderButton = () => {
+		const { enableIcon, iconPosition, isHiddenText } = general_content;
+		return (
+			<div
+				className={`wcb-button__main wcb-button__main--${general_preset.preset}`}
+			>
+				{iconPosition === "left" && renderIcon()}
+				{iconPosition === "top" && renderIcon()}
+
+				<RichText
+					tagName="div"
+					className={`wcb-button__text ${isHiddenText ? "sr-only" : ""}`}
+					value={attributes.content}
+					allowedFormats={["core/bold", "core/italic"]}
+					onChange={(content) => setAttributes({ content })}
+					placeholder={__("Button", "wcb")}
+				/>
+
+				{iconPosition === "right" && renderIcon()}
+				{iconPosition === "bottom" && renderIcon()}
+			</div>
+		);
+	};
+
 	return (
 		<CacheProvider value={myCache}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-button__wrap ${UNIQUE_ID}`}
+				className={`${wrapBlockProps?.className} wcb-button__wrap ${UNIQUE_ID} `}
 				data-uniqueid={UNIQUE_ID}
 			>
 				{/* CONTROL SETTINGS */}
@@ -194,14 +238,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				<GlobalCss {...attributes} />
 
 				{/* CHILD CONTENT  */}
-				<RichText
-					tagName="div"
-					className="wcb-button__main"
-					value={attributes.content}
-					allowedFormats={["core/bold", "core/italic"]}
-					onChange={(content) => setAttributes({ content })}
-					placeholder={__("Heading...")}
-				/>
+				{renderButton()}
 			</div>
 		</CacheProvider>
 	);

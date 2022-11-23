@@ -110,7 +110,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 	return (
 		<CacheProvider value={myCache}>
-			<form
+			<div
 				{...wrapBlockProps}
 				className={`wcb-buttons__wrap ${uniqueId} ${wrapBlockProps.className} `}
 				data-uniqueid={uniqueId}
@@ -130,7 +130,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					}}
 					tabDefaultActive={tabIsOpen}
 				/>
-			</form>
+			</div>
 		</CacheProvider>
 	);
 };
