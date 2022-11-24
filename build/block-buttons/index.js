@@ -2515,14 +2515,13 @@ const RenderIcon = props => {
 };
 
 const variations = [{
-  name: "test-full",
-  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Test Full Form"),
-  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Test Full Form"),
+  name: "two-buttons",
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Two buttons"),
+  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Two buttons"),
   icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RenderIcon, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "col-span-12 row-span-2 bg-white"
   })),
-  innerBlocks: [// ["wcb/button", undefined],
-  ["wcb/button", undefined]],
+  innerBlocks: [["wcb/button", undefined], ["wcb/button", undefined]],
   scope: ["block"],
   isDefault: true
 }];

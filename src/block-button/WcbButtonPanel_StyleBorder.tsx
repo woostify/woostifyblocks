@@ -9,15 +9,54 @@ import MyBorderControl from "../components/controls/MyBorderControl/MyBorderCont
 
 export interface WCB_BUTTON_PANEL_STYLE_BORDER extends MyBorderControlData {}
 
-export const WCB_BUTTON_PANEL_STYLE_BORDER_DEMO: WCB_BUTTON_PANEL_STYLE_BORDER =
+export const WCB_BUTTON_PANEL_STYLE_BORDER_DEMO_ROUND: WCB_BUTTON_PANEL_STYLE_BORDER =
+	{
+		...MY_BORDER_CONTROL_DEMO,
+		radius: {
+			Desktop: {
+				bottomLeft: "100px",
+				bottomRight: "100px",
+				topLeft: "100px",
+				topRight: "100px",
+			},
+		},
+	};
+export const WCB_BUTTON_PANEL_STYLE_BORDER_DEMO_WHITE: WCB_BUTTON_PANEL_STYLE_BORDER =
 	{
 		...MY_BORDER_CONTROL_DEMO,
 		mainSettings: {
-			color: "#38bdf8",
+			...MY_BORDER_CONTROL_DEMO.mainSettings,
 			style: "solid",
 			width: "1px",
+			color: "#d1d5db",
 		},
+		hoverColor: "#9ca3af",
 	};
+export const WCB_BUTTON_PANEL_STYLE_BORDER_DEMO_SECONDARY: WCB_BUTTON_PANEL_STYLE_BORDER =
+	{
+		...MY_BORDER_CONTROL_DEMO,
+		mainSettings: {
+			...MY_BORDER_CONTROL_DEMO.mainSettings,
+			style: "solid",
+			width: "1px",
+			color: "#e0f2fe",
+		},
+		hoverColor: "#bae6fd",
+	};
+export const WCB_BUTTON_PANEL_STYLE_BORDER_DEMO_PRIMARY: WCB_BUTTON_PANEL_STYLE_BORDER =
+	{
+		...MY_BORDER_CONTROL_DEMO,
+		mainSettings: {
+			...MY_BORDER_CONTROL_DEMO.mainSettings,
+			style: "solid",
+			width: "1px",
+			color: "#0284c7",
+		},
+		hoverColor: "#0369a1",
+	};
+
+export const WCB_BUTTON_PANEL_STYLE_BORDER_DEMO =
+	WCB_BUTTON_PANEL_STYLE_BORDER_DEMO_PRIMARY;
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {

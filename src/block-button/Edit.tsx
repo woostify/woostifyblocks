@@ -13,19 +13,39 @@ import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import WcbButtonPanelPreset from "./WcbButtonPanelPreset";
-import WcbButtonPanelContent from "./WcbButtonPanelContent";
-import WcbButtonPanel_StyleText from "./WcbButtonPanel_StyleText";
-import WcbButtonPanel_StyleIcon from "./WcbButtonPanel_StyleIcon";
-import WcbButtonPanel_StyleBackground from "./WcbButtonPanel_StyleBackground";
-import WcbButtonPanel_StyleBorder from "./WcbButtonPanel_StyleBorder";
+import WcbButtonPanelContent, {
+	WCB_BUTTON_PANEL_CONTENT_DEMO_CIRCULAR,
+	WCB_BUTTON_PANEL_CONTENT_DEMO_COMMON_NO_ICON,
+	WCB_BUTTON_PANEL_CONTENT_DEMO_with_leading_icon,
+	WCB_BUTTON_PANEL_CONTENT_DEMO_with_trailing_icons,
+} from "./WcbButtonPanelContent";
+import WcbButtonPanel_StyleText, {
+	WCB_BUTTON_PANEL_STYLE_TEXT_DEMO_PRIMARY,
+	WCB_BUTTON_PANEL_STYLE_TEXT_DEMO_SECONDARY,
+	WCB_BUTTON_PANEL_STYLE_TEXT_DEMO_WHITE,
+} from "./WcbButtonPanel_StyleText";
+import WcbButtonPanel_StyleIcon, {
+	WCB_BUTTON_PANEL_STYLE_ICON_DEMO,
+} from "./WcbButtonPanel_StyleIcon";
+import WcbButtonPanel_StyleBackground, {
+	WCB_BUTTON_PANEL_STYLE_BACKGROUND_DEMO_PRIMARY,
+	WCB_BUTTON_PANEL_STYLE_BACKGROUND_DEMO_SECONDARY,
+	WCB_BUTTON_PANEL_STYLE_BACKGROUND_DEMO_WHITE,
+} from "./WcbButtonPanel_StyleBackground";
+import WcbButtonPanel_StyleBorder, {
+	WCB_BUTTON_PANEL_STYLE_BORDER_DEMO_PRIMARY,
+	WCB_BUTTON_PANEL_STYLE_BORDER_DEMO_ROUND,
+	WCB_BUTTON_PANEL_STYLE_BORDER_DEMO_SECONDARY,
+	WCB_BUTTON_PANEL_STYLE_BORDER_DEMO_WHITE,
+} from "./WcbButtonPanel_StyleBorder";
 import WcbButtonPanel_StyleBoxshadow from "./WcbButtonPanel_StyleBoxshadow";
-import WcbButtonPanel_StyleDemension from "./WcbButtonPanel_StyleDimension";
-import { ButtonPreset } from "../components/controls/MyButtonPresetControl/MyButtonPresetControl";
-import { HeartIcon, PlusIcon } from "@heroicons/react/24/solid";
-import { Dashicon } from "@wordpress/components";
-import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import WcbButtonPanel_StyleDemension, {
+	WCB_BUTTON_PANEL_STYLE_DIMENSION_DEMO_CIRCULAR,
+	WCB_BUTTON_PANEL_STYLE_DIMENSION_DEMO_PRIMARY,
+} from "./WcbButtonPanel_StyleDimension";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
+import Button from "./Button";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -61,6 +81,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			uniqueId: UNIQUE_ID,
 		});
 	}, [UNIQUE_ID]);
+
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
@@ -77,7 +98,50 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabGeneralIsPanelOpen === "Preset" || undefined}
 							//
 							setAttr__={(data) => {
+								const { preset } = data;
 								setAttributes({ general_preset: data });
+								const enableIcon =
+									preset === "with_leading_icon" ||
+									preset === "with_trailing_icons" ||
+									preset === "circular"
+										? true
+										: false;
+								setAttributes({
+									style_text:
+										preset === "white"
+											? WCB_BUTTON_PANEL_STYLE_TEXT_DEMO_WHITE
+											: preset === "secondary"
+											? WCB_BUTTON_PANEL_STYLE_TEXT_DEMO_SECONDARY
+											: WCB_BUTTON_PANEL_STYLE_TEXT_DEMO_PRIMARY,
+									style_icon: WCB_BUTTON_PANEL_STYLE_ICON_DEMO,
+									style_background:
+										preset === "white"
+											? WCB_BUTTON_PANEL_STYLE_BACKGROUND_DEMO_WHITE
+											: preset === "secondary"
+											? WCB_BUTTON_PANEL_STYLE_BACKGROUND_DEMO_SECONDARY
+											: WCB_BUTTON_PANEL_STYLE_BACKGROUND_DEMO_PRIMARY,
+									style_border:
+										preset === "white"
+											? WCB_BUTTON_PANEL_STYLE_BORDER_DEMO_WHITE
+											: preset === "secondary"
+											? WCB_BUTTON_PANEL_STYLE_BORDER_DEMO_SECONDARY
+											: preset === "round" || preset === "circular"
+											? WCB_BUTTON_PANEL_STYLE_BORDER_DEMO_ROUND
+											: WCB_BUTTON_PANEL_STYLE_BORDER_DEMO_PRIMARY,
+									// style_boxshadow: WCB_BUTTON_PANEL_STYLE_BOXSHADOW_DEMO,
+									style_dimension:
+										preset === "circular"
+											? WCB_BUTTON_PANEL_STYLE_DIMENSION_DEMO_CIRCULAR
+											: WCB_BUTTON_PANEL_STYLE_DIMENSION_DEMO_PRIMARY,
+									general_content:
+										preset === "circular"
+											? WCB_BUTTON_PANEL_CONTENT_DEMO_CIRCULAR
+											: preset === "with_leading_icon"
+											? WCB_BUTTON_PANEL_CONTENT_DEMO_with_leading_icon
+											: preset === "with_trailing_icons"
+											? WCB_BUTTON_PANEL_CONTENT_DEMO_with_trailing_icons
+											: WCB_BUTTON_PANEL_CONTENT_DEMO_COMMON_NO_ICON,
+								});
 							}}
 							panelData={general_preset}
 						/>
@@ -88,7 +152,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabGeneralIsPanelOpen === "Content" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ general_content: data });
+								setAttributes({
+									general_content: data,
+									general_preset: { ...general_preset, preset: "" },
+								});
 							}}
 							panelData={general_content}
 						/>
@@ -106,7 +173,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabStylesIsPanelOpen === "_StyleText" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ style_text: data });
+								setAttributes({
+									style_text: data,
+									general_preset: { ...general_preset, preset: "" },
+								});
 							}}
 							panelData={style_text}
 						/>
@@ -117,7 +187,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabStylesIsPanelOpen === "_StyleIcon" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ style_icon: data });
+								setAttributes({
+									style_icon: data,
+									general_preset: { ...general_preset, preset: "" },
+								});
 							}}
 							panelData={style_icon}
 						/>
@@ -128,7 +201,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabStylesIsPanelOpen === "_StyleBackground" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ style_background: data });
+								setAttributes({
+									style_background: data,
+									general_preset: { ...general_preset, preset: "" },
+								});
 							}}
 							panelData={style_background}
 						/>
@@ -139,7 +215,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabStylesIsPanelOpen === "_StyleBorder" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ style_border: data });
+								setAttributes({
+									style_border: data,
+									general_preset: { ...general_preset, preset: "" },
+								});
 							}}
 							panelData={style_border}
 						/>
@@ -150,7 +229,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabStylesIsPanelOpen === "_StyleBoxshadow" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ style_boxshadow: data });
+								setAttributes({
+									style_boxshadow: data,
+									general_preset: { ...general_preset, preset: "" },
+								});
 							}}
 							panelData={style_boxshadow}
 						/>
@@ -161,7 +243,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabStylesIsPanelOpen === "StyleDemension" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ style_dimension: data });
+								setAttributes({
+									style_dimension: data,
+									general_preset: { ...general_preset, preset: "" },
+								});
 							}}
 							panelData={style_dimension}
 						/>
@@ -187,43 +272,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		}
 	};
 
-	const renderIcon = () => {
-		if (!general_content.iconName || !general_content.enableIcon) {
-			return null;
-		}
-		return (
-			<Dashicon
-				className="wcb-button__icon"
-				size={27}
-				icon={general_content.iconName}
-			/>
-		);
-	};
-
-	const renderButton = () => {
-		const { enableIcon, iconPosition, isHiddenText } = general_content;
-		return (
-			<div
-				className={`wcb-button__main wcb-button__main--${general_preset.preset}`}
-			>
-				{iconPosition === "left" && renderIcon()}
-				{iconPosition === "top" && renderIcon()}
-
-				<RichText
-					tagName="div"
-					className={`wcb-button__text ${isHiddenText ? "sr-only" : ""}`}
-					value={attributes.content}
-					allowedFormats={["core/bold", "core/italic"]}
-					onChange={(content) => setAttributes({ content })}
-					placeholder={__("Button", "wcb")}
-				/>
-
-				{iconPosition === "right" && renderIcon()}
-				{iconPosition === "bottom" && renderIcon()}
-			</div>
-		);
-	};
-
 	return (
 		<CacheProvider value={myCache}>
 			<div
@@ -238,7 +286,13 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				<GlobalCss {...attributes} />
 
 				{/* CHILD CONTENT  */}
-				{renderButton()}
+				<Button
+					attributes={attributes}
+					isEdit
+					onChangeText={(content) => {
+						setAttributes({ content });
+					}}
+				/>
 			</div>
 		</CacheProvider>
 	);

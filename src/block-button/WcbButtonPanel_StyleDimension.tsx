@@ -18,12 +18,36 @@ export interface WCB_BUTTON_PANEL_STYLE_DIMENSION
 	colGap: HasResponsive<string>;
 }
 
-export const WCB_BUTTON_PANEL_STYLE_DIMENSION_DEMO: WCB_BUTTON_PANEL_STYLE_DIMENSION =
+export const WCB_BUTTON_PANEL_STYLE_DIMENSION_DEMO_CIRCULAR: WCB_BUTTON_PANEL_STYLE_DIMENSION =
 	{
 		...MY_DIMENSIONS_NO_GAP_CONTROL_DEMO,
-		colGap: { Desktop: "1.5rem" },
+		padding: {
+			Desktop: {
+				top: "12px",
+				left: "12px",
+				right: "12px",
+				bottom: "12px",
+			},
+		},
+		colGap: { Desktop: "" },
 	};
 
+export const WCB_BUTTON_PANEL_STYLE_DIMENSION_DEMO_PRIMARY: WCB_BUTTON_PANEL_STYLE_DIMENSION =
+	{
+		...MY_DIMENSIONS_NO_GAP_CONTROL_DEMO,
+		padding: {
+			Desktop: {
+				top: "10px",
+				left: "24px",
+				right: "24px",
+				bottom: "10px",
+			},
+		},
+		colGap: { Desktop: "6px" },
+	};
+
+export const WCB_BUTTON_PANEL_STYLE_DIMENSION_DEMO =
+	WCB_BUTTON_PANEL_STYLE_DIMENSION_DEMO_PRIMARY;
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
 	panelData: WCB_BUTTON_PANEL_STYLE_DIMENSION;

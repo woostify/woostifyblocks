@@ -17,11 +17,38 @@ export interface WCB_BUTTON_PANEL_STYLE_TEXT {
 	hoverColor: string;
 }
 
-export const WCB_BUTTON_PANEL_STYLE_TEXT_DEMO: WCB_BUTTON_PANEL_STYLE_TEXT = {
-	typography: TYPOGRAPHY_CONTROL_DEMO,
-	color: "",
-	hoverColor: "",
-};
+export const WCB_BUTTON_PANEL_STYLE_TEXT_DEMO_PRIMARY: WCB_BUTTON_PANEL_STYLE_TEXT =
+	{
+		typography: {
+			...TYPOGRAPHY_CONTROL_DEMO,
+			appearance: {
+				...TYPOGRAPHY_CONTROL_DEMO.appearance,
+				style: {
+					...TYPOGRAPHY_CONTROL_DEMO.appearance.style,
+					fontWeight: 500,
+				},
+			},
+		},
+		color: "#fff",
+		hoverColor: "#fff",
+	};
+
+export const WCB_BUTTON_PANEL_STYLE_TEXT_DEMO_SECONDARY: WCB_BUTTON_PANEL_STYLE_TEXT =
+	{
+		...WCB_BUTTON_PANEL_STYLE_TEXT_DEMO_PRIMARY,
+		color: "#0284c7",
+		hoverColor: "#0284c7",
+	};
+
+export const WCB_BUTTON_PANEL_STYLE_TEXT_DEMO_WHITE: WCB_BUTTON_PANEL_STYLE_TEXT =
+	{
+		...WCB_BUTTON_PANEL_STYLE_TEXT_DEMO_PRIMARY,
+		color: "#111827",
+		hoverColor: "#111827",
+	};
+
+export const WCB_BUTTON_PANEL_STYLE_TEXT_DEMO =
+	WCB_BUTTON_PANEL_STYLE_TEXT_DEMO_PRIMARY;
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {

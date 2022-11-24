@@ -1,9 +1,7 @@
 import {
 	Dashicon,
 	Dropdown,
-	Icon,
 	PanelBody,
-	RangeControl,
 	TextControl,
 	ToggleControl,
 } from "@wordpress/components";
@@ -25,15 +23,51 @@ export interface WCB_BUTTON_PANEL_CONTENT {
 	addNofollowToLink: boolean;
 }
 
-export const WCB_BUTTON_PANEL_CONTENT_DEMO: WCB_BUTTON_PANEL_CONTENT = {
-	enableIcon: true,
-	iconName: "admin-media",
-	iconPosition: "left",
-	link: "#",
-	openInNewWindow: false,
-	isHiddenText: false,
-	addNofollowToLink: true,
-};
+export const WCB_BUTTON_PANEL_CONTENT_DEMO_COMMON_NO_ICON: WCB_BUTTON_PANEL_CONTENT =
+	{
+		enableIcon: false,
+		iconName: "heart",
+		iconPosition: "left",
+		link: "#",
+		openInNewWindow: false,
+		isHiddenText: false,
+		addNofollowToLink: true,
+	};
+
+export const WCB_BUTTON_PANEL_CONTENT_DEMO_with_leading_icon: WCB_BUTTON_PANEL_CONTENT =
+	{
+		enableIcon: true,
+		iconName: "heart",
+		iconPosition: "left",
+		link: "#",
+		openInNewWindow: false,
+		isHiddenText: false,
+		addNofollowToLink: true,
+	};
+export const WCB_BUTTON_PANEL_CONTENT_DEMO_with_trailing_icons: WCB_BUTTON_PANEL_CONTENT =
+	{
+		enableIcon: true,
+		iconName: "heart",
+		iconPosition: "right",
+		link: "#",
+		openInNewWindow: false,
+		isHiddenText: false,
+		addNofollowToLink: true,
+	};
+
+export const WCB_BUTTON_PANEL_CONTENT_DEMO_CIRCULAR: WCB_BUTTON_PANEL_CONTENT =
+	{
+		enableIcon: true,
+		iconName: "heart",
+		iconPosition: "left",
+		link: "#",
+		openInNewWindow: false,
+		isHiddenText: true,
+		addNofollowToLink: true,
+	};
+
+export const WCB_BUTTON_PANEL_CONTENT_DEMO =
+	WCB_BUTTON_PANEL_CONTENT_DEMO_COMMON_NO_ICON;
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
@@ -148,6 +182,7 @@ const WcbButtonPanelContent: FC<Props> = ({
 							iconPosition: value as typeof iconPosition,
 						});
 					}}
+					hasResponsive={false}
 					plans={PLANS_DEMO}
 				/>
 

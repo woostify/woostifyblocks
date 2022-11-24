@@ -16,7 +16,7 @@ export interface WCB_BUTTON_PANEL_PRESET {
 }
 
 export const WCB_BUTTON_PANEL_PRESET_DEMO: WCB_BUTTON_PANEL_PRESET = {
-	preset: "",
+	preset: "primary",
 };
 
 interface Props

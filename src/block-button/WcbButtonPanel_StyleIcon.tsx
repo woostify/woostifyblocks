@@ -3,13 +3,7 @@ import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
-import {
-	MyTypographyControlData,
-	TYPOGRAPHY_CONTROL_DEMO,
-} from "../components/controls/MyTypographyControl/types";
-import MyTypographyControl from "../components/controls/MyTypographyControl/MyTypographyControl";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
-import MyDisclosure from "../components/controls/MyDisclosure";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
@@ -21,9 +15,9 @@ export interface WCB_BUTTON_PANEL_STYLE_ICON {
 }
 
 export const WCB_BUTTON_PANEL_STYLE_ICON_DEMO: WCB_BUTTON_PANEL_STYLE_ICON = {
-	size: { Desktop: 16 },
-	color: "",
-	hoverColor: "",
+	size: { Desktop: 20 },
+	color: "#fff",
+	hoverColor: "#fff",
 };
 
 interface Props

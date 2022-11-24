@@ -65,7 +65,7 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	content: {
 		type: "string",
 		source: "html",
-		selector: ".wcb-button__main",
+		selector: ".wcb-button__text",
 		default: "Click here",
 	},
 	// THE ATTRS OF BLOCK HERE

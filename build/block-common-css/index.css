@@ -2084,17 +2084,6 @@ video {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(248 250 252 / var(--tw-bg-opacity)) !important;
 }
-.bg-cyan-600 {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(8 145 178 / var(--tw-bg-opacity)) !important;
-}
-.bg-cyan-100 {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(207 250 254 / var(--tw-bg-opacity)) !important;
-}
-.bg-transparent {
-  background-color: transparent !important;
-}
 .bg-sky-600 {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(2 132 199 / var(--tw-bg-opacity)) !important;
@@ -2102,6 +2091,9 @@ video {
 .bg-sky-100 {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(224 242 254 / var(--tw-bg-opacity)) !important;
+}
+.bg-transparent {
+  background-color: transparent !important;
 }
 .p-2\.5 {
   padding: 0.625rem !important;
@@ -2274,10 +2266,6 @@ video {
 .text-white {
   --tw-text-opacity: 1 !important;
   color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
-}
-.text-cyan-600 {
-  --tw-text-opacity: 1 !important;
-  color: rgb(8 145 178 / var(--tw-text-opacity)) !important;
 }
 .text-gray-900 {
   --tw-text-opacity: 1 !important;
@@ -17999,13 +17987,13 @@ video {
 .ring-black\/5 {
   --tw-ring-color: rgb(0 0 0 / 0.05) !important;
 }
-.ring-cyan-600 {
+.ring-sky-600 {
   --tw-ring-opacity: 1 !important;
-  --tw-ring-color: rgb(8 145 178 / var(--tw-ring-opacity)) !important;
+  --tw-ring-color: rgb(2 132 199 / var(--tw-ring-opacity)) !important;
 }
-.ring-cyan-100 {
+.ring-sky-100 {
   --tw-ring-opacity: 1 !important;
-  --tw-ring-color: rgb(207 250 254 / var(--tw-ring-opacity)) !important;
+  --tw-ring-color: rgb(224 242 254 / var(--tw-ring-opacity)) !important;
 }
 .ring-gray-300 {
   --tw-ring-opacity: 1 !important;
@@ -18014,14 +18002,6 @@ video {
 .ring-sky-400 {
   --tw-ring-opacity: 1 !important;
   --tw-ring-color: rgb(56 189 248 / var(--tw-ring-opacity)) !important;
-}
-.ring-sky-600 {
-  --tw-ring-opacity: 1 !important;
-  --tw-ring-color: rgb(2 132 199 / var(--tw-ring-opacity)) !important;
-}
-.ring-sky-100 {
-  --tw-ring-opacity: 1 !important;
-  --tw-ring-color: rgb(224 242 254 / var(--tw-ring-opacity)) !important;
 }
 .ring-opacity-60 {
   --tw-ring-opacity: 0.6 !important;

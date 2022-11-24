@@ -1,64 +1,53 @@
 /*!****************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/block-button/style.scss ***!
   \****************************************************************************************************************************************************************************************************************************************************/
+.wcb-button__wrap {
+  text-decoration: none;
+}
+
 .wcb-button__main {
+  text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-}.wcb-button__main > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(0.5rem * var(--tw-space-x-reverse));
-  margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
-}.wcb-button__main {
-  border-radius: var(--radius-lg);
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-.wcb-button__main--primary, .wcb-button__main--with_leading_icon, .wcb-button__main--with_trailing_icons, .wcb-button__main--round, .wcb-button__main--circular {
-  background-color: #0284c7;
-  color: white;
-  border: 1px solid #0284c7;
-}
-.wcb-button__main--secondary {
-  background-color: #e0f2fe;
-  color: #0284c7;
-  border: 1px solid #e0f2fe;
-}
-.wcb-button__main--white {
-  background-color: #fff;
-  color: #111827;
-  border: 1px solid #d1d5db;
-}
-.wcb-button__main--round {
-  border-radius: 999px;
+  /* &--primary,
+  &--with_leading_icon,
+  &--with_trailing_icons,
+  &--round,
+  &--circular {
+  	background-color: #0284c7;
+  	color: white;
+  	border: 1px solid #0284c7;
+  }
+  &--secondary {
+  	background-color: #e0f2fe;
+  	color: #0284c7;
+  	border: 1px solid #e0f2fe;
+  }
+  &--white {
+  	background-color: #fff;
+  	color: #111827;
+  	border: 1px solid #d1d5db;
+  }
+  &--round {
+  	border-radius: 999px;
+  } */
 }
 .wcb-button__main--circular {
-  border-radius: 999px;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  /* border-radius: 999px;
+  @apply px-3 py-3; */
 }
 .wcb-button__main--circular .wcb-button__text {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-.wcb-button__text {
-  font-weight: 500;
+  /* @apply sr-only; */
 }
 
 .wcb-button__icon {
   flex-shrink: 0;
+}
+
+.wcb-button__main-icon-top,
+.wcb-button__main-icon-bottom {
+  flex-direction: column;
 }
 
 /*# sourceMappingURL=style-index.css.map*/

@@ -1,9 +1,12 @@
+.wcb-button__wrap {
+	text-decoration: none;
+}
 .wcb-button__main {
+	text-decoration: none;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	@apply px-6 py-3 rounded-lg space-x-2;
-	&--primary,
+	/* &--primary,
 	&--with_leading_icon,
 	&--with_trailing_icons,
 	&--round,
@@ -24,20 +27,24 @@
 	}
 	&--round {
 		border-radius: 999px;
-	}
+	} */
 	&--circular {
-		border-radius: 999px;
-		@apply px-3 py-3;
+		/* border-radius: 999px;
+		@apply px-3 py-3; */
 		.wcb-button__text {
-			@apply sr-only;
+			/* @apply sr-only; */
 		}
 	}
 }
 
 .wcb-button__text {
-	font-weight: 500;
 }
 
 .wcb-button__icon {
 	flex-shrink: 0;
+}
+
+.wcb-button__main-icon-top,
+.wcb-button__main-icon-bottom {
+	flex-direction: column;
 }

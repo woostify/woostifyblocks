@@ -30,16 +30,16 @@ export const variations: {
 	attributes?: any;
 }[] = [
 	{
-		name: "test-full",
-		title: __("Test Full Form"),
-		description: __("Test Full Form"),
+		name: "two-buttons",
+		title: __("Two buttons"),
+		description: __("Two buttons"),
 		icon: (
 			<RenderIcon>
 				<div className="col-span-12 row-span-2 bg-white"></div>
 			</RenderIcon>
 		),
 		innerBlocks: [
-			// ["wcb/button", undefined],
+			["wcb/button", undefined],
 			["wcb/button", undefined],
 		],
 		scope: ["block"],
