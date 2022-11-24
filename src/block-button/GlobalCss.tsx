@@ -61,7 +61,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 
 	return (
 		<>
-			<Global styles={getDivWrapStyles()} />
+			{/* <Global styles={getDivWrapStyles()} /> */}
 
 			{/* BACKGROUND  */}
 			<Global
@@ -151,4 +151,4 @@ const GlobalCss: FC<Props> = (attrs) => {
 	);
 };
 
-export default GlobalCss;
+export default React.memo(GlobalCss);

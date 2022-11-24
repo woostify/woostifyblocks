@@ -23,12 +23,14 @@ import MyTextDecorationControl from "../MyTextDecorationControl/MyTextDecoration
 import MyTextTransformControl from "../MyTextTransformControl/MyTextTransformControl";
 import WcbFontFamilyPicker from "../WcbFontFamilyPicker/WcbFontFamilyPicker";
 import MyDisclosure from "../MyDisclosure";
+import getValueFromAttrsResponsives from "../../../utils/getValueFromAttrsResponsives";
 
 interface Props {
 	className?: string;
 	typographyControl: MyTypographyControlData;
 	setAttrs__typography: (data: MyTypographyControlData) => void;
 	label?: string;
+	disclosureDefaultOpen?: boolean;
 }
 
 const MyTypographyControl: FC<Props> = ({
@@ -36,6 +38,7 @@ const MyTypographyControl: FC<Props> = ({
 	typographyControl = TYPOGRAPHY_CONTROL_DEMO,
 	setAttrs__typography = () => {},
 	label = "Typography",
+	disclosureDefaultOpen,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
@@ -49,18 +52,21 @@ const MyTypographyControl: FC<Props> = ({
 		fontFamily,
 	} = typographyControl;
 
-	const FONT_SIZE =
-		fontSizesProps[deviceType] ||
-		fontSizesProps.Tablet ||
-		fontSizesProps.Desktop;
-	const LINE_HEIGHT =
-		lineHeightProps[deviceType] ||
-		lineHeightProps.Tablet ||
-		lineHeightProps.Desktop;
-	const LETTER_SPACING =
-		letterSpacingProps[deviceType] ||
-		letterSpacingProps.Tablet ||
-		letterSpacingProps.Desktop;
+	const { currentDeviceValue: FONT_SIZE } = getValueFromAttrsResponsives(
+		fontSizesProps,
+		deviceType
+	);
+
+	const { currentDeviceValue: LINE_HEIGHT } = getValueFromAttrsResponsives(
+		lineHeightProps,
+		deviceType
+	);
+
+	const { currentDeviceValue: LETTER_SPACING } = getValueFromAttrsResponsives(
+		letterSpacingProps,
+		deviceType
+	);
+
 	//
 	const handleChangeFontFamily = (newFont?: string) => {
 		setAttrs__typography({
@@ -210,7 +216,7 @@ const MyTypographyControl: FC<Props> = ({
 	};
 
 	return (
-		<MyDisclosure label={label}>
+		<MyDisclosure defaultOpen={disclosureDefaultOpen} label={label}>
 			<div className={className}>
 				{renderFontFamily()}
 				{renderFontsizePicker()}

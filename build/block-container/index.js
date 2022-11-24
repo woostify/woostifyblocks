@@ -2441,7 +2441,7 @@ const Edit = props => {
   });
   const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useInnerBlocksProps)(blockProps, {
     allowedBlocks: ALLOWED_BLOCKS,
-    renderAppender: () => null
+    renderAppender: () => false
   }); //
 
   const blockWrapProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
@@ -2811,7 +2811,7 @@ const GlobalCss = attrs => {
   }));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (GlobalCss);
+/* harmony default export */ __webpack_exports__["default"] = (react__WEBPACK_IMPORTED_MODULE_1___default().memo(GlobalCss));
 
 /***/ }),
 

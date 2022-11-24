@@ -2347,7 +2347,7 @@ const GlobalCss = attrs => {
   }));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (GlobalCss);
+/* harmony default export */ __webpack_exports__["default"] = (react__WEBPACK_IMPORTED_MODULE_1___default().memo(GlobalCss));
 
 /***/ }),
 

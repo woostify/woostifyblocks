@@ -6,6 +6,9 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+	flex: 1;
+	cursor: pointer;
+	@apply px-6 py-2.5;
 	/* &--primary,
 	&--with_leading_icon,
 	&--with_trailing_icons,
@@ -29,11 +32,7 @@
 		border-radius: 999px;
 	} */
 	&--circular {
-		/* border-radius: 999px;
-		@apply px-3 py-3; */
-		.wcb-button__text {
-			/* @apply sr-only; */
-		}
+		@apply px-3 py-3;
 	}
 }
 

@@ -1992,8 +1992,6 @@ const GlobalCss = attrs => {
     Mobile: iconSize_mobile + "px"
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
-    styles: getDivWrapStyles()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
     styles: (0,_utils_getBackgroundColorGradientStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
       className: BUTTON_CLASSNAME,
       background: style_background.normal,
@@ -2059,7 +2057,7 @@ const GlobalCss = attrs => {
   }));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (GlobalCss);
+/* harmony default export */ __webpack_exports__["default"] = (react__WEBPACK_IMPORTED_MODULE_1___default().memo(GlobalCss));
 
 /***/ }),
 

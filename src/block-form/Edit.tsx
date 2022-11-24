@@ -100,8 +100,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	}, [UNIQUE_ID]);
 	//
 	useEffect(() => {
-		console.log(111111);
-
 		if (general_general.formStyle === "simple") {
 			setAttributes({
 				style_input: WCB_FORM_PANEL_STYLE_INPUT_DEMO__SIMPLE,
@@ -300,7 +298,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	});
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
-		renderAppender: () => null,
+		renderAppender: () => false,
 	});
 	//
 

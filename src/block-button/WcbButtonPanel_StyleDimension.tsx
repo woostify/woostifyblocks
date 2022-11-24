@@ -29,6 +29,14 @@ export const WCB_BUTTON_PANEL_STYLE_DIMENSION_DEMO_CIRCULAR: WCB_BUTTON_PANEL_ST
 				bottom: "12px",
 			},
 		},
+		margin: {
+			Desktop: {
+				top: "",
+				left: "",
+				right: "",
+				bottom: "",
+			},
+		},
 		colGap: { Desktop: "" },
 	};
 
@@ -37,10 +45,18 @@ export const WCB_BUTTON_PANEL_STYLE_DIMENSION_DEMO_PRIMARY: WCB_BUTTON_PANEL_STY
 		...MY_DIMENSIONS_NO_GAP_CONTROL_DEMO,
 		padding: {
 			Desktop: {
-				top: "10px",
-				left: "24px",
-				right: "24px",
-				bottom: "10px",
+				top: "",
+				left: "",
+				right: "",
+				bottom: "",
+			},
+		},
+		margin: {
+			Desktop: {
+				top: "",
+				left: "",
+				right: "",
+				bottom: "",
 			},
 		},
 		colGap: { Desktop: "6px" },

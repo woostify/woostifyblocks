@@ -257,7 +257,7 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 	});
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
-		renderAppender: () => null,
+		renderAppender: () => false,
 	});
 	//
 

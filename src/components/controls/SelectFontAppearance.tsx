@@ -8,17 +8,53 @@ export const FONT_APPEARANCE_OPTIONS: FontAppearanceOptionsType[] = [
 	{
 		key: "default",
 		name: "Default",
-		style: { fontWeight: "normal", fontStyle: "normal" },
+		style: { fontWeight: undefined, fontStyle: undefined },
 	},
-	{ key: "thin", name: "Thin", style: { fontWeight: "100" } },
-	{ key: "ExtraLight", name: "Extra Light", style: { fontWeight: "200" } },
-	{ key: "light", name: "Light", style: { fontWeight: "300" } },
-	{ key: "Regular", name: "Regular", style: { fontWeight: "400" } },
-	{ key: "Medium", name: "Medium", style: { fontWeight: "500" } },
-	{ key: "SemiBold", name: "Semi Bold", style: { fontWeight: "600" } },
-	{ key: "Bold", name: "Bold", style: { fontWeight: "700" } },
-	{ key: "ExtraBold", name: "Extra Bold", style: { fontWeight: "800" } },
-	{ key: "Black", name: "Black", style: { fontWeight: "900" } },
+	{
+		key: "thin",
+		name: "Thin",
+		style: { fontWeight: "100", fontStyle: "normal" },
+	},
+	{
+		key: "ExtraLight",
+		name: "Extra Light",
+		style: { fontWeight: "200", fontStyle: "normal" },
+	},
+	{
+		key: "light",
+		name: "Light",
+		style: { fontWeight: "300", fontStyle: "normal" },
+	},
+	{
+		key: "Regular",
+		name: "Regular",
+		style: { fontWeight: "400", fontStyle: "normal" },
+	},
+	{
+		key: "Medium",
+		name: "Medium",
+		style: { fontWeight: "500", fontStyle: "normal" },
+	},
+	{
+		key: "SemiBold",
+		name: "Semi Bold",
+		style: { fontWeight: "600", fontStyle: "normal" },
+	},
+	{
+		key: "Bold",
+		name: "Bold",
+		style: { fontWeight: "700", fontStyle: "normal" },
+	},
+	{
+		key: "ExtraBold",
+		name: "Extra Bold",
+		style: { fontWeight: "800", fontStyle: "normal" },
+	},
+	{
+		key: "Black",
+		name: "Black",
+		style: { fontWeight: "900", fontStyle: "normal" },
+	},
 	//
 	{
 		key: "thin_italic",

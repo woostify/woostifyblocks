@@ -2791,7 +2791,7 @@ const GlobalCss = attrs => {
   }));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (GlobalCss);
+/* harmony default export */ __webpack_exports__["default"] = (react__WEBPACK_IMPORTED_MODULE_1___default().memo(GlobalCss));
 
 /***/ }),
 
@@ -6752,6 +6752,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MyTextTransformControl_MyTextTransformControl__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../MyTextTransformControl/MyTextTransformControl */ "./src/components/controls/MyTextTransformControl/MyTextTransformControl.tsx");
 /* harmony import */ var _WcbFontFamilyPicker_WcbFontFamilyPicker__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../WcbFontFamilyPicker/WcbFontFamilyPicker */ "./src/components/controls/WcbFontFamilyPicker/WcbFontFamilyPicker.tsx");
 /* harmony import */ var _MyDisclosure__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../MyDisclosure */ "./src/components/controls/MyDisclosure.tsx");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
 
 
 
@@ -6770,7 +6772,8 @@ const MyTypographyControl = _ref => {
     className = "space-y-5",
     typographyControl = _types__WEBPACK_IMPORTED_MODULE_5__.TYPOGRAPHY_CONTROL_DEMO,
     setAttrs__typography = () => {},
-    label = "Typography"
+    label = "Typography",
+    disclosureDefaultOpen
   } = _ref;
   const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_3__["default"])() || "Desktop";
   const {
@@ -6782,9 +6785,15 @@ const MyTypographyControl = _ref => {
     letterSpacing: letterSpacingProps,
     fontFamily
   } = typographyControl;
-  const FONT_SIZE = fontSizesProps[deviceType] || fontSizesProps.Tablet || fontSizesProps.Desktop;
-  const LINE_HEIGHT = lineHeightProps[deviceType] || lineHeightProps.Tablet || lineHeightProps.Desktop;
-  const LETTER_SPACING = letterSpacingProps[deviceType] || letterSpacingProps.Tablet || letterSpacingProps.Desktop; //
+  const {
+    currentDeviceValue: FONT_SIZE
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_12__["default"])(fontSizesProps, deviceType);
+  const {
+    currentDeviceValue: LINE_HEIGHT
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_12__["default"])(lineHeightProps, deviceType);
+  const {
+    currentDeviceValue: LETTER_SPACING
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_12__["default"])(letterSpacingProps, deviceType); //
 
   const handleChangeFontFamily = newFont => {
     setAttrs__typography({ ...typographyControl,
@@ -6919,6 +6928,7 @@ const MyTypographyControl = _ref => {
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyDisclosure__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    defaultOpen: disclosureDefaultOpen,
     label: label
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: className
@@ -7236,62 +7246,71 @@ const FONT_APPEARANCE_OPTIONS = [{
   key: "default",
   name: "Default",
   style: {
-    fontWeight: "normal",
-    fontStyle: "normal"
+    fontWeight: undefined,
+    fontStyle: undefined
   }
 }, {
   key: "thin",
   name: "Thin",
   style: {
-    fontWeight: "100"
+    fontWeight: "100",
+    fontStyle: "normal"
   }
 }, {
   key: "ExtraLight",
   name: "Extra Light",
   style: {
-    fontWeight: "200"
+    fontWeight: "200",
+    fontStyle: "normal"
   }
 }, {
   key: "light",
   name: "Light",
   style: {
-    fontWeight: "300"
+    fontWeight: "300",
+    fontStyle: "normal"
   }
 }, {
   key: "Regular",
   name: "Regular",
   style: {
-    fontWeight: "400"
+    fontWeight: "400",
+    fontStyle: "normal"
   }
 }, {
   key: "Medium",
   name: "Medium",
   style: {
-    fontWeight: "500"
+    fontWeight: "500",
+    fontStyle: "normal"
   }
 }, {
   key: "SemiBold",
   name: "Semi Bold",
   style: {
-    fontWeight: "600"
+    fontWeight: "600",
+    fontStyle: "normal"
   }
 }, {
   key: "Bold",
   name: "Bold",
   style: {
-    fontWeight: "700"
+    fontWeight: "700",
+    fontStyle: "normal"
   }
 }, {
   key: "ExtraBold",
   name: "Extra Bold",
   style: {
-    fontWeight: "800"
+    fontWeight: "800",
+    fontStyle: "normal"
   }
 }, {
   key: "Black",
   name: "Black",
   style: {
-    fontWeight: "900"
+    fontWeight: "900",
+    fontStyle: "normal"
   }
 }, //
 {

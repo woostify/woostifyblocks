@@ -7,6 +7,7 @@ import {
 	__experimentalBlockVariationPicker as BlockVariationPicker,
 	store as blockEditorStore,
 	RichText,
+	InnerBlocks,
 } from "@wordpress/block-editor";
 import { get } from "lodash";
 import React, { useEffect, FC } from "react";
@@ -29,10 +30,19 @@ import {
 	// @ts-ignore
 	store as blocksStore,
 } from "@wordpress/blocks";
+import WcbButtonsPanel_StyleText from "./WcbButtonsPanel_StyleText";
+import WcbButtonsPanel_StyleDimension from "./WcbButtonsPanel_StyleDimension";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
-	const { attributes, setAttributes, clientId } = props;
-	const { uniqueId, advance_responsiveCondition, advance_zIndex } = attributes;
+	const { attributes, setAttributes, clientId, isSelected } = props;
+	const {
+		uniqueId,
+		advance_responsiveCondition,
+		advance_zIndex,
+		general_general,
+		style_text,
+		style_dimension,
+	} = attributes;
 	//  COMMON HOOKS
 	const { myCache, ref } = useCreateCacheEmotion();
 	const wrapBlockProps = useBlockProps({ ref });
@@ -67,15 +77,41 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							}
 							opened={tabGeneralIsPanelOpen === "General" || undefined}
 							//
-							// setAttr__={(data) => {
-							// 	setAttributes({ general_general: data });
-							// }}
-							// panelData={general_general}
+							setAttr__={(data) => {
+								setAttributes({ general_general: data });
+							}}
+							panelData={general_general}
 						/>
 					</>
 				);
 			case "Styles":
-				return <></>;
+				return (
+					<>
+						<WcbButtonsPanel_StyleText
+							onToggle={() => handleTogglePanel("Styles", "_StyleText", true)}
+							initialOpen={
+								tabStylesIsPanelOpen === "_StyleText" ||
+								tabStylesIsPanelOpen === "first"
+							}
+							opened={tabStylesIsPanelOpen === "_StyleText" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_text: data });
+							}}
+							panelData={style_text}
+						/>
+						<WcbButtonsPanel_StyleDimension
+							onToggle={() => handleTogglePanel("Styles", "_StyleDimension")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleDimension"}
+							opened={tabStylesIsPanelOpen === "_StyleDimension" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_dimension: data });
+							}}
+							panelData={style_dimension}
+						/>
+					</>
+				);
 			case "Advances":
 				return (
 					<>
@@ -104,7 +140,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	});
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
-		renderAppender: () => null,
+		renderAppender: () =>
+			isSelected ? <InnerBlocks.ButtonBlockAppender /> : false,
 	});
 	//
 
@@ -120,7 +157,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				{/*  */}
 
 				<div {...innerBlocksProps} />
-				<div className="p-10 bg-red-200">MORE</div>
 
 				<HOCInspectorControls
 					uniqueId={uniqueId}

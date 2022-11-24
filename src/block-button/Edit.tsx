@@ -281,10 +281,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			>
 				{/* CONTROL SETTINGS */}
 				<HOCInspectorControls renderTabPanels={renderTabBodyPanels} />
-
 				{/* CSS IN JS */}
 				<GlobalCss {...attributes} />
-
 				{/* CHILD CONTENT  */}
 				<Button
 					attributes={attributes}

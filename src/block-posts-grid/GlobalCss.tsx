@@ -405,4 +405,4 @@ const GlobalCss: FC<Props> = (attrs) => {
 	);
 };
 
-export default GlobalCss;
+export default React.memo(GlobalCss);

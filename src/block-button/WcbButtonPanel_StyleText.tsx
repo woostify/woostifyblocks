@@ -21,13 +21,6 @@ export const WCB_BUTTON_PANEL_STYLE_TEXT_DEMO_PRIMARY: WCB_BUTTON_PANEL_STYLE_TE
 	{
 		typography: {
 			...TYPOGRAPHY_CONTROL_DEMO,
-			appearance: {
-				...TYPOGRAPHY_CONTROL_DEMO.appearance,
-				style: {
-					...TYPOGRAPHY_CONTROL_DEMO.appearance.style,
-					fontWeight: 500,
-				},
-			},
 		},
 		color: "#fff",
 		hoverColor: "#fff",

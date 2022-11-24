@@ -10,6 +10,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex: 1;
+  cursor: pointer;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
   /* &--primary,
   &--with_leading_icon,
   &--with_trailing_icons,
@@ -34,11 +40,10 @@
   } */
 }
 .wcb-button__main--circular {
-  /* border-radius: 999px;
-  @apply px-3 py-3; */
-}
-.wcb-button__main--circular .wcb-button__text {
-  /* @apply sr-only; */
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .wcb-button__icon {
