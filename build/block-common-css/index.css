@@ -1113,6 +1113,9 @@ video {
 .col-span-3 {
   grid-column: span 3 / span 3 !important;
 }
+.col-span-5 {
+  grid-column: span 5 / span 5 !important;
+}
 .row-span-2 {
   grid-row: span 2 / span 2 !important;
 }
@@ -1862,12 +1865,6 @@ video {
 }
 .items-center {
   align-items: center !important;
-}
-.justify-start {
-  justify-content: flex-start !important;
-}
-.justify-end {
-  justify-content: flex-end !important;
 }
 .justify-center {
   justify-content: center !important;

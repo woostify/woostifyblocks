@@ -2927,9 +2927,9 @@ __webpack_require__.r(__webpack_exports__);
 
 const RenderIcon = props => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "w-16 h-12 flex items-center justify-center "
+    className: "w-16 h-10 flex items-center justify-center "
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "grid grid-rows-2 grid-cols-12 w-14 h-8 p-0.5 bg-[#007cba] gap-0.5 rounded-sm"
+    className: "grid grid-rows-2 grid-cols-12 w-full h-3.5 p-0.5 gap-1 rounded-sm"
   }, props.children));
 };
 
@@ -2938,9 +2938,25 @@ const variations = [{
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Two buttons"),
   description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Two buttons"),
   icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RenderIcon, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "col-span-12 row-span-2 bg-white"
+    className: "col-span-5 row-span-2 bg-[#007cba]"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "col-span-5 row-span-2 bg-[#007cba]"
   })),
   innerBlocks: [["wcb/button", undefined], ["wcb/button", undefined]],
+  scope: ["block"],
+  isDefault: true
+}, {
+  name: "three-buttons",
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Three buttons"),
+  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Three buttons"),
+  icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RenderIcon, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "col-span-4 row-span-2 bg-[#007cba]"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "col-span-4 row-span-2 bg-[#007cba]"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "col-span-4 row-span-2 bg-[#007cba]"
+  })),
+  innerBlocks: [["wcb/button", undefined], ["wcb/button", undefined], ["wcb/button", undefined]],
   scope: ["block"],
   isDefault: true
 }];
