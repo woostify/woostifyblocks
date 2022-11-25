@@ -63,7 +63,6 @@ export const variations: {
 			["wcb/button", undefined],
 		],
 		scope: ["block"],
-		isDefault: true,
 	},
 ];
 

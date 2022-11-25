@@ -2957,8 +2957,7 @@ const variations = [{
     className: "col-span-4 row-span-2 bg-[#007cba]"
   })),
   innerBlocks: [["wcb/button", undefined], ["wcb/button", undefined], ["wcb/button", undefined]],
-  scope: ["block"],
-  isDefault: true
+  scope: ["block"]
 }];
 /* harmony default export */ __webpack_exports__["default"] = (variations);
 

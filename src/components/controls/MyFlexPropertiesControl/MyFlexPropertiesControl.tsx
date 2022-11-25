@@ -4,11 +4,11 @@ import useGetDeviceType from "../../../hooks/useGetDeviceType";
 import MyLabelControl from "../MyLabelControl/MyLabelControl";
 import { ResponsiveDevices } from "../MyResponsiveToggle/MyResponsiveToggle";
 import {
-	FLEX_ALIGNITEMS_DEMO,
-	FLEX_DIRECTIONS_DEMO,
-	FLEX_JUSTIFY_CONTENT_DEMO,
+	PLANS_FLEX_ALIGNITEMS_DEMO,
+	PLANS_FLEX_DIRECTIONS_DEMO,
+	PLANS_FLEX_JUSTIFY_CONTENT_DEMO,
 	FLEX_PROPERTIES_CONTROL_DEMO,
-	FLEX_WRAP_DEMO,
+	PLANS_FLEX_WRAP_DEMO,
 	MyFlexPropertiesControlData,
 } from "./types";
 import { RadioGroup } from "@headlessui/react";
@@ -103,7 +103,7 @@ const MyFlexPropertiesControl: FC<Props> = ({
 				label={__("Flex Direction", "wcb")}
 				// @ts-ignore
 				onChange={handleChangeFlexDirectionType}
-				plans={FLEX_DIRECTIONS_DEMO}
+				plans={PLANS_FLEX_DIRECTIONS_DEMO}
 				value={FLEX_DIRECTION}
 			/>
 		);
@@ -115,7 +115,7 @@ const MyFlexPropertiesControl: FC<Props> = ({
 				label={__("Align Items", "wcb")}
 				// @ts-ignore
 				onChange={handleChangeAlignItems}
-				plans={FLEX_ALIGNITEMS_DEMO}
+				plans={PLANS_FLEX_ALIGNITEMS_DEMO}
 				value={ALIGN_ITEMS}
 			/>
 		);
@@ -127,7 +127,7 @@ const MyFlexPropertiesControl: FC<Props> = ({
 				label={__("Justify Content", "wcb")}
 				// @ts-ignore
 				onChange={handleChangeJustifyContent}
-				plans={FLEX_JUSTIFY_CONTENT_DEMO}
+				plans={PLANS_FLEX_JUSTIFY_CONTENT_DEMO}
 				value={JUSTIFY_CONTENT}
 			/>
 		);
@@ -139,7 +139,7 @@ const MyFlexPropertiesControl: FC<Props> = ({
 				label={__("Flex Wrap", "wcb")}
 				// @ts-ignore
 				onChange={handleChangeFlexWrap}
-				plans={FLEX_WRAP_DEMO}
+				plans={PLANS_FLEX_WRAP_DEMO}
 				value={FLEX_WRAP}
 			/>
 		);

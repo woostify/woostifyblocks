@@ -1098,23 +1098,23 @@ video {
 .z-50 {
   z-index: 50 !important;
 }
+.col-span-5 {
+  grid-column: span 5 / span 5 !important;
+}
+.col-span-4 {
+  grid-column: span 4 / span 4 !important;
+}
 .col-span-12 {
   grid-column: span 12 / span 12 !important;
 }
 .col-span-6 {
   grid-column: span 6 / span 6 !important;
 }
-.col-span-4 {
-  grid-column: span 4 / span 4 !important;
-}
 .col-span-8 {
   grid-column: span 8 / span 8 !important;
 }
 .col-span-3 {
   grid-column: span 3 / span 3 !important;
-}
-.col-span-5 {
-  grid-column: span 5 / span 5 !important;
 }
 .row-span-2 {
   grid-row: span 2 / span 2 !important;
@@ -1423,23 +1423,23 @@ video {
 .h-24 {
   height: 6rem !important;
 }
-.h-12 {
-  height: 3rem !important;
-}
-.h-8 {
-  height: 2rem !important;
-}
 .h-10 {
   height: 2.5rem !important;
-}
-.h-5 {
-  height: 1.25rem !important;
 }
 .h-3\.5 {
   height: 0.875rem !important;
 }
 .h-3 {
   height: 0.75rem !important;
+}
+.h-5 {
+  height: 1.25rem !important;
+}
+.h-8 {
+  height: 2rem !important;
+}
+.h-12 {
+  height: 3rem !important;
 }
 .h-4 {
   height: 1rem !important;
@@ -1498,14 +1498,14 @@ video {
 .w-16 {
   width: 4rem !important;
 }
-.w-14 {
-  width: 3.5rem !important;
-}
 .w-5 {
   width: 1.25rem !important;
 }
 .w-8 {
   width: 2rem !important;
+}
+.w-14 {
+  width: 3.5rem !important;
 }
 .w-3\.5 {
   width: 0.875rem !important;
@@ -1875,14 +1875,14 @@ video {
 .gap-2 {
   gap: 0.5rem !important;
 }
+.gap-1 {
+  gap: 0.25rem !important;
+}
 .gap-0\.5 {
   gap: 0.125rem !important;
 }
 .gap-0 {
   gap: 0px !important;
-}
-.gap-1 {
-  gap: 0.25rem !important;
 }
 .gap-3 {
   gap: 0.75rem !important;
@@ -2074,16 +2074,16 @@ video {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(0 124 186 / var(--tw-bg-opacity)) !important;
 }
-.bg-white {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity)) !important;
-}
 .bg-sky-100\/80 {
   background-color: rgb(224 242 254 / 0.8) !important;
 }
 .bg-red-50 {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(254 242 242 / var(--tw-bg-opacity)) !important;
+}
+.bg-white {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity)) !important;
 }
 .bg-sky-50 {
   --tw-bg-opacity: 1 !important;

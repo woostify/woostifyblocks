@@ -15,7 +15,7 @@ export const FLEX_PROPERTIES_CONTROL_DEMO: MyFlexPropertiesControlData = {
 	flexWrap: { Desktop: "nowrap" },
 };
 
-export const FLEX_DIRECTIONS_DEMO: MyRadioItem<
+export const PLANS_FLEX_DIRECTIONS_DEMO: MyRadioItem<
 	NonNullable<CSSProperties["flexDirection"]>
 >[] = [
 	{
@@ -60,7 +60,7 @@ export const FLEX_DIRECTIONS_DEMO: MyRadioItem<
 	},
 ];
 
-export const FLEX_ALIGNITEMS_DEMO: MyRadioItem<
+export const PLANS_FLEX_ALIGNITEMS_DEMO: MyRadioItem<
 	NonNullable<CSSProperties["alignItems"]>
 >[] = [
 	{
@@ -118,7 +118,7 @@ export const FLEX_ALIGNITEMS_DEMO: MyRadioItem<
 	},
 ];
 
-export const FLEX_JUSTIFY_CONTENT_DEMO: MyRadioItem<
+export const PLANS_FLEX_JUSTIFY_CONTENT_DEMO: MyRadioItem<
 	NonNullable<CSSProperties["justifyContent"]>
 >[] = [
 	{
@@ -177,7 +177,7 @@ export const FLEX_JUSTIFY_CONTENT_DEMO: MyRadioItem<
 	},
 ];
 
-export const FLEX_WRAP_DEMO: MyRadioItem<
+export const PLANS_FLEX_WRAP_DEMO: MyRadioItem<
 	NonNullable<CSSProperties["flexWrap"]>
 >[] = [
 	{

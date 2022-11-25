@@ -5494,7 +5494,7 @@ const MyFlexPropertiesControl = _ref => {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Flex Direction", "wcb") // @ts-ignore
       ,
       onChange: handleChangeFlexDirectionType,
-      plans: _types__WEBPACK_IMPORTED_MODULE_4__.FLEX_DIRECTIONS_DEMO,
+      plans: _types__WEBPACK_IMPORTED_MODULE_4__.PLANS_FLEX_DIRECTIONS_DEMO,
       value: FLEX_DIRECTION
     });
   };
@@ -5504,7 +5504,7 @@ const MyFlexPropertiesControl = _ref => {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Align Items", "wcb") // @ts-ignore
       ,
       onChange: handleChangeAlignItems,
-      plans: _types__WEBPACK_IMPORTED_MODULE_4__.FLEX_ALIGNITEMS_DEMO,
+      plans: _types__WEBPACK_IMPORTED_MODULE_4__.PLANS_FLEX_ALIGNITEMS_DEMO,
       value: ALIGN_ITEMS
     });
   };
@@ -5514,7 +5514,7 @@ const MyFlexPropertiesControl = _ref => {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Justify Content", "wcb") // @ts-ignore
       ,
       onChange: handleChangeJustifyContent,
-      plans: _types__WEBPACK_IMPORTED_MODULE_4__.FLEX_JUSTIFY_CONTENT_DEMO,
+      plans: _types__WEBPACK_IMPORTED_MODULE_4__.PLANS_FLEX_JUSTIFY_CONTENT_DEMO,
       value: JUSTIFY_CONTENT
     });
   };
@@ -5524,7 +5524,7 @@ const MyFlexPropertiesControl = _ref => {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Flex Wrap", "wcb") // @ts-ignore
       ,
       onChange: handleChangeFlexWrap,
-      plans: _types__WEBPACK_IMPORTED_MODULE_4__.FLEX_WRAP_DEMO,
+      plans: _types__WEBPACK_IMPORTED_MODULE_4__.PLANS_FLEX_WRAP_DEMO,
       value: FLEX_WRAP
     });
   };
@@ -5546,11 +5546,11 @@ const MyFlexPropertiesControl = _ref => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FLEX_ALIGNITEMS_DEMO": function() { return /* binding */ FLEX_ALIGNITEMS_DEMO; },
-/* harmony export */   "FLEX_DIRECTIONS_DEMO": function() { return /* binding */ FLEX_DIRECTIONS_DEMO; },
-/* harmony export */   "FLEX_JUSTIFY_CONTENT_DEMO": function() { return /* binding */ FLEX_JUSTIFY_CONTENT_DEMO; },
 /* harmony export */   "FLEX_PROPERTIES_CONTROL_DEMO": function() { return /* binding */ FLEX_PROPERTIES_CONTROL_DEMO; },
-/* harmony export */   "FLEX_WRAP_DEMO": function() { return /* binding */ FLEX_WRAP_DEMO; }
+/* harmony export */   "PLANS_FLEX_ALIGNITEMS_DEMO": function() { return /* binding */ PLANS_FLEX_ALIGNITEMS_DEMO; },
+/* harmony export */   "PLANS_FLEX_DIRECTIONS_DEMO": function() { return /* binding */ PLANS_FLEX_DIRECTIONS_DEMO; },
+/* harmony export */   "PLANS_FLEX_JUSTIFY_CONTENT_DEMO": function() { return /* binding */ PLANS_FLEX_JUSTIFY_CONTENT_DEMO; },
+/* harmony export */   "PLANS_FLEX_WRAP_DEMO": function() { return /* binding */ PLANS_FLEX_WRAP_DEMO; }
 /* harmony export */ });
 const FLEX_PROPERTIES_CONTROL_DEMO = {
   flexDirection: {
@@ -5567,7 +5567,7 @@ const FLEX_PROPERTIES_CONTROL_DEMO = {
     Desktop: "nowrap"
   }
 };
-const FLEX_DIRECTIONS_DEMO = [{
+const PLANS_FLEX_DIRECTIONS_DEMO = [{
   name: "row",
   icon: `<svg class="scale-[.65]" width="38" height="24" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M13.5 4.1L13.5 19.9C13.5 21.4 14.14 22 15.73 22L19.77 22C21.36 22 22 21.4 22 19.9L22 4.1C22 2.6 21.36 2 19.77 2L15.73 2C14.14 2 13.5 2.6 13.5 4.1Z" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
@@ -5604,7 +5604,7 @@ const FLEX_DIRECTIONS_DEMO = [{
         </svg>
     `
 }];
-const FLEX_ALIGNITEMS_DEMO = [{
+const PLANS_FLEX_ALIGNITEMS_DEMO = [{
   name: "start",
   icon: ` <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M19.26 5.1001V16.9001C19.26 18.4001 18.62 19.0001 17.03 19.0001H15.99C14.4 19.0001 13.76 18.4001 13.76 16.9001V5.1001" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -5653,7 +5653,7 @@ const FLEX_ALIGNITEMS_DEMO = [{
         
     `
 }];
-const FLEX_JUSTIFY_CONTENT_DEMO = [{
+const PLANS_FLEX_JUSTIFY_CONTENT_DEMO = [{
   name: "start",
   icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M16.26 18.9V7.1C16.26 5.6 15.62 5 14.03 5H12.99C11.4 5 10.76 5.6 10.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -5702,7 +5702,7 @@ const FLEX_JUSTIFY_CONTENT_DEMO = [{
         </svg>
     `
 }];
-const FLEX_WRAP_DEMO = [{
+const PLANS_FLEX_WRAP_DEMO = [{
   name: "nowrap",
   icon: `<svg width="33" height="24" viewBox="0 0 33 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M22 14.27V10.23C22 8.64 21.36 8 19.77 8H15.73C14.14 8 13.5 8.64 13.5 10.23V14.27C13.5 15.86 14.14 16.5 15.73 16.5H19.77C21.36 16.5 22 15.86 22 14.27Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
