@@ -4,12 +4,12 @@ import MyRadioGroup, { MyRadioItem } from "../MyRadioGroup";
 
 interface Props {
 	className?: string;
-	tag?: React.ElementType<any>;
-	onChange?: (select: React.ElementType<any>) => void;
+	tag?: keyof HTMLElementTagNameMap;
+	onChange?: (select: keyof HTMLElementTagNameMap) => void;
 	label?: string;
 }
 
-const TAGS_PLANS: MyRadioItem<React.ElementType<any>>[] = [
+const TAGS_PLANS: MyRadioItem<keyof HTMLElementTagNameMap>[] = [
 	{
 		name: "h1",
 		icon: "H1",

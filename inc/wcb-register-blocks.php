@@ -117,7 +117,7 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
         register_block_type(
             WCB_BUILD_PATH . '/block-cta',
             [
-                // "render_callback"     => "wcb_block_cta_renderCallback",
+                "render_callback"     => "wcb_block_cta_renderCallback",
             ]
         );
     }

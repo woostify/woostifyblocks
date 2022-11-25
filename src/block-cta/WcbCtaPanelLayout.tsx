@@ -16,16 +16,29 @@ import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives"
 
 export interface WCB_CTA_PANEL_LAYOUT {
 	textAlignment: HasResponsive<TextAlignment>;
-	headingTag: React.ElementType<any>;
+	headingTag: keyof HTMLElementTagNameMap;
 	contentWidth: HasResponsive<string>;
 	flexDirection: HasResponsive<CSSProperties["flexDirection"]>;
 }
 
-export const WCB_CTA_PANEL_LAYOUT_DEMO: WCB_CTA_PANEL_LAYOUT = {
+export const WCB_CTA_PANEL_LAYOUT_PRESET_LEFT_DEMO: WCB_CTA_PANEL_LAYOUT = {
 	textAlignment: { Desktop: "left" },
-	headingTag: "h2",
+	headingTag: "h3",
 	contentWidth: { Desktop: "70%" },
 	flexDirection: { Desktop: "column" },
+};
+export const WCB_CTA_PANEL_LAYOUT_PRESET_CENTER_DEMO: WCB_CTA_PANEL_LAYOUT = {
+	textAlignment: { Desktop: "center" },
+	headingTag: "h3",
+	contentWidth: { Desktop: "70%" },
+	flexDirection: { Desktop: "column" },
+};
+
+export const WCB_CTA_PANEL_LAYOUT_DEMO: WCB_CTA_PANEL_LAYOUT = {
+	textAlignment: { Desktop: "left" },
+	headingTag: "h3",
+	contentWidth: { Desktop: "70%" },
+	flexDirection: { Desktop: "row" },
 };
 
 interface Props

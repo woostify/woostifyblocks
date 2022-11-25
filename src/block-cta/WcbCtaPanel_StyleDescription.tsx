@@ -20,7 +20,7 @@ export const WCB_CTA_PANEL_STYLE_DESCRIPTION_DEMO: WCB_CTA_PANEL_STYLE_TITLE = {
 		...TYPOGRAPHY_CONTROL_DEMO,
 	},
 	textColor: "#171717",
-	marginBottom: { Desktop: "0.5rem" },
+	marginBottom: { Desktop: "0rem" },
 };
 
 interface Props

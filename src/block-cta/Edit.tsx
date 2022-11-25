@@ -12,10 +12,17 @@ import GlobalCss from "./GlobalCss";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
-import WcbCtaPanelLayout from "./WcbCtaPanelLayout";
+import WcbCtaPanelLayout, {
+	WCB_CTA_PANEL_LAYOUT_DEMO,
+	WCB_CTA_PANEL_LAYOUT_PRESET_CENTER_DEMO,
+	WCB_CTA_PANEL_LAYOUT_PRESET_LEFT_DEMO,
+} from "./WcbCtaPanelLayout";
 import WcbCtaPanel_StyleTitle from "./WcbCtaPanel_StyleTitle";
 import WcbCtaPanel_StyleDescription from "./WcbCtaPanel_StyleDescription";
-import WcbCtaPanel_StyleDimension from "./WcbCtaPanel_StyleDimension";
+import WcbCtaPanel_StyleDimension, {
+	WCB_CTA_PANEL_STYLE_DIMENSION_DEMO,
+} from "./WcbCtaPanel_StyleDimension";
+import WcbCtaPanelPreset from "./WcbCtaPanelPreset";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -29,6 +36,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		title,
 		style_description,
 		style_dimension,
+		general_preset,
 	} = attributes;
 	//  COMMON HOOKS
 	const { myCache, ref } = useCreateCacheEmotion();
@@ -54,16 +62,49 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			case "General":
 				return (
 					<>
-						<WcbCtaPanelLayout
-							onToggle={() => handleTogglePanel("General", "Layout", true)}
+						<WcbCtaPanelPreset
+							onToggle={() => handleTogglePanel("General", "Preset", true)}
 							initialOpen={
-								tabGeneralIsPanelOpen === "Layout" ||
+								tabGeneralIsPanelOpen === "Preset" ||
 								tabGeneralIsPanelOpen === "first"
 							}
+							opened={tabGeneralIsPanelOpen === "Preset" || undefined}
+							//
+							setAttr__={(data) => {
+								if (!data.preset) {
+									return setAttributes({
+										general_preset: data,
+										general_layout: WCB_CTA_PANEL_LAYOUT_DEMO,
+										style_dimension: WCB_CTA_PANEL_STYLE_DIMENSION_DEMO,
+									});
+								}
+								setAttributes({
+									general_preset: data,
+									general_layout:
+										data.preset === "preset-center"
+											? WCB_CTA_PANEL_LAYOUT_PRESET_CENTER_DEMO
+											: WCB_CTA_PANEL_LAYOUT_PRESET_LEFT_DEMO,
+									style_dimension: {
+										...style_dimension,
+										gap: { Desktop: "1.5rem" },
+									},
+								});
+							}}
+							panelData={general_preset}
+						/>
+
+						<WcbCtaPanelLayout
+							onToggle={() => handleTogglePanel("General", "Layout")}
+							initialOpen={tabGeneralIsPanelOpen === "Layout"}
 							opened={tabGeneralIsPanelOpen === "Layout" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ general_layout: data });
+								setAttributes({
+									general_layout: data,
+									general_preset: {
+										preset: "",
+									},
+								});
 							}}
 							panelData={general_layout}
 						/>
@@ -144,7 +185,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				<div className="wcb-cta__inner">
 					<div className="wcb-cta__content">
 						<RichText
-							tagName="h3"
+							tagName={attributes.general_layout.headingTag || "h3"}
 							value={attributes.title}
 							allowedFormats={["core/bold", "core/italic"]}
 							onChange={(content) => setAttributes({ title: content })}

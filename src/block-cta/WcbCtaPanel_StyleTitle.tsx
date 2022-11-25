@@ -23,7 +23,7 @@ export interface WCB_CTA_PANEL_STYLE_TITLE {
 export const WCB_CTA_PANEL_STYLE_TITLE_DEMO: WCB_CTA_PANEL_STYLE_TITLE = {
 	typography: {
 		...TYPOGRAPHY_CONTROL_DEMO,
-		fontSizes: { Desktop: "2rem" },
+		fontSizes: { Desktop: "2.25rem" },
 		appearance: {
 			...TYPOGRAPHY_CONTROL_DEMO.appearance,
 			style: {
@@ -33,7 +33,7 @@ export const WCB_CTA_PANEL_STYLE_TITLE_DEMO: WCB_CTA_PANEL_STYLE_TITLE = {
 		},
 	},
 	textColor: "#171717",
-	marginBottom: { Desktop: "0.5rem" },
+	marginBottom: { Desktop: "1.5rem" },
 };
 
 interface Props

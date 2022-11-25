@@ -11,6 +11,10 @@ import {
 	WCB_CTA_PANEL_LAYOUT,
 	WCB_CTA_PANEL_LAYOUT_DEMO,
 } from "./WcbCtaPanelLayout";
+import {
+	WCB_CTA_PANEL_PRESET,
+	WCB_CTA_PANEL_PRESET_DEMO,
+} from "./WcbCtaPanelPreset";
 import { WCB_CTA_PANEL_STYLE_DESCRIPTION_DEMO } from "./WcbCtaPanel_StyleDescription";
 import {
 	WCB_CTA_PANEL_STYLE_DIMENSION,
@@ -26,6 +30,7 @@ export interface WcbAttrs {
 	description: string;
 	//
 	general_layout: WCB_CTA_PANEL_LAYOUT;
+	general_preset: WCB_CTA_PANEL_PRESET;
 	style_title: WCB_CTA_PANEL_STYLE_TITLE;
 	style_description: WCB_CTA_PANEL_STYLE_TITLE;
 	style_dimension: WCB_CTA_PANEL_STYLE_DIMENSION;
@@ -59,6 +64,10 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	general_layout: {
 		type: "object",
 		default: WCB_CTA_PANEL_LAYOUT_DEMO,
+	},
+	general_preset: {
+		type: "object",
+		default: WCB_CTA_PANEL_PRESET_DEMO,
 	},
 	style_title: {
 		type: "object",

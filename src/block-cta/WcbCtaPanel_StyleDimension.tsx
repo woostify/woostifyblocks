@@ -37,7 +37,7 @@ export const WCB_CTA_PANEL_STYLE_DIMENSION_DEMO: WCB_CTA_PANEL_STYLE_DIMENSION =
 				bottom: "",
 			},
 		},
-		gap: { Desktop: "6px" },
+		gap: { Desktop: "1rem" },
 	};
 
 interface Props

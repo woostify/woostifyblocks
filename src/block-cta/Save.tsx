@@ -1,12 +1,12 @@
 import React from "react";
 import { __ } from "@wordpress/i18n";
-import { useBlockProps } from "@wordpress/block-editor";
+import { InnerBlocks, RichText, useBlockProps } from "@wordpress/block-editor";
 import { WcbAttrs } from "./attributes";
 import SaveCommon from "../components/SaveCommon";
 import "./style.scss";
 
 export interface WcbAttrsForSave
-	extends Omit<WcbAttrs, "title" | "description"> {}
+	extends Omit<WcbAttrs, "title" | "description" | "general_preset"> {}
 
 export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const {
@@ -33,6 +33,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	};
 	//
 	const blockProps = useBlockProps.save({ className: "wcb-cta__wrap" });
+
 	return (
 		<SaveCommon
 			attributes={newAttrForSave}
@@ -40,7 +41,23 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			uniqueId={uniqueId}
 			{...blockProps}
 		>
-			<div>CHILD</div>
+			<div className="wcb-cta__inner">
+				<div className="wcb-cta__content">
+					<RichText.Content
+						tagName={attributes.general_layout.headingTag}
+						value={attributes.title}
+						className="wcb-cta__title"
+					/>
+					<RichText.Content
+						tagName="p"
+						value={attributes.description}
+						className="wcb-cta__description"
+					/>
+				</div>
+				<div className="wcb-cta__buttons">
+					<InnerBlocks.Content />
+				</div>
+			</div>
 		</SaveCommon>
 	);
 }
