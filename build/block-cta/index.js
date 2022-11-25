@@ -2204,19 +2204,13 @@ const Edit = props => {
             if (!data.preset) {
               return setAttributes({
                 general_preset: data,
-                general_layout: _WcbCtaPanelLayout__WEBPACK_IMPORTED_MODULE_11__.WCB_CTA_PANEL_LAYOUT_DEMO,
-                style_dimension: _WcbCtaPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_14__.WCB_CTA_PANEL_STYLE_DIMENSION_DEMO
+                general_layout: _WcbCtaPanelLayout__WEBPACK_IMPORTED_MODULE_11__.WCB_CTA_PANEL_LAYOUT_DEMO
               });
             }
 
             setAttributes({
               general_preset: data,
-              general_layout: data.preset === "preset-center" ? _WcbCtaPanelLayout__WEBPACK_IMPORTED_MODULE_11__.WCB_CTA_PANEL_LAYOUT_PRESET_CENTER_DEMO : _WcbCtaPanelLayout__WEBPACK_IMPORTED_MODULE_11__.WCB_CTA_PANEL_LAYOUT_PRESET_LEFT_DEMO,
-              style_dimension: { ...style_dimension,
-                gap: {
-                  Desktop: "1.5rem"
-                }
-              }
+              general_layout: data.preset === "preset-center" ? _WcbCtaPanelLayout__WEBPACK_IMPORTED_MODULE_11__.WCB_CTA_PANEL_LAYOUT_PRESET_CENTER_DEMO : _WcbCtaPanelLayout__WEBPACK_IMPORTED_MODULE_11__.WCB_CTA_PANEL_LAYOUT_PRESET_LEFT_DEMO
             });
           },
           panelData: general_preset
@@ -2980,7 +2974,7 @@ const WCB_CTA_PANEL_STYLE_DIMENSION_DEMO = { ..._components_controls_MyDimension
     }
   },
   gap: {
-    Desktop: "1rem"
+    Desktop: "1.75rem"
   }
 };
 
@@ -3077,7 +3071,7 @@ const WCB_CTA_PANEL_STYLE_TITLE_DEMO = {
   },
   textColor: "#171717",
   marginBottom: {
-    Desktop: "1.5rem"
+    Desktop: "1rem"
   }
 };
 

@@ -33,7 +33,7 @@ export const WCB_CTA_PANEL_STYLE_TITLE_DEMO: WCB_CTA_PANEL_STYLE_TITLE = {
 		},
 	},
 	textColor: "#171717",
-	marginBottom: { Desktop: "1.5rem" },
+	marginBottom: { Desktop: "1rem" },
 };
 
 interface Props

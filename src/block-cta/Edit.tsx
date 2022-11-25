@@ -75,7 +75,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 									return setAttributes({
 										general_preset: data,
 										general_layout: WCB_CTA_PANEL_LAYOUT_DEMO,
-										style_dimension: WCB_CTA_PANEL_STYLE_DIMENSION_DEMO,
 									});
 								}
 								setAttributes({
@@ -84,10 +83,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 										data.preset === "preset-center"
 											? WCB_CTA_PANEL_LAYOUT_PRESET_CENTER_DEMO
 											: WCB_CTA_PANEL_LAYOUT_PRESET_LEFT_DEMO,
-									style_dimension: {
-										...style_dimension,
-										gap: { Desktop: "1.5rem" },
-									},
 								});
 							}}
 							panelData={general_preset}
