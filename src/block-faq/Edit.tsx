@@ -12,12 +12,18 @@ import GlobalCss from "./GlobalCss";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
-import WcbHeadingPanelGeneral from "./WcbHeadingPanelGeneral";
+import WcbFaqPanelGeneral from "./WcbFaqPanelGeneral";
+import WcbFaqPanelIcon from "./WcbFaqPanelIcon";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
-	const { advance_responsiveCondition, advance_zIndex, heading, uniqueId } =
-		attributes;
+	const {
+		advance_responsiveCondition,
+		advance_zIndex,
+		uniqueId,
+		general_general,
+		general_icon,
+	} = attributes;
 	//  COMMON HOOKS
 	const { myCache, ref } = useCreateCacheEmotion();
 	const wrapBlockProps = useBlockProps({ ref });
@@ -42,18 +48,28 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			case "General":
 				return (
 					<>
-						<WcbHeadingPanelGeneral
-							onToggle={() => handleTogglePanel("General", "Heading", true)}
+						<WcbFaqPanelGeneral
+							onToggle={() => handleTogglePanel("General", "General", true)}
 							initialOpen={
-								tabGeneralIsPanelOpen === "Heading" ||
+								tabGeneralIsPanelOpen === "General" ||
 								tabGeneralIsPanelOpen === "first"
 							}
-							opened={tabGeneralIsPanelOpen === "Heading" || undefined}
+							opened={tabGeneralIsPanelOpen === "General" || undefined}
 							//
-							// setAttr__={(data) => {
-							// 	setAttributes({ general_sortingAndFiltering: data });
-							// }}
-							// panelData={general_sortingAndFiltering}
+							setAttr__={(data) => {
+								setAttributes({ general_general: data });
+							}}
+							panelData={general_general}
+						/>
+						<WcbFaqPanelIcon
+							onToggle={() => handleTogglePanel("General", "Icon")}
+							initialOpen={tabGeneralIsPanelOpen === "Icon"}
+							opened={tabGeneralIsPanelOpen === "Icon" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ general_icon: data });
+							}}
+							panelData={general_icon}
 						/>
 					</>
 				);
@@ -83,7 +99,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		<CacheProvider value={myCache}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-default__wrap ${UNIQUE_ID}`}
+				className={`${wrapBlockProps?.className} wcb-faq__wrap ${UNIQUE_ID}`}
 				data-uniqueid={UNIQUE_ID}
 			>
 				{/* CONTROL SETTINGS */}

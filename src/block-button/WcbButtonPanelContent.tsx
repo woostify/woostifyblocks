@@ -1,6 +1,5 @@
 import {
 	Dashicon,
-	Dropdown,
 	PanelBody,
 	TextControl,
 	ToggleControl,
@@ -9,9 +8,8 @@ import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
 import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
-import ResetButton from "../components/controls/ResetButton";
+import SelecIcon from "../components/controls/SelectIcon/SelecIcon";
 import useGetDeviceType from "../hooks/useGetDeviceType";
-import { ICONS_KEYS } from "./types";
 
 export interface WCB_BUTTON_PANEL_CONTENT {
 	enableIcon: boolean;
@@ -117,60 +115,14 @@ const WcbButtonPanelContent: FC<Props> = ({
 					}}
 				/>
 
-				<Dropdown
-					position="middle left"
-					className="w-full"
-					renderToggle={({ isOpen, onToggle }) => (
-						<div className="flex items-center space-x-4">
-							<button
-								className="py-3 px-6 flex items-center justify-center ring-2 ring-slate-200 hover:ring-slate-300 rounded-lg "
-								onClick={onToggle}
-							>
-								<span className="mr-3">{__("Icon:", "wcb")}</span>
-								{iconName ? (
-									<Dashicon size={20} icon={iconName} />
-								) : (
-									<strong>{__("None", "wcb")}</strong>
-								)}
-							</button>
-							<ResetButton
-								onClick={() => {
-									setAttr__({
-										...panelData,
-										iconName: undefined,
-									});
-								}}
-							/>
-						</div>
-					)}
-					renderContent={({ onToggle, onClose }) => (
-						<div className="p-2.5 max-h-96 w-72 overflow-auto bg-gray-900 grid grid-cols-3 gap-2">
-							{ICONS_KEYS.map((item) => (
-								<div
-									key={item}
-									className={`h-20 p-3 flex items-center justify-center bg-gray-800 rounded-lg text-gray-50 hover:ring-2 ring-offset-1 ring-sky-500 cursor-pointer ${
-										item === iconName ? "ring-2" : ""
-									}`}
-									onClick={() => {
-										setAttr__({
-											...panelData,
-											iconName: item === iconName ? undefined : item,
-										});
-										// onClose();
-									}}
-								>
-									<div className="grid">
-										<div className="text-center overflow-hidden ">
-											<Dashicon size={16} icon={item} />
-											<p className="block mt-2.5 truncate text-gray-300 text-xs">
-												{item}
-											</p>
-										</div>
-									</div>
-								</div>
-							))}
-						</div>
-					)}
+				<SelecIcon
+					value={iconName}
+					onChange={(value) => {
+						setAttr__({
+							...panelData,
+							iconName: value,
+						});
+					}}
 				/>
 
 				<MyRadioGroup

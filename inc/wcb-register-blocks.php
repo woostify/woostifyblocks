@@ -120,5 +120,17 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
                 "render_callback"     => "wcb_block_cta_renderCallback",
             ]
         );
+        register_block_type(
+            WCB_BUILD_PATH . '/block-faq',
+            [
+                // "render_callback"     => "wcb_block_cta_renderCallback",
+            ]
+        );
+        register_block_type(
+            WCB_BUILD_PATH . '/block-faq-child',
+            [
+                // "render_callback"     => "wcb_block_cta_renderCallback",
+            ]
+        );
     }
 }

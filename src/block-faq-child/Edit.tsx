@@ -12,7 +12,7 @@ import GlobalCss from "./GlobalCss";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
-import WcbHeadingPanelGeneral from "./WcbHeadingPanelGeneral";
+import WcbHeadingPanelHeading from "./WcbHeadingPanelHeading";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -42,7 +42,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			case "General":
 				return (
 					<>
-						<WcbHeadingPanelGeneral
+						<WcbHeadingPanelHeading
 							onToggle={() => handleTogglePanel("General", "Heading", true)}
 							initialOpen={
 								tabGeneralIsPanelOpen === "Heading" ||
@@ -83,7 +83,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		<CacheProvider value={myCache}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-default__wrap ${UNIQUE_ID}`}
+				className={`${wrapBlockProps?.className} wcb-faq-child__wrap ${UNIQUE_ID}`}
 				data-uniqueid={UNIQUE_ID}
 			>
 				{/* CONTROL SETTINGS */}
