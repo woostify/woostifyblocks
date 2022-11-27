@@ -1,18 +1,21 @@
+import { Dashicon } from "@wordpress/components";
 import { AttrsGenericType } from "../block-container/attributes";
 import {
-	MyResponsiveConditionControlData,
-	RESPONSIVE_CONDITON_DEMO,
-} from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
-import {
-	MyZIndexControlData,
-	Z_INDEX_DEMO,
-} from "../components/controls/MyZIndexControl/MyZIndexControl";
+	WCB_FAQ_PANEL_ICON,
+	WCB_FAQ_PANEL_ICON_DEMO,
+} from "../block-faq/WcbFaqPanelIcon";
+
 export interface WcbAttrs {
 	uniqueId: string;
-	heading: string;
+	question: string;
+	answer: string;
 	//
-	advance_responsiveCondition: MyResponsiveConditionControlData;
-	advance_zIndex: MyZIndexControlData;
+	headingTag: keyof HTMLElementTagNameMap;
+	layout: string;
+	//
+	general_icon: WCB_FAQ_PANEL_ICON;
+
+	//
 }
 
 const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
@@ -20,24 +23,35 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		type: "string",
 		default: "",
 	},
+	layout: {
+		type: "string",
+		default: "accordion",
+	},
+	headingTag: {
+		type: "string",
+		default: "div",
+	},
+	general_icon: {
+		type: "object",
+		default: WCB_FAQ_PANEL_ICON_DEMO,
+	},
 
 	// THE ATTRS OF BLOCK HERE
-	heading: {
+	question: {
 		type: "string",
 		source: "html",
-		selector: ".wcb-heading__heading",
-		default: "Clik to edit HEADING",
+		selector: ".wcb-faq-child__question-text",
+		default: "What is FAQ?",
+	},
+	answer: {
+		type: "string",
+		source: "html",
+		selector: ".wcb-faq-child__answer-text",
+		default:
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
 	},
 
 	// ADVANCE
-	advance_responsiveCondition: {
-		type: "object",
-		default: RESPONSIVE_CONDITON_DEMO,
-	},
-	advance_zIndex: {
-		type: "object",
-		default: Z_INDEX_DEMO,
-	},
 };
 
 export default blokc1Attrs;

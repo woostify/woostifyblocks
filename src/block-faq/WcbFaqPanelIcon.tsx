@@ -15,8 +15,8 @@ export interface WCB_FAQ_PANEL_ICON {
 
 export const WCB_FAQ_PANEL_ICON_DEMO: WCB_FAQ_PANEL_ICON = {
 	enableIcon: true,
-	iconName: "heart",
-	inactiveIconName: "hammer",
+	iconName: "minus",
+	inactiveIconName: "plus-alt2",
 	iconPosition: "left",
 };
 

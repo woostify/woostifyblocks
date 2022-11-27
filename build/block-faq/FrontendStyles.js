@@ -1975,11 +1975,13 @@ const getAdvanveDivWrapStyles = _ref => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../block-container/getAdvanveStyles */ "./src/block-container/getAdvanveStyles.ts");
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+
 
 
 
@@ -1990,6 +1992,11 @@ const GlobalCss = attrs => {
   const {
     uniqueId,
     // ATTRS OF BLOCK
+    general_general,
+    general_icon,
+    style_answer,
+    style_container,
+    style_question,
     //
     advance_responsiveCondition,
     advance_zIndex
@@ -1997,9 +2004,14 @@ const GlobalCss = attrs => {
   const {
     media_desktop,
     media_tablet
-  } = ___WEBPACK_IMPORTED_MODULE_3__.DEMO_WCB_GLOBAL_VARIABLES;
+  } = ___WEBPACK_IMPORTED_MODULE_4__.DEMO_WCB_GLOBAL_VARIABLES;
   const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
-  const HEADING_CLASSNAME = `${WRAP_CLASSNAME} .wcb-heading__heading`; // ------------------- WRAP DIV
+  const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-faq__inner`;
+  const FAQ_CHILD_WRAP = `${WRAP_CLASSNAME} .wcb-faq-child__wrap`;
+  const FAQ_CHILD_QUESTION = `${WRAP_CLASSNAME} .wcb-faq-child__question`;
+  const FAQ_CHILD_QUESTION_TEXT = `${WRAP_CLASSNAME} .wcb-faq-child__question-text`;
+  const FAQ_CHILD_ANSWER = `${WRAP_CLASSNAME} .wcb-faq-child__answer`;
+  const FAQ_CHILD_ANSWER_TEXT = `${WRAP_CLASSNAME} .wcb-faq-child__answer-text`; // ------------------- WRAP DIV
 
   const getDivWrapStyles = () => {
     return {
@@ -2010,19 +2022,79 @@ const GlobalCss = attrs => {
     };
   };
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_4__.Global, {
+  const inner_getGridCol = () => {
+    const {
+      value_Desktop,
+      value_Tablet,
+      value_Mobile
+    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_3__["default"])(general_general.columns);
+    return {
+      [`${INNER_CLASSNAME}`]: {
+        gridTemplateColumns: `repeat(${value_Mobile}, minmax(0, 1fr))`,
+        [`@media (min-width: ${media_tablet})`]: {
+          gridTemplateColumns: `repeat(${value_Tablet}, minmax(0, 1fr))`
+        },
+        [`@media (min-width: ${media_desktop})`]: {
+          gridTemplateColumns: `repeat(${value_Desktop}, minmax(0, 1fr))`
+        }
+      }
+    };
+  };
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_5__.Global, {
     styles: getDivWrapStyles()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_4__.Global, {
+  }), general_general.layout === "grid" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_5__.Global, {
+    styles: [inner_getGridCol(), {
+      [INNER_CLASSNAME]: {
+        textAlign: general_general.textAlignment
+      },
+      ".wcb-faq-child__question": {
+        display: "block"
+      }
+    }]
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_5__.Global, {
     styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__.getAdvanveDivWrapStyles)({
       advance_responsiveCondition,
       advance_zIndex,
       className: WRAP_CLASSNAME,
-      defaultDisplay: "block"
+      defaultDisplay: "grid"
     })
   }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (react__WEBPACK_IMPORTED_MODULE_1___default().memo(GlobalCss));
+
+/***/ }),
+
+/***/ "./src/utils/getValueFromAttrsResponsives.ts":
+/*!***************************************************!*\
+  !*** ./src/utils/getValueFromAttrsResponsives.ts ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+const getValueFromAttrsResponsives = function (properties, currentDevice) {
+  // let value_Desktop = properties.Desktop;
+  // let value_Tablet = properties.Tablet || value_Desktop;
+  // let value_Mobile = properties.Mobile || value_Tablet;
+  const v_Desktop = properties === null || properties === void 0 ? void 0 : properties.Desktop;
+  const v_Tablet = typeof (properties === null || properties === void 0 ? void 0 : properties.Tablet) !== "undefined" && (properties === null || properties === void 0 ? void 0 : properties.Tablet) !== null ? properties === null || properties === void 0 ? void 0 : properties.Tablet : v_Desktop;
+  const v_Mobile = typeof (properties === null || properties === void 0 ? void 0 : properties.Mobile) !== "undefined" && (properties === null || properties === void 0 ? void 0 : properties.Mobile) !== null ? properties === null || properties === void 0 ? void 0 : properties.Mobile : v_Tablet;
+  let currentDeviceValue = undefined;
+
+  if (currentDevice) {
+    currentDeviceValue = currentDevice === "Desktop" ? v_Desktop : currentDevice === "Tablet" ? v_Tablet : v_Mobile;
+  }
+
+  return {
+    value_Desktop: v_Desktop,
+    value_Tablet: v_Tablet,
+    value_Mobile: v_Mobile,
+    currentDeviceValue
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (getValueFromAttrsResponsives);
 
 /***/ }),
 

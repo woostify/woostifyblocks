@@ -2169,6 +2169,9 @@ video {
 .p-3 {
   padding: 0.75rem !important;
 }
+.p-5 {
+  padding: 1.25rem !important;
+}
 .p-1\.5 {
   padding: 0.375rem !important;
 }
@@ -2177,9 +2180,6 @@ video {
 }
 .p-2\.5 {
   padding: 0.625rem !important;
-}
-.p-5 {
-  padding: 1.25rem !important;
 }
 .py-3 {
   padding-top: 0.75rem !important;

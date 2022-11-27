@@ -38,11 +38,12 @@ import { useSelect, useDispatch } from "@wordpress/data";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 
-export type EditProps<T> = {
+export type EditProps<T, C = any> = {
 	attributes: T;
 	setAttributes: (newAttributes: Partial<T>) => void;
 	clientId: string;
 	isSelected: boolean;
+	context: C;
 };
 
 export const getGapStyleFromGapjObj = ({ colunmGap, rowGap }) => {

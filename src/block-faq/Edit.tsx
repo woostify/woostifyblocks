@@ -1,5 +1,13 @@
 import { __ } from "@wordpress/i18n";
-import { useBlockProps } from "@wordpress/block-editor";
+import {
+	InnerBlocks,
+	useBlockProps,
+	// @ts-ignore
+	useInnerBlocksProps,
+	// @ts-ignore
+	__experimentalBlockVariationPicker as BlockVariationPicker,
+	store as blockEditorStore,
+} from "@wordpress/block-editor";
 import React, { useEffect, FC } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
@@ -16,6 +24,7 @@ import WcbFaqPanelGeneral from "./WcbFaqPanelGeneral";
 import WcbFaqPanelIcon from "./WcbFaqPanelIcon";
 import WcbFaqPanel_StyleContainer from "./WcbFaqPanel_StyleContainer";
 import WcbFaqPanel_StyleQuestion from "./WcbFaqPanel_StyleQuestion";
+import WcbFaqPanel_StyleAnswer from "./WcbFaqPanel_StyleAnswer";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -27,6 +36,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		general_icon,
 		style_container,
 		style_question,
+		style_answer,
 	} = attributes;
 	//  COMMON HOOKS
 	const { myCache, ref } = useCreateCacheEmotion();
@@ -106,6 +116,17 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							}}
 							panelData={style_question}
 						/>
+
+						<WcbFaqPanel_StyleAnswer
+							onToggle={() => handleTogglePanel("Styles", "_StyleAnswer")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleAnswer"}
+							opened={tabStylesIsPanelOpen === "_StyleAnswer" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_answer: data });
+							}}
+							panelData={style_answer}
+						/>
 					</>
 				);
 			case "Advances":
@@ -128,11 +149,20 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		}
 	};
 
+	// INNER BLOCK
+	const blockProps = useBlockProps({
+		className: `wcb-faq__inner`,
+	});
+	const innerBlocksProps = useInnerBlocksProps(blockProps, {
+		allowedBlocks: ["wcb/faq-child"],
+		renderAppender: () => false,
+	});
+
 	return (
 		<CacheProvider value={myCache}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-faq__wrap ${UNIQUE_ID}`}
+				className={`${wrapBlockProps?.className} wcb-faq__wrap p-5 ${UNIQUE_ID}`}
 				data-uniqueid={UNIQUE_ID}
 			>
 				{/* CONTROL SETTINGS */}
@@ -142,7 +172,12 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				<GlobalCss {...attributes} />
 
 				{/* CHILD CONTENT  */}
-				<div>CHILD CONTENT </div>
+				<div {...innerBlocksProps} />
+				{/* <InnerBlocks
+						allowedBlocks={["wcb/faq-child"]}
+						template={[["wcb/faq-child", {}]]}
+						// templateLock="insert"
+					/> */}
 			</div>
 		</CacheProvider>
 	);

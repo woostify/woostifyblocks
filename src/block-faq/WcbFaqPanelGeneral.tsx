@@ -3,6 +3,7 @@ import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import MyHeadingTagControl from "../components/controls/MyHeadingTagControl/MyHeadingTagControl";
+import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
 import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import MyTextAlignControl, {
@@ -20,19 +21,19 @@ export interface WCB_FAQ_PANEL_GENERAL {
 	enableSchemaSupport: boolean;
 	enableSeparator: boolean;
 	columns: HasResponsive<number>;
-	textAlignment: HasResponsive<TextAlignment>;
+	textAlignment: TextAlignment;
 }
 
 export const WCB_FAQ_PANEL_GENERAL_DEMO: WCB_FAQ_PANEL_GENERAL = {
 	layout: "accordion",
-	headingTag: "h2",
+	headingTag: "div",
 	collapseOtherItems: true,
 	columns: { Desktop: 2 },
 	enableSchemaSupport: true,
 	enableSeparator: true,
 	enableToggle: true,
 	expandFirstItem: true,
-	textAlignment: { Desktop: "left" },
+	textAlignment: "left",
 };
 
 interface Props
@@ -60,10 +61,7 @@ const WcbFaqPanelGeneral: FC<Props> = ({
 		headingTag,
 		layout,
 	} = panelData;
-	const { currentDeviceValue: TEXT_ALIGNMENT } = getValueFromAttrsResponsives(
-		textAlignment,
-		deviceType
-	);
+
 	const { currentDeviceValue: COLUMNS } = getValueFromAttrsResponsives(
 		columns,
 		deviceType
@@ -73,10 +71,7 @@ const WcbFaqPanelGeneral: FC<Props> = ({
 	const handleChangeTextAlignment = (selected: CSSProperties["textAlign"]) => {
 		setAttr__({
 			...panelData,
-			textAlignment: {
-				...textAlignment,
-				[deviceType]: selected,
-			},
+			textAlignment: selected,
 		});
 	};
 	//
@@ -150,7 +145,11 @@ const WcbFaqPanelGeneral: FC<Props> = ({
 				/>
 
 				<RangeControl
-					label={__("Columns", "wcb")}
+					label={
+						<MyLabelControl hasResponsive className="">
+							{__("Columns", "wcb")}
+						</MyLabelControl>
+					}
 					value={COLUMNS || 2}
 					onChange={(value) => {
 						setAttr__({
@@ -173,8 +172,9 @@ const WcbFaqPanelGeneral: FC<Props> = ({
 				/>
 
 				<MyTextAlignControl
-					textAlignment={TEXT_ALIGNMENT}
+					textAlignment={textAlignment}
 					onChange={handleChangeTextAlignment}
+					hasResponsive={false}
 				/>
 			</div>
 		</PanelBody>

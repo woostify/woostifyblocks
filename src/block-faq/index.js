@@ -29,4 +29,8 @@ registerBlockType(metadata.name, {
 	edit: Edit,
 	save,
 	attributes,
+	providesContext: {
+		"wcb/faq_general": "general_general",
+		"wcb/faq_icon": "general_icon",
+	},
 });

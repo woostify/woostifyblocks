@@ -1,4 +1,41 @@
 /*!*************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/block-faq/style.scss ***!
   \*************************************************************************************************************************************************************************************************************************************************/
+.wcb-faq-child__wrap {
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  padding: 1.25rem;
+}
+.wcb-faq-child__wrap .wcb-faq-child__icon--active {
+  display: none;
+}
+.wcb-faq-child__wrap .wcb-faq-child__icon--inactive {
+  display: block;
+}
+.wcb-faq-child__wrap.active .wcb-faq-child__icon--active {
+  display: block;
+}
+.wcb-faq-child__wrap.active .wcb-faq-child__icon--inactive {
+  display: none;
+}
 
+.wcb-faq__inner {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.wcb-faq-child__question {
+  display: flex;
+  align-items: center;
+}
+.wcb-faq-child__question--icon-right {
+  justify-content: space-between;
+}
+
+.wcb-faq-child__question-text,
+.wcb-faq-child__answer-text {
+  margin: 0;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

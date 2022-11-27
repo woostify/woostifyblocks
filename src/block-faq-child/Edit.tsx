@@ -1,22 +1,27 @@
 import { __ } from "@wordpress/i18n";
-import { useBlockProps } from "@wordpress/block-editor";
+import { RichText, useBlockProps } from "@wordpress/block-editor";
 import React, { useEffect, FC } from "react";
 import { WcbAttrs } from "./attributes";
-import HOCInspectorControls, {
-	InspectorControlsTabs,
-} from "../components/HOCInspectorControls";
 import { EditProps } from "../block-container/Edit";
 import useCreateCacheEmotion from "../hooks/useCreateCacheEmotion";
 import { CacheProvider } from "@emotion/react";
-import GlobalCss from "./GlobalCss";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
-import AdvancePanelCommon from "../components/AdvancePanelCommon";
-import WcbHeadingPanelHeading from "./WcbHeadingPanelHeading";
+import { Dashicon } from "@wordpress/components";
+import { WCB_FAQ_PANEL_ICON } from "../block-faq/WcbFaqPanelIcon";
+import { WCB_FAQ_PANEL_GENERAL } from "../block-faq/WcbFaqPanelGeneral";
 
-const Edit: FC<EditProps<WcbAttrs>> = (props) => {
-	const { attributes, setAttributes, clientId } = props;
-	const { advance_responsiveCondition, advance_zIndex, heading, uniqueId } =
+const Edit: FC<
+	EditProps<
+		WcbAttrs,
+		{
+			"wcb/faq_icon"?: WCB_FAQ_PANEL_ICON;
+			"wcb/faq_general"?: WCB_FAQ_PANEL_GENERAL;
+		}
+	>
+> = (props) => {
+	const { attributes, setAttributes, clientId, context, isSelected } = props;
+	const { uniqueId, answer, layout, question, general_icon, headingTag } =
 		attributes;
 	//  COMMON HOOKS
 	const { myCache, ref } = useCreateCacheEmotion();
@@ -37,63 +42,78 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	}, [UNIQUE_ID]);
 	//
 
-	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
-		switch (tab.name) {
-			case "General":
-				return (
-					<>
-						<WcbHeadingPanelHeading
-							onToggle={() => handleTogglePanel("General", "Heading", true)}
-							initialOpen={
-								tabGeneralIsPanelOpen === "Heading" ||
-								tabGeneralIsPanelOpen === "first"
-							}
-							opened={tabGeneralIsPanelOpen === "Heading" || undefined}
-							//
-							// setAttr__={(data) => {
-							// 	setAttributes({ general_sortingAndFiltering: data });
-							// }}
-							// panelData={general_sortingAndFiltering}
-						/>
-					</>
-				);
-			case "Styles":
-				return <></>;
-			case "Advances":
-				return (
-					<>
-						<AdvancePanelCommon
-							advance_responsiveCondition={
-								attributes.advance_responsiveCondition
-							}
-							advance_zIndex={attributes.advance_zIndex}
-							handleTogglePanel={handleTogglePanel}
-							setAttributes={setAttributes}
-							tabAdvancesIsPanelOpen={tabAdvancesIsPanelOpen}
-						/>
-					</>
-				);
+	useEffect(() => {
+		console.log(12121212121212121);
 
-			default:
-				return <div></div>;
+		setAttributes({
+			layout: context["wcb/faq_general"]?.layout,
+			headingTag: context["wcb/faq_general"]?.headingTag,
+			general_icon: context["wcb/faq_icon"],
+		});
+	}, [context["wcb/faq_general"], context["wcb/faq_icon"]]);
+
+	const renderIcon = () => {
+		if (!general_icon.enableIcon || layout !== "accordion") {
+			return null;
 		}
+		return (
+			<>
+				{general_icon.iconName && (
+					<Dashicon
+						className="wcb-faq-child__icon wcb-faq-child__icon--active"
+						size={16}
+						icon={general_icon.iconName}
+					/>
+				)}
+				{general_icon.inactiveIconName && (
+					<Dashicon
+						className="wcb-faq-child__icon wcb-faq-child__icon--inactive"
+						size={16}
+						icon={general_icon.inactiveIconName}
+					/>
+				)}
+			</>
+		);
 	};
 
 	return (
 		<CacheProvider value={myCache}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-faq-child__wrap ${UNIQUE_ID}`}
+				className={`${
+					wrapBlockProps?.className
+				} wcb-faq-child__wrap wcb-faq-child__wrap--${layout} ${
+					isSelected ? "active" : ""
+				} ${UNIQUE_ID}`}
 				data-uniqueid={UNIQUE_ID}
 			>
-				{/* CONTROL SETTINGS */}
-				<HOCInspectorControls renderTabPanels={renderTabBodyPanels} />
+				<div
+					className={`wcb-faq-child__question wcb-faq-child__question--icon-${general_icon.iconPosition}`}
+				>
+					{general_icon.iconPosition === "left" && renderIcon()}
+					<RichText
+						tagName={headingTag || "h4"}
+						value={question}
+						allowedFormats={["core/bold", "core/italic"]}
+						onChange={(content) => setAttributes({ question: content })}
+						placeholder={__("Question...")}
+						className="wcb-faq-child__question-text"
+					/>
 
-				{/* CSS IN JS */}
-				<GlobalCss {...attributes} />
-
-				{/* CHILD CONTENT  */}
-				<div>CHILD CONTENT </div>
+					{general_icon.iconPosition === "right" && renderIcon()}
+				</div>
+				{(isSelected || layout === "grid") && (
+					<div className="wcb-faq-child__answer">
+						<RichText
+							tagName="p"
+							value={answer}
+							allowedFormats={["core/bold", "core/italic"]}
+							onChange={(content) => setAttributes({ answer: content })}
+							placeholder={__("Answer...")}
+							className="wcb-faq-child__answer-text"
+						/>
+					</div>
+				)}
 			</div>
 		</CacheProvider>
 	);

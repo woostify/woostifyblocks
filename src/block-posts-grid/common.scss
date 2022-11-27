@@ -52,6 +52,10 @@
 	inset: 0;
 }
 
+.wcbPostCard__title {
+	word-wrap: break-word;
+}
+
 .wcbPostCard__title,
 .wcbPostCard__excerpt {
 	margin-top: 0;

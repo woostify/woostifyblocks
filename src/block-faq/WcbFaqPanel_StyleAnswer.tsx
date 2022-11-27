@@ -1,4 +1,4 @@
-import { PanelBody, TabPanel } from "@wordpress/components";
+import { PanelBody } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
@@ -17,19 +17,16 @@ import {
 	__experimentalBoxControl as BoxControl,
 } from "@wordpress/components";
 import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
-import MyTabPanel from "../components/controls/MyTabPanel/MyTabPanel";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 
-export interface WCB_FAQ_PANEL_STYLE_QUESTION {
+export interface WCB_FAQ_PANEL_STYLE_ANSWER {
 	typography: MyTypographyControlData;
 	padding: HasResponsive<DimensionSettings>;
 	color: string;
 	backgroundColor: string;
-	colorHover: string;
-	backgroundColorHover: string;
 }
 
-export const WCB_FAQ_PANEL_STYLE_QUESTION_DEMO: WCB_FAQ_PANEL_STYLE_QUESTION = {
+export const WCB_FAQ_PANEL_STYLE_ANSWER_DEMO: WCB_FAQ_PANEL_STYLE_ANSWER = {
 	typography: TYPOGRAPHY_CONTROL_DEMO,
 	padding: {
 		Desktop: {
@@ -40,53 +37,45 @@ export const WCB_FAQ_PANEL_STYLE_QUESTION_DEMO: WCB_FAQ_PANEL_STYLE_QUESTION = {
 		},
 	},
 	backgroundColor: "",
-	backgroundColorHover: "",
 	color: "",
-	colorHover: "",
 };
-
-type TabHere = "Normal" | "Hover";
-
-export const PANEL_COLOR_TABS: {
-	name: TabHere;
-	title: string;
-}[] = [
-	{ name: "Normal", title: __("Normal", "wcb") },
-	{ name: "Hover", title: __("Hover/Active", "wcb") },
-];
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
-	panelData: WCB_FAQ_PANEL_STYLE_QUESTION;
-	setAttr__: (data: WCB_FAQ_PANEL_STYLE_QUESTION) => void;
+	panelData: WCB_FAQ_PANEL_STYLE_ANSWER;
+	setAttr__: (data: WCB_FAQ_PANEL_STYLE_ANSWER) => void;
 }
 
-const WcbFaqPanel_StyleQuestion: FC<Props> = ({
-	panelData = WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
+const WcbFaqPanel_StyleAnswer: FC<Props> = ({
+	panelData = WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
 	setAttr__,
 	initialOpen,
 	onToggle,
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const {
-		typography,
-		padding,
-		backgroundColor,
-		backgroundColorHover,
-		color,
-		colorHover,
-	} = panelData;
+	const { typography, padding, backgroundColor, color } = panelData;
 	const { currentDeviceValue: currentPadding } = getValueFromAttrsResponsives(
 		padding,
 		deviceType
 	);
 
-	const renderColorTab = (tab: TabPanel.Tab) => {
-		const tabName = tab.name as TabHere;
-		if (tabName === "Normal") {
-			return (
-				<div className="space-y-4">
+	return (
+		<PanelBody
+			initialOpen={initialOpen}
+			onToggle={onToggle}
+			opened={opened}
+			title={__("Answer", "wcb")}
+		>
+			<div className={"space-y-3.5"}>
+				<MyTypographyControl
+					typographyControl={typography}
+					setAttrs__typography={(value) => {
+						setAttr__({ ...panelData, typography: value });
+					}}
+				/>
+
+				<MyDisclosure defaultOpen label={__("Colors & Padding", "wcb")}>
 					<MyColorPicker
 						label={__("Color", "wcb")}
 						onChange={(value) => {
@@ -101,49 +90,6 @@ const WcbFaqPanel_StyleQuestion: FC<Props> = ({
 						}}
 						color={backgroundColor}
 					/>
-				</div>
-			);
-		}
-		if (tabName === "Hover") {
-			return (
-				<div className="space-y-4">
-					<MyColorPicker
-						label={__("Color", "wcb")}
-						onChange={(value) => {
-							setAttr__({ ...panelData, colorHover: value });
-						}}
-						color={colorHover}
-					/>
-					<MyColorPicker
-						label={__("Background color", "wcb")}
-						onChange={(value) => {
-							setAttr__({ ...panelData, backgroundColorHover: value });
-						}}
-						color={backgroundColorHover}
-					/>
-				</div>
-			);
-		}
-		return <div></div>;
-	};
-
-	return (
-		<PanelBody
-			initialOpen={initialOpen}
-			onToggle={onToggle}
-			opened={opened}
-			title={__("Question", "wcb")}
-		>
-			<div className={"space-y-3.5"}>
-				<MyTypographyControl
-					typographyControl={typography}
-					setAttrs__typography={(value) => {
-						setAttr__({ ...panelData, typography: value });
-					}}
-				/>
-
-				<MyDisclosure defaultOpen label={__("Colors & Padding", "wcb")}>
-					<MyTabPanel tabs={PANEL_COLOR_TABS}>{renderColorTab}</MyTabPanel>
 
 					<BoxControl
 						label={
@@ -168,4 +114,4 @@ const WcbFaqPanel_StyleQuestion: FC<Props> = ({
 	);
 };
 
-export default WcbFaqPanel_StyleQuestion;
+export default WcbFaqPanel_StyleAnswer;
