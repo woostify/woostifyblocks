@@ -14,6 +14,8 @@ import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import WcbFaqPanelGeneral from "./WcbFaqPanelGeneral";
 import WcbFaqPanelIcon from "./WcbFaqPanelIcon";
+import WcbFaqPanel_StyleContainer from "./WcbFaqPanel_StyleContainer";
+import WcbFaqPanel_StyleQuestion from "./WcbFaqPanel_StyleQuestion";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -23,6 +25,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		uniqueId,
 		general_general,
 		general_icon,
+		style_container,
+		style_question,
 	} = attributes;
 	//  COMMON HOOKS
 	const { myCache, ref } = useCreateCacheEmotion();
@@ -74,7 +78,36 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					</>
 				);
 			case "Styles":
-				return <></>;
+				return (
+					<>
+						<WcbFaqPanel_StyleContainer
+							onToggle={() =>
+								handleTogglePanel("Styles", "_StyleContainer", true)
+							}
+							initialOpen={
+								tabStylesIsPanelOpen === "_StyleContainer" ||
+								tabStylesIsPanelOpen === "first"
+							}
+							opened={tabStylesIsPanelOpen === "_StyleContainer" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_container: data });
+							}}
+							panelData={style_container}
+						/>
+
+						<WcbFaqPanel_StyleQuestion
+							onToggle={() => handleTogglePanel("Styles", "_StyleQuestion")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleQuestion"}
+							opened={tabStylesIsPanelOpen === "_StyleQuestion" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_question: data });
+							}}
+							panelData={style_question}
+						/>
+					</>
+				);
 			case "Advances":
 				return (
 					<>

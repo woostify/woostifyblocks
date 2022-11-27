@@ -12,10 +12,20 @@ import {
 	WCB_FAQ_PANEL_GENERAL_DEMO,
 } from "./WcbFaqPanelGeneral";
 import { WCB_FAQ_PANEL_ICON, WCB_FAQ_PANEL_ICON_DEMO } from "./WcbFaqPanelIcon";
+import {
+	WCB_FAQ_PANEL_STYLE_CONTAINER,
+	WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
+} from "./WcbFaqPanel_StyleContainer";
+import {
+	WCB_FAQ_PANEL_STYLE_QUESTION,
+	WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
+} from "./WcbFaqPanel_StyleQuestion";
 export interface WcbAttrs {
 	uniqueId: string;
 	general_general: WCB_FAQ_PANEL_GENERAL;
 	general_icon: WCB_FAQ_PANEL_ICON;
+	style_container: WCB_FAQ_PANEL_STYLE_CONTAINER;
+	style_question: WCB_FAQ_PANEL_STYLE_QUESTION;
 	//
 	advance_responsiveCondition: MyResponsiveConditionControlData;
 	advance_zIndex: MyZIndexControlData;
@@ -35,6 +45,14 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	general_icon: {
 		type: "string",
 		default: WCB_FAQ_PANEL_ICON_DEMO,
+	},
+	style_container: {
+		type: "string",
+		default: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
+	},
+	style_question: {
+		type: "string",
+		default: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
 	},
 
 	// ADVANCE
