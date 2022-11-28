@@ -1975,12 +1975,22 @@ const getAdvanveDivWrapStyles = _ref => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../block-container/getAdvanveStyles */ "./src/block-container/getAdvanveStyles.ts");
-/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _utils_getBackgroundColorGradientStyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getBackgroundColorGradientStyles */ "./src/utils/getBackgroundColorGradientStyles.ts");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+/* harmony import */ var _utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/getBorderStyles */ "./src/utils/getBorderStyles.ts");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/getStyleObjectFromResponsiveAttr */ "./src/utils/getStyleObjectFromResponsiveAttr.ts");
+/* harmony import */ var _utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/getTypographyStyles */ "./src/utils/getTypographyStyles.ts");
+/* harmony import */ var _utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/getPaddingMarginStyles */ "./src/utils/getPaddingMarginStyles.ts");
+
+
+
+
+
 
 
 
@@ -1997,6 +2007,7 @@ const GlobalCss = attrs => {
     style_answer,
     style_container,
     style_question,
+    style_icon,
     //
     advance_responsiveCondition,
     advance_zIndex
@@ -2004,14 +2015,26 @@ const GlobalCss = attrs => {
   const {
     media_desktop,
     media_tablet
-  } = ___WEBPACK_IMPORTED_MODULE_4__.DEMO_WCB_GLOBAL_VARIABLES;
+  } = ___WEBPACK_IMPORTED_MODULE_6__.DEMO_WCB_GLOBAL_VARIABLES;
   const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
   const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-faq__inner`;
   const FAQ_CHILD_WRAP = `${WRAP_CLASSNAME} .wcb-faq-child__wrap`;
   const FAQ_CHILD_QUESTION = `${WRAP_CLASSNAME} .wcb-faq-child__question`;
   const FAQ_CHILD_QUESTION_TEXT = `${WRAP_CLASSNAME} .wcb-faq-child__question-text`;
   const FAQ_CHILD_ANSWER = `${WRAP_CLASSNAME} .wcb-faq-child__answer`;
-  const FAQ_CHILD_ANSWER_TEXT = `${WRAP_CLASSNAME} .wcb-faq-child__answer-text`; // ------------------- WRAP DIV
+  const FAQ_CHILD_ANSWER_TEXT = `${WRAP_CLASSNAME} .wcb-faq-child__answer-text`;
+  const FAQ_CHILD_ICON = `${WRAP_CLASSNAME} .wcb-faq-child__icon`; //
+
+  let {
+    value_Desktop: iconSize_desktop,
+    value_Tablet: iconSize_tablet,
+    value_Mobile: iconSize_mobile
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_4__["default"])(style_icon.size);
+  const IconSizeConverted = {
+    Desktop: iconSize_desktop + "px",
+    Tablet: iconSize_tablet + "px",
+    Mobile: iconSize_mobile + "px"
+  }; // ------------------- WRAP DIV
 
   const getDivWrapStyles = () => {
     return {
@@ -2027,7 +2050,7 @@ const GlobalCss = attrs => {
       value_Desktop,
       value_Tablet,
       value_Mobile
-    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_3__["default"])(general_general.columns);
+    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_4__["default"])(general_general.columns);
     return {
       [`${INNER_CLASSNAME}`]: {
         gridTemplateColumns: `repeat(${value_Mobile}, minmax(0, 1fr))`,
@@ -2041,9 +2064,17 @@ const GlobalCss = attrs => {
     };
   };
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_5__.Global, {
-    styles: getDivWrapStyles()
-  }), general_general.layout === "grid" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_5__.Global, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+    styles: [(0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
+      className: INNER_CLASSNAME,
+      value: style_container.colunmGap,
+      prefix: "columnGap"
+    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
+      className: INNER_CLASSNAME,
+      value: style_container.rowGap,
+      prefix: "rowGap"
+    })]
+  }), general_general.layout === "grid" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: [inner_getGridCol(), {
       [INNER_CLASSNAME]: {
         textAlign: general_general.textAlignment
@@ -2052,17 +2083,647 @@ const GlobalCss = attrs => {
         display: "block"
       }
     }]
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_5__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+    styles: [(0,_utils_getBackgroundColorGradientStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
+      className: FAQ_CHILD_WRAP,
+      background: style_container.background
+    }), (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
+      border: style_container.border,
+      className: FAQ_CHILD_WRAP,
+      isWithRadius: true
+    })]
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+    styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_8__["default"])({
+      className: FAQ_CHILD_QUESTION,
+      typography: style_question.typography
+    }), (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_9__["default"])({
+      className: FAQ_CHILD_QUESTION,
+      padding: style_question.padding
+    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
+      className: FAQ_CHILD_QUESTION,
+      value: style_icon.colGap,
+      prefix: "gap"
+    }), {
+      [FAQ_CHILD_QUESTION]: {
+        color: style_question.color,
+        backgroundColor: style_question.backgroundColor,
+        ":hover": {
+          color: style_question.colorHover,
+          backgroundColor: style_question.backgroundColorHover
+        }
+      },
+      [`${WRAP_CLASSNAME} .wcb-faq-child__wrap.active .wcb-faq-child__question`]: {
+        color: style_question.colorHover,
+        backgroundColor: style_question.backgroundColorHover
+      }
+    }]
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+    styles: [(0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
+      className: `${FAQ_CHILD_ICON}, ${FAQ_CHILD_ICON}:before`,
+      value: IconSizeConverted,
+      prefix: "width",
+      prefix_2: "height",
+      prefix_3: "fontSize"
+    }), {
+      [FAQ_CHILD_ICON]: {
+        color: style_icon.color
+      },
+      [`${WRAP_CLASSNAME} .wcb-faq-child__wrap.active`]: {
+        [FAQ_CHILD_ICON]: {
+          color: style_icon.activeColor
+        }
+      }
+    }]
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+    styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_8__["default"])({
+      className: FAQ_CHILD_ANSWER,
+      typography: style_answer.typography
+    }), (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_9__["default"])({
+      className: FAQ_CHILD_ANSWER,
+      padding: style_answer.padding
+    }), {
+      [FAQ_CHILD_ANSWER]: {
+        color: style_answer.color,
+        backgroundColor: style_answer.backgroundColor
+      }
+    }]
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__.getAdvanveDivWrapStyles)({
       advance_responsiveCondition,
       advance_zIndex,
       className: WRAP_CLASSNAME,
-      defaultDisplay: "grid"
+      defaultDisplay: "block"
     })
   }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (react__WEBPACK_IMPORTED_MODULE_1___default().memo(GlobalCss));
+
+/***/ }),
+
+/***/ "./src/utils/color.js":
+/*!****************************!*\
+  !*** ./src/utils/color.js ***!
+  \****************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "wcbCreateColor": function() { return /* binding */ wcbCreateColor; },
+/* harmony export */   "wcbGetRgb": function() { return /* binding */ wcbGetRgb; }
+/* harmony export */ });
+/* harmony import */ var color_rgba__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! color-rgba */ "./node_modules/color-rgba/index.mjs");
+
+/**
+ * Creates a new random color.
+ */
+
+const wcbCreateColor = () => {
+  return `#${((1 << 24) * Math.random() | 0).toString(16)}`;
+};
+/**
+ * Returns an rgb string of the hex color.
+ *
+ * @param {string} hex Color
+ */
+
+const wcbGetRgb = hex => {
+  const rgbColor = (0,color_rgba__WEBPACK_IMPORTED_MODULE_0__["default"])(hex.match(/^#/) ? hex : `#${hex}`);
+  rgbColor.splice(3, 1);
+  return rgbColor.join(', ');
+};
+
+/***/ }),
+
+/***/ "./src/utils/font.ts":
+/*!***************************!*\
+  !*** ./src/utils/font.ts ***!
+  \***************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "createLinkTagWithGoogleFont": function() { return /* binding */ createLinkTagWithGoogleFont; },
+/* harmony export */   "getGoogleFontURL": function() { return /* binding */ getGoogleFontURL; },
+/* harmony export */   "isGoogleFontEnqueued": function() { return /* binding */ isGoogleFontEnqueued; },
+/* harmony export */   "isWebFont": function() { return /* binding */ isWebFont; },
+/* harmony export */   "loadGoogleFont": function() { return /* binding */ loadGoogleFont; }
+/* harmony export */ });
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! . */ "./src/utils/index.js");
+
+const getGoogleFontURL = fontName => {
+  const family = fontName.replace(/ /g, "+");
+  const subset = "";
+  return `https://fonts.googleapis.com/css?family=${family}:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic${subset}`;
+};
+const isWebFont = fontName => fontName && !(fontName !== null && fontName !== void 0 && fontName.match(/^(sans[-+]serif|serif|monospace|serif-alt)$/i));
+/**
+ * Load the stylesheet of a Google Font.
+ *
+ * @param {string} fontName The name of the font
+ */
+
+const loadGoogleFont = fontName => {
+  setTimeout(() => {
+    const _loadGoogleFont = head => {
+      if (head && isWebFont(fontName)) {
+        if (isGoogleFontEnqueued(fontName, head)) {
+          return;
+        }
+
+        const link = createLinkTagWithGoogleFont(fontName);
+        head.appendChild(link);
+        console.log(321, "________load-gg-font_____", {
+          fontName,
+          link
+        });
+      }
+    };
+
+    const headElement = (0,___WEBPACK_IMPORTED_MODULE_0__.getDocumentHead)();
+
+    _loadGoogleFont(headElement);
+
+    if (headElement !== document.querySelector("head")) {
+      _loadGoogleFont(document.querySelector("head"));
+    }
+  }, 50);
+};
+const createLinkTagWithGoogleFont = function () {
+  let fontName = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+  const link = document.createElement("link");
+  link.classList.add("wcb-google-fonts");
+  link.setAttribute("data-font-name", fontName);
+  link.setAttribute("href", getGoogleFontURL(fontName));
+  link.setAttribute("rel", "stylesheet");
+  link.setAttribute("type", "text/css");
+  return link;
+};
+const isGoogleFontEnqueued = function (fontName) {
+  let head = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document.querySelector("head");
+  return head.querySelector(`[data-font-name="${fontName}"]`);
+};
+
+/***/ }),
+
+/***/ "./src/utils/getBackgroundColorGradientStyles.ts":
+/*!*******************************************************!*\
+  !*** ./src/utils/getBackgroundColorGradientStyles.ts ***!
+  \*******************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+const getBackgroundColorGradientStyles = _ref => {
+  let {
+    className,
+    background,
+    backgroundHover
+  } = _ref;
+  const {
+    bgType,
+    color,
+    gradient
+  } = background;
+  const {
+    bgType: bgType_h,
+    color: color_h,
+    gradient: gradient_h
+  } = backgroundHover || {};
+
+  if (bgType !== "color" && bgType !== "gradient") {
+    return {};
+  }
+
+  let preBgName = "";
+  let bgValue = "";
+
+  if (bgType === "color") {
+    preBgName = "backgroundColor";
+    bgValue = color;
+  } // Backgroud gradient
+
+
+  if (bgType === "gradient") {
+    preBgName = "backgroundImage";
+    bgValue = gradient;
+  } //
+  //
+
+
+  let preBgName_h = "";
+  let bgValue_h = "";
+
+  if (bgType_h === "color") {
+    preBgName_h = "backgroundColor";
+    bgValue_h = color_h || "";
+  } // Backgroud gradient
+
+
+  if (bgType_h === "gradient") {
+    preBgName_h = "backgroundImage";
+    bgValue_h = gradient_h || "";
+  } //
+  //
+
+
+  return {
+    [`${className}`]: {
+      [`${preBgName}`]: `${bgValue}`,
+      ":hover": {
+        [`${preBgName_h}`]: `${bgValue_h || null}`
+      }
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (getBackgroundColorGradientStyles);
+
+/***/ }),
+
+/***/ "./src/utils/getBorderRadiusStyles.ts":
+/*!********************************************!*\
+  !*** ./src/utils/getBorderRadiusStyles.ts ***!
+  \********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
+
+
+const getBorderRadiusStyles = _ref => {
+  var _radiusMobile, _radiusMobile2, _radiusMobile3, _radiusMobile4, _radiusTablet, _radiusTablet2, _radiusTablet3, _radiusTablet4, _radiusDesktop, _radiusDesktop2, _radiusDesktop3, _radiusDesktop4;
+
+  let {
+    className,
+    radius
+  } = _ref;
+  const {
+    media_desktop,
+    media_tablet
+  } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES; //
+
+  let {
+    value_Desktop: radiusDesktop,
+    value_Tablet: radiusTablet,
+    value_Mobile: radiusMobile
+  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(radius);
+
+  const converttted = radiusValue => {
+    if (typeof radiusValue === "string") {
+      radiusValue = {
+        bottomLeft: radiusValue,
+        bottomRight: radiusValue,
+        topLeft: radiusValue,
+        topRight: radiusValue
+      };
+    }
+
+    return radiusValue;
+  };
+
+  radiusDesktop = converttted(radiusDesktop);
+  radiusTablet = converttted(radiusDesktop);
+  radiusMobile = converttted(radiusDesktop);
+  return {
+    [`${className}`]: {
+      borderTopLeftRadius: `${(_radiusMobile = radiusMobile) === null || _radiusMobile === void 0 ? void 0 : _radiusMobile.topLeft}`,
+      borderTopRightRadius: `${(_radiusMobile2 = radiusMobile) === null || _radiusMobile2 === void 0 ? void 0 : _radiusMobile2.topRight}`,
+      borderBottomRightRadius: `${(_radiusMobile3 = radiusMobile) === null || _radiusMobile3 === void 0 ? void 0 : _radiusMobile3.bottomRight}`,
+      borderBottomLeftRadius: `${(_radiusMobile4 = radiusMobile) === null || _radiusMobile4 === void 0 ? void 0 : _radiusMobile4.bottomLeft}`,
+      [`@media (min-width: ${media_tablet})`]: {
+        borderTopLeftRadius: `${(_radiusTablet = radiusTablet) === null || _radiusTablet === void 0 ? void 0 : _radiusTablet.topLeft}`,
+        borderTopRightRadius: ` ${(_radiusTablet2 = radiusTablet) === null || _radiusTablet2 === void 0 ? void 0 : _radiusTablet2.topRight}`,
+        borderBottomRightRadius: `${(_radiusTablet3 = radiusTablet) === null || _radiusTablet3 === void 0 ? void 0 : _radiusTablet3.bottomRight}`,
+        borderBottomLeftRadius: `${(_radiusTablet4 = radiusTablet) === null || _radiusTablet4 === void 0 ? void 0 : _radiusTablet4.bottomLeft}`
+      },
+      [`@media (min-width: ${media_desktop})`]: {
+        borderTopLeftRadius: `${(_radiusDesktop = radiusDesktop) === null || _radiusDesktop === void 0 ? void 0 : _radiusDesktop.topLeft}`,
+        borderTopRightRadius: `${(_radiusDesktop2 = radiusDesktop) === null || _radiusDesktop2 === void 0 ? void 0 : _radiusDesktop2.topRight}`,
+        borderBottomRightRadius: `${(_radiusDesktop3 = radiusDesktop) === null || _radiusDesktop3 === void 0 ? void 0 : _radiusDesktop3.bottomRight}`,
+        borderBottomLeftRadius: `${(_radiusDesktop4 = radiusDesktop) === null || _radiusDesktop4 === void 0 ? void 0 : _radiusDesktop4.bottomLeft}`
+      }
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (getBorderRadiusStyles);
+
+/***/ }),
+
+/***/ "./src/utils/getBorderStyles.ts":
+/*!**************************************!*\
+  !*** ./src/utils/getBorderStyles.ts ***!
+  \**************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _getBorderRadiusStyles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getBorderRadiusStyles */ "./src/utils/getBorderRadiusStyles.ts");
+
+
+const getBorderStyles = _ref => {
+  let {
+    border,
+    className,
+    isWithRadius = false
+  } = _ref;
+  const {
+    hoverColor,
+    mainSettings,
+    radius
+  } = border; //
+  // MAIN BORDER
+
+  let CSSObject = {
+    [`${className}`]: {}
+  };
+
+  if (mainSettings) {
+    if (mainSettings !== null && mainSettings !== void 0 && mainSettings.top) {
+      const {
+        bottom,
+        left,
+        right,
+        top
+      } = mainSettings;
+      CSSObject = {
+        [`${className}`]: {
+          borderTop: `${top.width} ${top.style} ${top.color}`,
+          borderLeft: `${left.width} ${left.style} ${left.color}`,
+          borderRight: `${right.width} ${right.style} ${right.color}`,
+          borderBottom: `${bottom.width} ${bottom.style} ${bottom.color}`,
+          "&:hover": {
+            borderColor: `${hoverColor}`
+          }
+        }
+      };
+    } else {
+      const {
+        color,
+        style,
+        width
+      } = mainSettings;
+      CSSObject = {
+        [`${className}`]: {
+          border: `${width} ${style} ${color}`,
+          "&:hover": {
+            borderColor: `${hoverColor}`
+          }
+        }
+      };
+    }
+  } // RAIDUS
+
+
+  let radiusCSSObject = {
+    [`${className}`]: {}
+  };
+
+  if (isWithRadius && radius) {
+    radiusCSSObject = (0,_getBorderRadiusStyles__WEBPACK_IMPORTED_MODULE_0__["default"])({
+      radius,
+      className
+    });
+  } //
+
+
+  let a = {};
+  let b = {};
+
+  if (typeof CSSObject[className] === "object") {
+    a = CSSObject[className] || {};
+  }
+
+  if (typeof radiusCSSObject[className] === "object") {
+    b = radiusCSSObject[className] || {};
+  }
+
+  return {
+    [`${className}`]: { ...a,
+      ...b
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (getBorderStyles);
+
+/***/ }),
+
+/***/ "./src/utils/getPaddingMarginStyles.ts":
+/*!*********************************************!*\
+  !*** ./src/utils/getPaddingMarginStyles.ts ***!
+  \*********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
+
+
+
+const getPaddingMarginStyles = _ref => {
+  let {
+    className,
+    padding,
+    margin
+  } = _ref;
+  const {
+    media_desktop,
+    media_tablet
+  } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES;
+  const {
+    value_Desktop: margin_Desktop,
+    value_Tablet: margin_Tablet,
+    value_Mobile: margin_Mobile
+  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(margin); //
+
+  const {
+    value_Desktop: padding_Desktop,
+    value_Tablet: padding_Tablet,
+    value_Mobile: padding_Mobile
+  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(padding); //
+
+  return _emotion_react__WEBPACK_IMPORTED_MODULE_2__.css`
+		${className} {
+			padding-top: ${padding_Mobile === null || padding_Mobile === void 0 ? void 0 : padding_Mobile.top};
+			padding-right: ${padding_Mobile === null || padding_Mobile === void 0 ? void 0 : padding_Mobile.right};
+			padding-bottom: ${padding_Mobile === null || padding_Mobile === void 0 ? void 0 : padding_Mobile.bottom};
+			padding-left: ${padding_Mobile === null || padding_Mobile === void 0 ? void 0 : padding_Mobile.left};
+			margin-top: ${margin_Mobile === null || margin_Mobile === void 0 ? void 0 : margin_Mobile.top};
+			margin-right: ${margin_Mobile === null || margin_Mobile === void 0 ? void 0 : margin_Mobile.right};
+			margin-bottom: ${margin_Mobile === null || margin_Mobile === void 0 ? void 0 : margin_Mobile.bottom};
+			margin-left: ${margin_Mobile === null || margin_Mobile === void 0 ? void 0 : margin_Mobile.left};
+			@media (min-width: ${media_tablet}) {
+				padding-top: ${padding_Tablet === null || padding_Tablet === void 0 ? void 0 : padding_Tablet.top};
+				padding-right: ${padding_Tablet === null || padding_Tablet === void 0 ? void 0 : padding_Tablet.right};
+				padding-bottom: ${padding_Tablet === null || padding_Tablet === void 0 ? void 0 : padding_Tablet.bottom};
+				padding-left: ${padding_Tablet === null || padding_Tablet === void 0 ? void 0 : padding_Tablet.left};
+				margin-top: ${margin_Tablet === null || margin_Tablet === void 0 ? void 0 : margin_Tablet.top};
+				margin-right: ${margin_Tablet === null || margin_Tablet === void 0 ? void 0 : margin_Tablet.right};
+				margin-bottom: ${margin_Tablet === null || margin_Tablet === void 0 ? void 0 : margin_Tablet.bottom};
+				margin-left: ${margin_Tablet === null || margin_Tablet === void 0 ? void 0 : margin_Tablet.left};
+			}
+			@media (min-width: ${media_desktop}) {
+				padding-top: ${padding_Desktop === null || padding_Desktop === void 0 ? void 0 : padding_Desktop.top};
+				padding-right: ${padding_Desktop === null || padding_Desktop === void 0 ? void 0 : padding_Desktop.right};
+				padding-bottom: ${padding_Desktop === null || padding_Desktop === void 0 ? void 0 : padding_Desktop.bottom};
+				padding-left: ${padding_Desktop === null || padding_Desktop === void 0 ? void 0 : padding_Desktop.left};
+				margin-top: ${margin_Desktop === null || margin_Desktop === void 0 ? void 0 : margin_Desktop.top};
+				margin-right: ${margin_Desktop === null || margin_Desktop === void 0 ? void 0 : margin_Desktop.right};
+				margin-bottom: ${margin_Desktop === null || margin_Desktop === void 0 ? void 0 : margin_Desktop.bottom};
+				margin-left: ${margin_Desktop === null || margin_Desktop === void 0 ? void 0 : margin_Desktop.left};
+			}
+		}
+	`;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (getPaddingMarginStyles);
+
+/***/ }),
+
+/***/ "./src/utils/getStyleObjectFromResponsiveAttr.ts":
+/*!*******************************************************!*\
+  !*** ./src/utils/getStyleObjectFromResponsiveAttr.ts ***!
+  \*******************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
+
+
+function getStyleObjectFromResponsiveAttr(_ref) {
+  let {
+    className,
+    prefix,
+    prefix_2,
+    prefix_3,
+    prefix_4,
+    value
+  } = _ref;
+  const {
+    media_desktop,
+    media_tablet
+  } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES;
+  const {
+    value_Desktop,
+    value_Tablet,
+    value_Mobile
+  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(value); //
+
+  let prefix2 = prefix_2 || "";
+  let prefix3 = prefix_3 || "";
+  let prefix4 = prefix_4 || "";
+  return {
+    [className]: {
+      [prefix]: `${value_Mobile}`,
+      [prefix2]: prefix_2 ? `${value_Mobile}` : null,
+      [prefix3]: prefix_3 ? `${value_Mobile}` : null,
+      [prefix4]: prefix_4 ? `${value_Mobile}` : null,
+      [`@media (min-width: ${media_tablet})`]: {
+        [prefix]: `${value_Tablet}`,
+        [prefix2]: prefix_2 ? `${value_Tablet}` : null,
+        [prefix3]: prefix_3 ? `${value_Tablet}` : null,
+        [prefix4]: prefix_4 ? `${value_Tablet}` : null
+      },
+      [`@media (min-width: ${media_desktop})`]: {
+        [prefix]: `${value_Desktop}`,
+        [prefix2]: prefix_2 ? `${value_Desktop}` : null,
+        [prefix3]: prefix_3 ? `${value_Desktop}` : null,
+        [prefix4]: prefix_4 ? `${value_Desktop}` : null
+      }
+    }
+  };
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (getStyleObjectFromResponsiveAttr);
+
+/***/ }),
+
+/***/ "./src/utils/getTypographyStyles.ts":
+/*!******************************************!*\
+  !*** ./src/utils/getTypographyStyles.ts ***!
+  \******************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _font__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./font */ "./src/utils/font.ts");
+
+
+
+const getTypographyStyles = _ref => {
+  var _appearance$style, _appearance$style2;
+
+  let {
+    typography,
+    className
+  } = _ref;
+
+  if (!typography || !className) {
+    return {};
+  }
+
+  const {
+    appearance,
+    fontFamily,
+    fontSizes,
+    letterSpacing,
+    lineHeight,
+    textDecoration,
+    textTransform
+  } = typography;
+
+  if (!!fontFamily) {
+    (0,_font__WEBPACK_IMPORTED_MODULE_1__.loadGoogleFont)(fontFamily);
+  }
+
+  const {
+    media_desktop,
+    media_tablet
+  } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES; //
+
+  const fontSize_Desktop = fontSizes === null || fontSizes === void 0 ? void 0 : fontSizes.Desktop;
+  const fontSize_Tablet = (fontSizes === null || fontSizes === void 0 ? void 0 : fontSizes.Tablet) || fontSize_Desktop;
+  const fontSize_Mobile = (fontSizes === null || fontSizes === void 0 ? void 0 : fontSizes.Mobile) || fontSize_Tablet; //
+
+  const lineHeight_Desktop = lineHeight === null || lineHeight === void 0 ? void 0 : lineHeight.Desktop;
+  const lineHeight_Tablet = (lineHeight === null || lineHeight === void 0 ? void 0 : lineHeight.Tablet) || lineHeight_Desktop;
+  const lineHeight_Mobile = (lineHeight === null || lineHeight === void 0 ? void 0 : lineHeight.Mobile) || lineHeight_Tablet; //
+
+  const letterSpacing_Desktop = letterSpacing === null || letterSpacing === void 0 ? void 0 : letterSpacing.Desktop;
+  const letterSpacing_Tablet = (letterSpacing === null || letterSpacing === void 0 ? void 0 : letterSpacing.Tablet) || letterSpacing_Desktop;
+  const letterSpacing_Mobile = (letterSpacing === null || letterSpacing === void 0 ? void 0 : letterSpacing.Mobile) || letterSpacing_Tablet; //
+
+  return {
+    [`${className}`]: {
+      fontFamily: fontFamily,
+      fontSize: fontSize_Mobile,
+      fontWeight: (_appearance$style = appearance.style) === null || _appearance$style === void 0 ? void 0 : _appearance$style.fontWeight,
+      fontStyle: (_appearance$style2 = appearance.style) === null || _appearance$style2 === void 0 ? void 0 : _appearance$style2.fontStyle,
+      textDecoration,
+      textTransform,
+      lineHeight: lineHeight_Mobile,
+      letterSpacing: letterSpacing_Mobile,
+      [`@media (min-width: ${media_tablet})`]: {
+        fontSize: fontSize_Tablet,
+        lineHeight: lineHeight_Tablet,
+        letterSpacing: letterSpacing_Tablet
+      },
+      [`@media (min-width: ${media_desktop})`]: {
+        fontSize: fontSize_Desktop,
+        lineHeight: lineHeight_Desktop,
+        letterSpacing: letterSpacing_Desktop
+      }
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (getTypographyStyles);
 
 /***/ }),
 
@@ -2095,6 +2756,363 @@ const getValueFromAttrsResponsives = function (properties, currentDevice) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (getValueFromAttrsResponsives);
+
+/***/ }),
+
+/***/ "./src/utils/global-style.js":
+/*!***********************************!*\
+  !*** ./src/utils/global-style.js ***!
+  \***********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "convertToResponsiveStyle": function() { return /* binding */ convertToResponsiveStyle; },
+/* harmony export */   "createStyleTagWithGlobalStyleContent": function() { return /* binding */ createStyleTagWithGlobalStyleContent; },
+/* harmony export */   "isStyleTagAdded": function() { return /* binding */ isStyleTagAdded; },
+/* harmony export */   "removeOldStyleTag": function() { return /* binding */ removeOldStyleTag; },
+/* harmony export */   "renderGlobalStyle": function() { return /* binding */ renderGlobalStyle; }
+/* harmony export */ });
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! . */ "./src/utils/index.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/api */ "@wordpress/api");
+/* harmony import */ var _wordpress_api__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+const convertToResponsiveStyle = () => {
+  let responsiveJson = {
+    'desktop': {
+      'style': []
+    },
+    'tablet': {
+      'breakpoint': '991px',
+      'style': []
+    },
+    'mobile': {
+      'breakpoint': '767px',
+      'style': []
+    }
+  };
+  let content = '';
+  _wordpress_api__WEBPACK_IMPORTED_MODULE_2__.loadPromise.then(() => {
+    const settings = new _wordpress_api__WEBPACK_IMPORTED_MODULE_2__.models.Settings();
+    settings.fetch().then(response => {
+      const typography = (0,lodash__WEBPACK_IMPORTED_MODULE_1__.head)(response.wcb_global_typography);
+      const colors = response.wcb_global_colors;
+
+      for (const selector in typography) {
+        //styleContent += `${cssPrefix} ${selector}{${JSToCSS(typo[selector])}}`;
+        const attrs = typography[selector];
+        let selectorStyle = {
+          [selector]: {}
+        };
+        responsiveJson['desktop']['style'].push(selectorStyle);
+        responsiveJson['mobile']['style'].push(selectorStyle);
+        responsiveJson['tablet']['style'].push(selectorStyle);
+
+        for (const attrName in attrs) {
+          if (attrName.includes('Tablet')) {} else if (attrName.includes('Mobile')) {} else {}
+        }
+      }
+
+      return responsiveJson;
+    });
+  });
+  return content;
+};
+const renderGlobalStyle = () => {
+  setTimeout(() => {
+    const _renderGlobalStyle = head => {
+      if (head) {
+        removeOldStyleTag(head);
+        const style = createStyleTagWithGlobalStyleContent();
+        head.appendChild(style);
+      }
+    };
+
+    const headElement = (0,___WEBPACK_IMPORTED_MODULE_0__.getDocumentHead)();
+
+    _renderGlobalStyle(headElement);
+
+    if (headElement !== document.querySelector('head')) {
+      _renderGlobalStyle(document.querySelector('head'));
+    }
+  }, 50);
+};
+const createStyleTagWithGlobalStyleContent = () => {
+  let cssPrefix = '.woostify-block';
+
+  if ((0,___WEBPACK_IMPORTED_MODULE_0__.isEditingPost)()) {
+    cssPrefix = '.editor-styles-wrapper .woostify-block';
+  }
+
+  const style = document.createElement('style');
+  style.classList.add('wcb-global-style');
+  style.textContent = convertToResponsiveStyle();
+  return style;
+};
+const removeOldStyleTag = function () {
+  let head = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document.querySelector('head');
+
+  if (!isStyleTagAdded(head)) {
+    return;
+  }
+
+  const oldTag = head.querySelector('.wcb-global-style');
+  oldTag.remove();
+};
+const isStyleTagAdded = function () {
+  let head = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document.querySelector('head');
+  return head.querySelector('.wcb-global-style');
+};
+
+/***/ }),
+
+/***/ "./src/utils/index.js":
+/*!****************************!*\
+  !*** ./src/utils/index.js ***!
+  \****************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "JSToCSS": function() { return /* binding */ JSToCSS; },
+/* harmony export */   "capitalizeFirstLetter": function() { return /* binding */ capitalizeFirstLetter; },
+/* harmony export */   "convertToResponsiveStyle": function() { return /* reexport safe */ _global_style__WEBPACK_IMPORTED_MODULE_2__.convertToResponsiveStyle; },
+/* harmony export */   "createLinkTagWithGoogleFont": function() { return /* reexport safe */ _font__WEBPACK_IMPORTED_MODULE_0__.createLinkTagWithGoogleFont; },
+/* harmony export */   "createStyleTagWithGlobalStyleContent": function() { return /* reexport safe */ _global_style__WEBPACK_IMPORTED_MODULE_2__.createStyleTagWithGlobalStyleContent; },
+/* harmony export */   "getDocumentHead": function() { return /* binding */ getDocumentHead; },
+/* harmony export */   "getGoogleFontURL": function() { return /* reexport safe */ _font__WEBPACK_IMPORTED_MODULE_0__.getGoogleFontURL; },
+/* harmony export */   "isEditingContent": function() { return /* binding */ isEditingContent; },
+/* harmony export */   "isEditingPost": function() { return /* binding */ isEditingPost; },
+/* harmony export */   "isGoogleFontEnqueued": function() { return /* reexport safe */ _font__WEBPACK_IMPORTED_MODULE_0__.isGoogleFontEnqueued; },
+/* harmony export */   "isStyleTagAdded": function() { return /* reexport safe */ _global_style__WEBPACK_IMPORTED_MODULE_2__.isStyleTagAdded; },
+/* harmony export */   "isWebFont": function() { return /* reexport safe */ _font__WEBPACK_IMPORTED_MODULE_0__.isWebFont; },
+/* harmony export */   "loadGoogleFont": function() { return /* reexport safe */ _font__WEBPACK_IMPORTED_MODULE_0__.loadGoogleFont; },
+/* harmony export */   "removeOldStyleTag": function() { return /* reexport safe */ _global_style__WEBPACK_IMPORTED_MODULE_2__.removeOldStyleTag; },
+/* harmony export */   "renderGlobalStyle": function() { return /* reexport safe */ _global_style__WEBPACK_IMPORTED_MODULE_2__.renderGlobalStyle; },
+/* harmony export */   "wcbCreateColor": function() { return /* reexport safe */ _color__WEBPACK_IMPORTED_MODULE_1__.wcbCreateColor; },
+/* harmony export */   "wcbGetRgb": function() { return /* reexport safe */ _color__WEBPACK_IMPORTED_MODULE_1__.wcbGetRgb; }
+/* harmony export */ });
+/* harmony import */ var _font__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./font */ "./src/utils/font.ts");
+/* harmony import */ var _color__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./color */ "./src/utils/color.js");
+/* harmony import */ var _global_style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./global-style */ "./src/utils/global-style.js");
+
+
+
+/**
+ * Capitalize the first letter in string
+ * @param {*} string
+ * @returns
+ */
+
+const capitalizeFirstLetter = string => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+const getDocumentHead = () => {
+  let head = document.querySelector('head');
+
+  if (isEditingContent()) {
+    head = document.querySelector('iframe[name="editor-canvas"]').contentWindow.document.querySelector('head');
+  }
+
+  return head;
+};
+const isEditingContent = () => !!document.querySelector('iframe[name="editor-canvas"]');
+const isEditingPost = () => {
+  if (document.querySelector('.edit-post-visual-editor')) {
+    return true;
+  }
+
+  return false;
+};
+const JSToCSS = JS => {
+  let cssString = '';
+
+  for (let objectKey in JS) {
+    if (objectKey.includes('Unit')) {
+      return;
+    }
+
+    let suffix = '';
+
+    if (objectKey.includes('fontFamily')) {
+      suffix = ', Sans-serif';
+    }
+
+    if (objectKey.includes('letterSpacing')) {
+      suffix = 'px';
+    }
+
+    cssString += objectKey.replace(/([A-Z])/g, g => `-${g[0].toLowerCase()}`) + ': ' + JS[objectKey] + suffix + ';\n';
+  }
+
+  return cssString;
+};
+
+/***/ }),
+
+/***/ "./node_modules/color-name/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/color-name/index.js ***!
+  \******************************************/
+/***/ (function(module) {
+
+
+
+module.exports = {
+	"aliceblue": [240, 248, 255],
+	"antiquewhite": [250, 235, 215],
+	"aqua": [0, 255, 255],
+	"aquamarine": [127, 255, 212],
+	"azure": [240, 255, 255],
+	"beige": [245, 245, 220],
+	"bisque": [255, 228, 196],
+	"black": [0, 0, 0],
+	"blanchedalmond": [255, 235, 205],
+	"blue": [0, 0, 255],
+	"blueviolet": [138, 43, 226],
+	"brown": [165, 42, 42],
+	"burlywood": [222, 184, 135],
+	"cadetblue": [95, 158, 160],
+	"chartreuse": [127, 255, 0],
+	"chocolate": [210, 105, 30],
+	"coral": [255, 127, 80],
+	"cornflowerblue": [100, 149, 237],
+	"cornsilk": [255, 248, 220],
+	"crimson": [220, 20, 60],
+	"cyan": [0, 255, 255],
+	"darkblue": [0, 0, 139],
+	"darkcyan": [0, 139, 139],
+	"darkgoldenrod": [184, 134, 11],
+	"darkgray": [169, 169, 169],
+	"darkgreen": [0, 100, 0],
+	"darkgrey": [169, 169, 169],
+	"darkkhaki": [189, 183, 107],
+	"darkmagenta": [139, 0, 139],
+	"darkolivegreen": [85, 107, 47],
+	"darkorange": [255, 140, 0],
+	"darkorchid": [153, 50, 204],
+	"darkred": [139, 0, 0],
+	"darksalmon": [233, 150, 122],
+	"darkseagreen": [143, 188, 143],
+	"darkslateblue": [72, 61, 139],
+	"darkslategray": [47, 79, 79],
+	"darkslategrey": [47, 79, 79],
+	"darkturquoise": [0, 206, 209],
+	"darkviolet": [148, 0, 211],
+	"deeppink": [255, 20, 147],
+	"deepskyblue": [0, 191, 255],
+	"dimgray": [105, 105, 105],
+	"dimgrey": [105, 105, 105],
+	"dodgerblue": [30, 144, 255],
+	"firebrick": [178, 34, 34],
+	"floralwhite": [255, 250, 240],
+	"forestgreen": [34, 139, 34],
+	"fuchsia": [255, 0, 255],
+	"gainsboro": [220, 220, 220],
+	"ghostwhite": [248, 248, 255],
+	"gold": [255, 215, 0],
+	"goldenrod": [218, 165, 32],
+	"gray": [128, 128, 128],
+	"green": [0, 128, 0],
+	"greenyellow": [173, 255, 47],
+	"grey": [128, 128, 128],
+	"honeydew": [240, 255, 240],
+	"hotpink": [255, 105, 180],
+	"indianred": [205, 92, 92],
+	"indigo": [75, 0, 130],
+	"ivory": [255, 255, 240],
+	"khaki": [240, 230, 140],
+	"lavender": [230, 230, 250],
+	"lavenderblush": [255, 240, 245],
+	"lawngreen": [124, 252, 0],
+	"lemonchiffon": [255, 250, 205],
+	"lightblue": [173, 216, 230],
+	"lightcoral": [240, 128, 128],
+	"lightcyan": [224, 255, 255],
+	"lightgoldenrodyellow": [250, 250, 210],
+	"lightgray": [211, 211, 211],
+	"lightgreen": [144, 238, 144],
+	"lightgrey": [211, 211, 211],
+	"lightpink": [255, 182, 193],
+	"lightsalmon": [255, 160, 122],
+	"lightseagreen": [32, 178, 170],
+	"lightskyblue": [135, 206, 250],
+	"lightslategray": [119, 136, 153],
+	"lightslategrey": [119, 136, 153],
+	"lightsteelblue": [176, 196, 222],
+	"lightyellow": [255, 255, 224],
+	"lime": [0, 255, 0],
+	"limegreen": [50, 205, 50],
+	"linen": [250, 240, 230],
+	"magenta": [255, 0, 255],
+	"maroon": [128, 0, 0],
+	"mediumaquamarine": [102, 205, 170],
+	"mediumblue": [0, 0, 205],
+	"mediumorchid": [186, 85, 211],
+	"mediumpurple": [147, 112, 219],
+	"mediumseagreen": [60, 179, 113],
+	"mediumslateblue": [123, 104, 238],
+	"mediumspringgreen": [0, 250, 154],
+	"mediumturquoise": [72, 209, 204],
+	"mediumvioletred": [199, 21, 133],
+	"midnightblue": [25, 25, 112],
+	"mintcream": [245, 255, 250],
+	"mistyrose": [255, 228, 225],
+	"moccasin": [255, 228, 181],
+	"navajowhite": [255, 222, 173],
+	"navy": [0, 0, 128],
+	"oldlace": [253, 245, 230],
+	"olive": [128, 128, 0],
+	"olivedrab": [107, 142, 35],
+	"orange": [255, 165, 0],
+	"orangered": [255, 69, 0],
+	"orchid": [218, 112, 214],
+	"palegoldenrod": [238, 232, 170],
+	"palegreen": [152, 251, 152],
+	"paleturquoise": [175, 238, 238],
+	"palevioletred": [219, 112, 147],
+	"papayawhip": [255, 239, 213],
+	"peachpuff": [255, 218, 185],
+	"peru": [205, 133, 63],
+	"pink": [255, 192, 203],
+	"plum": [221, 160, 221],
+	"powderblue": [176, 224, 230],
+	"purple": [128, 0, 128],
+	"rebeccapurple": [102, 51, 153],
+	"red": [255, 0, 0],
+	"rosybrown": [188, 143, 143],
+	"royalblue": [65, 105, 225],
+	"saddlebrown": [139, 69, 19],
+	"salmon": [250, 128, 114],
+	"sandybrown": [244, 164, 96],
+	"seagreen": [46, 139, 87],
+	"seashell": [255, 245, 238],
+	"sienna": [160, 82, 45],
+	"silver": [192, 192, 192],
+	"skyblue": [135, 206, 235],
+	"slateblue": [106, 90, 205],
+	"slategray": [112, 128, 144],
+	"slategrey": [112, 128, 144],
+	"snow": [255, 250, 250],
+	"springgreen": [0, 255, 127],
+	"steelblue": [70, 130, 180],
+	"tan": [210, 180, 140],
+	"teal": [0, 128, 128],
+	"thistle": [216, 191, 216],
+	"tomato": [255, 99, 71],
+	"turquoise": [64, 224, 208],
+	"violet": [238, 130, 238],
+	"wheat": [245, 222, 179],
+	"white": [255, 255, 255],
+	"whitesmoke": [245, 245, 245],
+	"yellow": [255, 255, 0],
+	"yellowgreen": [154, 205, 50]
+};
+
 
 /***/ }),
 
@@ -2447,6 +3465,26 @@ module.exports = window["jQuery"];
 
 /***/ }),
 
+/***/ "lodash":
+/*!*************************!*\
+  !*** external "lodash" ***!
+  \*************************/
+/***/ (function(module) {
+
+module.exports = window["lodash"];
+
+/***/ }),
+
+/***/ "@wordpress/api":
+/*!*****************************!*\
+  !*** external ["wp","api"] ***!
+  \*****************************/
+/***/ (function(module) {
+
+module.exports = window["wp"]["api"];
+
+/***/ }),
+
 /***/ "@wordpress/element":
 /*!*********************************!*\
   !*** external ["wp","element"] ***!
@@ -2483,6 +3521,376 @@ function _extends() {
   };
   return _extends.apply(this, arguments);
 }
+
+/***/ }),
+
+/***/ "./node_modules/color-parse/index.mjs":
+/*!********************************************!*\
+  !*** ./node_modules/color-parse/index.mjs ***!
+  \********************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var color_name__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! color-name */ "./node_modules/color-name/index.js");
+/**
+ * @module color-parse
+ */
+
+
+/* harmony default export */ __webpack_exports__["default"] = (parse);
+
+/**
+ * Base hues
+ * http://dev.w3.org/csswg/css-color/#typedef-named-hue
+ */
+//FIXME: use external hue detector
+var baseHues = {
+	red: 0,
+	orange: 60,
+	yellow: 120,
+	green: 180,
+	blue: 240,
+	purple: 300
+}
+
+/**
+ * Parse color from the string passed
+ *
+ * @return {Object} A space indicator `space`, an array `values` and `alpha`
+ */
+function parse (cstr) {
+	var m, parts = [], alpha = 1, space
+
+	if (typeof cstr === 'string') {
+		//keyword
+		if (color_name__WEBPACK_IMPORTED_MODULE_0__[cstr]) {
+			parts = color_name__WEBPACK_IMPORTED_MODULE_0__[cstr].slice()
+			space = 'rgb'
+		}
+
+		//reserved words
+		else if (cstr === 'transparent') {
+			alpha = 0
+			space = 'rgb'
+			parts = [0,0,0]
+		}
+
+		//hex
+		else if (/^#[A-Fa-f0-9]+$/.test(cstr)) {
+			var base = cstr.slice(1)
+			var size = base.length
+			var isShort = size <= 4
+			alpha = 1
+
+			if (isShort) {
+				parts = [
+					parseInt(base[0] + base[0], 16),
+					parseInt(base[1] + base[1], 16),
+					parseInt(base[2] + base[2], 16)
+				]
+				if (size === 4) {
+					alpha = parseInt(base[3] + base[3], 16) / 255
+				}
+			}
+			else {
+				parts = [
+					parseInt(base[0] + base[1], 16),
+					parseInt(base[2] + base[3], 16),
+					parseInt(base[4] + base[5], 16)
+				]
+				if (size === 8) {
+					alpha = parseInt(base[6] + base[7], 16) / 255
+				}
+			}
+
+			if (!parts[0]) parts[0] = 0
+			if (!parts[1]) parts[1] = 0
+			if (!parts[2]) parts[2] = 0
+
+			space = 'rgb'
+		}
+
+		//color space
+		else if (m = /^((?:rgb|hs[lvb]|hwb|cmyk?|xy[zy]|gray|lab|lchu?v?|[ly]uv|lms)a?)\s*\(([^\)]*)\)/.exec(cstr)) {
+			var name = m[1]
+			var isRGB = name === 'rgb'
+			var base = name.replace(/a$/, '')
+			space = base
+			var size = base === 'cmyk' ? 4 : base === 'gray' ? 1 : 3
+			parts = m[2].trim()
+				.split(/\s*[,\/]\s*|\s+/)
+				.map(function (x, i) {
+					//<percentage>
+					if (/%$/.test(x)) {
+						//alpha
+						if (i === size)	return parseFloat(x) / 100
+						//rgb
+						if (base === 'rgb') return parseFloat(x) * 255 / 100
+						return parseFloat(x)
+					}
+					//hue
+					else if (base[i] === 'h') {
+						//<deg>
+						if (/deg$/.test(x)) {
+							return parseFloat(x)
+						}
+						//<base-hue>
+						else if (baseHues[x] !== undefined) {
+							return baseHues[x]
+						}
+					}
+					return parseFloat(x)
+				})
+
+			if (name === base) parts.push(1)
+			alpha = (isRGB) ? 1 : (parts[size] === undefined) ? 1 : parts[size]
+			parts = parts.slice(0, size)
+		}
+
+		//named channels case
+		else if (cstr.length > 10 && /[0-9](?:\s|\/)/.test(cstr)) {
+			parts = cstr.match(/([0-9]+)/g).map(function (value) {
+				return parseFloat(value)
+			})
+
+			space = cstr.match(/([a-z])/ig).join('').toLowerCase()
+		}
+	}
+
+	//numeric case
+	else if (!isNaN(cstr)) {
+		space = 'rgb'
+		parts = [cstr >>> 16, (cstr & 0x00ff00) >>> 8, cstr & 0x0000ff]
+	}
+
+	//array-like
+	else if (Array.isArray(cstr) || cstr.length) {
+		parts = [cstr[0], cstr[1], cstr[2]]
+		space = 'rgb'
+		alpha = cstr.length === 4 ? cstr[3] : 1
+	}
+
+	//object case - detects css cases of rgb and hsl
+	else if (cstr instanceof Object) {
+		if (cstr.r != null || cstr.red != null || cstr.R != null) {
+			space = 'rgb'
+			parts = [
+				cstr.r || cstr.red || cstr.R || 0,
+				cstr.g || cstr.green || cstr.G || 0,
+				cstr.b || cstr.blue || cstr.B || 0
+			]
+		}
+		else {
+			space = 'hsl'
+			parts = [
+				cstr.h || cstr.hue || cstr.H || 0,
+				cstr.s || cstr.saturation || cstr.S || 0,
+				cstr.l || cstr.lightness || cstr.L || cstr.b || cstr.brightness
+			]
+		}
+
+		alpha = cstr.a || cstr.alpha || cstr.opacity || 1
+
+		if (cstr.opacity != null) alpha /= 100
+	}
+
+	return {
+		space: space,
+		values: parts,
+		alpha: alpha
+	}
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/color-rgba/index.mjs":
+/*!*******************************************!*\
+  !*** ./node_modules/color-rgba/index.mjs ***!
+  \*******************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ rgba; }
+/* harmony export */ });
+/* harmony import */ var color_parse__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! color-parse */ "./node_modules/color-parse/index.mjs");
+/* harmony import */ var color_space_rgb_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! color-space/rgb.js */ "./node_modules/color-space/rgb.js");
+/* harmony import */ var color_space_hsl_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! color-space/hsl.js */ "./node_modules/color-space/hsl.js");
+/** @module  color-rgba */
+
+
+
+
+function rgba (color) {
+	// template literals
+	if (Array.isArray(color) && color.raw) color = String.raw(...arguments)
+
+	var values, i, l
+
+	//attempt to parse non-array arguments
+	var parsed = (0,color_parse__WEBPACK_IMPORTED_MODULE_0__["default"])(color)
+
+	if (!parsed.space) return []
+
+	const min = parsed.space[0] === 'h' ? color_space_hsl_js__WEBPACK_IMPORTED_MODULE_2__["default"].min : color_space_rgb_js__WEBPACK_IMPORTED_MODULE_1__["default"].min
+	const max = parsed.space[0] === 'h' ? color_space_hsl_js__WEBPACK_IMPORTED_MODULE_2__["default"].max : color_space_rgb_js__WEBPACK_IMPORTED_MODULE_1__["default"].max
+
+	values = Array(3)
+	values[0] = Math.min(Math.max(parsed.values[0], min[0]), max[0])
+	values[1] = Math.min(Math.max(parsed.values[1], min[1]), max[1])
+	values[2] = Math.min(Math.max(parsed.values[2], min[2]), max[2])
+
+	if (parsed.space[0] === 'h') {
+		values = color_space_hsl_js__WEBPACK_IMPORTED_MODULE_2__["default"].rgb(values)
+	}
+
+	values.push(Math.min(Math.max(parsed.alpha, 0), 1))
+
+	return values
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/color-space/hsl.js":
+/*!*****************************************!*\
+  !*** ./node_modules/color-space/hsl.js ***!
+  \*****************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _rgb_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./rgb.js */ "./node_modules/color-space/rgb.js");
+/**
+ * @module color-space/hsl
+ */
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	name: 'hsl',
+	min: [0,0,0],
+	max: [360,100,100],
+	channel: ['hue', 'saturation', 'lightness'],
+	alias: ['HSL'],
+
+	rgb: function(hsl) {
+		var h = hsl[0] / 360,
+				s = hsl[1] / 100,
+				l = hsl[2] / 100,
+				t1, t2, t3, rgb, val;
+
+		if (s === 0) {
+			val = l * 255;
+			return [val, val, val];
+		}
+
+		if (l < 0.5) {
+			t2 = l * (1 + s);
+		}
+		else {
+			t2 = l + s - l * s;
+		}
+		t1 = 2 * l - t2;
+
+		rgb = [0, 0, 0];
+		for (var i = 0; i < 3; i++) {
+			t3 = h + 1 / 3 * - (i - 1);
+			if (t3 < 0) {
+				t3++;
+			}
+			else if (t3 > 1) {
+				t3--;
+			}
+
+			if (6 * t3 < 1) {
+				val = t1 + (t2 - t1) * 6 * t3;
+			}
+			else if (2 * t3 < 1) {
+				val = t2;
+			}
+			else if (3 * t3 < 2) {
+				val = t1 + (t2 - t1) * (2 / 3 - t3) * 6;
+			}
+			else {
+				val = t1;
+			}
+
+			rgb[i] = val * 255;
+		}
+
+		return rgb;
+	}
+});
+
+
+//extend rgb
+_rgb_js__WEBPACK_IMPORTED_MODULE_0__["default"].hsl = function(rgb) {
+	var r = rgb[0]/255,
+			g = rgb[1]/255,
+			b = rgb[2]/255,
+			min = Math.min(r, g, b),
+			max = Math.max(r, g, b),
+			delta = max - min,
+			h, s, l;
+
+	if (max === min) {
+		h = 0;
+	}
+	else if (r === max) {
+		h = (g - b) / delta;
+	}
+	else if (g === max) {
+		h = 2 + (b - r) / delta;
+	}
+	else if (b === max) {
+		h = 4 + (r - g)/ delta;
+	}
+
+	h = Math.min(h * 60, 360);
+
+	if (h < 0) {
+		h += 360;
+	}
+
+	l = (min + max) / 2;
+
+	if (max === min) {
+		s = 0;
+	}
+	else if (l <= 0.5) {
+		s = delta / (max + min);
+	}
+	else {
+		s = delta / (2 - max - min);
+	}
+
+	return [h, s * 100, l * 100];
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/color-space/rgb.js":
+/*!*****************************************!*\
+  !*** ./node_modules/color-space/rgb.js ***!
+  \*****************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/**
+ * RGB space.
+ *
+ * @module  color-space/rgb
+ */
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	name: 'rgb',
+	min: [0,0,0],
+	max: [255,255,255],
+	channel: ['red', 'green', 'blue'],
+	alias: ['RGB']
+});
+
 
 /***/ }),
 
@@ -3608,12 +5016,40 @@ divsToUpdate.forEach(div => {
 
 
   const props = JSON.parse(preEl === null || preEl === void 0 ? void 0 : preEl.innerText); //
+  // Handle when submit this Form
+
+  initCarousel(div.id, props); //
 
   react_dom__WEBPACK_IMPORTED_MODULE_2___default().render((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(FrontendStyles, props), divRenderCssEl); //
 
   div.classList.remove("wcb-update-div");
   preEl.remove();
-});
+}); //
+// --------------------------- FORM AJAX
+
+function initCarousel(id, props) {
+  var _props$general_genera;
+
+  let $ = jQuery;
+
+  if (typeof jQuery !== "function") {
+    return;
+  }
+
+  if ((props === null || props === void 0 ? void 0 : (_props$general_genera = props.general_general) === null || _props$general_genera === void 0 ? void 0 : _props$general_genera.layout) === "grid") {
+    return;
+  } //
+
+
+  const carouselBtn = $(`#${id} .wcb-faq-child__question`);
+  carouselBtn.on("click", function () {
+    // TOOGLE CAROUSEL
+    const parent = $(this).parent();
+    parent.toggleClass("active");
+    const answer = parent.children(".wcb-faq-child__answer");
+    answer.slideToggle();
+  });
+}
 }();
 /******/ })()
 ;

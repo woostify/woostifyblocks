@@ -22,6 +22,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_answer,
 		style_container,
 		style_question,
+		style_icon,
 	} = attributes;
 	//
 	const newAttrForSave: WcbAttrsForSave = {
@@ -33,6 +34,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_answer,
 		style_container,
 		style_question,
+		style_icon,
 	};
 	// WRAP BLOCK
 	const blockProps = useBlockProps.save({ className: "wcb-faq__wrap" });

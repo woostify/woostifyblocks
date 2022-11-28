@@ -6,6 +6,7 @@
 	"title": "FAQ child",
 	"category": "wcb-blocks",
 	"usesContext": ["wcb/faq_icon", "wcb/faq_general"],
+	"parent": ["wcb/faq"],
 	"icon": "heart",
 	"description": "Example static block scaffolded with Create Block tool.",
 	"supports": {

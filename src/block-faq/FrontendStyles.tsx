@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import ReactDOM from "react-dom";
-import { WcbAttrs } from "./attributes";
+import { WcbAttrsForSave } from "./Save";
 import GlobalCss from "./GlobalCss";
 
-interface Props extends WcbAttrs {}
+interface Props extends WcbAttrsForSave {}
 
 const FrontendStyles: FC<Props> = (attrs) => {
 	return <GlobalCss {...attrs} />;
@@ -26,8 +26,33 @@ divsToUpdate.forEach((div) => {
 	//
 	const props = JSON.parse(preEl?.innerText);
 	//
+	// Handle when submit this Form
+
+	initCarousel(div.id, props);
+	//
 	ReactDOM.render(<FrontendStyles {...props} />, divRenderCssEl);
 	//
 	div.classList.remove("wcb-update-div");
 	preEl.remove();
 });
+
+//
+// --------------------------- FORM AJAX
+function initCarousel(id: string, props: Props) {
+	let $ = jQuery;
+	if (typeof jQuery !== "function") {
+		return;
+	}
+	if (props?.general_general?.layout === "grid") {
+		return;
+	}
+	//
+	const carouselBtn = $(`#${id} .wcb-faq-child__question`);
+	carouselBtn.on("click", function () {
+		// TOOGLE CAROUSEL
+		const parent = $(this).parent();
+		parent.toggleClass("active");
+		const answer = parent.children(".wcb-faq-child__answer");
+		answer.slideToggle();
+	});
+}

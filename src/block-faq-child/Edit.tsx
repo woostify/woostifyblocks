@@ -43,8 +43,6 @@ const Edit: FC<
 	//
 
 	useEffect(() => {
-		console.log(12121212121212121);
-
 		setAttributes({
 			layout: context["wcb/faq_general"]?.layout,
 			headingTag: context["wcb/faq_general"]?.headingTag,

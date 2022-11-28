@@ -2,7 +2,6 @@ import React from "react";
 import { __ } from "@wordpress/i18n";
 import { RichText, useBlockProps } from "@wordpress/block-editor";
 import { WcbAttrs } from "./attributes";
-import SaveCommon from "../components/SaveCommon";
 import "./style.scss";
 import { Dashicon } from "@wordpress/components";
 
@@ -27,51 +26,62 @@ export default function save({
 	const isSelected = true;
 	//
 	const blockProps = useBlockProps.save({ className: "wcb-faq-child__wrap" });
+
+	const renderIcon = () => {
+		if (!general_icon.enableIcon || layout !== "accordion") {
+			return null;
+		}
+		return (
+			<>
+				{general_icon.iconName && (
+					<Dashicon
+						className="wcb-faq-child__icon wcb-faq-child__icon--active"
+						size={16}
+						icon={general_icon.iconName}
+					/>
+				)}
+				{general_icon.inactiveIconName && (
+					<Dashicon
+						className="wcb-faq-child__icon wcb-faq-child__icon--inactive"
+						size={16}
+						icon={general_icon.inactiveIconName}
+					/>
+				)}
+			</>
+		);
+	};
+
+	const ariaControls = uniqueId + "controls";
 	return (
-		<SaveCommon
-			attributes={newAttrForSave}
-			className={` wcb-faq-child__wrap wcb-faq-child__wrap--${layout} ${
-				isSelected ? "active" : ""
-			}`}
-			uniqueId={uniqueId}
+		<div
 			{...blockProps}
+			className={`wcb-faq-child__wrap wcb-faq-child__wrap--${layout}`}
+			id={uniqueId}
 		>
-			<div className="wcb-faq-child__question">
+			<button
+				className={`wcb-faq-child__question wcb-faq-child__question--icon-${general_icon.iconPosition}`}
+				type="button"
+				aria-expanded="true"
+				aria-controls={ariaControls}
+			>
+				{general_icon.iconPosition === "left" && renderIcon()}
 				<RichText.Content
 					tagName={headingTag || "h4"}
 					value={question}
 					className="wcb-faq-child__question-text"
 				/>
 
-				{general_icon.enableIcon && layout === "accordion" && (
-					<>
-						{general_icon.iconName && (
-							<Dashicon
-								className="wcb-faq-child__icon wcb-faq-child__icon--active"
-								size={16}
-								icon={general_icon.iconName}
-							/>
-						)}
-						{general_icon.inactiveIconName && (
-							<Dashicon
-								className="wcb-faq-child__icon wcb-faq-child__icon--inactive"
-								size={16}
-								icon={general_icon.inactiveIconName}
-							/>
-						)}
-					</>
-				)}
-			</div>
+				{general_icon.iconPosition === "right" && renderIcon()}
+			</button>
 			{(isSelected || layout === "grid") && (
-				<div className="wcb-faq-child__answer">
+				<div className="wcb-faq-child__answer" id={ariaControls}>
 					<RichText.Content
 						tagName="p"
 						value={answer}
-						placeholder={__("Answer...")}
 						className="wcb-faq-child__answer-text"
 					/>
 				</div>
 			)}
-		</SaveCommon>
+		</div>
 	);
 }

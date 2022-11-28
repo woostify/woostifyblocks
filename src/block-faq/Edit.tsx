@@ -25,6 +25,7 @@ import WcbFaqPanelIcon from "./WcbFaqPanelIcon";
 import WcbFaqPanel_StyleContainer from "./WcbFaqPanel_StyleContainer";
 import WcbFaqPanel_StyleQuestion from "./WcbFaqPanel_StyleQuestion";
 import WcbFaqPanel_StyleAnswer from "./WcbFaqPanel_StyleAnswer";
+import WcbFaqPanel_StyleIcon from "./WcbFaqPanel_StyleIcon";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -36,6 +37,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		general_icon,
 		style_container,
 		style_question,
+		style_icon,
 		style_answer,
 	} = attributes;
 	//  COMMON HOOKS
@@ -117,6 +119,17 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							panelData={style_question}
 						/>
 
+						<WcbFaqPanel_StyleIcon
+							onToggle={() => handleTogglePanel("Styles", "_StyleIcon")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleIcon"}
+							opened={tabStylesIsPanelOpen === "_StyleIcon" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_icon: data });
+							}}
+							panelData={style_icon}
+						/>
+
 						<WcbFaqPanel_StyleAnswer
 							onToggle={() => handleTogglePanel("Styles", "_StyleAnswer")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleAnswer"}
@@ -173,11 +186,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 				{/* CHILD CONTENT  */}
 				<div {...innerBlocksProps} />
-				{/* <InnerBlocks
-						allowedBlocks={["wcb/faq-child"]}
-						template={[["wcb/faq-child", {}]]}
-						// templateLock="insert"
-					/> */}
 			</div>
 		</CacheProvider>
 	);

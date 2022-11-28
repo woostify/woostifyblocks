@@ -1,5 +1,13 @@
 <?php
 //============================================= block 1 ===============================================================
+function wcb_block_faq_renderCallback($attributes, $content)
+{
+    if (!is_admin()) {
+        wp_enqueue_script('wcb_block_faq_renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-faq/FrontendStyles.js', array('wp-element'), null, true);
+    }
+    return $content;
+}
+//============================================= block 1 ===============================================================
 function wcb_block_cta_renderCallback($attributes, $content)
 {
     if (!is_admin()) {
