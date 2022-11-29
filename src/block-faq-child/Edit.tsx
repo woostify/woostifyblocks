@@ -1,5 +1,9 @@
 import { __ } from "@wordpress/i18n";
-import { RichText, useBlockProps } from "@wordpress/block-editor";
+import {
+	RichText,
+	useBlockProps,
+	store as blockEditorStore,
+} from "@wordpress/block-editor";
 import React, { useEffect, FC } from "react";
 import { WcbAttrs } from "./attributes";
 import { EditProps } from "../block-container/Edit";
@@ -10,6 +14,7 @@ import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import { Dashicon } from "@wordpress/components";
 import { WCB_FAQ_PANEL_ICON } from "../block-faq/WcbFaqPanelIcon";
 import { WCB_FAQ_PANEL_GENERAL } from "../block-faq/WcbFaqPanelGeneral";
+import { useSelect } from "@wordpress/data";
 
 const Edit: FC<
 	EditProps<
@@ -21,8 +26,16 @@ const Edit: FC<
 	>
 > = (props) => {
 	const { attributes, setAttributes, clientId, context, isSelected } = props;
-	const { uniqueId, answer, layout, question, general_icon, headingTag } =
-		attributes;
+	const {
+		uniqueId,
+		answer,
+		layout,
+		question,
+		general_icon,
+		headingTag,
+		defaultExtend,
+		enableSeparator,
+	} = attributes;
 	//  COMMON HOOKS
 	const { myCache, ref } = useCreateCacheEmotion();
 	const wrapBlockProps = useBlockProps({ ref });
@@ -42,13 +55,28 @@ const Edit: FC<
 	}, [UNIQUE_ID]);
 	//
 
+	const blockIndex: number = useSelect(
+		(select) => select(blockEditorStore).getBlockIndex(clientId),
+		[clientId]
+	);
+
+	//
+
 	useEffect(() => {
+		console.log(12, "------ FAQ CHILD setAttributes ON useEffect --------");
+
 		setAttributes({
 			layout: context["wcb/faq_general"]?.layout,
 			headingTag: context["wcb/faq_general"]?.headingTag,
 			general_icon: context["wcb/faq_icon"],
+			enableSeparator: context["wcb/faq_general"]?.enableSeparator,
+			defaultExtend:
+				!context["wcb/faq_general"]?.collapseOtherItems ||
+				(context["wcb/faq_general"]?.collapseOtherItems &&
+					!blockIndex &&
+					context["wcb/faq_general"]?.expandFirstItem),
 		});
-	}, [context["wcb/faq_general"], context["wcb/faq_icon"]]);
+	}, [context["wcb/faq_general"], context["wcb/faq_icon"], blockIndex]);
 
 	const renderIcon = () => {
 		if (!general_icon.enableIcon || layout !== "accordion") {
@@ -74,6 +102,8 @@ const Edit: FC<
 		);
 	};
 
+	const ACTIVE = (defaultExtend || isSelected) && layout === "accordion";
+
 	return (
 		<CacheProvider value={myCache}>
 			<div
@@ -81,35 +111,42 @@ const Edit: FC<
 				className={`${
 					wrapBlockProps?.className
 				} wcb-faq-child__wrap wcb-faq-child__wrap--${layout} ${
-					isSelected ? "active" : ""
+					ACTIVE ? "active" : ""
 				} ${UNIQUE_ID}`}
 				data-uniqueid={UNIQUE_ID}
 			>
-				<div
-					className={`wcb-faq-child__question wcb-faq-child__question--icon-${general_icon.iconPosition}`}
-				>
-					{general_icon.iconPosition === "left" && renderIcon()}
-					<RichText
-						tagName={headingTag || "h4"}
-						value={question}
-						allowedFormats={["core/bold", "core/italic"]}
-						onChange={(content) => setAttributes({ question: content })}
-						placeholder={__("Question...")}
-						className="wcb-faq-child__question-text"
-					/>
-
-					{general_icon.iconPosition === "right" && renderIcon()}
-				</div>
-				{(isSelected || layout === "grid") && (
-					<div className="wcb-faq-child__answer">
+				<div className="ac-header">
+					<div
+						className={`wcb-faq-child__question wcb-faq-child__question--icon-${general_icon.iconPosition}`}
+					>
+						{general_icon.iconPosition === "left" && renderIcon()}
 						<RichText
-							tagName="p"
-							value={answer}
+							tagName={headingTag || "h4"}
+							value={question}
 							allowedFormats={["core/bold", "core/italic"]}
-							onChange={(content) => setAttributes({ answer: content })}
-							placeholder={__("Answer...")}
-							className="wcb-faq-child__answer-text"
+							onChange={(content) => setAttributes({ question: content })}
+							placeholder={__("Question...")}
+							className="wcb-faq-child__question-text"
 						/>
+
+						{general_icon.iconPosition === "right" && renderIcon()}
+					</div>
+				</div>
+				{(ACTIVE || layout === "grid") && (
+					<div className="ac-panel">
+						{enableSeparator && (
+							<div className="wcb-faq-child__separator"></div>
+						)}
+						<div className="wcb-faq-child__answer">
+							<RichText
+								tagName="p"
+								value={answer}
+								allowedFormats={["core/bold", "core/italic"]}
+								onChange={(content) => setAttributes({ answer: content })}
+								placeholder={__("Answer...")}
+								className="wcb-faq-child__answer-text"
+							/>
+						</div>
 					</div>
 				)}
 			</div>

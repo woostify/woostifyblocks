@@ -26,15 +26,37 @@ export interface WCB_FAQ_PANEL_STYLE_CONTAINER {
 	equalHeight: boolean;
 }
 
-export const WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO: WCB_FAQ_PANEL_STYLE_CONTAINER =
+export const WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SIMPLE: WCB_FAQ_PANEL_STYLE_CONTAINER =
 	{
 		background: STYLES_BG_NO_IMAGE_DEMO,
 		border: MY_BORDER_CONTROL_DEMO,
 		equalHeight: true,
-		colunmGap: { Desktop: "1.5rem" },
-		rowGap: { Desktop: "1.5rem" },
+		colunmGap: { Desktop: "1rem" },
+		rowGap: { Desktop: "1rem" },
 	};
 
+export const WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID: WCB_FAQ_PANEL_STYLE_CONTAINER =
+	{
+		background: {
+			...STYLES_BG_NO_IMAGE_DEMO,
+			bgType: "color",
+			color: "#f5f5f5",
+		},
+		border: {
+			...MY_BORDER_CONTROL_DEMO,
+			mainSettings: {
+				...MY_BORDER_CONTROL_DEMO.mainSettings,
+				color: "#f5f5f5",
+				style: "solid",
+				width: "1px",
+			},
+		},
+		equalHeight: true,
+		colunmGap: { Desktop: "1rem" },
+		rowGap: { Desktop: "1rem" },
+	};
+export const WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO =
+	WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SIMPLE;
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
 	panelData: WCB_FAQ_PANEL_STYLE_CONTAINER;

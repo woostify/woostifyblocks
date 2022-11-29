@@ -1,0 +1,7 @@
+.wcb-faq-child__wrap {
+	&.active {
+		.wcb-faq-child__answer {
+			display: block !important;
+		}
+	}
+}

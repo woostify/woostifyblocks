@@ -20,12 +20,25 @@ import GlobalCss from "./GlobalCss";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
-import WcbFaqPanelGeneral from "./WcbFaqPanelGeneral";
+import WcbFaqPanelGeneral, {
+	WCB_FAQ_PANEL_GENERAL_DEMO,
+} from "./WcbFaqPanelGeneral";
 import WcbFaqPanelIcon from "./WcbFaqPanelIcon";
-import WcbFaqPanel_StyleContainer from "./WcbFaqPanel_StyleContainer";
-import WcbFaqPanel_StyleQuestion from "./WcbFaqPanel_StyleQuestion";
-import WcbFaqPanel_StyleAnswer from "./WcbFaqPanel_StyleAnswer";
-import WcbFaqPanel_StyleIcon from "./WcbFaqPanel_StyleIcon";
+import WcbFaqPanel_StyleContainer, {
+	WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
+	WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SIMPLE,
+	WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
+} from "./WcbFaqPanel_StyleContainer";
+import WcbFaqPanel_StyleQuestion, {
+	WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
+} from "./WcbFaqPanel_StyleQuestion";
+import WcbFaqPanel_StyleAnswer, {
+	WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
+} from "./WcbFaqPanel_StyleAnswer";
+import WcbFaqPanel_StyleIcon, {
+	WCB_FAQ_PANEL_STYLE_ICON_DEMO,
+} from "./WcbFaqPanel_StyleIcon";
+import WcbFaqPanelPreset from "./WcbFaqPanelPreset";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -39,6 +52,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_question,
 		style_icon,
 		style_answer,
+		general_preset,
 	} = attributes;
 	//  COMMON HOOKS
 	const { myCache, ref } = useCreateCacheEmotion();
@@ -64,12 +78,67 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			case "General":
 				return (
 					<>
-						<WcbFaqPanelGeneral
-							onToggle={() => handleTogglePanel("General", "General", true)}
+						<WcbFaqPanelPreset
+							onToggle={() => handleTogglePanel("General", "Preset", true)}
 							initialOpen={
-								tabGeneralIsPanelOpen === "General" ||
+								tabGeneralIsPanelOpen === "Preset" ||
 								tabGeneralIsPanelOpen === "first"
 							}
+							opened={tabGeneralIsPanelOpen === "Preset" || undefined}
+							//
+							setAttr__={(data) => {
+								if (!data.preset || data.preset === "carousel-simple") {
+									return setAttributes({
+										general_preset: data,
+										general_general: WCB_FAQ_PANEL_GENERAL_DEMO,
+										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
+										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
+										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
+										style_icon: WCB_FAQ_PANEL_STYLE_ICON_DEMO,
+									});
+								}
+								if (data.preset === "carousel-solid") {
+									return setAttributes({
+										general_preset: data,
+										general_general: WCB_FAQ_PANEL_GENERAL_DEMO,
+										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
+										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
+										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
+										style_icon: WCB_FAQ_PANEL_STYLE_ICON_DEMO,
+									});
+								}
+								if (data.preset === "grid-simple") {
+									return setAttributes({
+										general_preset: data,
+										general_general: {
+											...WCB_FAQ_PANEL_GENERAL_DEMO,
+											layout: "grid",
+										},
+										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
+										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
+										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
+										style_icon: WCB_FAQ_PANEL_STYLE_ICON_DEMO,
+									});
+								}
+								if (data.preset === "grid-solid") {
+									return setAttributes({
+										general_preset: data,
+										general_general: {
+											...WCB_FAQ_PANEL_GENERAL_DEMO,
+											layout: "grid",
+										},
+										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
+										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
+										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
+										style_icon: WCB_FAQ_PANEL_STYLE_ICON_DEMO,
+									});
+								}
+							}}
+							panelData={general_preset}
+						/>
+						<WcbFaqPanelGeneral
+							onToggle={() => handleTogglePanel("General", "General")}
+							initialOpen={tabGeneralIsPanelOpen === "General"}
 							opened={tabGeneralIsPanelOpen === "General" || undefined}
 							//
 							setAttr__={(data) => {
@@ -77,16 +146,18 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							}}
 							panelData={general_general}
 						/>
-						<WcbFaqPanelIcon
-							onToggle={() => handleTogglePanel("General", "Icon")}
-							initialOpen={tabGeneralIsPanelOpen === "Icon"}
-							opened={tabGeneralIsPanelOpen === "Icon" || undefined}
-							//
-							setAttr__={(data) => {
-								setAttributes({ general_icon: data });
-							}}
-							panelData={general_icon}
-						/>
+						{general_general.layout === "accordion" && (
+							<WcbFaqPanelIcon
+								onToggle={() => handleTogglePanel("General", "Icon")}
+								initialOpen={tabGeneralIsPanelOpen === "Icon"}
+								opened={tabGeneralIsPanelOpen === "Icon" || undefined}
+								//
+								setAttr__={(data) => {
+									setAttributes({ general_icon: data });
+								}}
+								panelData={general_icon}
+							/>
+						)}
 					</>
 				);
 			case "Styles":
@@ -119,16 +190,18 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							panelData={style_question}
 						/>
 
-						<WcbFaqPanel_StyleIcon
-							onToggle={() => handleTogglePanel("Styles", "_StyleIcon")}
-							initialOpen={tabStylesIsPanelOpen === "_StyleIcon"}
-							opened={tabStylesIsPanelOpen === "_StyleIcon" || undefined}
-							//
-							setAttr__={(data) => {
-								setAttributes({ style_icon: data });
-							}}
-							panelData={style_icon}
-						/>
+						{general_general.layout === "accordion" && (
+							<WcbFaqPanel_StyleIcon
+								onToggle={() => handleTogglePanel("Styles", "_StyleIcon")}
+								initialOpen={tabStylesIsPanelOpen === "_StyleIcon"}
+								opened={tabStylesIsPanelOpen === "_StyleIcon" || undefined}
+								//
+								setAttr__={(data) => {
+									setAttributes({ style_icon: data });
+								}}
+								panelData={style_icon}
+							/>
+						)}
 
 						<WcbFaqPanel_StyleAnswer
 							onToggle={() => handleTogglePanel("Styles", "_StyleAnswer")}
@@ -168,6 +241,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	});
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		allowedBlocks: ["wcb/faq-child"],
+		template: [
+			["wcb/faq-child", {}],
+			["wcb/faq-child", {}],
+		],
 		renderAppender: () => false,
 	});
 

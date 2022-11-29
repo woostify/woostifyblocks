@@ -36,6 +36,7 @@
 		"@wordpress/element": "^4.19.0",
 		"@wordpress/hooks": "^3.21.0",
 		"@wordpress/i18n": "^4.21.0",
+		"accordion-js": "^3.3.2",
 		"autoprefixer": "^10.4.8",
 		"classnames": "^2.3.2",
 		"color-rgba": "^2.4.0",

@@ -17,7 +17,7 @@ export interface WCB_FAQ_PANEL_GENERAL {
 	headingTag: keyof HTMLElementTagNameMap;
 	collapseOtherItems: boolean;
 	expandFirstItem: boolean;
-	enableToggle: boolean;
+	showMultiple: boolean;
 	enableSchemaSupport: boolean;
 	enableSeparator: boolean;
 	columns: HasResponsive<number>;
@@ -31,7 +31,7 @@ export const WCB_FAQ_PANEL_GENERAL_DEMO: WCB_FAQ_PANEL_GENERAL = {
 	columns: { Desktop: 2 },
 	enableSchemaSupport: true,
 	enableSeparator: true,
-	enableToggle: true,
+	showMultiple: true,
 	expandFirstItem: true,
 	textAlignment: "left",
 };
@@ -56,7 +56,7 @@ const WcbFaqPanelGeneral: FC<Props> = ({
 		columns,
 		enableSchemaSupport,
 		enableSeparator,
-		enableToggle,
+		showMultiple,
 		expandFirstItem,
 		headingTag,
 		layout,
@@ -81,6 +81,44 @@ const WcbFaqPanelGeneral: FC<Props> = ({
 		{ icon: "Grid", name: "grid" },
 	];
 
+	const renderCarouselToggleSettings = () => {
+		if (layout === "grid") {
+			return null;
+		}
+		return (
+			<>
+				<ToggleControl
+					label="Collapse other items"
+					help={"Collapse all accordion elements during initialization"}
+					checked={collapseOtherItems}
+					onChange={(checked) => {
+						setAttr__({ ...panelData, collapseOtherItems: checked });
+					}}
+				/>
+
+				{collapseOtherItems && (
+					<ToggleControl
+						label="Expand first item"
+						help={"Show accordion first element during initialization"}
+						checked={expandFirstItem}
+						onChange={(checked) => {
+							setAttr__({ ...panelData, expandFirstItem: checked });
+						}}
+					/>
+				)}
+
+				<ToggleControl
+					label="Show multiple"
+					help={"Show multiple elements at the same time"}
+					checked={showMultiple}
+					onChange={(checked) => {
+						setAttr__({ ...panelData, showMultiple: checked });
+					}}
+				/>
+			</>
+		);
+	};
+
 	return (
 		<PanelBody
 			initialOpen={initialOpen}
@@ -102,67 +140,46 @@ const WcbFaqPanelGeneral: FC<Props> = ({
 					plans={PLANS_DEMO}
 				/>
 
-				<ToggleControl
-					label="Collapse other items"
-					help={"Collapse other items"}
-					checked={collapseOtherItems}
-					onChange={(checked) => {
-						setAttr__({ ...panelData, collapseOtherItems: checked });
-					}}
-				/>
-				<ToggleControl
-					label="Expand First Item"
-					help={"Expand First Item"}
-					checked={expandFirstItem}
-					onChange={(checked) => {
-						setAttr__({ ...panelData, expandFirstItem: checked });
-					}}
-				/>
-				<ToggleControl
-					label="Enable Toggle"
-					help={"Enable Toggle"}
-					checked={enableToggle}
-					onChange={(checked) => {
-						setAttr__({ ...panelData, enableToggle: checked });
-					}}
-				/>
+				{renderCarouselToggleSettings()}
 
 				<ToggleControl
-					label="Enable Schema Support"
-					help={"Enable Schema Support"}
+					label="Enable schema support"
+					help={"Enable schema support"}
 					checked={enableSchemaSupport}
 					onChange={(checked) => {
 						setAttr__({ ...panelData, enableSchemaSupport: checked });
 					}}
 				/>
 				<ToggleControl
-					label="Enable Separator"
-					help={"Enable Separator"}
+					label="Enable separator"
+					help={"Enable separator"}
 					checked={enableSeparator}
 					onChange={(checked) => {
 						setAttr__({ ...panelData, enableSeparator: checked });
 					}}
 				/>
 
-				<RangeControl
-					label={
-						<MyLabelControl hasResponsive className="">
-							{__("Columns", "wcb")}
-						</MyLabelControl>
-					}
-					value={COLUMNS || 2}
-					onChange={(value) => {
-						setAttr__({
-							...panelData,
-							columns: {
-								...columns,
-								[deviceType]: value,
-							},
-						});
-					}}
-					min={1}
-					max={6}
-				/>
+				{layout === "grid" && (
+					<RangeControl
+						label={
+							<MyLabelControl hasResponsive className="">
+								{__("Columns", "wcb")}
+							</MyLabelControl>
+						}
+						value={COLUMNS || 2}
+						onChange={(value) => {
+							setAttr__({
+								...panelData,
+								columns: {
+									...columns,
+									[deviceType]: value,
+								},
+							});
+						}}
+						min={1}
+						max={6}
+					/>
+				)}
 
 				<MyHeadingTagControl
 					tag={headingTag}
@@ -171,11 +188,13 @@ const WcbFaqPanelGeneral: FC<Props> = ({
 					}}
 				/>
 
-				<MyTextAlignControl
-					textAlignment={textAlignment}
-					onChange={handleChangeTextAlignment}
-					hasResponsive={false}
-				/>
+				{layout === "grid" && (
+					<MyTextAlignControl
+						textAlignment={textAlignment}
+						onChange={handleChangeTextAlignment}
+						hasResponsive={false}
+					/>
+				)}
 			</div>
 		</PanelBody>
 	);

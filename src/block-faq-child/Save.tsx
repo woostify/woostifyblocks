@@ -14,16 +14,24 @@ export default function save({
 }: {
 	attributes: WcbAttrs;
 }) {
-	const { uniqueId, answer, question, general_icon, headingTag, layout } =
-		attributes;
-	//
-	const newAttrForSave: WcbAttrsForSave = {
+	const {
 		uniqueId,
+		answer,
+		question,
 		general_icon,
 		headingTag,
 		layout,
-	};
-	const isSelected = true;
+		defaultExtend,
+		enableSeparator,
+	} = attributes;
+	//
+	// const newAttrForSave: WcbAttrsForSave = {
+	// 	uniqueId,
+	// 	general_icon,
+	// 	headingTag,
+	// 	layout,
+	// 	defaultExtend,
+	// };
 	//
 	const blockProps = useBlockProps.save({ className: "wcb-faq-child__wrap" });
 
@@ -52,36 +60,40 @@ export default function save({
 	};
 
 	const ariaControls = uniqueId + "controls";
+	const Htmltag = layout === "grid" ? "div" : "button";
 	return (
 		<div
 			{...blockProps}
-			className={`wcb-faq-child__wrap wcb-faq-child__wrap--${layout}`}
+			className={`ac wcb-faq-child__wrap wcb-faq-child__wrap--${layout} `}
 			id={uniqueId}
 		>
-			<button
-				className={`wcb-faq-child__question wcb-faq-child__question--icon-${general_icon.iconPosition}`}
-				type="button"
-				aria-expanded="true"
-				aria-controls={ariaControls}
-			>
-				{general_icon.iconPosition === "left" && renderIcon()}
-				<RichText.Content
-					tagName={headingTag || "h4"}
-					value={question}
-					className="wcb-faq-child__question-text"
-				/>
+			<div className="ac-header">
+				<Htmltag
+					className={`ac-trigger wcb-faq-child__question wcb-faq-child__question--icon-${general_icon.iconPosition}`}
+					type="button"
+					aria-expanded="true"
+					aria-controls={ariaControls}
+				>
+					{general_icon.iconPosition === "left" && renderIcon()}
+					<RichText.Content
+						tagName={headingTag || "h4"}
+						value={question}
+						className="wcb-faq-child__question-text"
+					/>
 
-				{general_icon.iconPosition === "right" && renderIcon()}
-			</button>
-			{(isSelected || layout === "grid") && (
+					{general_icon.iconPosition === "right" && renderIcon()}
+				</Htmltag>
+			</div>
+			<div className="ac-panel">
+				{enableSeparator && <div className="wcb-faq-child__separator"></div>}
 				<div className="wcb-faq-child__answer" id={ariaControls}>
 					<RichText.Content
 						tagName="p"
 						value={answer}
-						className="wcb-faq-child__answer-text"
+						className="wcb-faq-child__answer-text ac-text"
 					/>
 				</div>
-			)}
+			</div>
 		</div>
 	);
 }

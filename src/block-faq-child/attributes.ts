@@ -1,5 +1,5 @@
-import { Dashicon } from "@wordpress/components";
 import { AttrsGenericType } from "../block-container/attributes";
+import { WCB_FAQ_PANEL_GENERAL } from "../block-faq/WcbFaqPanelGeneral";
 import {
 	WCB_FAQ_PANEL_ICON,
 	WCB_FAQ_PANEL_ICON_DEMO,
@@ -10,8 +10,10 @@ export interface WcbAttrs {
 	question: string;
 	answer: string;
 	//
-	headingTag: keyof HTMLElementTagNameMap;
-	layout: string;
+	defaultExtend: boolean;
+	enableSeparator: boolean;
+	headingTag: WCB_FAQ_PANEL_GENERAL["headingTag"];
+	layout: WCB_FAQ_PANEL_GENERAL["layout"];
 	//
 	general_icon: WCB_FAQ_PANEL_ICON;
 
@@ -34,6 +36,14 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	general_icon: {
 		type: "object",
 		default: WCB_FAQ_PANEL_ICON_DEMO,
+	},
+	defaultExtend: {
+		type: "bool",
+		default: false,
+	},
+	enableSeparator: {
+		type: "bool",
+		default: false,
 	},
 
 	// THE ATTRS OF BLOCK HERE

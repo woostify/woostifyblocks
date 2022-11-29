@@ -37,6 +37,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const FAQ_CHILD_ANSWER = `${WRAP_CLASSNAME} .wcb-faq-child__answer`;
 	const FAQ_CHILD_ANSWER_TEXT = `${WRAP_CLASSNAME} .wcb-faq-child__answer-text`;
 	const FAQ_CHILD_ICON = `${WRAP_CLASSNAME} .wcb-faq-child__icon`;
+	const FAQ_CHILD_SEPARATOR = `${WRAP_CLASSNAME} .wcb-faq-child__separator`;
 
 	//
 
@@ -126,6 +127,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 						className: FAQ_CHILD_WRAP,
 						isWithRadius: true,
 					}),
+					getBorderStyles({
+						border: style_container.border,
+						className: FAQ_CHILD_SEPARATOR,
+						isWithRadius: true,
+					}),
 				]}
 			/>
 
@@ -149,7 +155,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 						[FAQ_CHILD_QUESTION]: {
 							color: style_question.color,
 							backgroundColor: style_question.backgroundColor,
-							":hover": {
+							":hover, :focus, :active": {
 								color: style_question.colorHover,
 								backgroundColor: style_question.backgroundColorHover,
 							},
@@ -201,6 +207,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 						[FAQ_CHILD_ANSWER]: {
 							color: style_answer.color,
 							backgroundColor: style_answer.backgroundColor,
+							// display: general_general.collapseOtherItems ? "none" : "block",
 						},
 					},
 				]}

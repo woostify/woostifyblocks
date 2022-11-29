@@ -13,6 +13,10 @@ import {
 } from "./WcbFaqPanelGeneral";
 import { WCB_FAQ_PANEL_ICON, WCB_FAQ_PANEL_ICON_DEMO } from "./WcbFaqPanelIcon";
 import {
+	WCB_FAQ_PANEL_PRESET,
+	WCB_FAQ_PANEL_PRESET_DEMO,
+} from "./WcbFaqPanelPreset";
+import {
 	WCB_FAQ_PANEL_STYLE_ANSWER,
 	WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
 } from "./WcbFaqPanel_StyleAnswer";
@@ -30,6 +34,7 @@ import {
 } from "./WcbFaqPanel_StyleQuestion";
 export interface WcbAttrs {
 	uniqueId: string;
+	general_preset: WCB_FAQ_PANEL_PRESET;
 	general_general: WCB_FAQ_PANEL_GENERAL;
 	general_icon: WCB_FAQ_PANEL_ICON;
 	style_container: WCB_FAQ_PANEL_STYLE_CONTAINER;
@@ -48,6 +53,10 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	},
 
 	// THE ATTRS OF BLOCK HERE
+	general_preset: {
+		type: "object",
+		default: WCB_FAQ_PANEL_PRESET_DEMO,
+	},
 	general_general: {
 		type: "object",
 		default: WCB_FAQ_PANEL_GENERAL_DEMO,

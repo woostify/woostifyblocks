@@ -17,7 +17,7 @@ export const WCB_FAQ_PANEL_ICON_DEMO: WCB_FAQ_PANEL_ICON = {
 	enableIcon: true,
 	iconName: "minus",
 	inactiveIconName: "plus-alt2",
-	iconPosition: "left",
+	iconPosition: "right",
 };
 
 interface Props

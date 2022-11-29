@@ -10,7 +10,7 @@ import SaveCommon from "../components/SaveCommon";
 import "./style.scss";
 
 export interface WcbAttrsForSave
-	extends Omit<WcbAttrs, "heading" | "subHeading"> {}
+	extends Omit<WcbAttrs, "heading" | "general_preset"> {}
 
 export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const {
@@ -23,6 +23,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_container,
 		style_question,
 		style_icon,
+		general_preset,
 	} = attributes;
 	//
 	const newAttrForSave: WcbAttrsForSave = {
@@ -41,7 +42,9 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 	// INNER BLOCKS
 	const innerBlockProps = useBlockProps.save({
-		className: "wcb-faq__inner",
+		className: `wcb-faq__inner ${
+			general_general.layout === "accordion" ? "accordion-container" : ""
+		} `,
 	});
 	const innerBlocksProps = useInnerBlocksProps.save(innerBlockProps);
 	//

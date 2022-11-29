@@ -2,6 +2,8 @@ import React, { FC } from "react";
 import ReactDOM from "react-dom";
 import { WcbAttrsForSave } from "./Save";
 import GlobalCss from "./GlobalCss";
+import Accordion from "accordion-js";
+import "accordion-js/dist/accordion.min.css";
 
 interface Props extends WcbAttrsForSave {}
 
@@ -26,9 +28,9 @@ divsToUpdate.forEach((div) => {
 	//
 	const props = JSON.parse(preEl?.innerText);
 	//
-	// Handle when submit this Form
 
 	initCarousel(div.id, props);
+
 	//
 	ReactDOM.render(<FrontendStyles {...props} />, divRenderCssEl);
 	//
@@ -38,21 +40,21 @@ divsToUpdate.forEach((div) => {
 
 //
 // --------------------------- FORM AJAX
-function initCarousel(id: string, props: Props) {
-	let $ = jQuery;
-	if (typeof jQuery !== "function") {
+function initCarousel(id: string, { general_general }: Props) {
+	const container = "#" + id + "> .accordion-container";
+
+	if (!container || general_general.layout !== "accordion") {
 		return;
 	}
-	if (props?.general_general?.layout === "grid") {
-		return;
-	}
-	//
-	const carouselBtn = $(`#${id} .wcb-faq-child__question`);
-	carouselBtn.on("click", function () {
-		// TOOGLE CAROUSEL
-		const parent = $(this).parent();
-		parent.toggleClass("active");
-		const answer = parent.children(".wcb-faq-child__answer");
-		answer.slideToggle();
+
+	new Accordion(container, {
+		duration: 400,
+		showMultiple: general_general?.showMultiple,
+		openOnInit: !general_general.collapseOtherItems
+			? [...Array(99).keys()]
+			: general_general?.expandFirstItem
+			? [0]
+			: [],
+		activeClass: "active",
 	});
 }
