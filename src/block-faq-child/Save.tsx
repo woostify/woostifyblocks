@@ -25,14 +25,7 @@ export default function save({
 		enableSeparator,
 	} = attributes;
 	//
-	// const newAttrForSave: WcbAttrsForSave = {
-	// 	uniqueId,
-	// 	general_icon,
-	// 	headingTag,
-	// 	layout,
-	// 	defaultExtend,
-	// };
-	//
+
 	const blockProps = useBlockProps.save({ className: "wcb-faq-child__wrap" });
 
 	const renderIcon = () => {

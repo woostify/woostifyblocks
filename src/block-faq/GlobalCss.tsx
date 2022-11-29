@@ -132,6 +132,15 @@ const GlobalCss: FC<Props> = (attrs) => {
 						className: FAQ_CHILD_SEPARATOR,
 						isWithRadius: true,
 					}),
+					{
+						[FAQ_CHILD_WRAP]: {
+							height:
+								general_general.layout === "grid" &&
+								!style_container.equalHeight
+									? "fit-content"
+									: undefined,
+						},
+					},
 				]}
 			/>
 
@@ -184,7 +193,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 							color: style_icon.color,
 						},
 						[`${WRAP_CLASSNAME} .wcb-faq-child__wrap.active`]: {
-							[FAQ_CHILD_ICON]: {
+							".wcb-faq-child__icon": {
 								color: style_icon.activeColor,
 							},
 						},

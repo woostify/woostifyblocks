@@ -141,7 +141,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
 		renderAppender: () =>
-			isSelected ? <InnerBlocks.ButtonBlockAppender /> : false,
+			isSelected ? <InnerBlocks.DefaultBlockAppender /> : false,
 	});
 	//
 

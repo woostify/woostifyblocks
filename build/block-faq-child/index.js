@@ -1634,14 +1634,6 @@ function save(_ref) {
     defaultExtend,
     enableSeparator
   } = attributes; //
-  // const newAttrForSave: WcbAttrsForSave = {
-  // 	uniqueId,
-  // 	general_icon,
-  // 	headingTag,
-  // 	layout,
-  // 	defaultExtend,
-  // };
-  //
 
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
     className: "wcb-faq-child__wrap"

@@ -2157,7 +2157,8 @@ const Edit = props => {
   const {
     attributes,
     setAttributes,
-    clientId
+    clientId,
+    isSelected
   } = props;
   const {
     advance_responsiveCondition,
@@ -2202,10 +2203,12 @@ const Edit = props => {
           opened: tabGeneralIsPanelOpen === "Preset" || undefined //
           ,
           setAttr__: data => {
-            if (!data.preset || data.preset === "carousel-simple") {
+            if (data.preset === "carousel-simple") {
               return setAttributes({
                 general_preset: data,
-                general_general: _WcbFaqPanelGeneral__WEBPACK_IMPORTED_MODULE_10__.WCB_FAQ_PANEL_GENERAL_DEMO,
+                general_general: { ...general_general,
+                  layout: "accordion"
+                },
                 style_container: _WcbFaqPanel_StyleContainer__WEBPACK_IMPORTED_MODULE_12__.WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
                 style_answer: _WcbFaqPanel_StyleAnswer__WEBPACK_IMPORTED_MODULE_14__.WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
                 style_question: _WcbFaqPanel_StyleQuestion__WEBPACK_IMPORTED_MODULE_13__.WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
@@ -2216,7 +2219,9 @@ const Edit = props => {
             if (data.preset === "carousel-solid") {
               return setAttributes({
                 general_preset: data,
-                general_general: _WcbFaqPanelGeneral__WEBPACK_IMPORTED_MODULE_10__.WCB_FAQ_PANEL_GENERAL_DEMO,
+                general_general: { ...general_general,
+                  layout: "accordion"
+                },
                 style_container: _WcbFaqPanel_StyleContainer__WEBPACK_IMPORTED_MODULE_12__.WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
                 style_answer: _WcbFaqPanel_StyleAnswer__WEBPACK_IMPORTED_MODULE_14__.WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
                 style_question: _WcbFaqPanel_StyleQuestion__WEBPACK_IMPORTED_MODULE_13__.WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
@@ -2227,28 +2232,30 @@ const Edit = props => {
             if (data.preset === "grid-simple") {
               return setAttributes({
                 general_preset: data,
-                general_general: { ..._WcbFaqPanelGeneral__WEBPACK_IMPORTED_MODULE_10__.WCB_FAQ_PANEL_GENERAL_DEMO,
+                general_general: { ...general_general,
                   layout: "grid"
                 },
                 style_container: _WcbFaqPanel_StyleContainer__WEBPACK_IMPORTED_MODULE_12__.WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
                 style_answer: _WcbFaqPanel_StyleAnswer__WEBPACK_IMPORTED_MODULE_14__.WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
-                style_question: _WcbFaqPanel_StyleQuestion__WEBPACK_IMPORTED_MODULE_13__.WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
-                style_icon: _WcbFaqPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_15__.WCB_FAQ_PANEL_STYLE_ICON_DEMO
+                style_question: _WcbFaqPanel_StyleQuestion__WEBPACK_IMPORTED_MODULE_13__.WCB_FAQ_PANEL_STYLE_QUESTION_DEMO
               });
             }
 
             if (data.preset === "grid-solid") {
               return setAttributes({
                 general_preset: data,
-                general_general: { ..._WcbFaqPanelGeneral__WEBPACK_IMPORTED_MODULE_10__.WCB_FAQ_PANEL_GENERAL_DEMO,
+                general_general: { ...general_general,
                   layout: "grid"
                 },
                 style_container: _WcbFaqPanel_StyleContainer__WEBPACK_IMPORTED_MODULE_12__.WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
                 style_answer: _WcbFaqPanel_StyleAnswer__WEBPACK_IMPORTED_MODULE_14__.WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
-                style_question: _WcbFaqPanel_StyleQuestion__WEBPACK_IMPORTED_MODULE_13__.WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
-                style_icon: _WcbFaqPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_15__.WCB_FAQ_PANEL_STYLE_ICON_DEMO
+                style_question: _WcbFaqPanel_StyleQuestion__WEBPACK_IMPORTED_MODULE_13__.WCB_FAQ_PANEL_STYLE_QUESTION_DEMO
               });
             }
+
+            setAttributes({
+              general_preset: data
+            });
           },
           panelData: general_preset
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbFaqPanelGeneral__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2258,7 +2265,10 @@ const Edit = props => {
           ,
           setAttr__: data => {
             setAttributes({
-              general_general: data
+              general_general: data,
+              general_preset: { ...general_preset,
+                preset: ""
+              }
             });
           },
           panelData: general_general
@@ -2269,7 +2279,10 @@ const Edit = props => {
           ,
           setAttr__: data => {
             setAttributes({
-              general_icon: data
+              general_icon: data,
+              general_preset: { ...general_preset,
+                preset: ""
+              }
             });
           },
           panelData: general_icon
@@ -2283,7 +2296,10 @@ const Edit = props => {
           ,
           setAttr__: data => {
             setAttributes({
-              style_container: data
+              style_container: data,
+              general_preset: { ...general_preset,
+                preset: ""
+              }
             });
           },
           panelData: style_container
@@ -2294,7 +2310,10 @@ const Edit = props => {
           ,
           setAttr__: data => {
             setAttributes({
-              style_question: data
+              style_question: data,
+              general_preset: { ...general_preset,
+                preset: ""
+              }
             });
           },
           panelData: style_question
@@ -2305,7 +2324,10 @@ const Edit = props => {
           ,
           setAttr__: data => {
             setAttributes({
-              style_icon: data
+              style_icon: data,
+              general_preset: { ...general_preset,
+                preset: ""
+              }
             });
           },
           panelData: style_icon
@@ -2316,7 +2338,10 @@ const Edit = props => {
           ,
           setAttr__: data => {
             setAttributes({
-              style_answer: data
+              style_answer: data,
+              general_preset: { ...general_preset,
+                preset: ""
+              }
             });
           },
           panelData: style_answer
@@ -2343,7 +2368,9 @@ const Edit = props => {
   const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useInnerBlocksProps)(blockProps, {
     allowedBlocks: ["wcb/faq-child"],
     template: [["wcb/faq-child", {}], ["wcb/faq-child", {}]],
-    renderAppender: () => false
+    renderAppender: () => {
+      return isSelected ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks.DefaultBlockAppender, null) : false;
+    }
   });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_17__.C, {
     value: myCache
@@ -2489,7 +2516,11 @@ const GlobalCss = attrs => {
       border: style_container.border,
       className: FAQ_CHILD_SEPARATOR,
       isWithRadius: true
-    })]
+    }), {
+      [FAQ_CHILD_WRAP]: {
+        height: general_general.layout === "grid" && !style_container.equalHeight ? "fit-content" : undefined
+      }
+    }]
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_8__["default"])({
       className: FAQ_CHILD_QUESTION,
@@ -2527,7 +2558,7 @@ const GlobalCss = attrs => {
         color: style_icon.color
       },
       [`${WRAP_CLASSNAME} .wcb-faq-child__wrap.active`]: {
-        [FAQ_CHILD_ICON]: {
+        ".wcb-faq-child__icon": {
           color: style_icon.activeColor
         }
       }
@@ -3398,7 +3429,6 @@ const WcbFaqPanel_StyleContainer = _ref => {
       });
     }
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    defaultOpen: true,
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Border ", "wcb")
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyBorderControl_MyBorderControl__WEBPACK_IMPORTED_MODULE_6__["default"], {
     borderControl: border,

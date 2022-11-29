@@ -2115,7 +2115,11 @@ const GlobalCss = attrs => {
       border: style_container.border,
       className: FAQ_CHILD_SEPARATOR,
       isWithRadius: true
-    })]
+    }), {
+      [FAQ_CHILD_WRAP]: {
+        height: general_general.layout === "grid" && !style_container.equalHeight ? "fit-content" : undefined
+      }
+    }]
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_8__["default"])({
       className: FAQ_CHILD_QUESTION,
@@ -2153,7 +2157,7 @@ const GlobalCss = attrs => {
         color: style_icon.color
       },
       [`${WRAP_CLASSNAME} .wcb-faq-child__wrap.active`]: {
-        [FAQ_CHILD_ICON]: {
+        ".wcb-faq-child__icon": {
           color: style_icon.activeColor
         }
       }

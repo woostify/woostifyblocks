@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState } from "react";
-import { useSelect, useDispatch, withDispatch } from "@wordpress/data";
+import React, { useRef, useEffect } from "react";
+import { useSelect, useDispatch } from "@wordpress/data";
 // @ts-ignore
 import {
 	BlockInPanelStore,

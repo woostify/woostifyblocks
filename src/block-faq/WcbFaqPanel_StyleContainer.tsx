@@ -97,7 +97,7 @@ const WcbFaqPanel_StyleContainer: FC<Props> = ({
 						}}
 					/>
 				</MyDisclosure>
-				<MyDisclosure defaultOpen label={__("Border ", "wcb")}>
+				<MyDisclosure label={__("Border ", "wcb")}>
 					<MyBorderControl
 						borderControl={border}
 						setAttrs__border={(value) => {

@@ -41,7 +41,7 @@ import WcbFaqPanel_StyleIcon, {
 import WcbFaqPanelPreset from "./WcbFaqPanelPreset";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
-	const { attributes, setAttributes, clientId } = props;
+	const { attributes, setAttributes, clientId, isSelected } = props;
 	const {
 		advance_responsiveCondition,
 		advance_zIndex,
@@ -87,10 +87,13 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabGeneralIsPanelOpen === "Preset" || undefined}
 							//
 							setAttr__={(data) => {
-								if (!data.preset || data.preset === "carousel-simple") {
+								if (data.preset === "carousel-simple") {
 									return setAttributes({
 										general_preset: data,
-										general_general: WCB_FAQ_PANEL_GENERAL_DEMO,
+										general_general: {
+											...general_general,
+											layout: "accordion",
+										},
 										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
 										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
 										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
@@ -100,7 +103,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								if (data.preset === "carousel-solid") {
 									return setAttributes({
 										general_preset: data,
-										general_general: WCB_FAQ_PANEL_GENERAL_DEMO,
+										general_general: {
+											...general_general,
+											layout: "accordion",
+										},
 										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
 										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
 										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
@@ -111,28 +117,30 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 									return setAttributes({
 										general_preset: data,
 										general_general: {
-											...WCB_FAQ_PANEL_GENERAL_DEMO,
+											...general_general,
 											layout: "grid",
 										},
 										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
 										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
 										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
-										style_icon: WCB_FAQ_PANEL_STYLE_ICON_DEMO,
 									});
 								}
 								if (data.preset === "grid-solid") {
 									return setAttributes({
 										general_preset: data,
 										general_general: {
-											...WCB_FAQ_PANEL_GENERAL_DEMO,
+											...general_general,
 											layout: "grid",
 										},
 										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
 										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
 										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
-										style_icon: WCB_FAQ_PANEL_STYLE_ICON_DEMO,
 									});
 								}
+
+								setAttributes({
+									general_preset: data,
+								});
 							}}
 							panelData={general_preset}
 						/>
@@ -142,7 +150,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabGeneralIsPanelOpen === "General" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ general_general: data });
+								setAttributes({
+									general_general: data,
+									general_preset: { ...general_preset, preset: "" },
+								});
 							}}
 							panelData={general_general}
 						/>
@@ -153,7 +164,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								opened={tabGeneralIsPanelOpen === "Icon" || undefined}
 								//
 								setAttr__={(data) => {
-									setAttributes({ general_icon: data });
+									setAttributes({
+										general_icon: data,
+										general_preset: { ...general_preset, preset: "" },
+									});
 								}}
 								panelData={general_icon}
 							/>
@@ -174,7 +188,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabStylesIsPanelOpen === "_StyleContainer" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ style_container: data });
+								setAttributes({
+									style_container: data,
+									general_preset: { ...general_preset, preset: "" },
+								});
 							}}
 							panelData={style_container}
 						/>
@@ -185,7 +202,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabStylesIsPanelOpen === "_StyleQuestion" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ style_question: data });
+								setAttributes({
+									style_question: data,
+									general_preset: { ...general_preset, preset: "" },
+								});
 							}}
 							panelData={style_question}
 						/>
@@ -197,7 +217,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								opened={tabStylesIsPanelOpen === "_StyleIcon" || undefined}
 								//
 								setAttr__={(data) => {
-									setAttributes({ style_icon: data });
+									setAttributes({
+										style_icon: data,
+										general_preset: { ...general_preset, preset: "" },
+									});
 								}}
 								panelData={style_icon}
 							/>
@@ -209,7 +232,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabStylesIsPanelOpen === "_StyleAnswer" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ style_answer: data });
+								setAttributes({
+									style_answer: data,
+									general_preset: { ...general_preset, preset: "" },
+								});
 							}}
 							panelData={style_answer}
 						/>
@@ -239,13 +265,16 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const blockProps = useBlockProps({
 		className: `wcb-faq__inner`,
 	});
+
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		allowedBlocks: ["wcb/faq-child"],
 		template: [
 			["wcb/faq-child", {}],
 			["wcb/faq-child", {}],
 		],
-		renderAppender: () => false,
+		renderAppender: () => {
+			return isSelected ? <InnerBlocks.DefaultBlockAppender /> : false;
+		},
 	});
 
 	return (
