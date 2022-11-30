@@ -767,6 +767,448 @@ if (true) {
 
 /***/ }),
 
+/***/ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@emotion/react/dist/emotion-react.browser.esm.js ***!
+  \***********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CacheProvider": function() { return /* reexport safe */ _emotion_element_6a883da9_browser_esm_js__WEBPACK_IMPORTED_MODULE_2__.C; },
+/* harmony export */   "ClassNames": function() { return /* binding */ ClassNames; },
+/* harmony export */   "Global": function() { return /* binding */ Global; },
+/* harmony export */   "ThemeContext": function() { return /* reexport safe */ _emotion_element_6a883da9_browser_esm_js__WEBPACK_IMPORTED_MODULE_2__.T; },
+/* harmony export */   "ThemeProvider": function() { return /* reexport safe */ _emotion_element_6a883da9_browser_esm_js__WEBPACK_IMPORTED_MODULE_2__.a; },
+/* harmony export */   "__unsafe_useEmotionCache": function() { return /* reexport safe */ _emotion_element_6a883da9_browser_esm_js__WEBPACK_IMPORTED_MODULE_2__._; },
+/* harmony export */   "createElement": function() { return /* binding */ jsx; },
+/* harmony export */   "css": function() { return /* binding */ css; },
+/* harmony export */   "jsx": function() { return /* binding */ jsx; },
+/* harmony export */   "keyframes": function() { return /* binding */ keyframes; },
+/* harmony export */   "useTheme": function() { return /* reexport safe */ _emotion_element_6a883da9_browser_esm_js__WEBPACK_IMPORTED_MODULE_2__.u; },
+/* harmony export */   "withEmotionCache": function() { return /* reexport safe */ _emotion_element_6a883da9_browser_esm_js__WEBPACK_IMPORTED_MODULE_2__.w; },
+/* harmony export */   "withTheme": function() { return /* reexport safe */ _emotion_element_6a883da9_browser_esm_js__WEBPACK_IMPORTED_MODULE_2__.b; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _emotion_cache__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/cache */ "./node_modules/@emotion/cache/dist/emotion-cache.browser.esm.js");
+/* harmony import */ var _emotion_element_6a883da9_browser_esm_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./emotion-element-6a883da9.browser.esm.js */ "./node_modules/@emotion/react/dist/emotion-element-6a883da9.browser.esm.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _emotion_weak_memoize__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @emotion/weak-memoize */ "./node_modules/@emotion/weak-memoize/dist/emotion-weak-memoize.esm.js");
+/* harmony import */ var hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! hoist-non-react-statics */ "./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js");
+/* harmony import */ var hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _emotion_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @emotion/utils */ "./node_modules/@emotion/utils/dist/emotion-utils.browser.esm.js");
+/* harmony import */ var _emotion_serialize__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @emotion/serialize */ "./node_modules/@emotion/serialize/dist/emotion-serialize.browser.esm.js");
+/* harmony import */ var _emotion_use_insertion_effect_with_fallbacks__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @emotion/use-insertion-effect-with-fallbacks */ "./node_modules/@emotion/use-insertion-effect-with-fallbacks/dist/emotion-use-insertion-effect-with-fallbacks.browser.esm.js");
+
+
+
+
+
+
+
+
+
+
+
+
+var pkg = {
+	name: "@emotion/react",
+	version: "11.10.4",
+	main: "dist/emotion-react.cjs.js",
+	module: "dist/emotion-react.esm.js",
+	browser: {
+		"./dist/emotion-react.esm.js": "./dist/emotion-react.browser.esm.js"
+	},
+	exports: {
+		".": {
+			module: {
+				worker: "./dist/emotion-react.worker.esm.js",
+				browser: "./dist/emotion-react.browser.esm.js",
+				"default": "./dist/emotion-react.esm.js"
+			},
+			"default": "./dist/emotion-react.cjs.js"
+		},
+		"./jsx-runtime": {
+			module: {
+				worker: "./jsx-runtime/dist/emotion-react-jsx-runtime.worker.esm.js",
+				browser: "./jsx-runtime/dist/emotion-react-jsx-runtime.browser.esm.js",
+				"default": "./jsx-runtime/dist/emotion-react-jsx-runtime.esm.js"
+			},
+			"default": "./jsx-runtime/dist/emotion-react-jsx-runtime.cjs.js"
+		},
+		"./_isolated-hnrs": {
+			module: {
+				worker: "./_isolated-hnrs/dist/emotion-react-_isolated-hnrs.worker.esm.js",
+				browser: "./_isolated-hnrs/dist/emotion-react-_isolated-hnrs.browser.esm.js",
+				"default": "./_isolated-hnrs/dist/emotion-react-_isolated-hnrs.esm.js"
+			},
+			"default": "./_isolated-hnrs/dist/emotion-react-_isolated-hnrs.cjs.js"
+		},
+		"./jsx-dev-runtime": {
+			module: {
+				worker: "./jsx-dev-runtime/dist/emotion-react-jsx-dev-runtime.worker.esm.js",
+				browser: "./jsx-dev-runtime/dist/emotion-react-jsx-dev-runtime.browser.esm.js",
+				"default": "./jsx-dev-runtime/dist/emotion-react-jsx-dev-runtime.esm.js"
+			},
+			"default": "./jsx-dev-runtime/dist/emotion-react-jsx-dev-runtime.cjs.js"
+		},
+		"./package.json": "./package.json",
+		"./types/css-prop": "./types/css-prop.d.ts",
+		"./macro": "./macro.js"
+	},
+	types: "types/index.d.ts",
+	files: [
+		"src",
+		"dist",
+		"jsx-runtime",
+		"jsx-dev-runtime",
+		"_isolated-hnrs",
+		"types/*.d.ts",
+		"macro.js",
+		"macro.d.ts",
+		"macro.js.flow"
+	],
+	sideEffects: false,
+	author: "Emotion Contributors",
+	license: "MIT",
+	scripts: {
+		"test:typescript": "dtslint types"
+	},
+	dependencies: {
+		"@babel/runtime": "^7.18.3",
+		"@emotion/babel-plugin": "^11.10.0",
+		"@emotion/cache": "^11.10.0",
+		"@emotion/serialize": "^1.1.0",
+		"@emotion/use-insertion-effect-with-fallbacks": "^1.0.0",
+		"@emotion/utils": "^1.2.0",
+		"@emotion/weak-memoize": "^0.3.0",
+		"hoist-non-react-statics": "^3.3.1"
+	},
+	peerDependencies: {
+		"@babel/core": "^7.0.0",
+		react: ">=16.8.0"
+	},
+	peerDependenciesMeta: {
+		"@babel/core": {
+			optional: true
+		},
+		"@types/react": {
+			optional: true
+		}
+	},
+	devDependencies: {
+		"@babel/core": "^7.18.5",
+		"@definitelytyped/dtslint": "0.0.112",
+		"@emotion/css": "11.10.0",
+		"@emotion/css-prettifier": "1.1.0",
+		"@emotion/server": "11.10.0",
+		"@emotion/styled": "11.10.4",
+		"html-tag-names": "^1.1.2",
+		react: "16.14.0",
+		"svg-tag-names": "^1.1.1",
+		typescript: "^4.5.5"
+	},
+	repository: "https://github.com/emotion-js/emotion/tree/main/packages/react",
+	publishConfig: {
+		access: "public"
+	},
+	"umd:main": "dist/emotion-react.umd.min.js",
+	preconstruct: {
+		entrypoints: [
+			"./index.js",
+			"./jsx-runtime.js",
+			"./jsx-dev-runtime.js",
+			"./_isolated-hnrs.js"
+		],
+		umdName: "emotionReact",
+		exports: {
+			envConditions: [
+				"browser",
+				"worker"
+			],
+			extra: {
+				"./types/css-prop": "./types/css-prop.d.ts",
+				"./macro": "./macro.js"
+			}
+		}
+	}
+};
+
+var jsx = function jsx(type, props) {
+  var args = arguments;
+
+  if (props == null || !_emotion_element_6a883da9_browser_esm_js__WEBPACK_IMPORTED_MODULE_2__.h.call(props, 'css')) {
+    // $FlowFixMe
+    return react__WEBPACK_IMPORTED_MODULE_0__.createElement.apply(undefined, args);
+  }
+
+  var argsLength = args.length;
+  var createElementArgArray = new Array(argsLength);
+  createElementArgArray[0] = _emotion_element_6a883da9_browser_esm_js__WEBPACK_IMPORTED_MODULE_2__.E;
+  createElementArgArray[1] = (0,_emotion_element_6a883da9_browser_esm_js__WEBPACK_IMPORTED_MODULE_2__.c)(type, props);
+
+  for (var i = 2; i < argsLength; i++) {
+    createElementArgArray[i] = args[i];
+  } // $FlowFixMe
+
+
+  return react__WEBPACK_IMPORTED_MODULE_0__.createElement.apply(null, createElementArgArray);
+};
+
+var warnedAboutCssPropForGlobal = false; // maintain place over rerenders.
+// initial render from browser, insertBefore context.sheet.tags[0] or if a style hasn't been inserted there yet, appendChild
+// initial client-side render from SSR, use place of hydrating tag
+
+var Global = /* #__PURE__ */(0,_emotion_element_6a883da9_browser_esm_js__WEBPACK_IMPORTED_MODULE_2__.w)(function (props, cache) {
+  if ( true && !warnedAboutCssPropForGlobal && ( // check for className as well since the user is
+  // probably using the custom createElement which
+  // means it will be turned into a className prop
+  // $FlowFixMe I don't really want to add it to the type since it shouldn't be used
+  props.className || props.css)) {
+    console.error("It looks like you're using the css prop on Global, did you mean to use the styles prop instead?");
+    warnedAboutCssPropForGlobal = true;
+  }
+
+  var styles = props.styles;
+  var serialized = (0,_emotion_serialize__WEBPACK_IMPORTED_MODULE_7__.serializeStyles)([styles], undefined, (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_emotion_element_6a883da9_browser_esm_js__WEBPACK_IMPORTED_MODULE_2__.T));
+  // but it is based on a constant that will never change at runtime
+  // it's effectively like having two implementations and switching them out
+  // so it's not actually breaking anything
+
+
+  var sheetRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
+  (0,_emotion_use_insertion_effect_with_fallbacks__WEBPACK_IMPORTED_MODULE_8__.useInsertionEffectWithLayoutFallback)(function () {
+    var key = cache.key + "-global"; // use case of https://github.com/emotion-js/emotion/issues/2675
+
+    var sheet = new cache.sheet.constructor({
+      key: key,
+      nonce: cache.sheet.nonce,
+      container: cache.sheet.container,
+      speedy: cache.sheet.isSpeedy
+    });
+    var rehydrating = false; // $FlowFixMe
+
+    var node = document.querySelector("style[data-emotion=\"" + key + " " + serialized.name + "\"]");
+
+    if (cache.sheet.tags.length) {
+      sheet.before = cache.sheet.tags[0];
+    }
+
+    if (node !== null) {
+      rehydrating = true; // clear the hash so this node won't be recognizable as rehydratable by other <Global/>s
+
+      node.setAttribute('data-emotion', key);
+      sheet.hydrate([node]);
+    }
+
+    sheetRef.current = [sheet, rehydrating];
+    return function () {
+      sheet.flush();
+    };
+  }, [cache]);
+  (0,_emotion_use_insertion_effect_with_fallbacks__WEBPACK_IMPORTED_MODULE_8__.useInsertionEffectWithLayoutFallback)(function () {
+    var sheetRefCurrent = sheetRef.current;
+    var sheet = sheetRefCurrent[0],
+        rehydrating = sheetRefCurrent[1];
+
+    if (rehydrating) {
+      sheetRefCurrent[1] = false;
+      return;
+    }
+
+    if (serialized.next !== undefined) {
+      // insert keyframes
+      (0,_emotion_utils__WEBPACK_IMPORTED_MODULE_6__.insertStyles)(cache, serialized.next, true);
+    }
+
+    if (sheet.tags.length) {
+      // if this doesn't exist then it will be null so the style element will be appended
+      var element = sheet.tags[sheet.tags.length - 1].nextElementSibling;
+      sheet.before = element;
+      sheet.flush();
+    }
+
+    cache.insert("", serialized, sheet, false);
+  }, [cache, serialized.name]);
+  return null;
+});
+
+if (true) {
+  Global.displayName = 'EmotionGlobal';
+}
+
+function css() {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  return (0,_emotion_serialize__WEBPACK_IMPORTED_MODULE_7__.serializeStyles)(args);
+}
+
+var keyframes = function keyframes() {
+  var insertable = css.apply(void 0, arguments);
+  var name = "animation-" + insertable.name; // $FlowFixMe
+
+  return {
+    name: name,
+    styles: "@keyframes " + name + "{" + insertable.styles + "}",
+    anim: 1,
+    toString: function toString() {
+      return "_EMO_" + this.name + "_" + this.styles + "_EMO_";
+    }
+  };
+};
+
+var classnames = function classnames(args) {
+  var len = args.length;
+  var i = 0;
+  var cls = '';
+
+  for (; i < len; i++) {
+    var arg = args[i];
+    if (arg == null) continue;
+    var toAdd = void 0;
+
+    switch (typeof arg) {
+      case 'boolean':
+        break;
+
+      case 'object':
+        {
+          if (Array.isArray(arg)) {
+            toAdd = classnames(arg);
+          } else {
+            if ( true && arg.styles !== undefined && arg.name !== undefined) {
+              console.error('You have passed styles created with `css` from `@emotion/react` package to the `cx`.\n' + '`cx` is meant to compose class names (strings) so you should convert those styles to a class name by passing them to the `css` received from <ClassNames/> component.');
+            }
+
+            toAdd = '';
+
+            for (var k in arg) {
+              if (arg[k] && k) {
+                toAdd && (toAdd += ' ');
+                toAdd += k;
+              }
+            }
+          }
+
+          break;
+        }
+
+      default:
+        {
+          toAdd = arg;
+        }
+    }
+
+    if (toAdd) {
+      cls && (cls += ' ');
+      cls += toAdd;
+    }
+  }
+
+  return cls;
+};
+
+function merge(registered, css, className) {
+  var registeredStyles = [];
+  var rawClassName = (0,_emotion_utils__WEBPACK_IMPORTED_MODULE_6__.getRegisteredStyles)(registered, registeredStyles, className);
+
+  if (registeredStyles.length < 2) {
+    return className;
+  }
+
+  return rawClassName + css(registeredStyles);
+}
+
+var Insertion = function Insertion(_ref) {
+  var cache = _ref.cache,
+      serializedArr = _ref.serializedArr;
+  var rules = (0,_emotion_use_insertion_effect_with_fallbacks__WEBPACK_IMPORTED_MODULE_8__.useInsertionEffectAlwaysWithSyncFallback)(function () {
+
+    for (var i = 0; i < serializedArr.length; i++) {
+      var res = (0,_emotion_utils__WEBPACK_IMPORTED_MODULE_6__.insertStyles)(cache, serializedArr[i], false);
+    }
+  });
+
+  return null;
+};
+
+var ClassNames = /* #__PURE__ */(0,_emotion_element_6a883da9_browser_esm_js__WEBPACK_IMPORTED_MODULE_2__.w)(function (props, cache) {
+  var hasRendered = false;
+  var serializedArr = [];
+
+  var css = function css() {
+    if (hasRendered && "development" !== 'production') {
+      throw new Error('css can only be used during render');
+    }
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    var serialized = (0,_emotion_serialize__WEBPACK_IMPORTED_MODULE_7__.serializeStyles)(args, cache.registered);
+    serializedArr.push(serialized); // registration has to happen here as the result of this might get consumed by `cx`
+
+    (0,_emotion_utils__WEBPACK_IMPORTED_MODULE_6__.registerStyles)(cache, serialized, false);
+    return cache.key + "-" + serialized.name;
+  };
+
+  var cx = function cx() {
+    if (hasRendered && "development" !== 'production') {
+      throw new Error('cx can only be used during render');
+    }
+
+    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    return merge(cache.registered, css, classnames(args));
+  };
+
+  var content = {
+    css: css,
+    cx: cx,
+    theme: (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_emotion_element_6a883da9_browser_esm_js__WEBPACK_IMPORTED_MODULE_2__.T)
+  };
+  var ele = props.children(content);
+  hasRendered = true;
+  return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Insertion, {
+    cache: cache,
+    serializedArr: serializedArr
+  }), ele);
+});
+
+if (true) {
+  ClassNames.displayName = 'EmotionClassNames';
+}
+
+if (true) {
+  var isBrowser = "object" !== 'undefined'; // #1727 for some reason Jest evaluates modules twice if some consuming module gets mocked with jest.mock
+
+  var isJest = typeof jest !== 'undefined';
+
+  if (isBrowser && !isJest) {
+    // globalThis has wide browser support - https://caniuse.com/?search=globalThis, Node.js 12 and later
+    var globalContext = // $FlowIgnore
+    typeof globalThis !== 'undefined' ? globalThis // eslint-disable-line no-undef
+    : isBrowser ? window : __webpack_require__.g;
+    var globalKey = "__EMOTION_REACT_" + pkg.version.split('.')[0] + "__";
+
+    if (globalContext[globalKey]) {
+      console.warn('You are loading @emotion/react when it is already loaded. Running ' + 'multiple instances may cause problems. This can happen if multiple ' + 'versions are used, or if multiple builds of the same version are ' + 'used.');
+    }
+
+    globalContext[globalKey] = true;
+  }
+}
+
+
+
+
+/***/ }),
+
 /***/ "./node_modules/@emotion/serialize/dist/emotion-serialize.browser.esm.js":
 /*!*******************************************************************************!*\
   !*** ./node_modules/@emotion/serialize/dist/emotion-serialize.browser.esm.js ***!
@@ -1445,30 +1887,108 @@ var weakMemoize = function weakMemoize(func) {
 
 /***/ }),
 
-/***/ "./src/block-faq-child/Edit.tsx":
-/*!**************************************!*\
-  !*** ./src/block-faq-child/Edit.tsx ***!
-  \**************************************/
+/***/ "./src/________.ts":
+/*!*************************!*\
+  !*** ./src/________.ts ***!
+  \*************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DEMO_WCB_GLOBAL_VARIABLES": function() { return /* binding */ DEMO_WCB_GLOBAL_VARIABLES; }
+/* harmony export */ });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+const DEMO_WCB_GLOBAL_VARIABLES = window.wcbGlobalVariables || {
+  media__desktopMinWidth: "1024px",
+  media__tabletMinWidth: "768px",
+  media_tablet: "768px",
+  media_desktop: "1024px",
+  reCAPTCHA_site_key: "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
+  reCAPTCHA_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
+}; // ----------------
+
+/* harmony default export */ __webpack_exports__["default"] = (null);
+
+/***/ }),
+
+/***/ "./src/block-container/getAdvanveStyles.ts":
+/*!*************************************************!*\
+  !*** ./src/block-container/getAdvanveStyles.ts ***!
+  \*************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getAdvanveDivWrapStyles": function() { return /* binding */ getAdvanveDivWrapStyles; }
+/* harmony export */ });
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+
+
+const getAdvanveDivWrapStyles = _ref => {
+  let {
+    advance_zIndex,
+    advance_responsiveCondition,
+    className,
+    defaultDisplay = "flex"
+  } = _ref;
+  const {
+    media__desktopMinWidth,
+    media__tabletMinWidth
+  } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES; //
+
+  const zIndexDesktop = advance_zIndex.Desktop;
+  const zIndexTablet = advance_zIndex.Tablet || zIndexDesktop;
+  const zIndexMobile = advance_zIndex.Mobile || zIndexTablet; //
+
+  const {
+    isHiddenOnDesktop,
+    isHiddenOnMobile,
+    isHiddenOnTablet
+  } = advance_responsiveCondition;
+  return _emotion_react__WEBPACK_IMPORTED_MODULE_1__.css`
+		${className} {
+			display: ${isHiddenOnMobile ? "none" : defaultDisplay};
+			z-index: ${zIndexMobile};
+			@media (min-width: ${media__tabletMinWidth}) {
+				z-index: ${zIndexTablet};
+				display: ${isHiddenOnTablet ? "none" : defaultDisplay};
+			}
+			@media (min-width: ${media__desktopMinWidth}) {
+				z-index: ${zIndexDesktop};
+				display: ${isHiddenOnDesktop ? "none" : defaultDisplay};
+			}
+		}
+	`;
+};
+
+/***/ }),
+
+/***/ "./src/block-team/Edit.tsx":
+/*!*********************************!*\
+  !*** ./src/block-team/Edit.tsx ***!
+  \*********************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/HOCInspectorControls */ "./src/components/HOCInspectorControls.tsx");
 /* harmony import */ var _hooks_useCreateCacheEmotion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/useCreateCacheEmotion */ "./src/hooks/useCreateCacheEmotion.ts");
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-element-6a883da9.browser.esm.js");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./editor.scss */ "./src/block-faq-child/editor.scss");
-/* harmony import */ var _hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/useSetBlockPanelInfo */ "./src/hooks/useSetBlockPanelInfo.ts");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-element-6a883da9.browser.esm.js");
+/* harmony import */ var _GlobalCss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./GlobalCss */ "./src/block-team/GlobalCss.tsx");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./editor.scss */ "./src/block-team/editor.scss");
+/* harmony import */ var _hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../hooks/useSetBlockPanelInfo */ "./src/hooks/useSetBlockPanelInfo.ts");
+/* harmony import */ var _components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/AdvancePanelCommon */ "./src/components/AdvancePanelCommon.tsx");
+/* harmony import */ var _WcbTeamPanelLayout__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./WcbTeamPanelLayout */ "./src/block-team/WcbTeamPanelLayout.tsx");
+
 
 
 
@@ -1485,26 +2005,21 @@ const Edit = props => {
   const {
     attributes,
     setAttributes,
-    clientId,
-    context,
-    isSelected
+    clientId
   } = props;
   const {
+    advance_responsiveCondition,
+    advance_zIndex,
+    heading,
     uniqueId,
-    answer,
-    layout,
-    question,
-    general_icon,
-    headingTag,
-    defaultExtend,
-    enableSeparator
+    general_layout
   } = attributes; //  COMMON HOOKS
 
   const {
     myCache,
     ref
   } = (0,_hooks_useCreateCacheEmotion__WEBPACK_IMPORTED_MODULE_5__["default"])();
-  const wrapBlockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
+  const wrapBlockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
     ref
   });
   const {
@@ -1513,90 +2028,125 @@ const Edit = props => {
     tabGeneralIsPanelOpen,
     tabStylesIsPanelOpen,
     handleTogglePanel
-  } = (0,_hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_7__["default"])(uniqueId);
+  } = (0,_hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_8__["default"])(uniqueId);
   const UNIQUE_ID = wrapBlockProps.id;
-  (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
+  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
     setAttributes({
       uniqueId: UNIQUE_ID
     });
   }, [UNIQUE_ID]); //
 
-  const blockIndex = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_9__.useSelect)(select => select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.store).getBlockIndex(clientId), [clientId]); //
+  const renderTabBodyPanels = tab => {
+    switch (tab.name) {
+      case "General":
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbTeamPanelLayout__WEBPACK_IMPORTED_MODULE_10__["default"], {
+          onToggle: () => handleTogglePanel("General", "Layout", true),
+          initialOpen: tabGeneralIsPanelOpen === "Layout" || tabGeneralIsPanelOpen === "first",
+          opened: tabGeneralIsPanelOpen === "Layout" || undefined //
+          ,
+          setAttr__: data => {
+            setAttributes({
+              general_layout: data
+            });
+          },
+          panelData: general_layout
+        }));
 
-  (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
-    var _context$wcbFaq_gene, _context$wcbFaq_gene2, _context$wcbFaq_gene3, _context$wcbFaq_gene4, _context$wcbFaq_gene5, _context$wcbFaq_gene6;
+      case "Styles":
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null);
 
-    console.log(12, "------ FAQ CHILD setAttributes ON useEffect --------");
-    setAttributes({
-      layout: (_context$wcbFaq_gene = context["wcb/faq_general"]) === null || _context$wcbFaq_gene === void 0 ? void 0 : _context$wcbFaq_gene.layout,
-      headingTag: (_context$wcbFaq_gene2 = context["wcb/faq_general"]) === null || _context$wcbFaq_gene2 === void 0 ? void 0 : _context$wcbFaq_gene2.headingTag,
-      general_icon: context["wcb/faq_icon"],
-      enableSeparator: (_context$wcbFaq_gene3 = context["wcb/faq_general"]) === null || _context$wcbFaq_gene3 === void 0 ? void 0 : _context$wcbFaq_gene3.enableSeparator,
-      defaultExtend: !((_context$wcbFaq_gene4 = context["wcb/faq_general"]) !== null && _context$wcbFaq_gene4 !== void 0 && _context$wcbFaq_gene4.collapseOtherItems) || ((_context$wcbFaq_gene5 = context["wcb/faq_general"]) === null || _context$wcbFaq_gene5 === void 0 ? void 0 : _context$wcbFaq_gene5.collapseOtherItems) && !blockIndex && ((_context$wcbFaq_gene6 = context["wcb/faq_general"]) === null || _context$wcbFaq_gene6 === void 0 ? void 0 : _context$wcbFaq_gene6.expandFirstItem)
-    });
-  }, [context["wcb/faq_general"], context["wcb/faq_icon"], blockIndex]);
+      case "Advances":
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_9__["default"], {
+          advance_responsiveCondition: attributes.advance_responsiveCondition,
+          advance_zIndex: attributes.advance_zIndex,
+          handleTogglePanel: handleTogglePanel,
+          setAttributes: setAttributes,
+          tabAdvancesIsPanelOpen: tabAdvancesIsPanelOpen
+        }));
 
-  const renderIcon = () => {
-    if (!general_icon.enableIcon || layout !== "accordion") {
-      return null;
+      default:
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null);
     }
-
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, general_icon.iconName && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.Dashicon, {
-      className: "wcb-faq-child__icon wcb-faq-child__icon--active",
-      size: 16,
-      icon: general_icon.iconName
-    }), general_icon.inactiveIconName && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.Dashicon, {
-      className: "wcb-faq-child__icon wcb-faq-child__icon--inactive",
-      size: 16,
-      icon: general_icon.inactiveIconName
-    }));
   };
 
-  const ACTIVE = (defaultExtend || isSelected) && layout === "accordion";
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.C, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.C, {
     value: myCache
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
-    className: `${wrapBlockProps === null || wrapBlockProps === void 0 ? void 0 : wrapBlockProps.className} wcb-faq-child__wrap wcb-faq-child__wrap--${layout} ${ACTIVE ? "active" : ""} ${UNIQUE_ID}`,
+    className: `${wrapBlockProps === null || wrapBlockProps === void 0 ? void 0 : wrapBlockProps.className} wcb-team__wrap ${UNIQUE_ID}`,
     "data-uniqueid": UNIQUE_ID
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "ac-header"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: `wcb-faq-child__question wcb-faq-child__question--icon-${general_icon.iconPosition}`
-  }, general_icon.iconPosition === "left" && renderIcon(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, {
-    tagName: headingTag || "h4",
-    value: question,
-    allowedFormats: ["core/bold", "core/italic"],
-    onChange: content => setAttributes({
-      question: content
-    }),
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Question..."),
-    className: "wcb-faq-child__question-text"
-  }), general_icon.iconPosition === "right" && renderIcon())), (ACTIVE || layout === "grid") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "ac-panel"
-  }, enableSeparator && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-faq-child__separator"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-faq-child__answer"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, {
-    tagName: "p",
-    value: answer,
-    allowedFormats: ["core/bold", "core/italic"],
-    onChange: content => setAttributes({
-      answer: content
-    }),
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Answer..."),
-    className: "wcb-faq-child__answer-text"
-  })))));
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    renderTabPanels: renderTabBodyPanels
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_6__["default"], attributes), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, "CHILD CONTENT ")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Edit);
 
 /***/ }),
 
-/***/ "./src/block-faq-child/Save.tsx":
+/***/ "./src/block-team/GlobalCss.tsx":
 /*!**************************************!*\
-  !*** ./src/block-faq-child/Save.tsx ***!
+  !*** ./src/block-team/GlobalCss.tsx ***!
   \**************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../block-container/getAdvanveStyles */ "./src/block-container/getAdvanveStyles.ts");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+
+
+
+
+
+
+const GlobalCss = attrs => {
+  const {
+    uniqueId,
+    // ATTRS OF BLOCK
+    //
+    advance_responsiveCondition,
+    advance_zIndex
+  } = attrs;
+  const {
+    media_desktop,
+    media_tablet
+  } = ___WEBPACK_IMPORTED_MODULE_3__.DEMO_WCB_GLOBAL_VARIABLES;
+  const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+  const HEADING_CLASSNAME = `${WRAP_CLASSNAME} .wcb-heading__heading`; // ------------------- WRAP DIV
+
+  const getDivWrapStyles = () => {
+    return {
+      [`${WRAP_CLASSNAME}`]: {
+        [`@media (min-width: ${media_tablet})`]: {},
+        [`@media (min-width: ${media_desktop})`]: {}
+      }
+    };
+  };
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_4__.Global, {
+    styles: getDivWrapStyles()
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_4__.Global, {
+    styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__.getAdvanveDivWrapStyles)({
+      advance_responsiveCondition,
+      advance_zIndex,
+      className: WRAP_CLASSNAME,
+      defaultDisplay: "block"
+    })
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (react__WEBPACK_IMPORTED_MODULE_1___default().memo(GlobalCss));
+
+/***/ }),
+
+/***/ "./src/block-team/Save.tsx":
+/*!*********************************!*\
+  !*** ./src/block-team/Save.tsx ***!
+  \*********************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1610,9 +2160,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "./src/block-faq-child/style.scss");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/SaveCommon */ "./src/components/SaveCommon.tsx");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style.scss */ "./src/block-team/style.scss");
 
 
 
@@ -1621,139 +2170,167 @@ __webpack_require__.r(__webpack_exports__);
 
 function save(_ref) {
   let {
-    attributes,
-    ...props
+    attributes
   } = _ref;
   const {
     uniqueId,
-    answer,
-    question,
-    general_icon,
-    headingTag,
-    layout,
-    defaultExtend,
-    enableSeparator
+    advance_responsiveCondition,
+    advance_zIndex
   } = attributes; //
 
+  const newAttrForSave = {
+    uniqueId,
+    advance_responsiveCondition,
+    advance_zIndex
+  }; //
+
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-    className: "wcb-faq-child__wrap"
+    className: "wcb-team__wrap"
   });
-
-  const renderIcon = () => {
-    if (!general_icon.enableIcon || layout !== "accordion") {
-      return null;
-    }
-
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, general_icon.iconName && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.Dashicon, {
-      className: "wcb-faq-child__icon wcb-faq-child__icon--active",
-      size: 16,
-      icon: general_icon.iconName
-    }), general_icon.inactiveIconName && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.Dashicon, {
-      className: "wcb-faq-child__icon wcb-faq-child__icon--inactive",
-      size: 16,
-      icon: general_icon.inactiveIconName
-    }));
-  };
-
-  const ariaControls = uniqueId + "controls";
-  const Htmltag = layout === "grid" ? "div" : "button";
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, blockProps, {
-    className: `ac wcb-faq-child__wrap wcb-faq-child__wrap--${layout} `,
-    id: uniqueId
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "ac-header"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Htmltag, {
-    className: `ac-trigger wcb-faq-child__question wcb-faq-child__question--icon-${general_icon.iconPosition}`,
-    type: "button",
-    "aria-expanded": "true",
-    "aria-controls": ariaControls
-  }, general_icon.iconPosition === "left" && renderIcon(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText.Content, {
-    tagName: headingTag || "h4",
-    value: question,
-    className: "wcb-faq-child__question-text"
-  }), general_icon.iconPosition === "right" && renderIcon())), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "ac-panel"
-  }, enableSeparator && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-faq-child__separator"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-faq-child__answer",
-    id: ariaControls
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText.Content, {
-    tagName: "p",
-    value: answer,
-    className: "wcb-faq-child__answer-text ac-text"
-  }))));
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    attributes: newAttrForSave,
+    className: "wcb-team__wrap",
+    uniqueId: uniqueId
+  }, blockProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, "CHILD"));
 }
 
 /***/ }),
 
-/***/ "./src/block-faq-child/attributes.ts":
-/*!*******************************************!*\
-  !*** ./src/block-faq-child/attributes.ts ***!
-  \*******************************************/
+/***/ "./src/block-team/WcbTeamPanelLayout.tsx":
+/*!***********************************************!*\
+  !*** ./src/block-team/WcbTeamPanelLayout.tsx ***!
+  \***********************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _block_faq_WcbFaqPanelIcon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../block-faq/WcbFaqPanelIcon */ "./src/block-faq/WcbFaqPanelIcon.tsx");
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "WCB_TEAM_PANEL_LAYOUT_DEMO": function() { return /* binding */ WCB_TEAM_PANEL_LAYOUT_DEMO; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyTextAlignControl/MyTextAlignControl */ "./src/components/controls/MyTextAlignControl/MyTextAlignControl.tsx");
+/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
+
+
+
+
+
+
+const WCB_TEAM_PANEL_LAYOUT_DEMO = {
+  textAlignment: {
+    Desktop: "left"
+  },
+  headingTag: "h2"
+};
+
+const WcbTeamPanelLayout = _ref => {
+  let {
+    panelData = WCB_TEAM_PANEL_LAYOUT_DEMO,
+    setAttr__,
+    initialOpen,
+    onToggle,
+    opened
+  } = _ref;
+  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_5__["default"])() || "Desktop";
+  const {
+    textAlignment
+  } = panelData;
+  const {
+    currentDeviceValue: TEXT_ALIGNMENT
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(textAlignment, deviceType); //
+
+  const handleChangeTextAlignment = selected => {
+    setAttr__({ ...panelData,
+      textAlignment: { ...textAlignment,
+        [deviceType]: selected
+      }
+    });
+  }; //
+
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+    initialOpen: initialOpen,
+    onToggle: onToggle,
+    opened: opened,
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Layout", "wcb")
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "space-y-5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    textAlignment: TEXT_ALIGNMENT,
+    onChange: handleChangeTextAlignment
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (WcbTeamPanelLayout);
+
+/***/ }),
+
+/***/ "./src/block-team/attributes.ts":
+/*!**************************************!*\
+  !*** ./src/block-team/attributes.ts ***!
+  \**************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl */ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx");
+/* harmony import */ var _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/controls/MyZIndexControl/MyZIndexControl */ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx");
+/* harmony import */ var _WcbTeamPanelLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WcbTeamPanelLayout */ "./src/block-team/WcbTeamPanelLayout.tsx");
+
+
 
 const blokc1Attrs = {
   uniqueId: {
     type: "string",
     default: ""
   },
-  layout: {
-    type: "string",
-    default: "accordion"
-  },
-  headingTag: {
-    type: "string",
-    default: "div"
-  },
-  general_icon: {
-    type: "object",
-    default: _block_faq_WcbFaqPanelIcon__WEBPACK_IMPORTED_MODULE_0__.WCB_FAQ_PANEL_ICON_DEMO
-  },
-  defaultExtend: {
-    type: "bool",
-    default: false
-  },
-  enableSeparator: {
-    type: "bool",
-    default: false
-  },
   // THE ATTRS OF BLOCK HERE
-  question: {
+  heading: {
     type: "string",
     source: "html",
-    selector: ".wcb-faq-child__question-text",
-    default: "What is FAQ?"
+    selector: ".wcb-heading__heading",
+    default: "Clik to edit HEADING"
   },
-  answer: {
-    type: "string",
-    source: "html",
-    selector: ".wcb-faq-child__answer-text",
-    default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-  } // ADVANCE
-
+  //
+  general_layout: {
+    type: "object",
+    default: _WcbTeamPanelLayout__WEBPACK_IMPORTED_MODULE_2__.WCB_TEAM_PANEL_LAYOUT_DEMO
+  },
+  // ADVANCE
+  advance_responsiveCondition: {
+    type: "object",
+    default: _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_0__.RESPONSIVE_CONDITON_DEMO
+  },
+  advance_zIndex: {
+    type: "object",
+    default: _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_1__.Z_INDEX_DEMO
+  }
 };
 /* harmony default export */ __webpack_exports__["default"] = (blokc1Attrs);
 
 /***/ }),
 
-/***/ "./src/block-faq-child/index.js":
-/*!**************************************!*\
-  !*** ./src/block-faq-child/index.js ***!
-  \**************************************/
+/***/ "./src/block-team/index.js":
+/*!*********************************!*\
+  !*** ./src/block-team/index.js ***!
+  \*********************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/block-faq-child/style.scss");
-/* harmony import */ var _Edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Edit */ "./src/block-faq-child/Edit.tsx");
-/* harmony import */ var _Save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Save */ "./src/block-faq-child/Save.tsx");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/block-faq-child/block.json");
-/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./attributes */ "./src/block-faq-child/attributes.ts");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/block-team/style.scss");
+/* harmony import */ var _Edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Edit */ "./src/block-team/Edit.tsx");
+/* harmony import */ var _Save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Save */ "./src/block-team/Save.tsx");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/block-team/block.json");
+/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./attributes */ "./src/block-team/attributes.ts");
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
  *
@@ -1792,109 +2369,224 @@ const {
 
 /***/ }),
 
-/***/ "./src/block-faq/WcbFaqPanelIcon.tsx":
-/*!*******************************************!*\
-  !*** ./src/block-faq/WcbFaqPanelIcon.tsx ***!
-  \*******************************************/
+/***/ "./src/components/AdvancePanelCommon.tsx":
+/*!***********************************************!*\
+  !*** ./src/components/AdvancePanelCommon.tsx ***!
+  \***********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./controls/MyResponsiveConditionControl/MyResponsiveConditionControl */ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx");
+/* harmony import */ var _controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./controls/MyZIndexControl/MyZIndexControl */ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx");
+
+
+
+
+
+
+
+const AdvancePanelCommon = _ref => {
+  let {
+    handleTogglePanel,
+    tabAdvancesIsPanelOpen,
+    advance_responsiveCondition,
+    advance_zIndex,
+    setAttributes,
+    children
+  } = _ref;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    onToggle: () => handleTogglePanel("Advances", "Responsive Conditions"),
+    initialOpen: tabAdvancesIsPanelOpen === "Responsive Conditions",
+    opened: tabAdvancesIsPanelOpen === "Responsive Conditions" || undefined,
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Responsive Conditions", "wcb")
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    responsiveConditionControl: advance_responsiveCondition,
+    setAttrs__responsiveCondition: data => setAttributes({
+      advance_responsiveCondition: data
+    })
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    onToggle: () => handleTogglePanel("Advances", "Z-Index"),
+    initialOpen: tabAdvancesIsPanelOpen === "Z-Index",
+    opened: tabAdvancesIsPanelOpen === "Z-Index" || undefined,
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Z-Index", "wcb")
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    zIndexControl: advance_zIndex,
+    setAttrs__zIndex: data => setAttributes({
+      advance_zIndex: data
+    })
+  })), children ? children : null);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (AdvancePanelCommon);
+
+/***/ }),
+
+/***/ "./src/components/HOCInspectorControls.tsx":
+/*!*************************************************!*\
+  !*** ./src/components/HOCInspectorControls.tsx ***!
+  \*************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "WCB_FAQ_PANEL_ICON_DEMO": function() { return /* binding */ WCB_FAQ_PANEL_ICON_DEMO; }
+/* harmony export */   "INSPECTOR_CONTROLS_TABS": function() { return /* binding */ INSPECTOR_CONTROLS_TABS; }
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyRadioGroup */ "./src/components/controls/MyRadioGroup.tsx");
-/* harmony import */ var _components_controls_SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/SelectIcon/SelecIcon */ "./src/components/controls/SelectIcon/SelecIcon.tsx");
-/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
 
 
 
 
+const INSPECTOR_CONTROLS_TABS = [{
+  name: "General",
+  title: "General"
+}, {
+  name: "Styles",
+  title: "Styles"
+}, {
+  name: "Advances",
+  title: "Advances"
+}];
 
-
-
-const WCB_FAQ_PANEL_ICON_DEMO = {
-  enableIcon: true,
-  iconName: "minus",
-  inactiveIconName: "plus-alt2",
-  iconPosition: "right"
-};
-
-const WcbFaqPanelIcon = _ref => {
+const HOCInspectorControls = _ref => {
   let {
-    panelData = WCB_FAQ_PANEL_ICON_DEMO,
-    setAttr__,
-    initialOpen,
-    onToggle,
-    opened
+    renderTabPanels,
+    tabs = INSPECTOR_CONTROLS_TABS,
+    uniqueId = "",
+    tabDefaultActive = "General",
+    onChangeActive
   } = _ref;
-  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_6__["default"])() || "Desktop";
-  const {
-    enableIcon,
-    iconName,
-    iconPosition,
-    inactiveIconName
-  } = panelData;
-  const PLANS_DEMO = [{
-    name: "left",
-    icon: "Left"
-  }, {
-    name: "right",
-    icon: "Right"
-  }];
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
-    initialOpen: initialOpen,
-    onToggle: onToggle,
-    opened: opened,
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Icon", "wcb")
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "space-y-5"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Enable Icon", "wcb"),
-    checked: enableIcon,
-    className: "mb-0",
-    onChange: checked => {
-      setAttr__({ ...panelData,
-        enableIcon: checked
+  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
+    setTimeout(() => {
+      const tabIsOpenEl = document.querySelector(".components-panel__body.is-opened");
+
+      if (!tabIsOpenEl) {
+        return;
+      }
+
+      tabIsOpenEl.scrollIntoView({
+        behavior: "smooth"
       });
+    }, 500);
+  }, []); // HIDDEN PANEL ADVANCE DEFAULT OF WP
+
+  const handleTooglePanelAdvanceDefaultWp = () => {
+    const advancedPanel = document.querySelector(".components-panel__body.block-editor-block-inspector__advanced");
+    const elAdvancesbtn = document.querySelector(".HOCInspectorControls__ative-tab");
+    const isAdvanceTabActive = !!(elAdvancesbtn !== null && elAdvancesbtn !== void 0 && elAdvancesbtn.id.includes("-Advances"));
+
+    if (!advancedPanel) {
+      return;
     }
-  }), enableIcon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Active Icon:", "wcb"),
-    value: iconName,
-    onChange: value => {
-      setAttr__({ ...panelData,
-        iconName: value
-      });
-    }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Inactive Icon:", "wcb"),
-    value: inactiveIconName,
-    onChange: value => {
-      setAttr__({ ...panelData,
-        inactiveIconName: value
-      });
-    }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Icon position", "wcb"),
-    value: iconPosition,
-    onChange: value => {
-      setAttr__({ ...panelData,
-        iconPosition: value
-      });
-    },
-    hasResponsive: false,
-    plans: PLANS_DEMO
-  }))));
+
+    advancedPanel.style.display = isAdvanceTabActive ? "block" : "none";
+  };
+
+  const handleChageTab = tabName => {
+    onChangeActive && onChangeActive(tabName);
+    setTimeout(() => {
+      handleTooglePanelAdvanceDefaultWp();
+    }, 100);
+  };
+
+  const renderContent = () => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TabPanel, {
+      className: `wcb-inspectorControls__panel ${uniqueId}`,
+      activeClass: "HOCInspectorControls__ative-tab active-tab",
+      tabs: tabs,
+      onSelect: handleChageTab,
+      initialTabName: tabDefaultActive
+    }, tab => {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        key: tab.name,
+        className: tab.name
+      }, renderTabPanels(tab));
+    });
+  };
+
+  const renderContent2 = () => {
+    !!uniqueId && setTimeout(() => {
+      handleTooglePanelAdvanceDefaultWp();
+    }, 100);
+    return null;
+  };
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, renderContent(), renderContent2());
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (WcbFaqPanelIcon);
+/* harmony default export */ __webpack_exports__["default"] = (HOCInspectorControls);
+
+/***/ }),
+
+/***/ "./src/components/SaveCommon.tsx":
+/*!***************************************!*\
+  !*** ./src/components/SaveCommon.tsx ***!
+  \***************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+ // @ts-ignore
+
+const SaveCommon = _ref => {
+  let {
+    className = "",
+    uniqueId = "",
+    HtmlTag = "div",
+    children,
+    attributes = {},
+    ...props
+  } = _ref;
+  let blockJson = "";
+
+  try {
+    blockJson = lodash__WEBPACK_IMPORTED_MODULE_3___default().escape(JSON.stringify(attributes));
+  } catch (error) {
+    console.log("attributes JSON.stringify error on SAVE function", {
+      error,
+      className,
+      attributes
+    });
+  }
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(HtmlTag, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+    className: `${className} ${uniqueId} wcb-update-div`,
+    id: uniqueId,
+    "data-uniqueid": uniqueId
+  }), children, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    "data-wcb-global-styles": uniqueId
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("pre", {
+    "data-wcb-block-attrs": uniqueId,
+    style: {
+      display: "none"
+    }
+  }, blockJson));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SaveCommon);
 
 /***/ }),
 
@@ -2065,6 +2757,86 @@ const MyRadioGroup = _ref => {
 
 /***/ }),
 
+/***/ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx":
+/*!***********************************************************************************************!*\
+  !*** ./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx ***!
+  \***********************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RESPONSIVE_CONDITON_DEMO": function() { return /* binding */ RESPONSIVE_CONDITON_DEMO; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+const RESPONSIVE_CONDITON_DEMO = {
+  isHiddenOnDesktop: false,
+  isHiddenOnTablet: false,
+  isHiddenOnMobile: false
+};
+
+const MyResponsiveConditionControl = _ref => {
+  let {
+    className = "space-y-4",
+    responsiveConditionControl = RESPONSIVE_CONDITON_DEMO,
+    setAttrs__responsiveCondition
+  } = _ref;
+  const {
+    isHiddenOnDesktop,
+    isHiddenOnMobile,
+    isHiddenOnTablet
+  } = responsiveConditionControl;
+
+  const toggleHiddenOnDesktop = e => {
+    setAttrs__responsiveCondition({ ...responsiveConditionControl,
+      isHiddenOnDesktop: e
+    });
+  };
+
+  const toggleHiddenOnTablet = e => {
+    setAttrs__responsiveCondition({ ...responsiveConditionControl,
+      isHiddenOnTablet: e
+    });
+  };
+
+  const toggleHiddenOnMobile = e => {
+    setAttrs__responsiveCondition({ ...responsiveConditionControl,
+      isHiddenOnMobile: e
+    });
+  };
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: className
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Hide on Desktop", "wcb"),
+    checked: isHiddenOnDesktop,
+    onChange: toggleHiddenOnDesktop,
+    className: "mb-0"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Hide on Tablet", "wcb"),
+    checked: isHiddenOnTablet,
+    onChange: toggleHiddenOnTablet
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Hide on Mobile", "wcb"),
+    checked: isHiddenOnMobile,
+    onChange: toggleHiddenOnMobile
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MyResponsiveConditionControl);
+
+/***/ }),
+
 /***/ "./src/components/controls/MyResponsiveToggle/MyResponsiveToggle.tsx":
 /*!***************************************************************************!*\
   !*** ./src/components/controls/MyResponsiveToggle/MyResponsiveToggle.tsx ***!
@@ -2179,59 +2951,52 @@ const MyResponsiveToggle = _ref => {
 
 /***/ }),
 
-/***/ "./src/components/controls/ResetButton.tsx":
-/*!*************************************************!*\
-  !*** ./src/components/controls/ResetButton.tsx ***!
-  \*************************************************/
+/***/ "./src/components/controls/MyTextAlignControl/MyTextAlignControl.tsx":
+/*!***************************************************************************!*\
+  !*** ./src/components/controls/MyTextAlignControl/MyTextAlignControl.tsx ***!
+  \***************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _MyRadioGroup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../MyRadioGroup */ "./src/components/controls/MyRadioGroup.tsx");
 
 
 
 
-
-const ResetButton = _ref => {
+const MyTextAlignControl = _ref => {
   let {
-    onClick,
-    className = "text-slate-700",
-    isSmall = true,
-    ...props
+    onChange,
+    textAlignment,
+    className,
+    hasResponsive
   } = _ref;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    className: className,
-    onClick: onClick,
-    icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 24 24",
-      className: "w-5 h-5",
-      "aria-hidden": "true",
-      focusable: "false"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("path", {
-      d: "M12 4V2.2L9 4.8l3 2.5V5.5c3.6 0 6.5 2.9 6.5 6.5 0 2.9-1.9 5.3-4.5 6.2v.2l-.1-.2c-.4.1-.7.2-1.1.2l.2 1.5c.3 0 .6-.1 1-.2 3.5-.9 6-4 6-7.7 0-4.4-3.6-8-8-8zm-7.9 7l1.5.2c.1-1.2.5-2.3 1.2-3.2l-1.1-.9C4.8 8.2 4.3 9.6 4.1 11zm1.5 1.8l-1.5.2c.1.7.3 1.4.5 2 .3.7.6 1.3 1 1.8l1.2-.8c-.3-.5-.6-1-.8-1.5s-.4-1.1-.4-1.7zm1.5 5.5c1.1.9 2.4 1.4 3.8 1.6l.2-1.5c-1.1-.1-2.2-.5-3.1-1.2l-.9 1.1z"
-    })),
-    isSmall: isSmall
-  }, props));
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyRadioGroup__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    className: className // @ts-ignore
+    ,
+    onChange: onChange,
+    value: textAlignment || "",
+    hasResponsive: hasResponsive
+  });
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (ResetButton);
+/* harmony default export */ __webpack_exports__["default"] = (MyTextAlignControl);
 
 /***/ }),
 
-/***/ "./src/components/controls/SelectIcon/SelecIcon.tsx":
-/*!**********************************************************!*\
-  !*** ./src/components/controls/SelectIcon/SelecIcon.tsx ***!
-  \**********************************************************/
+/***/ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx":
+/*!*********************************************************************!*\
+  !*** ./src/components/controls/MyZIndexControl/MyZIndexControl.tsx ***!
+  \*********************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z_INDEX_DEMO": function() { return /* binding */ Z_INDEX_DEMO; }
+/* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
@@ -2240,162 +3005,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _ResetButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../ResetButton */ "./src/components/controls/ResetButton.tsx");
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./types */ "./src/components/controls/SelectIcon/types.ts");
-/* harmony import */ var react_window__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-window */ "./node_modules/react-window/dist/index.esm.js");
+/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
+/* harmony import */ var _MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
 
 
 
 
 
 
-
-
-const SelecIcon = _ref => {
-  let {
-    onChange,
-    value,
-    label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Icon:", "wcb")
-  } = _ref;
-  const [query, setQuery] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)("");
-  const filteredPeople = query === "" ? _types__WEBPACK_IMPORTED_MODULE_5__.ICONS_KEYS : _types__WEBPACK_IMPORTED_MODULE_5__.ICONS_KEYS.filter(person => {
-    return person.toLowerCase().includes(query.toLowerCase());
-  });
-  const ICONS_KEYS = filteredPeople;
-
-  const Cell = _ref2 => {
-    let {
-      columnIndex,
-      rowIndex,
-      style
-    } = _ref2;
-    const index = rowIndex * 3 + columnIndex;
-    const item = ICONS_KEYS[index];
-
-    if (!item) {
-      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        style: { ...style
-        }
-      });
-    }
-
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      style: { ...style,
-        padding: "4px 0px 4px 8px"
-      }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      key: item,
-      className: `h-20 p-3 flex items-center justify-center bg-gray-800 rounded-lg text-gray-50 hover:ring-2 ring-offset-1 ring-sky-500 cursor-pointer ${item === value ? "ring-2 SelecIcon__item--isActive" : ""}`,
-      onClick: () => {
-        onChange(item === value ? undefined : item);
-      }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "grid"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "text-center overflow-hidden "
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dashicon, {
-      size: 16,
-      icon: item
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-      className: "block mt-2.5 truncate text-gray-300 text-xs"
-    }, item)))));
-  };
-
-  const renderInput = () => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "relative mb-2.5 border-b border-gray-700 text-white p-2.5"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "pointer-events-none absolute inset-y-0 left-3 flex items-center pl-2.5"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-      fill: "none",
-      viewBox: "0 0 24 24",
-      strokeWidth: 1.5,
-      stroke: "currentColor",
-      className: "w-5 h-5"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      d: "M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-      onChange: event => setQuery(event.target.value),
-      type: "text",
-      className: "block w-full py-2 pl-10 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-800 border-transparent text-white",
-      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Search for an icon...", "wcb"),
-      defaultValue: query,
-      name: "icon-query",
-      autoFocus: true
-    }));
-  };
-
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dropdown, {
-    position: "middle left",
-    className: "w-full",
-    renderToggle: _ref3 => {
-      let {
-        isOpen,
-        onToggle
-      } = _ref3;
-      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "flex items-center space-x-4"
-      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-        className: "py-3 px-6 flex items-center justify-center ring-2 ring-slate-200 hover:ring-slate-300 rounded-lg ",
-        onClick: () => {
-          onToggle();
-          setTimeout(() => {
-            const el = document.querySelector(".SelecIcon__item--isActive");
-            if (!el) return;
-            el.scrollIntoView({
-              block: "center",
-              inline: "center"
-            });
-          }, 200);
-        }
-      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-        className: "mr-3"
-      }, label), value ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dashicon, {
-        size: 20,
-        icon: value
-      }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("None", "wcb"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ResetButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        onClick: () => {
-          onChange(undefined);
-        }
-      }));
-    },
-    renderContent: _ref4 => {
-      let {
-        onToggle,
-        onClose
-      } = _ref4;
-      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "bg-gray-900"
-      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, renderInput()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_window__WEBPACK_IMPORTED_MODULE_6__.FixedSizeGrid, {
-        className: "hiddenScrollbar",
-        columnCount: 3,
-        columnWidth: 100,
-        height: 400,
-        rowCount: Math.ceil(ICONS_KEYS.length / 3),
-        rowHeight: 88,
-        width: 308
-      }, Cell));
-    }
-  });
+const Z_INDEX_DEMO = {
+  Desktop: undefined
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (SelecIcon);
+const MyZIndexControl = _ref => {
+  let {
+    className = "space-y-3",
+    zIndexControl = Z_INDEX_DEMO,
+    setAttrs__zIndex
+  } = _ref;
+  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_4__["default"])() || "Desktop";
+  const Z_INDEX = zIndexControl[deviceType] !== undefined ? zIndexControl[deviceType] : zIndexControl.Tablet !== undefined ? zIndexControl.Tablet : zIndexControl.Desktop;
 
-/***/ }),
+  const handleChangeZIndex = value => {
+    setAttrs__zIndex({ ...zIndexControl,
+      [deviceType]: value
+    });
+  };
 
-/***/ "./src/components/controls/SelectIcon/types.ts":
-/*!*****************************************************!*\
-  !*** ./src/components/controls/SelectIcon/types.ts ***!
-  \*****************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: className
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Above setting will only take effect once you are on the live page, and not while you're editing.", "wcb") // @ts-ignore
+    ,
+    value: undefined,
+    label: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      className: "",
+      hasResponsive: true
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Z-Index", "wcb")),
+    allowReset: true,
+    max: 1000,
+    min: -100,
+    initialPosition: Z_INDEX,
+    onChange: handleChangeZIndex
+  }));
+};
 
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ICONS_KEYS": function() { return /* binding */ ICONS_KEYS; }
-/* harmony export */ });
-const ICONS_KEYS = ["admin-appearance", "admin-collapse", "admin-comments", "admin-customizer", "admin-generic", "admin-home", "admin-links", "admin-media", "admin-multisite", "admin-network", "admin-page", "admin-plugins", "admin-post", "admin-settings", "admin-site-alt", "admin-site-alt2", "admin-site-alt3", "admin-site", "admin-tools", "admin-users", "airplane", "album", "align-center", "align-full-width", "align-left", "align-none", "align-pull-left", "align-pull-right", "align-right", "align-wide", "amazon", "analytics", "archive", "arrow-down-alt", "arrow-down-alt2", "arrow-down", "arrow-left-alt", "arrow-left-alt2", "arrow-left", "arrow-right-alt", "arrow-right-alt2", "arrow-right", "arrow-up-alt", "arrow-up-alt2", "arrow-up", "arrow-up-duplicate", "art", "awards", "backup", "bank", "beer", "bell", "block-default", "book-alt", "book", "buddicons-activity", "buddicons-bbpress-logo", "buddicons-buddypress-logo", "buddicons-community", "buddicons-forums", "buddicons-friends", "buddicons-groups", "buddicons-pm", "buddicons-replies", "buddicons-topics", "buddicons-tracking", "building", "businessman", "businessperson", "businesswoman", "button", "calculator", "camera-alt", "car", "calendar-alt", "calendar", "camera", "carrot", "cart", "category", "chart-area", "chart-bar", "chart-line", "chart-pie", "clipboard", "clock", "cloud-saved", "cloud-upload", "cloud", "columns", "code-standards", "coffee", "color-picker", "controls-back", "controls-forward", "controls-pause", "controls-play", "controls-repeat", "controls-skipback", "controls-skipforward", "controls-volumeoff", "controls-volumeon", "cover-image", "dashboard", "database", "database-add", "database-export", "database-import", "database-remove", "database-view", "desktop", "dismiss", "download", "drumstick", "edit", "edit-large", "edit-page", "editor-aligncenter", "editor-alignleft", "editor-alignright", "editor-bold", "editor-break", "editor-code", "editor-code-duplicate", "editor-contract", "editor-customchar", "editor-expand", "editor-help", "editor-indent", "editor-insertmore", "editor-italic", "editor-justify", "editor-kitchensink", "editor-ltr", "editor-ol-rtl", "editor-ol", "editor-outdent", "editor-paragraph", "editor-paste-text", "editor-paste-word", "editor-quote", "editor-removeformatting", "editor-rtl", "editor-spellcheck", "editor-strikethrough", "editor-table", "editor-textcolor", "editor-ul", "editor-underline", "editor-unlink", "editor-video", "ellipsis", "email-alt", "email-alt2", "email", "embed-audio", "embed-generic", "embed-photo", "embed-post", "embed-video", "excerpt-view", "exit", "external", "facebook-alt", "facebook", "feedback", "filter", "flag", "food", "format-aside", "format-audio", "format-chat", "format-gallery", "format-image", "format-quote", "format-status", "format-video", "forms", "fullscreen-alt", "fullscreen-exit-alt", "games", "google", "googleplus", "grid-view", "groups", "hammer", "heading", "heart", "hidden", "hourglass", "html", "id-alt", "id", "image-crop", "image-filter", "image-flip-horizontal", "image-flip-vertical", "image-rotate-left", "image-rotate-right", "image-rotate", "images-alt", "images-alt2", "index-card", "info-outline", "info", "insert-after", "insert-before", "insert", "instagram", "keyboard-hide", "laptop", "layout", "leftright", "lightbulb", "list-view", "linkedin", "location-alt", "location", "lock-duplicate", "lock", "marker", "media-archive", "media-audio", "media-code", "media-default", "media-document", "media-interactive", "media-spreadsheet", "media-text", "media-video", "megaphone", "menu-alt", "menu-alt2", "menu-alt3", "menu", "money-alt", "microphone", "migrate", "minus", "money", "move", "nametag", "networking", "no-alt", "no", "open-folder", "palmtree", "paperclip", "performance", "pets", "pdf", "phone", "pinterest", "playlist-audio", "playlist-video", "plus-alt", "plus-light", "plus", "portfolio", "post-status", "pressthis", "products", "plugins-checked", "plus-alt2", "podio", "printer", "privacy", "randomize", "reddit", "redo", "remove", "rest-api", "rss", "saved", "schedule", "screenoptions", "search", "share-alt", "share-alt2", "share", "shield-alt", "shield", "shortcode", "slides", "smartphone", "smiley", "sort", "sos", "star-empty", "star-filled", "star-half", "sticky", "store", "spotify", "superhero", "superhero-alt", "table-col-after", "table-col-before", "table-col-delete", "table-row-after", "table-row-before", "table-row-delete", "tablet", "tag", "tagcloud", "testimonial", "text", "text-page", "thumbs-down", "thumbs-up", "tickets-alt", "tickets", "tide", "translation", "trash", "twitch", "twitter", "twitter-alt", "undo", "universal-access-alt", "universal-access", "unlock", "update-alt", "update", "upload", "vault", "video-alt", "video-alt2", "video-alt3", "visibility", "warning", "welcome-add-page", "welcome-comments", "welcome-learn-more", "welcome-view-site", "welcome-widgets-menus", "welcome-write-blog", "whatsapp", "wordpress-alt", "wordpress", "xing", "yes-alt", "yes", "youtube"];
+/* harmony default export */ __webpack_exports__["default"] = (MyZIndexControl);
 
 /***/ }),
 
@@ -2644,6 +3299,38 @@ const useSetBlockPanelInfo = uniqueId => {
 
 /***/ }),
 
+/***/ "./src/utils/getValueFromAttrsResponsives.ts":
+/*!***************************************************!*\
+  !*** ./src/utils/getValueFromAttrsResponsives.ts ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+const getValueFromAttrsResponsives = function (properties, currentDevice) {
+  // let value_Desktop = properties.Desktop;
+  // let value_Tablet = properties.Tablet || value_Desktop;
+  // let value_Mobile = properties.Mobile || value_Tablet;
+  const v_Desktop = properties === null || properties === void 0 ? void 0 : properties.Desktop;
+  const v_Tablet = typeof (properties === null || properties === void 0 ? void 0 : properties.Tablet) !== "undefined" && (properties === null || properties === void 0 ? void 0 : properties.Tablet) !== null ? properties === null || properties === void 0 ? void 0 : properties.Tablet : v_Desktop;
+  const v_Mobile = typeof (properties === null || properties === void 0 ? void 0 : properties.Mobile) !== "undefined" && (properties === null || properties === void 0 ? void 0 : properties.Mobile) !== null ? properties === null || properties === void 0 ? void 0 : properties.Mobile : v_Tablet;
+  let currentDeviceValue = undefined;
+
+  if (currentDevice) {
+    currentDeviceValue = currentDevice === "Desktop" ? v_Desktop : currentDevice === "Tablet" ? v_Tablet : v_Mobile;
+  }
+
+  return {
+    value_Desktop: v_Desktop,
+    value_Tablet: v_Tablet,
+    value_Mobile: v_Mobile,
+    currentDeviceValue
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (getValueFromAttrsResponsives);
+
+/***/ }),
+
 /***/ "./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js":
 /*!**********************************************************************************!*\
   !*** ./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js ***!
@@ -2757,70 +3444,10 @@ module.exports = hoistNonReactStatics;
 
 /***/ }),
 
-/***/ "./node_modules/memoize-one/dist/memoize-one.esm.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/memoize-one/dist/memoize-one.esm.js ***!
-  \**********************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-var safeIsNaN = Number.isNaN ||
-    function ponyfill(value) {
-        return typeof value === 'number' && value !== value;
-    };
-function isEqual(first, second) {
-    if (first === second) {
-        return true;
-    }
-    if (safeIsNaN(first) && safeIsNaN(second)) {
-        return true;
-    }
-    return false;
-}
-function areInputsEqual(newInputs, lastInputs) {
-    if (newInputs.length !== lastInputs.length) {
-        return false;
-    }
-    for (var i = 0; i < newInputs.length; i++) {
-        if (!isEqual(newInputs[i], lastInputs[i])) {
-            return false;
-        }
-    }
-    return true;
-}
-
-function memoizeOne(resultFn, isEqual) {
-    if (isEqual === void 0) { isEqual = areInputsEqual; }
-    var lastThis;
-    var lastArgs = [];
-    var lastResult;
-    var calledOnce = false;
-    function memoized() {
-        var newArgs = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            newArgs[_i] = arguments[_i];
-        }
-        if (calledOnce && lastThis === this && isEqual(newArgs, lastArgs)) {
-            return lastResult;
-        }
-        lastResult = resultFn.apply(this, newArgs);
-        calledOnce = true;
-        lastThis = this;
-        lastArgs = newArgs;
-        return lastResult;
-    }
-    return memoized;
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (memoizeOne);
-
-
-/***/ }),
-
-/***/ "./src/block-faq-child/editor.scss":
-/*!*****************************************!*\
-  !*** ./src/block-faq-child/editor.scss ***!
-  \*****************************************/
+/***/ "./src/block-team/editor.scss":
+/*!************************************!*\
+  !*** ./src/block-team/editor.scss ***!
+  \************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2829,10 +3456,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/block-faq-child/style.scss":
-/*!****************************************!*\
-  !*** ./src/block-faq-child/style.scss ***!
-  \****************************************/
+/***/ "./src/block-team/style.scss":
+/*!***********************************!*\
+  !*** ./src/block-team/style.scss ***!
+  \***********************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -3047,2108 +3674,6 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./node_modules/react-window/dist/index.esm.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/react-window/dist/index.esm.js ***!
-  \*****************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FixedSizeGrid": function() { return /* binding */ FixedSizeGrid; },
-/* harmony export */   "FixedSizeList": function() { return /* binding */ FixedSizeList; },
-/* harmony export */   "VariableSizeGrid": function() { return /* binding */ VariableSizeGrid; },
-/* harmony export */   "VariableSizeList": function() { return /* binding */ VariableSizeList; },
-/* harmony export */   "areEqual": function() { return /* binding */ areEqual; },
-/* harmony export */   "shouldComponentUpdate": function() { return /* binding */ shouldComponentUpdate; }
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/assertThisInitialized */ "./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
-/* harmony import */ var memoize_one__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! memoize-one */ "./node_modules/memoize-one/dist/memoize-one.esm.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
-
-
-
-
-
-
-
-// Animation frame based implementation of setTimeout.
-// Inspired by Joe Lambert, https://gist.github.com/joelambert/1002116#file-requesttimeout-js
-var hasNativePerformanceNow = typeof performance === 'object' && typeof performance.now === 'function';
-var now = hasNativePerformanceNow ? function () {
-  return performance.now();
-} : function () {
-  return Date.now();
-};
-function cancelTimeout(timeoutID) {
-  cancelAnimationFrame(timeoutID.id);
-}
-function requestTimeout(callback, delay) {
-  var start = now();
-
-  function tick() {
-    if (now() - start >= delay) {
-      callback.call(null);
-    } else {
-      timeoutID.id = requestAnimationFrame(tick);
-    }
-  }
-
-  var timeoutID = {
-    id: requestAnimationFrame(tick)
-  };
-  return timeoutID;
-}
-
-var size = -1; // This utility copied from "dom-helpers" package.
-
-function getScrollbarSize(recalculate) {
-  if (recalculate === void 0) {
-    recalculate = false;
-  }
-
-  if (size === -1 || recalculate) {
-    var div = document.createElement('div');
-    var style = div.style;
-    style.width = '50px';
-    style.height = '50px';
-    style.overflow = 'scroll';
-    document.body.appendChild(div);
-    size = div.offsetWidth - div.clientWidth;
-    document.body.removeChild(div);
-  }
-
-  return size;
-}
-var cachedRTLResult = null; // TRICKY According to the spec, scrollLeft should be negative for RTL aligned elements.
-// Chrome does not seem to adhere; its scrollLeft values are positive (measured relative to the left).
-// Safari's elastic bounce makes detecting this even more complicated wrt potential false positives.
-// The safest way to check this is to intentionally set a negative offset,
-// and then verify that the subsequent "scroll" event matches the negative offset.
-// If it does not match, then we can assume a non-standard RTL scroll implementation.
-
-function getRTLOffsetType(recalculate) {
-  if (recalculate === void 0) {
-    recalculate = false;
-  }
-
-  if (cachedRTLResult === null || recalculate) {
-    var outerDiv = document.createElement('div');
-    var outerStyle = outerDiv.style;
-    outerStyle.width = '50px';
-    outerStyle.height = '50px';
-    outerStyle.overflow = 'scroll';
-    outerStyle.direction = 'rtl';
-    var innerDiv = document.createElement('div');
-    var innerStyle = innerDiv.style;
-    innerStyle.width = '100px';
-    innerStyle.height = '100px';
-    outerDiv.appendChild(innerDiv);
-    document.body.appendChild(outerDiv);
-
-    if (outerDiv.scrollLeft > 0) {
-      cachedRTLResult = 'positive-descending';
-    } else {
-      outerDiv.scrollLeft = 1;
-
-      if (outerDiv.scrollLeft === 0) {
-        cachedRTLResult = 'negative';
-      } else {
-        cachedRTLResult = 'positive-ascending';
-      }
-    }
-
-    document.body.removeChild(outerDiv);
-    return cachedRTLResult;
-  }
-
-  return cachedRTLResult;
-}
-
-var IS_SCROLLING_DEBOUNCE_INTERVAL = 150;
-
-var defaultItemKey = function defaultItemKey(_ref) {
-  var columnIndex = _ref.columnIndex,
-      data = _ref.data,
-      rowIndex = _ref.rowIndex;
-  return rowIndex + ":" + columnIndex;
-}; // In DEV mode, this Set helps us only log a warning once per component instance.
-// This avoids spamming the console every time a render happens.
-
-
-var devWarningsOverscanCount = null;
-var devWarningsOverscanRowsColumnsCount = null;
-var devWarningsTagName = null;
-
-if (true) {
-  if (typeof window !== 'undefined' && typeof window.WeakSet !== 'undefined') {
-    devWarningsOverscanCount = /*#__PURE__*/new WeakSet();
-    devWarningsOverscanRowsColumnsCount = /*#__PURE__*/new WeakSet();
-    devWarningsTagName = /*#__PURE__*/new WeakSet();
-  }
-}
-
-function createGridComponent(_ref2) {
-  var _class;
-
-  var getColumnOffset = _ref2.getColumnOffset,
-      getColumnStartIndexForOffset = _ref2.getColumnStartIndexForOffset,
-      getColumnStopIndexForStartIndex = _ref2.getColumnStopIndexForStartIndex,
-      getColumnWidth = _ref2.getColumnWidth,
-      getEstimatedTotalHeight = _ref2.getEstimatedTotalHeight,
-      getEstimatedTotalWidth = _ref2.getEstimatedTotalWidth,
-      getOffsetForColumnAndAlignment = _ref2.getOffsetForColumnAndAlignment,
-      getOffsetForRowAndAlignment = _ref2.getOffsetForRowAndAlignment,
-      getRowHeight = _ref2.getRowHeight,
-      getRowOffset = _ref2.getRowOffset,
-      getRowStartIndexForOffset = _ref2.getRowStartIndexForOffset,
-      getRowStopIndexForStartIndex = _ref2.getRowStopIndexForStartIndex,
-      initInstanceProps = _ref2.initInstanceProps,
-      shouldResetStyleCacheOnItemSizeChange = _ref2.shouldResetStyleCacheOnItemSizeChange,
-      validateProps = _ref2.validateProps;
-  return _class = /*#__PURE__*/function (_PureComponent) {
-    (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__["default"])(Grid, _PureComponent);
-
-    // Always use explicit constructor for React components.
-    // It produces less code after transpilation. (#26)
-    // eslint-disable-next-line no-useless-constructor
-    function Grid(props) {
-      var _this;
-
-      _this = _PureComponent.call(this, props) || this;
-      _this._instanceProps = initInstanceProps(_this.props, (0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_1__["default"])(_this));
-      _this._resetIsScrollingTimeoutId = null;
-      _this._outerRef = void 0;
-      _this.state = {
-        instance: (0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_1__["default"])(_this),
-        isScrolling: false,
-        horizontalScrollDirection: 'forward',
-        scrollLeft: typeof _this.props.initialScrollLeft === 'number' ? _this.props.initialScrollLeft : 0,
-        scrollTop: typeof _this.props.initialScrollTop === 'number' ? _this.props.initialScrollTop : 0,
-        scrollUpdateWasRequested: false,
-        verticalScrollDirection: 'forward'
-      };
-      _this._callOnItemsRendered = void 0;
-      _this._callOnItemsRendered = (0,memoize_one__WEBPACK_IMPORTED_MODULE_5__["default"])(function (overscanColumnStartIndex, overscanColumnStopIndex, overscanRowStartIndex, overscanRowStopIndex, visibleColumnStartIndex, visibleColumnStopIndex, visibleRowStartIndex, visibleRowStopIndex) {
-        return _this.props.onItemsRendered({
-          overscanColumnStartIndex: overscanColumnStartIndex,
-          overscanColumnStopIndex: overscanColumnStopIndex,
-          overscanRowStartIndex: overscanRowStartIndex,
-          overscanRowStopIndex: overscanRowStopIndex,
-          visibleColumnStartIndex: visibleColumnStartIndex,
-          visibleColumnStopIndex: visibleColumnStopIndex,
-          visibleRowStartIndex: visibleRowStartIndex,
-          visibleRowStopIndex: visibleRowStopIndex
-        });
-      });
-      _this._callOnScroll = void 0;
-      _this._callOnScroll = (0,memoize_one__WEBPACK_IMPORTED_MODULE_5__["default"])(function (scrollLeft, scrollTop, horizontalScrollDirection, verticalScrollDirection, scrollUpdateWasRequested) {
-        return _this.props.onScroll({
-          horizontalScrollDirection: horizontalScrollDirection,
-          scrollLeft: scrollLeft,
-          scrollTop: scrollTop,
-          verticalScrollDirection: verticalScrollDirection,
-          scrollUpdateWasRequested: scrollUpdateWasRequested
-        });
-      });
-      _this._getItemStyle = void 0;
-
-      _this._getItemStyle = function (rowIndex, columnIndex) {
-        var _this$props = _this.props,
-            columnWidth = _this$props.columnWidth,
-            direction = _this$props.direction,
-            rowHeight = _this$props.rowHeight;
-
-        var itemStyleCache = _this._getItemStyleCache(shouldResetStyleCacheOnItemSizeChange && columnWidth, shouldResetStyleCacheOnItemSizeChange && direction, shouldResetStyleCacheOnItemSizeChange && rowHeight);
-
-        var key = rowIndex + ":" + columnIndex;
-        var style;
-
-        if (itemStyleCache.hasOwnProperty(key)) {
-          style = itemStyleCache[key];
-        } else {
-          var _offset = getColumnOffset(_this.props, columnIndex, _this._instanceProps);
-
-          var isRtl = direction === 'rtl';
-          itemStyleCache[key] = style = {
-            position: 'absolute',
-            left: isRtl ? undefined : _offset,
-            right: isRtl ? _offset : undefined,
-            top: getRowOffset(_this.props, rowIndex, _this._instanceProps),
-            height: getRowHeight(_this.props, rowIndex, _this._instanceProps),
-            width: getColumnWidth(_this.props, columnIndex, _this._instanceProps)
-          };
-        }
-
-        return style;
-      };
-
-      _this._getItemStyleCache = void 0;
-      _this._getItemStyleCache = (0,memoize_one__WEBPACK_IMPORTED_MODULE_5__["default"])(function (_, __, ___) {
-        return {};
-      });
-
-      _this._onScroll = function (event) {
-        var _event$currentTarget = event.currentTarget,
-            clientHeight = _event$currentTarget.clientHeight,
-            clientWidth = _event$currentTarget.clientWidth,
-            scrollLeft = _event$currentTarget.scrollLeft,
-            scrollTop = _event$currentTarget.scrollTop,
-            scrollHeight = _event$currentTarget.scrollHeight,
-            scrollWidth = _event$currentTarget.scrollWidth;
-
-        _this.setState(function (prevState) {
-          if (prevState.scrollLeft === scrollLeft && prevState.scrollTop === scrollTop) {
-            // Scroll position may have been updated by cDM/cDU,
-            // In which case we don't need to trigger another render,
-            // And we don't want to update state.isScrolling.
-            return null;
-          }
-
-          var direction = _this.props.direction; // TRICKY According to the spec, scrollLeft should be negative for RTL aligned elements.
-          // This is not the case for all browsers though (e.g. Chrome reports values as positive, measured relative to the left).
-          // It's also easier for this component if we convert offsets to the same format as they would be in for ltr.
-          // So the simplest solution is to determine which browser behavior we're dealing with, and convert based on it.
-
-          var calculatedScrollLeft = scrollLeft;
-
-          if (direction === 'rtl') {
-            switch (getRTLOffsetType()) {
-              case 'negative':
-                calculatedScrollLeft = -scrollLeft;
-                break;
-
-              case 'positive-descending':
-                calculatedScrollLeft = scrollWidth - clientWidth - scrollLeft;
-                break;
-            }
-          } // Prevent Safari's elastic scrolling from causing visual shaking when scrolling past bounds.
-
-
-          calculatedScrollLeft = Math.max(0, Math.min(calculatedScrollLeft, scrollWidth - clientWidth));
-          var calculatedScrollTop = Math.max(0, Math.min(scrollTop, scrollHeight - clientHeight));
-          return {
-            isScrolling: true,
-            horizontalScrollDirection: prevState.scrollLeft < scrollLeft ? 'forward' : 'backward',
-            scrollLeft: calculatedScrollLeft,
-            scrollTop: calculatedScrollTop,
-            verticalScrollDirection: prevState.scrollTop < scrollTop ? 'forward' : 'backward',
-            scrollUpdateWasRequested: false
-          };
-        }, _this._resetIsScrollingDebounced);
-      };
-
-      _this._outerRefSetter = function (ref) {
-        var outerRef = _this.props.outerRef;
-        _this._outerRef = ref;
-
-        if (typeof outerRef === 'function') {
-          outerRef(ref);
-        } else if (outerRef != null && typeof outerRef === 'object' && outerRef.hasOwnProperty('current')) {
-          outerRef.current = ref;
-        }
-      };
-
-      _this._resetIsScrollingDebounced = function () {
-        if (_this._resetIsScrollingTimeoutId !== null) {
-          cancelTimeout(_this._resetIsScrollingTimeoutId);
-        }
-
-        _this._resetIsScrollingTimeoutId = requestTimeout(_this._resetIsScrolling, IS_SCROLLING_DEBOUNCE_INTERVAL);
-      };
-
-      _this._resetIsScrolling = function () {
-        _this._resetIsScrollingTimeoutId = null;
-
-        _this.setState({
-          isScrolling: false
-        }, function () {
-          // Clear style cache after state update has been committed.
-          // This way we don't break pure sCU for items that don't use isScrolling param.
-          _this._getItemStyleCache(-1);
-        });
-      };
-
-      return _this;
-    }
-
-    Grid.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps, prevState) {
-      validateSharedProps(nextProps, prevState);
-      validateProps(nextProps);
-      return null;
-    };
-
-    var _proto = Grid.prototype;
-
-    _proto.scrollTo = function scrollTo(_ref3) {
-      var scrollLeft = _ref3.scrollLeft,
-          scrollTop = _ref3.scrollTop;
-
-      if (scrollLeft !== undefined) {
-        scrollLeft = Math.max(0, scrollLeft);
-      }
-
-      if (scrollTop !== undefined) {
-        scrollTop = Math.max(0, scrollTop);
-      }
-
-      this.setState(function (prevState) {
-        if (scrollLeft === undefined) {
-          scrollLeft = prevState.scrollLeft;
-        }
-
-        if (scrollTop === undefined) {
-          scrollTop = prevState.scrollTop;
-        }
-
-        if (prevState.scrollLeft === scrollLeft && prevState.scrollTop === scrollTop) {
-          return null;
-        }
-
-        return {
-          horizontalScrollDirection: prevState.scrollLeft < scrollLeft ? 'forward' : 'backward',
-          scrollLeft: scrollLeft,
-          scrollTop: scrollTop,
-          scrollUpdateWasRequested: true,
-          verticalScrollDirection: prevState.scrollTop < scrollTop ? 'forward' : 'backward'
-        };
-      }, this._resetIsScrollingDebounced);
-    };
-
-    _proto.scrollToItem = function scrollToItem(_ref4) {
-      var _ref4$align = _ref4.align,
-          align = _ref4$align === void 0 ? 'auto' : _ref4$align,
-          columnIndex = _ref4.columnIndex,
-          rowIndex = _ref4.rowIndex;
-      var _this$props2 = this.props,
-          columnCount = _this$props2.columnCount,
-          height = _this$props2.height,
-          rowCount = _this$props2.rowCount,
-          width = _this$props2.width;
-      var _this$state = this.state,
-          scrollLeft = _this$state.scrollLeft,
-          scrollTop = _this$state.scrollTop;
-      var scrollbarSize = getScrollbarSize();
-
-      if (columnIndex !== undefined) {
-        columnIndex = Math.max(0, Math.min(columnIndex, columnCount - 1));
-      }
-
-      if (rowIndex !== undefined) {
-        rowIndex = Math.max(0, Math.min(rowIndex, rowCount - 1));
-      }
-
-      var estimatedTotalHeight = getEstimatedTotalHeight(this.props, this._instanceProps);
-      var estimatedTotalWidth = getEstimatedTotalWidth(this.props, this._instanceProps); // The scrollbar size should be considered when scrolling an item into view,
-      // to ensure it's fully visible.
-      // But we only need to account for its size when it's actually visible.
-
-      var horizontalScrollbarSize = estimatedTotalWidth > width ? scrollbarSize : 0;
-      var verticalScrollbarSize = estimatedTotalHeight > height ? scrollbarSize : 0;
-      this.scrollTo({
-        scrollLeft: columnIndex !== undefined ? getOffsetForColumnAndAlignment(this.props, columnIndex, align, scrollLeft, this._instanceProps, verticalScrollbarSize) : scrollLeft,
-        scrollTop: rowIndex !== undefined ? getOffsetForRowAndAlignment(this.props, rowIndex, align, scrollTop, this._instanceProps, horizontalScrollbarSize) : scrollTop
-      });
-    };
-
-    _proto.componentDidMount = function componentDidMount() {
-      var _this$props3 = this.props,
-          initialScrollLeft = _this$props3.initialScrollLeft,
-          initialScrollTop = _this$props3.initialScrollTop;
-
-      if (this._outerRef != null) {
-        var outerRef = this._outerRef;
-
-        if (typeof initialScrollLeft === 'number') {
-          outerRef.scrollLeft = initialScrollLeft;
-        }
-
-        if (typeof initialScrollTop === 'number') {
-          outerRef.scrollTop = initialScrollTop;
-        }
-      }
-
-      this._callPropsCallbacks();
-    };
-
-    _proto.componentDidUpdate = function componentDidUpdate() {
-      var direction = this.props.direction;
-      var _this$state2 = this.state,
-          scrollLeft = _this$state2.scrollLeft,
-          scrollTop = _this$state2.scrollTop,
-          scrollUpdateWasRequested = _this$state2.scrollUpdateWasRequested;
-
-      if (scrollUpdateWasRequested && this._outerRef != null) {
-        // TRICKY According to the spec, scrollLeft should be negative for RTL aligned elements.
-        // This is not the case for all browsers though (e.g. Chrome reports values as positive, measured relative to the left).
-        // So we need to determine which browser behavior we're dealing with, and mimic it.
-        var outerRef = this._outerRef;
-
-        if (direction === 'rtl') {
-          switch (getRTLOffsetType()) {
-            case 'negative':
-              outerRef.scrollLeft = -scrollLeft;
-              break;
-
-            case 'positive-ascending':
-              outerRef.scrollLeft = scrollLeft;
-              break;
-
-            default:
-              var clientWidth = outerRef.clientWidth,
-                  scrollWidth = outerRef.scrollWidth;
-              outerRef.scrollLeft = scrollWidth - clientWidth - scrollLeft;
-              break;
-          }
-        } else {
-          outerRef.scrollLeft = Math.max(0, scrollLeft);
-        }
-
-        outerRef.scrollTop = Math.max(0, scrollTop);
-      }
-
-      this._callPropsCallbacks();
-    };
-
-    _proto.componentWillUnmount = function componentWillUnmount() {
-      if (this._resetIsScrollingTimeoutId !== null) {
-        cancelTimeout(this._resetIsScrollingTimeoutId);
-      }
-    };
-
-    _proto.render = function render() {
-      var _this$props4 = this.props,
-          children = _this$props4.children,
-          className = _this$props4.className,
-          columnCount = _this$props4.columnCount,
-          direction = _this$props4.direction,
-          height = _this$props4.height,
-          innerRef = _this$props4.innerRef,
-          innerElementType = _this$props4.innerElementType,
-          innerTagName = _this$props4.innerTagName,
-          itemData = _this$props4.itemData,
-          _this$props4$itemKey = _this$props4.itemKey,
-          itemKey = _this$props4$itemKey === void 0 ? defaultItemKey : _this$props4$itemKey,
-          outerElementType = _this$props4.outerElementType,
-          outerTagName = _this$props4.outerTagName,
-          rowCount = _this$props4.rowCount,
-          style = _this$props4.style,
-          useIsScrolling = _this$props4.useIsScrolling,
-          width = _this$props4.width;
-      var isScrolling = this.state.isScrolling;
-
-      var _this$_getHorizontalR = this._getHorizontalRangeToRender(),
-          columnStartIndex = _this$_getHorizontalR[0],
-          columnStopIndex = _this$_getHorizontalR[1];
-
-      var _this$_getVerticalRan = this._getVerticalRangeToRender(),
-          rowStartIndex = _this$_getVerticalRan[0],
-          rowStopIndex = _this$_getVerticalRan[1];
-
-      var items = [];
-
-      if (columnCount > 0 && rowCount) {
-        for (var _rowIndex = rowStartIndex; _rowIndex <= rowStopIndex; _rowIndex++) {
-          for (var _columnIndex = columnStartIndex; _columnIndex <= columnStopIndex; _columnIndex++) {
-            items.push((0,react__WEBPACK_IMPORTED_MODULE_3__.createElement)(children, {
-              columnIndex: _columnIndex,
-              data: itemData,
-              isScrolling: useIsScrolling ? isScrolling : undefined,
-              key: itemKey({
-                columnIndex: _columnIndex,
-                data: itemData,
-                rowIndex: _rowIndex
-              }),
-              rowIndex: _rowIndex,
-              style: this._getItemStyle(_rowIndex, _columnIndex)
-            }));
-          }
-        }
-      } // Read this value AFTER items have been created,
-      // So their actual sizes (if variable) are taken into consideration.
-
-
-      var estimatedTotalHeight = getEstimatedTotalHeight(this.props, this._instanceProps);
-      var estimatedTotalWidth = getEstimatedTotalWidth(this.props, this._instanceProps);
-      return (0,react__WEBPACK_IMPORTED_MODULE_3__.createElement)(outerElementType || outerTagName || 'div', {
-        className: className,
-        onScroll: this._onScroll,
-        ref: this._outerRefSetter,
-        style: (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-          position: 'relative',
-          height: height,
-          width: width,
-          overflow: 'auto',
-          WebkitOverflowScrolling: 'touch',
-          willChange: 'transform',
-          direction: direction
-        }, style)
-      }, (0,react__WEBPACK_IMPORTED_MODULE_3__.createElement)(innerElementType || innerTagName || 'div', {
-        children: items,
-        ref: innerRef,
-        style: {
-          height: estimatedTotalHeight,
-          pointerEvents: isScrolling ? 'none' : undefined,
-          width: estimatedTotalWidth
-        }
-      }));
-    };
-
-    _proto._callPropsCallbacks = function _callPropsCallbacks() {
-      var _this$props5 = this.props,
-          columnCount = _this$props5.columnCount,
-          onItemsRendered = _this$props5.onItemsRendered,
-          onScroll = _this$props5.onScroll,
-          rowCount = _this$props5.rowCount;
-
-      if (typeof onItemsRendered === 'function') {
-        if (columnCount > 0 && rowCount > 0) {
-          var _this$_getHorizontalR2 = this._getHorizontalRangeToRender(),
-              _overscanColumnStartIndex = _this$_getHorizontalR2[0],
-              _overscanColumnStopIndex = _this$_getHorizontalR2[1],
-              _visibleColumnStartIndex = _this$_getHorizontalR2[2],
-              _visibleColumnStopIndex = _this$_getHorizontalR2[3];
-
-          var _this$_getVerticalRan2 = this._getVerticalRangeToRender(),
-              _overscanRowStartIndex = _this$_getVerticalRan2[0],
-              _overscanRowStopIndex = _this$_getVerticalRan2[1],
-              _visibleRowStartIndex = _this$_getVerticalRan2[2],
-              _visibleRowStopIndex = _this$_getVerticalRan2[3];
-
-          this._callOnItemsRendered(_overscanColumnStartIndex, _overscanColumnStopIndex, _overscanRowStartIndex, _overscanRowStopIndex, _visibleColumnStartIndex, _visibleColumnStopIndex, _visibleRowStartIndex, _visibleRowStopIndex);
-        }
-      }
-
-      if (typeof onScroll === 'function') {
-        var _this$state3 = this.state,
-            _horizontalScrollDirection = _this$state3.horizontalScrollDirection,
-            _scrollLeft = _this$state3.scrollLeft,
-            _scrollTop = _this$state3.scrollTop,
-            _scrollUpdateWasRequested = _this$state3.scrollUpdateWasRequested,
-            _verticalScrollDirection = _this$state3.verticalScrollDirection;
-
-        this._callOnScroll(_scrollLeft, _scrollTop, _horizontalScrollDirection, _verticalScrollDirection, _scrollUpdateWasRequested);
-      }
-    } // Lazily create and cache item styles while scrolling,
-    // So that pure component sCU will prevent re-renders.
-    // We maintain this cache, and pass a style prop rather than index,
-    // So that List can clear cached styles and force item re-render if necessary.
-    ;
-
-    _proto._getHorizontalRangeToRender = function _getHorizontalRangeToRender() {
-      var _this$props6 = this.props,
-          columnCount = _this$props6.columnCount,
-          overscanColumnCount = _this$props6.overscanColumnCount,
-          overscanColumnsCount = _this$props6.overscanColumnsCount,
-          overscanCount = _this$props6.overscanCount,
-          rowCount = _this$props6.rowCount;
-      var _this$state4 = this.state,
-          horizontalScrollDirection = _this$state4.horizontalScrollDirection,
-          isScrolling = _this$state4.isScrolling,
-          scrollLeft = _this$state4.scrollLeft;
-      var overscanCountResolved = overscanColumnCount || overscanColumnsCount || overscanCount || 1;
-
-      if (columnCount === 0 || rowCount === 0) {
-        return [0, 0, 0, 0];
-      }
-
-      var startIndex = getColumnStartIndexForOffset(this.props, scrollLeft, this._instanceProps);
-      var stopIndex = getColumnStopIndexForStartIndex(this.props, startIndex, scrollLeft, this._instanceProps); // Overscan by one item in each direction so that tab/focus works.
-      // If there isn't at least one extra item, tab loops back around.
-
-      var overscanBackward = !isScrolling || horizontalScrollDirection === 'backward' ? Math.max(1, overscanCountResolved) : 1;
-      var overscanForward = !isScrolling || horizontalScrollDirection === 'forward' ? Math.max(1, overscanCountResolved) : 1;
-      return [Math.max(0, startIndex - overscanBackward), Math.max(0, Math.min(columnCount - 1, stopIndex + overscanForward)), startIndex, stopIndex];
-    };
-
-    _proto._getVerticalRangeToRender = function _getVerticalRangeToRender() {
-      var _this$props7 = this.props,
-          columnCount = _this$props7.columnCount,
-          overscanCount = _this$props7.overscanCount,
-          overscanRowCount = _this$props7.overscanRowCount,
-          overscanRowsCount = _this$props7.overscanRowsCount,
-          rowCount = _this$props7.rowCount;
-      var _this$state5 = this.state,
-          isScrolling = _this$state5.isScrolling,
-          verticalScrollDirection = _this$state5.verticalScrollDirection,
-          scrollTop = _this$state5.scrollTop;
-      var overscanCountResolved = overscanRowCount || overscanRowsCount || overscanCount || 1;
-
-      if (columnCount === 0 || rowCount === 0) {
-        return [0, 0, 0, 0];
-      }
-
-      var startIndex = getRowStartIndexForOffset(this.props, scrollTop, this._instanceProps);
-      var stopIndex = getRowStopIndexForStartIndex(this.props, startIndex, scrollTop, this._instanceProps); // Overscan by one item in each direction so that tab/focus works.
-      // If there isn't at least one extra item, tab loops back around.
-
-      var overscanBackward = !isScrolling || verticalScrollDirection === 'backward' ? Math.max(1, overscanCountResolved) : 1;
-      var overscanForward = !isScrolling || verticalScrollDirection === 'forward' ? Math.max(1, overscanCountResolved) : 1;
-      return [Math.max(0, startIndex - overscanBackward), Math.max(0, Math.min(rowCount - 1, stopIndex + overscanForward)), startIndex, stopIndex];
-    };
-
-    return Grid;
-  }(react__WEBPACK_IMPORTED_MODULE_3__.PureComponent), _class.defaultProps = {
-    direction: 'ltr',
-    itemData: undefined,
-    useIsScrolling: false
-  }, _class;
-}
-
-var validateSharedProps = function validateSharedProps(_ref5, _ref6) {
-  var children = _ref5.children,
-      direction = _ref5.direction,
-      height = _ref5.height,
-      innerTagName = _ref5.innerTagName,
-      outerTagName = _ref5.outerTagName,
-      overscanColumnsCount = _ref5.overscanColumnsCount,
-      overscanCount = _ref5.overscanCount,
-      overscanRowsCount = _ref5.overscanRowsCount,
-      width = _ref5.width;
-  var instance = _ref6.instance;
-
-  if (true) {
-    if (typeof overscanCount === 'number') {
-      if (devWarningsOverscanCount && !devWarningsOverscanCount.has(instance)) {
-        devWarningsOverscanCount.add(instance);
-        console.warn('The overscanCount prop has been deprecated. ' + 'Please use the overscanColumnCount and overscanRowCount props instead.');
-      }
-    }
-
-    if (typeof overscanColumnsCount === 'number' || typeof overscanRowsCount === 'number') {
-      if (devWarningsOverscanRowsColumnsCount && !devWarningsOverscanRowsColumnsCount.has(instance)) {
-        devWarningsOverscanRowsColumnsCount.add(instance);
-        console.warn('The overscanColumnsCount and overscanRowsCount props have been deprecated. ' + 'Please use the overscanColumnCount and overscanRowCount props instead.');
-      }
-    }
-
-    if (innerTagName != null || outerTagName != null) {
-      if (devWarningsTagName && !devWarningsTagName.has(instance)) {
-        devWarningsTagName.add(instance);
-        console.warn('The innerTagName and outerTagName props have been deprecated. ' + 'Please use the innerElementType and outerElementType props instead.');
-      }
-    }
-
-    if (children == null) {
-      throw Error('An invalid "children" prop has been specified. ' + 'Value should be a React component. ' + ("\"" + (children === null ? 'null' : typeof children) + "\" was specified."));
-    }
-
-    switch (direction) {
-      case 'ltr':
-      case 'rtl':
-        // Valid values
-        break;
-
-      default:
-        throw Error('An invalid "direction" prop has been specified. ' + 'Value should be either "ltr" or "rtl". ' + ("\"" + direction + "\" was specified."));
-    }
-
-    if (typeof width !== 'number') {
-      throw Error('An invalid "width" prop has been specified. ' + 'Grids must specify a number for width. ' + ("\"" + (width === null ? 'null' : typeof width) + "\" was specified."));
-    }
-
-    if (typeof height !== 'number') {
-      throw Error('An invalid "height" prop has been specified. ' + 'Grids must specify a number for height. ' + ("\"" + (height === null ? 'null' : typeof height) + "\" was specified."));
-    }
-  }
-};
-
-var DEFAULT_ESTIMATED_ITEM_SIZE = 50;
-
-var getEstimatedTotalHeight = function getEstimatedTotalHeight(_ref, _ref2) {
-  var rowCount = _ref.rowCount;
-  var rowMetadataMap = _ref2.rowMetadataMap,
-      estimatedRowHeight = _ref2.estimatedRowHeight,
-      lastMeasuredRowIndex = _ref2.lastMeasuredRowIndex;
-  var totalSizeOfMeasuredRows = 0; // Edge case check for when the number of items decreases while a scroll is in progress.
-  // https://github.com/bvaughn/react-window/pull/138
-
-  if (lastMeasuredRowIndex >= rowCount) {
-    lastMeasuredRowIndex = rowCount - 1;
-  }
-
-  if (lastMeasuredRowIndex >= 0) {
-    var itemMetadata = rowMetadataMap[lastMeasuredRowIndex];
-    totalSizeOfMeasuredRows = itemMetadata.offset + itemMetadata.size;
-  }
-
-  var numUnmeasuredItems = rowCount - lastMeasuredRowIndex - 1;
-  var totalSizeOfUnmeasuredItems = numUnmeasuredItems * estimatedRowHeight;
-  return totalSizeOfMeasuredRows + totalSizeOfUnmeasuredItems;
-};
-
-var getEstimatedTotalWidth = function getEstimatedTotalWidth(_ref3, _ref4) {
-  var columnCount = _ref3.columnCount;
-  var columnMetadataMap = _ref4.columnMetadataMap,
-      estimatedColumnWidth = _ref4.estimatedColumnWidth,
-      lastMeasuredColumnIndex = _ref4.lastMeasuredColumnIndex;
-  var totalSizeOfMeasuredRows = 0; // Edge case check for when the number of items decreases while a scroll is in progress.
-  // https://github.com/bvaughn/react-window/pull/138
-
-  if (lastMeasuredColumnIndex >= columnCount) {
-    lastMeasuredColumnIndex = columnCount - 1;
-  }
-
-  if (lastMeasuredColumnIndex >= 0) {
-    var itemMetadata = columnMetadataMap[lastMeasuredColumnIndex];
-    totalSizeOfMeasuredRows = itemMetadata.offset + itemMetadata.size;
-  }
-
-  var numUnmeasuredItems = columnCount - lastMeasuredColumnIndex - 1;
-  var totalSizeOfUnmeasuredItems = numUnmeasuredItems * estimatedColumnWidth;
-  return totalSizeOfMeasuredRows + totalSizeOfUnmeasuredItems;
-};
-
-var getItemMetadata = function getItemMetadata(itemType, props, index, instanceProps) {
-  var itemMetadataMap, itemSize, lastMeasuredIndex;
-
-  if (itemType === 'column') {
-    itemMetadataMap = instanceProps.columnMetadataMap;
-    itemSize = props.columnWidth;
-    lastMeasuredIndex = instanceProps.lastMeasuredColumnIndex;
-  } else {
-    itemMetadataMap = instanceProps.rowMetadataMap;
-    itemSize = props.rowHeight;
-    lastMeasuredIndex = instanceProps.lastMeasuredRowIndex;
-  }
-
-  if (index > lastMeasuredIndex) {
-    var offset = 0;
-
-    if (lastMeasuredIndex >= 0) {
-      var itemMetadata = itemMetadataMap[lastMeasuredIndex];
-      offset = itemMetadata.offset + itemMetadata.size;
-    }
-
-    for (var i = lastMeasuredIndex + 1; i <= index; i++) {
-      var size = itemSize(i);
-      itemMetadataMap[i] = {
-        offset: offset,
-        size: size
-      };
-      offset += size;
-    }
-
-    if (itemType === 'column') {
-      instanceProps.lastMeasuredColumnIndex = index;
-    } else {
-      instanceProps.lastMeasuredRowIndex = index;
-    }
-  }
-
-  return itemMetadataMap[index];
-};
-
-var findNearestItem = function findNearestItem(itemType, props, instanceProps, offset) {
-  var itemMetadataMap, lastMeasuredIndex;
-
-  if (itemType === 'column') {
-    itemMetadataMap = instanceProps.columnMetadataMap;
-    lastMeasuredIndex = instanceProps.lastMeasuredColumnIndex;
-  } else {
-    itemMetadataMap = instanceProps.rowMetadataMap;
-    lastMeasuredIndex = instanceProps.lastMeasuredRowIndex;
-  }
-
-  var lastMeasuredItemOffset = lastMeasuredIndex > 0 ? itemMetadataMap[lastMeasuredIndex].offset : 0;
-
-  if (lastMeasuredItemOffset >= offset) {
-    // If we've already measured items within this range just use a binary search as it's faster.
-    return findNearestItemBinarySearch(itemType, props, instanceProps, lastMeasuredIndex, 0, offset);
-  } else {
-    // If we haven't yet measured this high, fallback to an exponential search with an inner binary search.
-    // The exponential search avoids pre-computing sizes for the full set of items as a binary search would.
-    // The overall complexity for this approach is O(log n).
-    return findNearestItemExponentialSearch(itemType, props, instanceProps, Math.max(0, lastMeasuredIndex), offset);
-  }
-};
-
-var findNearestItemBinarySearch = function findNearestItemBinarySearch(itemType, props, instanceProps, high, low, offset) {
-  while (low <= high) {
-    var middle = low + Math.floor((high - low) / 2);
-    var currentOffset = getItemMetadata(itemType, props, middle, instanceProps).offset;
-
-    if (currentOffset === offset) {
-      return middle;
-    } else if (currentOffset < offset) {
-      low = middle + 1;
-    } else if (currentOffset > offset) {
-      high = middle - 1;
-    }
-  }
-
-  if (low > 0) {
-    return low - 1;
-  } else {
-    return 0;
-  }
-};
-
-var findNearestItemExponentialSearch = function findNearestItemExponentialSearch(itemType, props, instanceProps, index, offset) {
-  var itemCount = itemType === 'column' ? props.columnCount : props.rowCount;
-  var interval = 1;
-
-  while (index < itemCount && getItemMetadata(itemType, props, index, instanceProps).offset < offset) {
-    index += interval;
-    interval *= 2;
-  }
-
-  return findNearestItemBinarySearch(itemType, props, instanceProps, Math.min(index, itemCount - 1), Math.floor(index / 2), offset);
-};
-
-var getOffsetForIndexAndAlignment = function getOffsetForIndexAndAlignment(itemType, props, index, align, scrollOffset, instanceProps, scrollbarSize) {
-  var size = itemType === 'column' ? props.width : props.height;
-  var itemMetadata = getItemMetadata(itemType, props, index, instanceProps); // Get estimated total size after ItemMetadata is computed,
-  // To ensure it reflects actual measurements instead of just estimates.
-
-  var estimatedTotalSize = itemType === 'column' ? getEstimatedTotalWidth(props, instanceProps) : getEstimatedTotalHeight(props, instanceProps);
-  var maxOffset = Math.max(0, Math.min(estimatedTotalSize - size, itemMetadata.offset));
-  var minOffset = Math.max(0, itemMetadata.offset - size + scrollbarSize + itemMetadata.size);
-
-  if (align === 'smart') {
-    if (scrollOffset >= minOffset - size && scrollOffset <= maxOffset + size) {
-      align = 'auto';
-    } else {
-      align = 'center';
-    }
-  }
-
-  switch (align) {
-    case 'start':
-      return maxOffset;
-
-    case 'end':
-      return minOffset;
-
-    case 'center':
-      return Math.round(minOffset + (maxOffset - minOffset) / 2);
-
-    case 'auto':
-    default:
-      if (scrollOffset >= minOffset && scrollOffset <= maxOffset) {
-        return scrollOffset;
-      } else if (minOffset > maxOffset) {
-        // Because we only take into account the scrollbar size when calculating minOffset
-        // this value can be larger than maxOffset when at the end of the list
-        return minOffset;
-      } else if (scrollOffset < minOffset) {
-        return minOffset;
-      } else {
-        return maxOffset;
-      }
-
-  }
-};
-
-var VariableSizeGrid = /*#__PURE__*/createGridComponent({
-  getColumnOffset: function getColumnOffset(props, index, instanceProps) {
-    return getItemMetadata('column', props, index, instanceProps).offset;
-  },
-  getColumnStartIndexForOffset: function getColumnStartIndexForOffset(props, scrollLeft, instanceProps) {
-    return findNearestItem('column', props, instanceProps, scrollLeft);
-  },
-  getColumnStopIndexForStartIndex: function getColumnStopIndexForStartIndex(props, startIndex, scrollLeft, instanceProps) {
-    var columnCount = props.columnCount,
-        width = props.width;
-    var itemMetadata = getItemMetadata('column', props, startIndex, instanceProps);
-    var maxOffset = scrollLeft + width;
-    var offset = itemMetadata.offset + itemMetadata.size;
-    var stopIndex = startIndex;
-
-    while (stopIndex < columnCount - 1 && offset < maxOffset) {
-      stopIndex++;
-      offset += getItemMetadata('column', props, stopIndex, instanceProps).size;
-    }
-
-    return stopIndex;
-  },
-  getColumnWidth: function getColumnWidth(props, index, instanceProps) {
-    return instanceProps.columnMetadataMap[index].size;
-  },
-  getEstimatedTotalHeight: getEstimatedTotalHeight,
-  getEstimatedTotalWidth: getEstimatedTotalWidth,
-  getOffsetForColumnAndAlignment: function getOffsetForColumnAndAlignment(props, index, align, scrollOffset, instanceProps, scrollbarSize) {
-    return getOffsetForIndexAndAlignment('column', props, index, align, scrollOffset, instanceProps, scrollbarSize);
-  },
-  getOffsetForRowAndAlignment: function getOffsetForRowAndAlignment(props, index, align, scrollOffset, instanceProps, scrollbarSize) {
-    return getOffsetForIndexAndAlignment('row', props, index, align, scrollOffset, instanceProps, scrollbarSize);
-  },
-  getRowOffset: function getRowOffset(props, index, instanceProps) {
-    return getItemMetadata('row', props, index, instanceProps).offset;
-  },
-  getRowHeight: function getRowHeight(props, index, instanceProps) {
-    return instanceProps.rowMetadataMap[index].size;
-  },
-  getRowStartIndexForOffset: function getRowStartIndexForOffset(props, scrollTop, instanceProps) {
-    return findNearestItem('row', props, instanceProps, scrollTop);
-  },
-  getRowStopIndexForStartIndex: function getRowStopIndexForStartIndex(props, startIndex, scrollTop, instanceProps) {
-    var rowCount = props.rowCount,
-        height = props.height;
-    var itemMetadata = getItemMetadata('row', props, startIndex, instanceProps);
-    var maxOffset = scrollTop + height;
-    var offset = itemMetadata.offset + itemMetadata.size;
-    var stopIndex = startIndex;
-
-    while (stopIndex < rowCount - 1 && offset < maxOffset) {
-      stopIndex++;
-      offset += getItemMetadata('row', props, stopIndex, instanceProps).size;
-    }
-
-    return stopIndex;
-  },
-  initInstanceProps: function initInstanceProps(props, instance) {
-    var _ref5 = props,
-        estimatedColumnWidth = _ref5.estimatedColumnWidth,
-        estimatedRowHeight = _ref5.estimatedRowHeight;
-    var instanceProps = {
-      columnMetadataMap: {},
-      estimatedColumnWidth: estimatedColumnWidth || DEFAULT_ESTIMATED_ITEM_SIZE,
-      estimatedRowHeight: estimatedRowHeight || DEFAULT_ESTIMATED_ITEM_SIZE,
-      lastMeasuredColumnIndex: -1,
-      lastMeasuredRowIndex: -1,
-      rowMetadataMap: {}
-    };
-
-    instance.resetAfterColumnIndex = function (columnIndex, shouldForceUpdate) {
-      if (shouldForceUpdate === void 0) {
-        shouldForceUpdate = true;
-      }
-
-      instance.resetAfterIndices({
-        columnIndex: columnIndex,
-        shouldForceUpdate: shouldForceUpdate
-      });
-    };
-
-    instance.resetAfterRowIndex = function (rowIndex, shouldForceUpdate) {
-      if (shouldForceUpdate === void 0) {
-        shouldForceUpdate = true;
-      }
-
-      instance.resetAfterIndices({
-        rowIndex: rowIndex,
-        shouldForceUpdate: shouldForceUpdate
-      });
-    };
-
-    instance.resetAfterIndices = function (_ref6) {
-      var columnIndex = _ref6.columnIndex,
-          rowIndex = _ref6.rowIndex,
-          _ref6$shouldForceUpda = _ref6.shouldForceUpdate,
-          shouldForceUpdate = _ref6$shouldForceUpda === void 0 ? true : _ref6$shouldForceUpda;
-
-      if (typeof columnIndex === 'number') {
-        instanceProps.lastMeasuredColumnIndex = Math.min(instanceProps.lastMeasuredColumnIndex, columnIndex - 1);
-      }
-
-      if (typeof rowIndex === 'number') {
-        instanceProps.lastMeasuredRowIndex = Math.min(instanceProps.lastMeasuredRowIndex, rowIndex - 1);
-      } // We could potentially optimize further by only evicting styles after this index,
-      // But since styles are only cached while scrolling is in progress-
-      // It seems an unnecessary optimization.
-      // It's unlikely that resetAfterIndex() will be called while a user is scrolling.
-
-
-      instance._getItemStyleCache(-1);
-
-      if (shouldForceUpdate) {
-        instance.forceUpdate();
-      }
-    };
-
-    return instanceProps;
-  },
-  shouldResetStyleCacheOnItemSizeChange: false,
-  validateProps: function validateProps(_ref7) {
-    var columnWidth = _ref7.columnWidth,
-        rowHeight = _ref7.rowHeight;
-
-    if (true) {
-      if (typeof columnWidth !== 'function') {
-        throw Error('An invalid "columnWidth" prop has been specified. ' + 'Value should be a function. ' + ("\"" + (columnWidth === null ? 'null' : typeof columnWidth) + "\" was specified."));
-      } else if (typeof rowHeight !== 'function') {
-        throw Error('An invalid "rowHeight" prop has been specified. ' + 'Value should be a function. ' + ("\"" + (rowHeight === null ? 'null' : typeof rowHeight) + "\" was specified."));
-      }
-    }
-  }
-});
-
-var IS_SCROLLING_DEBOUNCE_INTERVAL$1 = 150;
-
-var defaultItemKey$1 = function defaultItemKey(index, data) {
-  return index;
-}; // In DEV mode, this Set helps us only log a warning once per component instance.
-// This avoids spamming the console every time a render happens.
-
-
-var devWarningsDirection = null;
-var devWarningsTagName$1 = null;
-
-if (true) {
-  if (typeof window !== 'undefined' && typeof window.WeakSet !== 'undefined') {
-    devWarningsDirection = /*#__PURE__*/new WeakSet();
-    devWarningsTagName$1 = /*#__PURE__*/new WeakSet();
-  }
-}
-
-function createListComponent(_ref) {
-  var _class;
-
-  var getItemOffset = _ref.getItemOffset,
-      getEstimatedTotalSize = _ref.getEstimatedTotalSize,
-      getItemSize = _ref.getItemSize,
-      getOffsetForIndexAndAlignment = _ref.getOffsetForIndexAndAlignment,
-      getStartIndexForOffset = _ref.getStartIndexForOffset,
-      getStopIndexForStartIndex = _ref.getStopIndexForStartIndex,
-      initInstanceProps = _ref.initInstanceProps,
-      shouldResetStyleCacheOnItemSizeChange = _ref.shouldResetStyleCacheOnItemSizeChange,
-      validateProps = _ref.validateProps;
-  return _class = /*#__PURE__*/function (_PureComponent) {
-    (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__["default"])(List, _PureComponent);
-
-    // Always use explicit constructor for React components.
-    // It produces less code after transpilation. (#26)
-    // eslint-disable-next-line no-useless-constructor
-    function List(props) {
-      var _this;
-
-      _this = _PureComponent.call(this, props) || this;
-      _this._instanceProps = initInstanceProps(_this.props, (0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_1__["default"])(_this));
-      _this._outerRef = void 0;
-      _this._resetIsScrollingTimeoutId = null;
-      _this.state = {
-        instance: (0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_1__["default"])(_this),
-        isScrolling: false,
-        scrollDirection: 'forward',
-        scrollOffset: typeof _this.props.initialScrollOffset === 'number' ? _this.props.initialScrollOffset : 0,
-        scrollUpdateWasRequested: false
-      };
-      _this._callOnItemsRendered = void 0;
-      _this._callOnItemsRendered = (0,memoize_one__WEBPACK_IMPORTED_MODULE_5__["default"])(function (overscanStartIndex, overscanStopIndex, visibleStartIndex, visibleStopIndex) {
-        return _this.props.onItemsRendered({
-          overscanStartIndex: overscanStartIndex,
-          overscanStopIndex: overscanStopIndex,
-          visibleStartIndex: visibleStartIndex,
-          visibleStopIndex: visibleStopIndex
-        });
-      });
-      _this._callOnScroll = void 0;
-      _this._callOnScroll = (0,memoize_one__WEBPACK_IMPORTED_MODULE_5__["default"])(function (scrollDirection, scrollOffset, scrollUpdateWasRequested) {
-        return _this.props.onScroll({
-          scrollDirection: scrollDirection,
-          scrollOffset: scrollOffset,
-          scrollUpdateWasRequested: scrollUpdateWasRequested
-        });
-      });
-      _this._getItemStyle = void 0;
-
-      _this._getItemStyle = function (index) {
-        var _this$props = _this.props,
-            direction = _this$props.direction,
-            itemSize = _this$props.itemSize,
-            layout = _this$props.layout;
-
-        var itemStyleCache = _this._getItemStyleCache(shouldResetStyleCacheOnItemSizeChange && itemSize, shouldResetStyleCacheOnItemSizeChange && layout, shouldResetStyleCacheOnItemSizeChange && direction);
-
-        var style;
-
-        if (itemStyleCache.hasOwnProperty(index)) {
-          style = itemStyleCache[index];
-        } else {
-          var _offset = getItemOffset(_this.props, index, _this._instanceProps);
-
-          var size = getItemSize(_this.props, index, _this._instanceProps); // TODO Deprecate direction "horizontal"
-
-          var isHorizontal = direction === 'horizontal' || layout === 'horizontal';
-          var isRtl = direction === 'rtl';
-          var offsetHorizontal = isHorizontal ? _offset : 0;
-          itemStyleCache[index] = style = {
-            position: 'absolute',
-            left: isRtl ? undefined : offsetHorizontal,
-            right: isRtl ? offsetHorizontal : undefined,
-            top: !isHorizontal ? _offset : 0,
-            height: !isHorizontal ? size : '100%',
-            width: isHorizontal ? size : '100%'
-          };
-        }
-
-        return style;
-      };
-
-      _this._getItemStyleCache = void 0;
-      _this._getItemStyleCache = (0,memoize_one__WEBPACK_IMPORTED_MODULE_5__["default"])(function (_, __, ___) {
-        return {};
-      });
-
-      _this._onScrollHorizontal = function (event) {
-        var _event$currentTarget = event.currentTarget,
-            clientWidth = _event$currentTarget.clientWidth,
-            scrollLeft = _event$currentTarget.scrollLeft,
-            scrollWidth = _event$currentTarget.scrollWidth;
-
-        _this.setState(function (prevState) {
-          if (prevState.scrollOffset === scrollLeft) {
-            // Scroll position may have been updated by cDM/cDU,
-            // In which case we don't need to trigger another render,
-            // And we don't want to update state.isScrolling.
-            return null;
-          }
-
-          var direction = _this.props.direction;
-          var scrollOffset = scrollLeft;
-
-          if (direction === 'rtl') {
-            // TRICKY According to the spec, scrollLeft should be negative for RTL aligned elements.
-            // This is not the case for all browsers though (e.g. Chrome reports values as positive, measured relative to the left).
-            // It's also easier for this component if we convert offsets to the same format as they would be in for ltr.
-            // So the simplest solution is to determine which browser behavior we're dealing with, and convert based on it.
-            switch (getRTLOffsetType()) {
-              case 'negative':
-                scrollOffset = -scrollLeft;
-                break;
-
-              case 'positive-descending':
-                scrollOffset = scrollWidth - clientWidth - scrollLeft;
-                break;
-            }
-          } // Prevent Safari's elastic scrolling from causing visual shaking when scrolling past bounds.
-
-
-          scrollOffset = Math.max(0, Math.min(scrollOffset, scrollWidth - clientWidth));
-          return {
-            isScrolling: true,
-            scrollDirection: prevState.scrollOffset < scrollLeft ? 'forward' : 'backward',
-            scrollOffset: scrollOffset,
-            scrollUpdateWasRequested: false
-          };
-        }, _this._resetIsScrollingDebounced);
-      };
-
-      _this._onScrollVertical = function (event) {
-        var _event$currentTarget2 = event.currentTarget,
-            clientHeight = _event$currentTarget2.clientHeight,
-            scrollHeight = _event$currentTarget2.scrollHeight,
-            scrollTop = _event$currentTarget2.scrollTop;
-
-        _this.setState(function (prevState) {
-          if (prevState.scrollOffset === scrollTop) {
-            // Scroll position may have been updated by cDM/cDU,
-            // In which case we don't need to trigger another render,
-            // And we don't want to update state.isScrolling.
-            return null;
-          } // Prevent Safari's elastic scrolling from causing visual shaking when scrolling past bounds.
-
-
-          var scrollOffset = Math.max(0, Math.min(scrollTop, scrollHeight - clientHeight));
-          return {
-            isScrolling: true,
-            scrollDirection: prevState.scrollOffset < scrollOffset ? 'forward' : 'backward',
-            scrollOffset: scrollOffset,
-            scrollUpdateWasRequested: false
-          };
-        }, _this._resetIsScrollingDebounced);
-      };
-
-      _this._outerRefSetter = function (ref) {
-        var outerRef = _this.props.outerRef;
-        _this._outerRef = ref;
-
-        if (typeof outerRef === 'function') {
-          outerRef(ref);
-        } else if (outerRef != null && typeof outerRef === 'object' && outerRef.hasOwnProperty('current')) {
-          outerRef.current = ref;
-        }
-      };
-
-      _this._resetIsScrollingDebounced = function () {
-        if (_this._resetIsScrollingTimeoutId !== null) {
-          cancelTimeout(_this._resetIsScrollingTimeoutId);
-        }
-
-        _this._resetIsScrollingTimeoutId = requestTimeout(_this._resetIsScrolling, IS_SCROLLING_DEBOUNCE_INTERVAL$1);
-      };
-
-      _this._resetIsScrolling = function () {
-        _this._resetIsScrollingTimeoutId = null;
-
-        _this.setState({
-          isScrolling: false
-        }, function () {
-          // Clear style cache after state update has been committed.
-          // This way we don't break pure sCU for items that don't use isScrolling param.
-          _this._getItemStyleCache(-1, null);
-        });
-      };
-
-      return _this;
-    }
-
-    List.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps, prevState) {
-      validateSharedProps$1(nextProps, prevState);
-      validateProps(nextProps);
-      return null;
-    };
-
-    var _proto = List.prototype;
-
-    _proto.scrollTo = function scrollTo(scrollOffset) {
-      scrollOffset = Math.max(0, scrollOffset);
-      this.setState(function (prevState) {
-        if (prevState.scrollOffset === scrollOffset) {
-          return null;
-        }
-
-        return {
-          scrollDirection: prevState.scrollOffset < scrollOffset ? 'forward' : 'backward',
-          scrollOffset: scrollOffset,
-          scrollUpdateWasRequested: true
-        };
-      }, this._resetIsScrollingDebounced);
-    };
-
-    _proto.scrollToItem = function scrollToItem(index, align) {
-      if (align === void 0) {
-        align = 'auto';
-      }
-
-      var _this$props2 = this.props,
-          itemCount = _this$props2.itemCount,
-          layout = _this$props2.layout;
-      var scrollOffset = this.state.scrollOffset;
-      index = Math.max(0, Math.min(index, itemCount - 1)); // The scrollbar size should be considered when scrolling an item into view, to ensure it's fully visible.
-      // But we only need to account for its size when it's actually visible.
-      // This is an edge case for lists; normally they only scroll in the dominant direction.
-
-      var scrollbarSize = 0;
-
-      if (this._outerRef) {
-        var outerRef = this._outerRef;
-
-        if (layout === 'vertical') {
-          scrollbarSize = outerRef.scrollWidth > outerRef.clientWidth ? getScrollbarSize() : 0;
-        } else {
-          scrollbarSize = outerRef.scrollHeight > outerRef.clientHeight ? getScrollbarSize() : 0;
-        }
-      }
-
-      this.scrollTo(getOffsetForIndexAndAlignment(this.props, index, align, scrollOffset, this._instanceProps, scrollbarSize));
-    };
-
-    _proto.componentDidMount = function componentDidMount() {
-      var _this$props3 = this.props,
-          direction = _this$props3.direction,
-          initialScrollOffset = _this$props3.initialScrollOffset,
-          layout = _this$props3.layout;
-
-      if (typeof initialScrollOffset === 'number' && this._outerRef != null) {
-        var outerRef = this._outerRef; // TODO Deprecate direction "horizontal"
-
-        if (direction === 'horizontal' || layout === 'horizontal') {
-          outerRef.scrollLeft = initialScrollOffset;
-        } else {
-          outerRef.scrollTop = initialScrollOffset;
-        }
-      }
-
-      this._callPropsCallbacks();
-    };
-
-    _proto.componentDidUpdate = function componentDidUpdate() {
-      var _this$props4 = this.props,
-          direction = _this$props4.direction,
-          layout = _this$props4.layout;
-      var _this$state = this.state,
-          scrollOffset = _this$state.scrollOffset,
-          scrollUpdateWasRequested = _this$state.scrollUpdateWasRequested;
-
-      if (scrollUpdateWasRequested && this._outerRef != null) {
-        var outerRef = this._outerRef; // TODO Deprecate direction "horizontal"
-
-        if (direction === 'horizontal' || layout === 'horizontal') {
-          if (direction === 'rtl') {
-            // TRICKY According to the spec, scrollLeft should be negative for RTL aligned elements.
-            // This is not the case for all browsers though (e.g. Chrome reports values as positive, measured relative to the left).
-            // So we need to determine which browser behavior we're dealing with, and mimic it.
-            switch (getRTLOffsetType()) {
-              case 'negative':
-                outerRef.scrollLeft = -scrollOffset;
-                break;
-
-              case 'positive-ascending':
-                outerRef.scrollLeft = scrollOffset;
-                break;
-
-              default:
-                var clientWidth = outerRef.clientWidth,
-                    scrollWidth = outerRef.scrollWidth;
-                outerRef.scrollLeft = scrollWidth - clientWidth - scrollOffset;
-                break;
-            }
-          } else {
-            outerRef.scrollLeft = scrollOffset;
-          }
-        } else {
-          outerRef.scrollTop = scrollOffset;
-        }
-      }
-
-      this._callPropsCallbacks();
-    };
-
-    _proto.componentWillUnmount = function componentWillUnmount() {
-      if (this._resetIsScrollingTimeoutId !== null) {
-        cancelTimeout(this._resetIsScrollingTimeoutId);
-      }
-    };
-
-    _proto.render = function render() {
-      var _this$props5 = this.props,
-          children = _this$props5.children,
-          className = _this$props5.className,
-          direction = _this$props5.direction,
-          height = _this$props5.height,
-          innerRef = _this$props5.innerRef,
-          innerElementType = _this$props5.innerElementType,
-          innerTagName = _this$props5.innerTagName,
-          itemCount = _this$props5.itemCount,
-          itemData = _this$props5.itemData,
-          _this$props5$itemKey = _this$props5.itemKey,
-          itemKey = _this$props5$itemKey === void 0 ? defaultItemKey$1 : _this$props5$itemKey,
-          layout = _this$props5.layout,
-          outerElementType = _this$props5.outerElementType,
-          outerTagName = _this$props5.outerTagName,
-          style = _this$props5.style,
-          useIsScrolling = _this$props5.useIsScrolling,
-          width = _this$props5.width;
-      var isScrolling = this.state.isScrolling; // TODO Deprecate direction "horizontal"
-
-      var isHorizontal = direction === 'horizontal' || layout === 'horizontal';
-      var onScroll = isHorizontal ? this._onScrollHorizontal : this._onScrollVertical;
-
-      var _this$_getRangeToRend = this._getRangeToRender(),
-          startIndex = _this$_getRangeToRend[0],
-          stopIndex = _this$_getRangeToRend[1];
-
-      var items = [];
-
-      if (itemCount > 0) {
-        for (var _index = startIndex; _index <= stopIndex; _index++) {
-          items.push((0,react__WEBPACK_IMPORTED_MODULE_3__.createElement)(children, {
-            data: itemData,
-            key: itemKey(_index, itemData),
-            index: _index,
-            isScrolling: useIsScrolling ? isScrolling : undefined,
-            style: this._getItemStyle(_index)
-          }));
-        }
-      } // Read this value AFTER items have been created,
-      // So their actual sizes (if variable) are taken into consideration.
-
-
-      var estimatedTotalSize = getEstimatedTotalSize(this.props, this._instanceProps);
-      return (0,react__WEBPACK_IMPORTED_MODULE_3__.createElement)(outerElementType || outerTagName || 'div', {
-        className: className,
-        onScroll: onScroll,
-        ref: this._outerRefSetter,
-        style: (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-          position: 'relative',
-          height: height,
-          width: width,
-          overflow: 'auto',
-          WebkitOverflowScrolling: 'touch',
-          willChange: 'transform',
-          direction: direction
-        }, style)
-      }, (0,react__WEBPACK_IMPORTED_MODULE_3__.createElement)(innerElementType || innerTagName || 'div', {
-        children: items,
-        ref: innerRef,
-        style: {
-          height: isHorizontal ? '100%' : estimatedTotalSize,
-          pointerEvents: isScrolling ? 'none' : undefined,
-          width: isHorizontal ? estimatedTotalSize : '100%'
-        }
-      }));
-    };
-
-    _proto._callPropsCallbacks = function _callPropsCallbacks() {
-      if (typeof this.props.onItemsRendered === 'function') {
-        var itemCount = this.props.itemCount;
-
-        if (itemCount > 0) {
-          var _this$_getRangeToRend2 = this._getRangeToRender(),
-              _overscanStartIndex = _this$_getRangeToRend2[0],
-              _overscanStopIndex = _this$_getRangeToRend2[1],
-              _visibleStartIndex = _this$_getRangeToRend2[2],
-              _visibleStopIndex = _this$_getRangeToRend2[3];
-
-          this._callOnItemsRendered(_overscanStartIndex, _overscanStopIndex, _visibleStartIndex, _visibleStopIndex);
-        }
-      }
-
-      if (typeof this.props.onScroll === 'function') {
-        var _this$state2 = this.state,
-            _scrollDirection = _this$state2.scrollDirection,
-            _scrollOffset = _this$state2.scrollOffset,
-            _scrollUpdateWasRequested = _this$state2.scrollUpdateWasRequested;
-
-        this._callOnScroll(_scrollDirection, _scrollOffset, _scrollUpdateWasRequested);
-      }
-    } // Lazily create and cache item styles while scrolling,
-    // So that pure component sCU will prevent re-renders.
-    // We maintain this cache, and pass a style prop rather than index,
-    // So that List can clear cached styles and force item re-render if necessary.
-    ;
-
-    _proto._getRangeToRender = function _getRangeToRender() {
-      var _this$props6 = this.props,
-          itemCount = _this$props6.itemCount,
-          overscanCount = _this$props6.overscanCount;
-      var _this$state3 = this.state,
-          isScrolling = _this$state3.isScrolling,
-          scrollDirection = _this$state3.scrollDirection,
-          scrollOffset = _this$state3.scrollOffset;
-
-      if (itemCount === 0) {
-        return [0, 0, 0, 0];
-      }
-
-      var startIndex = getStartIndexForOffset(this.props, scrollOffset, this._instanceProps);
-      var stopIndex = getStopIndexForStartIndex(this.props, startIndex, scrollOffset, this._instanceProps); // Overscan by one item in each direction so that tab/focus works.
-      // If there isn't at least one extra item, tab loops back around.
-
-      var overscanBackward = !isScrolling || scrollDirection === 'backward' ? Math.max(1, overscanCount) : 1;
-      var overscanForward = !isScrolling || scrollDirection === 'forward' ? Math.max(1, overscanCount) : 1;
-      return [Math.max(0, startIndex - overscanBackward), Math.max(0, Math.min(itemCount - 1, stopIndex + overscanForward)), startIndex, stopIndex];
-    };
-
-    return List;
-  }(react__WEBPACK_IMPORTED_MODULE_3__.PureComponent), _class.defaultProps = {
-    direction: 'ltr',
-    itemData: undefined,
-    layout: 'vertical',
-    overscanCount: 2,
-    useIsScrolling: false
-  }, _class;
-} // NOTE: I considered further wrapping individual items with a pure ListItem component.
-// This would avoid ever calling the render function for the same index more than once,
-// But it would also add the overhead of a lot of components/fibers.
-// I assume people already do this (render function returning a class component),
-// So my doing it would just unnecessarily double the wrappers.
-
-var validateSharedProps$1 = function validateSharedProps(_ref2, _ref3) {
-  var children = _ref2.children,
-      direction = _ref2.direction,
-      height = _ref2.height,
-      layout = _ref2.layout,
-      innerTagName = _ref2.innerTagName,
-      outerTagName = _ref2.outerTagName,
-      width = _ref2.width;
-  var instance = _ref3.instance;
-
-  if (true) {
-    if (innerTagName != null || outerTagName != null) {
-      if (devWarningsTagName$1 && !devWarningsTagName$1.has(instance)) {
-        devWarningsTagName$1.add(instance);
-        console.warn('The innerTagName and outerTagName props have been deprecated. ' + 'Please use the innerElementType and outerElementType props instead.');
-      }
-    } // TODO Deprecate direction "horizontal"
-
-
-    var isHorizontal = direction === 'horizontal' || layout === 'horizontal';
-
-    switch (direction) {
-      case 'horizontal':
-      case 'vertical':
-        if (devWarningsDirection && !devWarningsDirection.has(instance)) {
-          devWarningsDirection.add(instance);
-          console.warn('The direction prop should be either "ltr" (default) or "rtl". ' + 'Please use the layout prop to specify "vertical" (default) or "horizontal" orientation.');
-        }
-
-        break;
-
-      case 'ltr':
-      case 'rtl':
-        // Valid values
-        break;
-
-      default:
-        throw Error('An invalid "direction" prop has been specified. ' + 'Value should be either "ltr" or "rtl". ' + ("\"" + direction + "\" was specified."));
-    }
-
-    switch (layout) {
-      case 'horizontal':
-      case 'vertical':
-        // Valid values
-        break;
-
-      default:
-        throw Error('An invalid "layout" prop has been specified. ' + 'Value should be either "horizontal" or "vertical". ' + ("\"" + layout + "\" was specified."));
-    }
-
-    if (children == null) {
-      throw Error('An invalid "children" prop has been specified. ' + 'Value should be a React component. ' + ("\"" + (children === null ? 'null' : typeof children) + "\" was specified."));
-    }
-
-    if (isHorizontal && typeof width !== 'number') {
-      throw Error('An invalid "width" prop has been specified. ' + 'Horizontal lists must specify a number for width. ' + ("\"" + (width === null ? 'null' : typeof width) + "\" was specified."));
-    } else if (!isHorizontal && typeof height !== 'number') {
-      throw Error('An invalid "height" prop has been specified. ' + 'Vertical lists must specify a number for height. ' + ("\"" + (height === null ? 'null' : typeof height) + "\" was specified."));
-    }
-  }
-};
-
-var DEFAULT_ESTIMATED_ITEM_SIZE$1 = 50;
-
-var getItemMetadata$1 = function getItemMetadata(props, index, instanceProps) {
-  var _ref = props,
-      itemSize = _ref.itemSize;
-  var itemMetadataMap = instanceProps.itemMetadataMap,
-      lastMeasuredIndex = instanceProps.lastMeasuredIndex;
-
-  if (index > lastMeasuredIndex) {
-    var offset = 0;
-
-    if (lastMeasuredIndex >= 0) {
-      var itemMetadata = itemMetadataMap[lastMeasuredIndex];
-      offset = itemMetadata.offset + itemMetadata.size;
-    }
-
-    for (var i = lastMeasuredIndex + 1; i <= index; i++) {
-      var size = itemSize(i);
-      itemMetadataMap[i] = {
-        offset: offset,
-        size: size
-      };
-      offset += size;
-    }
-
-    instanceProps.lastMeasuredIndex = index;
-  }
-
-  return itemMetadataMap[index];
-};
-
-var findNearestItem$1 = function findNearestItem(props, instanceProps, offset) {
-  var itemMetadataMap = instanceProps.itemMetadataMap,
-      lastMeasuredIndex = instanceProps.lastMeasuredIndex;
-  var lastMeasuredItemOffset = lastMeasuredIndex > 0 ? itemMetadataMap[lastMeasuredIndex].offset : 0;
-
-  if (lastMeasuredItemOffset >= offset) {
-    // If we've already measured items within this range just use a binary search as it's faster.
-    return findNearestItemBinarySearch$1(props, instanceProps, lastMeasuredIndex, 0, offset);
-  } else {
-    // If we haven't yet measured this high, fallback to an exponential search with an inner binary search.
-    // The exponential search avoids pre-computing sizes for the full set of items as a binary search would.
-    // The overall complexity for this approach is O(log n).
-    return findNearestItemExponentialSearch$1(props, instanceProps, Math.max(0, lastMeasuredIndex), offset);
-  }
-};
-
-var findNearestItemBinarySearch$1 = function findNearestItemBinarySearch(props, instanceProps, high, low, offset) {
-  while (low <= high) {
-    var middle = low + Math.floor((high - low) / 2);
-    var currentOffset = getItemMetadata$1(props, middle, instanceProps).offset;
-
-    if (currentOffset === offset) {
-      return middle;
-    } else if (currentOffset < offset) {
-      low = middle + 1;
-    } else if (currentOffset > offset) {
-      high = middle - 1;
-    }
-  }
-
-  if (low > 0) {
-    return low - 1;
-  } else {
-    return 0;
-  }
-};
-
-var findNearestItemExponentialSearch$1 = function findNearestItemExponentialSearch(props, instanceProps, index, offset) {
-  var itemCount = props.itemCount;
-  var interval = 1;
-
-  while (index < itemCount && getItemMetadata$1(props, index, instanceProps).offset < offset) {
-    index += interval;
-    interval *= 2;
-  }
-
-  return findNearestItemBinarySearch$1(props, instanceProps, Math.min(index, itemCount - 1), Math.floor(index / 2), offset);
-};
-
-var getEstimatedTotalSize = function getEstimatedTotalSize(_ref2, _ref3) {
-  var itemCount = _ref2.itemCount;
-  var itemMetadataMap = _ref3.itemMetadataMap,
-      estimatedItemSize = _ref3.estimatedItemSize,
-      lastMeasuredIndex = _ref3.lastMeasuredIndex;
-  var totalSizeOfMeasuredItems = 0; // Edge case check for when the number of items decreases while a scroll is in progress.
-  // https://github.com/bvaughn/react-window/pull/138
-
-  if (lastMeasuredIndex >= itemCount) {
-    lastMeasuredIndex = itemCount - 1;
-  }
-
-  if (lastMeasuredIndex >= 0) {
-    var itemMetadata = itemMetadataMap[lastMeasuredIndex];
-    totalSizeOfMeasuredItems = itemMetadata.offset + itemMetadata.size;
-  }
-
-  var numUnmeasuredItems = itemCount - lastMeasuredIndex - 1;
-  var totalSizeOfUnmeasuredItems = numUnmeasuredItems * estimatedItemSize;
-  return totalSizeOfMeasuredItems + totalSizeOfUnmeasuredItems;
-};
-
-var VariableSizeList = /*#__PURE__*/createListComponent({
-  getItemOffset: function getItemOffset(props, index, instanceProps) {
-    return getItemMetadata$1(props, index, instanceProps).offset;
-  },
-  getItemSize: function getItemSize(props, index, instanceProps) {
-    return instanceProps.itemMetadataMap[index].size;
-  },
-  getEstimatedTotalSize: getEstimatedTotalSize,
-  getOffsetForIndexAndAlignment: function getOffsetForIndexAndAlignment(props, index, align, scrollOffset, instanceProps, scrollbarSize) {
-    var direction = props.direction,
-        height = props.height,
-        layout = props.layout,
-        width = props.width; // TODO Deprecate direction "horizontal"
-
-    var isHorizontal = direction === 'horizontal' || layout === 'horizontal';
-    var size = isHorizontal ? width : height;
-    var itemMetadata = getItemMetadata$1(props, index, instanceProps); // Get estimated total size after ItemMetadata is computed,
-    // To ensure it reflects actual measurements instead of just estimates.
-
-    var estimatedTotalSize = getEstimatedTotalSize(props, instanceProps);
-    var maxOffset = Math.max(0, Math.min(estimatedTotalSize - size, itemMetadata.offset));
-    var minOffset = Math.max(0, itemMetadata.offset - size + itemMetadata.size + scrollbarSize);
-
-    if (align === 'smart') {
-      if (scrollOffset >= minOffset - size && scrollOffset <= maxOffset + size) {
-        align = 'auto';
-      } else {
-        align = 'center';
-      }
-    }
-
-    switch (align) {
-      case 'start':
-        return maxOffset;
-
-      case 'end':
-        return minOffset;
-
-      case 'center':
-        return Math.round(minOffset + (maxOffset - minOffset) / 2);
-
-      case 'auto':
-      default:
-        if (scrollOffset >= minOffset && scrollOffset <= maxOffset) {
-          return scrollOffset;
-        } else if (scrollOffset < minOffset) {
-          return minOffset;
-        } else {
-          return maxOffset;
-        }
-
-    }
-  },
-  getStartIndexForOffset: function getStartIndexForOffset(props, offset, instanceProps) {
-    return findNearestItem$1(props, instanceProps, offset);
-  },
-  getStopIndexForStartIndex: function getStopIndexForStartIndex(props, startIndex, scrollOffset, instanceProps) {
-    var direction = props.direction,
-        height = props.height,
-        itemCount = props.itemCount,
-        layout = props.layout,
-        width = props.width; // TODO Deprecate direction "horizontal"
-
-    var isHorizontal = direction === 'horizontal' || layout === 'horizontal';
-    var size = isHorizontal ? width : height;
-    var itemMetadata = getItemMetadata$1(props, startIndex, instanceProps);
-    var maxOffset = scrollOffset + size;
-    var offset = itemMetadata.offset + itemMetadata.size;
-    var stopIndex = startIndex;
-
-    while (stopIndex < itemCount - 1 && offset < maxOffset) {
-      stopIndex++;
-      offset += getItemMetadata$1(props, stopIndex, instanceProps).size;
-    }
-
-    return stopIndex;
-  },
-  initInstanceProps: function initInstanceProps(props, instance) {
-    var _ref4 = props,
-        estimatedItemSize = _ref4.estimatedItemSize;
-    var instanceProps = {
-      itemMetadataMap: {},
-      estimatedItemSize: estimatedItemSize || DEFAULT_ESTIMATED_ITEM_SIZE$1,
-      lastMeasuredIndex: -1
-    };
-
-    instance.resetAfterIndex = function (index, shouldForceUpdate) {
-      if (shouldForceUpdate === void 0) {
-        shouldForceUpdate = true;
-      }
-
-      instanceProps.lastMeasuredIndex = Math.min(instanceProps.lastMeasuredIndex, index - 1); // We could potentially optimize further by only evicting styles after this index,
-      // But since styles are only cached while scrolling is in progress-
-      // It seems an unnecessary optimization.
-      // It's unlikely that resetAfterIndex() will be called while a user is scrolling.
-
-      instance._getItemStyleCache(-1);
-
-      if (shouldForceUpdate) {
-        instance.forceUpdate();
-      }
-    };
-
-    return instanceProps;
-  },
-  shouldResetStyleCacheOnItemSizeChange: false,
-  validateProps: function validateProps(_ref5) {
-    var itemSize = _ref5.itemSize;
-
-    if (true) {
-      if (typeof itemSize !== 'function') {
-        throw Error('An invalid "itemSize" prop has been specified. ' + 'Value should be a function. ' + ("\"" + (itemSize === null ? 'null' : typeof itemSize) + "\" was specified."));
-      }
-    }
-  }
-});
-
-var FixedSizeGrid = /*#__PURE__*/createGridComponent({
-  getColumnOffset: function getColumnOffset(_ref, index) {
-    var columnWidth = _ref.columnWidth;
-    return index * columnWidth;
-  },
-  getColumnWidth: function getColumnWidth(_ref2, index) {
-    var columnWidth = _ref2.columnWidth;
-    return columnWidth;
-  },
-  getRowOffset: function getRowOffset(_ref3, index) {
-    var rowHeight = _ref3.rowHeight;
-    return index * rowHeight;
-  },
-  getRowHeight: function getRowHeight(_ref4, index) {
-    var rowHeight = _ref4.rowHeight;
-    return rowHeight;
-  },
-  getEstimatedTotalHeight: function getEstimatedTotalHeight(_ref5) {
-    var rowCount = _ref5.rowCount,
-        rowHeight = _ref5.rowHeight;
-    return rowHeight * rowCount;
-  },
-  getEstimatedTotalWidth: function getEstimatedTotalWidth(_ref6) {
-    var columnCount = _ref6.columnCount,
-        columnWidth = _ref6.columnWidth;
-    return columnWidth * columnCount;
-  },
-  getOffsetForColumnAndAlignment: function getOffsetForColumnAndAlignment(_ref7, columnIndex, align, scrollLeft, instanceProps, scrollbarSize) {
-    var columnCount = _ref7.columnCount,
-        columnWidth = _ref7.columnWidth,
-        width = _ref7.width;
-    var lastColumnOffset = Math.max(0, columnCount * columnWidth - width);
-    var maxOffset = Math.min(lastColumnOffset, columnIndex * columnWidth);
-    var minOffset = Math.max(0, columnIndex * columnWidth - width + scrollbarSize + columnWidth);
-
-    if (align === 'smart') {
-      if (scrollLeft >= minOffset - width && scrollLeft <= maxOffset + width) {
-        align = 'auto';
-      } else {
-        align = 'center';
-      }
-    }
-
-    switch (align) {
-      case 'start':
-        return maxOffset;
-
-      case 'end':
-        return minOffset;
-
-      case 'center':
-        // "Centered" offset is usually the average of the min and max.
-        // But near the edges of the list, this doesn't hold true.
-        var middleOffset = Math.round(minOffset + (maxOffset - minOffset) / 2);
-
-        if (middleOffset < Math.ceil(width / 2)) {
-          return 0; // near the beginning
-        } else if (middleOffset > lastColumnOffset + Math.floor(width / 2)) {
-          return lastColumnOffset; // near the end
-        } else {
-          return middleOffset;
-        }
-
-      case 'auto':
-      default:
-        if (scrollLeft >= minOffset && scrollLeft <= maxOffset) {
-          return scrollLeft;
-        } else if (minOffset > maxOffset) {
-          // Because we only take into account the scrollbar size when calculating minOffset
-          // this value can be larger than maxOffset when at the end of the list
-          return minOffset;
-        } else if (scrollLeft < minOffset) {
-          return minOffset;
-        } else {
-          return maxOffset;
-        }
-
-    }
-  },
-  getOffsetForRowAndAlignment: function getOffsetForRowAndAlignment(_ref8, rowIndex, align, scrollTop, instanceProps, scrollbarSize) {
-    var rowHeight = _ref8.rowHeight,
-        height = _ref8.height,
-        rowCount = _ref8.rowCount;
-    var lastRowOffset = Math.max(0, rowCount * rowHeight - height);
-    var maxOffset = Math.min(lastRowOffset, rowIndex * rowHeight);
-    var minOffset = Math.max(0, rowIndex * rowHeight - height + scrollbarSize + rowHeight);
-
-    if (align === 'smart') {
-      if (scrollTop >= minOffset - height && scrollTop <= maxOffset + height) {
-        align = 'auto';
-      } else {
-        align = 'center';
-      }
-    }
-
-    switch (align) {
-      case 'start':
-        return maxOffset;
-
-      case 'end':
-        return minOffset;
-
-      case 'center':
-        // "Centered" offset is usually the average of the min and max.
-        // But near the edges of the list, this doesn't hold true.
-        var middleOffset = Math.round(minOffset + (maxOffset - minOffset) / 2);
-
-        if (middleOffset < Math.ceil(height / 2)) {
-          return 0; // near the beginning
-        } else if (middleOffset > lastRowOffset + Math.floor(height / 2)) {
-          return lastRowOffset; // near the end
-        } else {
-          return middleOffset;
-        }
-
-      case 'auto':
-      default:
-        if (scrollTop >= minOffset && scrollTop <= maxOffset) {
-          return scrollTop;
-        } else if (minOffset > maxOffset) {
-          // Because we only take into account the scrollbar size when calculating minOffset
-          // this value can be larger than maxOffset when at the end of the list
-          return minOffset;
-        } else if (scrollTop < minOffset) {
-          return minOffset;
-        } else {
-          return maxOffset;
-        }
-
-    }
-  },
-  getColumnStartIndexForOffset: function getColumnStartIndexForOffset(_ref9, scrollLeft) {
-    var columnWidth = _ref9.columnWidth,
-        columnCount = _ref9.columnCount;
-    return Math.max(0, Math.min(columnCount - 1, Math.floor(scrollLeft / columnWidth)));
-  },
-  getColumnStopIndexForStartIndex: function getColumnStopIndexForStartIndex(_ref10, startIndex, scrollLeft) {
-    var columnWidth = _ref10.columnWidth,
-        columnCount = _ref10.columnCount,
-        width = _ref10.width;
-    var left = startIndex * columnWidth;
-    var numVisibleColumns = Math.ceil((width + scrollLeft - left) / columnWidth);
-    return Math.max(0, Math.min(columnCount - 1, startIndex + numVisibleColumns - 1 // -1 is because stop index is inclusive
-    ));
-  },
-  getRowStartIndexForOffset: function getRowStartIndexForOffset(_ref11, scrollTop) {
-    var rowHeight = _ref11.rowHeight,
-        rowCount = _ref11.rowCount;
-    return Math.max(0, Math.min(rowCount - 1, Math.floor(scrollTop / rowHeight)));
-  },
-  getRowStopIndexForStartIndex: function getRowStopIndexForStartIndex(_ref12, startIndex, scrollTop) {
-    var rowHeight = _ref12.rowHeight,
-        rowCount = _ref12.rowCount,
-        height = _ref12.height;
-    var top = startIndex * rowHeight;
-    var numVisibleRows = Math.ceil((height + scrollTop - top) / rowHeight);
-    return Math.max(0, Math.min(rowCount - 1, startIndex + numVisibleRows - 1 // -1 is because stop index is inclusive
-    ));
-  },
-  initInstanceProps: function initInstanceProps(props) {// Noop
-  },
-  shouldResetStyleCacheOnItemSizeChange: true,
-  validateProps: function validateProps(_ref13) {
-    var columnWidth = _ref13.columnWidth,
-        rowHeight = _ref13.rowHeight;
-
-    if (true) {
-      if (typeof columnWidth !== 'number') {
-        throw Error('An invalid "columnWidth" prop has been specified. ' + 'Value should be a number. ' + ("\"" + (columnWidth === null ? 'null' : typeof columnWidth) + "\" was specified."));
-      }
-
-      if (typeof rowHeight !== 'number') {
-        throw Error('An invalid "rowHeight" prop has been specified. ' + 'Value should be a number. ' + ("\"" + (rowHeight === null ? 'null' : typeof rowHeight) + "\" was specified."));
-      }
-    }
-  }
-});
-
-var FixedSizeList = /*#__PURE__*/createListComponent({
-  getItemOffset: function getItemOffset(_ref, index) {
-    var itemSize = _ref.itemSize;
-    return index * itemSize;
-  },
-  getItemSize: function getItemSize(_ref2, index) {
-    var itemSize = _ref2.itemSize;
-    return itemSize;
-  },
-  getEstimatedTotalSize: function getEstimatedTotalSize(_ref3) {
-    var itemCount = _ref3.itemCount,
-        itemSize = _ref3.itemSize;
-    return itemSize * itemCount;
-  },
-  getOffsetForIndexAndAlignment: function getOffsetForIndexAndAlignment(_ref4, index, align, scrollOffset, instanceProps, scrollbarSize) {
-    var direction = _ref4.direction,
-        height = _ref4.height,
-        itemCount = _ref4.itemCount,
-        itemSize = _ref4.itemSize,
-        layout = _ref4.layout,
-        width = _ref4.width;
-    // TODO Deprecate direction "horizontal"
-    var isHorizontal = direction === 'horizontal' || layout === 'horizontal';
-    var size = isHorizontal ? width : height;
-    var lastItemOffset = Math.max(0, itemCount * itemSize - size);
-    var maxOffset = Math.min(lastItemOffset, index * itemSize);
-    var minOffset = Math.max(0, index * itemSize - size + itemSize + scrollbarSize);
-
-    if (align === 'smart') {
-      if (scrollOffset >= minOffset - size && scrollOffset <= maxOffset + size) {
-        align = 'auto';
-      } else {
-        align = 'center';
-      }
-    }
-
-    switch (align) {
-      case 'start':
-        return maxOffset;
-
-      case 'end':
-        return minOffset;
-
-      case 'center':
-        {
-          // "Centered" offset is usually the average of the min and max.
-          // But near the edges of the list, this doesn't hold true.
-          var middleOffset = Math.round(minOffset + (maxOffset - minOffset) / 2);
-
-          if (middleOffset < Math.ceil(size / 2)) {
-            return 0; // near the beginning
-          } else if (middleOffset > lastItemOffset + Math.floor(size / 2)) {
-            return lastItemOffset; // near the end
-          } else {
-            return middleOffset;
-          }
-        }
-
-      case 'auto':
-      default:
-        if (scrollOffset >= minOffset && scrollOffset <= maxOffset) {
-          return scrollOffset;
-        } else if (scrollOffset < minOffset) {
-          return minOffset;
-        } else {
-          return maxOffset;
-        }
-
-    }
-  },
-  getStartIndexForOffset: function getStartIndexForOffset(_ref5, offset) {
-    var itemCount = _ref5.itemCount,
-        itemSize = _ref5.itemSize;
-    return Math.max(0, Math.min(itemCount - 1, Math.floor(offset / itemSize)));
-  },
-  getStopIndexForStartIndex: function getStopIndexForStartIndex(_ref6, startIndex, scrollOffset) {
-    var direction = _ref6.direction,
-        height = _ref6.height,
-        itemCount = _ref6.itemCount,
-        itemSize = _ref6.itemSize,
-        layout = _ref6.layout,
-        width = _ref6.width;
-    // TODO Deprecate direction "horizontal"
-    var isHorizontal = direction === 'horizontal' || layout === 'horizontal';
-    var offset = startIndex * itemSize;
-    var size = isHorizontal ? width : height;
-    var numVisibleItems = Math.ceil((size + scrollOffset - offset) / itemSize);
-    return Math.max(0, Math.min(itemCount - 1, startIndex + numVisibleItems - 1 // -1 is because stop index is inclusive
-    ));
-  },
-  initInstanceProps: function initInstanceProps(props) {// Noop
-  },
-  shouldResetStyleCacheOnItemSizeChange: true,
-  validateProps: function validateProps(_ref7) {
-    var itemSize = _ref7.itemSize;
-
-    if (true) {
-      if (typeof itemSize !== 'number') {
-        throw Error('An invalid "itemSize" prop has been specified. ' + 'Value should be a number. ' + ("\"" + (itemSize === null ? 'null' : typeof itemSize) + "\" was specified."));
-      }
-    }
-  }
-});
-
-// Pulled from react-compat
-// https://github.com/developit/preact-compat/blob/7c5de00e7c85e2ffd011bf3af02899b63f699d3a/src/index.js#L349
-function shallowDiffers(prev, next) {
-  for (var attribute in prev) {
-    if (!(attribute in next)) {
-      return true;
-    }
-  }
-
-  for (var _attribute in next) {
-    if (prev[_attribute] !== next[_attribute]) {
-      return true;
-    }
-  }
-
-  return false;
-}
-
-var _excluded = ["style"],
-    _excluded2 = ["style"];
-// It knows to compare individual style props and ignore the wrapper object.
-// See https://reactjs.org/docs/react-api.html#reactmemo
-
-function areEqual(prevProps, nextProps) {
-  var prevStyle = prevProps.style,
-      prevRest = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_4__["default"])(prevProps, _excluded);
-
-  var nextStyle = nextProps.style,
-      nextRest = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_4__["default"])(nextProps, _excluded2);
-
-  return !shallowDiffers(prevStyle, nextStyle) && !shallowDiffers(prevRest, nextRest);
-}
-
-// It knows to compare individual style props and ignore the wrapper object.
-// See https://reactjs.org/docs/react-component.html#shouldcomponentupdate
-
-function shouldComponentUpdate(nextProps, nextState) {
-  return !areEqual(this.props, nextProps) || shallowDiffers(this.state, nextState);
-}
-
-
-//# sourceMappingURL=index.esm.js.map
-
-
-/***/ }),
-
 /***/ "react":
 /*!************************!*\
   !*** external "React" ***!
@@ -5156,6 +3681,26 @@ function shouldComponentUpdate(nextProps, nextState) {
 /***/ (function(module) {
 
 module.exports = window["React"];
+
+/***/ }),
+
+/***/ "jquery":
+/*!*************************!*\
+  !*** external "jQuery" ***!
+  \*************************/
+/***/ (function(module) {
+
+module.exports = window["jQuery"];
+
+/***/ }),
+
+/***/ "lodash":
+/*!*************************!*\
+  !*** external "lodash" ***!
+  \*************************/
+/***/ (function(module) {
+
+module.exports = window["lodash"];
 
 /***/ }),
 
@@ -6072,117 +4617,6 @@ function DeviceTabletIcon({
 
 const ForwardRef = react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(DeviceTabletIcon);
 /* harmony default export */ __webpack_exports__["default"] = (ForwardRef);
-
-/***/ }),
-
-/***/ "./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js":
-/*!****************************************************************************************************!*\
-  !*** ./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js ***!
-  \****************************************************************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ _assertThisInitialized; }
-/* harmony export */ });
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-  return self;
-}
-
-/***/ }),
-
-/***/ "./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/extends.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/extends.js ***!
-  \**************************************************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ _extends; }
-/* harmony export */ });
-function _extends() {
-  _extends = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends.apply(this, arguments);
-}
-
-/***/ }),
-
-/***/ "./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js ***!
-  \********************************************************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ _inheritsLoose; }
-/* harmony export */ });
-/* harmony import */ var _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./setPrototypeOf.js */ "./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js");
-
-function _inheritsLoose(subClass, superClass) {
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  (0,_setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__["default"])(subClass, superClass);
-}
-
-/***/ }),
-
-/***/ "./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js":
-/*!***********************************************************************************************************!*\
-  !*** ./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js ***!
-  \***********************************************************************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ _objectWithoutPropertiesLoose; }
-/* harmony export */ });
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-  return target;
-}
-
-/***/ }),
-
-/***/ "./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js ***!
-  \*********************************************************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ _setPrototypeOf; }
-/* harmony export */ });
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-  return _setPrototypeOf(o, p);
-}
 
 /***/ }),
 
@@ -7193,13 +5627,13 @@ function combine (array, callback) {
 
 /***/ }),
 
-/***/ "./src/block-faq-child/block.json":
-/*!****************************************!*\
-  !*** ./src/block-faq-child/block.json ***!
-  \****************************************/
+/***/ "./src/block-team/block.json":
+/*!***********************************!*\
+  !*** ./src/block-team/block.json ***!
+  \***********************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/faq-child","version":"0.1.0","title":"FAQ child","category":"wcb-blocks","usesContext":["wcb/faq_icon","wcb/faq_general"],"parent":["wcb/faq"],"icon":"heart","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/team","version":"0.1.0","title":"Team","category":"wcb-blocks","icon":"heart","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./FrontendStyles.js"}');
 
 /***/ })
 
@@ -7291,6 +5725,18 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 		};
 /******/ 	}();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	!function() {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	}();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	!function() {
 /******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
@@ -7315,8 +5761,8 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"block-faq-child/index": 0,
-/******/ 			"block-faq-child/style-index": 0
+/******/ 			"block-team/index": 0,
+/******/ 			"block-team/style-index": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -7368,7 +5814,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["block-faq-child/style-index"], function() { return __webpack_require__("./src/block-faq-child/index.js"); })
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["block-team/style-index"], function() { return __webpack_require__("./src/block-team/index.js"); })
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

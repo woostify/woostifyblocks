@@ -28,6 +28,7 @@
 		"@types/glidejs__glide": "^3.4.3",
 		"@types/jquery": "^3.5.14",
 		"@types/lodash": "^4.14.186",
+		"@types/react-window": "^1.8.5",
 		"@types/wordpress__block-editor": "^7.0.0",
 		"@wordpress/api-fetch": "^6.18.0",
 		"@wordpress/block-editor": "^10.4.0",
@@ -43,6 +44,7 @@
 		"lodash": "^4.17.21",
 		"postcss": "^8.4.16",
 		"react-use": "^17.4.0",
+		"react-window": "^1.8.8",
 		"sass": "^1.54.8",
 		"tailwindcss": "^3.2.0"
 	}
