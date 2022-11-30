@@ -217,7 +217,7 @@ const WcbPostCard: FC<Props> = ({
 						{/* CONTENT */}
 						{postContentSettings.contentType === "Full post" ? (
 							<div
-								className="wcbPostCard__fullContent"
+								className="wcbPostCard__fullContent wcbPostCard__excerpt"
 								dangerouslySetInnerHTML={{ __html: content.raw.trim() }}
 							></div>
 						) : null}

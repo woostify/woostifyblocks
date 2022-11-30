@@ -3173,7 +3173,7 @@ const WcbPostCard = _ref => {
       __html: title === null || title === void 0 ? void 0 : title.rendered
     }
   })) : null, postContentSettings.isShowPostContent && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, postContentSettings.contentType === "Full post" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wcbPostCard__fullContent",
+    className: "wcbPostCard__fullContent wcbPostCard__excerpt",
     dangerouslySetInnerHTML: {
       __html: content.raw.trim()
     }
