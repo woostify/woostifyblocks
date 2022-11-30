@@ -93,6 +93,8 @@
 .wcb-inspectorControls__panel .components-text-control__input[type=url],
 .wcb-inspectorControls__panel .components-text-control__input[type=week] {
   border-radius: var(--radius-lg);
+  --tw-border-opacity: 1;
+  border-color: rgb(156 163 175 / var(--tw-border-opacity));
 }
 .wcb-inspectorControls__panel .components-toggle-group-control > [role=presentation] {
   border-radius: var(--radius-md);

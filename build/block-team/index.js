@@ -2160,7 +2160,9 @@ const Edit = props => {
     "data-uniqueid": UNIQUE_ID
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_4__["default"], {
     renderTabPanels: renderTabBodyPanels
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_6__["default"], attributes), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, "CHILD CONTENT ")));
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_6__["default"], attributes), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, "CHILD CONTENT "), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
+    className: "lni lni-500px"
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Edit);
@@ -2275,7 +2277,9 @@ function save(_ref) {
     attributes: newAttrForSave,
     className: "wcb-team__wrap",
     uniqueId: uniqueId
-  }, blockProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, "CHILD"));
+  }, blockProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, "CHILD"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
+    className: "lni lni-500px"
+  }));
 }
 
 /***/ }),

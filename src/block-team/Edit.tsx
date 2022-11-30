@@ -124,6 +124,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 				{/* CHILD CONTENT  */}
 				<div>CHILD CONTENT </div>
+				<i className="lni lni-500px"></i>
 			</div>
 		</CacheProvider>
 	);

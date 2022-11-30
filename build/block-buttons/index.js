@@ -2440,11 +2440,17 @@ function save(_ref) {
   const {
     uniqueId,
     advance_responsiveCondition,
-    advance_zIndex
+    advance_zIndex,
+    general_general,
+    style_dimension,
+    style_text
   } = attributes; //
 
   const newAttrForSave = {
     uniqueId,
+    general_general,
+    style_dimension,
+    style_text,
     advance_responsiveCondition,
     advance_zIndex
   }; //

@@ -27,6 +27,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			{...blockProps}
 		>
 			<div>CHILD</div>
+			<i className="lni lni-500px"></i>
 		</SaveCommon>
 	);
 }

@@ -69,7 +69,7 @@
 	.components-text-control__input[type="time"],
 	.components-text-control__input[type="url"],
 	.components-text-control__input[type="week"] {
-		@apply rounded-lg;
+		@apply rounded-lg border-gray-400;
 	}
 
 	.components-toggle-group-control > [role="presentation"] {

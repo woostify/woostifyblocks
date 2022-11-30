@@ -10,8 +10,6 @@ import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
 import HelpText from "../components/controls/HelpText";
 import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
-import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
-import useGetDeviceType from "../hooks/useGetDeviceType";
 import SelecIcon from "../components/controls/SelectIcon/SelecIcon";
 
 export interface TeamSociaItem {

@@ -10,11 +10,21 @@ import SaveCommon from "../components/SaveCommon";
 import "./style.scss";
 
 export default function save({ attributes }: { attributes: WcbAttrs }) {
-	const { uniqueId, advance_responsiveCondition, advance_zIndex } = attributes;
+	const {
+		uniqueId,
+		advance_responsiveCondition,
+		advance_zIndex,
+		general_general,
+		style_dimension,
+		style_text,
+	} = attributes;
 	//
 
 	const newAttrForSave: Omit<WcbAttrs, "heading" | "subHeading"> = {
 		uniqueId,
+		general_general,
+		style_dimension,
+		style_text,
 		advance_responsiveCondition,
 		advance_zIndex,
 	};
