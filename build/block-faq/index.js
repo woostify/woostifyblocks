@@ -6322,6 +6322,7 @@ const SelecIcon = _ref => {
     label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Icon:", "wcb")
   } = _ref;
   const [query, setQuery] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)("");
+  const gridRef = react__WEBPACK_IMPORTED_MODULE_3___default().createRef();
   const filteredPeople = query === "" ? _types__WEBPACK_IMPORTED_MODULE_5__.ICONS_KEYS : _types__WEBPACK_IMPORTED_MODULE_5__.ICONS_KEYS.filter(person => {
     return person.toLowerCase().includes(query.toLowerCase());
   });
@@ -6406,13 +6407,17 @@ const SelecIcon = _ref => {
         onClick: () => {
           onToggle();
           setTimeout(() => {
-            const el = document.querySelector(".SelecIcon__item--isActive");
-            if (!el) return;
-            el.scrollIntoView({
-              block: "center",
-              inline: "center"
-            });
-          }, 200);
+            var _gridRef$current;
+
+            if (!value) return;
+            const index = filteredPeople.indexOf(value);
+            index && (gridRef === null || gridRef === void 0 ? void 0 : (_gridRef$current = gridRef.current) === null || _gridRef$current === void 0 ? void 0 : _gridRef$current.scrollToItem({
+              rowIndex: Math.ceil(index / 3),
+              align: "center"
+            })); // const el = document.querySelector(".SelecIcon__item--isActive");
+            // if (!el) return;
+            // el.scrollIntoView({ block: "center", inline: "center" });
+          }, 1);
         }
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
         className: "mr-3"
@@ -6433,6 +6438,7 @@ const SelecIcon = _ref => {
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         className: "bg-gray-900"
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, renderInput()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_window__WEBPACK_IMPORTED_MODULE_6__.FixedSizeGrid, {
+        ref: gridRef,
         className: "hiddenScrollbar",
         columnCount: 3,
         columnWidth: 100,

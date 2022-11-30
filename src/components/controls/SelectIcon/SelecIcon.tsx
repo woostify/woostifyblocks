@@ -17,6 +17,8 @@ const SelecIcon: FC<Props> = ({
 	label = __("Icon:", "wcb"),
 }) => {
 	const [query, setQuery] = useState("");
+	const gridRef = React.createRef<Grid<any>>();
+
 	const filteredPeople =
 		query === ""
 			? people
@@ -104,10 +106,17 @@ const SelecIcon: FC<Props> = ({
 						onClick={() => {
 							onToggle();
 							setTimeout(() => {
-								const el = document.querySelector(".SelecIcon__item--isActive");
-								if (!el) return;
-								el.scrollIntoView({ block: "center", inline: "center" });
-							}, 200);
+								if (!value) return;
+								const index = filteredPeople.indexOf(value);
+								index &&
+									gridRef?.current?.scrollToItem({
+										rowIndex: Math.ceil(index / 3),
+										align: "center",
+									});
+								// const el = document.querySelector(".SelecIcon__item--isActive");
+								// if (!el) return;
+								// el.scrollIntoView({ block: "center", inline: "center" });
+							}, 1);
 						}}
 					>
 						<span className="mr-3">{label}</span>
@@ -128,6 +137,7 @@ const SelecIcon: FC<Props> = ({
 				<div className="bg-gray-900">
 					<div>{renderInput()}</div>
 					<Grid
+						ref={gridRef}
 						className="hiddenScrollbar"
 						columnCount={3}
 						columnWidth={100}
