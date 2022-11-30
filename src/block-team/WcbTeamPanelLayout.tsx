@@ -2,6 +2,7 @@ import { PanelBody } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
+import MyHeadingTagControl from "../components/controls/MyHeadingTagControl/MyHeadingTagControl";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import MyTextAlignControl, {
 	TextAlignment,
@@ -16,7 +17,7 @@ export interface WCB_TEAM_PANEL_LAYOUT {
 
 export const WCB_TEAM_PANEL_LAYOUT_DEMO: WCB_TEAM_PANEL_LAYOUT = {
 	textAlignment: { Desktop: "left" },
-	headingTag: "h2",
+	headingTag: "div",
 };
 
 interface Props
@@ -34,7 +35,7 @@ const WcbTeamPanelLayout: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
-	const { textAlignment } = panelData;
+	const { textAlignment, headingTag } = panelData;
 
 	const { currentDeviceValue: TEXT_ALIGNMENT } = getValueFromAttrsResponsives(
 		textAlignment,
@@ -64,6 +65,13 @@ const WcbTeamPanelLayout: FC<Props> = ({
 				<MyTextAlignControl
 					textAlignment={TEXT_ALIGNMENT}
 					onChange={handleChangeTextAlignment}
+				/>
+
+				<MyHeadingTagControl
+					tag={headingTag}
+					onChange={(value) => {
+						setAttr__({ ...panelData, headingTag: value });
+					}}
 				/>
 			</div>
 		</PanelBody>

@@ -1887,6 +1887,62 @@ var weakMemoize = function weakMemoize(func) {
 
 /***/ }),
 
+/***/ "./node_modules/@wordpress/icons/build-module/library/capture-video.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/capture-video.js ***!
+  \*****************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const captureVideo = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  viewBox: "0 0 24 24",
+  xmlns: "http://www.w3.org/2000/svg"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M14 5H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm.5 12c0 .3-.2.5-.5.5H4c-.3 0-.5-.2-.5-.5V7c0-.3.2-.5.5-.5h10c.3 0 .5.2.5.5v10zm2.5-7v4l5 3V7l-5 3zm3.5 4.4l-2-1.2v-2.3l2-1.2v4.7z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (captureVideo);
+//# sourceMappingURL=capture-video.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/plus.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/plus.js ***!
+  \********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const plus = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (plus);
+//# sourceMappingURL=plus.js.map
+
+/***/ }),
+
 /***/ "./src/________.ts":
 /*!*************************!*\
   !*** ./src/________.ts ***!
@@ -1982,12 +2038,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/HOCInspectorControls */ "./src/components/HOCInspectorControls.tsx");
 /* harmony import */ var _hooks_useCreateCacheEmotion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/useCreateCacheEmotion */ "./src/hooks/useCreateCacheEmotion.ts");
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-element-6a883da9.browser.esm.js");
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-element-6a883da9.browser.esm.js");
 /* harmony import */ var _GlobalCss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./GlobalCss */ "./src/block-team/GlobalCss.tsx");
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./editor.scss */ "./src/block-team/editor.scss");
 /* harmony import */ var _hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../hooks/useSetBlockPanelInfo */ "./src/hooks/useSetBlockPanelInfo.ts");
 /* harmony import */ var _components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/AdvancePanelCommon */ "./src/components/AdvancePanelCommon.tsx");
 /* harmony import */ var _WcbTeamPanelLayout__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./WcbTeamPanelLayout */ "./src/block-team/WcbTeamPanelLayout.tsx");
+/* harmony import */ var _WcbTeamPanelImages__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./WcbTeamPanelImages */ "./src/block-team/WcbTeamPanelImages.tsx");
+/* harmony import */ var _WcbTeamPanelSocials__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./WcbTeamPanelSocials */ "./src/block-team/WcbTeamPanelSocials.tsx");
+
+
 
 
 
@@ -2012,7 +2072,9 @@ const Edit = props => {
     advance_zIndex,
     heading,
     uniqueId,
-    general_layout
+    general_layout,
+    general_image,
+    general_socials
   } = attributes; //  COMMON HOOKS
 
   const {
@@ -2050,6 +2112,28 @@ const Edit = props => {
             });
           },
           panelData: general_layout
+        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbTeamPanelImages__WEBPACK_IMPORTED_MODULE_11__["default"], {
+          onToggle: () => handleTogglePanel("General", "Images"),
+          initialOpen: tabGeneralIsPanelOpen === "Images",
+          opened: tabGeneralIsPanelOpen === "Images" || undefined //
+          ,
+          setAttr__: data => {
+            setAttributes({
+              general_image: data
+            });
+          },
+          panelData: general_image
+        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbTeamPanelSocials__WEBPACK_IMPORTED_MODULE_12__["default"], {
+          onToggle: () => handleTogglePanel("General", "Socials"),
+          initialOpen: tabGeneralIsPanelOpen === "Socials",
+          opened: tabGeneralIsPanelOpen === "Socials" || undefined //
+          ,
+          setAttr__: data => {
+            setAttributes({
+              general_socials: data
+            });
+          },
+          panelData: general_socials
         }));
 
       case "Styles":
@@ -2069,7 +2153,7 @@ const Edit = props => {
     }
   };
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.C, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_13__.C, {
     value: myCache
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
     className: `${wrapBlockProps === null || wrapBlockProps === void 0 ? void 0 : wrapBlockProps.className} wcb-team__wrap ${UNIQUE_ID}`,
@@ -2196,6 +2280,170 @@ function save(_ref) {
 
 /***/ }),
 
+/***/ "./src/block-team/WcbTeamPanelImages.tsx":
+/*!***********************************************!*\
+  !*** ./src/block-team/WcbTeamPanelImages.tsx ***!
+  \***********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "WCB_TEAM_PANEL_IMAGES_DEMO": function() { return /* binding */ WCB_TEAM_PANEL_IMAGES_DEMO; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_controls_HelpText__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/HelpText */ "./src/components/controls/HelpText.tsx");
+/* harmony import */ var _components_controls_MyBackgroundControl_MyBackgroundControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyBackgroundControl/MyBackgroundControl */ "./src/components/controls/MyBackgroundControl/MyBackgroundControl.tsx");
+/* harmony import */ var _components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/controls/MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
+/* harmony import */ var _components_controls_MyMediaUploadCheck__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/controls/MyMediaUploadCheck */ "./src/components/controls/MyMediaUploadCheck.tsx");
+/* harmony import */ var _components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/controls/MyRadioGroup */ "./src/components/controls/MyRadioGroup.tsx");
+/* harmony import */ var _components_controls_MySelect__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/controls/MySelect */ "./src/components/controls/MySelect.tsx");
+/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
+/* harmony import */ var _hooks_useGetImageSizeOptions__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../hooks/useGetImageSizeOptions */ "./src/hooks/useGetImageSizeOptions.ts");
+
+
+
+
+
+
+
+
+
+
+
+
+const WCB_TEAM_PANEL_IMAGES_DEMO = {
+  image: _components_controls_MyBackgroundControl_MyBackgroundControl__WEBPACK_IMPORTED_MODULE_5__.INIT_IMAGE_DATA_UPLOAD_DEMO,
+  imageSize: "thumbnail",
+  isShowImage: true,
+  imagePosition: "bottom"
+};
+
+const WcbTeamPanelImages = _ref => {
+  let {
+    panelData = WCB_TEAM_PANEL_IMAGES_DEMO,
+    setAttr__,
+    initialOpen,
+    onToggle,
+    opened
+  } = _ref;
+  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_10__["default"])() || "Desktop";
+  const {
+    image,
+    imagePosition,
+    isShowImage,
+    imageSize
+  } = panelData; //
+
+  const {
+    imageSizeOptions
+  } = (0,_hooks_useGetImageSizeOptions__WEBPACK_IMPORTED_MODULE_11__["default"])();
+
+  const renderSelectImage = () => {
+    if (!isShowImage) {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_HelpText__WEBPACK_IMPORTED_MODULE_4__["default"], null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Please enable the "Show Image" field to select images for testimonials...', "wcb"));
+    }
+
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "space-y-5"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      hasResponsive: false
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Choose Image", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyMediaUploadCheck__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      mediaId: image.mediaId,
+      mediaUrl: image.mediaUrl,
+      onChange: data => {
+        setAttr__({ ...panelData,
+          image: data
+        });
+      },
+      mediaSrcSet: image.mediaSrcSet
+    })));
+  };
+
+  const renderSettingsImage = () => {
+    const POSTION_PLANS = [{
+      name: "top",
+      icon: "Top"
+    }, {
+      name: "left",
+      icon: "Left"
+    }, {
+      name: "right",
+      icon: "Right"
+    }, {
+      name: "bottom",
+      icon: "Bottom"
+    }];
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "space-y-5"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Show image", "wcb"),
+      onChange: checked => setAttr__({ ...panelData,
+        isShowImage: checked
+      }),
+      checked: isShowImage
+    }), isShowImage ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MySelect__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      value: imageSize,
+      options: imageSizeOptions,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Image size", "wcb"),
+      onChange: size => {
+        setAttr__({ ...panelData,
+          imageSize: size
+        });
+      }
+    }) : null, isShowImage ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      label: "Position",
+      onChange: selected => setAttr__({ ...panelData,
+        imagePosition: selected
+      }),
+      value: imagePosition,
+      plans: POSTION_PLANS,
+      hasResponsive: false
+    }) : null);
+  };
+
+  const renderTabContent = tab => {
+    const tabName = tab.name;
+
+    if (tabName === "SelectImages") {
+      return renderSelectImage();
+    }
+
+    return renderSettingsImage();
+  };
+
+  const TABS = [{
+    name: "Settings",
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Settings", "wcb")
+  }, {
+    name: "SelectImages",
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Select Images", "wcb")
+  }];
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+    initialOpen: initialOpen,
+    onToggle: onToggle,
+    opened: opened,
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Images", "wcb")
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "space-y-5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TabPanel, {
+    className: `wcb-bodyControls__panel`,
+    activeClass: "active-tab",
+    initialTabName: "Settings",
+    tabs: TABS
+  }, renderTabContent)));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (WcbTeamPanelImages);
+
+/***/ }),
+
 /***/ "./src/block-team/WcbTeamPanelLayout.tsx":
 /*!***********************************************!*\
   !*** ./src/block-team/WcbTeamPanelLayout.tsx ***!
@@ -2214,9 +2462,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyTextAlignControl/MyTextAlignControl */ "./src/components/controls/MyTextAlignControl/MyTextAlignControl.tsx");
-/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
-/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+/* harmony import */ var _components_controls_MyHeadingTagControl_MyHeadingTagControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyHeadingTagControl/MyHeadingTagControl */ "./src/components/controls/MyHeadingTagControl/MyHeadingTagControl.tsx");
+/* harmony import */ var _components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyTextAlignControl/MyTextAlignControl */ "./src/components/controls/MyTextAlignControl/MyTextAlignControl.tsx");
+/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
 
 
 
@@ -2228,7 +2478,7 @@ const WCB_TEAM_PANEL_LAYOUT_DEMO = {
   textAlignment: {
     Desktop: "left"
   },
-  headingTag: "h2"
+  headingTag: "div"
 };
 
 const WcbTeamPanelLayout = _ref => {
@@ -2239,13 +2489,14 @@ const WcbTeamPanelLayout = _ref => {
     onToggle,
     opened
   } = _ref;
-  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_5__["default"])() || "Desktop";
+  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_6__["default"])() || "Desktop";
   const {
-    textAlignment
+    textAlignment,
+    headingTag
   } = panelData;
   const {
     currentDeviceValue: TEXT_ALIGNMENT
-  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(textAlignment, deviceType); //
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__["default"])(textAlignment, deviceType); //
 
   const handleChangeTextAlignment = selected => {
     setAttr__({ ...panelData,
@@ -2263,13 +2514,188 @@ const WcbTeamPanelLayout = _ref => {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Layout", "wcb")
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "space-y-5"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_5__["default"], {
     textAlignment: TEXT_ALIGNMENT,
     onChange: handleChangeTextAlignment
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyHeadingTagControl_MyHeadingTagControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    tag: headingTag,
+    onChange: value => {
+      setAttr__({ ...panelData,
+        headingTag: value
+      });
+    }
   })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (WcbTeamPanelLayout);
+
+/***/ }),
+
+/***/ "./src/block-team/WcbTeamPanelSocials.tsx":
+/*!************************************************!*\
+  !*** ./src/block-team/WcbTeamPanelSocials.tsx ***!
+  \************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "WCB_TEAM_PANEL_SOCIALS_DEMO": function() { return /* binding */ WCB_TEAM_PANEL_SOCIALS_DEMO; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_controls_HelpText__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/HelpText */ "./src/components/controls/HelpText.tsx");
+/* harmony import */ var _components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
+/* harmony import */ var _components_controls_SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/controls/SelectIcon/SelecIcon */ "./src/components/controls/SelectIcon/SelecIcon.tsx");
+
+
+
+
+
+
+
+const WCB_TEAM_PANEL_SOCIALS_DEMO = {
+  enableSocials: true,
+  openLinkInNewTab: false,
+  numberOfItems: 4,
+  socials: []
+};
+
+const WcbTeamPanelSocials = _ref => {
+  let {
+    panelData = WCB_TEAM_PANEL_SOCIALS_DEMO,
+    setAttr__,
+    initialOpen,
+    onToggle,
+    opened
+  } = _ref;
+  const {
+    enableSocials,
+    numberOfItems,
+    openLinkInNewTab,
+    socials
+  } = panelData;
+  const TABS = [{
+    name: "Settings",
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Settings", "wcb")
+  }, {
+    name: "Socials",
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Socials", "wcb")
+  }];
+  let CURRENT_SOCIALS = [...Array(numberOfItems || 3).keys()].map((_, index) => socials[index] || {});
+
+  const renderSettings = () => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "space-y-5"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Enable Socials", "wcb"),
+      checked: enableSocials,
+      onChange: checked => {
+        setAttr__({ ...panelData,
+          enableSocials: checked
+        });
+      }
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)(" Open Links in New Window", "wcb"),
+      checked: openLinkInNewTab,
+      onChange: checked => {
+        setAttr__({ ...panelData,
+          openLinkInNewTab: checked
+        });
+      }
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+      label: "Number of items",
+      value: numberOfItems,
+      onChange: value => {
+        setAttr__({ ...panelData,
+          numberOfItems: value || 1
+        });
+      },
+      min: 1,
+      max: 10
+    }));
+  };
+
+  const renderSocials = () => {
+    if (!enableSocials) {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_HelpText__WEBPACK_IMPORTED_MODULE_4__["default"], null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Please enable the "Enable Socials" field to settings socials...', "wcb"));
+    }
+
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "space-y-5"
+    }, CURRENT_SOCIALS.map((social, index) => {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        key: index + "--" + social.iconName
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_5__["default"], null, `${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Social", "wcb")} ${index + 1}`), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        className: "p-3 border rounded-lg space-y-3"
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Icon", "wcb"),
+        value: social.iconName || undefined,
+        onChange: value => {
+          setAttr__({ ...panelData,
+            socials: CURRENT_SOCIALS.map((item, j) => {
+              if (j === index) {
+                return { ...item,
+                  iconName: value || ""
+                };
+              }
+
+              return item;
+            })
+          });
+        }
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Url", "wcb"),
+        value: social.url,
+        type: "text",
+        onChange: value => {
+          setAttr__({ ...panelData,
+            socials: CURRENT_SOCIALS.map((item, j) => {
+              if (j === index) {
+                return { ...item,
+                  url: value
+                };
+              }
+
+              return item;
+            })
+          });
+        }
+      })));
+    }));
+  };
+
+  const renderTabContent = tab => {
+    const tabName = tab.name;
+
+    if (tabName === "Socials") {
+      return renderSocials();
+    }
+
+    return renderSettings();
+  };
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+    initialOpen: initialOpen,
+    onToggle: onToggle,
+    opened: opened,
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Socials", "wcb")
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "space-y-5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TabPanel, {
+    className: `wcb-bodyControls__panel`,
+    activeClass: "active-tab",
+    initialTabName: "Settings",
+    tabs: TABS
+  }, renderTabContent)));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (WcbTeamPanelSocials);
 
 /***/ }),
 
@@ -2282,7 +2708,11 @@ const WcbTeamPanelLayout = _ref => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl */ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx");
 /* harmony import */ var _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/controls/MyZIndexControl/MyZIndexControl */ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx");
-/* harmony import */ var _WcbTeamPanelLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WcbTeamPanelLayout */ "./src/block-team/WcbTeamPanelLayout.tsx");
+/* harmony import */ var _WcbTeamPanelImages__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WcbTeamPanelImages */ "./src/block-team/WcbTeamPanelImages.tsx");
+/* harmony import */ var _WcbTeamPanelLayout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WcbTeamPanelLayout */ "./src/block-team/WcbTeamPanelLayout.tsx");
+/* harmony import */ var _WcbTeamPanelSocials__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./WcbTeamPanelSocials */ "./src/block-team/WcbTeamPanelSocials.tsx");
+
+
 
 
 
@@ -2301,7 +2731,15 @@ const blokc1Attrs = {
   //
   general_layout: {
     type: "object",
-    default: _WcbTeamPanelLayout__WEBPACK_IMPORTED_MODULE_2__.WCB_TEAM_PANEL_LAYOUT_DEMO
+    default: _WcbTeamPanelLayout__WEBPACK_IMPORTED_MODULE_3__.WCB_TEAM_PANEL_LAYOUT_DEMO
+  },
+  general_image: {
+    type: "object",
+    default: _WcbTeamPanelImages__WEBPACK_IMPORTED_MODULE_2__.WCB_TEAM_PANEL_IMAGES_DEMO
+  },
+  general_socials: {
+    type: "object",
+    default: _WcbTeamPanelSocials__WEBPACK_IMPORTED_MODULE_4__.WCB_TEAM_PANEL_SOCIALS_DEMO
   },
   // ADVANCE
   advance_responsiveCondition: {
@@ -2590,6 +3028,722 @@ const SaveCommon = _ref => {
 
 /***/ }),
 
+/***/ "./src/components/controls/HelpText.tsx":
+/*!**********************************************!*\
+  !*** ./src/components/controls/HelpText.tsx ***!
+  \**********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+const HelpText = _ref => {
+  let {
+    children,
+    className = "my-1"
+  } = _ref;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: `components-form-token-field__help ${className}`
+  }, children);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (HelpText);
+
+/***/ }),
+
+/***/ "./src/components/controls/MyBackgroundControl/ControlBgImage.tsx":
+/*!************************************************************************!*\
+  !*** ./src/components/controls/MyBackgroundControl/ControlBgImage.tsx ***!
+  \************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _MyMediaUploadCheck__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../MyMediaUploadCheck */ "./src/components/controls/MyMediaUploadCheck.tsx");
+/* harmony import */ var _MySelect__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../MySelect */ "./src/components/controls/MySelect.tsx");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./types */ "./src/components/controls/MyBackgroundControl/types.ts");
+/* harmony import */ var _MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
+
+
+
+
+
+
+
+
+
+const ControlBgImage = _ref => {
+  let {
+    imageData,
+    setImageData,
+    focalPoint,
+    setFocalPoint,
+    bgImageAttachment,
+    setBgImageAttachment,
+    bgImageRepeat,
+    bgImageSize,
+    setBgImageRepeat,
+    setBgImageSize
+  } = _ref;
+
+  const renderContentImage = () => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
+      className: "w-full"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "w-full"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      hasResponsive: true
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Image", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyMediaUploadCheck__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      mediaId: imageData.mediaId,
+      mediaUrl: imageData.mediaUrl,
+      onChange: data => setImageData(data),
+      mediaSrcSet: imageData.mediaSrcSet
+    }))), imageData.mediaId ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
+      className: "w-full"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "w-full "
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      hasResponsive: true
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Image Position", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.FocalPointPicker, {
+      className: "mt-2.5",
+      url: imageData.mediaUrl,
+      value: focalPoint // @ts-ignore
+      ,
+      onDragStart: setFocalPoint,
+      onDrag: setFocalPoint,
+      onChange: setFocalPoint
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
+      className: "w-full "
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MySelect__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Attachment", "wcb"),
+      hasResponsive: true,
+      hideLabelFromVision: true,
+      options: _types__WEBPACK_IMPORTED_MODULE_6__.BG_ATTACHMENT_OPTIONS,
+      defaultValue: bgImageAttachment,
+      value: bgImageAttachment,
+      onChange: value => setBgImageAttachment(value || "local")
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
+      className: "w-full "
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MySelect__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Repeat", "wcb"),
+      hasResponsive: true,
+      hideLabelFromVision: true,
+      defaultValue: bgImageRepeat,
+      value: bgImageRepeat,
+      options: _types__WEBPACK_IMPORTED_MODULE_6__.BG_REPEAT_OPTIONS,
+      onChange: value => setBgImageRepeat(value || "no-repeat")
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
+      className: "w-full "
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MySelect__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Size", "wcb"),
+      hasResponsive: true,
+      hideLabelFromVision: true,
+      defaultValue: bgImageSize,
+      value: bgImageSize,
+      options: _types__WEBPACK_IMPORTED_MODULE_6__.BG_SIZE_OPTIONS,
+      onChange: value => setBgImageSize(value || "cover")
+    }))) : null);
+  };
+
+  return renderContentImage();
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ControlBgImage);
+
+/***/ }),
+
+/***/ "./src/components/controls/MyBackgroundControl/MyBackgroundControl.tsx":
+/*!*****************************************************************************!*\
+  !*** ./src/components/controls/MyBackgroundControl/MyBackgroundControl.tsx ***!
+  \*****************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "INIT_FOCAL_POINT_DEMO": function() { return /* binding */ INIT_FOCAL_POINT_DEMO; },
+/* harmony export */   "INIT_IMAGE_DATA_UPLOAD_DEMO": function() { return /* binding */ INIT_IMAGE_DATA_UPLOAD_DEMO; },
+/* harmony export */   "INIT_VIDEO_DATA_UPLOAD_DEMO": function() { return /* binding */ INIT_VIDEO_DATA_UPLOAD_DEMO; },
+/* harmony export */   "STYLES_BG_DEMO": function() { return /* binding */ STYLES_BG_DEMO; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../MyColorPicker/MyColorPicker */ "./src/components/controls/MyColorPicker/MyColorPicker.tsx");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/esm/PaintBrushIcon.js");
+/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/esm/FunnelIcon.js");
+/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/esm/PhotoIcon.js");
+/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/esm/VideoCameraIcon.js");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./types */ "./src/components/controls/MyBackgroundControl/types.ts");
+/* harmony import */ var _MyTabs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../MyTabs */ "./src/components/controls/MyTabs.tsx");
+/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/tabs/tabs.js");
+/* harmony import */ var _MyVideoUploadCheck__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../MyVideoUploadCheck */ "./src/components/controls/MyVideoUploadCheck.tsx");
+/* harmony import */ var _ControlBgImage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ControlBgImage */ "./src/components/controls/MyBackgroundControl/ControlBgImage.tsx");
+/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
+
+
+
+
+
+
+
+
+
+
+
+
+const BG_TYPES_PLANS = [{
+  name: "color",
+  icon: _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_10__["default"]
+}, {
+  name: "gradient",
+  icon: _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_11__["default"]
+}, {
+  name: "image",
+  icon: _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_12__["default"]
+}, {
+  name: "video",
+  icon: _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_13__["default"]
+}];
+const OVERLAY_TYPES = ["none", "color", "gradient"]; //
+
+const INIT_IMAGE_DATA_UPLOAD_DEMO = {
+  mediaId: 0,
+  mediaUrl: "",
+  mediaSrcSet: undefined
+};
+const INIT_VIDEO_DATA_UPLOAD_DEMO = {
+  mediaId: 0,
+  mediaUrl: ""
+};
+const INIT_FOCAL_POINT_DEMO = {
+  x: 0.5,
+  y: 0.5
+};
+const STYLES_BG_DEMO = {
+  bgImageAttachment: {
+    Desktop: "local"
+  },
+  bgImageRepeat: {
+    Desktop: "no-repeat"
+  },
+  bgImageSize: {
+    Desktop: "cover"
+  },
+  bgType: "color",
+  color: "",
+  focalPoint: {
+    Desktop: INIT_FOCAL_POINT_DEMO
+  },
+  gradient: "linear-gradient(104deg, rgb(93, 206, 231) 0%, rgb(244, 119, 127) 100%)",
+  imageData: {
+    Desktop: INIT_IMAGE_DATA_UPLOAD_DEMO
+  },
+  overlayColor: "#9437374d",
+  overlayGradient: "linear-gradient(104deg,rgba(93,207,232,0.72) 0%,rgba(245,120,128,0.69) 100%)",
+  overlayType: "none",
+  videoData: INIT_VIDEO_DATA_UPLOAD_DEMO
+};
+
+const MyBackgroundControl = _ref => {
+  let {
+    className = "",
+    backgroundControl = STYLES_BG_DEMO,
+    setAttrs__backgroundControl,
+    bgTypesPlans = BG_TYPES_PLANS
+  } = _ref;
+  //
+  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_9__["default"])() || "Desktop"; //
+
+  const {
+    bgImageAttachment,
+    bgImageRepeat,
+    bgImageSize,
+    bgType,
+    color,
+    focalPoint,
+    gradient,
+    imageData,
+    overlayColor,
+    overlayGradient,
+    overlayType,
+    videoData
+  } = backgroundControl; //
+
+  const IMAGE_ATTACMENT = bgImageAttachment[deviceType] || bgImageAttachment.Tablet || bgImageAttachment.Desktop;
+  const IMAGE_REPEAT = bgImageRepeat[deviceType] || bgImageRepeat.Tablet || bgImageRepeat.Desktop;
+  const IMAGE_SIZE = bgImageSize[deviceType] || bgImageSize.Tablet || bgImageSize.Desktop;
+  const FOCAL_POINT = focalPoint[deviceType] || focalPoint.Tablet || focalPoint.Desktop;
+  const IMAGE_DATA = imageData[deviceType] || imageData.Tablet || imageData.Desktop; //
+
+  const handleChangeBgType = type => {
+    setAttrs__backgroundControl({ ...backgroundControl,
+      bgType: type
+    });
+  };
+
+  const handleChangeColor = color => {
+    setAttrs__backgroundControl({ ...backgroundControl,
+      color
+    });
+  };
+
+  const handleChangeGradient = gradient => {
+    setAttrs__backgroundControl({ ...backgroundControl,
+      gradient
+    });
+  };
+
+  const handleChangeImageData = value => {
+    setAttrs__backgroundControl({ ...backgroundControl,
+      imageData: { ...imageData,
+        [deviceType]: value
+      }
+    });
+  };
+
+  const handleChangeFocalPoint = value => {
+    setAttrs__backgroundControl({ ...backgroundControl,
+      focalPoint: { ...focalPoint,
+        [deviceType]: value
+      }
+    });
+  };
+
+  const handleChangeBgImageSize = value => {
+    setAttrs__backgroundControl({ ...backgroundControl,
+      bgImageSize: { ...bgImageSize,
+        [deviceType]: value
+      }
+    });
+  };
+
+  const handleChangeBgImageRepeat = value => {
+    setAttrs__backgroundControl({ ...backgroundControl,
+      bgImageRepeat: { ...bgImageRepeat,
+        [deviceType]: value
+      }
+    });
+  };
+
+  const handleChangeBgImageAttachment = value => {
+    setAttrs__backgroundControl({ ...backgroundControl,
+      bgImageAttachment: { ...bgImageAttachment,
+        [deviceType]: value
+      }
+    });
+  };
+
+  const handleChangeVideoData = videoData => {
+    setAttrs__backgroundControl({ ...backgroundControl,
+      videoData
+    });
+  };
+
+  const handleChangeOverlayGradient = overlayGradient => {
+    setAttrs__backgroundControl({ ...backgroundControl,
+      overlayGradient
+    });
+  };
+
+  const handleChangeOverlayColor = overlayColor => {
+    setAttrs__backgroundControl({ ...backgroundControl,
+      overlayColor
+    });
+  };
+
+  const handleChangeOverlayType = index => {
+    setAttrs__backgroundControl({ ...backgroundControl,
+      overlayType: OVERLAY_TYPES[index]
+    });
+  }; //
+
+
+  const renderTypeGroupBtn = () => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
+      className: "w-full flex justify-between items-center"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+      className: "flex-1"
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Type", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "flex gap-1"
+    }, bgTypesPlans.map(item => {
+      const active = item.name === bgType;
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        key: item.name,
+        className: `p-2 rounded-lg border  ${active ? "text-sky-600 bg-sky-50 border-sky-400" : "border-slate-300 hover:border-slate-500 cursor-pointer"}`,
+        onClick: () => handleChangeBgType(item.name),
+        title: item.name
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(item.icon, {
+        className: "w-4 h-4"
+      }));
+    })));
+  };
+
+  const renderOverlaySettings = () => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
+      className: "w-full "
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyTabs__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      tabs: OVERLAY_TYPES,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Overlay Type", "wcb"),
+      tabSelected: overlayType,
+      onChangeSelected: handleChangeOverlayType
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_14__.Tab.Panel, {
+      className: "absolute -inset-1.5 bg-white z-10"
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_14__.Tab.Panel, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      onChange: handleChangeOverlayColor,
+      color: overlayColor
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_14__.Tab.Panel, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.GradientPicker, {
+      __nextHasNoMargin: true,
+      value: overlayGradient,
+      onChange: handleChangeOverlayGradient,
+      gradients: _types__WEBPACK_IMPORTED_MODULE_5__.GRADIENT_DEFAULT
+    }))));
+  };
+
+  const renderContent = () => {
+    switch (bgType) {
+      case "color":
+        return renderContentColor();
+
+      case "gradient":
+        return renderContentGradient();
+
+      case "image":
+        return renderContentImage();
+
+      case "video":
+        return renderContentVideo();
+
+      default:
+        return null;
+    }
+  };
+
+  const renderContentVideo = () => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
+      className: "w-full"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyVideoUploadCheck__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      mediaId: videoData.mediaId,
+      mediaUrl: videoData.mediaUrl,
+      onChange: handleChangeVideoData
+    })), videoData.mediaId ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, renderOverlaySettings()) : null);
+  };
+
+  const renderContentImage = () => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ControlBgImage__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      bgImageRepeat: IMAGE_REPEAT,
+      focalPoint: FOCAL_POINT,
+      imageData: IMAGE_DATA,
+      bgImageSize: IMAGE_SIZE,
+      bgImageAttachment: IMAGE_ATTACMENT //
+      ,
+      setBgImageAttachment: handleChangeBgImageAttachment,
+      setBgImageRepeat: handleChangeBgImageRepeat,
+      setBgImageSize: handleChangeBgImageSize,
+      setFocalPoint: handleChangeFocalPoint,
+      setImageData: handleChangeImageData
+    }), IMAGE_DATA.mediaId ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, renderOverlaySettings()) : null);
+  };
+
+  const renderContentGradient = () => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
+      className: "w-full pt-2.5"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.GradientPicker, {
+      __nextHasNoMargin: true,
+      value: gradient,
+      onChange: handleChangeGradient,
+      gradients: _types__WEBPACK_IMPORTED_MODULE_5__.GRADIENT_DEFAULT
+    }));
+  };
+
+  const renderContentColor = () => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
+      className: "w-full pt-2"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      onChange: handleChangeColor,
+      color: color
+    }));
+  };
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: className
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, renderTypeGroupBtn(), renderContent()));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MyBackgroundControl);
+
+/***/ }),
+
+/***/ "./src/components/controls/MyBackgroundControl/types.ts":
+/*!**************************************************************!*\
+  !*** ./src/components/controls/MyBackgroundControl/types.ts ***!
+  \**************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "BG_ATTACHMENT_OPTIONS": function() { return /* binding */ BG_ATTACHMENT_OPTIONS; },
+/* harmony export */   "BG_REPEAT_OPTIONS": function() { return /* binding */ BG_REPEAT_OPTIONS; },
+/* harmony export */   "BG_SIZE_OPTIONS": function() { return /* binding */ BG_SIZE_OPTIONS; },
+/* harmony export */   "GRADIENT_DEFAULT": function() { return /* binding */ GRADIENT_DEFAULT; }
+/* harmony export */ });
+const BG_ATTACHMENT_OPTIONS = [{
+  value: "fixed",
+  label: "Fixed"
+}, {
+  value: "local",
+  label: "Local"
+}, {
+  value: "scroll",
+  label: "Scroll"
+}];
+const BG_REPEAT_OPTIONS = [{
+  value: "no-repeat",
+  label: "No repeat"
+}, {
+  value: "repeat",
+  label: "Repeat"
+}, {
+  value: "repeat-x",
+  label: "Repeat-x"
+}, {
+  value: "repeat-y",
+  label: "Repeat-y"
+}];
+const BG_SIZE_OPTIONS = [{
+  value: "auto",
+  label: "Auto"
+}, {
+  value: "contain",
+  label: "Contain"
+}, {
+  value: "cover",
+  label: "Cover"
+}];
+const GRADIENT_DEFAULT = [{
+  name: "JShine",
+  gradient: "linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)",
+  slug: "jshine"
+}, {
+  name: "Moonlit Asteroid",
+  gradient: "linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)",
+  slug: "moonlit-asteroid"
+}, {
+  name: "Rastafarie",
+  gradient: "linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)",
+  slug: "rastafari"
+}];
+
+/***/ }),
+
+/***/ "./src/components/controls/MyButton.tsx":
+/*!**********************************************!*\
+  !*** ./src/components/controls/MyButton.tsx ***!
+  \**********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+
+const MyButton = _ref => {
+  let {
+    className,
+    ...props
+  } = _ref;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    className: `rounded-md ${className}`
+  }, props));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MyButton);
+
+/***/ }),
+
+/***/ "./src/components/controls/MyColorPicker/MyColorPicker.tsx":
+/*!*****************************************************************!*\
+  !*** ./src/components/controls/MyColorPicker/MyColorPicker.tsx ***!
+  \*****************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/popover/popover.js");
+/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/transitions/transition.js");
+/* harmony import */ var _ResetButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ResetButton */ "./src/components/controls/ResetButton.tsx");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+
+
+const MyColorPicker = _ref => {
+  let {
+    className = "",
+    label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Color", "wcb"),
+    // default value color - co the la cac gia tri hex string
+    color,
+    disableAlpha,
+    oldHue,
+    onChange
+  } = _ref;
+  const [colorState, setColorState] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)("");
+  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
+    color && setColorState(color);
+  }, [color]);
+
+  const handleUpdateColor = c => {
+    setColorState(c);
+    onChange(c);
+  };
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_5__.Popover, {
+    className: `relative w-full ${className}`
+  }, _ref2 => {
+    let {
+      open
+    } = _ref2;
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_2__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "flex justify-between items-center"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: "flex-1"
+    }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "flex items-center"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ResetButton__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      onClick: () => handleUpdateColor("")
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_5__.Popover.Button, {
+      className: `ml-0.5 w-7 h-7 rounded-full shadow-md ring-1 ring-black/5 ${colorState ? "" : "bg-transparent"}`,
+      style: {
+        backgroundColor: colorState,
+        backgroundImage: !colorState ? "linear-gradient(45deg, #ddd 25%, transparent 0), linear-gradient(-45deg, #ddd 25%, transparent 0), linear-gradient(45deg, transparent 75%, #ddd 0), linear-gradient(-45deg, transparent 75%, #ddd 0)" : undefined,
+        backgroundSize: "10px 10px",
+        backgroundPosition: "0 0, 0 5px, 5px -5px, -5px 0"
+      }
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_6__.Transition, {
+      as: react__WEBPACK_IMPORTED_MODULE_2__.Fragment,
+      enter: "transition ease-out duration-200",
+      enterFrom: "opacity-0 translate-y-1",
+      enterTo: "opacity-100 translate-y-0",
+      leave: "transition ease-in duration-150",
+      leaveFrom: "opacity-100 translate-y-0",
+      leaveTo: "opacity-0 translate-y-1"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_5__.Popover.Panel, {
+      className: "absolute right-0 z-50 mt-3"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "shadow-xl ring-1 ring-black/10 bg-white"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ColorPicker, {
+      onChangeComplete: e => handleUpdateColor(e.hex),
+      disableAlpha: disableAlpha,
+      color: colorState,
+      oldHue: oldHue
+    })))));
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MyColorPicker);
+
+/***/ }),
+
+/***/ "./src/components/controls/MyHeadingTagControl/MyHeadingTagControl.tsx":
+/*!*****************************************************************************!*\
+  !*** ./src/components/controls/MyHeadingTagControl/MyHeadingTagControl.tsx ***!
+  \*****************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _MyRadioGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../MyRadioGroup */ "./src/components/controls/MyRadioGroup.tsx");
+
+
+
+
+const TAGS_PLANS = [{
+  name: "h1",
+  icon: "H1"
+}, {
+  name: "h2",
+  icon: "H2"
+}, {
+  name: "h3",
+  icon: "H3"
+}, {
+  name: "h4",
+  icon: "H4"
+}, {
+  name: "h5",
+  icon: "H5"
+}, {
+  name: "h6",
+  icon: "H6"
+}, {
+  name: "div",
+  icon: "DIV"
+}, {
+  name: "p",
+  icon: "P"
+}];
+
+const MyHeadingTagControl = _ref => {
+  let {
+    onChange,
+    tag,
+    className,
+    label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Heading tag", "wcb")
+  } = _ref;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyRadioGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    label: label,
+    className: className // @ts-ignore
+    ,
+    onChange: onChange,
+    value: tag,
+    plans: TAGS_PLANS,
+    isWrap: true,
+    hasResponsive: false
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MyHeadingTagControl);
+
+/***/ }),
+
 /***/ "./src/components/controls/MyLabelControl/MyLabelControl.tsx":
 /*!*******************************************************************!*\
   !*** ./src/components/controls/MyLabelControl/MyLabelControl.tsx ***!
@@ -2632,6 +3786,116 @@ const MyLabelControl = _ref => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MyLabelControl);
+
+/***/ }),
+
+/***/ "./src/components/controls/MyMediaUploadCheck.tsx":
+/*!********************************************************!*\
+  !*** ./src/components/controls/MyMediaUploadCheck.tsx ***!
+  \********************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/plus.js");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _MyButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./MyButton */ "./src/components/controls/MyButton.tsx");
+
+
+
+
+
+
+
+
+const MyMediaUploadCheck = _ref => {
+  let {
+    className = "",
+    mediaId,
+    mediaSrcSet,
+    mediaUrl,
+    onChange
+  } = _ref;
+
+  const removeMedia = () => {
+    onChange({
+      mediaId: 0,
+      mediaUrl: "",
+      mediaSrcSet: undefined
+    });
+  };
+
+  const onSelectMedia = media => {
+    var _media$sizes, _media$sizes$medium, _media$sizes2, _media$sizes2$medium, _media$sizes3, _media$sizes3$full, _media$sizes4, _media$sizes4$full, _media$sizes5, _media$sizes5$large, _media$sizes6, _media$sizes6$large;
+
+    onChange({
+      mediaId: media.id,
+      mediaUrl: media.url,
+      mediaSrcSet: `${media.url} ${media.width}w, ${(_media$sizes = media.sizes) === null || _media$sizes === void 0 ? void 0 : (_media$sizes$medium = _media$sizes.medium) === null || _media$sizes$medium === void 0 ? void 0 : _media$sizes$medium.url} ${(_media$sizes2 = media.sizes) === null || _media$sizes2 === void 0 ? void 0 : (_media$sizes2$medium = _media$sizes2.medium) === null || _media$sizes2$medium === void 0 ? void 0 : _media$sizes2$medium.width}w, ${(_media$sizes3 = media.sizes) === null || _media$sizes3 === void 0 ? void 0 : (_media$sizes3$full = _media$sizes3.full) === null || _media$sizes3$full === void 0 ? void 0 : _media$sizes3$full.url} ${(_media$sizes4 = media.sizes) === null || _media$sizes4 === void 0 ? void 0 : (_media$sizes4$full = _media$sizes4.full) === null || _media$sizes4$full === void 0 ? void 0 : _media$sizes4$full.width}w, ${(_media$sizes5 = media.sizes) === null || _media$sizes5 === void 0 ? void 0 : (_media$sizes5$large = _media$sizes5.large) === null || _media$sizes5$large === void 0 ? void 0 : _media$sizes5$large.url} ${(_media$sizes6 = media.sizes) === null || _media$sizes6 === void 0 ? void 0 : (_media$sizes6$large = _media$sizes6.large) === null || _media$sizes6$large === void 0 ? void 0 : _media$sizes6$large.width}w`,
+      sizes: media.sizes
+    });
+  };
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `editor-post-featured-image w-full ${className}`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
+    onSelect: onSelectMedia,
+    value: mediaId,
+    allowedTypes: ["image"],
+    render: _ref2 => {
+      let {
+        open
+      } = _ref2;
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+        className: `h-auto rounded-lg ring-1 ring-black/10 ${mediaId == 0 ? "editor-post-featured-image__toggle hover:bg-slate-100" : "editor-post-featured-image__preview"}`,
+        onClick: open
+      }, mediaId == 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        className: "text-center flex flex-col items-center justify-center"
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
+        icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
+        className: "text-slate-700"
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+        className: "mt-0.5"
+      }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Choose an image", "wcb"))), !!mediaUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+        src: mediaUrl,
+        className: "w-full block",
+        sizes: "250px",
+        srcSet: mediaSrcSet || undefined
+      }));
+    }
+  })), mediaId !== 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex justify-between gap-2 mt-2"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Replace image", "wcb"),
+    value: mediaId,
+    onSelect: onSelectMedia,
+    allowedTypes: ["image"],
+    render: _ref3 => {
+      let {
+        open
+      } = _ref3;
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyButton__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        className: "flex-1 my-0 flex justify-center",
+        onClick: open,
+        variant: "secondary"
+      }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Replace", "wcb"));
+    }
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyButton__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    className: "flex-1 my-0",
+    onClick: removeMedia,
+    isDestructive: true
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Remove", "wcb")))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MyMediaUploadCheck);
 
 /***/ }),
 
@@ -2951,6 +4215,117 @@ const MyResponsiveToggle = _ref => {
 
 /***/ }),
 
+/***/ "./src/components/controls/MySelect.tsx":
+/*!**********************************************!*\
+  !*** ./src/components/controls/MySelect.tsx ***!
+  \**********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
+
+
+
+
+
+
+const MySelect = _ref => {
+  let {
+    label = "My select",
+    hasResponsive,
+    devices,
+    ...props
+  } = _ref;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "wcb-MySelect w-full flex justify-between items-center"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    className: "flex-1",
+    hasResponsive: hasResponsive,
+    devices: devices
+  }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "flex-1"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    hideLabelFromVision: true
+  }, props))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MySelect);
+
+/***/ }),
+
+/***/ "./src/components/controls/MyTabs.tsx":
+/*!********************************************!*\
+  !*** ./src/components/controls/MyTabs.tsx ***!
+  \********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/tabs/tabs.js");
+
+
+
+
+function classNames() {
+  for (var _len = arguments.length, classes = new Array(_len), _key = 0; _key < _len; _key++) {
+    classes[_key] = arguments[_key];
+  }
+
+  return classes.filter(Boolean).join(" ");
+}
+
+const MyTabs = _ref => {
+  let {
+    className = "",
+    children,
+    tabs = [],
+    label,
+    tabSelected,
+    onChangeSelected = () => {}
+  } = _ref;
+  const [selectedIndex, setSelectedIndex] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    setSelectedIndex(tabs.findIndex(el => el === tabSelected) || 0);
+  }, [tabSelected]);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `w-full max-w-md py-2 ${className}`
+  }, label ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "mb-2"
+  }, label) : null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_2__.Tab.Group, {
+    selectedIndex: selectedIndex,
+    onChange: index => {
+      setSelectedIndex(index);
+      onChangeSelected(index);
+    }
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_2__.Tab.List, {
+    className: "flex space-x-1 rounded-xl bg-slate-100 p-1"
+  }, tabs.map(category => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_2__.Tab, {
+    key: category,
+    className: _ref2 => {
+      let {
+        selected
+      } = _ref2;
+      return classNames("w-full rounded-lg py-2.5 text-xs font-medium leading-5 text-blue-700 capitalize", "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2", selected ? "bg-white shadow" : "text-slate-700 ");
+    }
+  }, category))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_2__.Tab.Panels, {
+    className: "relative mt-3 rounded-lg ring-1 ring-offset-4 ring-slate-200 p-2.5 "
+  }, children)));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MyTabs);
+
+/***/ }),
+
 /***/ "./src/components/controls/MyTextAlignControl/MyTextAlignControl.tsx":
 /*!***************************************************************************!*\
   !*** ./src/components/controls/MyTextAlignControl/MyTextAlignControl.tsx ***!
@@ -2984,6 +4359,112 @@ const MyTextAlignControl = _ref => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MyTextAlignControl);
+
+/***/ }),
+
+/***/ "./src/components/controls/MyVideoUploadCheck.tsx":
+/*!********************************************************!*\
+  !*** ./src/components/controls/MyVideoUploadCheck.tsx ***!
+  \********************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/plus.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/capture-video.js");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _MyButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./MyButton */ "./src/components/controls/MyButton.tsx");
+/* harmony import */ var _MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
+
+
+
+
+
+
+
+
+
+const MyVideoUploadCheck = _ref => {
+  let {
+    className = "",
+    label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Video", "wcb"),
+    mediaId,
+    mediaUrl,
+    onChange
+  } = _ref;
+
+  const removeMedia = () => {
+    onChange({
+      mediaId: 0,
+      mediaUrl: ""
+    });
+  };
+
+  const onSelectMedia = media => {
+    onChange({
+      mediaId: media.id,
+      mediaUrl: media.url
+    });
+  };
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `editor-post-featured-image w-full ${className}`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_6__["default"], null, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
+    onSelect: onSelectMedia,
+    value: mediaId,
+    allowedTypes: ["video"],
+    render: _ref2 => {
+      let {
+        open
+      } = _ref2;
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+        className: `h-auto rounded-lg ring-1 ring-black/10  flex items-center justify-center ${mediaId == 0 ? "editor-post-featured-image__toggle hover:bg-slate-100" : "editor-post-featured-image__toggle hover:bg-slate-100"}`,
+        onClick: open
+      }, mediaId == 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        className: "text-center flex flex-col items-center justify-center"
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
+        icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["default"],
+        className: "text-slate-700"
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+        className: "mt-0.5"
+      }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Choose an video", "wcb"))), !!mediaUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
+        icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__["default"]
+      }));
+    }
+  })), mediaId !== 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex justify-between gap-2 mt-2"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Replace Video", "wcb"),
+    value: mediaId,
+    onSelect: onSelectMedia,
+    allowedTypes: ["video"],
+    render: _ref3 => {
+      let {
+        open
+      } = _ref3;
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyButton__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        className: "flex-1 my-0 flex justify-center",
+        onClick: open,
+        variant: "secondary"
+      }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Replace", "wcb"));
+    }
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyButton__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Remove Video", "wcb"),
+    className: "flex-1 my-0",
+    onClick: removeMedia,
+    isDestructive: true
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Remove", "wcb")))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MyVideoUploadCheck);
 
 /***/ }),
 
@@ -3051,6 +4532,232 @@ const MyZIndexControl = _ref => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MyZIndexControl);
+
+/***/ }),
+
+/***/ "./src/components/controls/ResetButton.tsx":
+/*!*************************************************!*\
+  !*** ./src/components/controls/ResetButton.tsx ***!
+  \*************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+
+const ResetButton = _ref => {
+  let {
+    onClick,
+    className = "text-slate-700",
+    isSmall = true,
+    ...props
+  } = _ref;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    className: className,
+    onClick: onClick,
+    icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      viewBox: "0 0 24 24",
+      className: "w-5 h-5",
+      "aria-hidden": "true",
+      focusable: "false"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("path", {
+      d: "M12 4V2.2L9 4.8l3 2.5V5.5c3.6 0 6.5 2.9 6.5 6.5 0 2.9-1.9 5.3-4.5 6.2v.2l-.1-.2c-.4.1-.7.2-1.1.2l.2 1.5c.3 0 .6-.1 1-.2 3.5-.9 6-4 6-7.7 0-4.4-3.6-8-8-8zm-7.9 7l1.5.2c.1-1.2.5-2.3 1.2-3.2l-1.1-.9C4.8 8.2 4.3 9.6 4.1 11zm1.5 1.8l-1.5.2c.1.7.3 1.4.5 2 .3.7.6 1.3 1 1.8l1.2-.8c-.3-.5-.6-1-.8-1.5s-.4-1.1-.4-1.7zm1.5 5.5c1.1.9 2.4 1.4 3.8 1.6l.2-1.5c-1.1-.1-2.2-.5-3.1-1.2l-.9 1.1z"
+    })),
+    isSmall: isSmall
+  }, props));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ResetButton);
+
+/***/ }),
+
+/***/ "./src/components/controls/SelectIcon/SelecIcon.tsx":
+/*!**********************************************************!*\
+  !*** ./src/components/controls/SelectIcon/SelecIcon.tsx ***!
+  \**********************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _ResetButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../ResetButton */ "./src/components/controls/ResetButton.tsx");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./types */ "./src/components/controls/SelectIcon/types.ts");
+/* harmony import */ var react_window__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-window */ "./node_modules/react-window/dist/index.esm.js");
+
+
+
+
+
+
+
+
+const SelecIcon = _ref => {
+  let {
+    onChange,
+    value,
+    label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Icon:", "wcb")
+  } = _ref;
+  const [query, setQuery] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)("");
+  const gridRef = react__WEBPACK_IMPORTED_MODULE_3___default().createRef();
+  const filteredPeople = query === "" ? _types__WEBPACK_IMPORTED_MODULE_5__.ICONS_KEYS : _types__WEBPACK_IMPORTED_MODULE_5__.ICONS_KEYS.filter(person => {
+    return person.toLowerCase().includes(query.toLowerCase());
+  });
+  const ICONS_KEYS = filteredPeople;
+
+  const Cell = _ref2 => {
+    let {
+      columnIndex,
+      rowIndex,
+      style
+    } = _ref2;
+    const index = rowIndex * 3 + columnIndex;
+    const item = ICONS_KEYS[index];
+
+    if (!item) {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        style: { ...style
+        }
+      });
+    }
+
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: { ...style,
+        padding: "4px 0px 4px 8px"
+      }
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      key: item,
+      className: `h-20 p-3 flex items-center justify-center bg-gray-800 rounded-lg text-gray-50 hover:ring-2 ring-offset-1 ring-sky-500 cursor-pointer ${item === value ? "ring-2 SelecIcon__item--isActive" : ""}`,
+      onClick: () => {
+        onChange(item === value ? undefined : item);
+      }
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "grid"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "text-center overflow-hidden "
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dashicon, {
+      size: 16,
+      icon: item
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+      className: "block mt-2.5 truncate text-gray-300 text-xs"
+    }, item)))));
+  };
+
+  const renderInput = () => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "relative mb-2.5 border-b border-gray-700 text-white p-2.5"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "pointer-events-none absolute inset-y-0 left-3 flex items-center pl-2.5"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+      fill: "none",
+      viewBox: "0 0 24 24",
+      strokeWidth: 1.5,
+      stroke: "currentColor",
+      className: "w-5 h-5"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      d: "M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+      onChange: event => setQuery(event.target.value),
+      type: "text",
+      className: "block w-full py-2 pl-10 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-800 border-transparent text-white",
+      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Search for an icon...", "wcb"),
+      defaultValue: query,
+      name: "icon-query",
+      autoFocus: true
+    }));
+  };
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dropdown, {
+    position: "middle left",
+    className: "w-full",
+    renderToggle: _ref3 => {
+      let {
+        isOpen,
+        onToggle
+      } = _ref3;
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        className: "flex items-center space-x-4"
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+        className: "py-3 px-6 flex items-center justify-center ring-2 ring-slate-200 hover:ring-slate-300 rounded-lg ",
+        onClick: () => {
+          onToggle();
+          setTimeout(() => {
+            var _gridRef$current;
+
+            if (!value) return;
+            const index = filteredPeople.indexOf(value);
+            index && (gridRef === null || gridRef === void 0 ? void 0 : (_gridRef$current = gridRef.current) === null || _gridRef$current === void 0 ? void 0 : _gridRef$current.scrollToItem({
+              rowIndex: Math.ceil(index / 3),
+              align: "center"
+            })); // const el = document.querySelector(".SelecIcon__item--isActive");
+            // if (!el) return;
+            // el.scrollIntoView({ block: "center", inline: "center" });
+          }, 1);
+        }
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+        className: "mr-3"
+      }, label), value ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dashicon, {
+        size: 20,
+        icon: value
+      }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("None", "wcb"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ResetButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        onClick: () => {
+          onChange(undefined);
+        }
+      }));
+    },
+    renderContent: _ref4 => {
+      let {
+        onToggle,
+        onClose
+      } = _ref4;
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        className: "bg-gray-900"
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, renderInput()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_window__WEBPACK_IMPORTED_MODULE_6__.FixedSizeGrid, {
+        ref: gridRef,
+        className: "hiddenScrollbar",
+        columnCount: 3,
+        columnWidth: 100,
+        height: 400,
+        rowCount: Math.ceil(ICONS_KEYS.length / 3),
+        rowHeight: 88,
+        width: 308
+      }, Cell));
+    }
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SelecIcon);
+
+/***/ }),
+
+/***/ "./src/components/controls/SelectIcon/types.ts":
+/*!*****************************************************!*\
+  !*** ./src/components/controls/SelectIcon/types.ts ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ICONS_KEYS": function() { return /* binding */ ICONS_KEYS; }
+/* harmony export */ });
+const ICONS_KEYS = ["admin-appearance", "admin-collapse", "admin-comments", "admin-customizer", "admin-generic", "admin-home", "admin-links", "admin-media", "admin-multisite", "admin-network", "admin-page", "admin-plugins", "admin-post", "admin-settings", "admin-site-alt", "admin-site-alt2", "admin-site-alt3", "admin-site", "admin-tools", "admin-users", "airplane", "album", "align-center", "align-full-width", "align-left", "align-none", "align-pull-left", "align-pull-right", "align-right", "align-wide", "amazon", "analytics", "archive", "arrow-down-alt", "arrow-down-alt2", "arrow-down", "arrow-left-alt", "arrow-left-alt2", "arrow-left", "arrow-right-alt", "arrow-right-alt2", "arrow-right", "arrow-up-alt", "arrow-up-alt2", "arrow-up", "arrow-up-duplicate", "art", "awards", "backup", "bank", "beer", "bell", "block-default", "book-alt", "book", "buddicons-activity", "buddicons-bbpress-logo", "buddicons-buddypress-logo", "buddicons-community", "buddicons-forums", "buddicons-friends", "buddicons-groups", "buddicons-pm", "buddicons-replies", "buddicons-topics", "buddicons-tracking", "building", "businessman", "businessperson", "businesswoman", "button", "calculator", "camera-alt", "car", "calendar-alt", "calendar", "camera", "carrot", "cart", "category", "chart-area", "chart-bar", "chart-line", "chart-pie", "clipboard", "clock", "cloud-saved", "cloud-upload", "cloud", "columns", "code-standards", "coffee", "color-picker", "controls-back", "controls-forward", "controls-pause", "controls-play", "controls-repeat", "controls-skipback", "controls-skipforward", "controls-volumeoff", "controls-volumeon", "cover-image", "dashboard", "database", "database-add", "database-export", "database-import", "database-remove", "database-view", "desktop", "dismiss", "download", "drumstick", "edit", "edit-large", "edit-page", "editor-aligncenter", "editor-alignleft", "editor-alignright", "editor-bold", "editor-break", "editor-code", "editor-code-duplicate", "editor-contract", "editor-customchar", "editor-expand", "editor-help", "editor-indent", "editor-insertmore", "editor-italic", "editor-justify", "editor-kitchensink", "editor-ltr", "editor-ol-rtl", "editor-ol", "editor-outdent", "editor-paragraph", "editor-paste-text", "editor-paste-word", "editor-quote", "editor-removeformatting", "editor-rtl", "editor-spellcheck", "editor-strikethrough", "editor-table", "editor-textcolor", "editor-ul", "editor-underline", "editor-unlink", "editor-video", "ellipsis", "email-alt", "email-alt2", "email", "embed-audio", "embed-generic", "embed-photo", "embed-post", "embed-video", "excerpt-view", "exit", "external", "facebook-alt", "facebook", "feedback", "filter", "flag", "food", "format-aside", "format-audio", "format-chat", "format-gallery", "format-image", "format-quote", "format-status", "format-video", "forms", "fullscreen-alt", "fullscreen-exit-alt", "games", "google", "googleplus", "grid-view", "groups", "hammer", "heading", "heart", "hidden", "hourglass", "html", "id-alt", "id", "image-crop", "image-filter", "image-flip-horizontal", "image-flip-vertical", "image-rotate-left", "image-rotate-right", "image-rotate", "images-alt", "images-alt2", "index-card", "info-outline", "info", "insert-after", "insert-before", "insert", "instagram", "keyboard-hide", "laptop", "layout", "leftright", "lightbulb", "list-view", "linkedin", "location-alt", "location", "lock-duplicate", "lock", "marker", "media-archive", "media-audio", "media-code", "media-default", "media-document", "media-interactive", "media-spreadsheet", "media-text", "media-video", "megaphone", "menu-alt", "menu-alt2", "menu-alt3", "menu", "money-alt", "microphone", "migrate", "minus", "money", "move", "nametag", "networking", "no-alt", "no", "open-folder", "palmtree", "paperclip", "performance", "pets", "pdf", "phone", "pinterest", "playlist-audio", "playlist-video", "plus-alt", "plus-light", "plus", "portfolio", "post-status", "pressthis", "products", "plugins-checked", "plus-alt2", "podio", "printer", "privacy", "randomize", "reddit", "redo", "remove", "rest-api", "rss", "saved", "schedule", "screenoptions", "search", "share-alt", "share-alt2", "share", "shield-alt", "shield", "shortcode", "slides", "smartphone", "smiley", "sort", "sos", "star-empty", "star-filled", "star-half", "sticky", "store", "spotify", "superhero", "superhero-alt", "table-col-after", "table-col-before", "table-col-delete", "table-row-after", "table-row-before", "table-row-delete", "tablet", "tag", "tagcloud", "testimonial", "text", "text-page", "thumbs-down", "thumbs-up", "tickets-alt", "tickets", "tide", "translation", "trash", "twitch", "twitter", "twitter-alt", "undo", "universal-access-alt", "universal-access", "unlock", "update-alt", "update", "upload", "vault", "video-alt", "video-alt2", "video-alt3", "visibility", "warning", "welcome-add-page", "welcome-comments", "welcome-learn-more", "welcome-view-site", "welcome-widgets-menus", "welcome-write-blog", "whatsapp", "wordpress-alt", "wordpress", "xing", "yes-alt", "yes", "youtube"];
 
 /***/ }),
 
@@ -3203,6 +4910,48 @@ const useGetDeviceType = () => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (useGetDeviceType);
+
+/***/ }),
+
+/***/ "./src/hooks/useGetImageSizeOptions.ts":
+/*!*********************************************!*\
+  !*** ./src/hooks/useGetImageSizeOptions.ts ***!
+  \*********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ useGetImageSizeOptions; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function useGetImageSizeOptions() {
+  const {
+    imageSizes
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_0__.useSelect)(select => {
+    const settings = select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.store).getSettings();
+    return {
+      imageSizes: settings.imageSizes
+    };
+  }, []);
+  const imageSizeOptions = (imageSizes === null || imageSizes === void 0 ? void 0 : imageSizes.map(_ref => {
+    let {
+      name,
+      slug
+    } = _ref;
+    return {
+      value: slug,
+      label: name
+    };
+  })) || [];
+  return {
+    imageSizeOptions
+  };
+}
 
 /***/ }),
 
@@ -3444,6 +5193,66 @@ module.exports = hoistNonReactStatics;
 
 /***/ }),
 
+/***/ "./node_modules/memoize-one/dist/memoize-one.esm.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/memoize-one/dist/memoize-one.esm.js ***!
+  \**********************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+var safeIsNaN = Number.isNaN ||
+    function ponyfill(value) {
+        return typeof value === 'number' && value !== value;
+    };
+function isEqual(first, second) {
+    if (first === second) {
+        return true;
+    }
+    if (safeIsNaN(first) && safeIsNaN(second)) {
+        return true;
+    }
+    return false;
+}
+function areInputsEqual(newInputs, lastInputs) {
+    if (newInputs.length !== lastInputs.length) {
+        return false;
+    }
+    for (var i = 0; i < newInputs.length; i++) {
+        if (!isEqual(newInputs[i], lastInputs[i])) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function memoizeOne(resultFn, isEqual) {
+    if (isEqual === void 0) { isEqual = areInputsEqual; }
+    var lastThis;
+    var lastArgs = [];
+    var lastResult;
+    var calledOnce = false;
+    function memoized() {
+        var newArgs = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            newArgs[_i] = arguments[_i];
+        }
+        if (calledOnce && lastThis === this && isEqual(newArgs, lastArgs)) {
+            return lastResult;
+        }
+        lastResult = resultFn.apply(this, newArgs);
+        calledOnce = true;
+        lastThis = this;
+        lastArgs = newArgs;
+        return lastResult;
+    }
+    return memoized;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (memoizeOne);
+
+
+/***/ }),
+
 /***/ "./src/block-team/editor.scss":
 /*!************************************!*\
   !*** ./src/block-team/editor.scss ***!
@@ -3674,6 +5483,2108 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/react-window/dist/index.esm.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/react-window/dist/index.esm.js ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "FixedSizeGrid": function() { return /* binding */ FixedSizeGrid; },
+/* harmony export */   "FixedSizeList": function() { return /* binding */ FixedSizeList; },
+/* harmony export */   "VariableSizeGrid": function() { return /* binding */ VariableSizeGrid; },
+/* harmony export */   "VariableSizeList": function() { return /* binding */ VariableSizeList; },
+/* harmony export */   "areEqual": function() { return /* binding */ areEqual; },
+/* harmony export */   "shouldComponentUpdate": function() { return /* binding */ shouldComponentUpdate; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/assertThisInitialized */ "./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
+/* harmony import */ var memoize_one__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! memoize-one */ "./node_modules/memoize-one/dist/memoize-one.esm.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+
+
+
+
+
+
+
+// Animation frame based implementation of setTimeout.
+// Inspired by Joe Lambert, https://gist.github.com/joelambert/1002116#file-requesttimeout-js
+var hasNativePerformanceNow = typeof performance === 'object' && typeof performance.now === 'function';
+var now = hasNativePerformanceNow ? function () {
+  return performance.now();
+} : function () {
+  return Date.now();
+};
+function cancelTimeout(timeoutID) {
+  cancelAnimationFrame(timeoutID.id);
+}
+function requestTimeout(callback, delay) {
+  var start = now();
+
+  function tick() {
+    if (now() - start >= delay) {
+      callback.call(null);
+    } else {
+      timeoutID.id = requestAnimationFrame(tick);
+    }
+  }
+
+  var timeoutID = {
+    id: requestAnimationFrame(tick)
+  };
+  return timeoutID;
+}
+
+var size = -1; // This utility copied from "dom-helpers" package.
+
+function getScrollbarSize(recalculate) {
+  if (recalculate === void 0) {
+    recalculate = false;
+  }
+
+  if (size === -1 || recalculate) {
+    var div = document.createElement('div');
+    var style = div.style;
+    style.width = '50px';
+    style.height = '50px';
+    style.overflow = 'scroll';
+    document.body.appendChild(div);
+    size = div.offsetWidth - div.clientWidth;
+    document.body.removeChild(div);
+  }
+
+  return size;
+}
+var cachedRTLResult = null; // TRICKY According to the spec, scrollLeft should be negative for RTL aligned elements.
+// Chrome does not seem to adhere; its scrollLeft values are positive (measured relative to the left).
+// Safari's elastic bounce makes detecting this even more complicated wrt potential false positives.
+// The safest way to check this is to intentionally set a negative offset,
+// and then verify that the subsequent "scroll" event matches the negative offset.
+// If it does not match, then we can assume a non-standard RTL scroll implementation.
+
+function getRTLOffsetType(recalculate) {
+  if (recalculate === void 0) {
+    recalculate = false;
+  }
+
+  if (cachedRTLResult === null || recalculate) {
+    var outerDiv = document.createElement('div');
+    var outerStyle = outerDiv.style;
+    outerStyle.width = '50px';
+    outerStyle.height = '50px';
+    outerStyle.overflow = 'scroll';
+    outerStyle.direction = 'rtl';
+    var innerDiv = document.createElement('div');
+    var innerStyle = innerDiv.style;
+    innerStyle.width = '100px';
+    innerStyle.height = '100px';
+    outerDiv.appendChild(innerDiv);
+    document.body.appendChild(outerDiv);
+
+    if (outerDiv.scrollLeft > 0) {
+      cachedRTLResult = 'positive-descending';
+    } else {
+      outerDiv.scrollLeft = 1;
+
+      if (outerDiv.scrollLeft === 0) {
+        cachedRTLResult = 'negative';
+      } else {
+        cachedRTLResult = 'positive-ascending';
+      }
+    }
+
+    document.body.removeChild(outerDiv);
+    return cachedRTLResult;
+  }
+
+  return cachedRTLResult;
+}
+
+var IS_SCROLLING_DEBOUNCE_INTERVAL = 150;
+
+var defaultItemKey = function defaultItemKey(_ref) {
+  var columnIndex = _ref.columnIndex,
+      data = _ref.data,
+      rowIndex = _ref.rowIndex;
+  return rowIndex + ":" + columnIndex;
+}; // In DEV mode, this Set helps us only log a warning once per component instance.
+// This avoids spamming the console every time a render happens.
+
+
+var devWarningsOverscanCount = null;
+var devWarningsOverscanRowsColumnsCount = null;
+var devWarningsTagName = null;
+
+if (true) {
+  if (typeof window !== 'undefined' && typeof window.WeakSet !== 'undefined') {
+    devWarningsOverscanCount = /*#__PURE__*/new WeakSet();
+    devWarningsOverscanRowsColumnsCount = /*#__PURE__*/new WeakSet();
+    devWarningsTagName = /*#__PURE__*/new WeakSet();
+  }
+}
+
+function createGridComponent(_ref2) {
+  var _class;
+
+  var getColumnOffset = _ref2.getColumnOffset,
+      getColumnStartIndexForOffset = _ref2.getColumnStartIndexForOffset,
+      getColumnStopIndexForStartIndex = _ref2.getColumnStopIndexForStartIndex,
+      getColumnWidth = _ref2.getColumnWidth,
+      getEstimatedTotalHeight = _ref2.getEstimatedTotalHeight,
+      getEstimatedTotalWidth = _ref2.getEstimatedTotalWidth,
+      getOffsetForColumnAndAlignment = _ref2.getOffsetForColumnAndAlignment,
+      getOffsetForRowAndAlignment = _ref2.getOffsetForRowAndAlignment,
+      getRowHeight = _ref2.getRowHeight,
+      getRowOffset = _ref2.getRowOffset,
+      getRowStartIndexForOffset = _ref2.getRowStartIndexForOffset,
+      getRowStopIndexForStartIndex = _ref2.getRowStopIndexForStartIndex,
+      initInstanceProps = _ref2.initInstanceProps,
+      shouldResetStyleCacheOnItemSizeChange = _ref2.shouldResetStyleCacheOnItemSizeChange,
+      validateProps = _ref2.validateProps;
+  return _class = /*#__PURE__*/function (_PureComponent) {
+    (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__["default"])(Grid, _PureComponent);
+
+    // Always use explicit constructor for React components.
+    // It produces less code after transpilation. (#26)
+    // eslint-disable-next-line no-useless-constructor
+    function Grid(props) {
+      var _this;
+
+      _this = _PureComponent.call(this, props) || this;
+      _this._instanceProps = initInstanceProps(_this.props, (0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_1__["default"])(_this));
+      _this._resetIsScrollingTimeoutId = null;
+      _this._outerRef = void 0;
+      _this.state = {
+        instance: (0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_1__["default"])(_this),
+        isScrolling: false,
+        horizontalScrollDirection: 'forward',
+        scrollLeft: typeof _this.props.initialScrollLeft === 'number' ? _this.props.initialScrollLeft : 0,
+        scrollTop: typeof _this.props.initialScrollTop === 'number' ? _this.props.initialScrollTop : 0,
+        scrollUpdateWasRequested: false,
+        verticalScrollDirection: 'forward'
+      };
+      _this._callOnItemsRendered = void 0;
+      _this._callOnItemsRendered = (0,memoize_one__WEBPACK_IMPORTED_MODULE_5__["default"])(function (overscanColumnStartIndex, overscanColumnStopIndex, overscanRowStartIndex, overscanRowStopIndex, visibleColumnStartIndex, visibleColumnStopIndex, visibleRowStartIndex, visibleRowStopIndex) {
+        return _this.props.onItemsRendered({
+          overscanColumnStartIndex: overscanColumnStartIndex,
+          overscanColumnStopIndex: overscanColumnStopIndex,
+          overscanRowStartIndex: overscanRowStartIndex,
+          overscanRowStopIndex: overscanRowStopIndex,
+          visibleColumnStartIndex: visibleColumnStartIndex,
+          visibleColumnStopIndex: visibleColumnStopIndex,
+          visibleRowStartIndex: visibleRowStartIndex,
+          visibleRowStopIndex: visibleRowStopIndex
+        });
+      });
+      _this._callOnScroll = void 0;
+      _this._callOnScroll = (0,memoize_one__WEBPACK_IMPORTED_MODULE_5__["default"])(function (scrollLeft, scrollTop, horizontalScrollDirection, verticalScrollDirection, scrollUpdateWasRequested) {
+        return _this.props.onScroll({
+          horizontalScrollDirection: horizontalScrollDirection,
+          scrollLeft: scrollLeft,
+          scrollTop: scrollTop,
+          verticalScrollDirection: verticalScrollDirection,
+          scrollUpdateWasRequested: scrollUpdateWasRequested
+        });
+      });
+      _this._getItemStyle = void 0;
+
+      _this._getItemStyle = function (rowIndex, columnIndex) {
+        var _this$props = _this.props,
+            columnWidth = _this$props.columnWidth,
+            direction = _this$props.direction,
+            rowHeight = _this$props.rowHeight;
+
+        var itemStyleCache = _this._getItemStyleCache(shouldResetStyleCacheOnItemSizeChange && columnWidth, shouldResetStyleCacheOnItemSizeChange && direction, shouldResetStyleCacheOnItemSizeChange && rowHeight);
+
+        var key = rowIndex + ":" + columnIndex;
+        var style;
+
+        if (itemStyleCache.hasOwnProperty(key)) {
+          style = itemStyleCache[key];
+        } else {
+          var _offset = getColumnOffset(_this.props, columnIndex, _this._instanceProps);
+
+          var isRtl = direction === 'rtl';
+          itemStyleCache[key] = style = {
+            position: 'absolute',
+            left: isRtl ? undefined : _offset,
+            right: isRtl ? _offset : undefined,
+            top: getRowOffset(_this.props, rowIndex, _this._instanceProps),
+            height: getRowHeight(_this.props, rowIndex, _this._instanceProps),
+            width: getColumnWidth(_this.props, columnIndex, _this._instanceProps)
+          };
+        }
+
+        return style;
+      };
+
+      _this._getItemStyleCache = void 0;
+      _this._getItemStyleCache = (0,memoize_one__WEBPACK_IMPORTED_MODULE_5__["default"])(function (_, __, ___) {
+        return {};
+      });
+
+      _this._onScroll = function (event) {
+        var _event$currentTarget = event.currentTarget,
+            clientHeight = _event$currentTarget.clientHeight,
+            clientWidth = _event$currentTarget.clientWidth,
+            scrollLeft = _event$currentTarget.scrollLeft,
+            scrollTop = _event$currentTarget.scrollTop,
+            scrollHeight = _event$currentTarget.scrollHeight,
+            scrollWidth = _event$currentTarget.scrollWidth;
+
+        _this.setState(function (prevState) {
+          if (prevState.scrollLeft === scrollLeft && prevState.scrollTop === scrollTop) {
+            // Scroll position may have been updated by cDM/cDU,
+            // In which case we don't need to trigger another render,
+            // And we don't want to update state.isScrolling.
+            return null;
+          }
+
+          var direction = _this.props.direction; // TRICKY According to the spec, scrollLeft should be negative for RTL aligned elements.
+          // This is not the case for all browsers though (e.g. Chrome reports values as positive, measured relative to the left).
+          // It's also easier for this component if we convert offsets to the same format as they would be in for ltr.
+          // So the simplest solution is to determine which browser behavior we're dealing with, and convert based on it.
+
+          var calculatedScrollLeft = scrollLeft;
+
+          if (direction === 'rtl') {
+            switch (getRTLOffsetType()) {
+              case 'negative':
+                calculatedScrollLeft = -scrollLeft;
+                break;
+
+              case 'positive-descending':
+                calculatedScrollLeft = scrollWidth - clientWidth - scrollLeft;
+                break;
+            }
+          } // Prevent Safari's elastic scrolling from causing visual shaking when scrolling past bounds.
+
+
+          calculatedScrollLeft = Math.max(0, Math.min(calculatedScrollLeft, scrollWidth - clientWidth));
+          var calculatedScrollTop = Math.max(0, Math.min(scrollTop, scrollHeight - clientHeight));
+          return {
+            isScrolling: true,
+            horizontalScrollDirection: prevState.scrollLeft < scrollLeft ? 'forward' : 'backward',
+            scrollLeft: calculatedScrollLeft,
+            scrollTop: calculatedScrollTop,
+            verticalScrollDirection: prevState.scrollTop < scrollTop ? 'forward' : 'backward',
+            scrollUpdateWasRequested: false
+          };
+        }, _this._resetIsScrollingDebounced);
+      };
+
+      _this._outerRefSetter = function (ref) {
+        var outerRef = _this.props.outerRef;
+        _this._outerRef = ref;
+
+        if (typeof outerRef === 'function') {
+          outerRef(ref);
+        } else if (outerRef != null && typeof outerRef === 'object' && outerRef.hasOwnProperty('current')) {
+          outerRef.current = ref;
+        }
+      };
+
+      _this._resetIsScrollingDebounced = function () {
+        if (_this._resetIsScrollingTimeoutId !== null) {
+          cancelTimeout(_this._resetIsScrollingTimeoutId);
+        }
+
+        _this._resetIsScrollingTimeoutId = requestTimeout(_this._resetIsScrolling, IS_SCROLLING_DEBOUNCE_INTERVAL);
+      };
+
+      _this._resetIsScrolling = function () {
+        _this._resetIsScrollingTimeoutId = null;
+
+        _this.setState({
+          isScrolling: false
+        }, function () {
+          // Clear style cache after state update has been committed.
+          // This way we don't break pure sCU for items that don't use isScrolling param.
+          _this._getItemStyleCache(-1);
+        });
+      };
+
+      return _this;
+    }
+
+    Grid.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps, prevState) {
+      validateSharedProps(nextProps, prevState);
+      validateProps(nextProps);
+      return null;
+    };
+
+    var _proto = Grid.prototype;
+
+    _proto.scrollTo = function scrollTo(_ref3) {
+      var scrollLeft = _ref3.scrollLeft,
+          scrollTop = _ref3.scrollTop;
+
+      if (scrollLeft !== undefined) {
+        scrollLeft = Math.max(0, scrollLeft);
+      }
+
+      if (scrollTop !== undefined) {
+        scrollTop = Math.max(0, scrollTop);
+      }
+
+      this.setState(function (prevState) {
+        if (scrollLeft === undefined) {
+          scrollLeft = prevState.scrollLeft;
+        }
+
+        if (scrollTop === undefined) {
+          scrollTop = prevState.scrollTop;
+        }
+
+        if (prevState.scrollLeft === scrollLeft && prevState.scrollTop === scrollTop) {
+          return null;
+        }
+
+        return {
+          horizontalScrollDirection: prevState.scrollLeft < scrollLeft ? 'forward' : 'backward',
+          scrollLeft: scrollLeft,
+          scrollTop: scrollTop,
+          scrollUpdateWasRequested: true,
+          verticalScrollDirection: prevState.scrollTop < scrollTop ? 'forward' : 'backward'
+        };
+      }, this._resetIsScrollingDebounced);
+    };
+
+    _proto.scrollToItem = function scrollToItem(_ref4) {
+      var _ref4$align = _ref4.align,
+          align = _ref4$align === void 0 ? 'auto' : _ref4$align,
+          columnIndex = _ref4.columnIndex,
+          rowIndex = _ref4.rowIndex;
+      var _this$props2 = this.props,
+          columnCount = _this$props2.columnCount,
+          height = _this$props2.height,
+          rowCount = _this$props2.rowCount,
+          width = _this$props2.width;
+      var _this$state = this.state,
+          scrollLeft = _this$state.scrollLeft,
+          scrollTop = _this$state.scrollTop;
+      var scrollbarSize = getScrollbarSize();
+
+      if (columnIndex !== undefined) {
+        columnIndex = Math.max(0, Math.min(columnIndex, columnCount - 1));
+      }
+
+      if (rowIndex !== undefined) {
+        rowIndex = Math.max(0, Math.min(rowIndex, rowCount - 1));
+      }
+
+      var estimatedTotalHeight = getEstimatedTotalHeight(this.props, this._instanceProps);
+      var estimatedTotalWidth = getEstimatedTotalWidth(this.props, this._instanceProps); // The scrollbar size should be considered when scrolling an item into view,
+      // to ensure it's fully visible.
+      // But we only need to account for its size when it's actually visible.
+
+      var horizontalScrollbarSize = estimatedTotalWidth > width ? scrollbarSize : 0;
+      var verticalScrollbarSize = estimatedTotalHeight > height ? scrollbarSize : 0;
+      this.scrollTo({
+        scrollLeft: columnIndex !== undefined ? getOffsetForColumnAndAlignment(this.props, columnIndex, align, scrollLeft, this._instanceProps, verticalScrollbarSize) : scrollLeft,
+        scrollTop: rowIndex !== undefined ? getOffsetForRowAndAlignment(this.props, rowIndex, align, scrollTop, this._instanceProps, horizontalScrollbarSize) : scrollTop
+      });
+    };
+
+    _proto.componentDidMount = function componentDidMount() {
+      var _this$props3 = this.props,
+          initialScrollLeft = _this$props3.initialScrollLeft,
+          initialScrollTop = _this$props3.initialScrollTop;
+
+      if (this._outerRef != null) {
+        var outerRef = this._outerRef;
+
+        if (typeof initialScrollLeft === 'number') {
+          outerRef.scrollLeft = initialScrollLeft;
+        }
+
+        if (typeof initialScrollTop === 'number') {
+          outerRef.scrollTop = initialScrollTop;
+        }
+      }
+
+      this._callPropsCallbacks();
+    };
+
+    _proto.componentDidUpdate = function componentDidUpdate() {
+      var direction = this.props.direction;
+      var _this$state2 = this.state,
+          scrollLeft = _this$state2.scrollLeft,
+          scrollTop = _this$state2.scrollTop,
+          scrollUpdateWasRequested = _this$state2.scrollUpdateWasRequested;
+
+      if (scrollUpdateWasRequested && this._outerRef != null) {
+        // TRICKY According to the spec, scrollLeft should be negative for RTL aligned elements.
+        // This is not the case for all browsers though (e.g. Chrome reports values as positive, measured relative to the left).
+        // So we need to determine which browser behavior we're dealing with, and mimic it.
+        var outerRef = this._outerRef;
+
+        if (direction === 'rtl') {
+          switch (getRTLOffsetType()) {
+            case 'negative':
+              outerRef.scrollLeft = -scrollLeft;
+              break;
+
+            case 'positive-ascending':
+              outerRef.scrollLeft = scrollLeft;
+              break;
+
+            default:
+              var clientWidth = outerRef.clientWidth,
+                  scrollWidth = outerRef.scrollWidth;
+              outerRef.scrollLeft = scrollWidth - clientWidth - scrollLeft;
+              break;
+          }
+        } else {
+          outerRef.scrollLeft = Math.max(0, scrollLeft);
+        }
+
+        outerRef.scrollTop = Math.max(0, scrollTop);
+      }
+
+      this._callPropsCallbacks();
+    };
+
+    _proto.componentWillUnmount = function componentWillUnmount() {
+      if (this._resetIsScrollingTimeoutId !== null) {
+        cancelTimeout(this._resetIsScrollingTimeoutId);
+      }
+    };
+
+    _proto.render = function render() {
+      var _this$props4 = this.props,
+          children = _this$props4.children,
+          className = _this$props4.className,
+          columnCount = _this$props4.columnCount,
+          direction = _this$props4.direction,
+          height = _this$props4.height,
+          innerRef = _this$props4.innerRef,
+          innerElementType = _this$props4.innerElementType,
+          innerTagName = _this$props4.innerTagName,
+          itemData = _this$props4.itemData,
+          _this$props4$itemKey = _this$props4.itemKey,
+          itemKey = _this$props4$itemKey === void 0 ? defaultItemKey : _this$props4$itemKey,
+          outerElementType = _this$props4.outerElementType,
+          outerTagName = _this$props4.outerTagName,
+          rowCount = _this$props4.rowCount,
+          style = _this$props4.style,
+          useIsScrolling = _this$props4.useIsScrolling,
+          width = _this$props4.width;
+      var isScrolling = this.state.isScrolling;
+
+      var _this$_getHorizontalR = this._getHorizontalRangeToRender(),
+          columnStartIndex = _this$_getHorizontalR[0],
+          columnStopIndex = _this$_getHorizontalR[1];
+
+      var _this$_getVerticalRan = this._getVerticalRangeToRender(),
+          rowStartIndex = _this$_getVerticalRan[0],
+          rowStopIndex = _this$_getVerticalRan[1];
+
+      var items = [];
+
+      if (columnCount > 0 && rowCount) {
+        for (var _rowIndex = rowStartIndex; _rowIndex <= rowStopIndex; _rowIndex++) {
+          for (var _columnIndex = columnStartIndex; _columnIndex <= columnStopIndex; _columnIndex++) {
+            items.push((0,react__WEBPACK_IMPORTED_MODULE_3__.createElement)(children, {
+              columnIndex: _columnIndex,
+              data: itemData,
+              isScrolling: useIsScrolling ? isScrolling : undefined,
+              key: itemKey({
+                columnIndex: _columnIndex,
+                data: itemData,
+                rowIndex: _rowIndex
+              }),
+              rowIndex: _rowIndex,
+              style: this._getItemStyle(_rowIndex, _columnIndex)
+            }));
+          }
+        }
+      } // Read this value AFTER items have been created,
+      // So their actual sizes (if variable) are taken into consideration.
+
+
+      var estimatedTotalHeight = getEstimatedTotalHeight(this.props, this._instanceProps);
+      var estimatedTotalWidth = getEstimatedTotalWidth(this.props, this._instanceProps);
+      return (0,react__WEBPACK_IMPORTED_MODULE_3__.createElement)(outerElementType || outerTagName || 'div', {
+        className: className,
+        onScroll: this._onScroll,
+        ref: this._outerRefSetter,
+        style: (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+          position: 'relative',
+          height: height,
+          width: width,
+          overflow: 'auto',
+          WebkitOverflowScrolling: 'touch',
+          willChange: 'transform',
+          direction: direction
+        }, style)
+      }, (0,react__WEBPACK_IMPORTED_MODULE_3__.createElement)(innerElementType || innerTagName || 'div', {
+        children: items,
+        ref: innerRef,
+        style: {
+          height: estimatedTotalHeight,
+          pointerEvents: isScrolling ? 'none' : undefined,
+          width: estimatedTotalWidth
+        }
+      }));
+    };
+
+    _proto._callPropsCallbacks = function _callPropsCallbacks() {
+      var _this$props5 = this.props,
+          columnCount = _this$props5.columnCount,
+          onItemsRendered = _this$props5.onItemsRendered,
+          onScroll = _this$props5.onScroll,
+          rowCount = _this$props5.rowCount;
+
+      if (typeof onItemsRendered === 'function') {
+        if (columnCount > 0 && rowCount > 0) {
+          var _this$_getHorizontalR2 = this._getHorizontalRangeToRender(),
+              _overscanColumnStartIndex = _this$_getHorizontalR2[0],
+              _overscanColumnStopIndex = _this$_getHorizontalR2[1],
+              _visibleColumnStartIndex = _this$_getHorizontalR2[2],
+              _visibleColumnStopIndex = _this$_getHorizontalR2[3];
+
+          var _this$_getVerticalRan2 = this._getVerticalRangeToRender(),
+              _overscanRowStartIndex = _this$_getVerticalRan2[0],
+              _overscanRowStopIndex = _this$_getVerticalRan2[1],
+              _visibleRowStartIndex = _this$_getVerticalRan2[2],
+              _visibleRowStopIndex = _this$_getVerticalRan2[3];
+
+          this._callOnItemsRendered(_overscanColumnStartIndex, _overscanColumnStopIndex, _overscanRowStartIndex, _overscanRowStopIndex, _visibleColumnStartIndex, _visibleColumnStopIndex, _visibleRowStartIndex, _visibleRowStopIndex);
+        }
+      }
+
+      if (typeof onScroll === 'function') {
+        var _this$state3 = this.state,
+            _horizontalScrollDirection = _this$state3.horizontalScrollDirection,
+            _scrollLeft = _this$state3.scrollLeft,
+            _scrollTop = _this$state3.scrollTop,
+            _scrollUpdateWasRequested = _this$state3.scrollUpdateWasRequested,
+            _verticalScrollDirection = _this$state3.verticalScrollDirection;
+
+        this._callOnScroll(_scrollLeft, _scrollTop, _horizontalScrollDirection, _verticalScrollDirection, _scrollUpdateWasRequested);
+      }
+    } // Lazily create and cache item styles while scrolling,
+    // So that pure component sCU will prevent re-renders.
+    // We maintain this cache, and pass a style prop rather than index,
+    // So that List can clear cached styles and force item re-render if necessary.
+    ;
+
+    _proto._getHorizontalRangeToRender = function _getHorizontalRangeToRender() {
+      var _this$props6 = this.props,
+          columnCount = _this$props6.columnCount,
+          overscanColumnCount = _this$props6.overscanColumnCount,
+          overscanColumnsCount = _this$props6.overscanColumnsCount,
+          overscanCount = _this$props6.overscanCount,
+          rowCount = _this$props6.rowCount;
+      var _this$state4 = this.state,
+          horizontalScrollDirection = _this$state4.horizontalScrollDirection,
+          isScrolling = _this$state4.isScrolling,
+          scrollLeft = _this$state4.scrollLeft;
+      var overscanCountResolved = overscanColumnCount || overscanColumnsCount || overscanCount || 1;
+
+      if (columnCount === 0 || rowCount === 0) {
+        return [0, 0, 0, 0];
+      }
+
+      var startIndex = getColumnStartIndexForOffset(this.props, scrollLeft, this._instanceProps);
+      var stopIndex = getColumnStopIndexForStartIndex(this.props, startIndex, scrollLeft, this._instanceProps); // Overscan by one item in each direction so that tab/focus works.
+      // If there isn't at least one extra item, tab loops back around.
+
+      var overscanBackward = !isScrolling || horizontalScrollDirection === 'backward' ? Math.max(1, overscanCountResolved) : 1;
+      var overscanForward = !isScrolling || horizontalScrollDirection === 'forward' ? Math.max(1, overscanCountResolved) : 1;
+      return [Math.max(0, startIndex - overscanBackward), Math.max(0, Math.min(columnCount - 1, stopIndex + overscanForward)), startIndex, stopIndex];
+    };
+
+    _proto._getVerticalRangeToRender = function _getVerticalRangeToRender() {
+      var _this$props7 = this.props,
+          columnCount = _this$props7.columnCount,
+          overscanCount = _this$props7.overscanCount,
+          overscanRowCount = _this$props7.overscanRowCount,
+          overscanRowsCount = _this$props7.overscanRowsCount,
+          rowCount = _this$props7.rowCount;
+      var _this$state5 = this.state,
+          isScrolling = _this$state5.isScrolling,
+          verticalScrollDirection = _this$state5.verticalScrollDirection,
+          scrollTop = _this$state5.scrollTop;
+      var overscanCountResolved = overscanRowCount || overscanRowsCount || overscanCount || 1;
+
+      if (columnCount === 0 || rowCount === 0) {
+        return [0, 0, 0, 0];
+      }
+
+      var startIndex = getRowStartIndexForOffset(this.props, scrollTop, this._instanceProps);
+      var stopIndex = getRowStopIndexForStartIndex(this.props, startIndex, scrollTop, this._instanceProps); // Overscan by one item in each direction so that tab/focus works.
+      // If there isn't at least one extra item, tab loops back around.
+
+      var overscanBackward = !isScrolling || verticalScrollDirection === 'backward' ? Math.max(1, overscanCountResolved) : 1;
+      var overscanForward = !isScrolling || verticalScrollDirection === 'forward' ? Math.max(1, overscanCountResolved) : 1;
+      return [Math.max(0, startIndex - overscanBackward), Math.max(0, Math.min(rowCount - 1, stopIndex + overscanForward)), startIndex, stopIndex];
+    };
+
+    return Grid;
+  }(react__WEBPACK_IMPORTED_MODULE_3__.PureComponent), _class.defaultProps = {
+    direction: 'ltr',
+    itemData: undefined,
+    useIsScrolling: false
+  }, _class;
+}
+
+var validateSharedProps = function validateSharedProps(_ref5, _ref6) {
+  var children = _ref5.children,
+      direction = _ref5.direction,
+      height = _ref5.height,
+      innerTagName = _ref5.innerTagName,
+      outerTagName = _ref5.outerTagName,
+      overscanColumnsCount = _ref5.overscanColumnsCount,
+      overscanCount = _ref5.overscanCount,
+      overscanRowsCount = _ref5.overscanRowsCount,
+      width = _ref5.width;
+  var instance = _ref6.instance;
+
+  if (true) {
+    if (typeof overscanCount === 'number') {
+      if (devWarningsOverscanCount && !devWarningsOverscanCount.has(instance)) {
+        devWarningsOverscanCount.add(instance);
+        console.warn('The overscanCount prop has been deprecated. ' + 'Please use the overscanColumnCount and overscanRowCount props instead.');
+      }
+    }
+
+    if (typeof overscanColumnsCount === 'number' || typeof overscanRowsCount === 'number') {
+      if (devWarningsOverscanRowsColumnsCount && !devWarningsOverscanRowsColumnsCount.has(instance)) {
+        devWarningsOverscanRowsColumnsCount.add(instance);
+        console.warn('The overscanColumnsCount and overscanRowsCount props have been deprecated. ' + 'Please use the overscanColumnCount and overscanRowCount props instead.');
+      }
+    }
+
+    if (innerTagName != null || outerTagName != null) {
+      if (devWarningsTagName && !devWarningsTagName.has(instance)) {
+        devWarningsTagName.add(instance);
+        console.warn('The innerTagName and outerTagName props have been deprecated. ' + 'Please use the innerElementType and outerElementType props instead.');
+      }
+    }
+
+    if (children == null) {
+      throw Error('An invalid "children" prop has been specified. ' + 'Value should be a React component. ' + ("\"" + (children === null ? 'null' : typeof children) + "\" was specified."));
+    }
+
+    switch (direction) {
+      case 'ltr':
+      case 'rtl':
+        // Valid values
+        break;
+
+      default:
+        throw Error('An invalid "direction" prop has been specified. ' + 'Value should be either "ltr" or "rtl". ' + ("\"" + direction + "\" was specified."));
+    }
+
+    if (typeof width !== 'number') {
+      throw Error('An invalid "width" prop has been specified. ' + 'Grids must specify a number for width. ' + ("\"" + (width === null ? 'null' : typeof width) + "\" was specified."));
+    }
+
+    if (typeof height !== 'number') {
+      throw Error('An invalid "height" prop has been specified. ' + 'Grids must specify a number for height. ' + ("\"" + (height === null ? 'null' : typeof height) + "\" was specified."));
+    }
+  }
+};
+
+var DEFAULT_ESTIMATED_ITEM_SIZE = 50;
+
+var getEstimatedTotalHeight = function getEstimatedTotalHeight(_ref, _ref2) {
+  var rowCount = _ref.rowCount;
+  var rowMetadataMap = _ref2.rowMetadataMap,
+      estimatedRowHeight = _ref2.estimatedRowHeight,
+      lastMeasuredRowIndex = _ref2.lastMeasuredRowIndex;
+  var totalSizeOfMeasuredRows = 0; // Edge case check for when the number of items decreases while a scroll is in progress.
+  // https://github.com/bvaughn/react-window/pull/138
+
+  if (lastMeasuredRowIndex >= rowCount) {
+    lastMeasuredRowIndex = rowCount - 1;
+  }
+
+  if (lastMeasuredRowIndex >= 0) {
+    var itemMetadata = rowMetadataMap[lastMeasuredRowIndex];
+    totalSizeOfMeasuredRows = itemMetadata.offset + itemMetadata.size;
+  }
+
+  var numUnmeasuredItems = rowCount - lastMeasuredRowIndex - 1;
+  var totalSizeOfUnmeasuredItems = numUnmeasuredItems * estimatedRowHeight;
+  return totalSizeOfMeasuredRows + totalSizeOfUnmeasuredItems;
+};
+
+var getEstimatedTotalWidth = function getEstimatedTotalWidth(_ref3, _ref4) {
+  var columnCount = _ref3.columnCount;
+  var columnMetadataMap = _ref4.columnMetadataMap,
+      estimatedColumnWidth = _ref4.estimatedColumnWidth,
+      lastMeasuredColumnIndex = _ref4.lastMeasuredColumnIndex;
+  var totalSizeOfMeasuredRows = 0; // Edge case check for when the number of items decreases while a scroll is in progress.
+  // https://github.com/bvaughn/react-window/pull/138
+
+  if (lastMeasuredColumnIndex >= columnCount) {
+    lastMeasuredColumnIndex = columnCount - 1;
+  }
+
+  if (lastMeasuredColumnIndex >= 0) {
+    var itemMetadata = columnMetadataMap[lastMeasuredColumnIndex];
+    totalSizeOfMeasuredRows = itemMetadata.offset + itemMetadata.size;
+  }
+
+  var numUnmeasuredItems = columnCount - lastMeasuredColumnIndex - 1;
+  var totalSizeOfUnmeasuredItems = numUnmeasuredItems * estimatedColumnWidth;
+  return totalSizeOfMeasuredRows + totalSizeOfUnmeasuredItems;
+};
+
+var getItemMetadata = function getItemMetadata(itemType, props, index, instanceProps) {
+  var itemMetadataMap, itemSize, lastMeasuredIndex;
+
+  if (itemType === 'column') {
+    itemMetadataMap = instanceProps.columnMetadataMap;
+    itemSize = props.columnWidth;
+    lastMeasuredIndex = instanceProps.lastMeasuredColumnIndex;
+  } else {
+    itemMetadataMap = instanceProps.rowMetadataMap;
+    itemSize = props.rowHeight;
+    lastMeasuredIndex = instanceProps.lastMeasuredRowIndex;
+  }
+
+  if (index > lastMeasuredIndex) {
+    var offset = 0;
+
+    if (lastMeasuredIndex >= 0) {
+      var itemMetadata = itemMetadataMap[lastMeasuredIndex];
+      offset = itemMetadata.offset + itemMetadata.size;
+    }
+
+    for (var i = lastMeasuredIndex + 1; i <= index; i++) {
+      var size = itemSize(i);
+      itemMetadataMap[i] = {
+        offset: offset,
+        size: size
+      };
+      offset += size;
+    }
+
+    if (itemType === 'column') {
+      instanceProps.lastMeasuredColumnIndex = index;
+    } else {
+      instanceProps.lastMeasuredRowIndex = index;
+    }
+  }
+
+  return itemMetadataMap[index];
+};
+
+var findNearestItem = function findNearestItem(itemType, props, instanceProps, offset) {
+  var itemMetadataMap, lastMeasuredIndex;
+
+  if (itemType === 'column') {
+    itemMetadataMap = instanceProps.columnMetadataMap;
+    lastMeasuredIndex = instanceProps.lastMeasuredColumnIndex;
+  } else {
+    itemMetadataMap = instanceProps.rowMetadataMap;
+    lastMeasuredIndex = instanceProps.lastMeasuredRowIndex;
+  }
+
+  var lastMeasuredItemOffset = lastMeasuredIndex > 0 ? itemMetadataMap[lastMeasuredIndex].offset : 0;
+
+  if (lastMeasuredItemOffset >= offset) {
+    // If we've already measured items within this range just use a binary search as it's faster.
+    return findNearestItemBinarySearch(itemType, props, instanceProps, lastMeasuredIndex, 0, offset);
+  } else {
+    // If we haven't yet measured this high, fallback to an exponential search with an inner binary search.
+    // The exponential search avoids pre-computing sizes for the full set of items as a binary search would.
+    // The overall complexity for this approach is O(log n).
+    return findNearestItemExponentialSearch(itemType, props, instanceProps, Math.max(0, lastMeasuredIndex), offset);
+  }
+};
+
+var findNearestItemBinarySearch = function findNearestItemBinarySearch(itemType, props, instanceProps, high, low, offset) {
+  while (low <= high) {
+    var middle = low + Math.floor((high - low) / 2);
+    var currentOffset = getItemMetadata(itemType, props, middle, instanceProps).offset;
+
+    if (currentOffset === offset) {
+      return middle;
+    } else if (currentOffset < offset) {
+      low = middle + 1;
+    } else if (currentOffset > offset) {
+      high = middle - 1;
+    }
+  }
+
+  if (low > 0) {
+    return low - 1;
+  } else {
+    return 0;
+  }
+};
+
+var findNearestItemExponentialSearch = function findNearestItemExponentialSearch(itemType, props, instanceProps, index, offset) {
+  var itemCount = itemType === 'column' ? props.columnCount : props.rowCount;
+  var interval = 1;
+
+  while (index < itemCount && getItemMetadata(itemType, props, index, instanceProps).offset < offset) {
+    index += interval;
+    interval *= 2;
+  }
+
+  return findNearestItemBinarySearch(itemType, props, instanceProps, Math.min(index, itemCount - 1), Math.floor(index / 2), offset);
+};
+
+var getOffsetForIndexAndAlignment = function getOffsetForIndexAndAlignment(itemType, props, index, align, scrollOffset, instanceProps, scrollbarSize) {
+  var size = itemType === 'column' ? props.width : props.height;
+  var itemMetadata = getItemMetadata(itemType, props, index, instanceProps); // Get estimated total size after ItemMetadata is computed,
+  // To ensure it reflects actual measurements instead of just estimates.
+
+  var estimatedTotalSize = itemType === 'column' ? getEstimatedTotalWidth(props, instanceProps) : getEstimatedTotalHeight(props, instanceProps);
+  var maxOffset = Math.max(0, Math.min(estimatedTotalSize - size, itemMetadata.offset));
+  var minOffset = Math.max(0, itemMetadata.offset - size + scrollbarSize + itemMetadata.size);
+
+  if (align === 'smart') {
+    if (scrollOffset >= minOffset - size && scrollOffset <= maxOffset + size) {
+      align = 'auto';
+    } else {
+      align = 'center';
+    }
+  }
+
+  switch (align) {
+    case 'start':
+      return maxOffset;
+
+    case 'end':
+      return minOffset;
+
+    case 'center':
+      return Math.round(minOffset + (maxOffset - minOffset) / 2);
+
+    case 'auto':
+    default:
+      if (scrollOffset >= minOffset && scrollOffset <= maxOffset) {
+        return scrollOffset;
+      } else if (minOffset > maxOffset) {
+        // Because we only take into account the scrollbar size when calculating minOffset
+        // this value can be larger than maxOffset when at the end of the list
+        return minOffset;
+      } else if (scrollOffset < minOffset) {
+        return minOffset;
+      } else {
+        return maxOffset;
+      }
+
+  }
+};
+
+var VariableSizeGrid = /*#__PURE__*/createGridComponent({
+  getColumnOffset: function getColumnOffset(props, index, instanceProps) {
+    return getItemMetadata('column', props, index, instanceProps).offset;
+  },
+  getColumnStartIndexForOffset: function getColumnStartIndexForOffset(props, scrollLeft, instanceProps) {
+    return findNearestItem('column', props, instanceProps, scrollLeft);
+  },
+  getColumnStopIndexForStartIndex: function getColumnStopIndexForStartIndex(props, startIndex, scrollLeft, instanceProps) {
+    var columnCount = props.columnCount,
+        width = props.width;
+    var itemMetadata = getItemMetadata('column', props, startIndex, instanceProps);
+    var maxOffset = scrollLeft + width;
+    var offset = itemMetadata.offset + itemMetadata.size;
+    var stopIndex = startIndex;
+
+    while (stopIndex < columnCount - 1 && offset < maxOffset) {
+      stopIndex++;
+      offset += getItemMetadata('column', props, stopIndex, instanceProps).size;
+    }
+
+    return stopIndex;
+  },
+  getColumnWidth: function getColumnWidth(props, index, instanceProps) {
+    return instanceProps.columnMetadataMap[index].size;
+  },
+  getEstimatedTotalHeight: getEstimatedTotalHeight,
+  getEstimatedTotalWidth: getEstimatedTotalWidth,
+  getOffsetForColumnAndAlignment: function getOffsetForColumnAndAlignment(props, index, align, scrollOffset, instanceProps, scrollbarSize) {
+    return getOffsetForIndexAndAlignment('column', props, index, align, scrollOffset, instanceProps, scrollbarSize);
+  },
+  getOffsetForRowAndAlignment: function getOffsetForRowAndAlignment(props, index, align, scrollOffset, instanceProps, scrollbarSize) {
+    return getOffsetForIndexAndAlignment('row', props, index, align, scrollOffset, instanceProps, scrollbarSize);
+  },
+  getRowOffset: function getRowOffset(props, index, instanceProps) {
+    return getItemMetadata('row', props, index, instanceProps).offset;
+  },
+  getRowHeight: function getRowHeight(props, index, instanceProps) {
+    return instanceProps.rowMetadataMap[index].size;
+  },
+  getRowStartIndexForOffset: function getRowStartIndexForOffset(props, scrollTop, instanceProps) {
+    return findNearestItem('row', props, instanceProps, scrollTop);
+  },
+  getRowStopIndexForStartIndex: function getRowStopIndexForStartIndex(props, startIndex, scrollTop, instanceProps) {
+    var rowCount = props.rowCount,
+        height = props.height;
+    var itemMetadata = getItemMetadata('row', props, startIndex, instanceProps);
+    var maxOffset = scrollTop + height;
+    var offset = itemMetadata.offset + itemMetadata.size;
+    var stopIndex = startIndex;
+
+    while (stopIndex < rowCount - 1 && offset < maxOffset) {
+      stopIndex++;
+      offset += getItemMetadata('row', props, stopIndex, instanceProps).size;
+    }
+
+    return stopIndex;
+  },
+  initInstanceProps: function initInstanceProps(props, instance) {
+    var _ref5 = props,
+        estimatedColumnWidth = _ref5.estimatedColumnWidth,
+        estimatedRowHeight = _ref5.estimatedRowHeight;
+    var instanceProps = {
+      columnMetadataMap: {},
+      estimatedColumnWidth: estimatedColumnWidth || DEFAULT_ESTIMATED_ITEM_SIZE,
+      estimatedRowHeight: estimatedRowHeight || DEFAULT_ESTIMATED_ITEM_SIZE,
+      lastMeasuredColumnIndex: -1,
+      lastMeasuredRowIndex: -1,
+      rowMetadataMap: {}
+    };
+
+    instance.resetAfterColumnIndex = function (columnIndex, shouldForceUpdate) {
+      if (shouldForceUpdate === void 0) {
+        shouldForceUpdate = true;
+      }
+
+      instance.resetAfterIndices({
+        columnIndex: columnIndex,
+        shouldForceUpdate: shouldForceUpdate
+      });
+    };
+
+    instance.resetAfterRowIndex = function (rowIndex, shouldForceUpdate) {
+      if (shouldForceUpdate === void 0) {
+        shouldForceUpdate = true;
+      }
+
+      instance.resetAfterIndices({
+        rowIndex: rowIndex,
+        shouldForceUpdate: shouldForceUpdate
+      });
+    };
+
+    instance.resetAfterIndices = function (_ref6) {
+      var columnIndex = _ref6.columnIndex,
+          rowIndex = _ref6.rowIndex,
+          _ref6$shouldForceUpda = _ref6.shouldForceUpdate,
+          shouldForceUpdate = _ref6$shouldForceUpda === void 0 ? true : _ref6$shouldForceUpda;
+
+      if (typeof columnIndex === 'number') {
+        instanceProps.lastMeasuredColumnIndex = Math.min(instanceProps.lastMeasuredColumnIndex, columnIndex - 1);
+      }
+
+      if (typeof rowIndex === 'number') {
+        instanceProps.lastMeasuredRowIndex = Math.min(instanceProps.lastMeasuredRowIndex, rowIndex - 1);
+      } // We could potentially optimize further by only evicting styles after this index,
+      // But since styles are only cached while scrolling is in progress-
+      // It seems an unnecessary optimization.
+      // It's unlikely that resetAfterIndex() will be called while a user is scrolling.
+
+
+      instance._getItemStyleCache(-1);
+
+      if (shouldForceUpdate) {
+        instance.forceUpdate();
+      }
+    };
+
+    return instanceProps;
+  },
+  shouldResetStyleCacheOnItemSizeChange: false,
+  validateProps: function validateProps(_ref7) {
+    var columnWidth = _ref7.columnWidth,
+        rowHeight = _ref7.rowHeight;
+
+    if (true) {
+      if (typeof columnWidth !== 'function') {
+        throw Error('An invalid "columnWidth" prop has been specified. ' + 'Value should be a function. ' + ("\"" + (columnWidth === null ? 'null' : typeof columnWidth) + "\" was specified."));
+      } else if (typeof rowHeight !== 'function') {
+        throw Error('An invalid "rowHeight" prop has been specified. ' + 'Value should be a function. ' + ("\"" + (rowHeight === null ? 'null' : typeof rowHeight) + "\" was specified."));
+      }
+    }
+  }
+});
+
+var IS_SCROLLING_DEBOUNCE_INTERVAL$1 = 150;
+
+var defaultItemKey$1 = function defaultItemKey(index, data) {
+  return index;
+}; // In DEV mode, this Set helps us only log a warning once per component instance.
+// This avoids spamming the console every time a render happens.
+
+
+var devWarningsDirection = null;
+var devWarningsTagName$1 = null;
+
+if (true) {
+  if (typeof window !== 'undefined' && typeof window.WeakSet !== 'undefined') {
+    devWarningsDirection = /*#__PURE__*/new WeakSet();
+    devWarningsTagName$1 = /*#__PURE__*/new WeakSet();
+  }
+}
+
+function createListComponent(_ref) {
+  var _class;
+
+  var getItemOffset = _ref.getItemOffset,
+      getEstimatedTotalSize = _ref.getEstimatedTotalSize,
+      getItemSize = _ref.getItemSize,
+      getOffsetForIndexAndAlignment = _ref.getOffsetForIndexAndAlignment,
+      getStartIndexForOffset = _ref.getStartIndexForOffset,
+      getStopIndexForStartIndex = _ref.getStopIndexForStartIndex,
+      initInstanceProps = _ref.initInstanceProps,
+      shouldResetStyleCacheOnItemSizeChange = _ref.shouldResetStyleCacheOnItemSizeChange,
+      validateProps = _ref.validateProps;
+  return _class = /*#__PURE__*/function (_PureComponent) {
+    (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__["default"])(List, _PureComponent);
+
+    // Always use explicit constructor for React components.
+    // It produces less code after transpilation. (#26)
+    // eslint-disable-next-line no-useless-constructor
+    function List(props) {
+      var _this;
+
+      _this = _PureComponent.call(this, props) || this;
+      _this._instanceProps = initInstanceProps(_this.props, (0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_1__["default"])(_this));
+      _this._outerRef = void 0;
+      _this._resetIsScrollingTimeoutId = null;
+      _this.state = {
+        instance: (0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_1__["default"])(_this),
+        isScrolling: false,
+        scrollDirection: 'forward',
+        scrollOffset: typeof _this.props.initialScrollOffset === 'number' ? _this.props.initialScrollOffset : 0,
+        scrollUpdateWasRequested: false
+      };
+      _this._callOnItemsRendered = void 0;
+      _this._callOnItemsRendered = (0,memoize_one__WEBPACK_IMPORTED_MODULE_5__["default"])(function (overscanStartIndex, overscanStopIndex, visibleStartIndex, visibleStopIndex) {
+        return _this.props.onItemsRendered({
+          overscanStartIndex: overscanStartIndex,
+          overscanStopIndex: overscanStopIndex,
+          visibleStartIndex: visibleStartIndex,
+          visibleStopIndex: visibleStopIndex
+        });
+      });
+      _this._callOnScroll = void 0;
+      _this._callOnScroll = (0,memoize_one__WEBPACK_IMPORTED_MODULE_5__["default"])(function (scrollDirection, scrollOffset, scrollUpdateWasRequested) {
+        return _this.props.onScroll({
+          scrollDirection: scrollDirection,
+          scrollOffset: scrollOffset,
+          scrollUpdateWasRequested: scrollUpdateWasRequested
+        });
+      });
+      _this._getItemStyle = void 0;
+
+      _this._getItemStyle = function (index) {
+        var _this$props = _this.props,
+            direction = _this$props.direction,
+            itemSize = _this$props.itemSize,
+            layout = _this$props.layout;
+
+        var itemStyleCache = _this._getItemStyleCache(shouldResetStyleCacheOnItemSizeChange && itemSize, shouldResetStyleCacheOnItemSizeChange && layout, shouldResetStyleCacheOnItemSizeChange && direction);
+
+        var style;
+
+        if (itemStyleCache.hasOwnProperty(index)) {
+          style = itemStyleCache[index];
+        } else {
+          var _offset = getItemOffset(_this.props, index, _this._instanceProps);
+
+          var size = getItemSize(_this.props, index, _this._instanceProps); // TODO Deprecate direction "horizontal"
+
+          var isHorizontal = direction === 'horizontal' || layout === 'horizontal';
+          var isRtl = direction === 'rtl';
+          var offsetHorizontal = isHorizontal ? _offset : 0;
+          itemStyleCache[index] = style = {
+            position: 'absolute',
+            left: isRtl ? undefined : offsetHorizontal,
+            right: isRtl ? offsetHorizontal : undefined,
+            top: !isHorizontal ? _offset : 0,
+            height: !isHorizontal ? size : '100%',
+            width: isHorizontal ? size : '100%'
+          };
+        }
+
+        return style;
+      };
+
+      _this._getItemStyleCache = void 0;
+      _this._getItemStyleCache = (0,memoize_one__WEBPACK_IMPORTED_MODULE_5__["default"])(function (_, __, ___) {
+        return {};
+      });
+
+      _this._onScrollHorizontal = function (event) {
+        var _event$currentTarget = event.currentTarget,
+            clientWidth = _event$currentTarget.clientWidth,
+            scrollLeft = _event$currentTarget.scrollLeft,
+            scrollWidth = _event$currentTarget.scrollWidth;
+
+        _this.setState(function (prevState) {
+          if (prevState.scrollOffset === scrollLeft) {
+            // Scroll position may have been updated by cDM/cDU,
+            // In which case we don't need to trigger another render,
+            // And we don't want to update state.isScrolling.
+            return null;
+          }
+
+          var direction = _this.props.direction;
+          var scrollOffset = scrollLeft;
+
+          if (direction === 'rtl') {
+            // TRICKY According to the spec, scrollLeft should be negative for RTL aligned elements.
+            // This is not the case for all browsers though (e.g. Chrome reports values as positive, measured relative to the left).
+            // It's also easier for this component if we convert offsets to the same format as they would be in for ltr.
+            // So the simplest solution is to determine which browser behavior we're dealing with, and convert based on it.
+            switch (getRTLOffsetType()) {
+              case 'negative':
+                scrollOffset = -scrollLeft;
+                break;
+
+              case 'positive-descending':
+                scrollOffset = scrollWidth - clientWidth - scrollLeft;
+                break;
+            }
+          } // Prevent Safari's elastic scrolling from causing visual shaking when scrolling past bounds.
+
+
+          scrollOffset = Math.max(0, Math.min(scrollOffset, scrollWidth - clientWidth));
+          return {
+            isScrolling: true,
+            scrollDirection: prevState.scrollOffset < scrollLeft ? 'forward' : 'backward',
+            scrollOffset: scrollOffset,
+            scrollUpdateWasRequested: false
+          };
+        }, _this._resetIsScrollingDebounced);
+      };
+
+      _this._onScrollVertical = function (event) {
+        var _event$currentTarget2 = event.currentTarget,
+            clientHeight = _event$currentTarget2.clientHeight,
+            scrollHeight = _event$currentTarget2.scrollHeight,
+            scrollTop = _event$currentTarget2.scrollTop;
+
+        _this.setState(function (prevState) {
+          if (prevState.scrollOffset === scrollTop) {
+            // Scroll position may have been updated by cDM/cDU,
+            // In which case we don't need to trigger another render,
+            // And we don't want to update state.isScrolling.
+            return null;
+          } // Prevent Safari's elastic scrolling from causing visual shaking when scrolling past bounds.
+
+
+          var scrollOffset = Math.max(0, Math.min(scrollTop, scrollHeight - clientHeight));
+          return {
+            isScrolling: true,
+            scrollDirection: prevState.scrollOffset < scrollOffset ? 'forward' : 'backward',
+            scrollOffset: scrollOffset,
+            scrollUpdateWasRequested: false
+          };
+        }, _this._resetIsScrollingDebounced);
+      };
+
+      _this._outerRefSetter = function (ref) {
+        var outerRef = _this.props.outerRef;
+        _this._outerRef = ref;
+
+        if (typeof outerRef === 'function') {
+          outerRef(ref);
+        } else if (outerRef != null && typeof outerRef === 'object' && outerRef.hasOwnProperty('current')) {
+          outerRef.current = ref;
+        }
+      };
+
+      _this._resetIsScrollingDebounced = function () {
+        if (_this._resetIsScrollingTimeoutId !== null) {
+          cancelTimeout(_this._resetIsScrollingTimeoutId);
+        }
+
+        _this._resetIsScrollingTimeoutId = requestTimeout(_this._resetIsScrolling, IS_SCROLLING_DEBOUNCE_INTERVAL$1);
+      };
+
+      _this._resetIsScrolling = function () {
+        _this._resetIsScrollingTimeoutId = null;
+
+        _this.setState({
+          isScrolling: false
+        }, function () {
+          // Clear style cache after state update has been committed.
+          // This way we don't break pure sCU for items that don't use isScrolling param.
+          _this._getItemStyleCache(-1, null);
+        });
+      };
+
+      return _this;
+    }
+
+    List.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps, prevState) {
+      validateSharedProps$1(nextProps, prevState);
+      validateProps(nextProps);
+      return null;
+    };
+
+    var _proto = List.prototype;
+
+    _proto.scrollTo = function scrollTo(scrollOffset) {
+      scrollOffset = Math.max(0, scrollOffset);
+      this.setState(function (prevState) {
+        if (prevState.scrollOffset === scrollOffset) {
+          return null;
+        }
+
+        return {
+          scrollDirection: prevState.scrollOffset < scrollOffset ? 'forward' : 'backward',
+          scrollOffset: scrollOffset,
+          scrollUpdateWasRequested: true
+        };
+      }, this._resetIsScrollingDebounced);
+    };
+
+    _proto.scrollToItem = function scrollToItem(index, align) {
+      if (align === void 0) {
+        align = 'auto';
+      }
+
+      var _this$props2 = this.props,
+          itemCount = _this$props2.itemCount,
+          layout = _this$props2.layout;
+      var scrollOffset = this.state.scrollOffset;
+      index = Math.max(0, Math.min(index, itemCount - 1)); // The scrollbar size should be considered when scrolling an item into view, to ensure it's fully visible.
+      // But we only need to account for its size when it's actually visible.
+      // This is an edge case for lists; normally they only scroll in the dominant direction.
+
+      var scrollbarSize = 0;
+
+      if (this._outerRef) {
+        var outerRef = this._outerRef;
+
+        if (layout === 'vertical') {
+          scrollbarSize = outerRef.scrollWidth > outerRef.clientWidth ? getScrollbarSize() : 0;
+        } else {
+          scrollbarSize = outerRef.scrollHeight > outerRef.clientHeight ? getScrollbarSize() : 0;
+        }
+      }
+
+      this.scrollTo(getOffsetForIndexAndAlignment(this.props, index, align, scrollOffset, this._instanceProps, scrollbarSize));
+    };
+
+    _proto.componentDidMount = function componentDidMount() {
+      var _this$props3 = this.props,
+          direction = _this$props3.direction,
+          initialScrollOffset = _this$props3.initialScrollOffset,
+          layout = _this$props3.layout;
+
+      if (typeof initialScrollOffset === 'number' && this._outerRef != null) {
+        var outerRef = this._outerRef; // TODO Deprecate direction "horizontal"
+
+        if (direction === 'horizontal' || layout === 'horizontal') {
+          outerRef.scrollLeft = initialScrollOffset;
+        } else {
+          outerRef.scrollTop = initialScrollOffset;
+        }
+      }
+
+      this._callPropsCallbacks();
+    };
+
+    _proto.componentDidUpdate = function componentDidUpdate() {
+      var _this$props4 = this.props,
+          direction = _this$props4.direction,
+          layout = _this$props4.layout;
+      var _this$state = this.state,
+          scrollOffset = _this$state.scrollOffset,
+          scrollUpdateWasRequested = _this$state.scrollUpdateWasRequested;
+
+      if (scrollUpdateWasRequested && this._outerRef != null) {
+        var outerRef = this._outerRef; // TODO Deprecate direction "horizontal"
+
+        if (direction === 'horizontal' || layout === 'horizontal') {
+          if (direction === 'rtl') {
+            // TRICKY According to the spec, scrollLeft should be negative for RTL aligned elements.
+            // This is not the case for all browsers though (e.g. Chrome reports values as positive, measured relative to the left).
+            // So we need to determine which browser behavior we're dealing with, and mimic it.
+            switch (getRTLOffsetType()) {
+              case 'negative':
+                outerRef.scrollLeft = -scrollOffset;
+                break;
+
+              case 'positive-ascending':
+                outerRef.scrollLeft = scrollOffset;
+                break;
+
+              default:
+                var clientWidth = outerRef.clientWidth,
+                    scrollWidth = outerRef.scrollWidth;
+                outerRef.scrollLeft = scrollWidth - clientWidth - scrollOffset;
+                break;
+            }
+          } else {
+            outerRef.scrollLeft = scrollOffset;
+          }
+        } else {
+          outerRef.scrollTop = scrollOffset;
+        }
+      }
+
+      this._callPropsCallbacks();
+    };
+
+    _proto.componentWillUnmount = function componentWillUnmount() {
+      if (this._resetIsScrollingTimeoutId !== null) {
+        cancelTimeout(this._resetIsScrollingTimeoutId);
+      }
+    };
+
+    _proto.render = function render() {
+      var _this$props5 = this.props,
+          children = _this$props5.children,
+          className = _this$props5.className,
+          direction = _this$props5.direction,
+          height = _this$props5.height,
+          innerRef = _this$props5.innerRef,
+          innerElementType = _this$props5.innerElementType,
+          innerTagName = _this$props5.innerTagName,
+          itemCount = _this$props5.itemCount,
+          itemData = _this$props5.itemData,
+          _this$props5$itemKey = _this$props5.itemKey,
+          itemKey = _this$props5$itemKey === void 0 ? defaultItemKey$1 : _this$props5$itemKey,
+          layout = _this$props5.layout,
+          outerElementType = _this$props5.outerElementType,
+          outerTagName = _this$props5.outerTagName,
+          style = _this$props5.style,
+          useIsScrolling = _this$props5.useIsScrolling,
+          width = _this$props5.width;
+      var isScrolling = this.state.isScrolling; // TODO Deprecate direction "horizontal"
+
+      var isHorizontal = direction === 'horizontal' || layout === 'horizontal';
+      var onScroll = isHorizontal ? this._onScrollHorizontal : this._onScrollVertical;
+
+      var _this$_getRangeToRend = this._getRangeToRender(),
+          startIndex = _this$_getRangeToRend[0],
+          stopIndex = _this$_getRangeToRend[1];
+
+      var items = [];
+
+      if (itemCount > 0) {
+        for (var _index = startIndex; _index <= stopIndex; _index++) {
+          items.push((0,react__WEBPACK_IMPORTED_MODULE_3__.createElement)(children, {
+            data: itemData,
+            key: itemKey(_index, itemData),
+            index: _index,
+            isScrolling: useIsScrolling ? isScrolling : undefined,
+            style: this._getItemStyle(_index)
+          }));
+        }
+      } // Read this value AFTER items have been created,
+      // So their actual sizes (if variable) are taken into consideration.
+
+
+      var estimatedTotalSize = getEstimatedTotalSize(this.props, this._instanceProps);
+      return (0,react__WEBPACK_IMPORTED_MODULE_3__.createElement)(outerElementType || outerTagName || 'div', {
+        className: className,
+        onScroll: onScroll,
+        ref: this._outerRefSetter,
+        style: (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+          position: 'relative',
+          height: height,
+          width: width,
+          overflow: 'auto',
+          WebkitOverflowScrolling: 'touch',
+          willChange: 'transform',
+          direction: direction
+        }, style)
+      }, (0,react__WEBPACK_IMPORTED_MODULE_3__.createElement)(innerElementType || innerTagName || 'div', {
+        children: items,
+        ref: innerRef,
+        style: {
+          height: isHorizontal ? '100%' : estimatedTotalSize,
+          pointerEvents: isScrolling ? 'none' : undefined,
+          width: isHorizontal ? estimatedTotalSize : '100%'
+        }
+      }));
+    };
+
+    _proto._callPropsCallbacks = function _callPropsCallbacks() {
+      if (typeof this.props.onItemsRendered === 'function') {
+        var itemCount = this.props.itemCount;
+
+        if (itemCount > 0) {
+          var _this$_getRangeToRend2 = this._getRangeToRender(),
+              _overscanStartIndex = _this$_getRangeToRend2[0],
+              _overscanStopIndex = _this$_getRangeToRend2[1],
+              _visibleStartIndex = _this$_getRangeToRend2[2],
+              _visibleStopIndex = _this$_getRangeToRend2[3];
+
+          this._callOnItemsRendered(_overscanStartIndex, _overscanStopIndex, _visibleStartIndex, _visibleStopIndex);
+        }
+      }
+
+      if (typeof this.props.onScroll === 'function') {
+        var _this$state2 = this.state,
+            _scrollDirection = _this$state2.scrollDirection,
+            _scrollOffset = _this$state2.scrollOffset,
+            _scrollUpdateWasRequested = _this$state2.scrollUpdateWasRequested;
+
+        this._callOnScroll(_scrollDirection, _scrollOffset, _scrollUpdateWasRequested);
+      }
+    } // Lazily create and cache item styles while scrolling,
+    // So that pure component sCU will prevent re-renders.
+    // We maintain this cache, and pass a style prop rather than index,
+    // So that List can clear cached styles and force item re-render if necessary.
+    ;
+
+    _proto._getRangeToRender = function _getRangeToRender() {
+      var _this$props6 = this.props,
+          itemCount = _this$props6.itemCount,
+          overscanCount = _this$props6.overscanCount;
+      var _this$state3 = this.state,
+          isScrolling = _this$state3.isScrolling,
+          scrollDirection = _this$state3.scrollDirection,
+          scrollOffset = _this$state3.scrollOffset;
+
+      if (itemCount === 0) {
+        return [0, 0, 0, 0];
+      }
+
+      var startIndex = getStartIndexForOffset(this.props, scrollOffset, this._instanceProps);
+      var stopIndex = getStopIndexForStartIndex(this.props, startIndex, scrollOffset, this._instanceProps); // Overscan by one item in each direction so that tab/focus works.
+      // If there isn't at least one extra item, tab loops back around.
+
+      var overscanBackward = !isScrolling || scrollDirection === 'backward' ? Math.max(1, overscanCount) : 1;
+      var overscanForward = !isScrolling || scrollDirection === 'forward' ? Math.max(1, overscanCount) : 1;
+      return [Math.max(0, startIndex - overscanBackward), Math.max(0, Math.min(itemCount - 1, stopIndex + overscanForward)), startIndex, stopIndex];
+    };
+
+    return List;
+  }(react__WEBPACK_IMPORTED_MODULE_3__.PureComponent), _class.defaultProps = {
+    direction: 'ltr',
+    itemData: undefined,
+    layout: 'vertical',
+    overscanCount: 2,
+    useIsScrolling: false
+  }, _class;
+} // NOTE: I considered further wrapping individual items with a pure ListItem component.
+// This would avoid ever calling the render function for the same index more than once,
+// But it would also add the overhead of a lot of components/fibers.
+// I assume people already do this (render function returning a class component),
+// So my doing it would just unnecessarily double the wrappers.
+
+var validateSharedProps$1 = function validateSharedProps(_ref2, _ref3) {
+  var children = _ref2.children,
+      direction = _ref2.direction,
+      height = _ref2.height,
+      layout = _ref2.layout,
+      innerTagName = _ref2.innerTagName,
+      outerTagName = _ref2.outerTagName,
+      width = _ref2.width;
+  var instance = _ref3.instance;
+
+  if (true) {
+    if (innerTagName != null || outerTagName != null) {
+      if (devWarningsTagName$1 && !devWarningsTagName$1.has(instance)) {
+        devWarningsTagName$1.add(instance);
+        console.warn('The innerTagName and outerTagName props have been deprecated. ' + 'Please use the innerElementType and outerElementType props instead.');
+      }
+    } // TODO Deprecate direction "horizontal"
+
+
+    var isHorizontal = direction === 'horizontal' || layout === 'horizontal';
+
+    switch (direction) {
+      case 'horizontal':
+      case 'vertical':
+        if (devWarningsDirection && !devWarningsDirection.has(instance)) {
+          devWarningsDirection.add(instance);
+          console.warn('The direction prop should be either "ltr" (default) or "rtl". ' + 'Please use the layout prop to specify "vertical" (default) or "horizontal" orientation.');
+        }
+
+        break;
+
+      case 'ltr':
+      case 'rtl':
+        // Valid values
+        break;
+
+      default:
+        throw Error('An invalid "direction" prop has been specified. ' + 'Value should be either "ltr" or "rtl". ' + ("\"" + direction + "\" was specified."));
+    }
+
+    switch (layout) {
+      case 'horizontal':
+      case 'vertical':
+        // Valid values
+        break;
+
+      default:
+        throw Error('An invalid "layout" prop has been specified. ' + 'Value should be either "horizontal" or "vertical". ' + ("\"" + layout + "\" was specified."));
+    }
+
+    if (children == null) {
+      throw Error('An invalid "children" prop has been specified. ' + 'Value should be a React component. ' + ("\"" + (children === null ? 'null' : typeof children) + "\" was specified."));
+    }
+
+    if (isHorizontal && typeof width !== 'number') {
+      throw Error('An invalid "width" prop has been specified. ' + 'Horizontal lists must specify a number for width. ' + ("\"" + (width === null ? 'null' : typeof width) + "\" was specified."));
+    } else if (!isHorizontal && typeof height !== 'number') {
+      throw Error('An invalid "height" prop has been specified. ' + 'Vertical lists must specify a number for height. ' + ("\"" + (height === null ? 'null' : typeof height) + "\" was specified."));
+    }
+  }
+};
+
+var DEFAULT_ESTIMATED_ITEM_SIZE$1 = 50;
+
+var getItemMetadata$1 = function getItemMetadata(props, index, instanceProps) {
+  var _ref = props,
+      itemSize = _ref.itemSize;
+  var itemMetadataMap = instanceProps.itemMetadataMap,
+      lastMeasuredIndex = instanceProps.lastMeasuredIndex;
+
+  if (index > lastMeasuredIndex) {
+    var offset = 0;
+
+    if (lastMeasuredIndex >= 0) {
+      var itemMetadata = itemMetadataMap[lastMeasuredIndex];
+      offset = itemMetadata.offset + itemMetadata.size;
+    }
+
+    for (var i = lastMeasuredIndex + 1; i <= index; i++) {
+      var size = itemSize(i);
+      itemMetadataMap[i] = {
+        offset: offset,
+        size: size
+      };
+      offset += size;
+    }
+
+    instanceProps.lastMeasuredIndex = index;
+  }
+
+  return itemMetadataMap[index];
+};
+
+var findNearestItem$1 = function findNearestItem(props, instanceProps, offset) {
+  var itemMetadataMap = instanceProps.itemMetadataMap,
+      lastMeasuredIndex = instanceProps.lastMeasuredIndex;
+  var lastMeasuredItemOffset = lastMeasuredIndex > 0 ? itemMetadataMap[lastMeasuredIndex].offset : 0;
+
+  if (lastMeasuredItemOffset >= offset) {
+    // If we've already measured items within this range just use a binary search as it's faster.
+    return findNearestItemBinarySearch$1(props, instanceProps, lastMeasuredIndex, 0, offset);
+  } else {
+    // If we haven't yet measured this high, fallback to an exponential search with an inner binary search.
+    // The exponential search avoids pre-computing sizes for the full set of items as a binary search would.
+    // The overall complexity for this approach is O(log n).
+    return findNearestItemExponentialSearch$1(props, instanceProps, Math.max(0, lastMeasuredIndex), offset);
+  }
+};
+
+var findNearestItemBinarySearch$1 = function findNearestItemBinarySearch(props, instanceProps, high, low, offset) {
+  while (low <= high) {
+    var middle = low + Math.floor((high - low) / 2);
+    var currentOffset = getItemMetadata$1(props, middle, instanceProps).offset;
+
+    if (currentOffset === offset) {
+      return middle;
+    } else if (currentOffset < offset) {
+      low = middle + 1;
+    } else if (currentOffset > offset) {
+      high = middle - 1;
+    }
+  }
+
+  if (low > 0) {
+    return low - 1;
+  } else {
+    return 0;
+  }
+};
+
+var findNearestItemExponentialSearch$1 = function findNearestItemExponentialSearch(props, instanceProps, index, offset) {
+  var itemCount = props.itemCount;
+  var interval = 1;
+
+  while (index < itemCount && getItemMetadata$1(props, index, instanceProps).offset < offset) {
+    index += interval;
+    interval *= 2;
+  }
+
+  return findNearestItemBinarySearch$1(props, instanceProps, Math.min(index, itemCount - 1), Math.floor(index / 2), offset);
+};
+
+var getEstimatedTotalSize = function getEstimatedTotalSize(_ref2, _ref3) {
+  var itemCount = _ref2.itemCount;
+  var itemMetadataMap = _ref3.itemMetadataMap,
+      estimatedItemSize = _ref3.estimatedItemSize,
+      lastMeasuredIndex = _ref3.lastMeasuredIndex;
+  var totalSizeOfMeasuredItems = 0; // Edge case check for when the number of items decreases while a scroll is in progress.
+  // https://github.com/bvaughn/react-window/pull/138
+
+  if (lastMeasuredIndex >= itemCount) {
+    lastMeasuredIndex = itemCount - 1;
+  }
+
+  if (lastMeasuredIndex >= 0) {
+    var itemMetadata = itemMetadataMap[lastMeasuredIndex];
+    totalSizeOfMeasuredItems = itemMetadata.offset + itemMetadata.size;
+  }
+
+  var numUnmeasuredItems = itemCount - lastMeasuredIndex - 1;
+  var totalSizeOfUnmeasuredItems = numUnmeasuredItems * estimatedItemSize;
+  return totalSizeOfMeasuredItems + totalSizeOfUnmeasuredItems;
+};
+
+var VariableSizeList = /*#__PURE__*/createListComponent({
+  getItemOffset: function getItemOffset(props, index, instanceProps) {
+    return getItemMetadata$1(props, index, instanceProps).offset;
+  },
+  getItemSize: function getItemSize(props, index, instanceProps) {
+    return instanceProps.itemMetadataMap[index].size;
+  },
+  getEstimatedTotalSize: getEstimatedTotalSize,
+  getOffsetForIndexAndAlignment: function getOffsetForIndexAndAlignment(props, index, align, scrollOffset, instanceProps, scrollbarSize) {
+    var direction = props.direction,
+        height = props.height,
+        layout = props.layout,
+        width = props.width; // TODO Deprecate direction "horizontal"
+
+    var isHorizontal = direction === 'horizontal' || layout === 'horizontal';
+    var size = isHorizontal ? width : height;
+    var itemMetadata = getItemMetadata$1(props, index, instanceProps); // Get estimated total size after ItemMetadata is computed,
+    // To ensure it reflects actual measurements instead of just estimates.
+
+    var estimatedTotalSize = getEstimatedTotalSize(props, instanceProps);
+    var maxOffset = Math.max(0, Math.min(estimatedTotalSize - size, itemMetadata.offset));
+    var minOffset = Math.max(0, itemMetadata.offset - size + itemMetadata.size + scrollbarSize);
+
+    if (align === 'smart') {
+      if (scrollOffset >= minOffset - size && scrollOffset <= maxOffset + size) {
+        align = 'auto';
+      } else {
+        align = 'center';
+      }
+    }
+
+    switch (align) {
+      case 'start':
+        return maxOffset;
+
+      case 'end':
+        return minOffset;
+
+      case 'center':
+        return Math.round(minOffset + (maxOffset - minOffset) / 2);
+
+      case 'auto':
+      default:
+        if (scrollOffset >= minOffset && scrollOffset <= maxOffset) {
+          return scrollOffset;
+        } else if (scrollOffset < minOffset) {
+          return minOffset;
+        } else {
+          return maxOffset;
+        }
+
+    }
+  },
+  getStartIndexForOffset: function getStartIndexForOffset(props, offset, instanceProps) {
+    return findNearestItem$1(props, instanceProps, offset);
+  },
+  getStopIndexForStartIndex: function getStopIndexForStartIndex(props, startIndex, scrollOffset, instanceProps) {
+    var direction = props.direction,
+        height = props.height,
+        itemCount = props.itemCount,
+        layout = props.layout,
+        width = props.width; // TODO Deprecate direction "horizontal"
+
+    var isHorizontal = direction === 'horizontal' || layout === 'horizontal';
+    var size = isHorizontal ? width : height;
+    var itemMetadata = getItemMetadata$1(props, startIndex, instanceProps);
+    var maxOffset = scrollOffset + size;
+    var offset = itemMetadata.offset + itemMetadata.size;
+    var stopIndex = startIndex;
+
+    while (stopIndex < itemCount - 1 && offset < maxOffset) {
+      stopIndex++;
+      offset += getItemMetadata$1(props, stopIndex, instanceProps).size;
+    }
+
+    return stopIndex;
+  },
+  initInstanceProps: function initInstanceProps(props, instance) {
+    var _ref4 = props,
+        estimatedItemSize = _ref4.estimatedItemSize;
+    var instanceProps = {
+      itemMetadataMap: {},
+      estimatedItemSize: estimatedItemSize || DEFAULT_ESTIMATED_ITEM_SIZE$1,
+      lastMeasuredIndex: -1
+    };
+
+    instance.resetAfterIndex = function (index, shouldForceUpdate) {
+      if (shouldForceUpdate === void 0) {
+        shouldForceUpdate = true;
+      }
+
+      instanceProps.lastMeasuredIndex = Math.min(instanceProps.lastMeasuredIndex, index - 1); // We could potentially optimize further by only evicting styles after this index,
+      // But since styles are only cached while scrolling is in progress-
+      // It seems an unnecessary optimization.
+      // It's unlikely that resetAfterIndex() will be called while a user is scrolling.
+
+      instance._getItemStyleCache(-1);
+
+      if (shouldForceUpdate) {
+        instance.forceUpdate();
+      }
+    };
+
+    return instanceProps;
+  },
+  shouldResetStyleCacheOnItemSizeChange: false,
+  validateProps: function validateProps(_ref5) {
+    var itemSize = _ref5.itemSize;
+
+    if (true) {
+      if (typeof itemSize !== 'function') {
+        throw Error('An invalid "itemSize" prop has been specified. ' + 'Value should be a function. ' + ("\"" + (itemSize === null ? 'null' : typeof itemSize) + "\" was specified."));
+      }
+    }
+  }
+});
+
+var FixedSizeGrid = /*#__PURE__*/createGridComponent({
+  getColumnOffset: function getColumnOffset(_ref, index) {
+    var columnWidth = _ref.columnWidth;
+    return index * columnWidth;
+  },
+  getColumnWidth: function getColumnWidth(_ref2, index) {
+    var columnWidth = _ref2.columnWidth;
+    return columnWidth;
+  },
+  getRowOffset: function getRowOffset(_ref3, index) {
+    var rowHeight = _ref3.rowHeight;
+    return index * rowHeight;
+  },
+  getRowHeight: function getRowHeight(_ref4, index) {
+    var rowHeight = _ref4.rowHeight;
+    return rowHeight;
+  },
+  getEstimatedTotalHeight: function getEstimatedTotalHeight(_ref5) {
+    var rowCount = _ref5.rowCount,
+        rowHeight = _ref5.rowHeight;
+    return rowHeight * rowCount;
+  },
+  getEstimatedTotalWidth: function getEstimatedTotalWidth(_ref6) {
+    var columnCount = _ref6.columnCount,
+        columnWidth = _ref6.columnWidth;
+    return columnWidth * columnCount;
+  },
+  getOffsetForColumnAndAlignment: function getOffsetForColumnAndAlignment(_ref7, columnIndex, align, scrollLeft, instanceProps, scrollbarSize) {
+    var columnCount = _ref7.columnCount,
+        columnWidth = _ref7.columnWidth,
+        width = _ref7.width;
+    var lastColumnOffset = Math.max(0, columnCount * columnWidth - width);
+    var maxOffset = Math.min(lastColumnOffset, columnIndex * columnWidth);
+    var minOffset = Math.max(0, columnIndex * columnWidth - width + scrollbarSize + columnWidth);
+
+    if (align === 'smart') {
+      if (scrollLeft >= minOffset - width && scrollLeft <= maxOffset + width) {
+        align = 'auto';
+      } else {
+        align = 'center';
+      }
+    }
+
+    switch (align) {
+      case 'start':
+        return maxOffset;
+
+      case 'end':
+        return minOffset;
+
+      case 'center':
+        // "Centered" offset is usually the average of the min and max.
+        // But near the edges of the list, this doesn't hold true.
+        var middleOffset = Math.round(minOffset + (maxOffset - minOffset) / 2);
+
+        if (middleOffset < Math.ceil(width / 2)) {
+          return 0; // near the beginning
+        } else if (middleOffset > lastColumnOffset + Math.floor(width / 2)) {
+          return lastColumnOffset; // near the end
+        } else {
+          return middleOffset;
+        }
+
+      case 'auto':
+      default:
+        if (scrollLeft >= minOffset && scrollLeft <= maxOffset) {
+          return scrollLeft;
+        } else if (minOffset > maxOffset) {
+          // Because we only take into account the scrollbar size when calculating minOffset
+          // this value can be larger than maxOffset when at the end of the list
+          return minOffset;
+        } else if (scrollLeft < minOffset) {
+          return minOffset;
+        } else {
+          return maxOffset;
+        }
+
+    }
+  },
+  getOffsetForRowAndAlignment: function getOffsetForRowAndAlignment(_ref8, rowIndex, align, scrollTop, instanceProps, scrollbarSize) {
+    var rowHeight = _ref8.rowHeight,
+        height = _ref8.height,
+        rowCount = _ref8.rowCount;
+    var lastRowOffset = Math.max(0, rowCount * rowHeight - height);
+    var maxOffset = Math.min(lastRowOffset, rowIndex * rowHeight);
+    var minOffset = Math.max(0, rowIndex * rowHeight - height + scrollbarSize + rowHeight);
+
+    if (align === 'smart') {
+      if (scrollTop >= minOffset - height && scrollTop <= maxOffset + height) {
+        align = 'auto';
+      } else {
+        align = 'center';
+      }
+    }
+
+    switch (align) {
+      case 'start':
+        return maxOffset;
+
+      case 'end':
+        return minOffset;
+
+      case 'center':
+        // "Centered" offset is usually the average of the min and max.
+        // But near the edges of the list, this doesn't hold true.
+        var middleOffset = Math.round(minOffset + (maxOffset - minOffset) / 2);
+
+        if (middleOffset < Math.ceil(height / 2)) {
+          return 0; // near the beginning
+        } else if (middleOffset > lastRowOffset + Math.floor(height / 2)) {
+          return lastRowOffset; // near the end
+        } else {
+          return middleOffset;
+        }
+
+      case 'auto':
+      default:
+        if (scrollTop >= minOffset && scrollTop <= maxOffset) {
+          return scrollTop;
+        } else if (minOffset > maxOffset) {
+          // Because we only take into account the scrollbar size when calculating minOffset
+          // this value can be larger than maxOffset when at the end of the list
+          return minOffset;
+        } else if (scrollTop < minOffset) {
+          return minOffset;
+        } else {
+          return maxOffset;
+        }
+
+    }
+  },
+  getColumnStartIndexForOffset: function getColumnStartIndexForOffset(_ref9, scrollLeft) {
+    var columnWidth = _ref9.columnWidth,
+        columnCount = _ref9.columnCount;
+    return Math.max(0, Math.min(columnCount - 1, Math.floor(scrollLeft / columnWidth)));
+  },
+  getColumnStopIndexForStartIndex: function getColumnStopIndexForStartIndex(_ref10, startIndex, scrollLeft) {
+    var columnWidth = _ref10.columnWidth,
+        columnCount = _ref10.columnCount,
+        width = _ref10.width;
+    var left = startIndex * columnWidth;
+    var numVisibleColumns = Math.ceil((width + scrollLeft - left) / columnWidth);
+    return Math.max(0, Math.min(columnCount - 1, startIndex + numVisibleColumns - 1 // -1 is because stop index is inclusive
+    ));
+  },
+  getRowStartIndexForOffset: function getRowStartIndexForOffset(_ref11, scrollTop) {
+    var rowHeight = _ref11.rowHeight,
+        rowCount = _ref11.rowCount;
+    return Math.max(0, Math.min(rowCount - 1, Math.floor(scrollTop / rowHeight)));
+  },
+  getRowStopIndexForStartIndex: function getRowStopIndexForStartIndex(_ref12, startIndex, scrollTop) {
+    var rowHeight = _ref12.rowHeight,
+        rowCount = _ref12.rowCount,
+        height = _ref12.height;
+    var top = startIndex * rowHeight;
+    var numVisibleRows = Math.ceil((height + scrollTop - top) / rowHeight);
+    return Math.max(0, Math.min(rowCount - 1, startIndex + numVisibleRows - 1 // -1 is because stop index is inclusive
+    ));
+  },
+  initInstanceProps: function initInstanceProps(props) {// Noop
+  },
+  shouldResetStyleCacheOnItemSizeChange: true,
+  validateProps: function validateProps(_ref13) {
+    var columnWidth = _ref13.columnWidth,
+        rowHeight = _ref13.rowHeight;
+
+    if (true) {
+      if (typeof columnWidth !== 'number') {
+        throw Error('An invalid "columnWidth" prop has been specified. ' + 'Value should be a number. ' + ("\"" + (columnWidth === null ? 'null' : typeof columnWidth) + "\" was specified."));
+      }
+
+      if (typeof rowHeight !== 'number') {
+        throw Error('An invalid "rowHeight" prop has been specified. ' + 'Value should be a number. ' + ("\"" + (rowHeight === null ? 'null' : typeof rowHeight) + "\" was specified."));
+      }
+    }
+  }
+});
+
+var FixedSizeList = /*#__PURE__*/createListComponent({
+  getItemOffset: function getItemOffset(_ref, index) {
+    var itemSize = _ref.itemSize;
+    return index * itemSize;
+  },
+  getItemSize: function getItemSize(_ref2, index) {
+    var itemSize = _ref2.itemSize;
+    return itemSize;
+  },
+  getEstimatedTotalSize: function getEstimatedTotalSize(_ref3) {
+    var itemCount = _ref3.itemCount,
+        itemSize = _ref3.itemSize;
+    return itemSize * itemCount;
+  },
+  getOffsetForIndexAndAlignment: function getOffsetForIndexAndAlignment(_ref4, index, align, scrollOffset, instanceProps, scrollbarSize) {
+    var direction = _ref4.direction,
+        height = _ref4.height,
+        itemCount = _ref4.itemCount,
+        itemSize = _ref4.itemSize,
+        layout = _ref4.layout,
+        width = _ref4.width;
+    // TODO Deprecate direction "horizontal"
+    var isHorizontal = direction === 'horizontal' || layout === 'horizontal';
+    var size = isHorizontal ? width : height;
+    var lastItemOffset = Math.max(0, itemCount * itemSize - size);
+    var maxOffset = Math.min(lastItemOffset, index * itemSize);
+    var minOffset = Math.max(0, index * itemSize - size + itemSize + scrollbarSize);
+
+    if (align === 'smart') {
+      if (scrollOffset >= minOffset - size && scrollOffset <= maxOffset + size) {
+        align = 'auto';
+      } else {
+        align = 'center';
+      }
+    }
+
+    switch (align) {
+      case 'start':
+        return maxOffset;
+
+      case 'end':
+        return minOffset;
+
+      case 'center':
+        {
+          // "Centered" offset is usually the average of the min and max.
+          // But near the edges of the list, this doesn't hold true.
+          var middleOffset = Math.round(minOffset + (maxOffset - minOffset) / 2);
+
+          if (middleOffset < Math.ceil(size / 2)) {
+            return 0; // near the beginning
+          } else if (middleOffset > lastItemOffset + Math.floor(size / 2)) {
+            return lastItemOffset; // near the end
+          } else {
+            return middleOffset;
+          }
+        }
+
+      case 'auto':
+      default:
+        if (scrollOffset >= minOffset && scrollOffset <= maxOffset) {
+          return scrollOffset;
+        } else if (scrollOffset < minOffset) {
+          return minOffset;
+        } else {
+          return maxOffset;
+        }
+
+    }
+  },
+  getStartIndexForOffset: function getStartIndexForOffset(_ref5, offset) {
+    var itemCount = _ref5.itemCount,
+        itemSize = _ref5.itemSize;
+    return Math.max(0, Math.min(itemCount - 1, Math.floor(offset / itemSize)));
+  },
+  getStopIndexForStartIndex: function getStopIndexForStartIndex(_ref6, startIndex, scrollOffset) {
+    var direction = _ref6.direction,
+        height = _ref6.height,
+        itemCount = _ref6.itemCount,
+        itemSize = _ref6.itemSize,
+        layout = _ref6.layout,
+        width = _ref6.width;
+    // TODO Deprecate direction "horizontal"
+    var isHorizontal = direction === 'horizontal' || layout === 'horizontal';
+    var offset = startIndex * itemSize;
+    var size = isHorizontal ? width : height;
+    var numVisibleItems = Math.ceil((size + scrollOffset - offset) / itemSize);
+    return Math.max(0, Math.min(itemCount - 1, startIndex + numVisibleItems - 1 // -1 is because stop index is inclusive
+    ));
+  },
+  initInstanceProps: function initInstanceProps(props) {// Noop
+  },
+  shouldResetStyleCacheOnItemSizeChange: true,
+  validateProps: function validateProps(_ref7) {
+    var itemSize = _ref7.itemSize;
+
+    if (true) {
+      if (typeof itemSize !== 'number') {
+        throw Error('An invalid "itemSize" prop has been specified. ' + 'Value should be a number. ' + ("\"" + (itemSize === null ? 'null' : typeof itemSize) + "\" was specified."));
+      }
+    }
+  }
+});
+
+// Pulled from react-compat
+// https://github.com/developit/preact-compat/blob/7c5de00e7c85e2ffd011bf3af02899b63f699d3a/src/index.js#L349
+function shallowDiffers(prev, next) {
+  for (var attribute in prev) {
+    if (!(attribute in next)) {
+      return true;
+    }
+  }
+
+  for (var _attribute in next) {
+    if (prev[_attribute] !== next[_attribute]) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+var _excluded = ["style"],
+    _excluded2 = ["style"];
+// It knows to compare individual style props and ignore the wrapper object.
+// See https://reactjs.org/docs/react-api.html#reactmemo
+
+function areEqual(prevProps, nextProps) {
+  var prevStyle = prevProps.style,
+      prevRest = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_4__["default"])(prevProps, _excluded);
+
+  var nextStyle = nextProps.style,
+      nextRest = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_4__["default"])(nextProps, _excluded2);
+
+  return !shallowDiffers(prevStyle, nextStyle) && !shallowDiffers(prevRest, nextRest);
+}
+
+// It knows to compare individual style props and ignore the wrapper object.
+// See https://reactjs.org/docs/react-component.html#shouldcomponentupdate
+
+function shouldComponentUpdate(nextProps, nextState) {
+  return !areEqual(this.props, nextProps) || shallowDiffers(this.state, nextState);
+}
+
+
+//# sourceMappingURL=index.esm.js.map
+
+
+/***/ }),
+
 /***/ "react":
 /*!************************!*\
   !*** external "React" ***!
@@ -3761,6 +7672,16 @@ module.exports = window["wp"]["element"];
 /***/ (function(module) {
 
 module.exports = window["wp"]["i18n"];
+
+/***/ }),
+
+/***/ "@wordpress/primitives":
+/*!************************************!*\
+  !*** external ["wp","primitives"] ***!
+  \************************************/
+/***/ (function(module) {
+
+module.exports = window["wp"]["primitives"];
 
 /***/ }),
 
@@ -3885,6 +7806,38 @@ var ue=(o=>(o[o.Open=0]="Open",o[o.Closed=1]="Closed",o))(ue||{}),se=(o=>(o[o.Po
 
 /***/ }),
 
+/***/ "./node_modules/@headlessui/react/dist/components/popover/popover.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@headlessui/react/dist/components/popover/popover.js ***!
+  \***************************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Popover": function() { return /* binding */ mt; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var _utils_match_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/match.js */ "./node_modules/@headlessui/react/dist/utils/match.js");
+/* harmony import */ var _utils_render_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/render.js */ "./node_modules/@headlessui/react/dist/utils/render.js");
+/* harmony import */ var _hooks_use_sync_refs_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../hooks/use-sync-refs.js */ "./node_modules/@headlessui/react/dist/hooks/use-sync-refs.js");
+/* harmony import */ var _hooks_use_id_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../hooks/use-id.js */ "./node_modules/@headlessui/react/dist/hooks/use-id.js");
+/* harmony import */ var _keyboard_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../keyboard.js */ "./node_modules/@headlessui/react/dist/components/keyboard.js");
+/* harmony import */ var _utils_bugs_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utils/bugs.js */ "./node_modules/@headlessui/react/dist/utils/bugs.js");
+/* harmony import */ var _utils_focus_management_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/focus-management.js */ "./node_modules/@headlessui/react/dist/utils/focus-management.js");
+/* harmony import */ var _internal_open_closed_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../internal/open-closed.js */ "./node_modules/@headlessui/react/dist/internal/open-closed.js");
+/* harmony import */ var _hooks_use_resolve_button_type_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../hooks/use-resolve-button-type.js */ "./node_modules/@headlessui/react/dist/hooks/use-resolve-button-type.js");
+/* harmony import */ var _hooks_use_outside_click_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../hooks/use-outside-click.js */ "./node_modules/@headlessui/react/dist/hooks/use-outside-click.js");
+/* harmony import */ var _utils_owner_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../utils/owner.js */ "./node_modules/@headlessui/react/dist/utils/owner.js");
+/* harmony import */ var _hooks_use_owner_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../hooks/use-owner.js */ "./node_modules/@headlessui/react/dist/hooks/use-owner.js");
+/* harmony import */ var _hooks_use_event_listener_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../hooks/use-event-listener.js */ "./node_modules/@headlessui/react/dist/hooks/use-event-listener.js");
+/* harmony import */ var _internal_hidden_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../internal/hidden.js */ "./node_modules/@headlessui/react/dist/internal/hidden.js");
+/* harmony import */ var _hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../hooks/use-event.js */ "./node_modules/@headlessui/react/dist/hooks/use-event.js");
+/* harmony import */ var _hooks_use_tab_direction_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../hooks/use-tab-direction.js */ "./node_modules/@headlessui/react/dist/hooks/use-tab-direction.js");
+var Ae=(f=>(f[f.Open=0]="Open",f[f.Closed=1]="Closed",f))(Ae||{}),Ce=(n=>(n[n.TogglePopover=0]="TogglePopover",n[n.ClosePopover=1]="ClosePopover",n[n.SetButton=2]="SetButton",n[n.SetButtonId=3]="SetButtonId",n[n.SetPanel=4]="SetPanel",n[n.SetPanelId=5]="SetPanelId",n))(Ce||{});let Re={[0]:r=>({...r,popoverState:(0,_utils_match_js__WEBPACK_IMPORTED_MODULE_1__.match)(r.popoverState,{[0]:1,[1]:0})}),[1](r){return r.popoverState===1?r:{...r,popoverState:1}},[2](r,t){return r.button===t.button?r:{...r,button:t.button}},[3](r,t){return r.buttonId===t.buttonId?r:{...r,buttonId:t.buttonId}},[4](r,t){return r.panel===t.panel?r:{...r,panel:t.panel}},[5](r,t){return r.panelId===t.panelId?r:{...r,panelId:t.panelId}}},te=(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(null);te.displayName="PopoverContext";function Q(r){let t=(0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(te);if(t===null){let f=new Error(`<${r} /> is missing a parent <Popover /> component.`);throw Error.captureStackTrace&&Error.captureStackTrace(f,Q),f}return t}let oe=(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(null);oe.displayName="PopoverAPIContext";function re(r){let t=(0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(oe);if(t===null){let f=new Error(`<${r} /> is missing a parent <Popover /> component.`);throw Error.captureStackTrace&&Error.captureStackTrace(f,re),f}return t}let ne=(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(null);ne.displayName="PopoverGroupContext";function ce(){return (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(ne)}let le=(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(null);le.displayName="PopoverPanelContext";function Oe(){return (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(le)}function Me(r,t){return (0,_utils_match_js__WEBPACK_IMPORTED_MODULE_1__.match)(t.type,Re,r,t)}let Le="div",Ie=(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_2__.forwardRefWithAs)(function(t,f){var O;let o=`headlessui-popover-button-${(0,_hooks_use_id_js__WEBPACK_IMPORTED_MODULE_3__.useId)()}`,v=`headlessui-popover-panel-${(0,_hooks_use_id_js__WEBPACK_IMPORTED_MODULE_3__.useId)()}`,a=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null),n=(0,_hooks_use_sync_refs_js__WEBPACK_IMPORTED_MODULE_4__.useSyncRefs)(f,(0,_hooks_use_sync_refs_js__WEBPACK_IMPORTED_MODULE_4__.optionalRef)(e=>{a.current=e})),g=(0,react__WEBPACK_IMPORTED_MODULE_0__.useReducer)(Me,{popoverState:1,button:null,buttonId:o,panel:null,panelId:v,beforePanelSentinel:(0,react__WEBPACK_IMPORTED_MODULE_0__.createRef)(),afterPanelSentinel:(0,react__WEBPACK_IMPORTED_MODULE_0__.createRef)()}),[{popoverState:y,button:l,panel:P,beforePanelSentinel:s,afterPanelSentinel:B},i]=g,T=(0,_hooks_use_owner_js__WEBPACK_IMPORTED_MODULE_5__.useOwnerDocument)((O=a.current)!=null?O:l);(0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(()=>i({type:3,buttonId:o}),[o,i]),(0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(()=>i({type:5,panelId:v}),[v,i]);let c=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>{if(!l||!P)return!1;for(let M of document.querySelectorAll("body > *"))if(Number(M==null?void 0:M.contains(l))^Number(M==null?void 0:M.contains(P)))return!0;let e=(0,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_6__.getFocusableElements)(),p=e.indexOf(l),m=(p+e.length-1)%e.length,C=(p+1)%e.length,D=e[m],V=e[C];return!P.contains(D)&&!P.contains(V)},[l,P]),d=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>({buttonId:o,panelId:v,close:()=>i({type:1})}),[o,v,i]),E=ce(),A=E==null?void 0:E.registerPopover,L=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(()=>{var e;return(e=E==null?void 0:E.isFocusWithinPopoverGroup())!=null?e:(T==null?void 0:T.activeElement)&&((l==null?void 0:l.contains(T.activeElement))||(P==null?void 0:P.contains(T.activeElement)))});(0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(()=>A==null?void 0:A(d),[A,d]),(0,_hooks_use_event_listener_js__WEBPACK_IMPORTED_MODULE_8__.useEventListener)(T==null?void 0:T.defaultView,"focus",e=>{var p,m,C,D;y===0&&(L()||!l||!P||(m=(p=s.current)==null?void 0:p.contains)!=null&&m.call(p,e.target)||(D=(C=B.current)==null?void 0:C.contains)!=null&&D.call(C,e.target)||i({type:1}))},!0),(0,_hooks_use_outside_click_js__WEBPACK_IMPORTED_MODULE_9__.useOutsideClick)([l,P],(e,p)=>{i({type:1}),(0,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_6__.isFocusableElement)(p,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_6__.FocusableMode.Loose)||(e.preventDefault(),l==null||l.focus())},y===0);let I=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(e=>{i({type:1});let p=(()=>e?e instanceof HTMLElement?e:"current"in e&&e.current instanceof HTMLElement?e.current:l:l)();p==null||p.focus()}),H=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>({close:I,isPortalled:c}),[I,c]),u=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>({open:y===0,close:I}),[y,I]),S=t,R={ref:n};return react__WEBPACK_IMPORTED_MODULE_0__.createElement(te.Provider,{value:g},react__WEBPACK_IMPORTED_MODULE_0__.createElement(oe.Provider,{value:H},react__WEBPACK_IMPORTED_MODULE_0__.createElement(_internal_open_closed_js__WEBPACK_IMPORTED_MODULE_10__.OpenClosedProvider,{value:(0,_utils_match_js__WEBPACK_IMPORTED_MODULE_1__.match)(y,{[0]:_internal_open_closed_js__WEBPACK_IMPORTED_MODULE_10__.State.Open,[1]:_internal_open_closed_js__WEBPACK_IMPORTED_MODULE_10__.State.Closed})},(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_2__.render)({ourProps:R,theirProps:S,slot:u,defaultTag:Le,name:"Popover"}))))}),Fe="button",he=(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_2__.forwardRefWithAs)(function(t,f){let[o,v]=Q("Popover.Button"),{isPortalled:a}=re("Popover.Button"),n=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null),g=`headlessui-focus-sentinel-${(0,_hooks_use_id_js__WEBPACK_IMPORTED_MODULE_3__.useId)()}`,y=ce(),l=y==null?void 0:y.closeOthers,P=Oe(),s=P===null?!1:P===o.panelId,B=(0,_hooks_use_sync_refs_js__WEBPACK_IMPORTED_MODULE_4__.useSyncRefs)(n,f,s?null:e=>v({type:2,button:e})),i=(0,_hooks_use_sync_refs_js__WEBPACK_IMPORTED_MODULE_4__.useSyncRefs)(n,f),T=(0,_hooks_use_owner_js__WEBPACK_IMPORTED_MODULE_5__.useOwnerDocument)(n),c=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(e=>{var p,m,C;if(s){if(o.popoverState===1)return;switch(e.key){case _keyboard_js__WEBPACK_IMPORTED_MODULE_11__.Keys.Space:case _keyboard_js__WEBPACK_IMPORTED_MODULE_11__.Keys.Enter:e.preventDefault(),(m=(p=e.target).click)==null||m.call(p),v({type:1}),(C=o.button)==null||C.focus();break}}else switch(e.key){case _keyboard_js__WEBPACK_IMPORTED_MODULE_11__.Keys.Space:case _keyboard_js__WEBPACK_IMPORTED_MODULE_11__.Keys.Enter:e.preventDefault(),e.stopPropagation(),o.popoverState===1&&(l==null||l(o.buttonId)),v({type:0});break;case _keyboard_js__WEBPACK_IMPORTED_MODULE_11__.Keys.Escape:if(o.popoverState!==0)return l==null?void 0:l(o.buttonId);if(!n.current||(T==null?void 0:T.activeElement)&&!n.current.contains(T.activeElement))return;e.preventDefault(),e.stopPropagation(),v({type:1});break}}),d=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(e=>{s||e.key===_keyboard_js__WEBPACK_IMPORTED_MODULE_11__.Keys.Space&&e.preventDefault()}),E=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(e=>{var p,m;(0,_utils_bugs_js__WEBPACK_IMPORTED_MODULE_12__.isDisabledReactIssue7711)(e.currentTarget)||t.disabled||(s?(v({type:1}),(p=o.button)==null||p.focus()):(e.preventDefault(),e.stopPropagation(),o.popoverState===1&&(l==null||l(o.buttonId)),v({type:0}),(m=o.button)==null||m.focus()))}),A=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(e=>{e.preventDefault(),e.stopPropagation()}),L=o.popoverState===0,I=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>({open:L}),[L]),H=(0,_hooks_use_resolve_button_type_js__WEBPACK_IMPORTED_MODULE_13__.useResolveButtonType)(t,n),u=t,S=s?{ref:i,type:H,onKeyDown:c,onClick:E}:{ref:B,id:o.buttonId,type:H,"aria-expanded":t.disabled?void 0:o.popoverState===0,"aria-controls":o.panel?o.panelId:void 0,onKeyDown:c,onKeyUp:d,onClick:E,onMouseDown:A},R=(0,_hooks_use_tab_direction_js__WEBPACK_IMPORTED_MODULE_14__.useTabDirection)(),O=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(()=>{let e=o.panel;if(!e)return;function p(){(0,_utils_match_js__WEBPACK_IMPORTED_MODULE_1__.match)(R.current,{[_hooks_use_tab_direction_js__WEBPACK_IMPORTED_MODULE_14__.Direction.Forwards]:()=>(0,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_6__.focusIn)(e,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_6__.Focus.First),[_hooks_use_tab_direction_js__WEBPACK_IMPORTED_MODULE_14__.Direction.Backwards]:()=>(0,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_6__.focusIn)(e,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_6__.Focus.Last)})}p()});return react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment,null,(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_2__.render)({ourProps:S,theirProps:u,slot:I,defaultTag:Fe,name:"Popover.Button"}),L&&!s&&a&&react__WEBPACK_IMPORTED_MODULE_0__.createElement(_internal_hidden_js__WEBPACK_IMPORTED_MODULE_15__.Hidden,{id:g,features:_internal_hidden_js__WEBPACK_IMPORTED_MODULE_15__.Features.Focusable,as:"button",type:"button",onFocus:O}))}),Be="div",De=_utils_render_js__WEBPACK_IMPORTED_MODULE_2__.Features.RenderStrategy|_utils_render_js__WEBPACK_IMPORTED_MODULE_2__.Features.Static,xe=(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_2__.forwardRefWithAs)(function(t,f){let[{popoverState:o},v]=Q("Popover.Overlay"),a=(0,_hooks_use_sync_refs_js__WEBPACK_IMPORTED_MODULE_4__.useSyncRefs)(f),n=`headlessui-popover-overlay-${(0,_hooks_use_id_js__WEBPACK_IMPORTED_MODULE_3__.useId)()}`,g=(0,_internal_open_closed_js__WEBPACK_IMPORTED_MODULE_10__.useOpenClosed)(),y=(()=>g!==null?g===_internal_open_closed_js__WEBPACK_IMPORTED_MODULE_10__.State.Open:o===0)(),l=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(i=>{if((0,_utils_bugs_js__WEBPACK_IMPORTED_MODULE_12__.isDisabledReactIssue7711)(i.currentTarget))return i.preventDefault();v({type:1})}),P=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>({open:o===0}),[o]);return (0,_utils_render_js__WEBPACK_IMPORTED_MODULE_2__.render)({ourProps:{ref:a,id:n,"aria-hidden":!0,onClick:l},theirProps:t,slot:P,defaultTag:Be,features:De,visible:y,name:"Popover.Overlay"})}),He="div",Ge=_utils_render_js__WEBPACK_IMPORTED_MODULE_2__.Features.RenderStrategy|_utils_render_js__WEBPACK_IMPORTED_MODULE_2__.Features.Static,ke=(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_2__.forwardRefWithAs)(function(t,f){let{focus:o=!1,...v}=t,[a,n]=Q("Popover.Panel"),{close:g,isPortalled:y}=re("Popover.Panel"),l=`headlessui-focus-sentinel-before-${(0,_hooks_use_id_js__WEBPACK_IMPORTED_MODULE_3__.useId)()}`,P=`headlessui-focus-sentinel-after-${(0,_hooks_use_id_js__WEBPACK_IMPORTED_MODULE_3__.useId)()}`,s=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null),B=(0,_hooks_use_sync_refs_js__WEBPACK_IMPORTED_MODULE_4__.useSyncRefs)(s,f,u=>{n({type:4,panel:u})}),i=(0,_hooks_use_owner_js__WEBPACK_IMPORTED_MODULE_5__.useOwnerDocument)(s),T=(0,_internal_open_closed_js__WEBPACK_IMPORTED_MODULE_10__.useOpenClosed)(),c=(()=>T!==null?T===_internal_open_closed_js__WEBPACK_IMPORTED_MODULE_10__.State.Open:a.popoverState===0)(),d=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(u=>{var S;switch(u.key){case _keyboard_js__WEBPACK_IMPORTED_MODULE_11__.Keys.Escape:if(a.popoverState!==0||!s.current||(i==null?void 0:i.activeElement)&&!s.current.contains(i.activeElement))return;u.preventDefault(),u.stopPropagation(),n({type:1}),(S=a.button)==null||S.focus();break}});(0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(()=>{var u;t.static||a.popoverState===1&&((u=t.unmount)!=null?u:!0)&&n({type:4,panel:null})},[a.popoverState,t.unmount,t.static,n]),(0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(()=>{if(!o||a.popoverState!==0||!s.current)return;let u=i==null?void 0:i.activeElement;s.current.contains(u)||(0,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_6__.focusIn)(s.current,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_6__.Focus.First)},[o,s,a.popoverState]);let E=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>({open:a.popoverState===0,close:g}),[a,g]),A={ref:B,id:a.panelId,onKeyDown:d,onBlur:o&&a.popoverState===0?u=>{var R,O,e,p,m;let S=u.relatedTarget;!S||!s.current||(R=s.current)!=null&&R.contains(S)||(n({type:1}),(((e=(O=a.beforePanelSentinel.current)==null?void 0:O.contains)==null?void 0:e.call(O,S))||((m=(p=a.afterPanelSentinel.current)==null?void 0:p.contains)==null?void 0:m.call(p,S)))&&S.focus({preventScroll:!0}))}:void 0,tabIndex:-1},L=(0,_hooks_use_tab_direction_js__WEBPACK_IMPORTED_MODULE_14__.useTabDirection)(),I=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(()=>{let u=s.current;if(!u)return;function S(){(0,_utils_match_js__WEBPACK_IMPORTED_MODULE_1__.match)(L.current,{[_hooks_use_tab_direction_js__WEBPACK_IMPORTED_MODULE_14__.Direction.Forwards]:()=>{(0,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_6__.focusIn)(u,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_6__.Focus.First)},[_hooks_use_tab_direction_js__WEBPACK_IMPORTED_MODULE_14__.Direction.Backwards]:()=>{var R;(R=a.button)==null||R.focus({preventScroll:!0})}})}S()}),H=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(()=>{let u=s.current;if(!u)return;function S(){(0,_utils_match_js__WEBPACK_IMPORTED_MODULE_1__.match)(L.current,{[_hooks_use_tab_direction_js__WEBPACK_IMPORTED_MODULE_14__.Direction.Forwards]:()=>{var C,D,V;if(!a.button)return;let R=(0,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_6__.getFocusableElements)(),O=R.indexOf(a.button),e=R.slice(0,O+1),m=[...R.slice(O+1),...e];for(let M of m.slice())if(((D=(C=M==null?void 0:M.id)==null?void 0:C.startsWith)==null?void 0:D.call(C,"headlessui-focus-sentinel-"))||((V=a.panel)==null?void 0:V.contains(M))){let ae=m.indexOf(M);ae!==-1&&m.splice(ae,1)}(0,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_6__.focusIn)(m,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_6__.Focus.First,!1)},[_hooks_use_tab_direction_js__WEBPACK_IMPORTED_MODULE_14__.Direction.Backwards]:()=>(0,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_6__.focusIn)(u,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_6__.Focus.Last)})}S()});return react__WEBPACK_IMPORTED_MODULE_0__.createElement(le.Provider,{value:a.panelId},c&&y&&react__WEBPACK_IMPORTED_MODULE_0__.createElement(_internal_hidden_js__WEBPACK_IMPORTED_MODULE_15__.Hidden,{id:l,ref:a.beforePanelSentinel,features:_internal_hidden_js__WEBPACK_IMPORTED_MODULE_15__.Features.Focusable,as:"button",type:"button",onFocus:I}),(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_2__.render)({ourProps:A,theirProps:v,slot:E,defaultTag:He,features:Ge,visible:c,name:"Popover.Panel"}),c&&y&&react__WEBPACK_IMPORTED_MODULE_0__.createElement(_internal_hidden_js__WEBPACK_IMPORTED_MODULE_15__.Hidden,{id:P,ref:a.afterPanelSentinel,features:_internal_hidden_js__WEBPACK_IMPORTED_MODULE_15__.Features.Focusable,as:"button",type:"button",onFocus:H}))}),_e="div",we=(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_2__.forwardRefWithAs)(function(t,f){let o=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null),v=(0,_hooks_use_sync_refs_js__WEBPACK_IMPORTED_MODULE_4__.useSyncRefs)(o,f),[a,n]=(0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),g=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(c=>{n(d=>{let E=d.indexOf(c);if(E!==-1){let A=d.slice();return A.splice(E,1),A}return d})}),y=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(c=>(n(d=>[...d,c]),()=>g(c))),l=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(()=>{var E;let c=(0,_utils_owner_js__WEBPACK_IMPORTED_MODULE_16__.getOwnerDocument)(o);if(!c)return!1;let d=c.activeElement;return(E=o.current)!=null&&E.contains(d)?!0:a.some(A=>{var L,I;return((L=c.getElementById(A.buttonId))==null?void 0:L.contains(d))||((I=c.getElementById(A.panelId))==null?void 0:I.contains(d))})}),P=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(c=>{for(let d of a)d.buttonId!==c&&d.close()}),s=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>({registerPopover:y,unregisterPopover:g,isFocusWithinPopoverGroup:l,closeOthers:P}),[y,g,l,P]),B=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>({}),[]),i=t,T={ref:v};return react__WEBPACK_IMPORTED_MODULE_0__.createElement(ne.Provider,{value:s},(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_2__.render)({ourProps:T,theirProps:i,slot:B,defaultTag:_e,name:"Popover.Group"}))}),mt=Object.assign(Ie,{Button:he,Overlay:xe,Panel:ke,Group:we});
+
+
+/***/ }),
+
 /***/ "./node_modules/@headlessui/react/dist/components/radio-group/radio-group.js":
 /*!***********************************************************************************!*\
   !*** ./node_modules/@headlessui/react/dist/components/radio-group/radio-group.js ***!
@@ -3914,6 +7867,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hooks_use_controllable_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../hooks/use-controllable.js */ "./node_modules/@headlessui/react/dist/hooks/use-controllable.js");
 /* harmony import */ var _utils_bugs_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../utils/bugs.js */ "./node_modules/@headlessui/react/dist/utils/bugs.js");
 var ye=(t=>(t[t.RegisterOption=0]="RegisterOption",t[t.UnregisterOption=1]="UnregisterOption",t))(ye||{});let ge={[0](a,n){let t=[...a.options,{id:n.id,element:n.element,propsRef:n.propsRef}];return{...a,options:(0,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.sortByDomNode)(t,l=>l.element.current)}},[1](a,n){let t=a.options.slice(),l=a.options.findIndex(O=>O.id===n.id);return l===-1?a:(t.splice(l,1),{...a,options:t})}},$=(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(null);$.displayName="RadioGroupContext";function te(a){let n=(0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)($);if(n===null){let t=new Error(`<${a} /> is missing a parent <RadioGroup /> component.`);throw Error.captureStackTrace&&Error.captureStackTrace(t,te),t}return n}function ve(a,n){return (0,_utils_match_js__WEBPACK_IMPORTED_MODULE_2__.match)(n.type,ge,a,n)}let Oe="div",Ee=(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_3__.forwardRefWithAs)(function(n,t){let{value:l,defaultValue:O,name:c,onChange:M,by:E=(e,r)=>e===r,disabled:P=!1,...S}=n,u=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_4__.useEvent)(typeof E=="string"?(e,r)=>{let o=E;return(e==null?void 0:e[o])===(r==null?void 0:r[o])}:E),[_,A]=(0,react__WEBPACK_IMPORTED_MODULE_0__.useReducer)(ve,{options:[]}),i=_.options,[R,U]=(0,_components_label_label_js__WEBPACK_IMPORTED_MODULE_5__.useLabels)(),[f,D]=(0,_components_description_description_js__WEBPACK_IMPORTED_MODULE_6__.useDescriptions)(),H=`headlessui-radiogroup-${(0,_hooks_use_id_js__WEBPACK_IMPORTED_MODULE_7__.useId)()}`,h=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null),G=(0,_hooks_use_sync_refs_js__WEBPACK_IMPORTED_MODULE_8__.useSyncRefs)(h,t),[p,k]=(0,_hooks_use_controllable_js__WEBPACK_IMPORTED_MODULE_9__.useControllable)(l,M,O),F=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>i.find(e=>!e.propsRef.current.disabled),[i]),L=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>i.some(e=>u(e.propsRef.current.value,p)),[i,p]),T=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_4__.useEvent)(e=>{var o;if(P||u(e,p))return!1;let r=(o=i.find(w=>u(w.propsRef.current.value,e)))==null?void 0:o.propsRef.current;return r!=null&&r.disabled?!1:(k==null||k(e),!0)});(0,_hooks_use_tree_walker_js__WEBPACK_IMPORTED_MODULE_10__.useTreeWalker)({container:h.current,accept(e){return e.getAttribute("role")==="radio"?NodeFilter.FILTER_REJECT:e.hasAttribute("role")?NodeFilter.FILTER_SKIP:NodeFilter.FILTER_ACCEPT},walk(e){e.setAttribute("role","none")}});let N=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_4__.useEvent)(e=>{let r=h.current;if(!r)return;let o=(0,_utils_owner_js__WEBPACK_IMPORTED_MODULE_11__.getOwnerDocument)(r),w=i.filter(d=>d.propsRef.current.disabled===!1).map(d=>d.element.current);switch(e.key){case _components_keyboard_js__WEBPACK_IMPORTED_MODULE_12__.Keys.Enter:(0,_utils_form_js__WEBPACK_IMPORTED_MODULE_13__.attemptSubmit)(e.currentTarget);break;case _components_keyboard_js__WEBPACK_IMPORTED_MODULE_12__.Keys.ArrowLeft:case _components_keyboard_js__WEBPACK_IMPORTED_MODULE_12__.Keys.ArrowUp:if(e.preventDefault(),e.stopPropagation(),(0,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.focusIn)(w,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.Focus.Previous|_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.Focus.WrapAround)===_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.FocusResult.Success){let m=i.find(K=>K.element.current===(o==null?void 0:o.activeElement));m&&T(m.propsRef.current.value)}break;case _components_keyboard_js__WEBPACK_IMPORTED_MODULE_12__.Keys.ArrowRight:case _components_keyboard_js__WEBPACK_IMPORTED_MODULE_12__.Keys.ArrowDown:if(e.preventDefault(),e.stopPropagation(),(0,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.focusIn)(w,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.Focus.Next|_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.Focus.WrapAround)===_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.FocusResult.Success){let m=i.find(K=>K.element.current===(o==null?void 0:o.activeElement));m&&T(m.propsRef.current.value)}break;case _components_keyboard_js__WEBPACK_IMPORTED_MODULE_12__.Keys.Space:{e.preventDefault(),e.stopPropagation();let d=i.find(m=>m.element.current===(o==null?void 0:o.activeElement));d&&T(d.propsRef.current.value)}break}}),x=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_4__.useEvent)(e=>(A({type:0,...e}),()=>A({type:1,id:e.id}))),s=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>({registerOption:x,firstOption:F,containsCheckedOption:L,change:T,disabled:P,value:p,compare:u}),[x,F,L,T,P,p,u]),y={ref:G,id:H,role:"radiogroup","aria-labelledby":R,"aria-describedby":f,onKeyDown:N},W=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>({value:p}),[p]);return react__WEBPACK_IMPORTED_MODULE_0__.createElement(D,{name:"RadioGroup.Description"},react__WEBPACK_IMPORTED_MODULE_0__.createElement(U,{name:"RadioGroup.Label"},react__WEBPACK_IMPORTED_MODULE_0__.createElement($.Provider,{value:s},c!=null&&p!=null&&(0,_utils_form_js__WEBPACK_IMPORTED_MODULE_13__.objectToFormEntries)({[c]:p}).map(([e,r])=>react__WEBPACK_IMPORTED_MODULE_0__.createElement(_internal_hidden_js__WEBPACK_IMPORTED_MODULE_14__.Hidden,{features:_internal_hidden_js__WEBPACK_IMPORTED_MODULE_14__.Features.Hidden,...(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_3__.compact)({key:e,as:"input",type:"radio",checked:r!=null,hidden:!0,readOnly:!0,name:e,value:r})})),(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_3__.render)({ourProps:y,theirProps:S,slot:W,defaultTag:Oe,name:"RadioGroup"}))))});var Pe=(t=>(t[t.Empty=1]="Empty",t[t.Active=2]="Active",t))(Pe||{});let Ae="div",he=(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_3__.forwardRefWithAs)(function(n,t){let l=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null),O=(0,_hooks_use_sync_refs_js__WEBPACK_IMPORTED_MODULE_8__.useSyncRefs)(l,t),c=`headlessui-radiogroup-option-${(0,_hooks_use_id_js__WEBPACK_IMPORTED_MODULE_7__.useId)()}`,[M,E]=(0,_components_label_label_js__WEBPACK_IMPORTED_MODULE_5__.useLabels)(),[P,S]=(0,_components_description_description_js__WEBPACK_IMPORTED_MODULE_6__.useDescriptions)(),{addFlag:u,removeFlag:_,hasFlag:A}=(0,_hooks_use_flags_js__WEBPACK_IMPORTED_MODULE_15__.useFlags)(1),{value:i,disabled:R=!1,...U}=n,f=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)({value:i,disabled:R});(0,_hooks_use_iso_morphic_effect_js__WEBPACK_IMPORTED_MODULE_16__.useIsoMorphicEffect)(()=>{f.current.value=i},[i,f]),(0,_hooks_use_iso_morphic_effect_js__WEBPACK_IMPORTED_MODULE_16__.useIsoMorphicEffect)(()=>{f.current.disabled=R},[R,f]);let{registerOption:D,disabled:H,change:h,firstOption:G,containsCheckedOption:p,value:k,compare:F}=te("RadioGroup.Option");(0,_hooks_use_iso_morphic_effect_js__WEBPACK_IMPORTED_MODULE_16__.useIsoMorphicEffect)(()=>D({id:c,element:l,propsRef:f}),[c,D,l,n]);let L=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_4__.useEvent)(r=>{var o;if((0,_utils_bugs_js__WEBPACK_IMPORTED_MODULE_17__.isDisabledReactIssue7711)(r.currentTarget))return r.preventDefault();!h(i)||(u(2),(o=l.current)==null||o.focus())}),T=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_4__.useEvent)(r=>{if((0,_utils_bugs_js__WEBPACK_IMPORTED_MODULE_17__.isDisabledReactIssue7711)(r.currentTarget))return r.preventDefault();u(2)}),N=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_4__.useEvent)(()=>_(2)),x=(G==null?void 0:G.id)===c,s=H||R,y=F(k,i),W={ref:O,id:c,role:"radio","aria-checked":y?"true":"false","aria-labelledby":M,"aria-describedby":P,"aria-disabled":s?!0:void 0,tabIndex:(()=>s?-1:y||!p&&x?0:-1)(),onClick:s?void 0:L,onFocus:s?void 0:T,onBlur:s?void 0:N},e=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>({checked:y,disabled:s,active:A(2)}),[y,s,A]);return react__WEBPACK_IMPORTED_MODULE_0__.createElement(S,{name:"RadioGroup.Description"},react__WEBPACK_IMPORTED_MODULE_0__.createElement(E,{name:"RadioGroup.Label"},(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_3__.render)({ourProps:W,theirProps:U,slot:e,defaultTag:Ae,name:"RadioGroup.Option"})))}),et=Object.assign(Ee,{Option:he,Label:_components_label_label_js__WEBPACK_IMPORTED_MODULE_5__.Label,Description:_components_description_description_js__WEBPACK_IMPORTED_MODULE_6__.Description});
+
+
+/***/ }),
+
+/***/ "./node_modules/@headlessui/react/dist/components/tabs/tabs.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@headlessui/react/dist/components/tabs/tabs.js ***!
+  \*********************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Tab": function() { return /* binding */ qe; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var _utils_render_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/render.js */ "./node_modules/@headlessui/react/dist/utils/render.js");
+/* harmony import */ var _hooks_use_id_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../hooks/use-id.js */ "./node_modules/@headlessui/react/dist/hooks/use-id.js");
+/* harmony import */ var _utils_match_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/match.js */ "./node_modules/@headlessui/react/dist/utils/match.js");
+/* harmony import */ var _components_keyboard_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/keyboard.js */ "./node_modules/@headlessui/react/dist/components/keyboard.js");
+/* harmony import */ var _utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/focus-management.js */ "./node_modules/@headlessui/react/dist/utils/focus-management.js");
+/* harmony import */ var _hooks_use_iso_morphic_effect_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../hooks/use-iso-morphic-effect.js */ "./node_modules/@headlessui/react/dist/hooks/use-iso-morphic-effect.js");
+/* harmony import */ var _hooks_use_sync_refs_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../hooks/use-sync-refs.js */ "./node_modules/@headlessui/react/dist/hooks/use-sync-refs.js");
+/* harmony import */ var _hooks_use_resolve_button_type_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../hooks/use-resolve-button-type.js */ "./node_modules/@headlessui/react/dist/hooks/use-resolve-button-type.js");
+/* harmony import */ var _hooks_use_latest_value_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../hooks/use-latest-value.js */ "./node_modules/@headlessui/react/dist/hooks/use-latest-value.js");
+/* harmony import */ var _internal_focus_sentinel_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../internal/focus-sentinel.js */ "./node_modules/@headlessui/react/dist/internal/focus-sentinel.js");
+/* harmony import */ var _hooks_use_event_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../hooks/use-event.js */ "./node_modules/@headlessui/react/dist/hooks/use-event.js");
+/* harmony import */ var _utils_micro_task_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utils/micro-task.js */ "./node_modules/@headlessui/react/dist/utils/micro-task.js");
+/* harmony import */ var _internal_hidden_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../internal/hidden.js */ "./node_modules/@headlessui/react/dist/internal/hidden.js");
+/* harmony import */ var _utils_owner_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/owner.js */ "./node_modules/@headlessui/react/dist/utils/owner.js");
+var de=(n=>(n[n.SetSelectedIndex=0]="SetSelectedIndex",n[n.RegisterTab=1]="RegisterTab",n[n.UnregisterTab=2]="UnregisterTab",n[n.RegisterPanel=3]="RegisterPanel",n[n.UnregisterPanel=4]="UnregisterPanel",n))(de||{});let pe={[0](e,t){let r=e.tabs.filter(i=>{var l;return!((l=i.current)!=null&&l.hasAttribute("disabled"))});if(t.index<0)return{...e,selectedIndex:e.tabs.indexOf(r[0])};if(t.index>e.tabs.length)return{...e,selectedIndex:e.tabs.indexOf(r[r.length-1])};let o=e.tabs.slice(0,t.index),n=[...e.tabs.slice(t.index),...o].find(i=>r.includes(i));return n?{...e,selectedIndex:e.tabs.indexOf(n)}:e},[1](e,t){var n;if(e.tabs.includes(t.tab))return e;let r=e.tabs[e.selectedIndex],o=(0,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.sortByDomNode)([...e.tabs,t.tab],i=>i.current),s=(n=o.indexOf(r))!=null?n:e.selectedIndex;return s===-1&&(s=e.selectedIndex),{...e,tabs:o,selectedIndex:s}},[2](e,t){return{...e,tabs:e.tabs.filter(r=>r!==t.tab)}},[3](e,t){return e.panels.includes(t.panel)?e:{...e,panels:(0,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.sortByDomNode)([...e.panels,t.panel],r=>r.current)}},[4](e,t){return{...e,panels:e.panels.filter(r=>r!==t.panel)}}},z=(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(null);z.displayName="TabsSSRContext";function V(e){let t=(0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(z);if(t===null){let r=new Error(`<${e} /> is missing a parent <Tab.Group /> component.`);throw Error.captureStackTrace&&Error.captureStackTrace(r,V),r}return t}let q=(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(null);q.displayName="TabsDataContext";function D(e){let t=(0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(q);if(t===null){let r=new Error(`<${e} /> is missing a parent <Tab.Group /> component.`);throw Error.captureStackTrace&&Error.captureStackTrace(r,D),r}return t}let J=(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(null);J.displayName="TabsActionsContext";function Q(e){let t=(0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(J);if(t===null){let r=new Error(`<${e} /> is missing a parent <Tab.Group /> component.`);throw Error.captureStackTrace&&Error.captureStackTrace(r,Q),r}return t}function fe(e,t){return (0,_utils_match_js__WEBPACK_IMPORTED_MODULE_2__.match)(t.type,pe,e,t)}let be=react__WEBPACK_IMPORTED_MODULE_0__.Fragment,Te=(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_3__.forwardRefWithAs)(function(t,r){let{defaultIndex:o=0,vertical:s=!1,manual:n=!1,onChange:i,selectedIndex:l=null,...y}=t;const p=s?"vertical":"horizontal",S=n?"manual":"auto";let b=l!==null,u=(0,_hooks_use_sync_refs_js__WEBPACK_IMPORTED_MODULE_4__.useSyncRefs)(r),[c,f]=(0,react__WEBPACK_IMPORTED_MODULE_0__.useReducer)(fe,{selectedIndex:l!=null?l:o,tabs:[],panels:[]}),T=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>({selectedIndex:c.selectedIndex}),[c.selectedIndex]),x=(0,_hooks_use_latest_value_js__WEBPACK_IMPORTED_MODULE_5__.useLatestValue)(i||(()=>{})),R=(0,_hooks_use_latest_value_js__WEBPACK_IMPORTED_MODULE_5__.useLatestValue)(c.tabs),E=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>({orientation:p,activation:S,...c}),[p,S,c]),A=(0,_hooks_use_latest_value_js__WEBPACK_IMPORTED_MODULE_5__.useLatestValue)(b?t.selectedIndex:c.selectedIndex),L=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>({registerTab(d){return f({type:1,tab:d}),()=>f({type:2,tab:d})},registerPanel(d){return f({type:3,panel:d}),()=>f({type:4,panel:d})},change(d){A.current!==d&&x.current(d),b||f({type:0,index:d})}}),[f,b]);(0,_hooks_use_iso_morphic_effect_js__WEBPACK_IMPORTED_MODULE_6__.useIsoMorphicEffect)(()=>{f({type:0,index:l!=null?l:o})},[l]);let k=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)({tabs:[],panels:[]}),G={ref:u};return react__WEBPACK_IMPORTED_MODULE_0__.createElement(z.Provider,{value:k},react__WEBPACK_IMPORTED_MODULE_0__.createElement(J.Provider,{value:L},react__WEBPACK_IMPORTED_MODULE_0__.createElement(q.Provider,{value:E},E.tabs.length<=0&&react__WEBPACK_IMPORTED_MODULE_0__.createElement(_internal_focus_sentinel_js__WEBPACK_IMPORTED_MODULE_7__.FocusSentinel,{onFocus:()=>{var d,U;for(let M of R.current)if(((d=M.current)==null?void 0:d.tabIndex)===0)return(U=M.current)==null||U.focus(),!0;return!1}}),(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_3__.render)({ourProps:G,theirProps:y,slot:T,defaultTag:be,name:"Tabs"}))))}),me="div",Pe=(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_3__.forwardRefWithAs)(function(t,r){let{orientation:o,selectedIndex:s}=D("Tab.List"),n=(0,_hooks_use_sync_refs_js__WEBPACK_IMPORTED_MODULE_4__.useSyncRefs)(r);return (0,_utils_render_js__WEBPACK_IMPORTED_MODULE_3__.render)({ourProps:{ref:n,role:"tablist","aria-orientation":o},theirProps:t,slot:{selectedIndex:s},defaultTag:me,name:"Tabs.List"})}),xe="button",ge=(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_3__.forwardRefWithAs)(function(t,r){var M,X;let o=`headlessui-tabs-tab-${(0,_hooks_use_id_js__WEBPACK_IMPORTED_MODULE_8__.useId)()}`,{orientation:s,activation:n,selectedIndex:i,tabs:l,panels:y}=D("Tab"),p=Q("Tab"),S=D("Tab"),b=V("Tab"),u=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null),c=(0,_hooks_use_sync_refs_js__WEBPACK_IMPORTED_MODULE_4__.useSyncRefs)(u,r);(0,_hooks_use_iso_morphic_effect_js__WEBPACK_IMPORTED_MODULE_6__.useIsoMorphicEffect)(()=>p.registerTab(u),[p,u]);let f=b.current.tabs.indexOf(o);f===-1&&(f=b.current.tabs.push(o)-1);let T=l.indexOf(u);T===-1&&(T=f);let x=T===i,R=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_9__.useEvent)(a=>{var j;let g=a();if(g===_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.FocusResult.Success&&n==="auto"){let W=(j=(0,_utils_owner_js__WEBPACK_IMPORTED_MODULE_10__.getOwnerDocument)(u))==null?void 0:j.activeElement,Y=S.tabs.findIndex(ne=>ne.current===W);Y!==-1&&p.change(Y)}return g}),E=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_9__.useEvent)(a=>{let g=l.map(W=>W.current).filter(Boolean);if(a.key===_components_keyboard_js__WEBPACK_IMPORTED_MODULE_11__.Keys.Space||a.key===_components_keyboard_js__WEBPACK_IMPORTED_MODULE_11__.Keys.Enter){a.preventDefault(),a.stopPropagation(),p.change(T);return}switch(a.key){case _components_keyboard_js__WEBPACK_IMPORTED_MODULE_11__.Keys.Home:case _components_keyboard_js__WEBPACK_IMPORTED_MODULE_11__.Keys.PageUp:return a.preventDefault(),a.stopPropagation(),R(()=>(0,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.focusIn)(g,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.Focus.First));case _components_keyboard_js__WEBPACK_IMPORTED_MODULE_11__.Keys.End:case _components_keyboard_js__WEBPACK_IMPORTED_MODULE_11__.Keys.PageDown:return a.preventDefault(),a.stopPropagation(),R(()=>(0,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.focusIn)(g,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.Focus.Last))}if(R(()=>(0,_utils_match_js__WEBPACK_IMPORTED_MODULE_2__.match)(s,{vertical(){return a.key===_components_keyboard_js__WEBPACK_IMPORTED_MODULE_11__.Keys.ArrowUp?(0,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.focusIn)(g,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.Focus.Previous|_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.Focus.WrapAround):a.key===_components_keyboard_js__WEBPACK_IMPORTED_MODULE_11__.Keys.ArrowDown?(0,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.focusIn)(g,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.Focus.Next|_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.Focus.WrapAround):_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.FocusResult.Error},horizontal(){return a.key===_components_keyboard_js__WEBPACK_IMPORTED_MODULE_11__.Keys.ArrowLeft?(0,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.focusIn)(g,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.Focus.Previous|_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.Focus.WrapAround):a.key===_components_keyboard_js__WEBPACK_IMPORTED_MODULE_11__.Keys.ArrowRight?(0,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.focusIn)(g,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.Focus.Next|_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.Focus.WrapAround):_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.FocusResult.Error}}))===_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.FocusResult.Success)return a.preventDefault()}),A=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(!1),L=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_9__.useEvent)(()=>{var a;A.current||(A.current=!0,(a=u.current)==null||a.focus(),p.change(T),(0,_utils_micro_task_js__WEBPACK_IMPORTED_MODULE_12__.microTask)(()=>{A.current=!1}))}),k=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_9__.useEvent)(a=>{a.preventDefault()}),G=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>({selected:x}),[x]),d=t,U={ref:c,onKeyDown:E,onMouseDown:k,onClick:L,id:o,role:"tab",type:(0,_hooks_use_resolve_button_type_js__WEBPACK_IMPORTED_MODULE_13__.useResolveButtonType)(t,u),"aria-controls":(X=(M=y[T])==null?void 0:M.current)==null?void 0:X.id,"aria-selected":x,tabIndex:x?0:-1};return (0,_utils_render_js__WEBPACK_IMPORTED_MODULE_3__.render)({ourProps:U,theirProps:d,slot:G,defaultTag:xe,name:"Tabs.Tab"})}),ye="div",Re=(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_3__.forwardRefWithAs)(function(t,r){let{selectedIndex:o}=D("Tab.Panels"),s=(0,_hooks_use_sync_refs_js__WEBPACK_IMPORTED_MODULE_4__.useSyncRefs)(r),n=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>({selectedIndex:o}),[o]);return (0,_utils_render_js__WEBPACK_IMPORTED_MODULE_3__.render)({ourProps:{ref:s},theirProps:t,slot:n,defaultTag:ye,name:"Tabs.Panels"})}),Ae="div",Ee=_utils_render_js__WEBPACK_IMPORTED_MODULE_3__.Features.RenderStrategy|_utils_render_js__WEBPACK_IMPORTED_MODULE_3__.Features.Static,Se=(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_3__.forwardRefWithAs)(function(t,r){var R,E,A,L;let{selectedIndex:o,tabs:s,panels:n}=D("Tab.Panel"),i=Q("Tab.Panel"),l=V("Tab.Panel"),y=`headlessui-tabs-panel-${(0,_hooks_use_id_js__WEBPACK_IMPORTED_MODULE_8__.useId)()}`,p=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null),S=(0,_hooks_use_sync_refs_js__WEBPACK_IMPORTED_MODULE_4__.useSyncRefs)(p,r);(0,_hooks_use_iso_morphic_effect_js__WEBPACK_IMPORTED_MODULE_6__.useIsoMorphicEffect)(()=>i.registerPanel(p),[i,p]);let b=l.current.panels.indexOf(y);b===-1&&(b=l.current.panels.push(y)-1);let u=n.indexOf(p);u===-1&&(u=b);let c=u===o,f=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>({selected:c}),[c]),T=t,x={ref:S,id:y,role:"tabpanel","aria-labelledby":(E=(R=s[u])==null?void 0:R.current)==null?void 0:E.id,tabIndex:c?0:-1};return!c&&((A=t.unmount)!=null?A:!0)&&!((L=t.static)!=null&&L)?react__WEBPACK_IMPORTED_MODULE_0__.createElement(_internal_hidden_js__WEBPACK_IMPORTED_MODULE_14__.Hidden,{as:"span",...x}):(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_3__.render)({ourProps:x,theirProps:T,slot:f,defaultTag:Ae,features:Ee,visible:c,name:"Tabs.Panel"})}),qe=Object.assign(ge,{Group:Te,List:Pe,Panels:Re,Panel:Se});
 
 
 /***/ }),
@@ -4011,6 +7994,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var _use_latest_value_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./use-latest-value.js */ "./node_modules/@headlessui/react/dist/hooks/use-latest-value.js");
 function d(e,r,n){let o=(0,_use_latest_value_js__WEBPACK_IMPORTED_MODULE_1__.useLatestValue)(r);(0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(()=>{function t(u){o.current(u)}return document.addEventListener(e,t,n),()=>document.removeEventListener(e,t,n)},[e,n])}
+
+
+/***/ }),
+
+/***/ "./node_modules/@headlessui/react/dist/hooks/use-event-listener.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@headlessui/react/dist/hooks/use-event-listener.js ***!
+  \*************************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useEventListener": function() { return /* binding */ E; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var _use_latest_value_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./use-latest-value.js */ "./node_modules/@headlessui/react/dist/hooks/use-latest-value.js");
+function E(n,e,a,t){let i=(0,_use_latest_value_js__WEBPACK_IMPORTED_MODULE_1__.useLatestValue)(a);(0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(()=>{n=n!=null?n:window;function r(o){i.current(o)}return n.addEventListener(e,r,t),()=>n.removeEventListener(e,r,t)},[n,e,t])}
 
 
 /***/ }),
@@ -4203,6 +8203,24 @@ let u=Symbol();function T(t,n=!0){return Object.assign(t,{[u]:n})}function y(...
 
 /***/ }),
 
+/***/ "./node_modules/@headlessui/react/dist/hooks/use-tab-direction.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@headlessui/react/dist/hooks/use-tab-direction.js ***!
+  \************************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Direction": function() { return /* binding */ s; },
+/* harmony export */   "useTabDirection": function() { return /* binding */ n; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var _use_window_event_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./use-window-event.js */ "./node_modules/@headlessui/react/dist/hooks/use-window-event.js");
+var s=(r=>(r[r.Forwards=0]="Forwards",r[r.Backwards=1]="Backwards",r))(s||{});function n(){let e=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(0);return (0,_use_window_event_js__WEBPACK_IMPORTED_MODULE_1__.useWindowEvent)("keydown",o=>{o.key==="Tab"&&(e.current=o.shiftKey?1:0)},!0),e}
+
+
+/***/ }),
+
 /***/ "./node_modules/@headlessui/react/dist/hooks/use-transition.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/@headlessui/react/dist/hooks/use-transition.js ***!
@@ -4239,6 +8257,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _use_iso_morphic_effect_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./use-iso-morphic-effect.js */ "./node_modules/@headlessui/react/dist/hooks/use-iso-morphic-effect.js");
 /* harmony import */ var _utils_owner_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/owner.js */ "./node_modules/@headlessui/react/dist/utils/owner.js");
 function F({container:e,accept:t,walk:r,enabled:c=!0}){let o=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(t),l=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(r);(0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(()=>{o.current=t,l.current=r},[t,r]),(0,_use_iso_morphic_effect_js__WEBPACK_IMPORTED_MODULE_1__.useIsoMorphicEffect)(()=>{if(!e||!c)return;let n=(0,_utils_owner_js__WEBPACK_IMPORTED_MODULE_2__.getOwnerDocument)(e);if(!n)return;let f=o.current,p=l.current,d=Object.assign(i=>f(i),{acceptNode:f}),u=n.createTreeWalker(e,NodeFilter.SHOW_ELEMENT,d,!1);for(;u.nextNode();)p(u.currentNode)},[e,c,o,l])}
+
+
+/***/ }),
+
+/***/ "./node_modules/@headlessui/react/dist/hooks/use-window-event.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@headlessui/react/dist/hooks/use-window-event.js ***!
+  \***********************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useWindowEvent": function() { return /* binding */ s; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var _use_latest_value_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./use-latest-value.js */ "./node_modules/@headlessui/react/dist/hooks/use-latest-value.js");
+function s(e,r,n){let o=(0,_use_latest_value_js__WEBPACK_IMPORTED_MODULE_1__.useLatestValue)(r);(0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(()=>{function t(i){o.current(i)}return window.addEventListener(e,t,n),()=>window.removeEventListener(e,t,n)},[e,n])}
+
+
+/***/ }),
+
+/***/ "./node_modules/@headlessui/react/dist/internal/focus-sentinel.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@headlessui/react/dist/internal/focus-sentinel.js ***!
+  \************************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "FocusSentinel": function() { return /* binding */ p; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var _hidden_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hidden.js */ "./node_modules/@headlessui/react/dist/internal/hidden.js");
+function p({onFocus:n}){let[r,o]=(0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(!0);return r?react__WEBPACK_IMPORTED_MODULE_0__.createElement(_hidden_js__WEBPACK_IMPORTED_MODULE_1__.Hidden,{as:"button",type:"button",features:_hidden_js__WEBPACK_IMPORTED_MODULE_1__.Features.Focusable,onFocus:a=>{a.preventDefault();let e,u=50;function t(){if(u--<=0){e&&cancelAnimationFrame(e);return}if(n()){o(!1),cancelAnimationFrame(e);return}e=requestAnimationFrame(t)}e=requestAnimationFrame(t)}}):null}
 
 
 /***/ }),
@@ -4617,6 +8669,268 @@ function DeviceTabletIcon({
 
 const ForwardRef = react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(DeviceTabletIcon);
 /* harmony default export */ __webpack_exports__["default"] = (ForwardRef);
+
+/***/ }),
+
+/***/ "./node_modules/@heroicons/react/24/outline/esm/FunnelIcon.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@heroicons/react/24/outline/esm/FunnelIcon.js ***!
+  \********************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+
+
+function FunnelIcon({
+  title,
+  titleId,
+  ...props
+}, svgRef) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", Object.assign({
+    xmlns: "http://www.w3.org/2000/svg",
+    fill: "none",
+    viewBox: "0 0 24 24",
+    strokeWidth: 1.5,
+    stroke: "currentColor",
+    "aria-hidden": "true",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("title", {
+    id: titleId
+  }, title) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    d: "M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z"
+  }));
+}
+
+const ForwardRef = react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(FunnelIcon);
+/* harmony default export */ __webpack_exports__["default"] = (ForwardRef);
+
+/***/ }),
+
+/***/ "./node_modules/@heroicons/react/24/outline/esm/PaintBrushIcon.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@heroicons/react/24/outline/esm/PaintBrushIcon.js ***!
+  \************************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+
+
+function PaintBrushIcon({
+  title,
+  titleId,
+  ...props
+}, svgRef) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", Object.assign({
+    xmlns: "http://www.w3.org/2000/svg",
+    fill: "none",
+    viewBox: "0 0 24 24",
+    strokeWidth: 1.5,
+    stroke: "currentColor",
+    "aria-hidden": "true",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("title", {
+    id: titleId
+  }, title) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    d: "M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"
+  }));
+}
+
+const ForwardRef = react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(PaintBrushIcon);
+/* harmony default export */ __webpack_exports__["default"] = (ForwardRef);
+
+/***/ }),
+
+/***/ "./node_modules/@heroicons/react/24/outline/esm/PhotoIcon.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@heroicons/react/24/outline/esm/PhotoIcon.js ***!
+  \*******************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+
+
+function PhotoIcon({
+  title,
+  titleId,
+  ...props
+}, svgRef) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", Object.assign({
+    xmlns: "http://www.w3.org/2000/svg",
+    fill: "none",
+    viewBox: "0 0 24 24",
+    strokeWidth: 1.5,
+    stroke: "currentColor",
+    "aria-hidden": "true",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("title", {
+    id: titleId
+  }, title) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    d: "M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+  }));
+}
+
+const ForwardRef = react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(PhotoIcon);
+/* harmony default export */ __webpack_exports__["default"] = (ForwardRef);
+
+/***/ }),
+
+/***/ "./node_modules/@heroicons/react/24/outline/esm/VideoCameraIcon.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@heroicons/react/24/outline/esm/VideoCameraIcon.js ***!
+  \*************************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+
+
+function VideoCameraIcon({
+  title,
+  titleId,
+  ...props
+}, svgRef) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", Object.assign({
+    xmlns: "http://www.w3.org/2000/svg",
+    fill: "none",
+    viewBox: "0 0 24 24",
+    strokeWidth: 1.5,
+    stroke: "currentColor",
+    "aria-hidden": "true",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("title", {
+    id: titleId
+  }, title) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+    strokeLinecap: "round",
+    d: "M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"
+  }));
+}
+
+const ForwardRef = react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(VideoCameraIcon);
+/* harmony default export */ __webpack_exports__["default"] = (ForwardRef);
+
+/***/ }),
+
+/***/ "./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js":
+/*!****************************************************************************************************!*\
+  !*** ./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js ***!
+  \****************************************************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ _assertThisInitialized; }
+/* harmony export */ });
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+  return self;
+}
+
+/***/ }),
+
+/***/ "./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/extends.js":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/extends.js ***!
+  \**************************************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ _extends; }
+/* harmony export */ });
+function _extends() {
+  _extends = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends.apply(this, arguments);
+}
+
+/***/ }),
+
+/***/ "./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js ***!
+  \********************************************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ _inheritsLoose; }
+/* harmony export */ });
+/* harmony import */ var _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./setPrototypeOf.js */ "./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js");
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  (0,_setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__["default"])(subClass, superClass);
+}
+
+/***/ }),
+
+/***/ "./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js":
+/*!***********************************************************************************************************!*\
+  !*** ./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js ***!
+  \***********************************************************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ _objectWithoutPropertiesLoose; }
+/* harmony export */ });
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+  return target;
+}
+
+/***/ }),
+
+/***/ "./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js":
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/react-window/node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js ***!
+  \*********************************************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ _setPrototypeOf; }
+/* harmony export */ });
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+  return _setPrototypeOf(o, p);
+}
 
 /***/ }),
 

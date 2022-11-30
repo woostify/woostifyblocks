@@ -13,6 +13,8 @@ import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import WcbTeamPanelLayout from "./WcbTeamPanelLayout";
+import WcbTeamPanelImages from "./WcbTeamPanelImages";
+import WcbTeamPanelSocials from "./WcbTeamPanelSocials";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -22,6 +24,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		heading,
 		uniqueId,
 		general_layout,
+		general_image,
+		general_socials,
 	} = attributes;
 	//  COMMON HOOKS
 	const { myCache, ref } = useCreateCacheEmotion();
@@ -59,6 +63,27 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								setAttributes({ general_layout: data });
 							}}
 							panelData={general_layout}
+						/>
+
+						<WcbTeamPanelImages
+							onToggle={() => handleTogglePanel("General", "Images")}
+							initialOpen={tabGeneralIsPanelOpen === "Images"}
+							opened={tabGeneralIsPanelOpen === "Images" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ general_image: data });
+							}}
+							panelData={general_image}
+						/>
+						<WcbTeamPanelSocials
+							onToggle={() => handleTogglePanel("General", "Socials")}
+							initialOpen={tabGeneralIsPanelOpen === "Socials"}
+							opened={tabGeneralIsPanelOpen === "Socials" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ general_socials: data });
+							}}
+							panelData={general_socials}
 						/>
 					</>
 				);
