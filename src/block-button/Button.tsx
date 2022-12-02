@@ -1,7 +1,7 @@
 import { RichText } from "@wordpress/block-editor";
-import { Dashicon } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC } from "react";
+import MyIcon from "../components/controls/MyIcon";
 import { WcbAttrs } from "./attributes";
 
 interface Props {
@@ -42,7 +42,7 @@ const Button: FC<Props> = ({
 		if (!iconName || !enableIcon) {
 			return null;
 		}
-		return <Dashicon className="wcb-button__icon" size={20} icon={iconName} />;
+		return <MyIcon className="wcb-button__icon" size={20} icon={iconName} />;
 	};
 
 	const renderButton = () => {

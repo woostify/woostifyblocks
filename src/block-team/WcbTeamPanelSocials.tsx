@@ -9,11 +9,12 @@ import {
 import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
 import HelpText from "../components/controls/HelpText";
+import { MyIconKey } from "../components/controls/MyIcon";
 import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
 import SelecIcon from "../components/controls/SelectIcon/SelecIcon";
 
 export interface TeamSociaItem {
-	iconName: Dashicon.Icon | "";
+	iconName: MyIconKey | "";
 	url: string;
 }
 

@@ -49,7 +49,6 @@ const useGlide = ({ general_general, general_carousel, UNIQUE_ID }: Params) => {
 		}
 
 		const slider = new Glide(`[data-uniqueid=${UNIQUE_ID}] .glide`, options);
-		console.log(333, { slider, options, UNIQUE_ID });
 		slider.mount();
 		// @ts-ignore
 		return () => slider.destroy();

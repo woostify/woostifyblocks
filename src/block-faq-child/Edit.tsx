@@ -15,6 +15,7 @@ import { Dashicon } from "@wordpress/components";
 import { WCB_FAQ_PANEL_ICON } from "../block-faq/WcbFaqPanelIcon";
 import { WCB_FAQ_PANEL_GENERAL } from "../block-faq/WcbFaqPanelGeneral";
 import { useSelect } from "@wordpress/data";
+import MyIcon from "../components/controls/MyIcon";
 
 const Edit: FC<
 	EditProps<
@@ -85,14 +86,14 @@ const Edit: FC<
 		return (
 			<>
 				{general_icon.iconName && (
-					<Dashicon
+					<MyIcon
 						className="wcb-faq-child__icon wcb-faq-child__icon--active"
 						size={16}
 						icon={general_icon.iconName}
 					/>
 				)}
 				{general_icon.inactiveIconName && (
-					<Dashicon
+					<MyIcon
 						className="wcb-faq-child__icon wcb-faq-child__icon--inactive"
 						size={16}
 						icon={general_icon.inactiveIconName}

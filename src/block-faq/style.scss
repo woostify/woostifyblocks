@@ -1,10 +1,10 @@
 .wcb-faq-child__wrap {
 	@apply overflow-hidden;
 	&.active {
-		.wcb-faq-child__icon--active {
+		.lni.wcb-faq-child__icon--active {
 			display: block;
 		}
-		.wcb-faq-child__icon--inactive {
+		.lni.wcb-faq-child__icon--inactive {
 			display: none;
 		}
 	}
@@ -39,10 +39,10 @@
 	@apply text-base;
 }
 
-.wcb-faq-child__icon--active {
+.lni.wcb-faq-child__icon--active {
 	display: none;
 }
-.wcb-faq-child__icon--inactive {
+.lni.wcb-faq-child__icon--inactive {
 	display: block;
 }
 

@@ -4361,11 +4361,6 @@ const useGlide = _ref => {
     }
 
     const slider = new _glidejs_glide__WEBPACK_IMPORTED_MODULE_0__["default"](`[data-uniqueid=${UNIQUE_ID}] .glide`, options);
-    console.log(333, {
-      slider,
-      options,
-      UNIQUE_ID
-    });
     slider.mount(); // @ts-ignore
 
     return () => slider.destroy();

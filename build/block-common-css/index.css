@@ -2330,6 +2330,14 @@ video {
 .text-\[11px\] {
   font-size: 11px !important;
 }
+.text-lg {
+  font-size: 1.125rem !important;
+  line-height: 1.75rem !important;
+}
+.text-xl {
+  font-size: 1.25rem !important;
+  line-height: 1.75rem !important;
+}
 .font-medium {
   font-weight: 500 !important;
 }

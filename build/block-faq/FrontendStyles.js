@@ -2149,9 +2149,9 @@ const GlobalCss = attrs => {
     styles: [(0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
       className: `${FAQ_CHILD_ICON}, ${FAQ_CHILD_ICON}:before`,
       value: IconSizeConverted,
-      prefix: "width",
-      prefix_2: "height",
-      prefix_3: "fontSize"
+      prefix: "fontSize" // prefix_2: "height",
+      // prefix_3: "width",
+
     }), {
       [FAQ_CHILD_ICON]: {
         color: style_icon.color

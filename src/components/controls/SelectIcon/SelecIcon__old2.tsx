@@ -2,15 +2,12 @@ import { Dashicon, Dropdown } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, useState } from "react";
 import ResetButton from "../ResetButton";
-// import { ICONS_KEYS as people } from "./types";
+import { ICONS_KEYS as people } from "./types";
 import { FixedSizeGrid as Grid, GridChildComponentProps } from "react-window";
-import unicodesMap from "../../../../public/lineicons-free-basic/icon-font/unicodesMap.json";
-import MyIcon, { MyIconKey } from "../MyIcon";
 
-const ICON_KEYS = Object.keys(unicodesMap) as MyIconKey[];
 interface Props {
-	value?: MyIconKey;
-	onChange: (icon?: MyIconKey) => void;
+	value?: Dashicon.Icon;
+	onChange: (icon?: Dashicon.Icon) => void;
 	label?: string;
 }
 
@@ -21,8 +18,6 @@ const SelecIcon: FC<Props> = ({
 }) => {
 	const [query, setQuery] = useState("");
 	const gridRef = React.createRef<Grid<any>>();
-
-	const people = ICON_KEYS;
 
 	const filteredPeople =
 		query === ""
@@ -58,7 +53,7 @@ const SelecIcon: FC<Props> = ({
 				>
 					<div className="grid">
 						<div className="text-center overflow-hidden ">
-							<MyIcon className="text-lg" size={16} icon={item} />
+							<Dashicon size={16} icon={item} />
 							<p className="block mt-2.5 truncate text-gray-300 text-xs">
 								{item}
 							</p>
@@ -126,7 +121,7 @@ const SelecIcon: FC<Props> = ({
 					>
 						<span className="mr-3">{label}</span>
 						{value ? (
-							<MyIcon className="text-xl" size={20} icon={value} />
+							<Dashicon size={20} icon={value} />
 						) : (
 							<strong>{__("None", "wcb")}</strong>
 						)}

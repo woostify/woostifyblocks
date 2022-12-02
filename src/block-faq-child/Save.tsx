@@ -4,6 +4,7 @@ import { RichText, useBlockProps } from "@wordpress/block-editor";
 import { WcbAttrs } from "./attributes";
 import "./style.scss";
 import { Dashicon } from "@wordpress/components";
+import MyIcon from "../components/controls/MyIcon";
 
 export interface WcbAttrsForSave
 	extends Omit<WcbAttrs, "answer" | "question"> {}
@@ -35,14 +36,14 @@ export default function save({
 		return (
 			<>
 				{general_icon.iconName && (
-					<Dashicon
+					<MyIcon
 						className="wcb-faq-child__icon wcb-faq-child__icon--active"
 						size={16}
 						icon={general_icon.iconName}
 					/>
 				)}
 				{general_icon.inactiveIconName && (
-					<Dashicon
+					<MyIcon
 						className="wcb-faq-child__icon wcb-faq-child__icon--inactive"
 						size={16}
 						icon={general_icon.inactiveIconName}

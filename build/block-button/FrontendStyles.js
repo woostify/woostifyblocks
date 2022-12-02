@@ -2025,9 +2025,9 @@ const GlobalCss = attrs => {
     }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
       className: `${BUTTON_ICON}, ${BUTTON_ICON}:before`,
       value: IconSizeConverted,
-      prefix: "width",
-      prefix_2: "height",
-      prefix_3: "fontSize"
+      prefix: "fontSize" // prefix_2: "height",
+      // prefix_3: "width",
+
     }), {
       [BUTTON_TEXT]: {
         color: style_text.color

@@ -1,6 +1,7 @@
 import { Dashicon, PanelBody, ToggleControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
+import { MyIconKey } from "../components/controls/MyIcon";
 import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import SelecIcon from "../components/controls/SelectIcon/SelecIcon";
@@ -8,15 +9,15 @@ import useGetDeviceType from "../hooks/useGetDeviceType";
 
 export interface WCB_FAQ_PANEL_ICON {
 	enableIcon: boolean;
-	iconName?: Dashicon.Icon;
-	inactiveIconName?: Dashicon.Icon;
+	iconName?: MyIconKey;
+	inactiveIconName?: MyIconKey;
 	iconPosition: "top" | "left" | "right" | "bottom";
 }
 
 export const WCB_FAQ_PANEL_ICON_DEMO: WCB_FAQ_PANEL_ICON = {
 	enableIcon: true,
-	iconName: "minus",
-	inactiveIconName: "plus-alt2",
+	iconName: "lni-minus",
+	inactiveIconName: "lni-plus",
 	iconPosition: "right",
 };
 

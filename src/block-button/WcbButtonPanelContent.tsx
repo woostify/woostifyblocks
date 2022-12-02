@@ -6,6 +6,7 @@ import {
 } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
+import { MyIconKey } from "../components/controls/MyIcon";
 import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import SelecIcon from "../components/controls/SelectIcon/SelecIcon";
@@ -13,7 +14,7 @@ import useGetDeviceType from "../hooks/useGetDeviceType";
 
 export interface WCB_BUTTON_PANEL_CONTENT {
 	enableIcon: boolean;
-	iconName?: Dashicon.Icon;
+	iconName?: MyIconKey;
 	iconPosition: "top" | "left" | "right" | "bottom";
 	link: string;
 	openInNewWindow: boolean;
@@ -24,7 +25,7 @@ export interface WCB_BUTTON_PANEL_CONTENT {
 export const WCB_BUTTON_PANEL_CONTENT_DEMO_COMMON_NO_ICON: WCB_BUTTON_PANEL_CONTENT =
 	{
 		enableIcon: false,
-		iconName: "heart",
+		iconName: "lni-heart-filled",
 		iconPosition: "left",
 		link: "#",
 		openInNewWindow: false,
@@ -35,7 +36,7 @@ export const WCB_BUTTON_PANEL_CONTENT_DEMO_COMMON_NO_ICON: WCB_BUTTON_PANEL_CONT
 export const WCB_BUTTON_PANEL_CONTENT_DEMO_with_leading_icon: WCB_BUTTON_PANEL_CONTENT =
 	{
 		enableIcon: true,
-		iconName: "heart",
+		iconName: "lni-heart-filled",
 		iconPosition: "left",
 		link: "#",
 		openInNewWindow: false,
@@ -45,7 +46,7 @@ export const WCB_BUTTON_PANEL_CONTENT_DEMO_with_leading_icon: WCB_BUTTON_PANEL_C
 export const WCB_BUTTON_PANEL_CONTENT_DEMO_with_trailing_icons: WCB_BUTTON_PANEL_CONTENT =
 	{
 		enableIcon: true,
-		iconName: "heart",
+		iconName: "lni-heart-filled",
 		iconPosition: "right",
 		link: "#",
 		openInNewWindow: false,
@@ -56,7 +57,7 @@ export const WCB_BUTTON_PANEL_CONTENT_DEMO_with_trailing_icons: WCB_BUTTON_PANEL
 export const WCB_BUTTON_PANEL_CONTENT_DEMO_CIRCULAR: WCB_BUTTON_PANEL_CONTENT =
 	{
 		enableIcon: true,
-		iconName: "heart",
+		iconName: "lni-heart-filled",
 		iconPosition: "left",
 		link: "#",
 		openInNewWindow: false,
