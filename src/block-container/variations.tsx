@@ -71,7 +71,7 @@ export const variations: {
 	description: string;
 	icon: any;
 	innerBlocks: [
-		"wcb/container-box",
+		"wcb/container-box" | "core/paragraph",
 		{ general_container: ContainerBox_Container_Control } | undefined
 	][];
 	scope: string[];
@@ -88,6 +88,7 @@ export const variations: {
 			</RenderIcon>
 		),
 		innerBlocks: [["wcb/container-box", getContainerBoxAttrsByWidth("100%")]],
+		// innerBlocks: [["core/paragraph", undefined]],
 		scope: ["block"],
 		isDefault: true,
 	},

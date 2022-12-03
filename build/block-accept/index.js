@@ -1545,6 +1545,7 @@ const Edit = props => {
     "data-uniqueid": UNIQUE_ID
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_4__["default"], {
     tabs: _components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_4__.INSPECTOR_CONTROLS_TABS.filter(item => item.name !== "Styles"),
+    uniqueId: uniqueId,
     renderTabPanels: renderTabBodyPanels
   }), general_general.enablePrivacyLink && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
     href: general_general.linkHref,

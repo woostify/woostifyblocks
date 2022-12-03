@@ -391,6 +391,7 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 			<HOCInspectorControls
 				tabDefaultActive={tabIsOpen}
 				renderTabPanels={renderTabBodyPanels}
+				uniqueId={uniqueId}
 			/>
 			<div
 				{...wrapBlockProps}

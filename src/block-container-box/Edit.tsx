@@ -232,6 +232,7 @@ const Edit: FC<EditProps<BlockWCBContainerBoxAttrs>> = (props) => {
 			<HOCInspectorControls
 				tabDefaultActive={tabIsOpen}
 				renderTabPanels={renderTabBodyPanels}
+				uniqueId={uniqueId}
 			/>
 
 			<div

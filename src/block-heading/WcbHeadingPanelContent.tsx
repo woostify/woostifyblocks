@@ -11,7 +11,7 @@ import useGetDeviceType from "../hooks/useGetDeviceType";
 
 export interface WCB_HEADING_PANEL_CONTENT {
 	textAlignment: HasResponsive<TextAlignment>;
-	headingTag: React.ElementType<any>;
+	headingTag: keyof HTMLElementTagNameMap;
 	showHeading: boolean;
 	showSubHeading: boolean;
 	showSeparator: boolean;
@@ -21,8 +21,8 @@ export const WCB_HEADING_PANEL_CONTENT_DEMO: WCB_HEADING_PANEL_CONTENT = {
 	textAlignment: { Desktop: "left" },
 	headingTag: "h2",
 	showHeading: true,
-	showSeparator: true,
-	showSubHeading: true,
+	showSeparator: false,
+	showSubHeading: false,
 };
 
 interface Props
@@ -60,7 +60,7 @@ const WcbHeadingPanelContent: FC<Props> = ({
 			},
 		});
 	};
-	const handleChangeTag = (selected: React.ElementType<any>) => {
+	const handleChangeTag = (selected: keyof HTMLElementTagNameMap) => {
 		setAttr__panelContentData({
 			...panelContentData,
 			headingTag: selected,

@@ -99,6 +99,7 @@ const HOCInspectorControls: FC<Props> = ({
 			setTimeout(() => {
 				handleTooglePanelAdvanceDefaultWp();
 			}, 100);
+
 		return null;
 	};
 

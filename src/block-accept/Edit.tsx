@@ -80,6 +80,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					tabs={INSPECTOR_CONTROLS_TABS.filter(
 						(item) => item.name !== "Styles"
 					)}
+					uniqueId={uniqueId}
 					renderTabPanels={renderTabBodyPanels}
 				/>
 

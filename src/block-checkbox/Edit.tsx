@@ -234,6 +234,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 						(item) => item.name !== "Styles"
 					)}
 					renderTabPanels={renderTabBodyPanels}
+					uniqueId={uniqueId}
 				/>
 
 				{/* CHILD CONTENT  */}

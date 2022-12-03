@@ -1547,7 +1547,8 @@ const Edit = props => {
     "data-uniqueid": UNIQUE_ID
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_4__["default"], {
     tabs: _components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_4__.INSPECTOR_CONTROLS_TABS.filter(item => item.name !== "Styles"),
-    renderTabPanels: renderTabBodyPanels
+    renderTabPanels: renderTabBodyPanels,
+    uniqueId: uniqueId
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_block_form_FormInputLabelRichText__WEBPACK_IMPORTED_MODULE_9__.FormInputLabelRichText, {
     value: label,
     isRequired: general_general.isRequired,

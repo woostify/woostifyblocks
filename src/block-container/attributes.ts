@@ -11,7 +11,7 @@ import { MY_BOX_SHADOW_CONTROL_DEMO } from "../components/controls/MyBoxShadowCo
 import {
 	CONTAINER_CONTROL_DEMO,
 	MyContainerControlData,
-} from "../components/controls/MyContainerControl/MyContainerControl";
+} from "./MyContainerControl";
 import {
 	MyDimensionsControlData,
 	MY_DIMENSIONS_CONTROL_DEMO,
@@ -32,6 +32,7 @@ import {
 
 export interface BlockWCBContainerAttrs {
 	uniqueId: string;
+	isShowVariations: boolean;
 	general_container: MyContainerControlData;
 	general_flexProperties: MyFlexPropertiesControlData;
 	styles_color: string;
@@ -56,6 +57,10 @@ export const blokcContainerAttrs: AttrsGenericType<BlockWCBContainerAttrs> = {
 	uniqueId: {
 		type: "string",
 		default: "",
+	},
+	isShowVariations: {
+		type: "bool",
+		default: true,
 	},
 
 	general_container: {

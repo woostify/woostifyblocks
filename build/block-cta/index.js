@@ -2286,7 +2286,8 @@ const Edit = props => {
     className: `${wrapBlockProps === null || wrapBlockProps === void 0 ? void 0 : wrapBlockProps.className} wcb-cta__wrap ${UNIQUE_ID}`,
     "data-uniqueid": UNIQUE_ID
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    renderTabPanels: renderTabBodyPanels
+    renderTabPanels: renderTabBodyPanels,
+    uniqueId: uniqueId
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_7__["default"], attributes), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "wcb-cta__inner"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {

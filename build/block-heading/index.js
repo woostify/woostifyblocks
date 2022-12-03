@@ -2224,7 +2224,7 @@ const Edit = props => {
           onToggle: () => handleTogglePanel("Styles", "Heading", true),
           initialOpen: tabStylesIsPanelOpen === "Heading" || tabStylesIsPanelOpen === "first",
           opened: tabStylesIsPanelOpen === "Heading" || undefined
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbHeadingPanelSeparator__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        }), general_content.showSeparator && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbHeadingPanelSeparator__WEBPACK_IMPORTED_MODULE_8__["default"], {
           panelSeparator: styles_separator,
           setAttr__panelSeparator: styles_separator => {
             setAttributes({
@@ -2234,7 +2234,7 @@ const Edit = props => {
           onToggle: () => handleTogglePanel("Styles", "Separator"),
           initialOpen: tabStylesIsPanelOpen === "Separator",
           opened: tabStylesIsPanelOpen === "Separator" || undefined
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbHeadingPanelSubHeading__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        }), general_content.showSubHeading && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbHeadingPanelSubHeading__WEBPACK_IMPORTED_MODULE_9__["default"], {
           panelData: styles_subHeading,
           setAttr__: styles_subHeading => {
             setAttributes({
@@ -2306,6 +2306,7 @@ const Edit = props => {
     className: `${wrapBlockProps === null || wrapBlockProps === void 0 ? void 0 : wrapBlockProps.className} wcb-heading__wrap ${UNIQUE_ID}`,
     "data-uniqueid": UNIQUE_ID
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    uniqueId: uniqueId,
     tabDefaultActive: tabIsOpen,
     renderTabPanels: renderTabBodyPanels
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_15__["default"], attributes), general_content.showHeading ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
@@ -2808,8 +2809,8 @@ const WCB_HEADING_PANEL_CONTENT_DEMO = {
   },
   headingTag: "h2",
   showHeading: true,
-  showSeparator: true,
-  showSubHeading: true
+  showSeparator: false,
+  showSubHeading: false
 };
 
 const WcbHeadingPanelContent = _ref => {

@@ -54,8 +54,6 @@ const ContainerControl: FC<Props> = ({
 		overflow,
 	} = containerControl;
 
-	console.log(7, { containerControl });
-
 	const handleChangeCustomWidth = (value: string) => {
 		setAttrs__container({
 			...containerControl,

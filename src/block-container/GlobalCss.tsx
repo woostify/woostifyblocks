@@ -7,10 +7,10 @@ import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
 import getStyleBackground from "../utils/getStyleBackground";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
-import { BlockWCBContainerAttrs } from "./attributes";
 import { getAdvanveDivWrapStyles } from "./getAdvanveStyles";
+import { WcbAttrsForSave } from "./Save";
 
-interface Props extends BlockWCBContainerAttrs {}
+interface Props extends WcbAttrsForSave {}
 
 const GlobalCss: FC<Props> = (attrs) => {
 	const {

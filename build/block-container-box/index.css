@@ -1,7 +1,42 @@
 /*!************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/block-container-box/editor.scss ***!
   \************************************************************************************************************************************************************************************************************************************************************/
+.wcb-container-box__wrap {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.wcb-container-box__wrap:before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  border-width: 1px;
+  border-style: dashed;
+  --tw-border-opacity: 1;
+  border-color: rgb(203 213 225 / var(--tw-border-opacity));
+}
+.wcb-container-box__wrap:hover::before {
+  --tw-border-opacity: 1;
+  border-color: rgb(100 116 139 / var(--tw-border-opacity));
+}
+.wcb-container-box__wrap.has-child-selected:before {
+  display: none !important;
+}
 
+.wcb-container-box__inner {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.wcb-container-box__inner:after {
+  inset: calc(-1rem + 1px) !important;
+}
+.wcb-container-box__inner.has-child-selected:after {
+  inset: 1px !important;
+}
 /*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/components/controls/MySpacingSizesControl/styles.scss ***!
   \**********************************************************************************************************************************************************************************************************************************************************************************/

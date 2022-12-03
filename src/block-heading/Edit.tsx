@@ -91,24 +91,28 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 							}
 							opened={tabStylesIsPanelOpen === "Heading" || undefined}
 						/>
-						<WcbHeadingPanelSeparator
-							panelSeparator={styles_separator}
-							setAttr__panelSeparator={(styles_separator) => {
-								setAttributes({ styles_separator });
-							}}
-							onToggle={() => handleTogglePanel("Styles", "Separator")}
-							initialOpen={tabStylesIsPanelOpen === "Separator"}
-							opened={tabStylesIsPanelOpen === "Separator" || undefined}
-						/>
-						<WcbHeadingPanelSubHeading
-							panelData={styles_subHeading}
-							setAttr__={(styles_subHeading) => {
-								setAttributes({ styles_subHeading });
-							}}
-							onToggle={() => handleTogglePanel("Styles", "SubHeading")}
-							initialOpen={tabStylesIsPanelOpen === "SubHeading"}
-							opened={tabStylesIsPanelOpen === "SubHeading" || undefined}
-						/>
+						{general_content.showSeparator && (
+							<WcbHeadingPanelSeparator
+								panelSeparator={styles_separator}
+								setAttr__panelSeparator={(styles_separator) => {
+									setAttributes({ styles_separator });
+								}}
+								onToggle={() => handleTogglePanel("Styles", "Separator")}
+								initialOpen={tabStylesIsPanelOpen === "Separator"}
+								opened={tabStylesIsPanelOpen === "Separator" || undefined}
+							/>
+						)}
+						{general_content.showSubHeading && (
+							<WcbHeadingPanelSubHeading
+								panelData={styles_subHeading}
+								setAttr__={(styles_subHeading) => {
+									setAttributes({ styles_subHeading });
+								}}
+								onToggle={() => handleTogglePanel("Styles", "SubHeading")}
+								initialOpen={tabStylesIsPanelOpen === "SubHeading"}
+								opened={tabStylesIsPanelOpen === "SubHeading" || undefined}
+							/>
+						)}
 						<WcbHeadingPanelLink
 							panelData={styles_link}
 							setAttr__={(styles_link) => {
@@ -175,6 +179,7 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 				data-uniqueid={UNIQUE_ID}
 			>
 				<HOCInspectorControls
+					uniqueId={uniqueId}
 					tabDefaultActive={tabIsOpen}
 					renderTabPanels={renderTabBodyPanels}
 				/>

@@ -451,7 +451,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				data-uniqueid={UNIQUE_ID}
 			>
 				{/* CONTROL SETTINGS */}
-				<HOCInspectorControls renderTabPanels={renderTabBodyPanels} />
+				<HOCInspectorControls
+					renderTabPanels={renderTabBodyPanels}
+					uniqueId={uniqueId}
+				/>
 
 				{/* CSS IN JS */}
 				<GlobalCss {...attributes} />

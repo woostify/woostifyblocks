@@ -1,10 +1,6 @@
 import { FormToggle, RangeControl, SelectControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC } from "react";
-import useGetDeviceType from "../../../hooks/useGetDeviceType";
-import { HasResponsive } from "../MyBackgroundControl/types";
-import MyLabelControl from "../MyLabelControl/MyLabelControl";
-import { ResponsiveDevices } from "../MyResponsiveToggle/MyResponsiveToggle";
 import {
 	// @ts-ignore
 	__experimentalRadio as Radio,
@@ -13,6 +9,10 @@ import {
 	// @ts-ignore
 	__experimentalUnitControl as UnitControl,
 } from "@wordpress/components";
+import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
+import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
+import useGetDeviceType from "../hooks/useGetDeviceType";
+import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
 
 export type MyContainerControlData = {
 	containerWidthType: "Full Width" | "Boxed" | "Custom";

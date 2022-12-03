@@ -10,12 +10,16 @@ import VideoBackgroundByBgControl from "../components/VideoBackgroundByBgControl
 import OverlayBackgroundByBgControl from "../components/OverlayBackgroundByBgControl";
 import SaveCommon from "../components/SaveCommon";
 
+export interface WcbAttrsForSave
+	extends Omit<BlockWCBContainerAttrs, "isShowVariations" | "subHeading"> {}
+
 export default function save({
 	attributes,
 }: {
 	attributes: BlockWCBContainerAttrs;
 }) {
 	const {
+		isShowVariations,
 		styles_background,
 		uniqueId,
 		general_container,
@@ -41,7 +45,7 @@ export default function save({
 	const { colunmGap, rowGap } = styles_dimensions;
 	const GAPS_VARIABLES = getGapStyleFromGapjObj({ colunmGap, rowGap });
 
-	const newAttrs: BlockWCBContainerAttrs = {
+	const newAttrs: WcbAttrsForSave = {
 		styles_background,
 		uniqueId,
 		general_container,

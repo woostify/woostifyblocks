@@ -2497,7 +2497,8 @@ const Edit = props => {
     value: myCache
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_5__["default"], {
     tabDefaultActive: tabIsOpen,
-    renderTabPanels: renderTabBodyPanels
+    renderTabPanels: renderTabBodyPanels,
+    uniqueId: uniqueId
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
     className: `${wrapBlockProps === null || wrapBlockProps === void 0 ? void 0 : wrapBlockProps.className} wcb-posts-grid__wrap ${UNIQUE_ID}`,
     "data-uniqueid": UNIQUE_ID

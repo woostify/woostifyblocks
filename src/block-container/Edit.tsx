@@ -20,7 +20,7 @@ import MyBorderControl from "../components/controls/MyBorderControl/MyBorderCont
 import "./editor.scss";
 import MyBoxShadowControl from "../components/controls/MyBoxShadowControl/MyBoxShadowControl";
 import MyDimensionsControl from "../components/controls/MyDimensionsControl/MyDimensionsControl";
-import MyContainerControl from "../components/controls/MyContainerControl/MyContainerControl";
+import MyContainerControl from "./MyContainerControl";
 import MyFlexPropertiesControl from "../components/controls/MyFlexPropertiesControl/MyFlexPropertiesControl";
 import {
 	// @ts-ignore
@@ -236,7 +236,8 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 
 	const { general_container, styles_background, styles_dimensions } =
 		attributes;
-	const ALLOWED_BLOCKS = ["wcb/container-box"];
+	const ALLOWED_BLOCKS = null;
+	// const ALLOWED_BLOCKS = ["wcb/container-box"];
 
 	// ====== WRAP CLASSES
 	const { htmlTag: HtmlTag = "div", containerWidthType } = general_container;

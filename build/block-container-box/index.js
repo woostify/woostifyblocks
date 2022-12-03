@@ -2021,9 +2021,6 @@ const ContainerControl = _ref => {
     htmlTag,
     overflow
   } = containerControl;
-  console.log(7, {
-    containerControl
-  });
 
   const handleChangeCustomWidth = value => {
     setAttrs__container({ ...containerControl,
@@ -2414,7 +2411,8 @@ const Edit = props => {
     value: myCache
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_8__["default"], {
     tabDefaultActive: tabIsOpen,
-    renderTabPanels: renderTabBodyPanels
+    renderTabPanels: renderTabBodyPanels,
+    uniqueId: uniqueId
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
     className: `${wrapBlockProps === null || wrapBlockProps === void 0 ? void 0 : wrapBlockProps.className} wcb-container-box__wrap ${uniqueId}`,
     id: uniqueId,
@@ -9480,7 +9478,7 @@ function combine (array, callback) {
   \********************************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/container-box","version":"0.1.0","title":"Container box","category":"wcb-blocks","parent":["wcb/container"],"icon":"heart","description":"Create beautiful layouts with flexbox powered container block.","supports":{"html":false},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./FrontendStyles.js"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/container-box","version":"0.1.0","title":"Container box","category":"wcb-blocks","icon":"heart","description":"Create beautiful layouts with flexbox powered container block.","supports":{"html":false},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./FrontendStyles.js"}');
 
 /***/ })
 
