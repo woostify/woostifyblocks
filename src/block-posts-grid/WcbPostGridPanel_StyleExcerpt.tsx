@@ -24,7 +24,6 @@ export const WCB_POST_GRID_PANEL_STYLE_EXCERPT_DEMO: WCB_POST_GRID_PANEL_STYLE_E
 	{
 		typography: {
 			...TYPOGRAPHY_CONTROL_DEMO,
-			fontSizes: { Desktop: "1rem" },
 		},
 		textColor: "#737373",
 		marginBottom: { Desktop: "1rem" },

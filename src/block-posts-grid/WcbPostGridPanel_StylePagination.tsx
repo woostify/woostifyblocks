@@ -34,7 +34,6 @@ const MY_POST_GRID_MAIN_STYLE_PAGINATION_DEMO: PostGridPagiantionType = {
 		backgroundColor: "#fff",
 		border: {
 			...MY_BORDER_CONTROL_DEMO,
-			radius: { Desktop: "8px" },
 			mainSettings: {
 				color: "#cbd5e1",
 				style: "solid",
@@ -47,7 +46,6 @@ const MY_POST_GRID_MAIN_STYLE_PAGINATION_DEMO: PostGridPagiantionType = {
 		backgroundColor: "#0ea5e9",
 		border: {
 			...MY_BORDER_CONTROL_DEMO,
-			radius: { Desktop: "8px" },
 			mainSettings: {
 				color: "#0ea5e9",
 				style: "solid",

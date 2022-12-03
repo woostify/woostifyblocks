@@ -58,8 +58,8 @@ const WcbPostGridPanelPostFeaturedImage: FC<Props> = ({
 		WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE["featuredImagePosition"]
 	>[] = [
 		{ name: "top", icon: "Top" },
-		{ name: "left", icon: "Left" },
-		{ name: "right", icon: "Right" },
+		// { name: "left", icon: "Left" },
+		// { name: "right", icon: "Right" },
 		{ name: "background", icon: "Background" },
 	];
 

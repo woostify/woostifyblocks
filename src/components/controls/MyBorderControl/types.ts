@@ -26,7 +26,7 @@ export type BorderRadiusSettings =
 	  }
 	| string;
 
-export const DEFAULT_BORDER_RADIUS: BorderRadiusSettings = "12px";
+export const DEFAULT_BORDER_RADIUS: BorderRadiusSettings = "0";
 
 export const DEFAULT_BORDER_MAIN_SINGLE_SIDE: BorderMainSingleSide = {
 	color: "#d1d5db",

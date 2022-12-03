@@ -43,7 +43,6 @@ export const WCB_POST_GRID_PANEL_STYLE_READMORE_LINK_DEMO: WCB_POST_GRID_PANEL_S
 		colorAndBackgroundColor: MY_COLOR_BGCOLOR_CONTROL_FOR_BUTTON_DEMO,
 		typography: {
 			...TYPOGRAPHY_CONTROL_DEMO,
-			fontSizes: { Desktop: "1rem" },
 		},
 		padding: {
 			Desktop: {

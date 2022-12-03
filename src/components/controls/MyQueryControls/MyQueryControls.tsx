@@ -21,6 +21,7 @@ import {
 import MySelect from "../MySelect";
 import { Option } from "../../../types";
 import AuthorSelect from "./AuthorSelect";
+import HelpText from "../HelpText";
 
 const DEFAULT_MIN_ITEMS = 1;
 const DEFAULT_MAX_ITEMS = 100;
@@ -84,7 +85,6 @@ const MyQueryControls: FC<Props> = ({
 		maxItems = DEFAULT_MAX_ITEMS,
 		minItems = DEFAULT_MIN_ITEMS,
 		//
-		numberOfColumn = 2,
 		isExcludeCurrentPost = true,
 		isOffsetStartingPost = false,
 		offsetPost = 0,
@@ -298,21 +298,25 @@ const MyQueryControls: FC<Props> = ({
 			) : null}
 
 			{termSuggestionList && termSuggestionList.length ? (
-				<FormTokenField
-					// @ts-ignore
-					label={__(taxonomyLabel, "wcb")}
-					__experimentalExpandOnFocus
-					value={
-						selectedTerms &&
-						selectedTerms.map((item) => ({
-							...item,
-							value: item.name || item.value,
-						}))
-					}
-					suggestions={termSuggestionList}
-					onChange={handleSelectTerms}
-					maxSuggestions={MAX_CATEGORIES_SUGGESTIONS}
-				/>
+				<div>
+					<FormTokenField
+						// @ts-ignore
+						label={__(taxonomyLabel, "wcb")}
+						__experimentalExpandOnFocus
+						value={
+							selectedTerms &&
+							selectedTerms.map((item) => ({
+								...item,
+								value: item.name || item.value,
+							}))
+						}
+						suggestions={termSuggestionList}
+						onChange={handleSelectTerms}
+						maxSuggestions={MAX_CATEGORIES_SUGGESTIONS}
+						__experimentalShowHowTo={false}
+					/>
+					<HelpText>{__("Multiple values can be selected", "wcb")}</HelpText>
+				</div>
 			) : null}
 			{/*  ---------------------------- */}
 

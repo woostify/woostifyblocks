@@ -58,20 +58,31 @@ const GlobalCss: FC<Props> = (attrs) => {
 		} = getCssProperyHasResponsive<string>({
 			cssProperty: style_layout.colunmGap,
 		});
+
+		const {
+			value_desktop: numberOfColumn_desktop,
+			value_tablet: numberOfColumn_tablet,
+			value_mobile: numberOfColumn_mobile,
+		} = getCssProperyHasResponsive({
+			cssProperty: general_sortingAndFiltering.numberOfColumn,
+		});
+
 		return {
 			[`${WRAP_CLASSNAME}`]: {
 				".wcb-posts-grid__list-posts": {
 					display: "grid",
-					gridTemplateColumns: `repeat(${general_sortingAndFiltering.numberOfColumn}, minmax(0, 1fr))`,
+					gridTemplateColumns: `repeat(${numberOfColumn_mobile}, minmax(0, 1fr))`,
 					rowGap: rowGap_mobile,
 					columnGap: colunmGap_mobile,
 					[`@media (min-width: ${media_tablet})`]: {
 						rowGap: rowGap_tablet,
 						columnGap: colunmGap_tablet,
+						gridTemplateColumns: `repeat(${numberOfColumn_tablet}, minmax(0, 1fr))`,
 					},
 					[`@media (min-width: ${media_desktop})`]: {
 						rowGap: rowGap_desktop,
 						columnGap: colunmGap_desktop,
+						gridTemplateColumns: `repeat(${numberOfColumn_desktop}, minmax(0, 1fr))`,
 					},
 				},
 			},
@@ -109,7 +120,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	};
 
 	//
-	const getPostCardWrapStyles = (): CSSObject => {
+	const getPostCardWrapStyles = (): CSSObject[] => {
 		const {
 			value_mobile: titleMarginBottom_mobile,
 			value_tablet: titleMarginBottom_tablet,
@@ -131,58 +142,69 @@ const GlobalCss: FC<Props> = (attrs) => {
 		} = getCssProperyHasResponsive<string>({
 			cssProperty: style_featuredImage.marginBottom,
 		});
-		return {
-			[POST_CARD_CLASS]: {
-				position: "relative",
-				"&--image-background": {
-					".wcbPostCard__featuredImage-overlay": {
-						backgroundColor: style_featuredImage.backgroundOverlay,
-					},
-				},
-				"&--image-top": {
-					".wcbPostCard__featuredImage": {
-						marginBottom: featuredImageMarginBottom_mobile,
-						[`@media (min-width: ${media_tablet})`]: {
-							marginBottom: featuredImageMarginBottom_tablet,
-						},
-						[`@media (min-width: ${media_desktop})`]: {
-							marginBottom: featuredImageMarginBottom_desktop,
+		return [
+			{
+				[POST_CARD_CLASS]: {
+					position: "relative",
+					height: !general_sortingAndFiltering.isEqualHeight
+						? "max-content"
+						: undefined,
+					"&--image-background": {
+						".wcbPostCard__featuredImage-overlay": {
+							backgroundColor: style_featuredImage.backgroundOverlay,
 						},
 					},
-				},
-
-				textAlign: style_layout.textAlignment,
-				backgroundColor: style_layout.backgroundColor,
-				".wcbPostCard__content": {},
-
-				".wcbPostCard__title": {
-					marginBottom: titleMarginBottom_mobile,
-					">a": {
-						color: style_title.textColor,
+					"&--image-top": {
+						".wcbPostCard__featuredImage": {
+							marginBottom: featuredImageMarginBottom_mobile,
+							[`@media (min-width: ${media_tablet})`]: {
+								marginBottom: featuredImageMarginBottom_tablet,
+							},
+							[`@media (min-width: ${media_desktop})`]: {
+								marginBottom: featuredImageMarginBottom_desktop,
+							},
+						},
 					},
-				},
-				".wcbPostCard__excerpt": {
-					marginBottom: excerptMarginBottom_mobile,
-					color: style_excerpt.textColor,
-				},
-				[`@media (min-width: ${media_tablet})`]: {
+
+					textAlign: style_layout.textAlignment,
+					backgroundColor: style_layout.backgroundColor,
+					".wcbPostCard__content": {},
+
 					".wcbPostCard__title": {
-						marginBottom: titleMarginBottom_tablet,
+						marginBottom: titleMarginBottom_mobile,
+						">a": {
+							color: style_title.textColor,
+						},
 					},
 					".wcbPostCard__excerpt": {
-						marginBottom: excerptMarginBottom_tablet,
+						marginBottom: excerptMarginBottom_mobile,
+						color: style_excerpt.textColor,
 					},
-				},
-				[`@media (min-width: ${media_desktop})`]: {
-					".wcbPostCard__title": {
-						marginBottom: titleMarginBottom_desktop,
+					[`@media (min-width: ${media_tablet})`]: {
+						".wcbPostCard__title": {
+							marginBottom: titleMarginBottom_tablet,
+						},
+						".wcbPostCard__excerpt": {
+							marginBottom: excerptMarginBottom_tablet,
+						},
 					},
-					".wcbPostCard__excerpt": {
-						marginBottom: excerptMarginBottom_desktop,
+					[`@media (min-width: ${media_desktop})`]: {
+						".wcbPostCard__title": {
+							marginBottom: titleMarginBottom_desktop,
+						},
+						".wcbPostCard__excerpt": {
+							marginBottom: excerptMarginBottom_desktop,
+						},
 					},
 				},
 			},
-		};
+
+			getBorderStyles({
+				className: `${WRAP_CLASSNAME} .wcbPostCard--image-top .wcbPostCard__featuredImage img`,
+				border: style_featuredImage.border,
+				isWithRadius: true,
+			}),
+		];
 	};
 
 	const getPostCardStyles_Meta = (): CSSObject => {

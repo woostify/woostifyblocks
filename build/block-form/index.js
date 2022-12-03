@@ -4918,7 +4918,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "DEFAULT_BORDER_RADIUS": function() { return /* binding */ DEFAULT_BORDER_RADIUS; },
 /* harmony export */   "MY_BORDER_CONTROL_DEMO": function() { return /* binding */ MY_BORDER_CONTROL_DEMO; }
 /* harmony export */ });
-const DEFAULT_BORDER_RADIUS = "12px";
+const DEFAULT_BORDER_RADIUS = "0";
 const DEFAULT_BORDER_MAIN_SINGLE_SIDE = {
   color: "#d1d5db",
   style: "solid",

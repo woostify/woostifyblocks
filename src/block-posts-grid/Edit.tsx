@@ -263,6 +263,8 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 							//
 							panelData={style_featuredImage}
 							setAttr__={(data) => setAttributes({ style_featuredImage: data })}
+							//
+							imagePosition={general_postFeaturedImage.featuredImagePosition}
 						/>
 
 						<WcbPostGridPanel_StyleTitle

@@ -14,7 +14,7 @@ export interface WCB_POST_GRID_PANEL_PAGINATION {
 
 export const WCB_POST_GRID_PANEL_PAGINATION_DEMO: WCB_POST_GRID_PANEL_PAGINATION =
 	{
-		isShowPagination: true,
+		isShowPagination: false,
 		pageLimit: 10,
 		previousText: "",
 		nextText: "",

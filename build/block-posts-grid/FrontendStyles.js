@@ -2043,20 +2043,29 @@ const GlobalCss = attrs => {
     } = (0,_utils_getCssProperyHasResponsive__WEBPACK_IMPORTED_MODULE_5__["default"])({
       cssProperty: style_layout.colunmGap
     });
+    const {
+      value_desktop: numberOfColumn_desktop,
+      value_tablet: numberOfColumn_tablet,
+      value_mobile: numberOfColumn_mobile
+    } = (0,_utils_getCssProperyHasResponsive__WEBPACK_IMPORTED_MODULE_5__["default"])({
+      cssProperty: general_sortingAndFiltering.numberOfColumn
+    });
     return {
       [`${WRAP_CLASSNAME}`]: {
         ".wcb-posts-grid__list-posts": {
           display: "grid",
-          gridTemplateColumns: `repeat(${general_sortingAndFiltering.numberOfColumn}, minmax(0, 1fr))`,
+          gridTemplateColumns: `repeat(${numberOfColumn_mobile}, minmax(0, 1fr))`,
           rowGap: rowGap_mobile,
           columnGap: colunmGap_mobile,
           [`@media (min-width: ${media_tablet})`]: {
             rowGap: rowGap_tablet,
-            columnGap: colunmGap_tablet
+            columnGap: colunmGap_tablet,
+            gridTemplateColumns: `repeat(${numberOfColumn_tablet}, minmax(0, 1fr))`
           },
           [`@media (min-width: ${media_desktop})`]: {
             rowGap: rowGap_desktop,
-            columnGap: colunmGap_desktop
+            columnGap: colunmGap_desktop,
+            gridTemplateColumns: `repeat(${numberOfColumn_desktop}, minmax(0, 1fr))`
           }
         }
       }
@@ -2116,9 +2125,10 @@ const GlobalCss = attrs => {
     } = (0,_utils_getCssProperyHasResponsive__WEBPACK_IMPORTED_MODULE_5__["default"])({
       cssProperty: style_featuredImage.marginBottom
     });
-    return {
+    return [{
       [POST_CARD_CLASS]: {
         position: "relative",
+        height: !general_sortingAndFiltering.isEqualHeight ? "max-content" : undefined,
         "&--image-background": {
           ".wcbPostCard__featuredImage-overlay": {
             backgroundColor: style_featuredImage.backgroundOverlay
@@ -2165,7 +2175,11 @@ const GlobalCss = attrs => {
           }
         }
       }
-    };
+    }, (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
+      className: `${WRAP_CLASSNAME} .wcbPostCard--image-top .wcbPostCard__featuredImage img`,
+      border: style_featuredImage.border,
+      isWithRadius: true
+    })];
   };
 
   const getPostCardStyles_Meta = () => {
