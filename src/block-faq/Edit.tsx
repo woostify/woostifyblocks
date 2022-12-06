@@ -308,7 +308,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-faq__wrap p-5 ${UNIQUE_ID}`}
+				className={`${wrapBlockProps?.className} wcb-faq__wrap p-2 ${UNIQUE_ID}`}
 				data-uniqueid={UNIQUE_ID}
 			>
 				{/* CONTROL SETTINGS */}
