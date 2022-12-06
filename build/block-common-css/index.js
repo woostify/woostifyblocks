@@ -17,12 +17,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const Edit = () => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "Edit d");
 };
-
-/* harmony default export */ __webpack_exports__["default"] = (Edit); //
+/* harmony default export */ __webpack_exports__["default"] = (Edit);
+//
 
 /***/ }),
 
@@ -39,11 +38,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 
 
-
 const Save = () => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "Save");
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (Save);
 
 /***/ }),
@@ -69,6 +66,7 @@ __webpack_require__.r(__webpack_exports__);
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
 
+
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * All files containing `style` keyword are bundled together. The code used
@@ -84,22 +82,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const {
   Fragment
 } = wp.element;
 const {
   withSelect
-} = wp.data; //------------------ TAILWINDCSS AND COMMON CSS -----------------
+} = wp.data;
+//------------------ TAILWINDCSS AND COMMON CSS -----------------
 
 
- //-----------------------------------------
+//-----------------------------------------
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_4__.name, {
   edit: _Edit__WEBPACK_IMPORTED_MODULE_2__["default"],
   save: _Save__WEBPACK_IMPORTED_MODULE_3__["default"],
   attributes: []
-}); //
+});
+
+//
 
 /***/ }),
 

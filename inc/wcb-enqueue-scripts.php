@@ -26,3 +26,15 @@ if (!function_exists("wcb__enqueue_lineicons")) {
     add_action('wp_enqueue_scripts', 'wcb__enqueue_lineicons');
     add_action('admin_enqueue_scripts', 'wcb__enqueue_lineicons');
 }
+
+// 
+// if (!function_exists("wcb__enqueue_third_library_for_admin_editor")) {
+//     function wcb__enqueue_third_library_for_admin_editor()
+//     {
+//         wp_register_script('glidejsxxx', plugin_dir_url(WCB_FILE) . 'public/js/glide.js',  ["jquery"], '3.6.0', true);
+//         wp_register_script('glidejs', "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js", ["jquery"], '3.6.0', true);
+//         wp_enqueue_script('glidejs');
+//         wp_enqueue_script('glidejsxxx');
+//     }
+//     add_action('admin_enqueue_scripts', 'wcb__enqueue_third_library_for_admin_editor');
+// }

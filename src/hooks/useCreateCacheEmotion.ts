@@ -10,12 +10,14 @@ const useCreateCacheEmotion = (key = "wcb-custom-cache-key") => {
 		}
 		const { ownerDocument } = ref.current;
 		const { defaultView } = ownerDocument;
+
 		// Set ownerDocument.title for example.
 	}, []);
 	const myCache = createCache({
 		key,
 		container: ref.current || undefined,
 	});
+
 	return {
 		myCache,
 		ref,

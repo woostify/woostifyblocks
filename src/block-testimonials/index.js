@@ -23,6 +23,7 @@ import metadata from "./block.json";
 const { Fragment } = wp.element;
 const { withSelect } = wp.data;
 import attributes from "./attributes";
+
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 
 registerBlockType(metadata.name, {

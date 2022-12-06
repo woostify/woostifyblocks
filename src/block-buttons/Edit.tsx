@@ -22,7 +22,9 @@ import GlobalCss from "./GlobalCss";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
-import WcbButtonsPanelGeneral from "./WcbButtonsPanelGeneral";
+import WcbButtonsPanelGeneral, {
+	BtnGroupSizes,
+} from "./WcbButtonsPanelGeneral";
 import { useSelect, useDispatch } from "@wordpress/data";
 import {
 	// @ts-ignore
@@ -31,7 +33,16 @@ import {
 	store as blocksStore,
 } from "@wordpress/blocks";
 import WcbButtonsPanel_StyleText from "./WcbButtonsPanel_StyleText";
-import WcbButtonsPanel_StyleDimension from "./WcbButtonsPanel_StyleDimension";
+import WcbButtonsPanel_StyleDimension, {
+	WCB_BUTTONS_PANEL_STYLE_DIMENSION,
+	WCB_BUTTONS_PANEL_STYLE_DIMENSION_DEMO,
+} from "./WcbButtonsPanel_StyleDimension";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
+import {
+	DEFAULT_DIMENSION,
+	DimensionSettings,
+} from "../components/controls/MyDimensionsControl/types";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
@@ -64,6 +75,80 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	useEffect(() => {}, []);
 	//
 
+	const getPaddingBySize = (size?: BtnGroupSizes): DimensionSettings => {
+		switch (size) {
+			case "default":
+				return {
+					top: "12px",
+					left: "24px",
+					right: "24px",
+					bottom: "12px",
+				};
+			case "xs":
+				return {
+					top: "4px",
+					left: "8px",
+					right: "8px",
+					bottom: "4px",
+				};
+			case "sm":
+				return {
+					top: "8px",
+					left: "16px",
+					right: "16px",
+					bottom: "8px",
+				};
+			case "md":
+				return {
+					top: "14px",
+					left: "28px",
+					right: "28px",
+					bottom: "14px",
+				};
+			case "lg":
+				return {
+					top: "20px",
+					left: "40px",
+					right: "40px",
+					bottom: "20px",
+				};
+			case "xl":
+				return {
+					top: "28px",
+					left: "64px",
+					right: "64px",
+					bottom: "28px",
+				};
+
+			default:
+				return {
+					top: "12px",
+					left: "24px",
+					right: "24px",
+					bottom: "12px",
+				};
+		}
+	};
+
+	const getButtonSizeDimension = (
+		size: HasResponsive<BtnGroupSizes>
+	): WCB_BUTTONS_PANEL_STYLE_DIMENSION => {
+		const {
+			value_Desktop: size_desktop,
+			value_Tablet: size_tablet,
+			value_Mobile: size_mobile,
+		} = getValueFromAttrsResponsives(size);
+
+		return {
+			...style_dimension,
+			padding: {
+				Desktop: getPaddingBySize(size_desktop),
+				Tablet: getPaddingBySize(size_tablet),
+				Mobile: getPaddingBySize(size_mobile),
+			},
+		};
+	};
+
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
 		switch (tab.name) {
 			case "General":
@@ -78,7 +163,17 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabGeneralIsPanelOpen === "General" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ general_general: data });
+								if (
+									JSON.stringify(data.size) !==
+									JSON.stringify(general_general.size)
+								) {
+									setAttributes({
+										general_general: data,
+										style_dimension: getButtonSizeDimension(data.size),
+									});
+								} else {
+									setAttributes({ general_general: data });
+								}
 							}}
 							panelData={general_general}
 						/>

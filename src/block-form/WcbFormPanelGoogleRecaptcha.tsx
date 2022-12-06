@@ -16,7 +16,7 @@ export interface WCB_FORM_PANEL_GOOGLE_RECAPTCHA {
 
 export const WCB_FORM_PANEL_GOOGLE_RECAPTCHA_DEMO: WCB_FORM_PANEL_GOOGLE_RECAPTCHA =
 	{
-		enableReCaptcha: true,
+		enableReCaptcha: false,
 		version: "v2",
 	};
 
@@ -51,14 +51,6 @@ const WcbFormPanelGoogleRecaptcha: FC<Props> = ({
 			title={__("Google reCAPTCHA", "wcb")}
 		>
 			<div className={"space-y-5"}>
-				<Notice status="warning" className="m-0" isDismissible={false}>
-					<strong>{__("P.S. ", "wcb")}</strong>
-					{__(
-						" Note that If you are using two forms on the same page with the different reCAPTCHA versions (V2 checkbox and V3), it will create conflicts between the versions. Kindly avoid using different versions on same page.",
-						"wcb"
-					)}
-				</Notice>
-
 				<ToggleControl
 					checked={enableReCaptcha}
 					label={__("Enable reCAPTCHA", "wcb")}
@@ -71,18 +63,27 @@ const WcbFormPanelGoogleRecaptcha: FC<Props> = ({
 				/>
 
 				{enableReCaptcha && (
-					<MyRadioGroup
-						label="Select Version"
-						value={version}
-						plans={reCaptcha_plans}
-						onChange={(value) => {
-							setAttr__({
-								...panelData,
-								version: value as WCB_FORM_PANEL_GOOGLE_RECAPTCHA["version"],
-							});
-						}}
-						hasResponsive={false}
-					/>
+					<>
+						<MyRadioGroup
+							label="Select Version"
+							value={version}
+							plans={reCaptcha_plans}
+							onChange={(value) => {
+								setAttr__({
+									...panelData,
+									version: value as WCB_FORM_PANEL_GOOGLE_RECAPTCHA["version"],
+								});
+							}}
+							hasResponsive={false}
+						/>
+						<Notice status="warning" className="m-0" isDismissible={false}>
+							<strong>{__("P.S. ", "wcb")}</strong>
+							{__(
+								" Note that If you are using two forms on the same page with the different reCAPTCHA versions (V2 checkbox and V3), it will create conflicts between the versions. Kindly avoid using different versions on same page.",
+								"wcb"
+							)}
+						</Notice>
+					</>
 				)}
 			</div>
 		</PanelBody>

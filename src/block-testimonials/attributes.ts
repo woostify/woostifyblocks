@@ -7,6 +7,7 @@ import {
 	MyZIndexControlData,
 	Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
+import { TESTIMONIAL_ITEM_DEMO } from "./Edit";
 import {
 	WCB_TESTIMONIALS_PANEL_CAROUSEL,
 	WCB_TESTIMONIALS_PANEL_CAROUSEL_DEMO,
@@ -79,7 +80,11 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 
 	testimonials: {
 		type: "array",
-		default: [],
+		default: [
+			TESTIMONIAL_ITEM_DEMO,
+			TESTIMONIAL_ITEM_DEMO,
+			TESTIMONIAL_ITEM_DEMO,
+		],
 	},
 
 	// THE ATTRS OF BLOCK HERE

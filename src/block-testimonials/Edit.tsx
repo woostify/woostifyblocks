@@ -1,5 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import { RichText, useBlockProps } from "@wordpress/block-editor";
+import { useRefEffect } from "@wordpress/compose";
 import React, { useEffect, FC } from "react";
 import { TestimonialItem, WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
@@ -28,6 +29,11 @@ import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives"
 import OverlayBackgroundByBgControl from "../components/OverlayBackgroundByBgControl";
 import VideoBackgroundByBgControl from "../components/VideoBackgroundByBgControl";
 import useGlide from "./useGlide";
+import _ from "lodash";
+import { useMemo } from "@wordpress/element";
+import Glide from "@glidejs/glide";
+import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
+import useGetDeviceType from "../hooks/useGetDeviceType";
 
 export const TESTIMONIAL_ITEM_DEMO: TestimonialItem = {
 	name: "Drink Water",
@@ -56,7 +62,13 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	} = attributes;
 	//  COMMON HOOKS
 	const { myCache, ref } = useCreateCacheEmotion();
+
+	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
+
+	console.log(333, { ref: ref.current?.ownerDocument.defaultView });
+
 	const wrapBlockProps = useBlockProps({ ref });
+
 	const {
 		tabIsOpen,
 		tabAdvancesIsPanelOpen,
@@ -71,12 +83,21 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			uniqueId: UNIQUE_ID,
 		});
 	}, [UNIQUE_ID]);
+
 	//
-	useGlide({ general_carousel, general_general, UNIQUE_ID });
+	// useGlide({ general_carousel, general_general, UNIQUE_ID, ref, isSelected });
+	// const glideEL = document.querySelector(`[data-uniqueid=${UNIQUE_ID}] .glide`);
+	// console.log(1, { glideEL });
+
 	//
-	let CURRENT_DATA = [
-		...Array(general_general.numberofTestimonials || 3).keys(),
-	].map((_, index) => testimonials[index] || TESTIMONIAL_ITEM_DEMO);
+
+	let CURRENT_DATA = useMemo(
+		() =>
+			[...Array(general_general.numberofTestimonials || 3).keys()].map(
+				(_, index) => testimonials[index] || TESTIMONIAL_ITEM_DEMO
+			),
+		[general_general.numberofTestimonials, testimonials]
+	);
 
 	//
 
@@ -94,7 +115,22 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabGeneralIsPanelOpen === "Heading" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ general_general: data });
+								if (
+									data.numberofTestimonials !==
+									general_general.numberofTestimonials
+								) {
+									const newtestimonials = [
+										...Array(general_general.numberofTestimonials || 3).keys(),
+									].map(
+										(_, index) => testimonials[index] || TESTIMONIAL_ITEM_DEMO
+									);
+									setAttributes({
+										general_general: data,
+										testimonials: newtestimonials,
+									});
+								} else {
+									setAttributes({ general_general: data });
+								}
 							}}
 							panelData={general_general}
 						/>
@@ -117,7 +153,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabGeneralIsPanelOpen === "Carousel" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ general_carousel: data });
+								setAttributes({
+									general_carousel: data,
+								});
 							}}
 							panelData={general_carousel}
 						/>
@@ -230,7 +268,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				tagName="div"
 				className="wcb-testimonials__item-content"
 				value={item.content}
-				onChange={(content) =>
+				onChange={(content) => {
 					setAttributes({
 						testimonials: CURRENT_DATA.map((item, j) => {
 							if (j === index) {
@@ -241,8 +279,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							}
 							return item;
 						}),
-					})
-				}
+					});
+				}}
 				placeholder={__("Content of testimonials")}
 			/>
 		);
@@ -254,7 +292,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				tagName="div"
 				className="wcb-testimonials__item-name"
 				value={item.name}
-				onChange={(content) =>
+				onChange={(content) => {
 					setAttributes({
 						testimonials: CURRENT_DATA.map((item, j) => {
 							if (j === index) {
@@ -265,8 +303,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							}
 							return item;
 						}),
-					})
-				}
+					});
+				}}
 				placeholder={__("Name")}
 			/>
 		);
@@ -281,19 +319,19 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				tagName="div"
 				className="wcb-testimonials__item-company"
 				value={item.companyName}
-				onChange={(content) =>
+				onChange={(content) => {
 					setAttributes({
 						testimonials: CURRENT_DATA.map((item, j) => {
 							if (j === index) {
 								return {
 									...item,
-									companyName: content,
+									name: content,
 								};
 							}
 							return item;
 						}),
-					})
-				}
+					});
+				}}
 				placeholder={__("Company Name")}
 			/>
 		);
@@ -325,10 +363,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const renderTestimonialItem = (item: TestimonialItem, index: number) => {
 		const { imagePosition } = general_images;
 		return (
-			<li
-				className="glide__slide wcb-testimonials__item"
-				key={index + "-" + item.name}
-			>
+			<li className="glide__slide wcb-testimonials__item" key={index + "-"}>
 				<div className=""></div>
 				<VideoBackgroundByBgControl
 					bgType={style_backgroundAndBorder.background.bgType}
@@ -355,7 +390,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 						<div className="wcb-testimonials__item-nameandcompany">
 							{/* NAME */}
-							{renderTestimonialItemName(item, index)}
+							<div>{renderTestimonialItemName(item, index)}</div>
 
 							{/* COMPANY */}
 							{renderTestimonialItemCompany(item, index)}
@@ -444,25 +479,31 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	};
 
 	return (
-		<CacheProvider value={myCache}>
-			<div
-				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-testimonials__wrap ${UNIQUE_ID}`}
-				data-uniqueid={UNIQUE_ID}
-			>
-				{/* CONTROL SETTINGS */}
-				<HOCInspectorControls
-					renderTabPanels={renderTabBodyPanels}
-					uniqueId={uniqueId}
-				/>
+		// <CacheProvider value={myCache}>
+		<div
+			{...wrapBlockProps}
+			className={`${wrapBlockProps?.className} wcb-testimonials__wrap ${UNIQUE_ID}`}
+			data-uniqueid={UNIQUE_ID}
+		>
+			{/* CONTROL SETTINGS */}
+			{/* <HOCInspectorControls
+				renderTabPanels={renderTabBodyPanels}
+				uniqueId={uniqueId}
+			/> */}
 
-				{/* CSS IN JS */}
-				<GlobalCss {...attributes} />
+			{/* CSS IN JS */}
+			{/* <GlobalCss {...attributes} /> */}
 
-				{/* CHILD CONTENT  */}
-				{renderEditContent()}
+			{/* CHILD CONTENT  */}
+			{/* {renderEditContent()} */}
+
+			<div className="your-class">
+				<div>your content</div>
+				<div>your content</div>
+				<div>your content</div>
 			</div>
-		</CacheProvider>
+		</div>
+		// </CacheProvider>
 	);
 };
 

@@ -7,6 +7,7 @@ import getTypographyStyles from "../utils/getTypographyStyles";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { WcbAttrs } from "./attributes";
+import { BtnGroupSizes } from "./WcbButtonsPanelGeneral";
 
 interface Props extends WcbAttrs {}
 
@@ -21,7 +22,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		advance_responsiveCondition,
 		advance_zIndex,
 	} = attrs;
-	const { stackOrientation, alignment } = general_general;
+	const { stackOrientation, alignment, size } = general_general;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
 	const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
@@ -29,10 +30,44 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const INNER_BUTTON = `#${uniqueId} .wcb-button__main`;
 	const INNER_BUTTON_TEXT = `#${uniqueId} .wcb-button__text`;
 
+	// const getButtonSizeStyles = (size?: BtnGroupSizes): CSSObject => {
+	// 	switch (size) {
+	// 		case "xs":
+	// 			return {
+	// 				padding: "10px",
+	// 			};
+	// 		case "sm":
+	// 			return {
+	// 				padding: "15px",
+	// 			};
+	// 		case "md":
+	// 			return {
+	// 				padding: "20px",
+	// 			};
+	// 		case "lg":
+	// 			return {
+	// 				padding: "25px",
+	// 			};
+	// 		case "xl":
+	// 			return {
+	// 				padding: "30px",
+	// 			};
+
+	// 		default:
+	// 			return {};
+	// 	}
+	// };
+
+	// const {
+	// 	value_Desktop: size_desktop,
+	// 	value_Tablet: size_tablet,
+	// 	value_Mobile: size_mobile,
+	// } = getValueFromAttrsResponsives(size);
+
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject => {
 		return {
-			[`${WRAP_CLASSNAME}`]: {
+			[`.${uniqueId}`]: {
 				[`@media (min-width: ${media_tablet})`]: {},
 				[`@media (min-width: ${media_desktop})`]: {},
 			},

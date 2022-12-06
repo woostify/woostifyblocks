@@ -11,7 +11,7 @@ import useGetDeviceType from "../hooks/useGetDeviceType";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 
 export type BtnGroupAlignment = CSSProperties["justifyContent"];
-export type BtnGroupSizes = "xs" | "sm" | "md" | "lg" | "xl";
+export type BtnGroupSizes = "default" | "xs" | "sm" | "md" | "lg" | "xl";
 
 export interface WCB_BUTTONS_PANEL_GENERAL {
 	alignment: HasResponsive<BtnGroupAlignment>;
@@ -24,7 +24,7 @@ export const WCB_BUTTONS_PANEL_GENERAL_DEMO: WCB_BUTTONS_PANEL_GENERAL = {
 	alignment: { Desktop: "start" },
 	stackOrientation: "Mobile",
 	gap: { Desktop: "1rem" },
-	size: { Desktop: "md" },
+	size: { Desktop: "default", Tablet: "default", Mobile: "default" },
 };
 
 interface Props
@@ -56,7 +56,7 @@ const WcbButtonsPanelGeneral: FC<Props> = ({
 		deviceType
 	);
 
-	const PLANS_alignment: MyRadioItem<BtnGroupAlignment>[] = [
+	const PLANS_alignment: MyRadioItem<NonNullable<BtnGroupAlignment>>[] = [
 		{
 			name: "start",
 			icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -126,6 +126,7 @@ const WcbButtonsPanelGeneral: FC<Props> = ({
 		label: string;
 		value: BtnGroupSizes;
 	}[] = [
+		{ label: "Default", value: "default" },
 		{ label: "Extra-small", value: "xs" },
 		{ label: "Smal", value: "sm" },
 		{ label: "Medium", value: "md" },
@@ -197,6 +198,8 @@ const WcbButtonsPanelGeneral: FC<Props> = ({
 
 				<MySelect
 					label={__("Buttons Size", "wcb")}
+					labelClass="flex-[1.3]"
+					hasResponsive
 					onChange={(value) => {
 						setAttr__({
 							...panelData,
