@@ -19,8 +19,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 	const { general_general, uniqueId, label } = attributes;
 	//  COMMON HOOKS
-	const { myCache, ref } = useCreateCacheEmotion();
-	const wrapBlockProps = useBlockProps({ ref });
+	// const { myCache, ref } = useCreateCacheEmotion();
+	const wrapBlockProps = useBlockProps();
 	const {
 		tabIsOpen,
 		tabAdvancesIsPanelOpen,
@@ -69,37 +69,35 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	};
 
 	return (
-		<CacheProvider value={myCache}>
-			<div
-				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-url__wrap ${UNIQUE_ID}`}
-				data-uniqueid={UNIQUE_ID}
-			>
-				{/* CONTROL SETTINGS */}
-				<HOCInspectorControls
-					tabs={INSPECTOR_CONTROLS_TABS.filter(
-						(item) => item.name !== "Styles"
-					)}
-					renderTabPanels={renderTabBodyPanels}
-				/>
+		// <CacheProvider value={myCache}>
+		<div
+			{...wrapBlockProps}
+			className={`${wrapBlockProps?.className} wcb-url__wrap ${UNIQUE_ID}`}
+			data-uniqueid={UNIQUE_ID}
+		>
+			{/* CONTROL SETTINGS */}
+			<HOCInspectorControls
+				tabs={INSPECTOR_CONTROLS_TABS.filter((item) => item.name !== "Styles")}
+				renderTabPanels={renderTabBodyPanels}
+			/>
 
-				{/* CHILD CONTENT  */}
-				<FormInputLabelRichText
-					value={label}
-					isRequired={general_general.isRequired}
-					onChange={(value) => {
-						setAttributes({ label: value });
-					}}
-				/>
-				<input
-					type="url"
-					placeholder={general_general.placeholder}
-					required={general_general.isRequired}
-					autoComplete={general_general.autocomplete}
-					name={UNIQUE_NAME}
-				/>
-			</div>
-		</CacheProvider>
+			{/* CHILD CONTENT  */}
+			<FormInputLabelRichText
+				value={label}
+				isRequired={general_general.isRequired}
+				onChange={(value) => {
+					setAttributes({ label: value });
+				}}
+			/>
+			<input
+				type="url"
+				placeholder={general_general.placeholder}
+				required={general_general.isRequired}
+				autoComplete={general_general.autocomplete}
+				name={UNIQUE_NAME}
+			/>
+		</div>
+		// </CacheProvider>
 	);
 };
 

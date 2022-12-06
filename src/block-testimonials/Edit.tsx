@@ -1,7 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import { RichText, useBlockProps } from "@wordpress/block-editor";
 import { useRefEffect } from "@wordpress/compose";
-import React, { useEffect, FC } from "react";
+import React, { useEffect, FC, useCallback } from "react";
 import { TestimonialItem, WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
@@ -34,6 +34,8 @@ import { useMemo } from "@wordpress/element";
 import Glide from "@glidejs/glide";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
+import MyCacheProvider from "../components/MyCacheProvider";
+import { WcbAttrsForSave } from "./Save";
 
 export const TESTIMONIAL_ITEM_DEMO: TestimonialItem = {
 	name: "Drink Water",
@@ -478,32 +480,64 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		);
 	};
 
+	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {
+		return {
+			uniqueId,
+			advance_responsiveCondition,
+			advance_zIndex,
+			general_general,
+			style_dimension,
+			general_carousel,
+			general_images,
+			style_arrowAndDots,
+			style_backgroundAndBorder,
+			style_company,
+			style_content,
+			style_image,
+			style_name,
+		};
+	}, [
+		uniqueId,
+		advance_responsiveCondition,
+		advance_zIndex,
+		general_general,
+		style_dimension,
+		general_carousel,
+		general_images,
+		style_arrowAndDots,
+		style_backgroundAndBorder,
+		style_company,
+		style_content,
+		style_image,
+		style_name,
+	]);
+
 	return (
-		// <CacheProvider value={myCache}>
-		<div
-			{...wrapBlockProps}
-			className={`${wrapBlockProps?.className} wcb-testimonials__wrap ${UNIQUE_ID}`}
-			data-uniqueid={UNIQUE_ID}
-		>
-			{/* CONTROL SETTINGS */}
-			{/* <HOCInspectorControls
-				renderTabPanels={renderTabBodyPanels}
-				uniqueId={uniqueId}
-			/> */}
+		<MyCacheProvider uniqueKey={clientId}>
+			<div
+				{...wrapBlockProps}
+				className={`${wrapBlockProps?.className} wcb-testimonials__wrap ${UNIQUE_ID}`}
+				data-uniqueid={UNIQUE_ID}
+			>
+				{/* CONTROL SETTINGS */}
+				<HOCInspectorControls
+					renderTabPanels={renderTabBodyPanels}
+					uniqueId={uniqueId}
+				/>
 
-			{/* CSS IN JS */}
-			{/* <GlobalCss {...attributes} /> */}
+				{/* CSS IN JS */}
+				<GlobalCss {...WcbAttrsForSave()} />
 
-			{/* CHILD CONTENT  */}
-			{/* {renderEditContent()} */}
+				{/* CHILD CONTENT  */}
+				{renderEditContent()}
 
-			<div className="your-class">
-				<div>your content</div>
-				<div>your content</div>
-				<div>your content</div>
+				<div className="your-class">
+					<div>your content</div>
+					<div>your content</div>
+					<div>your content</div>
+				</div>
 			</div>
-		</div>
-		// </CacheProvider>
+		</MyCacheProvider>
 	);
 };
 

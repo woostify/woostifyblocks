@@ -30,39 +30,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const INNER_BUTTON = `#${uniqueId} .wcb-button__main`;
 	const INNER_BUTTON_TEXT = `#${uniqueId} .wcb-button__text`;
 
-	// const getButtonSizeStyles = (size?: BtnGroupSizes): CSSObject => {
-	// 	switch (size) {
-	// 		case "xs":
-	// 			return {
-	// 				padding: "10px",
-	// 			};
-	// 		case "sm":
-	// 			return {
-	// 				padding: "15px",
-	// 			};
-	// 		case "md":
-	// 			return {
-	// 				padding: "20px",
-	// 			};
-	// 		case "lg":
-	// 			return {
-	// 				padding: "25px",
-	// 			};
-	// 		case "xl":
-	// 			return {
-	// 				padding: "30px",
-	// 			};
-
-	// 		default:
-	// 			return {};
-	// 	}
-	// };
-
-	// const {
-	// 	value_Desktop: size_desktop,
-	// 	value_Tablet: size_tablet,
-	// 	value_Mobile: size_mobile,
-	// } = getValueFromAttrsResponsives(size);
+	console.log(99999);
 
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject => {
@@ -79,6 +47,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 		value_Tablet: alignment_tablet,
 		value_Mobile: alignment_mobile,
 	} = getValueFromAttrsResponsives(alignment);
+
+	console.log(1, "---- butons global css ---");
 
 	return (
 		<>

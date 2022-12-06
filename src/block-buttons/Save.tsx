@@ -9,7 +9,10 @@ import { WcbAttrs } from "./attributes";
 import SaveCommon from "../components/SaveCommon";
 import "./style.scss";
 
-export default function save({ attributes }: { attributes: WcbAttrs }) {
+export interface WcbAttrsForSave
+	extends Omit<WcbAttrs, "heading" | "subHeading"> {}
+
+export default function save({ attributes }: { attributes: WcbAttrsForSave }) {
 	const {
 		uniqueId,
 		advance_responsiveCondition,
@@ -20,7 +23,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	} = attributes;
 	//
 
-	const newAttrForSave: Omit<WcbAttrs, "heading" | "subHeading"> = {
+	const newAttrForSave: WcbAttrsForSave = {
 		uniqueId,
 		general_general,
 		style_dimension,

@@ -1,6 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import { InnerBlocks, RichText, useBlockProps } from "@wordpress/block-editor";
-import React, { useEffect, FC } from "react";
+import React, { useEffect, FC, useCallback, useRef } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
@@ -23,6 +23,10 @@ import WcbCtaPanel_StyleDimension, {
 	WCB_CTA_PANEL_STYLE_DIMENSION_DEMO,
 } from "./WcbCtaPanel_StyleDimension";
 import WcbCtaPanelPreset from "./WcbCtaPanelPreset";
+import { WcbAttrsForSave } from "./Save";
+import createCache, { EmotionCache } from "@emotion/cache";
+import MyCacheProvider from "../components/MyCacheProvider";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -39,7 +43,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		general_preset,
 	} = attributes;
 	//  COMMON HOOKS
-	const { myCache, ref } = useCreateCacheEmotion();
+	// const { myCache, ref } = useCreateCacheEmotion("cta");
+	const ref = useRef<HTMLDivElement>(null);
+
 	const wrapBlockProps = useBlockProps({ ref });
 	const {
 		tabIsOpen,
@@ -50,6 +56,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	} = useSetBlockPanelInfo(uniqueId);
 
 	const UNIQUE_ID = wrapBlockProps.id;
+
 	useEffect(() => {
 		setAttributes({
 			uniqueId: UNIQUE_ID,
@@ -163,8 +170,30 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		}
 	};
 
+	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {
+		return {
+			uniqueId,
+			advance_responsiveCondition,
+			advance_zIndex,
+			general_layout,
+			style_description,
+			style_dimension,
+			style_title,
+		};
+	}, [
+		uniqueId,
+		advance_responsiveCondition,
+		advance_zIndex,
+		general_layout,
+		style_description,
+		style_dimension,
+		style_title,
+	]);
+
+	// console.log(4, "---- CTA edit  ---" + uniqueId);
+
 	return (
-		<CacheProvider value={myCache}>
+		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
 				className={`${wrapBlockProps?.className} wcb-cta__wrap ${UNIQUE_ID}`}
@@ -177,7 +206,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				/>
 
 				{/* CSS IN JS */}
-				<GlobalCss {...attributes} />
+				<GlobalCss {...WcbAttrsForSave()} />
 
 				{/* CHILD CONTENT  */}
 				<div className="wcb-cta__inner">
@@ -207,7 +236,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					</div>
 				</div>
 			</div>
-		</CacheProvider>
+		</MyCacheProvider>
 	);
 };
 

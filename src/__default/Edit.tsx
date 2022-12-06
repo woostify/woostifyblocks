@@ -1,6 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import { useBlockProps } from "@wordpress/block-editor";
-import React, { useEffect, FC } from "react";
+import React, { useEffect, FC, useCallback } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
@@ -13,14 +13,16 @@ import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import WcbHeadingPanelGeneral from "./WcbHeadingPanelGeneral";
+import MyCacheProvider from "../components/MyCacheProvider";
+import { WcbAttrsForSave } from "./Save";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 	const { advance_responsiveCondition, advance_zIndex, heading, uniqueId } =
 		attributes;
 	//  COMMON HOOKS
-	const { myCache, ref } = useCreateCacheEmotion();
-	const wrapBlockProps = useBlockProps({ ref });
+	// const { myCache, ref } = useCreateCacheEmotion();
+	const wrapBlockProps = useBlockProps();
 	const {
 		tabIsOpen,
 		tabAdvancesIsPanelOpen,
@@ -79,8 +81,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		}
 	};
 
+	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {
+		return {
+			uniqueId,
+			advance_responsiveCondition,
+			advance_zIndex,
+		};
+	}, [uniqueId, advance_responsiveCondition, advance_zIndex]);
 	return (
-		<CacheProvider value={myCache}>
+		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
 				className={`${wrapBlockProps?.className} wcb-default__wrap ${UNIQUE_ID}`}
@@ -93,12 +102,12 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				/>
 
 				{/* CSS IN JS */}
-				<GlobalCss {...attributes} />
+				<GlobalCss {...WcbAttrsForSave()} />
 
 				{/* CHILD CONTENT  */}
 				<div>CHILD CONTENT </div>
 			</div>
-		</CacheProvider>
+		</MyCacheProvider>
 	);
 };
 

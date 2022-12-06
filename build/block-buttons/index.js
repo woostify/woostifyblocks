@@ -2285,21 +2285,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/HOCInspectorControls */ "./src/components/HOCInspectorControls.tsx");
-/* harmony import */ var _hooks_useCreateCacheEmotion__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/useCreateCacheEmotion */ "./src/hooks/useCreateCacheEmotion.ts");
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-element-6a883da9.browser.esm.js");
-/* harmony import */ var _GlobalCss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./GlobalCss */ "./src/block-buttons/GlobalCss.tsx");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./editor.scss */ "./src/block-buttons/editor.scss");
-/* harmony import */ var _hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../hooks/useSetBlockPanelInfo */ "./src/hooks/useSetBlockPanelInfo.ts");
-/* harmony import */ var _components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/AdvancePanelCommon */ "./src/components/AdvancePanelCommon.tsx");
-/* harmony import */ var _WcbButtonsPanelGeneral__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./WcbButtonsPanelGeneral */ "./src/block-buttons/WcbButtonsPanelGeneral.tsx");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _WcbButtonsPanel_StyleText__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./WcbButtonsPanel_StyleText */ "./src/block-buttons/WcbButtonsPanel_StyleText.tsx");
-/* harmony import */ var _WcbButtonsPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./WcbButtonsPanel_StyleDimension */ "./src/block-buttons/WcbButtonsPanel_StyleDimension.tsx");
-/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
-
+/* harmony import */ var _GlobalCss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./GlobalCss */ "./src/block-buttons/GlobalCss.tsx");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./editor.scss */ "./src/block-buttons/editor.scss");
+/* harmony import */ var _hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../hooks/useSetBlockPanelInfo */ "./src/hooks/useSetBlockPanelInfo.ts");
+/* harmony import */ var _components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/AdvancePanelCommon */ "./src/components/AdvancePanelCommon.tsx");
+/* harmony import */ var _WcbButtonsPanelGeneral__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./WcbButtonsPanelGeneral */ "./src/block-buttons/WcbButtonsPanelGeneral.tsx");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _WcbButtonsPanel_StyleText__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./WcbButtonsPanel_StyleText */ "./src/block-buttons/WcbButtonsPanel_StyleText.tsx");
+/* harmony import */ var _WcbButtonsPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./WcbButtonsPanel_StyleDimension */ "./src/block-buttons/WcbButtonsPanel_StyleDimension.tsx");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+/* harmony import */ var _components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../components/MyCacheProvider */ "./src/components/MyCacheProvider.tsx");
 
 
 
@@ -2334,10 +2332,11 @@ const Edit = props => {
     style_dimension
   } = attributes;
   //  COMMON HOOKS
-  const {
-    myCache,
-    ref
-  } = (0,_hooks_useCreateCacheEmotion__WEBPACK_IMPORTED_MODULE_7__["default"])();
+
+  const ref = (0,react__WEBPACK_IMPORTED_MODULE_5__.useRef)(null);
+
+  // const { myCache, ref } = useCreateCacheEmotion("wcb-button");
+
   const wrapBlockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
     ref
   });
@@ -2347,7 +2346,7 @@ const Edit = props => {
     tabGeneralIsPanelOpen,
     tabStylesIsPanelOpen,
     handleTogglePanel
-  } = (0,_hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_10__["default"])(uniqueId);
+  } = (0,_hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_9__["default"])(uniqueId);
   const UNIQUE_ID = wrapBlockProps.id;
   (0,react__WEBPACK_IMPORTED_MODULE_5__.useEffect)(() => {
     setAttributes({
@@ -2416,7 +2415,7 @@ const Edit = props => {
       value_Desktop: size_desktop,
       value_Tablet: size_tablet,
       value_Mobile: size_mobile
-    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_17__["default"])(size);
+    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_16__["default"])(size);
     return {
       ...style_dimension,
       padding: {
@@ -2429,7 +2428,7 @@ const Edit = props => {
   const renderTabBodyPanels = tab => {
     switch (tab.name) {
       case "General":
-        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbButtonsPanelGeneral__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbButtonsPanelGeneral__WEBPACK_IMPORTED_MODULE_11__["default"], {
           onToggle: () => handleTogglePanel("General", "General", true),
           initialOpen: tabGeneralIsPanelOpen === "General" || tabGeneralIsPanelOpen === "first",
           opened: tabGeneralIsPanelOpen === "General" || undefined
@@ -2450,7 +2449,7 @@ const Edit = props => {
           panelData: general_general
         }));
       case "Styles":
-        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbButtonsPanel_StyleText__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbButtonsPanel_StyleText__WEBPACK_IMPORTED_MODULE_14__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleText", true),
           initialOpen: tabStylesIsPanelOpen === "_StyleText" || tabStylesIsPanelOpen === "first",
           opened: tabStylesIsPanelOpen === "_StyleText" || undefined
@@ -2462,7 +2461,7 @@ const Edit = props => {
             });
           },
           panelData: style_text
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbButtonsPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_16__["default"], {
+        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbButtonsPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_15__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleDimension"),
           initialOpen: tabStylesIsPanelOpen === "_StyleDimension",
           opened: tabStylesIsPanelOpen === "_StyleDimension" || undefined
@@ -2476,7 +2475,7 @@ const Edit = props => {
           panelData: style_dimension
         }));
       case "Advances":
-        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_10__["default"], {
           advance_responsiveCondition: attributes.advance_responsiveCondition,
           advance_zIndex: attributes.advance_zIndex,
           handleTogglePanel: handleTogglePanel,
@@ -2498,12 +2497,24 @@ const Edit = props => {
   });
   //
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_18__.C, {
-    value: myCache
+  const WcbAttrsForSave = (0,react__WEBPACK_IMPORTED_MODULE_5__.useCallback)(() => {
+    return {
+      uniqueId,
+      advance_responsiveCondition,
+      advance_zIndex,
+      general_general,
+      style_dimension,
+      style_text
+    };
+  }, [uniqueId, advance_responsiveCondition, advance_zIndex, general_general, style_dimension, style_text]);
+
+  // console.log(6, "---- Button edit  ---" + uniqueId);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_17__["default"], {
+    uniqueKey: clientId
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
     className: `wcb-buttons__wrap ${uniqueId} ${wrapBlockProps.className} `,
     "data-uniqueid": uniqueId
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_8__["default"], attributes), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", innerBlocksProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_7__["default"], WcbAttrsForSave()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", innerBlocksProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_6__["default"], {
     uniqueId: uniqueId,
     renderTabPanels: renderTabBodyPanels,
     onChangeActive: tab => {
@@ -2524,12 +2535,12 @@ const Placeholder = _ref => {
     blockType,
     defaultVariation,
     variations
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_13__.useSelect)(select => {
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_12__.useSelect)(select => {
     const {
       getBlockVariations,
       getBlockType,
       getDefaultBlockVariation
-    } = select(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_14__.store);
+    } = select(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_13__.store);
     return {
       blockType: getBlockType(name),
       defaultVariation: getDefaultBlockVariation(name, "block"),
@@ -2538,7 +2549,7 @@ const Placeholder = _ref => {
   }, [name]);
   const {
     replaceInnerBlocks
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_13__.useDispatch)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.store);
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_12__.useDispatch)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.store);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.__experimentalBlockVariationPicker, {
     icon: (0,lodash__WEBPACK_IMPORTED_MODULE_4__.get)(blockType, ["icon", "src"]),
     label: (0,lodash__WEBPACK_IMPORTED_MODULE_4__.get)(blockType, ["title"]),
@@ -2552,7 +2563,7 @@ const Placeholder = _ref => {
         });
       }
       if (nextVariation.innerBlocks) {
-        replaceInnerBlocks(clientId, (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_14__.createBlocksFromInnerBlocksTemplate)(nextVariation.innerBlocks), true);
+        replaceInnerBlocks(clientId, (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_13__.createBlocksFromInnerBlocksTemplate)(nextVariation.innerBlocks), true);
       }
     },
     variations: variations,
@@ -2563,7 +2574,7 @@ const ButtonsEdit = props => {
   const {
     clientId
   } = props;
-  const hasInnerBlocks = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_13__.useSelect)(select => select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.store).getBlocks(clientId).length > 0, [clientId]);
+  const hasInnerBlocks = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_12__.useSelect)(select => select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.store).getBlocks(clientId).length > 0, [clientId]);
   const Component = hasInnerBlocks ? Edit : Placeholder;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Component, props);
 };
@@ -2622,40 +2633,7 @@ const GlobalCss = attrs => {
   const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-buttons__inner`;
   const INNER_BUTTON = `#${uniqueId} .wcb-button__main`;
   const INNER_BUTTON_TEXT = `#${uniqueId} .wcb-button__text`;
-
-  // const getButtonSizeStyles = (size?: BtnGroupSizes): CSSObject => {
-  // 	switch (size) {
-  // 		case "xs":
-  // 			return {
-  // 				padding: "10px",
-  // 			};
-  // 		case "sm":
-  // 			return {
-  // 				padding: "15px",
-  // 			};
-  // 		case "md":
-  // 			return {
-  // 				padding: "20px",
-  // 			};
-  // 		case "lg":
-  // 			return {
-  // 				padding: "25px",
-  // 			};
-  // 		case "xl":
-  // 			return {
-  // 				padding: "30px",
-  // 			};
-
-  // 		default:
-  // 			return {};
-  // 	}
-  // };
-
-  // const {
-  // 	value_Desktop: size_desktop,
-  // 	value_Tablet: size_tablet,
-  // 	value_Mobile: size_mobile,
-  // } = getValueFromAttrsResponsives(size);
+  console.log(99999);
 
   // ------------------- WRAP DIV
   const getDivWrapStyles = () => {
@@ -2671,6 +2649,7 @@ const GlobalCss = attrs => {
     value_Tablet: alignment_tablet,
     value_Mobile: alignment_mobile
   } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(alignment);
+  console.log(1, "---- butons global css ---");
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: [{
       [INNER_CLASSNAME]: {
@@ -3452,6 +3431,8 @@ const HOCInspectorControls = _ref => {
     tabDefaultActive = "General",
     onChangeActive
   } = _ref;
+  // console.log(888888);
+
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
     setTimeout(() => {
       const tabIsOpenEl = document.querySelector(".components-panel__body.is-opened");
@@ -3502,7 +3483,52 @@ const HOCInspectorControls = _ref => {
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, renderContent(), renderContent2());
 };
-/* harmony default export */ __webpack_exports__["default"] = (HOCInspectorControls);
+/* harmony default export */ __webpack_exports__["default"] = ((0,react__WEBPACK_IMPORTED_MODULE_3__.memo)(HOCInspectorControls));
+
+/***/ }),
+
+/***/ "./src/components/MyCacheProvider.tsx":
+/*!********************************************!*\
+  !*** ./src/components/MyCacheProvider.tsx ***!
+  \********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _hooks_useCreateCacheEmotion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../hooks/useCreateCacheEmotion */ "./src/hooks/useCreateCacheEmotion.ts");
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-element-6a883da9.browser.esm.js");
+/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
+
+
+
+
+
+const MyCacheProvider = _ref => {
+  let {
+    children,
+    uniqueKey = "uniqueid"
+  } = _ref;
+  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_3__["default"])() || "Desktop";
+  if (deviceType === "Desktop") {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, children);
+  }
+  const KEY = uniqueKey.replace(/[0-9]/g, "").replace(/ /g, "").toLocaleLowerCase();
+  const {
+    myCache,
+    ref
+  } = (0,_hooks_useCreateCacheEmotion__WEBPACK_IMPORTED_MODULE_2__["default"])("wcb-key-cache");
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_4__.C, {
+    value: myCache
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("head", {
+    hidden: true,
+    className: "hidden",
+    ref: ref
+  }), children);
+};
+/* harmony default export */ __webpack_exports__["default"] = ((0,react__WEBPACK_IMPORTED_MODULE_1__.memo)(MyCacheProvider));
 
 /***/ }),
 
@@ -5386,25 +5412,12 @@ const useCreateCacheEmotion = function () {
   let key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "wcb-custom-cache-key";
   // DIEU NAY GIUP EMOTION GLOBAL CSS DUOC IMPORT TRONG MOBILE IFRAME!!!
   const ref = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (!ref.current) {
-      return;
-    }
-    const {
-      ownerDocument
-    } = ref.current;
-    const {
-      defaultView
-    } = ownerDocument;
-
-    // Set ownerDocument.title for example.
-  }, []);
-  const myCache = (0,_emotion_cache__WEBPACK_IMPORTED_MODULE_1__["default"])({
+  const cache = (0,_emotion_cache__WEBPACK_IMPORTED_MODULE_1__["default"])({
     key,
     container: ref.current || undefined
   });
   return {
-    myCache,
+    myCache: cache,
     ref
   };
 };

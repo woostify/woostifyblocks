@@ -4,7 +4,7 @@ import {
 	useBlockProps,
 	store as blockEditorStore,
 } from "@wordpress/block-editor";
-import React, { useEffect, FC } from "react";
+import React, { useEffect, FC, useRef } from "react";
 import { WcbAttrs } from "./attributes";
 import { EditProps } from "../block-container/Edit";
 import useCreateCacheEmotion from "../hooks/useCreateCacheEmotion";
@@ -16,6 +16,7 @@ import { WCB_FAQ_PANEL_ICON } from "../block-faq/WcbFaqPanelIcon";
 import { WCB_FAQ_PANEL_GENERAL } from "../block-faq/WcbFaqPanelGeneral";
 import { useSelect } from "@wordpress/data";
 import MyIcon from "../components/controls/MyIcon";
+import MyCacheProvider from "../components/MyCacheProvider";
 
 const Edit: FC<
 	EditProps<
@@ -38,7 +39,8 @@ const Edit: FC<
 		enableSeparator,
 	} = attributes;
 	//  COMMON HOOKS
-	const { myCache, ref } = useCreateCacheEmotion();
+	const ref = useRef<HTMLDivElement>(null);
+	// const { myCache, ref } = useCreateCacheEmotion();
 	const wrapBlockProps = useBlockProps({ ref });
 	const {
 		tabIsOpen,
@@ -106,7 +108,7 @@ const Edit: FC<
 	const ACTIVE = (defaultExtend || isSelected) && layout === "accordion";
 
 	return (
-		<CacheProvider value={myCache}>
+		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
 				className={`${
@@ -151,7 +153,7 @@ const Edit: FC<
 					</div>
 				)}
 			</div>
-		</CacheProvider>
+		</MyCacheProvider>
 	);
 };
 

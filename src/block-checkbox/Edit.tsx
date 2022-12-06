@@ -1,7 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import { RichText, useBlockProps } from "@wordpress/block-editor";
 import _ from "lodash";
-import React, { useEffect, FC } from "react";
+import React, { useEffect, FC, useRef } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
@@ -32,7 +32,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
 	const { general_general, uniqueId, label } = attributes;
 	//  COMMON HOOKS
-	const { myCache, ref } = useCreateCacheEmotion();
+	// const { myCache, ref } = useCreateCacheEmotion();
+	const ref = useRef<HTMLDivElement>(null);
 	const wrapBlockProps = useBlockProps({ ref });
 	const {
 		tabIsOpen,
@@ -222,33 +223,31 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	};
 
 	return (
-		<CacheProvider value={myCache}>
-			<div
-				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-checkbox__wrap ${UNIQUE_ID}`}
-				data-uniqueid={UNIQUE_ID}
-			>
-				{/* CONTROL SETTINGS */}
-				<HOCInspectorControls
-					tabs={INSPECTOR_CONTROLS_TABS.filter(
-						(item) => item.name !== "Styles"
-					)}
-					renderTabPanels={renderTabBodyPanels}
-					uniqueId={uniqueId}
-				/>
+		// <CacheProvider value={myCache}>
+		<div
+			{...wrapBlockProps}
+			className={`${wrapBlockProps?.className} wcb-checkbox__wrap ${UNIQUE_ID}`}
+			data-uniqueid={UNIQUE_ID}
+		>
+			{/* CONTROL SETTINGS */}
+			<HOCInspectorControls
+				tabs={INSPECTOR_CONTROLS_TABS.filter((item) => item.name !== "Styles")}
+				renderTabPanels={renderTabBodyPanels}
+				uniqueId={uniqueId}
+			/>
 
-				{/* CHILD CONTENT  */}
-				<FormInputLabelRichText
-					value={label}
-					isRequired={general_general.isRequired}
-					onChange={(value) => {
-						setAttributes({ label: value });
-					}}
-				/>
+			{/* CHILD CONTENT  */}
+			<FormInputLabelRichText
+				value={label}
+				isRequired={general_general.isRequired}
+				onChange={(value) => {
+					setAttributes({ label: value });
+				}}
+			/>
 
-				{isSelected ? renderCheckboxOptionsEditing() : renderCheckboxOptions()}
-			</div>
-		</CacheProvider>
+			{isSelected ? renderCheckboxOptionsEditing() : renderCheckboxOptions()}
+		</div>
+		// </CacheProvider>
 	);
 };
 

@@ -6,7 +6,7 @@ import {
 	useInnerBlocksProps,
 } from "@wordpress/block-editor";
 import { PanelBody } from "@wordpress/components";
-import React, { useEffect, FC } from "react";
+import React, { useEffect, FC, useRef } from "react";
 import { BlockWCBContainerBoxAttrs } from "./attributes";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 import MyBackgroundControl from "../components/controls/MyBackgroundControl/MyBackgroundControl";
@@ -27,6 +27,7 @@ import VideoBackgroundByBgControl from "../components/VideoBackgroundByBgControl
 import OverlayBackgroundByBgControl from "../components/OverlayBackgroundByBgControl";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
+import MyCacheProvider from "../components/MyCacheProvider";
 
 const Edit: FC<EditProps<BlockWCBContainerBoxAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -39,7 +40,8 @@ const Edit: FC<EditProps<BlockWCBContainerBoxAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
-	const { myCache, ref } = useCreateCacheEmotion();
+	const ref = useRef<HTMLDivElement>(null);
+	// const { myCache, ref } = useCreateCacheEmotion();
 
 	//
 	useEffect(() => {
@@ -228,7 +230,7 @@ const Edit: FC<EditProps<BlockWCBContainerBoxAttrs>> = (props) => {
 	//
 	const { htmlTag: HtmlTag = "div" } = general_container;
 	return (
-		<CacheProvider value={myCache}>
+		<MyCacheProvider uniqueKey={clientId}>
 			<HOCInspectorControls
 				tabDefaultActive={tabIsOpen}
 				renderTabPanels={renderTabBodyPanels}
@@ -257,7 +259,7 @@ const Edit: FC<EditProps<BlockWCBContainerBoxAttrs>> = (props) => {
 				{/*  */}
 				{renderInnerDiv()}
 			</div>
-		</CacheProvider>
+		</MyCacheProvider>
 	);
 };
 

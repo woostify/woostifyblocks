@@ -1,6 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import { RichText, useBlockProps } from "@wordpress/block-editor";
-import React, { useEffect, FC } from "react";
+import React, { useEffect, FC, useRef } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
@@ -19,7 +19,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 	const { general_general, uniqueId, label } = attributes;
 	//  COMMON HOOKS
-	const { myCache, ref } = useCreateCacheEmotion();
+	const ref = useRef<HTMLDivElement>(null);
+	// const { myCache, ref } = useCreateCacheEmotion();
 	const wrapBlockProps = useBlockProps({ ref });
 	const {
 		tabIsOpen,
@@ -69,38 +70,36 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	};
 
 	return (
-		<CacheProvider value={myCache}>
-			<div
-				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-date__wrap ${UNIQUE_ID}`}
-				data-uniqueid={UNIQUE_ID}
-			>
-				{/* CONTROL SETTINGS */}
-				<HOCInspectorControls
-					tabs={INSPECTOR_CONTROLS_TABS.filter(
-						(item) => item.name !== "Styles"
-					)}
-					renderTabPanels={renderTabBodyPanels}
-					uniqueId={uniqueId}
-				/>
+		// <CacheProvider value={myCache}>
+		<div
+			{...wrapBlockProps}
+			className={`${wrapBlockProps?.className} wcb-date__wrap ${UNIQUE_ID}`}
+			data-uniqueid={UNIQUE_ID}
+		>
+			{/* CONTROL SETTINGS */}
+			<HOCInspectorControls
+				tabs={INSPECTOR_CONTROLS_TABS.filter((item) => item.name !== "Styles")}
+				renderTabPanels={renderTabBodyPanels}
+				uniqueId={uniqueId}
+			/>
 
-				{/* CHILD CONTENT  */}
-				<FormInputLabelRichText
-					value={label}
-					isRequired={general_general.isRequired}
-					onChange={(value) => {
-						setAttributes({ label: value });
-					}}
-				/>
-				<input
-					type="date"
-					required={general_general.isRequired}
-					name={UNIQUE_NAME}
-					max={general_general.max}
-					min={general_general.min}
-				/>
-			</div>
-		</CacheProvider>
+			{/* CHILD CONTENT  */}
+			<FormInputLabelRichText
+				value={label}
+				isRequired={general_general.isRequired}
+				onChange={(value) => {
+					setAttributes({ label: value });
+				}}
+			/>
+			<input
+				type="date"
+				required={general_general.isRequired}
+				name={UNIQUE_NAME}
+				max={general_general.max}
+				min={general_general.min}
+			/>
+		</div>
+		// </CacheProvider>
 	);
 };
 

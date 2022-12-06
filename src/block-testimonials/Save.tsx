@@ -11,6 +11,8 @@ import getImageUrlBySize from "../utils/getImageUrlBySize";
 import VideoBackgroundByBgControl from "../components/VideoBackgroundByBgControl";
 import OverlayBackgroundByBgControl from "../components/OverlayBackgroundByBgControl";
 
+export interface WcbAttrsForSave extends Omit<WcbAttrs, "testimonials"> {}
+
 export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const {
 		uniqueId,
@@ -30,7 +32,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	} = attributes;
 	//
 
-	const newAttrForSave: Omit<WcbAttrs, "testimonials"> = {
+	const newAttrForSave: WcbAttrsForSave = {
 		uniqueId,
 		advance_responsiveCondition,
 		advance_zIndex,

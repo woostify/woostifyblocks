@@ -9,13 +9,24 @@ export interface WcbAttrsForSave
 	extends Omit<WcbAttrs, "heading" | "subHeading"> {}
 
 export default function save({ attributes }: { attributes: WcbAttrs }) {
-	const { uniqueId, advance_responsiveCondition, advance_zIndex } = attributes;
+	const {
+		uniqueId,
+		advance_responsiveCondition,
+		advance_zIndex,
+		general_image,
+		general_layout,
+		general_socials,
+		heading,
+	} = attributes;
 	//
 
 	const newAttrForSave: WcbAttrsForSave = {
 		uniqueId,
 		advance_responsiveCondition,
 		advance_zIndex,
+		general_image,
+		general_layout,
+		general_socials,
 	};
 	//
 	const blockProps = useBlockProps.save({ className: "wcb-team__wrap" });

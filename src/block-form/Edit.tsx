@@ -11,7 +11,7 @@ import {
 import { get } from "lodash";
 import { PanelBody } from "@wordpress/components";
 import { useInstanceId } from "@wordpress/compose";
-import React, { useEffect, FC } from "react";
+import React, { useEffect, FC, useRef } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
@@ -48,6 +48,7 @@ import WcbPostGridPanel_StyleSubmitButton from "./WcbPostGridPanel_StyleSubmitBu
 import WcbPostGridPanel_StyleMessages from "./WcbPostGridPanel_StyleMessages";
 import WcbFormPanel_StyleSpacing from "./WcbFormPanel_StyleSpacing";
 import HelpText from "../components/controls/HelpText";
+import MyCacheProvider from "../components/MyCacheProvider";
 
 export type FormChildAllowed =
 	| "wcb/input"
@@ -82,7 +83,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_spacing,
 	} = attributes;
 	//  COMMON HOOKS
-	const { myCache, ref } = useCreateCacheEmotion();
+	const ref = useRef<HTMLDivElement>(null);
+	// const { myCache, ref } = useCreateCacheEmotion();
 	const wrapBlockProps = useBlockProps({ ref });
 	const {
 		tabIsOpen,
@@ -303,7 +305,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	//
 
 	return (
-		<CacheProvider value={myCache}>
+		<MyCacheProvider uniqueKey={clientId}>
 			<form
 				{...wrapBlockProps}
 				className={`wcb-form__wrap ${uniqueId} ${wrapBlockProps.className} `}
@@ -357,7 +359,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					tabDefaultActive={tabIsOpen}
 				/>
 			</form>
-		</CacheProvider>
+		</MyCacheProvider>
 	);
 };
 

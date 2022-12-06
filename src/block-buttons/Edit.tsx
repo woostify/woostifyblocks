@@ -10,7 +10,7 @@ import {
 	InnerBlocks,
 } from "@wordpress/block-editor";
 import { get } from "lodash";
-import React, { useEffect, FC } from "react";
+import React, { useEffect, FC, useCallback, useRef } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
@@ -43,6 +43,9 @@ import {
 	DEFAULT_DIMENSION,
 	DimensionSettings,
 } from "../components/controls/MyDimensionsControl/types";
+import { WcbAttrsForSave } from "./Save";
+import MyCacheProvider from "../components/MyCacheProvider";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
@@ -55,7 +58,11 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_dimension,
 	} = attributes;
 	//  COMMON HOOKS
-	const { myCache, ref } = useCreateCacheEmotion();
+
+	const ref = useRef<HTMLDivElement>(null);
+
+	// const { myCache, ref } = useCreateCacheEmotion("wcb-button");
+
 	const wrapBlockProps = useBlockProps({ ref });
 	const {
 		tabIsOpen,
@@ -240,15 +247,34 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	});
 	//
 
+	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {
+		return {
+			uniqueId,
+			advance_responsiveCondition,
+			advance_zIndex,
+			general_general,
+			style_dimension,
+			style_text,
+		};
+	}, [
+		uniqueId,
+		advance_responsiveCondition,
+		advance_zIndex,
+		general_general,
+		style_dimension,
+		style_text,
+	]);
+
+	// console.log(6, "---- Button edit  ---" + uniqueId);
 	return (
-		<CacheProvider value={myCache}>
+		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
 				className={`wcb-buttons__wrap ${uniqueId} ${wrapBlockProps.className} `}
 				data-uniqueid={uniqueId}
 			>
 				{/*  */}
-				<GlobalCss {...attributes} />
+				<GlobalCss {...WcbAttrsForSave()} />
 				{/*  */}
 
 				<div {...innerBlocksProps} />
@@ -262,7 +288,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					tabDefaultActive={tabIsOpen}
 				/>
 			</div>
-		</CacheProvider>
+		</MyCacheProvider>
 	);
 };
 

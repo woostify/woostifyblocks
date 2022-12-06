@@ -5,6 +5,9 @@ import { useBlockProps, RichText } from "@wordpress/block-editor";
 import { WcbBlockHeadingAttrs } from "./attributes";
 import SaveCommon from "../components/SaveCommon";
 
+export interface WcbAttrsForSave
+	extends Omit<WcbBlockHeadingAttrs, "heading" | "subHeading"> {}
+
 export default function save({
 	attributes,
 }: {
@@ -27,7 +30,7 @@ export default function save({
 	} = attributes;
 	//
 
-	const newAttrForSave: Omit<WcbBlockHeadingAttrs, "heading" | "subHeading"> = {
+	const newAttrForSave: WcbAttrsForSave = {
 		uniqueId,
 		advance_responsiveCondition,
 		advance_zIndex,

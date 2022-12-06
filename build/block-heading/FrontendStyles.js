@@ -2311,12 +2311,12 @@ const GlobalCss = attrs => {
       [`${WRAP_CLASSNAME} mark`]: {
         color: textColor,
         backgroundColor: bgColor,
-        padding: `${padding_Mobile.top} ${padding_Mobile.right} ${padding_Mobile.bottom} ${padding_Mobile.left}`,
+        padding: `${padding_Mobile?.top} ${padding_Mobile?.right} ${padding_Mobile?.bottom} ${padding_Mobile?.left}`,
         [`@media (min-width: ${media_tablet})`]: {
-          padding: `${padding_Tablet.top} ${padding_Tablet.right} ${padding_Tablet.bottom} ${padding_Tablet.left}`
+          padding: `${padding_Tablet?.top} ${padding_Tablet?.right} ${padding_Tablet?.bottom} ${padding_Tablet?.left}`
         },
         [`@media (min-width: ${media_desktop})`]: {
-          padding: `${padding_Desktop.top} ${padding_Desktop.right} ${padding_Desktop.bottom} ${padding_Desktop.left}`
+          padding: `${padding_Desktop?.top} ${padding_Desktop?.right} ${padding_Desktop?.bottom} ${padding_Desktop?.left}`
         }
       }
     };

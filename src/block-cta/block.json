@@ -3,7 +3,7 @@
 	"apiVersion": 2,
 	"name": "wcb/cta",
 	"version": "0.1.0",
-	"title": "CTA",
+	"title": "Call to action",
 	"category": "wcb-blocks",
 	"icon": "heart",
 	"description": "Example static block scaffolded with Create Block tool.",

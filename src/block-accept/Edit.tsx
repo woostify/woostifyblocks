@@ -1,6 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import { RichText, useBlockProps } from "@wordpress/block-editor";
-import React, { useEffect, FC } from "react";
+import React, { useEffect, FC, useRef } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
@@ -19,7 +19,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 	const { general_general, uniqueId, label } = attributes;
 	//  COMMON HOOKS
-	const { myCache, ref } = useCreateCacheEmotion();
+	// const { myCache, ref } = useCreateCacheEmotion();
+	const ref = useRef<HTMLDivElement>(null);
 	const wrapBlockProps = useBlockProps({ ref });
 	const {
 		tabIsOpen,
@@ -69,51 +70,49 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	};
 
 	return (
-		<CacheProvider value={myCache}>
-			<div
-				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-accept__wrap ${UNIQUE_ID}`}
-				data-uniqueid={UNIQUE_ID}
-			>
-				{/* CONTROL SETTINGS */}
-				<HOCInspectorControls
-					tabs={INSPECTOR_CONTROLS_TABS.filter(
-						(item) => item.name !== "Styles"
-					)}
-					uniqueId={uniqueId}
-					renderTabPanels={renderTabBodyPanels}
-				/>
+		// <CacheProvider value={myCache}>
+		<div
+			{...wrapBlockProps}
+			className={`${wrapBlockProps?.className} wcb-accept__wrap ${UNIQUE_ID}`}
+			data-uniqueid={UNIQUE_ID}
+		>
+			{/* CONTROL SETTINGS */}
+			<HOCInspectorControls
+				tabs={INSPECTOR_CONTROLS_TABS.filter((item) => item.name !== "Styles")}
+				uniqueId={uniqueId}
+				renderTabPanels={renderTabBodyPanels}
+			/>
 
-				{/* CHILD CONTENT  */}
-				{general_general.enablePrivacyLink && (
-					<div>
-						<a
-							href={general_general.linkHref}
-							target={general_general.openInNewTab ? "_blank" : "_self"}
-							rel="noopener noreferrer"
-							className="wcb-accept__link"
-						>
-							{general_general.linkLabel}
-						</a>
-					</div>
-				)}
-				<label className="wcb-checkbox__option">
-					<input
-						type="checkbox"
-						className="wcb-checkbox__option-input"
-						required={general_general.isRequired}
-						name={UNIQUE_NAME}
-					/>
-					<span
-						className={`wcb-checkbox__option-label ${
-							general_general.isRequired ? "required" : ""
-						}`}
+			{/* CHILD CONTENT  */}
+			{general_general.enablePrivacyLink && (
+				<div>
+					<a
+						href={general_general.linkHref}
+						target={general_general.openInNewTab ? "_blank" : "_self"}
+						rel="noopener noreferrer"
+						className="wcb-accept__link"
 					>
-						{general_general.acceptanceText}
-					</span>
-				</label>
-			</div>
-		</CacheProvider>
+						{general_general.linkLabel}
+					</a>
+				</div>
+			)}
+			<label className="wcb-checkbox__option">
+				<input
+					type="checkbox"
+					className="wcb-checkbox__option-input"
+					required={general_general.isRequired}
+					name={UNIQUE_NAME}
+				/>
+				<span
+					className={`wcb-checkbox__option-label ${
+						general_general.isRequired ? "required" : ""
+					}`}
+				>
+					{general_general.acceptanceText}
+				</span>
+			</label>
+		</div>
+		// </CacheProvider>
 	);
 };
 

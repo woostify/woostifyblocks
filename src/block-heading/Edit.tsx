@@ -1,6 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import { RichText, useBlockProps } from "@wordpress/block-editor";
-import React, { useEffect, FC } from "react";
+import React, { useEffect, FC, useRef, useCallback } from "react";
 import { WcbBlockHeadingAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
@@ -20,10 +20,13 @@ import { CacheProvider } from "@emotion/react";
 import GlobalCss from "./GlobalCss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
+import MyCacheProvider from "../components/MyCacheProvider";
+import { WcbAttrsForSave } from "./Save";
 
 const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
-	const { myCache, ref } = useCreateCacheEmotion();
+	const ref = useRef<HTMLDivElement>(null);
+	// const { myCache, ref } = useCreateCacheEmotion();
 
 	const {
 		uniqueId,
@@ -39,6 +42,8 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 		styles_dimensions,
 		//
 		general_content,
+		advance_responsiveCondition,
+		advance_zIndex,
 	} = attributes;
 
 	const {
@@ -171,8 +176,36 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 		}
 	};
 
+	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {
+		return {
+			advance_responsiveCondition,
+			advance_zIndex,
+			general_content,
+			styles_background,
+			styles_dimensions,
+			styles_heading,
+			styles_highlight,
+			styles_link,
+			styles_separator,
+			styles_subHeading,
+			uniqueId,
+		};
+	}, [
+		advance_responsiveCondition,
+		advance_zIndex,
+		general_content,
+		styles_background,
+		styles_dimensions,
+		styles_heading,
+		styles_highlight,
+		styles_link,
+		styles_separator,
+		styles_subHeading,
+		uniqueId,
+	]);
+
 	return (
-		<CacheProvider value={myCache}>
+		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
 				className={`${wrapBlockProps?.className} wcb-heading__wrap ${UNIQUE_ID}`}
@@ -185,7 +218,7 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 				/>
 
 				{/*  */}
-				<GlobalCss {...attributes} />
+				<GlobalCss {...WcbAttrsForSave()} />
 				{general_content.showHeading ? (
 					<RichText
 						identifier="heading"
@@ -208,7 +241,7 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 					/>
 				) : null}
 			</div>
-		</CacheProvider>
+		</MyCacheProvider>
 	);
 };
 

@@ -10,12 +10,9 @@ import { WcbAttrs } from "./attributes";
 import getBorderStyles from "../utils/getBorderStyles";
 import getStyleObjectFromResponsiveAttr from "../utils/getStyleObjectFromResponsiveAttr";
 import getStyleBackground from "../utils/getStyleBackground";
+import { WcbAttrsForSave } from "./Save";
 
-interface Props
-	extends Omit<
-		WcbAttrs,
-		"testimonials" | "general_carousel" | "general_images"
-	> {}
+interface Props extends WcbAttrsForSave {}
 
 const GlobalCss: FC<Props> = (attrs) => {
 	const {

@@ -8,7 +8,7 @@ import {
 	__experimentalBlockVariationPicker as BlockVariationPicker,
 	store as blockEditorStore,
 } from "@wordpress/block-editor";
-import React, { useEffect, FC } from "react";
+import React, { useEffect, FC, useRef, useCallback } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
@@ -39,6 +39,8 @@ import WcbFaqPanel_StyleIcon, {
 	WCB_FAQ_PANEL_STYLE_ICON_DEMO,
 } from "./WcbFaqPanel_StyleIcon";
 import WcbFaqPanelPreset from "./WcbFaqPanelPreset";
+import MyCacheProvider from "../components/MyCacheProvider";
+import { WcbAttrsForSave } from "./Save";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
@@ -55,7 +57,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		general_preset,
 	} = attributes;
 	//  COMMON HOOKS
-	const { myCache, ref } = useCreateCacheEmotion();
+	const ref = useRef<HTMLDivElement>(null);
+	// const { myCache, ref } = useCreateCacheEmotion();
 	const wrapBlockProps = useBlockProps({ ref });
 	const {
 		tabIsOpen,
@@ -277,8 +280,32 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		},
 	});
 
+	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {
+		return {
+			advance_responsiveCondition,
+			advance_zIndex,
+			general_general,
+			general_icon,
+			style_answer,
+			style_container,
+			style_icon,
+			style_question,
+			uniqueId,
+		};
+	}, [
+		advance_responsiveCondition,
+		advance_zIndex,
+		general_general,
+		general_icon,
+		style_answer,
+		style_container,
+		style_icon,
+		style_question,
+		uniqueId,
+	]);
+
 	return (
-		<CacheProvider value={myCache}>
+		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
 				className={`${wrapBlockProps?.className} wcb-faq__wrap p-5 ${UNIQUE_ID}`}
@@ -291,12 +318,12 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				/>
 
 				{/* CSS IN JS */}
-				<GlobalCss {...attributes} />
+				<GlobalCss {...WcbAttrsForSave()} />
 
 				{/* CHILD CONTENT  */}
 				<div {...innerBlocksProps} />
 			</div>
-		</CacheProvider>
+		</MyCacheProvider>
 	);
 };
 

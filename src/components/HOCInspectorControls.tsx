@@ -1,6 +1,6 @@
 import { InspectorControls } from "@wordpress/block-editor";
 import { TabPanel } from "@wordpress/components";
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, memo } from "react";
 
 export type InspectorControlsTabTitle = "General" | "Styles" | "Advances";
 export type InspectorControlsTabs = {
@@ -38,6 +38,8 @@ const HOCInspectorControls: FC<Props> = ({
 	tabDefaultActive = "General",
 	onChangeActive,
 }) => {
+	// console.log(888888);
+
 	useEffect(() => {
 		setTimeout(() => {
 			const tabIsOpenEl = document.querySelector(
@@ -111,4 +113,4 @@ const HOCInspectorControls: FC<Props> = ({
 	);
 };
 
-export default HOCInspectorControls;
+export default memo(HOCInspectorControls);

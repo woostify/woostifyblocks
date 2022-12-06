@@ -20,8 +20,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 	const { general_general, uniqueId, label } = attributes;
 	//  COMMON HOOKS
-	const { myCache, ref } = useCreateCacheEmotion();
-	const wrapBlockProps = useBlockProps({ ref });
+	// const { myCache, ref } = useCreateCacheEmotion();
+	const wrapBlockProps = useBlockProps();
 	const {
 		tabIsOpen,
 		tabAdvancesIsPanelOpen,
@@ -70,59 +70,57 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	};
 
 	return (
-		<CacheProvider value={myCache}>
-			<div
-				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-toggle__wrap ${UNIQUE_ID}`}
-				data-uniqueid={UNIQUE_ID}
-			>
-				{/* CONTROL SETTINGS */}
-				<HOCInspectorControls
-					tabs={INSPECTOR_CONTROLS_TABS.filter(
-						(item) => item.name !== "Styles"
-					)}
-					renderTabPanels={renderTabBodyPanels}
-				/>
+		// <CacheProvider value={myCache}>
+		<div
+			{...wrapBlockProps}
+			className={`${wrapBlockProps?.className} wcb-toggle__wrap ${UNIQUE_ID}`}
+			data-uniqueid={UNIQUE_ID}
+		>
+			{/* CONTROL SETTINGS */}
+			<HOCInspectorControls
+				tabs={INSPECTOR_CONTROLS_TABS.filter((item) => item.name !== "Styles")}
+				renderTabPanels={renderTabBodyPanels}
+			/>
 
-				{/* CHILD CONTENT  */}
-				<FormInputLabelRichText
-					value={label}
-					isRequired={general_general.isRequired}
-					onChange={(value) => {
-						setAttributes({ label: value });
+			{/* CHILD CONTENT  */}
+			<FormInputLabelRichText
+				value={label}
+				isRequired={general_general.isRequired}
+				onChange={(value) => {
+					setAttributes({ label: value });
+				}}
+			/>
+
+			<label className="wcb-toggle__switch">
+				<input
+					type="hidden"
+					className="wcb-toggle__switch-input-hidden"
+					data-truestate={attributes.general_general?.trueState}
+					data-falsestate={attributes.general_general?.falseState}
+					name={UNIQUE_NAME}
+				/>
+				<input
+					type="checkbox"
+					name={UNIQUE_NAME}
+					checked={attributes.general_general?.isDefaultON}
+					onChange={(e) => {
+						setAttributes({
+							general_general: {
+								...attributes.general_general,
+								isDefaultON: e.currentTarget.checked,
+							},
+						});
 					}}
+					required={attributes.general_general?.isRequired}
 				/>
-
-				<label className="wcb-toggle__switch">
-					<input
-						type="hidden"
-						className="wcb-toggle__switch-input-hidden"
-						data-truestate={attributes.general_general?.trueState}
-						data-falsestate={attributes.general_general?.falseState}
-						name={UNIQUE_NAME}
-					/>
-					<input
-						type="checkbox"
-						name={UNIQUE_NAME}
-						checked={attributes.general_general?.isDefaultON}
-						onChange={(e) => {
-							setAttributes({
-								general_general: {
-									...attributes.general_general,
-									isDefaultON: e.currentTarget.checked,
-								},
-							});
-						}}
-						required={attributes.general_general?.isRequired}
-					/>
-					<span
-						className={`wcb-toggle__slider ${
-							attributes.general_general?.layout === "round" ? "round" : ""
-						}`}
-					></span>
-				</label>
-			</div>
-		</CacheProvider>
+				<span
+					className={`wcb-toggle__slider ${
+						attributes.general_general?.layout === "round" ? "round" : ""
+					}`}
+				></span>
+			</label>
+		</div>
+		// </CacheProvider>
 	);
 };
 

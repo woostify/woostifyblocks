@@ -2334,20 +2334,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/HOCInspectorControls */ "./src/components/HOCInspectorControls.tsx");
-/* harmony import */ var _hooks_useCreateCacheEmotion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/useCreateCacheEmotion */ "./src/hooks/useCreateCacheEmotion.ts");
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-element-6a883da9.browser.esm.js");
-/* harmony import */ var _GlobalCss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./GlobalCss */ "./src/block-faq/GlobalCss.tsx");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./editor.scss */ "./src/block-faq/editor.scss");
-/* harmony import */ var _hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../hooks/useSetBlockPanelInfo */ "./src/hooks/useSetBlockPanelInfo.ts");
-/* harmony import */ var _components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/AdvancePanelCommon */ "./src/components/AdvancePanelCommon.tsx");
-/* harmony import */ var _WcbFaqPanelGeneral__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./WcbFaqPanelGeneral */ "./src/block-faq/WcbFaqPanelGeneral.tsx");
-/* harmony import */ var _WcbFaqPanelIcon__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./WcbFaqPanelIcon */ "./src/block-faq/WcbFaqPanelIcon.tsx");
-/* harmony import */ var _WcbFaqPanel_StyleContainer__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./WcbFaqPanel_StyleContainer */ "./src/block-faq/WcbFaqPanel_StyleContainer.tsx");
-/* harmony import */ var _WcbFaqPanel_StyleQuestion__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./WcbFaqPanel_StyleQuestion */ "./src/block-faq/WcbFaqPanel_StyleQuestion.tsx");
-/* harmony import */ var _WcbFaqPanel_StyleAnswer__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./WcbFaqPanel_StyleAnswer */ "./src/block-faq/WcbFaqPanel_StyleAnswer.tsx");
-/* harmony import */ var _WcbFaqPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./WcbFaqPanel_StyleIcon */ "./src/block-faq/WcbFaqPanel_StyleIcon.tsx");
-/* harmony import */ var _WcbFaqPanelPreset__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./WcbFaqPanelPreset */ "./src/block-faq/WcbFaqPanelPreset.tsx");
-
+/* harmony import */ var _GlobalCss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./GlobalCss */ "./src/block-faq/GlobalCss.tsx");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./editor.scss */ "./src/block-faq/editor.scss");
+/* harmony import */ var _hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/useSetBlockPanelInfo */ "./src/hooks/useSetBlockPanelInfo.ts");
+/* harmony import */ var _components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/AdvancePanelCommon */ "./src/components/AdvancePanelCommon.tsx");
+/* harmony import */ var _WcbFaqPanelGeneral__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./WcbFaqPanelGeneral */ "./src/block-faq/WcbFaqPanelGeneral.tsx");
+/* harmony import */ var _WcbFaqPanelIcon__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./WcbFaqPanelIcon */ "./src/block-faq/WcbFaqPanelIcon.tsx");
+/* harmony import */ var _WcbFaqPanel_StyleContainer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./WcbFaqPanel_StyleContainer */ "./src/block-faq/WcbFaqPanel_StyleContainer.tsx");
+/* harmony import */ var _WcbFaqPanel_StyleQuestion__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./WcbFaqPanel_StyleQuestion */ "./src/block-faq/WcbFaqPanel_StyleQuestion.tsx");
+/* harmony import */ var _WcbFaqPanel_StyleAnswer__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./WcbFaqPanel_StyleAnswer */ "./src/block-faq/WcbFaqPanel_StyleAnswer.tsx");
+/* harmony import */ var _WcbFaqPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./WcbFaqPanel_StyleIcon */ "./src/block-faq/WcbFaqPanel_StyleIcon.tsx");
+/* harmony import */ var _WcbFaqPanelPreset__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./WcbFaqPanelPreset */ "./src/block-faq/WcbFaqPanelPreset.tsx");
+/* harmony import */ var _components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../components/MyCacheProvider */ "./src/components/MyCacheProvider.tsx");
 
 
 
@@ -2385,10 +2383,8 @@ const Edit = props => {
     general_preset
   } = attributes;
   //  COMMON HOOKS
-  const {
-    myCache,
-    ref
-  } = (0,_hooks_useCreateCacheEmotion__WEBPACK_IMPORTED_MODULE_5__["default"])();
+  const ref = (0,react__WEBPACK_IMPORTED_MODULE_3__.useRef)(null);
+  // const { myCache, ref } = useCreateCacheEmotion();
   const wrapBlockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
     ref
   });
@@ -2398,7 +2394,7 @@ const Edit = props => {
     tabGeneralIsPanelOpen,
     tabStylesIsPanelOpen,
     handleTogglePanel
-  } = (0,_hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_8__["default"])(uniqueId);
+  } = (0,_hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_7__["default"])(uniqueId);
   const UNIQUE_ID = wrapBlockProps.id;
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
     setAttributes({
@@ -2410,7 +2406,7 @@ const Edit = props => {
   const renderTabBodyPanels = tab => {
     switch (tab.name) {
       case "General":
-        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbFaqPanelPreset__WEBPACK_IMPORTED_MODULE_16__["default"], {
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbFaqPanelPreset__WEBPACK_IMPORTED_MODULE_15__["default"], {
           onToggle: () => handleTogglePanel("General", "Preset", true),
           initialOpen: tabGeneralIsPanelOpen === "Preset" || tabGeneralIsPanelOpen === "first",
           opened: tabGeneralIsPanelOpen === "Preset" || undefined
@@ -2424,10 +2420,10 @@ const Edit = props => {
                   ...general_general,
                   layout: "accordion"
                 },
-                style_container: _WcbFaqPanel_StyleContainer__WEBPACK_IMPORTED_MODULE_12__.WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
-                style_answer: _WcbFaqPanel_StyleAnswer__WEBPACK_IMPORTED_MODULE_14__.WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
-                style_question: _WcbFaqPanel_StyleQuestion__WEBPACK_IMPORTED_MODULE_13__.WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
-                style_icon: _WcbFaqPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_15__.WCB_FAQ_PANEL_STYLE_ICON_DEMO
+                style_container: _WcbFaqPanel_StyleContainer__WEBPACK_IMPORTED_MODULE_11__.WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
+                style_answer: _WcbFaqPanel_StyleAnswer__WEBPACK_IMPORTED_MODULE_13__.WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
+                style_question: _WcbFaqPanel_StyleQuestion__WEBPACK_IMPORTED_MODULE_12__.WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
+                style_icon: _WcbFaqPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_14__.WCB_FAQ_PANEL_STYLE_ICON_DEMO
               });
             }
             if (data.preset === "carousel-solid") {
@@ -2437,10 +2433,10 @@ const Edit = props => {
                   ...general_general,
                   layout: "accordion"
                 },
-                style_container: _WcbFaqPanel_StyleContainer__WEBPACK_IMPORTED_MODULE_12__.WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
-                style_answer: _WcbFaqPanel_StyleAnswer__WEBPACK_IMPORTED_MODULE_14__.WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
-                style_question: _WcbFaqPanel_StyleQuestion__WEBPACK_IMPORTED_MODULE_13__.WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
-                style_icon: _WcbFaqPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_15__.WCB_FAQ_PANEL_STYLE_ICON_DEMO
+                style_container: _WcbFaqPanel_StyleContainer__WEBPACK_IMPORTED_MODULE_11__.WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
+                style_answer: _WcbFaqPanel_StyleAnswer__WEBPACK_IMPORTED_MODULE_13__.WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
+                style_question: _WcbFaqPanel_StyleQuestion__WEBPACK_IMPORTED_MODULE_12__.WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
+                style_icon: _WcbFaqPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_14__.WCB_FAQ_PANEL_STYLE_ICON_DEMO
               });
             }
             if (data.preset === "grid-simple") {
@@ -2450,9 +2446,9 @@ const Edit = props => {
                   ...general_general,
                   layout: "grid"
                 },
-                style_container: _WcbFaqPanel_StyleContainer__WEBPACK_IMPORTED_MODULE_12__.WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
-                style_answer: _WcbFaqPanel_StyleAnswer__WEBPACK_IMPORTED_MODULE_14__.WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
-                style_question: _WcbFaqPanel_StyleQuestion__WEBPACK_IMPORTED_MODULE_13__.WCB_FAQ_PANEL_STYLE_QUESTION_DEMO
+                style_container: _WcbFaqPanel_StyleContainer__WEBPACK_IMPORTED_MODULE_11__.WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
+                style_answer: _WcbFaqPanel_StyleAnswer__WEBPACK_IMPORTED_MODULE_13__.WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
+                style_question: _WcbFaqPanel_StyleQuestion__WEBPACK_IMPORTED_MODULE_12__.WCB_FAQ_PANEL_STYLE_QUESTION_DEMO
               });
             }
             if (data.preset === "grid-solid") {
@@ -2462,9 +2458,9 @@ const Edit = props => {
                   ...general_general,
                   layout: "grid"
                 },
-                style_container: _WcbFaqPanel_StyleContainer__WEBPACK_IMPORTED_MODULE_12__.WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
-                style_answer: _WcbFaqPanel_StyleAnswer__WEBPACK_IMPORTED_MODULE_14__.WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
-                style_question: _WcbFaqPanel_StyleQuestion__WEBPACK_IMPORTED_MODULE_13__.WCB_FAQ_PANEL_STYLE_QUESTION_DEMO
+                style_container: _WcbFaqPanel_StyleContainer__WEBPACK_IMPORTED_MODULE_11__.WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
+                style_answer: _WcbFaqPanel_StyleAnswer__WEBPACK_IMPORTED_MODULE_13__.WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
+                style_question: _WcbFaqPanel_StyleQuestion__WEBPACK_IMPORTED_MODULE_12__.WCB_FAQ_PANEL_STYLE_QUESTION_DEMO
               });
             }
             setAttributes({
@@ -2472,7 +2468,7 @@ const Edit = props => {
             });
           },
           panelData: general_preset
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbFaqPanelGeneral__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbFaqPanelGeneral__WEBPACK_IMPORTED_MODULE_9__["default"], {
           onToggle: () => handleTogglePanel("General", "General"),
           initialOpen: tabGeneralIsPanelOpen === "General",
           opened: tabGeneralIsPanelOpen === "General" || undefined
@@ -2488,7 +2484,7 @@ const Edit = props => {
             });
           },
           panelData: general_general
-        }), general_general.layout === "accordion" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbFaqPanelIcon__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        }), general_general.layout === "accordion" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbFaqPanelIcon__WEBPACK_IMPORTED_MODULE_10__["default"], {
           onToggle: () => handleTogglePanel("General", "Icon"),
           initialOpen: tabGeneralIsPanelOpen === "Icon",
           opened: tabGeneralIsPanelOpen === "Icon" || undefined
@@ -2506,7 +2502,7 @@ const Edit = props => {
           panelData: general_icon
         }));
       case "Styles":
-        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbFaqPanel_StyleContainer__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbFaqPanel_StyleContainer__WEBPACK_IMPORTED_MODULE_11__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleContainer", true),
           initialOpen: tabStylesIsPanelOpen === "_StyleContainer" || tabStylesIsPanelOpen === "first",
           opened: tabStylesIsPanelOpen === "_StyleContainer" || undefined
@@ -2522,7 +2518,7 @@ const Edit = props => {
             });
           },
           panelData: style_container
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbFaqPanel_StyleQuestion__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbFaqPanel_StyleQuestion__WEBPACK_IMPORTED_MODULE_12__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleQuestion"),
           initialOpen: tabStylesIsPanelOpen === "_StyleQuestion",
           opened: tabStylesIsPanelOpen === "_StyleQuestion" || undefined
@@ -2538,7 +2534,7 @@ const Edit = props => {
             });
           },
           panelData: style_question
-        }), general_general.layout === "accordion" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbFaqPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        }), general_general.layout === "accordion" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbFaqPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_14__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleIcon"),
           initialOpen: tabStylesIsPanelOpen === "_StyleIcon",
           opened: tabStylesIsPanelOpen === "_StyleIcon" || undefined
@@ -2554,7 +2550,7 @@ const Edit = props => {
             });
           },
           panelData: style_icon
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbFaqPanel_StyleAnswer__WEBPACK_IMPORTED_MODULE_14__["default"], {
+        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbFaqPanel_StyleAnswer__WEBPACK_IMPORTED_MODULE_13__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleAnswer"),
           initialOpen: tabStylesIsPanelOpen === "_StyleAnswer",
           opened: tabStylesIsPanelOpen === "_StyleAnswer" || undefined
@@ -2572,7 +2568,7 @@ const Edit = props => {
           panelData: style_answer
         }));
       case "Advances":
-        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_8__["default"], {
           advance_responsiveCondition: attributes.advance_responsiveCondition,
           advance_zIndex: attributes.advance_zIndex,
           handleTogglePanel: handleTogglePanel,
@@ -2595,15 +2591,28 @@ const Edit = props => {
       return isSelected ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks.DefaultBlockAppender, null) : false;
     }
   });
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_17__.C, {
-    value: myCache
+  const WcbAttrsForSave = (0,react__WEBPACK_IMPORTED_MODULE_3__.useCallback)(() => {
+    return {
+      advance_responsiveCondition,
+      advance_zIndex,
+      general_general,
+      general_icon,
+      style_answer,
+      style_container,
+      style_icon,
+      style_question,
+      uniqueId
+    };
+  }, [advance_responsiveCondition, advance_zIndex, general_general, general_icon, style_answer, style_container, style_icon, style_question, uniqueId]);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_16__["default"], {
+    uniqueKey: clientId
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
     className: `${wrapBlockProps?.className} wcb-faq__wrap p-5 ${UNIQUE_ID}`,
     "data-uniqueid": UNIQUE_ID
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_4__["default"], {
     renderTabPanels: renderTabBodyPanels,
     uniqueId: uniqueId
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_6__["default"], attributes), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", innerBlocksProps)));
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_5__["default"], WcbAttrsForSave()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", innerBlocksProps)));
 };
 /* harmony default export */ __webpack_exports__["default"] = (Edit);
 
@@ -4232,6 +4241,8 @@ const HOCInspectorControls = _ref => {
     tabDefaultActive = "General",
     onChangeActive
   } = _ref;
+  // console.log(888888);
+
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
     setTimeout(() => {
       const tabIsOpenEl = document.querySelector(".components-panel__body.is-opened");
@@ -4282,7 +4293,52 @@ const HOCInspectorControls = _ref => {
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, renderContent(), renderContent2());
 };
-/* harmony default export */ __webpack_exports__["default"] = (HOCInspectorControls);
+/* harmony default export */ __webpack_exports__["default"] = ((0,react__WEBPACK_IMPORTED_MODULE_3__.memo)(HOCInspectorControls));
+
+/***/ }),
+
+/***/ "./src/components/MyCacheProvider.tsx":
+/*!********************************************!*\
+  !*** ./src/components/MyCacheProvider.tsx ***!
+  \********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _hooks_useCreateCacheEmotion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../hooks/useCreateCacheEmotion */ "./src/hooks/useCreateCacheEmotion.ts");
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-element-6a883da9.browser.esm.js");
+/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
+
+
+
+
+
+const MyCacheProvider = _ref => {
+  let {
+    children,
+    uniqueKey = "uniqueid"
+  } = _ref;
+  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_3__["default"])() || "Desktop";
+  if (deviceType === "Desktop") {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, children);
+  }
+  const KEY = uniqueKey.replace(/[0-9]/g, "").replace(/ /g, "").toLocaleLowerCase();
+  const {
+    myCache,
+    ref
+  } = (0,_hooks_useCreateCacheEmotion__WEBPACK_IMPORTED_MODULE_2__["default"])("wcb-key-cache");
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_4__.C, {
+    value: myCache
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("head", {
+    hidden: true,
+    className: "hidden",
+    ref: ref
+  }), children);
+};
+/* harmony default export */ __webpack_exports__["default"] = ((0,react__WEBPACK_IMPORTED_MODULE_1__.memo)(MyCacheProvider));
 
 /***/ }),
 
@@ -6832,25 +6888,12 @@ const useCreateCacheEmotion = function () {
   let key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "wcb-custom-cache-key";
   // DIEU NAY GIUP EMOTION GLOBAL CSS DUOC IMPORT TRONG MOBILE IFRAME!!!
   const ref = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (!ref.current) {
-      return;
-    }
-    const {
-      ownerDocument
-    } = ref.current;
-    const {
-      defaultView
-    } = ownerDocument;
-
-    // Set ownerDocument.title for example.
-  }, []);
-  const myCache = (0,_emotion_cache__WEBPACK_IMPORTED_MODULE_1__["default"])({
+  const cache = (0,_emotion_cache__WEBPACK_IMPORTED_MODULE_1__["default"])({
     key,
     container: ref.current || undefined
   });
   return {
-    myCache,
+    myCache: cache,
     ref
   };
 };

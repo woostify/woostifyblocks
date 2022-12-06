@@ -1,6 +1,6 @@
 import { get, pickBy } from "lodash";
 import { __ } from "@wordpress/i18n";
-import React, { useEffect, FC } from "react";
+import React, { useEffect, FC, useRef, useCallback } from "react";
 import { WcbBlockPostsGridAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
@@ -41,6 +41,7 @@ import { PostRoot } from "./types";
 import { CategoryRoot } from "./CategoryType";
 import { AuthorRoot } from "./AuthorType";
 import WcbPostGridPanel_StyleTaxonomy from "./WcbPostGridPanel_StyleTaxonomy";
+import MyCacheProvider from "../components/MyCacheProvider";
 
 const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -66,7 +67,9 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 		style_taxonomy,
 	} = attributes;
 	//  COMMON HOOKS
-	const { myCache, ref } = useCreateCacheEmotion();
+	// const { myCache, ref } = useCreateCacheEmotion();
+	const ref = useRef<HTMLDivElement>(null);
+
 	const wrapBlockProps = useBlockProps({ ref });
 
 	const {
@@ -388,7 +391,7 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	};
 
 	return (
-		<CacheProvider value={myCache}>
+		<MyCacheProvider uniqueKey={clientId}>
 			{/* CONTROL SETTINGS */}
 			<HOCInspectorControls
 				tabDefaultActive={tabIsOpen}
@@ -460,7 +463,7 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 					) : null}
 				</>
 			</div>
-		</CacheProvider>
+		</MyCacheProvider>
 	);
 };
 

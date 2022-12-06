@@ -2177,40 +2177,7 @@ const GlobalCss = attrs => {
   const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-buttons__inner`;
   const INNER_BUTTON = `#${uniqueId} .wcb-button__main`;
   const INNER_BUTTON_TEXT = `#${uniqueId} .wcb-button__text`;
-
-  // const getButtonSizeStyles = (size?: BtnGroupSizes): CSSObject => {
-  // 	switch (size) {
-  // 		case "xs":
-  // 			return {
-  // 				padding: "10px",
-  // 			};
-  // 		case "sm":
-  // 			return {
-  // 				padding: "15px",
-  // 			};
-  // 		case "md":
-  // 			return {
-  // 				padding: "20px",
-  // 			};
-  // 		case "lg":
-  // 			return {
-  // 				padding: "25px",
-  // 			};
-  // 		case "xl":
-  // 			return {
-  // 				padding: "30px",
-  // 			};
-
-  // 		default:
-  // 			return {};
-  // 	}
-  // };
-
-  // const {
-  // 	value_Desktop: size_desktop,
-  // 	value_Tablet: size_tablet,
-  // 	value_Mobile: size_mobile,
-  // } = getValueFromAttrsResponsives(size);
+  console.log(99999);
 
   // ------------------- WRAP DIV
   const getDivWrapStyles = () => {
@@ -2226,6 +2193,7 @@ const GlobalCss = attrs => {
     value_Tablet: alignment_tablet,
     value_Mobile: alignment_mobile
   } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(alignment);
+  console.log(1, "---- butons global css ---");
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: [{
       [INNER_CLASSNAME]: {

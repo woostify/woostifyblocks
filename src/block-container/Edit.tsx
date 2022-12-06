@@ -9,7 +9,7 @@ import {
 } from "@wordpress/block-editor";
 import { PanelBody } from "@wordpress/components";
 import { get } from "lodash";
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import { BlockWCBContainerAttrs } from "./attributes";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 import MyBackgroundControl from "../components/controls/MyBackgroundControl/MyBackgroundControl";
@@ -37,6 +37,7 @@ import { FLEX_PROPERTIES_CONTROL_DEMO } from "../components/controls/MyFlexPrope
 import { useSelect, useDispatch } from "@wordpress/data";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
+import MyCacheProvider from "../components/MyCacheProvider";
 
 export type EditProps<T, C = any> = {
 	attributes: T;
@@ -63,7 +64,8 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 	const { uniqueId } = attributes;
 
-	const { myCache, ref } = useCreateCacheEmotion();
+	// const { myCache, ref } = useCreateCacheEmotion();
+	const ref = useRef<HTMLDivElement>(null);
 	const {
 		tabIsOpen,
 		tabAdvancesIsPanelOpen,
@@ -268,7 +270,7 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		className: `wcb-container__wrap ${uniqueId} ${containerWidthTypeClass}`,
 	});
 	return (
-		<CacheProvider value={myCache}>
+		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...blockWrapProps}
 				className={`${blockWrapProps.className} `}
@@ -299,7 +301,7 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 					tabDefaultActive={tabIsOpen}
 				/>
 			</div>
-		</CacheProvider>
+		</MyCacheProvider>
 	);
 };
 

@@ -1,6 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import { useBlockProps } from "@wordpress/block-editor";
-import React, { useEffect, FC } from "react";
+import React, { useEffect, FC, useRef, useCallback } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
@@ -15,6 +15,8 @@ import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import WcbTeamPanelLayout from "./WcbTeamPanelLayout";
 import WcbTeamPanelImages from "./WcbTeamPanelImages";
 import WcbTeamPanelSocials from "./WcbTeamPanelSocials";
+import MyCacheProvider from "../components/MyCacheProvider";
+import { WcbAttrsForSave } from "./Save";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -28,7 +30,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		general_socials,
 	} = attributes;
 	//  COMMON HOOKS
-	const { myCache, ref } = useCreateCacheEmotion();
+	const ref = useRef<HTMLDivElement>(null);
+	// const { myCache, ref } = useCreateCacheEmotion();
 	const wrapBlockProps = useBlockProps({ ref });
 	const {
 		tabIsOpen,
@@ -109,8 +112,26 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		}
 	};
 
+	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {
+		return {
+			uniqueId,
+			advance_responsiveCondition,
+			advance_zIndex,
+			general_image,
+			general_layout,
+			general_socials,
+		};
+	}, [
+		uniqueId,
+		advance_responsiveCondition,
+		advance_zIndex,
+		general_image,
+		general_layout,
+		general_socials,
+	]);
+
 	return (
-		<CacheProvider value={myCache}>
+		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
 				className={`${wrapBlockProps?.className} wcb-team__wrap ${UNIQUE_ID}`}
@@ -123,13 +144,13 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				/>
 
 				{/* CSS IN JS */}
-				<GlobalCss {...attributes} />
+				<GlobalCss {...WcbAttrsForSave()} />
 
 				{/* CHILD CONTENT  */}
 				<div>CHILD CONTENT </div>
 				<i className="lni lni-500px"></i>
 			</div>
-		</CacheProvider>
+		</MyCacheProvider>
 	);
 };
 

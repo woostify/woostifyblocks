@@ -20,8 +20,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 	const { general_general, uniqueId } = attributes;
 	//  COMMON HOOKS
-	const { myCache, ref } = useCreateCacheEmotion();
-	const wrapBlockProps = useBlockProps({ ref });
+	// const { myCache, ref } = useCreateCacheEmotion();
+	const wrapBlockProps = useBlockProps();
 	const {
 		tabIsOpen,
 		tabAdvancesIsPanelOpen,
@@ -70,43 +70,41 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	};
 
 	return (
-		<CacheProvider value={myCache}>
-			<div
-				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-hidden__wrap p-3 border-2 border-dashed rounded-lg ${UNIQUE_ID}`}
-				data-uniqueid={UNIQUE_ID}
-			>
-				{/* CONTROL SETTINGS */}
-				<HOCInspectorControls
-					tabs={INSPECTOR_CONTROLS_TABS.filter(
-						(item) => item.name !== "Styles"
-					)}
-					renderTabPanels={renderTabBodyPanels}
-				/>
+		// <CacheProvider value={myCache}>
+		<div
+			{...wrapBlockProps}
+			className={`${wrapBlockProps?.className} wcb-hidden__wrap p-3 border-2 border-dashed rounded-lg ${UNIQUE_ID}`}
+			data-uniqueid={UNIQUE_ID}
+		>
+			{/* CONTROL SETTINGS */}
+			<HOCInspectorControls
+				tabs={INSPECTOR_CONTROLS_TABS.filter((item) => item.name !== "Styles")}
+				renderTabPanels={renderTabBodyPanels}
+			/>
 
-				{/* CHILD CONTENT  */}
-				<FormInputLabelRichText
-					value={general_general.name}
-					isRequired={false}
-					onChange={(value) => {
-						setAttributes({
-							general_general: {
-								...general_general,
-								name: value,
-							},
-						});
-					}}
-				/>
-				<input
-					type="text"
-					placeholder={general_general.value}
-					name={UNIQUE_NAME}
-				/>
-				<HelpText>
-					{__("This field will be hidden in the front end.", "wcb")}
-				</HelpText>
-			</div>
-		</CacheProvider>
+			{/* CHILD CONTENT  */}
+			<FormInputLabelRichText
+				value={general_general.name}
+				isRequired={false}
+				onChange={(value) => {
+					setAttributes({
+						general_general: {
+							...general_general,
+							name: value,
+						},
+					});
+				}}
+			/>
+			<input
+				type="text"
+				placeholder={general_general.value}
+				name={UNIQUE_NAME}
+			/>
+			<HelpText>
+				{__("This field will be hidden in the front end.", "wcb")}
+			</HelpText>
+		</div>
+		// </CacheProvider>
 	);
 };
 

@@ -1,6 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import { RichText, useBlockProps } from "@wordpress/block-editor";
-import React, { useEffect, FC } from "react";
+import React, { useEffect, FC, useCallback, useRef } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
@@ -46,6 +46,9 @@ import WcbButtonPanel_StyleDemension, {
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import Button from "./Button";
+import { WcbAttrsForSave } from "./Save";
+import MyCacheProvider from "../components/MyCacheProvider";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -64,7 +67,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_dimension,
 	} = attributes;
 	//  COMMON HOOKS
-	const { myCache, ref } = useCreateCacheEmotion();
+	const ref = useRef<HTMLDivElement>(null);
+
+	// const { myCache, ref } = useCreateCacheEmotion("button");
 	const wrapBlockProps = useBlockProps({ ref });
 	const {
 		tabIsOpen,
@@ -272,8 +277,37 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		}
 	};
 
+	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {
+		return {
+			uniqueId,
+			advance_responsiveCondition,
+			advance_zIndex,
+			general_content,
+			general_preset,
+			style_background,
+			style_border,
+			style_boxshadow,
+			style_dimension,
+			style_icon,
+			style_text,
+		};
+	}, [
+		uniqueId,
+		advance_responsiveCondition,
+		advance_zIndex,
+		general_content,
+		general_preset,
+		style_background,
+		style_border,
+		style_boxshadow,
+		style_dimension,
+		style_icon,
+		style_text,
+	]);
+
+	// console.log(5, "---- Buttons edit  ---" + uniqueId);
 	return (
-		<CacheProvider value={myCache}>
+		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
 				className={`${wrapBlockProps?.className} wcb-button__wrap ${UNIQUE_ID} `}
@@ -284,8 +318,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					renderTabPanels={renderTabBodyPanels}
 					uniqueId={uniqueId}
 				/>
+
 				{/* CSS IN JS */}
-				<GlobalCss {...attributes} />
+				<GlobalCss {...WcbAttrsForSave()} />
+
 				{/* CHILD CONTENT  */}
 				<Button
 					attributes={attributes}
@@ -295,7 +331,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					}}
 				/>
 			</div>
-		</CacheProvider>
+		</MyCacheProvider>
 	);
 };
 
