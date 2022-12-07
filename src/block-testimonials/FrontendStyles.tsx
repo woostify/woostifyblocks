@@ -1,16 +1,15 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import ReactDOM from "react-dom";
-import { WcbAttrs } from "./attributes";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import GlobalCss from "./GlobalCss";
 import { WcbAttrsForSave } from "./Save";
-import useGlide from "./useGlide";
 
 interface Props extends WcbAttrsForSave {}
 
 const FrontendStyles: FC<Props> = (attrs) => {
-	const { general_carousel, general_general, uniqueId } = attrs;
-	useGlide({ general_carousel, general_general, UNIQUE_ID: uniqueId });
-
+	// const { general_carousel, general_general, uniqueId } = attrs;
+	// useGlide({ general_carousel, general_general, UNIQUE_ID: uniqueId });
 	return <GlobalCss {...attrs} />;
 };
 
@@ -33,8 +32,75 @@ divsToUpdate.forEach((div) => {
 	//
 	const props = JSON.parse(preEl?.innerText);
 	//
+	initCarousel({ id: div.id, props });
+	//
 	ReactDOM.render(<FrontendStyles {...props} />, divRenderCssEl);
 	//
 	div.classList.remove("wcb-update-div");
 	preEl.remove();
 });
+
+function initCarousel({ id, props }: { id: string; props: Props }) {
+	let $ = jQuery;
+	if (typeof jQuery !== "function") {
+		return;
+	}
+	const {
+		animationDuration,
+		autoplaySpeed,
+		hoverpause,
+		isAutoPlay,
+		rewind,
+		showArrowsDots,
+		adaptiveHeight,
+	} = props.general_carousel;
+	const { colGap, columns, numberofTestimonials, textAlignment } =
+		props.general_general;
+
+	const {
+		value_Desktop: col_desktop,
+		value_Tablet: col_tablet,
+		value_Mobile: col_mobile,
+	} = getValueFromAttrsResponsives(columns);
+
+	const settings = {
+		infinite: rewind,
+		speed: animationDuration || 500,
+		autoplay: isAutoPlay,
+		autoplaySpeed,
+		//
+		slidesToShow: col_desktop,
+		slidesToScroll: 1,
+		prevArrow: `<button type="button" class="slick-arrow slick-prev">
+		<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+		<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+		</svg>
+		</button>`,
+		nextArrow: `<button type="button" class="slick-arrow slick-next">
+		<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+		<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+		</svg>
+		</button>`,
+
+		dots: showArrowsDots !== "Arrow",
+		arrows: showArrowsDots !== "Dot",
+		adaptiveHeight,
+		pauseOnHover: hoverpause,
+		responsive: [
+			{
+				breakpoint: parseInt(DEMO_WCB_GLOBAL_VARIABLES.media_desktop),
+				settings: {
+					slidesToShow: col_tablet,
+				},
+			},
+			{
+				breakpoint: parseInt(DEMO_WCB_GLOBAL_VARIABLES.media_tablet),
+				settings: {
+					slidesToShow: col_mobile,
+				},
+			},
+		],
+	};
+
+	$(`#${id} .wcb-testimonials__wrap-items`).slick(settings);
+}

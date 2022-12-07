@@ -36,7 +36,10 @@ function wcb_block_button__renderCallback($attributes, $content)
 function wcb_block_testimonials__renderCallback($attributes, $content)
 {
     if (!is_admin()) {
-        wp_enqueue_script('wcb_block_testimonials__renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-testimonials/FrontendStyles.js', array('wp-element'), null, true);
+        wp_enqueue_script('wcb_block_testimonials__renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-testimonials/FrontendStyles.js', ["wp-element", "jquery"], null, true);
+        wp_enqueue_script('wcb-slick', plugin_dir_url(WCB_FILE) . 'public/slick/slick.min.js', [], null, false);
+        wp_enqueue_style('wcb-slick-main', plugin_dir_url(WCB_FILE) . 'public/slick/slick.css');
+        wp_enqueue_style('wcb-slick-theme', plugin_dir_url(WCB_FILE) . 'public/slick/slick-theme.css');
     }
     return $content;
 }
@@ -47,7 +50,7 @@ function wcb_block_form__renderCallback($attributes, $content)
 // LƯU Ý - PHẦN NÀY CHƯA CÓ DỮ LIỆU CHO RECAPTCHA KEY, CẦN CẬP NHẬT SAU KHI CÓ DỮ LIỆU
 {
     if (!is_admin()) {
-        wp_enqueue_script('wcb_block_form__renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-form/FrontendStyles.js', array('wp-element'), null, true);
+        wp_enqueue_script('wcb_block_form__renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-form/FrontendStyles.js', ["wp-element", "jquery"], null, true);
     }
     ob_start();
     echo $content;

@@ -9,6 +9,7 @@ export interface WCB_TESTIMONIALS_PANEL_CAROUSEL {
 	autoplaySpeed: number;
 	rewind: boolean;
 	animationDuration: number;
+	adaptiveHeight: boolean;
 	showArrowsDots: "Dot" | "Arrow" | "Both";
 }
 
@@ -19,6 +20,7 @@ export const WCB_TESTIMONIALS_PANEL_CAROUSEL_DEMO: WCB_TESTIMONIALS_PANEL_CAROUS
 		hoverpause: true,
 		isAutoPlay: true,
 		rewind: true,
+		adaptiveHeight: true,
 		showArrowsDots: "Both",
 	};
 
@@ -42,6 +44,7 @@ const WcbTestimonialsPanelCarousel: FC<Props> = ({
 		isAutoPlay,
 		rewind,
 		showArrowsDots,
+		adaptiveHeight,
 	} = panelData;
 
 	return (
@@ -90,6 +93,21 @@ const WcbTestimonialsPanelCarousel: FC<Props> = ({
 						setAttr__({
 							...panelData,
 							rewind: checked,
+						});
+					}}
+				/>
+
+				<ToggleControl
+					label={__("Adaptive height", "wcb")}
+					help={__(
+						"Enables adaptive height for single slide horizontal carousels.",
+						"wcb"
+					)}
+					checked={adaptiveHeight}
+					onChange={(checked) => {
+						setAttr__({
+							...panelData,
+							adaptiveHeight: checked,
 						});
 					}}
 				/>

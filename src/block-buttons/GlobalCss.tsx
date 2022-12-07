@@ -30,8 +30,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const INNER_BUTTON = `#${uniqueId} .wcb-button__main`;
 	const INNER_BUTTON_TEXT = `#${uniqueId} .wcb-button__text`;
 
-	console.log(99999);
-
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject => {
 		return {
@@ -48,7 +46,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		value_Mobile: alignment_mobile,
 	} = getValueFromAttrsResponsives(alignment);
 
-	console.log(1, "---- butons global css ---");
+	// console.log(1, "---- butons global css ---");
 
 	return (
 		<>

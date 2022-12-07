@@ -22,7 +22,7 @@ export interface WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS {
 }
 export const WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS_DEMO: WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS =
 	{
-		arrowSize: "1.5rem",
+		arrowSize: "1.25rem",
 		border: {
 			...MY_BORDER_CONTROL_DEMO,
 			mainSettings: {
@@ -35,7 +35,7 @@ export const WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS_DEMO: WCB_TESTIMONIALS_PANE
 			radius: { Desktop: "99px" },
 		},
 		dotsMarginTop: { Desktop: "1rem" },
-		color: "#6b7280",
+		color: "#374151",
 	};
 
 interface Props

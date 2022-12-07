@@ -2627,9 +2627,8 @@ const GlobalCss = attrs => {
   if (flexDirection_mobile === "row" || flexDirection_mobile === "row-reverse") {
     ALIGN_ITEMS.Mobile = "center";
   }
-  console.log(3, "---- CTA global css ---", {
-    uniqueId
-  });
+  // console.log(3, "---- CTA global css ---", { uniqueId });
+
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: [(0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_4__["default"])({
       className: INNER_CLASSNAME,

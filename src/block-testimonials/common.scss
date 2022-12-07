@@ -1,4 +1,4 @@
-.glide {
+/* .glide {
 	position: relative;
 }
 
@@ -26,9 +26,38 @@
 	&.glide__bullet--active {
 		background-color: black;
 	}
-}
+} */
 
 /*  */
+/*  */
+.wcb-testimonials__wrap {
+	.slick-dots {
+		position: relative;
+		bottom: auto;
+	}
+	.slick-dots li {
+		margin: 0px;
+	}
+	.slick-dots li button:before {
+		font-size: 8px;
+	}
+
+	.slick-prev,
+	.slick-next {
+		color: black;
+		padding: 0.5rem;
+		width: unset;
+		height: unset;
+		&:hover {
+			color: black;
+		}
+		&::before {
+			content: "";
+			display: none;
+		}
+	}
+}
+
 .wcb-testimonials__item {
 	display: flex;
 	position: relative;

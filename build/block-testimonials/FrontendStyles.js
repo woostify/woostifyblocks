@@ -2238,23 +2238,19 @@ const GlobalCss = attrs => {
   const ITEM_CONTENT = `${WRAP_CLASSNAME} .wcb-testimonials__item-content`;
   const ITEM_COMPANY = `${WRAP_CLASSNAME} .wcb-testimonials__item-company`;
   const ITEM_IMAGE = `${WRAP_CLASSNAME} .wcb-testimonials__item-image`;
-  const GLIDE_ARROW = `${WRAP_CLASSNAME} .glide__arrow`;
-  const GLIDE_DOTS = `${WRAP_CLASSNAME} .glide__bullets`;
+  const SLICK_ARROW = `${WRAP_CLASSNAME} .slick-arrow`;
+  const SLICK_DOTS = `${WRAP_CLASSNAME} .slick-dots`;
 
   // ------------------- WRAP DIV
   const getDivWrapStyles = () => {
     return [{
-      [`${WRAP_CLASSNAME}`]: {
-        ".glide": {
-          padding: "1rem"
-        },
-        [`@media (min-width: ${media_tablet})`]: {},
-        [`@media (min-width: ${media_desktop})`]: {
-          ".glide": {
-            padding: "1.75rem"
-          }
-        }
-      }
+      // [`${WRAP_CLASSNAME}`]: {
+      // 	".slick-slider": {},
+      // 	[`@media (min-width: ${media_tablet})`]: {},
+      // 	[`@media (min-width: ${media_desktop})`]: {
+      // 		".slick-slider": {},
+      // 	},
+      // },
     }, (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_9__["default"])({
       value: general_general.textAlignment,
       className: `${ITEM_CLASSNAME}`,
@@ -2313,41 +2309,43 @@ const GlobalCss = attrs => {
     })]
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
     styles: [(0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_8__["default"])({
+      border: style_backgroundAndBorder.border,
+      className: ITEM_CLASSNAME,
+      isWithRadius: true
+    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_9__["default"])({
+      className: ITEM_CLASSNAME,
+      value: general_general.colGap,
+      prefix: "paddingLeft",
+      prefix_2: "paddingRight"
+    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_9__["default"])({
+      className: ITEM_CLASSNAME,
+      value: style_arrowAndDots.dotsMarginTop,
+      prefix: "marginBottom"
+    }), (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
+      className: `${WRAP_CLASSNAME} .wcb-testimonials__item-inner`,
+      padding: style_dimension.padding
+    }), (0,_utils_getStyleBackground__WEBPACK_IMPORTED_MODULE_10__["default"])({
+      className: ITEM_CLASSNAME,
+      styles_background: style_backgroundAndBorder.background
+    })]
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+    styles: [(0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_8__["default"])({
       border: style_arrowAndDots.border,
-      className: GLIDE_ARROW,
+      className: SLICK_ARROW,
       isWithRadius: true
     }), {
-      [`${GLIDE_ARROW} svg`]: {
+      [`${SLICK_ARROW} svg`]: {
         width: style_arrowAndDots.arrowSize,
         height: style_arrowAndDots.arrowSize,
         color: style_arrowAndDots.color
       }
-    }, (0,_utils_getSingleDimensionStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
-      value: style_arrowAndDots.dotsMarginTop,
-      className: GLIDE_DOTS,
-      prefix: "marginTop"
-    }), {
-      [`${GLIDE_DOTS} .glide__bullet`]: {
-        backgroundColor: style_arrowAndDots.color,
-        opacity: 0.3,
-        "&.glide__bullet--active": {
-          backgroundColor: style_arrowAndDots.color,
-          opacity: 1
+    }, {
+      [`${SLICK_DOTS} li`]: {
+        "button:before": {
+          color: style_arrowAndDots.color
         }
       }
     }]
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
-    styles: [(0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_8__["default"])({
-      border: style_backgroundAndBorder.border,
-      className: ITEM_CLASSNAME,
-      isWithRadius: true
-    }), (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
-      className: `${ITEM_CLASSNAME}`,
-      padding: style_dimension.padding
-    }), (0,_utils_getStyleBackground__WEBPACK_IMPORTED_MODULE_10__["default"])({
-      className: `${ITEM_CLASSNAME}`,
-      styles_background: style_backgroundAndBorder.background
-    })]
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
     styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__.getAdvanveDivWrapStyles)({
       advance_responsiveCondition,
@@ -2358,140 +2356,6 @@ const GlobalCss = attrs => {
   }));
 };
 /* harmony default export */ __webpack_exports__["default"] = (react__WEBPACK_IMPORTED_MODULE_1___default().memo(GlobalCss));
-
-/***/ }),
-
-/***/ "./src/block-testimonials/useGlide.ts":
-/*!********************************************!*\
-  !*** ./src/block-testimonials/useGlide.ts ***!
-  \********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
-/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
-
-
-
-
-// let SLIDER: Glide | null = null;
-const useGlide = _ref => {
-  let {
-    general_general,
-    general_carousel,
-    UNIQUE_ID,
-    isSelected,
-    ref
-  } = _ref;
-  const {
-    value_Desktop: colGap_Desktop,
-    value_Tablet: colGap_Tablet,
-    value_Mobile: colGap_Mobile
-  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_2__["default"])(general_general.colGap);
-  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_1__["default"])() || "Desktop";
-  const [SLIDER, setSLIDER] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)();
-  const options = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => ({
-    keyboard: false,
-    perView: general_general.columns.Desktop || 1,
-    gap: colGap_Desktop || 0,
-    bound: true,
-    autoplay: general_carousel.isAutoPlay ? general_carousel.autoplaySpeed : false,
-    hoverpause: general_carousel.hoverpause,
-    animationDuration: general_carousel.animationDuration || 1,
-    rewind: general_carousel.rewind,
-    breakpoints: {
-      [parseInt(___WEBPACK_IMPORTED_MODULE_3__.DEMO_WCB_GLOBAL_VARIABLES.media_desktop)]: {
-        perView: general_general.columns.Tablet || 1,
-        gap: colGap_Tablet
-      },
-      [parseInt(___WEBPACK_IMPORTED_MODULE_3__.DEMO_WCB_GLOBAL_VARIABLES.media_tablet)]: {
-        perView: general_general.columns.Mobile || 1,
-        gap: colGap_Mobile
-      }
-    }
-  }), [general_general, general_carousel, ref, UNIQUE_ID]);
-  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (isSelected) {
-      SLIDER?.pause();
-    } else {
-      SLIDER?.play();
-    }
-  }, [isSelected]);
-
-  //
-  //
-  //
-  //
-  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    let DOC = window.document;
-    let GLIDE = window.Glide;
-    const {
-      ownerDocument
-    } = ref?.current || {};
-    DOC = ownerDocument;
-    const {
-      defaultView
-    } = ownerDocument;
-    GLIDE = defaultView?.Glide;
-
-    // defaultView.jQuery(".your-class").slick({});
-
-    console.log(111, {
-      DOC,
-      ownerDocument,
-      deviceType
-    });
-    const glideEL = DOC.querySelector(`[data-uniqueid=${UNIQUE_ID}] .glide`);
-    if (!GLIDE || !glideEL && !ref) {
-      return () => {};
-    }
-    const slider = new GLIDE(`[data-uniqueid=${UNIQUE_ID}] .glide`, options);
-    setSLIDER(slider);
-    setTimeout(() => {
-      slider?.mount();
-    }, 200);
-    return () => {
-      slider?.destroy();
-    };
-  }, [options, UNIQUE_ID, ref, deviceType]);
-  return null;
-};
-/* harmony default export */ __webpack_exports__["default"] = (useGlide);
-
-/***/ }),
-
-/***/ "./src/hooks/useGetDeviceType.ts":
-/*!***************************************!*\
-  !*** ./src/hooks/useGetDeviceType.ts ***!
-  \***************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__);
-
-const useGetDeviceType = () => {
-  const {
-    deviceType
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_0__.useSelect)(select => {
-    const {
-      __experimentalGetPreviewDeviceType: getPreviewDeviceType
-    } = select("core/edit-post") || false;
-    if (!getPreviewDeviceType) {
-      return {
-        deviceType: null
-      };
-    }
-    return {
-      deviceType: getPreviewDeviceType()
-    };
-  }, []);
-  return deviceType;
-};
-/* harmony default export */ __webpack_exports__["default"] = (useGetDeviceType);
 
 /***/ }),
 
@@ -3929,16 +3793,6 @@ module.exports = window["lodash"];
 /***/ (function(module) {
 
 module.exports = window["wp"]["api"];
-
-/***/ }),
-
-/***/ "@wordpress/data":
-/*!******************************!*\
-  !*** external ["wp","data"] ***!
-  \******************************/
-/***/ (function(module) {
-
-module.exports = window["wp"]["data"];
 
 /***/ }),
 
@@ -5475,25 +5329,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "react-dom");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _GlobalCss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./GlobalCss */ "./src/block-testimonials/GlobalCss.tsx");
-/* harmony import */ var _useGlide__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./useGlide */ "./src/block-testimonials/useGlide.ts");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _GlobalCss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./GlobalCss */ "./src/block-testimonials/GlobalCss.tsx");
+
 
 
 
 
 
 const FrontendStyles = attrs => {
-  const {
-    general_carousel,
-    general_general,
-    uniqueId
-  } = attrs;
-  (0,_useGlide__WEBPACK_IMPORTED_MODULE_4__["default"])({
-    general_carousel,
-    general_general,
-    UNIQUE_ID: uniqueId
-  });
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_3__["default"], attrs);
+  // const { general_carousel, general_general, uniqueId } = attrs;
+  // useGlide({ general_carousel, general_general, UNIQUE_ID: uniqueId });
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_5__["default"], attrs);
 };
 
 //
@@ -5507,11 +5355,81 @@ divsToUpdate.forEach(div => {
   //
   const props = JSON.parse(preEl?.innerText);
   //
+  initCarousel({
+    id: div.id,
+    props
+  });
+  //
   react_dom__WEBPACK_IMPORTED_MODULE_2___default().render((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(FrontendStyles, props), divRenderCssEl);
   //
   div.classList.remove("wcb-update-div");
   preEl.remove();
 });
+function initCarousel(_ref) {
+  let {
+    id,
+    props
+  } = _ref;
+  let $ = jQuery;
+  if (typeof jQuery !== "function") {
+    return;
+  }
+  const {
+    animationDuration,
+    autoplaySpeed,
+    hoverpause,
+    isAutoPlay,
+    rewind,
+    showArrowsDots,
+    adaptiveHeight
+  } = props.general_carousel;
+  const {
+    colGap,
+    columns,
+    numberofTestimonials,
+    textAlignment
+  } = props.general_general;
+  const {
+    value_Desktop: col_desktop,
+    value_Tablet: col_tablet,
+    value_Mobile: col_mobile
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_3__["default"])(columns);
+  const settings = {
+    infinite: rewind,
+    speed: animationDuration || 500,
+    autoplay: isAutoPlay,
+    autoplaySpeed,
+    //
+    slidesToShow: col_desktop,
+    slidesToScroll: 1,
+    prevArrow: `<button type="button" class="slick-arrow slick-prev">
+		<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+		<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+		</svg>
+		</button>`,
+    nextArrow: `<button type="button" class="slick-arrow slick-next">
+		<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+		<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+		</svg>
+		</button>`,
+    dots: showArrowsDots !== "Arrow",
+    arrows: showArrowsDots !== "Dot",
+    adaptiveHeight,
+    pauseOnHover: hoverpause,
+    responsive: [{
+      breakpoint: parseInt(___WEBPACK_IMPORTED_MODULE_4__.DEMO_WCB_GLOBAL_VARIABLES.media_desktop),
+      settings: {
+        slidesToShow: col_tablet
+      }
+    }, {
+      breakpoint: parseInt(___WEBPACK_IMPORTED_MODULE_4__.DEMO_WCB_GLOBAL_VARIABLES.media_tablet),
+      settings: {
+        slidesToShow: col_mobile
+      }
+    }]
+  };
+  $(`#${id} .wcb-testimonials__wrap-items`).slick(settings);
+}
 }();
 /******/ })()
 ;

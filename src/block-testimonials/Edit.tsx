@@ -1,14 +1,12 @@
 import { __ } from "@wordpress/i18n";
 import { RichText, useBlockProps } from "@wordpress/block-editor";
 import { useRefEffect } from "@wordpress/compose";
-import React, { useEffect, FC, useCallback } from "react";
+import React, { useEffect, FC, useCallback, useRef } from "react";
 import { TestimonialItem, WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
 } from "../components/HOCInspectorControls";
 import { EditProps } from "../block-container/Edit";
-import useCreateCacheEmotion from "../hooks/useCreateCacheEmotion";
-import { CacheProvider } from "@emotion/react";
 import GlobalCss from "./GlobalCss";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
@@ -28,14 +26,15 @@ import getImageUrlBySize from "../utils/getImageUrlBySize";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import OverlayBackgroundByBgControl from "../components/OverlayBackgroundByBgControl";
 import VideoBackgroundByBgControl from "../components/VideoBackgroundByBgControl";
-import useGlide from "./useGlide";
 import _ from "lodash";
 import { useMemo } from "@wordpress/element";
-import Glide from "@glidejs/glide";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
+import Slider, { Settings } from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export const TESTIMONIAL_ITEM_DEMO: TestimonialItem = {
 	name: "Drink Water",
@@ -43,6 +42,54 @@ export const TESTIMONIAL_ITEM_DEMO: TestimonialItem = {
 	content:
 		"I have been working with these guys for years now! With lots of hard work and timely communication, they made sure they delivered the best to me. Highly recommended!",
 };
+
+function SampleNextArrow(props) {
+	const { className, style, onClick } = props;
+	return (
+		<div
+			className={className}
+			style={{ ...style, display: "block" }}
+			onClick={onClick}
+		>
+			<svg
+				fill="none"
+				viewBox="0 0 24 24"
+				strokeWidth={1.5}
+				stroke="currentColor"
+			>
+				<path
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					d="M8.25 4.5l7.5 7.5-7.5 7.5"
+				/>
+			</svg>
+		</div>
+	);
+}
+
+function SamplePrevArrow(props) {
+	const { className, style, onClick } = props;
+	return (
+		<div
+			className={className}
+			style={{ ...style, display: "block" }}
+			onClick={onClick}
+		>
+			<svg
+				fill="none"
+				viewBox="0 0 24 24"
+				strokeWidth={1.5}
+				stroke="currentColor"
+			>
+				<path
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					d="M15.75 19.5L8.25 12l7.5-7.5"
+				/>
+			</svg>
+		</div>
+	);
+}
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
@@ -63,12 +110,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_dimension,
 	} = attributes;
 	//  COMMON HOOKS
-	const { myCache, ref } = useCreateCacheEmotion();
 
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-
-	console.log(333, { ref: ref.current?.ownerDocument.defaultView });
-
+	const ref = useRef<HTMLDivElement>(null);
 	const wrapBlockProps = useBlockProps({ ref });
 
 	const {
@@ -85,13 +129,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			uniqueId: UNIQUE_ID,
 		});
 	}, [UNIQUE_ID]);
-
-	//
-	// useGlide({ general_carousel, general_general, UNIQUE_ID, ref, isSelected });
-	// const glideEL = document.querySelector(`[data-uniqueid=${UNIQUE_ID}] .glide`);
-	// console.log(1, { glideEL });
-
-	//
 
 	let CURRENT_DATA = useMemo(
 		() =>
@@ -365,7 +402,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const renderTestimonialItem = (item: TestimonialItem, index: number) => {
 		const { imagePosition } = general_images;
 		return (
-			<li className="glide__slide wcb-testimonials__item" key={index + "-"}>
+			<div className="wcb-testimonials__item" key={index + "-"}>
 				<div className=""></div>
 				<VideoBackgroundByBgControl
 					bgType={style_backgroundAndBorder.background.bgType}
@@ -402,81 +439,45 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 				{/* IMAGE */}
 				{imagePosition === "right" && renderTestimonialItemImage(item, index)}
-			</li>
+			</div>
 		);
 	};
 
 	const renderEditContent = () => {
+		const {
+			animationDuration,
+			autoplaySpeed,
+			hoverpause,
+			isAutoPlay,
+			rewind,
+			showArrowsDots,
+			adaptiveHeight,
+		} = general_carousel;
+		const { colGap, columns } = general_general;
+
+		const { currentDeviceValue: currentColumns } = getValueFromAttrsResponsives(
+			columns,
+			deviceType
+		);
+
+		const settings: Settings = {
+			infinite: rewind,
+			speed: animationDuration || 500,
+			autoplay: isAutoPlay,
+			autoplaySpeed,
+			//
+			slidesToShow: currentColumns,
+			slidesToScroll: 1,
+			nextArrow: <SampleNextArrow />,
+			prevArrow: <SamplePrevArrow />,
+
+			dots: showArrowsDots !== "Arrow",
+			arrows: showArrowsDots !== "Dot",
+			adaptiveHeight: true,
+			pauseOnHover: hoverpause,
+		};
 		return (
-			<div className="glide">
-				{/* CONTENT */}
-				<div className="glide__track-wrap">
-					<div className="glide__track" data-glide-el="track">
-						<ul className="glide__slides">
-							{CURRENT_DATA.map(renderTestimonialItem)}
-						</ul>
-					</div>
-				</div>
-
-				{/* ARROW */}
-				{(general_carousel.showArrowsDots === "Both" ||
-					general_carousel.showArrowsDots === "Arrow") && (
-					<div className="glide__arrows" data-glide-el="controls">
-						<button
-							className="glide__arrow glide__arrow--left"
-							data-glide-dir="<"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								strokeWidth={1.5}
-								stroke="currentColor"
-							>
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									d="M15.75 19.5L8.25 12l7.5-7.5"
-								/>
-							</svg>
-						</button>
-						<button
-							className="glide__arrow glide__arrow--right"
-							data-glide-dir=">"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								strokeWidth={1.5}
-								stroke="currentColor"
-							>
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									d="M8.25 4.5l7.5 7.5-7.5 7.5"
-								/>
-							</svg>
-						</button>
-					</div>
-				)}
-
-				{/* DOTS */}
-				{(general_carousel.showArrowsDots === "Both" ||
-					general_carousel.showArrowsDots === "Dot") && (
-					<div className="glide__bullets" data-glide-el="controls[nav]">
-						{CURRENT_DATA.map((item, index) => {
-							return (
-								<button
-									className="glide__bullet"
-									key={index + "-" + item.name}
-									data-glide-dir={`=${index}`}
-								></button>
-							);
-						})}
-					</div>
-				)}
-			</div>
+			<Slider {...settings}>{CURRENT_DATA.map(renderTestimonialItem)}</Slider>
 		);
 	};
 
@@ -530,12 +531,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 				{/* CHILD CONTENT  */}
 				{renderEditContent()}
-
-				<div className="your-class">
-					<div>your content</div>
-					<div>your content</div>
-					<div>your content</div>
-				</div>
 			</div>
 		</MyCacheProvider>
 	);

@@ -4,6 +4,7 @@ import React, { FC, CSSProperties } from "react";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
+import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
 import MyTextAlignControl, {
 	TextAlignment,
 } from "../components/controls/MyTextAlignControl/MyTextAlignControl";
@@ -14,7 +15,7 @@ export interface WCB_TESTIMONIALS_PANEL_GENERAL {
 	textAlignment: HasResponsive<TextAlignment>;
 	numberofTestimonials: number;
 	columns: HasResponsive<number>;
-	colGap: HasResponsive<number>;
+	colGap: HasResponsive<string>;
 }
 
 export const WCB_TESTIMONIALS_PANEL_GENERAL_DEMO: WCB_TESTIMONIALS_PANEL_GENERAL =
@@ -22,7 +23,7 @@ export const WCB_TESTIMONIALS_PANEL_GENERAL_DEMO: WCB_TESTIMONIALS_PANEL_GENERAL
 		textAlignment: { Desktop: "center" },
 		numberofTestimonials: 3,
 		columns: { Desktop: 1, Tablet: 1, Mobile: 1 },
-		colGap: { Desktop: 16 },
+		colGap: { Desktop: "1rem" },
 	};
 
 interface Props
@@ -98,14 +99,10 @@ const WcbTestimonialsPanelGeneral: FC<Props> = ({
 						});
 					}}
 					min={1}
-					max={3}
+					max={numberofTestimonials}
 				/>
 
-				<RangeControl
-					label={
-						<MyLabelControl hasResponsive>{__("Gap", "wcb")}</MyLabelControl>
-					}
-					value={currentColGap || 1}
+				<MySpacingSizesControl
 					onChange={(value) => {
 						setAttr__({
 							...panelData,
@@ -115,8 +112,9 @@ const WcbTestimonialsPanelGeneral: FC<Props> = ({
 							},
 						});
 					}}
-					min={0}
-					max={100}
+					value={currentColGap || "0"}
+					label={"Gap"}
+					hasResponsive
 				/>
 
 				<MyTextAlignControl

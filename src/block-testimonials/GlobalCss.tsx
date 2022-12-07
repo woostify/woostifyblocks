@@ -38,24 +38,20 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const ITEM_CONTENT = `${WRAP_CLASSNAME} .wcb-testimonials__item-content`;
 	const ITEM_COMPANY = `${WRAP_CLASSNAME} .wcb-testimonials__item-company`;
 	const ITEM_IMAGE = `${WRAP_CLASSNAME} .wcb-testimonials__item-image`;
-	const GLIDE_ARROW = `${WRAP_CLASSNAME} .glide__arrow`;
-	const GLIDE_DOTS = `${WRAP_CLASSNAME} .glide__bullets`;
+	const SLICK_ARROW = `${WRAP_CLASSNAME} .slick-arrow`;
+	const SLICK_DOTS = `${WRAP_CLASSNAME} .slick-dots`;
 
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject[] => {
 		return [
 			{
-				[`${WRAP_CLASSNAME}`]: {
-					".glide": {
-						padding: "1rem",
-					},
-					[`@media (min-width: ${media_tablet})`]: {},
-					[`@media (min-width: ${media_desktop})`]: {
-						".glide": {
-							padding: "1.75rem",
-						},
-					},
-				},
+				// [`${WRAP_CLASSNAME}`]: {
+				// 	".slick-slider": {},
+				// 	[`@media (min-width: ${media_tablet})`]: {},
+				// 	[`@media (min-width: ${media_desktop})`]: {
+				// 		".slick-slider": {},
+				// 	},
+				// },
 			},
 			getStyleObjectFromResponsiveAttr({
 				value: general_general.textAlignment,
@@ -144,39 +140,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 				]}
 			/>
 
-			{/* GLIDE ARROW  */}
-			<Global
-				styles={[
-					getBorderStyles({
-						border: style_arrowAndDots.border,
-						className: GLIDE_ARROW,
-						isWithRadius: true,
-					}),
-					{
-						[`${GLIDE_ARROW} svg`]: {
-							width: style_arrowAndDots.arrowSize,
-							height: style_arrowAndDots.arrowSize,
-							color: style_arrowAndDots.color,
-						},
-					},
-					getSingleDimensionStyles({
-						value: style_arrowAndDots.dotsMarginTop,
-						className: GLIDE_DOTS,
-						prefix: "marginTop",
-					}),
-					{
-						[`${GLIDE_DOTS} .glide__bullet`]: {
-							backgroundColor: style_arrowAndDots.color,
-							opacity: 0.3,
-							"&.glide__bullet--active": {
-								backgroundColor: style_arrowAndDots.color,
-								opacity: 1,
-							},
-						},
-					},
-				]}
-			/>
-
 			{/* ITEM WRAP  */}
 			<Global
 				styles={[
@@ -185,14 +148,51 @@ const GlobalCss: FC<Props> = (attrs) => {
 						className: ITEM_CLASSNAME,
 						isWithRadius: true,
 					}),
+					getStyleObjectFromResponsiveAttr({
+						className: ITEM_CLASSNAME,
+						value: general_general.colGap,
+						prefix: "paddingLeft",
+						prefix_2: "paddingRight",
+					}),
+					getStyleObjectFromResponsiveAttr({
+						className: ITEM_CLASSNAME,
+						value: style_arrowAndDots.dotsMarginTop,
+						prefix: "marginBottom",
+					}),
 					getPaddingMarginStyles({
-						className: `${ITEM_CLASSNAME}`,
+						className: `${WRAP_CLASSNAME} .wcb-testimonials__item-inner`,
 						padding: style_dimension.padding,
 					}),
 					getStyleBackground({
-						className: `${ITEM_CLASSNAME}`,
+						className: ITEM_CLASSNAME,
 						styles_background: style_backgroundAndBorder.background,
 					}),
+				]}
+			/>
+
+			{/* SLICK ARROW & DOTS  */}
+			<Global
+				styles={[
+					getBorderStyles({
+						border: style_arrowAndDots.border,
+						className: SLICK_ARROW,
+						isWithRadius: true,
+					}),
+					{
+						[`${SLICK_ARROW} svg`]: {
+							width: style_arrowAndDots.arrowSize,
+							height: style_arrowAndDots.arrowSize,
+							color: style_arrowAndDots.color,
+						},
+					},
+
+					{
+						[`${SLICK_DOTS} li`]: {
+							"button:before": {
+								color: style_arrowAndDots.color,
+							},
+						},
+					},
 				]}
 			/>
 

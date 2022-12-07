@@ -118,10 +118,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const renderTestimonialItem = (item: TestimonialItem, index: number) => {
 		const { imagePosition } = general_images;
 		return (
-			<li
-				className="glide__slide wcb-testimonials__item"
-				key={index + "-" + item.name}
-			>
+			<div className="wcb-testimonials__item" key={index}>
 				<div className=""></div>
 				<VideoBackgroundByBgControl
 					bgType={style_backgroundAndBorder.background.bgType}
@@ -158,80 +155,14 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 				{/* IMAGE */}
 				{imagePosition === "right" && renderTestimonialItemImage(item, index)}
-			</li>
+			</div>
 		);
 	};
 
 	const renderEditContent = () => {
 		return (
-			<div className="glide">
-				{/* CONTENT */}
-				<div className="glide__track-wrap">
-					<div className="glide__track" data-glide-el="track">
-						<ul className="glide__slides">
-							{CURRENT_DATA.map(renderTestimonialItem)}
-						</ul>
-					</div>
-				</div>
-
-				{/* ARROW */}
-				{(general_carousel.showArrowsDots === "Both" ||
-					general_carousel.showArrowsDots === "Arrow") && (
-					<div className="glide__arrows" data-glide-el="controls">
-						<button
-							className="glide__arrow glide__arrow--left"
-							data-glide-dir="<"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								strokeWidth={1.5}
-								stroke="currentColor"
-							>
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									d="M15.75 19.5L8.25 12l7.5-7.5"
-								/>
-							</svg>
-						</button>
-						<button
-							className="glide__arrow glide__arrow--right"
-							data-glide-dir=">"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								strokeWidth={1.5}
-								stroke="currentColor"
-							>
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									d="M8.25 4.5l7.5 7.5-7.5 7.5"
-								/>
-							</svg>
-						</button>
-					</div>
-				)}
-
-				{/* DOTS */}
-				{(general_carousel.showArrowsDots === "Both" ||
-					general_carousel.showArrowsDots === "Dot") && (
-					<div className="glide__bullets" data-glide-el="controls[nav]">
-						{CURRENT_DATA.map((item, index) => {
-							return (
-								<button
-									className="glide__bullet"
-									key={index + "-" + item.name}
-									data-glide-dir={`=${index}`}
-								></button>
-							);
-						})}
-					</div>
-				)}
+			<div className="wcb-testimonials__wrap-items">
+				{CURRENT_DATA.map(renderTestimonialItem)}
 			</div>
 		);
 	};

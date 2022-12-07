@@ -59,7 +59,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		Mobile: iconSize_mobile + "px",
 	};
 
-	console.log(2, "---- buton global css ---");
+	// console.log(2, "---- buton global css ---");
 	return (
 		<>
 			{/* <Global styles={getDivWrapStyles()} /> */}
