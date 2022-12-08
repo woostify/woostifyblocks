@@ -5,6 +5,13 @@
 	--media-lg: 1024px;
 }
 
+.wcb-icon-full {
+	svg,
+	img {
+		@apply w-full;
+	}
+}
+
 .wcb-VideoBackgroundByBgControl {
 	position: absolute;
 	inset: 0;

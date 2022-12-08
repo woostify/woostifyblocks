@@ -9,12 +9,15 @@ import React, { FC, CSSProperties } from "react";
 import { MyIconKey } from "../components/controls/MyIcon";
 import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
-import SelecIcon from "../components/controls/SelectIcon/SelecIcon";
+import SelecIcon, {
+	DEFAULT_MY_ICON,
+	MyIcon,
+} from "../components/controls/SelectIcon/SelecIcon";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 
 export interface WCB_BUTTON_PANEL_CONTENT {
 	enableIcon: boolean;
-	iconName?: MyIconKey;
+	icon: MyIcon;
 	iconPosition: "top" | "left" | "right" | "bottom";
 	link: string;
 	openInNewWindow: boolean;
@@ -25,44 +28,44 @@ export interface WCB_BUTTON_PANEL_CONTENT {
 export const WCB_BUTTON_PANEL_CONTENT_DEMO_COMMON_NO_ICON: WCB_BUTTON_PANEL_CONTENT =
 	{
 		enableIcon: false,
-		iconName: "lni-heart-filled",
 		iconPosition: "left",
 		link: "#",
 		openInNewWindow: false,
 		isHiddenText: false,
 		addNofollowToLink: true,
+		icon: DEFAULT_MY_ICON,
 	};
 
 export const WCB_BUTTON_PANEL_CONTENT_DEMO_with_leading_icon: WCB_BUTTON_PANEL_CONTENT =
 	{
 		enableIcon: true,
-		iconName: "lni-heart-filled",
 		iconPosition: "left",
 		link: "#",
 		openInNewWindow: false,
 		isHiddenText: false,
 		addNofollowToLink: true,
+		icon: DEFAULT_MY_ICON,
 	};
 export const WCB_BUTTON_PANEL_CONTENT_DEMO_with_trailing_icons: WCB_BUTTON_PANEL_CONTENT =
 	{
 		enableIcon: true,
-		iconName: "lni-heart-filled",
 		iconPosition: "right",
 		link: "#",
 		openInNewWindow: false,
 		isHiddenText: false,
 		addNofollowToLink: true,
+		icon: DEFAULT_MY_ICON,
 	};
 
 export const WCB_BUTTON_PANEL_CONTENT_DEMO_CIRCULAR: WCB_BUTTON_PANEL_CONTENT =
 	{
 		enableIcon: true,
-		iconName: "lni-heart-filled",
 		iconPosition: "left",
 		link: "#",
 		openInNewWindow: false,
 		isHiddenText: true,
 		addNofollowToLink: true,
+		icon: DEFAULT_MY_ICON,
 	};
 
 export const WCB_BUTTON_PANEL_CONTENT_DEMO =
@@ -85,7 +88,7 @@ const WcbButtonPanelContent: FC<Props> = ({
 	const {
 		addNofollowToLink,
 		enableIcon,
-		iconName,
+		icon,
 		iconPosition,
 		isHiddenText,
 		link,
@@ -117,11 +120,11 @@ const WcbButtonPanelContent: FC<Props> = ({
 				/>
 
 				<SelecIcon
-					value={iconName}
+					iconData={icon}
 					onChange={(value) => {
 						setAttr__({
 							...panelData,
-							iconName: value,
+							icon: value,
 						});
 					}}
 				/>

@@ -1,25 +1,58 @@
-import { Dashicon, Dropdown } from "@wordpress/components";
+import { Dashicon, Dropdown, TextareaControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import ResetButton from "../ResetButton";
-// import { ICONS_KEYS as people } from "./types";
 import { FixedSizeGrid as Grid, GridChildComponentProps } from "react-window";
 import unicodesMap from "../../../../public/lineicons-free-basic/icon-font/unicodesMap.json";
 import MyIcon, { MyIconKey } from "../MyIcon";
+import { Tab } from "@headlessui/react";
+import MyMediaUploadCheck, {
+	DEFAULT_MEDIA_UPLOAD,
+	MediaUploadData,
+} from "../MyMediaUploadCheck";
+import "./editor.scss";
+import checkIsSvgHtmlTag from "../../../utils/checkIsSvgHtmlTag";
 
 const ICON_KEYS = Object.keys(unicodesMap) as MyIconKey[];
+
+export interface MyIcon {
+	type: "icon" | "image" | "svg";
+	iconName?: MyIconKey;
+	imageData: MediaUploadData;
+	svgCode: string;
+}
+
+export const DEFAULT_MY_ICON: MyIcon = {
+	type: "icon",
+	iconName: "lni-heart-filled",
+	imageData: DEFAULT_MEDIA_UPLOAD,
+	svgCode: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+	<path stroke-linecap="round" stroke-linejoin="round" d="M6 13.5V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 9.75V10.5" />
+  </svg>`,
+};
+
 interface Props {
-	value?: MyIconKey;
-	onChange: (icon?: MyIconKey) => void;
+	// value: MyIcon;
+	iconData: MyIcon;
+	onChange: (value: MyIcon) => void;
 	label?: string;
 }
 
 const SelecIcon: FC<Props> = ({
 	onChange,
-	value,
+	iconData = DEFAULT_MY_ICON,
 	label = __("Icon:", "wcb"),
 }) => {
 	const [query, setQuery] = useState("");
+	const [isCorrectSvgCode, setIsCorrectSvgCode] = useState(
+		checkIsSvgHtmlTag(iconData.svgCode)
+	);
+	const [svgCodeState, setSvgCodeState] = useState("");
+
+	useEffect(() => {
+		setSvgCodeState(iconData.svgCode);
+	}, [iconData.svgCode]);
+
 	const gridRef = React.createRef<Grid<any>>();
 
 	const people = ICON_KEYS;
@@ -45,15 +78,20 @@ const SelecIcon: FC<Props> = ({
 			return <div style={{ ...style }}></div>;
 		}
 
+		const isActive = item === iconData.iconName;
+
 		return (
 			<div style={{ ...style, padding: "4px 0px 4px 8px" }}>
 				<div
 					key={item}
 					className={`h-20 p-3 flex items-center justify-center bg-gray-800 rounded-lg text-gray-50 hover:ring-2 ring-offset-1 ring-sky-500 cursor-pointer ${
-						item === value ? "ring-2 SelecIcon__item--isActive" : ""
+						isActive ? "ring-2 SelecIcon__item--isActive" : ""
 					}`}
 					onClick={() => {
-						onChange(item === value ? undefined : item);
+						onChange({
+							...iconData,
+							iconName: isActive ? undefined : item,
+						});
 					}}
 				>
 					<div className="grid">
@@ -71,7 +109,7 @@ const SelecIcon: FC<Props> = ({
 
 	const renderInput = () => {
 		return (
-			<div className="relative mb-2.5 border-b border-gray-700 text-white p-2.5">
+			<div className="relative p-2 mb-2 -mt-2 border-b border-gray-800 text-white ">
 				<div className="pointer-events-none absolute inset-y-0 left-3 flex items-center pl-2.5">
 					<svg
 						fill="none"
@@ -100,61 +138,163 @@ const SelecIcon: FC<Props> = ({
 		);
 	};
 
+	const TABS: { name: MyIcon["type"]; icon: string }[] = [
+		{ name: "icon", icon: "lni lni-ruler-pencil text-lg" },
+		{ name: "image", icon: "lni lni-image text-lg" },
+		{ name: "svg", icon: "lni lni-code text-lg" },
+	];
+
+	const renderContent = ({ onToggle, onClose }) => (
+		<div className="min-w-[310px] min-h-[510px] bg-gray-900 pt-3">
+			<Tab.Group
+				onChange={(i) => {
+					onChange({
+						...iconData,
+						type: TABS[i].name,
+					});
+				}}
+				defaultIndex={TABS.findIndex((item) => item.name === iconData.type)}
+			>
+				<Tab.List className="flex p-1.5 bg-slate-700/60 rounded-lg shadow-md mx-2">
+					{TABS.map((item) => {
+						return (
+							<Tab
+								key={item.name}
+								className={({ selected }) =>
+									`flex-1 font-medium whitespace-nowrap px-1 py-2 text-sm focus:outline-none flex flex-col items-center justify-center space-y-1 rounded-lg capitalize ${
+										selected
+											? "bg-slate-900 text-slate-50 "
+											: "text-slate-300 hover:text-slate-100 border-b-transparent"
+									}`
+								}
+							>
+								<i className={item.icon}></i>
+								<span className="block">{item.name}</span>
+							</Tab>
+						);
+					})}
+				</Tab.List>
+				<Tab.Panels className="mt-3 pt-3 border-t border-slate-700">
+					<Tab.Panel className="">{renderContentDefault()}</Tab.Panel>
+					<Tab.Panel className="">{renderContentUploadImage()}</Tab.Panel>
+					<Tab.Panel className="">{renderContentUploadSVG()}</Tab.Panel>
+				</Tab.Panels>
+			</Tab.Group>
+		</div>
+	);
+
+	const renderContentUploadSVG = () => {
+		return (
+			<div className="pt-1 px-3 text-slate-300">
+				<TextareaControl
+					rows={17}
+					label=""
+					placeholder={`<svg xmlns="http://www.w3.org/2000/svg" fill="none" ...`}
+					className="Wcb-SelectIcon__textarea text-slate-200"
+					help={
+						!svgCodeState || isCorrectSvgCode ? (
+							__("Enter your SVG code here", "wcb")
+						) : (
+							<p className="text-red-500">
+								{__("Please write a valid SVG code", "wcb")}
+							</p>
+						)
+					}
+					value={svgCodeState}
+					onChange={(value) => {
+						setSvgCodeState(value);
+						if (checkIsSvgHtmlTag(value)) {
+							setIsCorrectSvgCode(true);
+							onChange({
+								...iconData,
+								svgCode: value,
+							});
+						} else {
+							setIsCorrectSvgCode(false);
+						}
+					}}
+				/>
+			</div>
+		);
+	};
+
+	const renderContentUploadImage = () => {
+		const imageData = iconData?.imageData;
+		return (
+			<div className="px-3 pt-1">
+				<MyMediaUploadCheck
+					className="text-neutral-200"
+					btnClass="ring-1 ring-neutral-700"
+					defaultBtnClass="hover:bg-black/10"
+					onChange={(data) => {
+						onChange({
+							...iconData,
+							imageData: data,
+						});
+					}}
+					imageData={imageData}
+				/>
+			</div>
+		);
+	};
+
+	const renderContentDefault = () => {
+		return (
+			<div>
+				<div>{renderInput()}</div>
+				<Grid
+					ref={gridRef}
+					className="hiddenScrollbar"
+					columnCount={3}
+					columnWidth={100}
+					height={380}
+					rowCount={Math.ceil(ICONS_KEYS.length / 3)}
+					rowHeight={88}
+					width={308}
+				>
+					{Cell}
+				</Grid>
+			</div>
+		);
+	};
+
 	return (
 		<Dropdown
 			position="middle left"
 			className="w-full"
+			contentClassName="Wcb-SelectIcon"
 			renderToggle={({ isOpen, onToggle }) => (
 				<div className="flex items-center space-x-4">
 					<button
 						className="py-3 px-6 flex items-center justify-center ring-2 ring-slate-200 hover:ring-slate-300 rounded-lg "
 						onClick={() => {
 							onToggle();
-							setTimeout(() => {
-								if (!value) return;
-								const index = filteredPeople.indexOf(value);
-								index &&
-									gridRef?.current?.scrollToItem({
-										rowIndex: Math.ceil(index / 3),
-										align: "center",
-									});
-								// const el = document.querySelector(".SelecIcon__item--isActive");
-								// if (!el) return;
-								// el.scrollIntoView({ block: "center", inline: "center" });
-							}, 1);
+							// setTimeout(() => {
+							// 	if (!value) return;
+							// 	const index = filteredPeople.indexOf(value);
+							// 	index &&
+							// 		gridRef?.current?.scrollToItem({
+							// 			rowIndex: Math.ceil(index / 3),
+							// 			align: "center",
+							// 		});
+							// }, 1);
 						}}
 					>
 						<span className="mr-3">{label}</span>
-						{value ? (
+						{/* {value ? (
 							<MyIcon className="text-xl" size={20} icon={value} />
 						) : (
 							<strong>{__("None", "wcb")}</strong>
-						)}
+						)} */}
 					</button>
 					<ResetButton
 						onClick={() => {
-							onChange(undefined);
+							onChange(DEFAULT_MY_ICON);
 						}}
 					/>
 				</div>
 			)}
-			renderContent={({ onToggle, onClose }) => (
-				<div className="bg-gray-900">
-					<div>{renderInput()}</div>
-					<Grid
-						ref={gridRef}
-						className="hiddenScrollbar"
-						columnCount={3}
-						columnWidth={100}
-						height={400}
-						rowCount={Math.ceil(ICONS_KEYS.length / 3)}
-						rowHeight={88}
-						width={308}
-					>
-						{Cell}
-					</Grid>
-				</div>
-			)}
+			renderContent={renderContent}
 		/>
 	);
 };

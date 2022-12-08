@@ -2580,15 +2580,13 @@ const WcbTeamPanelImages = _ref => {
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_6__["default"], {
       hasResponsive: false
     }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Choose Image", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyMediaUploadCheck__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      mediaId: image.mediaId,
-      mediaUrl: image.mediaUrl,
+      imageData: image,
       onChange: data => {
         setAttr__({
           ...panelData,
           image: data
         });
-      },
-      mediaSrcSet: image.mediaSrcSet
+      }
     })));
   };
   const renderSettingsImage = () => {
@@ -3359,10 +3357,8 @@ const ControlBgImage = _ref => {
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
       hasResponsive: true
     }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Image", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyMediaUploadCheck__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      mediaId: imageData.mediaId,
-      mediaUrl: imageData.mediaUrl,
       onChange: data => setImageData(data),
-      mediaSrcSet: imageData.mediaSrcSet
+      imageData: imageData
     }))), imageData.mediaId ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
       className: "w-full"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -4066,6 +4062,9 @@ const MyLabelControl = _ref => {
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DEFAULT_MEDIA_UPLOAD": function() { return /* binding */ DEFAULT_MEDIA_UPLOAD; }
+/* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
@@ -4085,14 +4084,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const DEFAULT_MEDIA_UPLOAD = {
+  mediaId: 0,
+  mediaUrl: "",
+  mediaSrcSet: undefined
+};
 const MyMediaUploadCheck = _ref => {
   let {
-    className = "",
-    mediaId,
-    mediaSrcSet,
-    mediaUrl,
+    className = "text-gray-700",
+    btnClass = "ring-1 ring-neutral-200",
+    defaultBtnClass = "hover:bg-slate-100",
+    imageData,
     onChange
   } = _ref;
+  const {
+    mediaId,
+    mediaUrl,
+    mediaSrcSet,
+    sizes
+  } = imageData;
   const removeMedia = () => {
     onChange({
       mediaId: 0,
@@ -4119,18 +4129,18 @@ const MyMediaUploadCheck = _ref => {
         open
       } = _ref2;
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
-        className: `h-auto rounded-lg ring-1 ring-black/10 ${mediaId == 0 ? "editor-post-featured-image__toggle hover:bg-slate-100" : "editor-post-featured-image__preview"}`,
+        className: `h-auto rounded-lg text-inherit ${btnClass} ${mediaId == 0 ? "editor-post-featured-image__toggle " + defaultBtnClass : "editor-post-featured-image__preview"}`,
         onClick: open
       }, mediaId == 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "text-center flex flex-col items-center justify-center"
+        className: "text-center flex flex-col items-center justify-center rounded-lg"
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
         icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
-        className: "text-slate-700"
+        className: "text-inherit"
       }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
         className: "mt-0.5"
       }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Choose an image", "wcb"))), !!mediaUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
         src: mediaUrl,
-        className: "w-full block",
+        className: "w-full block rounded-lg",
         sizes: "250px",
         srcSet: mediaSrcSet || undefined
       }));
@@ -4822,6 +4832,9 @@ const ResetButton = _ref => {
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DEFAULT_MY_ICON": function() { return /* binding */ DEFAULT_MY_ICON; }
+/* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
@@ -4831,26 +4844,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _ResetButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../ResetButton */ "./src/components/controls/ResetButton.tsx");
-/* harmony import */ var react_window__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-window */ "./node_modules/react-window/dist/index.esm.js");
+/* harmony import */ var react_window__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-window */ "./node_modules/react-window/dist/index.esm.js");
 /* harmony import */ var _public_lineicons_free_basic_icon_font_unicodesMap_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../public/lineicons-free-basic/icon-font/unicodesMap.json */ "./public/lineicons-free-basic/icon-font/unicodesMap.json");
 /* harmony import */ var _MyIcon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../MyIcon */ "./src/components/controls/MyIcon.tsx");
+/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/tabs/tabs.js");
+/* harmony import */ var _MyMediaUploadCheck__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../MyMediaUploadCheck */ "./src/components/controls/MyMediaUploadCheck.tsx");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./editor.scss */ "./src/components/controls/SelectIcon/editor.scss");
+/* harmony import */ var _utils_checkIsSvgHtmlTag__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../utils/checkIsSvgHtmlTag */ "./src/utils/checkIsSvgHtmlTag.ts");
 
 
 
 
 
-// import { ICONS_KEYS as people } from "./types";
+
+
+
+
 
 
 
 const ICON_KEYS = Object.keys(_public_lineicons_free_basic_icon_font_unicodesMap_json__WEBPACK_IMPORTED_MODULE_5__);
+const DEFAULT_MY_ICON = {
+  type: "icon",
+  iconName: "lni-heart-filled",
+  imageData: _MyMediaUploadCheck__WEBPACK_IMPORTED_MODULE_7__.DEFAULT_MEDIA_UPLOAD,
+  svgCode: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+	<path stroke-linecap="round" stroke-linejoin="round" d="M6 13.5V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 9.75V10.5" />
+  </svg>`
+};
 const SelecIcon = _ref => {
   let {
     onChange,
-    value,
+    iconData = DEFAULT_MY_ICON,
     label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Icon:", "wcb")
   } = _ref;
   const [query, setQuery] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)("");
+  const [isCorrectSvgCode, setIsCorrectSvgCode] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)((0,_utils_checkIsSvgHtmlTag__WEBPACK_IMPORTED_MODULE_9__["default"])(iconData.svgCode));
+  const [svgCodeState, setSvgCodeState] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)("");
+  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
+    setSvgCodeState(iconData.svgCode);
+  }, [iconData.svgCode]);
   const gridRef = react__WEBPACK_IMPORTED_MODULE_3___default().createRef();
   const people = ICON_KEYS;
   const filteredPeople = query === "" ? people : people.filter(person => {
@@ -4872,6 +4905,7 @@ const SelecIcon = _ref => {
         }
       });
     }
+    const isActive = item === iconData.iconName;
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       style: {
         ...style,
@@ -4879,9 +4913,12 @@ const SelecIcon = _ref => {
       }
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       key: item,
-      className: `h-20 p-3 flex items-center justify-center bg-gray-800 rounded-lg text-gray-50 hover:ring-2 ring-offset-1 ring-sky-500 cursor-pointer ${item === value ? "ring-2 SelecIcon__item--isActive" : ""}`,
+      className: `h-20 p-3 flex items-center justify-center bg-gray-800 rounded-lg text-gray-50 hover:ring-2 ring-offset-1 ring-sky-500 cursor-pointer ${isActive ? "ring-2 SelecIcon__item--isActive" : ""}`,
       onClick: () => {
-        onChange(item === value ? undefined : item);
+        onChange({
+          ...iconData,
+          iconName: isActive ? undefined : item
+        });
       }
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "grid"
@@ -4897,7 +4934,7 @@ const SelecIcon = _ref => {
   };
   const renderInput = () => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "relative mb-2.5 border-b border-gray-700 text-white p-2.5"
+      className: "relative p-2 mb-2 -mt-2 border-b border-gray-800 text-white "
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "pointer-events-none absolute inset-y-0 left-3 flex items-center pl-2.5"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
@@ -4920,62 +4957,146 @@ const SelecIcon = _ref => {
       autoFocus: true
     }));
   };
+  const TABS = [{
+    name: "icon",
+    icon: "lni lni-ruler-pencil text-lg"
+  }, {
+    name: "image",
+    icon: "lni lni-image text-lg"
+  }, {
+    name: "svg",
+    icon: "lni lni-code text-lg"
+  }];
+  const renderContent = _ref3 => {
+    let {
+      onToggle,
+      onClose
+    } = _ref3;
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "min-w-[310px] min-h-[510px] bg-gray-900 pt-3"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_10__.Tab.Group, {
+      onChange: i => {
+        onChange({
+          ...iconData,
+          type: TABS[i].name
+        });
+      },
+      defaultIndex: TABS.findIndex(item => item.name === iconData.type)
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_10__.Tab.List, {
+      className: "flex p-1.5 bg-slate-700/60 rounded-lg shadow-md mx-2"
+    }, TABS.map(item => {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_10__.Tab, {
+        key: item.name,
+        className: _ref4 => {
+          let {
+            selected
+          } = _ref4;
+          return `flex-1 font-medium whitespace-nowrap px-1 py-2 text-sm focus:outline-none flex flex-col items-center justify-center space-y-1 rounded-lg capitalize ${selected ? "bg-slate-900 text-slate-50 " : "text-slate-300 hover:text-slate-100 border-b-transparent"}`;
+        }
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+        className: item.icon
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+        className: "block"
+      }, item.name));
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_10__.Tab.Panels, {
+      className: "mt-3 pt-3 border-t border-slate-700"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_10__.Tab.Panel, {
+      className: ""
+    }, renderContentDefault()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_10__.Tab.Panel, {
+      className: ""
+    }, renderContentUploadImage()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_10__.Tab.Panel, {
+      className: ""
+    }, renderContentUploadSVG()))));
+  };
+  const renderContentUploadSVG = () => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "pt-1 px-3 text-slate-300"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextareaControl, {
+      rows: 17,
+      label: "",
+      placeholder: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" ...`,
+      className: "Wcb-SelectIcon__textarea text-slate-200",
+      help: !svgCodeState || isCorrectSvgCode ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Enter your SVG code here", "wcb") : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+        className: "text-red-500"
+      }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Please write a valid SVG code", "wcb")),
+      value: svgCodeState,
+      onChange: value => {
+        setSvgCodeState(value);
+        if ((0,_utils_checkIsSvgHtmlTag__WEBPACK_IMPORTED_MODULE_9__["default"])(value)) {
+          setIsCorrectSvgCode(true);
+          onChange({
+            ...iconData,
+            svgCode: value
+          });
+        } else {
+          setIsCorrectSvgCode(false);
+        }
+      }
+    }));
+  };
+  const renderContentUploadImage = () => {
+    const imageData = iconData?.imageData;
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "px-3 pt-1"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyMediaUploadCheck__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      className: "text-neutral-200",
+      btnClass: "ring-1 ring-neutral-700",
+      defaultBtnClass: "hover:bg-black/10",
+      onChange: data => {
+        onChange({
+          ...iconData,
+          imageData: data
+        });
+      },
+      imageData: imageData
+    }));
+  };
+  const renderContentDefault = () => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, renderInput()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_window__WEBPACK_IMPORTED_MODULE_11__.FixedSizeGrid, {
+      ref: gridRef,
+      className: "hiddenScrollbar",
+      columnCount: 3,
+      columnWidth: 100,
+      height: 380,
+      rowCount: Math.ceil(ICONS_KEYS.length / 3),
+      rowHeight: 88,
+      width: 308
+    }, Cell));
+  };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dropdown, {
     position: "middle left",
     className: "w-full",
-    renderToggle: _ref3 => {
+    contentClassName: "Wcb-SelectIcon",
+    renderToggle: _ref5 => {
       let {
         isOpen,
         onToggle
-      } = _ref3;
+      } = _ref5;
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         className: "flex items-center space-x-4"
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
         className: "py-3 px-6 flex items-center justify-center ring-2 ring-slate-200 hover:ring-slate-300 rounded-lg ",
         onClick: () => {
           onToggle();
-          setTimeout(() => {
-            if (!value) return;
-            const index = filteredPeople.indexOf(value);
-            index && gridRef?.current?.scrollToItem({
-              rowIndex: Math.ceil(index / 3),
-              align: "center"
-            });
-            // const el = document.querySelector(".SelecIcon__item--isActive");
-            // if (!el) return;
-            // el.scrollIntoView({ block: "center", inline: "center" });
-          }, 1);
+          // setTimeout(() => {
+          // 	if (!value) return;
+          // 	const index = filteredPeople.indexOf(value);
+          // 	index &&
+          // 		gridRef?.current?.scrollToItem({
+          // 			rowIndex: Math.ceil(index / 3),
+          // 			align: "center",
+          // 		});
+          // }, 1);
         }
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
         className: "mr-3"
-      }, label), value ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyIcon__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        className: "text-xl",
-        size: 20,
-        icon: value
-      }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("None", "wcb"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ResetButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, label)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ResetButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
         onClick: () => {
-          onChange(undefined);
+          onChange(DEFAULT_MY_ICON);
         }
       }));
     },
-    renderContent: _ref4 => {
-      let {
-        onToggle,
-        onClose
-      } = _ref4;
-      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "bg-gray-900"
-      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, renderInput()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_window__WEBPACK_IMPORTED_MODULE_7__.FixedSizeGrid, {
-        ref: gridRef,
-        className: "hiddenScrollbar",
-        columnCount: 3,
-        columnWidth: 100,
-        height: 400,
-        rowCount: Math.ceil(ICONS_KEYS.length / 3),
-        rowHeight: 88,
-        width: 308
-      }, Cell));
-    }
+    renderContent: renderContent
   });
 };
 /* harmony default export */ __webpack_exports__["default"] = (SelecIcon);
@@ -5236,6 +5357,23 @@ const useSetBlockPanelInfo = uniqueId => {
 
 /***/ }),
 
+/***/ "./src/utils/checkIsSvgHtmlTag.ts":
+/*!****************************************!*\
+  !*** ./src/utils/checkIsSvgHtmlTag.ts ***!
+  \****************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+function checkIsSvgHtmlTag(str) {
+  if (typeof str !== "string") {
+    return false;
+  }
+  return /<svg\b[^>]*?(?:viewBox=\"(\b[^"]*)\")?>([\s\S]*?)<\/svg>/g.test(str);
+}
+/* harmony default export */ __webpack_exports__["default"] = (checkIsSvgHtmlTag);
+
+/***/ }),
+
 /***/ "./src/utils/getValueFromAttrsResponsives.ts":
 /*!***************************************************!*\
   !*** ./src/utils/getValueFromAttrsResponsives.ts ***!
@@ -5455,6 +5593,18 @@ __webpack_require__.r(__webpack_exports__);
 /*!***********************************!*\
   !*** ./src/block-team/style.scss ***!
   \***********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./src/components/controls/SelectIcon/editor.scss":
+/*!********************************************************!*\
+  !*** ./src/components/controls/SelectIcon/editor.scss ***!
+  \********************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);

@@ -3,7 +3,6 @@ import { HeartIcon, PlusIcon } from "@heroicons/react/24/solid";
 import { Dropdown } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, useState } from "react";
-import CheckIcon from "../../CheckIcon";
 import ResetButton from "../ResetButton";
 
 export type ButtonPreset =
@@ -101,7 +100,7 @@ const MyButtonPresetControl: FC<Props> = ({
 								<RadioGroup.Option key={item.name} value={item.name}>
 									{({ checked }) => (
 										<div
-											className={`relative flex items-center justify-center w-full p-5 cursor-pointer rounded-lg hover:ring-2 ring-offset-1 ring-sky-400 ${
+											className={`relative flex items-center justify-center w-full p-4 cursor-pointer rounded-lg hover:ring-2 ring-offset-1 ring-sky-400 ${
 												checked ? "bg-white ring-2" : "bg-white"
 											} `}
 										>

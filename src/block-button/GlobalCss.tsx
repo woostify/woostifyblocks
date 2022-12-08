@@ -111,11 +111,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 						typography: style_text.typography,
 					}),
 					getStyleObjectFromResponsiveAttr({
-						className: `${BUTTON_ICON}, ${BUTTON_ICON}:before`,
+						className: `${BUTTON_ICON}, ${BUTTON_ICON}:before, ${BUTTON_ICON} svg`,
 						value: IconSizeConverted,
 						prefix: "fontSize",
-						// prefix_2: "height",
-						// prefix_3: "width",
+						prefix_2: "height",
+						prefix_3: "width",
 					}),
 					{
 						[BUTTON_TEXT]: {

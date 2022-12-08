@@ -1,10 +1,10 @@
 .wcb-faq-child__wrap {
 	@apply overflow-hidden;
 	&.active {
-		.lni.wcb-faq-child__icon--active {
+		.wcb-icon-full.wcb-faq-child__icon--active {
 			display: block;
 		}
-		.lni.wcb-faq-child__icon--inactive {
+		.wcb-icon-full.wcb-faq-child__icon--inactive {
 			display: none;
 		}
 	}
@@ -39,10 +39,10 @@
 	@apply text-base;
 }
 
-.lni.wcb-faq-child__icon--active {
+.wcb-icon-full.wcb-faq-child__icon--active {
 	display: none;
 }
-.lni.wcb-faq-child__icon--inactive {
+.wcb-icon-full.wcb-faq-child__icon--inactive {
 	display: block;
 }
 

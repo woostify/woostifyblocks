@@ -46,10 +46,8 @@ const ControlBgImage: FC<Props> = ({
 					<div className="w-full">
 						<MyLabelControl hasResponsive>{__("Image", "wcb")}</MyLabelControl>
 						<MyMediaUploadCheck
-							mediaId={imageData.mediaId}
-							mediaUrl={imageData.mediaUrl}
 							onChange={(data) => setImageData(data)}
-							mediaSrcSet={imageData.mediaSrcSet}
+							imageData={imageData}
 						/>
 					</div>
 				</PanelRow>

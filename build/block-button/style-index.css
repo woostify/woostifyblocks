@@ -47,7 +47,12 @@
 }
 
 .wcb-button__icon {
+  display: flex;
   flex-shrink: 0;
+  align-items: center;
+}
+.wcb-button__icon.is-image img, .wcb-button__icon.is-svg svg {
+  width: 100%;
 }
 
 .wcb-button__main-icon-top,

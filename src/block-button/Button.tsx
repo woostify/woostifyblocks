@@ -1,7 +1,7 @@
 import { RichText } from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n";
 import React, { FC } from "react";
-import MyIcon from "../components/controls/MyIcon";
+import MyIconFull from "../components/controls/MyIconFull";
 import { WcbAttrs } from "./attributes";
 
 interface Props {
@@ -32,17 +32,17 @@ const Button: FC<Props> = ({
 		enableIcon,
 		iconPosition,
 		isHiddenText,
-		iconName,
 		addNofollowToLink,
 		link,
 		openInNewWindow,
+		icon,
 	} = general_content;
 
 	const renderIcon = () => {
-		if (!iconName || !enableIcon) {
+		if (!icon || !enableIcon) {
 			return null;
 		}
-		return <MyIcon className="wcb-button__icon" size={20} icon={iconName} />;
+		return <MyIconFull icon={icon} className="wcb-button__icon" />;
 	};
 
 	const renderButton = () => {

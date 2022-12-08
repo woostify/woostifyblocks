@@ -66,15 +66,13 @@ const WcbTeamPanelImages: FC<Props> = ({
 						{__("Choose Image", "wcb")}
 					</MyLabelControl>
 					<MyMediaUploadCheck
-						mediaId={image.mediaId}
-						mediaUrl={image.mediaUrl}
+						imageData={image}
 						onChange={(data) => {
 							setAttr__({
 								...panelData,
 								image: data,
 							});
 						}}
-						mediaSrcSet={image.mediaSrcSet}
 					/>
 				</div>
 			</div>

@@ -249,6 +249,11 @@ video {
   --media-lg: 1024px;
 }
 
+.wcb-icon-full svg,
+.wcb-icon-full img {
+  width: 100%;
+}
+
 .wcb-VideoBackgroundByBgControl {
   position: absolute;
   inset: 0;

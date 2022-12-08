@@ -2360,11 +2360,11 @@ const GlobalCss = attrs => {
     }]
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: [(0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
-      className: `${FAQ_CHILD_ICON}, ${FAQ_CHILD_ICON}:before`,
+      className: `${FAQ_CHILD_ICON}, ${FAQ_CHILD_ICON}:before, ${FAQ_CHILD_ICON} svg`,
       value: IconSizeConverted,
-      prefix: "fontSize"
-      // prefix_2: "height",
-      // prefix_3: "width",
+      prefix: "fontSize",
+      prefix_2: "height",
+      prefix_3: "width"
     }), {
       [FAQ_CHILD_ICON]: {
         color: style_icon.color

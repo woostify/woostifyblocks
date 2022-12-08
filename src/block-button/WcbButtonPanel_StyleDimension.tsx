@@ -59,7 +59,7 @@ export const WCB_BUTTON_PANEL_STYLE_DIMENSION_DEMO_PRIMARY: WCB_BUTTON_PANEL_STY
 				bottom: "",
 			},
 		},
-		colGap: { Desktop: "6px" },
+		colGap: { Desktop: "8px" },
 	};
 
 export const WCB_BUTTON_PANEL_STYLE_DIMENSION_DEMO =

@@ -3566,10 +3566,8 @@ const ControlBgImage = _ref => {
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
       hasResponsive: true
     }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Image", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyMediaUploadCheck__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      mediaId: imageData.mediaId,
-      mediaUrl: imageData.mediaUrl,
       onChange: data => setImageData(data),
-      mediaSrcSet: imageData.mediaSrcSet
+      imageData: imageData
     }))), imageData.mediaId ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
       className: "w-full"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -5260,6 +5258,9 @@ const MyLabelControl = _ref => {
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DEFAULT_MEDIA_UPLOAD": function() { return /* binding */ DEFAULT_MEDIA_UPLOAD; }
+/* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
@@ -5279,14 +5280,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const DEFAULT_MEDIA_UPLOAD = {
+  mediaId: 0,
+  mediaUrl: "",
+  mediaSrcSet: undefined
+};
 const MyMediaUploadCheck = _ref => {
   let {
-    className = "",
-    mediaId,
-    mediaSrcSet,
-    mediaUrl,
+    className = "text-gray-700",
+    btnClass = "ring-1 ring-neutral-200",
+    defaultBtnClass = "hover:bg-slate-100",
+    imageData,
     onChange
   } = _ref;
+  const {
+    mediaId,
+    mediaUrl,
+    mediaSrcSet,
+    sizes
+  } = imageData;
   const removeMedia = () => {
     onChange({
       mediaId: 0,
@@ -5313,18 +5325,18 @@ const MyMediaUploadCheck = _ref => {
         open
       } = _ref2;
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
-        className: `h-auto rounded-lg ring-1 ring-black/10 ${mediaId == 0 ? "editor-post-featured-image__toggle hover:bg-slate-100" : "editor-post-featured-image__preview"}`,
+        className: `h-auto rounded-lg text-inherit ${btnClass} ${mediaId == 0 ? "editor-post-featured-image__toggle " + defaultBtnClass : "editor-post-featured-image__preview"}`,
         onClick: open
       }, mediaId == 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "text-center flex flex-col items-center justify-center"
+        className: "text-center flex flex-col items-center justify-center rounded-lg"
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
         icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
-        className: "text-slate-700"
+        className: "text-inherit"
       }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
         className: "mt-0.5"
       }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Choose an image", "wcb"))), !!mediaUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
         src: mediaUrl,
-        className: "w-full block",
+        className: "w-full block rounded-lg",
         sizes: "250px",
         srcSet: mediaSrcSet || undefined
       }));

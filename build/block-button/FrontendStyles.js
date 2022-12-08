@@ -2237,11 +2237,11 @@ const GlobalCss = attrs => {
       className: BUTTON_TEXT,
       typography: style_text.typography
     }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
-      className: `${BUTTON_ICON}, ${BUTTON_ICON}:before`,
+      className: `${BUTTON_ICON}, ${BUTTON_ICON}:before, ${BUTTON_ICON} svg`,
       value: IconSizeConverted,
-      prefix: "fontSize"
-      // prefix_2: "height",
-      // prefix_3: "width",
+      prefix: "fontSize",
+      prefix_2: "height",
+      prefix_3: "width"
     }), {
       [BUTTON_TEXT]: {
         color: style_text.color

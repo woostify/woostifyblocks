@@ -5,9 +5,12 @@ import { __ } from "@wordpress/i18n";
 import React, { useState, useEffect, FC } from "react";
 import MyButton from "./MyButton";
 
-interface Props extends MediaUploadData {
+interface Props {
+	imageData: MediaUploadData;
 	className?: string;
-	onChange: (T: Omit<Props, "onChange">) => void;
+	btnClass?: string;
+	defaultBtnClass?: string;
+	onChange: (T: MediaUploadData) => void;
 }
 
 export interface MediaUploadDataSizeItem {
@@ -28,13 +31,21 @@ export interface MediaUploadData {
 	};
 }
 
+export const DEFAULT_MEDIA_UPLOAD: MediaUploadData = {
+	mediaId: 0,
+	mediaUrl: "",
+	mediaSrcSet: undefined,
+};
+
 const MyMediaUploadCheck: FC<Props> = ({
-	className = "",
-	mediaId,
-	mediaSrcSet,
-	mediaUrl,
+	className = "text-gray-700",
+	btnClass = "ring-1 ring-neutral-200",
+	defaultBtnClass = "hover:bg-slate-100",
+	imageData,
 	onChange,
 }) => {
+	const { mediaId, mediaUrl, mediaSrcSet, sizes } = imageData;
+
 	const removeMedia = () => {
 		onChange({
 			mediaId: 0,
@@ -61,23 +72,23 @@ const MyMediaUploadCheck: FC<Props> = ({
 					allowedTypes={["image"]}
 					render={({ open }) => (
 						<Button
-							className={`h-auto rounded-lg ring-1 ring-black/10 ${
+							className={`h-auto rounded-lg text-inherit ${btnClass} ${
 								mediaId == 0
-									? "editor-post-featured-image__toggle hover:bg-slate-100"
+									? "editor-post-featured-image__toggle " + defaultBtnClass
 									: "editor-post-featured-image__preview"
 							}`}
 							onClick={open}
 						>
 							{mediaId == 0 && (
-								<div className="text-center flex flex-col items-center justify-center">
-									<Icon icon={plus} className="text-slate-700" />
+								<div className="text-center flex flex-col items-center justify-center rounded-lg">
+									<Icon icon={plus} className="text-inherit" />
 									<span className="mt-0.5">{__("Choose an image", "wcb")}</span>
 								</div>
 							)}
 							{!!mediaUrl && (
 								<img
 									src={mediaUrl}
-									className="w-full block"
+									className="w-full block rounded-lg"
 									sizes="250px"
 									srcSet={mediaSrcSet || undefined}
 								/>

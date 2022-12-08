@@ -4,21 +4,24 @@ import React, { FC, CSSProperties } from "react";
 import { MyIconKey } from "../components/controls/MyIcon";
 import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
-import SelecIcon from "../components/controls/SelectIcon/SelecIcon";
+import SelecIcon, {
+	DEFAULT_MY_ICON,
+	MyIcon,
+} from "../components/controls/SelectIcon/SelecIcon";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 
 export interface WCB_FAQ_PANEL_ICON {
 	enableIcon: boolean;
-	iconName?: MyIconKey;
-	inactiveIconName?: MyIconKey;
+	icon: MyIcon;
+	inactiveIcon?: MyIcon;
 	iconPosition: "top" | "left" | "right" | "bottom";
 }
 
 export const WCB_FAQ_PANEL_ICON_DEMO: WCB_FAQ_PANEL_ICON = {
 	enableIcon: true,
-	iconName: "lni-minus",
-	inactiveIconName: "lni-plus",
+	inactiveIcon: { ...DEFAULT_MY_ICON, iconName: "lni-plus" },
 	iconPosition: "right",
+	icon: { ...DEFAULT_MY_ICON, iconName: "lni-minus" },
 };
 
 interface Props
@@ -35,7 +38,7 @@ const WcbFaqPanelIcon: FC<Props> = ({
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { enableIcon, iconName, iconPosition, inactiveIconName } = panelData;
+	const { enableIcon, icon, iconPosition, inactiveIcon } = panelData;
 
 	const PLANS_DEMO: MyRadioItem<WCB_FAQ_PANEL_ICON["iconPosition"]>[] = [
 		{ name: "left", icon: "Left" },
@@ -62,22 +65,22 @@ const WcbFaqPanelIcon: FC<Props> = ({
 					<>
 						<SelecIcon
 							label={__("Active Icon:", "wcb")}
-							value={iconName}
+							iconData={icon}
 							onChange={(value) => {
 								setAttr__({
 									...panelData,
-									iconName: value,
+									icon: value,
 								});
 							}}
 						/>
 
 						<SelecIcon
 							label={__("Inactive Icon:", "wcb")}
-							value={inactiveIconName}
+							iconData={inactiveIcon || DEFAULT_MY_ICON}
 							onChange={(value) => {
 								setAttr__({
 									...panelData,
-									inactiveIconName: value,
+									inactiveIcon: value,
 								});
 							}}
 						/>

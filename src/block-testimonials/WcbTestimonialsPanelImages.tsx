@@ -76,8 +76,6 @@ const WcbTestimonialsPanelImages: FC<Props> = ({
 								{__("Image", "wcb")} {index + 1}
 							</MyLabelControl>
 							<MyMediaUploadCheck
-								mediaId={imageData.mediaId}
-								mediaUrl={imageData.mediaUrl}
 								onChange={(data) => {
 									setAttr__({
 										...panelData,
@@ -89,7 +87,7 @@ const WcbTestimonialsPanelImages: FC<Props> = ({
 										}),
 									});
 								}}
-								mediaSrcSet={imageData.mediaSrcSet}
+								imageData={imageData}
 							/>
 						</div>
 					);

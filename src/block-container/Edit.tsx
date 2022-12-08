@@ -6,6 +6,7 @@ import {
 	// @ts-ignore
 	__experimentalBlockVariationPicker as BlockVariationPicker,
 	store as blockEditorStore,
+	InnerBlocks,
 } from "@wordpress/block-editor";
 import { PanelBody } from "@wordpress/components";
 import { get } from "lodash";
@@ -261,7 +262,7 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 	});
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
-		renderAppender: () => false,
+		renderAppender: () => <InnerBlocks.ButtonBlockAppender />,
 	});
 	//
 
@@ -273,7 +274,7 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...blockWrapProps}
-				className={`${blockWrapProps.className} `}
+				className={`${blockWrapProps.className} border border-dashed`}
 				id={uniqueId}
 				data-uniqueid={uniqueId}
 			>
@@ -371,7 +372,7 @@ const ContainerEdit = (props) => {
 	);
 	const Component = hasInnerBlocks ? Edit : Placeholder;
 
-	return <Component {...props} />;
+	return <Edit {...props} />;
 };
 
 export default ContainerEdit;

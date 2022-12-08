@@ -182,11 +182,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 			<Global
 				styles={[
 					getStyleObjectFromResponsiveAttr({
-						className: `${FAQ_CHILD_ICON}, ${FAQ_CHILD_ICON}:before`,
+						className: `${FAQ_CHILD_ICON}, ${FAQ_CHILD_ICON}:before, ${FAQ_CHILD_ICON} svg`,
 						value: IconSizeConverted,
 						prefix: "fontSize",
-						// prefix_2: "height",
-						// prefix_3: "width",
+						prefix_2: "height",
+						prefix_3: "width",
 					}),
 					{
 						[FAQ_CHILD_ICON]: {

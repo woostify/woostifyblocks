@@ -7,16 +7,13 @@ import {
 import React, { useEffect, FC, useRef } from "react";
 import { WcbAttrs } from "./attributes";
 import { EditProps } from "../block-container/Edit";
-import useCreateCacheEmotion from "../hooks/useCreateCacheEmotion";
-import { CacheProvider } from "@emotion/react";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
-import { Dashicon } from "@wordpress/components";
 import { WCB_FAQ_PANEL_ICON } from "../block-faq/WcbFaqPanelIcon";
 import { WCB_FAQ_PANEL_GENERAL } from "../block-faq/WcbFaqPanelGeneral";
 import { useSelect } from "@wordpress/data";
-import MyIcon from "../components/controls/MyIcon";
 import MyCacheProvider from "../components/MyCacheProvider";
+import MyIconFull from "../components/controls/MyIconFull";
 
 const Edit: FC<
 	EditProps<
@@ -87,18 +84,16 @@ const Edit: FC<
 		}
 		return (
 			<>
-				{general_icon.iconName && (
-					<MyIcon
+				{general_icon.icon && (
+					<MyIconFull
 						className="wcb-faq-child__icon wcb-faq-child__icon--active"
-						size={16}
-						icon={general_icon.iconName}
+						icon={general_icon.icon}
 					/>
 				)}
-				{general_icon.inactiveIconName && (
-					<MyIcon
+				{general_icon.inactiveIcon && (
+					<MyIconFull
 						className="wcb-faq-child__icon wcb-faq-child__icon--inactive"
-						size={16}
-						icon={general_icon.inactiveIconName}
+						icon={general_icon.inactiveIcon}
 					/>
 				)}
 			</>

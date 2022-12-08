@@ -40,7 +40,11 @@
 }
 
 .wcb-button__icon {
-	flex-shrink: 0;
+	@apply flex items-center flex-shrink-0;
+	&.is-image img,
+	&.is-svg svg {
+		@apply w-full;
+	}
 }
 
 .wcb-button__main-icon-top,
