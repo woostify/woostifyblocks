@@ -1,4 +1,4 @@
-import { Global, css, CSSObject } from "@emotion/react";
+import { Global, css } from "@emotion/react";
 import React, { FC } from "react";
 import { getShadowStyleValueFromTwPreset } from "../components/controls/MyBoxShadowControl/getBoxShadowStyles";
 import getBorderStyles from "../utils/getBorderStyles";
@@ -31,8 +31,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-container__inner`;
 
 	// ------------------- WRAP DIV
-	const getDivWrapStyles = (): CSSObject[] => {
-		const { containerWidthType, customWidth, overflow, minHeight } =
+	const getDivWrapStyles = () => {
+		const { containerWidthType, customWidth, htmlTag, overflow, minHeight } =
 			general_container;
 
 		let {
@@ -42,49 +42,50 @@ const GlobalCss: FC<Props> = (attrs) => {
 		} = getValueFromAttrsResponsives(customWidth);
 
 		if (containerWidthType !== "Custom") {
-			cWidthDesktop = undefined;
-			cWidthTablet = undefined;
-			cWidthMobile = undefined;
+			cWidthDesktop = "";
+			cWidthTablet = "";
+			cWidthMobile = "";
 		}
-
 		//
+
 		const {
 			value_Desktop: minHeightDesktop,
 			value_Tablet: minHeightTablet,
 			value_Mobile: minHeightMobile,
 		} = getValueFromAttrsResponsives(minHeight);
+		//
 
-		return [
-			{
-				[WRAP_CLASSNAME]: {
-					color: styles_color,
-					overflow: overflow,
-					//
-					maxWidth: cWidthMobile,
-					minHeight: minHeightMobile,
-					"&.is_wcb_container_child": {
-						// maxWidth: "unset",
-						flexBasis: `calc(${cWidthMobile} - (var(--wcb-gap-x)));`,
-					},
-					[`@media (min-width: ${media_tablet})`]: {
-						maxWidth: cWidthTablet,
-						minHeight: minHeightTablet,
-						"&.is_wcb_container_child": {
-							// maxWidth: "unset",
-							flexBasis: `calc(${cWidthTablet} - (var(--wcb-gap-x)));`,
-						},
-					},
-					[`@media (min-width: ${media_desktop})`]: {
-						maxWidth: cWidthDesktop,
-						minHeight: minHeightDesktop,
-						"&.is_wcb_container_child": {
-							// maxWidth: "unset",
-							flexBasis: `calc(${cWidthDesktop} - (var(--wcb-gap-x)));`,
-						},
-					},
-				},
-			},
-		];
+		const {
+			value_Desktop: zIndexDesktop,
+			value_Tablet: zIndexTablet,
+			value_Mobile: zIndexMobile,
+		} = getValueFromAttrsResponsives(advance_zIndex);
+		//
+		const { isHiddenOnDesktop, isHiddenOnMobile, isHiddenOnTablet } =
+			advance_responsiveCondition;
+		return css`
+			${WRAP_CLASSNAME} {
+				position: relative;
+				display: ${isHiddenOnMobile ? "hidden" : "flex"};
+				color: ${styles_color};
+				overflow: ${overflow};
+				max-width: ${containerWidthType === "Custom" ? cWidthMobile : ""};
+				min-height: ${minHeightMobile};
+				z-index: ${zIndexMobile};
+				@media (min-width: ${media_tablet}) {
+					max-width: ${cWidthTablet};
+					min-height: ${minHeightTablet};
+					z-index: ${zIndexTablet};
+					display: ${isHiddenOnTablet ? "hidden" : "flex"};
+				}
+				@media (min-width: ${media_desktop}) {
+					max-width: ${cWidthDesktop};
+					min-height: ${minHeightDesktop};
+					z-index: ${zIndexDesktop};
+					display: ${isHiddenOnDesktop ? "hidden" : "flex"};
+				}
+			}
+		`;
 	};
 
 	const getDivWrapStyles__Border = () => {
@@ -154,15 +155,19 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const getDivInnerStyles = () => {
 		return css`
 			${INNER_CLASSNAME} {
+				display: flex;
+				flex: 1 1 0%;
+				position: relative;
+				margin: 0 auto;
 			}
 		`;
 	};
 
-	const getInner__contentCustomWidth = (): CSSObject => {
+	const getInner__contentCustomWidth = () => {
 		const { containerWidthType, contentWidthType, contentBoxWidth } =
 			general_container;
 		if (containerWidthType !== "Full Width" || contentWidthType !== "Boxed") {
-			return {};
+			return;
 		}
 
 		const {
@@ -171,18 +176,17 @@ const GlobalCss: FC<Props> = (attrs) => {
 			value_Mobile: contentBoxWidthMobile,
 		} = getValueFromAttrsResponsives(contentBoxWidth);
 
-		return {
-			[INNER_CLASSNAME]: {
-				maxWidth: contentBoxWidthMobile,
-				"> .wcb-container__wrap": {},
-				[`@media (min-width: ${media_tablet})`]: {
-					maxWidth: contentBoxWidthTablet,
-				},
-				[`@media (min-width: ${media_desktop})`]: {
-					maxWidth: contentBoxWidthDesktop,
-				},
-			},
-		};
+		return css`
+			${INNER_CLASSNAME} {
+				max-width: ${contentBoxWidthMobile};
+				@media (min-width: ${media_tablet}) {
+					max-width: ${contentBoxWidthTablet};
+				}
+				@media (min-width: ${media_desktop}) {
+					max-width: ${contentBoxWidthDesktop};
+				}
+			}
+		`;
 	};
 
 	const getInner__flexProperties = () => {
@@ -210,19 +214,17 @@ const GlobalCss: FC<Props> = (attrs) => {
 			<Global styles={getDivWrapStyles__Border()} />
 			<Global styles={getDivWrapStyles__BoxShadow()} />
 			<Global styles={getDivWrapStyles__PaddingMargin()} />
-			{/*  */}
-			{/* <Global styles={getDivInnerStyles()} /> */}
-			<Global styles={getInner__contentCustomWidth()} />
-			<Global styles={getInner__flexProperties()} />
-			{/*  */}
 			<Global
 				styles={getAdvanveDivWrapStyles({
 					advance_responsiveCondition,
 					advance_zIndex,
 					className: WRAP_CLASSNAME,
-					defaultDisplay: "flex",
 				})}
 			/>
+			{/*  */}
+			<Global styles={getDivInnerStyles()} />
+			<Global styles={getInner__contentCustomWidth()} />
+			<Global styles={getInner__flexProperties()} />
 		</>
 	);
 };

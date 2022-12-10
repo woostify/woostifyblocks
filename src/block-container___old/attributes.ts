@@ -69,12 +69,7 @@ export const blokcContainerAttrs: AttrsGenericType<BlockWCBContainerAttrs> = {
 	},
 	general_flexProperties: {
 		type: "object",
-		default: {
-			...FLEX_PROPERTIES_CONTROL_DEMO,
-			justifyContent: {
-				Desktop: "unset",
-			},
-		},
+		default: FLEX_PROPERTIES_CONTROL_DEMO,
 	},
 	styles_color: {
 		type: "string",

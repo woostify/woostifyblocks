@@ -265,17 +265,10 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		renderAppender: () => <InnerBlocks.ButtonBlockAppender />,
 	});
 	//
-	const hasParent = useSelect(
-		(select) =>
-			(select(blockEditorStore) as any).getBlockParents(clientId).length > 0,
-		[clientId]
-	);
 
 	const blockWrapProps = useBlockProps({
 		ref,
-		className: `wcb-container__wrap ${uniqueId} ${containerWidthTypeClass} ${
-			hasParent ? "is_wcb_container_child" : ""
-		}`,
+		className: `wcb-container__wrap ${uniqueId} ${containerWidthTypeClass}`,
 	});
 	return (
 		<MyCacheProvider uniqueKey={clientId}>

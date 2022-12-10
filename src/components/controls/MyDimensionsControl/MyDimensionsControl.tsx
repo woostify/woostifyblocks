@@ -24,6 +24,23 @@ interface Props {
 export const MY_GAP_UNITS = [
 	{ value: "px", label: "px", default: 32 },
 	{ value: "rem", label: "rem", default: 2 },
+	{ value: "em", label: "em", default: 2 },
+	{ value: "%", label: "%", default: 50 },
+];
+
+export const MY_HORIZOLTAL_UNITS = [
+	{ value: "px", label: "px", default: 32 },
+	{ value: "rem", label: "rem", default: 2 },
+	{ value: "em", label: "em", default: 2 },
+	{ value: "%", label: "%", default: 20 },
+	{ value: "vw", label: "vw", default: 20 },
+];
+export const MY_VERTICAL_UNITS = [
+	{ value: "px", label: "px", default: 32 },
+	{ value: "rem", label: "rem", default: 2 },
+	{ value: "em", label: "em", default: 2 },
+	{ value: "%", label: "%", default: 20 },
+	{ value: "vh", label: "vh", default: 20 },
 ];
 
 const MyDimensionsControl: FC<Props> = ({

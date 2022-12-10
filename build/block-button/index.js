@@ -5176,7 +5176,9 @@ const MyComboboxControl = _ref => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "MY_GAP_UNITS": function() { return /* binding */ MY_GAP_UNITS; }
+/* harmony export */   "MY_GAP_UNITS": function() { return /* binding */ MY_GAP_UNITS; },
+/* harmony export */   "MY_HORIZOLTAL_UNITS": function() { return /* binding */ MY_HORIZOLTAL_UNITS; },
+/* harmony export */   "MY_VERTICAL_UNITS": function() { return /* binding */ MY_VERTICAL_UNITS; }
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
@@ -5208,6 +5210,56 @@ const MY_GAP_UNITS = [{
   value: "rem",
   label: "rem",
   default: 2
+}, {
+  value: "em",
+  label: "em",
+  default: 2
+}, {
+  value: "%",
+  label: "%",
+  default: 50
+}];
+const MY_HORIZOLTAL_UNITS = [{
+  value: "px",
+  label: "px",
+  default: 32
+}, {
+  value: "rem",
+  label: "rem",
+  default: 2
+}, {
+  value: "em",
+  label: "em",
+  default: 2
+}, {
+  value: "%",
+  label: "%",
+  default: 20
+}, {
+  value: "vw",
+  label: "vw",
+  default: 20
+}];
+const MY_VERTICAL_UNITS = [{
+  value: "px",
+  label: "px",
+  default: 32
+}, {
+  value: "rem",
+  label: "rem",
+  default: 2
+}, {
+  value: "em",
+  label: "em",
+  default: 2
+}, {
+  value: "%",
+  label: "%",
+  default: 20
+}, {
+  value: "vh",
+  label: "vh",
+  default: 20
 }];
 const MyDimensionsControl = _ref => {
   let {

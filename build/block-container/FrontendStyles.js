@@ -2182,7 +2182,6 @@ const GlobalCss = attrs => {
     const {
       containerWidthType,
       customWidth,
-      htmlTag,
       overflow,
       minHeight
     } = general_container;
@@ -2192,53 +2191,46 @@ const GlobalCss = attrs => {
       value_Mobile: cWidthMobile
     } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__["default"])(customWidth);
     if (containerWidthType !== "Custom") {
-      cWidthDesktop = "";
-      cWidthTablet = "";
-      cWidthMobile = "";
+      cWidthDesktop = undefined;
+      cWidthTablet = undefined;
+      cWidthMobile = undefined;
     }
-    //
 
+    //
     const {
       value_Desktop: minHeightDesktop,
       value_Tablet: minHeightTablet,
       value_Mobile: minHeightMobile
     } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__["default"])(minHeight);
-    //
-
-    const {
-      value_Desktop: zIndexDesktop,
-      value_Tablet: zIndexTablet,
-      value_Mobile: zIndexMobile
-    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__["default"])(advance_zIndex);
-    //
-    const {
-      isHiddenOnDesktop,
-      isHiddenOnMobile,
-      isHiddenOnTablet
-    } = advance_responsiveCondition;
-    return _emotion_react__WEBPACK_IMPORTED_MODULE_10__.css`
-			${WRAP_CLASSNAME} {
-				position: relative;
-				display: ${isHiddenOnMobile ? "hidden" : "flex"};
-				color: ${styles_color};
-				overflow: ${overflow};
-				max-width: ${containerWidthType === "Custom" ? cWidthMobile : ""};
-				min-height: ${minHeightMobile};
-				z-index: ${zIndexMobile};
-				@media (min-width: ${media_tablet}) {
-					max-width: ${cWidthTablet};
-					min-height: ${minHeightTablet};
-					z-index: ${zIndexTablet};
-					display: ${isHiddenOnTablet ? "hidden" : "flex"};
-				}
-				@media (min-width: ${media_desktop}) {
-					max-width: ${cWidthDesktop};
-					min-height: ${minHeightDesktop};
-					z-index: ${zIndexDesktop};
-					display: ${isHiddenOnDesktop ? "hidden" : "flex"};
-				}
-			}
-		`;
+    return [{
+      [WRAP_CLASSNAME]: {
+        color: styles_color,
+        overflow: overflow,
+        //
+        maxWidth: cWidthMobile,
+        minHeight: minHeightMobile,
+        "&.is_wcb_container_child": {
+          // maxWidth: "unset",
+          flexBasis: `calc(${cWidthMobile} - (var(--wcb-gap-x)));`
+        },
+        [`@media (min-width: ${media_tablet})`]: {
+          maxWidth: cWidthTablet,
+          minHeight: minHeightTablet,
+          "&.is_wcb_container_child": {
+            // maxWidth: "unset",
+            flexBasis: `calc(${cWidthTablet} - (var(--wcb-gap-x)));`
+          }
+        },
+        [`@media (min-width: ${media_desktop})`]: {
+          maxWidth: cWidthDesktop,
+          minHeight: minHeightDesktop,
+          "&.is_wcb_container_child": {
+            // maxWidth: "unset",
+            flexBasis: `calc(${cWidthDesktop} - (var(--wcb-gap-x)));`
+          }
+        }
+      }
+    }];
   };
   const getDivWrapStyles__Border = () => {
     const {} = styles_border;
@@ -2313,10 +2305,6 @@ const GlobalCss = attrs => {
   const getDivInnerStyles = () => {
     return _emotion_react__WEBPACK_IMPORTED_MODULE_10__.css`
 			${INNER_CLASSNAME} {
-				display: flex;
-				flex: 1 1 0%;
-				position: relative;
-				margin: 0 auto;
 			}
 		`;
   };
@@ -2327,24 +2315,25 @@ const GlobalCss = attrs => {
       contentBoxWidth
     } = general_container;
     if (containerWidthType !== "Full Width" || contentWidthType !== "Boxed") {
-      return;
+      return {};
     }
     const {
       value_Desktop: contentBoxWidthDesktop,
       value_Tablet: contentBoxWidthTablet,
       value_Mobile: contentBoxWidthMobile
     } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__["default"])(contentBoxWidth);
-    return _emotion_react__WEBPACK_IMPORTED_MODULE_10__.css`
-			${INNER_CLASSNAME} {
-				max-width: ${contentBoxWidthMobile};
-				@media (min-width: ${media_tablet}) {
-					max-width: ${contentBoxWidthTablet};
-				}
-				@media (min-width: ${media_desktop}) {
-					max-width: ${contentBoxWidthDesktop};
-				}
-			}
-		`;
+    return {
+      [INNER_CLASSNAME]: {
+        maxWidth: contentBoxWidthMobile,
+        "> .wcb-container__wrap": {},
+        [`@media (min-width: ${media_tablet})`]: {
+          maxWidth: contentBoxWidthTablet
+        },
+        [`@media (min-width: ${media_desktop})`]: {
+          maxWidth: contentBoxWidthDesktop
+        }
+      }
+    };
   };
   const getInner__flexProperties = () => {
     const {} = general_flexProperties;
@@ -2375,17 +2364,16 @@ const GlobalCss = attrs => {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getDivWrapStyles__PaddingMargin()
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
-    styles: (0,_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_9__.getAdvanveDivWrapStyles)({
-      advance_responsiveCondition,
-      advance_zIndex,
-      className: WRAP_CLASSNAME
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
-    styles: getDivInnerStyles()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getInner__contentCustomWidth()
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getInner__flexProperties()
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+    styles: (0,_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_9__.getAdvanveDivWrapStyles)({
+      advance_responsiveCondition,
+      advance_zIndex,
+      className: WRAP_CLASSNAME,
+      defaultDisplay: "flex"
+    })
   }));
 };
 /* harmony default export */ __webpack_exports__["default"] = (react__WEBPACK_IMPORTED_MODULE_1___default().memo(GlobalCss));

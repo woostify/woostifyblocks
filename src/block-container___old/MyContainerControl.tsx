@@ -1,18 +1,18 @@
-import { SelectControl } from "@wordpress/components";
+import { FormToggle, RangeControl, SelectControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC } from "react";
-import {} from "@wordpress/components";
+import {
+	// @ts-ignore
+	__experimentalRadio as Radio,
+	// @ts-ignore
+	__experimentalRadioGroup as RadioGroup,
+	// @ts-ignore
+	__experimentalUnitControl as UnitControl,
+} from "@wordpress/components";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
-import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
-import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
-import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
-import {
-	MY_HORIZOLTAL_UNITS,
-	MY_VERTICAL_UNITS,
-} from "../components/controls/MyDimensionsControl/MyDimensionsControl";
 
 export type MyContainerControlData = {
 	containerWidthType: "Full Width" | "Boxed" | "Custom";
@@ -21,7 +21,7 @@ export type MyContainerControlData = {
 	contentBoxWidth: HasResponsive<string>;
 	minHeight: HasResponsive<string | undefined>;
 	htmlTag: React.ElementType<any>;
-	overflow: NonNullable<React.CSSProperties["overflow"]>;
+	overflow: React.CSSProperties["overflow"];
 };
 export const CONTAINER_CONTROL_DEMO: MyContainerControlData = {
 	containerWidthType: "Boxed",
@@ -69,16 +69,20 @@ const MyContainerControl: FC<Props> = ({
 		htmlTag,
 		overflow,
 	} = containerControl;
-	const handleChangeContainerWidthType = (value: string) => {
+	const handleChangeContainerWidthType = (
+		value: MyContainerControlData["containerWidthType"]
+	) => {
 		setAttrs__container({
 			...containerControl,
-			containerWidthType: value as MyContainerControlData["containerWidthType"],
+			containerWidthType: value,
 		});
 	};
-	const handleChangeContenWidthType = (value: string) => {
+	const handleChangeContenWidthType = (
+		value: MyContainerControlData["contentWidthType"]
+	) => {
 		setAttrs__container({
 			...containerControl,
-			contentWidthType: value as MyContainerControlData["contentWidthType"],
+			contentWidthType: value,
 		});
 	};
 	const handleChangeCustomWidth = (value: string) => {
@@ -122,102 +126,135 @@ const MyContainerControl: FC<Props> = ({
 		});
 	};
 
-	const { currentDeviceValue: CUSTOM_WIDTH } = getValueFromAttrsResponsives(
-		customWidthProps,
-		deviceType
-	);
-
-	const { currentDeviceValue: CONTENT_BOX_WIDTH } =
-		getValueFromAttrsResponsives(contentBoxWidthProps, deviceType);
-
-	const { currentDeviceValue: MIN_HEIGHT } = getValueFromAttrsResponsives(
-		minHeightProps,
-		deviceType
-	);
+	const CUSTOM_WIDTH =
+		customWidthProps[deviceType] ||
+		customWidthProps.Tablet ||
+		customWidthProps.Desktop;
+	const CONTENT_BOX_WIDTH =
+		contentBoxWidthProps[deviceType] ||
+		contentBoxWidthProps.Tablet ||
+		contentBoxWidthProps.Desktop;
+	const MIN_HEIGHT =
+		minHeightProps[deviceType] ||
+		minHeightProps.Tablet ||
+		minHeightProps.Desktop;
 
 	const renderContainerWidthType = () => {
-		const plans: MyRadioItem<MyContainerControlData["containerWidthType"]>[] =
-			DEMO_CONTAINER_WIDTH.map((item) => ({
-				name: item,
-				icon: item,
-			}));
 		return (
-			<MyRadioGroup
-				plans={plans}
-				label={__("Container Width", "wcb")}
-				onChange={handleChangeContainerWidthType}
-				contentClassName="capitalize mt-3"
-				value={containerWidthType}
-			/>
+			<div>
+				<p className="mb-2">{__("Container Width", "wcb")}</p>
+				<RadioGroup
+					onChange={handleChangeContainerWidthType}
+					checked={containerWidthType}
+				>
+					{DEMO_CONTAINER_WIDTH.map((item) => {
+						return (
+							<Radio key={item} value={item}>
+								{item}
+							</Radio>
+						);
+					})}
+				</RadioGroup>
+			</div>
 		);
 	};
 
 	const renderContenWidthType = () => {
-		const plans: MyRadioItem<MyContainerControlData["contentWidthType"]>[] =
-			DEMO_CONTENT_WIDTH.map((item) => ({
-				name: item,
-				icon: item,
-			}));
 		return (
-			<MyRadioGroup
-				plans={plans}
-				label={__("Content Width", "wcb")}
-				onChange={handleChangeContenWidthType}
-				contentClassName="capitalize mt-3"
-				value={contentWidthType}
-			/>
+			<div>
+				<p className="mb-2">{__("Content Width", "wcb")}</p>
+				<RadioGroup
+					onChange={handleChangeContenWidthType}
+					checked={contentWidthType}
+				>
+					{DEMO_CONTENT_WIDTH.map((item) => {
+						return (
+							<Radio key={item} value={item}>
+								{item}
+							</Radio>
+						);
+					})}
+				</RadioGroup>
+			</div>
 		);
 	};
 
 	const renderOverflow = () => {
-		const plans: MyRadioItem[] = DEMO_OVERFLOW.map((item) => ({
-			name: item,
-			icon: item,
-		}));
 		return (
-			<MyRadioGroup
-				plans={plans}
-				label={__("Overflow", "wcb")}
-				onChange={handleChangeOverflow}
-				contentClassName="capitalize mt-3"
-				value={overflow}
-			/>
+			<div>
+				<p className="mb-2">{__("Overflow", "wcb")}</p>
+				<RadioGroup onChange={handleChangeOverflow} checked={overflow}>
+					{DEMO_OVERFLOW.map((item) => {
+						return (
+							<Radio className="capitalize" key={item} value={item}>
+								{item}
+							</Radio>
+						);
+					})}
+				</RadioGroup>
+			</div>
 		);
 	};
 
 	const renderContentBoxWidth = () => {
+		const units = [
+			{ value: "px", label: "px", default: 1140 },
+			{ value: "%", label: "%", default: 100 },
+			{ value: "vw", label: "vw", default: 10 },
+		];
 		return (
-			<MySpacingSizesControl
-				onChange={handleChangeContentBoxWidth}
-				value={CONTENT_BOX_WIDTH || "0"}
-				label={__("Content Box Width", "wcb")}
-				hasResponsive={true}
-				units={MY_HORIZOLTAL_UNITS}
-			/>
+			<div className="flex items-center justify-between">
+				<MyLabelControl className="flex-shrink-0" hasResponsive>
+					{__("Content Box Width", "wcb")}
+				</MyLabelControl>
+				<UnitControl
+					className="flex-grow ml-3"
+					units={units}
+					value={CONTENT_BOX_WIDTH}
+					onChange={handleChangeContentBoxWidth}
+				/>
+			</div>
 		);
 	};
 
 	const renderCustomWidth = () => {
+		const units = [
+			{ value: "px", label: "px", default: 1140 },
+			{ value: "%", label: "%", default: 100 },
+			{ value: "vw", label: "vw", default: 10 },
+		];
 		return (
-			<MySpacingSizesControl
-				onChange={handleChangeCustomWidth}
-				value={CUSTOM_WIDTH || "0"}
-				label={__("Custom Width", "wcb")}
-				hasResponsive={true}
-				units={MY_HORIZOLTAL_UNITS}
-			/>
+			<div className="flex items-center justify-between">
+				<MyLabelControl className="flex-shrink-0" hasResponsive>
+					{__("Custom Width", "wcb")}
+				</MyLabelControl>
+				<UnitControl
+					className="flex-grow ml-3"
+					units={units}
+					value={CUSTOM_WIDTH}
+					onChange={handleChangeCustomWidth}
+				/>
+			</div>
 		);
 	};
 
 	const renderMinimumHeight = () => {
+		const units = [
+			{ value: "px", label: "px", default: 0 },
+			{ value: "vh", label: "vh", default: 0 },
+		];
 		return (
-			<MySpacingSizesControl
-				onChange={handleChangeMinHeight}
-				value={MIN_HEIGHT || "0"}
-				label={__("Minimum Height", "wcb")}
-				hasResponsive={true}
-				units={MY_VERTICAL_UNITS}
-			/>
+			<div className="flex items-center justify-between">
+				<MyLabelControl className="flex-shrink-0" hasResponsive>
+					{__("Minimum Height", "wcb")}
+				</MyLabelControl>
+				<UnitControl
+					className="flex-grow ml-3"
+					units={units}
+					value={MIN_HEIGHT}
+					onChange={handleChangeMinHeight}
+				/>
+			</div>
 		);
 	};
 
