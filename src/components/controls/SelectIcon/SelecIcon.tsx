@@ -12,6 +12,7 @@ import MyMediaUploadCheck, {
 } from "../MyMediaUploadCheck";
 import "./editor.scss";
 import checkIsSvgHtmlTag from "../../../utils/checkIsSvgHtmlTag";
+import MyIconFull from "../MyIconFull";
 
 const ICON_KEYS = Object.keys(unicodesMap) as MyIconKey[];
 
@@ -65,6 +66,19 @@ const SelecIcon: FC<Props> = ({
 			  });
 
 	const ICONS_KEYS = filteredPeople;
+
+	const scrollToIcon = () => {
+		setTimeout(() => {
+			if (!iconData.iconName) return;
+
+			const index = filteredPeople.indexOf(iconData.iconName);
+			index &&
+				gridRef?.current?.scrollToItem({
+					rowIndex: Math.ceil(index / 3),
+					align: "center",
+				});
+		}, 1);
+	};
 
 	const Cell = ({
 		columnIndex,
@@ -205,9 +219,14 @@ const SelecIcon: FC<Props> = ({
 						setSvgCodeState(value);
 						if (checkIsSvgHtmlTag(value)) {
 							setIsCorrectSvgCode(true);
+							const a =
+								/<svg\b[^>]*?(?:viewBox=\"(\b[^"]*)\")?>([\s\S]*?)<\/svg>/g.exec(
+									value
+								);
+
 							onChange({
 								...iconData,
-								svgCode: value,
+								svgCode: a?.[0] || "",
 							});
 						} else {
 							setIsCorrectSvgCode(false);
@@ -269,18 +288,13 @@ const SelecIcon: FC<Props> = ({
 						className="py-3 px-6 flex items-center justify-center ring-2 ring-slate-200 hover:ring-slate-300 rounded-lg "
 						onClick={() => {
 							onToggle();
-							// setTimeout(() => {
-							// 	if (!value) return;
-							// 	const index = filteredPeople.indexOf(value);
-							// 	index &&
-							// 		gridRef?.current?.scrollToItem({
-							// 			rowIndex: Math.ceil(index / 3),
-							// 			align: "center",
-							// 		});
-							// }, 1);
+							if (iconData.type === "icon") {
+								scrollToIcon();
+							}
 						}}
 					>
 						<span className="mr-3">{label}</span>
+						<MyIconFull icon={iconData} className="w-6 h-6 text-[24px]" />
 						{/* {value ? (
 							<MyIcon className="text-xl" size={20} icon={value} />
 						) : (

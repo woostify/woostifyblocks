@@ -11,10 +11,13 @@ import React, { FC, CSSProperties } from "react";
 import HelpText from "../components/controls/HelpText";
 import { MyIconKey } from "../components/controls/MyIcon";
 import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
-import SelecIcon from "../components/controls/SelectIcon/SelecIcon";
+import SelecIcon, {
+	DEFAULT_MY_ICON,
+	MyIcon,
+} from "../components/controls/SelectIcon/SelecIcon";
 
 export interface TeamSociaItem {
-	iconName: MyIconKey | "";
+	icon: MyIcon;
 	url: string;
 }
 
@@ -104,14 +107,14 @@ const WcbTeamPanelSocials: FC<Props> = ({
 			<div className="space-y-5">
 				{CURRENT_SOCIALS.map((social, index) => {
 					return (
-						<div key={index + "--" + social.iconName}>
+						<div key={index + "--"}>
 							<MyLabelControl>
 								{`${__("Social", "wcb")} ${index + 1}`}
 							</MyLabelControl>
 							<div className="p-3 border rounded-lg space-y-3">
 								<SelecIcon
 									label={__("Icon", "wcb")}
-									value={social.iconName || undefined}
+									iconData={social.icon}
 									onChange={(value) => {
 										setAttr__({
 											...panelData,
@@ -119,7 +122,7 @@ const WcbTeamPanelSocials: FC<Props> = ({
 												if (j === index) {
 													return {
 														...item,
-														iconName: value || "",
+														icon: value,
 													};
 												}
 												return item;

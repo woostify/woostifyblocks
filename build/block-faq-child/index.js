@@ -2248,27 +2248,30 @@ const MyIcon = _ref => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _MyIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MyIcon */ "./src/components/controls/MyIcon.tsx");
-/* harmony import */ var _SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SelectIcon/SelecIcon */ "./src/components/controls/SelectIcon/SelecIcon.tsx");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _MyIcon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./MyIcon */ "./src/components/controls/MyIcon.tsx");
+/* harmony import */ var _SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SelectIcon/SelecIcon */ "./src/components/controls/SelectIcon/SelecIcon.tsx");
+
 
 
 
 
 const MyIconFull = _ref => {
   let {
-    icon = _SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_3__.DEFAULT_MY_ICON,
+    icon = _SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_4__.DEFAULT_MY_ICON,
     className = "",
     ...props
   } = _ref;
   const renderIcon = () => {
     const classes = `wcb-icon-full ${className}`.trim();
     if (!icon) {
-      return null;
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("None", "wcb"));
     }
     if (icon.type === "icon" && icon.iconName) {
-      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyIcon__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyIcon__WEBPACK_IMPORTED_MODULE_3__["default"], {
         className: `${classes}`,
         icon: icon.iconName
       });
@@ -2289,7 +2292,7 @@ const MyIconFull = _ref => {
         alt: ""
       }));
     }
-    return null;
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("None", "wcb"));
   };
   return renderIcon();
 };
@@ -2745,13 +2748,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _ResetButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../ResetButton */ "./src/components/controls/ResetButton.tsx");
-/* harmony import */ var react_window__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-window */ "./node_modules/react-window/dist/index.esm.js");
+/* harmony import */ var react_window__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-window */ "./node_modules/react-window/dist/index.esm.js");
 /* harmony import */ var _public_lineicons_free_basic_icon_font_unicodesMap_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../public/lineicons-free-basic/icon-font/unicodesMap.json */ "./public/lineicons-free-basic/icon-font/unicodesMap.json");
 /* harmony import */ var _MyIcon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../MyIcon */ "./src/components/controls/MyIcon.tsx");
-/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/tabs/tabs.js");
+/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/tabs/tabs.js");
 /* harmony import */ var _MyMediaUploadCheck__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../MyMediaUploadCheck */ "./src/components/controls/MyMediaUploadCheck.tsx");
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./editor.scss */ "./src/components/controls/SelectIcon/editor.scss");
 /* harmony import */ var _utils_checkIsSvgHtmlTag__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../utils/checkIsSvgHtmlTag */ "./src/utils/checkIsSvgHtmlTag.ts");
+/* harmony import */ var _MyIconFull__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../MyIconFull */ "./src/components/controls/MyIconFull.tsx");
+
 
 
 
@@ -2791,6 +2796,16 @@ const SelecIcon = _ref => {
     return person.toLowerCase().includes(query.toLowerCase());
   });
   const ICONS_KEYS = filteredPeople;
+  const scrollToIcon = () => {
+    setTimeout(() => {
+      if (!iconData.iconName) return;
+      const index = filteredPeople.indexOf(iconData.iconName);
+      index && gridRef?.current?.scrollToItem({
+        rowIndex: Math.ceil(index / 3),
+        align: "center"
+      });
+    }, 1);
+  };
   const Cell = _ref2 => {
     let {
       columnIndex,
@@ -2875,7 +2890,7 @@ const SelecIcon = _ref => {
     } = _ref3;
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "min-w-[310px] min-h-[510px] bg-gray-900 pt-3"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_10__.Tab.Group, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_11__.Tab.Group, {
       onChange: i => {
         onChange({
           ...iconData,
@@ -2883,10 +2898,10 @@ const SelecIcon = _ref => {
         });
       },
       defaultIndex: TABS.findIndex(item => item.name === iconData.type)
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_10__.Tab.List, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_11__.Tab.List, {
       className: "flex p-1.5 bg-slate-700/60 rounded-lg shadow-md mx-2"
     }, TABS.map(item => {
-      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_10__.Tab, {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_11__.Tab, {
         key: item.name,
         className: _ref4 => {
           let {
@@ -2899,13 +2914,13 @@ const SelecIcon = _ref => {
       }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
         className: "block"
       }, item.name));
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_10__.Tab.Panels, {
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_11__.Tab.Panels, {
       className: "mt-3 pt-3 border-t border-slate-700"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_10__.Tab.Panel, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_11__.Tab.Panel, {
       className: ""
-    }, renderContentDefault()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_10__.Tab.Panel, {
+    }, renderContentDefault()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_11__.Tab.Panel, {
       className: ""
-    }, renderContentUploadImage()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_10__.Tab.Panel, {
+    }, renderContentUploadImage()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_11__.Tab.Panel, {
       className: ""
     }, renderContentUploadSVG()))));
   };
@@ -2925,9 +2940,10 @@ const SelecIcon = _ref => {
         setSvgCodeState(value);
         if ((0,_utils_checkIsSvgHtmlTag__WEBPACK_IMPORTED_MODULE_9__["default"])(value)) {
           setIsCorrectSvgCode(true);
+          const a = /<svg\b[^>]*?(?:viewBox=\"(\b[^"]*)\")?>([\s\S]*?)<\/svg>/g.exec(value);
           onChange({
             ...iconData,
-            svgCode: value
+            svgCode: a?.[0] || ""
           });
         } else {
           setIsCorrectSvgCode(false);
@@ -2953,7 +2969,7 @@ const SelecIcon = _ref => {
     }));
   };
   const renderContentDefault = () => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, renderInput()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_window__WEBPACK_IMPORTED_MODULE_11__.FixedSizeGrid, {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, renderInput()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_window__WEBPACK_IMPORTED_MODULE_12__.FixedSizeGrid, {
       ref: gridRef,
       className: "hiddenScrollbar",
       columnCount: 3,
@@ -2979,19 +2995,16 @@ const SelecIcon = _ref => {
         className: "py-3 px-6 flex items-center justify-center ring-2 ring-slate-200 hover:ring-slate-300 rounded-lg ",
         onClick: () => {
           onToggle();
-          // setTimeout(() => {
-          // 	if (!value) return;
-          // 	const index = filteredPeople.indexOf(value);
-          // 	index &&
-          // 		gridRef?.current?.scrollToItem({
-          // 			rowIndex: Math.ceil(index / 3),
-          // 			align: "center",
-          // 		});
-          // }, 1);
+          if (iconData.type === "icon") {
+            scrollToIcon();
+          }
         }
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
         className: "mr-3"
-      }, label)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ResetButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyIconFull__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        icon: iconData,
+        className: "w-6 h-6 text-[24px]"
+      })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ResetButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
         onClick: () => {
           onChange(DEFAULT_MY_ICON);
         }

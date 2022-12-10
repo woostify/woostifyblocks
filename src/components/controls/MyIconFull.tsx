@@ -1,3 +1,4 @@
+import { __ } from "@wordpress/i18n";
 import React, { FC } from "react";
 import MyIcon from "./MyIcon";
 import { DEFAULT_MY_ICON, MyIcon as MyIconType } from "./SelectIcon/SelecIcon";
@@ -14,7 +15,7 @@ const MyIconFull: FC<Props> = ({
 	const renderIcon = () => {
 		const classes = `wcb-icon-full ${className}`.trim();
 		if (!icon) {
-			return null;
+			return <span>{__("None", "wcb")}</span>;
 		}
 		if (icon.type === "icon" && icon.iconName) {
 			return <MyIcon className={`${classes}`} icon={icon.iconName} />;
@@ -34,7 +35,7 @@ const MyIconFull: FC<Props> = ({
 				</div>
 			);
 		}
-		return null;
+		return <span>{__("None", "wcb")}</span>;
 	};
 
 	return renderIcon();
