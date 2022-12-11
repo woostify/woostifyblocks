@@ -7266,15 +7266,16 @@ const MyQueryControls = _ref => {
     value: taxonomySlug,
     options: taxonomyOptions,
     onChange: handleTaxonomyChange
-  }) : null, termSuggestionList && termSuggestionList.length ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.FormTokenField
-  // @ts-ignore
-  , {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)(taxonomyLabel, "wcb"),
+  }) : null, termSuggestionList && termSuggestionList.length ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.FormTokenField, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)(taxonomyLabel, "wcb")
+    // @ts-ignore
+    ,
     __experimentalExpandOnFocus: true,
     value: selectedTerms && selectedTerms.map(item => ({
       ...item,
       value: item.name || item.value
     })),
+    placeholder: "All",
     suggestions: termSuggestionList,
     onChange: handleSelectTerms,
     maxSuggestions: MAX_CATEGORIES_SUGGESTIONS,

@@ -4,6 +4,15 @@
 .wcb-inspectorControls__panel .components-panel__row > .components-spacer {
   width: 100%;
 }
+.wcb-inspectorControls__panel .components-form-token-field__suggestions-list {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.wcb-inspectorControls__panel .components-form-token-field__suggestions-list::-webkit-scrollbar {
+  display: none;
+}
 .wcb-inspectorControls__panel .components-notice {
   border-radius: var(--radius-sm);
 }

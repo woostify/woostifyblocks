@@ -103,7 +103,8 @@ const MyQueryControls: FC<Props> = ({
 				getUsers,
 				getTaxonomies,
 				getPostTypes,
-			}: SelectCoreTypes = select(coreStore) as SelectCoreTypes;
+			}: // @ts-ignore
+			SelectCoreTypes = select(coreStore) as SelectCoreTypes;
 
 			// const settings = select(blockEditorStore).getSettings();
 			const termList = getEntityRecords(
@@ -300,8 +301,8 @@ const MyQueryControls: FC<Props> = ({
 			{termSuggestionList && termSuggestionList.length ? (
 				<div>
 					<FormTokenField
-						// @ts-ignore
 						label={__(taxonomyLabel, "wcb")}
+						// @ts-ignore
 						__experimentalExpandOnFocus
 						value={
 							selectedTerms &&
@@ -310,6 +311,7 @@ const MyQueryControls: FC<Props> = ({
 								value: item.name || item.value,
 							}))
 						}
+						placeholder="All"
 						suggestions={termSuggestionList}
 						onChange={handleSelectTerms}
 						maxSuggestions={MAX_CATEGORIES_SUGGESTIONS}
