@@ -2118,7 +2118,8 @@ const DEMO_WCB_GLOBAL_VARIABLES = window.wcbGlobalVariables || {
   media_tablet: "768px",
   media_desktop: "1024px",
   reCAPTCHA_site_key: "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
-  reCAPTCHA_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
+  reCAPTCHA_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
+  defaultContentWidth: "1140px"
 };
 
 // ----------------

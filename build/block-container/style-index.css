@@ -13,11 +13,9 @@
   margin: 0 auto;
 }
 .wcb-container__inner > * {
-  /* flex: 1 1 0%; */
   width: 100%;
 }
 .wcb-container__inner .wcb-container__wrap.is_wcb_container_child {
-  /* flex: 1 1 0%; */
   max-width: unset;
   flex: 1 1 auto;
 }

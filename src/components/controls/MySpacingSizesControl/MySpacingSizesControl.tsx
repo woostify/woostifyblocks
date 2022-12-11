@@ -4,8 +4,10 @@ import "./styles.scss";
 import SpacingInputControl from "./SpacingInputControl";
 import { MyUnit } from "../MyUnitControl";
 import MyLabelControl from "../MyLabelControl/MyLabelControl";
+import { SpacingInputControlProps } from "./SpacingInputControl";
 
-export interface Props {
+export interface Props
+	extends Pick<SpacingInputControlProps, "customUnitsValueSettings"> {
 	className?: string;
 	label?: string;
 	hasResponsive?: boolean;
@@ -23,6 +25,7 @@ const MySpacingSizesControl: FC<Props> = ({
 	minCustomValue,
 	value = "1rem",
 	onChange = () => {},
+	customUnitsValueSettings,
 }) => {
 	return (
 		<div className={`MySpacingSizesControl ${className}`}>
@@ -32,6 +35,7 @@ const MySpacingSizesControl: FC<Props> = ({
 				onChange={onChange}
 				minCustomValue={minCustomValue}
 				units={units}
+				customUnitsValueSettings={customUnitsValueSettings}
 			/>
 		</div>
 	);

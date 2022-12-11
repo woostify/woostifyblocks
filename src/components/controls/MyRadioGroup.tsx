@@ -119,10 +119,10 @@ const MyRadioGroup: FC<Props> = ({
 											item.name.charAt(0).toUpperCase() + item.name.slice(1)
 										}
 									>
-										<div className="absolute inset-0"></div>
+										<div className="absolute inset-0 z-[1]"></div>
 									</Tooltip>
 									<div
-										className="relative"
+										className=""
 										dangerouslySetInnerHTML={{ __html: item.icon }}
 									></div>
 								</div>

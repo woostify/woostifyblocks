@@ -9,7 +9,7 @@ export type MyFlexPropertiesControlData = {
 	flexWrap: HasResponsive<CSSProperties["flexWrap"]>;
 };
 export const FLEX_PROPERTIES_CONTROL_DEMO: MyFlexPropertiesControlData = {
-	flexDirection: { Desktop: "row", Tablet: "column" },
+	flexDirection: { Desktop: "column", Tablet: "column" },
 	alignItems: { Desktop: "center" },
 	justifyContent: { Desktop: "center" },
 	flexWrap: { Desktop: "nowrap" },

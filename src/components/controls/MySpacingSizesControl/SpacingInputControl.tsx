@@ -11,8 +11,8 @@ import { __ } from "@wordpress/i18n";
 import { MY_GAP_UNITS } from "../MyDimensionsControl/MyDimensionsControl";
 import { MyUnit } from "../MyUnitControl";
 
-const MY_CUSTOM_UNITS_VALUE_SETTINGS = {
-	px: { max: 300, steps: 1 },
+export const MY_CUSTOM_UNITS_VALUE_SETTINGS = {
+	px: { max: 1000, steps: 1 },
 	"%": { max: 100, steps: 1 },
 	vw: { max: 100, steps: 1 },
 	vh: { max: 100, steps: 1 },
@@ -21,20 +21,32 @@ const MY_CUSTOM_UNITS_VALUE_SETTINGS = {
 	rem: { max: 10, steps: 0.1 },
 };
 
-interface Props {
+export const MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE = {
+	px: { max: 2000, steps: 1 },
+	"%": { max: 100, steps: 1 },
+	vw: { max: 100, steps: 1 },
+	vh: { max: 100, steps: 1 },
+	em: { max: 100, steps: 1 },
+	rm: { max: 100, steps: 1 },
+	rem: { max: 100, steps: 1 },
+};
+
+export interface SpacingInputControlProps {
 	className?: string;
 	value: string;
 	onChange: (value: string) => void;
 	minCustomValue?: number;
 	units?: MyUnit[];
+	customUnitsValueSettings?: typeof MY_CUSTOM_UNITS_VALUE_SETTINGS;
 }
 
-const SpacingInputControl: FC<Props> = ({
+const SpacingInputControl: FC<SpacingInputControlProps> = ({
 	value = "10px",
 	onChange,
 	minCustomValue = 0,
 	units = MY_GAP_UNITS,
 	className = "",
+	customUnitsValueSettings = MY_CUSTOM_UNITS_VALUE_SETTINGS,
 }) => {
 	const [currentValue, setCurrentValue] = useState(value);
 
@@ -63,13 +75,13 @@ const SpacingInputControl: FC<Props> = ({
 					value={customRangeValue}
 					min={minCustomValue}
 					max={
-						MY_CUSTOM_UNITS_VALUE_SETTINGS[
-							selectedUnit as keyof typeof MY_CUSTOM_UNITS_VALUE_SETTINGS
+						customUnitsValueSettings[
+							selectedUnit as keyof typeof customUnitsValueSettings
 						].max
 					}
 					step={
-						MY_CUSTOM_UNITS_VALUE_SETTINGS[
-							selectedUnit as keyof typeof MY_CUSTOM_UNITS_VALUE_SETTINGS
+						customUnitsValueSettings[
+							selectedUnit as keyof typeof customUnitsValueSettings
 						].steps
 					}
 					// @ts-ignore

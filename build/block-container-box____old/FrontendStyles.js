@@ -2118,7 +2118,8 @@ const DEMO_WCB_GLOBAL_VARIABLES = window.wcbGlobalVariables || {
   media_tablet: "768px",
   media_desktop: "1024px",
   reCAPTCHA_site_key: "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
-  reCAPTCHA_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
+  reCAPTCHA_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
+  defaultContentWidth: "1140px"
 };
 
 // ----------------
@@ -2126,10 +2127,10 @@ const DEMO_WCB_GLOBAL_VARIABLES = window.wcbGlobalVariables || {
 
 /***/ }),
 
-/***/ "./src/block-container-box/GlobalCss.tsx":
-/*!***********************************************!*\
-  !*** ./src/block-container-box/GlobalCss.tsx ***!
-  \***********************************************/
+/***/ "./src/block-container-box____old/GlobalCss.tsx":
+/*!******************************************************!*\
+  !*** ./src/block-container-box____old/GlobalCss.tsx ***!
+  \******************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -4543,9 +4544,9 @@ function combine (array, callback) {
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 !function() {
-/*!****************************************************!*\
-  !*** ./src/block-container-box/FrontendStyles.tsx ***!
-  \****************************************************/
+/*!***********************************************************!*\
+  !*** ./src/block-container-box____old/FrontendStyles.tsx ***!
+  \***********************************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
@@ -4553,7 +4554,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "react-dom");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _GlobalCss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./GlobalCss */ "./src/block-container-box/GlobalCss.tsx");
+/* harmony import */ var _GlobalCss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./GlobalCss */ "./src/block-container-box____old/GlobalCss.tsx");
 
 
 

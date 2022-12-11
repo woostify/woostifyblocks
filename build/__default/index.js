@@ -2118,7 +2118,8 @@ const DEMO_WCB_GLOBAL_VARIABLES = window.wcbGlobalVariables || {
   media_tablet: "768px",
   media_desktop: "1024px",
   reCAPTCHA_site_key: "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
-  reCAPTCHA_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
+  reCAPTCHA_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
+  defaultContentWidth: "1140px"
 };
 
 // ----------------
@@ -2973,9 +2974,9 @@ const MyRadioGroup = _ref => {
         delay: 400,
         text: item.name.charAt(0).toUpperCase() + item.name.slice(1)
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "absolute inset-0"
+        className: "absolute inset-0 z-[1]"
       })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "relative",
+        className: "",
         dangerouslySetInnerHTML: {
           __html: item.icon
         }

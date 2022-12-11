@@ -2174,222 +2174,12 @@ const DEMO_WCB_GLOBAL_VARIABLES = window.wcbGlobalVariables || {
   media_tablet: "768px",
   media_desktop: "1024px",
   reCAPTCHA_site_key: "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
-  reCAPTCHA_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
+  reCAPTCHA_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
+  defaultContentWidth: "1140px"
 };
 
 // ----------------
 /* harmony default export */ __webpack_exports__["default"] = (null);
-
-/***/ }),
-
-/***/ "./src/block-container-box/ContainerControl.tsx":
-/*!******************************************************!*\
-  !*** ./src/block-container-box/ContainerControl.tsx ***!
-  \******************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "CONTAINER_BOX_CONTAINER_CONTROL_DEMO": function() { return /* binding */ CONTAINER_BOX_CONTAINER_CONTROL_DEMO; }
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
-/* harmony import */ var _components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
-
-
-
-
-
-
-
-const CONTAINER_BOX_CONTAINER_CONTROL_DEMO = {
-  customWidth: {
-    Desktop: "100%"
-  },
-  minHeight: {
-    Desktop: undefined
-  },
-  htmlTag: "div",
-  overflow: "visible"
-};
-const DEMO_OVERFLOW = ["visible", "hidden", "auto"];
-const ContainerControl = _ref => {
-  let {
-    className = "space-y-5",
-    containerControl = CONTAINER_BOX_CONTAINER_CONTROL_DEMO,
-    setAttrs__container
-  } = _ref;
-  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_4__["default"])() || "Desktop";
-  const {
-    minHeight: minHeightProps,
-    customWidth: customWidthProps,
-    htmlTag,
-    overflow
-  } = containerControl;
-  const handleChangeCustomWidth = value => {
-    setAttrs__container({
-      ...containerControl,
-      customWidth: {
-        ...customWidthProps,
-        [deviceType]: value
-      }
-    });
-  };
-  const handleChangeMinHeight = value => {
-    setAttrs__container({
-      ...containerControl,
-      minHeight: {
-        ...minHeightProps,
-        [deviceType]: value
-      }
-    });
-  };
-  const handleChangeHtmlTag = value => {
-    setAttrs__container({
-      ...containerControl,
-      htmlTag: value
-    });
-  };
-  const handleChangeOverflow = value => {
-    setAttrs__container({
-      ...containerControl,
-      overflow: value
-    });
-  };
-  const CUSTOM_WIDTH = customWidthProps[deviceType] || customWidthProps.Tablet || customWidthProps.Desktop;
-  const MIN_HEIGHT = minHeightProps[deviceType] || minHeightProps.Tablet || minHeightProps.Desktop;
-  const renderOverflow = () => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-      className: "mb-2"
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Overflow", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalRadioGroup, {
-      onChange: handleChangeOverflow,
-      checked: overflow
-    }, DEMO_OVERFLOW.map(item => {
-      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalRadio, {
-        className: "capitalize",
-        key: item,
-        value: item
-      }, item);
-    })));
-  };
-  const renderCustomWidth = () => {
-    const units = [{
-      value: "%",
-      label: "%",
-      default: 100
-    }, {
-      value: "px",
-      label: "px",
-      default: 1140
-    }, {
-      value: "rem",
-      label: "rem",
-      default: 10
-    }, {
-      value: "vw",
-      label: "vw",
-      default: 10
-    }];
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "flex items-center justify-between"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      className: "flex-shrink-0",
-      hasResponsive: true
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Custom Width", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
-      className: "flex-grow ml-3",
-      units: units,
-      value: CUSTOM_WIDTH,
-      onChange: handleChangeCustomWidth
-    }));
-  };
-  const renderMinimumHeight = () => {
-    const units = [{
-      value: "px",
-      label: "px",
-      default: 0
-    }, {
-      value: "vh",
-      label: "vh",
-      default: 0
-    }];
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "flex items-center justify-between"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      className: "flex-shrink-0",
-      hasResponsive: true
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Minimum Height", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
-      className: "components-spacing-sizes-control__custom-value-input flex-grow ml-3",
-      units: units,
-      value: MIN_HEIGHT,
-      onChange: handleChangeMinHeight
-      // size={"__unstable-large"}
-    }));
-  };
-
-  const renderHTMLTag = () => {
-    const options = [{
-      label: "div",
-      value: "div"
-    }, {
-      label: "header",
-      value: "header"
-    }, {
-      label: "footer",
-      value: "footer"
-    }, {
-      label: "main",
-      value: "main"
-    }, {
-      label: "article",
-      value: "article"
-    }, {
-      label: "section",
-      value: "section"
-    }, {
-      label: "aside",
-      value: "aside"
-    }, {
-      label: "summary",
-      value: "summary"
-    }, {
-      label: "figure",
-      value: "figure"
-    }, {
-      label: "link",
-      value: "link"
-    }, {
-      label: "nav",
-      value: "nav"
-    }];
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "flow-root"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "flex justify-between items-center -mb-3"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      className: "mb-4"
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("HTML Tag", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
-      label: "",
-      value: htmlTag,
-      options: options,
-      onChange: handleChangeHtmlTag
-      // @ts-ignore
-      ,
-      __nextHasNoMarginBottom: true,
-      help: ""
-    })));
-  };
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: className
-  }, renderCustomWidth(), renderMinimumHeight(), renderHTMLTag(), renderOverflow());
-};
-/* harmony default export */ __webpack_exports__["default"] = (ContainerControl);
 
 /***/ }),
 
@@ -2503,6 +2293,9 @@ const Edit = props => {
       uniqueId: "wcb-container-" + clientId.substring(2, 9).replace("-", "")
     });
   }, []);
+  const hasParent = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_21__.useSelect)(select => select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.store).getBlockParents(clientId).length > 0, [clientId]);
+  //
+
   const renderPanelBackground = () => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
       onToggle: () => handleTogglePanel("Styles", "Background", true),
@@ -2580,7 +2373,8 @@ const Edit = props => {
           containerControl: attributes.general_container,
           setAttrs__container: data => setAttributes({
             general_container: data
-          })
+          }),
+          showContainerWidthType: !hasParent
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
           onToggle: () => handleTogglePanel("General", "Flex Properties"),
           initialOpen: tabGeneralIsPanelOpen === "Flex Properties",
@@ -2641,7 +2435,7 @@ const Edit = props => {
     renderAppender: () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InnerBlocks.ButtonBlockAppender, null)
   });
   //
-  const hasParent = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_21__.useSelect)(select => select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.store).getBlockParents(clientId).length > 0, [clientId]);
+
   const blockWrapProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
     ref,
     className: `wcb-container__wrap ${uniqueId} ${containerWidthTypeClass} ${hasParent ? "is_wcb_container_child" : ""}`
@@ -2674,7 +2468,8 @@ const Placeholder = _ref2 => {
     attributes,
     setAttributes,
     name,
-    clientId
+    clientId,
+    onSelect
   } = _ref2;
   // RESET FLEX PROPERTIES
   (0,react__WEBPACK_IMPORTED_MODULE_6__.useEffect)(() => {
@@ -2716,6 +2511,7 @@ const Placeholder = _ref2 => {
       if (nextVariation.innerBlocks) {
         replaceInnerBlocks(clientId, (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_16__.createBlocksFromInnerBlocksTemplate)(nextVariation.innerBlocks), true);
       }
+      onSelect();
     },
     variations: variations,
     allowSkip: true
@@ -2726,8 +2522,12 @@ const ContainerEdit = props => {
     clientId
   } = props;
   const hasInnerBlocks = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_21__.useSelect)(select => select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.store).getBlocks(clientId).length > 0, [clientId]);
-  const Component = hasInnerBlocks ? Edit : Placeholder;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Edit, props);
+  const hasParent = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_21__.useSelect)(select => select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.store).getBlockParents(clientId).length > 0, [clientId]);
+  const [selectedVariant, setSelectedVariant] = (0,react__WEBPACK_IMPORTED_MODULE_6__.useState)(false);
+  const Component = hasParent || hasInnerBlocks || selectedVariant ? Edit : Placeholder;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Component, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+    onSelect: () => setSelectedVariant(true)
+  }));
 };
 /* harmony default export */ __webpack_exports__["default"] = (ContainerEdit);
 
@@ -2817,14 +2617,14 @@ const GlobalCss = attrs => {
         maxWidth: cWidthMobile,
         minHeight: minHeightMobile,
         "&.is_wcb_container_child": {
-          // maxWidth: "unset",
+          // width: "unset",
           flexBasis: `calc(${cWidthMobile} - (var(--wcb-gap-x)));`
         },
         [`@media (min-width: ${media_tablet})`]: {
           maxWidth: cWidthTablet,
           minHeight: minHeightTablet,
           "&.is_wcb_container_child": {
-            // maxWidth: "unset",
+            // width: "unset",
             flexBasis: `calc(${cWidthTablet} - (var(--wcb-gap-x)));`
           }
         },
@@ -2832,7 +2632,7 @@ const GlobalCss = attrs => {
           maxWidth: cWidthDesktop,
           minHeight: minHeightDesktop,
           "&.is_wcb_container_child": {
-            // maxWidth: "unset",
+            // width: "unset",
             flexBasis: `calc(${cWidthDesktop} - (var(--wcb-gap-x)));`
           }
         }
@@ -3011,6 +2811,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_controls_MySpacingSizesControl_MySpacingSizesControl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/controls/MySpacingSizesControl/MySpacingSizesControl */ "./src/components/controls/MySpacingSizesControl/MySpacingSizesControl.tsx");
 /* harmony import */ var _components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/controls/MyRadioGroup */ "./src/components/controls/MyRadioGroup.tsx");
 /* harmony import */ var _components_controls_MyDimensionsControl_MyDimensionsControl__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/controls/MyDimensionsControl/MyDimensionsControl */ "./src/components/controls/MyDimensionsControl/MyDimensionsControl.tsx");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _components_controls_MySpacingSizesControl_SpacingInputControl__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/controls/MySpacingSizesControl/SpacingInputControl */ "./src/components/controls/MySpacingSizesControl/SpacingInputControl.tsx");
+
+
 
 
 
@@ -3029,7 +2833,7 @@ const CONTAINER_CONTROL_DEMO = {
     Desktop: "100%"
   },
   contentBoxWidth: {
-    Desktop: "100%"
+    Desktop: ___WEBPACK_IMPORTED_MODULE_10__.DEMO_WCB_GLOBAL_VARIABLES.defaultContentWidth || "1140px"
   },
   minHeight: {
     Desktop: undefined
@@ -3044,7 +2848,8 @@ const MyContainerControl = _ref => {
   let {
     className = "space-y-5",
     containerControl = CONTAINER_CONTROL_DEMO,
-    setAttrs__container
+    setAttrs__container,
+    showContainerWidthType
   } = _ref;
   const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_4__["default"])() || "Desktop";
   const {
@@ -3056,6 +2861,11 @@ const MyContainerControl = _ref => {
     htmlTag,
     overflow
   } = containerControl;
+  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
+    if (!showContainerWidthType && containerWidthType !== "Custom") {
+      handleChangeContainerWidthType("Custom");
+    }
+  }, [showContainerWidthType]);
   const handleChangeContainerWidthType = value => {
     setAttrs__container({
       ...containerControl,
@@ -3161,7 +2971,8 @@ const MyContainerControl = _ref => {
       value: CONTENT_BOX_WIDTH || "0",
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Content Box Width", "wcb"),
       hasResponsive: true,
-      units: _components_controls_MyDimensionsControl_MyDimensionsControl__WEBPACK_IMPORTED_MODULE_9__.MY_HORIZOLTAL_UNITS
+      units: _components_controls_MyDimensionsControl_MyDimensionsControl__WEBPACK_IMPORTED_MODULE_9__.MY_HORIZOLTAL_UNITS,
+      customUnitsValueSettings: _components_controls_MySpacingSizesControl_SpacingInputControl__WEBPACK_IMPORTED_MODULE_11__.MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE
     });
   };
   const renderCustomWidth = () => {
@@ -3170,7 +2981,8 @@ const MyContainerControl = _ref => {
       value: CUSTOM_WIDTH || "0",
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Custom Width", "wcb"),
       hasResponsive: true,
-      units: _components_controls_MyDimensionsControl_MyDimensionsControl__WEBPACK_IMPORTED_MODULE_9__.MY_HORIZOLTAL_UNITS
+      units: _components_controls_MyDimensionsControl_MyDimensionsControl__WEBPACK_IMPORTED_MODULE_9__.MY_HORIZOLTAL_UNITS,
+      customUnitsValueSettings: _components_controls_MySpacingSizesControl_SpacingInputControl__WEBPACK_IMPORTED_MODULE_11__.MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE
     });
   };
   const renderMinimumHeight = () => {
@@ -3179,7 +2991,8 @@ const MyContainerControl = _ref => {
       value: MIN_HEIGHT || "0",
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Minimum Height", "wcb"),
       hasResponsive: true,
-      units: _components_controls_MyDimensionsControl_MyDimensionsControl__WEBPACK_IMPORTED_MODULE_9__.MY_VERTICAL_UNITS
+      units: _components_controls_MyDimensionsControl_MyDimensionsControl__WEBPACK_IMPORTED_MODULE_9__.MY_VERTICAL_UNITS,
+      customUnitsValueSettings: _components_controls_MySpacingSizesControl_SpacingInputControl__WEBPACK_IMPORTED_MODULE_11__.MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE
     });
   };
   const renderHTMLTag = () => {
@@ -3236,7 +3049,7 @@ const MyContainerControl = _ref => {
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: className
-  }, renderContainerWidthType(), containerWidthType === "Custom" ? renderCustomWidth() : null, containerWidthType === "Full Width" ? renderContenWidthType() : null, containerWidthType === "Full Width" && contentWidthType === "Boxed" ? renderContentBoxWidth() : null, renderMinimumHeight(), renderHTMLTag(), renderOverflow());
+  }, showContainerWidthType && renderContainerWidthType(), containerWidthType === "Custom" ? renderCustomWidth() : null, containerWidthType === "Full Width" ? renderContenWidthType() : null, containerWidthType === "Full Width" && contentWidthType === "Boxed" ? renderContentBoxWidth() : null, renderMinimumHeight(), renderHTMLTag(), renderOverflow());
 };
 /* harmony default export */ __webpack_exports__["default"] = (MyContainerControl);
 
@@ -3380,10 +3193,7 @@ const blokcContainerAttrs = {
   general_flexProperties: {
     type: "object",
     default: {
-      ..._components_controls_MyFlexPropertiesControl_types__WEBPACK_IMPORTED_MODULE_5__.FLEX_PROPERTIES_CONTROL_DEMO,
-      justifyContent: {
-        Desktop: "unset"
-      }
+      ..._components_controls_MyFlexPropertiesControl_types__WEBPACK_IMPORTED_MODULE_5__.FLEX_PROPERTIES_CONTROL_DEMO
     }
   },
   styles_color: {
@@ -3551,9 +3361,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _block_container_box_ContainerControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../block-container-box/ContainerControl */ "./src/block-container-box/ContainerControl.tsx");
-/* harmony import */ var _components_controls_MyFlexPropertiesControl_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyFlexPropertiesControl/types */ "./src/components/controls/MyFlexPropertiesControl/types.ts");
-/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./attributes */ "./src/block-container/attributes.ts");
+/* harmony import */ var _components_controls_MyFlexPropertiesControl_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/controls/MyFlexPropertiesControl/types */ "./src/components/controls/MyFlexPropertiesControl/types.ts");
+/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./attributes */ "./src/block-container/attributes.ts");
+/* harmony import */ var _MyContainerControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./MyContainerControl */ "./src/block-container/MyContainerControl.tsx");
 
 
 
@@ -3578,20 +3388,25 @@ const RenderIcon = props => {
 };
 const getContainerAttrsByFlexWrap = function () {
   let flexWrap = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "nowrap";
-  const attrsDefault = Object.keys(_attributes__WEBPACK_IMPORTED_MODULE_5__["default"]).reduce((previousValue, currentValue, currentIndex) => {
+  let flexDirection = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "row";
+  const attrsDefault = Object.keys(_attributes__WEBPACK_IMPORTED_MODULE_4__["default"]).reduce((previousValue, currentValue, currentIndex) => {
     return {
       ...previousValue,
-      [currentValue]: _attributes__WEBPACK_IMPORTED_MODULE_5__["default"][currentValue].default
+      [currentValue]: _attributes__WEBPACK_IMPORTED_MODULE_4__["default"][currentValue].default
     };
   }, {});
   return {
     ...attrsDefault,
     general_flexProperties: {
-      ..._components_controls_MyFlexPropertiesControl_types__WEBPACK_IMPORTED_MODULE_4__.FLEX_PROPERTIES_CONTROL_DEMO,
+      ..._components_controls_MyFlexPropertiesControl_types__WEBPACK_IMPORTED_MODULE_3__.FLEX_PROPERTIES_CONTROL_DEMO,
+      flexDirection: {
+        Desktop: flexDirection,
+        Tablet: "column"
+      },
       flexWrap: {
         Desktop: flexWrap,
-        Tablet: "wrap",
-        Mobile: "wrap"
+        Tablet: "nowrap",
+        Mobile: "nowrap"
       }
     }
   };
@@ -3599,9 +3414,11 @@ const getContainerAttrsByFlexWrap = function () {
 const getContainerBoxAttrsByWidth = width => {
   return {
     general_container: {
-      ..._block_container_box_ContainerControl__WEBPACK_IMPORTED_MODULE_3__.CONTAINER_BOX_CONTAINER_CONTROL_DEMO,
+      ..._MyContainerControl__WEBPACK_IMPORTED_MODULE_5__.CONTAINER_CONTROL_DEMO,
+      containerWidthType: "Custom",
       customWidth: {
-        Desktop: width
+        Desktop: width,
+        Tablet: "100%"
       }
     }
   };
@@ -3613,10 +3430,10 @@ const variations = [{
   icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RenderIcon, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "col-span-12 row-span-2 bg-white"
   })),
-  innerBlocks: [["wcb/container-box", getContainerBoxAttrsByWidth("100%")]],
-  // innerBlocks: [["core/paragraph", undefined]],
+  innerBlocks: [],
   scope: ["block"],
-  isDefault: true
+  isDefault: true,
+  attributes: getContainerAttrsByFlexWrap("wrap", "column")
 }, {
   name: "two-columns-equal",
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("50 / 50"),
@@ -3626,9 +3443,9 @@ const variations = [{
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "col-span-6 row-span-2 bg-white"
   })),
-  innerBlocks: [["wcb/container-box", getContainerBoxAttrsByWidth("50%")], ["wcb/container-box", getContainerBoxAttrsByWidth("50%")]],
-  scope: ["block"]
-  // attributes: {}
+  innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("50%")], ["wcb/container", getContainerBoxAttrsByWidth("50%")]],
+  scope: ["block"],
+  attributes: getContainerAttrsByFlexWrap("nowrap")
 }, {
   name: "two-columns-33-66",
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("33 / 66"),
@@ -3638,8 +3455,9 @@ const variations = [{
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "row-span-2 col-span-8 bg-white"
   })),
-  innerBlocks: [["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container-box", getContainerBoxAttrsByWidth("66.66%")]],
-  scope: ["block"]
+  innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("66.66%")]],
+  scope: ["block"],
+  attributes: getContainerAttrsByFlexWrap("nowrap")
 }, {
   name: "two-columns-66-33",
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("66 / 33"),
@@ -3649,8 +3467,9 @@ const variations = [{
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "row-span-2 col-span-4 bg-white"
   })),
-  innerBlocks: [["wcb/container-box", getContainerBoxAttrsByWidth("66.66%")], ["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")]],
-  scope: ["block"]
+  innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("66.66%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")]],
+  scope: ["block"],
+  attributes: getContainerAttrsByFlexWrap("nowrap")
 }, {
   name: "three-columns-equal",
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("33 / 33 / 33"),
@@ -3662,8 +3481,9 @@ const variations = [{
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "row-span-2 col-span-4 bg-white"
   })),
-  innerBlocks: [["wcb/container-box", undefined], ["wcb/container-box", undefined], ["wcb/container-box", undefined]],
-  scope: ["block"]
+  innerBlocks: [["wcb/container", undefined], ["wcb/container", undefined], ["wcb/container", undefined]],
+  scope: ["block"],
+  attributes: getContainerAttrsByFlexWrap("nowrap")
 }, {
   name: "four-columns-equal",
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("25 / 25 / 25 / 25"),
@@ -3677,8 +3497,9 @@ const variations = [{
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "row-span-2 col-span-3 bg-white"
   })),
-  innerBlocks: [["wcb/container-box", undefined], ["wcb/container-box", undefined], ["wcb/container-box", undefined], ["wcb/container-box", undefined]],
-  scope: ["block"]
+  innerBlocks: [["wcb/container", undefined], ["wcb/container", undefined], ["wcb/container", undefined], ["wcb/container", undefined]],
+  scope: ["block"],
+  attributes: getContainerAttrsByFlexWrap("nowrap")
 }, {
   name: "three-columns-25-50-25",
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("25 / 50 / 25"),
@@ -3690,8 +3511,9 @@ const variations = [{
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "row-span-2 col-span-3 bg-white"
   })),
-  innerBlocks: [["wcb/container-box", getContainerBoxAttrsByWidth("25%")], ["wcb/container-box", getContainerBoxAttrsByWidth("50%")], ["wcb/container-box", getContainerBoxAttrsByWidth("25%")]],
-  scope: ["block"]
+  innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("25%")], ["wcb/container", getContainerBoxAttrsByWidth("50%")], ["wcb/container", getContainerBoxAttrsByWidth("25%")]],
+  scope: ["block"],
+  attributes: getContainerAttrsByFlexWrap("nowrap")
 },
 // TWO ROW - FLEX WRAP
 {
@@ -3703,7 +3525,7 @@ const variations = [{
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "col-span-12 bg-white"
   })),
-  innerBlocks: [["wcb/container-box", getContainerBoxAttrsByWidth("100%")], ["wcb/container-box", getContainerBoxAttrsByWidth("100%")]],
+  innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("100%")], ["wcb/container", getContainerBoxAttrsByWidth("100%")]],
   scope: ["block"],
   attributes: getContainerAttrsByFlexWrap("wrap")
 }, {
@@ -3717,7 +3539,7 @@ const variations = [{
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "col-span-12 bg-white"
   })),
-  innerBlocks: [["wcb/container-box", getContainerBoxAttrsByWidth("50%")], ["wcb/container-box", getContainerBoxAttrsByWidth("50%")], ["wcb/container-box", getContainerBoxAttrsByWidth("100%")]],
+  innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("50%")], ["wcb/container", getContainerBoxAttrsByWidth("50%")], ["wcb/container", getContainerBoxAttrsByWidth("100%")]],
   scope: ["block"],
   attributes: getContainerAttrsByFlexWrap("wrap")
 }, {
@@ -3735,7 +3557,7 @@ const variations = [{
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "col-span-6 bg-white"
   })),
-  innerBlocks: [["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container-box", getContainerBoxAttrsByWidth("50%")], ["wcb/container-box", getContainerBoxAttrsByWidth("50%")]],
+  innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("50%")], ["wcb/container", getContainerBoxAttrsByWidth("50%")]],
   scope: ["block"],
   attributes: getContainerAttrsByFlexWrap("wrap")
 }, {
@@ -3751,7 +3573,7 @@ const variations = [{
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "col-span-4 bg-white"
   })),
-  innerBlocks: [["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container-box", getContainerBoxAttrsByWidth("66.66%")], ["wcb/container-box", getContainerBoxAttrsByWidth("66.66%")], ["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")]],
+  innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("66.66%")], ["wcb/container", getContainerBoxAttrsByWidth("66.66%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")]],
   scope: ["block"],
   attributes: getContainerAttrsByFlexWrap("wrap")
 }, {
@@ -3767,7 +3589,7 @@ const variations = [{
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "col-span-6 bg-white"
   })),
-  innerBlocks: [["wcb/container-box", getContainerBoxAttrsByWidth("50%")], ["wcb/container-box", getContainerBoxAttrsByWidth("50%")], ["wcb/container-box", getContainerBoxAttrsByWidth("50%")], ["wcb/container-box", getContainerBoxAttrsByWidth("50%")]],
+  innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("50%")], ["wcb/container", getContainerBoxAttrsByWidth("50%")], ["wcb/container", getContainerBoxAttrsByWidth("50%")], ["wcb/container", getContainerBoxAttrsByWidth("50%")]],
   scope: ["block"],
   attributes: getContainerAttrsByFlexWrap("wrap")
 }, {
@@ -3783,7 +3605,7 @@ const variations = [{
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "col-span-8 bg-white"
   })),
-  innerBlocks: [["wcb/container-box", getContainerBoxAttrsByWidth("66.66%")], ["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container-box", getContainerBoxAttrsByWidth("66.66%")]],
+  innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("66.66%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("66.66%")]],
   scope: ["block"],
   attributes: getContainerAttrsByFlexWrap("wrap")
 }, {
@@ -3803,7 +3625,7 @@ const variations = [{
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "col-span-3 bg-white"
   })),
-  innerBlocks: [["wcb/container-box", getContainerBoxAttrsByWidth("25%")], ["wcb/container-box", getContainerBoxAttrsByWidth("50%")], ["wcb/container-box", getContainerBoxAttrsByWidth("25%")], ["wcb/container-box", getContainerBoxAttrsByWidth("25%")], ["wcb/container-box", getContainerBoxAttrsByWidth("50%")], ["wcb/container-box", getContainerBoxAttrsByWidth("25%")]],
+  innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("25%")], ["wcb/container", getContainerBoxAttrsByWidth("50%")], ["wcb/container", getContainerBoxAttrsByWidth("25%")], ["wcb/container", getContainerBoxAttrsByWidth("25%")], ["wcb/container", getContainerBoxAttrsByWidth("50%")], ["wcb/container", getContainerBoxAttrsByWidth("25%")]],
   scope: ["block"],
   attributes: getContainerAttrsByFlexWrap("wrap")
 }, {
@@ -3823,7 +3645,7 @@ const variations = [{
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "col-span-4 bg-white"
   })),
-  innerBlocks: [["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container-box", getContainerBoxAttrsByWidth("33.33%")]],
+  innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")]],
   scope: ["block"],
   attributes: getContainerAttrsByFlexWrap("wrap")
 }];
@@ -5756,7 +5578,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 const FLEX_PROPERTIES_CONTROL_DEMO = {
   flexDirection: {
-    Desktop: "row",
+    Desktop: "column",
     Tablet: "column"
   },
   alignItems: {
@@ -6200,9 +6022,9 @@ const MyRadioGroup = _ref => {
         delay: 400,
         text: item.name.charAt(0).toUpperCase() + item.name.slice(1)
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "absolute inset-0"
+        className: "absolute inset-0 z-[1]"
       })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "relative",
+        className: "",
         dangerouslySetInnerHTML: {
           __html: item.icon
         }
@@ -6471,7 +6293,8 @@ const MySpacingSizesControl = _ref => {
     units,
     minCustomValue,
     value = "1rem",
-    onChange = () => {}
+    onChange = () => {},
+    customUnitsValueSettings
   } = _ref;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `MySpacingSizesControl ${className}`
@@ -6481,7 +6304,8 @@ const MySpacingSizesControl = _ref => {
     value: value,
     onChange: onChange,
     minCustomValue: minCustomValue,
-    units: units
+    units: units,
+    customUnitsValueSettings: customUnitsValueSettings
   }));
 };
 /* harmony default export */ __webpack_exports__["default"] = (MySpacingSizesControl);
@@ -6495,6 +6319,10 @@ const MySpacingSizesControl = _ref => {
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MY_CUSTOM_UNITS_VALUE_SETTINGS": function() { return /* binding */ MY_CUSTOM_UNITS_VALUE_SETTINGS; },
+/* harmony export */   "MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE": function() { return /* binding */ MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE; }
+/* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
@@ -6509,7 +6337,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const MY_CUSTOM_UNITS_VALUE_SETTINGS = {
   px: {
-    max: 300,
+    max: 1000,
     steps: 1
   },
   "%": {
@@ -6537,13 +6365,44 @@ const MY_CUSTOM_UNITS_VALUE_SETTINGS = {
     steps: 0.1
   }
 };
+const MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE = {
+  px: {
+    max: 2000,
+    steps: 1
+  },
+  "%": {
+    max: 100,
+    steps: 1
+  },
+  vw: {
+    max: 100,
+    steps: 1
+  },
+  vh: {
+    max: 100,
+    steps: 1
+  },
+  em: {
+    max: 100,
+    steps: 1
+  },
+  rm: {
+    max: 100,
+    steps: 1
+  },
+  rem: {
+    max: 100,
+    steps: 1
+  }
+};
 const SpacingInputControl = _ref => {
   let {
     value = "10px",
     onChange,
     minCustomValue = 0,
     units = _MyDimensionsControl_MyDimensionsControl__WEBPACK_IMPORTED_MODULE_3__.MY_GAP_UNITS,
-    className = ""
+    className = "",
+    customUnitsValueSettings = MY_CUSTOM_UNITS_VALUE_SETTINGS
   } = _ref;
   const [currentValue, setCurrentValue] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(value);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
@@ -6563,8 +6422,8 @@ const SpacingInputControl = _ref => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
     value: customRangeValue,
     min: minCustomValue,
-    max: MY_CUSTOM_UNITS_VALUE_SETTINGS[selectedUnit].max,
-    step: MY_CUSTOM_UNITS_VALUE_SETTINGS[selectedUnit].steps
+    max: customUnitsValueSettings[selectedUnit].max,
+    step: customUnitsValueSettings[selectedUnit].steps
     // @ts-ignore
     ,
     withInputField: false,

@@ -10,7 +10,7 @@ import {
 } from "@wordpress/block-editor";
 import { PanelBody } from "@wordpress/components";
 import { get } from "lodash";
-import React, { FC, useEffect, useRef } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import { BlockWCBContainerAttrs } from "./attributes";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 import MyBackgroundControl from "../components/controls/MyBackgroundControl/MyBackgroundControl";
@@ -81,6 +81,13 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 			uniqueId: "wcb-container-" + clientId.substring(2, 9).replace("-", ""),
 		});
 	}, []);
+
+	const hasParent = useSelect(
+		(select) =>
+			(select(blockEditorStore) as any).getBlockParents(clientId).length > 0,
+		[clientId]
+	);
+	//
 
 	const renderPanelBackground = () => {
 		return (
@@ -190,6 +197,7 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 								setAttrs__container={(data) =>
 									setAttributes({ general_container: data })
 								}
+								showContainerWidthType={!hasParent}
 							/>
 						</PanelBody>
 						<PanelBody
@@ -265,11 +273,6 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		renderAppender: () => <InnerBlocks.ButtonBlockAppender />,
 	});
 	//
-	const hasParent = useSelect(
-		(select) =>
-			(select(blockEditorStore) as any).getBlockParents(clientId).length > 0,
-		[clientId]
-	);
 
 	const blockWrapProps = useBlockProps({
 		ref,
@@ -316,6 +319,7 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 
 export interface TPlaceholder extends EditProps<BlockWCBContainerAttrs> {
 	name: string;
+	onSelect: () => void;
 }
 
 const Placeholder: FC<TPlaceholder> = ({
@@ -323,6 +327,7 @@ const Placeholder: FC<TPlaceholder> = ({
 	setAttributes,
 	name,
 	clientId,
+	onSelect,
 }) => {
 	// RESET FLEX PROPERTIES
 	useEffect(() => {
@@ -363,6 +368,7 @@ const Placeholder: FC<TPlaceholder> = ({
 							true
 						);
 					}
+					onSelect();
 				}}
 				variations={variations}
 				allowSkip
@@ -378,9 +384,18 @@ const ContainerEdit = (props) => {
 			(select(blockEditorStore) as any).getBlocks(clientId).length > 0,
 		[clientId]
 	);
-	const Component = hasInnerBlocks ? Edit : Placeholder;
+	const hasParent = useSelect(
+		(select) =>
+			(select(blockEditorStore) as any).getBlockParents(clientId).length > 0,
+		[clientId]
+	);
 
-	return <Edit {...props} />;
+	const [selectedVariant, setSelectedVariant] = useState(false);
+
+	const Component =
+		hasParent || hasInnerBlocks || selectedVariant ? Edit : Placeholder;
+
+	return <Component {...props} onSelect={() => setSelectedVariant(true)} />;
 };
 
 export default ContainerEdit;

@@ -2565,9 +2565,9 @@ const MyRadioGroup = _ref => {
         delay: 400,
         text: item.name.charAt(0).toUpperCase() + item.name.slice(1)
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "absolute inset-0"
+        className: "absolute inset-0 z-[1]"
       })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "relative",
+        className: "",
         dangerouslySetInnerHTML: {
           __html: item.icon
         }

@@ -3,7 +3,7 @@ import React, { ReactNode } from "react";
 import {
 	ContainerBox_Container_Control,
 	CONTAINER_BOX_CONTAINER_CONTROL_DEMO,
-} from "../block-container-box/ContainerControl";
+} from "../block-container-box____old/ContainerControl";
 import { FLEX_PROPERTIES_CONTROL_DEMO } from "../components/controls/MyFlexPropertiesControl/types";
 import blokcContainerAttrs, { BlockWCBContainerAttrs } from "./attributes";
 

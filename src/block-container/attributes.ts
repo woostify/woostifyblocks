@@ -71,9 +71,6 @@ export const blokcContainerAttrs: AttrsGenericType<BlockWCBContainerAttrs> = {
 		type: "object",
 		default: {
 			...FLEX_PROPERTIES_CONTROL_DEMO,
-			justifyContent: {
-				Desktop: "unset",
-			},
 		},
 	},
 	styles_color: {

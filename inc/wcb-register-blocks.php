@@ -16,12 +16,12 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
             WCB_BUILD_PATH . '/block-common-css',
             []
         );
-        register_block_type(
-            WCB_BUILD_PATH . '/block-container-box',
-            [
-                "render_callback"     => "wcb_block_container_box__renderCallback",
-            ]
-        );
+        // register_block_type(
+        //     WCB_BUILD_PATH . '/block-container-box',
+        //     [
+        //         "render_callback"     => "wcb_block_container_box__renderCallback",
+        //     ]
+        // );
         register_block_type(
             WCB_BUILD_PATH . '/block-container',
             [

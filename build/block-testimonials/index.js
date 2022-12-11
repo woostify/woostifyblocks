@@ -2333,7 +2333,8 @@ const DEMO_WCB_GLOBAL_VARIABLES = window.wcbGlobalVariables || {
   media_tablet: "768px",
   media_desktop: "1024px",
   reCAPTCHA_site_key: "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
-  reCAPTCHA_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
+  reCAPTCHA_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
+  defaultContentWidth: "1140px"
 };
 
 // ----------------
@@ -6374,9 +6375,9 @@ const MyRadioGroup = _ref => {
         delay: 400,
         text: item.name.charAt(0).toUpperCase() + item.name.slice(1)
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "absolute inset-0"
+        className: "absolute inset-0 z-[1]"
       })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "relative",
+        className: "",
         dangerouslySetInnerHTML: {
           __html: item.icon
         }
@@ -6649,7 +6650,8 @@ const MySpacingSizesControl = _ref => {
     units,
     minCustomValue,
     value = "1rem",
-    onChange = () => {}
+    onChange = () => {},
+    customUnitsValueSettings
   } = _ref;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `MySpacingSizesControl ${className}`
@@ -6659,7 +6661,8 @@ const MySpacingSizesControl = _ref => {
     value: value,
     onChange: onChange,
     minCustomValue: minCustomValue,
-    units: units
+    units: units,
+    customUnitsValueSettings: customUnitsValueSettings
   }));
 };
 /* harmony default export */ __webpack_exports__["default"] = (MySpacingSizesControl);
@@ -6674,6 +6677,10 @@ const MySpacingSizesControl = _ref => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MY_CUSTOM_UNITS_VALUE_SETTINGS": function() { return /* binding */ MY_CUSTOM_UNITS_VALUE_SETTINGS; },
+/* harmony export */   "MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE": function() { return /* binding */ MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE; }
+/* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
@@ -6688,7 +6695,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const MY_CUSTOM_UNITS_VALUE_SETTINGS = {
   px: {
-    max: 300,
+    max: 1000,
     steps: 1
   },
   "%": {
@@ -6716,13 +6723,44 @@ const MY_CUSTOM_UNITS_VALUE_SETTINGS = {
     steps: 0.1
   }
 };
+const MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE = {
+  px: {
+    max: 2000,
+    steps: 1
+  },
+  "%": {
+    max: 100,
+    steps: 1
+  },
+  vw: {
+    max: 100,
+    steps: 1
+  },
+  vh: {
+    max: 100,
+    steps: 1
+  },
+  em: {
+    max: 100,
+    steps: 1
+  },
+  rm: {
+    max: 100,
+    steps: 1
+  },
+  rem: {
+    max: 100,
+    steps: 1
+  }
+};
 const SpacingInputControl = _ref => {
   let {
     value = "10px",
     onChange,
     minCustomValue = 0,
     units = _MyDimensionsControl_MyDimensionsControl__WEBPACK_IMPORTED_MODULE_3__.MY_GAP_UNITS,
-    className = ""
+    className = "",
+    customUnitsValueSettings = MY_CUSTOM_UNITS_VALUE_SETTINGS
   } = _ref;
   const [currentValue, setCurrentValue] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(value);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
@@ -6742,8 +6780,8 @@ const SpacingInputControl = _ref => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
     value: customRangeValue,
     min: minCustomValue,
-    max: MY_CUSTOM_UNITS_VALUE_SETTINGS[selectedUnit].max,
-    step: MY_CUSTOM_UNITS_VALUE_SETTINGS[selectedUnit].steps
+    max: customUnitsValueSettings[selectedUnit].max,
+    step: customUnitsValueSettings[selectedUnit].steps
     // @ts-ignore
     ,
     withInputField: false,

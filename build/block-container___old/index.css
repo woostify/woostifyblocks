@@ -1,0 +1,49 @@
+/*!**************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/block-container___old/editor.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************/
+.wcb-container__wrap > .is-selected {
+  box-shadow: none !important;
+}
+
+.wcb-container-box__wrap > .is-selected {
+  box-shadow: none !important;
+}
+
+.wcb-container__inner {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.wcb-container__inner .block-editor-button-block-appender {
+  box-shadow: none;
+}
+.wcb-container__inner .block-list-appender.wp-block {
+  box-shadow: none;
+  position: absolute;
+  list-style: none;
+  padding: 0;
+  z-index: 2;
+  bottom: 0;
+  right: 0;
+}
+.wcb-container__inner .block-list-appender.wp-block button {
+  padding: 0;
+}
+.wcb-container__inner .block-list-appender.wp-block:only-child {
+  position: relative;
+  right: auto;
+  align-self: center;
+  list-style: none;
+  line-height: inherit;
+}
+.wcb-container__inner .block-list-appender.wp-block:only-child button {
+  padding: 8px;
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/components/controls/MySpacingSizesControl/styles.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************/
+.MySpacingSizesControl .components-base-control__field {
+  margin-bottom: 0;
+}
+
+/*# sourceMappingURL=index.css.map*/

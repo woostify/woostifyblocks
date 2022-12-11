@@ -1,6 +1,6 @@
 import { SelectControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import {} from "@wordpress/components";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
@@ -13,6 +13,8 @@ import {
 	MY_HORIZOLTAL_UNITS,
 	MY_VERTICAL_UNITS,
 } from "../components/controls/MyDimensionsControl/MyDimensionsControl";
+import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
+import { MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE } from "../components/controls/MySpacingSizesControl/SpacingInputControl";
 
 export type MyContainerControlData = {
 	containerWidthType: "Full Width" | "Boxed" | "Custom";
@@ -27,7 +29,9 @@ export const CONTAINER_CONTROL_DEMO: MyContainerControlData = {
 	containerWidthType: "Boxed",
 	contentWidthType: "Full Width",
 	customWidth: { Desktop: "100%" },
-	contentBoxWidth: { Desktop: "100%" },
+	contentBoxWidth: {
+		Desktop: DEMO_WCB_GLOBAL_VARIABLES.defaultContentWidth || "1140px",
+	},
 	minHeight: { Desktop: undefined },
 	htmlTag: "div",
 	overflow: "visible",
@@ -52,11 +56,13 @@ interface Props {
 	className?: string;
 	containerControl: MyContainerControlData;
 	setAttrs__container: (data: MyContainerControlData) => void;
+	showContainerWidthType: boolean;
 }
 const MyContainerControl: FC<Props> = ({
 	className = "space-y-5",
 	containerControl = CONTAINER_CONTROL_DEMO,
 	setAttrs__container,
+	showContainerWidthType,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
@@ -69,12 +75,20 @@ const MyContainerControl: FC<Props> = ({
 		htmlTag,
 		overflow,
 	} = containerControl;
+
+	useEffect(() => {
+		if (!showContainerWidthType && containerWidthType !== "Custom") {
+			handleChangeContainerWidthType("Custom");
+		}
+	}, [showContainerWidthType]);
+
 	const handleChangeContainerWidthType = (value: string) => {
 		setAttrs__container({
 			...containerControl,
 			containerWidthType: value as MyContainerControlData["containerWidthType"],
 		});
 	};
+
 	const handleChangeContenWidthType = (value: string) => {
 		setAttrs__container({
 			...containerControl,
@@ -193,6 +207,7 @@ const MyContainerControl: FC<Props> = ({
 				label={__("Content Box Width", "wcb")}
 				hasResponsive={true}
 				units={MY_HORIZOLTAL_UNITS}
+				customUnitsValueSettings={MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE}
 			/>
 		);
 	};
@@ -205,6 +220,7 @@ const MyContainerControl: FC<Props> = ({
 				label={__("Custom Width", "wcb")}
 				hasResponsive={true}
 				units={MY_HORIZOLTAL_UNITS}
+				customUnitsValueSettings={MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE}
 			/>
 		);
 	};
@@ -217,6 +233,7 @@ const MyContainerControl: FC<Props> = ({
 				label={__("Minimum Height", "wcb")}
 				hasResponsive={true}
 				units={MY_VERTICAL_UNITS}
+				customUnitsValueSettings={MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE}
 			/>
 		);
 	};
@@ -261,7 +278,7 @@ const MyContainerControl: FC<Props> = ({
 
 	return (
 		<div className={className}>
-			{renderContainerWidthType()}
+			{showContainerWidthType && renderContainerWidthType()}
 			{containerWidthType === "Custom" ? renderCustomWidth() : null}
 			{containerWidthType === "Full Width" ? renderContenWidthType() : null}
 			{containerWidthType === "Full Width" && contentWidthType === "Boxed"

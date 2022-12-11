@@ -2118,7 +2118,8 @@ const DEMO_WCB_GLOBAL_VARIABLES = window.wcbGlobalVariables || {
   media_tablet: "768px",
   media_desktop: "1024px",
   reCAPTCHA_site_key: "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
-  reCAPTCHA_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
+  reCAPTCHA_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
+  defaultContentWidth: "1140px"
 };
 
 // ----------------
@@ -2210,14 +2211,14 @@ const GlobalCss = attrs => {
         maxWidth: cWidthMobile,
         minHeight: minHeightMobile,
         "&.is_wcb_container_child": {
-          // maxWidth: "unset",
+          // width: "unset",
           flexBasis: `calc(${cWidthMobile} - (var(--wcb-gap-x)));`
         },
         [`@media (min-width: ${media_tablet})`]: {
           maxWidth: cWidthTablet,
           minHeight: minHeightTablet,
           "&.is_wcb_container_child": {
-            // maxWidth: "unset",
+            // width: "unset",
             flexBasis: `calc(${cWidthTablet} - (var(--wcb-gap-x)));`
           }
         },
@@ -2225,7 +2226,7 @@ const GlobalCss = attrs => {
           maxWidth: cWidthDesktop,
           minHeight: minHeightDesktop,
           "&.is_wcb_container_child": {
-            // maxWidth: "unset",
+            // width: "unset",
             flexBasis: `calc(${cWidthDesktop} - (var(--wcb-gap-x)));`
           }
         }
