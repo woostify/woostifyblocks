@@ -23,6 +23,7 @@ import WcbTeamPanel_StyleDescription from "./WcbTeamPanel_StyleDescription";
 import WcbTeamPanel_StyleSocialIcons from "./WcbTeamPanel_StyleSocialIcons";
 import MyIcon from "../components/controls/MyIcon";
 import WcbTeamPanel_StyleImage from "./WcbTeamPanel_StyleImage";
+import MyIconFull from "../components/controls/MyIconFull";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -219,13 +220,16 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 	const renderImage = () => {
 		return general_image.isShowImage && general_image?.image?.mediaId ? (
-			<div className="wcb-team__image">
-				<img src={general_image.image.mediaUrl} alt="" />
-			</div>
+			<img
+				className="wcb-team__image"
+				src={general_image.image.mediaUrl}
+				alt=""
+			/>
 		) : null;
 	};
 
 	const HeadingTag = general_layout.headingTag;
+
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
@@ -242,7 +246,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				{/* CSS IN JS */}
 				<GlobalCss {...WcbAttrsForSave()} />
 
-				{renderImage()}
+				{(general_image.imagePosition === "left" ||
+					general_image.imagePosition === "top") &&
+					renderImage()}
 				{/* CHILD CONTENT  */}
 				<div className="wcb-team__content-wrap">
 					<div className="wcb-team__content">
@@ -272,18 +278,29 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 						/>
 					</div>
 
-					<div className="wcb-team__socials-icons">
-						<a href="#">
-							<MyIcon icon="lni-adobe" />
-						</a>
-						<a href="#">
-							<MyIcon icon="lni-airbnb" />
-						</a>
-						<a href="#">
-							<MyIcon icon="lni-sad" />
-						</a>
-					</div>
+					{general_socials.enableSocials && general_socials.socials?.length ? (
+						<div className="wcb-team__socials-icons">
+							{general_socials.socials.map((item, index) => {
+								return (
+									<a
+										key={index}
+										href={item.url || ""}
+										target={
+											general_socials.openLinkInNewTab ? "_blank" : undefined
+										}
+										rel="noopener noreferrer"
+									>
+										<MyIconFull icon={item.icon} />
+									</a>
+								);
+							})}
+						</div>
+					) : null}
 				</div>
+
+				{(general_image.imagePosition === "right" ||
+					general_image.imagePosition === "bottom") &&
+					renderImage()}
 			</div>
 		</MyCacheProvider>
 	);

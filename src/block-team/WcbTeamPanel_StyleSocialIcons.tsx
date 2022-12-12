@@ -17,10 +17,10 @@ export interface WCB_TEAM_PANEL_STYLE_SOCIALICONS {
 
 export const WCB_TEAM_PANEL_STYLE_SOCIALICONS_DEMO: WCB_TEAM_PANEL_STYLE_SOCIALICONS =
 	{
-		color: "#171717",
+		color: "#334155",
 		hoverColor: "",
-		iconSize: { Desktop: "1rem" },
-		iconSpacing: { Desktop: "1rem" },
+		iconSize: { Desktop: "1.25rem" },
+		iconSpacing: { Desktop: "1.25rem" },
 	};
 
 interface Props

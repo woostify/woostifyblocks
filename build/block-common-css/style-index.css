@@ -249,6 +249,11 @@ video {
   --media-lg: 1024px;
 }
 
+.wcb-icon-full {
+  display: inline-block;
+  line-height: 1;
+  vertical-align: -0.125em;
+}
 .wcb-icon-full svg,
 .wcb-icon-full img {
   width: 100%;

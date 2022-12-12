@@ -19,6 +19,7 @@ export interface WCB_TEAM_PANEL_IMAGES {
 	isShowImage: boolean;
 	imagePosition: "top" | "left" | "bottom" | "right";
 	stackOn: "none" | "tablet" | "mobile";
+	imageAlignSelf: "flex-start" | "center" | "flex-end";
 }
 
 type TabsHere = "Settings" | "SelectImages";
@@ -27,8 +28,9 @@ export const WCB_TEAM_PANEL_IMAGES_DEMO: WCB_TEAM_PANEL_IMAGES = {
 	image: INIT_IMAGE_DATA_UPLOAD_DEMO,
 	imageSize: "thumbnail",
 	isShowImage: true,
-	imagePosition: "bottom",
+	imagePosition: "top",
 	stackOn: "none",
+	imageAlignSelf: "center",
 };
 
 interface Props
@@ -45,7 +47,14 @@ const WcbTeamPanelImages: FC<Props> = ({
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { image, imagePosition, isShowImage, imageSize, stackOn } = panelData;
+	const {
+		image,
+		imagePosition,
+		isShowImage,
+		imageSize,
+		stackOn,
+		imageAlignSelf,
+	} = panelData;
 	//
 	const { imageSizeOptions } = useGetImageSizeOptions();
 
@@ -94,6 +103,13 @@ const WcbTeamPanelImages: FC<Props> = ({
 			{ name: "tablet", icon: "Tablet" },
 			{ name: "mobile", icon: "Mobile" },
 		];
+		const ALIGNSELF_PLANS: MyRadioItem<
+			WCB_TEAM_PANEL_IMAGES["imageAlignSelf"]
+		>[] = [
+			{ name: "flex-start", icon: "Flex start" },
+			{ name: "center", icon: "Center" },
+			{ name: "flex-end", icon: "Flex end" },
+		];
 
 		return (
 			<div className={"space-y-5"}>
@@ -128,18 +144,32 @@ const WcbTeamPanelImages: FC<Props> = ({
 							hasResponsive={false}
 						/>
 						{(imagePosition === "left" || imagePosition === "right") && (
-							<MyRadioGroup
-								label="Stack on"
-								onChange={(selected) =>
-									setAttr__({
-										...panelData,
-										stackOn: selected as any,
-									})
-								}
-								value={stackOn}
-								plans={STACKON_PLANS}
-								hasResponsive={false}
-							/>
+							<>
+								<MyRadioGroup
+									label="Stack on"
+									onChange={(selected) =>
+										setAttr__({
+											...panelData,
+											stackOn: selected as any,
+										})
+									}
+									value={stackOn}
+									plans={STACKON_PLANS}
+									hasResponsive={false}
+								/>
+								<MyRadioGroup
+									label="Image align self"
+									onChange={(selected) =>
+										setAttr__({
+											...panelData,
+											imageAlignSelf: selected as any,
+										})
+									}
+									value={imageAlignSelf}
+									plans={ALIGNSELF_PLANS}
+									hasResponsive={false}
+								/>
+							</>
 						)}
 					</>
 				) : null}

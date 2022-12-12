@@ -2781,7 +2781,7 @@ const DEFAULT_MY_ICON = {
 const SelecIcon = _ref => {
   let {
     onChange,
-    iconData = DEFAULT_MY_ICON,
+    iconData,
     label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Icon:", "wcb")
   } = _ref;
   const [query, setQuery] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)("");

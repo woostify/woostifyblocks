@@ -22,9 +22,12 @@ export interface WCB_TEAM_PANEL_STYLE_DESIGNATION {
 
 export const WCB_TEAM_PANEL_STYLE_DESIGNATION_DEMO: WCB_TEAM_PANEL_STYLE_DESIGNATION =
 	{
-		typography: TYPOGRAPHY_CONTROL_DEMO,
-		textColor: "#171717",
-		marginBottom: { Desktop: "1rem" },
+		typography: {
+			...TYPOGRAPHY_CONTROL_DEMO,
+			fontSizes: { Desktop: "1rem" },
+		},
+		textColor: "#6b7280",
+		marginBottom: { Desktop: "1.125rem" },
 	};
 
 interface Props

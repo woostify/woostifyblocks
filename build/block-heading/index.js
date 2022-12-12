@@ -2286,11 +2286,11 @@ const getAdvanveDivWrapStyles = _ref => {
     advance_zIndex,
     advance_responsiveCondition,
     className,
-    defaultDisplay = "flex"
+    defaultDisplay
   } = _ref;
   const {
-    media__desktopMinWidth,
-    media__tabletMinWidth
+    media_desktop,
+    media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES;
   //
   const zIndexDesktop = advance_zIndex.Desktop;
@@ -2306,11 +2306,11 @@ const getAdvanveDivWrapStyles = _ref => {
 		${className} {
 			display: ${isHiddenOnMobile ? "none" : defaultDisplay};
 			z-index: ${zIndexMobile};
-			@media (min-width: ${media__tabletMinWidth}) {
+			@media (min-width: ${media_tablet}) {
 				z-index: ${zIndexTablet};
 				display: ${isHiddenOnTablet ? "none" : defaultDisplay};
 			}
-			@media (min-width: ${media__desktopMinWidth}) {
+			@media (min-width: ${media_desktop}) {
 				z-index: ${zIndexDesktop};
 				display: ${isHiddenOnDesktop ? "none" : defaultDisplay};
 			}

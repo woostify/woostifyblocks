@@ -16,9 +16,9 @@ export const MY_CUSTOM_UNITS_VALUE_SETTINGS = {
 	"%": { max: 100, steps: 1 },
 	vw: { max: 100, steps: 1 },
 	vh: { max: 100, steps: 1 },
-	em: { max: 10, steps: 0.1 },
-	rm: { max: 10, steps: 0.1 },
-	rem: { max: 10, steps: 0.1 },
+	em: { max: 30, steps: 0.1 },
+	rm: { max: 30, steps: 0.1 },
+	rem: { max: 30, steps: 0.1 },
 };
 
 export const MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE = {

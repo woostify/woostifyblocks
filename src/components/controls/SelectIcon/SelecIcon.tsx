@@ -41,7 +41,7 @@ interface Props {
 
 const SelecIcon: FC<Props> = ({
 	onChange,
-	iconData = DEFAULT_MY_ICON,
+	iconData,
 	label = __("Icon:", "wcb"),
 }) => {
 	const [query, setQuery] = useState("");

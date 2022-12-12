@@ -23,7 +23,7 @@ export interface WCB_TEAM_PANEL_STYLE_TITLE {
 export const WCB_TEAM_PANEL_STYLE_TITLE_DEMO: WCB_TEAM_PANEL_STYLE_TITLE = {
 	typography: TYPOGRAPHY_CONTROL_DEMO,
 	textColor: "#171717",
-	marginBottom: { Desktop: "1rem" },
+	marginBottom: { Desktop: "0.5rem" },
 };
 
 interface Props

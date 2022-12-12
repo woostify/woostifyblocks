@@ -5,7 +5,6 @@ import {
 	__experimentalBoxControl as BoxControl,
 } from "@wordpress/components";
 // @ts-ignore
-import { __experimentalBorderRadiusControl as BorderRadiusControl } from "@wordpress/block-editor";
 import React, { FC } from "react";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import { DimensionSettings } from "../components/controls/MyDimensionsControl/types";
@@ -23,21 +22,21 @@ import MyBorderControl from "../components/controls/MyBorderControl/MyBorderCont
 import MyDisclosure from "../components/controls/MyDisclosure";
 
 export interface WCB_TEAM_PANEL_STYLE_IMAGE {
-	padding: HasResponsive<DimensionSettings>;
+	margin: HasResponsive<DimensionSettings>;
 	imageSize: HasResponsive<string>;
 	border: MyBorderControlData;
 }
 export const WCB_TEAM_PANEL_STYLE_IMAGE_DEMO: WCB_TEAM_PANEL_STYLE_IMAGE = {
-	padding: {
+	margin: {
 		Desktop: {
-			top: "0.5rem",
+			top: "1rem",
 			left: "1rem",
 			right: "1rem",
-			bottom: "0.5rem",
+			bottom: "1rem",
 		},
 	},
 	imageSize: {
-		Desktop: "3.5rem",
+		Desktop: "6.25rem",
 	},
 	border: MY_BORDER_CONTROL_DEMO,
 };
@@ -56,9 +55,9 @@ const WcbTeamPanel_StyleImage: FC<Props> = ({
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { padding, imageSize, border } = panelData;
-	const { currentDeviceValue: currentPadding } = getValueFromAttrsResponsives(
-		padding,
+	const { margin, imageSize, border } = panelData;
+	const { currentDeviceValue: currentMargin } = getValueFromAttrsResponsives(
+		margin,
 		deviceType
 	);
 
@@ -94,15 +93,15 @@ const WcbTeamPanel_StyleImage: FC<Props> = ({
 				<BoxControl
 					label={
 						<MyLabelControl className="" hasResponsive>
-							{__("Padding", "wcb")}
+							{__("Margin", "wcb")}
 						</MyLabelControl>
 					}
-					values={currentPadding}
+					values={currentMargin}
 					onChange={(value: DimensionSettings) => {
 						setAttr__({
 							...panelData,
-							padding: {
-								...padding,
+							margin: {
+								...margin,
 								[deviceType]: value,
 							},
 						});

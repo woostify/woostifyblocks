@@ -7,7 +7,7 @@ import {
 	ToggleControl,
 } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
-import React, { FC, CSSProperties } from "react";
+import React, { FC, CSSProperties, useEffect } from "react";
 import HelpText from "../components/controls/HelpText";
 import { MyIconKey } from "../components/controls/MyIcon";
 import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
@@ -28,11 +28,42 @@ export interface WCB_TEAM_PANEL_SOCIALS {
 	socials: TeamSociaItem[];
 }
 
+export const DEFAULT_MY_TEAM_SOCIAL: TeamSociaItem = {
+	url: "#",
+	icon: {
+		...DEFAULT_MY_ICON,
+		iconName: "lni-twitter-original",
+	},
+};
+
 export const WCB_TEAM_PANEL_SOCIALS_DEMO: WCB_TEAM_PANEL_SOCIALS = {
 	enableSocials: true,
 	openLinkInNewTab: false,
 	numberOfItems: 4,
-	socials: [],
+	socials: [
+		DEFAULT_MY_TEAM_SOCIAL,
+		{
+			url: "#",
+			icon: {
+				...DEFAULT_MY_ICON,
+				iconName: "lni-facebook-oval",
+			},
+		},
+		{
+			url: "#",
+			icon: {
+				...DEFAULT_MY_ICON,
+				iconName: "lni-instagram-filled",
+			},
+		},
+		{
+			url: "#",
+			icon: {
+				...DEFAULT_MY_ICON,
+				iconName: "lni-atlassian",
+			},
+		},
+	],
 };
 
 interface Props
@@ -58,10 +89,6 @@ const WcbTeamPanelSocials: FC<Props> = ({
 		{ name: "Socials", title: __("Socials", "wcb") },
 	];
 
-	let CURRENT_SOCIALS = [...Array(numberOfItems || 3).keys()].map(
-		(_, index) => socials[index] || {}
-	);
-
 	const renderSettings = () => {
 		return (
 			<div className="space-y-5">
@@ -85,7 +112,15 @@ const WcbTeamPanelSocials: FC<Props> = ({
 							label="Number of items"
 							value={numberOfItems}
 							onChange={(value) => {
-								setAttr__({ ...panelData, numberOfItems: value || 1 });
+								let NEWS_SOCIALS: TeamSociaItem[] = [
+									...Array(value || 1).keys(),
+								].map((_, index) => socials[index] || DEFAULT_MY_TEAM_SOCIAL);
+
+								setAttr__({
+									...panelData,
+									numberOfItems: value || 1,
+									socials: NEWS_SOCIALS,
+								});
 							}}
 							min={1}
 							max={10}
@@ -109,7 +144,7 @@ const WcbTeamPanelSocials: FC<Props> = ({
 		}
 		return (
 			<div className="space-y-5">
-				{CURRENT_SOCIALS.map((social, index) => {
+				{socials.map((social, index) => {
 					return (
 						<div key={index + "--"}>
 							<MyLabelControl>
@@ -117,12 +152,11 @@ const WcbTeamPanelSocials: FC<Props> = ({
 							</MyLabelControl>
 							<div className="p-3 border rounded-lg space-y-3">
 								<SelecIcon
-									label={__("Icon", "wcb")}
 									iconData={social.icon}
 									onChange={(value) => {
 										setAttr__({
 											...panelData,
-											socials: CURRENT_SOCIALS.map((item, j) => {
+											socials: socials.map((item, j) => {
 												if (j === index) {
 													return {
 														...item,
@@ -135,13 +169,14 @@ const WcbTeamPanelSocials: FC<Props> = ({
 									}}
 								/>
 								<TextControl
-									label={__("Url", "wcb")}
+									label={__("Social URL", "wcb")}
+									placeholder="https://example.com"
 									value={social.url}
 									type="text"
 									onChange={(value) => {
 										setAttr__({
 											...panelData,
-											socials: CURRENT_SOCIALS.map((item, j) => {
+											socials: socials.map((item, j) => {
 												if (j === index) {
 													return {
 														...item,

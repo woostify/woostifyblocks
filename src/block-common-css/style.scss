@@ -6,6 +6,10 @@
 }
 
 .wcb-icon-full {
+	display: inline-block;
+	line-height: 1;
+	vertical-align: -0.125em;
+
 	svg,
 	img {
 		@apply w-full;
