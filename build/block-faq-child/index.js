@@ -2852,7 +2852,7 @@ const SelecIcon = _ref => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "relative p-2 mb-2 -mt-2 border-b border-gray-800 text-white "
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "pointer-events-none absolute inset-y-0 left-3 flex items-center pl-2.5"
+      className: "pointer-events-none absolute inset-y-0 left-2.5 flex items-center pl-2.5"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
       fill: "none",
       viewBox: "0 0 24 24",
@@ -2866,7 +2866,7 @@ const SelecIcon = _ref => {
     }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
       onChange: event => setQuery(event.target.value),
       type: "text",
-      className: "block w-full py-2 pl-10 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-800 border-transparent text-white",
+      className: "block w-full py-1.5 pl-10 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-800 border-transparent text-white",
       placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Search for an icon...", "wcb"),
       defaultValue: query,
       name: "icon-query",

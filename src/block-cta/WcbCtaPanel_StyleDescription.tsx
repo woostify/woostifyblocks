@@ -14,6 +14,7 @@ import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyR
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 import { WCB_CTA_PANEL_STYLE_TITLE } from "./WcbCtaPanel_StyleTitle";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 
 export const WCB_CTA_PANEL_STYLE_DESCRIPTION_DEMO: WCB_CTA_PANEL_STYLE_TITLE = {
 	typography: {
@@ -38,8 +39,11 @@ const WcbCtaPanel_StyleDescription: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	const { typography, textColor, marginBottom } = panelData;
-	const MARGIN_BOTTOM =
-		marginBottom[deviceType] || marginBottom.Tablet || marginBottom.Desktop;
+
+	const { currentDeviceValue: MARGIN_BOTTOM } = getValueFromAttrsResponsives(
+		marginBottom,
+		deviceType
+	);
 	//
 	return (
 		<PanelBody
@@ -80,7 +84,7 @@ const WcbCtaPanel_StyleDescription: FC<Props> = ({
 								},
 							});
 						}}
-						value={MARGIN_BOTTOM}
+						value={MARGIN_BOTTOM || ""}
 						units={MY_GAP_UNITS}
 						label={__("Margin bottom", "wcb")}
 						hasResponsive

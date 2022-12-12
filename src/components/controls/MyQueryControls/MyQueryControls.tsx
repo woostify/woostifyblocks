@@ -311,7 +311,7 @@ const MyQueryControls: FC<Props> = ({
 								value: item.name || item.value,
 							}))
 						}
-						placeholder="All"
+						placeholder={__("All", "wcb")}
 						suggestions={termSuggestionList}
 						onChange={handleSelectTerms}
 						maxSuggestions={MAX_CATEGORIES_SUGGESTIONS}

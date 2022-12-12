@@ -14,6 +14,7 @@ import {
 import MyDisclosure from "../components/controls/MyDisclosure";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
 import { WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE } from "./WcbPostGridPanelPostFeaturedImage";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 
 export interface WCB_POST_GRID_PANEL_STYLE_FEATURED_IMAGE {
 	marginBottom: HasResponsive<string>;
@@ -45,8 +46,11 @@ const WcbPostGridPanel_StyleFeaturedImage: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	const { marginBottom, backgroundOverlay } = panelData;
-	const MARGIN_BOTTOM =
-		marginBottom[deviceType] || marginBottom.Tablet || marginBottom.Desktop;
+
+	const { currentDeviceValue: MARGIN_BOTTOM } = getValueFromAttrsResponsives(
+		marginBottom,
+		deviceType
+	);
 	//
 	return (
 		<PanelBody
@@ -81,7 +85,7 @@ const WcbPostGridPanel_StyleFeaturedImage: FC<Props> = ({
 									},
 								});
 							}}
-							value={MARGIN_BOTTOM}
+							value={MARGIN_BOTTOM || ""}
 							units={MY_GAP_UNITS}
 							label={__("Margin bottom", "wcb")}
 							hasResponsive

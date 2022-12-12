@@ -3136,7 +3136,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const WCB_HEADING_PANEL_DIMENSION_DEMO = {
-  dimension: _components_controls_MyDimensionsControl_types__WEBPACK_IMPORTED_MODULE_5__.MY_DIMENSIONS_NO_GAP_CONTROL_DEMO
+  dimension: {
+    ..._components_controls_MyDimensionsControl_types__WEBPACK_IMPORTED_MODULE_5__.MY_DIMENSIONS_NO_GAP_CONTROL_DEMO,
+    padding: {
+      Desktop: {
+        bottom: "0",
+        top: "0",
+        left: "0",
+        right: "0"
+      }
+    }
+  }
 };
 const WcbHeadingPanelDimension = _ref => {
   let {

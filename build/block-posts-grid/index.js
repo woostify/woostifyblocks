@@ -4075,6 +4075,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_controls_MyDimensionsControl_MyDimensionsControl__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/controls/MyDimensionsControl/MyDimensionsControl */ "./src/components/controls/MyDimensionsControl/MyDimensionsControl.tsx");
 /* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
 /* harmony import */ var _components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/controls/MyColorPicker/MyColorPicker */ "./src/components/controls/MyColorPicker/MyColorPicker.tsx");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
 
 
 
@@ -4109,7 +4111,9 @@ const WcbPostGridPanel_StyleExcerpt = _ref => {
     textColor,
     marginBottom
   } = panelData;
-  const MARGIN_BOTTOM = marginBottom[deviceType] || marginBottom.Tablet || marginBottom.Desktop;
+  const {
+    currentDeviceValue: MARGIN_BOTTOM
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_11__["default"])(marginBottom, deviceType);
   //
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     initialOpen: initialOpen,
@@ -4147,7 +4151,7 @@ const WcbPostGridPanel_StyleExcerpt = _ref => {
         }
       });
     },
-    value: MARGIN_BOTTOM,
+    value: MARGIN_BOTTOM || "",
     units: _components_controls_MyDimensionsControl_MyDimensionsControl__WEBPACK_IMPORTED_MODULE_8__.MY_GAP_UNITS,
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Margin bottom", "wcb"),
     hasResponsive: true,
@@ -4183,6 +4187,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/controls/MyBorderControl/types */ "./src/components/controls/MyBorderControl/types.ts");
 /* harmony import */ var _components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/controls/MyDisclosure */ "./src/components/controls/MyDisclosure.tsx");
 /* harmony import */ var _components_controls_MyBorderControl_MyBorderControl__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/controls/MyBorderControl/MyBorderControl */ "./src/components/controls/MyBorderControl/MyBorderControl.tsx");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
 
 
 
@@ -4215,7 +4221,9 @@ const WcbPostGridPanel_StyleFeaturedImage = _ref => {
     marginBottom,
     backgroundOverlay
   } = panelData;
-  const MARGIN_BOTTOM = marginBottom[deviceType] || marginBottom.Tablet || marginBottom.Desktop;
+  const {
+    currentDeviceValue: MARGIN_BOTTOM
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_11__["default"])(marginBottom, deviceType);
   //
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     initialOpen: initialOpen,
@@ -4243,7 +4251,7 @@ const WcbPostGridPanel_StyleFeaturedImage = _ref => {
         }
       });
     },
-    value: MARGIN_BOTTOM,
+    value: MARGIN_BOTTOM || "",
     units: _components_controls_MyDimensionsControl_MyDimensionsControl__WEBPACK_IMPORTED_MODULE_5__.MY_GAP_UNITS,
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Margin bottom", "wcb"),
     hasResponsive: true,
@@ -4401,6 +4409,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_controls_MyDimensionsControl_MyDimensionsControl__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/controls/MyDimensionsControl/MyDimensionsControl */ "./src/components/controls/MyDimensionsControl/MyDimensionsControl.tsx");
 /* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
 /* harmony import */ var _components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/controls/MyColorPicker/MyColorPicker */ "./src/components/controls/MyColorPicker/MyColorPicker.tsx");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
 
 
 
@@ -4455,8 +4465,9 @@ const WcbPostGridPanel_StyleMeta = _ref => {
     dateTextColor,
     marginBottom
   } = panelData;
-  const MARGIN_BOTTOM = marginBottom[deviceType] || marginBottom.Tablet || marginBottom.Desktop;
-
+  const {
+    currentDeviceValue: MARGIN_BOTTOM
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_11__["default"])(marginBottom, deviceType);
   //
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     initialOpen: initialOpen,
@@ -4514,7 +4525,7 @@ const WcbPostGridPanel_StyleMeta = _ref => {
         }
       });
     },
-    value: MARGIN_BOTTOM,
+    value: MARGIN_BOTTOM || "",
     units: _components_controls_MyDimensionsControl_MyDimensionsControl__WEBPACK_IMPORTED_MODULE_8__.MY_GAP_UNITS,
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Margin bottom", "wcb"),
     hasResponsive: true,
@@ -4743,6 +4754,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_controls_MyColorBackgroundColorControl_MyColorBackgroundColorControl__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/controls/MyColorBackgroundColorControl/MyColorBackgroundColorControl */ "./src/components/controls/MyColorBackgroundColorControl/MyColorBackgroundColorControl.tsx");
 /* harmony import */ var _components_controls_MyUnitControl__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/controls/MyUnitControl */ "./src/components/controls/MyUnitControl.tsx");
 /* harmony import */ var _components_controls_MyDimensionsControl_MyDimensionsControl__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/controls/MyDimensionsControl/MyDimensionsControl */ "./src/components/controls/MyDimensionsControl/MyDimensionsControl.tsx");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
 
 
 
@@ -4793,8 +4806,12 @@ const WcbPostGridPanel_StyleReadmoreLink = _ref => {
       Desktop: "1rem"
     }
   } = panelData;
-  const padding = paddingProps[deviceType] || paddingProps.Tablet || paddingProps.Desktop;
-  const MARGIN_BOTTOM = marginBottom[deviceType] || marginBottom.Tablet || marginBottom.Desktop;
+  const {
+    currentDeviceValue: MARGIN_BOTTOM
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_14__["default"])(marginBottom, deviceType);
+  const {
+    currentDeviceValue: padding
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_14__["default"])(paddingProps, deviceType);
   //
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
@@ -4856,7 +4873,7 @@ const WcbPostGridPanel_StyleReadmoreLink = _ref => {
         }
       });
     },
-    value: MARGIN_BOTTOM,
+    value: MARGIN_BOTTOM || "",
     units: _components_controls_MyDimensionsControl_MyDimensionsControl__WEBPACK_IMPORTED_MODULE_13__.MY_GAP_UNITS,
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Margin bottom", "wcb"),
     hasResponsive: true
@@ -4891,6 +4908,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
 /* harmony import */ var _components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/controls/MyColorPicker/MyColorPicker */ "./src/components/controls/MyColorPicker/MyColorPicker.tsx");
 /* harmony import */ var _components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/controls/MyDisclosure */ "./src/components/controls/MyDisclosure.tsx");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
 
 
 
@@ -4938,8 +4957,9 @@ const WcbPostGridPanel_StyleTaxonomy = _ref => {
     marginBottom,
     backgroundColor
   } = panelData;
-  const MARGIN_BOTTOM = marginBottom[deviceType] || marginBottom.Tablet || marginBottom.Desktop;
-
+  const {
+    currentDeviceValue: MARGIN_BOTTOM
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_11__["default"])(marginBottom, deviceType);
   //
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     initialOpen: initialOpen,
@@ -4987,7 +5007,7 @@ const WcbPostGridPanel_StyleTaxonomy = _ref => {
         }
       });
     },
-    value: MARGIN_BOTTOM,
+    value: MARGIN_BOTTOM || "",
     units: _components_controls_MyDimensionsControl_MyDimensionsControl__WEBPACK_IMPORTED_MODULE_7__.MY_GAP_UNITS,
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Margin bottom", "wcb"),
     hasResponsive: true,
@@ -5023,6 +5043,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_controls_MyDimensionsControl_MyDimensionsControl__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/controls/MyDimensionsControl/MyDimensionsControl */ "./src/components/controls/MyDimensionsControl/MyDimensionsControl.tsx");
 /* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
 /* harmony import */ var _components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/controls/MyColorPicker/MyColorPicker */ "./src/components/controls/MyColorPicker/MyColorPicker.tsx");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
 
 
 
@@ -5055,7 +5077,9 @@ const WcbPostGridPanel_StyleTitle = _ref => {
     textColor,
     marginBottom
   } = panelData;
-  const MARGIN_BOTTOM = marginBottom[deviceType] || marginBottom.Tablet || marginBottom.Desktop;
+  const {
+    currentDeviceValue: MARGIN_BOTTOM
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_11__["default"])(marginBottom, deviceType);
   //
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     initialOpen: initialOpen,
@@ -5093,7 +5117,7 @@ const WcbPostGridPanel_StyleTitle = _ref => {
         }
       });
     },
-    value: MARGIN_BOTTOM,
+    value: MARGIN_BOTTOM || "",
     units: _components_controls_MyDimensionsControl_MyDimensionsControl__WEBPACK_IMPORTED_MODULE_8__.MY_GAP_UNITS,
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Margin bottom", "wcb"),
     hasResponsive: true,
@@ -7275,7 +7299,7 @@ const MyQueryControls = _ref => {
       ...item,
       value: item.name || item.value
     })),
-    placeholder: "All",
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("All", "wcb"),
     suggestions: termSuggestionList,
     onChange: handleSelectTerms,
     maxSuggestions: MAX_CATEGORIES_SUGGESTIONS,

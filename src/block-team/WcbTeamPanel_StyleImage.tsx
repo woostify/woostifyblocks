@@ -14,12 +14,18 @@ import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyR
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
-import { BorderRadiusSettings } from "../components/controls/MyBorderControl/types";
+import {
+	BorderRadiusSettings,
+	MyBorderControlData,
+	MY_BORDER_CONTROL_DEMO,
+} from "../components/controls/MyBorderControl/types";
+import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
+import MyDisclosure from "../components/controls/MyDisclosure";
 
 export interface WCB_TEAM_PANEL_STYLE_IMAGE {
 	padding: HasResponsive<DimensionSettings>;
 	imageSize: HasResponsive<string>;
-	radius: HasResponsive<BorderRadiusSettings>;
+	border: MyBorderControlData;
 }
 export const WCB_TEAM_PANEL_STYLE_IMAGE_DEMO: WCB_TEAM_PANEL_STYLE_IMAGE = {
 	padding: {
@@ -33,11 +39,7 @@ export const WCB_TEAM_PANEL_STYLE_IMAGE_DEMO: WCB_TEAM_PANEL_STYLE_IMAGE = {
 	imageSize: {
 		Desktop: "3.5rem",
 	},
-	radius: {
-		Desktop: "100px",
-		Tablet: "100px",
-		Mobile: "100px",
-	},
+	border: MY_BORDER_CONTROL_DEMO,
 };
 
 interface Props
@@ -54,15 +56,12 @@ const WcbTeamPanel_StyleImage: FC<Props> = ({
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { padding, imageSize, radius } = panelData;
+	const { padding, imageSize, border } = panelData;
 	const { currentDeviceValue: currentPadding } = getValueFromAttrsResponsives(
 		padding,
 		deviceType
 	);
-	const { currentDeviceValue: currentRadius } = getValueFromAttrsResponsives(
-		radius,
-		deviceType
-	);
+
 	const { currentDeviceValue: currentImageSize } = getValueFromAttrsResponsives(
 		imageSize,
 		deviceType
@@ -92,24 +91,6 @@ const WcbTeamPanel_StyleImage: FC<Props> = ({
 					label={__("Image size", "wcb")}
 				/>
 
-				<BorderRadiusControl
-					values={currentRadius}
-					onChange={(value: BorderRadiusSettings) => {
-						setAttr__({
-							...panelData,
-							radius: {
-								...radius,
-								[deviceType]: value,
-							},
-						});
-					}}
-					label={
-						<MyLabelControl className="" hasResponsive>
-							{__("Border radius", "wcb")}
-						</MyLabelControl>
-					}
-				/>
-
 				<BoxControl
 					label={
 						<MyLabelControl className="" hasResponsive>
@@ -127,6 +108,15 @@ const WcbTeamPanel_StyleImage: FC<Props> = ({
 						});
 					}}
 				/>
+
+				<MyDisclosure label={__("Border", "wcb")} defaultOpen>
+					<MyBorderControl
+						borderControl={border}
+						setAttrs__border={(data) => {
+							setAttr__({ ...panelData, border: data });
+						}}
+					/>
+				</MyDisclosure>
 			</div>
 		</PanelBody>
 	);

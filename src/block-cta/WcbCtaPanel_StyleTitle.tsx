@@ -7,12 +7,12 @@ import {
 	TYPOGRAPHY_CONTROL_DEMO,
 } from "../components/controls/MyTypographyControl/types";
 import MyDisclosure from "../components/controls/MyDisclosure";
-import MyUnitControl from "../components/controls/MyUnitControl";
-import { MY_GAP_UNITS } from "../components/controls/MyDimensionsControl/MyDimensionsControl";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
+import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 
 export interface WCB_CTA_PANEL_STYLE_TITLE {
 	typography: MyTypographyControlData;
@@ -51,8 +51,12 @@ const WcbCtaPanel_StyleTitle: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	const { typography, textColor, marginBottom } = panelData;
-	const MARGIN_BOTTOM =
-		marginBottom[deviceType] || marginBottom.Tablet || marginBottom.Desktop;
+
+	const { currentDeviceValue: MARGIN_BOTTOM } = getValueFromAttrsResponsives(
+		marginBottom,
+		deviceType
+	);
+
 	//
 	return (
 		<PanelBody
@@ -83,7 +87,7 @@ const WcbCtaPanel_StyleTitle: FC<Props> = ({
 						color={textColor}
 					/>
 
-					<MyUnitControl
+					<MySpacingSizesControl
 						onChange={(value) => {
 							setAttr__({
 								...panelData,
@@ -93,11 +97,9 @@ const WcbCtaPanel_StyleTitle: FC<Props> = ({
 								},
 							});
 						}}
-						value={MARGIN_BOTTOM}
-						units={MY_GAP_UNITS}
+						value={MARGIN_BOTTOM || ""}
 						label={__("Margin bottom", "wcb")}
 						hasResponsive
-						className="flex-col space-y-2"
 					/>
 				</MyDisclosure>
 			</div>

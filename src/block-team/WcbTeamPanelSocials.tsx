@@ -72,22 +72,26 @@ const WcbTeamPanelSocials: FC<Props> = ({
 						setAttr__({ ...panelData, enableSocials: checked });
 					}}
 				/>
-				<ToggleControl
-					label={__(" Open Links in New Window", "wcb")}
-					checked={openLinkInNewTab}
-					onChange={(checked) => {
-						setAttr__({ ...panelData, openLinkInNewTab: checked });
-					}}
-				/>
-				<RangeControl
-					label="Number of items"
-					value={numberOfItems}
-					onChange={(value) => {
-						setAttr__({ ...panelData, numberOfItems: value || 1 });
-					}}
-					min={1}
-					max={10}
-				/>
+				{enableSocials && (
+					<>
+						<ToggleControl
+							label={__("Open Links in New Window", "wcb")}
+							checked={openLinkInNewTab}
+							onChange={(checked) => {
+								setAttr__({ ...panelData, openLinkInNewTab: checked });
+							}}
+						/>
+						<RangeControl
+							label="Number of items"
+							value={numberOfItems}
+							onChange={(value) => {
+								setAttr__({ ...panelData, numberOfItems: value || 1 });
+							}}
+							min={1}
+							max={10}
+						/>
+					</>
+				)}
 			</div>
 		);
 	};

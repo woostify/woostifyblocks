@@ -18,6 +18,7 @@ export interface WCB_TEAM_PANEL_IMAGES {
 	imageSize: string;
 	isShowImage: boolean;
 	imagePosition: "top" | "left" | "bottom" | "right";
+	stackOn: "none" | "tablet" | "mobile";
 }
 
 type TabsHere = "Settings" | "SelectImages";
@@ -27,6 +28,7 @@ export const WCB_TEAM_PANEL_IMAGES_DEMO: WCB_TEAM_PANEL_IMAGES = {
 	imageSize: "thumbnail",
 	isShowImage: true,
 	imagePosition: "bottom",
+	stackOn: "none",
 };
 
 interface Props
@@ -43,7 +45,7 @@ const WcbTeamPanelImages: FC<Props> = ({
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { image, imagePosition, isShowImage, imageSize } = panelData;
+	const { image, imagePosition, isShowImage, imageSize, stackOn } = panelData;
 	//
 	const { imageSizeOptions } = useGetImageSizeOptions();
 
@@ -87,6 +89,11 @@ const WcbTeamPanelImages: FC<Props> = ({
 				{ name: "right", icon: "Right" },
 				{ name: "bottom", icon: "Bottom" },
 			];
+		const STACKON_PLANS: MyRadioItem<WCB_TEAM_PANEL_IMAGES["stackOn"]>[] = [
+			{ name: "none", icon: "None" },
+			{ name: "tablet", icon: "Tablet" },
+			{ name: "mobile", icon: "Mobile" },
+		];
 
 		return (
 			<div className={"space-y-5"}>
@@ -99,29 +106,42 @@ const WcbTeamPanelImages: FC<Props> = ({
 				/>
 
 				{isShowImage ? (
-					<MySelect
-						value={imageSize}
-						options={imageSizeOptions}
-						label={__("Image size", "wcb")}
-						onChange={(size) => {
-							setAttr__({ ...panelData, imageSize: size });
-						}}
-					/>
-				) : null}
-
-				{isShowImage ? (
-					<MyRadioGroup
-						label="Position"
-						onChange={(selected) =>
-							setAttr__({
-								...panelData,
-								imagePosition: selected as any,
-							})
-						}
-						value={imagePosition}
-						plans={POSTION_PLANS}
-						hasResponsive={false}
-					/>
+					<>
+						<MySelect
+							value={imageSize}
+							options={imageSizeOptions}
+							label={__("Image size", "wcb")}
+							onChange={(size) => {
+								setAttr__({ ...panelData, imageSize: size });
+							}}
+						/>
+						<MyRadioGroup
+							label="Position"
+							onChange={(selected) =>
+								setAttr__({
+									...panelData,
+									imagePosition: selected as any,
+								})
+							}
+							value={imagePosition}
+							plans={POSTION_PLANS}
+							hasResponsive={false}
+						/>
+						{(imagePosition === "left" || imagePosition === "right") && (
+							<MyRadioGroup
+								label="Stack on"
+								onChange={(selected) =>
+									setAttr__({
+										...panelData,
+										stackOn: selected as any,
+									})
+								}
+								value={stackOn}
+								plans={STACKON_PLANS}
+								hasResponsive={false}
+							/>
+						)}
+					</>
 				) : null}
 			</div>
 		);

@@ -124,7 +124,7 @@ const SelecIcon: FC<Props> = ({
 	const renderInput = () => {
 		return (
 			<div className="relative p-2 mb-2 -mt-2 border-b border-gray-800 text-white ">
-				<div className="pointer-events-none absolute inset-y-0 left-3 flex items-center pl-2.5">
+				<div className="pointer-events-none absolute inset-y-0 left-2.5 flex items-center pl-2.5">
 					<svg
 						fill="none"
 						viewBox="0 0 24 24"
@@ -142,7 +142,7 @@ const SelecIcon: FC<Props> = ({
 				<input
 					onChange={(event) => setQuery(event.target.value)}
 					type="text"
-					className="block w-full py-2 pl-10 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-800 border-transparent text-white"
+					className="block w-full py-1.5 pl-10 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-800 border-transparent text-white"
 					placeholder={__("Search for an icon...", "wcb")}
 					defaultValue={query}
 					name="icon-query"

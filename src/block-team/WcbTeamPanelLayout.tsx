@@ -17,7 +17,7 @@ export interface WCB_TEAM_PANEL_LAYOUT {
 
 export const WCB_TEAM_PANEL_LAYOUT_DEMO: WCB_TEAM_PANEL_LAYOUT = {
 	textAlignment: { Desktop: "left" },
-	headingTag: "div",
+	headingTag: "h3",
 };
 
 interface Props

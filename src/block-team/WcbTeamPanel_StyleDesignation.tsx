@@ -7,35 +7,34 @@ import {
 	TYPOGRAPHY_CONTROL_DEMO,
 } from "../components/controls/MyTypographyControl/types";
 import MyDisclosure from "../components/controls/MyDisclosure";
-import MyUnitControl from "../components/controls/MyUnitControl";
-import { MY_GAP_UNITS } from "../components/controls/MyDimensionsControl/MyDimensionsControl";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
+import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 
-export interface WCB_POST_GRID_PANEL_STYLE_TITLE {
+export interface WCB_TEAM_PANEL_STYLE_DESIGNATION {
 	typography: MyTypographyControlData;
 	textColor: string;
 	marginBottom: HasResponsive<string>;
 }
 
-export const WCB_POST_GRID_PANEL_STYLE_TITLE_DEMO: WCB_POST_GRID_PANEL_STYLE_TITLE =
+export const WCB_TEAM_PANEL_STYLE_DESIGNATION_DEMO: WCB_TEAM_PANEL_STYLE_DESIGNATION =
 	{
 		typography: TYPOGRAPHY_CONTROL_DEMO,
 		textColor: "#171717",
-		marginBottom: { Desktop: "0.5rem" },
+		marginBottom: { Desktop: "1rem" },
 	};
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
-	panelData: WCB_POST_GRID_PANEL_STYLE_TITLE;
-	setAttr__: (data: WCB_POST_GRID_PANEL_STYLE_TITLE) => void;
+	panelData: WCB_TEAM_PANEL_STYLE_DESIGNATION;
+	setAttr__: (data: WCB_TEAM_PANEL_STYLE_DESIGNATION) => void;
 }
 
-const WcbPostGridPanel_StyleTitle: FC<Props> = ({
-	panelData = WCB_POST_GRID_PANEL_STYLE_TITLE_DEMO,
+const WcbTeamPanel_StyleDesignation: FC<Props> = ({
+	panelData = WCB_TEAM_PANEL_STYLE_DESIGNATION_DEMO,
 	setAttr__,
 	initialOpen,
 	onToggle,
@@ -54,7 +53,7 @@ const WcbPostGridPanel_StyleTitle: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Title", "wcb")}
+			title={__("Designation", "wcb")}
 		>
 			<div className="space-y-2.5">
 				<MyTypographyControl
@@ -78,7 +77,7 @@ const WcbPostGridPanel_StyleTitle: FC<Props> = ({
 						color={textColor}
 					/>
 
-					<MyUnitControl
+					<MySpacingSizesControl
 						onChange={(value) => {
 							setAttr__({
 								...panelData,
@@ -89,10 +88,8 @@ const WcbPostGridPanel_StyleTitle: FC<Props> = ({
 							});
 						}}
 						value={MARGIN_BOTTOM || ""}
-						units={MY_GAP_UNITS}
 						label={__("Margin bottom", "wcb")}
 						hasResponsive
-						className="flex-col space-y-2"
 					/>
 				</MyDisclosure>
 			</div>
@@ -100,4 +97,4 @@ const WcbPostGridPanel_StyleTitle: FC<Props> = ({
 	);
 };
 
-export default WcbPostGridPanel_StyleTitle;
+export default WcbTeamPanel_StyleDesignation;

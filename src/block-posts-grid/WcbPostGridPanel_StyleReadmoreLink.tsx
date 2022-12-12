@@ -29,6 +29,7 @@ import MyColorBackgroundColorControl, {
 import { MyTabsForColor } from "../types";
 import MyUnitControl from "../components/controls/MyUnitControl";
 import { MY_GAP_UNITS } from "../components/controls/MyDimensionsControl/MyDimensionsControl";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 
 export interface WCB_POST_GRID_PANEL_STYLE_READMORE_LINK {
 	colorAndBackgroundColor: MyColorBackgroundColorControlData;
@@ -78,10 +79,15 @@ const WcbPostGridPanel_StyleReadmoreLink: FC<Props> = ({
 		colorAndBackgroundColor,
 		marginBottom = { Desktop: "1rem" },
 	} = panelData;
-	const padding =
-		paddingProps[deviceType] || paddingProps.Tablet || paddingProps.Desktop;
-	const MARGIN_BOTTOM =
-		marginBottom[deviceType] || marginBottom.Tablet || marginBottom.Desktop;
+
+	const { currentDeviceValue: MARGIN_BOTTOM } = getValueFromAttrsResponsives(
+		marginBottom,
+		deviceType
+	);
+	const { currentDeviceValue: padding } = getValueFromAttrsResponsives(
+		paddingProps,
+		deviceType
+	);
 	//
 
 	return (
@@ -146,7 +152,7 @@ const WcbPostGridPanel_StyleReadmoreLink: FC<Props> = ({
 								},
 							});
 						}}
-						value={MARGIN_BOTTOM}
+						value={MARGIN_BOTTOM || ""}
 						units={MY_GAP_UNITS}
 						label={__("Margin bottom", "wcb")}
 						hasResponsive

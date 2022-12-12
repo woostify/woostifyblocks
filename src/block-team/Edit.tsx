@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { useBlockProps } from "@wordpress/block-editor";
+import { RichText, useBlockProps } from "@wordpress/block-editor";
 import React, { useEffect, FC, useRef, useCallback } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
@@ -17,6 +17,12 @@ import WcbTeamPanelImages from "./WcbTeamPanelImages";
 import WcbTeamPanelSocials from "./WcbTeamPanelSocials";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
+import WcbTeamPanel_StyleTitle from "./WcbTeamPanel_StyleTitle";
+import WcbTeamPanel_StyleDesignation from "./WcbTeamPanel_StyleDesignation";
+import WcbTeamPanel_StyleDescription from "./WcbTeamPanel_StyleDescription";
+import WcbTeamPanel_StyleSocialIcons from "./WcbTeamPanel_StyleSocialIcons";
+import MyIcon from "../components/controls/MyIcon";
+import WcbTeamPanel_StyleImage from "./WcbTeamPanel_StyleImage";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -24,10 +30,17 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		advance_responsiveCondition,
 		advance_zIndex,
 		heading,
+		description,
+		designation,
 		uniqueId,
 		general_layout,
 		general_image,
 		general_socials,
+		style_title,
+		style_desination,
+		style_description,
+		style_socialIcons,
+		style_image,
 	} = attributes;
 	//  COMMON HOOKS
 	const ref = useRef<HTMLDivElement>(null);
@@ -91,7 +104,71 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					</>
 				);
 			case "Styles":
-				return <></>;
+				return (
+					<>
+						<WcbTeamPanel_StyleTitle
+							onToggle={() => handleTogglePanel("Styles", "_StyleTitle", true)}
+							initialOpen={
+								tabStylesIsPanelOpen === "_StyleTitle" ||
+								tabStylesIsPanelOpen === "first"
+							}
+							opened={tabStylesIsPanelOpen === "_StyleTitle" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_title: data });
+							}}
+							panelData={style_title}
+						/>
+						<WcbTeamPanel_StyleDesignation
+							onToggle={() => handleTogglePanel("Styles", "_StyleDesignation")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleDesignation"}
+							opened={tabStylesIsPanelOpen === "_StyleDesignation" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_desination: data });
+							}}
+							panelData={style_desination}
+						/>
+						<WcbTeamPanel_StyleDescription
+							onToggle={() => handleTogglePanel("Styles", "_StyleDescription")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleDescription"}
+							opened={tabStylesIsPanelOpen === "_StyleDescription" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_description: data });
+							}}
+							panelData={style_description}
+						/>
+						{general_image.isShowImage && (
+							<WcbTeamPanel_StyleImage
+								onToggle={() => handleTogglePanel("Styles", "_StyleImage")}
+								initialOpen={tabStylesIsPanelOpen === "_StyleImage"}
+								opened={tabStylesIsPanelOpen === "_StyleImage" || undefined}
+								//
+								setAttr__={(data) => {
+									setAttributes({ style_image: data });
+								}}
+								panelData={style_image}
+							/>
+						)}
+						{general_socials.enableSocials && (
+							<WcbTeamPanel_StyleSocialIcons
+								onToggle={() =>
+									handleTogglePanel("Styles", "_StyleSocialIcons")
+								}
+								initialOpen={tabStylesIsPanelOpen === "_StyleSocialIcons"}
+								opened={
+									tabStylesIsPanelOpen === "_StyleSocialIcons" || undefined
+								}
+								//
+								setAttr__={(data) => {
+									setAttributes({ style_socialIcons: data });
+								}}
+								panelData={style_socialIcons}
+							/>
+						)}
+					</>
+				);
 			case "Advances":
 				return (
 					<>
@@ -120,6 +197,11 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			general_image,
 			general_layout,
 			general_socials,
+			style_title,
+			style_desination,
+			style_description,
+			style_socialIcons,
+			style_image,
 		};
 	}, [
 		uniqueId,
@@ -128,8 +210,22 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		general_image,
 		general_layout,
 		general_socials,
+		style_title,
+		style_desination,
+		style_description,
+		style_socialIcons,
+		style_image,
 	]);
 
+	const renderImage = () => {
+		return general_image.isShowImage && general_image?.image?.mediaId ? (
+			<div className="wcb-team__image">
+				<img src={general_image.image.mediaUrl} alt="" />
+			</div>
+		) : null;
+	};
+
+	const HeadingTag = general_layout.headingTag;
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
@@ -146,9 +242,48 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				{/* CSS IN JS */}
 				<GlobalCss {...WcbAttrsForSave()} />
 
+				{renderImage()}
 				{/* CHILD CONTENT  */}
-				<div>CHILD CONTENT </div>
-				<i className="lni lni-500px"></i>
+				<div className="wcb-team__content-wrap">
+					<div className="wcb-team__content">
+						<RichText
+							tagName={HeadingTag}
+							value={heading}
+							allowedFormats={["core/bold", "core/italic"]}
+							onChange={(content) => setAttributes({ heading: content })}
+							placeholder={__("Heading...")}
+							className="wcb-team__heading"
+						/>
+						<RichText
+							tagName="div"
+							value={designation}
+							allowedFormats={[]}
+							onChange={(content) => setAttributes({ designation: content })}
+							placeholder={__("Designation...")}
+							className="wcb-team__designation"
+						/>
+						<RichText
+							tagName="div"
+							value={description}
+							allowedFormats={["core/bold", "core/italic"]}
+							onChange={(content) => setAttributes({ description: content })}
+							placeholder={__("Description...")}
+							className="wcb-team__description"
+						/>
+					</div>
+
+					<div className="wcb-team__socials-icons">
+						<a href="#">
+							<MyIcon icon="lni-adobe" />
+						</a>
+						<a href="#">
+							<MyIcon icon="lni-airbnb" />
+						</a>
+						<a href="#">
+							<MyIcon icon="lni-sad" />
+						</a>
+					</div>
+				</div>
 			</div>
 		</MyCacheProvider>
 	);
