@@ -30,8 +30,6 @@ import {
 	store as blocksStore,
 } from "@wordpress/blocks";
 import GlobalCss from "./GlobalCss";
-import { CacheProvider } from "@emotion/react";
-import useCreateCacheEmotion from "../hooks/useCreateCacheEmotion";
 import VideoBackgroundByBgControl from "../components/VideoBackgroundByBgControl";
 import OverlayBackgroundByBgControl from "../components/OverlayBackgroundByBgControl";
 import { FLEX_PROPERTIES_CONTROL_DEMO } from "../components/controls/MyFlexPropertiesControl/types";
@@ -85,6 +83,11 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 	const hasParent = useSelect(
 		(select) =>
 			(select(blockEditorStore) as any).getBlockParents(clientId).length > 0,
+		[clientId]
+	);
+	const hasInnerBlocks = useSelect(
+		(select) =>
+			(select(blockEditorStore) as any).getBlocks(clientId).length > 0,
 		[clientId]
 	);
 	//
@@ -252,12 +255,16 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 
 	// ====== WRAP CLASSES
 	const { htmlTag: HtmlTag = "div", containerWidthType } = general_container;
-	const containerWidthTypeClass =
+	let containerWidthTypeClass =
 		containerWidthType === "Full Width"
 			? "alignfull"
 			: containerWidthType === "Boxed"
 			? "alignwide"
 			: "";
+
+	if (hasParent) {
+		containerWidthTypeClass = "";
+	}
 	// ====== END WRAP CLASSES
 
 	// MAIN STYLES - CLASSES
@@ -266,11 +273,20 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 	//
 
 	const blockProps = useBlockProps({
-		className: `wcb-container__inner`,
+		className: `wcb-container__inner is-layout-flow`,
 	});
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
-		renderAppender: () => <InnerBlocks.ButtonBlockAppender />,
+		renderAppender: () =>
+			hasParent ? (
+				hasInnerBlocks ? (
+					<InnerBlocks.DefaultBlockAppender />
+				) : (
+					<InnerBlocks.ButtonBlockAppender />
+				)
+			) : hasInnerBlocks ? null : (
+				<InnerBlocks.ButtonBlockAppender />
+			),
 	});
 	//
 
@@ -278,13 +294,13 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		ref,
 		className: `wcb-container__wrap ${uniqueId} ${containerWidthTypeClass} ${
 			hasParent ? "is_wcb_container_child" : ""
-		}`,
+		}`.trim(),
 	});
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...blockWrapProps}
-				className={`${blockWrapProps.className} border border-dashed`}
+				className={`${blockWrapProps.className} `}
 				id={uniqueId}
 				data-uniqueid={uniqueId}
 			>
@@ -302,7 +318,11 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 				/>
 				{/*  */}
 
-				<div {...innerBlocksProps} style={GAPS_VARIABLES} />
+				<div
+					{...innerBlocksProps}
+					// className="wcb-container__inner"
+					style={GAPS_VARIABLES}
+				/>
 
 				<HOCInspectorControls
 					uniqueId={uniqueId}

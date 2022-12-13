@@ -91,7 +91,17 @@ export const blokcContainerAttrs: AttrsGenericType<BlockWCBContainerAttrs> = {
 	},
 	styles_dimensions: {
 		type: "object",
-		default: MY_DIMENSIONS_CONTROL_DEMO,
+		default: {
+			...MY_DIMENSIONS_CONTROL_DEMO,
+			padding: {
+				Desktop: {
+					bottom: "",
+					left: "",
+					right: "",
+					top: "",
+				},
+			},
+		},
 	},
 	advance_responsiveCondition: {
 		type: "object",

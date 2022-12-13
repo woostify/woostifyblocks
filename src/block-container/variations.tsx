@@ -163,9 +163,9 @@ export const variations: {
 			</RenderIcon>
 		),
 		innerBlocks: [
-			["wcb/container", undefined],
-			["wcb/container", undefined],
-			["wcb/container", undefined],
+			["wcb/container", getContainerBoxAttrsByWidth("33.33%")],
+			["wcb/container", getContainerBoxAttrsByWidth("33.33%")],
+			["wcb/container", getContainerBoxAttrsByWidth("33.33%")],
 		],
 		scope: ["block"],
 		attributes: getContainerAttrsByFlexWrap("nowrap"),
@@ -183,10 +183,10 @@ export const variations: {
 			</RenderIcon>
 		),
 		innerBlocks: [
-			["wcb/container", undefined],
-			["wcb/container", undefined],
-			["wcb/container", undefined],
-			["wcb/container", undefined],
+			["wcb/container", getContainerBoxAttrsByWidth("25%")],
+			["wcb/container", getContainerBoxAttrsByWidth("25%")],
+			["wcb/container", getContainerBoxAttrsByWidth("25%")],
+			["wcb/container", getContainerBoxAttrsByWidth("25%")],
 		],
 		scope: ["block"],
 		attributes: getContainerAttrsByFlexWrap("nowrap"),

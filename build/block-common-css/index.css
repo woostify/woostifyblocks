@@ -1,6 +1,11 @@
 /*!*********************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/block-common-css/editor.scss ***!
   \*********************************************************************************************************************************************************************************************************************************************************/
+.block-editor-block-list__layout .block-editor-block-list__block.is-selected {
+  box-shadow: 0 0 0 1.5px #007cba;
+  border-radius: 2px;
+}
+
 .wcb-inspectorControls__panel .components-panel__row > .components-spacer {
   width: 100%;
 }
@@ -1074,6 +1079,45 @@ video {
 .left-2 {
   left: 0.5rem !important;
 }
+.right-3 {
+  right: 0.75rem !important;
+}
+.top-3 {
+  top: 0.75rem !important;
+}
+.right-6 {
+  right: 1.5rem !important;
+}
+.top-2 {
+  top: 0.5rem !important;
+}
+.right-4 {
+  right: 1rem !important;
+}
+.right-5 {
+  right: 1.25rem !important;
+}
+.right-1 {
+  right: 0.25rem !important;
+}
+.top-1 {
+  top: 0.25rem !important;
+}
+.top-0 {
+  top: 0px !important;
+}
+.-right-1 {
+  right: -0.25rem !important;
+}
+.-top-1 {
+  top: -0.25rem !important;
+}
+.-right-0\.5 {
+  right: -0.125rem !important;
+}
+.-right-0 {
+  right: -0px !important;
+}
 .z-\[1\] {
   z-index: 1 !important;
 }
@@ -1082,6 +1126,9 @@ video {
 }
 .z-50 {
   z-index: 50 !important;
+}
+.z-\[100\] {
+  z-index: 100 !important;
 }
 .col-span-5 {
   grid-column: span 5 / span 5 !important;
@@ -18164,6 +18211,20 @@ video {
   --tw-ring-opacity: 1 !important;
   --tw-ring-color: rgba(var(--c-neutral-700), var(--tw-ring-opacity)) !important;
 }
+.ring-slate-300 {
+  --tw-ring-opacity: 1 !important;
+  --tw-ring-color: rgb(203 213 225 / var(--tw-ring-opacity)) !important;
+}
+.ring-slate-100 {
+  --tw-ring-opacity: 1 !important;
+  --tw-ring-color: rgb(241 245 249 / var(--tw-ring-opacity)) !important;
+}
+.ring-slate-200\/70 {
+  --tw-ring-color: rgb(226 232 240 / 0.7) !important;
+}
+.ring-gray-200\/70 {
+  --tw-ring-color: rgb(229 231 235 / 0.7) !important;
+}
 .ring-opacity-60 {
   --tw-ring-opacity: 0.6 !important;
 }
@@ -18351,6 +18412,11 @@ h4 {
 .hover\:ring-slate-300:hover {
   --tw-ring-opacity: 1 !important;
   --tw-ring-color: rgb(203 213 225 / var(--tw-ring-opacity)) !important;
+}
+
+.hover\:ring-gray-300:hover {
+  --tw-ring-opacity: 1 !important;
+  --tw-ring-color: rgb(209 213 219 / var(--tw-ring-opacity)) !important;
 }
 
 .focus\:border-indigo-500:focus {

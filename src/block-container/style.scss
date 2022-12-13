@@ -3,10 +3,10 @@
 }
 
 .wcb-container__inner {
+	position: initial;
 	width: 100%;
 	display: flex;
 	flex: 1 1 0%;
-	position: relative;
 	margin: 0 auto;
 	> * {
 		width: 100%;
@@ -16,10 +16,5 @@
 			max-width: unset;
 			flex: 1 1 auto;
 		}
-	}
-
-	.block-list-appender.wp-block {
-		width: unset;
-		flex: none;
 	}
 }

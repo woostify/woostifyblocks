@@ -13,6 +13,7 @@ import MyMediaUploadCheck, {
 import "./editor.scss";
 import checkIsSvgHtmlTag from "../../../utils/checkIsSvgHtmlTag";
 import MyIconFull from "../MyIconFull";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
 const ICON_KEYS = Object.keys(unicodesMap) as MyIconKey[];
 
@@ -160,6 +161,25 @@ const SelecIcon: FC<Props> = ({
 
 	const renderContent = ({ onToggle, onClose }) => (
 		<div className="min-w-[310px] min-h-[510px] bg-gray-900 pt-3">
+			<div
+				className="cursor-pointer absolute -right-0.5 -top-0.5 w-7 h-7 flex items-center justify-center bg-white rounded-full shadow-lg ring-1 ring-gray-200/70 hover:ring-gray-300"
+				onClick={onClose}
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					strokeWidth={2}
+					stroke="currentColor"
+					className="w-6 h-6 text-red-500"
+				>
+					<path
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						d="M6 18L18 6M6 6l12 12"
+					/>
+				</svg>
+			</div>
 			<Tab.Group
 				onChange={(i) => {
 					onChange({
@@ -281,7 +301,7 @@ const SelecIcon: FC<Props> = ({
 		<Dropdown
 			position="middle left"
 			className="w-full"
-			contentClassName="Wcb-SelectIcon"
+			contentClassName="Wcb-SelectIcon z-[100]"
 			renderToggle={({ isOpen, onToggle }) => (
 				<div className="flex items-center space-x-4">
 					<button
@@ -294,7 +314,11 @@ const SelecIcon: FC<Props> = ({
 						}}
 					>
 						<span className="mr-3">{label}</span>
-						<MyIconFull icon={iconData} className="w-6 h-6 text-[24px]" />
+						<MyIconFull
+							icon={iconData}
+							className="w-6 h-6 text-[24px]"
+							renderIfNone={<strong>{__("None", "wcb")}</strong>}
+						/>
 						{/* {value ? (
 							<MyIcon className="text-xl" size={20} icon={value} />
 						) : (

@@ -6,10 +6,10 @@
 }
 
 .wcb-container__inner {
+  position: initial;
   width: 100%;
   display: flex;
   flex: 1 1 0%;
-  position: relative;
   margin: 0 auto;
 }
 .wcb-container__inner > * {
@@ -18,10 +18,6 @@
 .wcb-container__inner .wcb-container__wrap.is_wcb_container_child {
   max-width: unset;
   flex: 1 1 auto;
-}
-.wcb-container__inner .block-list-appender.wp-block {
-  width: unset;
-  flex: none;
 }
 
 /*# sourceMappingURL=style-index.css.map*/

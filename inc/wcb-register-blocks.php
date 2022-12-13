@@ -136,5 +136,11 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
                 "render_callback"     => "wcb_block_team_renderCallback",
             ]
         );
+        register_block_type(
+            WCB_BUILD_PATH . '/block-icon-box',
+            [
+                // "render_callback"     => "wcb_block_team_renderCallback",
+            ]
+        );
     }
 }
