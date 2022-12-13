@@ -23,7 +23,20 @@ import metadata from "./block.json";
 const { Fragment } = wp.element;
 const { withSelect } = wp.data;
 import attributes from "./attributes";
+import {
+	RichTextToolbarButton,
+	RichTextShortcut,
+} from "@wordpress/block-editor";
+import { registerFormatType, toggleFormat } from "@wordpress/rich-text";
+import MyCustomButton, { WCB_FORMAT_HIGHLIGHT } from "./MyCustomButton";
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
+
+registerFormatType(WCB_FORMAT_HIGHLIGHT, {
+	title: "Highlight",
+	tagName: "mark",
+	className: "wcb-highlight-text",
+	edit: MyCustomButton,
+});
 
 registerBlockType(metadata.name, {
 	edit: Edit,
