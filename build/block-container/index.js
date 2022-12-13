@@ -2271,7 +2271,8 @@ const Edit = props => {
   const {
     attributes,
     setAttributes,
-    clientId
+    clientId,
+    isSelected
   } = props;
   const {
     uniqueId
@@ -2293,8 +2294,19 @@ const Edit = props => {
       uniqueId: "wcb-container-" + clientId.substring(2, 9).replace("-", "")
     });
   }, []);
-  const hasParent = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_21__.useSelect)(select => select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.store).getBlockParents(clientId).length > 0, [clientId]);
-  const hasInnerBlocks = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_21__.useSelect)(select => select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.store).getBlocks(clientId).length > 0, [clientId]);
+  const {
+    hasInnerBlocks,
+    hasParent
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_21__.useSelect)(select => {
+    return {
+      hasParent:
+      // @ts-ignore
+      select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.store).getBlockParents(clientId).length > 0,
+      // @ts-ignore
+      hasInnerBlocks: select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.store).getBlocks(clientId).length > 0
+    };
+  }, [clientId]);
+
   //
 
   const renderPanelBackground = () => {
@@ -2436,7 +2448,12 @@ const Edit = props => {
   });
   const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useInnerBlocksProps)(blockProps, {
     allowedBlocks: ALLOWED_BLOCKS,
-    renderAppender: () => hasParent ? hasInnerBlocks ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InnerBlocks.DefaultBlockAppender, null) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InnerBlocks.ButtonBlockAppender, null) : hasInnerBlocks ? null : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InnerBlocks.ButtonBlockAppender, null)
+    renderAppender: () => {
+      if (!hasInnerBlocks) {
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InnerBlocks.ButtonBlockAppender, null);
+      }
+      return isSelected ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InnerBlocks.DefaultBlockAppender, null) : null;
+    }
   });
   //
 
@@ -2526,8 +2543,18 @@ const ContainerEdit = props => {
   const {
     clientId
   } = props;
-  const hasInnerBlocks = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_21__.useSelect)(select => select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.store).getBlocks(clientId).length > 0, [clientId]);
-  const hasParent = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_21__.useSelect)(select => select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.store).getBlockParents(clientId).length > 0, [clientId]);
+  const {
+    hasInnerBlocks,
+    hasParent
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_21__.useSelect)(select => {
+    return {
+      hasParent:
+      // @ts-ignore
+      select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.store).getBlockParents(clientId).length > 0,
+      // @ts-ignore
+      hasInnerBlocks: select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.store).getBlocks(clientId).length > 0
+    };
+  }, [clientId]);
   const [selectedVariant, setSelectedVariant] = (0,react__WEBPACK_IMPORTED_MODULE_6__.useState)(false);
   const Component = hasParent || hasInnerBlocks || selectedVariant ? Edit : Placeholder;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Component, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {

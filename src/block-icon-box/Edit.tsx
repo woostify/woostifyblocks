@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { RichText, useBlockProps } from "@wordpress/block-editor";
+import { InnerBlocks, RichText, useBlockProps } from "@wordpress/block-editor";
 import React, { useEffect, FC, useRef, useCallback } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
@@ -254,6 +254,13 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 						placeholder={__("Description...")}
 						className="wcb-icon-box__description"
 					/>
+
+					<div className="wcb-cta__buttons">
+						<InnerBlocks
+							allowedBlocks={[]}
+							template={[["wcb/buttons", {}, [["wcb/button", {}]]]]}
+						/>
+					</div>
 				</div>
 
 				{(general_image.imagePosition === "right" ||

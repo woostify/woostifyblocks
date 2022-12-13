@@ -2628,7 +2628,12 @@ const Edit = props => {
     }),
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Description..."),
     className: "wcb-icon-box__description"
-  })), (general_image.imagePosition === "right" || general_image.imagePosition === "bottom") && renderImage()));
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "wcb-cta__buttons"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InnerBlocks, {
+    allowedBlocks: [],
+    template: [["wcb/buttons", {}, [["wcb/button", {}]]]]
+  }))), (general_image.imagePosition === "right" || general_image.imagePosition === "bottom") && renderImage()));
 };
 /* harmony default export */ __webpack_exports__["default"] = (Edit);
 

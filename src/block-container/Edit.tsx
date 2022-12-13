@@ -60,7 +60,7 @@ export const getGapStyleFromGapjObj = ({ colunmGap, rowGap }) => {
 };
 
 const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
-	const { attributes, setAttributes, clientId } = props;
+	const { attributes, setAttributes, clientId, isSelected } = props;
 	const { uniqueId } = attributes;
 
 	// const { myCache, ref } = useCreateCacheEmotion();
@@ -80,16 +80,19 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		});
 	}, []);
 
-	const hasParent = useSelect(
-		(select) =>
-			(select(blockEditorStore) as any).getBlockParents(clientId).length > 0,
+	const { hasInnerBlocks, hasParent } = useSelect(
+		(select) => {
+			return {
+				hasParent:
+					// @ts-ignore
+					select(blockEditorStore).getBlockParents(clientId).length > 0,
+				// @ts-ignore
+				hasInnerBlocks: select(blockEditorStore).getBlocks(clientId).length > 0,
+			};
+		},
 		[clientId]
 	);
-	const hasInnerBlocks = useSelect(
-		(select) =>
-			(select(blockEditorStore) as any).getBlocks(clientId).length > 0,
-		[clientId]
-	);
+
 	//
 
 	const renderPanelBackground = () => {
@@ -277,16 +280,12 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 	});
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
-		renderAppender: () =>
-			hasParent ? (
-				hasInnerBlocks ? (
-					<InnerBlocks.DefaultBlockAppender />
-				) : (
-					<InnerBlocks.ButtonBlockAppender />
-				)
-			) : hasInnerBlocks ? null : (
-				<InnerBlocks.ButtonBlockAppender />
-			),
+		renderAppender: () => {
+			if (!hasInnerBlocks) {
+				return <InnerBlocks.ButtonBlockAppender />;
+			}
+			return isSelected ? <InnerBlocks.DefaultBlockAppender /> : null;
+		},
 	});
 	//
 
@@ -399,14 +398,17 @@ const Placeholder: FC<TPlaceholder> = ({
 
 const ContainerEdit = (props) => {
 	const { clientId } = props;
-	const hasInnerBlocks = useSelect(
-		(select) =>
-			(select(blockEditorStore) as any).getBlocks(clientId).length > 0,
-		[clientId]
-	);
-	const hasParent = useSelect(
-		(select) =>
-			(select(blockEditorStore) as any).getBlockParents(clientId).length > 0,
+
+	const { hasInnerBlocks, hasParent } = useSelect(
+		(select) => {
+			return {
+				hasParent:
+					// @ts-ignore
+					select(blockEditorStore).getBlockParents(clientId).length > 0,
+				// @ts-ignore
+				hasInnerBlocks: select(blockEditorStore).getBlocks(clientId).length > 0,
+			};
+		},
 		[clientId]
 	);
 
