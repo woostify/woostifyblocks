@@ -17,32 +17,33 @@ import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyR
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 
-export interface WCB_HEADING_PANEL_SEPARATOR {
+export interface WCB_ICON_BOX_PANEL_STYLE_SEPARATOR {
 	border: BorderMainSingleSide;
 	width: HasResponsive<string>;
 }
 
-export const WCB_HEADING_PANEL_SEPARATOR_DEMO: WCB_HEADING_PANEL_SEPARATOR = {
-	border: DEFAULT_BORDER_MAIN_SINGLE_SIDE,
-	width: { Desktop: "10%" },
-};
+export const WCB_ICON_BOX_PANEL_STYLE_SEPARATOR_DEMO: WCB_ICON_BOX_PANEL_STYLE_SEPARATOR =
+	{
+		border: DEFAULT_BORDER_MAIN_SINGLE_SIDE,
+		width: { Desktop: "10%" },
+	};
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
-	panelSeparator: WCB_HEADING_PANEL_SEPARATOR;
-	setAttr__panelSeparator: (data: WCB_HEADING_PANEL_SEPARATOR) => void;
+	panelData: WCB_ICON_BOX_PANEL_STYLE_SEPARATOR;
+	setAttr__: (data: WCB_ICON_BOX_PANEL_STYLE_SEPARATOR) => void;
 }
 
-const WcbHeadingPanelSeparator: FC<Props> = ({
-	panelSeparator = WCB_HEADING_PANEL_SEPARATOR_DEMO,
-	setAttr__panelSeparator,
+const WcbIconBoxPanel_StyleSeparator: FC<Props> = ({
+	panelData = WCB_ICON_BOX_PANEL_STYLE_SEPARATOR_DEMO,
+	setAttr__,
 	initialOpen,
 	onToggle,
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
-	const { border, width: widthProps } = panelSeparator;
+	const { border, width: widthProps } = panelData;
 
 	const { currentDeviceValue: CUSTOM_WIDTH } = getValueFromAttrsResponsives(
 		widthProps,
@@ -65,8 +66,8 @@ const WcbHeadingPanelSeparator: FC<Props> = ({
 					units={units}
 					value={CUSTOM_WIDTH}
 					onChange={(value) => {
-						setAttr__panelSeparator({
-							...panelSeparator,
+						setAttr__({
+							...panelData,
 							width: {
 								...widthProps,
 								[deviceType]: value,
@@ -90,8 +91,8 @@ const WcbHeadingPanelSeparator: FC<Props> = ({
 				<BorderControl
 					label={__("Border styles")}
 					onChange={(border: BorderMainSingleSide) => {
-						setAttr__panelSeparator({
-							...panelSeparator,
+						setAttr__({
+							...panelData,
 							border,
 						});
 					}}
@@ -103,4 +104,4 @@ const WcbHeadingPanelSeparator: FC<Props> = ({
 	);
 };
 
-export default WcbHeadingPanelSeparator;
+export default WcbIconBoxPanel_StyleSeparator;

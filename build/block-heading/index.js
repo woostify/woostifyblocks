@@ -3520,6 +3520,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyBorderControl/types */ "./src/components/controls/MyBorderControl/types.ts");
 /* harmony import */ var _components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
 /* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
 
 
 
@@ -3546,7 +3548,9 @@ const WcbHeadingPanelSeparator = _ref => {
     border,
     width: widthProps
   } = panelSeparator;
-  const CUSTOM_WIDTH = widthProps[deviceType] || widthProps.Tablet || widthProps.Desktop;
+  const {
+    currentDeviceValue: CUSTOM_WIDTH
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__["default"])(widthProps, deviceType);
   const renderCustomWidth = () => {
     const units = [{
       value: "px",
@@ -3597,6 +3601,7 @@ const WcbHeadingPanelSeparator = _ref => {
         border
       });
     },
+    withSlider: true,
     value: border
   })));
 };

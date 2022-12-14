@@ -56,7 +56,7 @@ const WcbTeamPanel_StyleDesignation: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Designation", "wcb")}
+			title={__("Prefix", "wcb")}
 		>
 			<div className="space-y-2.5">
 				<MyTypographyControl

@@ -29,13 +29,21 @@ import {
 	WCB_ICON_BOX_PANEL_STYLE_TITLE_DEMO,
 } from "./WcbTeamPanel_StyleTitle";
 import {
-	WCB_ICON_BOX_PANEL_STYLE_SOCIALICONS,
-	WCB_ICON_BOX_PANEL_STYLE_SOCIALICONS_DEMO,
-} from "./WcbTeamPanel_StyleSocialIcons";
+	WCB_ICON_BOX_PANEL_STYLE_ICON,
+	WCB_ICON_BOX_PANEL_STYLE_ICON_DEMO,
+} from "./WcbIconBoxPanel_StyleIcons";
 import {
 	WCB_ICON_BOX_PANEL_STYLE_IMAGE,
 	WCB_ICON_BOX_PANEL_STYLE_IMAGE_DEMO,
 } from "./WcbTeamPanel_StyleImage";
+import {
+	WCB_ICON_BOX_PANEL_STYLE_SEPARATOR,
+	WCB_ICON_BOX_PANEL_STYLE_SEPARATOR_DEMO,
+} from "./WcbIconBoxPanel_StyleSeparator";
+import {
+	WCB_ICON_BOX_PANEL_STYLE_DIMENSION,
+	WCB_ICON_BOX_PANEL_STYLE_DIMENSION_DEMO,
+} from "./WcbIconBoxPanel_StyleDimension";
 export interface WcbAttrs {
 	uniqueId: string;
 	heading: string;
@@ -46,9 +54,11 @@ export interface WcbAttrs {
 	general_image: WCB_ICON_BOX_PANEL_IMAGES;
 	style_title: WCB_ICON_BOX_PANEL_STYLE_TITLE;
 	style_desination: WCB_ICON_BOX_PANEL_STYLE_DESIGNATION;
+	style_separator: WCB_ICON_BOX_PANEL_STYLE_SEPARATOR;
 	style_description: WCB_ICON_BOX_PANEL_STYLE_DESCRIPTION;
-	style_socialIcons: WCB_ICON_BOX_PANEL_STYLE_SOCIALICONS;
+	style_socialIcons: WCB_ICON_BOX_PANEL_STYLE_ICON;
 	style_image: WCB_ICON_BOX_PANEL_STYLE_IMAGE;
+	style_dimension: WCB_ICON_BOX_PANEL_STYLE_DIMENSION;
 	//
 	advance_responsiveCondition: MyResponsiveConditionControlData;
 	advance_zIndex: MyZIndexControlData;
@@ -71,7 +81,7 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		type: "string",
 		source: "html",
 		selector: ".wcb-icon-box__designation",
-		default: "Designation",
+		default: "Write a Prefix",
 	},
 	description: {
 		type: "string",
@@ -99,17 +109,25 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		type: "object",
 		default: WCB_ICON_BOX_PANEL_STYLE_DESIGNATION_DEMO,
 	},
+	style_separator: {
+		type: "object",
+		default: WCB_ICON_BOX_PANEL_STYLE_SEPARATOR_DEMO,
+	},
 	style_description: {
 		type: "object",
 		default: WCB_ICON_BOX_PANEL_STYLE_DESCRIPTION_DEMO,
 	},
 	style_socialIcons: {
 		type: "object",
-		default: WCB_ICON_BOX_PANEL_STYLE_SOCIALICONS_DEMO,
+		default: WCB_ICON_BOX_PANEL_STYLE_ICON_DEMO,
 	},
 	style_image: {
 		type: "object",
 		default: WCB_ICON_BOX_PANEL_STYLE_IMAGE_DEMO,
+	},
+	style_dimension: {
+		type: "object",
+		default: WCB_ICON_BOX_PANEL_STYLE_DIMENSION_DEMO,
 	},
 
 	// ADVANCE

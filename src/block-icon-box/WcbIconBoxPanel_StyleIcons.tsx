@@ -7,50 +7,62 @@ import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import {
+	MyDimensionsNoGapControlData,
+	MY_DIMENSIONS_NO_GAP_CONTROL_DEMO,
+} from "../components/controls/MyDimensionsControl/types";
+import MyDimensionsNoGapControl from "../components/controls/MyDimensionsControl/MyDimensionsNoGapControl";
+import {
+	MyBorderControlData,
+	MY_BORDER_CONTROL_DEMO,
+} from "../components/controls/MyBorderControl/types";
+import MyDisclosure from "../components/controls/MyDisclosure";
+import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
 
-export interface WCB_ICON_BOX_PANEL_STYLE_SOCIALICONS {
+export interface WCB_ICON_BOX_PANEL_STYLE_ICON {
 	color: string;
 	hoverColor: string;
 	iconSize: HasResponsive<string>;
-	iconSpacing: HasResponsive<string>;
+	dimensions: MyDimensionsNoGapControlData;
+	border: MyBorderControlData;
 }
 
-export const WCB_ICON_BOX_PANEL_STYLE_SOCIALICONS_DEMO: WCB_ICON_BOX_PANEL_STYLE_SOCIALICONS =
+export const WCB_ICON_BOX_PANEL_STYLE_ICON_DEMO: WCB_ICON_BOX_PANEL_STYLE_ICON =
 	{
 		color: "#334155",
 		hoverColor: "",
 		iconSize: { Desktop: "1.25rem" },
-		iconSpacing: { Desktop: "1.25rem" },
+		dimensions: MY_DIMENSIONS_NO_GAP_CONTROL_DEMO,
+		border: MY_BORDER_CONTROL_DEMO,
 	};
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
-	panelData: WCB_ICON_BOX_PANEL_STYLE_SOCIALICONS;
-	setAttr__: (data: WCB_ICON_BOX_PANEL_STYLE_SOCIALICONS) => void;
+	panelData: WCB_ICON_BOX_PANEL_STYLE_ICON;
+	setAttr__: (data: WCB_ICON_BOX_PANEL_STYLE_ICON) => void;
 }
 
-const WcbTeamPanel_StyleSocialIcons: FC<Props> = ({
-	panelData = WCB_ICON_BOX_PANEL_STYLE_SOCIALICONS_DEMO,
+const WcbIconBoxPanel_StyleIcons: FC<Props> = ({
+	panelData = WCB_ICON_BOX_PANEL_STYLE_ICON_DEMO,
 	setAttr__,
 	initialOpen,
 	onToggle,
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { color, hoverColor, iconSize, iconSpacing } = panelData;
+	const { color, hoverColor, iconSize, dimensions, border } = panelData;
 	const { currentDeviceValue: currentIconSize } = getValueFromAttrsResponsives(
 		iconSize,
 		deviceType
 	);
-	const { currentDeviceValue: currentIconSpacing } =
-		getValueFromAttrsResponsives(iconSpacing, deviceType);
+
 	//
 	return (
 		<PanelBody
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Social icons", "wcb")}
+			title={__("Icon", "wcb")}
 		>
 			<div className="space-y-5">
 				<MySpacingSizesControl
@@ -65,21 +77,6 @@ const WcbTeamPanel_StyleSocialIcons: FC<Props> = ({
 					}}
 					value={currentIconSize || ""}
 					label={__("Icon size", "wcb")}
-					hasResponsive
-				/>
-
-				<MySpacingSizesControl
-					onChange={(value) => {
-						setAttr__({
-							...panelData,
-							iconSpacing: {
-								...iconSpacing,
-								[deviceType]: value,
-							},
-						});
-					}}
-					value={currentIconSpacing || ""}
-					label={__("Icon spacing", "wcb")}
 					hasResponsive
 				/>
 
@@ -102,9 +99,28 @@ const WcbTeamPanel_StyleSocialIcons: FC<Props> = ({
 					color={hoverColor}
 					label={__("Hover color", "wcb")}
 				/>
+
+				<div className="space-y-4">
+					<MyDisclosure label="Border">
+						<MyBorderControl
+							borderControl={border}
+							setAttrs__border={(data) => {
+								setAttr__({ ...panelData, border: data });
+							}}
+						/>
+					</MyDisclosure>
+					<MyDisclosure label="Dimensions">
+						<MyDimensionsNoGapControl
+							dimensionControl={dimensions}
+							setAttrs__dimensions={(data) => {
+								setAttr__({ ...panelData, dimensions: data });
+							}}
+						/>
+					</MyDisclosure>
+				</div>
 			</div>
 		</PanelBody>
 	);
 };
 
-export default WcbTeamPanel_StyleSocialIcons;
+export default WcbIconBoxPanel_StyleIcons;

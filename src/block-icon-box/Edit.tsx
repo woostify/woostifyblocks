@@ -17,10 +17,12 @@ import { WcbAttrsForSave } from "./Save";
 import WcbTeamPanel_StyleTitle from "./WcbTeamPanel_StyleTitle";
 import WcbTeamPanel_StyleDesignation from "./WcbTeamPanel_StyleDesignation";
 import WcbTeamPanel_StyleDescription from "./WcbTeamPanel_StyleDescription";
-import WcbTeamPanel_StyleSocialIcons from "./WcbTeamPanel_StyleSocialIcons";
+import WcbIconBoxPanel_StyleIcons from "./WcbIconBoxPanel_StyleIcons";
 import MyIcon from "../components/controls/MyIcon";
 import WcbTeamPanel_StyleImage from "./WcbTeamPanel_StyleImage";
 import MyIconFull from "../components/controls/MyIconFull";
+import WcbIconBoxPanel_StyleSeparator from "./WcbIconBoxPanel_StyleSeparator";
+import WcbIconBoxPanel_StyleDimension from "./WcbIconBoxPanel_StyleDimension";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -38,6 +40,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_description,
 		style_socialIcons,
 		style_image,
+		style_separator,
+		style_dimension,
 	} = attributes;
 	//  COMMON HOOKS
 	const ref = useRef<HTMLDivElement>(null);
@@ -106,6 +110,26 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							}}
 							panelData={style_title}
 						/>
+						<WcbIconBoxPanel_StyleIcons
+							onToggle={() => handleTogglePanel("Styles", "_StyleIcons")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleIcons"}
+							opened={tabStylesIsPanelOpen === "_StyleIcons" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_socialIcons: data });
+							}}
+							panelData={style_socialIcons}
+						/>
+						<WcbIconBoxPanel_StyleSeparator
+							onToggle={() => handleTogglePanel("Styles", "_StyleSeparator")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleSeparator"}
+							opened={tabStylesIsPanelOpen === "_StyleSeparator" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_separator: data });
+							}}
+							panelData={style_separator}
+						/>
 						<WcbTeamPanel_StyleDesignation
 							onToggle={() => handleTogglePanel("Styles", "_StyleDesignation")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleDesignation"}
@@ -126,6 +150,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							}}
 							panelData={style_description}
 						/>
+
 						{general_image.isShowImage && (
 							<WcbTeamPanel_StyleImage
 								onToggle={() => handleTogglePanel("Styles", "_StyleImage")}
@@ -138,15 +163,16 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								panelData={style_image}
 							/>
 						)}
-						<WcbTeamPanel_StyleSocialIcons
-							onToggle={() => handleTogglePanel("Styles", "_StyleSocialIcons")}
-							initialOpen={tabStylesIsPanelOpen === "_StyleSocialIcons"}
-							opened={tabStylesIsPanelOpen === "_StyleSocialIcons" || undefined}
+
+						<WcbIconBoxPanel_StyleDimension
+							onToggle={() => handleTogglePanel("Styles", "_StyleDimension")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleDimension"}
+							opened={tabStylesIsPanelOpen === "_StyleDimension" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ style_socialIcons: data });
+								setAttributes({ style_dimension: data });
 							}}
-							panelData={style_socialIcons}
+							panelData={style_dimension}
 						/>
 					</>
 				);
@@ -182,6 +208,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			style_description,
 			style_socialIcons,
 			style_image,
+			style_separator,
+			style_dimension,
 		};
 	}, [
 		uniqueId,
@@ -194,6 +222,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_description,
 		style_socialIcons,
 		style_image,
+		style_separator,
+		style_dimension,
 	]);
 
 	const renderImage = () => {
@@ -229,6 +259,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					renderImage()}
 				{/* CHILD CONTENT  */}
 				<div className="wcb-icon-box__content">
+					<MyIcon icon="lni-add-files" />
 					<RichText
 						tagName="div"
 						value={designation}
@@ -255,12 +286,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 						className="wcb-icon-box__description"
 					/>
 
-					<div className="wcb-cta__buttons">
-						<InnerBlocks
-							allowedBlocks={[]}
-							template={[["wcb/buttons", {}, [["wcb/button", {}]]]]}
-						/>
-					</div>
+					<InnerBlocks allowedBlocks={[]} template={[["wcb/button", {}]]} />
 				</div>
 
 				{(general_image.imagePosition === "right" ||
