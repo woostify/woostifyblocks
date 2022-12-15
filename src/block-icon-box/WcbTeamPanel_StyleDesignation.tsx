@@ -27,7 +27,7 @@ export const WCB_ICON_BOX_PANEL_STYLE_DESIGNATION_DEMO: WCB_ICON_BOX_PANEL_STYLE
 			fontSizes: { Desktop: "1rem" },
 		},
 		textColor: "#6b7280",
-		marginBottom: { Desktop: "1.125rem" },
+		marginBottom: { Desktop: "0.5rem" },
 	};
 
 interface Props

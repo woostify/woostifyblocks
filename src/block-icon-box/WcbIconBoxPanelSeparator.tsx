@@ -12,7 +12,7 @@ export interface WCB_ICON_BOX_PANEL_SEPARATOR {
 }
 
 export const WCB_ICON_BOX_PANEL_SEPARATOR_DEMO: WCB_ICON_BOX_PANEL_SEPARATOR = {
-	enableSeparator: true,
+	enableSeparator: false,
 	position: "afterTitle",
 };
 
@@ -20,6 +20,7 @@ interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
 	panelData: WCB_ICON_BOX_PANEL_SEPARATOR;
 	setAttr__: (data: WCB_ICON_BOX_PANEL_SEPARATOR) => void;
+	showOptionAfterIcon: boolean;
 }
 
 const WcbIconBoxPanelSeparator: FC<Props> = ({
@@ -28,16 +29,22 @@ const WcbIconBoxPanelSeparator: FC<Props> = ({
 	initialOpen,
 	onToggle,
 	opened,
+	showOptionAfterIcon,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
 	const { enableSeparator, position } = panelData;
-	const PLANS_DEMO: Option<WCB_ICON_BOX_PANEL_SEPARATOR["position"]>[] = [
-		{ value: "afterIcon", label: "After Icon" },
+
+	let PLANS_DEMO: Option<WCB_ICON_BOX_PANEL_SEPARATOR["position"]>[] = [
 		{ value: "afterPrefix", label: "After Prefix" },
 		{ value: "afterTitle", label: "After Title" },
 		{ value: "afterDescription", label: "After Description" },
 	];
+
+	if (showOptionAfterIcon) {
+		PLANS_DEMO = [{ value: "afterIcon", label: "After Icon" }, ...PLANS_DEMO];
+	}
+
 	return (
 		<PanelBody
 			initialOpen={initialOpen}
@@ -55,17 +62,19 @@ const WcbIconBoxPanelSeparator: FC<Props> = ({
 					}}
 				/>
 
-				<MySelect
-					label={__("Position", "Wcb")}
-					options={PLANS_DEMO}
-					value={position}
-					onChange={(value) => {
-						setAttr__({
-							...panelData,
-							position: value as WCB_ICON_BOX_PANEL_SEPARATOR["position"],
-						});
-					}}
-				/>
+				{enableSeparator && (
+					<MySelect
+						label={__("Position", "Wcb")}
+						options={PLANS_DEMO}
+						value={position}
+						onChange={(value) => {
+							setAttr__({
+								...panelData,
+								position: value as WCB_ICON_BOX_PANEL_SEPARATOR["position"],
+							});
+						}}
+					/>
+				)}
 			</div>
 		</PanelBody>
 	);

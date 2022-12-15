@@ -17,7 +17,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		general_layout,
 		style_description,
 		style_desination,
-		style_socialIcons,
+		style_Icon,
 		style_title,
 		//
 		advance_responsiveCondition,
@@ -25,6 +25,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		general_icon,
 		style_dimension,
 		style_separator,
+		general_separator,
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
@@ -38,8 +39,22 @@ const GlobalCss: FC<Props> = (attrs) => {
 				value: general_layout.textAlignment,
 				prefix: "textAlign",
 			}),
+
 			{
 				[`${WRAP_CLASSNAME}`]: {
+					display:
+						general_icon.iconPosition === "left" ||
+						general_icon.iconPosition === "right"
+							? "flex"
+							: "block",
+					".wcb-icon-box__content-title-wrap": {
+						display:
+							general_icon.iconPosition === "leftOfTitle" ||
+							general_icon.iconPosition === "rightOfTitle"
+								? "flex"
+								: "block",
+					},
+
 					[`@media (min-width: ${media_tablet})`]: {},
 					[`@media (min-width: ${media_desktop})`]: {},
 				},
@@ -47,143 +62,147 @@ const GlobalCss: FC<Props> = (attrs) => {
 		];
 	};
 
-	// const isImageBeSide =
-	// 	general_image.imagePosition === "left" ||
-	// 	general_image.imagePosition === "right";
 	return (
 		<>
 			<Global styles={getDivWrapStyles()} />
+			<Global
+				styles={getPaddingMarginStyles({
+					className: WRAP_CLASSNAME,
+					margin: style_dimension.margin,
+					padding: style_dimension.padding,
+				})}
+			/>
 
-			{/* --------- CONTENT WRAP ---------
-			{general_image.isShowImage &&
-			general_image?.image?.mediaId &&
-			isImageBeSide ? (
+			{/* --------- ICON --------- */}
+			{general_icon.enableIcon ? (
 				<Global
 					styles={[
+						getPaddingMarginStyles({
+							className: `${WRAP_CLASSNAME} .wcb-icon-box__icon-wrap`,
+							margin: style_Icon.dimensions.margin,
+						}),
+						getPaddingMarginStyles({
+							className: `${WRAP_CLASSNAME} .wcb-icon-box__icon`,
+							padding: style_Icon.dimensions.padding,
+						}),
+						getBorderStyles({
+							border: style_Icon.border,
+							className: `${WRAP_CLASSNAME} .wcb-icon-box__icon`,
+							isWithRadius: true,
+						}),
+						getStyleObjectFromResponsiveAttr({
+							className: `${WRAP_CLASSNAME} .wcb-icon-full`,
+							value: style_Icon.iconSize,
+							prefix: "width",
+							prefix_2: "fontSize",
+						}),
 						{
-							[`${WRAP_CLASSNAME}`]: {
-								display: general_image.stackOn !== "none" ? "block" : "flex",
-								[`@media (min-width: ${media_tablet})`]: {
-									display:
-										general_image.stackOn === "tablet" ? "block" : "flex",
+							[`${WRAP_CLASSNAME} .wcb-icon-full`]: {
+								color: style_Icon.color,
+								":hover": {
+									color: style_Icon.hoverColor,
 								},
-								[`@media (min-width: ${media_desktop})`]: {
-									display: "flex",
-								},
+							},
+						},
+						// {
+						// 	[`${WRAP_CLASSNAME} .wcb-icon-full, ${WRAP_CLASSNAME} .wcb-icon-box__content-wrap`]:
+						// 		{
+						// 			alignSelf: style_Icon.imageAlignSelf,
+						// 		},
+						// },
+					]}
+				/>
+			) : null}
+
+			{/* --------- DESIGNATION --------- */}
+			{general_layout.enablePrefix ? (
+				<Global
+					styles={[
+						getTypographyStyles({
+							typography: style_desination.typography,
+							className: `${WRAP_CLASSNAME} .wcb-icon-box__designation`,
+						}),
+						getStyleObjectFromResponsiveAttr({
+							className: `${WRAP_CLASSNAME} .wcb-icon-box__designation`,
+							value: style_desination.marginBottom,
+							prefix: "marginBottom",
+						}),
+						{
+							[`${WRAP_CLASSNAME} .wcb-icon-box__designation`]: {
+								color: style_desination.textColor,
 							},
 						},
 					]}
 				/>
-			) : null} */}
+			) : null}
 
-			{/* --------- IMAGE --------- */}
-			{/* {general_image.isShowImage && general_image?.image?.mediaId ? (
+			{/* --------- TITLE --------- */}
+			{general_layout.enableTitle ? (
+				<Global
+					styles={[
+						getTypographyStyles({
+							typography: style_title.typography,
+							className: `${WRAP_CLASSNAME} .wcb-icon-box__heading`,
+						}),
+						getStyleObjectFromResponsiveAttr({
+							className: `${WRAP_CLASSNAME} .wcb-icon-box__heading`,
+							value: style_title.marginBottom,
+							prefix: "marginBottom",
+						}),
+						{
+							[`${WRAP_CLASSNAME} .wcb-icon-box__heading`]: {
+								color: style_title.textColor,
+							},
+						},
+					]}
+				/>
+			) : null}
+
+			{/* ----------- SEPARATOR ----------- */}
+			{general_separator.enableSeparator ? (
 				<Global
 					styles={[
 						getBorderStyles({
-							border: style_image.border,
-							className: `${WRAP_CLASSNAME} .wcb-icon-box__image`,
-							isWithRadius: true,
-						}),
-						getPaddingMarginStyles({
-							className: `${WRAP_CLASSNAME} .wcb-icon-box__image`,
-							margin: style_image.margin,
+							border: {
+								mainSettings: style_separator.border,
+							},
+							className: `${WRAP_CLASSNAME} .wcb-icon-box__separator`,
 						}),
 						getStyleObjectFromResponsiveAttr({
-							className: `${WRAP_CLASSNAME} .wcb-icon-box__image`,
-							value: style_image.imageSize,
+							className: `${WRAP_CLASSNAME} .wcb-icon-box__separator`,
+							value: style_separator.width,
 							prefix: "width",
 						}),
+						getStyleObjectFromResponsiveAttr({
+							className: `${WRAP_CLASSNAME} .wcb-icon-box__separator`,
+							value: style_separator.marginBottom,
+							prefix: "marginBottom",
+						}),
+					]}
+				/>
+			) : null}
+
+			{/* --------- DESCRIPTION --------- */}
+			{general_layout.enableDescription ? (
+				<Global
+					styles={[
+						getTypographyStyles({
+							typography: style_description.typography,
+							className: `${WRAP_CLASSNAME} .wcb-icon-box__description`,
+						}),
+						getStyleObjectFromResponsiveAttr({
+							className: `${WRAP_CLASSNAME} .wcb-icon-box__description`,
+							value: style_description.marginBottom,
+							prefix: "marginBottom",
+						}),
 						{
-							[`${WRAP_CLASSNAME} .wcb-icon-box__image, ${WRAP_CLASSNAME} .wcb-icon-box__content-wrap`]:
-								{
-									alignSelf: general_image.imageAlignSelf,
-								},
+							[`${WRAP_CLASSNAME} .wcb-icon-box__description`]: {
+								color: style_description.textColor,
+							},
 						},
 					]}
 				/>
-			) : null} */}
-
-			{/* --------- TITLE --------- */}
-			<Global
-				styles={[
-					getTypographyStyles({
-						typography: style_title.typography,
-						className: `${WRAP_CLASSNAME} .wcb-icon-box__heading`,
-					}),
-					getStyleObjectFromResponsiveAttr({
-						className: `${WRAP_CLASSNAME} .wcb-icon-box__heading`,
-						value: style_title.marginBottom,
-						prefix: "marginBottom",
-					}),
-					{
-						[`${WRAP_CLASSNAME} .wcb-icon-box__heading`]: {
-							color: style_title.textColor,
-						},
-					},
-				]}
-			/>
-
-			{/* --------- DESIGNATION --------- */}
-			<Global
-				styles={[
-					getTypographyStyles({
-						typography: style_desination.typography,
-						className: `${WRAP_CLASSNAME} .wcb-icon-box__designation`,
-					}),
-					getStyleObjectFromResponsiveAttr({
-						className: `${WRAP_CLASSNAME} .wcb-icon-box__designation`,
-						value: style_desination.marginBottom,
-						prefix: "marginBottom",
-					}),
-					{
-						[`${WRAP_CLASSNAME} .wcb-icon-box__designation`]: {
-							color: style_desination.textColor,
-						},
-					},
-				]}
-			/>
-
-			{/* --------- DESCRIPTION --------- */}
-			<Global
-				styles={[
-					getTypographyStyles({
-						typography: style_description.typography,
-						className: `${WRAP_CLASSNAME} .wcb-icon-box__description`,
-					}),
-					getStyleObjectFromResponsiveAttr({
-						className: `${WRAP_CLASSNAME} .wcb-icon-box__description`,
-						value: style_description.marginBottom,
-						prefix: "marginBottom",
-					}),
-					{
-						[`${WRAP_CLASSNAME} .wcb-icon-box__description`]: {
-							color: style_description.textColor,
-						},
-					},
-				]}
-			/>
-
-			{/* --------- SOCIALS ICONS --------- */}
-			<Global
-				styles={[
-					getStyleObjectFromResponsiveAttr({
-						className: `${WRAP_CLASSNAME} .wcb-icon-full`,
-						value: style_socialIcons.iconSize,
-						prefix: "width",
-						prefix_2: "fontSize",
-					}),
-
-					{
-						[`${WRAP_CLASSNAME} .wcb-icon-full`]: {
-							color: style_socialIcons.color,
-							":hover": {
-								color: style_socialIcons.hoverColor,
-							},
-						},
-					},
-				]}
-			/>
+			) : null}
 
 			{/* ADVANCE  */}
 			<Global

@@ -253,6 +253,7 @@ video {
   display: inline-block;
   line-height: 1;
   vertical-align: -0.125em;
+  overflow: hidden;
 }
 .wcb-icon-full svg,
 .wcb-icon-full img {

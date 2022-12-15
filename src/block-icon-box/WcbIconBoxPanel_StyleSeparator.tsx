@@ -11,21 +11,26 @@ import {
 	BorderMainSingleSide,
 	DEFAULT_BORDER_MAIN_SINGLE_SIDE,
 } from "../components/controls/MyBorderControl/types";
-import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
 
 export interface WCB_ICON_BOX_PANEL_STYLE_SEPARATOR {
 	border: BorderMainSingleSide;
 	width: HasResponsive<string>;
+	marginBottom: HasResponsive<string>;
 }
 
 export const WCB_ICON_BOX_PANEL_STYLE_SEPARATOR_DEMO: WCB_ICON_BOX_PANEL_STYLE_SEPARATOR =
 	{
-		border: DEFAULT_BORDER_MAIN_SINGLE_SIDE,
-		width: { Desktop: "10%" },
+		border: {
+			...DEFAULT_BORDER_MAIN_SINGLE_SIDE,
+			color: "#334155",
+		},
+		width: { Desktop: "40%" },
+		marginBottom: { Desktop: "1rem" },
 	};
 
 interface Props
@@ -43,41 +48,18 @@ const WcbIconBoxPanel_StyleSeparator: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
-	const { border, width: widthProps } = panelData;
+	const { border, width: widthProps, marginBottom } = panelData;
+
+	const { currentDeviceValue: MARGIN_BOTTOM } = getValueFromAttrsResponsives(
+		marginBottom,
+		deviceType
+	);
 
 	const { currentDeviceValue: CUSTOM_WIDTH } = getValueFromAttrsResponsives(
 		widthProps,
 		deviceType
 	);
 
-	const renderCustomWidth = () => {
-		const units = [
-			{ value: "px", label: "px", default: 100 },
-			{ value: "%", label: "%", default: 10 },
-			{ value: "vw", label: "vw", default: 10 },
-		];
-		return (
-			<div className="flex items-center justify-between">
-				<MyLabelControl className="flex-shrink-0" hasResponsive>
-					{__("Custom Width", "wcb")}
-				</MyLabelControl>
-				<UnitControl
-					className="flex-grow ml-3"
-					units={units}
-					value={CUSTOM_WIDTH}
-					onChange={(value) => {
-						setAttr__({
-							...panelData,
-							width: {
-								...widthProps,
-								[deviceType]: value,
-							},
-						});
-					}}
-				/>
-			</div>
-		);
-	};
 	//
 	return (
 		<PanelBody
@@ -87,7 +69,19 @@ const WcbIconBoxPanel_StyleSeparator: FC<Props> = ({
 			title={__("Separator", "wcb")}
 		>
 			<div className="space-y-5">
-				{renderCustomWidth()}
+				<MySpacingSizesControl
+					value={CUSTOM_WIDTH || ""}
+					onChange={(value) => {
+						setAttr__({
+							...panelData,
+							width: {
+								...widthProps,
+								[deviceType]: value,
+							},
+						});
+					}}
+					label={__("Custom Width", "wcb")}
+				/>
 				<BorderControl
 					label={__("Border styles")}
 					onChange={(border: BorderMainSingleSide) => {
@@ -98,6 +92,21 @@ const WcbIconBoxPanel_StyleSeparator: FC<Props> = ({
 					}}
 					withSlider
 					value={border}
+				/>
+
+				<MySpacingSizesControl
+					onChange={(value) => {
+						setAttr__({
+							...panelData,
+							marginBottom: {
+								...marginBottom,
+								[deviceType]: value,
+							},
+						});
+					}}
+					value={MARGIN_BOTTOM || ""}
+					label={__("Margin bottom", "wcb")}
+					hasResponsive
 				/>
 			</div>
 		</PanelBody>

@@ -23,9 +23,12 @@ export interface WCB_ICON_BOX_PANEL_ICON {
 }
 
 export const WCB_ICON_BOX_PANEL_ICON_DEMO: WCB_ICON_BOX_PANEL_ICON = {
-	enableIcon: false,
-	iconPosition: "left",
-	icon: DEFAULT_MY_ICON,
+	enableIcon: true,
+	iconPosition: "top",
+	icon: {
+		...DEFAULT_MY_ICON,
+		iconName: "lni-checkmark-circle",
+	},
 };
 
 interface Props
@@ -70,27 +73,32 @@ const WcbIconBoxPanelIcon: FC<Props> = ({
 					}}
 				/>
 
-				<SelecIcon
-					iconData={icon}
-					onChange={(value) => {
-						setAttr__({
-							...panelData,
-							icon: value,
-						});
-					}}
-				/>
+				{enableIcon && (
+					<>
+						<SelecIcon
+							iconData={icon}
+							onChange={(value) => {
+								setAttr__({
+									...panelData,
+									icon: value,
+								});
+							}}
+						/>
 
-				<MySelect
-					label={__("Position", "Wcb")}
-					options={PLANS_DEMO}
-					value={iconPosition}
-					onChange={(value) => {
-						setAttr__({
-							...panelData,
-							iconPosition: value as WCB_ICON_BOX_PANEL_ICON["iconPosition"],
-						});
-					}}
-				/>
+						<MySelect
+							label={__("Position", "Wcb")}
+							options={PLANS_DEMO}
+							value={iconPosition}
+							onChange={(value) => {
+								setAttr__({
+									...panelData,
+									iconPosition:
+										value as WCB_ICON_BOX_PANEL_ICON["iconPosition"],
+								});
+							}}
+						/>
+					</>
+				)}
 			</div>
 		</PanelBody>
 	);

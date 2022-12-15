@@ -23,6 +23,7 @@ import MyIconFull from "../components/controls/MyIconFull";
 import WcbIconBoxPanel_StyleSeparator from "./WcbIconBoxPanel_StyleSeparator";
 import WcbIconBoxPanel_StyleDimension from "./WcbIconBoxPanel_StyleDimension";
 import WcbIconBoxPanelSeparator from "./WcbIconBoxPanelSeparator";
+import { MY_DIMENSIONS_NO_GAP_DEMO__EMPTY } from "../components/controls/MyDimensionsControl/types";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -38,7 +39,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_title,
 		style_desination,
 		style_description,
-		style_socialIcons,
+		style_Icon,
 		style_separator,
 		style_dimension,
 		general_separator,
@@ -88,17 +89,114 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabGeneralIsPanelOpen === "Icon" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ general_icon: data });
+								if (
+									data.iconPosition === "leftOfTitle" ||
+									data.iconPosition === "left"
+								) {
+									return setAttributes({
+										general_icon: data,
+										general_separator: {
+											...general_separator,
+											position: "afterTitle",
+										},
+										general_layout: {
+											...general_layout,
+											textAlignment: {
+												Desktop: "left",
+												Tablet: "left",
+												Mobile: "left",
+											},
+										},
+										style_Icon: {
+											...style_Icon,
+											dimensions: {
+												...MY_DIMENSIONS_NO_GAP_DEMO__EMPTY,
+												margin: {
+													Desktop: {
+														...MY_DIMENSIONS_NO_GAP_DEMO__EMPTY.margin.Desktop,
+														right: "1rem",
+													},
+												},
+											},
+										},
+									});
+								}
+								if (
+									data.iconPosition === "rightOfTitle" ||
+									data.iconPosition === "right"
+								) {
+									return setAttributes({
+										general_icon: data,
+										general_separator: {
+											...general_separator,
+											position: "afterTitle",
+										},
+										general_layout: {
+											...general_layout,
+											textAlignment: {
+												Desktop: "right",
+												Tablet: "right",
+												Mobile: "right",
+											},
+										},
+										style_Icon: {
+											...style_Icon,
+											dimensions: {
+												...MY_DIMENSIONS_NO_GAP_DEMO__EMPTY,
+												margin: {
+													Desktop: {
+														...MY_DIMENSIONS_NO_GAP_DEMO__EMPTY.margin.Desktop,
+														left: "1rem",
+													},
+												},
+											},
+										},
+									});
+								}
+
+								return setAttributes({
+									general_icon: data,
+									style_Icon: {
+										...style_Icon,
+										dimensions: {
+											...MY_DIMENSIONS_NO_GAP_DEMO__EMPTY,
+											margin: {
+												Desktop: {
+													...MY_DIMENSIONS_NO_GAP_DEMO__EMPTY.margin.Desktop,
+													top: "1rem",
+													bottom: "1rem",
+												},
+											},
+										},
+									},
+								});
 							}}
 							panelData={general_icon}
 						/>
+
 						<WcbIconBoxPanelSeparator
 							onToggle={() => handleTogglePanel("General", "Separator")}
 							initialOpen={tabGeneralIsPanelOpen === "Separator"}
 							opened={tabGeneralIsPanelOpen === "Separator" || undefined}
 							//
+							showOptionAfterIcon={
+								general_icon.iconPosition === "top" ||
+								general_icon.iconPosition === "bellowTitle"
+							}
 							setAttr__={(data) => {
-								setAttributes({ general_separator: data });
+								if (
+									data.position === "afterIcon" &&
+									general_icon.iconPosition !== "top" &&
+									general_icon.iconPosition !== "bellowTitle"
+								) {
+									return setAttributes({
+										general_separator: {
+											...general_separator,
+											position: "afterTitle",
+										},
+									});
+								}
+								return setAttributes({ general_separator: data });
 							}}
 							panelData={general_separator}
 						/>
@@ -107,60 +205,80 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			case "Styles":
 				return (
 					<>
-						<WcbTeamPanel_StyleTitle
-							onToggle={() => handleTogglePanel("Styles", "_StyleTitle", true)}
-							initialOpen={
-								tabStylesIsPanelOpen === "_StyleTitle" ||
-								tabStylesIsPanelOpen === "first"
-							}
-							opened={tabStylesIsPanelOpen === "_StyleTitle" || undefined}
-							//
-							setAttr__={(data) => {
-								setAttributes({ style_title: data });
-							}}
-							panelData={style_title}
-						/>
-						<WcbIconBoxPanel_StyleIcons
-							onToggle={() => handleTogglePanel("Styles", "_StyleIcons")}
-							initialOpen={tabStylesIsPanelOpen === "_StyleIcons"}
-							opened={tabStylesIsPanelOpen === "_StyleIcons" || undefined}
-							//
-							setAttr__={(data) => {
-								setAttributes({ style_socialIcons: data });
-							}}
-							panelData={style_socialIcons}
-						/>
-						<WcbIconBoxPanel_StyleSeparator
-							onToggle={() => handleTogglePanel("Styles", "_StyleSeparator")}
-							initialOpen={tabStylesIsPanelOpen === "_StyleSeparator"}
-							opened={tabStylesIsPanelOpen === "_StyleSeparator" || undefined}
-							//
-							setAttr__={(data) => {
-								setAttributes({ style_separator: data });
-							}}
-							panelData={style_separator}
-						/>
-						<WcbTeamPanel_StyleDesignation
-							onToggle={() => handleTogglePanel("Styles", "_StyleDesignation")}
-							initialOpen={tabStylesIsPanelOpen === "_StyleDesignation"}
-							opened={tabStylesIsPanelOpen === "_StyleDesignation" || undefined}
-							//
-							setAttr__={(data) => {
-								setAttributes({ style_desination: data });
-							}}
-							panelData={style_desination}
-						/>
-						<WcbTeamPanel_StyleDescription
-							onToggle={() => handleTogglePanel("Styles", "_StyleDescription")}
-							initialOpen={tabStylesIsPanelOpen === "_StyleDescription"}
-							opened={tabStylesIsPanelOpen === "_StyleDescription" || undefined}
-							//
-							setAttr__={(data) => {
-								setAttributes({ style_description: data });
-							}}
-							panelData={style_description}
-						/>
+						{general_icon.enableIcon && (
+							<WcbIconBoxPanel_StyleIcons
+								onToggle={() => handleTogglePanel("Styles", "_StyleIcons")}
+								initialOpen={tabStylesIsPanelOpen === "_StyleIcons"}
+								opened={tabStylesIsPanelOpen === "_StyleIcons" || undefined}
+								//
+								setAttr__={(data) => {
+									setAttributes({ style_Icon: data });
+								}}
+								panelData={style_Icon}
+							/>
+						)}
+						{general_layout.enablePrefix && (
+							<WcbTeamPanel_StyleDesignation
+								onToggle={() =>
+									handleTogglePanel("Styles", "_StyleDesignation")
+								}
+								initialOpen={tabStylesIsPanelOpen === "_StyleDesignation"}
+								opened={
+									tabStylesIsPanelOpen === "_StyleDesignation" || undefined
+								}
+								//
+								setAttr__={(data) => {
+									setAttributes({ style_desination: data });
+								}}
+								panelData={style_desination}
+							/>
+						)}
+						{general_layout.enableTitle && (
+							<WcbTeamPanel_StyleTitle
+								onToggle={() =>
+									handleTogglePanel("Styles", "_StyleTitle", true)
+								}
+								initialOpen={
+									tabStylesIsPanelOpen === "_StyleTitle" ||
+									tabStylesIsPanelOpen === "first"
+								}
+								opened={tabStylesIsPanelOpen === "_StyleTitle" || undefined}
+								//
+								setAttr__={(data) => {
+									setAttributes({ style_title: data });
+								}}
+								panelData={style_title}
+							/>
+						)}
 
+						{general_separator.enableSeparator && (
+							<WcbIconBoxPanel_StyleSeparator
+								onToggle={() => handleTogglePanel("Styles", "_StyleSeparator")}
+								initialOpen={tabStylesIsPanelOpen === "_StyleSeparator"}
+								opened={tabStylesIsPanelOpen === "_StyleSeparator" || undefined}
+								//
+								setAttr__={(data) => {
+									setAttributes({ style_separator: data });
+								}}
+								panelData={style_separator}
+							/>
+						)}
+						{general_layout.enableDescription && (
+							<WcbTeamPanel_StyleDescription
+								onToggle={() =>
+									handleTogglePanel("Styles", "_StyleDescription")
+								}
+								initialOpen={tabStylesIsPanelOpen === "_StyleDescription"}
+								opened={
+									tabStylesIsPanelOpen === "_StyleDescription" || undefined
+								}
+								//
+								setAttr__={(data) => {
+									setAttributes({ style_description: data });
+								}}
+								panelData={style_description}
+							/>
+						)}
 						<WcbIconBoxPanel_StyleDimension
 							onToggle={() => handleTogglePanel("Styles", "_StyleDimension")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleDimension"}
@@ -202,7 +320,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			style_title,
 			style_desination,
 			style_description,
-			style_socialIcons,
+			style_Icon,
 			style_separator,
 			style_dimension,
 			general_icon,
@@ -216,7 +334,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_title,
 		style_desination,
 		style_description,
-		style_socialIcons,
+		style_Icon,
 		style_separator,
 		style_dimension,
 		general_icon,
@@ -224,9 +342,29 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	]);
 
 	const renderIcon = () => {
-		return general_icon.enableIcon ? (
-			<MyIconFull icon={general_icon.icon} />
-		) : null;
+		return (
+			<>
+				{general_icon.enableIcon && (
+					<div className="wcb-icon-box__icon-wrap">
+						<div className="wcb-icon-box__icon">
+							<MyIconFull icon={general_icon.icon} />
+						</div>
+					</div>
+				)}
+				{general_separator.position === "afterIcon" && renderSeparator()}
+			</>
+		);
+	};
+
+	const renderSeparator = () => {
+		if (!general_separator.enableSeparator) {
+			return null;
+		}
+		return (
+			<div className="wcb-icon-box__separator-wrap">
+				<div className="wcb-icon-box__separator"></div>
+			</div>
+		);
 	};
 
 	const HeadingTag = general_layout.headingTag;
@@ -247,40 +385,69 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				{/* CSS IN JS */}
 				<GlobalCss {...WcbAttrsForSave()} />
 
-				{(general_icon.iconPosition === "left" ||
-					general_icon.iconPosition === "top") &&
+				{(general_icon.iconPosition === "top" ||
+					general_icon.iconPosition === "left") &&
 					renderIcon()}
 
 				{/* CHILD CONTENT  */}
 				<div className="wcb-icon-box__content">
-					<RichText
-						tagName="div"
-						value={designation}
-						allowedFormats={[]}
-						onChange={(content) => setAttributes({ designation: content })}
-						placeholder={__("Designation...")}
-						className="wcb-icon-box__designation"
-					/>
-					<RichText
-						tagName={HeadingTag}
-						value={heading}
-						allowedFormats={["core/bold", "core/italic"]}
-						onChange={(content) => setAttributes({ heading: content })}
-						placeholder={__("Heading...")}
-						className="wcb-icon-box__heading"
-					/>
-					<div className="wcb-icon-box__separator"></div>
-					<RichText
-						tagName="div"
-						value={description}
-						allowedFormats={["core/bold", "core/italic"]}
-						onChange={(content) => setAttributes({ description: content })}
-						placeholder={__("Description...")}
-						className="wcb-icon-box__description"
-					/>
+					<div className="wcb-icon-box__content-title-wrap">
+						{general_icon.iconPosition === "leftOfTitle" && renderIcon()}
+						<div className="wcb-icon-box__content-title">
+							{general_layout.enablePrefix && (
+								<RichText
+									tagName="div"
+									value={designation}
+									allowedFormats={[]}
+									onChange={(content) =>
+										setAttributes({ designation: content })
+									}
+									placeholder={__("Write a Prefix")}
+									className="wcb-icon-box__designation"
+								/>
+							)}
 
-					<InnerBlocks allowedBlocks={[]} template={[["wcb/button", {}]]} />
+							{general_separator.position === "afterPrefix" &&
+								renderSeparator()}
+
+							{general_layout.enableTitle && (
+								<RichText
+									tagName={HeadingTag}
+									value={heading}
+									allowedFormats={["core/bold", "core/italic"]}
+									onChange={(content) => setAttributes({ heading: content })}
+									placeholder={__("Heading of box")}
+									className="wcb-icon-box__heading"
+								/>
+							)}
+						</div>
+						{(general_icon.iconPosition === "rightOfTitle" ||
+							general_icon.iconPosition === "bellowTitle") &&
+							renderIcon()}
+					</div>
+
+					{general_separator.position === "afterTitle" && renderSeparator()}
+
+					{general_layout.enableDescription && (
+						<RichText
+							tagName="div"
+							value={description}
+							allowedFormats={["core/bold", "core/italic"]}
+							onChange={(content) => setAttributes({ description: content })}
+							placeholder={__("Description of box ...")}
+							className="wcb-icon-box__description"
+						/>
+					)}
+
+					{general_separator.position === "afterDescription" &&
+						renderSeparator()}
+
+					{general_layout.enableCTAButton && (
+						<InnerBlocks allowedBlocks={[]} template={[["wcb/button", {}]]} />
+					)}
 				</div>
+
+				{general_icon.iconPosition === "right" && renderIcon()}
 			</div>
 		</MyCacheProvider>
 	);

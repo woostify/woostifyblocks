@@ -47,6 +47,7 @@ export const MY_DIMENSIONS_CONTROL_DEMO: MyDimensionsControlData = {
 		},
 	},
 };
+
 export const MY_DIMENSIONS_NO_GAP_CONTROL_DEMO: MyDimensionsNoGapControlData = {
 	margin: {
 		Desktop: {
@@ -65,6 +66,26 @@ export const MY_DIMENSIONS_NO_GAP_CONTROL_DEMO: MyDimensionsNoGapControlData = {
 		},
 	},
 };
+
+export const MY_DIMENSIONS_NO_GAP_DEMO__EMPTY: MyDimensionsNoGapControlData = {
+	margin: {
+		Desktop: {
+			top: "",
+			left: "",
+			right: "",
+			bottom: "",
+		},
+	},
+	padding: {
+		Desktop: {
+			top: "",
+			left: "",
+			right: "",
+			bottom: "",
+		},
+	},
+};
+
 export const MY_DIMENSIONS_NO_MARGIN_CONTROL_DEMO: MyDimensionsNoMarginControlData =
 	{
 		colunmGap: { Desktop: "1.5rem" },

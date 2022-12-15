@@ -16,14 +16,16 @@ export interface WCB_ICON_BOX_PANEL_LAYOUT {
 	enablePrefix: boolean;
 	enableTitle: boolean;
 	enableDescription: boolean;
+	enableCTAButton: boolean;
 }
 
 export const WCB_ICON_BOX_PANEL_LAYOUT_DEMO: WCB_ICON_BOX_PANEL_LAYOUT = {
 	textAlignment: { Desktop: "center" },
-	headingTag: "h3",
+	headingTag: "h4",
 	enableDescription: true,
-	enablePrefix: true,
+	enablePrefix: false,
 	enableTitle: true,
+	enableCTAButton: false,
 };
 
 interface Props
@@ -47,6 +49,7 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 		enableDescription,
 		enablePrefix,
 		enableTitle,
+		enableCTAButton,
 	} = panelData;
 
 	const { currentDeviceValue: TEXT_ALIGNMENT } = getValueFromAttrsResponsives(
@@ -96,12 +99,14 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 					}}
 				/>
 
-				<MyHeadingTagControl
-					tag={headingTag}
-					onChange={(value) => {
-						setAttr__({ ...panelData, headingTag: value });
-					}}
-				/>
+				{enableTitle && (
+					<MyHeadingTagControl
+						tag={headingTag}
+						onChange={(value) => {
+							setAttr__({ ...panelData, headingTag: value });
+						}}
+					/>
+				)}
 
 				<ToggleControl
 					label={__("Enable description", "wcb")}
@@ -109,6 +114,15 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 					className="mb-0"
 					onChange={(checked) => {
 						setAttr__({ ...panelData, enableDescription: checked });
+					}}
+				/>
+
+				<ToggleControl
+					label={__("Enable CTA button", "wcb")}
+					checked={enableCTAButton}
+					className="mb-0"
+					onChange={(checked) => {
+						setAttr__({ ...panelData, enableCTAButton: checked });
 					}}
 				/>
 			</div>

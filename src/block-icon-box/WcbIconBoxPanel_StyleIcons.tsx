@@ -31,8 +31,26 @@ export const WCB_ICON_BOX_PANEL_STYLE_ICON_DEMO: WCB_ICON_BOX_PANEL_STYLE_ICON =
 	{
 		color: "#334155",
 		hoverColor: "",
-		iconSize: { Desktop: "1.25rem" },
-		dimensions: MY_DIMENSIONS_NO_GAP_CONTROL_DEMO,
+		iconSize: { Desktop: "2.5rem" },
+		dimensions: {
+			...MY_DIMENSIONS_NO_GAP_CONTROL_DEMO,
+			margin: {
+				Desktop: {
+					top: "1rem",
+					left: "1rem",
+					right: "1rem",
+					bottom: "1rem",
+				},
+			},
+			padding: {
+				Desktop: {
+					bottom: "",
+					left: "",
+					right: "",
+					top: "",
+				},
+			},
+		},
 		border: MY_BORDER_CONTROL_DEMO,
 	};
 

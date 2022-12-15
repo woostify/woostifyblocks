@@ -1,4 +1,4 @@
-import { Dashicon, Dropdown, TextareaControl } from "@wordpress/components";
+import { Dropdown, TextareaControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, useState, useEffect } from "react";
 import ResetButton from "../ResetButton";
@@ -13,7 +13,6 @@ import MyMediaUploadCheck, {
 import "./editor.scss";
 import checkIsSvgHtmlTag from "../../../utils/checkIsSvgHtmlTag";
 import MyIconFull from "../MyIconFull";
-import { XMarkIcon } from "@heroicons/react/24/outline";
 
 const ICON_KEYS = Object.keys(unicodesMap) as MyIconKey[];
 
@@ -316,14 +315,9 @@ const SelecIcon: FC<Props> = ({
 						<span className="mr-3">{label}</span>
 						<MyIconFull
 							icon={iconData}
-							className="w-6 h-6 text-[24px]"
+							className="w-6 h-6 text-[24px] flex items-center "
 							renderIfNone={<strong>{__("None", "wcb")}</strong>}
 						/>
-						{/* {value ? (
-							<MyIcon className="text-xl" size={20} icon={value} />
-						) : (
-							<strong>{__("None", "wcb")}</strong>
-						)} */}
 					</button>
 					<ResetButton
 						onClick={() => {

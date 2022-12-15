@@ -58,7 +58,7 @@ export interface WcbAttrs {
 	style_desination: WCB_ICON_BOX_PANEL_STYLE_DESIGNATION;
 	style_separator: WCB_ICON_BOX_PANEL_STYLE_SEPARATOR;
 	style_description: WCB_ICON_BOX_PANEL_STYLE_DESCRIPTION;
-	style_socialIcons: WCB_ICON_BOX_PANEL_STYLE_ICON;
+	style_Icon: WCB_ICON_BOX_PANEL_STYLE_ICON;
 	style_dimension: WCB_ICON_BOX_PANEL_STYLE_DIMENSION;
 	//
 	advance_responsiveCondition: MyResponsiveConditionControlData;
@@ -122,7 +122,7 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		type: "object",
 		default: WCB_ICON_BOX_PANEL_STYLE_DESCRIPTION_DEMO,
 	},
-	style_socialIcons: {
+	style_Icon: {
 		type: "object",
 		default: WCB_ICON_BOX_PANEL_STYLE_ICON_DEMO,
 	},

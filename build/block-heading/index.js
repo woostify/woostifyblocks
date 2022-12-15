@@ -4767,6 +4767,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "DEFAULT_DIMENSION": function() { return /* binding */ DEFAULT_DIMENSION; },
 /* harmony export */   "MY_DIMENSIONS_CONTROL_DEMO": function() { return /* binding */ MY_DIMENSIONS_CONTROL_DEMO; },
 /* harmony export */   "MY_DIMENSIONS_NO_GAP_CONTROL_DEMO": function() { return /* binding */ MY_DIMENSIONS_NO_GAP_CONTROL_DEMO; },
+/* harmony export */   "MY_DIMENSIONS_NO_GAP_DEMO__EMPTY": function() { return /* binding */ MY_DIMENSIONS_NO_GAP_DEMO__EMPTY; },
 /* harmony export */   "MY_DIMENSIONS_NO_MARGIN_CONTROL_DEMO": function() { return /* binding */ MY_DIMENSIONS_NO_MARGIN_CONTROL_DEMO; },
 /* harmony export */   "MY_DIMENSIONS_NO_PADDING_CONTROL_DEMO": function() { return /* binding */ MY_DIMENSIONS_NO_PADDING_CONTROL_DEMO; }
 /* harmony export */ });
@@ -4815,6 +4816,24 @@ const MY_DIMENSIONS_NO_GAP_CONTROL_DEMO = {
       left: "1rem",
       right: "1rem",
       bottom: "1rem"
+    }
+  }
+};
+const MY_DIMENSIONS_NO_GAP_DEMO__EMPTY = {
+  margin: {
+    Desktop: {
+      top: "",
+      left: "",
+      right: "",
+      bottom: ""
+    }
+  },
+  padding: {
+    Desktop: {
+      top: "",
+      left: "",
+      right: "",
+      bottom: ""
     }
   }
 };

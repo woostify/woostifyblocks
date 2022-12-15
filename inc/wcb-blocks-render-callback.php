@@ -1,5 +1,14 @@
 <?php
 //============================================= block 1 ===============================================================
+function wcb_block_icon_box_renderCallback($attributes, $content)
+{
+    if (!is_admin()) {
+        wp_enqueue_script('wcb_block_icon_box_renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-icon-box/FrontendStyles.js', array('wp-element'), null, true);
+    }
+    return $content;
+}
+
+//============================================= block 1 ===============================================================
 function wcb_block_team_renderCallback($attributes, $content)
 {
     if (!is_admin()) {
