@@ -10,8 +10,8 @@ import GlobalCss from "./GlobalCss";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
-import WcbTeamPanelLayout from "./WcbTeamPanelLayout";
-import WcbTeamPanelImages from "./WcbTeamPanelImages";
+import WcbIconBoxPanelLayout from "./WcbIconBoxPanelLayout";
+import WcbIconBoxPanelIcon from "./WcbIconBoxPanelIcon";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
 import WcbTeamPanel_StyleTitle from "./WcbTeamPanel_StyleTitle";
@@ -19,10 +19,10 @@ import WcbTeamPanel_StyleDesignation from "./WcbTeamPanel_StyleDesignation";
 import WcbTeamPanel_StyleDescription from "./WcbTeamPanel_StyleDescription";
 import WcbIconBoxPanel_StyleIcons from "./WcbIconBoxPanel_StyleIcons";
 import MyIcon from "../components/controls/MyIcon";
-import WcbTeamPanel_StyleImage from "./WcbTeamPanel_StyleImage";
 import MyIconFull from "../components/controls/MyIconFull";
 import WcbIconBoxPanel_StyleSeparator from "./WcbIconBoxPanel_StyleSeparator";
 import WcbIconBoxPanel_StyleDimension from "./WcbIconBoxPanel_StyleDimension";
+import WcbIconBoxPanelSeparator from "./WcbIconBoxPanelSeparator";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -34,14 +34,14 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		designation,
 		uniqueId,
 		general_layout,
-		general_image,
+		general_icon,
 		style_title,
 		style_desination,
 		style_description,
 		style_socialIcons,
-		style_image,
 		style_separator,
 		style_dimension,
+		general_separator,
 	} = attributes;
 	//  COMMON HOOKS
 	const ref = useRef<HTMLDivElement>(null);
@@ -68,7 +68,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			case "General":
 				return (
 					<>
-						<WcbTeamPanelLayout
+						<WcbIconBoxPanelLayout
 							onToggle={() => handleTogglePanel("General", "Layout", true)}
 							initialOpen={
 								tabGeneralIsPanelOpen === "Layout" ||
@@ -82,15 +82,25 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							panelData={general_layout}
 						/>
 
-						<WcbTeamPanelImages
-							onToggle={() => handleTogglePanel("General", "Images")}
-							initialOpen={tabGeneralIsPanelOpen === "Images"}
-							opened={tabGeneralIsPanelOpen === "Images" || undefined}
+						<WcbIconBoxPanelIcon
+							onToggle={() => handleTogglePanel("General", "Icon")}
+							initialOpen={tabGeneralIsPanelOpen === "Icon"}
+							opened={tabGeneralIsPanelOpen === "Icon" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ general_image: data });
+								setAttributes({ general_icon: data });
 							}}
-							panelData={general_image}
+							panelData={general_icon}
+						/>
+						<WcbIconBoxPanelSeparator
+							onToggle={() => handleTogglePanel("General", "Separator")}
+							initialOpen={tabGeneralIsPanelOpen === "Separator"}
+							opened={tabGeneralIsPanelOpen === "Separator" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ general_separator: data });
+							}}
+							panelData={general_separator}
 						/>
 					</>
 				);
@@ -151,19 +161,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							panelData={style_description}
 						/>
 
-						{general_image.isShowImage && (
-							<WcbTeamPanel_StyleImage
-								onToggle={() => handleTogglePanel("Styles", "_StyleImage")}
-								initialOpen={tabStylesIsPanelOpen === "_StyleImage"}
-								opened={tabStylesIsPanelOpen === "_StyleImage" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({ style_image: data });
-								}}
-								panelData={style_image}
-							/>
-						)}
-
 						<WcbIconBoxPanel_StyleDimension
 							onToggle={() => handleTogglePanel("Styles", "_StyleDimension")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleDimension"}
@@ -201,38 +198,34 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			uniqueId,
 			advance_responsiveCondition,
 			advance_zIndex,
-			general_image,
 			general_layout,
 			style_title,
 			style_desination,
 			style_description,
 			style_socialIcons,
-			style_image,
 			style_separator,
 			style_dimension,
+			general_icon,
+			general_separator,
 		};
 	}, [
 		uniqueId,
 		advance_responsiveCondition,
 		advance_zIndex,
-		general_image,
 		general_layout,
 		style_title,
 		style_desination,
 		style_description,
 		style_socialIcons,
-		style_image,
 		style_separator,
 		style_dimension,
+		general_icon,
+		general_separator,
 	]);
 
-	const renderImage = () => {
-		return general_image.isShowImage && general_image?.image?.mediaId ? (
-			<img
-				className="wcb-icon-box__image"
-				src={general_image.image.mediaUrl}
-				alt=""
-			/>
+	const renderIcon = () => {
+		return general_icon.enableIcon ? (
+			<MyIconFull icon={general_icon.icon} />
 		) : null;
 	};
 
@@ -254,12 +247,12 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				{/* CSS IN JS */}
 				<GlobalCss {...WcbAttrsForSave()} />
 
-				{(general_image.imagePosition === "left" ||
-					general_image.imagePosition === "top") &&
-					renderImage()}
+				{(general_icon.iconPosition === "left" ||
+					general_icon.iconPosition === "top") &&
+					renderIcon()}
+
 				{/* CHILD CONTENT  */}
 				<div className="wcb-icon-box__content">
-					<MyIcon icon="lni-add-files" />
 					<RichText
 						tagName="div"
 						value={designation}
@@ -288,10 +281,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 					<InnerBlocks allowedBlocks={[]} template={[["wcb/button", {}]]} />
 				</div>
-
-				{(general_image.imagePosition === "right" ||
-					general_image.imagePosition === "bottom") &&
-					renderImage()}
 			</div>
 		</MyCacheProvider>
 	);

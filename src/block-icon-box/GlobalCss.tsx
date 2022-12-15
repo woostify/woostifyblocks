@@ -14,16 +14,17 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const {
 		uniqueId,
 		// ATTRS OF BLOCK
-		general_image,
 		general_layout,
 		style_description,
 		style_desination,
-		style_image,
 		style_socialIcons,
 		style_title,
 		//
 		advance_responsiveCondition,
 		advance_zIndex,
+		general_icon,
+		style_dimension,
+		style_separator,
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
@@ -46,14 +47,14 @@ const GlobalCss: FC<Props> = (attrs) => {
 		];
 	};
 
-	const isImageBeSide =
-		general_image.imagePosition === "left" ||
-		general_image.imagePosition === "right";
+	// const isImageBeSide =
+	// 	general_image.imagePosition === "left" ||
+	// 	general_image.imagePosition === "right";
 	return (
 		<>
 			<Global styles={getDivWrapStyles()} />
 
-			{/* --------- CONTENT WRAP --------- */}
+			{/* --------- CONTENT WRAP ---------
 			{general_image.isShowImage &&
 			general_image?.image?.mediaId &&
 			isImageBeSide ? (
@@ -73,10 +74,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 						},
 					]}
 				/>
-			) : null}
+			) : null} */}
 
 			{/* --------- IMAGE --------- */}
-			{general_image.isShowImage && general_image?.image?.mediaId ? (
+			{/* {general_image.isShowImage && general_image?.image?.mediaId ? (
 				<Global
 					styles={[
 						getBorderStyles({
@@ -101,7 +102,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 						},
 					]}
 				/>
-			) : null}
+			) : null} */}
 
 			{/* --------- TITLE --------- */}
 			<Global
@@ -172,11 +173,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 						prefix: "width",
 						prefix_2: "fontSize",
 					}),
-					getStyleObjectFromResponsiveAttr({
-						className: `${WRAP_CLASSNAME} .wcb-icon-box__socials-icons > a`,
-						value: style_socialIcons.iconSpacing,
-						prefix: "marginLeft",
-					}),
+
 					{
 						[`${WRAP_CLASSNAME} .wcb-icon-full`]: {
 							color: style_socialIcons.color,

@@ -8,13 +8,13 @@ import {
 	Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
 import {
-	WCB_ICON_BOX_PANEL_IMAGES,
-	WCB_ICON_BOX_PANEL_IMAGES_DEMO,
-} from "./WcbTeamPanelImages";
+	WCB_ICON_BOX_PANEL_ICON,
+	WCB_ICON_BOX_PANEL_ICON_DEMO,
+} from "./WcbIconBoxPanelIcon";
 import {
 	WCB_ICON_BOX_PANEL_LAYOUT,
 	WCB_ICON_BOX_PANEL_LAYOUT_DEMO,
-} from "./WcbTeamPanelLayout";
+} from "./WcbIconBoxPanelLayout";
 
 import {
 	WCB_ICON_BOX_PANEL_STYLE_DESIGNATION,
@@ -32,10 +32,7 @@ import {
 	WCB_ICON_BOX_PANEL_STYLE_ICON,
 	WCB_ICON_BOX_PANEL_STYLE_ICON_DEMO,
 } from "./WcbIconBoxPanel_StyleIcons";
-import {
-	WCB_ICON_BOX_PANEL_STYLE_IMAGE,
-	WCB_ICON_BOX_PANEL_STYLE_IMAGE_DEMO,
-} from "./WcbTeamPanel_StyleImage";
+
 import {
 	WCB_ICON_BOX_PANEL_STYLE_SEPARATOR,
 	WCB_ICON_BOX_PANEL_STYLE_SEPARATOR_DEMO,
@@ -44,6 +41,10 @@ import {
 	WCB_ICON_BOX_PANEL_STYLE_DIMENSION,
 	WCB_ICON_BOX_PANEL_STYLE_DIMENSION_DEMO,
 } from "./WcbIconBoxPanel_StyleDimension";
+import {
+	WCB_ICON_BOX_PANEL_SEPARATOR,
+	WCB_ICON_BOX_PANEL_SEPARATOR_DEMO,
+} from "./WcbIconBoxPanelSeparator";
 export interface WcbAttrs {
 	uniqueId: string;
 	heading: string;
@@ -51,13 +52,13 @@ export interface WcbAttrs {
 	description: string;
 	//
 	general_layout: WCB_ICON_BOX_PANEL_LAYOUT;
-	general_image: WCB_ICON_BOX_PANEL_IMAGES;
+	general_icon: WCB_ICON_BOX_PANEL_ICON;
+	general_separator: WCB_ICON_BOX_PANEL_SEPARATOR;
 	style_title: WCB_ICON_BOX_PANEL_STYLE_TITLE;
 	style_desination: WCB_ICON_BOX_PANEL_STYLE_DESIGNATION;
 	style_separator: WCB_ICON_BOX_PANEL_STYLE_SEPARATOR;
 	style_description: WCB_ICON_BOX_PANEL_STYLE_DESCRIPTION;
 	style_socialIcons: WCB_ICON_BOX_PANEL_STYLE_ICON;
-	style_image: WCB_ICON_BOX_PANEL_STYLE_IMAGE;
 	style_dimension: WCB_ICON_BOX_PANEL_STYLE_DIMENSION;
 	//
 	advance_responsiveCondition: MyResponsiveConditionControlData;
@@ -96,9 +97,13 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		type: "object",
 		default: WCB_ICON_BOX_PANEL_LAYOUT_DEMO,
 	},
-	general_image: {
+	general_icon: {
 		type: "object",
-		default: WCB_ICON_BOX_PANEL_IMAGES_DEMO,
+		default: WCB_ICON_BOX_PANEL_ICON_DEMO,
+	},
+	general_separator: {
+		type: "object",
+		default: WCB_ICON_BOX_PANEL_SEPARATOR_DEMO,
 	},
 
 	style_title: {
@@ -121,10 +126,7 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		type: "object",
 		default: WCB_ICON_BOX_PANEL_STYLE_ICON_DEMO,
 	},
-	style_image: {
-		type: "object",
-		default: WCB_ICON_BOX_PANEL_STYLE_IMAGE_DEMO,
-	},
+
 	style_dimension: {
 		type: "object",
 		default: WCB_ICON_BOX_PANEL_STYLE_DIMENSION_DEMO,

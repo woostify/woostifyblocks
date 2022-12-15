@@ -1,4 +1,4 @@
-import { PanelBody } from "@wordpress/components";
+import { PanelBody, ToggleControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
@@ -13,11 +13,17 @@ import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives"
 export interface WCB_ICON_BOX_PANEL_LAYOUT {
 	textAlignment: HasResponsive<TextAlignment>;
 	headingTag: keyof HTMLElementTagNameMap;
+	enablePrefix: boolean;
+	enableTitle: boolean;
+	enableDescription: boolean;
 }
 
 export const WCB_ICON_BOX_PANEL_LAYOUT_DEMO: WCB_ICON_BOX_PANEL_LAYOUT = {
 	textAlignment: { Desktop: "center" },
 	headingTag: "h3",
+	enableDescription: true,
+	enablePrefix: true,
+	enableTitle: true,
 };
 
 interface Props
@@ -26,7 +32,7 @@ interface Props
 	setAttr__: (data: WCB_ICON_BOX_PANEL_LAYOUT) => void;
 }
 
-const WcbTeamPanelLayout: FC<Props> = ({
+const WcbIconBoxPanelLayout: FC<Props> = ({
 	panelData = WCB_ICON_BOX_PANEL_LAYOUT_DEMO,
 	setAttr__,
 	initialOpen,
@@ -35,7 +41,13 @@ const WcbTeamPanelLayout: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
-	const { textAlignment, headingTag } = panelData;
+	const {
+		textAlignment,
+		headingTag,
+		enableDescription,
+		enablePrefix,
+		enableTitle,
+	} = panelData;
 
 	const { currentDeviceValue: TEXT_ALIGNMENT } = getValueFromAttrsResponsives(
 		textAlignment,
@@ -67,10 +79,36 @@ const WcbTeamPanelLayout: FC<Props> = ({
 					onChange={handleChangeTextAlignment}
 				/>
 
+				<ToggleControl
+					label={__("Enable prefix", "wcb")}
+					checked={enablePrefix}
+					className="mb-0"
+					onChange={(checked) => {
+						setAttr__({ ...panelData, enablePrefix: checked });
+					}}
+				/>
+				<ToggleControl
+					label={__("Enable title", "wcb")}
+					checked={enableTitle}
+					className="mb-0"
+					onChange={(checked) => {
+						setAttr__({ ...panelData, enableTitle: checked });
+					}}
+				/>
+
 				<MyHeadingTagControl
 					tag={headingTag}
 					onChange={(value) => {
 						setAttr__({ ...panelData, headingTag: value });
+					}}
+				/>
+
+				<ToggleControl
+					label={__("Enable description", "wcb")}
+					checked={enableDescription}
+					className="mb-0"
+					onChange={(checked) => {
+						setAttr__({ ...panelData, enableDescription: checked });
 					}}
 				/>
 			</div>
@@ -78,4 +116,4 @@ const WcbTeamPanelLayout: FC<Props> = ({
 	);
 };
 
-export default WcbTeamPanelLayout;
+export default WcbIconBoxPanelLayout;
