@@ -53,9 +53,12 @@ const MyResponsiveToggle: FC<Props> = ({
 	};
 
 	return (
-		<Menu as="div" className={`relative inline-block text-left ${className}`}>
+		<Menu
+			as="div"
+			className={`wcbMyResponsiveToggle relative inline-block text-left ${className}`}
+		>
 			<Menu.Button
-				className="inline-flex w-full items-center justify-center rounded-md p-1 focus:outline-none focus-visible:ring-0 transition-colors text-slate-600 border border-slate-200 hover:border-slate-400"
+				className="wcbMyResponsiveToggle__button inline-flex w-full items-center justify-center rounded-md p-1 focus:outline-none focus-visible:ring-0 transition-colors text-slate-600 border border-slate-200 hover:border-slate-400"
 				title={deviceType}
 			>
 				{renderDeviceIcon(deviceType)}
@@ -70,7 +73,7 @@ const MyResponsiveToggle: FC<Props> = ({
 				leaveFrom="transform opacity-100 scale-100"
 				leaveTo="transform opacity-0 scale-95"
 			>
-				<Menu.Items className="absolute z-50 inset-x-0 mt-1 rounded-lg bg-white shadow-lg ring-1 ring-black/10 focus:outline-none">
+				<Menu.Items className="wcbMyResponsiveToggle__items absolute z-50 inset-x-0 mt-1 rounded-lg bg-white shadow-lg ring-1 ring-black/10 focus:outline-none">
 					<div className="p-1 space-y-0.5">
 						{devices.map((item, index) => {
 							return (
@@ -82,7 +85,9 @@ const MyResponsiveToggle: FC<Props> = ({
 												className={`${
 													isActive ? "bg-sky-50 text-sky-600" : "text-slate-800"
 												} group flex w-full items-center justify-center rounded-md py-1.5`}
-												onClick={() => handleSetDeviceType(item)}
+												onClick={(e) => {
+													handleSetDeviceType(item);
+												}}
 												title={item}
 											>
 												{renderDeviceIcon(item)}

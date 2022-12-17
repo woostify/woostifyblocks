@@ -50,6 +50,8 @@ export type AttrsGenericType<T> = {
 		default?: T[k];
 		source?: string;
 		selector?: string;
+		attribute?: string;
+		__experimentalRole?: string;
 	};
 };
 

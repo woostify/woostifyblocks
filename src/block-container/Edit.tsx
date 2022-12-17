@@ -44,6 +44,9 @@ export type EditProps<T, C = any> = {
 	clientId: string;
 	isSelected: boolean;
 	context: C;
+	className: string;
+	insertBlocksAfter: Function;
+	onReplace: Function;
 };
 
 export const getGapStyleFromGapjObj = ({ colunmGap, rowGap }) => {

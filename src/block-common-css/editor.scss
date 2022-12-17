@@ -3,6 +3,15 @@
 	border-radius: 2px;
 }
 
+.MyDisclosure__labelControl {
+	.wcbMyResponsiveToggle__button {
+		border-color: #c4b5fd !important;
+		&:hover {
+			border-color: #a78bfa !important;
+		}
+	}
+}
+
 .wcb-inspectorControls__panel {
 	.components-panel__row > .components-spacer {
 		width: 100%;

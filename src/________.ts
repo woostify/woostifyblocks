@@ -1,5 +1,6 @@
 import "jquery";
 declare global {
+	var wp: any | undefined;
 	var grecaptcha: any | undefined;
 	var wcbGlobalVariables: {
 		media__tabletMinWidth: string;

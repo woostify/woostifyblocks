@@ -6,6 +6,13 @@
   border-radius: 2px;
 }
 
+.MyDisclosure__labelControl .wcbMyResponsiveToggle__button {
+  border-color: #c4b5fd !important;
+}
+.MyDisclosure__labelControl .wcbMyResponsiveToggle__button:hover {
+  border-color: #a78bfa !important;
+}
+
 .wcb-inspectorControls__panel .components-panel__row > .components-spacer {
   width: 100%;
 }
@@ -1647,6 +1654,9 @@ video {
      -moz-user-select: none !important;
           user-select: none !important;
 }
+.resize {
+  resize: both !important;
+}
 .scroll-m-1 {
   scroll-margin: 0.25rem !important;
 }
@@ -2329,10 +2339,6 @@ video {
 }
 .text-\[24px\] {
   font-size: 24px !important;
-}
-.text-xl {
-  font-size: 1.25rem !important;
-  line-height: 1.75rem !important;
 }
 .font-medium {
   font-weight: 500 !important;

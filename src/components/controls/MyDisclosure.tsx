@@ -6,6 +6,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { __ } from "@wordpress/i18n";
 import React, { FC, ReactNode } from "react";
+import MyLabelControl from "./MyLabelControl/MyLabelControl";
 
 interface Props {
 	className?: string;
@@ -13,6 +14,8 @@ interface Props {
 	children: ReactNode;
 	defaultOpen?: boolean;
 	as?: React.ElementType<any>;
+	hasResponsive?: boolean;
+	isDisableButton?: boolean;
 }
 
 const MyDisclosure: FC<Props> = ({
@@ -21,6 +24,8 @@ const MyDisclosure: FC<Props> = ({
 	children,
 	defaultOpen,
 	as,
+	hasResponsive = false,
+	isDisableButton = false,
 }) => {
 	return (
 		<Disclosure defaultOpen={defaultOpen} as={as}>
@@ -34,8 +39,14 @@ const MyDisclosure: FC<Props> = ({
 						className={`flex w-full justify-between items-center rounded-lg bg-purple-100 px-3 py-2.5 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75 ${
 							open ? "rounded-b-none" : ""
 						}`}
+						disabled={isDisableButton}
 					>
-						<span>{__(label, "wcb")}</span>
+						<MyLabelControl
+							hasResponsive={hasResponsive}
+							className="MyDisclosure__labelControl"
+						>
+							{__(label, "wcb")}
+						</MyLabelControl>
 						{open ? (
 							<MinusIcon className="w-5 h-5 text-purple-900" />
 						) : (

@@ -142,5 +142,11 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
                 "render_callback"     => "wcb_block_icon_box_renderCallback",
             ]
         );
+        register_block_type(
+            WCB_BUILD_PATH . '/block-image',
+            [
+                // "render_callback"     => "wcb_block_icon_box_renderCallback",
+            ]
+        );
     }
 }

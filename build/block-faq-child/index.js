@@ -2644,9 +2644,9 @@ const MyResponsiveToggle = _ref => {
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_7__.Menu, {
     as: "div",
-    className: `relative inline-block text-left ${className}`
+    className: `wcbMyResponsiveToggle relative inline-block text-left ${className}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_7__.Menu.Button, {
-    className: "inline-flex w-full items-center justify-center rounded-md p-1 focus:outline-none focus-visible:ring-0 transition-colors text-slate-600 border border-slate-200 hover:border-slate-400",
+    className: "wcbMyResponsiveToggle__button inline-flex w-full items-center justify-center rounded-md p-1 focus:outline-none focus-visible:ring-0 transition-colors text-slate-600 border border-slate-200 hover:border-slate-400",
     title: deviceType
   }, renderDeviceIcon(deviceType), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_8__["default"], {
     className: "w-2.5 h-2.5 ml-1",
@@ -2660,7 +2660,7 @@ const MyResponsiveToggle = _ref => {
     leaveFrom: "transform opacity-100 scale-100",
     leaveTo: "transform opacity-0 scale-95"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_7__.Menu.Items, {
-    className: "absolute z-50 inset-x-0 mt-1 rounded-lg bg-white shadow-lg ring-1 ring-black/10 focus:outline-none"
+    className: "wcbMyResponsiveToggle__items absolute z-50 inset-x-0 mt-1 rounded-lg bg-white shadow-lg ring-1 ring-black/10 focus:outline-none"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "p-1 space-y-0.5"
   }, devices.map((item, index) => {
@@ -2673,7 +2673,9 @@ const MyResponsiveToggle = _ref => {
       const isActive = active || item === deviceType;
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
         className: `${isActive ? "bg-sky-50 text-sky-600" : "text-slate-800"} group flex w-full items-center justify-center rounded-md py-1.5`,
-        onClick: () => handleSetDeviceType(item),
+        onClick: e => {
+          handleSetDeviceType(item);
+        },
         title: item
       }, renderDeviceIcon(item));
     });
