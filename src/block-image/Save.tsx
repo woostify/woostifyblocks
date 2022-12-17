@@ -13,6 +13,7 @@ import {
 	// @ts-ignore
 	__experimentalGetBorderClassesAndStyles as getBorderClassesAndStyles,
 } from "@wordpress/block-editor";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 
 export interface WcbAttrsForSave
 	extends Omit<
@@ -37,21 +38,17 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		uniqueId,
 		advance_responsiveCondition,
 		advance_zIndex,
-		align,
 		alt,
 		caption,
-		heading,
-		height,
 		href,
 		id,
 		linkClass,
 		linkDestination,
 		linkTarget,
 		rel,
-		sizeSlug,
 		title,
 		url,
-		width,
+		general_settings,
 	} = attributes;
 	//
 
@@ -59,11 +56,13 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		uniqueId,
 		advance_responsiveCondition,
 		advance_zIndex,
-		align,
-		height,
-		width,
+		general_settings,
 	};
 
+	const { currentDeviceValue: align } = getValueFromAttrsResponsives(
+		general_settings.alignment,
+		"Desktop"
+	);
 	//
 	//
 
@@ -72,9 +71,9 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 	const classes = classnames({
 		[`align${align}`]: align,
-		[`size-${sizeSlug}`]: sizeSlug,
-		"is-resized": width || height,
-		"has-custom-border": !!borderProps.className || !isEmpty(borderProps.style),
+		// [`size-${sizeSlug}`]: sizeSlug,
+		// "is-resized": width || height,
+		// "has-custom-border": !!borderProps.className || !isEmpty(borderProps.style),
 	});
 
 	const imageClasses = classnames(borderProps.className, {
@@ -87,8 +86,8 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			alt={alt}
 			className={imageClasses || undefined}
 			style={borderProps.style}
-			width={width}
-			height={height}
+			// width={width}
+			// height={height}
 			title={title}
 		/>
 	);
@@ -117,7 +116,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	//
 	//
 	const blockProps = useBlockProps.save({
-		className: "wcb-default__wrap " + classes,
+		className: "wcb-image__wrap " + classes,
 	});
 	//
 	//

@@ -18,22 +18,13 @@ import { useRef, useState } from "@wordpress/element";
 import { image as icon } from "@wordpress/icons";
 // @ts-ignore
 import { store as noticesStore } from "@wordpress/notices";
-
-//
 import { __ } from "@wordpress/i18n";
 import { useBlockProps } from "@wordpress/block-editor";
 import React, { useEffect, FC, useCallback } from "react";
 import { WcbAttrs } from "./attributes";
-import HOCInspectorControls, {
-	InspectorControlsTabs,
-} from "../components/HOCInspectorControls";
 import { EditProps } from "../block-container/Edit";
-import useCreateCacheEmotion from "../hooks/useCreateCacheEmotion";
-import { CacheProvider } from "@emotion/react";
 import GlobalCss from "./GlobalCss";
 import "./editor.scss";
-import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
-import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
 import Image from "./Image";
@@ -47,6 +38,9 @@ import {
 	LINK_DESTINATION_NONE,
 	ALLOWED_MEDIA_TYPES,
 } from "./constants";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import useGetDeviceType from "../hooks/useGetDeviceType";
+import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 
 // Much of this description is duplicated from MediaPlaceholder.
 const placeholder = (content) => {
@@ -134,11 +128,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		url = "",
 		alt,
 		caption,
-		align,
 		id,
-		// width,
-		// height,
-		// sizeSlug,
 		advance_responsiveCondition,
 		advance_zIndex,
 		href,
@@ -152,6 +142,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	} = attributes;
 
 	const [temporaryURL, setTemporaryURL] = useState<string>();
+	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
 	const altRef = useRef();
 	useEffect(() => {
@@ -318,12 +309,23 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							Tablet: undefined,
 							Mobile: undefined,
 						},
+						alignment: {
+							...general_settings.alignment,
+							[deviceType]: nextAlign,
+						},
 					},
 			  }
-			: {};
+			: {
+					general_settings: {
+						...general_settings,
+						alignment: {
+							...general_settings.alignment,
+							[deviceType]: nextAlign,
+						},
+					},
+			  };
 		setAttributes({
 			...extraUpdatedAttributes,
-			align: nextAlign,
 		});
 	}
 
@@ -373,8 +375,13 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		/>
 	) : null;
 
+	const { currentDeviceValue: align } = getValueFromAttrsResponsives(
+		general_settings.alignment,
+		deviceType
+	);
 	const classes = classnames(className, {
-		// "is-transient": temporaryURL,
+		[`align${align}`]: align,
+		"is-transient": temporaryURL,
 		// "is-resized": !!width || !!height,
 		// [`size-${sizeSlug}`]: sizeSlug,
 	});
@@ -396,16 +403,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			uniqueId,
 			advance_responsiveCondition,
 			advance_zIndex,
-			align,
 			general_settings,
 		};
-	}, [
-		uniqueId,
-		advance_responsiveCondition,
-		advance_zIndex,
-		align,
-		general_settings,
-	]);
+	}, [uniqueId, advance_responsiveCondition, advance_zIndex, general_settings]);
 
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
@@ -437,7 +437,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							isContentLocked={isContentLocked}
 						/>
 					)}
-					{!url && !isContentLocked && (
+					{/* {!url && !isContentLocked && (
 						// @ts-ignore
 						<BlockControls group="block">
 							<BlockAlignmentToolbar
@@ -445,7 +445,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								onChange={updateAlignment}
 							/>
 						</BlockControls>
-					)}
+					)} */}
 					<MediaPlaceholder
 						icon={<BlockIcon icon={icon} />}
 						onSelect={onSelectImage}

@@ -21,7 +21,6 @@ export interface WcbAttrs {
 	alt: string;
 	title: string;
 	caption: string;
-	align: string;
 	id: string;
 	// width: number;
 	// height: number;
@@ -48,9 +47,7 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		default: WCB_IMAGE_PANEL_SETTINGS_DEMO,
 	},
 	//
-	align: {
-		type: "string",
-	},
+
 	url: {
 		type: "string",
 		source: "attribute",
@@ -102,15 +99,7 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		type: "number",
 		__experimentalRole: "content",
 	},
-	// width: {
-	// 	type: "number",
-	// },
-	// height: {
-	// 	type: "number",
-	// },
-	// sizeSlug: {
-	// 	type: "string",
-	// },
+
 	linkDestination: {
 		type: "string",
 	},

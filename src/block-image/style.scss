@@ -1,0 +1,9 @@
+.wcb-image__wrap {
+	&.alignfull,
+	&.alignwide {
+		img {
+			height: auto;
+			width: 100%;
+		}
+	}
+}

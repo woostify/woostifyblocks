@@ -71,10 +71,6 @@ import { store as coreStore } from "@wordpress/core-data";
  */
 import useClientWidth from "./use-client-width";
 import { isExternalImage } from "./Edit";
-
-/**
- * Module constants
- */
 import { MIN_SIZE, ALLOWED_MEDIA_TYPES } from "./constants";
 import { EditProps } from "../block-container/Edit";
 import { WcbAttrs } from "./attributes";
@@ -84,8 +80,6 @@ import HOCInspectorControls, {
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import WcbImagePanelSettings from "./WcbImagePanelSettings";
-import MyDisclosure from "../components/controls/MyDisclosure";
-import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
@@ -119,7 +113,6 @@ const Image: FC<ImageProps> = ({
 		url = "",
 		alt,
 		caption,
-		align,
 		id,
 		href,
 		rel,
@@ -137,8 +130,11 @@ const Image: FC<ImageProps> = ({
 	const prevCaption = usePrevious(caption);
 	const [showCaption, setShowCaption] = useState(!!caption);
 	const { allowResize = true } = context;
-	// @ts-ignore
-	const { getBlock } = useSelect(blockEditorStore);
+	const { currentDeviceValue: align = "" } = getValueFromAttrsResponsives(
+		general_settings.alignment,
+		// "Desktop"
+		deviceType
+	);
 
 	const { image, multiImageSelection } = useSelect(
 		(select) => {
@@ -333,12 +329,35 @@ const Image: FC<ImageProps> = ({
 	}
 
 	function updateAlignment(nextAlign) {
-		const extraUpdatedAttributes = ["wide", "full"].includes(nextAlign)
-			? { width: undefined, height: undefined }
-			: {};
+		const extraUpdatedAttributes: Partial<WcbAttrs> = ["wide", "full"].includes(
+			nextAlign
+		)
+			? {
+					general_settings: {
+						...general_settings,
+						width: { Desktop: undefined, Tablet: undefined, Mobile: undefined },
+						height: {
+							Desktop: undefined,
+							Tablet: undefined,
+							Mobile: undefined,
+						},
+						alignment: {
+							...general_settings.alignment,
+							[deviceType]: nextAlign,
+						},
+					},
+			  }
+			: {
+					general_settings: {
+						...general_settings,
+						alignment: {
+							...general_settings.alignment,
+							[deviceType]: nextAlign,
+						},
+					},
+			  };
 		setAttributes({
 			...extraUpdatedAttributes,
-			align: nextAlign,
 		});
 	}
 
@@ -389,6 +408,10 @@ const Image: FC<ImageProps> = ({
 							setAttributes={setAttributes}
 							updateImage={updateImage}
 							alt={alt}
+							enableCaption={showCaption}
+							toggleEnableCaption={(checked) => {
+								setShowCaption(checked);
+							}}
 						/>
 					</>
 				);
@@ -650,6 +673,7 @@ const Image: FC<ImageProps> = ({
 
 		img = (
 			<ResizableBox
+				className="xxxxxxxxxx"
 				size={{
 					width: WIDTH || "auto",
 					height: HEIGHT && !hasCustomBorder ? HEIGHT : "auto",

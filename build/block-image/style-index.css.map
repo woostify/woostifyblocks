@@ -1,0 +1,1 @@
+{"version":3,"file":"block-image/style-index.css","mappings":";;;AAGE;EACC;EACA;AAFH,C","sources":["webpack://woostify-blocks/./src/block-image/style.scss"],"sourcesContent":[".wcb-image__wrap {\r\n\t&.alignfull,\r\n\t&.alignwide {\r\n\t\timg {\r\n\t\t\theight: auto;\r\n\t\t\twidth: 100%;\r\n\t\t}\r\n\t}\r\n}\r\n"],"names":[],"sourceRoot":""}
