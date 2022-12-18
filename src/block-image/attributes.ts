@@ -11,10 +11,20 @@ import {
 	WCB_IMAGE_PANEL_SETTINGS,
 	WCB_IMAGE_PANEL_SETTINGS_DEMO,
 } from "./WcbImagePanelSettings";
+import {
+	WCB_IMAGE_PANEL_STYLE_IMAGE,
+	WCB_IMAGE_PANEL_STYLE_IMAGE_DEMO,
+} from "./WcbImagePanel_StyleImage";
+import {
+	WCB_IMAGE_PANEL_STYLE_OVERLAY,
+	WCB_IMAGE_PANEL_STYLE_OVERLAY_DEMO,
+} from "./WcbImagePanel_StyleOverlay";
 export interface WcbAttrs {
 	uniqueId: string;
 	//
 	general_settings: WCB_IMAGE_PANEL_SETTINGS;
+	style_image: WCB_IMAGE_PANEL_STYLE_IMAGE;
+	style_overlay: WCB_IMAGE_PANEL_STYLE_OVERLAY;
 	//
 	//
 	url: string;
@@ -22,9 +32,6 @@ export interface WcbAttrs {
 	title: string;
 	caption: string;
 	id: string;
-	// width: number;
-	// height: number;
-	// sizeSlug: string;
 	href: string;
 	rel: string;
 	linkClass: string;
@@ -45,6 +52,14 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	general_settings: {
 		type: "object",
 		default: WCB_IMAGE_PANEL_SETTINGS_DEMO,
+	},
+	style_image: {
+		type: "object",
+		default: WCB_IMAGE_PANEL_STYLE_IMAGE_DEMO,
+	},
+	style_overlay: {
+		type: "object",
+		default: WCB_IMAGE_PANEL_STYLE_OVERLAY_DEMO,
 	},
 	//
 

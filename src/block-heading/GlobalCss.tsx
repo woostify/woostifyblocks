@@ -6,6 +6,7 @@ import getBackgroundColorGradientStyles from "../utils/getBackgroundColorGradien
 import getBorderStyles from "../utils/getBorderStyles";
 import getColorAndGradientStyles from "../utils/getColorAndGradientStyles";
 import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
+import getStyleObjectFromResponsiveAttr from "../utils/getStyleObjectFromResponsiveAttr";
 import getTypographyStyles from "../utils/getTypographyStyles";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
@@ -210,13 +211,36 @@ const GlobalCss: FC<Props> = (attrs) => {
 			{/*  */}
 			<Global styles={getDivWrapStyles__Separator_width()} />
 			<Global styles={getDivWrapStyles__Separator()} />
+			<Global
+				styles={getStyleObjectFromResponsiveAttr({
+					className: `${WRAP_CLASSNAME} .wcb-heading__separator-wrap`,
+					value: styles_separator.marginBottom,
+					prefix: "marginBottom",
+				})}
+			/>
 			{/*  */}
 			<Global styles={getInner__Heading_typography()} />
 			<Global styles={getInner__Heading_color()} />
 			<Global styles={getInner__Heading__textShadow()} />
+			<Global
+				styles={getStyleObjectFromResponsiveAttr({
+					className: HEADING_CLASSNAME,
+					value: styles_heading.marginBottom,
+					prefix: "marginBottom",
+				})}
+			/>
+
 			{/*  */}
 			<Global styles={getInner__subHeading_typography()} />
 			<Global styles={getInner__subHeading_color()} />
+			<Global
+				styles={getStyleObjectFromResponsiveAttr({
+					className: SUB_HEADING_CLASSNAME,
+					value: styles_subHeading.marginBottom,
+					prefix: "marginBottom",
+				})}
+			/>
+
 			{/*  */}
 			<Global
 				styles={getAdvanveDivWrapStyles({

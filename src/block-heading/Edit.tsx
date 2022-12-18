@@ -204,6 +204,14 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 		uniqueId,
 	]);
 
+	const renderSeparator = () => {
+		return general_content.showSeparator ? (
+			<div className="wcb-heading__separator-wrap">
+				<div className="wcb-heading__separator"></div>
+			</div>
+		) : null;
+	};
+
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
@@ -219,18 +227,22 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 
 				{/*  */}
 				<GlobalCss {...WcbAttrsForSave()} />
+
+				{general_content.separatorPosition === "top" && renderSeparator()}
+
 				{general_content.showHeading ? (
 					<RichText
 						identifier="heading"
 						tagName={general_content.headingTag || "h2"}
 						className="wcb-heading__heading"
 						value={heading}
+						placeholder="Add heading here"
 						onChange={(heading) => setAttributes({ heading })}
 					/>
 				) : null}
-				{general_content.showSeparator ? (
-					<div className="wcb-heading__separator"></div>
-				) : null}
+
+				{general_content.separatorPosition === "middle" && renderSeparator()}
+
 				{general_content.showSubHeading ? (
 					<RichText
 						identifier="subHeading"
@@ -238,8 +250,11 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 						className="wcb-heading__subHeading"
 						value={subHeading}
 						onChange={(subHeading) => setAttributes({ subHeading })}
+						placeholder="Add sub heading here"
 					/>
 				) : null}
+
+				{general_content.separatorPosition === "bottom" && renderSeparator()}
 			</div>
 		</MyCacheProvider>
 	);

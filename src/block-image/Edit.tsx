@@ -1,16 +1,11 @@
 import classnames from "classnames";
 import { get, isEmpty } from "lodash";
-
-/**
- * WordPress dependencies
- */
 import { getBlobByURL, isBlobURL, revokeBlobURL } from "@wordpress/blob";
 import { Placeholder } from "@wordpress/components";
 import { useDispatch, useSelect } from "@wordpress/data";
 import {
-	BlockAlignmentToolbar,
-	BlockControls,
 	BlockIcon,
+	InnerBlocks,
 	MediaPlaceholder,
 	store as blockEditorStore,
 } from "@wordpress/block-editor";
@@ -28,9 +23,6 @@ import "./editor.scss";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
 import Image from "./Image";
-/**
- * Module constants
- */
 import {
 	LINK_DESTINATION_ATTACHMENT,
 	LINK_DESTINATION_CUSTOM,
@@ -41,6 +33,7 @@ import {
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
+import { WCB_HEADING_PANEL_CONTENT_DEMO } from "../block-heading/WcbHeadingPanelContent";
 
 // Much of this description is duplicated from MediaPlaceholder.
 const placeholder = (content) => {
@@ -74,37 +67,10 @@ export const pickRelevantMediaFiles = (image, size) => {
 	return imageProps;
 };
 
-/**
- * Is the URL a temporary blob URL? A blob URL is one that is used temporarily
- * while the image is being uploaded and will not have an id yet allocated.
- *
- * @param {number=} id  The id of the image.
- * @param {string=} url The url of the image.
- *
- * @return {boolean} Is the URL a Blob URL
- */
 const isTemporaryImage = (id, url) => !id && isBlobURL(url);
 
-/**
- * Is the url for the image hosted externally. An externally hosted image has no
- * id and is not a blob url.
- *
- * @param {number=} id  The id of the image.
- * @param {string=} url The url of the image.
- *
- * @return {boolean} Is the url an externally hosted url?
- */
 export const isExternalImage = (id, url) => url && !id && !isBlobURL(url);
 
-/**
- * Checks if WP generated default image size. Size generation is skipped
- * when the image is smaller than the said size.
- *
- * @param {Object} image
- * @param {string} defaultSize
- *
- * @return {boolean} Whether or not it has default image size.
- */
 function hasDefaultSize(image, defaultSize) {
 	return (
 		"url" in (image?.sizes?.[defaultSize] ?? {}) ||
@@ -139,6 +105,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		title,
 		uniqueId,
 		general_settings,
+		style_image,
+		style_overlay,
 	} = attributes;
 
 	const [temporaryURL, setTemporaryURL] = useState<string>();
@@ -404,8 +372,45 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			advance_responsiveCondition,
 			advance_zIndex,
 			general_settings,
+			style_image,
+			style_overlay,
 		};
-	}, [uniqueId, advance_responsiveCondition, advance_zIndex, general_settings]);
+	}, [
+		uniqueId,
+		advance_responsiveCondition,
+		advance_zIndex,
+		general_settings,
+		style_image,
+		style_overlay,
+	]);
+
+	const renderOverlay = () => {
+		return (
+			<>
+				<div className="wcb-image__overlay-bg"></div>
+				<div className="wcb-image__overlay-content">
+					<InnerBlocks
+						allowedBlocks={[]}
+						template={[
+							[
+								"wcb/heading",
+								{
+									heading: "Title of content",
+									subHeading: "Description of content",
+									general_content: {
+										...WCB_HEADING_PANEL_CONTENT_DEMO,
+										showSeparator: true,
+										showSubHeading: true,
+										headingTag: "h3",
+									},
+								},
+							],
+						]}
+					/>
+				</div>
+			</>
+		);
+	};
 
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
@@ -420,22 +425,25 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				{/* CHILD CONTENT  */}
 				<>
 					{(temporaryURL || url) && (
-						<Image
-							className=""
-							temporaryURL={temporaryURL || ""}
-							attributes={attributes}
-							setAttributes={setAttributes}
-							isSelected={isSelected}
-							insertBlocksAfter={insertBlocksAfter}
-							onReplace={onReplace}
-							onSelectImage={onSelectImage}
-							onSelectURL={onSelectURL}
-							onUploadError={onUploadError}
-							containerRef={ref}
-							context={context}
-							clientId={clientId}
-							isContentLocked={isContentLocked}
-						/>
+						<>
+							<Image
+								className="wcb-image__image"
+								temporaryURL={temporaryURL || ""}
+								attributes={attributes}
+								setAttributes={setAttributes}
+								isSelected={isSelected}
+								insertBlocksAfter={insertBlocksAfter}
+								onReplace={onReplace}
+								onSelectImage={onSelectImage}
+								onSelectURL={onSelectURL}
+								onUploadError={onUploadError}
+								containerRef={ref}
+								context={context}
+								clientId={clientId}
+								isContentLocked={isContentLocked}
+							/>
+							{general_settings.layout === "overlay" && renderOverlay()}
+						</>
 					)}
 					{/* {!url && !isContentLocked && (
 						// @ts-ignore
@@ -446,6 +454,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							/>
 						</BlockControls>
 					)} */}
+
 					<MediaPlaceholder
 						icon={<BlockIcon icon={icon} />}
 						onSelect={onSelectImage}

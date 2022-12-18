@@ -1,11 +1,8 @@
-import { get, isEmpty, map } from "lodash";
 import {
 	ExternalLink,
 	PanelBody,
 	TextareaControl,
 	ToggleControl,
-	// @ts-ignore
-	__experimentalAlignmentMatrixControl as AlignmentMatrixControl,
 } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 // @ts-ignore
@@ -20,10 +17,9 @@ import MyTextAlignControl, {
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import MySelect from "../components/controls/MySelect";
-import { AlignmentMatrixControlValue, MySelectOption, Option } from "../types";
-import MyTabs from "../components/controls/MyTabs";
+import { MySelectOption, Option } from "../types";
 import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
-import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
+import { DimensionSettings } from "../components/controls/MyDimensionsControl/types";
 
 export interface WCB_IMAGE_PANEL_SETTINGS {
 	alignment: HasResponsive<TextAlignment>;
@@ -33,7 +29,7 @@ export interface WCB_IMAGE_PANEL_SETTINGS {
 	captionAlignment: HasResponsive<TextAlignment>;
 	objectFit: HasResponsive<NonNullable<CSSProperties["objectFit"]>>;
 	layout: "normal" | "overlay";
-	contentAlignment: AlignmentMatrixControlValue;
+	contentAlignment: "top" | "middle" | "bottom";
 }
 
 export const WCB_IMAGE_PANEL_SETTINGS_DEMO: WCB_IMAGE_PANEL_SETTINGS = {
@@ -44,7 +40,7 @@ export const WCB_IMAGE_PANEL_SETTINGS_DEMO: WCB_IMAGE_PANEL_SETTINGS = {
 	width: { Desktop: undefined },
 	objectFit: { Desktop: "initial" },
 	layout: "normal",
-	contentAlignment: "center center",
+	contentAlignment: "middle",
 };
 
 interface Props
@@ -146,6 +142,14 @@ const WcbImagePanelSettings: FC<Props> = ({
 		{ name: "overlay", icon: "Overlay" },
 	];
 
+	const PLANS_CONTENT_ALIGNMENT: MyRadioItem<
+		WCB_IMAGE_PANEL_SETTINGS["contentAlignment"]
+	>[] = [
+		{ name: "top", icon: "Top" },
+		{ name: "middle", icon: "Middle" },
+		{ name: "bottom", icon: "Bottom" },
+	];
+
 	return (
 		<PanelBody
 			initialOpen={initialOpen}
@@ -190,18 +194,21 @@ const WcbImagePanelSettings: FC<Props> = ({
 					}}
 				/>
 
-				<div>
-					<MyLabelControl className="mb-0" hasResponsive={false}>
-						{__("Content alignment", "wcb")}
-					</MyLabelControl>
-					<AlignmentMatrixControl
-						label={__("Content alignment", "wcb")}
+				{panelData.layout === "overlay" && (
+					<MyRadioGroup
+						plans={PLANS_CONTENT_ALIGNMENT}
 						value={panelData.contentAlignment}
-						onChange={(newAlignment: AlignmentMatrixControlValue) => {
-							setAttr__({ ...panelData, contentAlignment: newAlignment });
+						hasResponsive={false}
+						label={__("Content alignment", "wcb")}
+						onChange={(value) => {
+							setAttr__({
+								...panelData,
+								contentAlignment:
+									value as WCB_IMAGE_PANEL_SETTINGS["contentAlignment"],
+							});
 						}}
 					/>
-				</div>
+				)}
 
 				<MyDisclosure
 					label={"Dimensions"}
@@ -272,6 +279,7 @@ const WcbImagePanelSettings: FC<Props> = ({
 					<MyTextAlignControl
 						textAlignment={CAPTION_ALIGNMENT}
 						onChange={handleChangeCaptionAlignment}
+						label={__("Caption alignment", "wcb")}
 					/>
 				)}
 			</div>

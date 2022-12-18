@@ -3,6 +3,7 @@ import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import MyHeadingTagControl from "../components/controls/MyHeadingTagControl/MyHeadingTagControl";
+import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import MyTextAlignControl, {
 	TextAlignment,
@@ -15,6 +16,7 @@ export interface WCB_HEADING_PANEL_CONTENT {
 	showHeading: boolean;
 	showSubHeading: boolean;
 	showSeparator: boolean;
+	separatorPosition: "top" | "middle" | "bottom";
 }
 
 export const WCB_HEADING_PANEL_CONTENT_DEMO: WCB_HEADING_PANEL_CONTENT = {
@@ -23,7 +25,16 @@ export const WCB_HEADING_PANEL_CONTENT_DEMO: WCB_HEADING_PANEL_CONTENT = {
 	showHeading: true,
 	showSeparator: false,
 	showSubHeading: false,
+	separatorPosition: "middle",
 };
+
+const PLANS_SEPARATOR_POSTION: MyRadioItem<
+	WCB_HEADING_PANEL_CONTENT["separatorPosition"]
+>[] = [
+	{ name: "top", icon: "Top" },
+	{ name: "middle", icon: "Middle" },
+	{ name: "bottom", icon: "Bottom" },
+];
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
@@ -46,6 +57,7 @@ const WcbHeadingPanelContent: FC<Props> = ({
 		showHeading,
 		showSeparator,
 		showSubHeading,
+		separatorPosition,
 	} = panelContentData;
 	const TEXT_ALIGNMENT =
 		textAlignment[deviceType] || textAlignment.Tablet || textAlignment.Desktop;
@@ -117,6 +129,21 @@ const WcbHeadingPanelContent: FC<Props> = ({
 				checked={showSeparator}
 				onChange={toggleSeparator}
 			/>
+			{showSeparator && (
+				<MyRadioGroup
+					plans={PLANS_SEPARATOR_POSTION}
+					value={separatorPosition}
+					hasResponsive={false}
+					label={__("Separator position", "wcb")}
+					onChange={(value) => {
+						setAttr__panelContentData({
+							...panelContentData,
+							separatorPosition:
+								value as WCB_HEADING_PANEL_CONTENT["separatorPosition"],
+						});
+					}}
+				/>
+			)}
 		</PanelBody>
 	);
 };

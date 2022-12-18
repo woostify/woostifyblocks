@@ -9,6 +9,7 @@ interface Props {
 	textAlignment?: TextAlignment;
 	onChange?: (select: TextAlignment) => void;
 	hasResponsive?: boolean;
+	label?: string;
 }
 
 const MyTextAlignControl: FC<Props> = ({
@@ -16,6 +17,7 @@ const MyTextAlignControl: FC<Props> = ({
 	textAlignment,
 	className,
 	hasResponsive,
+	label = __("Alignment", "wcb"),
 }) => {
 	return (
 		<MyRadioGroup
@@ -24,6 +26,7 @@ const MyTextAlignControl: FC<Props> = ({
 			onChange={onChange}
 			value={textAlignment || ""}
 			hasResponsive={hasResponsive}
+			label={label}
 		/>
 	);
 };

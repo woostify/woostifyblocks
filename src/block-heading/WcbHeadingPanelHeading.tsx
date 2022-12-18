@@ -14,17 +14,24 @@ import {
 	MyTypographyControlData,
 	TYPOGRAPHY_CONTROL_DEMO,
 } from "../components/controls/MyTypographyControl/types";
+import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
+import useGetDeviceType from "../hooks/useGetDeviceType";
+import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
 
 export interface WCB_HEADING_PANEL_HEADING {
 	typography: MyTypographyControlData;
 	textColor: TextColorControlData;
 	textShadow: MyTextShadowControlData;
+	marginBottom: HasResponsive<string>;
 }
 
 export const WCB_HEADING_PANEL_HEADING_DEMO: WCB_HEADING_PANEL_HEADING = {
 	typography: TYPOGRAPHY_CONTROL_DEMO,
 	textColor: TEXT_COLOR_CONTROL_DEMO,
 	textShadow: MY_TEXT_SHADOW_CONTROL_DEMO,
+	marginBottom: { Desktop: "" },
 };
 
 interface Props
@@ -40,8 +47,12 @@ const WcbHeadingPanelHeading: FC<Props> = ({
 	onToggle,
 	opened,
 }) => {
-	const { typography, textColor, textShadow } = panelHeading;
-
+	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
+	const { typography, textColor, textShadow, marginBottom } = panelHeading;
+	const { currentDeviceValue: MARGIN_BOTTOM } = getValueFromAttrsResponsives(
+		marginBottom,
+		deviceType
+	);
 	//
 	return (
 		<PanelBody
@@ -77,6 +88,21 @@ const WcbHeadingPanelHeading: FC<Props> = ({
 							textShadow,
 						});
 					}}
+				/>
+
+				<MySpacingSizesControl
+					onChange={(value) => {
+						setAttr__panelHeading({
+							...panelHeading,
+							marginBottom: {
+								...marginBottom,
+								[deviceType]: value,
+							},
+						});
+					}}
+					value={MARGIN_BOTTOM || ""}
+					label={__("Margin bottom", "wcb")}
+					hasResponsive
 				/>
 			</div>
 		</PanelBody>

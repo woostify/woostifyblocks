@@ -16,15 +16,18 @@ import { HasResponsive } from "../components/controls/MyBackgroundControl/types"
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
 
 export interface WCB_HEADING_PANEL_SEPARATOR {
 	border: BorderMainSingleSide;
 	width: HasResponsive<string>;
+	marginBottom: HasResponsive<string>;
 }
 
 export const WCB_HEADING_PANEL_SEPARATOR_DEMO: WCB_HEADING_PANEL_SEPARATOR = {
 	border: DEFAULT_BORDER_MAIN_SINGLE_SIDE,
 	width: { Desktop: "10%" },
+	marginBottom: { Desktop: "1rem" },
 };
 
 interface Props
@@ -42,10 +45,14 @@ const WcbHeadingPanelSeparator: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
-	const { border, width: widthProps } = panelSeparator;
+	const { border, width: widthProps, marginBottom } = panelSeparator;
 
 	const { currentDeviceValue: CUSTOM_WIDTH } = getValueFromAttrsResponsives(
 		widthProps,
+		deviceType
+	);
+	const { currentDeviceValue: MARGIN_BOTTOM } = getValueFromAttrsResponsives(
+		marginBottom,
 		deviceType
 	);
 
@@ -97,6 +104,21 @@ const WcbHeadingPanelSeparator: FC<Props> = ({
 					}}
 					withSlider
 					value={border}
+				/>
+
+				<MySpacingSizesControl
+					onChange={(value) => {
+						setAttr__panelSeparator({
+							...panelSeparator,
+							marginBottom: {
+								...marginBottom,
+								[deviceType]: value,
+							},
+						});
+					}}
+					value={MARGIN_BOTTOM || ""}
+					label={__("Margin bottom", "wcb")}
+					hasResponsive
 				/>
 			</div>
 		</PanelBody>

@@ -1,12 +1,4 @@
-/**
- * External dependencies
- */
 import { get, isEmpty, map } from "lodash";
-
-/**
- * WordPress dependencies
- */
-
 import React, { FC } from "react";
 import { isBlobURL } from "@wordpress/blob";
 import {
@@ -65,10 +57,6 @@ import {
 // @ts-ignore
 import { store as noticesStore } from "@wordpress/notices";
 import { store as coreStore } from "@wordpress/core-data";
-
-/**
- * Internal dependencies
- */
 import useClientWidth from "./use-client-width";
 import { isExternalImage } from "./Edit";
 import { MIN_SIZE, ALLOWED_MEDIA_TYPES } from "./constants";
@@ -83,6 +71,8 @@ import WcbImagePanelSettings from "./WcbImagePanelSettings";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import WcbImagePanel_StyleImage from "./WcbImagePanel_StyleImage";
+import WcbImagePanel_StyleOverlay from "./WcbImagePanel_StyleOverlay";
 
 type ImageProps = EditProps<WcbAttrs> & {
 	temporaryURL: string;
@@ -124,6 +114,8 @@ const Image: FC<ImageProps> = ({
 		advance_zIndex,
 		general_settings,
 		uniqueId,
+		style_image,
+		style_overlay,
 	} = attributes;
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	const imageRef = useRef<HTMLImageElement>(null);
@@ -198,9 +190,6 @@ const Image: FC<ImageProps> = ({
 		({ name, slug }) => ({ value: slug, label: name })
 	);
 
-	// If an image is externally hosted, try to fetch the image data. This may
-	// fail if the image host doesn't allow CORS with the domain. If it works,
-	// we can enable a button in the toolbar to upload the image.
 	useEffect(() => {
 		if (!isExternalImage(id, url) || !isSelected || externalBlob) {
 			return;
@@ -233,10 +222,6 @@ const Image: FC<ImageProps> = ({
 		[caption]
 	);
 
-	// Get naturalWidth and naturalHeight from image ref, and fall back to loaded natural
-	// width and height. This resolves an issue in Safari where the loaded natural
-	// width and height is otherwise lost when switching between alignments.
-	// See: https://github.com/WordPress/gutenberg/pull/37210.
 	const { naturalWidth, naturalHeight } = useMemo(() => {
 		return {
 			naturalWidth:
@@ -416,7 +401,35 @@ const Image: FC<ImageProps> = ({
 					</>
 				);
 			case "Styles":
-				return <></>;
+				return (
+					<>
+						<WcbImagePanel_StyleImage
+							onToggle={() => handleTogglePanel("Styles", "_StyleImage", true)}
+							initialOpen={
+								tabStylesIsPanelOpen === "_StyleImage" ||
+								tabStylesIsPanelOpen === "first"
+							}
+							opened={tabStylesIsPanelOpen === "_StyleImage" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_image: data });
+							}}
+							panelData={style_image}
+						/>
+						{general_settings.layout === "overlay" && (
+							<WcbImagePanel_StyleOverlay
+								onToggle={() => handleTogglePanel("Styles", "_StyleOverlay")}
+								initialOpen={tabStylesIsPanelOpen === "_StyleOverlay"}
+								opened={tabStylesIsPanelOpen === "_StyleOverlay" || undefined}
+								//
+								setAttr__={(data) => {
+									setAttributes({ style_overlay: data });
+								}}
+								panelData={style_overlay}
+							/>
+						)}
+					</>
+				);
 			case "Advances":
 				return (
 					<>
@@ -631,15 +644,7 @@ const Image: FC<ImageProps> = ({
 		const minHeight =
 			naturalHeight < naturalWidth ? MIN_SIZE : MIN_SIZE / ratio;
 
-		// With the current implementation of ResizableBox, an image needs an
-		// explicit pixel value for the max-width. In absence of being able to
-		// set the content-width, this max-width is currently dictated by the
-		// vanilla editor style. The following variable adds a buffer to this
-		// vanilla style, so 3rd party themes have some wiggleroom. This does,
-		// in most cases, allow you to scale the image beyond the width of the
-		// main column, though not infinitely.
-		// @todo It would be good to revisit this once a content-width variable
-		// becomes available.
+		// ==============
 		const maxWidthBuffer = maxWidth * 2.5;
 
 		let showRightHandle = false;
@@ -673,7 +678,7 @@ const Image: FC<ImageProps> = ({
 
 		img = (
 			<ResizableBox
-				className="xxxxxxxxxx"
+				className="wcb-image__ResizableBox"
 				size={{
 					width: WIDTH || "auto",
 					height: HEIGHT && !hasCustomBorder ? HEIGHT : "auto",

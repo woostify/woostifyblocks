@@ -10,16 +10,23 @@ import {
 	MyTypographyControlData,
 	TYPOGRAPHY_CONTROL_DEMO,
 } from "../components/controls/MyTypographyControl/types";
+import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
+import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
+import useGetDeviceType from "../hooks/useGetDeviceType";
+import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 
 export interface WCB_HEADING_PANEL_SUB_HEADING {
 	typography: MyTypographyControlData;
 	textColor: TextColorControlData;
+	marginBottom: HasResponsive<string>;
 }
 
 export const WCB_HEADING_PANEL_SUB_HEADING_DEMO: WCB_HEADING_PANEL_SUB_HEADING =
 	{
 		typography: TYPOGRAPHY_CONTROL_DEMO,
 		textColor: TEXT_COLOR_CONTROL_DEMO,
+		marginBottom: { Desktop: "" },
 	};
 
 interface Props
@@ -35,15 +42,19 @@ const WcbHeadingPanelSubHeading: FC<Props> = ({
 	onToggle,
 	opened,
 }) => {
-	const { typography, textColor } = panelData;
-
+	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
+	const { typography, textColor, marginBottom } = panelData;
+	const { currentDeviceValue: MARGIN_BOTTOM } = getValueFromAttrsResponsives(
+		marginBottom,
+		deviceType
+	);
 	//
 	return (
 		<PanelBody
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Sub Heading", "wcb")}
+			title={__("Sub heading", "wcb")}
 		>
 			<div className="space-y-2.5">
 				<MyTypographyControl
@@ -63,6 +74,21 @@ const WcbHeadingPanelSubHeading: FC<Props> = ({
 							textColor,
 						});
 					}}
+				/>
+
+				<MySpacingSizesControl
+					onChange={(value) => {
+						setAttr__({
+							...panelData,
+							marginBottom: {
+								...marginBottom,
+								[deviceType]: value,
+							},
+						});
+					}}
+					value={MARGIN_BOTTOM || ""}
+					label={__("Margin bottom", "wcb")}
+					hasResponsive
 				/>
 			</div>
 		</PanelBody>
