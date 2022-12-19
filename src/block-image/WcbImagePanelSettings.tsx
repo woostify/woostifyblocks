@@ -29,7 +29,7 @@ export interface WCB_IMAGE_PANEL_SETTINGS {
 	captionAlignment: HasResponsive<TextAlignment>;
 	objectFit: HasResponsive<NonNullable<CSSProperties["objectFit"]>>;
 	layout: "normal" | "overlay";
-	contentAlignment: "top" | "middle" | "bottom";
+	contentAlignment: CSSProperties["justifyItems"];
 }
 
 export const WCB_IMAGE_PANEL_SETTINGS_DEMO: WCB_IMAGE_PANEL_SETTINGS = {
@@ -40,7 +40,7 @@ export const WCB_IMAGE_PANEL_SETTINGS_DEMO: WCB_IMAGE_PANEL_SETTINGS = {
 	width: { Desktop: undefined },
 	objectFit: { Desktop: "initial" },
 	layout: "normal",
-	contentAlignment: "middle",
+	contentAlignment: "center",
 };
 
 interface Props
@@ -143,11 +143,11 @@ const WcbImagePanelSettings: FC<Props> = ({
 	];
 
 	const PLANS_CONTENT_ALIGNMENT: MyRadioItem<
-		WCB_IMAGE_PANEL_SETTINGS["contentAlignment"]
+		NonNullable<WCB_IMAGE_PANEL_SETTINGS["contentAlignment"]>
 	>[] = [
-		{ name: "top", icon: "Top" },
-		{ name: "middle", icon: "Middle" },
-		{ name: "bottom", icon: "Bottom" },
+		{ name: "flex-start", icon: "Top" },
+		{ name: "center", icon: "Middle" },
+		{ name: "flex-end", icon: "Bottom" },
 	];
 
 	return (
@@ -225,24 +225,35 @@ const WcbImagePanelSettings: FC<Props> = ({
 							width?: number;
 							height?: number;
 						}) => {
-							const W: Partial<WCB_IMAGE_PANEL_SETTINGS> = width
-								? {
-										width: {
-											...panelData.width,
-											[deviceType]: width,
-										},
-								  }
-								: {};
-							const H: Partial<WCB_IMAGE_PANEL_SETTINGS> = height
-								? {
-										height: {
-											...panelData.height,
-											[deviceType]: height,
-										},
-								  }
-								: {};
+							if (
+								typeof width === "undefined" &&
+								typeof height === "undefined"
+							) {
+								setAttr__({
+									...panelData,
+									width: { ...panelData.width, [deviceType]: undefined },
+									height: { ...panelData.height, [deviceType]: undefined },
+								});
+							} else {
+								const W: Partial<WCB_IMAGE_PANEL_SETTINGS> = width
+									? {
+											width: {
+												...panelData.width,
+												[deviceType]: width,
+											},
+									  }
+									: {};
+								const H: Partial<WCB_IMAGE_PANEL_SETTINGS> = height
+									? {
+											height: {
+												...panelData.height,
+												[deviceType]: height,
+											},
+									  }
+									: {};
 
-							setAttr__({ ...panelData, ...W, ...H });
+								setAttr__({ ...panelData, ...W, ...H });
+							}
 						}}
 						slug={currentSizeSlug}
 						width={currentWidth}
@@ -270,12 +281,14 @@ const WcbImagePanelSettings: FC<Props> = ({
 					options={OBJECT_FIT_OPTIONS}
 				/>
 
-				<ToggleControl
-					label={__("Enable caption", "wcb")}
-					checked={enableCaption}
-					onChange={toggleEnableCaption}
-				/>
-				{enableCaption && (
+				{panelData.layout !== "overlay" && (
+					<ToggleControl
+						label={__("Enable caption", "wcb")}
+						checked={enableCaption}
+						onChange={toggleEnableCaption}
+					/>
+				)}
+				{panelData.layout !== "overlay" && enableCaption && (
 					<MyTextAlignControl
 						textAlignment={CAPTION_ALIGNMENT}
 						onChange={handleChangeCaptionAlignment}

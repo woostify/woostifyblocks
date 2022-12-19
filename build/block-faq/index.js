@@ -7949,17 +7949,25 @@ function getStyleObjectFromResponsiveAttr(_ref) {
     prefix_2,
     prefix_3,
     prefix_4,
-    value
+    value,
+    hasUnit = true,
+    unit
   } = _ref;
   const {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES;
-  const {
+  let {
     value_Desktop,
     value_Tablet,
     value_Mobile
   } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(value);
+  if (!hasUnit && !!unit && (typeof value_Desktop === "string" || typeof value_Desktop === "number")) {
+    value_Desktop = value_Desktop + unit;
+    value_Tablet = value_Tablet + unit;
+    value_Mobile = value_Mobile + unit;
+  }
+
   //
   let prefix2 = prefix_2 || "";
   let prefix3 = prefix_3 || "";

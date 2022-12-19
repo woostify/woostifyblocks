@@ -34,6 +34,10 @@ import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives"
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import { WCB_HEADING_PANEL_CONTENT_DEMO } from "../block-heading/WcbHeadingPanelContent";
+import { WCB_HEADING_PANEL_DIMENSION_DEMO } from "../block-heading/WcbHeadingPanelDimension";
+import { WCB_HEADING_PANEL_SEPARATOR_DEMO } from "../block-heading/WcbHeadingPanelSeparator";
+import { DEFAULT_BORDER_MAIN_SINGLE_SIDE } from "../components/controls/MyBorderControl/types";
+import { WcbBlockHeadingAttrs } from "../block-heading/attributes";
 
 // Much of this description is duplicated from MediaPlaceholder.
 const placeholder = (content) => {
@@ -107,6 +111,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		general_settings,
 		style_image,
 		style_overlay,
+		style_caption,
 	} = attributes;
 
 	const [temporaryURL, setTemporaryURL] = useState<string>();
@@ -374,6 +379,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			general_settings,
 			style_image,
 			style_overlay,
+			style_caption,
 		};
 	}, [
 		uniqueId,
@@ -382,33 +388,54 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		general_settings,
 		style_image,
 		style_overlay,
+		style_caption,
 	]);
 
 	const renderOverlay = () => {
+		const InitWcbBlockHeadingAttrs: Partial<WcbBlockHeadingAttrs> = {
+			heading: "Title of content",
+			subHeading: "Description of content",
+			styles_separator: {
+				...WCB_HEADING_PANEL_SEPARATOR_DEMO,
+				width: { Desktop: "20%" },
+				border: {
+					...DEFAULT_BORDER_MAIN_SINGLE_SIDE,
+					color: "#334155",
+				},
+			},
+			general_content: {
+				...WCB_HEADING_PANEL_CONTENT_DEMO,
+				textAlignment: { Desktop: "center" },
+				showSeparator: true,
+				showSubHeading: true,
+				headingTag: "h3",
+			},
+			styles_dimensions: {
+				...WCB_HEADING_PANEL_DIMENSION_DEMO,
+				dimension: {
+					...WCB_HEADING_PANEL_DIMENSION_DEMO.dimension,
+					margin: {
+						Desktop: {
+							bottom: "1rem",
+							top: "1rem",
+							left: "1rem",
+							right: "1rem",
+						},
+					},
+				},
+			},
+		};
 		return (
-			<>
-				<div className="wcb-image__overlay-bg"></div>
-				<div className="wcb-image__overlay-content">
-					<InnerBlocks
-						allowedBlocks={[]}
-						template={[
-							[
-								"wcb/heading",
-								{
-									heading: "Title of content",
-									subHeading: "Description of content",
-									general_content: {
-										...WCB_HEADING_PANEL_CONTENT_DEMO,
-										showSeparator: true,
-										showSubHeading: true,
-										headingTag: "h3",
-									},
-								},
-							],
-						]}
-					/>
+			<div className="wcb-image__overlay-wrap">
+				<div className="wcb-image__overlay-bg">
+					<div className="wcb-image__overlay-content">
+						<InnerBlocks
+							allowedBlocks={[]}
+							template={[["wcb/heading", InitWcbBlockHeadingAttrs]]}
+						/>
+					</div>
 				</div>
-			</>
+			</div>
 		);
 	};
 
@@ -416,7 +443,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		<MyCacheProvider uniqueKey={clientId}>
 			<figure
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-image__wrap ${UNIQUE_ID}`}
+				className={`${wrapBlockProps?.className} wcb-image__wrap wcb-image__wrap--${general_settings.layout} ${UNIQUE_ID}`}
 				data-uniqueid={UNIQUE_ID}
 			>
 				{/* CSS IN JS */}

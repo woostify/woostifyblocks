@@ -12,6 +12,10 @@ import {
 	WCB_IMAGE_PANEL_SETTINGS_DEMO,
 } from "./WcbImagePanelSettings";
 import {
+	WCB_IMAGE_PANEL_STYLE_CAPTION,
+	WCB_IMAGE_PANEL_STYLE_CAPTION_DEMO,
+} from "./WcbImagePanel_StyleCaption";
+import {
 	WCB_IMAGE_PANEL_STYLE_IMAGE,
 	WCB_IMAGE_PANEL_STYLE_IMAGE_DEMO,
 } from "./WcbImagePanel_StyleImage";
@@ -25,6 +29,7 @@ export interface WcbAttrs {
 	general_settings: WCB_IMAGE_PANEL_SETTINGS;
 	style_image: WCB_IMAGE_PANEL_STYLE_IMAGE;
 	style_overlay: WCB_IMAGE_PANEL_STYLE_OVERLAY;
+	style_caption: WCB_IMAGE_PANEL_STYLE_CAPTION;
 	//
 	//
 	url: string;
@@ -60,6 +65,10 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	style_overlay: {
 		type: "object",
 		default: WCB_IMAGE_PANEL_STYLE_OVERLAY_DEMO,
+	},
+	style_caption: {
+		type: "object",
+		default: WCB_IMAGE_PANEL_STYLE_CAPTION_DEMO,
 	},
 	//
 

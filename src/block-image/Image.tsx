@@ -73,6 +73,7 @@ import useGetDeviceType from "../hooks/useGetDeviceType";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import WcbImagePanel_StyleImage from "./WcbImagePanel_StyleImage";
 import WcbImagePanel_StyleOverlay from "./WcbImagePanel_StyleOverlay";
+import WcbImagePanel_StyleCaption from "./WcbImagePanel_StyleCaption";
 
 type ImageProps = EditProps<WcbAttrs> & {
 	temporaryURL: string;
@@ -116,6 +117,7 @@ const Image: FC<ImageProps> = ({
 		uniqueId,
 		style_image,
 		style_overlay,
+		style_caption,
 	} = attributes;
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	const imageRef = useRef<HTMLImageElement>(null);
@@ -426,6 +428,18 @@ const Image: FC<ImageProps> = ({
 									setAttributes({ style_overlay: data });
 								}}
 								panelData={style_overlay}
+							/>
+						)}
+						{showCaption && general_settings.layout !== "overlay" && (
+							<WcbImagePanel_StyleCaption
+								onToggle={() => handleTogglePanel("Styles", "_StyleCaption")}
+								initialOpen={tabStylesIsPanelOpen === "_StyleCaption"}
+								opened={tabStylesIsPanelOpen === "_StyleCaption" || undefined}
+								//
+								setAttr__={(data) => {
+									setAttributes({ style_caption: data });
+								}}
+								panelData={style_caption}
 							/>
 						)}
 					</>

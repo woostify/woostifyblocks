@@ -27,6 +27,7 @@ export default function save({
 		styles_link,
 		styles_separator,
 		styles_subHeading,
+		styles_border,
 	} = attributes;
 	//
 
@@ -42,6 +43,7 @@ export default function save({
 		styles_link,
 		styles_separator,
 		styles_subHeading,
+		styles_border,
 	};
 	//
 	const blockProps = useBlockProps.save({ className: "wcb-heading__wrap" });
@@ -74,14 +76,6 @@ export default function save({
 
 				{general_content.separatorPosition === "middle" && renderSeparator()}
 
-				{general_content.showSeparator ? (
-					<div className="wcb-heading__separator-wrap">
-						<div className="wcb-heading__separator"></div>
-					</div>
-				) : null}
-
-				{general_content.separatorPosition === "bottom" && renderSeparator()}
-
 				{general_content.showSubHeading ? (
 					<RichText.Content
 						tagName="p"
@@ -89,6 +83,8 @@ export default function save({
 						value={subHeading}
 					/>
 				) : null}
+
+				{general_content.separatorPosition === "bottom" && renderSeparator()}
 			</>
 		</SaveCommon>
 	);

@@ -28,6 +28,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		styles_subHeading,
 		advance_responsiveCondition,
 		advance_zIndex,
+		styles_border,
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
@@ -203,6 +204,13 @@ const GlobalCss: FC<Props> = (attrs) => {
 			<Global styles={getDivWrapStyles()} />
 			<Global styles={getDivWrapStyles__background()} />
 			<Global styles={getDivWrapStyles__Link()} />
+			<Global
+				styles={getBorderStyles({
+					className: WRAP_CLASSNAME,
+					border: styles_border,
+					isWithRadius: true,
+				})}
+			/>
 			{/*  */}
 			<Global styles={getDivWrapStyles__Highlight()} />
 			<Global styles={getDivWrapStyles__Highlight_typography()} />

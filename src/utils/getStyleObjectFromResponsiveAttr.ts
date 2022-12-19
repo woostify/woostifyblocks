@@ -11,6 +11,8 @@ interface Params<T = string> {
 	prefix_3?: keyof CSSProperties;
 	prefix_4?: keyof CSSProperties;
 	className: string;
+	hasUnit?: boolean;
+	unit?: string;
 }
 
 function getStyleObjectFromResponsiveAttr<T = string>({
@@ -20,11 +22,24 @@ function getStyleObjectFromResponsiveAttr<T = string>({
 	prefix_3,
 	prefix_4,
 	value,
+	hasUnit = true,
+	unit,
 }: Params<T>): CSSObject {
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
-	const { value_Desktop, value_Tablet, value_Mobile } =
+	let { value_Desktop, value_Tablet, value_Mobile } =
 		getValueFromAttrsResponsives(value);
+
+	if (
+		!hasUnit &&
+		!!unit &&
+		(typeof value_Desktop === "string" || typeof value_Desktop === "number")
+	) {
+		value_Desktop = value_Desktop + unit;
+		value_Tablet = value_Tablet + unit;
+		value_Mobile = value_Mobile + unit;
+	}
+
 	//
 	let prefix2 = prefix_2 || "";
 	let prefix3 = prefix_3 || "";

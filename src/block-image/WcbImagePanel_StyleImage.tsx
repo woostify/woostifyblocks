@@ -25,13 +25,13 @@ import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives"
 export interface WCB_IMAGE_PANEL_STYLE_IMAGE {
 	border: MyBorderControlData;
 	boxShadow: MyBoxShadowControlData;
-	margin: HasResponsive<DimensionSettings>;
+	padding: HasResponsive<DimensionSettings>;
 }
 
 export const WCB_IMAGE_PANEL_STYLE_IMAGE_DEMO: WCB_IMAGE_PANEL_STYLE_IMAGE = {
 	border: MY_BORDER_CONTROL_DEMO,
 	boxShadow: MY_BOX_SHADOW_CONTROL_DEMO,
-	margin: {
+	padding: {
 		Desktop: {
 			top: "0",
 			left: "0",
@@ -56,9 +56,9 @@ const WcbImagePanel_StyleImage: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
-	const { border, boxShadow, margin } = panelData;
-	const { currentDeviceValue: currentMargin } = getValueFromAttrsResponsives(
-		margin,
+	const { border, boxShadow, padding } = panelData;
+	const { currentDeviceValue: currentPadding } = getValueFromAttrsResponsives(
+		padding,
 		deviceType
 	);
 	return (
@@ -95,15 +95,15 @@ const WcbImagePanel_StyleImage: FC<Props> = ({
 				<BoxControl
 					label={
 						<MyLabelControl hasResponsive className="">
-							{__("Margin", "wcb")}
+							{__("Padding", "wcb")}
 						</MyLabelControl>
 					}
-					values={currentMargin}
+					values={currentPadding}
 					onChange={(data) => {
 						setAttr__({
 							...panelData,
-							margin: {
-								...margin,
+							padding: {
+								...padding,
 								[deviceType]: data,
 							},
 						});

@@ -171,3 +171,12 @@ figure.wp-block-image:not(.wp-block) {
 		padding-right: 0;
 	}
 }
+
+/* ------------------------------------------- */
+.wcb-image__wrap {
+	img {
+		display: block;
+		width: inherit !important;
+		height: inherit !important;
+	}
+}

@@ -12,6 +12,7 @@ import {
 	__experimentalGetElementClassName,
 	// @ts-ignore
 	__experimentalGetBorderClassesAndStyles as getBorderClassesAndStyles,
+	InnerBlocks,
 } from "@wordpress/block-editor";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 
@@ -49,6 +50,9 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		title,
 		url,
 		general_settings,
+		style_image,
+		style_overlay,
+		style_caption,
 	} = attributes;
 	//
 
@@ -57,10 +61,21 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_settings,
+		style_image,
+		style_overlay,
+		style_caption,
 	};
 
 	const { currentDeviceValue: align } = getValueFromAttrsResponsives(
 		general_settings.alignment,
+		"Desktop"
+	);
+	const { currentDeviceValue: WIDTH } = getValueFromAttrsResponsives(
+		general_settings.width,
+		"Desktop"
+	);
+	const { currentDeviceValue: HEIGHT } = getValueFromAttrsResponsives(
+		general_settings.height,
 		"Desktop"
 	);
 	//
@@ -86,8 +101,8 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			alt={alt}
 			className={imageClasses || undefined}
 			style={borderProps.style}
-			// width={width}
-			// height={height}
+			width={WIDTH}
+			height={HEIGHT}
 			title={title}
 		/>
 	);
@@ -110,25 +125,39 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			)}
 		</>
 	);
-
-	//
-	//
 	//
 	//
 	const blockProps = useBlockProps.save({
-		className: "wcb-image__wrap " + classes,
+		className:
+			"wcb-image__wrap " +
+			classes +
+			` wcb-image__wrap--${general_settings.layout}`,
 	});
 	//
 	//
+
+	const renderOverlay = () => {
+		return (
+			<div className="wcb-image__overlay-wrap">
+				<div className="wcb-image__overlay-bg">
+					<div className="wcb-image__overlay-content">
+						<InnerBlocks.Content />
+					</div>
+				</div>
+			</div>
+		);
+	};
+
 	return (
 		<SaveCommon
 			attributes={newAttrForSave}
-			className="wcb-default__wrap"
+			className={`wcb-image__wrap wcb-image__wrap--${general_settings.layout}`}
 			uniqueId={uniqueId}
 			HtmlTag="figure"
 			{...blockProps}
 		>
 			{figure}
+			{general_settings.layout === "overlay" && renderOverlay()}
 		</SaveCommon>
 	);
 }

@@ -2225,7 +2225,8 @@ const GlobalCss = attrs => {
     styles_separator,
     styles_subHeading,
     advance_responsiveCondition,
-    advance_zIndex
+    advance_zIndex,
+    styles_border
   } = attrs;
   const {
     media_desktop,
@@ -2439,6 +2440,12 @@ const GlobalCss = attrs => {
     styles: getDivWrapStyles__background()
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
     styles: getDivWrapStyles__Link()
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+    styles: (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
+      className: WRAP_CLASSNAME,
+      border: styles_border,
+      isWithRadius: true
+    })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
     styles: getDivWrapStyles__Highlight()
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
@@ -2953,17 +2960,25 @@ function getStyleObjectFromResponsiveAttr(_ref) {
     prefix_2,
     prefix_3,
     prefix_4,
-    value
+    value,
+    hasUnit = true,
+    unit
   } = _ref;
   const {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES;
-  const {
+  let {
     value_Desktop,
     value_Tablet,
     value_Mobile
   } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(value);
+  if (!hasUnit && !!unit && (typeof value_Desktop === "string" || typeof value_Desktop === "number")) {
+    value_Desktop = value_Desktop + unit;
+    value_Tablet = value_Tablet + unit;
+    value_Mobile = value_Mobile + unit;
+  }
+
   //
   let prefix2 = prefix_2 || "";
   let prefix3 = prefix_3 || "";

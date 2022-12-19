@@ -22,6 +22,7 @@ import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
+import WcbHeadingPanel_StyleBorder from "./WcbHeadingPanel_StyleBorder";
 
 const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -40,6 +41,7 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 		styles_highlight,
 		styles_background,
 		styles_dimensions,
+		styles_border,
 		//
 		general_content,
 		advance_responsiveCondition,
@@ -145,6 +147,15 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 							initialOpen={tabStylesIsPanelOpen === "Background"}
 							opened={tabStylesIsPanelOpen === "Background" || undefined}
 						/>
+						<WcbHeadingPanel_StyleBorder
+							panelData={styles_border}
+							setAttr__={(data) => {
+								setAttributes({ styles_border: data });
+							}}
+							onToggle={() => handleTogglePanel("Styles", "_StyleBorder")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleBorder"}
+							opened={tabStylesIsPanelOpen === "_StyleBorder" || undefined}
+						/>
 						<WcbHeadingPanelDimension
 							panelData={styles_dimensions}
 							setAttr__={(styles_dimensions) => {
@@ -189,6 +200,7 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 			styles_separator,
 			styles_subHeading,
 			uniqueId,
+			styles_border,
 		};
 	}, [
 		advance_responsiveCondition,
@@ -202,6 +214,7 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 		styles_separator,
 		styles_subHeading,
 		uniqueId,
+		styles_border,
 	]);
 
 	const renderSeparator = () => {

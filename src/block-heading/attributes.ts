@@ -39,6 +39,10 @@ import {
 	WCB_HEADING_PANEL_SUB_HEADING,
 	WCB_HEADING_PANEL_SUB_HEADING_DEMO,
 } from "./WcbHeadingPanelSubHeading";
+import {
+	WCB_HEADING_PANEL_STYLE_BORDER,
+	WCB_HEADING_PANEL_STYLE_BORDER_DEMO,
+} from "./WcbHeadingPanel_StyleBorder";
 
 export interface WcbBlockHeadingAttrs {
 	uniqueId: string;
@@ -52,6 +56,7 @@ export interface WcbBlockHeadingAttrs {
 	styles_link: WCB_HEADING_PANEL_LINK;
 	styles_highlight: WCB_HEADING_PANEL_HIGHLIGHT;
 	styles_background: WCB_HEADING_PANEL_BACKGROUND;
+	styles_border: WCB_HEADING_PANEL_STYLE_BORDER;
 	styles_dimensions: WCB_HEADING_PANEL_DIMENSION;
 	//
 
@@ -105,6 +110,10 @@ const blokc1Attrs: AttrsGenericType<WcbBlockHeadingAttrs> = {
 	styles_background: {
 		type: "object",
 		default: WCB_HEADING_PANEL_BACKGROUND_DEMO,
+	},
+	styles_border: {
+		type: "object",
+		default: WCB_HEADING_PANEL_STYLE_BORDER_DEMO,
 	},
 	styles_dimensions: {
 		type: "object",
