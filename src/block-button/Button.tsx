@@ -1,6 +1,6 @@
 import { RichText } from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n";
-import React, { FC } from "react";
+import React, { FC, forwardRef } from "react";
 import MyIconFull from "../components/controls/MyIconFull";
 import { WcbAttrs } from "./attributes";
 
@@ -10,12 +10,9 @@ interface Props {
 	isEdit: boolean;
 }
 
-const Button: FC<Props> = ({
-	attributes,
-	onChangeText = () => {},
-	isEdit,
-	...props
-}) => {
+const Button: FC<Props> = forwardRef((props, ref) => {
+	const { attributes, onChangeText = () => {}, isEdit, ...otherProps } = props;
+
 	const {
 		content,
 		general_content,
@@ -50,7 +47,9 @@ const Button: FC<Props> = ({
 
 		return (
 			<HtmlTag
-				{...props}
+				{...otherProps}
+				// @ts-ignore
+				ref={ref}
 				className={`wcb-button__main ${
 					enableIcon ? `wcb-button__main-icon-${iconPosition}` : ""
 				} ${
@@ -90,6 +89,6 @@ const Button: FC<Props> = ({
 	};
 
 	return renderButton();
-};
+});
 
 export default Button;

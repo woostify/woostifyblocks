@@ -2241,8 +2241,6 @@ const GlobalCss = attrs => {
     };
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
-    styles: getDivWrapStyles()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: [(0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_6__["default"])({
       className: WRAP_CLASSNAME,
       padding: style_image.padding
@@ -2280,7 +2278,7 @@ const GlobalCss = attrs => {
       className: IMAGE_CLASSNAME,
       boxShadow: style_image.boxShadow
     })]
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+  }), general_settings.layout === "overlay" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: [{
       [OVERLAY_BG_CLASSNAME]: {
         justifyContent: general_settings.contentAlignment,
@@ -2290,7 +2288,7 @@ const GlobalCss = attrs => {
         }
       }
     }]
-  }), general_settings.layout !== "overlay" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+  }) : null, general_settings.layout !== "overlay" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: [(0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
       className: CAPTION_CLASSNAME,
       value: general_settings.captionAlignment,

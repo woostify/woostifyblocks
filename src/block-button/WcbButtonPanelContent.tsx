@@ -5,6 +5,8 @@ import {
 	ToggleControl,
 } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
+// @ts-ignore
+import { __experimentalLinkControl as LinkControl } from "@wordpress/block-editor";
 import React, { FC, CSSProperties } from "react";
 import { MyIconKey } from "../components/controls/MyIcon";
 import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
@@ -14,6 +16,7 @@ import SelecIcon, {
 	MyIcon,
 } from "../components/controls/SelectIcon/SelecIcon";
 import useGetDeviceType from "../hooks/useGetDeviceType";
+import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
 
 export interface WCB_BUTTON_PANEL_CONTENT {
 	enableIcon: boolean;
@@ -29,7 +32,7 @@ export const WCB_BUTTON_PANEL_CONTENT_DEMO_COMMON_NO_ICON: WCB_BUTTON_PANEL_CONT
 	{
 		enableIcon: false,
 		iconPosition: "left",
-		link: "#",
+		link: "",
 		openInNewWindow: false,
 		isHiddenText: false,
 		addNofollowToLink: true,
@@ -102,12 +105,16 @@ const WcbButtonPanelContent: FC<Props> = ({
 		{ name: "bottom", icon: "Bottom" },
 	];
 
+	const url = panelData.link;
+	const opensInNewTab = panelData.openInNewWindow;
+
 	return (
 		<PanelBody
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
 			title={__("Content", "wcb")}
+			className="WcbButtonPanelContent"
 		>
 			<div className={"space-y-5"}>
 				<ToggleControl
@@ -142,7 +149,34 @@ const WcbButtonPanelContent: FC<Props> = ({
 					plans={PLANS_DEMO}
 				/>
 
-				<TextControl
+				<div>
+					<MyLabelControl className="mb-0">{__("Link", "wcb")}</MyLabelControl>
+
+					<LinkControl
+						className="WcbButtonPanelContent__inline-link-input"
+						value={{ url, opensInNewTab }}
+						onChange={({
+							url: newURL = "",
+							opensInNewTab: newOpensInNewTab,
+						}) => {
+							setAttr__({
+								...panelData,
+								link: newURL,
+								openInNewWindow: newOpensInNewTab,
+							});
+						}}
+						onRemove={() => {
+							setAttr__({
+								...panelData,
+								link: "",
+								openInNewWindow: false,
+								addNofollowToLink: false,
+							});
+						}}
+					/>
+				</div>
+
+				{/* <TextControl
 					label={__("Link", "wcb")}
 					type="text"
 					value={link}
@@ -157,7 +191,7 @@ const WcbButtonPanelContent: FC<Props> = ({
 					onChange={(checked) => {
 						setAttr__({ ...panelData, openInNewWindow: checked });
 					}}
-				/>
+				/> */}
 
 				<ToggleControl
 					label={__('Add "nofollow" to link', "wcb")}

@@ -1,6 +1,12 @@
 import { __ } from "@wordpress/i18n";
-import { RichText, useBlockProps } from "@wordpress/block-editor";
-import React, { useEffect, FC, useCallback, useRef } from "react";
+import {
+	RichText,
+	useBlockProps,
+	BlockControls,
+	// @ts-ignore
+	__experimentalLinkControl as LinkControl,
+} from "@wordpress/block-editor";
+import React, { useEffect, FC, useCallback, useRef, useState } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
@@ -49,9 +55,13 @@ import Button from "./Button";
 import { WcbAttrsForSave } from "./Save";
 import MyCacheProvider from "../components/MyCacheProvider";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
+import { Popover, ToolbarButton } from "@wordpress/components";
+import { link, linkOff } from "@wordpress/icons";
+import { displayShortcut, isKeyboardEvent } from "@wordpress/keycodes";
+import { useMergeRefs } from "@wordpress/compose";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
-	const { attributes, setAttributes, clientId } = props;
+	const { attributes, setAttributes, clientId, isSelected } = props;
 	const {
 		advance_responsiveCondition,
 		advance_zIndex,
@@ -67,10 +77,14 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_dimension,
 	} = attributes;
 	//  COMMON HOOKS
-	const ref = useRef<HTMLDivElement>(null);
 
-	// const { myCache, ref } = useCreateCacheEmotion("button");
-	const wrapBlockProps = useBlockProps({ ref });
+	const [popoverAnchor, setPopoverAnchor] = useState(null);
+	const [isEditingURL, setIsEditingURL] = useState(false);
+
+	const ref = useRef<HTMLDivElement>(null);
+	const wrapBlockProps = useBlockProps({
+		ref,
+	});
 	const {
 		tabIsOpen,
 		tabAdvancesIsPanelOpen,
@@ -87,6 +101,38 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		});
 	}, [UNIQUE_ID]);
 
+	//
+	//
+	//
+
+	const isURLSet = !!general_content.link;
+	const url = general_content.link;
+	const opensInNewTab = general_content.openInNewWindow;
+
+	function startEditing(event) {
+		event.preventDefault();
+		setIsEditingURL(true);
+	}
+
+	function unlink() {
+		setAttributes({
+			general_content: {
+				...general_content,
+				link: "",
+				openInNewWindow: false,
+				addNofollowToLink: false,
+			},
+		});
+		setIsEditingURL(false);
+	}
+
+	useEffect(() => {
+		if (!isSelected) {
+			setIsEditingURL(false);
+		}
+	}, [isSelected]);
+	const richTextRef = useRef();
+	//
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
@@ -321,11 +367,70 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 				{/* CSS IN JS */}
 				<GlobalCss {...WcbAttrsForSave()} />
+				{/* @ts-ignore */}
+				<BlockControls group="block">
+					{!isURLSet && (
+						<ToolbarButton
+							name="link"
+							icon={link}
+							title={__("Link")}
+							shortcut={displayShortcut.primary("k")}
+							onClick={startEditing}
+						/>
+					)}
+					{isURLSet && (
+						<ToolbarButton
+							name="link"
+							icon={linkOff}
+							title={__("Unlink")}
+							shortcut={displayShortcut.primaryShift("k")}
+							onClick={unlink}
+							isActive={true}
+						/>
+					)}
+				</BlockControls>
+
+				{isSelected && (isEditingURL || isURLSet) && (
+					<Popover
+						position="bottom center"
+						onClose={() => {
+							setIsEditingURL(false);
+						}}
+						// @ts-ignore
+						anchor={popoverAnchor}
+						focusOnMount={isEditingURL ? "firstElement" : false}
+						__unstableSlotName={"__unstable-block-tools-after"}
+						shift
+					>
+						<LinkControl
+							className="wp-block-navigation-link__inline-link-input"
+							value={{ url, opensInNewTab }}
+							onChange={({
+								url: newURL = "",
+								opensInNewTab: newOpensInNewTab,
+							}) => {
+								setAttributes({
+									general_content: {
+										...general_content,
+										link: newURL,
+										openInNewWindow: newOpensInNewTab,
+									},
+								});
+							}}
+							onRemove={() => {
+								unlink();
+							}}
+							forceIsEditingLink={isEditingURL}
+						/>
+					</Popover>
+				)}
 
 				{/* CHILD CONTENT  */}
 				<Button
 					attributes={attributes}
 					isEdit
+					// @ts-ignore
+					ref={setPopoverAnchor}
 					onChangeText={(content) => {
 						setAttributes({ content });
 					}}

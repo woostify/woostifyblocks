@@ -1,7 +1,60 @@
 /*!*****************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/block-button/editor.scss ***!
   \*****************************************************************************************************************************************************************************************************************************************************/
-
+.WcbButtonPanelContent .block-editor-link-control__field {
+  margin: 1rem 0 !important;
+  padding: 0 !important;
+}
+.WcbButtonPanelContent .block-editor-link-control__tools {
+  margin: 0px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  padding-top: 1rem !important;
+  padding-bottom: 0px !important;
+}
+.WcbButtonPanelContent .block-editor-link-control__search-item.is-current {
+  padding: 1rem 0 !important;
+  margin: 0 !important;
+}
+.WcbButtonPanelContent .block-editor-link-control__search-item .block-editor-link-control__search-item-header {
+  margin: 0 !important;
+}
+.WcbButtonPanelContent .WcbButtonPanelContent__inline-link-input input {
+  width: 100% !important;
+}
+.WcbButtonPanelContent .block-editor-link-control {
+  min-width: unset !important;
+}
+.WcbButtonPanelContent .block-editor-link-control__search-input.has-no-label .block-editor-url-input__input {
+  border-radius: var(--radius-lg) !important;
+}
+.WcbButtonPanelContent .block-editor-link-control__search-results-wrapper {
+  margin-top: -0.625rem !important;
+}
+.WcbButtonPanelContent .block-editor-link-control__search-results {
+  margin: 0px !important;
+  border-radius: var(--radius-xl) !important;
+  padding: 0px !important;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color) !important;
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color) !important;
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000) !important;
+  --tw-ring-opacity: 1 !important;
+  --tw-ring-color: rgb(203 213 225 / var(--tw-ring-opacity)) !important;
+  --tw-ring-offset-width: 2px !important;
+}
+.WcbButtonPanelContent .block-editor-link-control__search-item {
+  margin: 0px !important;
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+}
+.WcbButtonPanelContent .block-editor-link-control__search-item-title {
+  /* @apply truncate !important; */
+}
+.WcbButtonPanelContent .block-editor-link-control__search-results-wrapper .block-editor-link-control__search-item-title {
+  word-break: break-all !important;
+}
 /*!***********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/components/controls/SelectIcon/editor.scss ***!
   \***********************************************************************************************************************************************************************************************************************************************************************/
