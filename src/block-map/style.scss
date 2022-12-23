@@ -1,0 +1,6 @@
+.wcb-map__wrap {
+	@apply overflow-hidden z-10;
+}
+.wcb-map__inner {
+	@apply w-full h-[400px] overflow-hidden z-10;
+}

@@ -35,9 +35,9 @@ function getStyleObjectFromResponsiveAttr<T = string>({
 		!!unit &&
 		(typeof value_Desktop === "string" || typeof value_Desktop === "number")
 	) {
-		value_Desktop = value_Desktop + unit;
-		value_Tablet = value_Tablet + unit;
-		value_Mobile = value_Mobile + unit;
+		(value_Desktop as string) = value_Desktop + unit;
+		(value_Tablet as string) = value_Tablet + unit;
+		(value_Mobile as string) = value_Mobile + unit;
 	}
 
 	//

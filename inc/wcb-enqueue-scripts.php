@@ -27,6 +27,11 @@ if (!function_exists("wcb__enqueue_lineicons")) {
     add_action('admin_enqueue_scripts', 'wcb__enqueue_lineicons');
 }
 
+function my_load_scripts()
+{
+    wp_enqueue_script('googleapis', "https://maps.googleapis.com/maps/api/js?key=AIzaSyAGVJfZMAKYfZ71nzL_v5i3LjTTWnCYwTY&libraries=places&v=weekly");
+}
+add_action('admin_enqueue_scripts', 'my_load_scripts');
 // 
 // if (!function_exists("wcb__enqueue_third_library_for_admin_editor")) {
 //     function wcb__enqueue_third_library_for_admin_editor()
