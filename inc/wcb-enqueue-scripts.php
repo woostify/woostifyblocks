@@ -45,11 +45,12 @@ if (!function_exists("wcb__enqueue_script_to_setting_page")) {
     {
         $currentScrren = get_current_screen();
         if (!empty($currentScrren->id) && $currentScrren->id == "woostify-blocks/settings-page") {
-            wp_register_style('wcb-settings-page', plugin_dir_url(WCB_FILE) . 'settings-page-out.css',);
+            // wp_register_style('wcb-settings-page', plugin_dir_url(WCB_FILE) . 'settings-page-out.css',);
+            wp_register_style('wcb-settings-page', plugin_dir_url(WCB_FILE) . 'build/____dashboard/style-App.css');
             wp_enqueue_style('wcb-settings-page');
 
             // 
-            wp_enqueue_script('dashboard-app', plugin_dir_url(WCB_FILE) . 'build/____dashboard/App.js', ['wp-blocks', 'wp-element', 'jquery'], WCB_VERSION, true);
+            wp_enqueue_script('wcb-dashboard-app', plugin_dir_url(WCB_FILE) . 'build/____dashboard/App.js', ['wp-blocks', 'wp-element', 'jquery'], WCB_VERSION, true);
         }
     }
     add_action('admin_enqueue_scripts', 'wcb__enqueue_script_to_setting_page');

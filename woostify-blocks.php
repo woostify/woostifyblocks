@@ -24,12 +24,39 @@ define('WCB_PLUGIN_BASE', plugin_basename(WCB_FILE));
 define('WCB_PATH', plugin_dir_path(WCB_FILE));
 define('WCB_URI', plugins_url('/', WCB_FILE));
 define('WCB_BUILD_PATH', __DIR__ . '/build');
+
+
+//
+define('WCB_DEFAULT_BLOCKS_STATUS', [
+    'heading'   => 'enabled',
+    'container' => 'enabled',
+    'button'    => 'enabled',
+    'buttons'   => 'enabled',
+    'form'      => 'enabled',
+    'cta'       => 'enabled',
+    'faq'       => 'enabled',
+]);
+
+define('WCB_DEFAULT_BLOCKS_SETTINGS', [
+    'defaultContentWidth'       => '1140px',
+    'containerPadding'          => '10px',
+    'containerElementsGap'      => '20px',
+    'enableTemplatesButton'     => 'enabled',
+    "formReCAPTCHAv2SiteKey"    => "",
+    "formReCAPTCHAv2SecretKey"  => "",
+    "formReCAPTCHAv3SiteKey"    => "",
+    "formReCAPTCHAv3SecretKey"  => "",
+]);
 // 
 
 require plugin_dir_path(__FILE__) . 'inc/wcb-custom-funcs.php';
 require plugin_dir_path(__FILE__) . 'inc/wcb-hooks.php';
 // 
 require plugin_dir_path(__FILE__) . 'inc/wcb-enqueue-scripts.php';
+// 
+// 
+require plugin_dir_path(__FILE__) . 'inc/wcb-dashboard-settings-options.php';
+require plugin_dir_path(__FILE__) . 'inc/wcb-ajax-for-dashboard-page.php';
 // 
 require plugin_dir_path(__FILE__) . 'inc/wcb-blocks-render-callback.php';
 // 

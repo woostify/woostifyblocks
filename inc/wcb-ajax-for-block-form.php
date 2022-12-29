@@ -14,7 +14,6 @@ function wcb_form_action_init()
     $subject = $mail_info['subject'];
     $body = '<html><body><h1>Hello World!</h1></body></html>';
     $headers = array('Content-Type: text/html; charset=UTF-8');
-    // $headers[] = 'From: '. $mail_info['xxxxx'];
     $headers[] = 'Cc: ' . $mail_info['cc'];
     $headers[] = 'Bcc: ' . $mail_info['bcc'];
 

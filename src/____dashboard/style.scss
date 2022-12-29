@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+//
+.woostify-blocks-settings-page-php {
+	#wpcontent {
+		@apply pl-0;
+	}
+}
