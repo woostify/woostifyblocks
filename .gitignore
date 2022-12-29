@@ -27,3 +27,5 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+tailwindcss-windows-x64.exe
