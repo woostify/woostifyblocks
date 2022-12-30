@@ -1,11 +1,15 @@
-import React, { FC } from "react";
+import React, { FC, useState, useEffect } from "react";
 import * as ReactDOM from "react-dom";
+import BlocksPage from "./components/BlocksPage";
 import Heading from "./components/Heading";
 import Nav from "./components/Nav";
+import WelcomePage from "./components/WelcomePage";
 import "./style.scss";
 import "./types";
+import toast, { Toaster } from "react-hot-toast";
+import SettingsPage from "./components/SettingsPage";
 
-interface Wcb_blocks_enable_disable_options_Type {
+export interface Wcb_blocks_enable_disable_options_Type {
 	heading: "enabled" | "disabled";
 	container: "enabled" | "disabled";
 	button: "enabled" | "disabled";
@@ -15,7 +19,7 @@ interface Wcb_blocks_enable_disable_options_Type {
 	faq: "enabled" | "disabled";
 } // Follow by WCB_DEFAULT_BLOCKS_STATUS
 
-interface Wcb_blocks_settings_options_Type {
+export interface Wcb_blocks_settings_options_Type {
 	defaultContentWidth: string;
 	containerPadding: string;
 	containerElementsGap: string;
@@ -31,60 +35,44 @@ interface Props {
 	wcb_blocks_settings_options: Wcb_blocks_settings_options_Type;
 }
 
+export type Path = "welcome" | "blocks" | "settings";
+interface Page {
+	name: string;
+	path: Path;
+}
+
+export const PAGES: Page[] = [
+	{ name: "Welcome", path: "welcome" },
+	{ name: "Blocks", path: "blocks" },
+	{ name: "Settings", path: "settings" },
+];
+
 const App: FC<Props> = ({
 	wcb_blocks_enable_disable_options,
 	wcb_blocks_settings_options,
 }) => {
-	console.log(23232, {
-		wcb_blocks_enable_disable_options,
-		wcb_blocks_settings_options,
-	});
-
-	const handleDisableEnableBlocks = () => {
-		if (typeof jQuery !== "function") {
-			return;
-		}
-		const data = {
-			action: "wcb_dashboard_blocks_disable_enable",
-			blocksStatus: {
-				image: "enabled",
-				form: "disabled",
-			},
-		};
-
-		jQuery.post(ajaxurl, data, function (response) {
-			alert("Got this from the server: " + JSON.stringify(response));
-		});
-	};
-
-	const handleUpdateSettings = () => {
-		if (typeof jQuery !== "function") {
-			return;
-		}
-		const data = {
-			action: "wcb_dashboard_blocks_update_settings",
-			settings: {
-				defaultContentWidth: "1200px",
-				containerPadding: "33px",
-			},
-		};
-
-		jQuery.post(ajaxurl, data, function (response) {
-			alert("Got this from the server: " + JSON.stringify(response));
-		});
-	};
+	const [currentPath, setcurrentPath] = useState<Path>(PAGES[0].path);
 
 	return (
 		<div className="">
-			<Nav />
-			<Heading />
+			<Nav currentPath={currentPath} onChangePath={setcurrentPath} />
 
-			<div onClick={handleUpdateSettings} className="container">
-				handleUpdateSettings
+			<div className="container ">
+				<Heading />
+				{currentPath === "settings" && <SettingsPage />}
+				{currentPath === "blocks" && (
+					<BlocksPage initData={wcb_blocks_enable_disable_options} />
+				)}
+				{currentPath === "welcome" && <WelcomePage />}
 			</div>
-			<div onClick={handleDisableEnableBlocks} className="container">
-				handleDisableEnableBlocks
-			</div>
+
+			<Toaster
+				position="top-right"
+				containerStyle={{ marginTop: "40px" }}
+				toastOptions={{
+					style: { fontSize: 16 },
+				}}
+			/>
 		</div>
 	);
 };

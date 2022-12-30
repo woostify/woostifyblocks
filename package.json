@@ -44,6 +44,7 @@
 		"color-rgba": "^2.4.0",
 		"lodash": "^4.17.21",
 		"postcss": "^8.4.20",
+		"react-hot-toast": "^2.4.0",
 		"react-slick": "^0.29.0",
 		"react-use": "^17.4.0",
 		"react-window": "^1.8.8",

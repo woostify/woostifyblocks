@@ -55,7 +55,7 @@ const safelist = [
 
 module.exports = {
 	important: true,
-	content: ["./src/**/*.{ts,tsx}", "./settings-page.php"],
+	content: ["./src/**/*.{ts,tsx}"],
 	safelist,
 	theme: {
 		container: {

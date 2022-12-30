@@ -9,6 +9,6 @@ $props = [
 ]
 
 ?>
-<div id="wcb-dasboard-root" data-props="<?php echo esc_attr(json_encode($props)); ?>">
+<div id="wcb-dasboard-root" class="" data-props="<?php echo esc_attr(json_encode($props)); ?>">
 
 </div>

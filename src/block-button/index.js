@@ -26,6 +26,7 @@ import attributes from "./attributes";
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 
 registerBlockType(metadata.name, {
+	icon: "heart",
 	edit: Edit,
 	save,
 	attributes,

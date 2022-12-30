@@ -4096,6 +4096,7 @@ const {
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_4__.name, {
+  icon: "heart",
   edit: _Edit__WEBPACK_IMPORTED_MODULE_2__["default"],
   save: _Save__WEBPACK_IMPORTED_MODULE_3__["default"],
   attributes: _attributes__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -14433,7 +14434,7 @@ module.exports = JSON.parse('{"lni-500px":59907,"lni-add-files":59905,"lni-adobe
   \*************************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/button","version":"0.1.0","title":"Button","category":"wcb-blocks","icon":"heart","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./FrontendStyles.js"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/button","version":"0.1.0","title":"Button","category":"wcb-blocks","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./FrontendStyles.js"}');
 
 /***/ }),
 
