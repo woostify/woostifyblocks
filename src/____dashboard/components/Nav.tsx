@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from "react";
-import dashboardlogo from "../../../public/images/dashboardlogo.svg";
+// import dashboardlogo from "../../../public/images/dashboardlogo.svg";
 import { CheckIcon, HeartIcon, BellIcon } from "@heroicons/react/24/outline";
 import { PAGES, Path } from "../App";
 
@@ -15,14 +15,15 @@ const Nav: FC<Props> = ({ currentPath, onChangePath }) => {
 				<div className="relative flex justify-between h-16">
 					<div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
 						<a
-							href="http://localhost/wordpress/wp-admin/options-general.php?page=spectra"
-							className="flex-shrink-0 flex items-center"
+							href="#"
+							className="flex-shrink-0 flex items-center text-5xl text-black"
 						>
-							<img
+							{/* <img
 								className="lg:block h-[2.6rem] w-auto"
 								src={dashboardlogo}
 								alt="Workflow"
-							/>
+							/> */}
+							<i className="lni lni-google-wallet"></i>
 						</a>
 						<div className="sm:ml-8 sm:flex items-center sm:space-x-2">
 							{PAGES.map((item) => {
@@ -30,7 +31,7 @@ const Nav: FC<Props> = ({ currentPath, onChangePath }) => {
 								return (
 									<a
 										key={item.path}
-										className={`flex items-center justify-center text-base px-6 py-2.5 rounded-xl font-medium ${
+										className={`flex items-center justify-center text-base px-6 py-2.5 rounded-xl font-medium outline-none ring-0 ${
 											isActive
 												? "bg-blue-50 text-blue-600"
 												: "bg-white text-slate-700 hover:bg-slate-100"

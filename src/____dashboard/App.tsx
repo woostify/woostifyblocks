@@ -4,10 +4,10 @@ import BlocksPage from "./components/BlocksPage";
 import Heading from "./components/Heading";
 import Nav from "./components/Nav";
 import WelcomePage from "./components/WelcomePage";
-import "./style.scss";
 import "./types";
 import toast, { Toaster } from "react-hot-toast";
 import SettingsPage from "./components/SettingsPage";
+import "../styles/index.scss";
 
 export interface Wcb_blocks_enable_disable_options_Type {
 	heading: "enabled" | "disabled";
@@ -65,7 +65,6 @@ const App: FC<Props> = ({
 				)}
 				{currentPath === "welcome" && <WelcomePage />}
 			</div>
-
 			<Toaster
 				position="top-right"
 				containerStyle={{ marginTop: "40px" }}

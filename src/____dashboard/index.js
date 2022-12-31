@@ -1,7 +1,3 @@
-import { registerBlockType } from "@wordpress/blocks";
-import metadata from "./block.json";
+import App from "./App";
 
-registerBlockType(metadata.name, {
-	edit: () => null,
-	save: () => null,
-});
+export default 1;

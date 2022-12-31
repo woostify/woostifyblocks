@@ -46,7 +46,7 @@ const BlocksPage: FC<Props> = ({ initData }) => {
 			<div className="flex space-x-3 justify-end">
 				<button
 					type="button"
-					className="inline-flex items-center rounded-lg border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+					className="inline-flex items-center rounded-xl border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
 					onClick={() => {
 						const newblocksStatus = Object.keys(blocksStatus).reduce(
 							(obj, item) => {
@@ -65,7 +65,7 @@ const BlocksPage: FC<Props> = ({ initData }) => {
 				</button>
 				<button
 					type="button"
-					className="inline-flex items-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+					className="inline-flex items-center rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
 					onClick={() => {
 						const newblocksStatus = Object.keys(blocksStatus).reduce(
 							(obj, item) => {
@@ -94,9 +94,8 @@ const BlocksPage: FC<Props> = ({ initData }) => {
 		return (
 			<div
 				key={index}
-				className="group relative rounded-xl border border-slate-200 dark:border-slate-800 bg-white"
+				className="relative border border-slate-200 hover:border-blue-500 rounded-xl bg-white transition-colors"
 			>
-				<div className="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 [background:linear-gradient(var(--quick-links-hover-bg,theme(colors.sky.50)),var(--quick-links-hover-bg,theme(colors.sky.50)))_padding-box,linear-gradient(to_top,theme(colors.blue.400),theme(colors.cyan.400),theme(colors.sky.500))_border-box] group-hover:opacity-100 dark:[--quick-links-hover-bg:theme(colors.slate.800)]"></div>
 				<div className="relative z-10 h-20 p-4 flex items-center gap-x-4">
 					<HeartIcon className="w-8 h-8" />
 					<div className="flex-1 min-w-0">
