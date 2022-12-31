@@ -35,6 +35,12 @@ define('WCB_DEFAULT_BLOCKS_STATUS', [
     'form'      => 'enabled',
     'cta'       => 'enabled',
     'faq'       => 'enabled',
+    'postsGrid'       => 'enabled',
+    'testimonials'       => 'enabled',
+    'team'       => 'enabled',
+    'iconBox'       => 'enabled',
+    'image'       => 'enabled',
+    'googleMap'       => 'enabled',
 ]);
 
 define('WCB_DEFAULT_BLOCKS_SETTINGS', [

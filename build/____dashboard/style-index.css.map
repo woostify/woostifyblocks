@@ -1,1 +1,0 @@
-{"version":3,"file":"____dashboard/style-index.css","mappings":";;;AAEE;IAAA;IAAA;AAAA;AAGA;IAAA;AAAA,C","sources":["webpack://woostify-blocks/./src/____dashboard/style.scss"],"sourcesContent":[".woostify-blocks-settings-page-php {\r\n\t#wpwrap {\r\n\t\t@apply bg-white;\r\n\t}\r\n\t#wpcontent {\r\n\t\t@apply pl-0;\r\n\t}\r\n}\r\n"],"names":[],"sourceRoot":""}

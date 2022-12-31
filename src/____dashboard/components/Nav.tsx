@@ -16,7 +16,7 @@ const Nav: FC<Props> = ({ currentPath, onChangePath }) => {
 					<div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
 						<a
 							href="#"
-							className="flex-shrink-0 flex items-center text-5xl text-black"
+							className="flex-shrink-0 flex items-center text-4xl text-black outline-none ring-0"
 						>
 							{/* <img
 								className="lg:block h-[2.6rem] w-auto"
@@ -53,7 +53,7 @@ const Nav: FC<Props> = ({ currentPath, onChangePath }) => {
 					<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 						<button
 							title="What's New?"
-							className="w-10 h-10 flex items-center justify-center cursor-pointer rounded-full border border-slate-200"
+							className="w-10 h-10 flex items-center justify-center cursor-pointer rounded-full border border-slate-200 text-slate-500 hover:border-slate-300"
 						>
 							<BellIcon className="w-6 h-6" />
 						</button>

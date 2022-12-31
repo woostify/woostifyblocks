@@ -1,11 +1,12 @@
 import React, { useEffect, useState, FC } from "react";
-import MyIcon, { MyIconKey } from "../../components/controls/MyIcon";
 import {
 	Cog6ToothIcon,
 	RectangleGroupIcon,
 	Squares2X2Icon,
 	RocketLaunchIcon,
 } from "@heroicons/react/24/outline";
+import SettingsPageEditorOptions from "./SettingsPageEditorOptions";
+import toast, { Toaster } from "react-hot-toast";
 
 interface Tab {
 	name: string;
@@ -36,24 +37,60 @@ const TABS: Tab[] = [
 	},
 ];
 
-const SettingsPage = () => {
+interface Props {
+	initData: typeof window.wcbGlobalVariables;
+}
+
+const SettingsPage: FC<Props> = ({ initData }) => {
+	const [allSettings, setAllSettings] = useState(initData);
 	const [currentTab, setcurrentTab] = useState(TABS[0].name);
 
-	const handleUpdateSettings = () => {
+	useEffect(() => {
+		const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+		const tab = urlParams.get("tab");
+		if (tab && TABS.some((item) => item.name === tab)) {
+			setcurrentTab(tab);
+		}
+	}, []);
+
+	const setHistoryStateParams = (tab: string) => {
+		let queryParams = new URLSearchParams(window.location.search);
+		const path = queryParams.get("path");
+		if (path) {
+			queryParams.set("path", path);
+		}
+		queryParams.set("tab", tab);
+
+		history.replaceState(null, "", `?${queryParams.toString()}`);
+	};
+
+	const handleUpdateSettings = (newData: typeof window.wcbGlobalVariables) => {
 		if (typeof jQuery !== "function") {
 			return;
 		}
+
+		const newSettings = {
+			...allSettings,
+			...newData,
+		};
+		setAllSettings(newSettings);
 		const data = {
 			action: "wcb_dashboard_blocks_update_settings",
-			settings: {
-				defaultContentWidth: "1200px",
-				containerPadding: "33px",
-			},
+			settings: newSettings,
 		};
 
-		jQuery.post(ajaxurl, data, function (response) {
-			alert("Got this from the server: " + JSON.stringify(response));
-		});
+		toast.promise(
+			// @ts-ignore
+			jQuery.post(ajaxurl, data, function (response) {
+				console.log("Got this from the server: ", response);
+			}),
+			{
+				loading: "Saving...",
+				success: <div>Successful saved!</div>,
+				error: <div>Could not save.</div>,
+			}
+		);
 	};
 
 	const renderLeft = () => {
@@ -71,6 +108,7 @@ const SettingsPage = () => {
 							}`}
 							onClick={() => {
 								setcurrentTab(item.name);
+								setHistoryStateParams(item.name);
 							}}
 						>
 							<item.icon
@@ -87,7 +125,16 @@ const SettingsPage = () => {
 	};
 
 	const renderRight = () => {
-		return <div></div>;
+		return (
+			<div>
+				<SettingsPageEditorOptions
+					onChange={(data) => {
+						handleUpdateSettings(data);
+					}}
+					allSettings={allSettings}
+				/>
+			</div>
+		);
 	};
 
 	return (

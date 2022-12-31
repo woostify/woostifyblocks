@@ -19,20 +19,9 @@ export interface Wcb_blocks_enable_disable_options_Type {
 	faq: "enabled" | "disabled";
 } // Follow by WCB_DEFAULT_BLOCKS_STATUS
 
-export interface Wcb_blocks_settings_options_Type {
-	defaultContentWidth: string;
-	containerPadding: string;
-	containerElementsGap: string;
-	enableTemplatesButton: string;
-	formReCAPTCHAv2SiteKey: string;
-	formReCAPTCHAv2SecretKey: string;
-	formReCAPTCHAv3SiteKey: string;
-	formReCAPTCHAv3SecretKey: string;
-} // Follow by WCB_DEFAULT_BLOCKS_SETTINGS
-
 interface Props {
 	wcb_blocks_enable_disable_options: Wcb_blocks_enable_disable_options_Type;
-	wcb_blocks_settings_options: Wcb_blocks_settings_options_Type;
+	wcb_blocks_settings_options: typeof window.wcbGlobalVariables;
 }
 
 export type Path = "welcome" | "blocks" | "settings";
@@ -43,7 +32,7 @@ interface Page {
 
 export const PAGES: Page[] = [
 	{ name: "Welcome", path: "welcome" },
-	{ name: "Blocks", path: "blocks" },
+	{ name: "Blocks/Extensions", path: "blocks" },
 	{ name: "Settings", path: "settings" },
 ];
 
@@ -53,23 +42,60 @@ const App: FC<Props> = ({
 }) => {
 	const [currentPath, setcurrentPath] = useState<Path>(PAGES[0].path);
 
+	useEffect(() => {
+		const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+		const path = urlParams.get("path");
+		const pathCorrect: Path[] = ["blocks", "settings", "welcome"];
+
+		if (path && pathCorrect.includes(path as Path)) {
+			setcurrentPath(path as Path);
+		}
+	}, []);
+
+	const setHistoryStateParams = (path: Path) => {
+		let queryParams = new URLSearchParams(window.location.search);
+		queryParams.set("path", path);
+
+		if (path !== "settings") {
+			queryParams.delete("tab");
+		}
+
+		history.replaceState(null, "", `?${queryParams.toString()}`);
+	};
+
 	return (
 		<div className="">
-			<Nav currentPath={currentPath} onChangePath={setcurrentPath} />
+			<Nav
+				currentPath={currentPath}
+				onChangePath={(path) => {
+					setcurrentPath(path);
+					setHistoryStateParams(path);
+				}}
+			/>
 
 			<div className="container ">
-				<Heading />
-				{currentPath === "settings" && <SettingsPage />}
+				{currentPath !== "welcome" && (
+					<Heading
+						children={
+							PAGES.filter((item) => item.path === currentPath)[0]?.name || ""
+						}
+					/>
+				)}
+				{currentPath === "settings" && (
+					<SettingsPage initData={wcb_blocks_settings_options} />
+				)}
 				{currentPath === "blocks" && (
 					<BlocksPage initData={wcb_blocks_enable_disable_options} />
 				)}
 				{currentPath === "welcome" && <WelcomePage />}
 			</div>
 			<Toaster
-				position="top-right"
+				position="top-center"
 				containerStyle={{ marginTop: "40px" }}
 				toastOptions={{
-					style: { fontSize: 16 },
+					style: { fontSize: 16, padding: "14px 16px" },
+					duration: 4000,
 				}}
 			/>
 		</div>

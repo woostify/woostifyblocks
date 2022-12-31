@@ -91,15 +91,20 @@ const BlocksPage: FC<Props> = ({ initData }) => {
 
 	const renderCard = (key: string, index: number) => {
 		const status = blocksStatus[key];
+		const enabled = status === "enabled";
 		return (
 			<div
 				key={index}
-				className="relative border border-slate-200 hover:border-blue-500 rounded-xl bg-white transition-colors"
+				className={`relative border rounded-xl bg-white transition-colors ${
+					enabled
+						? "border-slate-100 text-slate-800 bg-slate-50"
+						: "border-slate-200/80 hover:border-slate-300 text-slate-400"
+				}`}
 			>
 				<div className="relative z-10 h-20 p-4 flex items-center gap-x-4">
 					<HeartIcon className="w-8 h-8" />
 					<div className="flex-1 min-w-0">
-						<div className="text-base font-medium text-slate-800 capitalize">
+						<div className="text-base font-medium text-inherit capitalize">
 							{key}
 						</div>
 						<a
@@ -110,7 +115,7 @@ const BlocksPage: FC<Props> = ({ initData }) => {
 						</a>
 					</div>
 					<MyToggle
-						checked={status === "enabled"}
+						checked={enabled}
 						onChange={(checked) => {
 							handleDisableEnableBlocks({
 								[key]: checked ? "enabled" : "disabled",
@@ -125,7 +130,7 @@ const BlocksPage: FC<Props> = ({ initData }) => {
 	return (
 		<div>
 			{renderButtons()}
-			<div className="my-5 grid grid-flow-row auto-rows-min grid-cols-2 gap-6 sm:grid-cols-3">
+			<div className="mt-6 grid grid-flow-row auto-rows-min grid-cols-2 gap-6 sm:grid-cols-3">
 				{Object.keys(blocksStatus).map(renderCard)}
 			</div>
 		</div>
