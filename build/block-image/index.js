@@ -2427,24 +2427,26 @@ const upload = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "DEMO_WCB_GLOBAL_VARIABLES": () => (/* binding */ DEMO_WCB_GLOBAL_VARIABLES),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "DEMO_WCB_GLOBAL_VARIABLES": () => (/* binding */ DEMO_WCB_GLOBAL_VARIABLES)
 /* harmony export */ });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
-const DEMO_WCB_GLOBAL_VARIABLES = window.wcbGlobalVariables || {
-  media__desktopMinWidth: "1024px",
-  media__tabletMinWidth: "768px",
+const INIT_WCB_GLOBAL_VARIABLES = {
   media_tablet: "768px",
   media_desktop: "1024px",
-  reCAPTCHA_site_key: "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
-  reCAPTCHA_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
-  defaultContentWidth: "1140px"
+  reCAPTCHA_v3_secret_key: "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
+  reCAPTCHA_v3_site_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
+  reCAPTCHA_v2_site_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
+  reCAPTCHA_v2_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
+  defaultContentWidth: "1140px",
+  enableTemplatesButton: true,
+  enableCopyPasteStyles: false
 };
-
-// ----------------
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (null);
+const DEMO_WCB_GLOBAL_VARIABLES = {
+  ...INIT_WCB_GLOBAL_VARIABLES,
+  ...(window.wcbGlobalVariables || {})
+};
 
 /***/ }),
 

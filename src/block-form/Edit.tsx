@@ -84,7 +84,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	} = attributes;
 	//  COMMON HOOKS
 	const ref = useRef<HTMLDivElement>(null);
-	// const { myCache, ref } = useCreateCacheEmotion();
 	const wrapBlockProps = useBlockProps({ ref });
 	const {
 		tabIsOpen,

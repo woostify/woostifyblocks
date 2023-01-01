@@ -29,6 +29,7 @@ import {
 	MyZIndexControlData,
 	Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
+import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 
 export interface BlockWCBContainerAttrs {
 	uniqueId: string;

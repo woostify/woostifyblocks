@@ -16,6 +16,20 @@ if (!function_exists("wcb__my_scripts_method")) {
     add_action('wp_enqueue_scripts', 'wcb__my_scripts_method');
 }
 
+// 
+if (!function_exists("wcb__my_enqueue_scripts_for_admin_editor")) {
+    function wcb__my_enqueue_scripts_for_admin_editor()
+    {
+        // 1 - JS Global -> Follow by typeof window.wcbGlobalVariables
+        wp_localize_script(
+            'jquery',
+            'wcbGlobalVariables',
+            get_option('wcb_blocks_settings_options')
+        );
+    }
+    add_action('admin_enqueue_scripts', 'wcb__my_enqueue_scripts_for_admin_editor');
+}
+
 
 // 
 if (!function_exists("wcb__enqueue_lineicons")) {

@@ -4,6 +4,10 @@
   "name": "wcb/button",
   "version": "0.1.0",
   "title": "Button",
+  "icon": "button",
+  "parent": [
+    "wcb/buttons"
+  ],
   "category": "wcb-blocks",
   "description": "Example static block scaffolded with Create Block tool.",
   "supports": {

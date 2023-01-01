@@ -6,8 +6,8 @@
 function wpdocs_register_my_custom_menu_page()
 {
     add_menu_page(
-        __('Wootify blocks settings', 'wcb'),
-        __('Wootify blocks', 'wcb'),
+        __('Woostify blocks settings', 'wcb'),
+        __('Woostify blocks', 'wcb'),
         'manage_options',
         WCB_PATH . '/settings-page.php',
         '',

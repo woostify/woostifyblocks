@@ -15,6 +15,7 @@ import {
 } from "../components/controls/MyDimensionsControl/MyDimensionsControl";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE } from "../components/controls/MySpacingSizesControl/SpacingInputControl";
+import HelpText from "../components/controls/HelpText";
 
 export type MyContainerControlData = {
 	containerWidthType: "Full Width" | "Boxed" | "Custom";
@@ -30,7 +31,7 @@ export const CONTAINER_CONTROL_DEMO: MyContainerControlData = {
 	contentWidthType: "Full Width",
 	customWidth: { Desktop: "100%" },
 	contentBoxWidth: {
-		Desktop: DEMO_WCB_GLOBAL_VARIABLES.defaultContentWidth || "1140px",
+		Desktop: "",
 	},
 	minHeight: { Desktop: undefined },
 	htmlTag: "div",
@@ -141,8 +142,13 @@ const MyContainerControl: FC<Props> = ({
 		deviceType
 	);
 
-	const { currentDeviceValue: CONTENT_BOX_WIDTH } =
-		getValueFromAttrsResponsives(contentBoxWidthProps, deviceType);
+	let { currentDeviceValue: CONTENT_BOX_WIDTH } = getValueFromAttrsResponsives(
+		contentBoxWidthProps,
+		deviceType
+	);
+	if (CONTENT_BOX_WIDTH === "") {
+		CONTENT_BOX_WIDTH = DEMO_WCB_GLOBAL_VARIABLES.defaultContentWidth;
+	}
 
 	const { currentDeviceValue: MIN_HEIGHT } = getValueFromAttrsResponsives(
 		minHeightProps,
@@ -201,14 +207,22 @@ const MyContainerControl: FC<Props> = ({
 
 	const renderContentBoxWidth = () => {
 		return (
-			<MySpacingSizesControl
-				onChange={handleChangeContentBoxWidth}
-				value={CONTENT_BOX_WIDTH || "0"}
-				label={__("Content Box Width", "wcb")}
-				hasResponsive={true}
-				units={MY_HORIZOLTAL_UNITS}
-				customUnitsValueSettings={MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE}
-			/>
+			<div>
+				<MySpacingSizesControl
+					onChange={handleChangeContentBoxWidth}
+					value={CONTENT_BOX_WIDTH || "0"}
+					label={__("Content Box Width", "wcb")}
+					hasResponsive={true}
+					units={MY_HORIZOLTAL_UNITS}
+					customUnitsValueSettings={MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE}
+				/>
+				<HelpText>
+					{__(
+						"Default content box width " +
+							DEMO_WCB_GLOBAL_VARIABLES.defaultContentWidth
+					)}
+				</HelpText>
+			</div>
 		);
 	};
 

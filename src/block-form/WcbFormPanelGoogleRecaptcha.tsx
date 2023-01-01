@@ -1,12 +1,8 @@
 import { Notice, PanelBody, ToggleControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
-import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
-import MyTextAlignControl, {
-	TextAlignment,
-} from "../components/controls/MyTextAlignControl/MyTextAlignControl";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 
 export interface WCB_FORM_PANEL_GOOGLE_RECAPTCHA {

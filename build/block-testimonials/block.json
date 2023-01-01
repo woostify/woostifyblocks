@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "title": "Testimonials",
   "category": "wcb-blocks",
-  "icon": "heart",
+  "icon": "format-quote",
   "description": "Example static block scaffolded with Create Block tool.",
   "supports": {
     "html": false

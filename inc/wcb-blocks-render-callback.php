@@ -88,6 +88,7 @@ function wcb_block_form__renderCallback($attributes, $content)
     if (!is_admin()) {
         wp_enqueue_script('wcb_block_form__renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-form/FrontendStyles.js', ["wp-element", "jquery"], null, true);
     }
+    $wcb_blocks_settings_options = get_option('wcb_blocks_settings_options');
     ob_start();
     echo $content;
 ?>
@@ -101,7 +102,7 @@ function wcb_block_form__renderCallback($attributes, $content)
 
         <!-- V3 -->
         <?php if (($attributes['general_gg_recaptcha']['version'] ?? 'v2') === 'v3') : ?>
-            <script src="https://www.google.com/recaptcha/api.js?render=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" async defer></script>
+            <script src="https://www.google.com/recaptcha/api.js?render=<?php echo esc_attr($wcb_blocks_settings_options['reCAPTCHA_v3_site_key'] ?? ""); ?>" async defer></script>
         <?php endif; ?>
 
     <?php endif; ?>

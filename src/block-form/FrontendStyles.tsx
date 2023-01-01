@@ -57,7 +57,7 @@ function handleSubmitForm(formId: string, props: Props) {
 	if (reCaptchaV2) {
 		$(`#${formId} .g-recaptcha`).attr(
 			"data-sitekey",
-			DEMO_WCB_GLOBAL_VARIABLES.reCAPTCHA_site_key || ""
+			DEMO_WCB_GLOBAL_VARIABLES.reCAPTCHA_v2_site_key || ""
 		);
 	}
 
@@ -119,13 +119,13 @@ function handleSubmitForm(formId: string, props: Props) {
 		if (typeof grecaptcha === "object" && reCaptchaV3) {
 			grecaptcha.ready(function () {
 				grecaptcha
-					.execute(DEMO_WCB_GLOBAL_VARIABLES.reCAPTCHA_site_key, {
+					.execute(DEMO_WCB_GLOBAL_VARIABLES.reCAPTCHA_v3_site_key, {
 						action: "submit",
 					})
 					.then(function (token) {
 						console.log(123, {
 							token,
-							key: DEMO_WCB_GLOBAL_VARIABLES.reCAPTCHA_site_key,
+							key: DEMO_WCB_GLOBAL_VARIABLES.reCAPTCHA_v3_site_key,
 						});
 						handleAjaxAction();
 					});

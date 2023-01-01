@@ -7,6 +7,8 @@ import {
 } from "@heroicons/react/24/outline";
 import SettingsPageEditorOptions from "./SettingsPageEditorOptions";
 import toast, { Toaster } from "react-hot-toast";
+import SettingsPageTemplates from "./SettingsPageTemplates";
+import SettingsPageBlockSettings from "./SettingsPageBlockSettings";
 
 interface Tab {
 	name: string;
@@ -125,25 +127,48 @@ const SettingsPage: FC<Props> = ({ initData }) => {
 	};
 
 	const renderRight = () => {
-		return (
-			<div>
-				<SettingsPageEditorOptions
-					onChange={(data) => {
-						handleUpdateSettings(data);
-					}}
-					allSettings={allSettings}
-				/>
-			</div>
-		);
+		switch (currentTab) {
+			case "editor-options":
+				return (
+					<SettingsPageEditorOptions
+						onChange={(data) => {
+							handleUpdateSettings(data);
+						}}
+						allSettings={allSettings}
+					/>
+				);
+			case "templates":
+				return (
+					<SettingsPageTemplates
+						onChange={(data) => {
+							handleUpdateSettings(data);
+						}}
+						allSettings={allSettings}
+					/>
+				);
+
+			case "block-settings":
+				return (
+					<SettingsPageBlockSettings
+						onChange={(data) => {
+							handleUpdateSettings(data);
+						}}
+						allSettings={allSettings}
+					/>
+				);
+
+			default:
+				return <div className="text-lg font-medium">Coming soon ...</div>;
+		}
 	};
 
 	return (
 		<div>
 			<div className="lg:grid lg:grid-cols-12 min-h-[36rem] h-full">
-				<div className="py-6 sm:px-6 lg:py-6 lg:pr-6 lg:pl-0 lg:col-span-3">
+				<div className="py-8 sm:px-8 lg:pr-8 lg:pl-0 lg:col-span-3">
 					{renderLeft()}
 				</div>
-				<div className="lg:col-span-9 border-l p-6">{renderRight()}</div>
+				<div className="lg:col-span-9 border-l p-8">{renderRight()}</div>
 			</div>
 		</div>
 	);

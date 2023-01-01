@@ -9,19 +9,20 @@ import toast, { Toaster } from "react-hot-toast";
 import SettingsPage from "./components/SettingsPage";
 import "../styles/index.scss";
 
-export interface Wcb_blocks_enable_disable_options_Type {
-	heading: "enabled" | "disabled";
-	container: "enabled" | "disabled";
-	button: "enabled" | "disabled";
-	buttons: "enabled" | "disabled";
-	form: "enabled" | "disabled";
-	cta: "enabled" | "disabled";
-	faq: "enabled" | "disabled";
-} // Follow by WCB_DEFAULT_BLOCKS_STATUS
+export interface Wcb_block_Type {
+	name: string;
+	title: string;
+	category: string;
+	icon: string;
+	parent: unknown;
+}
+export interface Wcb_blocks_enable_disable_options_Type
+	extends Record<string, "enabled" | "disabled"> {}
 
 interface Props {
 	wcb_blocks_enable_disable_options: Wcb_blocks_enable_disable_options_Type;
 	wcb_blocks_settings_options: typeof window.wcbGlobalVariables;
+	wcb_blocks_list: Wcb_block_Type[];
 }
 
 export type Path = "welcome" | "blocks" | "settings";
@@ -39,6 +40,7 @@ export const PAGES: Page[] = [
 const App: FC<Props> = ({
 	wcb_blocks_enable_disable_options,
 	wcb_blocks_settings_options,
+	wcb_blocks_list,
 }) => {
 	const [currentPath, setcurrentPath] = useState<Path>(PAGES[0].path);
 
@@ -86,12 +88,15 @@ const App: FC<Props> = ({
 					<SettingsPage initData={wcb_blocks_settings_options} />
 				)}
 				{currentPath === "blocks" && (
-					<BlocksPage initData={wcb_blocks_enable_disable_options} />
+					<BlocksPage
+						initWcbBlocksList={wcb_blocks_list}
+						initWcbBlocksEnableDisable={wcb_blocks_enable_disable_options}
+					/>
 				)}
 				{currentPath === "welcome" && <WelcomePage />}
 			</div>
 			<Toaster
-				position="top-center"
+				position="top-right"
 				containerStyle={{ marginTop: "40px" }}
 				toastOptions={{
 					style: { fontSize: 16, padding: "14px 16px" },
@@ -113,3 +118,5 @@ if (preEl) {
 		: {};
 	ReactDOM.render(<App {...componentProps} />, preEl);
 }
+
+//

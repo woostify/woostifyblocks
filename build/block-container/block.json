@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "title": "Container",
   "category": "wcb-blocks",
-  "icon": "heart",
+  "icon": "grid-view",
   "description": "Create beautiful layouts with flexbox powered container block.",
   "supports": {
     "html": false

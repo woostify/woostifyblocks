@@ -159,10 +159,16 @@ const GlobalCss: FC<Props> = (attrs) => {
 	};
 
 	const getInner__contentCustomWidth = (): CSSObject => {
-		const { containerWidthType, contentWidthType, contentBoxWidth } =
+		let { containerWidthType, contentWidthType, contentBoxWidth } =
 			general_container;
 		if (containerWidthType !== "Full Width" || contentWidthType !== "Boxed") {
 			return {};
+		}
+
+		if (contentBoxWidth.Desktop === "") {
+			contentBoxWidth = {
+				Desktop: DEMO_WCB_GLOBAL_VARIABLES.defaultContentWidth || "",
+			};
 		}
 
 		const {

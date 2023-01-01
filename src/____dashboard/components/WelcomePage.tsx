@@ -8,7 +8,7 @@ const WelcomePage = () => {
 				<div className="grid grid-cols-1 gap-4 lg:col-span-2 h-full">
 					<div className="flex flex-col justify-center h-full rounded-md bg-white p-10 pt-[2.2rem] border border-slate-200">
 						<h2 className="text-slate-800 text-[1.8rem] leading-[2.4rem] pb-3 font-medium text-left">
-							Welcome to Wootify!
+							Welcome to Woostify!
 						</h2>
 						<p className="text-slate-500 pb-7">
 							We designed Wootify to be intuitive but we do recommend learning

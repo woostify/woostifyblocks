@@ -31,3 +31,32 @@ function vcb_var_export($value)
     echo '</code></pre>';
 };
 // 
+function wcb_get_wcb_block_type_list()
+{
+    $blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
+    $wcbBlockList = [];
+    foreach ($blocks as $key => $value) {
+        $pos = strpos($key, 'wcb/');
+        if ($pos === 0) {
+            $wcbBlockList[] = [
+                'name' => $value->name,
+                'title' => $value->title,
+                'category' => $value->category,
+                'icon' => $value->icon,
+                'parent' => $value->parent,
+            ];
+        }
+    }
+    return $wcbBlockList;
+};
+
+function wcb_get_wcb_block_name_enable_init()
+{
+    $blocks = wcb_get_wcb_block_type_list();
+    $wcbBlockName = [];
+    foreach ($blocks as $key => $value) {
+        $wcbBlockName[$value['name']] = 'enabled';
+    }
+
+    return $wcbBlockName;
+};

@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "title": "Posts grid",
   "category": "wcb-blocks",
-  "icon": "heart",
+  "icon": "screenoptions",
   "description": "Example static block scaffolded with Create Block tool.",
   "supports": {
     "html": false

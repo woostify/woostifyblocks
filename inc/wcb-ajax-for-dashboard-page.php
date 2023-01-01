@@ -4,7 +4,12 @@ add_action('wp_ajax_wcb_dashboard_blocks_disable_enable', 'wcb_ajax_dashboard_bl
 function wcb_ajax_dashboard_blocks_disable_enable()
 {
     $blocksStatus = $_POST['blocksStatus'] ?? [];
-    $blocksStatus = array_merge(WCB_DEFAULT_BLOCKS_STATUS, $blocksStatus);
+    $wcbBlockStatusInit = [];
+    if (function_exists('wcb_get_wcb_block_name_enable_init')) {
+        $wcbBlockStatusInit = wcb_get_wcb_block_name_enable_init();
+    }
+
+    $blocksStatus = array_merge($wcbBlockStatusInit, $blocksStatus);
 
     update_option('wcb_blocks_enable_disable_options', $blocksStatus);
     $array_result = array(
