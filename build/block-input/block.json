@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "title": "Input",
   "category": "wcb-blocks",
-  "icon": "heart",
+  "icon": "- wcb-block-editor-block-icon lni lni-bubble",
   "parent": [
     "wcb/form"
   ],

@@ -8,7 +8,7 @@
   "version": "0.1.0",
   "title": "Checkbox",
   "category": "wcb-blocks",
-  "icon": "heart",
+  "icon": "- wcb-block-editor-block-icon lni lni-check-box",
   "description": "Example static block scaffolded with Create Block tool.",
   "supports": {
     "__experimentalSelector": "span,label"

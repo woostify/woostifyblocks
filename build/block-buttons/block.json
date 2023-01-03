@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "title": "Buttons",
   "category": "wcb-blocks",
-  "icon": "excerpt-view",
+  "icon": "- wcb-block-editor-block-icon lni lni-page-break",
   "description": "Example static block scaffolded with Create Block tool.",
   "supports": {
     "html": false

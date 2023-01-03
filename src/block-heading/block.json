@@ -5,7 +5,7 @@
 	"version": "0.1.0",
 	"title": "Heading",
 	"category": "wcb-blocks",
-	"icon": "heading",
+	"icon": "heading - wcb-block-editor-block-icon",
 	"description": "Example static block scaffolded with Create Block tool.",
 	"supports": {
 		"align": ["wide", "full"],

@@ -8004,7 +8004,7 @@ module.exports = JSON.parse('{"lni-500px":59907,"lni-add-files":59905,"lni-adobe
   \****************************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/faq-child","version":"0.1.0","title":"FAQ child","category":"wcb-blocks","usesContext":["wcb/faq_icon","wcb/faq_general"],"parent":["wcb/faq"],"icon":"heart","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/faq-child","version":"0.1.0","title":"FAQ child","category":"wcb-blocks","usesContext":["wcb/faq_icon","wcb/faq_general"],"parent":["wcb/faq"],"icon":"- wcb-block-editor-block-icon lni lni-support","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

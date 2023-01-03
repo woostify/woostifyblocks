@@ -50,6 +50,10 @@ const safelist = [
 		pattern: /container/,
 		variants: ["sm", "md", "lg", "xl", "2xl"],
 	},
+	{
+		pattern: /text-blue-(100|500)/,
+		variants: [],
+	},
 	//
 ];
 

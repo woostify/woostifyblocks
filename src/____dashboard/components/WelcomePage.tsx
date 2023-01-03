@@ -17,12 +17,11 @@ const WelcomePage = () => {
 						</p>
 						<div className="">
 							<iframe
-								src="https://www.youtube.com/embed/GLNzTxArR6Y?showinfo=0&amp;autoplay=0&amp;mute=0&amp;rel=0"
-								allow="autoplay"
+								src="https://www.youtube.com/embed/JX6S3MtkjKs"
 								title="YouTube video player"
-								frameBorder="0"
-								allowFullScreen
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 								className="w-full aspect-video"
+								allowFullScreen
 							></iframe>
 						</div>
 					</div>
@@ -39,7 +38,7 @@ const WelcomePage = () => {
 							</p>
 							<a
 								className="text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline"
-								href="https://wpspectra.com/docs/"
+								href="https://woostifyblocks.com/"
 								target="_blank"
 								rel="noreferrer"
 							>
@@ -47,7 +46,7 @@ const WelcomePage = () => {
 							</a>
 							<a
 								className="text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover no-underline"
-								href="https://wpspectra.com/docs/"
+								href="https://woostifyblocks.com/"
 								target="_blank"
 								rel="noreferrer"
 							>
@@ -67,7 +66,7 @@ const WelcomePage = () => {
 							</p>
 							<a
 								className="text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline"
-								href="https://wpspectra.com/support/"
+								href="https://woostifyblocks.com/"
 								target="_blank"
 								rel="noreferrer"
 							>
@@ -95,7 +94,7 @@ const WelcomePage = () => {
 							</p>
 							<a
 								className="text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline"
-								href="https://www.facebook.com/groups/wpspectra"
+								href="https://woostifyblocks.com/"
 								target="_blank"
 								rel="noreferrer"
 							>
@@ -103,7 +102,7 @@ const WelcomePage = () => {
 							</a>
 							<a
 								className="text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover no-underline"
-								href="https://www.facebook.com/groups/wpspectra"
+								href="https://woostifyblocks.com/"
 								target="_blank"
 								rel="noreferrer"
 							>

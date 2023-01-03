@@ -6,7 +6,7 @@
 	"version": "0.1.0",
 	"title": "Date",
 	"category": "wcb-blocks",
-	"icon": "heart",
+	"icon": "- wcb-block-editor-block-icon lni lni-calendar",
 	"description": "Example static block scaffolded with Create Block tool.",
 	"supports": {
 		"__experimentalSelector": "span,label"

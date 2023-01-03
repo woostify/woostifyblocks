@@ -5,7 +5,7 @@
 	"version": "0.1.0",
 	"title": "Posts grid",
 	"category": "wcb-blocks",
-	"icon": "screenoptions",
+	"icon": "- wcb-block-editor-block-icon lni lni-grid-alt",
 	"description": "Example static block scaffolded with Create Block tool.",
 	"supports": {
 		"html": false

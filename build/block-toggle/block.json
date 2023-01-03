@@ -8,7 +8,7 @@
   ],
   "title": "Toggle",
   "category": "wcb-blocks",
-  "icon": "heart",
+  "icon": "- wcb-block-editor-block-icon lni lni-capsule",
   "description": "Example static block scaffolded with Create Block tool.",
   "supports": {
     "__experimentalSelector": "span,label"

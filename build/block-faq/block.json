@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "title": "FAQ",
   "category": "wcb-blocks",
-  "icon": "heart",
+  "icon": "- wcb-block-editor-block-icon lni lni-support",
   "description": "Example static block scaffolded with Create Block tool.",
   "supports": {
     "html": false

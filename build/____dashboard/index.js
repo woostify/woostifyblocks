@@ -872,12 +872,11 @@ const WelcomePage = () => {
   }, "We designed Wootify to be intuitive but we do recommend learning how it works by checking our comprehensive documentation and watching the video below. Enjoy your time with Wootify!"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: ""
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
-    src: "https://www.youtube.com/embed/GLNzTxArR6Y?showinfo=0&autoplay=0&mute=0&rel=0",
-    allow: "autoplay",
+    src: "https://www.youtube.com/embed/JX6S3MtkjKs",
     title: "YouTube video player",
-    frameBorder: "0",
-    allowFullScreen: true,
-    className: "w-full aspect-video"
+    allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+    className: "w-full aspect-video",
+    allowFullScreen: true
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "h-full grid gap-4 lg:gap-5 xl:gap-10 "
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -890,12 +889,12 @@ const WelcomePage = () => {
     className: "text-slate-500 text-sm pb-2 pr-2"
   }, "Learn everything you need to know about the Wootify plugin with our comprehensive documentation."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     className: "text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline",
-    href: "https://wpspectra.com/docs/",
+    href: "https://woostifyblocks.com/",
     target: "_blank",
     rel: "noreferrer"
   }, "Browse Now"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     className: "text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover no-underline",
-    href: "https://wpspectra.com/docs/",
+    href: "https://woostifyblocks.com/",
     target: "_blank",
     rel: "noreferrer"
   }, " ", "\u2192", " "))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -908,7 +907,7 @@ const WelcomePage = () => {
     className: "text-slate-500 text-sm pb-2 pr-2"
   }, "Need some help? Our awesome support team is here to help you with any question you have."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     className: "text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline",
-    href: "https://wpspectra.com/support/",
+    href: "https://woostifyblocks.com/",
     target: "_blank",
     rel: "noreferrer"
   }, "Get Support"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
@@ -926,12 +925,12 @@ const WelcomePage = () => {
     className: "text-slate-500 text-sm pb-2 pr-2"
   }, "Got a question about the plugin, want to share your awesome project or just say hi? Join our wonderful community!"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     className: "text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline",
-    href: "https://www.facebook.com/groups/wpspectra",
+    href: "https://woostifyblocks.com/",
     target: "_blank",
     rel: "noreferrer"
   }, "Join Now"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     className: "text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover no-underline",
-    href: "https://www.facebook.com/groups/wpspectra",
+    href: "https://woostifyblocks.com/",
     target: "_blank",
     rel: "noreferrer"
   }, " ", "\u2192", " "))))));
