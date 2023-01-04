@@ -5,30 +5,71 @@ import * as ReactDOM from "react-dom";
 import { Button, Modal } from "@wordpress/components";
 import {
 	ArrowTopRightOnSquareIcon,
-	ChevronDownIcon,
 	KeyIcon,
 	LightBulbIcon,
 } from "@heroicons/react/24/outline";
-
-const categoryOptions = [
-	{ name: "Call to action", value: "Call to action" },
-	{ name: "Testimonial", value: "Testimonial" },
-	{ name: "Clients", value: "Clients" },
-	{ name: "Team", value: "Team" },
-	{ name: "Contact", value: "Contact" },
-	{ name: "About", value: "About" },
-	{ name: "Hero", value: "Hero" },
-	{ name: "Heading", value: "Heading" },
-	{ name: "FAQ", value: "FAQ" },
-	{ name: "Infor boxes", value: "Infor boxes" },
-];
+import axios from "axios";
+import { WcbPatternType } from "../________";
 
 const HeaderToolBarPatterns = () => {
+	// STATE
 	const [isOpen, setOpen] = useState(false);
-	const [currentTab, setCurrentTab] = useState<"free" | "pro">("free");
-	const openModal = () => setOpen(true);
+
+	const [patterns, setPatterns] = useState<WcbPatternType[]>([]);
+	const [categories, setCategories] = useState<string[]>([]);
+
+	const [currentCategorySelected, setCurrentCategorySelected] =
+		useState<string>("");
+	const [currentPricingPackage, setCurrentPricingPackage] = useState<
+		"free" | "pro"
+	>("free");
+
+	// USEEFFECT
+	useEffect(() => {
+		console.log(111, { a: window.wcbGlobalPatternsData });
+		if (wcbGlobalPatternsData) {
+			setCategories(Object.keys(wcbGlobalPatternsData));
+
+			const c = Object.values(wcbGlobalPatternsData).reduce((arr, item) => {
+				return [...arr, ...item];
+			}, []);
+			setPatterns(c);
+		}
+	}, []);
+
+	// HANDLE
+	const openModal = () => {
+		setOpen(true);
+	};
 	const closeModal = () => setOpen(false);
 
+	// LOGIC API
+	const fetchPosts = () => {
+		if (!!posts && posts.length) {
+			return console.log(1111, posts);
+		}
+
+		axios
+			.get("https://woostifyblocks.com/wp-json/wp/v2/wcb-blocks", {
+				params: {
+					// per_page: 999,
+					status: "publish",
+					// page: 1,
+				},
+			})
+			.then(function (response) {
+				console.log(222, response);
+				setPosts(response.data);
+			})
+			.catch(function (error) {
+				console.log(error);
+			})
+			.finally(function () {
+				// always executed
+			});
+	};
+
+	// RENDER
 	const renderBadge = (status: "free" | "pro") => {
 		if (status === "pro") {
 			return (
@@ -44,9 +85,9 @@ const HeaderToolBarPatterns = () => {
 		);
 	};
 
-	const renderCardItem = () => {
+	const renderCardItem = (post, index) => {
 		return (
-			<li>
+			<li key={post.id}>
 				<div className="group relative before:absolute before:-inset-2.5 before:rounded-[20px] before:bg-gray-50 before:opacity-0 hover:before:opacity-100">
 					<div className="relative aspect-[2/1] overflow-hidden rounded-lg bg-gray-100 ring-1 ring-gray-900/10">
 						<img
@@ -80,13 +121,13 @@ const HeaderToolBarPatterns = () => {
 			>
 				<button
 					className={`flex items-center rounded-md py-[0.4375rem] pl-2 pr-2 text-sm font-semibold lg:pr-3 ${
-						currentTab === "free" ? "bg-white shadow" : ""
+						currentPricingPackage === "free" ? "bg-white shadow" : ""
 					}`}
 					id="headlessui-tabs-tab-29"
 					role="tab"
 					type="button"
-					aria-selected={currentTab === "free" ? "true" : undefined}
-					onClick={() => setCurrentTab("free")}
+					aria-selected={currentPricingPackage === "free" ? "true" : undefined}
+					onClick={() => setCurrentPricingPackage("free")}
 				>
 					<LightBulbIcon className="w-4 h-4" />
 					<span className="sr-only lg:not-sr-only lg:ml-2 text-slate-900">
@@ -95,13 +136,13 @@ const HeaderToolBarPatterns = () => {
 				</button>
 				<button
 					className={`flex items-center rounded-md py-[0.4375rem] pl-2 pr-2 text-sm font-semibold lg:pr-3 ${
-						currentTab === "pro" ? "bg-white shadow" : ""
+						currentPricingPackage === "pro" ? "bg-white shadow" : ""
 					}`}
 					id="headlessui-tabs-tab-30"
 					role="tab"
 					type="button"
-					aria-selected={currentTab === "pro" ? "true" : undefined}
-					onClick={() => setCurrentTab("pro")}
+					aria-selected={currentPricingPackage === "pro" ? "true" : undefined}
+					onClick={() => setCurrentPricingPackage("pro")}
 				>
 					<KeyIcon className="w-4 h-4" />
 					<span className="sr-only lg:not-sr-only lg:ml-2 text-slate-600">
@@ -148,13 +189,7 @@ const HeaderToolBarPatterns = () => {
 	const renderContent = () => {
 		return (
 			<ul className="col-span-3 grid grid-cols-1 gap-y-6 gap-x-6 sm:grid-cols-2 sm:gap-y-10 md:grid-cols-3 xl:gap-x-8">
-				{renderCardItem()}
-				{renderCardItem()}
-				{renderCardItem()}
-				{renderCardItem()}
-				{renderCardItem()}
-				{renderCardItem()}
-				{renderCardItem()}
+				{posts.map(renderCardItem)}
 			</ul>
 		);
 	};
@@ -200,6 +235,7 @@ const HeaderToolBarPatterns = () => {
 		);
 	};
 
+	// MAIN RETURN
 	return (
 		<>
 			<Button

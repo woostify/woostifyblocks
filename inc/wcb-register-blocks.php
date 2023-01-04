@@ -19,6 +19,10 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
             WCB_BUILD_PATH . '/block-common-css',
             []
         );
+        register_block_type(
+            WCB_BUILD_PATH . '/____toolbar-patterns',
+            []
+        );
         // common - not deactive
 
         if (($wcb_blocks_enable_disable['wcb/container'] ?? "") !== 'disabled') :

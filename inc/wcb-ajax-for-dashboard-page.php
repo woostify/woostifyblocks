@@ -26,7 +26,7 @@ add_action('wp_ajax_wcb_dashboard_blocks_update_settings', 'wcb_ajax_dashboard_u
 function wcb_ajax_dashboard_update_settings()
 {
     $settings = $_POST['settings'] ?? [];
-    $settings = array_merge(WCB_DEFAULT_BLOCKS_SETTINGS, $settings);
+    $settings = array_merge(wcb_get_default_blocks_settings(), $settings);
 
     update_option('wcb_blocks_settings_options', $settings);
     $array_result = array(

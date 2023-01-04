@@ -31,32 +31,56 @@ function vcb_var_export($value)
     echo '</code></pre>';
 };
 // 
-function wcb_get_wcb_block_type_list()
-{
-    $blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
-    $wcbBlockList = [];
-    foreach ($blocks as $key => $value) {
-        $pos = strpos($key, 'wcb/');
-        if ($pos === 0) {
-            $wcbBlockList[] = [
-                'name' => $value->name,
-                'title' => $value->title,
-                'category' => $value->category,
-                'icon' => $value->icon,
-                'parent' => $value->parent,
-            ];
+if (!function_exists('wcb_get_wcb_block_type_list')) :
+    function wcb_get_wcb_block_type_list()
+    {
+        $blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
+        $wcbBlockList = [];
+        foreach ($blocks as $key => $value) {
+            $pos = strpos($key, 'wcb/');
+            if ($pos === 0) {
+                $wcbBlockList[] = [
+                    'name' => $value->name,
+                    'title' => $value->title,
+                    'category' => $value->category,
+                    'icon' => $value->icon,
+                    'parent' => $value->parent,
+                ];
+            }
         }
-    }
-    return $wcbBlockList;
-};
+        return $wcbBlockList;
+    };
+endif;
 
-function wcb_get_wcb_block_name_enable_init()
-{
-    $blocks = wcb_get_wcb_block_type_list();
-    $wcbBlockName = [];
-    foreach ($blocks as $key => $value) {
-        $wcbBlockName[$value['name']] = 'enabled';
-    }
+// 
+if (!function_exists('wcb_get_wcb_block_name_enable_init')) :
+    function wcb_get_wcb_block_name_enable_init()
+    {
+        $blocks = wcb_get_wcb_block_type_list();
+        $wcbBlockName = [];
+        foreach ($blocks as $key => $value) {
+            $wcbBlockName[$value['name']] = 'enabled';
+        }
 
-    return $wcbBlockName;
-};
+        return $wcbBlockName;
+    };
+endif;
+
+//
+if (!function_exists('wcb_get_default_blocks_settings')) :
+    function wcb_get_default_blocks_settings()
+    {
+        return [
+            'media_tablet'              => '768px',
+            'media_desktop'             => '1024px',
+            'reCAPTCHA_v3_site_key'     => '',
+            'reCAPTCHA_v3_secret_key'   => '',
+            'reCAPTCHA_v2_site_key'     => '',
+            'reCAPTCHA_v2_secret_key'   => '',
+            'defaultContentWidth'       => '1140px',
+            'containerPadding'          => '10px',
+            'enableTemplatesButton'     => true,
+            'enableCopyPasteStyles'     => true,
+        ];
+    }
+endif;

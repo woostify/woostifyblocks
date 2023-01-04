@@ -18,7 +18,7 @@ if (!function_exists("wcb__my_scripts_method")) {
 
 // 
 if (!function_exists("wcb__my_enqueue_scripts_for_admin_editor")) {
-    function wcb__my_enqueue_scripts_for_admin_editor()
+    function wcb__my_enqueue_scripts_for_admin_editor($hook)
     {
         // 1 - JS Global -> Follow by typeof window.wcbGlobalVariables
         wp_localize_script(
@@ -26,6 +26,15 @@ if (!function_exists("wcb__my_enqueue_scripts_for_admin_editor")) {
             'wcbGlobalVariables',
             get_option('wcb_blocks_settings_options')
         );
+
+        // only for gutenberg editor page
+        if (function_exists('wcb_get_wcb_all_patterns_data') && ($hook == "post-new.php" || $hook == "post.php")) {
+            wp_localize_script(
+                'jquery',
+                'wcbGlobalPatternsData',
+                wcb_get_wcb_all_patterns_data()
+            );
+        }
     }
     add_action('admin_enqueue_scripts', 'wcb__my_enqueue_scripts_for_admin_editor');
 }

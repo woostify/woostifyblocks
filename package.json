@@ -40,6 +40,7 @@
 		"@wordpress/i18n": "^4.23.0",
 		"accordion-js": "^3.3.2",
 		"autoprefixer": "^10.4.13",
+		"axios": "^1.2.2",
 		"classnames": "^2.3.2",
 		"color-rgba": "^2.4.0",
 		"lodash": "^4.17.21",

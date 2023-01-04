@@ -26,9 +26,9 @@ define('WCB_URI', plugins_url('/', WCB_FILE));
 define('WCB_BUILD_PATH', __DIR__ . '/build');
 // 
 
-require plugin_dir_path(__FILE__) . 'inc/wcb-default-global-variables.php';
 require plugin_dir_path(__FILE__) . 'inc/wcb-custom-funcs.php';
 require plugin_dir_path(__FILE__) . 'inc/wcb-hooks.php';
+require plugin_dir_path(__FILE__) . 'inc/wcb-all-patterns-data.php';
 // 
 require plugin_dir_path(__FILE__) . 'inc/wcb-enqueue-scripts.php';
 // 
