@@ -14,10 +14,15 @@ import {
 import axios from "axios";
 import { gql, useLazyQuery } from "@apollo/client";
 import { GET_WCB_BLOCKS } from "./constant";
-import { Edge, Edge2, WcbBlocksRoot } from "./type";
+import { Edge, Edge2, Node, WcbBlocksRoot } from "./type";
+import * as copy from "copy-to-clipboard";
+import { useTimeoutFn } from "react-use";
 
 const HeaderToolBarPatterns = () => {
 	// STATE
+	let [isCopying, setIsCopying] = useState(true);
+	let [, , resetIsCopying] = useTimeoutFn(() => setIsCopying(true), 2000);
+
 	const [isOpen, setOpen] = useState(false);
 
 	const [currentCategorySelected, setCurrentCategorySelected] =
@@ -55,6 +60,14 @@ const HeaderToolBarPatterns = () => {
 	};
 	const closeModal = () => setOpen(false);
 
+	const insertWcbBlocks = (content: string) => {
+		const newBlocks = wp.blocks.rawHandler({
+			HTML: content,
+		});
+		wp.data.dispatch("core/block-editor").insertBlocks(newBlocks);
+		setOpen(false);
+	};
+
 	// LOGIC API
 	const graphqlGetWcbBlocksFromStoreSite = () => {};
 
@@ -74,12 +87,15 @@ const HeaderToolBarPatterns = () => {
 		);
 	};
 
-	const renderBtnImport = () => {
+	const renderImportBtns = (post: Node) => {
 		return (
 			<div className="space-x-2 absolute inset-0 flex items-center justify-center z-10 opacity-0 group-hover:opacity-100 transition-opacity">
 				<button
 					type="button"
 					className="inline-flex items-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+					onClick={() => {
+						insertWcbBlocks(post.contentOrigin);
+					}}
 				>
 					<ArrowDownOnSquareStackIcon
 						className="-ml-1 mr-2 h-5 w-5"
@@ -91,12 +107,27 @@ const HeaderToolBarPatterns = () => {
 				<button
 					type="button"
 					className="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+					onClick={() => {
+						copy(post.contentOrigin, {
+							debug: true,
+							format: "text/plain",
+							onCopy: (data) => {
+								console.log(1111, { data });
+							},
+						});
+						setIsCopying(false);
+						resetIsCopying();
+					}}
 				>
-					<ClipboardDocumentListIcon
-						className="-ml-1 mr-2 h-5 w-5 text-gray-500"
-						aria-hidden="true"
-					/>
-					Copy
+					{isCopying ? (
+						<ClipboardDocumentListIcon
+							className="-ml-1 mr-2 h-5 w-5 text-gray-500"
+							aria-hidden="true"
+						/>
+					) : (
+						<CheckIcon className="-ml-1 mr-2 h-5 w-5 text-gray-500" />
+					)}
+					{isCopying ? "Copy" : "Copied!"}
 				</button>
 			</div>
 		);
@@ -125,7 +156,7 @@ const HeaderToolBarPatterns = () => {
 			<li key={post.id}>
 				<div className="group relative before:absolute before:-inset-2.5 before:rounded-[20px] before:bg-gray-100/60 before:opacity-0 hover:before:opacity-100">
 					<div className="relative aspect-[2/1] overflow-hidden rounded-lg bg-gray-100 ring-1 ring-gray-900/10">
-						{renderBtnImport()}
+						{renderImportBtns(post)}
 
 						{post.featuredImage?.node.sourceUrl && (
 							<img

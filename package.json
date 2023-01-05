@@ -44,6 +44,7 @@
 		"axios": "^1.2.2",
 		"classnames": "^2.3.2",
 		"color-rgba": "^2.4.0",
+		"copy-to-clipboard": "^3.3.3",
 		"graphql": "^16.6.0",
 		"lodash": "^4.17.21",
 		"postcss": "^8.4.20",
