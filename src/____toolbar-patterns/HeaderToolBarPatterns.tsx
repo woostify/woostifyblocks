@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
 import apiFetch from "@wordpress/api-fetch";
-import { Button, Modal } from "@wordpress/components";
+import { Button, Modal, Spinner } from "@wordpress/components";
 import {
+	ArrowDownOnSquareStackIcon,
 	ArrowTopRightOnSquareIcon,
+	ArrowUpRightIcon,
+	CheckIcon,
+	ClipboardDocumentListIcon,
 	KeyIcon,
 	LightBulbIcon,
+	LinkIcon,
 } from "@heroicons/react/24/outline";
 import axios from "axios";
 import { gql, useLazyQuery } from "@apollo/client";
 import { GET_WCB_BLOCKS } from "./constant";
-import { Edge, WcbBlocksRoot } from "./type";
+import { Edge, Edge2, WcbBlocksRoot } from "./type";
 
 const HeaderToolBarPatterns = () => {
 	// STATE
@@ -29,13 +34,16 @@ const HeaderToolBarPatterns = () => {
 	console.log(11223344, { called, loading, data });
 
 	let patternsEdge: Edge[] = [];
-	let categoriesEdge: Edge[] = [];
+	let categoriesEdge: Record<string, Edge2["node"]> = {};
 	if (data) {
 		patternsEdge = data.wcbBlocks.edges;
-		// categoriesEdge = data.wcbBlocks.edges.map( item => {
-		// 	return item.node.wcbBlocksCategories.edges
-		// })
+		data.wcbBlocks.edges.forEach((element) => {
+			element.node.wcbBlocksCategories.edges.map((item) => {
+				categoriesEdge[item.node.id] = item.node;
+			});
+		});
 	}
+	console.log(112, { categoriesEdge, patternsEdge });
 
 	// USEEFFECT
 	useEffect(() => {}, []);
@@ -51,48 +59,99 @@ const HeaderToolBarPatterns = () => {
 	const graphqlGetWcbBlocksFromStoreSite = () => {};
 
 	// RENDER
-	const renderBadge = (status: "free" | "pro") => {
-		if (status === "pro") {
-			return (
-				<span className="relative bg-red-500 text-white text-[10px] rounded-full px-2 py-0.5 leading-none">
-					Pro
-				</span>
-			);
-		}
+	const renderBadge = (value: Edge2, index: number) => {
+		const name = value.node.name;
+
 		return (
-			<span className="relative bg-green-500 text-white text-[10px] rounded-full px-2 py-0.5 leading-none">
-				Free
+			<span
+				key={value.node.id}
+				className={`relative text-white text-[10px] rounded-full px-2 py-0.5 leading-none ${
+					name === "pro" ? "bg-red-500" : "bg-green-500"
+				}`}
+			>
+				{name}
 			</span>
+		);
+	};
+
+	const renderBtnImport = () => {
+		return (
+			<div className="space-x-2 absolute inset-0 flex items-center justify-center z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+				<button
+					type="button"
+					className="inline-flex items-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+				>
+					<ArrowDownOnSquareStackIcon
+						className="-ml-1 mr-2 h-5 w-5"
+						aria-hidden="true"
+					/>
+					Import
+				</button>
+
+				<button
+					type="button"
+					className="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+				>
+					<ClipboardDocumentListIcon
+						className="-ml-1 mr-2 h-5 w-5 text-gray-500"
+						aria-hidden="true"
+					/>
+					Copy
+				</button>
+			</div>
 		);
 	};
 
 	const renderCardItem = (value: Edge, index: number) => {
 		const post = value.node;
+		const isIncludeCategorySelected = !currentCategorySelected
+			? true
+			: post.wcbBlocksCategories.edges.some(
+					(item) => item.node.id === currentCategorySelected
+			  );
+
+		const isIncludePricingPackage = !post.wcbBlocksPricingPackages.edges.length
+			? true
+			: post.wcbBlocksPricingPackages.edges.some(
+					(item) => item.node.name === currentPricingPackage
+			  );
+
+		// CHECK FILTER
+		if (!isIncludeCategorySelected || !isIncludePricingPackage) {
+			return null;
+		}
+
 		return (
 			<li key={post.id}>
-				<div className="group relative before:absolute before:-inset-2.5 before:rounded-[20px] before:bg-gray-50 before:opacity-0 hover:before:opacity-100">
+				<div className="group relative before:absolute before:-inset-2.5 before:rounded-[20px] before:bg-gray-100/60 before:opacity-0 hover:before:opacity-100">
 					<div className="relative aspect-[2/1] overflow-hidden rounded-lg bg-gray-100 ring-1 ring-gray-900/10">
+						{renderBtnImport()}
+
 						{post.featuredImage?.node.sourceUrl && (
 							<img
 								src={post.featuredImage?.node.sourceUrl}
 								srcSet={post.featuredImage?.node.srcSet}
 								sizes="550px"
 								alt="heroes"
-								className="absolute inset-0 h-full w-full object-contain"
+								className="absolute inset-0 h-full w-full object-contain group-hover:opacity-60 transition-opacity"
 							/>
 						)}
 					</div>
-					<h4 className="mt-3.5 text-sm font-medium text-slate-900 group-hover:text-indigo-600 space-x-1">
-						<a href="/components/marketing/sections/heroes">
-							<span className="absolute -inset-2.5 z-10"></span>
+					<div className="flex items-center space-x-2">
+						<h4 className="mt-3.5 text-sm font-medium text-slate-900 group-hover:text-blue-600">
 							<span className="relative">{post.title}</span>
-						</a>
-						{renderBadge("free")}
-						{renderBadge("pro")}
-					</h4>
-					<p className="relative mt-1 text-xs font-medium text-slate-500">
-						9 templates
-					</p>
+						</h4>
+						{post.wcbBlocksPricingPackages?.edges?.map(renderBadge)}
+					</div>
+					<a
+						href={post.link}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="relative mt-1.5 text-xs font-medium text-slate-500 hover:text-slate-700 flex items-center space-x-2"
+					>
+						<span>View demo</span>
+						<ArrowUpRightIcon className="w-3 h-3" />
+					</a>
 				</div>
 			</li>
 		);
@@ -142,13 +201,18 @@ const HeaderToolBarPatterns = () => {
 	const renderSelectCategories = () => {
 		return (
 			<div className="relative hidden sm:block">
-				<select className="form-select h-9 w-full rounded-lg border-0 bg-transparent bg-none p-0 pl-3.5 pr-[1.875rem] font-medium text-slate-900 focus:shadow-none focus-visible:ring-2 focus-visible:ring-sky-500 sm:text-sm">
+				<select
+					className="form-select h-9 w-full rounded-lg border-0 bg-transparent bg-none p-0 pl-3.5 pr-[1.875rem] font-medium text-slate-900 focus:shadow-none focus-visible:ring-2 focus-visible:ring-sky-500 sm:text-sm"
+					onChange={(e) => {
+						setCurrentCategorySelected(e.currentTarget.value);
+					}}
+				>
 					<option selected value="">
 						All categories
 					</option>
-					{categories.map((item) => (
-						<option key={item} value={item}>
-							{item}
+					{Object.values(categoriesEdge).map((item) => (
+						<option key={item.id} value={item.id}>
+							{item.name}
 						</option>
 					))}
 				</select>
@@ -174,7 +238,7 @@ const HeaderToolBarPatterns = () => {
 
 	const renderContent = () => {
 		return (
-			<ul className="col-span-3 grid grid-cols-1 gap-y-6 gap-x-6 sm:grid-cols-2 sm:gap-y-10 md:grid-cols-3 xl:gap-x-8">
+			<ul className="col-span-3 grid grid-cols-1 gap-y-6 gap-x-6 sm:grid-cols-2 sm:gap-y-10 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
 				{patternsEdge.map(renderCardItem)}
 			</ul>
 		);
@@ -202,7 +266,7 @@ const HeaderToolBarPatterns = () => {
 						<div className="ml-6 mr-3 hidden h-5 w-px bg-slate-900/10 sm:block"></div>
 						{renderSelectCategories()}
 						<a
-							href="#"
+							href="https://woostifyblocks.com/wcb-blocks/"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="block relative ml-2 h-9 w-9 items-center justify-center sm:flex"
@@ -212,8 +276,8 @@ const HeaderToolBarPatterns = () => {
 					</div>
 
 					<div className="col-span-2 row-start-2 min-w-0">
-						<div className="mt-4 focus:outline-none w-full h-full rounded-lg ring-1 ring-slate-900/10 bg-white p-8">
-							{called && loading ? "Loading ..." : renderContent()}
+						<div className="mt-5 pt-6 border-t border-slate-200 focus:outline-none w-full h-full ">
+							{called && loading ? <Spinner /> : renderContent()}
 						</div>
 					</div>
 				</div>
