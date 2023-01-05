@@ -28,13 +28,13 @@ if (!function_exists("wcb__my_enqueue_scripts_for_admin_editor")) {
         );
 
         // only for gutenberg editor page
-        if (function_exists('wcb_get_wcb_all_patterns_data') && ($hook == "post-new.php" || $hook == "post.php")) {
-            wp_localize_script(
-                'jquery',
-                'wcbGlobalPatternsData',
-                wcb_get_wcb_all_patterns_data()
-            );
-        }
+        // if (function_exists('wcb_get_wcb_all_patterns_data') && ($hook == "post-new.php" || $hook == "post.php")) {
+        //     wp_localize_script(
+        //         'jquery',
+        //         'wcbGlobalPatternsData',
+        //         wcb_get_wcb_all_patterns_data()
+        //     );
+        // }
     }
     add_action('admin_enqueue_scripts', 'wcb__my_enqueue_scripts_for_admin_editor');
 }

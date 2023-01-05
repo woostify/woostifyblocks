@@ -1,12 +1,5 @@
 import "jquery";
 
-export interface WcbPatternType {
-	id: number;
-	featuredImageUrl: string;
-	isPro: boolean;
-	categoryName?: string;
-}
-
 declare global {
 	var wp: any | undefined;
 	var grecaptcha: any | undefined;
@@ -26,7 +19,6 @@ declare global {
 		ajaxurl: string;
 		homeUrl: string;
 	};
-	var wcbGlobalPatternsData: Record<string, WcbPatternType[]> | undefined;
 }
 
 const INIT_WCB_GLOBAL_VARIABLES: typeof window.wcbGlobalVariables = {

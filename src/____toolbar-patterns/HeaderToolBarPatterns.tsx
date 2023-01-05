@@ -1,7 +1,5 @@
-import "./editor.scss";
 import React, { useEffect, useState } from "react";
 import apiFetch from "@wordpress/api-fetch";
-import * as ReactDOM from "react-dom";
 import { Button, Modal } from "@wordpress/components";
 import {
 	ArrowTopRightOnSquareIcon,
@@ -9,14 +7,13 @@ import {
 	LightBulbIcon,
 } from "@heroicons/react/24/outline";
 import axios from "axios";
-import { WcbPatternType } from "../________";
+import { gql, useLazyQuery } from "@apollo/client";
+import { GET_WCB_BLOCKS } from "./constant";
+import { Edge, WcbBlocksRoot } from "./type";
 
 const HeaderToolBarPatterns = () => {
 	// STATE
 	const [isOpen, setOpen] = useState(false);
-
-	const [patterns, setPatterns] = useState<WcbPatternType[]>([]);
-	const [categories, setCategories] = useState<string[]>([]);
 
 	const [currentCategorySelected, setCurrentCategorySelected] =
 		useState<string>("");
@@ -24,50 +21,34 @@ const HeaderToolBarPatterns = () => {
 		"free" | "pro"
 	>("free");
 
-	// USEEFFECT
-	useEffect(() => {
-		console.log(111, { a: window.wcbGlobalPatternsData });
-		if (wcbGlobalPatternsData) {
-			setCategories(Object.keys(wcbGlobalPatternsData));
+	// CONSTS
 
-			const c = Object.values(wcbGlobalPatternsData).reduce((arr, item) => {
-				return [...arr, ...item];
-			}, []);
-			setPatterns(c);
-		}
-	}, []);
+	const [loadGreeting, { called, loading, data }] =
+		useLazyQuery<WcbBlocksRoot>(GET_WCB_BLOCKS);
+
+	console.log(11223344, { called, loading, data });
+
+	let patternsEdge: Edge[] = [];
+	let categoriesEdge: Edge[] = [];
+	if (data) {
+		patternsEdge = data.wcbBlocks.edges;
+		// categoriesEdge = data.wcbBlocks.edges.map( item => {
+		// 	return item.node.wcbBlocksCategories.edges
+		// })
+	}
+
+	// USEEFFECT
+	useEffect(() => {}, []);
 
 	// HANDLE
 	const openModal = () => {
 		setOpen(true);
+		!called && loadGreeting();
 	};
 	const closeModal = () => setOpen(false);
 
 	// LOGIC API
-	const fetchPosts = () => {
-		if (!!posts && posts.length) {
-			return console.log(1111, posts);
-		}
-
-		axios
-			.get("https://woostifyblocks.com/wp-json/wp/v2/wcb-blocks", {
-				params: {
-					// per_page: 999,
-					status: "publish",
-					// page: 1,
-				},
-			})
-			.then(function (response) {
-				console.log(222, response);
-				setPosts(response.data);
-			})
-			.catch(function (error) {
-				console.log(error);
-			})
-			.finally(function () {
-				// always executed
-			});
-	};
+	const graphqlGetWcbBlocksFromStoreSite = () => {};
 
 	// RENDER
 	const renderBadge = (status: "free" | "pro") => {
@@ -85,21 +66,26 @@ const HeaderToolBarPatterns = () => {
 		);
 	};
 
-	const renderCardItem = (post, index) => {
+	const renderCardItem = (value: Edge, index: number) => {
+		const post = value.node;
 		return (
 			<li key={post.id}>
 				<div className="group relative before:absolute before:-inset-2.5 before:rounded-[20px] before:bg-gray-50 before:opacity-0 hover:before:opacity-100">
 					<div className="relative aspect-[2/1] overflow-hidden rounded-lg bg-gray-100 ring-1 ring-gray-900/10">
-						<img
-							src="https://library.generateblocks.com/wp-content/uploads/2022/07/imageZFnxbHM3Lz-768x307.jpg"
-							alt="heroes"
-							className="absolute inset-0 h-full w-full object-contain"
-						/>
+						{post.featuredImage?.node.sourceUrl && (
+							<img
+								src={post.featuredImage?.node.sourceUrl}
+								srcSet={post.featuredImage?.node.srcSet}
+								sizes="550px"
+								alt="heroes"
+								className="absolute inset-0 h-full w-full object-contain"
+							/>
+						)}
 					</div>
 					<h4 className="mt-3.5 text-sm font-medium text-slate-900 group-hover:text-indigo-600 space-x-1">
 						<a href="/components/marketing/sections/heroes">
 							<span className="absolute -inset-2.5 z-10"></span>
-							<span className="relative">Hero Sections</span>
+							<span className="relative">{post.title}</span>
 						</a>
 						{renderBadge("free")}
 						{renderBadge("pro")}
@@ -160,9 +146,9 @@ const HeaderToolBarPatterns = () => {
 					<option selected value="">
 						All categories
 					</option>
-					{categoryOptions.map((item) => (
-						<option key={item.value} value={item.value}>
-							{item.name}
+					{categories.map((item) => (
+						<option key={item} value={item}>
+							{item}
 						</option>
 					))}
 				</select>
@@ -189,7 +175,7 @@ const HeaderToolBarPatterns = () => {
 	const renderContent = () => {
 		return (
 			<ul className="col-span-3 grid grid-cols-1 gap-y-6 gap-x-6 sm:grid-cols-2 sm:gap-y-10 md:grid-cols-3 xl:gap-x-8">
-				{posts.map(renderCardItem)}
+				{patternsEdge.map(renderCardItem)}
 			</ul>
 		);
 	};
@@ -227,7 +213,7 @@ const HeaderToolBarPatterns = () => {
 
 					<div className="col-span-2 row-start-2 min-w-0">
 						<div className="mt-4 focus:outline-none w-full h-full rounded-lg ring-1 ring-slate-900/10 bg-white p-8">
-							{renderContent()}
+							{called && loading ? "Loading ..." : renderContent()}
 						</div>
 					</div>
 				</div>
@@ -252,25 +238,4 @@ const HeaderToolBarPatterns = () => {
 	);
 };
 
-// -------------------------------------------------------------------------------------------
-let IS_TOOLBAR_RENDERED = false;
-const myInterval = setInterval(() => {
-	if (IS_TOOLBAR_RENDERED) {
-		clearInterval(myInterval);
-		return;
-	}
-
-	const modalRoot = document.querySelector(
-		`.edit-post-header__toolbar`
-	) as HTMLElement | null;
-
-	if (modalRoot) {
-		IS_TOOLBAR_RENDERED = true;
-		const newDiv = document.createElement("div");
-		modalRoot.appendChild(newDiv);
-		ReactDOM.render(<HeaderToolBarPatterns />, newDiv);
-	}
-}, 500);
-
-//
-export default 1;
+export default HeaderToolBarPatterns;
