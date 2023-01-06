@@ -39,7 +39,8 @@ const myInterval = setInterval(() => {
 
 	if (modalRoot) {
 		IS_TOOLBAR_RENDERED = true;
-		const newDiv = document.createElement("div");
+		let newDiv = document.createElement("div");
+		newDiv.setAttribute("id", "wcb-block-templates-button-wrap");
 		modalRoot.appendChild(newDiv);
 		ReactDOM.render(
 			<ApolloProvider client={client}>

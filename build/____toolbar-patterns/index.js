@@ -576,7 +576,8 @@ const myInterval = setInterval(() => {
   const modalRoot = document.querySelector(`.edit-post-header__toolbar`);
   if (modalRoot) {
     IS_TOOLBAR_RENDERED = true;
-    const newDiv = document.createElement("div");
+    let newDiv = document.createElement("div");
+    newDiv.setAttribute("id", "wcb-block-templates-button-wrap");
     modalRoot.appendChild(newDiv);
     react_dom__WEBPACK_IMPORTED_MODULE_2__.render((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_apollo_client__WEBPACK_IMPORTED_MODULE_7__.ApolloProvider, {
       client: client
