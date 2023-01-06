@@ -6,7 +6,7 @@
 	"version": "0.1.0",
 	"title": "Checkbox",
 	"category": "wcb-blocks",
-	"icon": "- wcb-block-editor-block-icon lni lni-check-box",
+	"icon": "- wcb-block-editor-block-icon lni lni-check-box text-xl",
 	"description": "Example static block scaffolded with Create Block tool.",
 	"supports": {
 		"__experimentalSelector": "span,label"

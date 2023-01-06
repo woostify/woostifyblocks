@@ -144,6 +144,12 @@ const BlocksPage = _ref => {
   } = _ref;
   const [blocksStatus, setBlocksStatus] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(initWcbBlocksEnableDisable);
   const [blocksList, setBlocksList] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(initWcbBlocksList);
+  console.log(2, {
+    initWcbBlocksList,
+    initWcbBlocksEnableDisable,
+    blocksStatus,
+    blocksList
+  });
   const handleDisableEnableBlocks = obj => {
     if (typeof jQuery !== "function") {
       return;
@@ -204,13 +210,13 @@ const BlocksPage = _ref => {
   };
   const renderCard = (key, index) => {
     const status = blocksStatus[key];
-    const currentBlock = blocksList.filter(item => item.name === key)[0] || {};
+    const currentBlock = blocksList.filter(item => item.name === key)[0];
     const {
       title = "None",
       icon = "none",
       parent
-    } = currentBlock;
-    if (!!parent) {
+    } = currentBlock || {};
+    if (!!parent || !currentBlock) {
       return null;
     }
     const enabled = status === "enabled";
@@ -777,12 +783,12 @@ const SettingsPageEditorOptions = _ref => {
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "py-8 wcb-field-disabled"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyToggle__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    checked: !!allSettings.enableCopyPasteStyles,
+    checked: allSettings.enableCopyPasteStyles === "true",
     disabled: !!"wcb-field-disabled",
     onChange: checked => {
       onChange({
         ...allSettings,
-        enableCopyPasteStyles: checked
+        enableCopyPasteStyles: checked ? "true" : "false"
       });
     },
     label: "Copy Paste Styles",
@@ -822,11 +828,11 @@ const SettingsPageTemplates = _ref => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-8"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyToggle__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    checked: !!allSettings.enableTemplatesButton,
+    checked: allSettings.enableTemplatesButton === "true",
     onChange: checked => {
       onChange({
         ...allSettings,
-        enableTemplatesButton: checked
+        enableTemplatesButton: checked ? "true" : "false"
       });
     },
     label: "Enable Templates Button",

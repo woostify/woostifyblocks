@@ -79,8 +79,8 @@ if (!function_exists('wcb_get_default_blocks_settings')) :
             'reCAPTCHA_v2_secret_key'   => '',
             'defaultContentWidth'       => '1140px',
             'containerPadding'          => '10px',
-            'enableTemplatesButton'     => true,
-            'enableCopyPasteStyles'     => true,
+            'enableTemplatesButton'     => 'true',
+            'enableCopyPasteStyles'     => 'true',
         ];
     }
 endif;

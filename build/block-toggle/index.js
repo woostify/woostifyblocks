@@ -2059,7 +2059,7 @@ const ForwardRef = react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(DeviceTabletIco
   \*************************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/toggle","version":"0.1.0","parent":["wcb/form"],"title":"Toggle","category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-capsule","description":"Example static block scaffolded with Create Block tool.","supports":{"__experimentalSelector":"span,label"},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/toggle","version":"0.1.0","parent":["wcb/form"],"title":"Toggle","category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-capsule text-xl","description":"Example static block scaffolded with Create Block tool.","supports":{"__experimentalSelector":"span,label"},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

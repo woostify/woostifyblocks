@@ -2200,8 +2200,8 @@ const INIT_WCB_GLOBAL_VARIABLES = {
   reCAPTCHA_v2_site_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
   reCAPTCHA_v2_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
   defaultContentWidth: "1140px",
-  enableTemplatesButton: true,
-  enableCopyPasteStyles: false
+  enableTemplatesButton: "true",
+  enableCopyPasteStyles: "false"
 };
 const DEMO_WCB_GLOBAL_VARIABLES = {
   ...INIT_WCB_GLOBAL_VARIABLES,

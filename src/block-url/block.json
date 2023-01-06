@@ -6,7 +6,7 @@
 	"title": "Url",
 	"parent": ["wcb/form"],
 	"category": "wcb-blocks",
-	"icon": "- wcb-block-editor-block-icon lni lni-link",
+	"icon": "- wcb-block-editor-block-icon lni lni-link text-xl",
 	"description": "Example static block scaffolded with Create Block tool.",
 	"supports": {
 		"__experimentalSelector": "span,label"

@@ -52,10 +52,13 @@ const SettingsPageEditorOptions: FC<Props> = ({ allSettings, onChange }) => {
 			</div> */}
 			<div className="py-8 wcb-field-disabled">
 				<MyToggle
-					checked={!!allSettings.enableCopyPasteStyles}
+					checked={allSettings.enableCopyPasteStyles === "true"}
 					disabled={!!"wcb-field-disabled"}
 					onChange={(checked) => {
-						onChange({ ...allSettings, enableCopyPasteStyles: checked });
+						onChange({
+							...allSettings,
+							enableCopyPasteStyles: checked ? "true" : "false",
+						});
 					}}
 					label="Copy Paste Styles"
 					desc='Enable the "Copy Paste Styles" option to have the ability to copy & paste Woostify & Core Gutenberg Blocks Styles.'

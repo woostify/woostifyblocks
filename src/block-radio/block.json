@@ -6,7 +6,7 @@
 	"title": "Radio",
 	"parent": ["wcb/form"],
 	"category": "wcb-blocks",
-	"icon": "- wcb-block-editor-block-icon lni lni-radio-button",
+	"icon": "- wcb-block-editor-block-icon lni lni-radio-button text-xl",
 	"description": "Example static block scaffolded with Create Block tool.",
 	"supports": {
 		"__experimentalSelector": "span,label"

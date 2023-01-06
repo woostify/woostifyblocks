@@ -5,6 +5,15 @@
 	}
 }
 
+.is-selected {
+	.block-editor-block-icon .wcb-block-editor-block-icon {
+		&.dashicons,
+		&.dashicons-before:before {
+			@apply text-white;
+		}
+	}
+}
+
 .block-editor-block-list__layout .block-editor-block-list__block.is-selected {
 	box-shadow: 0 0 0 1.5px #007cba;
 	border-radius: 2px;

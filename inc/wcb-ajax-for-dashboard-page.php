@@ -9,11 +9,11 @@ function wcb_ajax_dashboard_blocks_disable_enable()
         $wcbBlockStatusInit = wcb_get_wcb_block_name_enable_init();
     }
 
-    $blocksStatus = array_merge($wcbBlockStatusInit, $blocksStatus);
+    $newBlocksStatus = array_merge($wcbBlockStatusInit, $blocksStatus);
 
-    update_option('wcb_blocks_enable_disable_options', $blocksStatus);
+    update_option('wcb_blocks_enable_disable_options', $newBlocksStatus);
     $array_result = array(
-        'data' => $blocksStatus,
+        'data' => $newBlocksStatus,
         'message' => 'your message'
     );
     // 

@@ -18,6 +18,7 @@
 defined('ABSPATH') || exit;
 
 // Define Constants.
+define('WCB_UNIQUE_NAME', 'wcb-woostify-blocks-unique');
 define('WCB_VERSION', '0.1.0');
 define('WCB_FILE', __FILE__);
 define('WCB_PLUGIN_BASE', plugin_basename(WCB_FILE));

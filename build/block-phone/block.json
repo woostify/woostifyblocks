@@ -8,7 +8,7 @@
   "version": "0.1.0",
   "title": "Phone",
   "category": "wcb-blocks",
-  "icon": "- wcb-block-editor-block-icon lni lni-phone",
+  "icon": "- wcb-block-editor-block-icon lni lni-phone text-xl",
   "description": "Example static block scaffolded with Create Block tool.",
   "supports": {
     "__experimentalSelector": "span,label"

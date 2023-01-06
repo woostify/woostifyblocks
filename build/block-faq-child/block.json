@@ -12,7 +12,7 @@
   "parent": [
     "wcb/faq"
   ],
-  "icon": "- wcb-block-editor-block-icon lni lni-support",
+  "icon": "- wcb-block-editor-block-icon lni lni-support text-xl",
   "description": "Example static block scaffolded with Create Block tool.",
   "supports": {
     "html": false

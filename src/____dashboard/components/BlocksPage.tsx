@@ -21,6 +21,13 @@ const BlocksPage: FC<Props> = ({
 	const [blocksStatus, setBlocksStatus] = useState(initWcbBlocksEnableDisable);
 	const [blocksList, setBlocksList] = useState(initWcbBlocksList);
 
+	console.log(2, {
+		initWcbBlocksList,
+		initWcbBlocksEnableDisable,
+		blocksStatus,
+		blocksList,
+	});
+
 	const handleDisableEnableBlocks = (obj: any) => {
 		if (typeof jQuery !== "function") {
 			return;
@@ -98,11 +105,11 @@ const BlocksPage: FC<Props> = ({
 
 	const renderCard = (key: string, index: number) => {
 		const status = blocksStatus[key];
-		const currentBlock =
-			blocksList.filter((item) => item.name === key)[0] || {};
-		const { title = "None", icon = "none", parent } = currentBlock;
+		const currentBlock = blocksList.filter((item) => item.name === key)[0];
 
-		if (!!parent) {
+		const { title = "None", icon = "none", parent } = currentBlock || {};
+
+		if (!!parent || !currentBlock) {
 			return null;
 		}
 

@@ -6,7 +6,7 @@
 	"parent": ["wcb/form"],
 	"title": "Textarea",
 	"category": "wcb-blocks",
-	"icon": "- wcb-block-editor-block-icon lni lni-bubble",
+	"icon": "- wcb-block-editor-block-icon lni lni-pencil-alt text-xl",
 	"description": "Example static block scaffolded with Create Block tool.",
 	"supports": {
 		"__experimentalSelector": "span,label"

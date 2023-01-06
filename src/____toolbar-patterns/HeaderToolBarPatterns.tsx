@@ -1,42 +1,41 @@
 import React, { useEffect, useState } from "react";
-import apiFetch from "@wordpress/api-fetch";
 import { Button, Modal, Spinner } from "@wordpress/components";
 import {
+	ArrowDownOnSquareIcon,
 	ArrowDownOnSquareStackIcon,
 	ArrowTopRightOnSquareIcon,
 	ArrowUpRightIcon,
 	CheckIcon,
-	ClipboardDocumentListIcon,
+	ClipboardIcon,
 	KeyIcon,
 	LightBulbIcon,
 	LinkIcon,
 } from "@heroicons/react/24/outline";
-import axios from "axios";
 import { gql, useLazyQuery } from "@apollo/client";
 import { GET_WCB_BLOCKS } from "./constant";
 import { Edge, Edge2, Node, WcbBlocksRoot } from "./type";
 import * as copy from "copy-to-clipboard";
 import { useTimeoutFn } from "react-use";
+import { useSelect, useDispatch } from "@wordpress/data";
+import { store as blockEditorStore } from "@wordpress/block-editor";
+import { rawHandler } from "@wordpress/blocks";
 
 const HeaderToolBarPatterns = () => {
 	// STATE
-	let [isCopying, setIsCopying] = useState(true);
-	let [, , resetIsCopying] = useTimeoutFn(() => setIsCopying(true), 2000);
+	let [indexCopying, setIndexCopying] = useState("");
+	let [, , resetIsCopying] = useTimeoutFn(() => setIndexCopying(""), 1500);
 
 	const [isOpen, setOpen] = useState(false);
 
 	const [currentCategorySelected, setCurrentCategorySelected] =
 		useState<string>("");
 	const [currentPricingPackage, setCurrentPricingPackage] = useState<
-		"free" | "pro"
+		"free" | "pro" | "all"
 	>("free");
 
 	// CONSTS
-
 	const [loadGreeting, { called, loading, data }] =
 		useLazyQuery<WcbBlocksRoot>(GET_WCB_BLOCKS);
-
-	console.log(11223344, { called, loading, data });
 
 	let patternsEdge: Edge[] = [];
 	let categoriesEdge: Record<string, Edge2["node"]> = {};
@@ -48,42 +47,58 @@ const HeaderToolBarPatterns = () => {
 			});
 		});
 	}
-	console.log(112, { categoriesEdge, patternsEdge });
 
-	// USEEFFECT
-	useEffect(() => {}, []);
+	// HOOKS
+	const { selectedBlockClientIndex, selectedBlockClientId } = useSelect(
+		(select) => {
+			// @ts-ignore
+			const { getSelectedBlockClientId, getBlockIndex } =
+				select(blockEditorStore);
+			const selectedBlockClientId = getSelectedBlockClientId();
+			return {
+				selectedBlockClientId,
+				selectedBlockClientIndex: getBlockIndex(selectedBlockClientId),
+			};
+		},
+		[]
+	);
+	const { insertBlocks } = useDispatch(blockEditorStore);
 
 	// HANDLE
 	const openModal = () => {
 		setOpen(true);
 		!called && loadGreeting();
 	};
-	const closeModal = () => setOpen(false);
-
-	const insertWcbBlocks = (content: string) => {
-		const newBlocks = wp.blocks.rawHandler({
-			HTML: content,
-		});
-		wp.data.dispatch("core/block-editor").insertBlocks(newBlocks);
+	const closeModal = () => {
 		setOpen(false);
 	};
 
-	// LOGIC API
-	const graphqlGetWcbBlocksFromStoreSite = () => {};
+	const insertWcbBlocks = (content: string) => {
+		setOpen(false);
+		const newBlocks = rawHandler({
+			HTML: content,
+		});
+		const newIndex =
+			selectedBlockClientIndex === -1
+				? undefined
+				: (selectedBlockClientIndex || 0) + 1;
+
+		insertBlocks(newBlocks, newIndex);
+	};
 
 	// RENDER
 	const renderBadge = (value: Edge2, index: number) => {
 		const name = value.node.name;
 
 		return (
-			<span
+			<div
 				key={value.node.id}
-				className={`relative text-white text-[10px] rounded-full px-2 py-0.5 leading-none ${
+				className={`relative text-white text-[10px] rounded-full px-2 py-0.5 leading-none capitalize font-medium flex items-center justify-center ${
 					name === "pro" ? "bg-red-500" : "bg-green-500"
 				}`}
 			>
-				{name}
-			</span>
+				<span>{name}</span>
+			</div>
 		);
 	};
 
@@ -93,11 +108,12 @@ const HeaderToolBarPatterns = () => {
 				<button
 					type="button"
 					className="inline-flex items-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-					onClick={() => {
+					onClick={(e) => {
+						e.preventDefault();
 						insertWcbBlocks(post.contentOrigin);
 					}}
 				>
-					<ArrowDownOnSquareStackIcon
+					<ArrowDownOnSquareIcon
 						className="-ml-1 mr-2 h-5 w-5"
 						aria-hidden="true"
 					/>
@@ -107,27 +123,24 @@ const HeaderToolBarPatterns = () => {
 				<button
 					type="button"
 					className="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-					onClick={() => {
+					onClick={(e) => {
+						e.preventDefault();
 						copy(post.contentOrigin, {
-							debug: true,
 							format: "text/plain",
-							onCopy: (data) => {
-								console.log(1111, { data });
-							},
 						});
-						setIsCopying(false);
+						setIndexCopying(post.id);
 						resetIsCopying();
 					}}
 				>
-					{isCopying ? (
-						<ClipboardDocumentListIcon
+					{indexCopying !== post.id ? (
+						<ClipboardIcon
 							className="-ml-1 mr-2 h-5 w-5 text-gray-500"
 							aria-hidden="true"
 						/>
 					) : (
 						<CheckIcon className="-ml-1 mr-2 h-5 w-5 text-gray-500" />
 					)}
-					{isCopying ? "Copy" : "Copied!"}
+					{indexCopying !== post.id ? "Copy" : "Copied!"}
 				</button>
 			</div>
 		);
@@ -141,11 +154,14 @@ const HeaderToolBarPatterns = () => {
 					(item) => item.node.id === currentCategorySelected
 			  );
 
-		const isIncludePricingPackage = !post.wcbBlocksPricingPackages.edges.length
-			? true
-			: post.wcbBlocksPricingPackages.edges.some(
-					(item) => item.node.name === currentPricingPackage
-			  );
+		let isIncludePricingPackage = false;
+		if (!currentPricingPackage || currentPricingPackage === "all") {
+			isIncludePricingPackage = true;
+		} else {
+			isIncludePricingPackage = post.wcbBlocksPricingPackages.edges.some(
+				(item) => item.node.name === currentPricingPackage
+			);
+		}
 
 		// CHECK FILTER
 		if (!isIncludeCategorySelected || !isIncludePricingPackage) {
@@ -168,8 +184,8 @@ const HeaderToolBarPatterns = () => {
 							/>
 						)}
 					</div>
-					<div className="flex items-center space-x-2">
-						<h4 className="mt-3.5 text-sm font-medium text-slate-900 group-hover:text-blue-600">
+					<div className="flex space-x-2 mt-3.5 ">
+						<h4 className="text-sm font-medium text-slate-900 group-hover:text-blue-600">
 							<span className="relative">{post.title}</span>
 						</h4>
 						{post.wcbBlocksPricingPackages?.edges?.map(renderBadge)}
@@ -197,33 +213,42 @@ const HeaderToolBarPatterns = () => {
 			>
 				<button
 					className={`flex items-center rounded-md py-[0.4375rem] pl-2 pr-2 text-sm font-semibold lg:pr-3 ${
+						currentPricingPackage === "all" ? "bg-white shadow" : ""
+					}`}
+					id="headlessui-tabs-tab-all"
+					role="tab"
+					type="button"
+					aria-selected={currentPricingPackage === "all" ? "true" : undefined}
+					onClick={() => setCurrentPricingPackage("all")}
+				>
+					<LinkIcon className="w-4 h-4" />
+					<span className="ml-2 text-slate-900">All</span>
+				</button>
+				<button
+					className={`flex items-center rounded-md py-[0.4375rem] pl-2 pr-2 text-sm font-semibold lg:pr-3 ${
 						currentPricingPackage === "free" ? "bg-white shadow" : ""
 					}`}
-					id="headlessui-tabs-tab-29"
+					id="headlessui-tabs-tab-free"
 					role="tab"
 					type="button"
 					aria-selected={currentPricingPackage === "free" ? "true" : undefined}
 					onClick={() => setCurrentPricingPackage("free")}
 				>
 					<LightBulbIcon className="w-4 h-4" />
-					<span className="sr-only lg:not-sr-only lg:ml-2 text-slate-900">
-						Free
-					</span>
+					<span className="ml-2 text-slate-900">Free</span>
 				</button>
 				<button
 					className={`flex items-center rounded-md py-[0.4375rem] pl-2 pr-2 text-sm font-semibold lg:pr-3 ${
 						currentPricingPackage === "pro" ? "bg-white shadow" : ""
 					}`}
-					id="headlessui-tabs-tab-30"
+					id="headlessui-tabs-tab-pro"
 					role="tab"
 					type="button"
 					aria-selected={currentPricingPackage === "pro" ? "true" : undefined}
 					onClick={() => setCurrentPricingPackage("pro")}
 				>
 					<KeyIcon className="w-4 h-4" />
-					<span className="sr-only lg:not-sr-only lg:ml-2 text-slate-600">
-						Pro
-					</span>
+					<span className="ml-2 text-slate-600">Pro</span>
 				</button>
 			</div>
 		);
@@ -231,9 +256,9 @@ const HeaderToolBarPatterns = () => {
 
 	const renderSelectCategories = () => {
 		return (
-			<div className="relative hidden sm:block">
+			<div className="relative block">
 				<select
-					className="form-select h-9 w-full rounded-lg border-0 bg-transparent bg-none p-0 pl-3.5 pr-[1.875rem] font-medium text-slate-900 focus:shadow-none focus-visible:ring-2 focus-visible:ring-sky-500 sm:text-sm"
+					className="form-select h-9 w-full rounded-lg border-0 bg-transparent bg-none p-0 pl-3.5 pr-[1.875rem] font-medium text-slate-900 focus:shadow-none focus-visible:ring-2 focus-visible:ring-sky-500 text-sm"
 					onChange={(e) => {
 						setCurrentCategorySelected(e.currentTarget.value);
 					}}
@@ -269,7 +294,7 @@ const HeaderToolBarPatterns = () => {
 
 	const renderContent = () => {
 		return (
-			<ul className="col-span-3 grid grid-cols-1 gap-y-6 gap-x-6 sm:grid-cols-2 sm:gap-y-10 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
+			<ul className="col-span-3 grid grid-cols-1 gap-y-6 gap-x-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-3 2xl:grid-cols-4 xl:gap-x-8">
 				{patternsEdge.map(renderCardItem)}
 			</ul>
 		);
@@ -284,29 +309,29 @@ const HeaderToolBarPatterns = () => {
 				__experimentalHideHeader
 			>
 				<div className="grid grid-cols-[1fr,auto] items-center">
-					<div className="flex min-w-0">
+					<div className="col-span-2 md:col-span-1 flex min-w-0">
 						<h2 className="truncate text-base font-medium leading-7 text-slate-900">
 							Woostify Pattern Library
 						</h2>
-						<p className="ml-3 hidden whitespace-nowrap rounded-lg bg-slate-100 py-0.5 px-2 text-xs font-semibold leading-6 text-slate-700 lg:block">
-							315 patterns
+						<p className="ml-3 whitespace-nowrap rounded-lg bg-slate-100 py-0.5 px-2 text-xs font-semibold leading-6 text-slate-700 block">
+							{data ? patternsEdge.length : ""} patterns
 						</p>
 					</div>
-					<div className="ml-6 flex items-center">
+					<div className="pt-5 md:pt-0 col-span-2 md:col-span-1 md:ml-6 flex items-center">
 						{renderFreeProTab()}
-						<div className="ml-6 mr-3 hidden h-5 w-px bg-slate-900/10 sm:block"></div>
+						<div className="ml-6 mr-3 h-5 w-px bg-slate-900/10 block"></div>
 						{renderSelectCategories()}
 						<a
 							href="https://woostifyblocks.com/wcb-blocks/"
 							target="_blank"
 							rel="noopener noreferrer"
-							className="block relative ml-2 h-9 w-9 items-center justify-center sm:flex"
+							className="relative ml-2 h-9 w-9 items-center justify-center flex"
 						>
-							<ArrowTopRightOnSquareIcon className="w-5 h-5" />
+							<ArrowTopRightOnSquareIcon className="w-4 h-4" />
 						</a>
 					</div>
 
-					<div className="col-span-2 row-start-2 min-w-0">
+					<div className="col-span-2 min-w-0">
 						<div className="mt-5 pt-6 border-t border-slate-200 focus:outline-none w-full h-full ">
 							{called && loading ? <Spinner /> : renderContent()}
 						</div>

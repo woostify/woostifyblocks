@@ -6,7 +6,7 @@
 	"title": "Block Common CSS",
 	"category": "wcb-blocks",
 	"parent": ["wcb/create-block-toolbar-patterns"],
-	"icon": "heart",
+	"icon": "heart text-xl",
 	"description": "Example static block scaffolded with Create Block tool.",
 	"supports": {
 		"html": false

@@ -12,9 +12,12 @@ const SettingsPageTemplates: FC<Props> = ({ allSettings, onChange }) => {
 		<div className="divide-y">
 			<div className="pb-8">
 				<MyToggle
-					checked={!!allSettings.enableTemplatesButton}
+					checked={allSettings.enableTemplatesButton === "true"}
 					onChange={(checked) => {
-						onChange({ ...allSettings, enableTemplatesButton: checked });
+						onChange({
+							...allSettings,
+							enableTemplatesButton: checked ? "true" : "false",
+						});
 					}}
 					label="Enable Templates Button"
 					desc="Woostify comes with a stunning library of page templates and block patterns. This library is accessible with the Templates button while editing the page or post. Manage the visibility of that button with this option.."
