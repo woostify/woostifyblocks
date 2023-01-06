@@ -31,7 +31,7 @@ const HeaderToolBarPatterns = () => {
 		useState<string>("");
 	const [currentPricingPackage, setCurrentPricingPackage] = useState<
 		"free" | "pro" | "all"
-	>("free");
+	>("all");
 
 	// CONSTS
 	const [loadGreeting, { called, loading, data }] =

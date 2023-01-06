@@ -640,7 +640,7 @@ const HeaderToolBarPatterns = () => {
   let [,, resetIsCopying] = (0,react_use__WEBPACK_IMPORTED_MODULE_8__["default"])(() => setIndexCopying(""), 1500);
   const [isOpen, setOpen] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
   const [currentCategorySelected, setCurrentCategorySelected] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("");
-  const [currentPricingPackage, setCurrentPricingPackage] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("free");
+  const [currentPricingPackage, setCurrentPricingPackage] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("all");
 
   // CONSTS
   const [loadGreeting, {
