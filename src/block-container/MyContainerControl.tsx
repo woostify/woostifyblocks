@@ -27,8 +27,8 @@ export type MyContainerControlData = {
 	overflow: NonNullable<React.CSSProperties["overflow"]>;
 };
 export const CONTAINER_CONTROL_DEMO: MyContainerControlData = {
-	containerWidthType: "Boxed",
-	contentWidthType: "Full Width",
+	containerWidthType: "Full Width",
+	contentWidthType: "Boxed",
 	customWidth: { Desktop: "100%" },
 	contentBoxWidth: {
 		Desktop: "",

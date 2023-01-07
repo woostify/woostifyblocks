@@ -98,7 +98,7 @@ export const variations: {
 		innerBlocks: [],
 		scope: ["block"],
 		isDefault: true,
-		attributes: getContainerAttrsByFlexWrap("wrap", "column"),
+		attributes: getContainerAttrsByFlexWrap("nowrap", "column"),
 	},
 	{
 		name: "two-columns-equal",

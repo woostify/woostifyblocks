@@ -2898,8 +2898,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const CONTAINER_CONTROL_DEMO = {
-  containerWidthType: "Boxed",
-  contentWidthType: "Full Width",
+  containerWidthType: "Full Width",
+  contentWidthType: "Boxed",
   customWidth: {
     Desktop: "100%"
   },
@@ -3519,7 +3519,7 @@ const variations = [{
   innerBlocks: [],
   scope: ["block"],
   isDefault: true,
-  attributes: getContainerAttrsByFlexWrap("wrap", "column")
+  attributes: getContainerAttrsByFlexWrap("nowrap", "column")
 }, {
   name: "two-columns-equal",
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("50 / 50"),
