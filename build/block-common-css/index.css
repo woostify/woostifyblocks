@@ -43,16 +43,28 @@
   border-radius: var(--radius-sm);
 }
 .wcb-inspectorControls__panel .components-tab-panel__tabs {
-  background-color: rgba(var(--c-neutral-200), 0.8);
+  background-color: rgba(var(--c-neutral-200), 0.7);
   padding: 0.25rem;
-  --tw-text-opacity: 1;
-  color: rgba(var(--c-neutral-700), var(--tw-text-opacity));
+}
+.wcb-inspectorControls__panel .components-tab-panel__tabs .components-tab-panel__tabs-item {
+  height: 3.5rem;
 }
 .wcb-inspectorControls__panel .components-tab-panel__tabs .components-button {
   border-radius: var(--radius-md);
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
   --tw-shadow: 0 0 #0000;
   --tw-shadow-colored: 0 0 #0000;
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.wcb-inspectorControls__panel .components-tab-panel__tabs .components-button:hover {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 .wcb-inspectorControls__panel .components-tab-panel__tabs .components-button:focus {
   --tw-shadow: 0 0 #0000;
@@ -2415,6 +2427,12 @@ video {
 }
 .bg-none {
   background-image: none !important;
+}
+.\!fill-none {
+  fill: none !important;
+}
+.fill-none {
+  fill: none !important;
 }
 .stroke-slate-500 {
   stroke: #64748b !important;

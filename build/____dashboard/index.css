@@ -2118,6 +2118,12 @@ video {
 .bg-none {
   background-image: none !important;
 }
+.\!fill-none {
+  fill: none !important;
+}
+.fill-none {
+  fill: none !important;
+}
 .stroke-slate-500 {
   stroke: #64748b !important;
 }

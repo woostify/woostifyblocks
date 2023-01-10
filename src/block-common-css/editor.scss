@@ -49,9 +49,12 @@
 	}
 
 	.components-tab-panel__tabs {
-		@apply bg-neutral-200/80 text-neutral-700 p-1;
+		@apply bg-neutral-200/70  p-1;
+		.components-tab-panel__tabs-item {
+			@apply h-14;
+		}
 		.components-button {
-			@apply shadow-none focus:shadow-none rounded-md;
+			@apply shadow-none focus:shadow-none rounded-md py-1 text-gray-700 hover:text-black transition-colors;
 			&.active-tab {
 				@apply bg-white shadow-lg text-black;
 			}
