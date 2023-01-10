@@ -59,7 +59,7 @@ const safelist = [
 
 module.exports = {
 	important: true,
-	content: ["./src/**/*.{ts,tsx}"],
+	content: ["./src/**/*.{ts,tsx,js,jsx}"],
 	safelist,
 	theme: {
 		container: {

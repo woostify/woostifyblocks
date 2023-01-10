@@ -30,4 +30,43 @@ registerBlockType(metadata.name, {
 	edit: Edit,
 	save,
 	attributes,
+	icon: (
+		<svg
+			className="wcb-editor-block-icons fill-none "
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path
+				d="M19.32 15.99H4.69002C3.21002 15.99 2.01001 14.78 2.01001 13.31V10.68C2.01001 9.20001 3.22002 8 4.69002 8H19.32C20.8 8 22 9.21001 22 10.68V13.31C22 14.78 20.79 15.99 19.32 15.99Z"
+				stroke="currentColor"
+				strokeWidth="1.5"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+			<path
+				d="M6 10.99V12.99"
+				stroke="currentColor"
+				strokeWidth="1.5"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+			<path
+				d="M10 10.99V12.99"
+				stroke="currentColor"
+				strokeWidth="1.5"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+			<path
+				d="M14 11.99H18"
+				stroke="currentColor"
+				strokeWidth="1.5"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+		</svg>
+	),
 });

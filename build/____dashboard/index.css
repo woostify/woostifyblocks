@@ -1871,6 +1871,16 @@ video {
   margin-right: calc(0.75rem * var(--tw-space-x-reverse)) !important;
   margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse))) !important;
 }
+.space-y-0\.5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0 !important;
+  margin-top: calc(0.125rem * calc(1 - var(--tw-space-y-reverse))) !important;
+  margin-bottom: calc(0.125rem * var(--tw-space-y-reverse)) !important;
+}
+.space-y-0 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0 !important;
+  margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse))) !important;
+  margin-bottom: calc(0px * var(--tw-space-y-reverse)) !important;
+}
 .space-x-1 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0 !important;
   margin-right: calc(0.25rem * var(--tw-space-x-reverse)) !important;
@@ -1890,16 +1900,6 @@ video {
   --tw-space-x-reverse: 0 !important;
   margin-right: calc(1rem * var(--tw-space-x-reverse)) !important;
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse))) !important;
-}
-.space-y-0\.5 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0 !important;
-  margin-top: calc(0.125rem * calc(1 - var(--tw-space-y-reverse))) !important;
-  margin-bottom: calc(0.125rem * var(--tw-space-y-reverse)) !important;
-}
-.space-y-0 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0 !important;
-  margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse))) !important;
-  margin-bottom: calc(0px * var(--tw-space-y-reverse)) !important;
 }
 .space-x-2\.5 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0 !important;
@@ -2117,9 +2117,6 @@ video {
 }
 .bg-none {
   background-image: none !important;
-}
-.\!fill-none {
-  fill: none !important;
 }
 .fill-none {
   fill: none !important;
@@ -2490,6 +2487,10 @@ video {
 .text-red-600 {
   --tw-text-opacity: 1 !important;
   color: rgb(220 38 38 / var(--tw-text-opacity)) !important;
+}
+.text-indigo-500 {
+  --tw-text-opacity: 1 !important;
+  color: rgb(99 102 241 / var(--tw-text-opacity)) !important;
 }
 .text-white {
   --tw-text-opacity: 1 !important;
