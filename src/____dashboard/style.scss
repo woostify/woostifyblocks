@@ -1,4 +1,9 @@
 .woostify-blocks-settings-page-php {
+	#wpbody-content > .notice:not(.wcb-notice),
+	#wpbody-content > .error {
+		display: none !important;
+	}
+
 	#wpwrap {
 		@apply bg-white;
 	}

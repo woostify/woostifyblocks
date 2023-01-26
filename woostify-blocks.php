@@ -42,4 +42,7 @@ require plugin_dir_path(__FILE__) . 'inc/wcb-blocks-render-callback.php';
 require plugin_dir_path(__FILE__) . 'inc/wcb-register-blocks.php';
 // 
 require plugin_dir_path(__FILE__) . 'inc/wcb-menu-page.php';
+// 
+require plugin_dir_path(__FILE__) . 'inc/woo/index.php';
+
 // end

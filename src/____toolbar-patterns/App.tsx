@@ -39,15 +39,17 @@ const myInterval = setInterval(() => {
 
 	if (modalRoot) {
 		IS_TOOLBAR_RENDERED = true;
-		let newDiv = document.createElement("div");
-		newDiv.setAttribute("id", "wcb-block-templates-button-wrap");
-		modalRoot.appendChild(newDiv);
-		ReactDOM.render(
-			<ApolloProvider client={client}>
-				<App />
-			</ApolloProvider>,
-			newDiv
-		);
+		if (!document.getElementById("wcb-block-templates-button-wrap")) {
+			let newDiv = document.createElement("div");
+			newDiv.setAttribute("id", "wcb-block-templates-button-wrap");
+			modalRoot.appendChild(newDiv);
+			ReactDOM.render(
+				<ApolloProvider client={client}>
+					<App />
+				</ApolloProvider>,
+				newDiv
+			);
+		}
 	}
 }, 500);
 

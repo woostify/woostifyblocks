@@ -1041,6 +1041,10 @@ video {
   margin-top: 0.5rem !important;
   margin-bottom: 0.5rem !important;
 }
+.my-5 {
+  margin-top: 1.25rem !important;
+  margin-bottom: 1.25rem !important;
+}
 .mx-2 {
   margin-left: 0.5rem !important;
   margin-right: 0.5rem !important;
@@ -1934,11 +1938,11 @@ video {
 .rounded {
   border-radius: var(--radius-DEFAULT) !important;
 }
-.rounded-full {
-  border-radius: var(--radius-full) !important;
-}
 .rounded-xl {
   border-radius: var(--radius-xl) !important;
+}
+.rounded-full {
+  border-radius: var(--radius-full) !important;
 }
 .\!rounded-full {
   border-radius: var(--radius-full) !important;
@@ -2149,6 +2153,9 @@ video {
 .p-1 {
   padding: 0.25rem !important;
 }
+.p-5 {
+  padding: 1.25rem !important;
+}
 .p-2\.5 {
   padding: 0.625rem !important;
 }
@@ -2310,6 +2317,10 @@ video {
   font-size: 1rem !important;
   line-height: 1.5rem !important;
 }
+.text-lg {
+  font-size: 1.125rem !important;
+  line-height: 1.75rem !important;
+}
 .text-\[10px\] {
   font-size: 10px !important;
 }
@@ -2327,10 +2338,6 @@ video {
 .text-4xl {
   font-size: 2.25rem !important;
   line-height: 2.5rem !important;
-}
-.text-lg {
-  font-size: 1.125rem !important;
-  line-height: 1.75rem !important;
 }
 .text-\[1\.8rem\] {
   font-size: 1.8rem !important;
@@ -2488,9 +2495,9 @@ video {
   --tw-text-opacity: 1 !important;
   color: rgb(220 38 38 / var(--tw-text-opacity)) !important;
 }
-.text-indigo-500 {
+.text-red-500 {
   --tw-text-opacity: 1 !important;
-  color: rgb(99 102 241 / var(--tw-text-opacity)) !important;
+  color: rgb(239 68 68 / var(--tw-text-opacity)) !important;
 }
 .text-white {
   --tw-text-opacity: 1 !important;
@@ -2570,10 +2577,6 @@ video {
 .text-gray-300 {
   --tw-text-opacity: 1 !important;
   color: rgb(209 213 219 / var(--tw-text-opacity)) !important;
-}
-.text-red-500 {
-  --tw-text-opacity: 1 !important;
-  color: rgb(239 68 68 / var(--tw-text-opacity)) !important;
 }
 .text-slate-50 {
   --tw-text-opacity: 1 !important;
@@ -18486,6 +18489,10 @@ h4 {
 }
 
 /* for dashboard */
+.woostify-blocks-settings-page-php #wpbody-content > .notice:not(.wcb-notice),
+.woostify-blocks-settings-page-php #wpbody-content > .error {
+  display: none !important;
+}
 .woostify-blocks-settings-page-php #wpwrap {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
