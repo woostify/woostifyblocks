@@ -25,6 +25,8 @@ interface Props {
 	isCompact?: boolean;
 	isSingle?: boolean;
 	showReviewCount?: boolean;
+	operator: string;
+	onOperatorChange?: (data: any) => void;
 }
 
 const ProductTagControl: FC<Props> = ({
@@ -33,6 +35,8 @@ const ProductTagControl: FC<Props> = ({
 	isCompact = true,
 	isSingle = true,
 	showReviewCount = false,
+	onOperatorChange,
+	operator,
 }) => {
 	const [tags, setTags] = useState<ProductTag[]>([]);
 	const [isLoading, setIsLoading] = useState(false);
@@ -114,17 +118,17 @@ const ProductTagControl: FC<Props> = ({
 	};
 
 	const messages = {
-		clear: __("Clear all product categories", "wcb"),
-		list: __("Product Categories", "wcb"),
-		noItems: __("Your store doesn't have any product categories.", "wcb"),
-		search: __("Search for product categories", "wcb"),
+		clear: __("Clear all product tags", "wcb"),
+		list: __("Product Tags", "wcb"),
+		noItems: __("Your store doesn't have any product tags.", "wcb"),
+		search: __("Search for product tags", "wcb"),
 		selected: (n) =>
 			sprintf(
-				/* translators: %d is the count of selected categories. */
-				_n("%d category selected", "%d categories selected", n, "wcb"),
+				/* translators: %d is the count of selected tags. */
+				_n("%d tag selected", "%d tags selected", n, "wcb"),
 				n
 			),
-		updated: __("Category search results updated.", "wcb"),
+		updated: __("Tag search results updated.", "wcb"),
 	};
 
 	if (error) {
@@ -151,6 +155,27 @@ const ProductTagControl: FC<Props> = ({
 				isHierarchical
 				isSingle={isSingle}
 			/>
+			{!!onOperatorChange && (
+				<div hidden={selected.length < 2}>
+					<SelectControl
+						className="woocommerce-product-categories__operator"
+						label={__("Display products matching", "wcb")}
+						help={__("Pick at least two tags to use this setting.", "wcb")}
+						value={operator}
+						onChange={onOperatorChange}
+						options={[
+							{
+								label: __("Any selected tags", "wcb"),
+								value: "any",
+							},
+							{
+								label: __("All selected tags", "wcb"),
+								value: "all",
+							},
+						]}
+					/>
+				</div>
+			)}
 		</>
 	);
 };

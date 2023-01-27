@@ -26,6 +26,8 @@ interface Props {
 	isCompact?: boolean;
 	isSingle?: boolean;
 	showReviewCount?: boolean;
+	operator: string;
+	onOperatorChange?: (data: any) => void;
 }
 
 export interface WError {
@@ -39,6 +41,8 @@ const ProductCategoryControl: FC<Props> = ({
 	isCompact = true,
 	isSingle = true,
 	showReviewCount = false,
+	onOperatorChange,
+	operator,
 }) => {
 	const [categories, setcategories] = useState<ProductCategory[]>([]);
 	const [isLoading, setIsLoading] = useState(false);
@@ -157,6 +161,30 @@ const ProductCategoryControl: FC<Props> = ({
 				isHierarchical
 				isSingle={isSingle}
 			/>
+			{!!onOperatorChange && (
+				<div hidden={selected.length < 2}>
+					<SelectControl
+						className="woocommerce-product-categories__operator"
+						label={__("Display products matching", "wcb")}
+						help={__(
+							"Pick at least two categories to use this setting.",
+							"wcb"
+						)}
+						value={operator}
+						onChange={onOperatorChange}
+						options={[
+							{
+								label: __("Any selected categories", "wcb"),
+								value: "any",
+							},
+							{
+								label: __("All selected categories", "wcb"),
+								value: "all",
+							},
+						]}
+					/>
+				</div>
+			)}
 		</>
 	);
 };
