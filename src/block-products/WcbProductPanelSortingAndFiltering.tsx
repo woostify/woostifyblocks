@@ -24,6 +24,9 @@ import {
 	QUERY_DEFAULT_ATTRIBUTES,
 	get_STOCK_STATUS_OPTIONS,
 } from "./constants";
+import ProductCategoryControl from "./product-category-control";
+import ProductTagControl from "./product-tag-control";
+import MyDisclosure from "../components/controls/MyDisclosure";
 
 export interface WCB_PRODUCTS_PANEL_SORTINGANDFILTERING {
 	queries: ProductQueryBlockQuery;
@@ -128,9 +131,13 @@ const WcbProductPanelSortingAndFiltering: FC<Props> = ({
 				label={__("Show only products on sale", "wcb")}
 				checked={query.__woocommerceOnSale || false}
 				onChange={(__woocommerceOnSale) => {
-					// setQueryAttribute( props, {
-					// 	__woocommerceOnSale,
-					// } );
+					setAttr__({
+						...panelData,
+						queries: {
+							...panelData.queries,
+							__woocommerceOnSale,
+						},
+					});
 				}}
 			/>
 
@@ -141,9 +148,13 @@ const WcbProductPanelSortingAndFiltering: FC<Props> = ({
 						.map(getStockStatusIdByLabel)
 						.filter(Boolean) as string[];
 
-					// setQueryAttribute( props, {
-					// 	__woocommerceStockStatus,
-					// } );
+					setAttr__({
+						...panelData,
+						queries: {
+							...panelData.queries,
+							__woocommerceStockStatus,
+						},
+					});
 				}}
 				suggestions={Object.values(STOCK_STATUS_OPTIONS)}
 				validateInput={(value: string) =>
@@ -157,6 +168,31 @@ const WcbProductPanelSortingAndFiltering: FC<Props> = ({
 				__experimentalExpandOnFocus={true}
 			/>
 			{/*  */}
+
+			<MyDisclosure label="PRODUCT CATEGORIES">
+				<ProductCategoryControl
+					onChange={(data) => {
+						// setAttr__({
+						// 	...panelData,
+						// 	queries: {
+						// 		...panelData.queries,
+						// 	},
+						// });
+					}}
+				/>
+			</MyDisclosure>
+
+			<MyDisclosure label="PRODUCT TAGS">
+				<ProductTagControl />
+			</MyDisclosure>
+
+			<InputControl
+				// value={panelData.emptyMessage}
+				label={__("KEYWORD", "wcb")}
+				// onChange={(nextValue) =>
+				// 	setAttr__({ ...panelData, emptyMessage: nextValue })
+				// }
+			/>
 
 			{/*  */}
 			<RangeControl
