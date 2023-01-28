@@ -2766,6 +2766,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _product_category_control__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./product-category-control */ "./src/block-products/product-category-control/index.tsx");
 /* harmony import */ var _product_tag_control__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./product-tag-control */ "./src/block-products/product-tag-control/index.tsx");
 /* harmony import */ var _components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/controls/MyDisclosure */ "./src/components/controls/MyDisclosure.tsx");
+/* harmony import */ var _product_attribute_term_control__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./product-attribute-term-control */ "./src/block-products/product-attribute-term-control/index.tsx");
 
 
 
@@ -2780,22 +2781,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 const WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO = {
-  queries: _constants__WEBPACK_IMPORTED_MODULE_7__.QUERY_DEFAULT_ATTRIBUTES.query,
   emptyMessage: "No post found!",
   numberOfColumn: {
     Desktop: 3
   },
-  isEqualHeight: true
+  isEqualHeight: true,
+  isOnSale: false,
+  stockStatus: [],
+  categories: [],
+  tags: [],
+  attributes: [],
+  keyword: "",
+  catOperator: "any",
+  tagOperator: "any",
+  attrOperator: "any",
+  order: "",
+  orderBy: ""
 };
-/**
- * Gets the id of a specific stock status from its text label
- *
- * In theory, we could use a `saveTransform` function on the
- * `FormFieldToken` component to do the conversion. However, plugins
- * can add custom stock statii which don't conform to our naming
- * conventions.
- */
 function getStockStatusIdByLabel(statusLabel) {
   const label = typeof statusLabel === "string" ? statusLabel : statusLabel.value;
   return Object.entries((0,_constants__WEBPACK_IMPORTED_MODULE_7__.get_STOCK_STATUS_OPTIONS)()).find(_ref => {
@@ -2815,11 +2819,7 @@ const WcbProductPanelSortingAndFiltering = _ref2 => {
   const {
     currentDeviceValue: currentNumberOfColumn
   } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_5__["default"])(panelData.numberOfColumn, deviceType);
-  const query = panelData.queries;
   const STOCK_STATUS_OPTIONS = (0,_constants__WEBPACK_IMPORTED_MODULE_7__.get_STOCK_STATUS_OPTIONS)();
-  console.log(888, {
-    STOCK_STATUS_OPTIONS
-  });
   const renderPopularPresets = () => {
     const PRESETS = [{
       key: "title/asc",
@@ -2839,12 +2839,14 @@ const WcbProductPanelSortingAndFiltering = _ref2 => {
       onChange: option => {
         if (!option.selectedItem?.key) return;
         const [orderBy, order] = option.selectedItem?.key?.split("/");
-
-        // setQueryAttribute(props, { order, orderBy });
+        setAttr__({
+          ...panelData,
+          order,
+          orderBy
+        });
       },
-
       options: PRESETS,
-      value: PRESETS.find(option => option.key === `${query.orderBy}/${query.order}`)
+      value: PRESETS.find(option => option.key === `${panelData.orderBy}/${panelData.order}`)
     });
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
@@ -2855,14 +2857,11 @@ const WcbProductPanelSortingAndFiltering = _ref2 => {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Sorting and filtering", "wcb")
   }, renderPopularPresets(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Show only products on sale", "wcb"),
-    checked: query.__woocommerceOnSale || false,
-    onChange: __woocommerceOnSale => {
+    checked: !!panelData.isOnSale,
+    onChange: isOnSale => {
       setAttr__({
         ...panelData,
-        queries: {
-          ...panelData.queries,
-          __woocommerceOnSale
-        }
+        isOnSale
       });
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.FormTokenField, {
@@ -2871,36 +2870,98 @@ const WcbProductPanelSortingAndFiltering = _ref2 => {
       const __woocommerceStockStatus = statusLabels.map(getStockStatusIdByLabel).filter(Boolean);
       setAttr__({
         ...panelData,
-        queries: {
-          ...panelData.queries,
-          __woocommerceStockStatus
-        }
+        stockStatus: __woocommerceStockStatus
       });
     },
-    suggestions: Object.values(STOCK_STATUS_OPTIONS),
+    suggestions: Object.values(STOCK_STATUS_OPTIONS)
+    // @ts-ignore
+    ,
     validateInput: value => Object.values(STOCK_STATUS_OPTIONS).includes(value),
-    value: query?.__woocommerceStockStatus?.map(key => STOCK_STATUS_OPTIONS[key]) || [],
+    value: panelData.stockStatus.map(key => STOCK_STATUS_OPTIONS[key]) || [],
     __experimentalExpandOnFocus: true
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    label: "PRODUCT ATTRIBUTES"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_product_attribute_term_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    selected: panelData.attributes,
+    onChange: function () {
+      let value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      const result = value.map(_ref3 => {
+        let {
+          id,
+          attr_slug: attributeSlug
+        } = _ref3;
+        return {
+          id,
+          attr_slug: attributeSlug
+        };
+      });
+      setAttr__({
+        ...panelData,
+        attributes: result
+      });
+    },
+    operator: panelData.attrOperator,
+    onOperatorChange: function () {
+      let value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "any";
+      return setAttr__({
+        ...panelData,
+        attrOperator: value
+      });
+    },
+    isCompact: true
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_10__["default"], {
     label: "PRODUCT CATEGORIES"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_product_category_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    onChange: data => {
-      // setAttr__({
-      // 	...panelData,
-      // 	queries: {
-      // 		...panelData.queries,
-      // 	},
-      // });
+    selected: panelData.categories,
+    operator: panelData.catOperator,
+    onOperatorChange: operator => {
+      setAttr__({
+        ...panelData,
+        catOperator: operator
+      });
+    },
+    onChange: value => {
+      const ids = value.map(_ref4 => {
+        let {
+          id
+        } = _ref4;
+        return id;
+      });
+      setAttr__({
+        ...panelData,
+        categories: ids
+      });
     }
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_10__["default"], {
     label: "PRODUCT TAGS"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_product_tag_control__WEBPACK_IMPORTED_MODULE_9__["default"], null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalInputControl
-  // value={panelData.emptyMessage}
-  , {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("KEYWORD", "wcb")
-    // onChange={(nextValue) =>
-    // 	setAttr__({ ...panelData, emptyMessage: nextValue })
-    // }
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_product_tag_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    selected: panelData.tags,
+    operator: panelData.tagOperator,
+    onOperatorChange: operator => {
+      setAttr__({
+        ...panelData,
+        tagOperator: operator
+      });
+    },
+    onChange: value => {
+      const ids = value.map(_ref5 => {
+        let {
+          id
+        } = _ref5;
+        return id;
+      });
+      setAttr__({
+        ...panelData,
+        tags: ids
+      });
+    }
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalInputControl, {
+    value: panelData.keyword,
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("KEYWORD", "wcb"),
+    onChange: nextValue => setAttr__({
+      ...panelData,
+      keyword: nextValue
+    })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
     label: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
       hasResponsive: true
@@ -3087,6 +3148,180 @@ const INNER_BLOCKS_TEMPLATE = [["core/post-template", {
 
 /***/ }),
 
+/***/ "./src/block-products/expandable-search-list-item/expandable-search-list-item.tsx":
+/*!****************************************************************************************!*\
+  !*** ./src/block-products/expandable-search-list-item/expandable-search-list-item.tsx ***!
+  \****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _search_list_control_item__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../search-list-control/item */ "./src/block-products/search-list-control/item.tsx");
+
+
+/**
+ * External dependencies
+ */
+
+
+
+
+const ExpandableSearchListItem = _ref => {
+  let {
+    className,
+    item,
+    isSelected,
+    isLoading,
+    onSelect,
+    disabled,
+    ...rest
+  } = _ref;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_search_list_control_item__WEBPACK_IMPORTED_MODULE_5__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, rest, {
+    key: item.id,
+    className: className,
+    isSelected: isSelected,
+    item: item,
+    onSelect: onSelect,
+    isSingle: true,
+    disabled: disabled
+  })), isSelected && isLoading && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    key: "loading",
+    className: classnames__WEBPACK_IMPORTED_MODULE_4___default()("woocommerce-search-list__item", "woocommerce-product-attributes__item", "depth-1", "is-loading", "is-not-active")
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Spinner, null)));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ExpandableSearchListItem);
+
+/***/ }),
+
+/***/ "./src/block-products/hocs/with-attributes.tsx":
+/*!*****************************************************!*\
+  !*** ./src/block-products/hocs/with-attributes.tsx ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils */ "./src/block-products/utils.ts");
+
+
+/**
+ * External dependencies
+ */
+
+
+
+
+/**
+ * Internal dependencies
+ */
+
+/**
+ * Get attribute data (name, taxonomy etc) from server data.
+ *
+ * @param {number}     attributeId   Attribute ID to look for.
+ * @param {Array|null} attributeList List of attributes.
+ * @param {string}     matchField    Field to match on. e.g. id or slug.
+ */
+const getAttributeData = function (attributeId, attributeList) {
+  let matchField = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "id";
+  return Array.isArray(attributeList) ? attributeList.find(attr => attr[matchField] === attributeId) : null;
+};
+
+/**
+ * HOC that calls the useAttributes hook.
+ *
+ * @param {Function} OriginalComponent Component being wrapped.
+ */
+const withAttributes = OriginalComponent => {
+  return props => {
+    const {
+      selected = []
+    } = props;
+    const selectedSlug = selected.length ? selected[0].attr_slug : null;
+    const [attributes, setAttributes] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
+    const [expandedAttribute, setExpandedAttribute] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
+    const [termsList, setTermsList] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)({});
+    const [loading, setLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(true);
+    const [termsLoading, setTermsLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    const [error, setError] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
+    (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+      if (attributes === null) {
+        (0,_utils__WEBPACK_IMPORTED_MODULE_3__.getAttributes)().then(newAttributes => {
+          newAttributes = newAttributes.map(attribute => ({
+            ...attribute,
+            parent: 0
+          }));
+          setAttributes(newAttributes);
+          if (selectedSlug) {
+            const selectedAttributeFromTerm = getAttributeData(selectedSlug, newAttributes, "taxonomy");
+            if (selectedAttributeFromTerm) {
+              setExpandedAttribute(selectedAttributeFromTerm.id);
+            }
+          }
+        }).catch(async e => {
+          setError(await (0,_utils__WEBPACK_IMPORTED_MODULE_3__.formatError)(e));
+        }).finally(() => {
+          setLoading(false);
+        });
+      }
+    }, [attributes, selectedSlug]);
+    (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+      const attributeData = getAttributeData(expandedAttribute, attributes);
+      if (!attributeData) {
+        return;
+      }
+      setTermsLoading(true);
+      (0,_utils__WEBPACK_IMPORTED_MODULE_3__.getTerms)(expandedAttribute).then(newTerms => {
+        newTerms = newTerms.map(term => ({
+          ...term,
+          parent: expandedAttribute,
+          attr_slug: attributeData.taxonomy
+        }));
+        setTermsList(previousTermsList => ({
+          ...previousTermsList,
+          [expandedAttribute]: newTerms
+        }));
+      }).catch(async e => {
+        setError(await (0,_utils__WEBPACK_IMPORTED_MODULE_3__.formatError)(e));
+      }).finally(() => {
+        setTermsLoading(false);
+      });
+    }, [expandedAttribute, attributes]);
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(OriginalComponent, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+      attributes: attributes || [],
+      error: error,
+      expandedAttribute: expandedAttribute,
+      onExpandAttribute: setExpandedAttribute,
+      isLoading: loading,
+      termsAreLoading: termsLoading,
+      termsList: termsList
+    }));
+  };
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withAttributes);
+
+/***/ }),
+
 /***/ "./src/block-products/index.js":
 /*!*************************************!*\
   !*** ./src/block-products/index.js ***!
@@ -3141,6 +3376,165 @@ const {
 
 /***/ }),
 
+/***/ "./src/block-products/product-attribute-term-control/index.tsx":
+/*!*********************************************************************!*\
+  !*** ./src/block-products/product-attribute-term-control/index.tsx ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _search_list_control_item__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../search-list-control/item */ "./src/block-products/search-list-control/item.tsx");
+/* harmony import */ var _expandable_search_list_item_expandable_search_list_item__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../expandable-search-list-item/expandable-search-list-item */ "./src/block-products/expandable-search-list-item/expandable-search-list-item.tsx");
+/* harmony import */ var _search_list_control_search_list_control__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../search-list-control/search-list-control */ "./src/block-products/search-list-control/search-list-control.tsx");
+/* harmony import */ var _hocs_with_attributes__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../hocs/with-attributes */ "./src/block-products/hocs/with-attributes.tsx");
+
+
+/**
+ * External dependencies
+ */
+
+
+
+
+
+
+/**
+ * Internal dependencies
+ */
+
+
+
+
+const ProductAttributeTermControl = _ref => {
+  let {
+    attributes,
+    error,
+    expandedAttribute,
+    onChange,
+    onExpandAttribute,
+    onOperatorChange,
+    instanceId,
+    isCompact,
+    isLoading,
+    operator,
+    selected = [],
+    termsAreLoading,
+    termsList
+  } = _ref;
+  const renderItem = args => {
+    const {
+      item,
+      search,
+      depth = 0
+    } = args;
+    const classes = ["woocommerce-product-attributes__item", "woocommerce-search-list__item", {
+      "is-searching": search.length > 0,
+      "is-skip-level": depth === 0 && item.parent !== 0
+    }];
+    if (!item.breadcrumbs.length) {
+      const isSelected = expandedAttribute === item.id;
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_expandable_search_list_item_expandable_search_list_item__WEBPACK_IMPORTED_MODULE_8__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, args, {
+        className: classnames__WEBPACK_IMPORTED_MODULE_6___default()(...classes, {
+          "is-selected": isSelected
+        }),
+        isSelected: isSelected,
+        item: item,
+        isLoading: termsAreLoading,
+        disabled: item.count === "0",
+        onSelect: _ref2 => {
+          let {
+            id
+          } = _ref2;
+          return () => {
+            onChange([]);
+            onExpandAttribute(id);
+          };
+        },
+        name: `attributes-${instanceId}`,
+        countLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.sprintf)( /* translators: %d is the count of terms. */
+        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__._n)("%d term", "%d terms", item.count, "woocommerce"), item.count),
+        "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.sprintf)( /* translators: %1$s is the item name, %2$d is the count of terms for the item. */
+        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__._n)("%1$s, has %2$d term", "%1$s, has %2$d terms", item.count, "woocommerce"), item.name, item.count)
+      }));
+    }
+    const itemName = `${item.breadcrumbs[0]}: ${item.name}`;
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_search_list_control_item__WEBPACK_IMPORTED_MODULE_7__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, args, {
+      name: `terms-${instanceId}`,
+      className: classnames__WEBPACK_IMPORTED_MODULE_6___default()(...classes, "has-count"),
+      countLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.sprintf)( /* translators: %d is the count of products. */
+      (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__._n)("%d product", "%d products", item.count, "woocommerce"), item.count),
+      "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.sprintf)( /* translators: %1$s is the attribute name, %2$d is the count of products for that attribute. */
+      (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__._n)("%1$s, has %2$d product", "%1$s, has %2$d products", item.count, "woocommerce"), itemName, item.count)
+    }));
+  };
+  const currentTerms = termsList[expandedAttribute] || [];
+  const currentList = [...attributes, ...currentTerms];
+  const messages = {
+    clear: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Clear all product attributes", "woocommerce"),
+    list: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Product Attributes", "woocommerce"),
+    noItems: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Your store doesn't have any product attributes.", "woocommerce"),
+    search: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Search for product attributes", "woocommerce"),
+    selected: n => (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.sprintf)( /* translators: %d is the count of attributes selected. */
+    (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__._n)("%d attribute selected", "%d attributes selected", n, "woocommerce"), n),
+    updated: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Product attribute search results updated.", "woocommerce")
+  };
+  if (error) {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("code", null, JSON.stringify(error));
+  }
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_search_list_control_search_list_control__WEBPACK_IMPORTED_MODULE_9__.SearchListControl, {
+    className: "woocommerce-product-attributes",
+    list: currentList,
+    isLoading: isLoading,
+    selected: selected.map(_ref3 => {
+      let {
+        id
+      } = _ref3;
+      return currentList.find(currentListItem => currentListItem.id === id);
+    }).filter(Boolean),
+    onChange: onChange,
+    renderItem: renderItem,
+    messages: messages,
+    isCompact: isCompact,
+    isHierarchical: true,
+    isSingle: false
+  }), !!onOperatorChange && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    hidden: selected.length < 2
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
+    className: "woocommerce-product-attributes__operator",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Display products matching", "woocommerce"),
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Pick at least two attributes to use this setting.", "woocommerce"),
+    value: operator,
+    onChange: onOperatorChange,
+    options: [{
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Any selected attributes", "woocommerce"),
+      value: "any"
+    }, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("All selected attributes", "woocommerce"),
+      value: "all"
+    }]
+  })));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_hocs_with_attributes__WEBPACK_IMPORTED_MODULE_10__["default"])((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__.withInstanceId)(ProductAttributeTermControl)));
+
+/***/ }),
+
 /***/ "./src/block-products/product-category-control/index.tsx":
 /*!***************************************************************!*\
   !*** ./src/block-products/product-category-control/index.tsx ***!
@@ -3189,7 +3583,7 @@ const ProductCategoryControl = _ref => {
     onChange = () => {},
     selected = [],
     isCompact = true,
-    isSingle = true,
+    isSingle = false,
     showReviewCount = false,
     onOperatorChange,
     operator
@@ -3251,7 +3645,7 @@ const ProductCategoryControl = _ref => {
     className: "woocommerce-product-categories",
     list: categories,
     isLoading: isLoading,
-    selected: selected.map(id => categories.find(category => category.id === id)).filter(Boolean),
+    selected: selected.map(id => categories.find(cat => cat.id === id)).filter(Boolean),
     onChange: search => {
       onChange(search);
     },
@@ -3264,15 +3658,15 @@ const ProductCategoryControl = _ref => {
     hidden: selected.length < 2
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
     className: "woocommerce-product-categories__operator",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Display products matching", "woocommerce"),
-    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Pick at least two categories to use this setting.", "woocommerce"),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Display products matching", "wcb"),
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Pick at least two categories to use this setting.", "wcb"),
     value: operator,
     onChange: onOperatorChange,
     options: [{
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Any selected categories", "woocommerce"),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Any selected categories", "wcb"),
       value: "any"
     }, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("All selected categories", "woocommerce"),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("All selected categories", "wcb"),
       value: "all"
     }]
   })));
@@ -3329,7 +3723,7 @@ const ProductTagControl = _ref => {
     onChange = () => {},
     selected = [],
     isCompact = true,
-    isSingle = true,
+    isSingle = false,
     showReviewCount = false,
     onOperatorChange,
     operator
@@ -3377,13 +3771,13 @@ const ProductTagControl = _ref => {
     }));
   };
   const messages = {
-    clear: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Clear all product categories", "wcb"),
-    list: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Product Categories", "wcb"),
-    noItems: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Your store doesn't have any product categories.", "wcb"),
-    search: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Search for product categories", "wcb"),
-    selected: n => (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.sprintf)( /* translators: %d is the count of selected categories. */
-    (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__._n)("%d category selected", "%d categories selected", n, "wcb"), n),
-    updated: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Category search results updated.", "wcb")
+    clear: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Clear all product tags", "wcb"),
+    list: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Product Tags", "wcb"),
+    noItems: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Your store doesn't have any product tags.", "wcb"),
+    search: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Search for product tags", "wcb"),
+    selected: n => (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.sprintf)( /* translators: %d is the count of selected tags. */
+    (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__._n)("%d tag selected", "%d tags selected", n, "wcb"), n),
+    updated: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Tag search results updated.", "wcb")
   };
   if (error) {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("code", {
@@ -3408,14 +3802,14 @@ const ProductTagControl = _ref => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
     className: "woocommerce-product-categories__operator",
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Display products matching", "wcb"),
-    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Pick at least two categories to use this setting.", "wcb"),
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Pick at least two tags to use this setting.", "wcb"),
     value: operator,
     onChange: onOperatorChange,
     options: [{
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Any selected categories", "wcb"),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Any selected tags", "wcb"),
       value: "any"
     }, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("All selected categories", "wcb"),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("All selected tags", "wcb"),
       value: "all"
     }]
   })));
@@ -3610,7 +4004,7 @@ const SelectedListItems = _ref2 => {
   }
   const selectedCount = selected.length;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "woocommerce-search-list__selected"
+    className: `woocommerce-search-list__selected ${selectedCount < 1 ? "!min-h-0" : ""}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "woocommerce-search-list__selected-header"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("strong", null, messages.selected(selectedCount)), selectedCount > 0 ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
@@ -3996,7 +4390,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getCategories": () => (/* binding */ getCategories),
 /* harmony export */   "getCategory": () => (/* binding */ getCategory),
 /* harmony export */   "getProduct": () => (/* binding */ getProduct),
-/* harmony export */   "getProductTags": () => (/* binding */ getProductTags)
+/* harmony export */   "getProductTags": () => (/* binding */ getProductTags),
+/* harmony export */   "getTerms": () => (/* binding */ getTerms)
 /* harmony export */ });
 /* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/url */ "@wordpress/url");
 /* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_url__WEBPACK_IMPORTED_MODULE_0__);
@@ -4007,11 +4402,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const getAttributes = () => {
-  return _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
-    path: `wc/store/v1/products/attributes`
-  });
-};
 const getProduct = productId => {
   return _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
     path: `/wc/store/v1/products/${productId}`
@@ -4086,6 +4476,16 @@ const formatError = async error => {
     message: error.message,
     type: error.type || "general"
   };
+};
+const getAttributes = () => {
+  return _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
+    path: `wc/store/v1/products/attributes`
+  });
+};
+const getTerms = attribute => {
+  return _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
+    path: `wc/store/v1/products/attributes/${attribute}/terms`
+  });
 };
 
 /***/ }),

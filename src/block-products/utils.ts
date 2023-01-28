@@ -2,12 +2,6 @@ import { addQueryArgs } from "@wordpress/url";
 import apiFetch from "@wordpress/api-fetch";
 import { flatten, uniqBy } from "lodash";
 
-export const getAttributes = () => {
-	return apiFetch({
-		path: `wc/store/v1/products/attributes`,
-	});
-};
-
 export const getProduct = (productId) => {
 	return apiFetch({
 		path: `/wc/store/v1/products/${productId}`,
@@ -82,4 +76,16 @@ export const formatError = async (error) => {
 		message: error.message,
 		type: error.type || "general",
 	};
+};
+
+export const getAttributes = () => {
+	return apiFetch({
+		path: `wc/store/v1/products/attributes`,
+	});
+};
+
+export const getTerms = (attribute) => {
+	return apiFetch({
+		path: `wc/store/v1/products/attributes/${attribute}/terms`,
+	});
 };

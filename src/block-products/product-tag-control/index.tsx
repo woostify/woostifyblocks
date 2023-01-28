@@ -33,7 +33,7 @@ const ProductTagControl: FC<Props> = ({
 	onChange = () => {},
 	selected = [],
 	isCompact = true,
-	isSingle = true,
+	isSingle = false,
 	showReviewCount = false,
 	onOperatorChange,
 	operator,

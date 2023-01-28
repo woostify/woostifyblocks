@@ -27,19 +27,40 @@ import {
 import ProductCategoryControl from "./product-category-control";
 import ProductTagControl from "./product-tag-control";
 import MyDisclosure from "../components/controls/MyDisclosure";
+import ProductAttributeTermControl from "./product-attribute-term-control";
 
 export interface WCB_PRODUCTS_PANEL_SORTINGANDFILTERING {
-	queries: ProductQueryBlockQuery;
 	emptyMessage: string;
 	numberOfColumn: HasResponsive<number>;
 	isEqualHeight: boolean;
+	isOnSale: boolean;
+	stockStatus: string[];
+	categories: string[];
+	tags: string[];
+	attributes: any[];
+	keyword: string;
+	catOperator: string;
+	tagOperator: string;
+	attrOperator: string;
+	orderBy: string;
+	order: string;
 }
 export const WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO: WCB_PRODUCTS_PANEL_SORTINGANDFILTERING =
 	{
-		queries: QUERY_DEFAULT_ATTRIBUTES.query,
 		emptyMessage: "No post found!",
 		numberOfColumn: { Desktop: 3 },
 		isEqualHeight: true,
+		isOnSale: false,
+		stockStatus: [],
+		categories: [],
+		tags: [],
+		attributes: [],
+		keyword: "",
+		catOperator: "any",
+		tagOperator: "any",
+		attrOperator: "any",
+		order: "",
+		orderBy: "",
 	};
 
 interface Props
@@ -48,14 +69,6 @@ interface Props
 	setAttr__: (data: WCB_PRODUCTS_PANEL_SORTINGANDFILTERING) => void;
 }
 
-/**
- * Gets the id of a specific stock status from its text label
- *
- * In theory, we could use a `saveTransform` function on the
- * `FormFieldToken` component to do the conversion. However, plugins
- * can add custom stock statii which don't conform to our naming
- * conventions.
- */
 function getStockStatusIdByLabel(statusLabel: FormTokenField.Value) {
 	const label =
 		typeof statusLabel === "string" ? statusLabel : statusLabel.value;
@@ -76,9 +89,7 @@ const WcbProductPanelSortingAndFiltering: FC<Props> = ({
 	const { currentDeviceValue: currentNumberOfColumn } =
 		getValueFromAttrsResponsives(panelData.numberOfColumn, deviceType);
 
-	const query = panelData.queries;
 	const STOCK_STATUS_OPTIONS = get_STOCK_STATUS_OPTIONS();
-	console.log(888, { STOCK_STATUS_OPTIONS });
 
 	const renderPopularPresets = () => {
 		const PRESETS = [
@@ -107,11 +118,15 @@ const WcbProductPanelSortingAndFiltering: FC<Props> = ({
 						ProductQueryBlockQuery["order"]
 					];
 
-					// setQueryAttribute(props, { order, orderBy });
+					setAttr__({
+						...panelData,
+						order,
+						orderBy,
+					});
 				}}
 				options={PRESETS}
 				value={PRESETS.find(
-					(option) => option.key === `${query.orderBy}/${query.order}`
+					(option) => option.key === `${panelData.orderBy}/${panelData.order}`
 				)}
 			/>
 		);
@@ -129,14 +144,11 @@ const WcbProductPanelSortingAndFiltering: FC<Props> = ({
 
 			<ToggleControl
 				label={__("Show only products on sale", "wcb")}
-				checked={query.__woocommerceOnSale || false}
-				onChange={(__woocommerceOnSale) => {
+				checked={!!panelData.isOnSale}
+				onChange={(isOnSale) => {
 					setAttr__({
 						...panelData,
-						queries: {
-							...panelData.queries,
-							__woocommerceOnSale,
-						},
+						isOnSale,
 					});
 				}}
 			/>
@@ -150,48 +162,84 @@ const WcbProductPanelSortingAndFiltering: FC<Props> = ({
 
 					setAttr__({
 						...panelData,
-						queries: {
-							...panelData.queries,
-							__woocommerceStockStatus,
-						},
+						stockStatus: __woocommerceStockStatus,
 					});
 				}}
 				suggestions={Object.values(STOCK_STATUS_OPTIONS)}
+				// @ts-ignore
 				validateInput={(value: string) =>
 					Object.values(STOCK_STATUS_OPTIONS).includes(value)
 				}
 				value={
-					query?.__woocommerceStockStatus?.map(
-						(key) => STOCK_STATUS_OPTIONS[key]
-					) || []
+					panelData.stockStatus.map((key) => STOCK_STATUS_OPTIONS[key]) || []
 				}
 				__experimentalExpandOnFocus={true}
 			/>
 			{/*  */}
+			<MyDisclosure label="PRODUCT ATTRIBUTES">
+				<ProductAttributeTermControl
+					selected={panelData.attributes}
+					onChange={(value = []) => {
+						const result = value.map(({ id, attr_slug: attributeSlug }) => ({
+							id,
+							attr_slug: attributeSlug,
+						}));
+						setAttr__({ ...panelData, attributes: result });
+					}}
+					operator={panelData.attrOperator}
+					onOperatorChange={(value = "any") =>
+						setAttr__({ ...panelData, attrOperator: value })
+					}
+					isCompact
+				/>
+			</MyDisclosure>
 
 			<MyDisclosure label="PRODUCT CATEGORIES">
 				<ProductCategoryControl
-					onChange={(data) => {
-						// setAttr__({
-						// 	...panelData,
-						// 	queries: {
-						// 		...panelData.queries,
-						// 	},
-						// });
+					selected={panelData.categories}
+					operator={panelData.catOperator}
+					onOperatorChange={(operator) => {
+						setAttr__({
+							...panelData,
+							catOperator: operator,
+						});
+					}}
+					onChange={(value) => {
+						const ids = value.map(({ id }) => id);
+						setAttr__({
+							...panelData,
+							categories: ids,
+						});
 					}}
 				/>
 			</MyDisclosure>
 
 			<MyDisclosure label="PRODUCT TAGS">
-				<ProductTagControl />
+				<ProductTagControl
+					selected={panelData.tags}
+					operator={panelData.tagOperator}
+					onOperatorChange={(operator) => {
+						setAttr__({
+							...panelData,
+							tagOperator: operator,
+						});
+					}}
+					onChange={(value) => {
+						const ids = value.map(({ id }) => id);
+						setAttr__({
+							...panelData,
+							tags: ids,
+						});
+					}}
+				/>
 			</MyDisclosure>
 
 			<InputControl
-				// value={panelData.emptyMessage}
+				value={panelData.keyword}
 				label={__("KEYWORD", "wcb")}
-				// onChange={(nextValue) =>
-				// 	setAttr__({ ...panelData, emptyMessage: nextValue })
-				// }
+				onChange={(nextValue) =>
+					setAttr__({ ...panelData, keyword: nextValue })
+				}
 			/>
 
 			{/*  */}

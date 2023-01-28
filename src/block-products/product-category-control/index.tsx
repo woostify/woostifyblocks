@@ -39,7 +39,7 @@ const ProductCategoryControl: FC<Props> = ({
 	onChange = () => {},
 	selected = [],
 	isCompact = true,
-	isSingle = true,
+	isSingle = false,
 	showReviewCount = false,
 	onOperatorChange,
 	operator,
@@ -150,7 +150,7 @@ const ProductCategoryControl: FC<Props> = ({
 				list={categories}
 				isLoading={isLoading}
 				selected={selected
-					.map((id) => categories.find((category) => category.id === id))
+					.map((id) => categories.find((cat) => cat.id === id))
 					.filter(Boolean)}
 				onChange={(search) => {
 					onChange(search);

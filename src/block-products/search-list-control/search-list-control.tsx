@@ -103,7 +103,11 @@ const SelectedListItems = ({
 	}
 	const selectedCount = selected.length;
 	return (
-		<div className="woocommerce-search-list__selected">
+		<div
+			className={`woocommerce-search-list__selected ${
+				selectedCount < 1 ? "!min-h-0" : ""
+			}`}
+		>
 			<div className="woocommerce-search-list__selected-header">
 				<strong>{messages.selected(selectedCount)}</strong>
 				{selectedCount > 0 ? (
