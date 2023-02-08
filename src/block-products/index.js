@@ -23,10 +23,13 @@ import metadata from "./block.json";
 const { Fragment } = wp.element;
 const { withSelect } = wp.data;
 import attributes from "./attributes";
+import { INNER_BLOCKS_TEMPLATE } from "./constants";
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 
 registerBlockType(metadata.name, {
 	edit: Edit,
 	save,
 	attributes,
+	innerBlocks: INNER_BLOCKS_TEMPLATE,
+	scope: ["inserter"],
 });

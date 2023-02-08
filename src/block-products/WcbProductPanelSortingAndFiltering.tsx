@@ -153,6 +153,75 @@ const WcbProductPanelSortingAndFiltering: FC<Props> = ({
 				}}
 			/>
 
+			{/*  */}
+			<div className="space-y-3">
+				<MyDisclosure label="PRODUCT CATEGORIES">
+					<ProductCategoryControl
+						selected={panelData.categories}
+						operator={panelData.catOperator}
+						onOperatorChange={(operator) => {
+							setAttr__({
+								...panelData,
+								catOperator: operator,
+							});
+						}}
+						onChange={(value) => {
+							const ids = value.map(({ id }) => id);
+							setAttr__({
+								...panelData,
+								categories: ids,
+							});
+						}}
+					/>
+				</MyDisclosure>
+
+				<MyDisclosure label="PRODUCT TAGS">
+					<ProductTagControl
+						selected={panelData.tags}
+						operator={panelData.tagOperator}
+						onOperatorChange={(operator) => {
+							setAttr__({
+								...panelData,
+								tagOperator: operator,
+							});
+						}}
+						onChange={(value) => {
+							const ids = value.map(({ id }) => id);
+							setAttr__({
+								...panelData,
+								tags: ids,
+							});
+						}}
+					/>
+				</MyDisclosure>
+
+				<MyDisclosure label="PRODUCT ATTRIBUTES">
+					<ProductAttributeTermControl
+						selected={panelData.attributes}
+						onChange={(value = []) => {
+							const result = value.map(({ id, attr_slug: attributeSlug }) => ({
+								id,
+								attr_slug: attributeSlug,
+							}));
+							setAttr__({ ...panelData, attributes: result });
+						}}
+						operator={panelData.attrOperator}
+						onOperatorChange={(value = "any") =>
+							setAttr__({ ...panelData, attrOperator: value })
+						}
+						isCompact
+					/>
+				</MyDisclosure>
+			</div>
+
+			<InputControl
+				value={panelData.keyword}
+				label={__("KEYWORD", "wcb")}
+				onChange={(nextValue) =>
+					setAttr__({ ...panelData, keyword: nextValue })
+				}
+			/>
+
 			<FormTokenField
 				label={__("Stock status", "wcb")}
 				onChange={(statusLabels) => {
@@ -174,72 +243,6 @@ const WcbProductPanelSortingAndFiltering: FC<Props> = ({
 					panelData.stockStatus.map((key) => STOCK_STATUS_OPTIONS[key]) || []
 				}
 				__experimentalExpandOnFocus={true}
-			/>
-			{/*  */}
-			<MyDisclosure label="PRODUCT ATTRIBUTES">
-				<ProductAttributeTermControl
-					selected={panelData.attributes}
-					onChange={(value = []) => {
-						const result = value.map(({ id, attr_slug: attributeSlug }) => ({
-							id,
-							attr_slug: attributeSlug,
-						}));
-						setAttr__({ ...panelData, attributes: result });
-					}}
-					operator={panelData.attrOperator}
-					onOperatorChange={(value = "any") =>
-						setAttr__({ ...panelData, attrOperator: value })
-					}
-					isCompact
-				/>
-			</MyDisclosure>
-
-			<MyDisclosure label="PRODUCT CATEGORIES">
-				<ProductCategoryControl
-					selected={panelData.categories}
-					operator={panelData.catOperator}
-					onOperatorChange={(operator) => {
-						setAttr__({
-							...panelData,
-							catOperator: operator,
-						});
-					}}
-					onChange={(value) => {
-						const ids = value.map(({ id }) => id);
-						setAttr__({
-							...panelData,
-							categories: ids,
-						});
-					}}
-				/>
-			</MyDisclosure>
-
-			<MyDisclosure label="PRODUCT TAGS">
-				<ProductTagControl
-					selected={panelData.tags}
-					operator={panelData.tagOperator}
-					onOperatorChange={(operator) => {
-						setAttr__({
-							...panelData,
-							tagOperator: operator,
-						});
-					}}
-					onChange={(value) => {
-						const ids = value.map(({ id }) => id);
-						setAttr__({
-							...panelData,
-							tags: ids,
-						});
-					}}
-				/>
-			</MyDisclosure>
-
-			<InputControl
-				value={panelData.keyword}
-				label={__("KEYWORD", "wcb")}
-				onChange={(nextValue) =>
-					setAttr__({ ...panelData, keyword: nextValue })
-				}
 			/>
 
 			{/*  */}

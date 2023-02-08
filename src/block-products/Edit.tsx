@@ -1,6 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import { useBlockProps } from "@wordpress/block-editor";
 import React, { useEffect, FC, useCallback } from "react";
+import ServerSideRender from "@wordpress/server-side-render";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
@@ -50,12 +51,16 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				return (
 					<>
 						<WcbProductPanelSortingAndFiltering
-							onToggle={() => handleTogglePanel("General", "Heading", true)}
+							onToggle={() =>
+								handleTogglePanel("General", "SortingAndFiltering", true)
+							}
 							initialOpen={
-								tabGeneralIsPanelOpen === "Heading" ||
+								tabGeneralIsPanelOpen === "SortingAndFiltering" ||
 								tabGeneralIsPanelOpen === "first"
 							}
-							opened={tabGeneralIsPanelOpen === "Heading" || undefined}
+							opened={
+								tabGeneralIsPanelOpen === "SortingAndFiltering" || undefined
+							}
 							//
 							setAttr__={(data) => {
 								setAttributes({ general_sortingAndFiltering: data });
@@ -118,6 +123,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				{/* CHILD CONTENT  */}
 				{/* <ProductsQueries /> */}
 				<h2> This is Products ... </h2>
+				<ServerSideRender block="wcb/products" attributes={undefined} />
 			</div>
 		</MyCacheProvider>
 	);

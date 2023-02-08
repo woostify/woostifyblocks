@@ -4,6 +4,7 @@
 // START REGISTER GUTENBERG BLOCKS
 //======================================================================================================================================
 require WCB_PATH . 'inc/wcb-render-callback-for-block-posts-grid.php';
+require WCB_PATH . 'inc/wcb-render-callback-for-block-products.php';
 require WCB_PATH . 'inc/wcb-ajax-for-block-form.php';
 // 
 
@@ -29,7 +30,7 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
             register_block_type(
                 WCB_BUILD_PATH . '/block-products',
                 [
-                    // "render_callback"     => "wcb_block_container__renderCallback",
+                    "render_callback"     => "wcb_block_products__renderCallback",
                     // "ancestor"     => (($wcb_blocks_enable_disable['wcb/products'] ?? "") !== 'disabled') ? null : WCB_UNIQUE_NAME,
                 ]
             );

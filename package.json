@@ -1,6 +1,6 @@
 {
 	"name": "woostify-blocks",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Example static block scaffolded with Create Block tool.",
 	"author": "The WordPress Contributors",
 	"license": "GPL-2.0-or-later",
@@ -39,6 +39,7 @@
 		"@wordpress/element": "^5.2.0",
 		"@wordpress/hooks": "^3.25.0",
 		"@wordpress/i18n": "^4.25.0",
+		"@wordpress/server-side-render": "^4.2.0",
 		"accordion-js": "^3.3.2",
 		"autoprefixer": "^10.4.13",
 		"axios": "^1.2.4",

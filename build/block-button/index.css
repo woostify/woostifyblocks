@@ -18,6 +18,10 @@
 }
 .WcbButtonPanelContent .block-editor-link-control__search-item .block-editor-link-control__search-item-header {
   margin: 0 !important;
+  overflow: hidden;
+}
+.WcbButtonPanelContent .block-editor-link-control__search-item-details {
+  overflow: hidden;
 }
 .WcbButtonPanelContent .WcbButtonPanelContent__inline-link-input input {
   width: 100% !important;

@@ -862,7 +862,8 @@ const myInterval = setInterval(() => {
     return;
   }
   const modalRoot = document.querySelector(`.edit-post-header__toolbar`);
-  if (modalRoot) {
+  const defaultToolbar = document.querySelector(`.edit-post-header__toolbar .edit-post-header-toolbar`);
+  if (modalRoot && defaultToolbar) {
     IS_TOOLBAR_RENDERED = true;
     if (!document.getElementById("wcb-block-templates-button-wrap")) {
       let newDiv = document.createElement("div");

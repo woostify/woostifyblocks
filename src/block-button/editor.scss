@@ -15,6 +15,10 @@
 	.block-editor-link-control__search-item
 		.block-editor-link-control__search-item-header {
 		margin: 0 !important;
+		overflow: hidden;
+	}
+	.block-editor-link-control__search-item-details {
+		overflow: hidden;
 	}
 
 	.WcbButtonPanelContent__inline-link-input {
