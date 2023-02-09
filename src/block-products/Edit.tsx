@@ -7,16 +7,12 @@ import HOCInspectorControls, {
 	InspectorControlsTabs,
 } from "../components/HOCInspectorControls";
 import { EditProps } from "../block-container/Edit";
-import useCreateCacheEmotion from "../hooks/useCreateCacheEmotion";
-import { CacheProvider } from "@emotion/react";
 import GlobalCss from "./GlobalCss";
-import { compose } from "@wordpress/compose";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
-import ProductsQueries from "./ProductsQueries";
 import WcbProductPanelSortingAndFiltering from "./WcbProductPanelSortingAndFiltering";
 import {
 	Button,
@@ -24,37 +20,36 @@ import {
 	Tip,
 	withSpokenMessages,
 } from "@wordpress/components";
-import { withDispatch, withSelect } from "@wordpress/data";
-import {
-	DEFAULT_PRODUCT_LIST_LAYOUT,
-	getProductLayoutConfig,
-} from "./base-utils";
-import { createBlock } from "@wordpress/blocks";
-import { Icon, grid } from "@wordpress/icons";
+import WcbProductsPanelContent from "./WcbProductsPanelContent";
+import WcbProductsPanelFeaturedImage from "./WcbProductsPanelFeaturedImage";
+import WcbProductsPanelButton from "./WcbProductsPanelButton";
+import WcbProductsPanelPagination from "./WcbProductsPanelPagination";
+import WcbProductsPanel_StyleTitle from "./WcbProductsPanel_StyleTitle";
+import WcbProductsPanel_StyleFeaturedImage from "./WcbProductsPanel_StyleFeaturedImage";
+import WcbProductsPanel_StyleLayout from "./WcbProductsPanel_StyleLayout";
+import WcbProductsPanel_StyleAddToCartBtn from "./WcbProductsPanel_StyleAddToCartBtn";
+import WcbProductsPanel_StylePagination from "./WcbProductsPanel_StylePagination";
 
-interface Props extends EditProps<WcbAttrs> {
-	block: any;
-	replaceInnerBlocks: any;
-}
+interface Props extends EditProps<WcbAttrs> {}
 
 const Edit: FC<Props> = (props) => {
-	const {
-		attributes,
-		setAttributes,
-		clientId,
-		block,
-		insertBlocksAfter,
-		replaceInnerBlocks,
-	} = props;
+	const { attributes, setAttributes, clientId } = props;
 	const {
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_sortingAndFiltering,
 		uniqueId,
-		layoutConfig,
+		general_content,
+		general_featuredImage,
+		general_addToCartBtn,
+		general_pagination,
+		style_title,
+		style_featuredImage,
+		style_layout,
+		style_addToCardBtn,
+		style_pagiantion,
 	} = attributes;
 	//  COMMON HOOKS
-	// const { myCache, ref } = useCreateCacheEmotion();
 	const wrapBlockProps = useBlockProps();
 	const {
 		tabIsOpen,
@@ -67,16 +62,11 @@ const Edit: FC<Props> = (props) => {
 	const UNIQUE_ID = wrapBlockProps.id;
 
 	//
-	const [innerBlocks, setInnerBlocks] = useState([]);
-	const [isEditing, setIsEditing] = useState(false);
-	//
 
 	useEffect(() => {
 		setAttributes({
 			uniqueId: UNIQUE_ID,
 		});
-
-		setInnerBlocks(block.innerBlocks);
 	}, [UNIQUE_ID]);
 	//
 
@@ -102,10 +92,116 @@ const Edit: FC<Props> = (props) => {
 							}}
 							panelData={general_sortingAndFiltering}
 						/>
+						<WcbProductsPanelContent
+							onToggle={() => handleTogglePanel("General", "Content")}
+							initialOpen={tabGeneralIsPanelOpen === "Content"}
+							opened={tabGeneralIsPanelOpen === "Content" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ general_content: data });
+							}}
+							panelData={general_content}
+						/>
+						<WcbProductsPanelFeaturedImage
+							onToggle={() => handleTogglePanel("General", "PostFeaturedImage")}
+							initialOpen={tabGeneralIsPanelOpen === "PostFeaturedImage"}
+							opened={
+								tabGeneralIsPanelOpen === "PostFeaturedImage" || undefined
+							}
+							//
+							setAttr__={(data) => {
+								setAttributes({ general_featuredImage: data });
+							}}
+							panelData={general_featuredImage}
+						/>
+						<WcbProductsPanelButton
+							onToggle={() => handleTogglePanel("General", "Button")}
+							initialOpen={tabGeneralIsPanelOpen === "Button"}
+							opened={tabGeneralIsPanelOpen === "Button" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ general_addToCartBtn: data });
+							}}
+							panelData={general_addToCartBtn}
+						/>
+						<WcbProductsPanelPagination
+							onToggle={() => handleTogglePanel("General", "Pagination")}
+							initialOpen={tabGeneralIsPanelOpen === "Pagination"}
+							opened={tabGeneralIsPanelOpen === "Pagination" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ general_pagination: data });
+							}}
+							panelData={general_pagination}
+						/>
 					</>
 				);
 			case "Styles":
-				return <></>;
+				return (
+					<>
+						<WcbProductsPanel_StyleLayout
+							onToggle={() => handleTogglePanel("Styles", "_StyleLayout", true)}
+							initialOpen={
+								tabStylesIsPanelOpen === "_StyleLayout" ||
+								tabStylesIsPanelOpen === "first"
+							}
+							opened={tabStylesIsPanelOpen === "_StyleLayout" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_layout: data });
+							}}
+							panelData={style_layout}
+						/>
+						<WcbProductsPanel_StyleTitle
+							onToggle={() => handleTogglePanel("Styles", "_StyleTitle")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleTitle"}
+							opened={tabStylesIsPanelOpen === "_StyleTitle" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_title: data });
+							}}
+							panelData={style_title}
+						/>
+
+						<WcbProductsPanel_StyleFeaturedImage
+							onToggle={() =>
+								handleTogglePanel("Styles", "_StyleFeaturedImage")
+							}
+							initialOpen={tabStylesIsPanelOpen === "_StyleFeaturedImage"}
+							opened={
+								tabStylesIsPanelOpen === "_StyleFeaturedImage" || undefined
+							}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_featuredImage: data });
+							}}
+							panelData={style_featuredImage}
+							imagePosition="top"
+						/>
+						<WcbProductsPanel_StyleAddToCartBtn
+							onToggle={() => handleTogglePanel("Styles", "_StyleAddToCartBtn")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleAddToCartBtn"}
+							opened={
+								tabStylesIsPanelOpen === "_StyleAddToCartBtn" || undefined
+							}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_addToCardBtn: data });
+							}}
+							panelData={style_addToCardBtn}
+						/>
+						<WcbProductsPanel_StylePagination
+							onToggle={() => handleTogglePanel("Styles", "_StylePagination")}
+							initialOpen={tabStylesIsPanelOpen === "_StylePagination"}
+							opened={tabStylesIsPanelOpen === "_StylePagination" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_pagiantion: data });
+							}}
+							panelData={style_pagiantion}
+						/>
+					</>
+				);
 			case "Advances":
 				return (
 					<>
@@ -132,113 +228,31 @@ const Edit: FC<Props> = (props) => {
 			advance_responsiveCondition,
 			advance_zIndex,
 			general_sortingAndFiltering,
+			general_content,
+			general_featuredImage,
+			general_addToCartBtn,
+			general_pagination,
+			style_title,
+			style_featuredImage,
+			style_layout,
+			style_addToCardBtn,
+			style_pagiantion,
 		};
 	}, [
 		uniqueId,
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_sortingAndFiltering,
+		general_content,
+		general_featuredImage,
+		general_addToCartBtn,
+		general_pagination,
+		style_title,
+		style_featuredImage,
+		style_layout,
+		style_addToCardBtn,
+		style_pagiantion,
 	]);
-
-	const togglePreview = () => {
-		setIsEditing(!isEditing);
-	};
-
-	const getTitle = () => {
-		return __("All Products", "woocommerce");
-	};
-
-	const getIcon = () => {
-		return <Icon icon={grid} />;
-	};
-
-	const renderEditMode = () => {
-		const onDone = () => {
-			const { block, setAttributes } = props;
-			setAttributes({
-				layoutConfig: getProductLayoutConfig(block.innerBlocks),
-			});
-			setInnerBlocks(block.innerBlocks);
-			togglePreview();
-		};
-
-		const onCancel = () => {
-			const { block, replaceInnerBlocks } = props;
-			replaceInnerBlocks(block.clientId, innerBlocks, false);
-			togglePreview();
-		};
-
-		const onReset = () => {
-			const { block, replaceInnerBlocks } = props;
-			const newBlocks = [];
-			DEFAULT_PRODUCT_LIST_LAYOUT.map(([name, attributes]) => {
-				newBlocks.push(createBlock(name, attributes));
-				return true;
-			});
-			replaceInnerBlocks(block.clientId, newBlocks, false);
-			setInnerBlocks(block.innerBlocks);
-		};
-
-		let innerBlockProps = {
-			template: layoutConfig,
-			templateLock: false,
-			// allowedBlocks: [],
-		};
-
-		if (layoutConfig.length !== 0) {
-			innerBlockProps.renderAppender = false;
-		}
-
-		return (
-			<Placeholder icon={getIcon()} label={getTitle()}>
-				{__("Display all products from your store as a grid.", "woocommerce")}
-				<div className="wc-block-all-products-grid-item-template">
-					<Tip>
-						{__(
-							"Edit the blocks inside the example below to change the content displayed for all products within the product grid.",
-							"woocommerce"
-						)}
-					</Tip>
-
-					<div className="wc-block-grid wc-block-layout has-1-columns">
-						<ul className="wc-block-grid__products">
-							<li className="wc-block-grid__product">
-								{/* <ProductDataContextProvider product={previewProducts[0]}> */}
-								<InnerBlocks {...innerBlockProps} />
-								{/* </ProductDataContextProvider> */}
-							</li>
-						</ul>
-					</div>
-					<div className="wc-block-all-products__actions">
-						<Button
-							className="wc-block-all-products__done-button"
-							variant="secondary"
-							onClick={onDone}
-						>
-							{__("Done", "woocommerce")}
-						</Button>
-						<Button
-							className="wc-block-all-products__cancel-button"
-							variant="tertiary"
-							onClick={onCancel}
-						>
-							{__("Cancel", "woocommerce")}
-						</Button>
-						<Button
-							className="wc-block-all-products__reset-button"
-							icon={<Icon icon={grid} />}
-							label={__("Reset layout to default", "woocommerce")}
-							onClick={onReset}
-						>
-							{__("Reset Layout", "woocommerce")}
-						</Button>
-					</div>
-				</div>
-			</Placeholder>
-		);
-	};
-
-	console.log(111, { layoutConfig });
 
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
@@ -259,25 +273,10 @@ const Edit: FC<Props> = (props) => {
 				{/* CHILD CONTENT  */}
 				{/* <ProductsQueries /> */}
 				<h2> This is Products ... </h2>
-				{renderEditMode()}
 				<ServerSideRender block="wcb/products" attributes={undefined} />
 			</div>
 		</MyCacheProvider>
 	);
 };
 
-export default compose(
-	withSpokenMessages,
-	withSelect((select, { clientId }) => {
-		const { getBlock } = select("core/block-editor");
-		return {
-			block: getBlock(clientId),
-		};
-	}),
-	withDispatch((dispatch) => {
-		const { replaceInnerBlocks } = dispatch("core/block-editor");
-		return {
-			replaceInnerBlocks,
-		};
-	})
-)(Edit);
+export default withSpokenMessages(Edit);
