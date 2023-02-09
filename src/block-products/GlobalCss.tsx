@@ -17,7 +17,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
 	const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
-	const HEADING_CLASSNAME = `${WRAP_CLASSNAME} .wcb-__heading`;
+	const LIST_CLASS = `${WRAP_CLASSNAME} .wcb-products__list`;
 
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject => {
@@ -32,6 +32,15 @@ const GlobalCss: FC<Props> = (attrs) => {
 	return (
 		<>
 			<Global styles={getDivWrapStyles()} />
+			<Global
+				styles={{
+					[LIST_CLASS]: {
+						display: "grid",
+						gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+						gap: 32,
+					},
+				}}
+			/>
 
 			{/* ADVANCE  */}
 			<Global

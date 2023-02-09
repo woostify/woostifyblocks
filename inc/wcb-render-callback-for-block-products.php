@@ -1,6 +1,5 @@
 <?php
 
-
 //============================================= block 1 ===============================================================
 function wcb_block_products__renderCallback($attributes, $content)
 {
@@ -26,48 +25,34 @@ function wcb_block_products__renderCallback($attributes, $content)
     // echo $content;
 ?>
 
-    <div class="product-list-contain">
-
+    <div class="wcb-products__content">
         <?php
         $loop = new WP_Query($args);
         if ($loop->have_posts()) :
 
             // do_action('woocommerce_before_shop_loop');
-            woocommerce_product_loop_start();
+            // woocommerce_product_loop_start();
         ?>
-
-            <ul>
+            <div class="wcb-products__list">
                 <?php
                 while ($loop->have_posts()) :
                     global $product;
 
                     $loop->the_post();
-                    $x = wc_get_template_part('content', 'product');
-                    // echo '<pre>';
-                    // var_dump($product);
-                    // echo '</pre>';
-                    echo  wcb_block_products__render_product($product);
+                    echo wcb_block_products__render_product($product);
                 endwhile;
                 ?>
-
-            </ul>
-
-            <?php
-            woocommerce_product_loop_end(); ?>
+            </div>
 
             <?php
-            do_action('woocommerce_after_shop_loop'); ?>
-
+            // woocommerce_product_loop_end(); 
+            // do_action('woocommerce_after_shop_loop');
+            ?>
         <?php
         else :
-
             do_action('woocommerce_no_products_found');
-
         endif; ?>
-
-        <?php
-        wp_reset_postdata(); ?>
-
+        <?php wp_reset_postdata(); ?>
     </div>
 <?php
     return ob_get_clean();
@@ -88,8 +73,8 @@ function wcb_block_products__render_product($product)
 
     return apply_filters(
         'woocommerce_blocks_product_grid_item_html',
-        "<li class=\"wc-block-grid__product\">
-				<a href=\"{$data->permalink}\" class=\"wc-block-grid__product-link\">
+        "<div class=\"wcb-products__product wc-block-grid__product\">
+				<a href=\"{$data->permalink}\" class=\"wcb-products__product wc-block-grid__product-link\">
 					{$data->image}
 					{$data->title}
 				</a>
@@ -97,7 +82,7 @@ function wcb_block_products__render_product($product)
 				{$data->price}
 				{$data->rating}
 				{$data->button}
-			</li>",
+			</div>",
         $data,
         $product
     );
@@ -120,14 +105,14 @@ function wcb_block_products__get_image_html($product)
         );
     }
 
-    return '<div class="wc-block-grid__product-image">' . $product->get_image('woocommerce_thumbnail', $attr) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+    return '<div class="wcb-products__product-image wc-block-grid__product-image">' . $product->get_image('woocommerce_thumbnail', $attr) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
 
 function wcb_block_products__get_title_html($product)
 {
 
-    return '<div class="wc-block-grid__product-title">' . wp_kses_post($product->get_title()) . '</div>';
+    return '<div class="wcb-products__product-title wc-block-grid__product-title">' . wp_kses_post($product->get_title()) . '</div>';
 }
 
 
@@ -140,7 +125,7 @@ function wcb_block_products__get_rating_html($product)
 
     if ($rating_count > 0) {
         return sprintf(
-            '<div class="wc-block-grid__product-rating">%s</div>',
+            '<div class="wcb-products__product-rating wc-block-grid__product-rating">%s</div>',
             wc_get_rating_html($average, $rating_count) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         );
     }
@@ -152,7 +137,7 @@ function wcb_block_products__get_price_html($product)
 {
 
     return sprintf(
-        '<div class="wc-block-grid__product-price price">%s</div>',
+        '<div class="wcb-products__product-price wc-block-grid__product-price price">%s</div>',
         wp_kses_post($product->get_price_html())
     );
 }
@@ -168,7 +153,7 @@ function wcb_block_products__get_sale_badge_html($product)
         return;
     }
 
-    return '<div class="wc-block-grid__product-onsale">
+    return '<div class="wcb-products__product-onsale wc-block-grid__product-onsale">
 			<span aria-hidden="true">' . esc_html__('Sale', 'woocommerce') . '</span>
 			<span class="screen-reader-text">' . esc_html__('Product on sale', 'woocommerce') . '</span>
 		</div>';
@@ -180,7 +165,7 @@ function wcb_block_products__get_button_html($product)
     // if (empty($this->attributes['contentVisibility']['button'])) {
     //     return '';
     // }
-    return '<div class="wp-block-button wc-block-grid__product-add-to-cart">' . wcb_block_products__get_add_to_cart($product) . '</div>';
+    return '<div class="wcb-products__product-add-to-cart wp-block-button wc-block-grid__product-add-to-cart">' . wcb_block_products__get_add_to_cart($product) . '</div>';
 }
 
 

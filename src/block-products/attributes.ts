@@ -7,12 +7,14 @@ import {
 	MyZIndexControlData,
 	Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
+import { DEFAULT_PRODUCT_LIST_LAYOUT } from "./base-utils";
 import {
 	WCB_PRODUCTS_PANEL_SORTINGANDFILTERING,
 	WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
 } from "./WcbProductPanelSortingAndFiltering";
 export interface WcbAttrs {
 	uniqueId: string;
+	layoutConfig: string[][];
 	//
 	general_sortingAndFiltering: WCB_PRODUCTS_PANEL_SORTINGANDFILTERING;
 	//
@@ -24,6 +26,10 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	uniqueId: {
 		type: "string",
 		default: "",
+	},
+	layoutConfig: {
+		type: "array",
+		default: DEFAULT_PRODUCT_LIST_LAYOUT,
 	},
 
 	// THE ATTRS OF BLOCK HERE

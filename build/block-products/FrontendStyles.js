@@ -2236,7 +2236,7 @@ const GlobalCss = attrs => {
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_3__.DEMO_WCB_GLOBAL_VARIABLES;
   const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
-  const HEADING_CLASSNAME = `${WRAP_CLASSNAME} .wcb-__heading`;
+  const LIST_CLASS = `${WRAP_CLASSNAME} .wcb-products__list`;
 
   // ------------------- WRAP DIV
   const getDivWrapStyles = () => {
@@ -2249,6 +2249,14 @@ const GlobalCss = attrs => {
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_4__.Global, {
     styles: getDivWrapStyles()
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_4__.Global, {
+    styles: {
+      [LIST_CLASS]: {
+        display: "grid",
+        gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+        gap: 32
+      }
+    }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_4__.Global, {
     styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__.getAdvanveDivWrapStyles)({
       advance_responsiveCondition,
