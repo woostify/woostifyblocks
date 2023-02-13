@@ -30,8 +30,52 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
             register_block_type(
                 WCB_BUILD_PATH . '/block-products',
                 [
+                    'attributes'      => array(
+                        'uniqueId'    => array(
+                            'type'      => 'string',
+                            'default'   => '',
+                        ),
+                        'general_sortingAndFiltering' => array(
+                            'type'      => 'object',
+                        ),
+                        'general_content' => array(
+                            'type'      => 'object',
+                        ),
+                        'general_featuredImage' => array(
+                            'type'      => 'object',
+                        ),
+                        'general_addToCartBtn' => array(
+                            'type'      => 'object',
+                        ),
+                        'general_pagination' => array(
+                            'type'      => 'object',
+                        ),
+                        'style_title' => array(
+                            'type'      => 'object',
+                        ),
+                        'style_featuredImage' => array(
+                            'type'      => 'object',
+                        ),
+                        'style_layout' => array(
+                            'type'      => 'object',
+                        ),
+                        'style_addToCardBtn' => array(
+                            'type'      => 'object',
+                        ),
+                        'style_pagiantion' => array(
+                            'type'      => 'object',
+                        ),
+                        'advance_responsiveCondition' => array(
+                            'type'      => 'object',
+                        ),
+                        'advance_zIndex' => array(
+                            'type'      => 'object',
+                        ),
+
+                    ),
                     "render_callback"     => "wcb_block_products__renderCallback",
                     // "ancestor"     => (($wcb_blocks_enable_disable['wcb/products'] ?? "") !== 'disabled') ? null : WCB_UNIQUE_NAME,
+
                 ]
             );
         endif;

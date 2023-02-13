@@ -8,28 +8,25 @@ function wcb_block_products__renderCallback($attributes, $content)
     }
 
     $sortingAndFiltering = $attributes['general_sortingAndFiltering'] ?? [];
+    $sortingAndFiltering = parse_filterAttributes($sortingAndFiltering);
 
     $display_count = $sortingAndFiltering["numberOfItems"] ?? 9;
     $page = get_query_var('paged') ? get_query_var('paged') : 1;
     $offset = ($page - 1) * $display_count;
-    $args = array(
-        'post_type'         => 'product',
-        'post_status'       => 'publish',
-        'posts_per_page'    => $display_count,
-        'page'              => $page,
-        'offset'            => $offset,
-        'orderby'           => 'menu_order',
-        'order'             => 'ASC'
-    );
+
+    // 
+    $content    = $content;
+    // $query_args = parse_query_args($sortingAndFiltering);
+    $args2 = parse_query_args($sortingAndFiltering);
 
     ob_start();
-    // echo $content;
-    // return '';
+    $loop = new WP_Query($args2);
+    echo $content;
 ?>
 
     <div class="wcb-products__content">
+
         <?php
-        $loop = new WP_Query($args);
         if ($loop->have_posts()) :
 
             // do_action('woocommerce_before_shop_loop');
@@ -38,8 +35,8 @@ function wcb_block_products__renderCallback($attributes, $content)
             <div class="wcb-products__list">
                 <?php
                 while ($loop->have_posts()) :
-                    global $product;
                     $loop->the_post();
+                    global $product;
                     if (!empty($product)) {
                         echo wcb_block_products__render_product($product);
                     }
@@ -91,7 +88,6 @@ function wcb_block_products__render_product($product)
         $product
     );
 }
-
 
 
 //  
@@ -198,4 +194,166 @@ function wcb_block_products__get_add_to_cart($product)
         wc_implode_html_attributes($attributes),
         esc_html($product->add_to_cart_text())
     );
+}
+
+
+
+// ===============================
+
+
+function parse_filterAttributes($filterAttrs)
+{
+    // These should match what's set in JS `registerBlockType`.
+    $defaults = array(
+        'columns'           => wc_get_theme_support('product_blocks::default_columns', 3),
+        'rows'              => wc_get_theme_support('product_blocks::default_rows', 3),
+        'alignButtons'      => false,
+        'categories'        => array(),
+        'catOperator'       => 'any',
+        'contentVisibility' => array(
+            'image'  => true,
+            'title'  => true,
+            'price'  => true,
+            'rating' => true,
+            'button' => true,
+        ),
+        'stockStatus'       => array_keys(wc_get_product_stock_status_options()),
+    );
+
+    return wp_parse_args($filterAttrs, $defaults);
+}
+
+
+
+
+function parse_query_args($filtersAttrs)
+{
+    // Store the original meta query.
+    $meta_query = WC()->query->get_meta_query();
+
+    $query_args = array(
+        'post_type'           => 'product',
+        'post_status'         => 'publish',
+        'fields'              => 'ids',
+        'ignore_sticky_posts' => true,
+        'no_found_rows'       => false,
+        'orderby'             => '',
+        'order'               => '',
+        'meta_query'          => $meta_query, // phpcs:ignore WordPress.DB.SlowDBQuery
+        'tax_query'           => array(), // phpcs:ignore WordPress.DB.SlowDBQuery
+        'posts_per_page'      => $filtersAttrs['numberOfItems'] ?? 1,
+    );
+
+    set_block_query_args($query_args);
+    set_ordering_query_args($query_args, $filtersAttrs);
+    set_categories_query_args($query_args, $filtersAttrs);
+    set_tags_query_args($query_args, $filtersAttrs);
+    set_attributes_query_args($query_args, $filtersAttrs);
+    set_visibility_query_args($query_args, $filtersAttrs);
+    set_stock_status_query_args($query_args, $filtersAttrs, $meta_query);
+    return $query_args;
+}
+
+
+
+
+function set_ordering_query_args(&$query_args, $attributes)
+{
+
+    $query_args['orderby'] = $attributes['orderby'] ?? "date";
+    $query_args['order'] = $attributes['order'] ?? "DESC";
+
+    $query_args = array_merge(
+        $query_args,
+        WC()->query->get_catalog_ordering_args($query_args['orderby'], $query_args['order'])
+    );
+}
+
+function set_block_query_args(&$query_args)
+{
+}
+
+
+function set_categories_query_args(&$query_args, $attributes)
+{
+    if (!empty($attributes['categories'])) {
+        $categories = array_map('absint', $attributes['categories']);
+
+        $query_args['tax_query'][] = array(
+            'taxonomy'         => 'product_cat',
+            'terms'            => $categories,
+            'field'            => 'term_id',
+            'operator'         => 'all' === $attributes['catOperator'] ? 'AND' : 'IN',
+
+            /*
+				 * When cat_operator is AND, the children categories should be excluded,
+				 * as only products belonging to all the children categories would be selected.
+				 */
+            'include_children' => 'all' === $attributes['catOperator'] ? false : true,
+        );
+    }
+}
+
+function set_tags_query_args(&$query_args, $attributes)
+{
+    if (!empty($attributes['tags'])) {
+        $query_args['tax_query'][] = array(
+            'taxonomy' => 'product_tag',
+            'terms'    => array_map('absint', $attributes['tags']),
+            'field'    => 'term_id',
+            'operator' => isset($attributes['tagOperator']) && 'any' === $attributes['tagOperator'] ? 'IN' : 'AND',
+        );
+    }
+}
+
+function set_attributes_query_args(&$query_args, $attributes)
+{
+    if (!empty($attributes['attributes'])) {
+        $taxonomy = sanitize_title($attributes['attributes'][0]['attr_slug']);
+        $terms    = wp_list_pluck($attributes['attributes'], 'id');
+
+        $query_args['tax_query'][] = array(
+            'taxonomy' => $taxonomy,
+            'terms'    => array_map('absint', $terms),
+            'field'    => 'term_id',
+            'operator' => 'all' === $attributes['attrOperator'] ? 'AND' : 'IN',
+        );
+    }
+}
+
+
+function set_visibility_query_args(&$query_args, $attributes)
+{
+    $product_visibility_terms  = wc_get_product_visibility_term_ids();
+    $product_visibility_not_in = array($product_visibility_terms['exclude-from-catalog']);
+
+    if ('yes' === get_option('woocommerce_hide_out_of_stock_items')) {
+        $product_visibility_not_in[] = $product_visibility_terms['outofstock'];
+    }
+
+    $query_args['tax_query'][] = array(
+        'taxonomy' => 'product_visibility',
+        'field'    => 'term_taxonomy_id',
+        'terms'    => $product_visibility_not_in,
+        'operator' => 'NOT IN',
+    );
+}
+
+function set_stock_status_query_args(&$query_args, $attributes, $meta_query)
+{
+    $stock_statuses = array_keys(wc_get_product_stock_status_options());
+
+    // phpcs:disable WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+    if (isset($attributes['stockStatus']) && $stock_statuses !== $attributes['stockStatus']) {
+        // Reset meta_query then update with our stock status.
+        $query_args['meta_query']   = $meta_query;
+        $query_args['meta_query'][] = array(
+            'key'     => '_stock_status',
+            'value'   => array_merge([''], $attributes['stockStatus']),
+            'compare' => 'IN',
+        );
+    } else {
+        $query_args['meta_query'] = $meta_query;
+    }
+    // phpcs:enable WordPress.DB.SlowDBQuery.slow_db_query_meta_query
 }

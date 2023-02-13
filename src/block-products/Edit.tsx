@@ -273,7 +273,7 @@ const Edit: FC<Props> = (props) => {
 				{/* CHILD CONTENT  */}
 				{/* <ProductsQueries /> */}
 				<h2> This is Products ... </h2>
-				<ServerSideRender block="wcb/products" attributes={undefined} />
+				<ServerSideRender block="wcb/products" attributes={attributes} />
 			</div>
 		</MyCacheProvider>
 	);
