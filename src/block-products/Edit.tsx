@@ -13,7 +13,7 @@ import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
-import WcbProductPanelSortingAndFiltering from "./WcbProductPanelSortingAndFiltering";
+import WcbProducstPanelSortingAndFiltering from "./WcbProducstPanelSortingAndFiltering";
 import {
 	Button,
 	Placeholder,
@@ -75,7 +75,7 @@ const Edit: FC<Props> = (props) => {
 			case "General":
 				return (
 					<>
-						<WcbProductPanelSortingAndFiltering
+						<WcbProducstPanelSortingAndFiltering
 							onToggle={() =>
 								handleTogglePanel("General", "SortingAndFiltering", true)
 							}

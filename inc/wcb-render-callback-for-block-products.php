@@ -7,8 +7,9 @@ function wcb_block_products__renderCallback($attributes, $content)
         wp_enqueue_script('wcb_block_products__renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-products/FrontendStyles.js', ["wp-element", "jquery"], null, true);
     }
 
-    $a = wcb_woo___get_product_filters_no_ajax();
-    $display_count = 9;
+    $sortingAndFiltering = $attributes['general_sortingAndFiltering'] ?? [];
+
+    $display_count = $sortingAndFiltering["numberOfItems"] ?? 9;
     $page = get_query_var('paged') ? get_query_var('paged') : 1;
     $offset = ($page - 1) * $display_count;
     $args = array(
@@ -23,6 +24,7 @@ function wcb_block_products__renderCallback($attributes, $content)
 
     ob_start();
     // echo $content;
+    // return '';
 ?>
 
     <div class="wcb-products__content">
@@ -37,15 +39,16 @@ function wcb_block_products__renderCallback($attributes, $content)
                 <?php
                 while ($loop->have_posts()) :
                     global $product;
-
                     $loop->the_post();
-                    echo wcb_block_products__render_product($product);
+                    if (!empty($product)) {
+                        echo wcb_block_products__render_product($product);
+                    }
                 endwhile;
                 ?>
             </div>
 
             <?php
-            // woocommerce_product_loop_end(); 
+            // woocommerce_product_loop_end();
             // do_action('woocommerce_after_shop_loop');
             ?>
         <?php
@@ -61,6 +64,7 @@ function wcb_block_products__renderCallback($attributes, $content)
 // 
 function wcb_block_products__render_product($product)
 {
+
     $data = (object) array(
         'permalink' => esc_url($product->get_permalink()),
         'image'     => wcb_block_products__get_image_html($product),

@@ -1,10 +1,11 @@
 import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
+import { HtmlTagsType } from "../../../types";
 import MyRadioGroup, { MyRadioItem } from "../MyRadioGroup";
 
 interface Props {
 	className?: string;
-	tag?: keyof HTMLElementTagNameMap;
+	tag?: keyof HTMLElementTagNameMap | HtmlTagsType;
 	onChange?: (select: keyof HTMLElementTagNameMap) => void;
 	label?: string;
 }

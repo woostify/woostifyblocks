@@ -4,6 +4,7 @@ import {
 	PanelBody,
 	RangeControl,
 	ToggleControl,
+	SelectControl,
 } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC } from "react";
@@ -29,8 +30,21 @@ import ProductTagControl from "./product-tag-control";
 import MyDisclosure from "../components/controls/MyDisclosure";
 import ProductAttributeTermControl from "./product-attribute-term-control";
 
+export type ProductOrderBy =
+	| "ID"
+	| "menu_order title"
+	| "title"
+	| "relevance"
+	| "rand"
+	| "date ID"
+	| "order_by_price_desc_post_clauses"
+	| "order_by_price_asc_post_clauses"
+	| "order_by_popularity_post_clauses"
+	| "order_by_rating_post_clauses";
+
 export interface WCB_PRODUCTS_PANEL_SORTINGANDFILTERING {
 	emptyMessage: string;
+	numberOfItems: number;
 	numberOfColumn: HasResponsive<number>;
 	isEqualHeight: boolean;
 	isOnSale: boolean;
@@ -42,12 +56,13 @@ export interface WCB_PRODUCTS_PANEL_SORTINGANDFILTERING {
 	catOperator: string;
 	tagOperator: string;
 	attrOperator: string;
-	orderBy: string;
-	order: string;
+	orderBy: ProductOrderBy;
+	order: "DESC" | "ASC";
 }
 export const WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO: WCB_PRODUCTS_PANEL_SORTINGANDFILTERING =
 	{
 		emptyMessage: "No post found!",
+		numberOfItems: 10,
 		numberOfColumn: { Desktop: 3 },
 		isEqualHeight: true,
 		isOnSale: false,
@@ -59,8 +74,8 @@ export const WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO: WCB_PRODUCTS_PANEL_SOR
 		catOperator: "any",
 		tagOperator: "any",
 		attrOperator: "any",
-		order: "",
-		orderBy: "",
+		order: "DESC",
+		orderBy: "date ID",
 	};
 
 interface Props
@@ -78,7 +93,7 @@ function getStockStatusIdByLabel(statusLabel: FormTokenField.Value) {
 	)?.[0];
 }
 
-const WcbProductPanelSortingAndFiltering: FC<Props> = ({
+const WcbProducstPanelSortingAndFiltering: FC<Props> = ({
 	panelData = WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
 	setAttr__,
 	initialOpen,
@@ -91,43 +106,59 @@ const WcbProductPanelSortingAndFiltering: FC<Props> = ({
 
 	const STOCK_STATUS_OPTIONS = get_STOCK_STATUS_OPTIONS();
 
-	const renderPopularPresets = () => {
-		const PRESETS = [
+	const renderSelectOrderBy = () => {
+		const OPTIONS: {
+			label: string;
+			value: ProductOrderBy;
+		}[] = [
 			{
-				key: "title/asc",
-				name: __("Sorted by title", "woo-gutenberg-products-block"),
-			},
-			{ key: "date/desc", name: __("Newest", "woo-gutenberg-products-block") },
-			{
-				key: "popularity/desc",
-				name: __("Best Selling", "woo-gutenberg-products-block"),
+				label: __("ID", "wcb"),
+				value: "ID",
 			},
 			{
-				key: "rating/desc",
-				name: __("Top Rated", "woo-gutenberg-products-block"),
+				label: __("Date", "wcb"),
+				value: "date ID",
+			},
+			{
+				label: __("Title", "wcb"),
+				value: "title",
+			},
+			{
+				label: __("Menu order", "wcb"),
+				value: "menu_order title",
+			},
+			{
+				label: __("Popularity", "wcb"),
+				value: "order_by_popularity_post_clauses",
+			},
+			{
+				label: __("Price_asc", "wcb"),
+				value: "order_by_price_asc_post_clauses",
+			},
+			{
+				label: __("Price_desc", "wcb"),
+				value: "order_by_price_desc_post_clauses",
+			},
+			{
+				label: __("Rating", "wcb"),
+				value: "order_by_rating_post_clauses",
+			},
+			{
+				label: __("Relevance", "wcb"),
+				value: "relevance",
+			},
+			{
+				label: __("Random", "wcb"),
+				value: "rand",
 			},
 		];
+
 		return (
-			<CustomSelectControl
-				label={__("Arrange products by popular pre-sets.", "wcb")}
-				onChange={(option) => {
-					if (!option.selectedItem?.key) return;
-
-					const [orderBy, order] = option.selectedItem?.key?.split("/") as [
-						ProductQueryBlockQuery["orderBy"],
-						ProductQueryBlockQuery["order"]
-					];
-
-					setAttr__({
-						...panelData,
-						order,
-						orderBy,
-					});
-				}}
-				options={PRESETS}
-				value={PRESETS.find(
-					(option) => option.key === `${panelData.orderBy}/${panelData.order}`
-				)}
+			<SelectControl
+				label={__("Order products by", "wcb")}
+				value={panelData.orderBy}
+				options={OPTIONS}
+				onChange={(orderby) => setAttr__({ ...panelData, orderBy: orderby })}
 			/>
 		);
 	};
@@ -140,7 +171,23 @@ const WcbProductPanelSortingAndFiltering: FC<Props> = ({
 			opened={opened}
 			title={__("Sorting and filtering", "wcb")}
 		>
-			{renderPopularPresets()}
+			{renderSelectOrderBy()}
+
+			<SelectControl
+				label={__("Order", "wcb")}
+				value={panelData.order}
+				options={[
+					{
+						label: __("DESC", "wcb"),
+						value: "DESC",
+					},
+					{
+						label: __("ASC", "wcb"),
+						value: "ASC",
+					},
+				]}
+				onChange={(order) => setAttr__({ ...panelData, order })}
+			/>
 
 			<ToggleControl
 				label={__("Show only products on sale", "wcb")}
@@ -248,6 +295,25 @@ const WcbProductPanelSortingAndFiltering: FC<Props> = ({
 			{/*  */}
 			<RangeControl
 				label={
+					<MyLabelControl hasResponsive>
+						{__("Number of items", "wcb")}
+					</MyLabelControl>
+				}
+				value={panelData.numberOfItems}
+				onChange={(numberOfItems = 10) => {
+					setAttr__({
+						...panelData,
+						numberOfItems,
+					});
+				}}
+				min={1}
+				max={40}
+				required
+			/>
+
+			{/*  */}
+			<RangeControl
+				label={
 					<MyLabelControl hasResponsive>{__("Columns", "wcb")}</MyLabelControl>
 				}
 				value={currentNumberOfColumn || 1}
@@ -284,4 +350,4 @@ const WcbProductPanelSortingAndFiltering: FC<Props> = ({
 	);
 };
 
-export default WcbProductPanelSortingAndFiltering;
+export default WcbProducstPanelSortingAndFiltering;

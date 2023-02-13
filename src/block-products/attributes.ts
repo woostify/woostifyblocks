@@ -11,7 +11,7 @@ import { DEFAULT_PRODUCT_LIST_LAYOUT } from "./base-utils";
 import {
 	WCB_PRODUCTS_PANEL_SORTINGANDFILTERING,
 	WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
-} from "./WcbProductPanelSortingAndFiltering";
+} from "./WcbProducstPanelSortingAndFiltering";
 import {
 	WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN,
 	WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO,
