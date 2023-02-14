@@ -40,6 +40,8 @@ const myInterval = setInterval(() => {
 		`.edit-post-header__toolbar .edit-post-header-toolbar__left`
 	) as HTMLElement | null;
 
+	console.log(1, "IS_TOOLBAR_RENDERED", { modalRoot, defaultToolbar });
+
 	if (modalRoot && defaultToolbar) {
 		IS_TOOLBAR_RENDERED = true;
 		if (!document.getElementById("wcb-block-templates-button-wrap")) {

@@ -3464,7 +3464,7 @@ const WcbProductsPanelButton = _ref => {
     initialOpen: initialOpen,
     onToggle: onToggle,
     opened: opened,
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Read more link", "wcb")
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Add to Cart button", "wcb")
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "space-y-5"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
@@ -3514,17 +3514,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyDisclosure */ "./src/components/controls/MyDisclosure.tsx");
-/* harmony import */ var _components_controls_MyHeadingTagControl_MyHeadingTagControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyHeadingTagControl/MyHeadingTagControl */ "./src/components/controls/MyHeadingTagControl/MyHeadingTagControl.tsx");
-/* harmony import */ var _components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/controls/MyRadioGroup */ "./src/components/controls/MyRadioGroup.tsx");
-/* harmony import */ var _components_controls_MySelect__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/controls/MySelect */ "./src/components/controls/MySelect.tsx");
+/* harmony import */ var _components_controls_MyHeadingTagControl_MyHeadingTagControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyHeadingTagControl/MyHeadingTagControl */ "./src/components/controls/MyHeadingTagControl/MyHeadingTagControl.tsx");
 
 
-
-
-
-
-// @ts-ignore
 
 
 
@@ -3536,6 +3528,7 @@ const TAXONOMY_POSITION_OPTIONS = [{
   label: "Below featured image"
 }];
 const WCB_PRODUCTS_PANEL_COTENT_DEMO = {
+  isShowAddToCartBtn: true,
   isShowPrice: true,
   isShowRating: true,
   isShowSaleBadge: true,
@@ -3543,14 +3536,7 @@ const WCB_PRODUCTS_PANEL_COTENT_DEMO = {
   //
   isShowTitle: true,
   titleHtmlTag: "h4",
-  isShowComment: true,
-  isShowAuthor: true,
-  isShowDate: true,
-  isShowTaxonomy: true,
-  isShowMetaIcon: true,
-  isShowTaxonomyIcon: false,
   taxonomyPosition: "Below featured image",
-  taxonomyDivider: `, `,
   taxonomyStyle: "Highlighted"
 };
 const WcbProductsPanelContent = _ref => {
@@ -3562,76 +3548,16 @@ const WcbProductsPanelContent = _ref => {
     opened
   } = _ref;
   const {
-    isShowAuthor,
-    isShowComment,
-    isShowDate,
-    isShowTaxonomy,
     isShowTitle,
     titleHtmlTag,
-    isShowMetaIcon,
-    taxonomyDivider,
     taxonomyStyle,
     taxonomyPosition,
-    isShowTaxonomyIcon
+    isShowPrice,
+    isShowRating,
+    isShowSKU,
+    isShowSaleBadge,
+    isShowAddToCartBtn
   } = panelData;
-  const renderTaxonomy = () => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      label: "Taxonomy",
-      defaultOpen: true
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Show taxonomy", "wcb"),
-      onChange: checked => setAttr__({
-        ...panelData,
-        isShowTaxonomy: checked
-      }),
-      checked: isShowTaxonomy
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: "Style",
-      labelClassName: "",
-      className: "flex items-center justify-between space-x-3",
-      contentClassName: "flex-shrink-0 flex-1",
-      onChange: selected => setAttr__({
-        ...panelData,
-        taxonomyStyle: selected
-      }),
-      value: taxonomyStyle,
-      plans: [
-      // "Normal" | "Highlighted"
-      {
-        name: "Normal",
-        icon: "Normal"
-      }, {
-        name: "Highlighted",
-        icon: "Highlighted"
-      }],
-      hasResponsive: false
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MySelect__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      onChange: value => {
-        setAttr__({
-          ...panelData,
-          taxonomyPosition: value
-        });
-      },
-      value: taxonomyPosition,
-      options: TAXONOMY_POSITION_OPTIONS,
-      hasResponsive: false,
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Position", "")
-    }), taxonomyStyle === "Normal" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalInputControl, {
-      value: taxonomyDivider,
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Separator", "wcb"),
-      onChange: value => setAttr__({
-        ...panelData,
-        taxonomyDivider: value
-      })
-    }) : null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Show icon", "wcb"),
-      onChange: checked => setAttr__({
-        ...panelData,
-        isShowTaxonomyIcon: checked
-      }),
-      checked: isShowTaxonomyIcon
-    }));
-  };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     initialOpen: initialOpen,
     onToggle: onToggle,
@@ -3640,13 +3566,13 @@ const WcbProductsPanelContent = _ref => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "space-y-5"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Show title", "wcb"),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Product title", "wcb"),
     onChange: checked => setAttr__({
       ...panelData,
       isShowTitle: checked
     }),
     checked: isShowTitle
-  }), isShowTitle ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyHeadingTagControl_MyHeadingTagControl__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }), isShowTitle ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyHeadingTagControl_MyHeadingTagControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
     tag: titleHtmlTag,
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Title HTML tag", "wcb"),
     onChange: tag => setAttr__({
@@ -3654,34 +3580,34 @@ const WcbProductsPanelContent = _ref => {
       titleHtmlTag: tag
     })
   }) : null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Show author", "wcb"),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Product price", "wcb"),
     onChange: checked => setAttr__({
       ...panelData,
-      isShowAuthor: checked
+      isShowPrice: checked
     }),
-    checked: isShowAuthor
+    checked: isShowPrice
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Show date", "wcb"),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Product SKU", "wcb"),
     onChange: checked => setAttr__({
       ...panelData,
-      isShowDate: checked
+      isShowSKU: checked
     }),
-    checked: isShowDate
+    checked: isShowSKU
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Show comment", "wcb"),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Product rating", "wcb"),
     onChange: checked => setAttr__({
       ...panelData,
-      isShowComment: checked
+      isShowRating: checked
     }),
-    checked: isShowComment
+    checked: isShowRating
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Show Meta icon", "wcb"),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Add to Cart button", "wcb"),
     onChange: checked => setAttr__({
       ...panelData,
-      isShowMetaIcon: checked
+      isShowAddToCartBtn: checked
     }),
-    checked: isShowMetaIcon
-  }), renderTaxonomy()));
+    checked: isShowAddToCartBtn
+  })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WcbProductsPanelContent);
 
@@ -3707,15 +3633,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_controls_MySelect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MySelect */ "./src/components/controls/MySelect.tsx");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/controls/MyRadioGroup */ "./src/components/controls/MyRadioGroup.tsx");
-
-
-
+/* harmony import */ var _components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyRadioGroup */ "./src/components/controls/MyRadioGroup.tsx");
 
 
 
@@ -3741,31 +3659,10 @@ const WcbProductsPanelFeaturedImage = _ref => {
     featuredImagePosition,
     linkCompleteBox
   } = panelData;
-  const {
-    imageSizes
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.useSelect)(select => {
-    const settings = select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.store).getSettings();
-    return {
-      imageSizes: settings.imageSizes
-    };
-  }, []);
-  const imageSizeOptions = imageSizes?.map(_ref2 => {
-    let {
-      name,
-      slug
-    } = _ref2;
-    return {
-      value: slug,
-      label: name
-    };
-  }) || [];
   const POSTION_PLANS = [{
     name: "top",
     icon: "Top"
-  },
-  // { name: "left", icon: "Left" },
-  // { name: "right", icon: "Right" },
-  {
+  }, {
     name: "background",
     icon: "Background"
   }];
@@ -3773,7 +3670,7 @@ const WcbProductsPanelFeaturedImage = _ref => {
     initialOpen: initialOpen,
     onToggle: onToggle,
     opened: opened,
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Featured image settings", "wcb")
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Product image settings", "wcb")
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "space-y-5 "
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
@@ -3783,22 +3680,8 @@ const WcbProductsPanelFeaturedImage = _ref => {
       isShowFeaturedImage: checked
     }),
     checked: isShowFeaturedImage
-  }), isShowFeaturedImage ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MySelect__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    value: featuredImageSize,
-    options: imageSizeOptions,
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Image size", "wcb"),
-    onChange: size => {
-      setAttr__({
-        ...panelData,
-        featuredImageSize: size
-      });
-    }
-  }) : null, isShowFeaturedImage ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    label: "Position"
-    // labelClassName=""
-    // className="flex items-center justify-between space-x-3"
-    // contentClassName="flex-shrink-0 flex-1"
-    ,
+  }), isShowFeaturedImage ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    label: "Position",
     onChange: selected => setAttr__({
       ...panelData,
       featuredImagePosition: selected
@@ -7939,54 +7822,6 @@ const MyResponsiveToggle = _ref => {
   })))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyResponsiveToggle);
-
-/***/ }),
-
-/***/ "./src/components/controls/MySelect.tsx":
-/*!**********************************************!*\
-  !*** ./src/components/controls/MySelect.tsx ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
-
-
-
-
-
-const MySelect = _ref => {
-  let {
-    label = "My select",
-    hasResponsive,
-    labelClass = "flex-1",
-    devices,
-    ...props
-  } = _ref;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-MySelect w-full flex justify-between items-center"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    className: labelClass,
-    hasResponsive: hasResponsive,
-    devices: devices
-  }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "flex-1"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    hideLabelFromVision: true
-  }, props))));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MySelect);
 
 /***/ }),
 

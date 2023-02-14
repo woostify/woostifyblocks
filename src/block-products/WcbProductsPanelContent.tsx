@@ -10,6 +10,7 @@ import MyRadioGroup from "../components/controls/MyRadioGroup";
 import MySelect from "../components/controls/MySelect";
 
 export interface WCB_PRODUCTS_PANEL_COTENT {
+	isShowAddToCartBtn: boolean;
 	isShowPrice: boolean;
 	isShowRating: boolean;
 	isShowSKU: boolean;
@@ -17,14 +18,7 @@ export interface WCB_PRODUCTS_PANEL_COTENT {
 	isShowTitle: boolean;
 	titleHtmlTag: HtmlTagsType;
 	//
-	isShowAuthor: boolean;
-	isShowDate: boolean;
-	isShowComment: boolean;
-	isShowMetaIcon: boolean;
-	isShowTaxonomyIcon: boolean;
-	isShowTaxonomy: boolean;
 	taxonomyPosition: "Inside featured image" | "Below featured image";
-	taxonomyDivider: string;
 	taxonomyStyle: "Normal" | "Highlighted";
 }
 
@@ -37,6 +31,7 @@ const TAXONOMY_POSITION_OPTIONS: {
 ];
 
 export const WCB_PRODUCTS_PANEL_COTENT_DEMO: WCB_PRODUCTS_PANEL_COTENT = {
+	isShowAddToCartBtn: true,
 	isShowPrice: true,
 	isShowRating: true,
 	isShowSaleBadge: true,
@@ -44,14 +39,7 @@ export const WCB_PRODUCTS_PANEL_COTENT_DEMO: WCB_PRODUCTS_PANEL_COTENT = {
 	//
 	isShowTitle: true,
 	titleHtmlTag: "h4",
-	isShowComment: true,
-	isShowAuthor: true,
-	isShowDate: true,
-	isShowTaxonomy: true,
-	isShowMetaIcon: true,
-	isShowTaxonomyIcon: false,
 	taxonomyPosition: "Below featured image",
-	taxonomyDivider: `, `,
 	taxonomyStyle: "Highlighted",
 };
 
@@ -69,84 +57,16 @@ const WcbProductsPanelContent: FC<Props> = ({
 	opened,
 }) => {
 	const {
-		isShowAuthor,
-		isShowComment,
-		isShowDate,
-		isShowTaxonomy,
 		isShowTitle,
 		titleHtmlTag,
-		isShowMetaIcon,
-		taxonomyDivider,
 		taxonomyStyle,
 		taxonomyPosition,
-		isShowTaxonomyIcon,
+		isShowPrice,
+		isShowRating,
+		isShowSKU,
+		isShowSaleBadge,
+		isShowAddToCartBtn,
 	} = panelData;
-
-	const renderTaxonomy = () => {
-		return (
-			<MyDisclosure label="Taxonomy" defaultOpen>
-				<ToggleControl
-					label={__("Show taxonomy", "wcb")}
-					onChange={(checked) =>
-						setAttr__({ ...panelData, isShowTaxonomy: checked })
-					}
-					checked={isShowTaxonomy}
-				/>
-
-				<MyRadioGroup
-					label="Style"
-					labelClassName=""
-					className="flex items-center justify-between space-x-3"
-					contentClassName="flex-shrink-0 flex-1"
-					onChange={(selected) =>
-						setAttr__({
-							...panelData,
-							taxonomyStyle: selected as any,
-						})
-					}
-					value={taxonomyStyle}
-					plans={[
-						// "Normal" | "Highlighted"
-						{ name: "Normal", icon: "Normal" },
-						{ name: "Highlighted", icon: "Highlighted" },
-					]}
-					hasResponsive={false}
-				/>
-
-				<MySelect
-					onChange={(value) => {
-						setAttr__({
-							...panelData,
-							taxonomyPosition:
-								value as WCB_PRODUCTS_PANEL_COTENT["taxonomyPosition"],
-						});
-					}}
-					value={taxonomyPosition}
-					options={TAXONOMY_POSITION_OPTIONS}
-					hasResponsive={false}
-					label={__("Position", "")}
-				/>
-
-				{taxonomyStyle === "Normal" ? (
-					<InputControl
-						value={taxonomyDivider}
-						label={__("Separator", "wcb")}
-						onChange={(value) =>
-							setAttr__({ ...panelData, taxonomyDivider: value })
-						}
-					/>
-				) : null}
-
-				<ToggleControl
-					label={__("Show icon", "wcb")}
-					onChange={(checked) =>
-						setAttr__({ ...panelData, isShowTaxonomyIcon: checked })
-					}
-					checked={isShowTaxonomyIcon}
-				/>
-			</MyDisclosure>
-		);
-	};
 
 	return (
 		<PanelBody
@@ -157,7 +77,7 @@ const WcbProductsPanelContent: FC<Props> = ({
 		>
 			<div className={"space-y-5"}>
 				<ToggleControl
-					label={__("Show title", "wcb")}
+					label={__("Product title", "wcb")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowTitle: checked })
 					}
@@ -173,38 +93,36 @@ const WcbProductsPanelContent: FC<Props> = ({
 				) : null}
 
 				<ToggleControl
-					label={__("Show author", "wcb")}
+					label={__("Product price", "wcb")}
 					onChange={(checked) =>
-						setAttr__({ ...panelData, isShowAuthor: checked })
+						setAttr__({ ...panelData, isShowPrice: checked })
 					}
-					checked={isShowAuthor}
+					checked={isShowPrice}
 				/>
 
 				<ToggleControl
-					label={__("Show date", "wcb")}
+					label={__("Product SKU", "wcb")}
 					onChange={(checked) =>
-						setAttr__({ ...panelData, isShowDate: checked })
+						setAttr__({ ...panelData, isShowSKU: checked })
 					}
-					checked={isShowDate}
+					checked={isShowSKU}
 				/>
 
 				<ToggleControl
-					label={__("Show comment", "wcb")}
+					label={__("Product rating", "wcb")}
 					onChange={(checked) =>
-						setAttr__({ ...panelData, isShowComment: checked })
+						setAttr__({ ...panelData, isShowRating: checked })
 					}
-					checked={isShowComment}
+					checked={isShowRating}
 				/>
 
 				<ToggleControl
-					label={__("Show Meta icon", "wcb")}
+					label={__("Add to Cart button", "wcb")}
 					onChange={(checked) =>
-						setAttr__({ ...panelData, isShowMetaIcon: checked })
+						setAttr__({ ...panelData, isShowAddToCartBtn: checked })
 					}
-					checked={isShowMetaIcon}
+					checked={isShowAddToCartBtn}
 				/>
-
-				{renderTaxonomy()}
 			</div>
 		</PanelBody>
 	);

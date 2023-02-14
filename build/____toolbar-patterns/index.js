@@ -863,6 +863,10 @@ const myInterval = setInterval(() => {
   }
   const modalRoot = document.querySelector(`.edit-post-header__toolbar .edit-post-header-toolbar `);
   const defaultToolbar = document.querySelector(`.edit-post-header__toolbar .edit-post-header-toolbar__left`);
+  console.log(1, "IS_TOOLBAR_RENDERED", {
+    modalRoot,
+    defaultToolbar
+  });
   if (modalRoot && defaultToolbar) {
     IS_TOOLBAR_RENDERED = true;
     if (!document.getElementById("wcb-block-templates-button-wrap")) {

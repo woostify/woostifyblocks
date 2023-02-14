@@ -1,15 +1,12 @@
 import { PanelBody, ToggleControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
-import MySelect from "../components/controls/MySelect";
-import { useSelect, useDispatch } from "@wordpress/data";
-import { store as blockEditorStore } from "@wordpress/block-editor";
 import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
 
 export interface WCB_PRODUCTS_PANEL_FEATURED_IMAGE {
 	isShowFeaturedImage: boolean;
 	featuredImageSize: string;
-	featuredImagePosition: "top" | "left" | "right" | "background";
+	featuredImagePosition: "top" | "background";
 	linkCompleteBox: boolean;
 }
 
@@ -41,25 +38,10 @@ const WcbProductsPanelFeaturedImage: FC<Props> = ({
 		linkCompleteBox,
 	} = panelData;
 
-	const { imageSizes } = useSelect((select) => {
-		const settings = select(blockEditorStore).getSettings();
-		return {
-			imageSizes: settings.imageSizes as any[],
-		};
-	}, []);
-
-	const imageSizeOptions =
-		imageSizes?.map(({ name, slug }) => ({
-			value: slug,
-			label: name,
-		})) || [];
-
 	const POSTION_PLANS: MyRadioItem<
 		WCB_PRODUCTS_PANEL_FEATURED_IMAGE["featuredImagePosition"]
 	>[] = [
 		{ name: "top", icon: "Top" },
-		// { name: "left", icon: "Left" },
-		// { name: "right", icon: "Right" },
 		{ name: "background", icon: "Background" },
 	];
 
@@ -68,7 +50,7 @@ const WcbProductsPanelFeaturedImage: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Featured image settings", "wcb")}
+			title={__("Product image settings", "wcb")}
 		>
 			<div className={"space-y-5 "}>
 				<ToggleControl
@@ -80,22 +62,8 @@ const WcbProductsPanelFeaturedImage: FC<Props> = ({
 				/>
 
 				{isShowFeaturedImage ? (
-					<MySelect
-						value={featuredImageSize}
-						options={imageSizeOptions}
-						label={__("Image size", "wcb")}
-						onChange={(size) => {
-							setAttr__({ ...panelData, featuredImageSize: size });
-						}}
-					/>
-				) : null}
-
-				{isShowFeaturedImage ? (
 					<MyRadioGroup
 						label="Position"
-						// labelClassName=""
-						// className="flex items-center justify-between space-x-3"
-						// contentClassName="flex-shrink-0 flex-1"
 						onChange={(selected) =>
 							setAttr__({
 								...panelData,

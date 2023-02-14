@@ -37,7 +37,7 @@ const WcbProductsPanelButton: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Read more link", "wcb")}
+			title={__("Add to Cart button", "wcb")}
 		>
 			<div className={"space-y-5"}>
 				<ToggleControl
