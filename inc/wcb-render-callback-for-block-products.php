@@ -16,12 +16,19 @@ function wcb_block_products__renderCallback($attributes, $content)
 
     // 
     $content    = $content;
-    // $query_args = parse_query_args($sortingAndFiltering);
-    $args2 = parse_query_args($sortingAndFiltering);
+    $args = parse_query_args($sortingAndFiltering);
 
     ob_start();
-    $loop = new WP_Query($args2);
-    echo $content;
+    $loop = new WP_Query($args);
+
+    // echo $content;
+
+    // echo '<pre>';
+    // var_export($args);
+    // echo '</pre>';
+    if (!$loop->have_posts()) {
+        return '';
+    }
 ?>
 
     <div class="wcb-products__content">
@@ -242,9 +249,10 @@ function parse_query_args($filtersAttrs)
         'meta_query'          => $meta_query, // phpcs:ignore WordPress.DB.SlowDBQuery
         'tax_query'           => array(), // phpcs:ignore WordPress.DB.SlowDBQuery
         'posts_per_page'      => $filtersAttrs['numberOfItems'] ?? 1,
+        's'                 => $filtersAttrs['keyword'] ?? '',
     );
 
-    set_block_query_args($query_args);
+    set_block_query_args($query_args, $filtersAttrs);
     set_ordering_query_args($query_args, $filtersAttrs);
     set_categories_query_args($query_args, $filtersAttrs);
     set_tags_query_args($query_args, $filtersAttrs);
@@ -269,8 +277,11 @@ function set_ordering_query_args(&$query_args, $attributes)
     );
 }
 
-function set_block_query_args(&$query_args)
+function set_block_query_args(&$query_args, $filtersAttrs)
 {
+    if ($filtersAttrs['isOnSale'] === true || $filtersAttrs['isOnSale'] === "true") {
+        $query_args['post__in'] = array_merge(array(0), wc_get_product_ids_on_sale());
+    }
 }
 
 
@@ -344,7 +355,7 @@ function set_stock_status_query_args(&$query_args, $attributes, $meta_query)
     $stock_statuses = array_keys(wc_get_product_stock_status_options());
 
     // phpcs:disable WordPress.DB.SlowDBQuery.slow_db_query_meta_query
-    if (isset($attributes['stockStatus']) && $stock_statuses !== $attributes['stockStatus']) {
+    if (!empty($attributes['stockStatus']) && $stock_statuses !== $attributes['stockStatus']) {
         // Reset meta_query then update with our stock status.
         $query_args['meta_query']   = $meta_query;
         $query_args['meta_query'][] = array(

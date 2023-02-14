@@ -861,8 +861,8 @@ const myInterval = setInterval(() => {
     clearInterval(myInterval);
     return;
   }
-  const modalRoot = document.querySelector(`.edit-post-header__toolbar`);
-  const defaultToolbar = document.querySelector(`.edit-post-header__toolbar .edit-post-header-toolbar`);
+  const modalRoot = document.querySelector(`.edit-post-header__toolbar .edit-post-header-toolbar `);
+  const defaultToolbar = document.querySelector(`.edit-post-header__toolbar .edit-post-header-toolbar__left`);
   if (modalRoot && defaultToolbar) {
     IS_TOOLBAR_RENDERED = true;
     if (!document.getElementById("wcb-block-templates-button-wrap")) {
@@ -874,7 +874,7 @@ const myInterval = setInterval(() => {
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(App, null)), newDiv);
     }
   }
-}, 500);
+}, 1000);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
 
 /***/ }),

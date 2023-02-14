@@ -15,8 +15,6 @@ import WcbHeadingPanelLink from "./WcbHeadingPanelLink";
 import WcbHeadingPanelBackground from "./WcbHeadingPanelBackground";
 import WcbHeadingPanelDimension from "./WcbHeadingPanelDimension";
 import "./editor.scss";
-import useCreateCacheEmotion from "../hooks/useCreateCacheEmotion";
-import { CacheProvider } from "@emotion/react";
 import GlobalCss from "./GlobalCss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";

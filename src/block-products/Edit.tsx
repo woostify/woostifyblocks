@@ -29,6 +29,7 @@ import WcbProductsPanel_StyleFeaturedImage from "./WcbProductsPanel_StyleFeature
 import WcbProductsPanel_StyleLayout from "./WcbProductsPanel_StyleLayout";
 import WcbProductsPanel_StyleAddToCartBtn from "./WcbProductsPanel_StyleAddToCartBtn";
 import WcbProductsPanel_StylePagination from "./WcbProductsPanel_StylePagination";
+import { Icon, file } from "@wordpress/icons";
 
 interface Props extends EditProps<WcbAttrs> {}
 
@@ -273,10 +274,24 @@ const Edit: FC<Props> = (props) => {
 				{/* CHILD CONTENT  */}
 				{/* <ProductsQueries /> */}
 				<h2> This is Products ... </h2>
-				<ServerSideRender block="wcb/products" attributes={attributes} />
+				<ServerSideRender
+					block="wcb/products"
+					attributes={attributes}
+					EmptyResponsePlaceholder={EmptyPlaceholder}
+				/>
 			</div>
 		</MyCacheProvider>
 	);
 };
 
 export default withSpokenMessages(Edit);
+
+const EmptyPlaceholder = () => (
+	<Placeholder
+		icon={<Icon icon={file} />}
+		label={__("Woostify block Products", "wcb")}
+		className="wc-block-products-grid wc-block-products-category"
+	>
+		{__("No products were found that matched your selection.", "wcb")}
+	</Placeholder>
+);

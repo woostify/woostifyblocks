@@ -7,11 +7,8 @@ import HOCInspectorControls, {
 	INSPECTOR_CONTROLS_TABS,
 } from "../components/HOCInspectorControls";
 import { EditProps } from "../block-container/Edit";
-import useCreateCacheEmotion from "../hooks/useCreateCacheEmotion";
-import { CacheProvider } from "@emotion/react";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
-import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import WcbInputPanelGeneral from "./WcbInputPanelGeneral";
 import { FormInputLabelRichText } from "../block-form/FormInputLabelRichText";
 import converUniqueId from "../utils/converUniqueId";

@@ -34,10 +34,10 @@ const myInterval = setInterval(() => {
 	}
 
 	const modalRoot = document.querySelector(
-		`.edit-post-header__toolbar`
+		`.edit-post-header__toolbar .edit-post-header-toolbar `
 	) as HTMLElement | null;
 	const defaultToolbar = document.querySelector(
-		`.edit-post-header__toolbar .edit-post-header-toolbar`
+		`.edit-post-header__toolbar .edit-post-header-toolbar__left`
 	) as HTMLElement | null;
 
 	if (modalRoot && defaultToolbar) {
@@ -54,6 +54,6 @@ const myInterval = setInterval(() => {
 			);
 		}
 	}
-}, 500);
+}, 1000);
 
 export default App;
