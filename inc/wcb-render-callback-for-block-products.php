@@ -7,14 +7,14 @@ function wcb_block_products__renderCallback($attributes, $content)
         wp_enqueue_script('wcb_block_products__renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-products/FrontendStyles.js', ["wp-element", "jquery"], null, true);
     }
 
-    $sortingAndFiltering = $attributes['general_sortingAndFiltering'] ?? [];
-    $sortingAndFiltering = parse_filterAttributes($sortingAndFiltering);
+    $sortingAndFilteringAttrs = $attributes['general_sortingAndFiltering'] ?? [];
+    $contentAttrs = $attributes['general_content'] ?? [];
 
-
+    $queryArgs = parse_filterAttributes($sortingAndFilteringAttrs);
 
     // 
     $content    = $content;
-    $args = parse_query_args($sortingAndFiltering);
+    $args = parse_query_args($queryArgs);
 
     ob_start();
     $loop = new WP_Query($args);
@@ -37,13 +37,13 @@ function wcb_block_products__renderCallback($attributes, $content)
             // do_action('woocommerce_before_shop_loop');
             // woocommerce_product_loop_start();
         ?>
-            <div class="wcb-products__list">
+            <div class="wcb-products__list swithToScrollSnapX--<?php echo esc_attr($sortingAndFilteringAttrs['swithToScrollSnapX']); ?>">
                 <?php
                 while ($loop->have_posts()) :
                     $loop->the_post();
                     global $product;
                     if (!empty($product)) {
-                        echo wcb_block_products__render_product($product);
+                        echo wcb_block_products__render_product($product,  $attributes);
                     }
                 endwhile;
                 ?>
@@ -71,18 +71,39 @@ function wcb_block_products__renderCallback($attributes, $content)
 }
 
 // 
-function wcb_block_products__render_product($product)
+function wcb_block_products__render_product($product, $attributes)
 {
 
     $data = (object) array(
         'permalink' => esc_url($product->get_permalink()),
-        'image'     => wcb_block_products__get_image_html($product),
-        'title'     => wcb_block_products__get_title_html($product),
-        'rating'    => wcb_block_products__get_rating_html($product),
-        'price'     => wcb_block_products__get_price_html($product),
-        'badge'     => wcb_block_products__get_sale_badge_html($product),
-        'button'    => wcb_block_products__get_button_html($product),
+        'image'     => "",
+        'title'     => "",
+        'rating'    => "",
+        'price'     => "",
+        'badge'     => "",
+        'button'    => "",
     );
+
+    if (($attributes['general_featuredImage']['isShowFeaturedImage'] ?? "") === "true") {
+        $data->image = wcb_block_products__get_image_html($product);
+    }
+    if (($attributes['general_content']['isShowTitle'] ?? "") === "true") {
+        $data->title = wcb_block_products__get_title_html($product);
+    }
+    if (($attributes['general_content']['isShowRating'] ?? "") === "true") {
+        $data->rating = wcb_block_products__get_rating_html($product);
+    }
+    if (($attributes['general_content']['isShowSaleBadge'] ?? "") === "true") {
+        $data->badge = wcb_block_products__get_sale_badge_html($product);
+    }
+    if (($attributes['general_content']['isShowPrice'] ?? "") === "true") {
+        $data->price = wcb_block_products__get_price_html($product);
+    }
+    if (($attributes['general_addToCartBtn']['isShowButton'] ?? "") === "true") {
+        $data->button = wcb_block_products__get_button_html($product);
+    }
+
+
 
     return apply_filters(
         'woocommerce_blocks_product_grid_item_html',
@@ -92,8 +113,8 @@ function wcb_block_products__render_product($product)
 					{$data->title}
 				</a>
 				{$data->badge}
-				{$data->price}
 				{$data->rating}
+				{$data->price}
 				{$data->button}
 			</div>",
         $data,

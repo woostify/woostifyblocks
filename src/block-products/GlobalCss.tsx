@@ -56,31 +56,94 @@ const GlobalCss: FC<Props> = (attrs) => {
 			cssProperty: style_layout.colunmGap,
 		});
 
+		const { numberOfColumn, swithToScrollSnapX } = general_sortingAndFiltering;
 		const {
 			value_desktop: numberOfColumn_desktop,
 			value_tablet: numberOfColumn_tablet,
 			value_mobile: numberOfColumn_mobile,
 		} = getCssProperyHasResponsive({
-			cssProperty: general_sortingAndFiltering.numberOfColumn,
+			cssProperty: numberOfColumn,
 		});
 
+		const isSnapScrollDesktop = swithToScrollSnapX === "Desktop";
+		const isSnapScrollTablet =
+			isSnapScrollDesktop || swithToScrollSnapX === "Tablet";
+		const isSnapScrollMobile =
+			isSnapScrollTablet || swithToScrollSnapX === "Mobile";
 		return (
 			<Global
 				styles={{
 					[LIST_CLASS]: {
-						display: "grid",
-						gridTemplateColumns: `repeat(${numberOfColumn_mobile}, minmax(0, 1fr))`,
+						// ------ setting snap scroll x
+						"> div": isSnapScrollMobile
+							? {
+									scrollSnapAlign: "start",
+									flexShrink: 0,
+									flexBasis: `calc((100% - (${
+										Number(numberOfColumn_mobile) - 1
+									} * ${colunmGap_mobile})) / ${Number(
+										numberOfColumn_mobile
+									)})`,
+							  }
+							: {},
+
+						overflowX: isSnapScrollMobile ? "auto" : undefined,
+						scrollSnapType: isSnapScrollMobile ? "x proximity" : undefined,
+						display: isSnapScrollMobile ? "flex" : "grid",
+						gridTemplateColumns: isSnapScrollMobile
+							? undefined
+							: `repeat(${numberOfColumn_mobile}, minmax(0, 1fr))`,
+						// ------ end setting snap scroll x
+						//
 						rowGap: rowGap_mobile,
 						columnGap: colunmGap_mobile,
 						[`@media (min-width: ${media_tablet})`]: {
 							rowGap: rowGap_tablet,
 							columnGap: colunmGap_tablet,
-							gridTemplateColumns: `repeat(${numberOfColumn_tablet}, minmax(0, 1fr))`,
+							// ------ setting snap scroll x
+							"> div": isSnapScrollTablet
+								? {
+										scrollSnapAlign: "start",
+										flexShrink: 0,
+										flexBasis: `calc((100% - (${
+											Number(numberOfColumn_tablet) - 1
+										} * ${colunmGap_tablet})) / ${Number(
+											numberOfColumn_tablet
+										)})`,
+								  }
+								: {},
+
+							overflowX: isSnapScrollTablet ? "auto" : undefined,
+							scrollSnapType: isSnapScrollTablet ? "x proximity" : undefined,
+							display: isSnapScrollTablet ? "flex" : "grid",
+							gridTemplateColumns: isSnapScrollTablet
+								? undefined
+								: `repeat(${numberOfColumn_tablet}, minmax(0, 1fr))`,
+							// ------ end setting snap scroll x
 						},
 						[`@media (min-width: ${media_desktop})`]: {
 							rowGap: rowGap_desktop,
 							columnGap: colunmGap_desktop,
-							gridTemplateColumns: `repeat(${numberOfColumn_desktop}, minmax(0, 1fr))`,
+							// ------ setting snap scroll x
+							"> div": isSnapScrollDesktop
+								? {
+										scrollSnapAlign: "start",
+										flexShrink: 0,
+										flexBasis: `calc((100% - (${
+											Number(numberOfColumn_desktop) - 1
+										} * ${colunmGap_desktop})) / ${Number(
+											numberOfColumn_desktop
+										)})`,
+								  }
+								: {},
+
+							overflowX: isSnapScrollDesktop ? "auto" : undefined,
+							scrollSnapType: isSnapScrollDesktop ? "x proximity" : undefined,
+							display: isSnapScrollDesktop ? "flex" : "grid",
+							gridTemplateColumns: isSnapScrollDesktop
+								? undefined
+								: `repeat(${numberOfColumn_desktop}, minmax(0, 1fr))`,
+							// ------ end setting snap scroll x
 						},
 					},
 				}}

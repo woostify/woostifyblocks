@@ -10,7 +10,7 @@ import MyRadioGroup from "../components/controls/MyRadioGroup";
 import MySelect from "../components/controls/MySelect";
 
 export interface WCB_PRODUCTS_PANEL_COTENT {
-	isShowAddToCartBtn: boolean;
+	// isShowAddToCartBtn: boolean;
 	isShowPrice: boolean;
 	isShowRating: boolean;
 	isShowSKU: boolean;
@@ -31,7 +31,7 @@ const TAXONOMY_POSITION_OPTIONS: {
 ];
 
 export const WCB_PRODUCTS_PANEL_COTENT_DEMO: WCB_PRODUCTS_PANEL_COTENT = {
-	isShowAddToCartBtn: true,
+	// isShowAddToCartBtn: true,
 	isShowPrice: true,
 	isShowRating: true,
 	isShowSaleBadge: true,
@@ -65,7 +65,6 @@ const WcbProductsPanelContent: FC<Props> = ({
 		isShowRating,
 		isShowSKU,
 		isShowSaleBadge,
-		isShowAddToCartBtn,
 	} = panelData;
 
 	return (
@@ -100,13 +99,13 @@ const WcbProductsPanelContent: FC<Props> = ({
 					checked={isShowPrice}
 				/>
 
-				<ToggleControl
+				{/* <ToggleControl
 					label={__("Product SKU", "wcb")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowSKU: checked })
 					}
 					checked={isShowSKU}
-				/>
+				/> */}
 
 				<ToggleControl
 					label={__("Product rating", "wcb")}
@@ -116,13 +115,13 @@ const WcbProductsPanelContent: FC<Props> = ({
 					checked={isShowRating}
 				/>
 
-				<ToggleControl
+				{/* <ToggleControl
 					label={__("Add to Cart button", "wcb")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowAddToCartBtn: checked })
 					}
 					checked={isShowAddToCartBtn}
-				/>
+				/> */}
 			</div>
 		</PanelBody>
 	);
