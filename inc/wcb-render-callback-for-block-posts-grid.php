@@ -335,44 +335,6 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
         }
     }
 
-    if (!function_exists("wcb_pagination_bar")) {
-        function wcb_pagination_bar($custom_query, $attributes)
-        {
-            $nextPreIcons =  [
-                "none" => 'None',
-                "arrow" => '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16px" height="16px">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                          </svg>',
-                "chevron" => '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16px" height="16px">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                          </svg>',
-                "chevron-double" => '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16px" height="16px"><path stroke-linecap="round" stroke-linejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" /></svg>',
-            ];
-            $icon =   $nextPreIcons[$attributes['general_pagination']['iconName'] ?? "arrow"];
-
-            $nextText =  $attributes['general_pagination']['nextText'] ?? "";
-            $previousIcon =  $attributes['general_pagination']['previousIcon'] ?? "";
-
-            $nextHtml = !empty($nextText) ? '<span>' . $nextText . '</span>' . $icon : $icon;
-            $prevHtml = !empty($previousIcon) ? '<span>' . $previousIcon . '</span>' . $icon : $icon;
-
-
-            $total_pages = $custom_query->max_num_pages;
-            $big = 999999999; // need an unlikely integer
-            if ($total_pages > 1) {
-                $current_page = max(1, get_query_var('paged'));
-                echo paginate_links(array(
-                    'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-                    'format' => '?paged=%#%',
-                    'current' => $current_page,
-                    'total' => $total_pages,
-                    'next_text' => $nextHtml,
-                    'prev_text' => $prevHtml
-                ));
-            }
-        }
-    }
-
     ob_start();
 ?>
     <!-- CONTENT FOR RENDER CSSS @EMOTION -->
@@ -536,9 +498,11 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
         </div>
 
         <!-- pagination here -->
-        <div class="wcb-posts-grid__pagination">
-            <?php wcb_pagination_bar($the_query, $attributes); ?>
-        </div>
+        <?php if (($attributes['general_pagination']['isShowPagination'] ?? "false") === "true") : ?>
+            <div class="wcb-posts-grid__pagination">
+                <?php wcb_pagination_bar($the_query, $attributes['general_pagination']); ?>
+            </div>
+        <?php endif; ?>
 
         <!-- reset post here -->
         <?php wp_reset_postdata(); ?>

@@ -10,9 +10,7 @@ function wcb_block_products__renderCallback($attributes, $content)
     $sortingAndFiltering = $attributes['general_sortingAndFiltering'] ?? [];
     $sortingAndFiltering = parse_filterAttributes($sortingAndFiltering);
 
-    $display_count = $sortingAndFiltering["numberOfItems"] ?? 9;
-    $page = get_query_var('paged') ? get_query_var('paged') : 1;
-    $offset = ($page - 1) * $display_count;
+
 
     // 
     $content    = $content;
@@ -59,6 +57,13 @@ function wcb_block_products__renderCallback($attributes, $content)
         else :
             do_action('woocommerce_no_products_found');
         endif; ?>
+
+        <?php if (($attributes['general_pagination']['isShowPagination'] ?? "false") === "true") : ?>
+            <div class="wcb-products__pagination">
+                <?php wcb_pagination_bar($loop, $attributes['general_pagination']); ?>
+            </div>
+        <?php endif; ?>
+
         <?php wp_reset_postdata(); ?>
     </div>
 <?php
@@ -235,6 +240,10 @@ function parse_filterAttributes($filterAttrs)
 
 function parse_query_args($filtersAttrs)
 {
+    $postsPerPage = $filtersAttrs["numberOfItems"] ?? 9;
+    $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+    // $offset = ($paged - 1) * $postsPerPage;
+
     // Store the original meta query.
     $meta_query = WC()->query->get_meta_query();
 
@@ -248,8 +257,9 @@ function parse_query_args($filtersAttrs)
         'order'               => '',
         'meta_query'          => $meta_query, // phpcs:ignore WordPress.DB.SlowDBQuery
         'tax_query'           => array(), // phpcs:ignore WordPress.DB.SlowDBQuery
-        'posts_per_page'      => $filtersAttrs['numberOfItems'] ?? 1,
+        'posts_per_page'      => $postsPerPage,
         's'                 => $filtersAttrs['keyword'] ?? '',
+        'paged'             => $paged
     );
 
     set_block_query_args($query_args, $filtersAttrs);

@@ -1,20 +1,17 @@
 import { PanelBody, ToggleControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
-// @ts-ignore
-import { __experimentalInputControl as InputControl } from "@wordpress/components";
+import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
 
 export interface WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN {
-	isShowReadmore: boolean;
-	isOpenInNewTab: boolean;
-	text: string;
+	isShowButton: boolean;
+	position: "bottom" | "inside image";
 }
 
 export const WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO: WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN =
 	{
-		isShowReadmore: true,
-		isOpenInNewTab: false,
-		text: "Read more",
+		isShowButton: true,
+		position: "bottom",
 	};
 
 interface Props
@@ -30,8 +27,14 @@ const WcbProductsPanelButton: FC<Props> = ({
 	onToggle,
 	opened,
 }) => {
-	const { isOpenInNewTab, isShowReadmore, text } = panelData;
+	const { position, isShowButton } = panelData;
 
+	const POSTION_PLANS: MyRadioItem<
+		WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN["position"]
+	>[] = [
+		{ name: "inside image", icon: "Inside image" },
+		{ name: "bottom", icon: "Bottom" },
+	];
 	return (
 		<PanelBody
 			initialOpen={initialOpen}
@@ -41,30 +44,26 @@ const WcbProductsPanelButton: FC<Props> = ({
 		>
 			<div className={"space-y-5"}>
 				<ToggleControl
-					label={__("Show Read more link", "wcb")}
+					label={__("Add to Cart button", "wcb")}
 					onChange={(checked) =>
-						setAttr__({ ...panelData, isShowReadmore: checked })
+						setAttr__({ ...panelData, isShowButton: checked })
 					}
-					checked={isShowReadmore}
+					checked={isShowButton}
 				/>
 
-				{isShowReadmore ? (
-					<ToggleControl
-						label={__("Open links in new tab", "wcb")}
-						onChange={(checked) =>
-							setAttr__({ ...panelData, isOpenInNewTab: checked })
+				{isShowButton ? (
+					<MyRadioGroup
+						label="Position"
+						onChange={(selected) =>
+							setAttr__({
+								...panelData,
+								position: selected as any,
+							})
 						}
-						checked={isOpenInNewTab}
-					/>
-				) : null}
-
-				{isShowReadmore ? (
-					<InputControl
-						value={text}
-						label={__("Text", "wcb")}
-						onChange={(nextValue) =>
-							setAttr__({ ...panelData, text: nextValue || "" })
-						}
+						value={position}
+						plans={POSTION_PLANS}
+						hasResponsive={false}
+						isWrap
 					/>
 				) : null}
 			</div>

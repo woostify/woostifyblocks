@@ -54,14 +54,14 @@ const WcbProductsPanelFeaturedImage: FC<Props> = ({
 		>
 			<div className={"space-y-5 "}>
 				<ToggleControl
-					label={__("Show featured image", "wcb")}
+					label={__("Product image", "wcb")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowFeaturedImage: checked })
 					}
 					checked={isShowFeaturedImage}
 				/>
 
-				{isShowFeaturedImage ? (
+				{/* {isShowFeaturedImage ? (
 					<MyRadioGroup
 						label="Position"
 						onChange={(selected) =>
@@ -75,19 +75,16 @@ const WcbProductsPanelFeaturedImage: FC<Props> = ({
 						hasResponsive={false}
 						isWrap
 					/>
-				) : null}
+				) : null} */}
 
 				{isShowFeaturedImage ? (
 					<ToggleControl
-						label={__("Link Complete Box", "wcb")}
+						label={__("Link to Product Page", "wcb")}
 						onChange={(checked) =>
 							setAttr__({ ...panelData, linkCompleteBox: checked })
 						}
 						checked={linkCompleteBox}
-						help={__(
-							"When enabled, the link to the article page will cover the entire card",
-							"wcb"
-						)}
+						help={__("Links the image to the single product listing", "wcb")}
 					/>
 				) : null}
 			</div>

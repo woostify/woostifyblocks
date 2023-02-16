@@ -2213,11 +2213,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../block-container/getAdvanveStyles */ "./src/block-container/getAdvanveStyles.ts");
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _utils_getCssProperyHasResponsive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getCssProperyHasResponsive */ "./src/utils/getCssProperyHasResponsive.ts");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+
 
 
 
@@ -2227,6 +2229,16 @@ const GlobalCss = attrs => {
   const {
     uniqueId,
     // ATTRS OF BLOCK
+    general_addToCartBtn,
+    general_content,
+    general_featuredImage,
+    general_pagination,
+    general_sortingAndFiltering,
+    style_addToCardBtn,
+    style_featuredImage,
+    style_layout,
+    style_pagiantion,
+    style_title,
     //
     advance_responsiveCondition,
     advance_zIndex
@@ -2234,7 +2246,7 @@ const GlobalCss = attrs => {
   const {
     media_desktop,
     media_tablet
-  } = ___WEBPACK_IMPORTED_MODULE_3__.DEMO_WCB_GLOBAL_VARIABLES;
+  } = ___WEBPACK_IMPORTED_MODULE_4__.DEMO_WCB_GLOBAL_VARIABLES;
   const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
   const LIST_CLASS = `${WRAP_CLASSNAME} .wcb-products__list`;
 
@@ -2247,17 +2259,52 @@ const GlobalCss = attrs => {
       }
     };
   };
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_4__.Global, {
-    styles: getDivWrapStyles()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_4__.Global, {
-    styles: {
-      [LIST_CLASS]: {
-        display: "grid",
-        gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
-        gap: 32
+  const renderDivListWrapStyle = () => {
+    const {
+      value_desktop: rowGap_desktop,
+      value_mobile: rowGap_mobile,
+      value_tablet: rowGap_tablet
+    } = (0,_utils_getCssProperyHasResponsive__WEBPACK_IMPORTED_MODULE_3__["default"])({
+      cssProperty: style_layout.rowGap
+    });
+    const {
+      value_desktop: colunmGap_desktop,
+      value_mobile: colunmGap_mobile,
+      value_tablet: colunmGap_tablet
+    } = (0,_utils_getCssProperyHasResponsive__WEBPACK_IMPORTED_MODULE_3__["default"])({
+      cssProperty: style_layout.colunmGap
+    });
+    const {
+      value_desktop: numberOfColumn_desktop,
+      value_tablet: numberOfColumn_tablet,
+      value_mobile: numberOfColumn_mobile
+    } = (0,_utils_getCssProperyHasResponsive__WEBPACK_IMPORTED_MODULE_3__["default"])({
+      cssProperty: general_sortingAndFiltering.numberOfColumn
+    });
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_5__.Global, {
+      styles: {
+        [LIST_CLASS]: {
+          display: "grid",
+          gridTemplateColumns: `repeat(${numberOfColumn_mobile}, minmax(0, 1fr))`,
+          rowGap: rowGap_mobile,
+          columnGap: colunmGap_mobile,
+          [`@media (min-width: ${media_tablet})`]: {
+            rowGap: rowGap_tablet,
+            columnGap: colunmGap_tablet,
+            gridTemplateColumns: `repeat(${numberOfColumn_tablet}, minmax(0, 1fr))`
+          },
+          [`@media (min-width: ${media_desktop})`]: {
+            rowGap: rowGap_desktop,
+            columnGap: colunmGap_desktop,
+            gridTemplateColumns: `repeat(${numberOfColumn_desktop}, minmax(0, 1fr))`
+          }
+        }
       }
-    }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_4__.Global, {
+    });
+  };
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_5__.Global, {
+    styles: getDivWrapStyles()
+  }), renderDivListWrapStyle(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_5__.Global, {
     styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__.getAdvanveDivWrapStyles)({
       advance_responsiveCondition,
       advance_zIndex,
@@ -2267,6 +2314,73 @@ const GlobalCss = attrs => {
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (react__WEBPACK_IMPORTED_MODULE_1___default().memo(GlobalCss));
+
+/***/ }),
+
+/***/ "./src/utils/getCssProperyHasResponsive.ts":
+/*!*************************************************!*\
+  !*** ./src/utils/getCssProperyHasResponsive.ts ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
+function getCssProperyHasResponsive(_ref) {
+  let {
+    cssProperty
+  } = _ref;
+  const {
+    value_Desktop: value_desktop,
+    value_Tablet: value_tablet,
+    value_Mobile: value_mobile
+  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_0__["default"])(cssProperty);
+  // const value_desktop = cssProperty.Desktop;
+  // const value_tablet = cssProperty.Tablet || value_desktop;
+  // const value_mobile = cssProperty.Mobile || value_tablet;
+  return {
+    value_desktop,
+    value_tablet,
+    value_mobile
+  };
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getCssProperyHasResponsive);
+
+/***/ }),
+
+/***/ "./src/utils/getValueFromAttrsResponsives.ts":
+/*!***************************************************!*\
+  !*** ./src/utils/getValueFromAttrsResponsives.ts ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const getValueFromAttrsResponsives = function (properties, currentDevice) {
+  // let value_Desktop = properties.Desktop;
+  // let value_Tablet = properties.Tablet || value_Desktop;
+  // let value_Mobile = properties.Mobile || value_Tablet;
+
+  const v_Desktop = properties?.Desktop;
+  const v_Tablet = typeof properties?.Tablet !== "undefined" && properties?.Tablet !== null ? properties?.Tablet : v_Desktop;
+  const v_Mobile = typeof properties?.Mobile !== "undefined" && properties?.Mobile !== null ? properties?.Mobile : v_Tablet;
+  let currentDeviceValue = undefined;
+  if (currentDevice) {
+    currentDeviceValue = currentDevice === "Desktop" ? v_Desktop : currentDevice === "Tablet" ? v_Tablet : v_Mobile;
+  }
+  return {
+    value_Desktop: v_Desktop,
+    value_Tablet: v_Tablet,
+    value_Mobile: v_Mobile,
+    currentDeviceValue
+  };
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getValueFromAttrsResponsives);
 
 /***/ }),
 

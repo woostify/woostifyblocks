@@ -17,11 +17,6 @@ import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives"
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import {
-	ProductQueryBlock,
-	ProductQueryBlockQuery,
-	QueryBlockQuery,
-} from "./types";
-import {
 	QUERY_DEFAULT_ATTRIBUTES,
 	get_STOCK_STATUS_OPTIONS,
 } from "./constants";
@@ -29,6 +24,8 @@ import ProductCategoryControl from "./product-category-control";
 import ProductTagControl from "./product-tag-control";
 import MyDisclosure from "../components/controls/MyDisclosure";
 import ProductAttributeTermControl from "./product-attribute-term-control";
+import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
+import HelpText from "../components/controls/HelpText";
 
 export type ProductOrderBy =
 	| "ID"
@@ -45,7 +42,6 @@ export type ProductOrderBy =
 export interface WCB_PRODUCTS_PANEL_SORTINGANDFILTERING {
 	emptyMessage: string;
 	numberOfItems: number;
-	numberOfColumn: HasResponsive<number>;
 	isEqualHeight: boolean;
 	isOnSale: boolean;
 	stockStatus: string[];
@@ -58,6 +54,8 @@ export interface WCB_PRODUCTS_PANEL_SORTINGANDFILTERING {
 	attrOperator: string;
 	orderBy: ProductOrderBy;
 	order: "DESC" | "ASC";
+	numberOfColumn: HasResponsive<number>;
+	swithToScrollSnapX: ResponsiveDevices | "None";
 }
 export const WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO: WCB_PRODUCTS_PANEL_SORTINGANDFILTERING =
 	{
@@ -76,6 +74,7 @@ export const WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO: WCB_PRODUCTS_PANEL_SOR
 		attrOperator: "any",
 		order: "DESC",
 		orderBy: "date ID",
+		swithToScrollSnapX: "None",
 	};
 
 interface Props
@@ -162,6 +161,15 @@ const WcbProducstPanelSortingAndFiltering: FC<Props> = ({
 			/>
 		);
 	};
+
+	const SNAPX_POSTION_PLANS: MyRadioItem<
+		WCB_PRODUCTS_PANEL_SORTINGANDFILTERING["swithToScrollSnapX"]
+	>[] = [
+		{ name: "Desktop", icon: "Desktop" },
+		{ name: "Tablet", icon: "Tablet" },
+		{ name: "Mobile", icon: "Mobile" },
+		{ name: "None", icon: "None" },
+	];
 
 	return (
 		<PanelBody
@@ -330,6 +338,28 @@ const WcbProducstPanelSortingAndFiltering: FC<Props> = ({
 				max={6}
 				required
 			/>
+
+			<div>
+				<MyRadioGroup
+					label="Swith to scroll-snap-x"
+					onChange={(selected) =>
+						setAttr__({
+							...panelData,
+							swithToScrollSnapX: selected as any,
+						})
+					}
+					value={panelData.swithToScrollSnapX}
+					plans={SNAPX_POSTION_PLANS}
+					hasResponsive={false}
+					isWrap
+				/>
+				<HelpText>
+					{__(
+						"Device selection to start switching from layout GRID to layout is a scroll able row.",
+						"wcb"
+					)}
+				</HelpText>
+			</div>
 
 			<ToggleControl
 				label={__("Equal height", "wcb")}

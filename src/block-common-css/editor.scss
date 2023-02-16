@@ -1,3 +1,8 @@
+.wcb-products__wrap a {
+	user-select: none !important;
+	pointer-events: none !important;
+}
+
 .block-editor-block-icon {
 	svg.wcb-editor-block-icons path {
 		@apply stroke-emerald-600;
