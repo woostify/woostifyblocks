@@ -6,56 +6,45 @@ import {
 	MyTypographyControlData,
 	TYPOGRAPHY_CONTROL_DEMO,
 } from "../components/controls/MyTypographyControl/types";
+import MyDisclosure from "../components/controls/MyDisclosure";
 import MyUnitControl from "../components/controls/MyUnitControl";
 import { MY_GAP_UNITS } from "../components/controls/MyDimensionsControl/MyDimensionsControl";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
-import MyDisclosure from "../components/controls/MyDisclosure";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 
-export interface WCB_POST_GRID_PANEL_STYLE_TAXONOMY {
+export interface WCB_PRODUCTS_PANEL_STYLE_PRICE {
 	typography: MyTypographyControlData;
 	textColor: string;
-	backgroundColor: string;
 	marginBottom: HasResponsive<string>;
 }
 
-export const WCB_POST_GRID_PANEL_STYLE_TAXONOMY_DEMO: WCB_POST_GRID_PANEL_STYLE_TAXONOMY =
+export const WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO: WCB_PRODUCTS_PANEL_STYLE_PRICE =
 	{
 		typography: {
 			...TYPOGRAPHY_CONTROL_DEMO,
-			fontSizes: { Desktop: "12px" },
-			textDecoration: "none",
-			appearance: {
-				...TYPOGRAPHY_CONTROL_DEMO.appearance,
-				style: {
-					...TYPOGRAPHY_CONTROL_DEMO.appearance.style,
-					fontWeight: "500",
-				},
-			},
 		},
-		textColor: "#0c4a6e",
-		backgroundColor: "#f0f9ff",
-		marginBottom: { Desktop: "0.5rem" },
+		textColor: "#737373",
+		marginBottom: { Desktop: "0.75rem" },
 	};
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
-	panelData: WCB_POST_GRID_PANEL_STYLE_TAXONOMY;
-	setAttr__: (data: WCB_POST_GRID_PANEL_STYLE_TAXONOMY) => void;
+	panelData: WCB_PRODUCTS_PANEL_STYLE_PRICE;
+	setAttr__: (data: WCB_PRODUCTS_PANEL_STYLE_PRICE) => void;
 }
 
-const WcbPostGridPanel_StyleTaxonomy: FC<Props> = ({
-	panelData = WCB_POST_GRID_PANEL_STYLE_TAXONOMY_DEMO,
+const WcbProductsPanel_StylePrice: FC<Props> = ({
+	panelData = WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO,
 	setAttr__,
 	initialOpen,
 	onToggle,
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { typography, textColor, marginBottom, backgroundColor } = panelData;
+	const { typography, textColor, marginBottom } = panelData;
 
 	const { currentDeviceValue: MARGIN_BOTTOM } = getValueFromAttrsResponsives(
 		marginBottom,
@@ -67,7 +56,7 @@ const WcbPostGridPanel_StyleTaxonomy: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Taxonomy", "wcb")}
+			title={__("Price", "wcb")}
 		>
 			<div className="space-y-2.5">
 				<MyTypographyControl
@@ -82,7 +71,6 @@ const WcbPostGridPanel_StyleTaxonomy: FC<Props> = ({
 
 				<MyDisclosure defaultOpen label="More styles">
 					<MyColorPicker
-						label={__("Color", "wcb")}
 						onChange={(color) => {
 							setAttr__({
 								...panelData,
@@ -91,18 +79,6 @@ const WcbPostGridPanel_StyleTaxonomy: FC<Props> = ({
 						}}
 						color={textColor}
 					/>
-
-					<MyColorPicker
-						label={__("Background", "wcb")}
-						onChange={(color) => {
-							setAttr__({
-								...panelData,
-								backgroundColor: color,
-							});
-						}}
-						color={backgroundColor}
-					/>
-
 					<MyUnitControl
 						onChange={(value) => {
 							setAttr__({
@@ -125,4 +101,4 @@ const WcbPostGridPanel_StyleTaxonomy: FC<Props> = ({
 	);
 };
 
-export default WcbPostGridPanel_StyleTaxonomy;
+export default WcbProductsPanel_StylePrice;

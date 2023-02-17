@@ -62,7 +62,16 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
                         'style_addToCardBtn' => array(
                             'type'      => 'object',
                         ),
-                        'style_pagiantion' => array(
+                        'style_pagination' => array(
+                            'type'      => 'object',
+                        ),
+                        'style_saleBadge' => array(
+                            'type'      => 'object',
+                        ),
+                        'style_border' => array(
+                            'type'      => 'object',
+                        ),
+                        'style_rating' => array(
                             'type'      => 'object',
                         ),
                         'advance_responsiveCondition' => array(

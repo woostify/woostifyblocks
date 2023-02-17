@@ -25,7 +25,7 @@ export const WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO: WCB_PRODUCTS_PANEL_STYLE_TITLE
 	{
 		typography: TYPOGRAPHY_CONTROL_DEMO,
 		textColor: "#171717",
-		marginBottom: { Desktop: "0.5rem" },
+		marginBottom: { Desktop: "0.65rem" },
 	};
 
 interface Props

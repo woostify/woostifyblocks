@@ -24,7 +24,7 @@ export interface WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE {
 
 export const WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO: WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE =
 	{
-		marginBottom: { Desktop: "0" },
+		marginBottom: { Desktop: "0.75rem" },
 		backgroundOverlay: "#FFFFFFE6",
 		border: MY_BORDER_CONTROL_DEMO,
 	};
@@ -57,10 +57,10 @@ const WcbProductsPanel_StyleFeaturedImage: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Featured image", "wcb")}
+			title={__("Product image", "wcb")}
 		>
 			<div className="space-y-5">
-				{imagePosition === "background" && (
+				{/* {imagePosition === "background" && (
 					<MyColorPicker
 						label={__("Background overlay", "wcb")}
 						onChange={(color) => {
@@ -71,10 +71,21 @@ const WcbProductsPanel_StyleFeaturedImage: FC<Props> = ({
 						}}
 						color={backgroundOverlay}
 					/>
-				)}
+				)} */}
 
 				{imagePosition !== "background" && (
 					<>
+						<MyDisclosure defaultOpen label="Border">
+							<MyBorderControl
+								borderControl={panelData.border}
+								setAttrs__border={(value) => {
+									setAttr__({
+										...panelData,
+										border: value,
+									});
+								}}
+							/>
+						</MyDisclosure>
 						<MyUnitControl
 							onChange={(value) => {
 								setAttr__({
@@ -91,17 +102,6 @@ const WcbProductsPanel_StyleFeaturedImage: FC<Props> = ({
 							hasResponsive
 							className="flex-col space-y-2"
 						/>
-						<MyDisclosure defaultOpen label="Border">
-							<MyBorderControl
-								borderControl={panelData.border}
-								setAttrs__border={(value) => {
-									setAttr__({
-										...panelData,
-										border: value,
-									});
-								}}
-							/>
-						</MyDisclosure>
 					</>
 				)}
 			</div>

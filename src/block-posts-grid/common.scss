@@ -80,24 +80,6 @@
 	}
 }
 
-.wcb-posts-grid__pagination-number,
-.wcb-posts-grid__pagination {
-	display: flex;
-	@apply space-x-1.5;
-}
-.wcb-posts-grid__pagination {
-	.page-numbers {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		text-decoration: none;
-		@apply space-x-1 py-1 px-3;
-		&.prev svg {
-			transform: rotate(180deg);
-		}
-	}
-}
-
 .wcbPostCard__readmoreLink {
 	display: inline-flex;
 }

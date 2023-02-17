@@ -10,7 +10,6 @@ import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyR
 import MyTextAlignControl, {
 	TextAlignment,
 } from "../components/controls/MyTextAlignControl/MyTextAlignControl";
-import MyUnitControl from "../components/controls/MyUnitControl";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyDimensionsNoMarginControl from "../components/controls/MyDimensionsControl/MyDimensionsNoMarginControl";
 import {
@@ -27,14 +26,14 @@ export interface WCB_PRODUCTS_PANEL_STYLE_LAYOUT
 export const WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO: WCB_PRODUCTS_PANEL_STYLE_LAYOUT =
 	{
 		...MY_DIMENSIONS_NO_MARGIN_CONTROL_DEMO,
-		textAlignment: "left",
-		backgroundColor: "#fafafa",
+		textAlignment: "center",
+		backgroundColor: "",
 		padding: {
 			Desktop: {
-				bottom: "1rem",
-				top: "1rem",
-				left: "1rem",
-				right: "1rem",
+				bottom: "0",
+				top: "0",
+				left: "0",
+				right: "0",
 			},
 		},
 	};

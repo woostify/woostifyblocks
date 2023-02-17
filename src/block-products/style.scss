@@ -1,6 +1,31 @@
 .wcb-products__list {
 }
 
+.wcb-products__product {
+	font-size: 16px;
+
+	&.wcb-products__product--btnInsideImage {
+		.wcb-products__product-add-to-cart {
+			@apply absolute left-1/2 -translate-x-1/2 bottom-5;
+		}
+	}
+
+	.wcb-products__product-rating {
+		display: inline-block;
+	}
+	.wcb-products__product-onsale {
+		border: none;
+	}
+}
+
+.wcb-products__product-featured {
+	position: relative;
+}
+
+.wcb-products__product-title {
+	margin-top: 0;
+}
+
 .wcb-products__product-image {
 	img {
 		width: 100%;

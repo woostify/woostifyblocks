@@ -88,7 +88,7 @@ function wcb_block_products__render_product($product, $attributes)
         $data->image = wcb_block_products__get_image_html($product);
     }
     if (($attributes['general_content']['isShowTitle'] ?? "") === "true") {
-        $data->title = wcb_block_products__get_title_html($product);
+        $data->title = wcb_block_products__get_title_html($product, $attributes['general_content']['titleHtmlTag'] ?? null, $data->permalink);
     }
     if (($attributes['general_content']['isShowRating'] ?? "") === "true") {
         $data->rating = wcb_block_products__get_rating_html($product);
@@ -103,19 +103,26 @@ function wcb_block_products__render_product($product, $attributes)
         $data->button = wcb_block_products__get_button_html($product);
     }
 
-
+    $btnInsideImage = ($attributes['general_addToCartBtn']['position'] ?? "") === "inside image";
+    $cl = "wcb-products__product ";
+    $cl .= $btnInsideImage ? "wcb-products__product--btnInsideImage" : "";
+    $btn1 = $btnInsideImage ? $data->button : "";
+    $btn2 = $btnInsideImage ?   "" : $data->button;
 
     return apply_filters(
         'woocommerce_blocks_product_grid_item_html',
-        "<div class=\"wcb-products__product wc-block-grid__product\">
-				<a href=\"{$data->permalink}\" class=\"wcb-products__product wc-block-grid__product-link\">
-					{$data->image}
-					{$data->title}
-				</a>
+        "<div class=\"{$cl}\">
+				<div class=\"wcb-products__product-featured \">
+                    <a href=\"{$data->permalink}\" class=\"wcb-products__product-image-link\">
+                        {$data->image}
+                    </a>
+                    {$btn1}
+                </div>
+                {$data->title}
 				{$data->badge}
 				{$data->rating}
 				{$data->price}
-				{$data->button}
+               {$btn2}
 			</div>",
         $data,
         $product
@@ -142,10 +149,12 @@ function wcb_block_products__get_image_html($product)
 }
 
 
-function wcb_block_products__get_title_html($product)
+function wcb_block_products__get_title_html($product, $headingTag = "div", $link)
 {
-
-    return '<div class="wcb-products__product-title wc-block-grid__product-title">' . wp_kses_post($product->get_title()) . '</div>';
+    if (empty($headingTag)) {
+        $headingTag = 'div';
+    };
+    return '<' . $headingTag . ' class="wcb-products__product-title wc-block-grid__product-title"> <a href=" ' . $link . ' ">' . wp_kses_post($product->get_title()) . '</a></' . $headingTag . '>';
 }
 
 
@@ -178,26 +187,21 @@ function wcb_block_products__get_price_html($product)
 
 function wcb_block_products__get_sale_badge_html($product)
 {
-    // if (empty($this->attributes['contentVisibility']['price'])) {
-    //     return '';
-    // }
 
     if (!$product->is_on_sale()) {
         return;
     }
 
-    return '<div class="wcb-products__product-onsale wc-block-grid__product-onsale">
+    return '<div class="wcb-products__product-salebadge"><div class="wcb-products__product-onsale wc-block-grid__product-onsale">
 			<span aria-hidden="true">' . esc_html__('Sale', 'woocommerce') . '</span>
 			<span class="screen-reader-text">' . esc_html__('Product on sale', 'woocommerce') . '</span>
-		</div>';
+		</div></div>';
 }
 
 
 function wcb_block_products__get_button_html($product)
 {
-    // if (empty($this->attributes['contentVisibility']['button'])) {
-    //     return '';
-    // }
+
     return '<div class="wcb-products__product-add-to-cart wp-block-button wc-block-grid__product-add-to-cart">' . wcb_block_products__get_add_to_cart($product) . '</div>';
 }
 
@@ -238,18 +242,8 @@ function parse_filterAttributes($filterAttrs)
 {
     // These should match what's set in JS `registerBlockType`.
     $defaults = array(
-        'columns'           => wc_get_theme_support('product_blocks::default_columns', 3),
-        'rows'              => wc_get_theme_support('product_blocks::default_rows', 3),
-        'alignButtons'      => false,
         'categories'        => array(),
         'catOperator'       => 'any',
-        'contentVisibility' => array(
-            'image'  => true,
-            'title'  => true,
-            'price'  => true,
-            'rating' => true,
-            'button' => true,
-        ),
         'stockStatus'       => array_keys(wc_get_product_stock_status_options()),
     );
 
@@ -290,6 +284,7 @@ function parse_query_args($filtersAttrs)
     set_attributes_query_args($query_args, $filtersAttrs);
     set_visibility_query_args($query_args, $filtersAttrs);
     set_stock_status_query_args($query_args, $filtersAttrs, $meta_query);
+
     return $query_args;
 }
 
@@ -310,7 +305,7 @@ function set_ordering_query_args(&$query_args, $attributes)
 
 function set_block_query_args(&$query_args, $filtersAttrs)
 {
-    if ($filtersAttrs['isOnSale'] === true || $filtersAttrs['isOnSale'] === "true") {
+    if (($filtersAttrs['isOnSale'] ?? "") === "true") {
         $query_args['post__in'] = array_merge(array(0), wc_get_product_ids_on_sale());
     }
 }

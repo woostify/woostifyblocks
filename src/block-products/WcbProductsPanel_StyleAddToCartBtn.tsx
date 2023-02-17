@@ -47,10 +47,10 @@ export const WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO: WCB_PRODUCTS_PANEL_S
 		},
 		padding: {
 			Desktop: {
-				top: "10px",
-				left: "20px",
-				right: "20px",
-				bottom: "10px",
+				top: "8px",
+				left: "16px",
+				right: "16px",
+				bottom: "8px",
 			},
 		},
 		border: MY_BORDER_CONTROL_DEMO,

@@ -6,45 +6,56 @@ import {
 	MyTypographyControlData,
 	TYPOGRAPHY_CONTROL_DEMO,
 } from "../components/controls/MyTypographyControl/types";
-import MyDisclosure from "../components/controls/MyDisclosure";
 import MyUnitControl from "../components/controls/MyUnitControl";
 import { MY_GAP_UNITS } from "../components/controls/MyDimensionsControl/MyDimensionsControl";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
+import MyDisclosure from "../components/controls/MyDisclosure";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 
-export interface WCB_POST_GRID_PANEL_STYLE_EXCERPT {
+export interface WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE {
 	typography: MyTypographyControlData;
 	textColor: string;
+	backgroundColor: string;
 	marginBottom: HasResponsive<string>;
 }
 
-export const WCB_POST_GRID_PANEL_STYLE_EXCERPT_DEMO: WCB_POST_GRID_PANEL_STYLE_EXCERPT =
+export const WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO: WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE =
 	{
 		typography: {
 			...TYPOGRAPHY_CONTROL_DEMO,
+			fontSizes: { Desktop: "12px" },
+			textDecoration: "none",
+			appearance: {
+				...TYPOGRAPHY_CONTROL_DEMO.appearance,
+				style: {
+					...TYPOGRAPHY_CONTROL_DEMO.appearance.style,
+					fontWeight: "500",
+				},
+			},
 		},
-		textColor: "#737373",
-		marginBottom: { Desktop: "1rem" },
+		textColor: "#0c4a6e",
+		backgroundColor: "#f0f9ff",
+		marginBottom: { Desktop: "0.5rem" },
 	};
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
-	panelData: WCB_POST_GRID_PANEL_STYLE_EXCERPT;
-	setAttr__: (data: WCB_POST_GRID_PANEL_STYLE_EXCERPT) => void;
+	panelData: WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE;
+	setAttr__: (data: WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE) => void;
 }
 
-const WcbPostGridPanel_StyleExcerpt: FC<Props> = ({
-	panelData = WCB_POST_GRID_PANEL_STYLE_EXCERPT_DEMO,
+const WcbProductsPanel_StyleSaleBadge: FC<Props> = ({
+	panelData = WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO,
 	setAttr__,
 	initialOpen,
 	onToggle,
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { typography, textColor, marginBottom } = panelData;
+	const { typography, textColor, marginBottom, backgroundColor } = panelData;
 
 	const { currentDeviceValue: MARGIN_BOTTOM } = getValueFromAttrsResponsives(
 		marginBottom,
@@ -56,7 +67,7 @@ const WcbPostGridPanel_StyleExcerpt: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Excerpt", "wcb")}
+			title={__("Sale badge", "wcb")}
 		>
 			<div className="space-y-2.5">
 				<MyTypographyControl
@@ -71,6 +82,7 @@ const WcbPostGridPanel_StyleExcerpt: FC<Props> = ({
 
 				<MyDisclosure defaultOpen label="More styles">
 					<MyColorPicker
+						label={__("Color", "wcb")}
 						onChange={(color) => {
 							setAttr__({
 								...panelData,
@@ -79,6 +91,18 @@ const WcbPostGridPanel_StyleExcerpt: FC<Props> = ({
 						}}
 						color={textColor}
 					/>
+
+					<MyColorPicker
+						label={__("Background", "wcb")}
+						onChange={(color) => {
+							setAttr__({
+								...panelData,
+								backgroundColor: color,
+							});
+						}}
+						color={backgroundColor}
+					/>
+
 					<MyUnitControl
 						onChange={(value) => {
 							setAttr__({
@@ -101,4 +125,4 @@ const WcbPostGridPanel_StyleExcerpt: FC<Props> = ({
 	);
 };
 
-export default WcbPostGridPanel_StyleExcerpt;
+export default WcbProductsPanel_StyleSaleBadge;
