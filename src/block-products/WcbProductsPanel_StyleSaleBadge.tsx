@@ -36,9 +36,9 @@ export const WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO: WCB_PRODUCTS_PANEL_STYLE_
 				},
 			},
 		},
-		textColor: "#0c4a6e",
-		backgroundColor: "#f0f9ff",
-		marginBottom: { Desktop: "0.5rem" },
+		backgroundColor: "#0c4a6e",
+		textColor: "#f0f9ff",
+		marginBottom: { Desktop: "0.65rem" },
 	};
 
 interface Props

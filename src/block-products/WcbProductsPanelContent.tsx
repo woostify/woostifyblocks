@@ -6,7 +6,7 @@ import MyHeadingTagControl from "../components/controls/MyHeadingTagControl/MyHe
 import { HtmlTagsType } from "../types";
 // @ts-ignore
 import { __experimentalInputControl as InputControl } from "@wordpress/components";
-import MyRadioGroup from "../components/controls/MyRadioGroup";
+import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
 import MySelect from "../components/controls/MySelect";
 
 export interface WCB_PRODUCTS_PANEL_COTENT {
@@ -18,16 +18,15 @@ export interface WCB_PRODUCTS_PANEL_COTENT {
 	isShowTitle: boolean;
 	titleHtmlTag: HtmlTagsType;
 	//
-	taxonomyPosition: "Inside featured image" | "Below featured image";
+	saleBadgePosition: "Inside image" | "bottom";
 	taxonomyStyle: "Normal" | "Highlighted";
 }
 
-const TAXONOMY_POSITION_OPTIONS: {
-	value: WCB_PRODUCTS_PANEL_COTENT["taxonomyPosition"];
-	label: string;
-}[] = [
-	{ value: "Inside featured image", label: "Inside featured image" },
-	{ value: "Below featured image", label: "Below featured image" },
+const SALE_POSITION_OPTIONS: MyRadioItem<
+	WCB_PRODUCTS_PANEL_COTENT["saleBadgePosition"]
+>[] = [
+	{ name: "Inside image", icon: "Inside image" },
+	{ name: "bottom", icon: "Bottom" },
 ];
 
 export const WCB_PRODUCTS_PANEL_COTENT_DEMO: WCB_PRODUCTS_PANEL_COTENT = {
@@ -39,7 +38,7 @@ export const WCB_PRODUCTS_PANEL_COTENT_DEMO: WCB_PRODUCTS_PANEL_COTENT = {
 	//
 	isShowTitle: true,
 	titleHtmlTag: "h4",
-	taxonomyPosition: "Below featured image",
+	saleBadgePosition: "Inside image",
 	taxonomyStyle: "Highlighted",
 };
 
@@ -60,12 +59,60 @@ const WcbProductsPanelContent: FC<Props> = ({
 		isShowTitle,
 		titleHtmlTag,
 		taxonomyStyle,
-		taxonomyPosition,
+
 		isShowPrice,
 		isShowRating,
 		isShowSKU,
 		isShowSaleBadge,
+		saleBadgePosition,
 	} = panelData;
+
+	const renderSaleDisclosure = () => {
+		return (
+			<MyDisclosure label="Sale badge" defaultOpen>
+				<ToggleControl
+					label={__("Sale badge", "wcb")}
+					onChange={(checked) =>
+						setAttr__({ ...panelData, isShowSaleBadge: checked })
+					}
+					checked={isShowSaleBadge}
+				/>
+
+				<MyRadioGroup
+					label="Position"
+					onChange={(selected) =>
+						setAttr__({
+							...panelData,
+							saleBadgePosition: selected as any,
+						})
+					}
+					value={saleBadgePosition}
+					plans={SALE_POSITION_OPTIONS}
+					hasResponsive={false}
+				/>
+
+				{/* <MyRadioGroup
+					label="Style"
+					labelClassName=""
+					className="flex items-center justify-between space-x-3"
+					contentClassName="flex-shrink-0 flex-1"
+					onChange={(selected) =>
+						setAttr__({
+							...panelData,
+							taxonomyStyle: selected as any,
+						})
+					}
+					value={taxonomyStyle}
+					plans={[
+						// "Normal" | "Highlighted"
+						{ name: "Normal", icon: "Normal" },
+						{ name: "Highlighted", icon: "Highlighted" },
+					]}
+					hasResponsive={false}
+				/> */}
+			</MyDisclosure>
+		);
+	};
 
 	return (
 		<PanelBody
@@ -106,6 +153,18 @@ const WcbProductsPanelContent: FC<Props> = ({
 					}
 					checked={isShowSKU}
 				/> */}
+
+				{isShowSaleBadge ? (
+					renderSaleDisclosure()
+				) : (
+					<ToggleControl
+						label={__("Sale badge", "wcb")}
+						onChange={(checked) =>
+							setAttr__({ ...panelData, isShowSaleBadge: checked })
+						}
+						checked={isShowSaleBadge}
+					/>
+				)}
 
 				<ToggleControl
 					label={__("Product rating", "wcb")}

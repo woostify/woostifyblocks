@@ -3997,18 +3997,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_controls_MyHeadingTagControl_MyHeadingTagControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyHeadingTagControl/MyHeadingTagControl */ "./src/components/controls/MyHeadingTagControl/MyHeadingTagControl.tsx");
+/* harmony import */ var _components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyDisclosure */ "./src/components/controls/MyDisclosure.tsx");
+/* harmony import */ var _components_controls_MyHeadingTagControl_MyHeadingTagControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyHeadingTagControl/MyHeadingTagControl */ "./src/components/controls/MyHeadingTagControl/MyHeadingTagControl.tsx");
+/* harmony import */ var _components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/controls/MyRadioGroup */ "./src/components/controls/MyRadioGroup.tsx");
 
 
 
 
 
-const TAXONOMY_POSITION_OPTIONS = [{
-  value: "Inside featured image",
-  label: "Inside featured image"
+
+
+const SALE_POSITION_OPTIONS = [{
+  name: "Inside image",
+  icon: "Inside image"
 }, {
-  value: "Below featured image",
-  label: "Below featured image"
+  name: "bottom",
+  icon: "Bottom"
 }];
 const WCB_PRODUCTS_PANEL_COTENT_DEMO = {
   // isShowAddToCartBtn: true,
@@ -4019,7 +4023,7 @@ const WCB_PRODUCTS_PANEL_COTENT_DEMO = {
   //
   isShowTitle: true,
   titleHtmlTag: "h4",
-  taxonomyPosition: "Below featured image",
+  saleBadgePosition: "Inside image",
   taxonomyStyle: "Highlighted"
 };
 const WcbProductsPanelContent = _ref => {
@@ -4034,12 +4038,34 @@ const WcbProductsPanelContent = _ref => {
     isShowTitle,
     titleHtmlTag,
     taxonomyStyle,
-    taxonomyPosition,
     isShowPrice,
     isShowRating,
     isShowSKU,
-    isShowSaleBadge
+    isShowSaleBadge,
+    saleBadgePosition
   } = panelData;
+  const renderSaleDisclosure = () => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      label: "Sale badge",
+      defaultOpen: true
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Sale badge", "wcb"),
+      onChange: checked => setAttr__({
+        ...panelData,
+        isShowSaleBadge: checked
+      }),
+      checked: isShowSaleBadge
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      label: "Position",
+      onChange: selected => setAttr__({
+        ...panelData,
+        saleBadgePosition: selected
+      }),
+      value: saleBadgePosition,
+      plans: SALE_POSITION_OPTIONS,
+      hasResponsive: false
+    }));
+  };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     initialOpen: initialOpen,
     onToggle: onToggle,
@@ -4054,7 +4080,7 @@ const WcbProductsPanelContent = _ref => {
       isShowTitle: checked
     }),
     checked: isShowTitle
-  }), isShowTitle ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyHeadingTagControl_MyHeadingTagControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }), isShowTitle ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyHeadingTagControl_MyHeadingTagControl__WEBPACK_IMPORTED_MODULE_5__["default"], {
     tag: titleHtmlTag,
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Title HTML tag", "wcb"),
     onChange: tag => setAttr__({
@@ -4068,6 +4094,13 @@ const WcbProductsPanelContent = _ref => {
       isShowPrice: checked
     }),
     checked: isShowPrice
+  }), isShowSaleBadge ? renderSaleDisclosure() : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Sale badge", "wcb"),
+    onChange: checked => setAttr__({
+      ...panelData,
+      isShowSaleBadge: checked
+    }),
+    checked: isShowSaleBadge
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Product rating", "wcb"),
     onChange: checked => setAttr__({
@@ -5123,10 +5156,10 @@ const WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO = {
       }
     }
   },
-  textColor: "#0c4a6e",
-  backgroundColor: "#f0f9ff",
+  backgroundColor: "#0c4a6e",
+  textColor: "#f0f9ff",
   marginBottom: {
-    Desktop: "0.5rem"
+    Desktop: "0.65rem"
   }
 };
 const WcbProductsPanel_StyleSaleBadge = _ref => {
@@ -5249,7 +5282,7 @@ const WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO = {
   typography: _components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_5__.TYPOGRAPHY_CONTROL_DEMO,
   textColor: "#171717",
   marginBottom: {
-    Desktop: "0.65rem"
+    Desktop: "0.75rem"
   }
 };
 const WcbProductsPanel_StyleTitle = _ref => {
@@ -5770,14 +5803,17 @@ const withAttributes = OriginalComponent => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/block-products/style.scss");
-/* harmony import */ var _Edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Edit */ "./src/block-products/Edit.tsx");
-/* harmony import */ var _Save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Save */ "./src/block-products/Save.tsx");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/block-products/block.json");
-/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./attributes */ "./src/block-products/attributes.ts");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./constants */ "./src/block-products/constants.ts");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./src/block-products/style.scss");
+/* harmony import */ var _Edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Edit */ "./src/block-products/Edit.tsx");
+/* harmony import */ var _Save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Save */ "./src/block-products/Save.tsx");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/block-products/block.json");
+/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./attributes */ "./src/block-products/attributes.ts");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./constants */ "./src/block-products/constants.ts");
+
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
  *
@@ -5810,12 +5846,50 @@ const {
 
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_4__.name, {
-  edit: _Edit__WEBPACK_IMPORTED_MODULE_2__["default"],
-  save: _Save__WEBPACK_IMPORTED_MODULE_3__["default"],
-  attributes: _attributes__WEBPACK_IMPORTED_MODULE_5__["default"],
-  innerBlocks: _constants__WEBPACK_IMPORTED_MODULE_6__.INNER_BLOCKS_TEMPLATE,
-  scope: ["inserter"]
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_5__.name, {
+  edit: _Edit__WEBPACK_IMPORTED_MODULE_3__["default"],
+  save: _Save__WEBPACK_IMPORTED_MODULE_4__["default"],
+  attributes: _attributes__WEBPACK_IMPORTED_MODULE_6__["default"],
+  innerBlocks: _constants__WEBPACK_IMPORTED_MODULE_7__.INNER_BLOCKS_TEMPLATE,
+  scope: ["inserter"],
+  icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    className: "wcb-editor-block-icons fill-none ",
+    width: 24,
+    height: 24,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M3.00999 11.22V15.71C3.00999 20.2 4.80999 22 9.29999 22H14.69C19.18 22 20.98 20.2 20.98 15.71V11.22",
+    stroke: "currentColor",
+    strokeWidth: "1.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M12 12C13.83 12 15.18 10.51 15 8.68L14.34 2H9.67L9 8.68C8.82 10.51 10.17 12 12 12Z",
+    stroke: "currentColor",
+    strokeWidth: "1.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M18.31 12C20.33 12 21.81 10.36 21.61 8.35L21.33 5.6C20.97 3 19.97 2 17.35 2H14.3L15 9.01C15.17 10.66 16.66 12 18.31 12Z",
+    stroke: "currentColor",
+    strokeWidth: "1.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M5.64 12C7.29 12 8.78 10.66 8.94 9.01L9.16 6.8L9.64001 2H6.59C3.97001 2 2.97 3 2.61 5.6L2.34 8.35C2.14 10.36 3.62 12 5.64 12Z",
+    stroke: "currentColor",
+    strokeWidth: "1.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M12 17C10.33 17 9.5 17.83 9.5 19.5V22H14.5V19.5C14.5 17.83 13.67 17 12 17Z",
+    stroke: "currentColor",
+    strokeWidth: "1.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }))
 });
 
 /***/ }),
@@ -13781,7 +13855,7 @@ function combine (array, callback) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/products","version":"0.1.0","title":"Products","category":"wcb-blocks","icon":"heart","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./FrontendStyles.js"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/products","version":"0.1.0","title":"Products","category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-restaurant","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./FrontendStyles.js"}');
 
 /***/ }),
 
