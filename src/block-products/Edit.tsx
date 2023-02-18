@@ -13,7 +13,9 @@ import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
-import WcbProducstPanelSortingAndFiltering from "./WcbProducstPanelSortingAndFiltering";
+import WcbProducstPanelSortingAndFiltering, {
+	WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
+} from "./WcbProducstPanelSortingAndFiltering";
 import {
 	Button,
 	PanelBody,
@@ -22,10 +24,18 @@ import {
 	Tip,
 	withSpokenMessages,
 } from "@wordpress/components";
-import WcbProductsPanelContent from "./WcbProductsPanelContent";
-import WcbProductsPanelFeaturedImage from "./WcbProductsPanelFeaturedImage";
-import WcbProductsPanelButton from "./WcbProductsPanelButton";
-import WcbProductsPanelPagination from "./WcbProductsPanelPagination";
+import WcbProductsPanelContent, {
+	WCB_PRODUCTS_PANEL_COTENT_DEMO,
+} from "./WcbProductsPanelContent";
+import WcbProductsPanelFeaturedImage, {
+	WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO,
+} from "./WcbProductsPanelFeaturedImage";
+import WcbProductsPanelButton, {
+	WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO,
+} from "./WcbProductsPanelButton";
+import WcbProductsPanelPagination, {
+	WCB_PRODUCTS_PANEL_PAGINATION_DEMO,
+} from "./WcbProductsPanelPagination";
 import WcbProductsPanel_StyleTitle, {
 	WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
 } from "./WcbProductsPanel_StyleTitle";
@@ -53,6 +63,8 @@ import WcbProductsPanel_StyleRating, {
 	WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO,
 } from "./WcbProductsPanel_StyleRating";
 import { MY_BORDER_CONTROL_DEMO } from "../components/controls/MyBorderControl/types";
+import { RESPONSIVE_CONDITON_DEMO } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
+import { Z_INDEX_DEMO } from "../components/controls/MyZIndexControl/MyZIndexControl";
 
 interface Props extends EditProps<WcbAttrs> {}
 
@@ -101,8 +113,7 @@ const Edit: FC<Props> = (props) => {
 		if (style_layout) {
 			return;
 		}
-
-		setAttributes({
+		const DEFAULT: Omit<WcbAttrs, "uniqueId"> = {
 			style_addToCardBtn: WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO,
 			style_border: MY_BORDER_CONTROL_DEMO,
 			style_featuredImage: WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO,
@@ -112,7 +123,16 @@ const Edit: FC<Props> = (props) => {
 			style_rating: WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO,
 			style_saleBadge: WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO,
 			style_title: WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
-		});
+			advance_responsiveCondition: RESPONSIVE_CONDITON_DEMO,
+			advance_zIndex: Z_INDEX_DEMO,
+			general_sortingAndFiltering: WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
+			general_content: WCB_PRODUCTS_PANEL_COTENT_DEMO,
+			general_featuredImage: WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO,
+			general_addToCartBtn: WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO,
+			general_pagination: WCB_PRODUCTS_PANEL_PAGINATION_DEMO,
+		};
+
+		setAttributes({ ...DEFAULT });
 	}, [style_layout]);
 	//
 

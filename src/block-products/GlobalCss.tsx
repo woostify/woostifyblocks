@@ -35,7 +35,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
-	const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+	const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}].${uniqueId}`;
 	const LIST_CLASS = `${WRAP_CLASSNAME} .wcb-products__list`;
 	const POST_CARD_CLASS = `${WRAP_CLASSNAME} .wcb-products__product`;
 	const ADD_TO_CART_BTN = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart a`;

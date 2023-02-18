@@ -123,3 +123,12 @@ if (!function_exists("wcb_pagination_bar")) {
         }
     }
 }
+
+// 
+if (!function_exists("wcb__is_enabled")) :
+    function wcb__is_enabled($variable)
+    {
+        if (!isset($variable)) return null;
+        return filter_var($variable, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+    }
+endif;

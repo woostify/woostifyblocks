@@ -2737,13 +2737,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _WcbProductsPanel_StyleLayout__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./WcbProductsPanel_StyleLayout */ "./src/block-products/WcbProductsPanel_StyleLayout.tsx");
 /* harmony import */ var _WcbProductsPanel_StyleAddToCartBtn__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./WcbProductsPanel_StyleAddToCartBtn */ "./src/block-products/WcbProductsPanel_StyleAddToCartBtn.tsx");
 /* harmony import */ var _WcbProductsPanel_StylePagination__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./WcbProductsPanel_StylePagination */ "./src/block-products/WcbProductsPanel_StylePagination.tsx");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/icon/index.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/file.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/icon/index.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/file.js");
 /* harmony import */ var _WcbProductsPanel_StyleSaleBadge__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./WcbProductsPanel_StyleSaleBadge */ "./src/block-products/WcbProductsPanel_StyleSaleBadge.tsx");
 /* harmony import */ var _components_controls_MyBorderControl_MyBorderControl__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../components/controls/MyBorderControl/MyBorderControl */ "./src/components/controls/MyBorderControl/MyBorderControl.tsx");
 /* harmony import */ var _WcbProductsPanel_StylePrice__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./WcbProductsPanel_StylePrice */ "./src/block-products/WcbProductsPanel_StylePrice.tsx");
 /* harmony import */ var _WcbProductsPanel_StyleRating__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./WcbProductsPanel_StyleRating */ "./src/block-products/WcbProductsPanel_StyleRating.tsx");
 /* harmony import */ var _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../components/controls/MyBorderControl/types */ "./src/components/controls/MyBorderControl/types.ts");
+/* harmony import */ var _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl */ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx");
+/* harmony import */ var _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../components/controls/MyZIndexControl/MyZIndexControl */ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx");
+
+
 
 
 
@@ -2820,7 +2824,7 @@ const Edit = props => {
     if (style_layout) {
       return;
     }
-    setAttributes({
+    const DEFAULT = {
       style_addToCardBtn: _WcbProductsPanel_StyleAddToCartBtn__WEBPACK_IMPORTED_MODULE_21__.WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO,
       style_border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_27__.MY_BORDER_CONTROL_DEMO,
       style_featuredImage: _WcbProductsPanel_StyleFeaturedImage__WEBPACK_IMPORTED_MODULE_19__.WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO,
@@ -2829,7 +2833,17 @@ const Edit = props => {
       style_price: _WcbProductsPanel_StylePrice__WEBPACK_IMPORTED_MODULE_25__.WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO,
       style_rating: _WcbProductsPanel_StyleRating__WEBPACK_IMPORTED_MODULE_26__.WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO,
       style_saleBadge: _WcbProductsPanel_StyleSaleBadge__WEBPACK_IMPORTED_MODULE_23__.WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO,
-      style_title: _WcbProductsPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_18__.WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO
+      style_title: _WcbProductsPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_18__.WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
+      advance_responsiveCondition: _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_28__.RESPONSIVE_CONDITON_DEMO,
+      advance_zIndex: _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_29__.Z_INDEX_DEMO,
+      general_sortingAndFiltering: _WcbProducstPanelSortingAndFiltering__WEBPACK_IMPORTED_MODULE_12__.WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
+      general_content: _WcbProductsPanelContent__WEBPACK_IMPORTED_MODULE_14__.WCB_PRODUCTS_PANEL_COTENT_DEMO,
+      general_featuredImage: _WcbProductsPanelFeaturedImage__WEBPACK_IMPORTED_MODULE_15__.WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO,
+      general_addToCartBtn: _WcbProductsPanelButton__WEBPACK_IMPORTED_MODULE_16__.WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO,
+      general_pagination: _WcbProductsPanelPagination__WEBPACK_IMPORTED_MODULE_17__.WCB_PRODUCTS_PANEL_PAGINATION_DEMO
+    };
+    setAttributes({
+      ...DEFAULT
     });
   }, [style_layout]);
   //
@@ -3067,8 +3081,8 @@ const Edit = props => {
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_components__WEBPACK_IMPORTED_MODULE_13__.withSpokenMessages)(Edit));
 const EmptyPlaceholder = () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__.Placeholder, {
-  icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_icons__WEBPACK_IMPORTED_MODULE_28__["default"], {
-    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_29__["default"]
+  icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_icons__WEBPACK_IMPORTED_MODULE_30__["default"], {
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_31__["default"]
   }),
   label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Woostify block Products", "wcb"),
   className: "wc-block-products-grid wc-block-products-category"
@@ -3134,7 +3148,7 @@ const GlobalCss = attrs => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_7__.DEMO_WCB_GLOBAL_VARIABLES;
-  const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+  const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}].${uniqueId}`;
   const LIST_CLASS = `${WRAP_CLASSNAME} .wcb-products__list`;
   const POST_CARD_CLASS = `${WRAP_CLASSNAME} .wcb-products__product`;
   const ADD_TO_CART_BTN = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart a`;
@@ -3542,14 +3556,42 @@ function save(_ref) {
   const {
     uniqueId,
     advance_responsiveCondition,
-    advance_zIndex
+    advance_zIndex,
+    general_addToCartBtn,
+    general_content,
+    general_featuredImage,
+    general_pagination,
+    general_sortingAndFiltering,
+    style_addToCardBtn,
+    style_border,
+    style_featuredImage,
+    style_layout,
+    style_pagination,
+    style_price,
+    style_rating,
+    style_saleBadge,
+    style_title
   } = attributes;
   //
 
   const newAttrForSave = {
     uniqueId,
     advance_responsiveCondition,
-    advance_zIndex
+    advance_zIndex,
+    general_addToCartBtn,
+    general_content,
+    general_featuredImage,
+    general_pagination,
+    general_sortingAndFiltering,
+    style_addToCardBtn,
+    style_border,
+    style_featuredImage,
+    style_layout,
+    style_pagination,
+    style_price,
+    style_rating,
+    style_saleBadge,
+    style_title
   };
   //
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
@@ -3558,7 +3600,7 @@ function save(_ref) {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     attributes: newAttrForSave,
     uniqueId: uniqueId
-  }, blockProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, "CHILD"));
+  }, blockProps), null);
 }
 
 /***/ }),
@@ -5361,20 +5403,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl */ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx");
-/* harmony import */ var _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/controls/MyZIndexControl/MyZIndexControl */ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx");
-/* harmony import */ var _WcbProducstPanelSortingAndFiltering__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WcbProducstPanelSortingAndFiltering */ "./src/block-products/WcbProducstPanelSortingAndFiltering.tsx");
-/* harmony import */ var _WcbProductsPanelButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WcbProductsPanelButton */ "./src/block-products/WcbProductsPanelButton.tsx");
-/* harmony import */ var _WcbProductsPanelContent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./WcbProductsPanelContent */ "./src/block-products/WcbProductsPanelContent.tsx");
-/* harmony import */ var _WcbProductsPanelFeaturedImage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WcbProductsPanelFeaturedImage */ "./src/block-products/WcbProductsPanelFeaturedImage.tsx");
-/* harmony import */ var _WcbProductsPanelPagination__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./WcbProductsPanelPagination */ "./src/block-products/WcbProductsPanelPagination.tsx");
-
-
-
-
-
-
-
 const blokc1Attrs = {
   uniqueId: {
     type: "string",
@@ -5382,25 +5410,30 @@ const blokc1Attrs = {
   },
   // THE ATTRS OF BLOCK HERE
   general_sortingAndFiltering: {
-    type: "object",
-    default: _WcbProducstPanelSortingAndFiltering__WEBPACK_IMPORTED_MODULE_2__.WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO
+    type: "object"
+    // default: WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
   },
+
   general_content: {
-    type: "object",
-    default: _WcbProductsPanelContent__WEBPACK_IMPORTED_MODULE_4__.WCB_PRODUCTS_PANEL_COTENT_DEMO
+    type: "object"
+    // default: WCB_PRODUCTS_PANEL_COTENT_DEMO,
   },
+
   general_featuredImage: {
-    type: "object",
-    default: _WcbProductsPanelFeaturedImage__WEBPACK_IMPORTED_MODULE_5__.WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO
+    type: "object"
+    // default: WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO,
   },
+
   general_addToCartBtn: {
-    type: "object",
-    default: _WcbProductsPanelButton__WEBPACK_IMPORTED_MODULE_3__.WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO
+    type: "object"
+    // default: WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO,
   },
+
   general_pagination: {
-    type: "object",
-    default: _WcbProductsPanelPagination__WEBPACK_IMPORTED_MODULE_6__.WCB_PRODUCTS_PANEL_PAGINATION_DEMO
+    type: "object"
+    // default: WCB_PRODUCTS_PANEL_PAGINATION_DEMO,
   },
+
   //
   style_title: {
     type: "object"
@@ -5449,14 +5482,16 @@ const blokc1Attrs = {
 
   // ADVANCE
   advance_responsiveCondition: {
-    type: "object",
-    default: _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_0__.RESPONSIVE_CONDITON_DEMO
+    type: "object"
+    // default: RESPONSIVE_CONDITON_DEMO,
   },
+
   advance_zIndex: {
-    type: "object",
-    default: _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_1__.Z_INDEX_DEMO
+    type: "object"
+    // default: Z_INDEX_DEMO,
   }
 };
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (blokc1Attrs);
 
 /***/ }),

@@ -1,6 +1,10 @@
 /*!******************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/block-products/style.scss ***!
   \******************************************************************************************************************************************************************************************************************************************************/
+.wcb-products__wrap {
+  display: none;
+}
+
 .wcb-products__product {
   font-size: 16px;
 }
@@ -10,12 +14,11 @@
   left: 50%;
   bottom: 1.25rem;
   z-index: 10;
-  --tw-translate-x: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   opacity: 0;
   transition-property: opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+  transform: translateX(-50%);
 }
 .wcb-products__product.wcb-products__product--btnInsideImage:hover .wcb-products__product-add-to-cart {
   visibility: visible;

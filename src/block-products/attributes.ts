@@ -97,23 +97,23 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	// THE ATTRS OF BLOCK HERE
 	general_sortingAndFiltering: {
 		type: "object",
-		default: WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
+		// default: WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
 	},
 	general_content: {
 		type: "object",
-		default: WCB_PRODUCTS_PANEL_COTENT_DEMO,
+		// default: WCB_PRODUCTS_PANEL_COTENT_DEMO,
 	},
 	general_featuredImage: {
 		type: "object",
-		default: WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO,
+		// default: WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO,
 	},
 	general_addToCartBtn: {
 		type: "object",
-		default: WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO,
+		// default: WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO,
 	},
 	general_pagination: {
 		type: "object",
-		default: WCB_PRODUCTS_PANEL_PAGINATION_DEMO,
+		// default: WCB_PRODUCTS_PANEL_PAGINATION_DEMO,
 	},
 	//
 	style_title: {
@@ -156,11 +156,11 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	// ADVANCE
 	advance_responsiveCondition: {
 		type: "object",
-		default: RESPONSIVE_CONDITON_DEMO,
+		// default: RESPONSIVE_CONDITON_DEMO,
 	},
 	advance_zIndex: {
 		type: "object",
-		default: Z_INDEX_DEMO,
+		// default: Z_INDEX_DEMO,
 	},
 };
 

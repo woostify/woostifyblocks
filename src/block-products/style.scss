@@ -1,3 +1,7 @@
+.wcb-products__wrap {
+	display: none;
+}
+
 .wcb-products__list {
 }
 
@@ -6,7 +10,8 @@
 
 	&.wcb-products__product--btnInsideImage {
 		.wcb-products__product-add-to-cart {
-			@apply absolute left-1/2 -translate-x-1/2 bottom-5 z-10 opacity-0 invisible transition-opacity;
+			@apply absolute left-1/2 bottom-5 z-10 opacity-0 invisible transition-opacity;
+			transform: translateX(-50%);
 		}
 		&:hover {
 			.wcb-products__product-add-to-cart {
