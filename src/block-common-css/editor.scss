@@ -1,6 +1,9 @@
-.wcb-products__wrap a {
-	user-select: none !important;
-	pointer-events: none !important;
+.wcb-products__wrap,
+.wcb-posts-grid__wrap {
+	a {
+		user-select: none !important;
+		pointer-events: none !important;
+	}
 }
 
 .block-editor-block-icon {

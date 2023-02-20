@@ -2,10 +2,9 @@
 //============================================= block 1 ===============================================================
 function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
 {
-    if (!is_admin()) {
-        wp_enqueue_script('wcb_block_posts_grid__renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-posts-grid/FrontendStyles.js', array('wp-element'), null, true);
-    }
-    // wcb_var_dump($attributes);
+    // if (!is_admin()) {
+    //     wp_enqueue_script('wcb_block_posts_grid__renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-posts-grid/FrontendStyles.js', array('wp-element'), null, true);
+    // }
 
     $DEFAULT_ATTRS = [
         'uniqueId' => 'xxblock-ea687c0d-0eda-4ebf-a7c2-cbcaca07bbe8-xx',
@@ -281,10 +280,11 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
         ),
     ];
 
-    $uniqueId =  $attributes['uniqueId'];
+    $uniqueId =  $attributes['uniqueId'] ?? "";
 
     $sortingAndFiltering = isset($attributes["general_sortingAndFiltering"]) ? $attributes["general_sortingAndFiltering"] :  $DEFAULT_ATTRS["general_sortingAndFiltering"];
-    $queries = isset($sortingAndFiltering["queries"]) ? $sortingAndFiltering["queries"] : $DEFAULT_ATTRS["general_sortingAndFiltering"]["queries"];
+    $queries =   $sortingAndFiltering["queries"] ?? $DEFAULT_ATTRS["general_sortingAndFiltering"]["queries"];
+
 
     $aTermsId = array_map(function ($item) {
         return $item['id'];
@@ -301,12 +301,13 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
                 'terms'         =>  $aTermsId,
             ] : null
         ],
-        'post__not_in'      => boolval($queries["isExcludeCurrentPost"]) ? [get_the_ID()] : [],
-        'posts_per_page'    => $queries["numberOfItems"],
-        'offset'            => $queries["offsetPost"],
-        'orderby'           => $queries["orderBy"],
-        'order'             => $queries["order"],
-        'paged'             => $paged
+        'post__not_in'          => boolval($queries["isExcludeCurrentPost"]) ? [get_the_ID()] : [],
+        'posts_per_page'        => $queries["numberOfItems"],
+        'ignore_sticky_posts'   => true,
+        'offset'                => $queries["offsetPost"],
+        'orderby'               => $queries["orderBy"],
+        'order'                 => $queries["order"],
+        'paged'                 => $paged
     ]);
 
     if (!function_exists("wcb_block_posts_grid__render_taxonomy")) {

@@ -103,77 +103,77 @@ const blokc1Attrs: AttrsGenericType<WcbBlockPostsGridAttrs> = {
 	// THE ATTRS OF BLOCK HERE
 	general_sortingAndFiltering: {
 		type: "object",
-		default: WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING_DEMO,
+		// default: WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING_DEMO,
 	},
 	general_postContent: {
 		type: "object",
-		default: WCB_POST_GRID_PANEL_POST_CONTENT_DEMO,
+		// default: WCB_POST_GRID_PANEL_POST_CONTENT_DEMO,
 	},
 	general_postMeta: {
 		type: "object",
-		default: WCB_POST_GRID_PANEL_POST_META_DEMO,
+		// default: WCB_POST_GRID_PANEL_POST_META_DEMO,
 	},
 	general_postFeaturedImage: {
 		type: "object",
-		default: WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE_DEMO,
+		// default: WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE_DEMO,
 	},
 	general_readmoreLink: {
 		type: "object",
-		default: WCB_POST_GRID_PANEL_READMORE_LINK_DEMO,
+		// default: WCB_POST_GRID_PANEL_READMORE_LINK_DEMO,
 	},
 	general_pagination: {
 		type: "object",
-		default: WCB_POST_GRID_PANEL_PAGINATION_DEMO,
+		// default: WCB_POST_GRID_PANEL_PAGINATION_DEMO,
 	},
 	// STYLES
 	style_layout: {
 		type: "object",
-		default: WCB_POST_GRID_PANEL_STYLE_LAYOUT_DEMO,
+		// default: WCB_POST_GRID_PANEL_STYLE_LAYOUT_DEMO,
 	},
 	style_title: {
 		type: "object",
-		default: WCB_POST_GRID_PANEL_STYLE_TITLE_DEMO,
+		// default: WCB_POST_GRID_PANEL_STYLE_TITLE_DEMO,
 	},
 	style_excerpt: {
 		type: "object",
-		default: WCB_POST_GRID_PANEL_STYLE_EXCERPT_DEMO,
+		// default: WCB_POST_GRID_PANEL_STYLE_EXCERPT_DEMO,
 	},
 	style_taxonomy: {
 		type: "object",
-		default: WCB_POST_GRID_PANEL_STYLE_TAXONOMY_DEMO,
+		// default: WCB_POST_GRID_PANEL_STYLE_TAXONOMY_DEMO,
 	},
 	style_meta: {
 		type: "object",
-		default: WCB_POST_GRID_PANEL_STYLE_META_DEMO,
+		// default: WCB_POST_GRID_PANEL_STYLE_META_DEMO,
 	},
 	style_readmoreLink: {
 		type: "object",
-		default: WCB_POST_GRID_PANEL_STYLE_READMORE_LINK_DEMO,
+		// default: WCB_POST_GRID_PANEL_STYLE_READMORE_LINK_DEMO,
 	},
 	style_pagination: {
 		type: "object",
-		default: WCB_POST_GRID_PANEL_STYLE_PAGINATION_DEMO,
+		// default: WCB_POST_GRID_PANEL_STYLE_PAGINATION_DEMO,
 	},
 	style_featuredImage: {
 		type: "object",
-		default: WCB_POST_GRID_PANEL_STYLE_FEATURED_IMAGE_DEMO,
+		// default: WCB_POST_GRID_PANEL_STYLE_FEATURED_IMAGE_DEMO,
 	},
 	style_border: {
 		type: "object",
-		default: MY_BORDER_CONTROL_DEMO,
+		// default: MY_BORDER_CONTROL_DEMO,
 	},
 	style_boxShadow: {
 		type: "object",
-		default: MY_BOX_SHADOW_CONTROL_DEMO,
+		// default: MY_BOX_SHADOW_CONTROL_DEMO,
 	},
 	// ADVANCE
 	advance_responsiveCondition: {
 		type: "object",
-		default: RESPONSIVE_CONDITON_DEMO,
+		// default: RESPONSIVE_CONDITON_DEMO,
 	},
 	advance_zIndex: {
 		type: "object",
-		default: Z_INDEX_DEMO,
+		// default: Z_INDEX_DEMO,
 	},
 };
 

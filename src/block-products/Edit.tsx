@@ -17,11 +17,9 @@ import WcbProducstPanelSortingAndFiltering, {
 	WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
 } from "./WcbProducstPanelSortingAndFiltering";
 import {
-	Button,
 	PanelBody,
 	Placeholder,
 	Spinner,
-	Tip,
 	withSpokenMessages,
 } from "@wordpress/components";
 import WcbProductsPanelContent, {
@@ -102,8 +100,10 @@ const Edit: FC<Props> = (props) => {
 	const UNIQUE_ID = wrapBlockProps.id;
 
 	//
-
 	useEffect(() => {
+		if (uniqueId) {
+			return;
+		}
 		setAttributes({
 			uniqueId: UNIQUE_ID,
 		});
@@ -416,11 +416,7 @@ const Edit: FC<Props> = (props) => {
 
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
-			<div
-				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-products__wrap ${UNIQUE_ID}`}
-				data-uniqueid={UNIQUE_ID}
-			>
+			<div {...wrapBlockProps}>
 				{/* CONTROL SETTINGS */}
 				<HOCInspectorControls
 					renderTabPanels={renderTabBodyPanels}
@@ -428,7 +424,7 @@ const Edit: FC<Props> = (props) => {
 				/>
 
 				{/* CSS IN JS */}
-				{uniqueId && !!style_layout && <GlobalCss {...WcbAttrsForSave()} />}
+				{!!uniqueId && !!style_layout && <GlobalCss {...WcbAttrsForSave()} />}
 
 				{/* CHILD CONTENT  */}
 				{uniqueId && !!style_layout && (

@@ -1,6 +1,5 @@
-import { get, pickBy } from "lodash";
 import { __ } from "@wordpress/i18n";
-import React, { useEffect, FC, useRef, useCallback } from "react";
+import React, { useEffect, FC, useRef, useMemo, useCallback } from "react";
 import { WcbBlockPostsGridAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
@@ -8,38 +7,62 @@ import HOCInspectorControls, {
 import { EditProps } from "../block-container/Edit";
 import GlobalCss from "./GlobalCss";
 import "./editor.scss";
-import WcbPostsGridPanelSortingAndFiltering from "./WcbPostsGridPanelSortingAndFiltering";
+import WcbPostsGridPanelSortingAndFiltering, {
+	WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING_DEMO,
+} from "./WcbPostsGridPanelSortingAndFiltering";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
-import WcbPostGridPanelPostContent from "./WcbPostGridPanelPostContent";
-import WcbPostGridPanelPostMeta from "./WcbPostGridPanelPostMeta";
-import WcbPostGridPanelPostFeaturedImage from "./WcbPostGridPanelPostFeaturedImage";
-import WcbPostGridPanelReadMoreLink from "./WcbPostGridPanelReadMoreLink";
+import WcbPostGridPanelPostContent, {
+	WCB_POST_GRID_PANEL_POST_CONTENT_DEMO,
+} from "./WcbPostGridPanelPostContent";
+import WcbPostGridPanelPostMeta, {
+	WCB_POST_GRID_PANEL_POST_META_DEMO,
+} from "./WcbPostGridPanelPostMeta";
+import WcbPostGridPanelPostFeaturedImage, {
+	WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE_DEMO,
+} from "./WcbPostGridPanelPostFeaturedImage";
+import WcbPostGridPanelReadMoreLink, {
+	WCB_POST_GRID_PANEL_READMORE_LINK_DEMO,
+} from "./WcbPostGridPanelReadMoreLink";
 import WcbPostGridPanelPagination, {
 	WCB_POSTS_GRID_PAGINATION_PLANS_ICONS,
+	WCB_POST_GRID_PANEL_PAGINATION_DEMO,
 } from "./WcbPostGridPanelPagination";
-import WcbPostGridPanel_StyleLayout from "./WcbPostGridPanel_StyleLayout";
-import WcbPostGridPanel_StyleTitle from "./WcbPostGridPanel_StyleTitle";
-import WcbPostGridPanel_StyleExcerpt from "./WcbPostGridPanel_StyleExcerpt";
-import WcbPostGridPanel_StyleMeta from "./WcbPostGridPanel_StyleMeta";
-import WcbPostGridPanel_StyleReadmoreLink from "./WcbPostGridPanel_StyleReadmoreLink";
-import WcbPostGridPanel_StylePagination from "./WcbPostGridPanel_StylePagination";
-import WcbPostGridPanel_StyleFeaturedImage from "./WcbPostGridPanel_StyleFeaturedImage";
-import { PanelBody } from "@wordpress/components";
+import WcbPostGridPanel_StyleLayout, {
+	WCB_POST_GRID_PANEL_STYLE_LAYOUT_DEMO,
+} from "./WcbPostGridPanel_StyleLayout";
+import WcbPostGridPanel_StyleTitle, {
+	WCB_POST_GRID_PANEL_STYLE_TITLE_DEMO,
+} from "./WcbPostGridPanel_StyleTitle";
+import WcbPostGridPanel_StyleExcerpt, {
+	WCB_POST_GRID_PANEL_STYLE_EXCERPT_DEMO,
+} from "./WcbPostGridPanel_StyleExcerpt";
+import WcbPostGridPanel_StyleMeta, {
+	WCB_POST_GRID_PANEL_STYLE_META_DEMO,
+} from "./WcbPostGridPanel_StyleMeta";
+import WcbPostGridPanel_StyleReadmoreLink, {
+	WCB_POST_GRID_PANEL_STYLE_READMORE_LINK_DEMO,
+} from "./WcbPostGridPanel_StyleReadmoreLink";
+import WcbPostGridPanel_StylePagination, {
+	WCB_POST_GRID_PANEL_STYLE_PAGINATION_DEMO,
+} from "./WcbPostGridPanel_StylePagination";
+import WcbPostGridPanel_StyleFeaturedImage, {
+	WCB_POST_GRID_PANEL_STYLE_FEATURED_IMAGE_DEMO,
+} from "./WcbPostGridPanel_StyleFeaturedImage";
+import { PanelBody, Placeholder, Spinner } from "@wordpress/components";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
 import MyBoxShadowControl from "../components/controls/MyBoxShadowControl/MyBoxShadowControl";
-import WcbPostCard from "./WcbPostCard";
-import {
-	useBlockProps,
-	store as blockEditorStore,
-} from "@wordpress/block-editor";
-import { useSelect, useDispatch } from "@wordpress/data";
-import { store as coreStore } from "@wordpress/core-data";
-import { PostRoot } from "./types";
-import { CategoryRoot } from "./CategoryType";
-import { AuthorRoot } from "./AuthorType";
-import WcbPostGridPanel_StyleTaxonomy from "./WcbPostGridPanel_StyleTaxonomy";
+import { useBlockProps } from "@wordpress/block-editor";
+import WcbPostGridPanel_StyleTaxonomy, {
+	WCB_POST_GRID_PANEL_STYLE_TAXONOMY_DEMO,
+} from "./WcbPostGridPanel_StyleTaxonomy";
 import MyCacheProvider from "../components/MyCacheProvider";
+import ServerSideRender from "@wordpress/server-side-render";
+import { Icon, file } from "@wordpress/icons";
+import { Z_INDEX_DEMO } from "../components/controls/MyZIndexControl/MyZIndexControl";
+import { RESPONSIVE_CONDITON_DEMO } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
+import { MY_BOX_SHADOW_CONTROL_DEMO } from "../components/controls/MyBoxShadowControl/types";
+import { MY_BORDER_CONTROL_DEMO } from "../components/controls/MyBorderControl/types";
 
 const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -65,7 +88,6 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 		style_taxonomy,
 	} = attributes;
 	//  COMMON HOOKS
-	// const { myCache, ref } = useCreateCacheEmotion();
 	const ref = useRef<HTMLDivElement>(null);
 
 	const wrapBlockProps = useBlockProps({ ref });
@@ -79,85 +101,47 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	} = useSetBlockPanelInfo(uniqueId);
 
 	const UNIQUE_ID = wrapBlockProps.id;
+
 	useEffect(() => {
+		if (uniqueId) {
+			return;
+		}
 		setAttributes({
 			uniqueId: UNIQUE_ID,
 		});
 	}, [UNIQUE_ID]);
 	//
+	useEffect(() => {
+		if (style_layout) {
+			return;
+		}
 
-	//
-	const { emptyMessage, queries } = general_sortingAndFiltering;
-	const {
-		isExcludeCurrentPost,
-		isOffsetStartingPost,
-		numberOfItems,
-		offsetPost,
-		order,
-		orderBy,
-		postType,
-		selectedAuthorId,
-		selectedTerms,
-		taxonomyRestbase,
-		taxonomySlug,
-	} = queries;
-	const { listPosts, categoriesList, authorList } = useSelect(
-		(select) => {
-			const {
-				getEntityRecords,
-				//  @ts-ignore
-				getUsers,
-			} = select(coreStore);
-			// const settings = select(blockEditorStore).getSettings();
-			const termIds =
-				selectedTerms && selectedTerms.length > 0
-					? selectedTerms.map((cat) => cat.id)
-					: [];
+		const DEFAULT: Omit<WcbBlockPostsGridAttrs, "uniqueId"> = {
+			general_sortingAndFiltering:
+				WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING_DEMO,
+			general_postContent: WCB_POST_GRID_PANEL_POST_CONTENT_DEMO,
+			general_postMeta: WCB_POST_GRID_PANEL_POST_META_DEMO,
+			general_postFeaturedImage: WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE_DEMO,
+			general_readmoreLink: WCB_POST_GRID_PANEL_READMORE_LINK_DEMO,
+			general_pagination: WCB_POST_GRID_PANEL_PAGINATION_DEMO,
+			//
+			style_layout: WCB_POST_GRID_PANEL_STYLE_LAYOUT_DEMO,
+			style_title: WCB_POST_GRID_PANEL_STYLE_TITLE_DEMO,
+			style_excerpt: WCB_POST_GRID_PANEL_STYLE_EXCERPT_DEMO,
+			style_taxonomy: WCB_POST_GRID_PANEL_STYLE_TAXONOMY_DEMO,
+			style_meta: WCB_POST_GRID_PANEL_STYLE_META_DEMO,
+			style_readmoreLink: WCB_POST_GRID_PANEL_STYLE_READMORE_LINK_DEMO,
+			style_pagination: WCB_POST_GRID_PANEL_STYLE_PAGINATION_DEMO,
+			style_featuredImage: WCB_POST_GRID_PANEL_STYLE_FEATURED_IMAGE_DEMO,
+			style_border: MY_BORDER_CONTROL_DEMO,
+			style_boxShadow: MY_BOX_SHADOW_CONTROL_DEMO,
+			//
+			advance_responsiveCondition: RESPONSIVE_CONDITON_DEMO,
+			advance_zIndex: Z_INDEX_DEMO,
+		};
 
-			const listPostsQuery = pickBy(
-				{
-					[taxonomyRestbase]: termIds,
-					author: selectedAuthorId || undefined,
-					order: order || undefined,
-					orderby: orderBy || undefined,
-					per_page: numberOfItems || undefined,
-					offset: offsetPost || undefined,
-					_embed: "wp:featuredmedia",
-				},
-				(value) => typeof value !== "undefined"
-			);
-
-			return {
-				listPosts: getEntityRecords<PostRoot>(
-					"postType",
-					postType,
-					listPostsQuery
-				),
-				categoriesList: getEntityRecords<CategoryRoot>("taxonomy", "category", {
-					per_page: -1,
-					context: "view",
-				}),
-				authorList: getUsers({
-					per_page: -1,
-					context: "view",
-				}) as AuthorRoot[] | undefined,
-			};
-		},
-		[
-			isExcludeCurrentPost,
-			isOffsetStartingPost,
-			numberOfItems,
-			offsetPost,
-			order,
-			orderBy,
-			postType,
-			selectedAuthorId,
-			selectedTerms,
-			taxonomyRestbase,
-		]
-	);
-
-	// console.log(11, { listPosts });
+		setAttributes({ ...DEFAULT });
+	}, [style_layout]);
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
 		switch (tab.name) {
@@ -369,100 +353,111 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 		}
 	};
 
-	const renderPaginationIcon = (isLeft = false) => {
-		const iconName = general_pagination.iconName;
-		if (iconName === "none") {
-			return null;
-		}
-		const svgIcon = WCB_POSTS_GRID_PAGINATION_PLANS_ICONS.filter(
-			(item) => item.name === iconName
-		)[0]?.icon;
-		if (!svgIcon) {
-			return null;
-		}
-		return (
-			<div
-				className={isLeft ? "rotate-180" : ""}
-				dangerouslySetInnerHTML={{ __html: svgIcon }}
-			></div>
-		);
-	};
+	const WcbAttrsForGlobalCss = useMemo((): WcbBlockPostsGridAttrs => {
+		return {
+			uniqueId,
+			general_sortingAndFiltering,
+			advance_responsiveCondition,
+			advance_zIndex,
+			general_postContent,
+			general_postMeta,
+			general_postFeaturedImage,
+			general_readmoreLink,
+			general_pagination,
+			style_layout,
+			style_title,
+			style_excerpt,
+			style_meta,
+			style_readmoreLink,
+			style_pagination,
+			style_featuredImage,
+			style_border,
+			style_boxShadow,
+			style_taxonomy,
+		};
+	}, [
+		uniqueId,
+		general_sortingAndFiltering,
+		advance_responsiveCondition,
+		advance_zIndex,
+		general_postContent,
+		general_postMeta,
+		general_postFeaturedImage,
+		general_readmoreLink,
+		general_pagination,
+		style_layout,
+		style_title,
+		style_excerpt,
+		style_meta,
+		style_readmoreLink,
+		style_pagination,
+		style_featuredImage,
+		style_border,
+		style_boxShadow,
+		style_taxonomy,
+	]);
+
+	const WcbAttrsForServerSide = useMemo(() => {
+		return {
+			uniqueId,
+			general_sortingAndFiltering,
+			general_pagination,
+			general_postContent,
+			general_postFeaturedImage,
+			general_postMeta,
+			general_readmoreLink,
+		};
+	}, [
+		uniqueId,
+		general_sortingAndFiltering,
+		general_pagination,
+		general_postContent,
+		general_postFeaturedImage,
+		general_postMeta,
+		general_readmoreLink,
+	]);
+
+	console.log(99, { uniqueId, WcbAttrsForServerSide });
 
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
-			{/* CONTROL SETTINGS */}
-			<HOCInspectorControls
-				tabDefaultActive={tabIsOpen}
-				renderTabPanels={renderTabBodyPanels}
-				uniqueId={uniqueId}
-			/>
-			<div
-				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-posts-grid__wrap ${UNIQUE_ID}`}
-				data-uniqueid={UNIQUE_ID}
-			>
+			<div {...wrapBlockProps}>
+				{/* CONTROL SETTINGS */}
+				<HOCInspectorControls
+					tabDefaultActive={tabIsOpen}
+					renderTabPanels={renderTabBodyPanels}
+					uniqueId={uniqueId}
+				/>
+
 				{/* CSS IN JS */}
-				<GlobalCss {...attributes} />
+				{uniqueId && !!style_layout && <GlobalCss {...WcbAttrsForGlobalCss} />}
 
-				{/* CHILD CONTENT  */}
-				<>
-					<div className="wcb-posts-grid__list-posts">
-						{listPosts && categoriesList && authorList && listPosts.length
-							? listPosts?.map((post) => (
-									<WcbPostCard
-										key={post.id}
-										postData={post}
-										authors={authorList || []}
-										categories={categoriesList || []}
-										postMetaSettings={general_postMeta}
-										postContentSettings={general_postContent}
-										featuredImageSettings={general_postFeaturedImage}
-										general_readmoreLink={general_readmoreLink}
-									/>
-							  ))
-							: null}
-					</div>
-
-					{!listPosts?.length ? (
-						<div className="py-5">
-							<p className="wcb-posts-grid__emptyMessage ">{emptyMessage}</p>
-						</div>
-					) : null}
-
-					{/* PAGINATIOn */}
-					{general_pagination.isShowPagination ? (
-						<div className="wcb-posts-grid__pagination">
-							<a href="" className="page-numbers prev">
-								{renderPaginationIcon()}
-								{!!general_pagination.previousText && (
-									<span>{general_pagination.previousText}</span>
-								)}
-							</a>
-							<div className="wcb-posts-grid__pagination-number">
-								<a className="page-numbers" href="">
-									{__("1", "wcb")}
-								</a>
-								<span className="page-numbers current">{__("2", "wcb")}</span>
-								<a className="page-numbers" href="">
-									{__("3", "wcb")}
-								</a>
-								<span className="page-numbers dots">{__("...", "wcb")}</span>
-								<a className="page-numbers" href="">
-									{__("8", "wcb")}
-								</a>
-							</div>
-							<a href="" className="page-numbers next">
-								{!!general_pagination.nextText && (
-									<span>{general_pagination.nextText}</span>
-								)}
-								{renderPaginationIcon()}
-							</a>
-						</div>
-					) : null}
-				</>
+				{uniqueId && !!style_layout && (
+					<ServerSideRender
+						block="wcb/posts-grid"
+						attributes={{ ...WcbAttrsForServerSide, uniqueId }}
+						EmptyResponsePlaceholder={EmptyPlaceholder}
+						LoadLoadingResponsePlaceholder={LoadingPlaceholder}
+					/>
+				)}
 			</div>
 		</MyCacheProvider>
 	);
 };
 
 export default Edit;
+
+const EmptyPlaceholder = () => (
+	<Placeholder
+		icon={<Icon icon={file} />}
+		label={__("Woostify block Products", "wcb")}
+		className="wc-block-products-grid wc-block-products-category"
+	>
+		{__("No products were found that matched your selection.", "wcb")}
+	</Placeholder>
+);
+const LoadingPlaceholder = () => (
+	<div>
+		<Spinner />
+	</div>
+);

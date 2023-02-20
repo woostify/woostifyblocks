@@ -108,8 +108,61 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
         register_block_type(
             WCB_BUILD_PATH . '/block-posts-grid',
             [
+                'attributes'      => array(
+                    'uniqueId'    => array(
+                        'type'      => 'string',
+                        'default'   => '',
+                    ),
+                    'general_sortingAndFiltering' => array(
+                        'type'      => 'object',
+                    ),
+                    'general_postContent' => array(
+                        'type'      => 'object',
+                    ),
+                    'general_postMeta' => array(
+                        'type'      => 'object',
+                    ),
+                    'general_postFeaturedImage' => array(
+                        'type'      => 'object',
+                    ),
+                    'general_readmoreLink' => array(
+                        'type'      => 'object',
+                    ),
+                    'general_pagination' => array(
+                        'type'      => 'object',
+                    ),
+                    'style_layout' => array(
+                        'type'      => 'object',
+                    ),
+                    'style_title' => array(
+                        'type'      => 'object',
+                    ),
+                    'style_excerpt' => array(
+                        'type'      => 'object',
+                    ),
+                    'style_taxonomy' => array(
+                        'type'      => 'object',
+                    ),
+                    'style_meta' => array(
+                        'type'      => 'object',
+                    ),
+                    'style_readmoreLink' => array(
+                        'type'      => 'object',
+                    ),
+                    'style_pagination' => array(
+                        'type'      => 'object',
+                    ),
+                    'style_featuredImage' => array(
+                        'type'      => 'object',
+                    ),
+                    'style_border' => array(
+                        'type'      => 'object',
+                    ),
+
+                ),
                 "render_callback"     => "wcb_block_posts_grid__renderCallback",
-                "ancestor"              => (($wcb_blocks_enable_disable['wcb/posts-grid'] ?? "") !== 'disabled') ? null : WCB_UNIQUE_NAME
+                "ancestor"              => (($wcb_blocks_enable_disable['wcb/posts-grid'] ?? "") !== 'disabled') ? null : WCB_UNIQUE_NAME,
+
             ]
         );
 

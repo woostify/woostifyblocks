@@ -2,18 +2,15 @@
 
 function wcb_block_products__renderCallback($attributes, $content)
 {
-    if (!is_admin()) {
-        wp_enqueue_script('wcb_block_products__renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-products/FrontendStyles.js', ["wp-element", "jquery"], null, true);
-    }
+    // if (!is_admin()) {
+    //     wp_enqueue_script('wcb_block_products__renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-products/FrontendStyles.js', ["wp-element", "jquery"], null, true);
+    // }
 
     $sortingAndFilteringAttrs = $attributes['general_sortingAndFiltering'] ?? [];
-    $contentAttrs = $attributes['general_content'] ?? [];
     $uniqueId =  $attributes['uniqueId'] ?? "";
 
     $queryArgs = wcb_block_products_parse_filterAttributes($sortingAndFilteringAttrs);
-
     // 
-    $content    = $content;
     $args = wcb_block_products_parse_query_args($queryArgs);
 
     ob_start();
