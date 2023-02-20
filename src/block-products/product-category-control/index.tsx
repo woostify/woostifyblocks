@@ -17,17 +17,35 @@ import {
 	SearchListItemsType,
 	SearchListItemType,
 } from "../search-list-control/types";
+import { ProductTaxOperator } from "../product-tag-control";
 
 interface ProductCategory extends SearchListItemType {}
 
+export const PRODUCT_CATS_OPERATOR_OPTIONS: {
+	label: string;
+	value: ProductTaxOperator;
+}[] = [
+	{
+		label: __("Any selected categories", "wcb"),
+		value: "any",
+	},
+	{
+		label: __("All selected categories", "wcb"),
+		value: "all",
+	},
+	{
+		label: __("Not in all selected categories", "wcb"),
+		value: "not_in",
+	},
+];
 interface Props {
 	onChange?: (data: SearchListItemsType) => void;
 	selected?: ProductCategory["id"][];
 	isCompact?: boolean;
 	isSingle?: boolean;
 	showReviewCount?: boolean;
-	operator: string;
-	onOperatorChange?: (data: any) => void;
+	operator: ProductTaxOperator;
+	onOperatorChange?: (o: ProductTaxOperator) => void;
 }
 
 export interface WError {
@@ -149,6 +167,7 @@ const ProductCategoryControl: FC<Props> = ({
 				className="woocommerce-product-categories"
 				list={categories}
 				isLoading={isLoading}
+				// @ts-ignore
 				selected={selected
 					.map((id) => categories.find((cat) => cat.id === id))
 					.filter(Boolean)}
@@ -162,26 +181,14 @@ const ProductCategoryControl: FC<Props> = ({
 				isSingle={isSingle}
 			/>
 			{!!onOperatorChange && (
-				<div hidden={selected.length < 2}>
+				<div hidden={selected.length < 1}>
 					<SelectControl
 						className="woocommerce-product-categories__operator"
 						label={__("Display products matching", "wcb")}
-						help={__(
-							"Pick at least two categories to use this setting.",
-							"wcb"
-						)}
+						help={__("Select the operator of the category items.", "wcb")}
 						value={operator}
 						onChange={onOperatorChange}
-						options={[
-							{
-								label: __("Any selected categories", "wcb"),
-								value: "any",
-							},
-							{
-								label: __("All selected categories", "wcb"),
-								value: "all",
-							},
-						]}
+						options={PRODUCT_CATS_OPERATOR_OPTIONS}
 					/>
 				</div>
 			)}

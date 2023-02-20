@@ -5,6 +5,8 @@ function wcb_block_products__renderCallback($attributes, $content)
     // if (!is_admin()) {
     //     wp_enqueue_script('wcb_block_products__renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-products/FrontendStyles.js', ["wp-element", "jquery"], null, true);
     // }
+    wp_enqueue_script__block_commoncss_frontend_styles();
+
 
     $sortingAndFilteringAttrs = $attributes['general_sortingAndFiltering'] ?? [];
     $uniqueId =  $attributes['uniqueId'] ?? "";
@@ -337,7 +339,7 @@ if (!function_exists("wcb_block_products_set_categories_query_args")) :
                 'taxonomy'         => 'product_cat',
                 'terms'            => $categories,
                 'field'            => 'term_id',
-                'operator'         => 'all' === $attributes['catOperator'] ? 'AND' : 'IN',
+                'operator'         => wcb_block_products_tax_operator_mapping($attributes['catOperator'] ?? null),
 
                 /*
 				 * When cat_operator is AND, the children categories should be excluded,
@@ -357,7 +359,7 @@ if (!function_exists("wcb_block_products_set_tags_query_args")) :
                 'taxonomy' => 'product_tag',
                 'terms'    => array_map('absint', $attributes['tags']),
                 'field'    => 'term_id',
-                'operator' => isset($attributes['tagOperator']) && 'any' === $attributes['tagOperator'] ? 'IN' : 'AND',
+                'operator' => wcb_block_products_tax_operator_mapping($attributes['tagOperator'] ?? null),
             );
         }
     }
@@ -374,7 +376,7 @@ if (!function_exists("wcb_block_products_set_attributes_query_args")) :
                 'taxonomy' => $taxonomy,
                 'terms'    => array_map('absint', $terms),
                 'field'    => 'term_id',
-                'operator' => 'all' === $attributes['attrOperator'] ? 'AND' : 'IN',
+                'operator' => wcb_block_products_tax_operator_mapping($attributes['attrOperator'] ?? null)
             );
         }
     }
@@ -417,5 +419,18 @@ if (!function_exists("wcb_block_products_set_stock_status_query_args")) :
             $query_args['meta_query'] = $meta_query;
         }
         // phpcs:enable WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+    }
+endif;
+
+
+if (!function_exists('wcb_block_products_tax_operator_mapping')) :
+    function wcb_block_products_tax_operator_mapping(string $operator = "in")
+    {
+        $operator_mapping = [
+            'in'     => 'IN',
+            'not_in' => 'NOT IN',
+            'all'    => 'AND',
+        ];
+        return $operator_mapping[$operator] ?? "IN";
     }
 endif;

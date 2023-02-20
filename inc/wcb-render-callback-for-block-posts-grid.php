@@ -5,6 +5,8 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
     // if (!is_admin()) {
     //     wp_enqueue_script('wcb_block_posts_grid__renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-posts-grid/FrontendStyles.js', array('wp-element'), null, true);
     // }
+    wp_enqueue_script__block_commoncss_frontend_styles();
+
 
     $DEFAULT_ATTRS = [
         'uniqueId' => 'xxblock-ea687c0d-0eda-4ebf-a7c2-cbcaca07bbe8-xx',

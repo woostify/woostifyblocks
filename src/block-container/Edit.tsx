@@ -64,7 +64,7 @@ export const getGapStyleFromGapjObj = ({ colunmGap, rowGap }) => {
 
 const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
-	const { uniqueId } = attributes;
+	const { uniqueId, containerClassName } = attributes;
 
 	// const { myCache, ref } = useCreateCacheEmotion();
 	const ref = useRef<HTMLDivElement>(null);
@@ -95,6 +95,23 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		},
 		[clientId]
 	);
+	const { general_container, styles_background, styles_dimensions } =
+		attributes;
+	const { containerWidthType, htmlTag } = general_container;
+	useEffect(() => {
+		let cl =
+			containerWidthType === "Full Width"
+				? "alignfull"
+				: containerWidthType === "Boxed"
+				? "alignwide"
+				: "";
+
+		if (hasParent) {
+			cl = "is_wcb_container_child";
+		}
+
+		setAttributes({ containerClassName: cl });
+	}, [hasParent, containerWidthType]);
 
 	//
 
@@ -254,23 +271,9 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		}
 	};
 
-	const { general_container, styles_background, styles_dimensions } =
-		attributes;
 	const ALLOWED_BLOCKS = null;
 	// const ALLOWED_BLOCKS = ["wcb/container-box"];
 
-	// ====== WRAP CLASSES
-	const { htmlTag: HtmlTag = "div", containerWidthType } = general_container;
-	let containerWidthTypeClass =
-		containerWidthType === "Full Width"
-			? "alignfull"
-			: containerWidthType === "Boxed"
-			? "alignwide"
-			: "";
-
-	if (hasParent) {
-		containerWidthTypeClass = "";
-	}
 	// ====== END WRAP CLASSES
 
 	// MAIN STYLES - CLASSES
@@ -294,9 +297,7 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 
 	const blockWrapProps = useBlockProps({
 		ref,
-		className: `wcb-container__wrap ${uniqueId} ${containerWidthTypeClass} ${
-			hasParent ? "is_wcb_container_child" : ""
-		}`.trim(),
+		className: `wcb-container__wrap ${uniqueId} ${containerClassName}`.trim(),
 	});
 	return (
 		<MyCacheProvider uniqueKey={clientId}>

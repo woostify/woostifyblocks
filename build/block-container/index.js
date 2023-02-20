@@ -2641,7 +2641,8 @@ const Edit = props => {
     isSelected
   } = props;
   const {
-    uniqueId
+    uniqueId,
+    containerClassName
   } = attributes;
 
   // const { myCache, ref } = useCreateCacheEmotion();
@@ -2672,6 +2673,24 @@ const Edit = props => {
       hasInnerBlocks: select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.store).getBlocks(clientId).length > 0
     };
   }, [clientId]);
+  const {
+    general_container,
+    styles_background,
+    styles_dimensions
+  } = attributes;
+  const {
+    containerWidthType,
+    htmlTag
+  } = general_container;
+  (0,react__WEBPACK_IMPORTED_MODULE_6__.useEffect)(() => {
+    let cl = containerWidthType === "Full Width" ? "alignfull" : containerWidthType === "Boxed" ? "alignwide" : "";
+    if (hasParent) {
+      cl = "is_wcb_container_child";
+    }
+    setAttributes({
+      containerClassName: cl
+    });
+  }, [hasParent, containerWidthType]);
 
   //
 
@@ -2779,23 +2798,9 @@ const Edit = props => {
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null);
     }
   };
-  const {
-    general_container,
-    styles_background,
-    styles_dimensions
-  } = attributes;
   const ALLOWED_BLOCKS = null;
   // const ALLOWED_BLOCKS = ["wcb/container-box"];
 
-  // ====== WRAP CLASSES
-  const {
-    htmlTag: HtmlTag = "div",
-    containerWidthType
-  } = general_container;
-  let containerWidthTypeClass = containerWidthType === "Full Width" ? "alignfull" : containerWidthType === "Boxed" ? "alignwide" : "";
-  if (hasParent) {
-    containerWidthTypeClass = "";
-  }
   // ====== END WRAP CLASSES
 
   // MAIN STYLES - CLASSES
@@ -2825,7 +2830,7 @@ const Edit = props => {
 
   const blockWrapProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
     ref,
-    className: `wcb-container__wrap ${uniqueId} ${containerWidthTypeClass} ${hasParent ? "is_wcb_container_child" : ""}`.trim()
+    className: `wcb-container__wrap ${uniqueId} ${containerClassName}`.trim()
   });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_24__["default"], {
     uniqueKey: clientId
@@ -3517,7 +3522,8 @@ function save(_ref) {
     general_flexProperties,
     styles_border,
     styles_boxShadow,
-    styles_color
+    styles_color,
+    containerClassName
   } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
     className: "wcb-container__inner"
@@ -3527,7 +3533,12 @@ function save(_ref) {
     htmlTag: HtmlTag = "div",
     containerWidthType
   } = general_container;
-  const containerWidthTypeClass = containerWidthType === "Full Width" ? "alignfull" : containerWidthType === "Boxed" ? "alignwide" : "";
+  // const containerWidthTypeClass =
+  // 	containerWidthType === "Full Width"
+  // 		? "alignfull"
+  // 		: containerWidthType === "Boxed"
+  // 		? "alignwide"
+  // 		: "";
   const {
     colunmGap,
     rowGap
@@ -3546,13 +3557,14 @@ function save(_ref) {
     general_flexProperties,
     styles_border,
     styles_boxShadow,
-    styles_color
+    styles_color,
+    containerClassName
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_8__["default"], {
     attributes: newAttrs,
     uniqueId: uniqueId,
     HtmlTag: HtmlTag,
-    className: `wcb-container__wrap ${containerWidthTypeClass}`
+    className: `wcb-container__wrap ${containerClassName}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_VideoBackgroundByBgControl__WEBPACK_IMPORTED_MODULE_6__["default"], {
     bgType: styles_background.bgType,
     videoData: styles_background.videoData
@@ -3596,6 +3608,10 @@ __webpack_require__.r(__webpack_exports__);
 
 const blokcContainerAttrs = {
   uniqueId: {
+    type: "string",
+    default: ""
+  },
+  containerClassName: {
     type: "string",
     default: ""
   },
@@ -10731,7 +10747,7 @@ function combine (array, callback) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/container","version":"0.1.0","title":"Container","category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-layout","description":"Create beautiful layouts with flexbox powered container block.","supports":{"html":false},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./FrontendStyles.js"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/container","version":"0.1.0","title":"Container","category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-layout","description":"Create beautiful layouts with flexbox powered container block.","supports":{"html":false},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

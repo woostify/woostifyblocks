@@ -417,8 +417,6 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 		general_readmoreLink,
 	]);
 
-	console.log(99, { uniqueId, WcbAttrsForServerSide });
-
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div {...wrapBlockProps}>

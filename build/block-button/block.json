@@ -4,7 +4,7 @@
   "name": "wcb/button",
   "version": "0.1.0",
   "title": "Button",
-  "icon": "button - wcb-block-editor-block-icon  text-xl",
+  "icon": "button - wcb-block-editor-block-icon text-xl",
   "parent": [
     "wcb/buttons"
   ],
@@ -16,6 +16,5 @@
   "textdomain": "wcb-blocks",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css",
-  "viewScript": "file:./FrontendStyles.js"
+  "style": "file:./style-index.css"
 }

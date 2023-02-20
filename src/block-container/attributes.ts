@@ -33,6 +33,7 @@ import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 
 export interface BlockWCBContainerAttrs {
 	uniqueId: string;
+	containerClassName: string;
 	isShowVariations: boolean;
 	general_container: MyContainerControlData;
 	general_flexProperties: MyFlexPropertiesControlData;
@@ -58,6 +59,10 @@ export type AttrsGenericType<T> = {
 
 export const blokcContainerAttrs: AttrsGenericType<BlockWCBContainerAttrs> = {
 	uniqueId: {
+		type: "string",
+		default: "",
+	},
+	containerClassName: {
 		type: "string",
 		default: "",
 	},

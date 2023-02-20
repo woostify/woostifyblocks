@@ -30,18 +30,19 @@ export default function save({
 		styles_border,
 		styles_boxShadow,
 		styles_color,
+		containerClassName,
 	} = attributes;
 
 	const blockProps = useBlockProps.save({ className: "wcb-container__inner" });
 	const innerBlocksProps = useInnerBlocksProps.save(blockProps);
 
 	const { htmlTag: HtmlTag = "div", containerWidthType } = general_container;
-	const containerWidthTypeClass =
-		containerWidthType === "Full Width"
-			? "alignfull"
-			: containerWidthType === "Boxed"
-			? "alignwide"
-			: "";
+	// const containerWidthTypeClass =
+	// 	containerWidthType === "Full Width"
+	// 		? "alignfull"
+	// 		: containerWidthType === "Boxed"
+	// 		? "alignwide"
+	// 		: "";
 	const { colunmGap, rowGap } = styles_dimensions;
 	const GAPS_VARIABLES = getGapStyleFromGapjObj({ colunmGap, rowGap });
 
@@ -56,13 +57,14 @@ export default function save({
 		styles_border,
 		styles_boxShadow,
 		styles_color,
+		containerClassName,
 	};
 	return (
 		<SaveCommon
 			attributes={newAttrs}
 			uniqueId={uniqueId}
 			HtmlTag={HtmlTag}
-			className={`wcb-container__wrap ${containerWidthTypeClass}`}
+			className={`wcb-container__wrap ${containerClassName}`}
 		>
 			<>
 				{/*  */}

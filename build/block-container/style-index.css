@@ -11,6 +11,12 @@
   display: flex;
   flex: 1 1 0%;
   margin: 0 auto;
+  /* .wcb-container__wrap {
+  	max-width: unset;
+  	flex: 1 1 auto;
+  	margin-right: initial;
+  	margin-left: initial;
+  } */
 }
 .wcb-container__inner > * {
   width: 100%;
@@ -18,6 +24,8 @@
 .wcb-container__inner .wcb-container__wrap.is_wcb_container_child {
   max-width: unset;
   flex: 1 1 auto;
+  /* margin-right: initial;
+  margin-left: initial; */
 }
 
 /*# sourceMappingURL=style-index.css.map*/

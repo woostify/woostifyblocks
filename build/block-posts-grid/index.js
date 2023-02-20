@@ -3023,17 +3023,13 @@ const Edit = props => {
       general_readmoreLink
     };
   }, [uniqueId, general_sortingAndFiltering, general_pagination, general_postContent, general_postFeaturedImage, general_postMeta, general_readmoreLink]);
-  console.log(99, {
-    uniqueId,
-    WcbAttrsForServerSide
-  });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_26__["default"], {
     uniqueKey: clientId
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", wrapBlockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_3__["default"], {
     tabDefaultActive: tabIsOpen,
     renderTabPanels: renderTabBodyPanels,
     uniqueId: uniqueId
-  }), uniqueId && !!style_layout && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_4__["default"], WcbAttrsForGlobalCss), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, uniqueId), uniqueId && !!style_layout && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)((_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_27___default()), {
+  }), uniqueId && !!style_layout && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_4__["default"], WcbAttrsForGlobalCss), uniqueId && !!style_layout && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)((_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_27___default()), {
     block: "wcb/posts-grid",
     attributes: {
       ...WcbAttrsForServerSide,
@@ -13223,7 +13219,7 @@ function combine (array, callback) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/posts-grid","version":"0.1.0","title":"Posts grid","category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-grid-alt","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./FrontendStyles.js"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/posts-grid","version":"0.1.0","title":"Posts grid","category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-grid-alt","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ }),
 

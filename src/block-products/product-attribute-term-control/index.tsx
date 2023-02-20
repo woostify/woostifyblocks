@@ -14,6 +14,25 @@ import SearchListItem from "../search-list-control/item";
 import ExpandableSearchListItem from "../expandable-search-list-item/expandable-search-list-item";
 import { SearchListControl } from "../search-list-control/search-list-control";
 import withAttributes from "../hocs/with-attributes";
+import { ProductTaxOperator } from "../product-tag-control";
+
+export const PRODUCT_ATTRS_OPERATOR_OPTIONS: {
+	label: string;
+	value: ProductTaxOperator;
+}[] = [
+	{
+		label: __("Any selected attributes", "wcb"),
+		value: "any",
+	},
+	{
+		label: __("All selected attributes", "wcb"),
+		value: "all",
+	},
+	{
+		label: __("Not in all selected attributes", "wcb"),
+		value: "not_in",
+	},
+];
 
 const ProductAttributeTermControl = ({
 	attributes,
@@ -62,7 +81,7 @@ const ProductAttributeTermControl = ({
 					name={`attributes-${instanceId}`}
 					countLabel={sprintf(
 						/* translators: %d is the count of terms. */
-						_n("%d term", "%d terms", item.count, "woocommerce"),
+						_n("%d term", "%d terms", item.count, "wcb"),
 						item.count
 					)}
 					aria-label={sprintf(
@@ -71,7 +90,7 @@ const ProductAttributeTermControl = ({
 							"%1$s, has %2$d term",
 							"%1$s, has %2$d terms",
 							item.count,
-							"woocommerce"
+							"wcb"
 						),
 						item.name,
 						item.count
@@ -89,7 +108,7 @@ const ProductAttributeTermControl = ({
 				className={classNames(...classes, "has-count")}
 				countLabel={sprintf(
 					/* translators: %d is the count of products. */
-					_n("%d product", "%d products", item.count, "woocommerce"),
+					_n("%d product", "%d products", item.count, "wcb"),
 					item.count
 				)}
 				aria-label={sprintf(
@@ -98,7 +117,7 @@ const ProductAttributeTermControl = ({
 						"%1$s, has %2$d product",
 						"%1$s, has %2$d products",
 						item.count,
-						"woocommerce"
+						"wcb"
 					),
 					itemName,
 					item.count
@@ -111,20 +130,17 @@ const ProductAttributeTermControl = ({
 	const currentList = [...attributes, ...currentTerms];
 
 	const messages = {
-		clear: __("Clear all product attributes", "woocommerce"),
-		list: __("Product Attributes", "woocommerce"),
-		noItems: __(
-			"Your store doesn't have any product attributes.",
-			"woocommerce"
-		),
-		search: __("Search for product attributes", "woocommerce"),
+		clear: __("Clear all product attributes", "wcb"),
+		list: __("Product Attributes", "wcb"),
+		noItems: __("Your store doesn't have any product attributes.", "wcb"),
+		search: __("Search for product attributes", "wcb"),
 		selected: (n) =>
 			sprintf(
 				/* translators: %d is the count of attributes selected. */
-				_n("%d attribute selected", "%d attributes selected", n, "woocommerce"),
+				_n("%d attribute selected", "%d attributes selected", n, "wcb"),
 				n
 			),
-		updated: __("Product attribute search results updated.", "woocommerce"),
+		updated: __("Product attribute search results updated.", "wcb"),
 	};
 
 	if (error) {
@@ -150,26 +166,14 @@ const ProductAttributeTermControl = ({
 				isSingle={false}
 			/>
 			{!!onOperatorChange && (
-				<div hidden={selected.length < 2}>
+				<div hidden={selected.length < 1}>
 					<SelectControl
 						className="woocommerce-product-attributes__operator"
-						label={__("Display products matching", "woocommerce")}
-						help={__(
-							"Pick at least two attributes to use this setting.",
-							"woocommerce"
-						)}
+						label={__("Display products matching", "wcb")}
+						help={__("Select the operator of the attribute items.", "wcb")}
 						value={operator}
 						onChange={onOperatorChange}
-						options={[
-							{
-								label: __("Any selected attributes", "woocommerce"),
-								value: "any",
-							},
-							{
-								label: __("All selected attributes", "woocommerce"),
-								value: "all",
-							},
-						]}
+						options={PRODUCT_ATTRS_OPERATOR_OPTIONS}
 					/>
 				</div>
 			)}

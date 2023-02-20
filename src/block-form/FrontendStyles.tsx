@@ -1,47 +1,12 @@
-import React, { FC } from "react";
-import ReactDOM from "react-dom";
 import { WcbAttrs } from "./attributes";
-import GlobalCss from "./GlobalCss";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 
 interface Props extends WcbAttrs {}
 
-const FrontendStyles: FC<Props> = (attrs) => {
-	return <GlobalCss {...attrs} />;
-};
-
-//
-const divsToUpdate = document.querySelectorAll(
-	".wcb-form__wrap.wcb-update-div"
-);
-
-divsToUpdate.forEach((div) => {
-	// Handle CSS IN JS THIS block
-	const preEl = div.querySelector(
-		`pre[data-wcb-block-attrs=${div.id}]`
-	) as HTMLElement | null;
-
-	const divRenderCssEl = div.querySelector(
-		`div[data-wcb-global-styles=${div.id}]`
-	) as HTMLElement | null;
-
-	if (!preEl || !preEl.innerText || !divRenderCssEl) {
-		return;
-	}
-
-	const props = JSON.parse(preEl?.innerText);
-	//
-	// Handle when submit this Form
-	handleSubmitForm(div.id, props);
-	//
-	ReactDOM.render(<FrontendStyles {...props} />, divRenderCssEl);
-	//
-	div.classList.remove("wcb-update-div");
-	preEl.remove();
-});
-
 // --------------------------- FORM AJAX
-function handleSubmitForm(formId: string, props: Props) {
+export function handleSubmitFormForWcbForm(div: Element, props: Props) {
+	const formId = div.id;
+
 	let $ = jQuery;
 	if (typeof jQuery !== "function") {
 		return;

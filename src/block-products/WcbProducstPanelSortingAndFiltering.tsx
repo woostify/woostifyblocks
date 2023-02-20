@@ -21,7 +21,7 @@ import {
 	get_STOCK_STATUS_OPTIONS,
 } from "./constants";
 import ProductCategoryControl from "./product-category-control";
-import ProductTagControl from "./product-tag-control";
+import ProductTagControl, { ProductTaxOperator } from "./product-tag-control";
 import MyDisclosure from "../components/controls/MyDisclosure";
 import ProductAttributeTermControl from "./product-attribute-term-control";
 import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
@@ -49,9 +49,9 @@ export interface WCB_PRODUCTS_PANEL_SORTINGANDFILTERING {
 	tags: string[];
 	attributes: any[];
 	keyword: string;
-	catOperator: string;
-	tagOperator: string;
-	attrOperator: string;
+	catOperator: ProductTaxOperator;
+	tagOperator: ProductTaxOperator;
+	attrOperator: ProductTaxOperator;
 	orderBy: ProductOrderBy;
 	order: "DESC" | "ASC";
 	numberOfColumn: HasResponsive<number>;
@@ -262,7 +262,10 @@ const WcbProducstPanelSortingAndFiltering: FC<Props> = ({
 						}}
 						operator={panelData.attrOperator}
 						onOperatorChange={(value = "any") =>
-							setAttr__({ ...panelData, attrOperator: value })
+							setAttr__({
+								...panelData,
+								attrOperator: value as ProductTaxOperator,
+							})
 						}
 						isCompact
 					/>
