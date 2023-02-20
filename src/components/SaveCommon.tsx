@@ -35,6 +35,7 @@ const SaveCommon: FC<Props> = ({
 			className={`${className} ${uniqueId} wcb-update-div`}
 			id={uniqueId}
 			data-uniqueid={uniqueId}
+			data-is-wcb-save-common
 		>
 			{children}
 			{/*  */}
