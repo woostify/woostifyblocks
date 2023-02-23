@@ -67,7 +67,7 @@ const App: FC<Props> = ({
 	};
 
 	return (
-		<div className="">
+		<div className="bg-[#F0F0F1]">
 			<Nav
 				currentPath={currentPath}
 				onChangePath={(path) => {
@@ -76,7 +76,7 @@ const App: FC<Props> = ({
 				}}
 			/>
 
-			<div className="container ">
+			<div className="container pb-14">
 				{currentPath !== "welcome" && (
 					<Heading
 						children={

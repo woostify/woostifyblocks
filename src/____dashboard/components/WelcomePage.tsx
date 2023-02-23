@@ -3,10 +3,9 @@ import React from "react";
 const WelcomePage = () => {
 	return (
 		<div className="mt-10">
-			<h1 className="sr-only">Page title</h1>
 			<div className="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-5 xl:gap-10">
 				<div className="grid grid-cols-1 gap-4 lg:col-span-2 h-full">
-					<div className="flex flex-col justify-center h-full rounded-md bg-white p-10 pt-[2.2rem] border border-slate-200">
+					<div className="flex flex-col justify-center h-full rounded-2xl bg-white p-10 pt-[2.2rem] border border-slate-200">
 						<h2 className="text-slate-800 text-[1.8rem] leading-[2.4rem] pb-3 font-medium text-left">
 							Welcome to Woostify!
 						</h2>
@@ -26,8 +25,8 @@ const WelcomePage = () => {
 						</div>
 					</div>
 				</div>
-				<div className="h-full grid gap-4 lg:gap-5 xl:gap-10 ">
-					<div className=" border border-slate-200 box-border rounded-md bg-white shadow-sm overflow-hidden transition hover:shadow-hover">
+				<div className="h-full grid gap-4 lg:gap-5 xl:gap-10">
+					<div className="border border-slate-200 box-border rounded-2xl bg-white shadow-sm overflow-hidden transition hover:shadow-hover">
 						<div className="p-8 pr-10">
 							<h3 className="text-slate-800 text-xl font-medium pb-2">
 								Knowledge Base
@@ -55,7 +54,7 @@ const WelcomePage = () => {
 							</a>
 						</div>
 					</div>
-					<div className=" border border-slate-200 box-border rounded-md bg-white shadow-sm overflow-hidden transition hover:shadow-hover">
+					<div className="border border-slate-200 box-border rounded-2xl bg-white shadow-sm overflow-hidden transition hover:shadow-hover">
 						<div className="p-8 pr-10">
 							<h3 className="text-slate-800 text-xl font-medium pb-2">
 								Get 5-star Support
@@ -83,7 +82,7 @@ const WelcomePage = () => {
 							</a>
 						</div>
 					</div>
-					<div className=" border border-slate-200 box-border rounded-md bg-white shadow-sm overflow-hidden transition hover:shadow-hover">
+					<div className="border border-slate-200 box-border rounded-2xl bg-white shadow-sm overflow-hidden transition hover:shadow-hover">
 						<div className="p-8 pr-10">
 							<h3 className="text-slate-800 text-xl font-medium pb-2">
 								Join the Community
