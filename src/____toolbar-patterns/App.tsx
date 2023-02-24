@@ -34,15 +34,15 @@ const myInterval = setInterval(() => {
 	}
 
 	const modalRoot = document.querySelector(
-		`.edit-post-header__toolbar .edit-post-header-toolbar `
+		".edit-post-header__toolbar .edit-post-header-toolbar"
 	) as HTMLElement | null;
-	const defaultToolbar = document.querySelector(
-		`.edit-post-header__toolbar .edit-post-header-toolbar__left`
+	const wpAnchorDiv = document.querySelector(
+		".edit-post-header__toolbar .edit-post-header-toolbar__left .edit-post-header-toolbar__inserter-toggle"
 	) as HTMLElement | null;
 
-	console.log(1, "IS_TOOLBAR_RENDERED", { modalRoot, defaultToolbar });
+	console.log("____wcb_toolbar_patterns", { modalRoot, wpAnchorDiv });
 
-	if (modalRoot && defaultToolbar) {
+	if (modalRoot && !modalRoot.id && wpAnchorDiv && !wpAnchorDiv.id) {
 		IS_TOOLBAR_RENDERED = true;
 		if (!document.getElementById("wcb-block-templates-button-wrap")) {
 			let newDiv = document.createElement("div");
@@ -56,6 +56,6 @@ const myInterval = setInterval(() => {
 			);
 		}
 	}
-}, 1000);
+}, 500);
 
 export default App;

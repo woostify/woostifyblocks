@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { initCarouselForWcbFaq } from "../block-faq/FrontendStyles";
 import { handleSubmitFormForWcbForm } from "../block-form/FrontendStyles";
 import { initCarouselForWcbTestimonials } from "../block-testimonials/FrontendStyles";
+import { initCarouselForWcbProducts } from "../block-products/FrontendStyles";
 
 const classes: {
 	D: string;
@@ -24,6 +25,7 @@ const classes: {
 	{
 		D: ".wcb-products__wrap.wcb-update-div",
 		C: React.lazy(() => import("../block-products/GlobalCss")),
+		F: initCarouselForWcbProducts,
 	},
 	{
 		D: ".wcb-posts-grid__wrap.wcb-update-div",

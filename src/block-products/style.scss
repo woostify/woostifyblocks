@@ -1,8 +1,7 @@
+@import "~scroll-snap-slider/src/scroll-snap-slider.css";
+
 .wcb-products__wrap {
 	display: none;
-}
-
-.wcb-products__list {
 }
 
 .wcb-products__product {
@@ -30,7 +29,14 @@
 	}
 	.wcb-products__product-onsale {
 		border: none;
+		padding: 0.25rem 0.75rem;
+		text-align: center;
+		text-transform: uppercase;
 	}
+}
+
+.wcb-products__product-onsale {
+	display: inline-block;
 }
 
 .wcb-products__product-featured {

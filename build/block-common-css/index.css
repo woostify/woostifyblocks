@@ -1149,6 +1149,9 @@ video {
 .z-\[1\] {
   z-index: 1 !important;
 }
+.z-0 {
+  z-index: 0 !important;
+}
 .z-50 {
   z-index: 50 !important;
 }
@@ -1374,6 +1377,10 @@ video {
   margin-top: 1.25rem !important;
   margin-bottom: 1.25rem !important;
 }
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 .mx-2 {
   margin-left: 0.5rem !important;
   margin-right: 0.5rem !important;
@@ -1455,6 +1462,9 @@ video {
 .mt-1\.5 {
   margin-top: 0.375rem !important;
 }
+.mt-2 {
+  margin-top: 0.5rem !important;
+}
 .ml-6 {
   margin-left: 1.5rem !important;
 }
@@ -1463,9 +1473,6 @@ video {
 }
 .mt-5 {
   margin-top: 1.25rem !important;
-}
-.mt-2 {
-  margin-top: 0.5rem !important;
 }
 .mb-2 {
   margin-bottom: 0.5rem !important;
@@ -1682,6 +1689,9 @@ video {
 }
 .w-6 {
   width: 1.5rem !important;
+}
+.w-12 {
+  width: 3rem !important;
 }
 .w-px {
   width: 1px !important;
@@ -2077,9 +2087,6 @@ video {
 .flex-nowrap {
   flex-wrap: nowrap !important;
 }
-.items-start {
-  align-items: flex-start !important;
-}
 .items-center {
   align-items: center !important;
 }
@@ -2112,6 +2119,9 @@ video {
 }
 .gap-6 {
   gap: 1.5rem !important;
+}
+.gap-5 {
+  gap: 1.25rem !important;
 }
 .gap-4 {
   gap: 1rem !important;
@@ -2276,11 +2286,11 @@ video {
 .rounded-full {
   border-radius: var(--radius-full) !important;
 }
-.\!rounded-full {
-  border-radius: var(--radius-full) !important;
-}
 .rounded-2xl {
   border-radius: var(--radius-2xl) !important;
+}
+.\!rounded-full {
+  border-radius: var(--radius-full) !important;
 }
 .rounded-b-none {
   border-bottom-right-radius: 0px !important;
@@ -2394,10 +2404,6 @@ video {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(241 245 249 / var(--tw-bg-opacity)) !important;
 }
-.bg-\[\#F0F0F1\] {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(240 240 241 / var(--tw-bg-opacity)) !important;
-}
 .bg-red-500 {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(239 68 68 / var(--tw-bg-opacity)) !important;
@@ -2437,6 +2443,10 @@ video {
 }
 .bg-slate-100\/80 {
   background-color: rgb(241 245 249 / 0.8) !important;
+}
+.bg-indigo-600 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(79 70 229 / var(--tw-bg-opacity)) !important;
 }
 .bg-sky-600 {
   --tw-bg-opacity: 1 !important;
@@ -2624,14 +2634,8 @@ video {
 .pt-\[2\.2rem\] {
   padding-top: 2.2rem !important;
 }
-.pb-7 {
-  padding-bottom: 1.75rem !important;
-}
 .pr-10 {
   padding-right: 2.5rem !important;
-}
-.pb-2 {
-  padding-bottom: 0.5rem !important;
 }
 .pt-2\.5 {
   padding-top: 0.625rem !important;
@@ -2864,6 +2868,14 @@ video {
   --tw-text-opacity: 1 !important;
   color: rgb(71 85 105 / var(--tw-text-opacity)) !important;
 }
+.text-gray-400 {
+  --tw-text-opacity: 1 !important;
+  color: rgb(156 163 175 / var(--tw-text-opacity)) !important;
+}
+.text-gray-900 {
+  --tw-text-opacity: 1 !important;
+  color: rgb(17 24 39 / var(--tw-text-opacity)) !important;
+}
 .text-slate-700 {
   --tw-text-opacity: 1 !important;
   color: rgb(51 65 85 / var(--tw-text-opacity)) !important;
@@ -2903,10 +2915,6 @@ video {
   --tw-text-opacity: 1 !important;
   color: rgb(0 0 0 / var(--tw-text-opacity)) !important;
 }
-.text-gray-900 {
-  --tw-text-opacity: 1 !important;
-  color: rgb(17 24 39 / var(--tw-text-opacity)) !important;
-}
 .text-blue-600 {
   --tw-text-opacity: 1 !important;
   color: rgb(37 99 235 / var(--tw-text-opacity)) !important;
@@ -2944,9 +2952,6 @@ video {
 }
 .line-through {
   text-decoration-line: line-through !important;
-}
-.no-underline {
-  text-decoration-line: none !important;
 }
 .opacity-0 {
   opacity: 0 !important;
@@ -18965,6 +18970,10 @@ h4 {
 .hover\:bg-slate-50:hover {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(248 250 252 / var(--tw-bg-opacity)) !important;
+}
+.hover\:bg-indigo-700:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(67 56 202 / var(--tw-bg-opacity)) !important;
 }
 .hover\:bg-black\/10:hover {
   background-color: rgb(0 0 0 / 0.1) !important;
@@ -52321,9 +52330,6 @@ h4 {
   .lg\:col-span-9 {
     grid-column: span 9 / span 9 !important;
   }
-  .lg\:col-span-2 {
-    grid-column: span 2 / span 2 !important;
-  }
   .lg\:m-1 {
     margin: 0.25rem !important;
   }
@@ -69308,6 +69314,9 @@ h4 {
   }
   .xl\:gap-10 {
     gap: 2.5rem !important;
+  }
+  .xl\:gap-8 {
+    gap: 2rem !important;
   }
   .xl\:gap-x-8 {
     -moz-column-gap: 2rem !important;

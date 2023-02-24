@@ -63,6 +63,7 @@ import WcbProductsPanel_StyleRating, {
 import { MY_BORDER_CONTROL_DEMO } from "../components/controls/MyBorderControl/types";
 import { RESPONSIVE_CONDITON_DEMO } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
 import { Z_INDEX_DEMO } from "../components/controls/MyZIndexControl/MyZIndexControl";
+import { initCarouselForWcbProducts } from "./FrontendStyles";
 
 interface Props extends EditProps<WcbAttrs> {}
 
@@ -135,6 +136,16 @@ const Edit: FC<Props> = (props) => {
 		setAttributes({ ...DEFAULT });
 	}, [style_layout]);
 	//
+
+	useEffect(() => {
+		if (!document.getElementById(UNIQUE_ID)) {
+			return;
+		}
+		initCarouselForWcbProducts(
+			document.getElementById(UNIQUE_ID) as Element,
+			attributes
+		);
+	}, [UNIQUE_ID]);
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
 		switch (tab.name) {

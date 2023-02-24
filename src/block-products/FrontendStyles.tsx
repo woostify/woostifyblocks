@@ -1,35 +1,40 @@
-import React, { FC } from "react";
-import ReactDOM from "react-dom";
 import { WcbAttrsForSave } from "./Save";
-import GlobalCss from "./GlobalCss";
+import { ScrollSnapSlider } from "scroll-snap-slider";
 
 interface Props extends WcbAttrsForSave {}
 
-const FrontendStyles: FC<Props> = (attrs) => {
-	return <GlobalCss {...attrs} />;
-};
+export function initCarouselForWcbProducts(div: Element, props: Props) {
+	const id = div.id;
 
-//
-const divsToUpdate = document.querySelectorAll(
-	".wcb-products__wrap.wcb-update-div"
-);
-divsToUpdate.forEach((div) => {
-	const preEl = div.querySelector(
-		`pre[data-wcb-block-attrs=${div.id}]`
-	) as HTMLElement | null;
+	const sliderMultiElement = document.querySelector(
+		".scroll-snap-slider.-multi"
+	);
+	const sliderMulti = new ScrollSnapSlider(sliderMultiElement);
 
-	const divRenderCssEl = div.querySelector(
-		`div[data-wcb-global-styles=${div.id}]`
-	) as HTMLElement | null;
+	const prev = document.querySelector(".indicators.-multi .arrow.-prev");
+	const next = document.querySelector(".indicators.-multi .arrow.-next");
 
-	if (!preEl || !preEl.innerText || !divRenderCssEl) {
-		return;
-	}
-	//
-	const props = JSON.parse(preEl?.innerText);
-	//
-	ReactDOM.render(<FrontendStyles {...props} />, divRenderCssEl);
-	//
-	div.classList.remove("wcb-update-div");
-	preEl.remove();
-});
+	console.log(11, { sliderMulti, prev, next });
+
+	const updateArrows = function () {
+		prev.classList.toggle("-disabled", sliderMultiElement.scrollLeft === 0);
+		next.classList.toggle(
+			"-disabled",
+			sliderMultiElement.scrollLeft + sliderMultiElement.offsetWidth ===
+				sliderMultiElement.scrollWidth
+		);
+	};
+
+	prev.addEventListener("click", function () {
+		console.log(222);
+
+		sliderMulti.slideTo(sliderMulti.slide - 1);
+	});
+
+	next.addEventListener("click", function () {
+		sliderMulti.slideTo(sliderMulti.slide + 1);
+	});
+
+	sliderMulti.addEventListener("slide-pass", updateArrows);
+	sliderMulti.addEventListener("slide-stop", updateArrows);
+}

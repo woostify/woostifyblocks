@@ -861,13 +861,13 @@ const myInterval = setInterval(() => {
     clearInterval(myInterval);
     return;
   }
-  const modalRoot = document.querySelector(`.edit-post-header__toolbar .edit-post-header-toolbar `);
-  const defaultToolbar = document.querySelector(`.edit-post-header__toolbar .edit-post-header-toolbar__left`);
-  console.log(1, "IS_TOOLBAR_RENDERED", {
+  const modalRoot = document.querySelector(".edit-post-header__toolbar .edit-post-header-toolbar");
+  const wpAnchorDiv = document.querySelector(".edit-post-header__toolbar .edit-post-header-toolbar__left .edit-post-header-toolbar__inserter-toggle");
+  console.log("____wcb_toolbar_patterns", {
     modalRoot,
-    defaultToolbar
+    wpAnchorDiv
   });
-  if (modalRoot && defaultToolbar) {
+  if (modalRoot && !modalRoot.id && wpAnchorDiv && !wpAnchorDiv.id) {
     IS_TOOLBAR_RENDERED = true;
     if (!document.getElementById("wcb-block-templates-button-wrap")) {
       let newDiv = document.createElement("div");
@@ -878,7 +878,7 @@ const myInterval = setInterval(() => {
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(App, null)), newDiv);
     }
   }
-}, 1000);
+}, 500);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
 
 /***/ }),
@@ -1148,10 +1148,31 @@ const HeaderToolBarPatterns = () => {
       strokeLinejoin: "round"
     })));
   };
+  const renderEmpty = () => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "text-center"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+      className: "mx-auto h-12 w-12 text-gray-400",
+      fill: "none",
+      viewBox: "0 0 24 24",
+      stroke: "currentColor",
+      "aria-hidden": "true"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+      vectorEffect: "non-scaling-stroke",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      strokeWidth: 2,
+      d: "M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+      className: "mt-2 text-sm font-semibold text-gray-900"
+    }, "No items!"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+      className: "mt-1 text-sm text-gray-500"
+    }, "Please try filtering another way."));
+  };
   const renderContent = () => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
       className: "col-span-3 grid grid-cols-1 gap-y-6 gap-x-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-3 2xl:grid-cols-4 xl:gap-x-8"
-    }, patternsEdge.map(renderCardItem));
+    }, patternsEdge && patternsEdge.length ? patternsEdge.map(renderCardItem) : renderEmpty());
   };
   const renderModal = () => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Modal, {

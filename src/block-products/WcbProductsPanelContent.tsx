@@ -19,6 +19,7 @@ export interface WCB_PRODUCTS_PANEL_COTENT {
 	titleHtmlTag: HtmlTagsType;
 	//
 	saleBadgePosition: "Inside image" | "bottom";
+	showSaleBadgeDiscoutPercent: boolean;
 	taxonomyStyle: "Normal" | "Highlighted";
 }
 
@@ -35,6 +36,7 @@ export const WCB_PRODUCTS_PANEL_COTENT_DEMO: WCB_PRODUCTS_PANEL_COTENT = {
 	isShowRating: true,
 	isShowSaleBadge: true,
 	isShowSKU: true,
+	showSaleBadgeDiscoutPercent: false,
 	//
 	isShowTitle: true,
 	titleHtmlTag: "h4",
@@ -59,7 +61,7 @@ const WcbProductsPanelContent: FC<Props> = ({
 		isShowTitle,
 		titleHtmlTag,
 		taxonomyStyle,
-
+		showSaleBadgeDiscoutPercent,
 		isShowPrice,
 		isShowRating,
 		isShowSKU,
@@ -76,6 +78,14 @@ const WcbProductsPanelContent: FC<Props> = ({
 						setAttr__({ ...panelData, isShowSaleBadge: checked })
 					}
 					checked={isShowSaleBadge}
+				/>
+
+				<ToggleControl
+					label={__("Show discount percentage", "wcb")}
+					onChange={(checked) =>
+						setAttr__({ ...panelData, showSaleBadgeDiscoutPercent: checked })
+					}
+					checked={showSaleBadgeDiscoutPercent}
 				/>
 
 				<MyRadioGroup

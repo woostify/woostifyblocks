@@ -26,6 +26,7 @@ function wcb_block_products__renderCallback($attributes, $content)
 
 
 ?>
+
     <?php echo $content; ?>
     <div class="wcb-products__wrap <?php echo esc_attr($uniqueId); ?> " data-uniqueid="<?php echo esc_attr($uniqueId); ?>">
 
@@ -35,16 +36,34 @@ function wcb_block_products__renderCallback($attributes, $content)
             // do_action('woocommerce_before_shop_loop');
             // woocommerce_product_loop_start();
         ?>
-            <div class="wcb-products__list swithToScrollSnapX--<?php echo esc_attr($sortingAndFilteringAttrs['swithToScrollSnapX'] ?? ""); ?>">
+            <div class="scroll-snap-slider -multi wcb-products__list swithToScrollSnapX--<?php echo esc_attr($sortingAndFilteringAttrs['swithToScrollSnapX'] ?? ""); ?>">
                 <?php
                 while ($loop->have_posts()) :
                     $loop->the_post();
+
                     global $product;
                     if (!empty($product)) {
-                        echo wcb_block_products__render_product($product, $attributes);
+                        echo wcb_block_products__render_product($product, $attributes, $loop->current_post);
                     }
                 endwhile;
                 ?>
+
+
+            </div>
+            <div class="indicators -multi">
+                <button type="button" class="arrow -prev -multi">
+                    <svg fill="#707070" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <title>Previous slide</title>
+                        <path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" />
+                    </svg>
+                </button>
+
+                <button type="button" class="arrow -next -multi">
+                    <svg fill="#707070" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <title>Next slide</title>
+                        <path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" />
+                    </svg>
+                </button>
             </div>
 
             <?php
@@ -69,7 +88,7 @@ function wcb_block_products__renderCallback($attributes, $content)
 }
 
 // 
-function wcb_block_products__render_product($product, $attributes)
+function wcb_block_products__render_product($product, $attributes, $index)
 {
 
     $data = (object) array(
@@ -93,7 +112,7 @@ function wcb_block_products__render_product($product, $attributes)
         $data->rating = wcb_block_products__get_rating_html($product);
     }
     if (wcb__is_enabled($attributes['general_content']['isShowSaleBadge'] ?? "")) {
-        $data->badge = wcb_block_products__get_sale_badge_html($product);
+        $data->badge = wcb_block_products__get_sale_badge_html($product, $attributes['general_content']['showSaleBadgeDiscoutPercent'] ?? false);
     }
     if (wcb__is_enabled($attributes['general_content']['isShowPrice'] ?? "")) {
         $data->price = wcb_block_products__get_price_html($product);
@@ -122,7 +141,7 @@ function wcb_block_products__render_product($product, $attributes)
 
     return apply_filters(
         'woocommerce_blocks_product_grid_item_html',
-        "<div class=\"{$classes}\">
+        "<div class=\"scroll-snap-slide {$classes}\" data-index=\"{$index}\">
 				<div class=\"wcb-products__product-featured \">
                     <a href=\"{$data->permalink}\" class=\"wcb-products__product-image-link\">
                         {$data->image}
@@ -196,17 +215,50 @@ function wcb_block_products__get_price_html($product)
     );
 }
 
+function wcb_block_products__add_percentage_to_sale_badge($product)
+{
+    if ($product->is_type('variable')) {
+        $percentages = array();
 
-function wcb_block_products__get_sale_badge_html($product)
+        // Get all variation prices
+        $prices = $product->get_variation_prices();
+
+        // Loop through variation prices
+        foreach ($prices['price'] as $key => $price) {
+            // Only on sale variations
+            if ($prices['regular_price'][$key] !== $price) {
+                // Calculate and set in the array the percentage for each variation on sale
+                $percentages[] = round(100 - ($prices['sale_price'][$key] / $prices['regular_price'][$key] * 100));
+            }
+        }
+        $percentage = max($percentages) . '%';
+    } else {
+        $regular_price = (float) $product->get_regular_price();
+        $sale_price    = (float) $product->get_sale_price();
+
+        $percentage    = round(100 - ($sale_price / $regular_price * 100)) . '%';
+    }
+    return '<span class="onsale">' . esc_html__('SALE', 'wcb') . ' ' . $percentage . '</span>';
+}
+
+function wcb_block_products__get_sale_badge_html($product,  $showSaleBadgeDiscoutPercent)
 {
 
     if (!$product->is_on_sale()) {
         return;
     }
 
+    if (wcb__is_enabled($showSaleBadgeDiscoutPercent)) {
+        return '<div class="wcb-products__product-salebadge"><div class="wcb-products__product-onsale wc-block-grid__product-onsale">
+        ' . wcb_block_products__add_percentage_to_sale_badge($product) . '
+        <span class="screen-reader-text">' . esc_html__('Product on sale', 'wcb') . '</span>
+    </div></div>';
+    }
+
+
     return '<div class="wcb-products__product-salebadge"><div class="wcb-products__product-onsale wc-block-grid__product-onsale">
-			<span aria-hidden="true">' . esc_html__('Sale', 'woocommerce') . '</span>
-			<span class="screen-reader-text">' . esc_html__('Product on sale', 'woocommerce') . '</span>
+			<span aria-hidden="true">' . esc_html__('Sale', 'wcb') . '</span>
+			<span class="screen-reader-text">' . esc_html__('Product on sale', 'wcb') . '</span>
 		</div></div>';
 }
 
@@ -309,7 +361,7 @@ if (!function_exists("wcb_block_products_set_ordering_query_args")) :
     function wcb_block_products_set_ordering_query_args(&$query_args, $attributes)
     {
 
-        $query_args['orderby'] = $attributes['orderby'] ?? "date";
+        $query_args['orderby'] = $attributes['orderBy'] ?? "date";
         $query_args['order'] = $attributes['order'] ?? "DESC";
 
         $query_args = array_merge(
