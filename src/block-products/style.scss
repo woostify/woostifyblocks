@@ -1,7 +1,6 @@
-@import "~scroll-snap-slider/src/scroll-snap-slider.css";
-
 .wcb-products__wrap {
 	display: none;
+	position: relative;
 }
 
 .wcb-products__product {
@@ -52,5 +51,74 @@
 		width: 100%;
 		border-radius: inherit;
 		vertical-align: middle;
+	}
+}
+
+/*  */
+/*  */
+/*  */
+/*  */
+.wcb-products__wrap {
+	.scroll-snap-slider {
+		display: flex;
+		flex-wrap: nowrap;
+		justify-content: normal;
+		overflow-x: auto;
+		padding-inline: 0;
+		scroll-behavior: smooth;
+		scroll-snap-stop: always;
+		scroll-snap-type: x mandatory;
+	}
+
+	.scroll-snap-slider:not(.-show-scroll-bar) {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
+	}
+
+	.scroll-snap-slider:not(.-show-scroll-bar)::-webkit-scrollbar {
+		display: none;
+	}
+
+	.p-arrow.-disabled {
+		cursor: not-allowed;
+		opacity: 0.3;
+	}
+
+	.indicators {
+		display: none;
+		/* only show on devices has slider */
+		&.-hidden {
+			opacity: 0;
+		}
+		.p-arrow {
+			@apply flex items-center justify-center absolute top-1/2 w-10 h-10 z-30 bg-white text-black shadow-lg;
+			transform: translateY(-50%);
+			border-radius: 9999px;
+
+			&-disable {
+				opacity: 0;
+			}
+			svg {
+				@apply w-6 h-6;
+			}
+		}
+		.-next {
+			@apply -right-4 left-auto;
+		}
+		.-prev {
+			@apply -left-4 right-auto;
+		}
+	}
+
+	.indicators input[type="radio"] {
+		display: none;
+	}
+
+	.scroll-snap-slider.-draggable {
+		cursor: grab;
+	}
+
+	.scroll-snap-slider.-draggable.-dragging {
+		cursor: grabbing;
 	}
 }

@@ -1,3 +1,11 @@
 .wcb-products__wrap {
 	display: block !important;
+	.scroll-snap-slider:not(.-show-scroll-bar) {
+		-ms-overflow-style: initial !important; /* IE and Edge */
+		scrollbar-width: initial !important; /* Firefox */
+	}
+
+	.scroll-snap-slider:not(.-show-scroll-bar)::-webkit-scrollbar {
+		display: initial !important;
+	}
 }

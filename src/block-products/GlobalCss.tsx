@@ -83,6 +83,15 @@ const GlobalCss: FC<Props> = (attrs) => {
 		return (
 			<Global
 				styles={{
+					[`${WRAP_CLASSNAME} .indicators`]: {
+						display: isSnapScrollMobile ? "block" : "none",
+						[`@media (min-width: ${media_tablet})`]: {
+							display: isSnapScrollTablet ? "block" : "none",
+						},
+						[`@media (min-width: ${media_desktop})`]: {
+							display: isSnapScrollDesktop ? "block" : "none",
+						},
+					},
 					[LIST_CLASS]: {
 						// ------ setting snap scroll x
 						"> div": isSnapScrollMobile

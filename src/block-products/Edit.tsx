@@ -141,10 +141,10 @@ const Edit: FC<Props> = (props) => {
 		if (!document.getElementById(UNIQUE_ID)) {
 			return;
 		}
-		initCarouselForWcbProducts(
-			document.getElementById(UNIQUE_ID) as Element,
-			attributes
-		);
+		// initCarouselForWcbProducts(
+		// 	document.getElementById(UNIQUE_ID) as Element,
+		// 	attributes
+		// );
 	}, [UNIQUE_ID]);
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
