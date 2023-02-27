@@ -34,10 +34,9 @@ export type ProductOrderBy =
 	| "relevance"
 	| "rand"
 	| "date ID"
-	| "order_by_price_desc_post_clauses"
-	| "order_by_price_asc_post_clauses"
-	| "order_by_popularity_post_clauses"
-	| "order_by_rating_post_clauses";
+	| "price"
+	| "popularity"
+	| "rating";
 
 export interface WCB_PRODUCTS_PANEL_SORTINGANDFILTERING {
 	emptyMessage: string;
@@ -128,19 +127,16 @@ const WcbProducstPanelSortingAndFiltering: FC<Props> = ({
 			},
 			{
 				label: __("Popularity", "wcb"),
-				value: "order_by_popularity_post_clauses",
+				value: "popularity",
 			},
 			{
-				label: __("Price_asc", "wcb"),
-				value: "order_by_price_asc_post_clauses",
+				label: __("Price", "wcb"),
+				value: "price",
 			},
-			{
-				label: __("Price_desc", "wcb"),
-				value: "order_by_price_desc_post_clauses",
-			},
+
 			{
 				label: __("Rating", "wcb"),
-				value: "order_by_rating_post_clauses",
+				value: "rating",
 			},
 			{
 				label: __("Relevance", "wcb"),

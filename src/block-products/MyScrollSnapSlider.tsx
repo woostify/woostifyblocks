@@ -42,7 +42,7 @@ export class CustomPlugin extends ScrollSnapSlider {
 		const totalWidth = slider.element.scrollWidth;
 
 		const totalGapWidth = totalWidth - numbChild * childWidth;
-		const gap = totalGapWidth / (numbChild - 1);
+		const gap = totalGapWidth / (numbChild - 1 || 1);
 
 		return childWidth + gap;
 	};

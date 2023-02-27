@@ -8,8 +8,10 @@ export function initCarouselForWcbProducts(div: Element, props: Props) {
 		const sliderMultiElement = document.querySelector(
 			`.${div.id} .scroll-snap-slider.-multi`
 		);
-
-		if (!sliderMultiElement) {
+		if (
+			!sliderMultiElement ||
+			sliderMultiElement.classList.contains("swithToScrollSnapX--None")
+		) {
 			return;
 		}
 
@@ -54,8 +56,28 @@ export function initCarouselForWcbProducts(div: Element, props: Props) {
 		updateArrows();
 	};
 
-	setTimeout(() => {
+	let IS_TOOLBAR_RENDERED = false;
+	const myInterval = setInterval(
 		// Why timeout? : Vi slide can Global js style, vi vay can doi JS style xong thi moi tinh duoc offsetWidth
-		handleCarouselForWcbProducts();
-	}, 1000);
+		() => {
+			if (IS_TOOLBAR_RENDERED) {
+				clearInterval(myInterval);
+				return;
+			}
+			// div nay cho biet rang JS style da load xong
+			if (
+				!document.querySelector(
+					`[data-block-products-uniqueId=${div.getAttribute("data-uniqueid")}]`
+				)
+			) {
+				return;
+			}
+
+			IS_TOOLBAR_RENDERED = true;
+			setTimeout(() => {
+				handleCarouselForWcbProducts();
+			}, 500);
+		},
+		500
+	);
 }
