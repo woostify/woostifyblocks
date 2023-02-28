@@ -373,12 +373,11 @@ const HeaderToolBarPatterns = () => {
 	return (
 		<>
 			<Button
-				className="wcb-HeaderToolBarPatternsBtn flex-shrink-0 mx-2 "
-				variant="primary"
+				className="wcb-HeaderToolBarPatternsBtn flex-shrink-0 mx-2 button button-primary leading-none h-[33px] text-[13px] flex items-center justify-center"
 				onClick={openModal}
-				icon="editor-paste-word"
 			>
-				Woostify patterns
+				<span className="dashicon dashicons dashicons-editor-paste-word"></span>
+				<span className="ml-2">Woostify patterns</span>
 			</Button>
 
 			{isOpen && renderModal()}

@@ -1,37 +1,3 @@
-/*!******************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/scroll-snap-slider/src/scroll-snap-slider.css ***!
-  \******************************************************************************************************************************************/
-.scroll-snap-slider {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: normal;
-  overflow-x: auto;
-  padding-inline: 0;
-  scroll-behavior: smooth;
-  scroll-snap-stop: always;
-  scroll-snap-type: x mandatory;
-}
-
-.scroll-snap-slider:not(.-show-scroll-bar) {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-.scroll-snap-slider:not(.-show-scroll-bar)::-webkit-scrollbar {
-  display: none;
-}
-
-.scroll-snap-slide {
-  align-items: center;
-  display: flex;
-  flex: 0 0 auto;
-  flex-direction: column;
-  justify-content: center;
-  max-width: none;
-  scroll-snap-align: start;
-  width: 100%;
-}
-
 /*!*******************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/block-products/editor.scss ***!
   \*******************************************************************************************************************************************************************************************************************************************************/

@@ -1606,6 +1606,9 @@ video {
 .h-2\.5 {
   height: 0.625rem !important;
 }
+.h-\[33px\] {
+  height: 33px !important;
+}
 .max-h-14 {
   max-height: 3.5rem !important;
 }
@@ -2700,6 +2703,9 @@ video {
 }
 .text-\[24px\] {
   font-size: 24px !important;
+}
+.text-\[13px\] {
+  font-size: 13px !important;
 }
 .font-medium {
   font-weight: 500 !important;

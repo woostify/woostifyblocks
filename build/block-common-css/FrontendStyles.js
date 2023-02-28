@@ -219,60 +219,139 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "initCarouselForWcbProducts": () => (/* binding */ initCarouselForWcbProducts)
 /* harmony export */ });
-/* harmony import */ var scroll_snap_slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! scroll-snap-slider */ "./node_modules/scroll-snap-slider/src/ScrollSnapSlider.js");
-
-// const FrontendStyles: FC<Props> = (attrs) => {
-// 	return <GlobalCss {...attrs} />;
-// };
-
-// //
-// const divsToUpdate = document.querySelectorAll(
-// 	".wcb-products__wrap.wcb-update-div"
-// );
-// divsToUpdate.forEach((div) => {
-// 	const preEl = div.querySelector(
-// 		`pre[data-wcb-block-attrs=${div.id}]`
-// 	) as HTMLElement | null;
-
-// 	const divRenderCssEl = div.querySelector(
-// 		`div[data-wcb-global-styles=${div.id}]`
-// 	) as HTMLElement | null;
-
-// 	if (!preEl || !preEl.innerText || !divRenderCssEl) {
-// 		return;
-// 	}
-// 	//
-// 	const props = JSON.parse(preEl?.innerText);
-// 	//
-// 	ReactDOM.render(<FrontendStyles {...props} />, divRenderCssEl);
-// 	//
-// 	div.classList.remove("wcb-update-div");
-// 	preEl.remove();
-// });
+/* harmony import */ var _MyScrollSnapSlider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MyScrollSnapSlider */ "./src/block-products/MyScrollSnapSlider.tsx");
 
 function initCarouselForWcbProducts(div, props) {
-  const id = div.id;
-  const sliderMultiElement = document.querySelector(".scroll-snap-slider.-multi");
-  const sliderMulti = new scroll_snap_slider__WEBPACK_IMPORTED_MODULE_0__.ScrollSnapSlider(sliderMultiElement);
-  const prev = document.querySelector(".indicators.-multi .arrow.-prev");
-  const next = document.querySelector(".indicators.-multi .arrow.-next");
-  console.log(11, {
-    sliderMulti,
-    prev,
-    next
-  });
-  const updateArrows = function () {
-    prev.classList.toggle("-disabled", sliderMultiElement.scrollLeft === 0);
-    next.classList.toggle("-disabled", sliderMultiElement.scrollLeft + sliderMultiElement.offsetWidth === sliderMultiElement.scrollWidth);
+  const handleCarouselForWcbProducts = () => {
+    const sliderMultiElement = document.querySelector(`.${div.id} .scroll-snap-slider.-multi`);
+    if (!sliderMultiElement || sliderMultiElement.classList.contains("swithToScrollSnapX--None")) {
+      return;
+    }
+    const sliderMulti = new _MyScrollSnapSlider__WEBPACK_IMPORTED_MODULE_0__.CustomPlugin(sliderMultiElement);
+    const arrows = document.querySelector(`.${div.id} .indicators.-multi`);
+    const prev = document.querySelector(`.${div.id} .indicators.-multi .p-arrow.-prev`);
+    const next = document.querySelector(`.${div.id} .indicators.-multi .p-arrow.-next`);
+    const updateArrows = function () {
+      prev?.classList.toggle("-disabled", sliderMultiElement.scrollLeft === 0);
+      next?.classList.toggle("-disabled", sliderMultiElement.scrollLeft + sliderMultiElement.offsetWidth === sliderMultiElement.scrollWidth);
+      arrows?.classList.toggle("-hidden", sliderMultiElement.scrollWidth <= sliderMultiElement.clientWidth);
+    };
+    prev?.addEventListener("click", function (event) {
+      const prevI = (sliderMulti.slide || 1) - 1;
+      sliderMulti.slideTo(prevI);
+    });
+    next?.addEventListener("click", function () {
+      const nextI = (sliderMulti.slide || 0) + 1;
+      sliderMulti.slideTo(nextI);
+    });
+    sliderMulti.addEventListener("slide-pass", updateArrows);
+    sliderMulti.addEventListener("slide-stop", updateArrows);
+
+    //
+    sliderMulti.slideTo(0);
+    window.addEventListener("resize", updateArrows);
+    updateArrows();
   };
-  prev.addEventListener("click", function () {
-    sliderMulti.slideTo(sliderMulti.slide - 1);
+
+  // let IS_TOOLBAR_RENDERED = false;
+  // const myInterval = setInterval(
+  // 	// Why timeout? : Vi slide can Global js style, vi vay can doi JS style xong thi moi tinh duoc offsetWidth
+  // 	() => {
+  // 		if (IS_TOOLBAR_RENDERED) {
+  // 			clearInterval(myInterval);
+  // 			return;
+  // 		}
+  // 		// div nay cho biet rang JS style da load xong
+  // 		if (
+  // 			!document.querySelector(
+  // 				`[data-block-products-uniqueId=${div.getAttribute("data-uniqueid")}]`
+  // 			)
+  // 		) {
+  // 			return;
+  // 		}
+
+  // 		IS_TOOLBAR_RENDERED = true;
+  // 		setTimeout(() => {
+  // 			handleCarouselForWcbProducts();
+  // 		}, 500);
+  // 	},
+  // 	500
+  // );
+
+  //
+  const domObserver = new MutationObserver(() => {
+    if (document.querySelector(`[data-block-products-uniqueId=${div.getAttribute("data-uniqueid")}]`)) {
+      domObserver.disconnect();
+      setTimeout(() => {
+        handleCarouselForWcbProducts();
+      }, 500);
+    }
   });
-  next.addEventListener("click", function () {
-    sliderMulti.slideTo(sliderMulti.slide + 1);
+  domObserver.observe(document.body || document, {
+    childList: true,
+    subtree: true
   });
-  sliderMulti.addEventListener("slide-pass", updateArrows);
-  sliderMulti.addEventListener("slide-stop", updateArrows);
+  //
+}
+
+/***/ }),
+
+/***/ "./src/block-products/MyScrollSnapSlider.tsx":
+/*!***************************************************!*\
+  !*** ./src/block-products/MyScrollSnapSlider.tsx ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CustomPlugin": () => (/* binding */ CustomPlugin)
+/* harmony export */ });
+/* harmony import */ var scroll_snap_slider_src_ScrollSnapSlider_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! scroll-snap-slider/src/ScrollSnapSlider.js */ "./node_modules/scroll-snap-slider/src/ScrollSnapSlider.js");
+
+class CustomPlugin extends scroll_snap_slider_src_ScrollSnapSlider_js__WEBPACK_IMPORTED_MODULE_0__.ScrollSnapSlider {
+  /**
+   * Pass any config here
+   * @param {*} config
+   */
+  constructor(element) {
+    let enabled = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+    let plugins = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+    super(element, enabled, plugins);
+  }
+
+  /**
+   * Override this if you need multiple instances of the same plugin on the same slider.
+   * By default, the id will be the plugin's class name.
+   * @return {String}
+   */
+  get id() {
+    return "lubba-wubba-dub-dub";
+  }
+
+  /**
+   * Attach listeners, fetch DOM things, save reference to the slider
+   * @param {ScrollSnapSlider} slider
+   * @override
+   */
+  enable(slider) {
+    // TODO methods stub
+  }
+
+  /**
+   * Free resources, remove listeners, ...
+   * @override
+   */
+  disable() {
+    // TODO methods stub
+  }
+  sizingMethod = function (slider) {
+    const childWidth = slider.element.firstElementChild?.offsetWidth;
+    const numbChild = slider.element.childElementCount;
+    const totalWidth = slider.element.scrollWidth;
+    const totalGapWidth = totalWidth - numbChild * childWidth;
+    const gap = totalGapWidth / (numbChild - 1 || 1);
+    return childWidth + gap;
+  };
 }
 
 /***/ }),

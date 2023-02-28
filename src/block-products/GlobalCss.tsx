@@ -2,13 +2,11 @@ import { Global, CSSObject } from "@emotion/react";
 import React, { FC, useEffect } from "react";
 import { getAdvanveDivWrapStyles } from "../block-container/getAdvanveStyles";
 import getBorderStyles from "../utils/getBorderStyles";
-import getBoxShadowStyles from "../utils/getBoxShadowStyles";
 import getCssProperyHasResponsive from "../utils/getCssProperyHasResponsive";
 import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
 import getTypographyStyles from "../utils/getTypographyStyles";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { WcbAttrsForSave } from "./Save";
-import { initCarouselForWcbProducts } from "./FrontendStyles";
 
 interface Props extends WcbAttrsForSave {}
 

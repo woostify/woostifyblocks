@@ -32,6 +32,48 @@
 		text-align: center;
 		text-transform: uppercase;
 	}
+
+	/* RATING */
+	.wc-block-components-product-rating__stars {
+		font-family: star;
+		font-size: 1em;
+		font-weight: 400;
+		height: 1.618em;
+		line-height: 1.618;
+		margin: 0 auto;
+		overflow: hidden;
+		position: relative;
+		text-align: left;
+		width: 5.3em;
+	}
+	.wc-block-components-product-rating__stars:before {
+		color: inherit;
+		content: "SSSSS";
+		left: 0;
+		opacity: 0.5;
+		position: absolute;
+		right: 0;
+		top: 0;
+		white-space: nowrap;
+	}
+	.wc-block-components-product-rating__stars span {
+		color: inherit;
+		left: 0;
+		overflow: hidden;
+		padding-top: 1.5em;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+	.wc-block-components-product-rating__stars span:before {
+		color: inherit;
+		content: "SSSSS";
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		white-space: nowrap;
+	}
 }
 
 .wcb-products__product-onsale {

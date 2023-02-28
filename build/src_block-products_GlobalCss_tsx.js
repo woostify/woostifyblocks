@@ -155,6 +155,15 @@ const GlobalCss = attrs => {
     const isSnapScrollMobile = isSnapScrollTablet || swithToScrollSnapX === "Mobile";
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
       styles: {
+        [`${WRAP_CLASSNAME} .indicators`]: {
+          display: isSnapScrollMobile ? "block" : "none",
+          [`@media (min-width: ${media_tablet})`]: {
+            display: isSnapScrollTablet ? "block" : "none"
+          },
+          [`@media (min-width: ${media_desktop})`]: {
+            display: isSnapScrollDesktop ? "block" : "none"
+          }
+        },
         [LIST_CLASS]: {
           // ------ setting snap scroll x
           "> div": isSnapScrollMobile ? {
@@ -479,6 +488,8 @@ const GlobalCss = attrs => {
       className: WRAP_CLASSNAME,
       defaultDisplay: "block"
     })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    "data-block-products-uniqueId": uniqueId
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (react__WEBPACK_IMPORTED_MODULE_1___default().memo(GlobalCss));

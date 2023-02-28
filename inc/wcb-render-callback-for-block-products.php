@@ -2,12 +2,9 @@
 
 function wcb_block_products__renderCallback($attributes, $content)
 {
-    // if (!is_admin()) {
-    //     wp_enqueue_script('wcb_block_products__renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-products/FrontendStyles.js', ["wp-element", "jquery"], null, true);
-    // }
+
     wp_enqueue_script__block_commoncss_frontend_styles();
-
-
+    // 
     $sortingAndFilteringAttrs = $attributes['general_sortingAndFiltering'] ?? [];
     $uniqueId =  $attributes['uniqueId'] ?? "";
 
@@ -18,12 +15,9 @@ function wcb_block_products__renderCallback($attributes, $content)
     ob_start();
     $loop = new WP_Query($args);
 
-
     if (!$loop->have_posts()) {
         return '';
     }
-
-
 
 ?>
 
@@ -51,18 +45,18 @@ function wcb_block_products__renderCallback($attributes, $content)
 
             </div>
             <div class="indicators -multi">
-                <button type="button" class="arrow -prev -multi">
-                    <svg fill="#707070" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                        <title>Previous slide</title>
-                        <path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" />
+                <button type="button" class="p-arrow -prev -multi">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                     </svg>
+
                 </button>
 
-                <button type="button" class="arrow -next -multi">
-                    <svg fill="#707070" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                        <title>Next slide</title>
-                        <path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" />
+                <button type="button" class="p-arrow -next -multi">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                     </svg>
+
                 </button>
             </div>
 
