@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect } from "react";
 // import dashboardlogo from "../../../public/images/dashboardlogo.svg";
 import { CheckIcon, HeartIcon, BellIcon } from "@heroicons/react/24/outline";
 import { PAGES, Path } from "../App";
+import Logo from "../../components/Logo";
 
 interface Props {
 	currentPath: Path;
@@ -23,7 +24,7 @@ const Nav: FC<Props> = ({ currentPath, onChangePath }) => {
 								src={dashboardlogo}
 								alt="Workflow"
 							/> */}
-						<i className="lni lni-google-wallet"></i>
+						<Logo />
 					</a>
 				</div>
 

@@ -1,22 +1,22 @@
 import React, { useMemo } from "react";
 import {
+	ColorIndicator,
 	ColorPalette,
-	__experimentalToolsPanelItem as ToolsPanelItem,
+	ColorPicker,
+	Panel,
+	PanelBody,
+	PanelRow,
 } from "@wordpress/components";
+import { more } from "@wordpress/icons";
 import { useState } from "@wordpress/element";
-import {
-	withColorContext,
-	useSetting,
-	__experimentalColorGradientControl as ColorGradientControl,
-} from "@wordpress/block-editor";
+// @ts-ignore
+import { withColorContext, useSetting } from "@wordpress/block-editor";
 
 import {
-	InspectorControls,
-	withColors,
-	__experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
+	// @ts-ignore
 	__experimentalUseGradient,
+	// @ts-ignore
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
-	__experimentalUseBorderProps as useBorderProps,
 } from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n";
 
@@ -41,15 +41,37 @@ const WcbPluginSidebar = (props) => {
 		colorGradientSettings,
 	});
 	return (
-		<div>
-			<ColorPalette
-				colors={colorGradientSettings?.colors}
-				value={color}
-				onChange={(color) => setColor(color)}
-				__experimentalHasMultipleOrigins
-				__experimentalIsRenderedInSidebar
-			/>
-		</div>
+		<>
+			<Panel header="">
+				<PanelBody title="Color Palette" initialOpen={true}>
+					<PanelRow>
+						<div className="flex flex-col gap-4">
+							{colorGradientSettings?.colors?.map((item, index) => {
+								return (
+									<div key={index} className="flex flex-col gap-2">
+										<h2 className="uppercase text-[11px] font-medium m-0">
+											{item.name}
+										</h2>
+										<div className="flex flex-wrap gap-2.5">
+											{item.colors?.map((item, j) => (
+												<ColorIndicator
+													key={j}
+													colorValue={item.color}
+													name={item.name}
+													className="w-[30px] h-[30px]"
+													title={item.name}
+													as="div"
+												/>
+											))}
+										</div>
+									</div>
+								);
+							})}
+						</div>
+					</PanelRow>
+				</PanelBody>
+			</Panel>
+		</>
 	);
 };
 

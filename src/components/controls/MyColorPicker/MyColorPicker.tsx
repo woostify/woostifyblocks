@@ -1,4 +1,6 @@
-import { Button, ColorPicker } from "@wordpress/components";
+import { Button, ColorPalette, ColorPicker } from "@wordpress/components";
+// @ts-ignore
+import { __experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients } from "@wordpress/block-editor";
 import React, { FC, Fragment, useEffect, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import ResetButton from "../ResetButton";
@@ -29,6 +31,8 @@ const MyColorPicker: FC<Props> = ({
 		setColorState(c);
 		onChange(c);
 	};
+
+	const colorGradientSettings = useMultipleOriginColorsAndGradients();
 
 	return (
 		<Popover className={`relative w-full ${className}`}>
@@ -63,13 +67,21 @@ const MyColorPicker: FC<Props> = ({
 						leaveTo="opacity-0 translate-y-1"
 					>
 						<Popover.Panel className="absolute right-0 z-50 mt-3">
-							<div className="shadow-xl ring-1 ring-black/10 bg-white">
-								<ColorPicker
+							<div className="shadow-xl ring-1 ring-black/10 bg-white ">
+								<ColorPalette
+									className="block-editor-color-gradient-control__panel p-4"
+									colors={colorGradientSettings?.colors}
+									value={colorState}
+									onChange={(color) => handleUpdateColor(color || "")}
+									__experimentalHasMultipleOrigins
+									__experimentalIsRenderedInSidebar
+								/>
+								{/* <ColorPicker
 									onChangeComplete={(e) => handleUpdateColor(e.hex)}
 									disableAlpha={disableAlpha}
 									color={colorState}
 									oldHue={oldHue}
-								/>
+								/> */}
 							</div>
 						</Popover.Panel>
 					</Transition>

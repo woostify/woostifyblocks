@@ -263,3 +263,19 @@
 		@apply rounded-l-lg;
 	}
 }
+
+/*  */
+.block-editor-color-gradient-control__panel {
+	.components-circular-option-picker__option {
+		border-radius: 999px !important;
+	}
+}
+
+.wcb-plugin-sidebar-woostify__logosvg {
+	@apply text-black;
+}
+.components-button.is-pressed {
+	.wcb-plugin-sidebar-woostify__logosvg {
+		@apply text-white;
+	}
+}

@@ -19,6 +19,7 @@ import { useTimeoutFn } from "react-use";
 import { useSelect, useDispatch } from "@wordpress/data";
 import { store as blockEditorStore } from "@wordpress/block-editor";
 import { rawHandler } from "@wordpress/blocks";
+import Logo from "../components/Logo";
 
 const HeaderToolBarPatterns = () => {
 	// STATE
@@ -376,7 +377,7 @@ const HeaderToolBarPatterns = () => {
 				className="wcb-HeaderToolBarPatternsBtn flex-shrink-0 mx-2 button button-primary leading-none h-[33px] text-[13px] flex items-center justify-center"
 				onClick={openModal}
 			>
-				<span className="dashicon dashicons dashicons-editor-paste-word"></span>
+				<Logo className="w-4 h-4 text-white" />
 				<span className="ml-2">Woostify patterns</span>
 			</Button>
 
