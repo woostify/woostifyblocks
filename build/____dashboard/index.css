@@ -1262,6 +1262,9 @@ video {
 .h-9 {
   height: 2.25rem !important;
 }
+.h-\[33px\] {
+  height: 33px !important;
+}
 .h-7 {
   height: 1.75rem !important;
 }
@@ -1276,9 +1279,6 @@ video {
 }
 .h-2\.5 {
   height: 0.625rem !important;
-}
-.h-\[33px\] {
-  height: 33px !important;
 }
 .max-h-14 {
   max-height: 3.5rem !important;
@@ -2351,6 +2351,9 @@ video {
   font-size: 0.75rem !important;
   line-height: 1rem !important;
 }
+.text-\[13px\] {
+  font-size: 13px !important;
+}
 .text-\[1\.875rem\] {
   font-size: 1.875rem !important;
 }
@@ -2374,9 +2377,6 @@ video {
 }
 .text-\[24px\] {
   font-size: 24px !important;
-}
-.text-\[13px\] {
-  font-size: 13px !important;
 }
 .font-medium {
   font-weight: 500 !important;
