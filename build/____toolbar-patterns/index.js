@@ -850,9 +850,15 @@ const client = new _apollo_client__WEBPACK_IMPORTED_MODULE_5__.ApolloClient({
   cache: new _apollo_client__WEBPACK_IMPORTED_MODULE_6__.InMemoryCache()
 });
 const App = () => {
+  console.log(1111, {
+    wcbGlobalVariables
+  });
   if (wcbGlobalVariables?.enableTemplatesButton === "false") {
     return null;
   }
+  console.log(2222, {
+    wcbGlobalVariables
+  });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_HeaderToolBarPatterns__WEBPACK_IMPORTED_MODULE_4__["default"], null));
 };
 

@@ -16,9 +16,15 @@ const client = new ApolloClient({
 });
 
 const App = () => {
+
+	console.log(1111, {wcbGlobalVariables});
+	
+
 	if (wcbGlobalVariables?.enableTemplatesButton === "false") {
 		return null;
 	}
+	console.log(2222, {wcbGlobalVariables});
+
 	return (
 		<>
 			<HeaderToolBarPatterns />
