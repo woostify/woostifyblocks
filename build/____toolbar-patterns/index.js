@@ -850,57 +850,17 @@ const client = new _apollo_client__WEBPACK_IMPORTED_MODULE_5__.ApolloClient({
   cache: new _apollo_client__WEBPACK_IMPORTED_MODULE_6__.InMemoryCache()
 });
 const App = () => {
-  console.log(1111, {
-    wcbGlobalVariables
-  });
   if (wcbGlobalVariables?.enableTemplatesButton === "false") {
     return null;
   }
-  console.log(2222, {
-    wcbGlobalVariables
-  });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_HeaderToolBarPatterns__WEBPACK_IMPORTED_MODULE_4__["default"], null));
 };
-
-// let IS_TOOLBAR_RENDERED = false;
-// const myInterval = setInterval(() => {
-// 	if (IS_TOOLBAR_RENDERED) {
-// 		clearInterval(myInterval);
-// 		return;
-// 	}
-
-// 	const modalRoot = document.querySelector(
-// 		".edit-post-header__toolbar .edit-post-header-toolbar"
-// 	) as HTMLElement | null;
-// 	const wpAnchorDiv = document.querySelector(
-// 		".edit-post-header__toolbar .edit-post-header-toolbar__left .edit-post-header-toolbar__inserter-toggle"
-// 	) as HTMLElement | null;
-
-// 	console.log("____wcb_toolbar_patterns", { modalRoot, wpAnchorDiv });
-
-// 	if (modalRoot && !modalRoot.id && wpAnchorDiv && !wpAnchorDiv.id) {
-// 		IS_TOOLBAR_RENDERED = true;
-// 		if (!document.getElementById("wcb-block-templates-button-wrap")) {
-// 			let newDiv = document.createElement("div");
-// 			newDiv.setAttribute("id", "wcb-block-templates-button-wrap");
-// 			modalRoot.appendChild(newDiv);
-// 			ReactDOM.render(
-// 				<ApolloProvider client={client}>
-// 					<App />
-// 				</ApolloProvider>,
-// 				newDiv
-// 			);
-// 		}
-// 	}
-// }, 500);
-
-//
-
 const domObserver = new MutationObserver(() => {
   const modalRoot = document.querySelector(".edit-post-header__toolbar .edit-post-header-toolbar");
-  const wpAnchorDiv = document.querySelector(".edit-post-header__toolbar .edit-post-header-toolbar__left .edit-post-header-toolbar__inserter-toggle");
-  if (modalRoot && !modalRoot.id && wpAnchorDiv && !wpAnchorDiv.id) {
-    domObserver.disconnect();
+  if (modalRoot) {
+    // ko disconect vi toolbar co the re-render dan den bi mat nut cua minh
+    // domObserver.disconnect();
+
     if (!document.getElementById("wcb-block-templates-button-wrap")) {
       let newDiv = document.createElement("div");
       newDiv.setAttribute("id", "wcb-block-templates-button-wrap");
