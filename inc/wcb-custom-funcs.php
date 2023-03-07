@@ -93,7 +93,7 @@ endif;
 
 // 
 if (!function_exists("wcb_pagination_bar")) {
-    function wcb_pagination_bar($custom_query, $attrPagination)
+    function wcb_pagination_bar($the_query, $attrPagination)
     {
         $nextPreIcons =  [
             "none" => 'None',
@@ -113,20 +113,19 @@ if (!function_exists("wcb_pagination_bar")) {
         $nextHtml = !empty($nextText) ? '<span>' . $nextText . '</span>' . $icon : $icon;
         $prevHtml = !empty($previousIcon) ? '<span>' . $previousIcon . '</span>' . $icon : $icon;
 
+        $max_page = $attrPagination['pageLimit'] ?? 0;
+        $total         = !$max_page || $max_page > $the_query->max_num_pages ? $the_query->max_num_pages : $max_page;
 
-        $total_pages = $custom_query->max_num_pages;
         $big = 999999999; // need an unlikely integer
-        if ($total_pages > 1) {
-            $current_page = max(1, get_query_var('paged'));
-            echo paginate_links(array(
-                'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-                'format' => '?paged=%#%',
-                'current' => $current_page,
-                'total' => $total_pages,
-                'next_text' => $nextHtml,
-                'prev_text' => $prevHtml
-            ));
-        }
+        $current_page = max(1, get_query_var('paged'));
+        echo paginate_links(array(
+            'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+            'format' => '?paged=%#%',
+            'current' => $current_page,
+            'total' => $total,
+            'next_text' => $nextHtml,
+            'prev_text' => $prevHtml
+        ));
     }
 }
 

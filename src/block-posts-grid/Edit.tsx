@@ -1,6 +1,16 @@
 import { __ } from "@wordpress/i18n";
-import React, { useEffect, FC, useRef, useMemo, useCallback } from "react";
+import React, { useEffect, FC, useRef, useMemo } from "react";
 import { WcbBlockPostsGridAttrs } from "./attributes";
+import { settings } from "@wordpress/icons";
+
+import {
+	Dropdown,
+	ToolbarButton,
+	BaseControl,
+	// @ts-ignore
+	__experimentalNumberControl as NumberControl,
+	ToggleControl,
+} from "@wordpress/components";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
 } from "../components/HOCInspectorControls";
@@ -52,7 +62,7 @@ import WcbPostGridPanel_StyleFeaturedImage, {
 import { PanelBody, Placeholder, Spinner } from "@wordpress/components";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
 import MyBoxShadowControl from "../components/controls/MyBoxShadowControl/MyBoxShadowControl";
-import { useBlockProps } from "@wordpress/block-editor";
+import { BlockControls, useBlockProps } from "@wordpress/block-editor";
 import WcbPostGridPanel_StyleTaxonomy, {
 	WCB_POST_GRID_PANEL_STYLE_TAXONOMY_DEMO,
 } from "./WcbPostGridPanel_StyleTaxonomy";
@@ -353,6 +363,129 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 		}
 	};
 
+	const renderToobar = () => {
+		const itemPerPage = general_sortingAndFiltering.queries.numberOfItems;
+		const columnDesktop =
+			general_sortingAndFiltering.numberOfColumn.Desktop || 1;
+		const isShowPagination = general_pagination.isShowPagination;
+		const maxPageShow = general_pagination.pageLimit;
+
+		return (
+			<Dropdown
+				contentClassName="block-library-query-toolbar__popover"
+				renderToggle={({ onToggle }) => (
+					<ToolbarButton
+						icon={settings}
+						label={__("Display settings")}
+						onClick={onToggle}
+					/>
+				)}
+				renderContent={() => (
+					<>
+						<BaseControl id="1">
+							<NumberControl
+								__unstableInputWidth="60px"
+								label={__("Items per Page")}
+								labelPosition="edge"
+								min={1}
+								max={100}
+								onChange={(value) => {
+									if (isNaN(value) || value < 1 || value > 100) {
+										return;
+									}
+									setAttributes({
+										general_sortingAndFiltering: {
+											...general_sortingAndFiltering,
+											queries: {
+												...general_sortingAndFiltering.queries,
+												numberOfItems: Number(value || 1),
+											},
+										},
+									});
+								}}
+								step="1"
+								value={itemPerPage}
+								isDragEnabled={false}
+							/>
+						</BaseControl>
+						<BaseControl id="2">
+							<NumberControl
+								__unstableInputWidth="60px"
+								label={__("Column in Desktop")}
+								labelPosition="edge"
+								min={0}
+								max={100}
+								onChange={(value) => {
+									if (isNaN(value) || value < 0 || value > 100) {
+										return;
+									}
+									setAttributes({
+										general_sortingAndFiltering: {
+											...general_sortingAndFiltering,
+											numberOfColumn: {
+												...general_sortingAndFiltering.numberOfColumn,
+												Desktop: Number(value || 1),
+											},
+										},
+									});
+								}}
+								step="1"
+								value={columnDesktop}
+								isDragEnabled={false}
+							/>
+						</BaseControl>
+						<BaseControl id="3">
+							<ToggleControl
+								label={__("Show pagination", "wcb")}
+								onChange={(checked) =>
+									setAttributes({
+										general_pagination: {
+											...general_pagination,
+											isShowPagination: checked,
+										},
+									})
+								}
+								checked={isShowPagination}
+							/>
+						</BaseControl>
+						{isShowPagination && (
+							<BaseControl
+								id="4"
+								help={__(
+									"Limit the pages you want to show, even if the query has more results. To show all pages use 0 (zero).",
+									"wcb"
+								)}
+							>
+								<NumberControl
+									id={"maxPageInputId"}
+									__unstableInputWidth="60px"
+									label={__("Max page to show")}
+									labelPosition="edge"
+									min={0}
+									onChange={(value) => {
+										if (isNaN(value) || value < 0) {
+											return;
+										}
+										setAttributes({
+											general_pagination: {
+												...general_pagination,
+												pageLimit: value,
+												isShowPagination: true,
+											},
+										});
+									}}
+									step="1"
+									value={maxPageShow}
+									isDragEnabled={false}
+								/>
+							</BaseControl>
+						)}
+					</>
+				)}
+			/>
+		);
+	};
+
 	const WcbAttrsForGlobalCss = useMemo((): WcbBlockPostsGridAttrs => {
 		return {
 			uniqueId,
@@ -426,6 +559,9 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 					renderTabPanels={renderTabBodyPanels}
 					uniqueId={uniqueId}
 				/>
+
+				{/* @ts-ignore */}
+				<BlockControls group="block">{renderToobar()}</BlockControls>
 
 				{/* CSS IN JS */}
 				{uniqueId && !!style_layout && <GlobalCss {...WcbAttrsForGlobalCss} />}

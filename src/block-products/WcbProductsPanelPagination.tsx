@@ -1,9 +1,10 @@
-import { PanelBody, RangeControl, ToggleControl } from "@wordpress/components";
+import { PanelBody, ToggleControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
 // @ts-ignore
 import { __experimentalInputControl as InputControl } from "@wordpress/components";
 import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
+import MaxPageToShowInput from "../components/controls/MaxPageToShowInput";
 export interface WCB_PRODUCTS_PANEL_PAGINATION {
 	isShowPagination: boolean;
 	pageLimit: number;
@@ -14,8 +15,8 @@ export interface WCB_PRODUCTS_PANEL_PAGINATION {
 
 export const WCB_PRODUCTS_PANEL_PAGINATION_DEMO: WCB_PRODUCTS_PANEL_PAGINATION =
 	{
-		isShowPagination: false,
-		pageLimit: 10,
+		isShowPagination: true,
+		pageLimit: 0,
 		previousText: "",
 		nextText: "",
 		iconName: "arrow",
@@ -81,15 +82,14 @@ const WcbProductsPanelPagination: FC<Props> = ({
 	const renderMore = () => {
 		return (
 			<>
-				<RangeControl
-					label={__("Page Limit", "wcb")}
+				<MaxPageToShowInput
 					value={pageLimit}
-					onChange={(e) => {
-						setAttr__({ ...panelData, pageLimit: e || 10 });
+					onChange={(value) => {
+						if (isNaN(value) || value < 0) {
+							return;
+						}
+						setAttr__({ ...panelData, pageLimit: Number(value || 10) });
 					}}
-					min={1}
-					max={100}
-					required
 				/>
 
 				<InputControl

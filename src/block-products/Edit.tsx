@@ -1,14 +1,23 @@
 import { __ } from "@wordpress/i18n";
-import { InnerBlocks, useBlockProps } from "@wordpress/block-editor";
+import { BlockControls, useBlockProps } from "@wordpress/block-editor";
 import React, { useEffect, FC, useCallback, useState, useMemo } from "react";
 import ServerSideRender from "@wordpress/server-side-render";
 import { WcbAttrs } from "./attributes";
+import { settings } from "@wordpress/icons";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
 } from "../components/HOCInspectorControls";
 import { EditProps } from "../block-container/Edit";
 import GlobalCss from "./GlobalCss";
 import "./editor.scss";
+import {
+	Dropdown,
+	ToolbarButton,
+	BaseControl,
+	// @ts-ignore
+	__experimentalNumberControl as NumberControl,
+	ToggleControl,
+} from "@wordpress/components";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import MyCacheProvider from "../components/MyCacheProvider";
@@ -63,7 +72,6 @@ import WcbProductsPanel_StyleRating, {
 import { MY_BORDER_CONTROL_DEMO } from "../components/controls/MyBorderControl/types";
 import { RESPONSIVE_CONDITON_DEMO } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
 import { Z_INDEX_DEMO } from "../components/controls/MyZIndexControl/MyZIndexControl";
-import { initCarouselForWcbProducts } from "./FrontendStyles";
 
 interface Props extends EditProps<WcbAttrs> {}
 
@@ -367,6 +375,125 @@ const Edit: FC<Props> = (props) => {
 		}
 	};
 
+	const renderToobar = () => {
+		const itemPerPage = general_sortingAndFiltering.numberOfItems;
+		const columnDesktop = style_layout.numberOfColumn.Desktop || 1;
+		const isShowPagination = general_pagination.isShowPagination;
+		const maxPageShow = general_pagination.pageLimit;
+
+		return (
+			<Dropdown
+				contentClassName="block-library-query-toolbar__popover"
+				renderToggle={({ onToggle }) => (
+					<ToolbarButton
+						icon={settings}
+						label={__("Display settings")}
+						onClick={onToggle}
+					/>
+				)}
+				renderContent={() => (
+					<>
+						<BaseControl id="1">
+							<NumberControl
+								__unstableInputWidth="60px"
+								label={__("Items per Page")}
+								labelPosition="edge"
+								min={1}
+								max={100}
+								onChange={(value) => {
+									if (isNaN(value) || value < 1 || value > 100) {
+										return;
+									}
+									setAttributes({
+										general_sortingAndFiltering: {
+											...general_sortingAndFiltering,
+											numberOfItems: Number(value || 1),
+										},
+									});
+								}}
+								step="1"
+								value={itemPerPage}
+								isDragEnabled={false}
+							/>
+						</BaseControl>
+						<BaseControl id="2">
+							<NumberControl
+								__unstableInputWidth="60px"
+								label={__("Column in Desktop")}
+								labelPosition="edge"
+								min={0}
+								max={100}
+								onChange={(value) => {
+									if (isNaN(value) || value < 0 || value > 100) {
+										return;
+									}
+									setAttributes({
+										style_layout: {
+											...style_layout,
+											numberOfColumn: {
+												...style_layout.numberOfColumn,
+												Desktop: Number(value || 1),
+											},
+										},
+									});
+								}}
+								step="1"
+								value={columnDesktop}
+								isDragEnabled={false}
+							/>
+						</BaseControl>
+						<BaseControl id="3">
+							<ToggleControl
+								label={__("Show pagination", "wcb")}
+								onChange={(checked) =>
+									setAttributes({
+										general_pagination: {
+											...general_pagination,
+											isShowPagination: checked,
+										},
+									})
+								}
+								checked={isShowPagination}
+							/>
+						</BaseControl>
+						{isShowPagination && (
+							<BaseControl
+								id="4"
+								help={__(
+									"Limit the pages you want to show, even if the query has more results. To show all pages use 0 (zero).",
+									"wcb"
+								)}
+							>
+								<NumberControl
+									id={"maxPageInputId"}
+									__unstableInputWidth="60px"
+									label={__("Max page to show")}
+									labelPosition="edge"
+									min={0}
+									onChange={(value) => {
+										if (isNaN(value) || value < 0) {
+											return;
+										}
+										setAttributes({
+											general_pagination: {
+												...general_pagination,
+												pageLimit: value,
+												isShowPagination: true,
+											},
+										});
+									}}
+									step="1"
+									value={maxPageShow}
+									isDragEnabled={false}
+								/>
+							</BaseControl>
+						)}
+					</>
+				)}
+			/>
+		);
+	};
+
 	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {
 		return {
 			uniqueId,
@@ -433,6 +560,9 @@ const Edit: FC<Props> = (props) => {
 					renderTabPanels={renderTabBodyPanels}
 					uniqueId={uniqueId}
 				/>
+
+				{/* @ts-ignore */}
+				<BlockControls group="block">{renderToobar()}</BlockControls>
 
 				{/* CSS IN JS */}
 				{!!uniqueId && !!style_layout && <GlobalCss {...WcbAttrsForSave()} />}
