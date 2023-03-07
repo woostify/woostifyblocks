@@ -2549,7 +2549,8 @@ const formatUppercase = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.creat
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "DEMO_WCB_GLOBAL_VARIABLES": () => (/* binding */ DEMO_WCB_GLOBAL_VARIABLES)
+/* harmony export */   "DEMO_WCB_GLOBAL_VARIABLES": () => (/* binding */ DEMO_WCB_GLOBAL_VARIABLES),
+/* harmony export */   "___wcb_global": () => (/* binding */ ___wcb_global)
 /* harmony export */ });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
@@ -2569,6 +2570,7 @@ const DEMO_WCB_GLOBAL_VARIABLES = {
   ...INIT_WCB_GLOBAL_VARIABLES,
   ...(window.wcbGlobalVariables || {})
 };
+const ___wcb_global = 1;
 
 /***/ }),
 
@@ -5280,8 +5282,6 @@ __webpack_require__.r(__webpack_exports__);
 // @ts-ignore
 
 
-// import { Popover, Transition } from "@headlessui/react";
-
 
 const MyColorPicker = _ref => {
   let {
@@ -5289,9 +5289,9 @@ const MyColorPicker = _ref => {
     label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Color", "wcb"),
     // default value color - co the la cac gia tri hex string
     color,
-    disableAlpha,
-    oldHue,
-    onChange
+    onChange,
+    showDefaultPalette = true,
+    showCustomColorOnDefaultPallete = true
   } = _ref;
   const [colorState, setColorState] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)("");
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
@@ -5302,9 +5302,22 @@ const MyColorPicker = _ref => {
     onChange(c);
   };
   const colorGradientSettings = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.__experimentalUseMultipleOriginColorsAndGradients)();
+  const defaultColorPallete = (0,react__WEBPACK_IMPORTED_MODULE_3__.useMemo)(() => {
+    const customColors = window.wcbGlobalVariables?.customColorPallete;
+    if (!customColors || !customColors.length || !showCustomColorOnDefaultPallete) {
+      return colorGradientSettings?.colors || [];
+    }
+    const c = [...(colorGradientSettings?.colors || []), {
+      name: "Customs",
+      colors: window.wcbGlobalVariables.customColorPallete || []
+    }];
+    return c;
+  }, [colorGradientSettings, showCustomColorOnDefaultPallete]);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dropdown, {
     className: `w-full ${className}`,
-    contentClassName: "my-popover-content-classname",
+    contentClassName: "my-popover-content-classname"
+    // @ts-ignore
+    ,
     popoverProps: {
       placement: "left-start"
     },
@@ -5326,15 +5339,17 @@ const MyColorPicker = _ref => {
           backgroundSize: "10px 10px",
           backgroundPosition: "0 0, 0 5px, 5px -5px, -5px 0"
         }
-      })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, label)));
+      })), label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, label)));
     },
     renderContent: () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "bg-white "
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ColorPalette, {
       className: "block-editor-color-gradient-control__panel p-4",
-      colors: colorGradientSettings?.colors,
+      colors: showDefaultPalette ? defaultColorPallete : undefined,
       value: colorState,
-      onChange: color => handleUpdateColor(color || ""),
+      onChange: color => handleUpdateColor(color || "")
+      // @ts-ignore
+      ,
       __experimentalHasMultipleOrigins: true,
       __experimentalIsRenderedInSidebar: true
     })))

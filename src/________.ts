@@ -14,6 +14,7 @@ declare global {
 		enableTemplatesButton?: "true" | "false";
 		enableCopyPasteStyles?: "true" | "false";
 		// containerElementsGap?: string;
+		customColorPallete?: { name: string; color: string }[];
 	};
 	var wcbFrontendAjaxObject: {
 		ajaxurl: string;
@@ -37,3 +38,5 @@ export const DEMO_WCB_GLOBAL_VARIABLES = {
 	...INIT_WCB_GLOBAL_VARIABLES,
 	...(window.wcbGlobalVariables || {}),
 };
+
+export const ___wcb_global = 1;

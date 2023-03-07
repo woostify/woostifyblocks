@@ -29,7 +29,8 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "DEMO_WCB_GLOBAL_VARIABLES": () => (/* binding */ DEMO_WCB_GLOBAL_VARIABLES)
+/* harmony export */   "DEMO_WCB_GLOBAL_VARIABLES": () => (/* binding */ DEMO_WCB_GLOBAL_VARIABLES),
+/* harmony export */   "___wcb_global": () => (/* binding */ ___wcb_global)
 /* harmony export */ });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
@@ -49,6 +50,7 @@ const DEMO_WCB_GLOBAL_VARIABLES = {
   ...INIT_WCB_GLOBAL_VARIABLES,
   ...(window.wcbGlobalVariables || {})
 };
+const ___wcb_global = 1;
 
 /***/ }),
 
@@ -220,6 +222,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "initCarouselForWcbProducts": () => (/* binding */ initCarouselForWcbProducts)
 /* harmony export */ });
 /* harmony import */ var _MyScrollSnapSlider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MyScrollSnapSlider */ "./src/block-products/MyScrollSnapSlider.tsx");
+// @ts-nocheck
+
 
 function initCarouselForWcbProducts(div, props) {
   const handleCarouselForWcbProducts = () => {
@@ -252,31 +256,6 @@ function initCarouselForWcbProducts(div, props) {
     window.addEventListener("resize", updateArrows);
     updateArrows();
   };
-
-  // let IS_TOOLBAR_RENDERED = false;
-  // const myInterval = setInterval(
-  // 	// Why timeout? : Vi slide can Global js style, vi vay can doi JS style xong thi moi tinh duoc offsetWidth
-  // 	() => {
-  // 		if (IS_TOOLBAR_RENDERED) {
-  // 			clearInterval(myInterval);
-  // 			return;
-  // 		}
-  // 		// div nay cho biet rang JS style da load xong
-  // 		if (
-  // 			!document.querySelector(
-  // 				`[data-block-products-uniqueId=${div.getAttribute("data-uniqueid")}]`
-  // 			)
-  // 		) {
-  // 			return;
-  // 		}
-
-  // 		IS_TOOLBAR_RENDERED = true;
-  // 		setTimeout(() => {
-  // 			handleCarouselForWcbProducts();
-  // 		}, 500);
-  // 	},
-  // 	500
-  // );
 
   //
   const domObserver = new MutationObserver(() => {

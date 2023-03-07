@@ -7,6 +7,7 @@ import { PluginSidebar } from "@wordpress/edit-post";
  * Internal dependencies
  */
 import "./App";
+import "../________";
 import WcbPluginSidebar from "./WcbPluginSidebar";
 // import metadata from "./block.json";
 //

@@ -1,5 +1,5 @@
 <?php
-// 
+// wcb_blocks_settings_options
 function wcb_dashboard_settings_options_init()
 {
     if (!function_exists('wcb_get_wcb_block_name_enable_init') || !function_exists('wcb_get_wcb_block_type_list')) {
@@ -15,6 +15,12 @@ function wcb_dashboard_settings_options_init()
     // add a new option -- wcb_blocks_settings_options
     if (FALSE === get_option('wcb_blocks_settings_options') && FALSE === update_option('wcb_blocks_settings_options', FALSE)) {
         add_option('wcb_blocks_settings_options', wcb_get_default_blocks_settings());
+    } else {
+        // check co new option thi merge laij..........
+        $hasNewOption = array_key_exists('customColorPallete', get_option('wcb_blocks_settings_options') ?? []);
+        if (!$hasNewOption) {
+            update_option('wcb_blocks_settings_options', array_merge(wcb_get_default_blocks_settings(), get_option('wcb_blocks_settings_options')));
+        }
     }
 }
 

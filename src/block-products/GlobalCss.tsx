@@ -7,6 +7,7 @@ import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
 import getTypographyStyles from "../utils/getTypographyStyles";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { WcbAttrsForSave } from "./Save";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 
 interface Props extends WcbAttrsForSave {}
 
@@ -51,28 +52,28 @@ const GlobalCss: FC<Props> = (attrs) => {
 
 	const renderDivListWrapStyle = () => {
 		const {
-			value_desktop: rowGap_desktop,
-			value_mobile: rowGap_mobile,
-			value_tablet: rowGap_tablet,
-		} = getCssProperyHasResponsive<string>({
-			cssProperty: style_layout.rowGap,
-		});
+			value_Desktop: rowGap_desktop,
+			value_Mobile: rowGap_mobile,
+			value_Tablet: rowGap_tablet,
+		} = getValueFromAttrsResponsives(style_layout.rowGap);
 		const {
-			value_desktop: colunmGap_desktop,
-			value_mobile: colunmGap_mobile,
-			value_tablet: colunmGap_tablet,
-		} = getCssProperyHasResponsive<string>({
-			cssProperty: style_layout.colunmGap,
-		});
+			value_Desktop: colunmGap_desktop,
+			value_Mobile: colunmGap_mobile,
+			value_Tablet: colunmGap_tablet,
+		} = getValueFromAttrsResponsives(style_layout.colunmGap);
 
-		const { numberOfColumn, swithToScrollSnapX } = general_sortingAndFiltering;
+		const { numberOfColumn, swithToScrollSnapX, peekAfter } = style_layout;
 		const {
-			value_desktop: numberOfColumn_desktop,
-			value_tablet: numberOfColumn_tablet,
-			value_mobile: numberOfColumn_mobile,
-		} = getCssProperyHasResponsive({
-			cssProperty: numberOfColumn,
-		});
+			value_Desktop: numberOfColumn_desktop,
+			value_Tablet: numberOfColumn_tablet,
+			value_Mobile: numberOfColumn_mobile,
+		} = getValueFromAttrsResponsives(numberOfColumn);
+
+		const {
+			value_Desktop: peekAfter_desktop,
+			value_Tablet: peekAfter_tablet,
+			value_Mobile: peekAfter_mobile,
+		} = getValueFromAttrsResponsives(peekAfter);
 
 		const isSnapScrollDesktop = swithToScrollSnapX === "Desktop";
 		const isSnapScrollTablet =
@@ -101,7 +102,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 										Number(numberOfColumn_mobile) - 1
 									} * ${colunmGap_mobile})) / ${Number(
 										numberOfColumn_mobile
-									)})`,
+									)} - ${peekAfter_mobile})`,
 							  }
 							: {},
 
@@ -127,7 +128,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 											Number(numberOfColumn_tablet) - 1
 										} * ${colunmGap_tablet})) / ${Number(
 											numberOfColumn_tablet
-										)})`,
+										)} - ${peekAfter_tablet})`,
 								  }
 								: {},
 
@@ -147,11 +148,12 @@ const GlobalCss: FC<Props> = (attrs) => {
 								? {
 										scrollSnapAlign: "start",
 										flexShrink: 0,
+										// tinh toan the nay de tao phan thut-tho cho slider
 										flexBasis: `calc((100% - (${
 											Number(numberOfColumn_desktop) - 1
 										} * ${colunmGap_desktop})) / ${Number(
 											numberOfColumn_desktop
-										)})`,
+										)} - ${peekAfter_desktop})`,
 								  }
 								: {},
 
@@ -271,9 +273,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 			{
 				[POST_CARD_CLASS]: {
 					position: "relative",
-					height: !general_sortingAndFiltering.isEqualHeight
-						? "max-content"
-						: undefined,
+					height: !style_layout.isEqualHeight ? "max-content" : undefined,
 					textAlign: style_layout.textAlignment,
 					backgroundColor: style_layout.backgroundColor,
 

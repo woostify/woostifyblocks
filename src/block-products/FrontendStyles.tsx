@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { CustomPlugin } from "./MyScrollSnapSlider";
 import { WcbAttrsForSave } from "./Save";
 
@@ -55,31 +57,6 @@ export function initCarouselForWcbProducts(div: Element, props: Props) {
 		window.addEventListener("resize", updateArrows);
 		updateArrows();
 	};
-
-	// let IS_TOOLBAR_RENDERED = false;
-	// const myInterval = setInterval(
-	// 	// Why timeout? : Vi slide can Global js style, vi vay can doi JS style xong thi moi tinh duoc offsetWidth
-	// 	() => {
-	// 		if (IS_TOOLBAR_RENDERED) {
-	// 			clearInterval(myInterval);
-	// 			return;
-	// 		}
-	// 		// div nay cho biet rang JS style da load xong
-	// 		if (
-	// 			!document.querySelector(
-	// 				`[data-block-products-uniqueId=${div.getAttribute("data-uniqueid")}]`
-	// 			)
-	// 		) {
-	// 			return;
-	// 		}
-
-	// 		IS_TOOLBAR_RENDERED = true;
-	// 		setTimeout(() => {
-	// 			handleCarouselForWcbProducts();
-	// 		}, 500);
-	// 	},
-	// 	500
-	// );
 
 	//
 	const domObserver = new MutationObserver(() => {

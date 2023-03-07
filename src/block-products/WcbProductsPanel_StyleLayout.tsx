@@ -4,6 +4,8 @@ import {
 	PanelBody,
 	// @ts-ignore
 	__experimentalBoxControl as BoxControl,
+	RangeControl,
+	ToggleControl,
 } from "@wordpress/components";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
@@ -16,11 +18,23 @@ import {
 	MyDimensionsNoMarginControlData,
 	MY_DIMENSIONS_NO_MARGIN_CONTROL_DEMO,
 } from "../components/controls/MyDimensionsControl/types";
+import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
+import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
+import HelpText from "../components/controls/HelpText";
+import MyDisclosure from "../components/controls/MyDisclosure";
+import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
 
 export interface WCB_PRODUCTS_PANEL_STYLE_LAYOUT
 	extends MyDimensionsNoMarginControlData {
 	textAlignment: TextAlignment;
 	backgroundColor: string;
+	numberOfColumn: HasResponsive<number>;
+	// peekAfter - The value of the future viewports which have to be visible in the current view
+	peekAfter: HasResponsive<string>;
+	isEqualHeight: boolean;
+	swithToScrollSnapX: ResponsiveDevices | "None";
 }
 
 export const WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO: WCB_PRODUCTS_PANEL_STYLE_LAYOUT =
@@ -36,6 +50,10 @@ export const WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO: WCB_PRODUCTS_PANEL_STYLE_LAYO
 				right: "0",
 			},
 		},
+		numberOfColumn: { Desktop: 3 },
+		peekAfter: { Desktop: "2rem", Tablet: "2rem", Mobile: "2rem" },
+		swithToScrollSnapX: "None",
+		isEqualHeight: true,
 	};
 
 interface Props
@@ -52,10 +70,24 @@ const WcbProductsPanel_StyleLayout: FC<Props> = ({
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
+	const { currentDeviceValue: currentNumberOfColumn } =
+		getValueFromAttrsResponsives(panelData.numberOfColumn, deviceType);
+	const { currentDeviceValue: currentPeekAfter } = getValueFromAttrsResponsives(
+		panelData.peekAfter,
+		deviceType
+	);
 
 	const { textAlignment, backgroundColor, colunmGap, padding, rowGap } =
 		panelData;
 
+	const SNAPX_POSTION_PLANS: MyRadioItem<
+		WCB_PRODUCTS_PANEL_STYLE_LAYOUT["swithToScrollSnapX"]
+	>[] = [
+		{ name: "Desktop", icon: "Desktop" },
+		{ name: "Tablet", icon: "Tablet" },
+		{ name: "Mobile", icon: "Mobile" },
+		{ name: "None", icon: "None" },
+	];
 	//
 	const handleChangeTextAlignment = (selected: CSSProperties["textAlign"]) => {
 		setAttr__({
@@ -92,6 +124,78 @@ const WcbProductsPanel_StyleLayout: FC<Props> = ({
 					color={backgroundColor}
 				/>
 
+				{/*  */}
+				<RangeControl
+					label={
+						<MyLabelControl hasResponsive>
+							{__("Columns", "wcb")}
+						</MyLabelControl>
+					}
+					value={currentNumberOfColumn || 1}
+					onChange={(number) => {
+						setAttr__({
+							...panelData,
+							numberOfColumn: {
+								...panelData.numberOfColumn,
+								[deviceType]: number || 2,
+							},
+						});
+					}}
+					min={1}
+					max={6}
+					required
+				/>
+
+				<MyDisclosure label="Swith to scroll-snap-x" defaultOpen>
+					<div>
+						<MyRadioGroup
+							label="Swith to scroll-snap-x"
+							onChange={(selected) =>
+								setAttr__({
+									...panelData,
+									swithToScrollSnapX: selected as any,
+								})
+							}
+							value={panelData.swithToScrollSnapX}
+							plans={SNAPX_POSTION_PLANS}
+							hasResponsive={false}
+							isWrap={false}
+						/>
+						<HelpText>
+							{__(
+								"Device selection to start switching from layout GRID to layout is a scroll able row.",
+								"wcb"
+							)}
+						</HelpText>
+					</div>
+					{/*  */}
+
+					{panelData.swithToScrollSnapX !== "None" && (
+						<div>
+							<MySpacingSizesControl
+								hasResponsive
+								onChange={(value) => {
+									setAttr__({
+										...panelData,
+										peekAfter: {
+											...panelData.peekAfter,
+											[deviceType]: value,
+										},
+									});
+								}}
+								value={currentPeekAfter || "0"}
+								label={__("Peek After", "wcb")}
+							/>
+							<HelpText>
+								{__(
+									"The value of the future viewports which have to be visible in the current view.",
+									"wcb"
+								)}
+							</HelpText>
+						</div>
+					)}
+				</MyDisclosure>
+
 				<MyDimensionsNoMarginControl
 					dimensionControl={{ colunmGap, padding, rowGap }}
 					setAttrs__dimensions={(data) => {
@@ -101,6 +205,18 @@ const WcbProductsPanel_StyleLayout: FC<Props> = ({
 						});
 					}}
 					paddingLabel={__("Padding content", "wcb")}
+				/>
+
+				<ToggleControl
+					label={__("Equal height", "wcb")}
+					checked={panelData.isEqualHeight}
+					onChange={(checked) => {
+						setAttr__({ ...panelData, isEqualHeight: checked });
+					}}
+					help={__(
+						"The product cards will have the same height, suitable when you set the border or background",
+						"wcb"
+					)}
 				/>
 			</div>
 		</PanelBody>

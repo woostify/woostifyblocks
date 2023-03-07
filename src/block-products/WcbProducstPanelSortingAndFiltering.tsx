@@ -41,7 +41,6 @@ export type ProductOrderBy =
 export interface WCB_PRODUCTS_PANEL_SORTINGANDFILTERING {
 	emptyMessage: string;
 	numberOfItems: number;
-	isEqualHeight: boolean;
 	isOnSale: boolean;
 	stockStatus: string[];
 	categories: string[];
@@ -53,15 +52,11 @@ export interface WCB_PRODUCTS_PANEL_SORTINGANDFILTERING {
 	attrOperator: ProductTaxOperator;
 	orderBy: ProductOrderBy;
 	order: "DESC" | "ASC";
-	numberOfColumn: HasResponsive<number>;
-	swithToScrollSnapX: ResponsiveDevices | "None";
 }
 export const WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO: WCB_PRODUCTS_PANEL_SORTINGANDFILTERING =
 	{
 		emptyMessage: "No post found!",
 		numberOfItems: 10,
-		numberOfColumn: { Desktop: 3 },
-		isEqualHeight: true,
 		isOnSale: false,
 		stockStatus: [],
 		categories: [],
@@ -73,7 +68,6 @@ export const WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO: WCB_PRODUCTS_PANEL_SOR
 		attrOperator: "any",
 		order: "DESC",
 		orderBy: "date ID",
-		swithToScrollSnapX: "None",
 	};
 
 interface Props
@@ -99,8 +93,6 @@ const WcbProducstPanelSortingAndFiltering: FC<Props> = ({
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { currentDeviceValue: currentNumberOfColumn } =
-		getValueFromAttrsResponsives(panelData.numberOfColumn, deviceType);
 
 	const STOCK_STATUS_OPTIONS = get_STOCK_STATUS_OPTIONS();
 
@@ -157,15 +149,6 @@ const WcbProducstPanelSortingAndFiltering: FC<Props> = ({
 			/>
 		);
 	};
-
-	const SNAPX_POSTION_PLANS: MyRadioItem<
-		WCB_PRODUCTS_PANEL_SORTINGANDFILTERING["swithToScrollSnapX"]
-	>[] = [
-		{ name: "Desktop", icon: "Desktop" },
-		{ name: "Tablet", icon: "Tablet" },
-		{ name: "Mobile", icon: "Mobile" },
-		{ name: "None", icon: "None" },
-	];
 
 	return (
 		<PanelBody
@@ -316,56 +299,6 @@ const WcbProducstPanelSortingAndFiltering: FC<Props> = ({
 				min={1}
 				max={40}
 				required
-			/>
-
-			{/*  */}
-			<RangeControl
-				label={
-					<MyLabelControl hasResponsive>{__("Columns", "wcb")}</MyLabelControl>
-				}
-				value={currentNumberOfColumn || 1}
-				onChange={(number) => {
-					setAttr__({
-						...panelData,
-						numberOfColumn: {
-							...panelData.numberOfColumn,
-							[deviceType]: number || 2,
-						},
-					});
-				}}
-				min={1}
-				max={6}
-				required
-			/>
-
-			<div>
-				<MyRadioGroup
-					label="Swith to scroll-snap-x"
-					onChange={(selected) =>
-						setAttr__({
-							...panelData,
-							swithToScrollSnapX: selected as any,
-						})
-					}
-					value={panelData.swithToScrollSnapX}
-					plans={SNAPX_POSTION_PLANS}
-					hasResponsive={false}
-					isWrap
-				/>
-				<HelpText>
-					{__(
-						"Device selection to start switching from layout GRID to layout is a scroll able row.",
-						"wcb"
-					)}
-				</HelpText>
-			</div>
-
-			<ToggleControl
-				label={__("Equal height", "wcb")}
-				checked={panelData.isEqualHeight}
-				onChange={(checked) => {
-					setAttr__({ ...panelData, isEqualHeight: checked });
-				}}
 			/>
 
 			<InputControl

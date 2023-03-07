@@ -1,20 +1,16 @@
-import {
-	Button,
-	ColorPalette,
-	ColorPicker,
-	Dropdown,
-} from "@wordpress/components";
+import { ColorPalette, Dropdown } from "@wordpress/components";
 // @ts-ignore
 import { __experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients } from "@wordpress/block-editor";
-import React, { FC, Fragment, useEffect, useState } from "react";
-// import { Popover, Transition } from "@headlessui/react";
-import ResetButton from "../ResetButton";
+import React, { FC, useMemo, useEffect, useState } from "react";
 import { __ } from "@wordpress/i18n";
 
-interface Props extends Omit<ColorPicker.Props, "onChangeComplete"> {
+interface Props {
 	className?: string;
 	label?: string;
 	onChange: (color: string) => void;
+	color: string;
+	showDefaultPalette?: boolean;
+	showCustomColorOnDefaultPallete?: boolean;
 }
 
 const MyColorPicker: FC<Props> = ({
@@ -22,9 +18,9 @@ const MyColorPicker: FC<Props> = ({
 	label = __("Color", "wcb"),
 	// default value color - co the la cac gia tri hex string
 	color,
-	disableAlpha,
-	oldHue,
 	onChange,
+	showDefaultPalette = true,
+	showCustomColorOnDefaultPallete = true,
 }) => {
 	const [colorState, setColorState] = useState("");
 
@@ -39,11 +35,34 @@ const MyColorPicker: FC<Props> = ({
 
 	const colorGradientSettings = useMultipleOriginColorsAndGradients();
 
+	const defaultColorPallete = useMemo(() => {
+		const customColors = window.wcbGlobalVariables?.customColorPallete;
+
+		if (
+			!customColors ||
+			!customColors.length ||
+			!showCustomColorOnDefaultPallete
+		) {
+			return colorGradientSettings?.colors || [];
+		}
+
+		const c = [
+			...(colorGradientSettings?.colors || []),
+			{
+				name: "Customs",
+				colors: window.wcbGlobalVariables.customColorPallete || [],
+			},
+		];
+
+		return c;
+	}, [colorGradientSettings, showCustomColorOnDefaultPallete]);
+
 	return (
 		<div>
 			<Dropdown
 				className={`w-full ${className}`}
 				contentClassName="my-popover-content-classname"
+				// @ts-ignore
 				popoverProps={{ placement: "left-start" }}
 				renderToggle={({ isOpen, onToggle }) => (
 					<div
@@ -66,9 +85,11 @@ const MyColorPicker: FC<Props> = ({
 							></div>
 							{/* <ResetButton onClick={() => handleUpdateColor("")} /> */}
 						</div>
-						<div>
-							<span>{label}</span>
-						</div>
+						{label && (
+							<div>
+								<span>{label}</span>
+							</div>
+						)}
 					</div>
 				)}
 				renderContent={() => (
@@ -76,9 +97,10 @@ const MyColorPicker: FC<Props> = ({
 						<div className="bg-white ">
 							<ColorPalette
 								className="block-editor-color-gradient-control__panel p-4"
-								colors={colorGradientSettings?.colors}
+								colors={showDefaultPalette ? defaultColorPallete : undefined}
 								value={colorState}
 								onChange={(color) => handleUpdateColor(color || "")}
+								// @ts-ignore
 								__experimentalHasMultipleOrigins
 								__experimentalIsRenderedInSidebar
 							/>

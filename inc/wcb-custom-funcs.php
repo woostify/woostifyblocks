@@ -81,6 +81,12 @@ if (!function_exists('wcb_get_default_blocks_settings')) :
             'containerPadding'          => '10px',
             'enableTemplatesButton'     => 'true',
             'enableCopyPasteStyles'     => 'true',
+            // new 1
+            'customColorPallete'        => [
+                ["name" => "white", "color" => "#fff"],
+                ["name" => "black", "color" => "#000"],
+                ["name" => "blue", "color" => "#00f"],
+            ],
         ];
     }
 endif;

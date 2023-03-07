@@ -817,6 +817,40 @@ function isObjRef(value) {
 
 /***/ }),
 
+/***/ "./src/________.ts":
+/*!*************************!*\
+  !*** ./src/________.ts ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DEMO_WCB_GLOBAL_VARIABLES": () => (/* binding */ DEMO_WCB_GLOBAL_VARIABLES),
+/* harmony export */   "___wcb_global": () => (/* binding */ ___wcb_global)
+/* harmony export */ });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+const INIT_WCB_GLOBAL_VARIABLES = {
+  media_tablet: "768px",
+  media_desktop: "1024px",
+  reCAPTCHA_v3_secret_key: "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
+  reCAPTCHA_v3_site_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
+  reCAPTCHA_v2_site_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
+  reCAPTCHA_v2_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
+  defaultContentWidth: "1140px",
+  enableTemplatesButton: "true",
+  enableCopyPasteStyles: "false"
+};
+const DEMO_WCB_GLOBAL_VARIABLES = {
+  ...INIT_WCB_GLOBAL_VARIABLES,
+  ...(window.wcbGlobalVariables || {})
+};
+const ___wcb_global = 1;
+
+/***/ }),
+
 /***/ "./src/____toolbar-patterns/App.tsx":
 /*!******************************************!*\
   !*** ./src/____toolbar-patterns/App.tsx ***!
@@ -1239,8 +1273,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/controls/MyColorPicker/MyColorPicker */ "./src/components/controls/MyColorPicker/MyColorPicker.tsx");
+/* harmony import */ var _components_controls_HelpText__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/controls/HelpText */ "./src/components/controls/HelpText.tsx");
+
 
 
 
@@ -1248,33 +1289,84 @@ __webpack_require__.r(__webpack_exports__);
 // @ts-ignore
 
 
-const WcbPluginSidebar = props => {
-  const [color, setColor] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)("#f00");
-  const colors = [{
-    name: "red",
-    color: "#f00"
-  }, {
-    name: "white",
-    color: "#fff"
-  }, {
-    name: "blue",
-    color: "#00f"
-  }];
 
-  // const userPalette = useSetting("color.palette.custom");
-  const themePalette = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useSetting)("color.palette.theme");
-  const defaultPalette = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useSetting)("color.palette.default");
-  const colorGradientSettings = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.__experimentalUseMultipleOriginColorsAndGradients)();
-  console.log(11, {
+
+
+const WcbPluginSidebar = props => {
+  const [mycolors, setMyColor] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(window.wcbGlobalVariables.customColorPallete || []);
+  const [updateStatus, setUpdateStatus] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)("");
+  const themePalette = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.useSetting)("color.palette.theme");
+  const defaultPalette = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.useSetting)("color.palette.default");
+  const colorGradientSettings = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.__experimentalUseMultipleOriginColorsAndGradients)();
+  console.log(11, "____WcbPluginSidebar____log", {
     props,
     themePalette,
     defaultPalette,
-    colorGradientSettings
+    colorGradientSettings,
+    mycolors,
+    nweww: window.wcbGlobalVariables.customColorPallete
   });
+
+  // update save setting to database options via ajax
+  const handleUpdateSettings = newColors => {
+    if (typeof jQuery !== "function") {
+      return;
+    }
+    const newSettings = {
+      ...window.wcbGlobalVariables,
+      customColorPallete: newColors
+    };
+    const data = {
+      action: "wcb_dashboard_blocks_update_settings",
+      settings: newSettings
+    };
+    setUpdateStatus("loading");
+    jQuery
+    // @ts-ignore
+    .post(ajaxurl, data, function (response) {
+      console.log("Got this from the server: ", response);
+    }).done(function () {
+      setUpdateStatus("ok");
+    }).fail(function () {
+      setUpdateStatus("error");
+    });
+  };
+  const handleChangeCustomColor = (color, index) => {
+    console.log(111111);
+    if (!color) {
+      const newcolors = mycolors.filter((_, j) => j !== index);
+      handleUpdateSettings(newcolors);
+      return setMyColor(newcolors);
+    }
+    const newcolors = mycolors.map((item, j) => {
+      if (j !== index) {
+        return item;
+      }
+      return {
+        color,
+        name: color
+      };
+    });
+    setMyColor(newcolors);
+    handleUpdateSettings(newcolors);
+  };
+  const addNewCustomColor = () => {
+    const newcolors = [...mycolors, {
+      name: "black",
+      color: "#000"
+    }];
+    handleUpdateSettings(newcolors);
+    return setMyColor(newcolors);
+  };
+
+  //
+  const debounce_fun = lodash__WEBPACK_IMPORTED_MODULE_3___default().debounce(function (e, j) {
+    handleChangeCustomColor(e, j);
+  }, 600);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Panel, {
     header: ""
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
-    title: "Color Palette",
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)("Color Palette", "wcb"),
     initialOpen: true
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "flex flex-col gap-4"
@@ -1294,7 +1386,48 @@ const WcbPluginSidebar = props => {
       title: item.name,
       as: "div"
     }))));
-  }))))));
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex flex-col gap-2"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
+    className: "uppercase text-[11px] font-medium m-0"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)("Add custom colors", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_HelpText__WEBPACK_IMPORTED_MODULE_7__["default"], null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)("The custom colors will show up in your ColorPicker component.", "wcb"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex flex-wrap gap-2"
+  }, mycolors?.map((item, j) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    color: item.color,
+    key: j,
+    label: "",
+    onChange: e => {
+      debounce_fun(e, j);
+    },
+    showDefaultPalette: true,
+    showCustomColorOnDefaultPallete: false
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "p-2 flex items-center justify-center border rounded-lg cursor-pointer hover:border-slate-300 disabled:opacity-40",
+    title: updateStatus === "loading" ? "Updating..." : "Add new color",
+    onClick: addNewCustomColor,
+    disabled: updateStatus === "loading"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "sr-only"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)("Add new color", "wcb")), updateStatus === "loading" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "w-7 h-7 flex items-center justify-center"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Spinner, {
+    className: "w-5 h-5 !m-0"
+  })) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    fill: "none",
+    viewBox: "0 0 24 24",
+    strokeWidth: 1.5,
+    stroke: "currentColor",
+    className: "w-7 h-7"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    d: "M12 6v12m6-6H6"
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Notice, {
+    status: "warning",
+    className: "m-0",
+    isDismissible: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)("Note: ", "wcb")), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)("After customizing this color you need to reload the page (f5) so that the changes can properly update into the ColorPicker components.", "wcb"))))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WcbPluginSidebar);
 
@@ -1425,6 +1558,139 @@ const Logo = _ref => {
   }))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Logo);
+
+/***/ }),
+
+/***/ "./src/components/controls/HelpText.tsx":
+/*!**********************************************!*\
+  !*** ./src/components/controls/HelpText.tsx ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+const HelpText = _ref => {
+  let {
+    children,
+    className = "my-1"
+  } = _ref;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: `components-form-token-field__help ${className}`
+  }, children);
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HelpText);
+
+/***/ }),
+
+/***/ "./src/components/controls/MyColorPicker/MyColorPicker.tsx":
+/*!*****************************************************************!*\
+  !*** ./src/components/controls/MyColorPicker/MyColorPicker.tsx ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
+
+
+// @ts-ignore
+
+
+
+const MyColorPicker = _ref => {
+  let {
+    className = "",
+    label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Color", "wcb"),
+    // default value color - co the la cac gia tri hex string
+    color,
+    onChange,
+    showDefaultPalette = true,
+    showCustomColorOnDefaultPallete = true
+  } = _ref;
+  const [colorState, setColorState] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)("");
+  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
+    color && setColorState(color);
+  }, [color]);
+  const handleUpdateColor = c => {
+    setColorState(c);
+    onChange(c);
+  };
+  const colorGradientSettings = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.__experimentalUseMultipleOriginColorsAndGradients)();
+  const defaultColorPallete = (0,react__WEBPACK_IMPORTED_MODULE_3__.useMemo)(() => {
+    const customColors = window.wcbGlobalVariables?.customColorPallete;
+    if (!customColors || !customColors.length || !showCustomColorOnDefaultPallete) {
+      return colorGradientSettings?.colors || [];
+    }
+    const c = [...(colorGradientSettings?.colors || []), {
+      name: "Customs",
+      colors: window.wcbGlobalVariables.customColorPallete || []
+    }];
+    return c;
+  }, [colorGradientSettings, showCustomColorOnDefaultPallete]);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dropdown, {
+    className: `w-full ${className}`,
+    contentClassName: "my-popover-content-classname"
+    // @ts-ignore
+    ,
+    popoverProps: {
+      placement: "left-start"
+    },
+    renderToggle: _ref2 => {
+      let {
+        isOpen,
+        onToggle
+      } = _ref2;
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        className: `w-full flex items-center gap-3 border p-2 rounded-lg cursor-pointer hover:bg-slate-50 transition-colors`,
+        onClick: onToggle
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        className: "flex items-center gap-0.5"
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        className: `w-7 h-7 rounded-full shadow-md ring-1 ring-black/5 cursor-pointer ${colorState ? "" : "bg-transparent"}`,
+        style: {
+          backgroundColor: colorState,
+          backgroundImage: !colorState ? "linear-gradient(45deg, #ddd 25%, transparent 0), linear-gradient(-45deg, #ddd 25%, transparent 0), linear-gradient(45deg, transparent 75%, #ddd 0), linear-gradient(-45deg, transparent 75%, #ddd 0)" : undefined,
+          backgroundSize: "10px 10px",
+          backgroundPosition: "0 0, 0 5px, 5px -5px, -5px 0"
+        }
+      })), label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, label)));
+    },
+    renderContent: () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "bg-white "
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ColorPalette, {
+      className: "block-editor-color-gradient-control__panel p-4",
+      colors: showDefaultPalette ? defaultColorPallete : undefined,
+      value: colorState,
+      onChange: color => handleUpdateColor(color || "")
+      // @ts-ignore
+      ,
+      __experimentalHasMultipleOrigins: true,
+      __experimentalIsRenderedInSidebar: true
+    })))
+  }));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyColorPicker);
 
 /***/ }),
 
@@ -2666,6 +2932,28 @@ module.exports = window["ReactDOM"];
 
 /***/ }),
 
+/***/ "jquery":
+/*!*************************!*\
+  !*** external "jQuery" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["jQuery"];
+
+/***/ }),
+
+/***/ "lodash":
+/*!*************************!*\
+  !*** external "lodash" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["lodash"];
+
+/***/ }),
+
 /***/ "@wordpress/block-editor":
 /*!*************************************!*\
   !*** external ["wp","blockEditor"] ***!
@@ -2729,6 +3017,17 @@ module.exports = window["wp"]["editPost"];
 
 "use strict";
 module.exports = window["wp"]["element"];
+
+/***/ }),
+
+/***/ "@wordpress/i18n":
+/*!******************************!*\
+  !*** external ["wp","i18n"] ***!
+  \******************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["i18n"];
 
 /***/ }),
 
@@ -17050,7 +17349,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/edit-post */ "@wordpress/edit-post");
 /* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./App */ "./src/____toolbar-patterns/App.tsx");
-/* harmony import */ var _WcbPluginSidebar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WcbPluginSidebar */ "./src/____toolbar-patterns/WcbPluginSidebar.tsx");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _WcbPluginSidebar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./WcbPluginSidebar */ "./src/____toolbar-patterns/WcbPluginSidebar.tsx");
 
 
 
@@ -17060,6 +17360,7 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Internal dependencies
  */
+
 
 
 // import metadata from "./block.json";
@@ -17104,7 +17405,7 @@ const PluginSidebarTest = () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0
     height: "188",
     fill: "white"
   }))))
-}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPluginSidebar__WEBPACK_IMPORTED_MODULE_5__["default"], null));
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPluginSidebar__WEBPACK_IMPORTED_MODULE_6__["default"], null));
 (0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_2__.registerPlugin)("wcb-plugin-sidebar-woostify", {
   render: PluginSidebarTest
 });
