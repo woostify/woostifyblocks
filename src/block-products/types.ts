@@ -3,8 +3,6 @@
  */
 import type { Block, BlockEditProps } from "@wordpress/blocks";
 
-export type EditorBlock<T> = Block<T> & BlockEditProps<T>;
-
 export interface AttributeMetadata {
 	taxonomy: string;
 	termId: number;
@@ -98,8 +96,6 @@ export interface ProductQueryArguments {
 	__woocommerceStockStatus?: string[];
 }
 /* eslint-enable */
-
-export type ProductQueryBlock = EditorBlock<QueryBlockAttributes>;
 
 export type ProductQueryBlockQuery = Omit<
 	QueryBlockQuery,

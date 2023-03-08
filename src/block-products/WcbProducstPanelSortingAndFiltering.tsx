@@ -1,5 +1,4 @@
 import {
-	CustomSelectControl,
 	FormTokenField,
 	PanelBody,
 	RangeControl,
@@ -12,20 +11,13 @@ import React, { FC } from "react";
 // @ts-ignore
 import { __experimentalInputControl as InputControl } from "@wordpress/components";
 import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
-import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
-import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
-import {
-	QUERY_DEFAULT_ATTRIBUTES,
-	get_STOCK_STATUS_OPTIONS,
-} from "./constants";
+import { get_STOCK_STATUS_OPTIONS } from "./constants";
 import ProductCategoryControl from "./product-category-control";
 import ProductTagControl, { ProductTaxOperator } from "./product-tag-control";
 import MyDisclosure from "../components/controls/MyDisclosure";
 import ProductAttributeTermControl from "./product-attribute-term-control";
-import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
-import HelpText from "../components/controls/HelpText";
 
 export type ProductOrderBy =
 	| "ID"

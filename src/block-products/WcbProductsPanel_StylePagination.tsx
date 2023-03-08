@@ -103,38 +103,42 @@ const WcbProductsPanel_StylePagination: FC<Props> = ({
 		const { color, backgroundColor, border } = mainStyle[tabName];
 		return (
 			<div className="space-y-3.5">
-				<MyColorPicker
-					label={__("Color", "wcb")}
-					onChange={(value) =>
-						setAttr__({
-							...panelData,
-							mainStyle: {
-								...mainStyle,
-								[tabName]: {
-									...mainStyle[tabName],
-									color: value,
+				{color && (
+					<MyColorPicker
+						label={__("Color", "wcb")}
+						onChange={(value) =>
+							setAttr__({
+								...panelData,
+								mainStyle: {
+									...mainStyle,
+									[tabName]: {
+										...mainStyle[tabName],
+										color: value,
+									},
 								},
-							},
-						})
-					}
-					color={color}
-				/>
-				<MyColorPicker
-					label={__("Background color", "wcb")}
-					onChange={(value) =>
-						setAttr__({
-							...panelData,
-							mainStyle: {
-								...mainStyle,
-								[tabName]: {
-									...mainStyle[tabName],
-									backgroundColor: value,
+							})
+						}
+						color={color}
+					/>
+				)}
+				{backgroundColor && (
+					<MyColorPicker
+						label={__("Background color", "wcb")}
+						onChange={(value) =>
+							setAttr__({
+								...panelData,
+								mainStyle: {
+									...mainStyle,
+									[tabName]: {
+										...mainStyle[tabName],
+										backgroundColor: value,
+									},
 								},
-							},
-						})
-					}
-					color={backgroundColor}
-				/>
+							})
+						}
+						color={backgroundColor}
+					/>
+				)}
 
 				<MyBorderControl
 					borderControl={border}

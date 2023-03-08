@@ -68,24 +68,24 @@ export interface WcbAttrs {
 	uniqueId: string;
 
 	//
-	general_sortingAndFiltering: WCB_PRODUCTS_PANEL_SORTINGANDFILTERING;
-	general_content: WCB_PRODUCTS_PANEL_COTENT;
-	general_featuredImage: WCB_PRODUCTS_PANEL_FEATURED_IMAGE;
-	general_addToCartBtn: WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN;
-	general_pagination: WCB_PRODUCTS_PANEL_PAGINATION;
+	general_sortingAndFiltering?: WCB_PRODUCTS_PANEL_SORTINGANDFILTERING;
+	general_content?: WCB_PRODUCTS_PANEL_COTENT;
+	general_featuredImage?: WCB_PRODUCTS_PANEL_FEATURED_IMAGE;
+	general_addToCartBtn?: WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN;
+	general_pagination?: WCB_PRODUCTS_PANEL_PAGINATION;
 	//
-	style_title: WCB_PRODUCTS_PANEL_STYLE_TITLE;
-	style_featuredImage: WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE;
-	style_layout: WCB_PRODUCTS_PANEL_STYLE_LAYOUT;
-	style_addToCardBtn: WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN;
-	style_pagination: WCB_PRODUCTS_PANEL_STYLE_PAGINATION;
-	style_saleBadge: WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE;
-	style_border: MyBorderControlData;
-	style_price: WCB_PRODUCTS_PANEL_STYLE_PRICE;
-	style_rating: WCB_PRODUCTS_PANEL_STYLE_RATING;
+	style_title?: WCB_PRODUCTS_PANEL_STYLE_TITLE;
+	style_featuredImage?: WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE;
+	style_layout?: WCB_PRODUCTS_PANEL_STYLE_LAYOUT;
+	style_addToCardBtn?: WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN;
+	style_pagination?: WCB_PRODUCTS_PANEL_STYLE_PAGINATION;
+	style_saleBadge?: WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE;
+	style_border?: MyBorderControlData;
+	style_price?: WCB_PRODUCTS_PANEL_STYLE_PRICE;
+	style_rating?: WCB_PRODUCTS_PANEL_STYLE_RATING;
 	//
-	advance_responsiveCondition: MyResponsiveConditionControlData;
-	advance_zIndex: MyZIndexControlData;
+	advance_responsiveCondition?: MyResponsiveConditionControlData;
+	advance_zIndex?: MyZIndexControlData;
 }
 
 const blokc1Attrs: AttrsGenericType<WcbAttrs> = {

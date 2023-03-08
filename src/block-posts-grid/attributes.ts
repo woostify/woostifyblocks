@@ -72,26 +72,26 @@ import {
 export interface WcbBlockPostsGridAttrs {
 	uniqueId: string;
 	//
-	general_sortingAndFiltering: WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING;
-	general_postContent: WCB_POST_GRID_PANEL_POST_CONTENT;
-	general_postMeta: WCB_POST_GRID_PANEL_POST_META;
-	general_postFeaturedImage: WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE;
-	general_readmoreLink: WCB_POST_GRID_PANEL_READMORE_LINK;
-	general_pagination: WCB_POST_GRID_PANEL_PAGINATION;
+	general_sortingAndFiltering?: WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING;
+	general_postContent?: WCB_POST_GRID_PANEL_POST_CONTENT;
+	general_postMeta?: WCB_POST_GRID_PANEL_POST_META;
+	general_postFeaturedImage?: WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE;
+	general_readmoreLink?: WCB_POST_GRID_PANEL_READMORE_LINK;
+	general_pagination?: WCB_POST_GRID_PANEL_PAGINATION;
 	//
-	style_layout: WCB_POST_GRID_PANEL_STYLE_LAYOUT;
-	style_title: WCB_POST_GRID_PANEL_STYLE_TITLE;
-	style_excerpt: WCB_POST_GRID_PANEL_STYLE_EXCERPT;
-	style_taxonomy: WCB_POST_GRID_PANEL_STYLE_TAXONOMY;
-	style_meta: WCB_POST_GRID_PANEL_STYLE_META;
-	style_readmoreLink: WCB_POST_GRID_PANEL_STYLE_READMORE_LINK;
-	style_pagination: WCB_POST_GRID_PANEL_STYLE_PAGINATION;
-	style_featuredImage: WCB_POST_GRID_PANEL_STYLE_FEATURED_IMAGE;
-	style_border: MyBorderControlData;
-	style_boxShadow: MyBoxShadowControlData;
+	style_layout?: WCB_POST_GRID_PANEL_STYLE_LAYOUT;
+	style_title?: WCB_POST_GRID_PANEL_STYLE_TITLE;
+	style_excerpt?: WCB_POST_GRID_PANEL_STYLE_EXCERPT;
+	style_taxonomy?: WCB_POST_GRID_PANEL_STYLE_TAXONOMY;
+	style_meta?: WCB_POST_GRID_PANEL_STYLE_META;
+	style_readmoreLink?: WCB_POST_GRID_PANEL_STYLE_READMORE_LINK;
+	style_pagination?: WCB_POST_GRID_PANEL_STYLE_PAGINATION;
+	style_featuredImage?: WCB_POST_GRID_PANEL_STYLE_FEATURED_IMAGE;
+	style_border?: MyBorderControlData;
+	style_boxShadow?: MyBoxShadowControlData;
 	//
-	advance_responsiveCondition: MyResponsiveConditionControlData;
-	advance_zIndex: MyZIndexControlData;
+	advance_responsiveCondition?: MyResponsiveConditionControlData;
+	advance_zIndex?: MyZIndexControlData;
 }
 
 const blokc1Attrs: AttrsGenericType<WcbBlockPostsGridAttrs> = {

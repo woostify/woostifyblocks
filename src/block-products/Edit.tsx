@@ -160,85 +160,101 @@ const Edit: FC<Props> = (props) => {
 			case "General":
 				return (
 					<>
-						<WcbProducstPanelSortingAndFiltering
-							onToggle={() =>
-								handleTogglePanel("General", "SortingAndFiltering", true)
-							}
-							initialOpen={
-								tabGeneralIsPanelOpen === "SortingAndFiltering" ||
-								tabGeneralIsPanelOpen === "first"
-							}
-							opened={
-								tabGeneralIsPanelOpen === "SortingAndFiltering" || undefined
-							}
-							//
-							setAttr__={(data) => {
-								setAttributes({ general_sortingAndFiltering: data });
-							}}
-							panelData={general_sortingAndFiltering}
-						/>
-						<WcbProductsPanelContent
-							onToggle={() => handleTogglePanel("General", "Content")}
-							initialOpen={tabGeneralIsPanelOpen === "Content"}
-							opened={tabGeneralIsPanelOpen === "Content" || undefined}
-							//
-							setAttr__={(data) => {
-								setAttributes({ general_content: data });
-							}}
-							panelData={general_content}
-						/>
-						<WcbProductsPanelFeaturedImage
-							onToggle={() => handleTogglePanel("General", "PostFeaturedImage")}
-							initialOpen={tabGeneralIsPanelOpen === "PostFeaturedImage"}
-							opened={
-								tabGeneralIsPanelOpen === "PostFeaturedImage" || undefined
-							}
-							//
-							setAttr__={(data) => {
-								setAttributes({ general_featuredImage: data });
-							}}
-							panelData={general_featuredImage}
-						/>
-						<WcbProductsPanelButton
-							onToggle={() => handleTogglePanel("General", "Button")}
-							initialOpen={tabGeneralIsPanelOpen === "Button"}
-							opened={tabGeneralIsPanelOpen === "Button" || undefined}
-							//
-							setAttr__={(data) => {
-								setAttributes({ general_addToCartBtn: data });
-							}}
-							panelData={general_addToCartBtn}
-						/>
-						<WcbProductsPanelPagination
-							onToggle={() => handleTogglePanel("General", "Pagination")}
-							initialOpen={tabGeneralIsPanelOpen === "Pagination"}
-							opened={tabGeneralIsPanelOpen === "Pagination" || undefined}
-							//
-							setAttr__={(data) => {
-								setAttributes({ general_pagination: data });
-							}}
-							panelData={general_pagination}
-						/>
+						{general_sortingAndFiltering && (
+							<WcbProducstPanelSortingAndFiltering
+								onToggle={() =>
+									handleTogglePanel("General", "SortingAndFiltering", true)
+								}
+								initialOpen={
+									tabGeneralIsPanelOpen === "SortingAndFiltering" ||
+									tabGeneralIsPanelOpen === "first"
+								}
+								opened={
+									tabGeneralIsPanelOpen === "SortingAndFiltering" || undefined
+								}
+								//
+								setAttr__={(data) => {
+									setAttributes({ general_sortingAndFiltering: data });
+								}}
+								panelData={general_sortingAndFiltering}
+							/>
+						)}
+						{general_content && (
+							<WcbProductsPanelContent
+								onToggle={() => handleTogglePanel("General", "Content")}
+								initialOpen={tabGeneralIsPanelOpen === "Content"}
+								opened={tabGeneralIsPanelOpen === "Content" || undefined}
+								//
+								setAttr__={(data) => {
+									setAttributes({ general_content: data });
+								}}
+								panelData={general_content}
+							/>
+						)}
+						{general_featuredImage && (
+							<WcbProductsPanelFeaturedImage
+								onToggle={() =>
+									handleTogglePanel("General", "PostFeaturedImage")
+								}
+								initialOpen={tabGeneralIsPanelOpen === "PostFeaturedImage"}
+								opened={
+									tabGeneralIsPanelOpen === "PostFeaturedImage" || undefined
+								}
+								//
+								setAttr__={(data) => {
+									setAttributes({ general_featuredImage: data });
+								}}
+								panelData={general_featuredImage}
+							/>
+						)}
+						{general_addToCartBtn && (
+							<WcbProductsPanelButton
+								onToggle={() => handleTogglePanel("General", "Button")}
+								initialOpen={tabGeneralIsPanelOpen === "Button"}
+								opened={tabGeneralIsPanelOpen === "Button" || undefined}
+								//
+								setAttr__={(data) => {
+									setAttributes({ general_addToCartBtn: data });
+								}}
+								panelData={general_addToCartBtn}
+							/>
+						)}
+						{general_pagination && (
+							<WcbProductsPanelPagination
+								onToggle={() => handleTogglePanel("General", "Pagination")}
+								initialOpen={tabGeneralIsPanelOpen === "Pagination"}
+								opened={tabGeneralIsPanelOpen === "Pagination" || undefined}
+								//
+								setAttr__={(data) => {
+									setAttributes({ general_pagination: data });
+								}}
+								panelData={general_pagination}
+							/>
+						)}
 					</>
 				);
 			case "Styles":
 				return (
 					<>
-						<WcbProductsPanel_StyleLayout
-							onToggle={() => handleTogglePanel("Styles", "_StyleLayout", true)}
-							initialOpen={
-								tabStylesIsPanelOpen === "_StyleLayout" ||
-								tabStylesIsPanelOpen === "first"
-							}
-							opened={tabStylesIsPanelOpen === "_StyleLayout" || undefined}
-							//
-							setAttr__={(data) => {
-								setAttributes({ style_layout: data });
-							}}
-							panelData={style_layout}
-						/>
+						{style_layout && (
+							<WcbProductsPanel_StyleLayout
+								onToggle={() =>
+									handleTogglePanel("Styles", "_StyleLayout", true)
+								}
+								initialOpen={
+									tabStylesIsPanelOpen === "_StyleLayout" ||
+									tabStylesIsPanelOpen === "first"
+								}
+								opened={tabStylesIsPanelOpen === "_StyleLayout" || undefined}
+								//
+								setAttr__={(data) => {
+									setAttributes({ style_layout: data });
+								}}
+								panelData={style_layout}
+							/>
+						)}
 
-						{general_featuredImage.isShowFeaturedImage && (
+						{general_featuredImage?.isShowFeaturedImage && style_featuredImage && (
 							<WcbProductsPanel_StyleFeaturedImage
 								onToggle={() =>
 									handleTogglePanel("Styles", "_StyleFeaturedImage")
@@ -256,7 +272,7 @@ const Edit: FC<Props> = (props) => {
 							/>
 						)}
 
-						{general_content.isShowTitle && (
+						{general_content?.isShowTitle && style_title && (
 							<WcbProductsPanel_StyleTitle
 								onToggle={() => handleTogglePanel("Styles", "_StyleTitle")}
 								initialOpen={tabStylesIsPanelOpen === "_StyleTitle"}
@@ -269,7 +285,7 @@ const Edit: FC<Props> = (props) => {
 							/>
 						)}
 
-						{general_content.isShowSaleBadge && (
+						{general_content?.isShowSaleBadge && style_saleBadge && (
 							<WcbProductsPanel_StyleSaleBadge
 								onToggle={() => handleTogglePanel("Styles", "_StyleSaleBadge")}
 								initialOpen={tabStylesIsPanelOpen === "_StyleSaleBadge"}
@@ -282,7 +298,7 @@ const Edit: FC<Props> = (props) => {
 							/>
 						)}
 
-						{general_content.isShowRating && (
+						{general_content?.isShowRating && style_rating && (
 							<WcbProductsPanel_StyleRating
 								onToggle={() => handleTogglePanel("Styles", "_StyleRating")}
 								initialOpen={tabStylesIsPanelOpen === "_StyleRating"}
@@ -295,7 +311,7 @@ const Edit: FC<Props> = (props) => {
 							/>
 						)}
 
-						{general_content.isShowPrice && (
+						{general_content?.isShowPrice && style_price && (
 							<WcbProductsPanel_StylePrice
 								onToggle={() => handleTogglePanel("Styles", "_StylePrice")}
 								initialOpen={tabStylesIsPanelOpen === "_StylePrice"}
@@ -308,7 +324,7 @@ const Edit: FC<Props> = (props) => {
 							/>
 						)}
 
-						{general_addToCartBtn.isShowButton && (
+						{general_addToCartBtn?.isShowButton && style_addToCardBtn && (
 							<WcbProductsPanel_StyleAddToCartBtn
 								onToggle={() =>
 									handleTogglePanel("Styles", "_StyleAddToCartBtn")
@@ -325,7 +341,7 @@ const Edit: FC<Props> = (props) => {
 							/>
 						)}
 
-						{general_pagination.isShowPagination && (
+						{general_pagination?.isShowPagination && style_pagination && (
 							<WcbProductsPanel_StylePagination
 								onToggle={() => handleTogglePanel("Styles", "_StylePagination")}
 								initialOpen={tabStylesIsPanelOpen === "_StylePagination"}
@@ -346,27 +362,29 @@ const Edit: FC<Props> = (props) => {
 							opened={tabStylesIsPanelOpen === "StyleBorder" || undefined}
 							title={__("Border", "wcb")}
 						>
-							<MyBorderControl
-								borderControl={style_border}
-								setAttrs__border={(data) =>
-									setAttributes({ style_border: data })
-								}
-							/>
+							{style_border && (
+								<MyBorderControl
+									borderControl={style_border}
+									setAttrs__border={(data) =>
+										setAttributes({ style_border: data })
+									}
+								/>
+							)}
 						</PanelBody>
 					</>
 				);
 			case "Advances":
 				return (
 					<>
-						<AdvancePanelCommon
-							advance_responsiveCondition={
-								attributes.advance_responsiveCondition
-							}
-							advance_zIndex={attributes.advance_zIndex}
-							handleTogglePanel={handleTogglePanel}
-							setAttributes={setAttributes}
-							tabAdvancesIsPanelOpen={tabAdvancesIsPanelOpen}
-						/>
+						{advance_responsiveCondition && advance_zIndex && (
+							<AdvancePanelCommon
+								advance_responsiveCondition={advance_responsiveCondition}
+								advance_zIndex={advance_zIndex}
+								handleTogglePanel={handleTogglePanel}
+								setAttributes={setAttributes}
+								tabAdvancesIsPanelOpen={tabAdvancesIsPanelOpen}
+							/>
+						)}
 					</>
 				);
 
@@ -376,10 +394,14 @@ const Edit: FC<Props> = (props) => {
 	};
 
 	const renderToobar = () => {
-		const itemPerPage = general_sortingAndFiltering.numberOfItems;
-		const columnDesktop = style_layout.numberOfColumn.Desktop || 1;
-		const isShowPagination = general_pagination.isShowPagination;
-		const maxPageShow = general_pagination.pageLimit;
+		if (!general_sortingAndFiltering || !style_layout || !general_pagination) {
+			return null;
+		}
+
+		const itemPerPage = general_sortingAndFiltering?.numberOfItems || 9;
+		const columnDesktop = style_layout?.numberOfColumn.Desktop || 1;
+		const isShowPagination = general_pagination?.isShowPagination;
+		const maxPageShow = general_pagination?.pageLimit || 0;
 
 		return (
 			<Dropdown
@@ -394,67 +416,73 @@ const Edit: FC<Props> = (props) => {
 				renderContent={() => (
 					<>
 						<BaseControl id="1">
-							<NumberControl
-								__unstableInputWidth="60px"
-								label={__("Items per Page")}
-								labelPosition="edge"
-								min={1}
-								max={100}
-								onChange={(value) => {
-									if (isNaN(value) || value < 1 || value > 100) {
-										return;
-									}
-									setAttributes({
-										general_sortingAndFiltering: {
-											...general_sortingAndFiltering,
-											numberOfItems: Number(value || 1),
-										},
-									});
-								}}
-								step="1"
-								value={itemPerPage}
-								isDragEnabled={false}
-							/>
+							{general_sortingAndFiltering && (
+								<NumberControl
+									__unstableInputWidth="60px"
+									label={__("Items per Page")}
+									labelPosition="edge"
+									min={1}
+									max={100}
+									onChange={(value) => {
+										if (isNaN(value) || value < 1 || value > 100) {
+											return;
+										}
+										setAttributes({
+											general_sortingAndFiltering: {
+												...general_sortingAndFiltering,
+												numberOfItems: Number(value || 1),
+											},
+										});
+									}}
+									step="1"
+									value={itemPerPage}
+									isDragEnabled={false}
+								/>
+							)}
 						</BaseControl>
 						<BaseControl id="2">
-							<NumberControl
-								__unstableInputWidth="60px"
-								label={__("Column in Desktop")}
-								labelPosition="edge"
-								min={0}
-								max={100}
-								onChange={(value) => {
-									if (isNaN(value) || value < 0 || value > 100) {
-										return;
-									}
-									setAttributes({
-										style_layout: {
-											...style_layout,
-											numberOfColumn: {
-												...style_layout.numberOfColumn,
-												Desktop: Number(value || 1),
+							{style_layout && (
+								<NumberControl
+									__unstableInputWidth="60px"
+									label={__("Column in Desktop")}
+									labelPosition="edge"
+									min={0}
+									max={100}
+									onChange={(value) => {
+										if (isNaN(value) || value < 0 || value > 100) {
+											return;
+										}
+										setAttributes({
+											style_layout: {
+												...style_layout,
+												numberOfColumn: {
+													...style_layout.numberOfColumn,
+													Desktop: Number(value || 1),
+												},
 											},
-										},
-									});
-								}}
-								step="1"
-								value={columnDesktop}
-								isDragEnabled={false}
-							/>
+										});
+									}}
+									step="1"
+									value={columnDesktop}
+									isDragEnabled={false}
+								/>
+							)}
 						</BaseControl>
 						<BaseControl id="3">
-							<ToggleControl
-								label={__("Show pagination", "wcb")}
-								onChange={(checked) =>
-									setAttributes({
-										general_pagination: {
-											...general_pagination,
-											isShowPagination: checked,
-										},
-									})
-								}
-								checked={isShowPagination}
-							/>
+							{general_pagination && (
+								<ToggleControl
+									label={__("Show pagination", "wcb")}
+									onChange={(checked) =>
+										setAttributes({
+											general_pagination: {
+												...general_pagination,
+												isShowPagination: checked,
+											},
+										})
+									}
+									checked={isShowPagination}
+								/>
+							)}
 						</BaseControl>
 						{isShowPagination && (
 							<BaseControl
@@ -494,8 +522,8 @@ const Edit: FC<Props> = (props) => {
 		);
 	};
 
-	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {
-		return {
+	const WcbAttrsForSave = useCallback((): Required<WcbAttrsForSave> | null => {
+		const cs: WcbAttrsForSave = {
 			uniqueId,
 			advance_responsiveCondition,
 			advance_zIndex,
@@ -514,6 +542,10 @@ const Edit: FC<Props> = (props) => {
 			style_price,
 			style_rating,
 		};
+		if (Object.values(cs).some((item) => !item)) {
+			return null;
+		}
+		return cs as Required<WcbAttrsForSave>;
 	}, [
 		uniqueId,
 		advance_responsiveCondition,
@@ -552,6 +584,7 @@ const Edit: FC<Props> = (props) => {
 		general_pagination,
 	]);
 
+	const WcbAttrsForSaveValue = WcbAttrsForSave();
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div {...wrapBlockProps}>
@@ -565,7 +598,9 @@ const Edit: FC<Props> = (props) => {
 				<BlockControls group="block">{renderToobar()}</BlockControls>
 
 				{/* CSS IN JS */}
-				{!!uniqueId && !!style_layout && <GlobalCss {...WcbAttrsForSave()} />}
+				{!!uniqueId && !!style_layout && WcbAttrsForSaveValue && (
+					<GlobalCss {...WcbAttrsForSaveValue} />
+				)}
 
 				{/* CHILD CONTENT  */}
 				{uniqueId && !!style_layout && (

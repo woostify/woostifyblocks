@@ -59,31 +59,6 @@ export const get_STOCK_STATUS_OPTIONS = () =>
 export const get_GLOBAL_HIDE_OUT_OF_STOCK = () =>
 	!!window.wcSettings?.hideOutOfStockItems;
 
-export const QUERY_DEFAULT_ATTRIBUTES: QueryBlockAttributes = {
-	allowedControls: DEFAULT_ALLOWED_CONTROLS,
-	displayLayout: {
-		type: "flex",
-		columns: 3,
-	},
-	query: {
-		perPage: 9,
-		pages: 0,
-		offset: 0,
-		postType: "product",
-		order: "asc",
-		orderBy: "title",
-		author: "",
-		search: "",
-		exclude: [],
-		sticky: "",
-		inherit: false,
-		__woocommerceAttributes: [],
-		__woocommerceStockStatus: get_GLOBAL_HIDE_OUT_OF_STOCK()
-			? Object.keys(objectOmit(get_STOCK_STATUS_OPTIONS(), "outofstock"))
-			: Object.keys(get_STOCK_STATUS_OPTIONS()),
-	},
-};
-
 export const INNER_BLOCKS_TEMPLATE: InnerBlockTemplate[] = [
 	[
 		"core/post-template",

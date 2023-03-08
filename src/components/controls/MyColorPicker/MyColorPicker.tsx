@@ -8,7 +8,7 @@ interface Props {
 	className?: string;
 	label?: string;
 	onChange: (color: string) => void;
-	color: string;
+	color?: string;
 	showDefaultPalette?: boolean;
 	showCustomColorOnDefaultPallete?: boolean;
 }
@@ -17,7 +17,7 @@ const MyColorPicker: FC<Props> = ({
 	className = "",
 	label = __("Color", "wcb"),
 	// default value color - co the la cac gia tri hex string
-	color,
+	color = "#000",
 	onChange,
 	showDefaultPalette = true,
 	showCustomColorOnDefaultPallete = true,

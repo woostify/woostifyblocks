@@ -158,163 +158,207 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 			case "General":
 				return (
 					<>
-						<WcbPostsGridPanelSortingAndFiltering
-							onToggle={() =>
-								handleTogglePanel("General", "SortingAndFiltering", true)
-							}
-							initialOpen={
-								tabGeneralIsPanelOpen === "SortingAndFiltering" ||
-								tabGeneralIsPanelOpen === "first"
-							}
-							opened={
-								tabGeneralIsPanelOpen === "SortingAndFiltering" || undefined
-							}
-							//
-							setAttr__={(data) => {
-								setAttributes({ general_sortingAndFiltering: data });
-							}}
-							panelData={general_sortingAndFiltering}
-						/>
+						{general_sortingAndFiltering && (
+							<WcbPostsGridPanelSortingAndFiltering
+								onToggle={() =>
+									handleTogglePanel("General", "SortingAndFiltering", true)
+								}
+								initialOpen={
+									tabGeneralIsPanelOpen === "SortingAndFiltering" ||
+									tabGeneralIsPanelOpen === "first"
+								}
+								opened={
+									tabGeneralIsPanelOpen === "SortingAndFiltering" || undefined
+								}
+								//
+								setAttr__={(data) => {
+									setAttributes({ general_sortingAndFiltering: data });
+								}}
+								panelData={general_sortingAndFiltering}
+							/>
+						)}
 
-						<WcbPostGridPanelPostContent
-							onToggle={() => handleTogglePanel("General", "PostContent")}
-							initialOpen={tabGeneralIsPanelOpen === "PostContent"}
-							opened={tabGeneralIsPanelOpen === "PostContent" || undefined}
-							//
-							setAttr__={(data) => {
-								setAttributes({ general_postContent: data });
-							}}
-							panelData={general_postContent}
-						/>
+						{general_postContent && (
+							<WcbPostGridPanelPostContent
+								onToggle={() => handleTogglePanel("General", "PostContent")}
+								initialOpen={tabGeneralIsPanelOpen === "PostContent"}
+								opened={tabGeneralIsPanelOpen === "PostContent" || undefined}
+								//
+								setAttr__={(data) => {
+									setAttributes({ general_postContent: data });
+								}}
+								panelData={general_postContent}
+							/>
+						)}
 
-						<WcbPostGridPanelPostMeta
-							onToggle={() => handleTogglePanel("General", "PostMeta")}
-							initialOpen={tabGeneralIsPanelOpen === "PostMeta"}
-							opened={tabGeneralIsPanelOpen === "PostMeta" || undefined}
-							//
-							setAttr__={(data) => {
-								setAttributes({ general_postMeta: data });
-							}}
-							panelData={general_postMeta}
-						/>
+						{general_postMeta && (
+							<WcbPostGridPanelPostMeta
+								onToggle={() => handleTogglePanel("General", "PostMeta")}
+								initialOpen={tabGeneralIsPanelOpen === "PostMeta"}
+								opened={tabGeneralIsPanelOpen === "PostMeta" || undefined}
+								//
+								setAttr__={(data) => {
+									setAttributes({ general_postMeta: data });
+								}}
+								panelData={general_postMeta}
+							/>
+						)}
 
-						<WcbPostGridPanelPostFeaturedImage
-							onToggle={() => handleTogglePanel("General", "PostFeaturedImage")}
-							initialOpen={tabGeneralIsPanelOpen === "PostFeaturedImage"}
-							opened={
-								tabGeneralIsPanelOpen === "PostFeaturedImage" || undefined
-							}
-							//
-							setAttr__={(data) => {
-								setAttributes({ general_postFeaturedImage: data });
-							}}
-							panelData={general_postFeaturedImage}
-						/>
+						{general_postFeaturedImage && (
+							<WcbPostGridPanelPostFeaturedImage
+								onToggle={() =>
+									handleTogglePanel("General", "PostFeaturedImage")
+								}
+								initialOpen={tabGeneralIsPanelOpen === "PostFeaturedImage"}
+								opened={
+									tabGeneralIsPanelOpen === "PostFeaturedImage" || undefined
+								}
+								//
+								setAttr__={(data) => {
+									setAttributes({ general_postFeaturedImage: data });
+								}}
+								panelData={general_postFeaturedImage}
+							/>
+						)}
 
-						<WcbPostGridPanelReadMoreLink
-							onToggle={() => handleTogglePanel("General", "ReadMoreLink")}
-							initialOpen={tabGeneralIsPanelOpen === "ReadMoreLink"}
-							opened={tabGeneralIsPanelOpen === "ReadMoreLink" || undefined}
-							//
-							setAttr__={(data) => {
-								setAttributes({ general_readmoreLink: data });
-							}}
-							panelData={general_readmoreLink}
-						/>
+						{general_readmoreLink && (
+							<WcbPostGridPanelReadMoreLink
+								onToggle={() => handleTogglePanel("General", "ReadMoreLink")}
+								initialOpen={tabGeneralIsPanelOpen === "ReadMoreLink"}
+								opened={tabGeneralIsPanelOpen === "ReadMoreLink" || undefined}
+								//
+								setAttr__={(data) => {
+									setAttributes({ general_readmoreLink: data });
+								}}
+								panelData={general_readmoreLink}
+							/>
+						)}
 
-						<WcbPostGridPanelPagination
-							onToggle={() => handleTogglePanel("General", "Pagination")}
-							initialOpen={tabGeneralIsPanelOpen === "Pagination"}
-							opened={tabGeneralIsPanelOpen === "Pagination" || undefined}
-							//
-							setAttr__={(data) => {
-								setAttributes({ general_pagination: data });
-							}}
-							panelData={general_pagination}
-						/>
+						{general_pagination && (
+							<WcbPostGridPanelPagination
+								onToggle={() => handleTogglePanel("General", "Pagination")}
+								initialOpen={tabGeneralIsPanelOpen === "Pagination"}
+								opened={tabGeneralIsPanelOpen === "Pagination" || undefined}
+								//
+								setAttr__={(data) => {
+									setAttributes({ general_pagination: data });
+								}}
+								panelData={general_pagination}
+							/>
+						)}
 					</>
 				);
 			case "Styles":
 				return (
 					<>
-						<WcbPostGridPanel_StyleLayout
-							onToggle={() => handleTogglePanel("Styles", "StyleLayout", true)}
-							initialOpen={
-								tabStylesIsPanelOpen === "StyleLayout" ||
-								tabStylesIsPanelOpen === "first"
-							}
-							opened={tabStylesIsPanelOpen === "StyleLayout" || undefined}
-							//
-							panelData={style_layout}
-							setAttr__={(data) => setAttributes({ style_layout: data })}
-						/>
+						{style_layout && (
+							<WcbPostGridPanel_StyleLayout
+								onToggle={() =>
+									handleTogglePanel("Styles", "StyleLayout", true)
+								}
+								initialOpen={
+									tabStylesIsPanelOpen === "StyleLayout" ||
+									tabStylesIsPanelOpen === "first"
+								}
+								opened={tabStylesIsPanelOpen === "StyleLayout" || undefined}
+								//
+								panelData={style_layout}
+								setAttr__={(data) => setAttributes({ style_layout: data })}
+							/>
+						)}
 
-						<WcbPostGridPanel_StyleFeaturedImage
-							onToggle={() => handleTogglePanel("Styles", "StyleFeaturedImage")}
-							initialOpen={tabStylesIsPanelOpen === "StyleFeaturedImage"}
-							opened={
-								tabStylesIsPanelOpen === "StyleFeaturedImage" || undefined
-							}
-							//
-							panelData={style_featuredImage}
-							setAttr__={(data) => setAttributes({ style_featuredImage: data })}
-							//
-							imagePosition={general_postFeaturedImage.featuredImagePosition}
-						/>
+						{style_featuredImage && (
+							<WcbPostGridPanel_StyleFeaturedImage
+								onToggle={() =>
+									handleTogglePanel("Styles", "StyleFeaturedImage")
+								}
+								initialOpen={tabStylesIsPanelOpen === "StyleFeaturedImage"}
+								opened={
+									tabStylesIsPanelOpen === "StyleFeaturedImage" || undefined
+								}
+								//
+								panelData={style_featuredImage}
+								setAttr__={(data) =>
+									setAttributes({ style_featuredImage: data })
+								}
+								//
+								imagePosition={
+									general_postFeaturedImage?.featuredImagePosition || "top"
+								}
+							/>
+						)}
 
-						<WcbPostGridPanel_StyleTitle
-							onToggle={() => handleTogglePanel("Styles", "StyleTitle")}
-							initialOpen={tabStylesIsPanelOpen === "StyleTitle"}
-							opened={tabStylesIsPanelOpen === "StyleTitle" || undefined}
-							//
-							panelData={style_title}
-							setAttr__={(data) => setAttributes({ style_title: data })}
-						/>
+						{style_title && (
+							<WcbPostGridPanel_StyleTitle
+								onToggle={() => handleTogglePanel("Styles", "StyleTitle")}
+								initialOpen={tabStylesIsPanelOpen === "StyleTitle"}
+								opened={tabStylesIsPanelOpen === "StyleTitle" || undefined}
+								//
+								panelData={style_title}
+								setAttr__={(data) => setAttributes({ style_title: data })}
+							/>
+						)}
 
-						<WcbPostGridPanel_StyleExcerpt
-							onToggle={() => handleTogglePanel("Styles", "StyleExcerpt")}
-							initialOpen={tabStylesIsPanelOpen === "StyleExcerpt"}
-							opened={tabStylesIsPanelOpen === "StyleExcerpt" || undefined}
-							//
-							panelData={style_excerpt}
-							setAttr__={(data) => setAttributes({ style_excerpt: data })}
-						/>
+						{style_excerpt && (
+							<WcbPostGridPanel_StyleExcerpt
+								onToggle={() => handleTogglePanel("Styles", "StyleExcerpt")}
+								initialOpen={tabStylesIsPanelOpen === "StyleExcerpt"}
+								opened={tabStylesIsPanelOpen === "StyleExcerpt" || undefined}
+								//
+								panelData={style_excerpt}
+								setAttr__={(data) => setAttributes({ style_excerpt: data })}
+							/>
+						)}
 
-						<WcbPostGridPanel_StyleTaxonomy
-							onToggle={() => handleTogglePanel("Styles", "StyleTaxonomy")}
-							initialOpen={tabStylesIsPanelOpen === "StyleTaxonomy"}
-							opened={tabStylesIsPanelOpen === "StyleTaxonomy" || undefined}
-							//
-							panelData={style_taxonomy}
-							setAttr__={(data) => setAttributes({ style_taxonomy: data })}
-						/>
+						{style_taxonomy && (
+							<WcbPostGridPanel_StyleTaxonomy
+								onToggle={() => handleTogglePanel("Styles", "StyleTaxonomy")}
+								initialOpen={tabStylesIsPanelOpen === "StyleTaxonomy"}
+								opened={tabStylesIsPanelOpen === "StyleTaxonomy" || undefined}
+								//
+								panelData={style_taxonomy}
+								setAttr__={(data) => setAttributes({ style_taxonomy: data })}
+							/>
+						)}
 
-						<WcbPostGridPanel_StyleMeta
-							onToggle={() => handleTogglePanel("Styles", "StyleMeta")}
-							initialOpen={tabStylesIsPanelOpen === "StyleMeta"}
-							opened={tabStylesIsPanelOpen === "StyleMeta" || undefined}
-							//
-							panelData={style_meta}
-							setAttr__={(data) => setAttributes({ style_meta: data })}
-						/>
+						{style_meta && (
+							<WcbPostGridPanel_StyleMeta
+								onToggle={() => handleTogglePanel("Styles", "StyleMeta")}
+								initialOpen={tabStylesIsPanelOpen === "StyleMeta"}
+								opened={tabStylesIsPanelOpen === "StyleMeta" || undefined}
+								//
+								panelData={style_meta}
+								setAttr__={(data) => setAttributes({ style_meta: data })}
+							/>
+						)}
 
-						<WcbPostGridPanel_StyleReadmoreLink
-							onToggle={() => handleTogglePanel("Styles", "StyleReadmoreLink")}
-							initialOpen={tabStylesIsPanelOpen === "StyleReadmoreLink"}
-							opened={tabStylesIsPanelOpen === "StyleReadmoreLink" || undefined}
-							//
-							panelData={style_readmoreLink}
-							setAttr__={(data) => setAttributes({ style_readmoreLink: data })}
-						/>
+						{style_readmoreLink && (
+							<WcbPostGridPanel_StyleReadmoreLink
+								onToggle={() =>
+									handleTogglePanel("Styles", "StyleReadmoreLink")
+								}
+								initialOpen={tabStylesIsPanelOpen === "StyleReadmoreLink"}
+								opened={
+									tabStylesIsPanelOpen === "StyleReadmoreLink" || undefined
+								}
+								//
+								panelData={style_readmoreLink}
+								setAttr__={(data) =>
+									setAttributes({ style_readmoreLink: data })
+								}
+							/>
+						)}
 
-						<WcbPostGridPanel_StylePagination
-							onToggle={() => handleTogglePanel("Styles", "StylePagination")}
-							initialOpen={tabStylesIsPanelOpen === "StylePagination"}
-							opened={tabStylesIsPanelOpen === "StylePagination" || undefined}
-							//
-							panelData={style_pagination}
-							setAttr__={(data) => setAttributes({ style_pagination: data })}
-						/>
+						{style_pagination && (
+							<WcbPostGridPanel_StylePagination
+								onToggle={() => handleTogglePanel("Styles", "StylePagination")}
+								initialOpen={tabStylesIsPanelOpen === "StylePagination"}
+								opened={tabStylesIsPanelOpen === "StylePagination" || undefined}
+								//
+								panelData={style_pagination}
+								setAttr__={(data) => setAttributes({ style_pagination: data })}
+							/>
+						)}
 
 						<PanelBody
 							onToggle={() => handleTogglePanel("Styles", "StyleBorder")}
@@ -322,12 +366,14 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 							opened={tabStylesIsPanelOpen === "StyleBorder" || undefined}
 							title={__("Border", "wcb")}
 						>
-							<MyBorderControl
-								borderControl={style_border}
-								setAttrs__border={(data) =>
-									setAttributes({ style_border: data })
-								}
-							/>
+							{style_border && (
+								<MyBorderControl
+									borderControl={style_border}
+									setAttrs__border={(data) =>
+										setAttributes({ style_border: data })
+									}
+								/>
+							)}
 						</PanelBody>
 
 						<PanelBody
@@ -336,25 +382,29 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 							opened={tabStylesIsPanelOpen === "StyleBoxShadow" || undefined}
 							title={__("Box Shadow", "wcb")}
 						>
-							<MyBoxShadowControl
-								boxShadowControl={style_boxShadow}
-								setAttrs__boxShadow={(data) =>
-									setAttributes({ style_boxShadow: data })
-								}
-							/>
+							{style_boxShadow && (
+								<MyBoxShadowControl
+									boxShadowControl={style_boxShadow}
+									setAttrs__boxShadow={(data) =>
+										setAttributes({ style_boxShadow: data })
+									}
+								/>
+							)}
 						</PanelBody>
 					</>
 				);
 			case "Advances":
 				return (
 					<>
-						<AdvancePanelCommon
-							advance_responsiveCondition={advance_responsiveCondition}
-							advance_zIndex={advance_zIndex}
-							handleTogglePanel={handleTogglePanel}
-							setAttributes={setAttributes}
-							tabAdvancesIsPanelOpen={tabAdvancesIsPanelOpen}
-						/>
+						{advance_zIndex && advance_responsiveCondition && (
+							<AdvancePanelCommon
+								advance_responsiveCondition={advance_responsiveCondition}
+								advance_zIndex={advance_zIndex}
+								handleTogglePanel={handleTogglePanel}
+								setAttributes={setAttributes}
+								tabAdvancesIsPanelOpen={tabAdvancesIsPanelOpen}
+							/>
+						)}
 					</>
 				);
 
@@ -364,6 +414,14 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	};
 
 	const renderToobar = () => {
+		if (
+			!general_sortingAndFiltering ||
+			!general_sortingAndFiltering ||
+			!general_pagination
+		) {
+			return null;
+		}
+
 		const itemPerPage = general_sortingAndFiltering.queries.numberOfItems;
 		const columnDesktop =
 			general_sortingAndFiltering.numberOfColumn.Desktop || 1;
@@ -486,8 +544,35 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 		);
 	};
 
-	const WcbAttrsForGlobalCss = useMemo((): WcbBlockPostsGridAttrs => {
-		return {
+	const WcbAttrsForGlobalCss =
+		useMemo((): Required<WcbBlockPostsGridAttrs> | null => {
+			const cs: WcbBlockPostsGridAttrs = {
+				uniqueId,
+				general_sortingAndFiltering,
+				advance_responsiveCondition,
+				advance_zIndex,
+				general_postContent,
+				general_postMeta,
+				general_postFeaturedImage,
+				general_readmoreLink,
+				general_pagination,
+				style_layout,
+				style_title,
+				style_excerpt,
+				style_meta,
+				style_readmoreLink,
+				style_pagination,
+				style_featuredImage,
+				style_border,
+				style_boxShadow,
+				style_taxonomy,
+			};
+			if (Object.values(cs).some((item) => !item)) {
+				return null;
+			}
+
+			return cs as Required<WcbBlockPostsGridAttrs>;
+		}, [
 			uniqueId,
 			general_sortingAndFiltering,
 			advance_responsiveCondition,
@@ -507,28 +592,7 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 			style_border,
 			style_boxShadow,
 			style_taxonomy,
-		};
-	}, [
-		uniqueId,
-		general_sortingAndFiltering,
-		advance_responsiveCondition,
-		advance_zIndex,
-		general_postContent,
-		general_postMeta,
-		general_postFeaturedImage,
-		general_readmoreLink,
-		general_pagination,
-		style_layout,
-		style_title,
-		style_excerpt,
-		style_meta,
-		style_readmoreLink,
-		style_pagination,
-		style_featuredImage,
-		style_border,
-		style_boxShadow,
-		style_taxonomy,
-	]);
+		]);
 
 	const WcbAttrsForServerSide = useMemo(() => {
 		return {
@@ -564,7 +628,9 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 				<BlockControls group="block">{renderToobar()}</BlockControls>
 
 				{/* CSS IN JS */}
-				{uniqueId && !!style_layout && <GlobalCss {...WcbAttrsForGlobalCss} />}
+				{uniqueId && !!style_layout && WcbAttrsForGlobalCss && (
+					<GlobalCss {...WcbAttrsForGlobalCss} />
+				)}
 
 				{uniqueId && !!style_layout && (
 					<ServerSideRender

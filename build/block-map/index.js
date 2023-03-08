@@ -4130,7 +4130,7 @@ const MyColorPicker = _ref => {
     className = "",
     label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Color", "wcb"),
     // default value color - co the la cac gia tri hex string
-    color,
+    color = "#000",
     onChange,
     showDefaultPalette = true,
     showCustomColorOnDefaultPallete = true

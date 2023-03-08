@@ -9,7 +9,7 @@ import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { WcbAttrsForSave } from "./Save";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 
-interface Props extends WcbAttrsForSave {}
+interface Props extends Required<WcbAttrsForSave> {}
 
 const GlobalCss: FC<Props> = (attrs) => {
 	const {

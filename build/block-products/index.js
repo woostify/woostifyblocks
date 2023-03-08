@@ -2897,7 +2897,7 @@ const Edit = props => {
   const renderTabBodyPanels = tab => {
     switch (tab.name) {
       case "General":
-        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProducstPanelSortingAndFiltering__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, general_sortingAndFiltering && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProducstPanelSortingAndFiltering__WEBPACK_IMPORTED_MODULE_12__["default"], {
           onToggle: () => handleTogglePanel("General", "SortingAndFiltering", true),
           initialOpen: tabGeneralIsPanelOpen === "SortingAndFiltering" || tabGeneralIsPanelOpen === "first",
           opened: tabGeneralIsPanelOpen === "SortingAndFiltering" || undefined
@@ -2909,7 +2909,7 @@ const Edit = props => {
             });
           },
           panelData: general_sortingAndFiltering
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanelContent__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        }), general_content && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanelContent__WEBPACK_IMPORTED_MODULE_13__["default"], {
           onToggle: () => handleTogglePanel("General", "Content"),
           initialOpen: tabGeneralIsPanelOpen === "Content",
           opened: tabGeneralIsPanelOpen === "Content" || undefined
@@ -2921,7 +2921,7 @@ const Edit = props => {
             });
           },
           panelData: general_content
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanelFeaturedImage__WEBPACK_IMPORTED_MODULE_14__["default"], {
+        }), general_featuredImage && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanelFeaturedImage__WEBPACK_IMPORTED_MODULE_14__["default"], {
           onToggle: () => handleTogglePanel("General", "PostFeaturedImage"),
           initialOpen: tabGeneralIsPanelOpen === "PostFeaturedImage",
           opened: tabGeneralIsPanelOpen === "PostFeaturedImage" || undefined
@@ -2933,7 +2933,7 @@ const Edit = props => {
             });
           },
           panelData: general_featuredImage
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanelButton__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        }), general_addToCartBtn && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanelButton__WEBPACK_IMPORTED_MODULE_15__["default"], {
           onToggle: () => handleTogglePanel("General", "Button"),
           initialOpen: tabGeneralIsPanelOpen === "Button",
           opened: tabGeneralIsPanelOpen === "Button" || undefined
@@ -2945,7 +2945,7 @@ const Edit = props => {
             });
           },
           panelData: general_addToCartBtn
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanelPagination__WEBPACK_IMPORTED_MODULE_16__["default"], {
+        }), general_pagination && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanelPagination__WEBPACK_IMPORTED_MODULE_16__["default"], {
           onToggle: () => handleTogglePanel("General", "Pagination"),
           initialOpen: tabGeneralIsPanelOpen === "Pagination",
           opened: tabGeneralIsPanelOpen === "Pagination" || undefined
@@ -2959,7 +2959,7 @@ const Edit = props => {
           panelData: general_pagination
         }));
       case "Styles":
-        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanel_StyleLayout__WEBPACK_IMPORTED_MODULE_19__["default"], {
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, style_layout && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanel_StyleLayout__WEBPACK_IMPORTED_MODULE_19__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleLayout", true),
           initialOpen: tabStylesIsPanelOpen === "_StyleLayout" || tabStylesIsPanelOpen === "first",
           opened: tabStylesIsPanelOpen === "_StyleLayout" || undefined
@@ -2971,7 +2971,7 @@ const Edit = props => {
             });
           },
           panelData: style_layout
-        }), general_featuredImage.isShowFeaturedImage && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanel_StyleFeaturedImage__WEBPACK_IMPORTED_MODULE_18__["default"], {
+        }), general_featuredImage?.isShowFeaturedImage && style_featuredImage && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanel_StyleFeaturedImage__WEBPACK_IMPORTED_MODULE_18__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleFeaturedImage"),
           initialOpen: tabStylesIsPanelOpen === "_StyleFeaturedImage",
           opened: tabStylesIsPanelOpen === "_StyleFeaturedImage" || undefined
@@ -2984,7 +2984,7 @@ const Edit = props => {
           },
           panelData: style_featuredImage,
           imagePosition: "top"
-        }), general_content.isShowTitle && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_17__["default"], {
+        }), general_content?.isShowTitle && style_title && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_17__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleTitle"),
           initialOpen: tabStylesIsPanelOpen === "_StyleTitle",
           opened: tabStylesIsPanelOpen === "_StyleTitle" || undefined
@@ -2996,7 +2996,7 @@ const Edit = props => {
             });
           },
           panelData: style_title
-        }), general_content.isShowSaleBadge && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanel_StyleSaleBadge__WEBPACK_IMPORTED_MODULE_22__["default"], {
+        }), general_content?.isShowSaleBadge && style_saleBadge && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanel_StyleSaleBadge__WEBPACK_IMPORTED_MODULE_22__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleSaleBadge"),
           initialOpen: tabStylesIsPanelOpen === "_StyleSaleBadge",
           opened: tabStylesIsPanelOpen === "_StyleSaleBadge" || undefined
@@ -3008,7 +3008,7 @@ const Edit = props => {
             });
           },
           panelData: style_saleBadge
-        }), general_content.isShowRating && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanel_StyleRating__WEBPACK_IMPORTED_MODULE_25__["default"], {
+        }), general_content?.isShowRating && style_rating && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanel_StyleRating__WEBPACK_IMPORTED_MODULE_25__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleRating"),
           initialOpen: tabStylesIsPanelOpen === "_StyleRating",
           opened: tabStylesIsPanelOpen === "_StyleRating" || undefined
@@ -3020,7 +3020,7 @@ const Edit = props => {
             });
           },
           panelData: style_rating
-        }), general_content.isShowPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanel_StylePrice__WEBPACK_IMPORTED_MODULE_24__["default"], {
+        }), general_content?.isShowPrice && style_price && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanel_StylePrice__WEBPACK_IMPORTED_MODULE_24__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StylePrice"),
           initialOpen: tabStylesIsPanelOpen === "_StylePrice",
           opened: tabStylesIsPanelOpen === "_StylePrice" || undefined
@@ -3032,7 +3032,7 @@ const Edit = props => {
             });
           },
           panelData: style_price
-        }), general_addToCartBtn.isShowButton && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanel_StyleAddToCartBtn__WEBPACK_IMPORTED_MODULE_20__["default"], {
+        }), general_addToCartBtn?.isShowButton && style_addToCardBtn && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanel_StyleAddToCartBtn__WEBPACK_IMPORTED_MODULE_20__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleAddToCartBtn"),
           initialOpen: tabStylesIsPanelOpen === "_StyleAddToCartBtn",
           opened: tabStylesIsPanelOpen === "_StyleAddToCartBtn" || undefined
@@ -3044,7 +3044,7 @@ const Edit = props => {
             });
           },
           panelData: style_addToCardBtn
-        }), general_pagination.isShowPagination && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanel_StylePagination__WEBPACK_IMPORTED_MODULE_21__["default"], {
+        }), general_pagination?.isShowPagination && style_pagination && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanel_StylePagination__WEBPACK_IMPORTED_MODULE_21__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StylePagination"),
           initialOpen: tabStylesIsPanelOpen === "_StylePagination",
           opened: tabStylesIsPanelOpen === "_StylePagination" || undefined
@@ -3061,16 +3061,16 @@ const Edit = props => {
           initialOpen: tabStylesIsPanelOpen === "StyleBorder",
           opened: tabStylesIsPanelOpen === "StyleBorder" || undefined,
           title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Border", "wcb")
-        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyBorderControl_MyBorderControl__WEBPACK_IMPORTED_MODULE_23__["default"], {
+        }, style_border && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyBorderControl_MyBorderControl__WEBPACK_IMPORTED_MODULE_23__["default"], {
           borderControl: style_border,
           setAttrs__border: data => setAttributes({
             style_border: data
           })
         })));
       case "Advances":
-        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_10__["default"], {
-          advance_responsiveCondition: attributes.advance_responsiveCondition,
-          advance_zIndex: attributes.advance_zIndex,
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, advance_responsiveCondition && advance_zIndex && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_10__["default"], {
+          advance_responsiveCondition: advance_responsiveCondition,
+          advance_zIndex: advance_zIndex,
           handleTogglePanel: handleTogglePanel,
           setAttributes: setAttributes,
           tabAdvancesIsPanelOpen: tabAdvancesIsPanelOpen
@@ -3080,10 +3080,13 @@ const Edit = props => {
     }
   };
   const renderToobar = () => {
-    const itemPerPage = general_sortingAndFiltering.numberOfItems;
-    const columnDesktop = style_layout.numberOfColumn.Desktop || 1;
-    const isShowPagination = general_pagination.isShowPagination;
-    const maxPageShow = general_pagination.pageLimit;
+    if (!general_sortingAndFiltering || !style_layout || !general_pagination) {
+      return null;
+    }
+    const itemPerPage = general_sortingAndFiltering?.numberOfItems || 9;
+    const columnDesktop = style_layout?.numberOfColumn.Desktop || 1;
+    const isShowPagination = general_pagination?.isShowPagination;
+    const maxPageShow = general_pagination?.pageLimit || 0;
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.Dropdown, {
       contentClassName: "block-library-query-toolbar__popover",
       renderToggle: _ref => {
@@ -3098,7 +3101,7 @@ const Edit = props => {
       },
       renderContent: () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.BaseControl, {
         id: "1"
-      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.__experimentalNumberControl, {
+      }, general_sortingAndFiltering && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.__experimentalNumberControl, {
         __unstableInputWidth: "60px",
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Items per Page"),
         labelPosition: "edge",
@@ -3120,7 +3123,7 @@ const Edit = props => {
         isDragEnabled: false
       })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.BaseControl, {
         id: "2"
-      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.__experimentalNumberControl, {
+      }, style_layout && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.__experimentalNumberControl, {
         __unstableInputWidth: "60px",
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Column in Desktop"),
         labelPosition: "edge",
@@ -3145,7 +3148,7 @@ const Edit = props => {
         isDragEnabled: false
       })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.BaseControl, {
         id: "3"
-      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.ToggleControl, {
+      }, general_pagination && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.ToggleControl, {
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Show pagination", "wcb"),
         onChange: checked => setAttributes({
           general_pagination: {
@@ -3182,7 +3185,7 @@ const Edit = props => {
     });
   };
   const WcbAttrsForSave = (0,react__WEBPACK_IMPORTED_MODULE_3__.useCallback)(() => {
-    return {
+    const cs = {
       uniqueId,
       advance_responsiveCondition,
       advance_zIndex,
@@ -3201,6 +3204,10 @@ const Edit = props => {
       style_price,
       style_rating
     };
+    if (Object.values(cs).some(item => !item)) {
+      return null;
+    }
+    return cs;
   }, [uniqueId, advance_responsiveCondition, advance_zIndex, general_sortingAndFiltering, general_content, general_featuredImage, general_addToCartBtn, general_pagination, style_title, style_featuredImage, style_layout, style_addToCardBtn, style_pagination, style_saleBadge, style_border, style_price, style_rating]);
   const WcbAttrsForServerSide = (0,react__WEBPACK_IMPORTED_MODULE_3__.useMemo)(() => {
     return {
@@ -3212,6 +3219,7 @@ const Edit = props => {
       general_pagination
     };
   }, [uniqueId, general_sortingAndFiltering, general_content, general_featuredImage, general_addToCartBtn, general_pagination]);
+  const WcbAttrsForSaveValue = WcbAttrsForSave();
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_11__["default"], {
     uniqueKey: clientId
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", wrapBlockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -3219,7 +3227,7 @@ const Edit = props => {
     uniqueId: uniqueId
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, {
     group: "block"
-  }, renderToobar()), !!uniqueId && !!style_layout && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_6__["default"], WcbAttrsForSave()), uniqueId && !!style_layout && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)((_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4___default()), {
+  }, renderToobar()), !!uniqueId && !!style_layout && WcbAttrsForSaveValue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_6__["default"], WcbAttrsForSaveValue), uniqueId && !!style_layout && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)((_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4___default()), {
     block: "wcb/products",
     attributes: WcbAttrsForServerSide,
     EmptyResponsePlaceholder: EmptyPlaceholder,
@@ -5048,7 +5056,7 @@ const WcbProductsPanel_StylePagination = _ref => {
     } = mainStyle[tabName];
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "space-y-3.5"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    }, color && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_7__["default"], {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Color", "wcb"),
       onChange: value => setAttr__({
         ...panelData,
@@ -5061,7 +5069,7 @@ const WcbProductsPanel_StylePagination = _ref => {
         }
       }),
       color: color
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    }), backgroundColor && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_7__["default"], {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Background color", "wcb"),
       onChange: value => setAttr__({
         ...panelData,
@@ -5710,7 +5718,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "INNER_BLOCKS_TEMPLATE": () => (/* binding */ INNER_BLOCKS_TEMPLATE),
 /* harmony export */   "PRODUCT_TEMPLATE_ID": () => (/* binding */ PRODUCT_TEMPLATE_ID),
 /* harmony export */   "PRODUCT_TITLE_ID": () => (/* binding */ PRODUCT_TITLE_ID),
-/* harmony export */   "QUERY_DEFAULT_ATTRIBUTES": () => (/* binding */ QUERY_DEFAULT_ATTRIBUTES),
 /* harmony export */   "QUERY_LOOP_ID": () => (/* binding */ QUERY_LOOP_ID),
 /* harmony export */   "WC_BLOCKS_IMAGE_URL": () => (/* binding */ WC_BLOCKS_IMAGE_URL),
 /* harmony export */   "get_GLOBAL_HIDE_OUT_OF_STOCK": () => (/* binding */ get_GLOBAL_HIDE_OUT_OF_STOCK),
@@ -5758,28 +5765,6 @@ const ALL_PRODUCT_QUERY_CONTROLS = ["attributes", "presets", "onSale", "stockSta
 const DEFAULT_ALLOWED_CONTROLS = [...DEFAULT_CORE_ALLOWED_CONTROLS, ...ALL_PRODUCT_QUERY_CONTROLS];
 const get_STOCK_STATUS_OPTIONS = () => window.wcSettings?.stockStatusOptions || {};
 const get_GLOBAL_HIDE_OUT_OF_STOCK = () => !!window.wcSettings?.hideOutOfStockItems;
-const QUERY_DEFAULT_ATTRIBUTES = {
-  allowedControls: DEFAULT_ALLOWED_CONTROLS,
-  displayLayout: {
-    type: "flex",
-    columns: 3
-  },
-  query: {
-    perPage: 9,
-    pages: 0,
-    offset: 0,
-    postType: "product",
-    order: "asc",
-    orderBy: "title",
-    author: "",
-    search: "",
-    exclude: [],
-    sticky: "",
-    inherit: false,
-    __woocommerceAttributes: [],
-    __woocommerceStockStatus: get_GLOBAL_HIDE_OUT_OF_STOCK() ? Object.keys(objectOmit(get_STOCK_STATUS_OPTIONS(), "outofstock")) : Object.keys(get_STOCK_STATUS_OPTIONS())
-  }
-};
 const INNER_BLOCKS_TEMPLATE = [["core/post-template", {
   __woocommerceNamespace: PRODUCT_TEMPLATE_ID
 }, [["woocommerce/product-image"], ["core/post-title", {
@@ -7981,7 +7966,7 @@ const MyColorPicker = _ref => {
     className = "",
     label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Color", "wcb"),
     // default value color - co the la cac gia tri hex string
-    color,
+    color = "#000",
     onChange,
     showDefaultPalette = true,
     showCustomColorOnDefaultPallete = true

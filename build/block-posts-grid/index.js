@@ -2836,7 +2836,7 @@ const Edit = props => {
   const renderTabBodyPanels = tab => {
     switch (tab.name) {
       case "General":
-        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostsGridPanelSortingAndFiltering__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, general_sortingAndFiltering && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostsGridPanelSortingAndFiltering__WEBPACK_IMPORTED_MODULE_7__["default"], {
           onToggle: () => handleTogglePanel("General", "SortingAndFiltering", true),
           initialOpen: tabGeneralIsPanelOpen === "SortingAndFiltering" || tabGeneralIsPanelOpen === "first",
           opened: tabGeneralIsPanelOpen === "SortingAndFiltering" || undefined
@@ -2848,7 +2848,7 @@ const Edit = props => {
             });
           },
           panelData: general_sortingAndFiltering
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanelPostContent__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        }), general_postContent && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanelPostContent__WEBPACK_IMPORTED_MODULE_10__["default"], {
           onToggle: () => handleTogglePanel("General", "PostContent"),
           initialOpen: tabGeneralIsPanelOpen === "PostContent",
           opened: tabGeneralIsPanelOpen === "PostContent" || undefined
@@ -2860,7 +2860,7 @@ const Edit = props => {
             });
           },
           panelData: general_postContent
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanelPostMeta__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        }), general_postMeta && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanelPostMeta__WEBPACK_IMPORTED_MODULE_11__["default"], {
           onToggle: () => handleTogglePanel("General", "PostMeta"),
           initialOpen: tabGeneralIsPanelOpen === "PostMeta",
           opened: tabGeneralIsPanelOpen === "PostMeta" || undefined
@@ -2872,7 +2872,7 @@ const Edit = props => {
             });
           },
           panelData: general_postMeta
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanelPostFeaturedImage__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        }), general_postFeaturedImage && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanelPostFeaturedImage__WEBPACK_IMPORTED_MODULE_12__["default"], {
           onToggle: () => handleTogglePanel("General", "PostFeaturedImage"),
           initialOpen: tabGeneralIsPanelOpen === "PostFeaturedImage",
           opened: tabGeneralIsPanelOpen === "PostFeaturedImage" || undefined
@@ -2884,7 +2884,7 @@ const Edit = props => {
             });
           },
           panelData: general_postFeaturedImage
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanelReadMoreLink__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        }), general_readmoreLink && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanelReadMoreLink__WEBPACK_IMPORTED_MODULE_13__["default"], {
           onToggle: () => handleTogglePanel("General", "ReadMoreLink"),
           initialOpen: tabGeneralIsPanelOpen === "ReadMoreLink",
           opened: tabGeneralIsPanelOpen === "ReadMoreLink" || undefined
@@ -2896,7 +2896,7 @@ const Edit = props => {
             });
           },
           panelData: general_readmoreLink
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanelPagination__WEBPACK_IMPORTED_MODULE_14__["default"], {
+        }), general_pagination && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanelPagination__WEBPACK_IMPORTED_MODULE_14__["default"], {
           onToggle: () => handleTogglePanel("General", "Pagination"),
           initialOpen: tabGeneralIsPanelOpen === "Pagination",
           opened: tabGeneralIsPanelOpen === "Pagination" || undefined
@@ -2910,7 +2910,7 @@ const Edit = props => {
           panelData: general_pagination
         }));
       case "Styles":
-        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanel_StyleLayout__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, style_layout && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanel_StyleLayout__WEBPACK_IMPORTED_MODULE_15__["default"], {
           onToggle: () => handleTogglePanel("Styles", "StyleLayout", true),
           initialOpen: tabStylesIsPanelOpen === "StyleLayout" || tabStylesIsPanelOpen === "first",
           opened: tabStylesIsPanelOpen === "StyleLayout" || undefined
@@ -2920,7 +2920,7 @@ const Edit = props => {
           setAttr__: data => setAttributes({
             style_layout: data
           })
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanel_StyleFeaturedImage__WEBPACK_IMPORTED_MODULE_21__["default"], {
+        }), style_featuredImage && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanel_StyleFeaturedImage__WEBPACK_IMPORTED_MODULE_21__["default"], {
           onToggle: () => handleTogglePanel("Styles", "StyleFeaturedImage"),
           initialOpen: tabStylesIsPanelOpen === "StyleFeaturedImage",
           opened: tabStylesIsPanelOpen === "StyleFeaturedImage" || undefined
@@ -2932,8 +2932,8 @@ const Edit = props => {
           })
           //
           ,
-          imagePosition: general_postFeaturedImage.featuredImagePosition
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_16__["default"], {
+          imagePosition: general_postFeaturedImage?.featuredImagePosition || "top"
+        }), style_title && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_16__["default"], {
           onToggle: () => handleTogglePanel("Styles", "StyleTitle"),
           initialOpen: tabStylesIsPanelOpen === "StyleTitle",
           opened: tabStylesIsPanelOpen === "StyleTitle" || undefined
@@ -2943,7 +2943,7 @@ const Edit = props => {
           setAttr__: data => setAttributes({
             style_title: data
           })
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanel_StyleExcerpt__WEBPACK_IMPORTED_MODULE_17__["default"], {
+        }), style_excerpt && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanel_StyleExcerpt__WEBPACK_IMPORTED_MODULE_17__["default"], {
           onToggle: () => handleTogglePanel("Styles", "StyleExcerpt"),
           initialOpen: tabStylesIsPanelOpen === "StyleExcerpt",
           opened: tabStylesIsPanelOpen === "StyleExcerpt" || undefined
@@ -2953,7 +2953,7 @@ const Edit = props => {
           setAttr__: data => setAttributes({
             style_excerpt: data
           })
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanel_StyleTaxonomy__WEBPACK_IMPORTED_MODULE_25__["default"], {
+        }), style_taxonomy && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanel_StyleTaxonomy__WEBPACK_IMPORTED_MODULE_25__["default"], {
           onToggle: () => handleTogglePanel("Styles", "StyleTaxonomy"),
           initialOpen: tabStylesIsPanelOpen === "StyleTaxonomy",
           opened: tabStylesIsPanelOpen === "StyleTaxonomy" || undefined
@@ -2963,7 +2963,7 @@ const Edit = props => {
           setAttr__: data => setAttributes({
             style_taxonomy: data
           })
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanel_StyleMeta__WEBPACK_IMPORTED_MODULE_18__["default"], {
+        }), style_meta && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanel_StyleMeta__WEBPACK_IMPORTED_MODULE_18__["default"], {
           onToggle: () => handleTogglePanel("Styles", "StyleMeta"),
           initialOpen: tabStylesIsPanelOpen === "StyleMeta",
           opened: tabStylesIsPanelOpen === "StyleMeta" || undefined
@@ -2973,7 +2973,7 @@ const Edit = props => {
           setAttr__: data => setAttributes({
             style_meta: data
           })
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanel_StyleReadmoreLink__WEBPACK_IMPORTED_MODULE_19__["default"], {
+        }), style_readmoreLink && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanel_StyleReadmoreLink__WEBPACK_IMPORTED_MODULE_19__["default"], {
           onToggle: () => handleTogglePanel("Styles", "StyleReadmoreLink"),
           initialOpen: tabStylesIsPanelOpen === "StyleReadmoreLink",
           opened: tabStylesIsPanelOpen === "StyleReadmoreLink" || undefined
@@ -2983,7 +2983,7 @@ const Edit = props => {
           setAttr__: data => setAttributes({
             style_readmoreLink: data
           })
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanel_StylePagination__WEBPACK_IMPORTED_MODULE_20__["default"], {
+        }), style_pagination && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbPostGridPanel_StylePagination__WEBPACK_IMPORTED_MODULE_20__["default"], {
           onToggle: () => handleTogglePanel("Styles", "StylePagination"),
           initialOpen: tabStylesIsPanelOpen === "StylePagination",
           opened: tabStylesIsPanelOpen === "StylePagination" || undefined
@@ -2998,7 +2998,7 @@ const Edit = props => {
           initialOpen: tabStylesIsPanelOpen === "StyleBorder",
           opened: tabStylesIsPanelOpen === "StyleBorder" || undefined,
           title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Border", "wcb")
-        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyBorderControl_MyBorderControl__WEBPACK_IMPORTED_MODULE_22__["default"], {
+        }, style_border && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyBorderControl_MyBorderControl__WEBPACK_IMPORTED_MODULE_22__["default"], {
           borderControl: style_border,
           setAttrs__border: data => setAttributes({
             style_border: data
@@ -3008,14 +3008,14 @@ const Edit = props => {
           initialOpen: tabStylesIsPanelOpen === "StyleBoxShadow",
           opened: tabStylesIsPanelOpen === "StyleBoxShadow" || undefined,
           title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Box Shadow", "wcb")
-        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyBoxShadowControl_MyBoxShadowControl__WEBPACK_IMPORTED_MODULE_23__["default"], {
+        }, style_boxShadow && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyBoxShadowControl_MyBoxShadowControl__WEBPACK_IMPORTED_MODULE_23__["default"], {
           boxShadowControl: style_boxShadow,
           setAttrs__boxShadow: data => setAttributes({
             style_boxShadow: data
           })
         })));
       case "Advances":
-        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, advance_zIndex && advance_responsiveCondition && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_9__["default"], {
           advance_responsiveCondition: advance_responsiveCondition,
           advance_zIndex: advance_zIndex,
           handleTogglePanel: handleTogglePanel,
@@ -3027,6 +3027,9 @@ const Edit = props => {
     }
   };
   const renderToobar = () => {
+    if (!general_sortingAndFiltering || !general_sortingAndFiltering || !general_pagination) {
+      return null;
+    }
     const itemPerPage = general_sortingAndFiltering.queries.numberOfItems;
     const columnDesktop = general_sortingAndFiltering.numberOfColumn.Desktop || 1;
     const isShowPagination = general_pagination.isShowPagination;
@@ -3132,7 +3135,7 @@ const Edit = props => {
     });
   };
   const WcbAttrsForGlobalCss = (0,react__WEBPACK_IMPORTED_MODULE_2__.useMemo)(() => {
-    return {
+    const cs = {
       uniqueId,
       general_sortingAndFiltering,
       advance_responsiveCondition,
@@ -3153,6 +3156,10 @@ const Edit = props => {
       style_boxShadow,
       style_taxonomy
     };
+    if (Object.values(cs).some(item => !item)) {
+      return null;
+    }
+    return cs;
   }, [uniqueId, general_sortingAndFiltering, advance_responsiveCondition, advance_zIndex, general_postContent, general_postMeta, general_postFeaturedImage, general_readmoreLink, general_pagination, style_layout, style_title, style_excerpt, style_meta, style_readmoreLink, style_pagination, style_featuredImage, style_border, style_boxShadow, style_taxonomy]);
   const WcbAttrsForServerSide = (0,react__WEBPACK_IMPORTED_MODULE_2__.useMemo)(() => {
     return {
@@ -3173,7 +3180,7 @@ const Edit = props => {
     uniqueId: uniqueId
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_24__.BlockControls, {
     group: "block"
-  }, renderToobar()), uniqueId && !!style_layout && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_5__["default"], WcbAttrsForGlobalCss), uniqueId && !!style_layout && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)((_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_27___default()), {
+  }, renderToobar()), uniqueId && !!style_layout && WcbAttrsForGlobalCss && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_5__["default"], WcbAttrsForGlobalCss), uniqueId && !!style_layout && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)((_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_27___default()), {
     block: "wcb/posts-grid",
     attributes: {
       ...WcbAttrsForServerSide,
@@ -6788,7 +6795,7 @@ const MyColorPicker = _ref => {
     className = "",
     label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Color", "wcb"),
     // default value color - co the la cac gia tri hex string
-    color,
+    color = "#000",
     onChange,
     showDefaultPalette = true,
     showCustomColorOnDefaultPallete = true

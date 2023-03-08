@@ -9,7 +9,7 @@ import getTypographyStyles from "../utils/getTypographyStyles";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { WcbBlockPostsGridAttrs } from "./attributes";
 
-interface Props extends WcbBlockPostsGridAttrs {}
+interface Props extends Required<WcbBlockPostsGridAttrs> {}
 
 const GlobalCss: FC<Props> = (attrs) => {
 	const {
