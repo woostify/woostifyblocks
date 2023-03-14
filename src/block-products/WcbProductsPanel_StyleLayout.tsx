@@ -44,10 +44,10 @@ export const WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO: WCB_PRODUCTS_PANEL_STYLE_LAYO
 		backgroundColor: "",
 		padding: {
 			Desktop: {
-				bottom: "0",
-				top: "0",
-				left: "0",
-				right: "0",
+				bottom: "",
+				top: "",
+				left: "",
+				right: "",
 			},
 		},
 		numberOfColumn: { Desktop: 3 },

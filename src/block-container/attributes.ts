@@ -101,6 +101,14 @@ export const blokcContainerAttrs: AttrsGenericType<BlockWCBContainerAttrs> = {
 		type: "object",
 		default: {
 			...MY_DIMENSIONS_CONTROL_DEMO,
+			margin: {
+				Desktop: {
+					bottom: "",
+					left: "",
+					right: "",
+					top: "",
+				},
+			},
 			padding: {
 				Desktop: {
 					bottom: "",

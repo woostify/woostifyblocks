@@ -34,10 +34,10 @@ export const WCB_IMAGE_PANEL_STYLE_CAPTION_DEMO: WCB_IMAGE_PANEL_STYLE_CAPTION =
 		textColor: "",
 		margin: {
 			Desktop: {
-				top: "0",
-				left: "0",
-				right: "0",
-				bottom: "0",
+				top: "",
+				left: "",
+				right: "",
+				bottom: "",
 			},
 		},
 	};

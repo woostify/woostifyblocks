@@ -3651,6 +3651,14 @@ const blokcContainerAttrs = {
     type: "object",
     default: {
       ..._components_controls_MyDimensionsControl_types__WEBPACK_IMPORTED_MODULE_4__.MY_DIMENSIONS_CONTROL_DEMO,
+      margin: {
+        Desktop: {
+          bottom: "",
+          left: "",
+          right: "",
+          top: ""
+        }
+      },
       padding: {
         Desktop: {
           bottom: "",
@@ -5957,10 +5965,10 @@ const MY_DIMENSIONS_CONTROL_DEMO = {
   },
   margin: {
     Desktop: {
-      top: "0",
-      left: "0",
-      right: "0",
-      bottom: "0"
+      top: "",
+      left: "",
+      right: "",
+      bottom: ""
     }
   },
   padding: {
@@ -5975,10 +5983,10 @@ const MY_DIMENSIONS_CONTROL_DEMO = {
 const MY_DIMENSIONS_NO_GAP_CONTROL_DEMO = {
   margin: {
     Desktop: {
-      top: "0",
-      left: "0",
-      right: "0",
-      bottom: "0"
+      top: "",
+      left: "",
+      right: "",
+      bottom: ""
     }
   },
   padding: {
@@ -6033,10 +6041,10 @@ const MY_DIMENSIONS_NO_PADDING_CONTROL_DEMO = {
   },
   margin: {
     Desktop: {
-      top: "0",
-      left: "0",
-      right: "0",
-      bottom: "0"
+      top: "",
+      left: "",
+      right: "",
+      bottom: ""
     }
   }
 };

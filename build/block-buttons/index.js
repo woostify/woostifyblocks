@@ -4407,10 +4407,10 @@ const MY_DIMENSIONS_CONTROL_DEMO = {
   },
   margin: {
     Desktop: {
-      top: "0",
-      left: "0",
-      right: "0",
-      bottom: "0"
+      top: "",
+      left: "",
+      right: "",
+      bottom: ""
     }
   },
   padding: {
@@ -4425,10 +4425,10 @@ const MY_DIMENSIONS_CONTROL_DEMO = {
 const MY_DIMENSIONS_NO_GAP_CONTROL_DEMO = {
   margin: {
     Desktop: {
-      top: "0",
-      left: "0",
-      right: "0",
-      bottom: "0"
+      top: "",
+      left: "",
+      right: "",
+      bottom: ""
     }
   },
   padding: {
@@ -4483,10 +4483,10 @@ const MY_DIMENSIONS_NO_PADDING_CONTROL_DEMO = {
   },
   margin: {
     Desktop: {
-      top: "0",
-      left: "0",
-      right: "0",
-      bottom: "0"
+      top: "",
+      left: "",
+      right: "",
+      bottom: ""
     }
   }
 };

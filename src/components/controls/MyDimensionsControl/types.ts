@@ -32,10 +32,10 @@ export const MY_DIMENSIONS_CONTROL_DEMO: MyDimensionsControlData = {
 	rowGap: { Desktop: "1.5rem" },
 	margin: {
 		Desktop: {
-			top: "0",
-			left: "0",
-			right: "0",
-			bottom: "0",
+			top: "",
+			left: "",
+			right: "",
+			bottom: "",
 		},
 	},
 	padding: {
@@ -51,10 +51,10 @@ export const MY_DIMENSIONS_CONTROL_DEMO: MyDimensionsControlData = {
 export const MY_DIMENSIONS_NO_GAP_CONTROL_DEMO: MyDimensionsNoGapControlData = {
 	margin: {
 		Desktop: {
-			top: "0",
-			left: "0",
-			right: "0",
-			bottom: "0",
+			top: "",
+			left: "",
+			right: "",
+			bottom: "",
 		},
 	},
 	padding: {
@@ -105,10 +105,10 @@ export const MY_DIMENSIONS_NO_PADDING_CONTROL_DEMO: MyDimensionsNoPaddingControl
 		rowGap: { Desktop: "1.5rem" },
 		margin: {
 			Desktop: {
-				top: "0",
-				left: "0",
-				right: "0",
-				bottom: "0",
+				top: "",
+				left: "",
+				right: "",
+				bottom: "",
 			},
 		},
 	};

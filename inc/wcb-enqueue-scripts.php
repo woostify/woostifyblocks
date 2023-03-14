@@ -73,6 +73,8 @@ if (!function_exists("wcb__enqueue_script_to_setting_page")) {
             wp_enqueue_style('wcb-settings-page');
 
             // 
+            wp_enqueue_script('wcb-dashboard-app-tailwind', "https://cdn.tailwindcss.com?plugins=forms", [], '3.2.6', false);
+            // 
             wp_enqueue_script('wcb-dashboard-app', plugin_dir_url(WCB_FILE) . 'build/____dashboard/index.js', ['wp-blocks', 'wp-element', 'jquery'], WCB_VERSION, true);
         }
     }

@@ -2867,10 +2867,10 @@ const WCB_HEADING_PANEL_DIMENSION_DEMO = {
     ..._components_controls_MyDimensionsControl_types__WEBPACK_IMPORTED_MODULE_5__.MY_DIMENSIONS_NO_GAP_CONTROL_DEMO,
     padding: {
       Desktop: {
-        bottom: "0",
-        top: "0",
-        left: "0",
-        right: "0"
+        bottom: "",
+        top: "",
+        left: "",
+        right: ""
       }
     }
   }
@@ -4807,10 +4807,10 @@ const WCB_IMAGE_PANEL_STYLE_CAPTION_DEMO = {
   textColor: "",
   margin: {
     Desktop: {
-      top: "0",
-      left: "0",
-      right: "0",
-      bottom: "0"
+      top: "",
+      left: "",
+      right: "",
+      bottom: ""
     }
   }
 };
@@ -4922,10 +4922,10 @@ const WCB_IMAGE_PANEL_STYLE_IMAGE_DEMO = {
   boxShadow: _components_controls_MyBoxShadowControl_types__WEBPACK_IMPORTED_MODULE_7__.MY_BOX_SHADOW_CONTROL_DEMO,
   padding: {
     Desktop: {
-      top: "0",
-      left: "0",
-      right: "0",
-      bottom: "0"
+      top: "",
+      left: "",
+      right: "",
+      bottom: ""
     }
   }
 };
@@ -6695,10 +6695,10 @@ const MY_DIMENSIONS_CONTROL_DEMO = {
   },
   margin: {
     Desktop: {
-      top: "0",
-      left: "0",
-      right: "0",
-      bottom: "0"
+      top: "",
+      left: "",
+      right: "",
+      bottom: ""
     }
   },
   padding: {
@@ -6713,10 +6713,10 @@ const MY_DIMENSIONS_CONTROL_DEMO = {
 const MY_DIMENSIONS_NO_GAP_CONTROL_DEMO = {
   margin: {
     Desktop: {
-      top: "0",
-      left: "0",
-      right: "0",
-      bottom: "0"
+      top: "",
+      left: "",
+      right: "",
+      bottom: ""
     }
   },
   padding: {
@@ -6771,10 +6771,10 @@ const MY_DIMENSIONS_NO_PADDING_CONTROL_DEMO = {
   },
   margin: {
     Desktop: {
-      top: "0",
-      left: "0",
-      right: "0",
-      bottom: "0"
+      top: "",
+      left: "",
+      right: "",
+      bottom: ""
     }
   }
 };

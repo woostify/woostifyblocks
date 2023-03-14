@@ -33,10 +33,10 @@ export const WCB_IMAGE_PANEL_STYLE_IMAGE_DEMO: WCB_IMAGE_PANEL_STYLE_IMAGE = {
 	boxShadow: MY_BOX_SHADOW_CONTROL_DEMO,
 	padding: {
 		Desktop: {
-			top: "0",
-			left: "0",
-			right: "0",
-			bottom: "0",
+			top: "",
+			left: "",
+			right: "",
+			bottom: "",
 		},
 	},
 };

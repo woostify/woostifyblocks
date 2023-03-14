@@ -16,10 +16,10 @@ export const WCB_HEADING_PANEL_DIMENSION_DEMO: WCB_HEADING_PANEL_DIMENSION = {
 		...MY_DIMENSIONS_NO_GAP_CONTROL_DEMO,
 		padding: {
 			Desktop: {
-				bottom: "0",
-				top: "0",
-				left: "0",
-				right: "0",
+				bottom: "",
+				top: "",
+				left: "",
+				right: "",
 			},
 		},
 	},
