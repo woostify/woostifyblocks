@@ -1,0 +1,29 @@
+.wcb-image__wrap {
+	position: relative;
+	&.alignfull,
+	&.alignwide {
+		img {
+			height: auto;
+			width: 100%;
+		}
+	}
+
+	.wp-element-caption {
+		position: relative;
+		z-index: 1;
+	}
+
+	&--overlay {
+		.wp-element-caption {
+			display: none;
+		}
+	}
+}
+
+.wcb-image__overlay-wrap {
+	@apply absolute inset-0 flex overflow-hidden;
+}
+
+.wcb-image__overlay-bg {
+	@apply flex-1 bg-white/50 flex flex-col;
+}

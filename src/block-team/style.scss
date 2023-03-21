@@ -1,0 +1,18 @@
+.wcb-team__wrap {
+	.wcb-team__socials-icons > a:first-child {
+		margin-left: 0 !important;
+	}
+}
+
+.wcb-team__heading {
+	margin: 0;
+}
+
+.wcb-team__content-wrap {
+	flex-grow: 1;
+}
+
+.wcb-team__image {
+	flex-shrink: 0;
+	display: inline-block;
+}

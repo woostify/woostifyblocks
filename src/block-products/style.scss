@@ -1,0 +1,169 @@
+.wcb-products__wrap {
+	display: none;
+	position: relative;
+}
+
+.wcb-products__product {
+	font-size: 16px;
+
+	&.wcb-products__product--btnInsideImage {
+		.wcb-products__product-add-to-cart {
+			@apply absolute left-1/2 bottom-5 z-10 opacity-0 invisible transition-opacity;
+			transform: translateX(-50%);
+		}
+		&:hover {
+			.wcb-products__product-add-to-cart {
+				@apply opacity-100 visible;
+			}
+		}
+	}
+	&.wcb-products__product--onsaleInsideImage {
+		.wcb-products__product-salebadge {
+			@apply absolute left-2 top-2 z-10;
+		}
+	}
+
+	.wcb-products__product-rating {
+		display: inline-block;
+	}
+	.wcb-products__product-onsale {
+		border: none;
+		padding: 0.25rem 0.75rem;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	/* RATING */
+	.wc-block-components-product-rating__stars {
+		font-family: star;
+		font-size: 1em;
+		font-weight: 400;
+		height: 1.618em;
+		line-height: 1.618;
+		margin: 0 auto;
+		overflow: hidden;
+		position: relative;
+		text-align: left;
+		width: 5.3em;
+	}
+	.wc-block-components-product-rating__stars:before {
+		color: inherit;
+		content: "SSSSS";
+		left: 0;
+		opacity: 0.5;
+		position: absolute;
+		right: 0;
+		top: 0;
+		white-space: nowrap;
+	}
+	.wc-block-components-product-rating__stars span {
+		color: inherit;
+		left: 0;
+		overflow: hidden;
+		padding-top: 1.5em;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+	.wc-block-components-product-rating__stars span:before {
+		color: inherit;
+		content: "SSSSS";
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		white-space: nowrap;
+	}
+}
+
+.wcb-products__product-onsale {
+	display: inline-block;
+}
+
+.wcb-products__product-featured {
+	position: relative;
+}
+
+.wcb-products__product-title {
+	margin-top: 0;
+}
+
+.wcb-products__product-image {
+	img {
+		width: 100%;
+		border-radius: inherit;
+		vertical-align: middle;
+	}
+}
+
+/*  */
+/*  */
+/*  */
+/*  */
+
+body:not(.wp-admin) {
+	.scroll-snap-slider:not(.-show-scroll-bar) {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
+	}
+
+	.scroll-snap-slider:not(.-show-scroll-bar)::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+.wcb-products__wrap {
+	.scroll-snap-slider {
+		display: flex;
+		flex-wrap: nowrap;
+		justify-content: normal;
+		overflow-x: auto;
+		padding-inline: 0;
+		scroll-behavior: smooth;
+		scroll-snap-stop: always;
+		scroll-snap-type: x mandatory;
+	}
+
+	.p-arrow.-disabled {
+		cursor: not-allowed;
+		opacity: 0;
+	}
+
+	.indicators {
+		display: none;
+		/* only show on devices has slider */
+		&.-hidden {
+			opacity: 0;
+		}
+		.p-arrow {
+			@apply flex items-center justify-center absolute top-1/2 w-11 h-11 z-30 bg-white text-black shadow-lg;
+			transform: translateY(-50%);
+			border-radius: 9999px;
+
+			&-disable {
+				opacity: 0;
+			}
+			svg {
+				@apply w-6 h-6;
+			}
+		}
+		.-next {
+			@apply -right-4 left-auto;
+		}
+		.-prev {
+			@apply -left-4 right-auto;
+		}
+	}
+
+	.indicators input[type="radio"] {
+		display: none;
+	}
+
+	.scroll-snap-slider.-draggable {
+		cursor: grab;
+	}
+
+	.scroll-snap-slider.-draggable.-dragging {
+		cursor: grabbing;
+	}
+}

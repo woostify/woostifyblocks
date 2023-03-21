@@ -1,0 +1,9 @@
+.Wcb-SelectIcon__textarea {
+	textarea {
+		background: transparent;
+		@apply text-gray-100 rounded-lg border border-slate-700 placeholder:text-slate-600;
+	}
+	.components-base-control__help {
+		@apply text-gray-300;
+	}
+}

@@ -1,0 +1,13 @@
+.wcb-checkbox__wrap {
+	label {
+		@apply select-none;
+	}
+}
+
+.wcb-checkbox__option {
+	@apply inline-flex items-center;
+}
+
+.wcb-checkbox__option-label {
+	@apply ml-2;
+}

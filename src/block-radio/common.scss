@@ -1,0 +1,18 @@
+.wcb-radio__wrap {
+	label {
+		@apply select-none;
+	}
+}
+
+.wcb-radio__option {
+	@apply inline-flex items-center;
+	input {
+		&.round {
+			border-radius: 999px !important;
+		}
+	}
+}
+
+.wcb-radio__option-label {
+	@apply ml-2;
+}
