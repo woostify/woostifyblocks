@@ -3719,6 +3719,9 @@ const getAdvanveDivWrapStyles = _ref => {
     isHiddenOnTablet
   } = advance_responsiveCondition;
   return _emotion_react__WEBPACK_IMPORTED_MODULE_1__.css`
+		[data-is-wcb-save-common] {
+			visibility: hidden;
+		}
 		${className} {
 			display: ${isHiddenOnMobile ? "none" : defaultDisplay};
 			visibility: visible;
