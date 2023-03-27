@@ -197,6 +197,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 					advance_responsiveCondition,
 					advance_zIndex,
 					className: WRAP_CLASSNAME,
+					defaultDisplay: "block",
 				})}
 			/>
 		</>

@@ -58,7 +58,7 @@ const MyColorPicker: FC<Props> = ({
 	}, [colorGradientSettings, showCustomColorOnDefaultPallete]);
 
 	return (
-		<div>
+		<>
 			<Dropdown
 				className={`w-full ${className}`}
 				contentClassName="my-popover-content-classname"
@@ -156,7 +156,7 @@ const MyColorPicker: FC<Props> = ({
 					</>
 				)}
 			</Popover> */}
-		</div>
+		</>
 	);
 };
 

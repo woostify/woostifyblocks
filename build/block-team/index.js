@@ -3213,7 +3213,8 @@ const GlobalCss = attrs => {
     styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__.getAdvanveDivWrapStyles)({
       advance_responsiveCondition,
       advance_zIndex,
-      className: WRAP_CLASSNAME
+      className: WRAP_CLASSNAME,
+      defaultDisplay: "block"
     })
   }));
 };
@@ -5730,7 +5731,7 @@ const MyColorPicker = _ref => {
     }];
     return c;
   }, [colorGradientSettings, showCustomColorOnDefaultPallete]);
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dropdown, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dropdown, {
     className: `w-full ${className}`,
     contentClassName: "my-popover-content-classname"
     // @ts-ignore
