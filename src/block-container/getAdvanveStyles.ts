@@ -27,6 +27,7 @@ export const getAdvanveDivWrapStyles = ({
 	return css`
 		${className} {
 			display: ${isHiddenOnMobile ? "none" : defaultDisplay};
+			visibility: visible;
 			z-index: ${zIndexMobile};
 			@media (min-width: ${media_tablet}) {
 				z-index: ${zIndexTablet};

@@ -90,5 +90,5 @@ export function initCarouselForWcbTestimonials(div: Element, props: Props) {
 		],
 	};
 
-	$(`#${id} .wcb-testimonials__wrap-items`).slick(settings);
+	$(`#${id} .wcb-testimonials__wrap-items`).slick?.(settings);
 }

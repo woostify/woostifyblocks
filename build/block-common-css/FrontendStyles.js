@@ -431,7 +431,7 @@ function initCarouselForWcbTestimonials(div, props) {
       }
     }]
   };
-  $(`#${id} .wcb-testimonials__wrap-items`).slick(settings);
+  $(`#${id} .wcb-testimonials__wrap-items`).slick?.(settings);
 }
 
 /***/ }),

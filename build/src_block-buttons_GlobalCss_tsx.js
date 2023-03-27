@@ -169,6 +169,7 @@ const getAdvanveDivWrapStyles = _ref => {
   return _emotion_react__WEBPACK_IMPORTED_MODULE_1__.css`
 		${className} {
 			display: ${isHiddenOnMobile ? "none" : defaultDisplay};
+			visibility: visible;
 			z-index: ${zIndexMobile};
 			@media (min-width: ${media_tablet}) {
 				z-index: ${zIndexTablet};
