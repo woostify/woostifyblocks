@@ -367,7 +367,7 @@ const BlocksPage = _ref => {
   } = _ref;
   const [blocksStatus, setBlocksStatus] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(initWcbBlocksEnableDisable);
   const [blocksList, setBlocksList] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(initWcbBlocksList);
-  console.log(2, {
+  console.log(211, {
     initWcbBlocksList,
     initWcbBlocksEnableDisable,
     blocksStatus,
@@ -437,7 +437,8 @@ const BlocksPage = _ref => {
     const {
       title = "None",
       icon = "none",
-      parent
+      parent,
+      name
     } = currentBlock || {};
     if (!!parent || !currentBlock) {
       return null;
@@ -458,7 +459,7 @@ const BlocksPage = _ref => {
       htmlFor: key,
       className: "block text-base font-medium text-inherit capitalize select-none"
     }, title), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-      href: "#",
+      href: `https://woostifyblocks.com/${name.replace(/\//g, "-")}`,
       target: "_blank",
       rel: "noopener noreferrer",
       className: "focus-visible:text-slate-500 active:text-slate-500 hover:text-slate-500 focus:text-slate-400 text-slate-400 text-sm truncate"

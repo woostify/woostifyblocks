@@ -21,7 +21,7 @@ const BlocksPage: FC<Props> = ({
 	const [blocksStatus, setBlocksStatus] = useState(initWcbBlocksEnableDisable);
 	const [blocksList, setBlocksList] = useState(initWcbBlocksList);
 
-	console.log(2, {
+	console.log(211, {
 		initWcbBlocksList,
 		initWcbBlocksEnableDisable,
 		blocksStatus,
@@ -107,7 +107,7 @@ const BlocksPage: FC<Props> = ({
 		const status = blocksStatus[key];
 		const currentBlock = blocksList.filter((item) => item.name === key)[0];
 
-		const { title = "None", icon = "none", parent } = currentBlock || {};
+		const { title = "None", icon = "none", parent, name } = currentBlock || {};
 
 		if (!!parent || !currentBlock) {
 			return null;
@@ -137,7 +137,7 @@ const BlocksPage: FC<Props> = ({
 							{title}
 						</label>
 						<a
-							href="#"
+							href={`https://woostifyblocks.com/${name.replace(/\//g, "-")}`}
 							target="_blank"
 							rel="noopener noreferrer"
 							className="focus-visible:text-slate-500 active:text-slate-500 hover:text-slate-500 focus:text-slate-400 text-slate-400 text-sm truncate"
