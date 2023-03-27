@@ -300,7 +300,7 @@ const getAdvanveDivWrapStyles = _ref => {
   } = advance_responsiveCondition;
   return _emotion_react__WEBPACK_IMPORTED_MODULE_1__.css`
 		[data-is-wcb-save-common] {
-			visibility: hidden;
+			visibility: visible;
 		}
 		${className} {
 			display: ${isHiddenOnMobile ? "none" : defaultDisplay};

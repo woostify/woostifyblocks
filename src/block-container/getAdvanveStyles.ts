@@ -26,7 +26,7 @@ export const getAdvanveDivWrapStyles = ({
 		advance_responsiveCondition;
 	return css`
 		[data-is-wcb-save-common] {
-			visibility: hidden;
+			visibility: visible;
 		}
 		${className} {
 			display: ${isHiddenOnMobile ? "none" : defaultDisplay};
