@@ -18868,46 +18868,46 @@ h4 {
 }
 
 /* for dashboard */
-.woostify-blocks-settings-page-php {
+.woostifyblocks-includes-settings-page-php {
   --font-body: "";
   /* button {
   	@apply inline-flex items-center rounded-xl border border-transparent px-4 py-2 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
   } */
 }
-.woostify-blocks-settings-page-php #wpbody-content > .notice:not(.wcb-notice),
-.woostify-blocks-settings-page-php #wpbody-content > .error {
+.woostifyblocks-includes-settings-page-php #wpbody-content > .notice:not(.wcb-notice),
+.woostifyblocks-includes-settings-page-php #wpbody-content > .error {
   display: none !important;
 }
-.woostify-blocks-settings-page-php #wpwrap {
+.woostifyblocks-includes-settings-page-php #wpwrap {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
-.woostify-blocks-settings-page-php #wpcontent {
+.woostifyblocks-includes-settings-page-php #wpcontent {
   padding-left: 0px;
 }
-.woostify-blocks-settings-page-php .wcb-field-disabled {
+.woostifyblocks-includes-settings-page-php .wcb-field-disabled {
   pointer-events: none;
   opacity: 0.4;
 }
-.woostify-blocks-settings-page-php .container {
+.woostifyblocks-includes-settings-page-php .container {
   margin-left: auto;
   margin-right: auto;
 }
-.woostify-blocks-settings-page-php [type=text],
-.woostify-blocks-settings-page-php [type=email],
-.woostify-blocks-settings-page-php [type=url],
-.woostify-blocks-settings-page-php [type=password],
-.woostify-blocks-settings-page-php [type=number],
-.woostify-blocks-settings-page-php [type=date],
-.woostify-blocks-settings-page-php [type=datetime-local],
-.woostify-blocks-settings-page-php [type=month],
-.woostify-blocks-settings-page-php [type=search],
-.woostify-blocks-settings-page-php [type=tel],
-.woostify-blocks-settings-page-php [type=time],
-.woostify-blocks-settings-page-php [type=week],
-.woostify-blocks-settings-page-php [multiple],
-.woostify-blocks-settings-page-php textarea,
-.woostify-blocks-settings-page-php select {
+.woostifyblocks-includes-settings-page-php [type=text],
+.woostifyblocks-includes-settings-page-php [type=email],
+.woostifyblocks-includes-settings-page-php [type=url],
+.woostifyblocks-includes-settings-page-php [type=password],
+.woostifyblocks-includes-settings-page-php [type=number],
+.woostifyblocks-includes-settings-page-php [type=date],
+.woostifyblocks-includes-settings-page-php [type=datetime-local],
+.woostifyblocks-includes-settings-page-php [type=month],
+.woostifyblocks-includes-settings-page-php [type=search],
+.woostifyblocks-includes-settings-page-php [type=tel],
+.woostifyblocks-includes-settings-page-php [type=time],
+.woostifyblocks-includes-settings-page-php [type=week],
+.woostifyblocks-includes-settings-page-php [multiple],
+.woostifyblocks-includes-settings-page-php textarea,
+.woostifyblocks-includes-settings-page-php select {
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.375rem;

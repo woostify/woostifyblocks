@@ -3,9 +3,9 @@
 //============================================================================================================================================
 // START REGISTER GUTENBERG BLOCKS
 //======================================================================================================================================
-require WCB_PATH . 'inc/wcb-render-callback-for-block-posts-grid.php';
-require WCB_PATH . 'inc/wcb-render-callback-for-block-products.php';
-require WCB_PATH . 'inc/wcb-ajax-for-block-form.php';
+require WCB_PATH . 'includes/wcb-render-callback-for-block-posts-grid.php';
+require WCB_PATH . 'includes/wcb-render-callback-for-block-products.php';
+require WCB_PATH . 'includes/wcb-ajax-for-block-form.php';
 // 
 
 add_action('init', 'wcb_create_blocks_gutenberg_init');

@@ -1,5 +1,5 @@
 "use strict";
-(globalThis["webpackChunkwoostify_blocks"] = globalThis["webpackChunkwoostify_blocks"] || []).push([["src_block-image_GlobalCss_tsx"],{
+(globalThis["webpackChunkwoostifyblocks"] = globalThis["webpackChunkwoostifyblocks"] || []).push([["src_block-image_GlobalCss_tsx"],{
 
 /***/ "./src/block-container/getAdvanveStyles.ts":
 /*!*************************************************!*\

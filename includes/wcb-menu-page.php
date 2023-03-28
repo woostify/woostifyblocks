@@ -13,7 +13,7 @@ function wpdocs_register_my_custom_menu_page()
         __('Woostify blocks settings', 'wcb'),
         __('Woostify blocks', 'wcb'),
         'manage_options',
-        WCB_PATH . '/settings-page.php',
+        WCB_PATH . 'includes/settings-page.php',
         '',
         'data:image/svg+xml;base64,' . base64_encode($svg),
         6

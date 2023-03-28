@@ -26,15 +26,6 @@ if (!function_exists("wcb__my_enqueue_scripts_for_admin_editor")) {
             'wcbGlobalVariables',
             get_option('wcb_blocks_settings_options')
         );
-
-        // only for gutenberg editor page
-        // if (function_exists('wcb_get_wcb_all_patterns_data') && ($hook == "post-new.php" || $hook == "post.php")) {
-        //     wp_localize_script(
-        //         'jquery',
-        //         'wcbGlobalPatternsData',
-        //         wcb_get_wcb_all_patterns_data()
-        //     );
-        // }
     }
     add_action('admin_enqueue_scripts', 'wcb__my_enqueue_scripts_for_admin_editor');
 }
@@ -67,12 +58,9 @@ if (!function_exists("wcb__enqueue_script_to_setting_page")) {
     function wcb__enqueue_script_to_setting_page()
     {
         $currentScrren = get_current_screen();
-        if (!empty($currentScrren->id) && $currentScrren->id == "woostify-blocks/settings-page") {
+        if (!empty($currentScrren->id) && $currentScrren->id == "woostifyblocks/includes/settings-page") {
             wp_register_style('wcb-settings-page', plugin_dir_url(WCB_FILE) . 'build/____dashboard/style-index.css');
-            // wp_register_style('wcb-settings-page', plugin_dir_url(WCB_FILE) . 'build/____dashboard/index.css');
-            // wp_register_style('wcb-settings-page', plugin_dir_url(WCB_FILE) . 'public/css/dashboard.css');
             wp_enqueue_style('wcb-settings-page');
-
             // 
             wp_enqueue_script('wcb-dashboard-app-tailwind', "https://cdn.tailwindcss.com?plugins=forms", [], '3.2.6', false);
             wp_add_inline_script('wcb-dashboard-app-tailwind', 'tailwind.config = {
