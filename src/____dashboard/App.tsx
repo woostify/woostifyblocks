@@ -7,7 +7,6 @@ import WelcomePage from "./components/WelcomePage";
 import "./types";
 import toast, { Toaster } from "react-hot-toast";
 import SettingsPage from "./components/SettingsPage";
-import "../styles/index.scss";
 
 export interface Wcb_block_Type {
 	name: string;

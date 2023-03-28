@@ -1,5 +1,4 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./node_modules/accordion-js/dist/accordion.min.js":
@@ -9,15 +8,15 @@
 /***/ ((module) => {
 
 /**
- * Accordion v3.3.2
+ * Accordion v3.3.4
  * Lightweight and accessible accordion module created in pure Javascript
  * https://github.com/michu2k/Accordion
- * 
+ *
  * Copyright (c) Michał Strumpf
  * Published under MIT License
  */
 
-!function(e){var t=0,n=function e(n,s){var i=this,o=this,a=!1;if(Array.isArray(n))return!!n.length&&n.map((function(t){return new e(t,s)}));var r={init:function(){this.options=Object.assign({duration:600,ariaEnabled:!0,collapse:!0,showMultiple:!1,onlyChildNodes:!0,openOnInit:[],elementClass:"ac",triggerClass:"ac-trigger",panelClass:"ac-panel",activeClass:"is-active",beforeOpen:function(){},onOpen:function(){},beforeClose:function(){},onClose:function(){}},s);var e="string"==typeof n;this.container=e?document.querySelector(n):n,this.createDefinitions(),o.attachEvents()},createDefinitions:function(){var e=this,n=this.options,s=n.elementClass,i=n.openOnInit,o=n.onlyChildNodes?this.container.childNodes:this.container.querySelectorAll(".".concat(s));this.elements=Array.from(o).filter((function(e){return e.classList&&e.classList.contains(s)})),this.firstElement=this.elements[0],this.lastElement=this.elements[this.elements.length-1],this.elements.filter((function(e){return!e.classList.contains("js-enabled")})).forEach((function(n){n.classList.add("js-enabled"),e.generateIDs(n),e.setARIA(n),e.setTransition(n);var s=e.elements.indexOf(n);t++,i.includes(s)?e.showElement(n,!1):e.closeElement(n,!1)}))},setTransition:function(e){var t=arguments.length>1&&void 0!==arguments[1]&&arguments[1],n=this.options,s=n.duration,i=n.panelClass,o=e.querySelector(".".concat(i)),a=c("transitionDuration");o.style[a]=t?null:"".concat(s,"ms")},generateIDs:function(e){var n=this.options,s=n.triggerClass,i=n.panelClass,o=e.querySelector(".".concat(s)),a=e.querySelector(".".concat(i));e.setAttribute("id","ac-".concat(t)),o.setAttribute("id","ac-trigger-".concat(t)),a.setAttribute("id","ac-panel-".concat(t))},removeIDs:function(e){var t=this.options,n=t.triggerClass,s=t.panelClass,i=e.querySelector(".".concat(n)),o=e.querySelector(".".concat(s));e.removeAttribute("id"),i.removeAttribute("id"),o.removeAttribute("id")},setARIA:function(e){var n=this.options,s=n.ariaEnabled,i=n.triggerClass,o=n.panelClass;if(s){var a=e.querySelector(".".concat(i)),r=e.querySelector(".".concat(o));a.setAttribute("role","button"),a.setAttribute("aria-controls","ac-panel-".concat(t)),a.setAttribute("aria-disabled",!1),a.setAttribute("aria-expanded",!1),r.setAttribute("role","region"),r.setAttribute("aria-labelledby","ac-trigger-".concat(t))}},updateARIA:function(e,t){var n=t.ariaExpanded,s=t.ariaDisabled,i=this.options,o=i.ariaEnabled,a=i.triggerClass;if(o){var r=e.querySelector(".".concat(a));r.setAttribute("aria-expanded",n),r.setAttribute("aria-disabled",s)}},removeARIA:function(e){var t=this.options,n=t.ariaEnabled,s=t.triggerClass,i=t.panelClass;if(n){var o=e.querySelector(".".concat(s)),a=e.querySelector(".".concat(i));o.removeAttribute("role"),o.removeAttribute("aria-controls"),o.removeAttribute("aria-disabled"),o.removeAttribute("aria-expanded"),a.removeAttribute("role"),a.removeAttribute("aria-labelledby")}},focus:function(e,t){e.preventDefault();var n=this.options.triggerClass;t.querySelector(".".concat(n)).focus()},focusFirstElement:function(e){this.focus(e,this.firstElement),this.currFocusedIdx=0},focusLastElement:function(e){this.focus(e,this.lastElement),this.currFocusedIdx=this.elements.length-1},focusNextElement:function(e){var t=this.currFocusedIdx+1;if(t>this.elements.length-1)return this.focusFirstElement(e);this.focus(e,this.elements[t]),this.currFocusedIdx=t},focusPrevElement:function(e){var t=this.currFocusedIdx-1;if(t<0)return this.focusLastElement(e);this.focus(e,this.elements[t]),this.currFocusedIdx=t},showElement:function(e){var t=!(arguments.length>1&&void 0!==arguments[1])||arguments[1],n=this.options,s=n.panelClass,i=n.activeClass,o=n.collapse,a=n.beforeOpen;t&&a(e);var r=e.querySelector(".".concat(s)),c=r.scrollHeight;e.classList.add(i),requestAnimationFrame((function(){requestAnimationFrame((function(){r.style.height=t?"".concat(c,"px"):"auto"}))})),this.updateARIA(e,{ariaExpanded:!0,ariaDisabled:!o})},closeElement:function(e){var t=!(arguments.length>1&&void 0!==arguments[1])||arguments[1],n=this.options,s=n.panelClass,i=n.activeClass,o=n.beforeClose,a=e.querySelector(".".concat(s)),r=a.scrollHeight;e.classList.remove(i),t?(o(e),requestAnimationFrame((function(){a.style.height="".concat(r,"px"),requestAnimationFrame((function(){a.style.height=0}))}))):a.style.height=0,this.updateARIA(e,{ariaExpanded:!1,ariaDisabled:!1})},toggleElement:function(e){var t=this.options,n=t.activeClass,s=t.collapse,i=e.classList.contains(n);if(!i||s)return i?this.closeElement(e):this.showElement(e)},closeElements:function(){var e=this,t=this.options,n=t.activeClass;t.showMultiple||this.elements.forEach((function(t,s){t.classList.contains(n)&&s!==e.currFocusedIdx&&e.closeElement(t)}))},handleClick:function(e){var t=this,n=e.currentTarget;this.elements.forEach((function(s,i){s.contains(n)&&"A"!==e.target.nodeName&&(t.currFocusedIdx=i,t.closeElements(),t.focus(e,s),t.toggleElement(s))}))},handleKeydown:function(e){var t=38,n=40,s=36,i=35;switch(e.keyCode){case t:return this.focusPrevElement(e);case n:return this.focusNextElement(e);case s:return this.focusFirstElement(e);case i:return this.focusLastElement(e);default:return null}},handleTransitionEnd:function(e){if("height"===e.propertyName){var t=this.options,n=t.onOpen,s=t.onClose,i=e.currentTarget,o=parseInt(i.style.height),a=this.elements.find((function(e){return e.contains(i)}));o>0?(i.style.height="auto",n(a)):s(a)}}};this.attachEvents=function(){if(!a){var e=r.options,t=e.triggerClass,n=e.panelClass;r.handleClick=r.handleClick.bind(r),r.handleKeydown=r.handleKeydown.bind(r),r.handleTransitionEnd=r.handleTransitionEnd.bind(r),r.elements.forEach((function(e){var s=e.querySelector(".".concat(t)),i=e.querySelector(".".concat(n));s.addEventListener("click",r.handleClick),s.addEventListener("keydown",r.handleKeydown),i.addEventListener("webkitTransitionEnd",r.handleTransitionEnd),i.addEventListener("transitionend",r.handleTransitionEnd)})),a=!0}},this.detachEvents=function(){if(a){var e=r.options,t=e.triggerClass,n=e.panelClass;r.elements.forEach((function(e){var s=e.querySelector(".".concat(t)),i=e.querySelector(".".concat(n));s.removeEventListener("click",r.handleClick),s.removeEventListener("keydown",r.handleKeydown),i.removeEventListener("webkitTransitionEnd",r.handleTransitionEnd),i.removeEventListener("transitionend",r.handleTransitionEnd)})),a=!1}},this.toggle=function(e){var t=r.elements[e];t&&r.toggleElement(t)},this.open=function(e){var t=r.elements[e];t&&r.showElement(t)},this.openAll=function(){var e=r.options,t=e.activeClass,n=e.onOpen;r.elements.forEach((function(e){e.classList.contains(t)||(r.showElement(e,!1),n(e))}))},this.close=function(e){var t=r.elements[e];t&&r.closeElement(t)},this.closeAll=function(){var e=r.options,t=e.activeClass,n=e.onClose;r.elements.forEach((function(e){e.classList.contains(t)&&(r.closeElement(e,!1),n(e))}))},this.destroy=function(){i.detachEvents(),i.openAll(),r.elements.forEach((function(e){r.removeIDs(e),r.removeARIA(e),r.setTransition(e,!0)})),a=!0},this.update=function(){r.createDefinitions(),i.detachEvents(),i.attachEvents()};var c=function(e){return"string"==typeof document.documentElement.style[e]?e:(e=l(e),e="webkit".concat(e))},l=function(e){return e.charAt(0).toUpperCase()+e.slice(1)};r.init()}; true&&void 0!==module.exports?module.exports=n:e.Accordion=n}(window);
+!function(e){var t=0,n=function e(n,s){var i=this,r=this,o=!1;if(Array.isArray(n))return!!n.length&&n.map((function(t){return new e(t,s)}));var a={init:function(){this.options=Object.assign({duration:600,ariaEnabled:!0,collapse:!0,showMultiple:!1,onlyChildNodes:!0,openOnInit:[],elementClass:"ac",triggerClass:"ac-trigger",panelClass:"ac-panel",activeClass:"is-active",beforeOpen:function(){},onOpen:function(){},beforeClose:function(){},onClose:function(){}},s);var e="string"==typeof n;this.container=e?document.querySelector(n):n,this.createDefinitions(),r.attachEvents()},createDefinitions:function(){var e=this,n=this.options,s=n.elementClass,i=n.openOnInit,r=n.onlyChildNodes?this.container.childNodes:this.container.querySelectorAll(u(s));this.elements=Array.from(r).filter((function(e){return e.classList&&e.classList.contains(s)})),this.firstElement=this.elements[0],this.lastElement=this.elements[this.elements.length-1],this.elements.filter((function(e){return!e.classList.contains("js-enabled")})).forEach((function(n){n.classList.add("js-enabled"),e.generateIDs(n),e.setARIA(n),e.setTransition(n);var s=e.elements.indexOf(n);t++,i.includes(s)?e.showElement(n,!1):e.closeElement(n,!1)}))},setTransition:function(e){var t=arguments.length>1&&void 0!==arguments[1]&&arguments[1],n=this.options,s=n.duration,i=n.panelClass,r=e.querySelector(u(i)),o=l("transitionDuration");r.style[o]=t?null:"".concat(s,"ms")},generateIDs:function(e){var n=this.options,s=n.triggerClass,i=n.panelClass,r=e.querySelector(u(s)),o=e.querySelector(u(i));e.setAttribute("id",e.id||"ac-".concat(t)),r.setAttribute("id",r.id||"ac-trigger-".concat(t)),o.setAttribute("id",o.id||"ac-panel-".concat(t))},removeIDs:function(e){var t=this.options,n=t.triggerClass,s=t.panelClass,i=e.querySelector(u(n)),r=e.querySelector(u(s));e.id.startsWith("ac-")&&e.removeAttribute("id"),i.id.startsWith("ac-")&&i.removeAttribute("id"),r.id.startsWith("ac-")&&r.removeAttribute("id")},setARIA:function(e){var t=this.options,n=t.ariaEnabled,s=t.triggerClass,i=t.panelClass;if(n){var r=e.querySelector(u(s)),o=e.querySelector(u(i));r.setAttribute("role","button"),r.setAttribute("aria-controls",o.id),r.setAttribute("aria-disabled",!1),r.setAttribute("aria-expanded",!1),o.setAttribute("role","region"),o.setAttribute("aria-labelledby",r.id)}},updateARIA:function(e,t){var n=t.ariaExpanded,s=t.ariaDisabled,i=this.options,r=i.ariaEnabled,o=i.triggerClass;if(r){var a=e.querySelector(u(o));a.setAttribute("aria-expanded",n),a.setAttribute("aria-disabled",s)}},removeARIA:function(e){var t=this.options,n=t.ariaEnabled,s=t.triggerClass,i=t.panelClass;if(n){var r=e.querySelector(u(s)),o=e.querySelector(u(i));r.removeAttribute("role"),r.removeAttribute("aria-controls"),r.removeAttribute("aria-disabled"),r.removeAttribute("aria-expanded"),o.removeAttribute("role"),o.removeAttribute("aria-labelledby")}},focus:function(e,t){e.preventDefault();var n=this.options.triggerClass;t.querySelector(u(n)).focus()},focusFirstElement:function(e){this.focus(e,this.firstElement),this.currFocusedIdx=0},focusLastElement:function(e){this.focus(e,this.lastElement),this.currFocusedIdx=this.elements.length-1},focusNextElement:function(e){var t=this.currFocusedIdx+1;if(t>this.elements.length-1)return this.focusFirstElement(e);this.focus(e,this.elements[t]),this.currFocusedIdx=t},focusPrevElement:function(e){var t=this.currFocusedIdx-1;if(t<0)return this.focusLastElement(e);this.focus(e,this.elements[t]),this.currFocusedIdx=t},showElement:function(e){var t=!(arguments.length>1&&void 0!==arguments[1])||arguments[1],n=this.options,s=n.panelClass,i=n.activeClass,r=n.collapse,o=n.beforeOpen;t&&o(e);var a=e.querySelector(u(s)),l=a.scrollHeight;e.classList.add(i),requestAnimationFrame((function(){requestAnimationFrame((function(){a.style.height=t?"".concat(l,"px"):"auto"}))})),this.updateARIA(e,{ariaExpanded:!0,ariaDisabled:!r})},closeElement:function(e){var t=!(arguments.length>1&&void 0!==arguments[1])||arguments[1],n=this.options,s=n.panelClass,i=n.activeClass,r=n.beforeClose,o=e.querySelector(u(s)),a=o.scrollHeight;e.classList.remove(i),t?(r(e),requestAnimationFrame((function(){o.style.height="".concat(a,"px"),requestAnimationFrame((function(){o.style.height=0}))}))):o.style.height=0,this.updateARIA(e,{ariaExpanded:!1,ariaDisabled:!1})},toggleElement:function(e){var t=this.options,n=t.activeClass,s=t.collapse,i=e.classList.contains(n);if(!i||s)return i?this.closeElement(e):this.showElement(e)},closeElements:function(){var e=this,t=this.options,n=t.activeClass;t.showMultiple||this.elements.forEach((function(t,s){t.classList.contains(n)&&s!==e.currFocusedIdx&&e.closeElement(t)}))},handleClick:function(e){var t=this,n=e.currentTarget;this.elements.forEach((function(s,i){s.contains(n)&&"A"!==e.target.nodeName&&(t.currFocusedIdx=i,t.closeElements(),t.focus(e,s),t.toggleElement(s))}))},handleKeydown:function(e){switch(e.key){case"ArrowUp":return this.focusPrevElement(e);case"ArrowDown":return this.focusNextElement(e);case"Home":return this.focusFirstElement(e);case"End":return this.focusLastElement(e);default:return null}},handleFocus:function(e){var t=e.currentTarget,n=this.elements.find((function(e){return e.contains(t)}));this.currFocusedIdx=this.elements.indexOf(n)},handleTransitionEnd:function(e){if(e.stopPropagation(),"height"===e.propertyName){var t=this.options,n=t.onOpen,s=t.onClose,i=e.currentTarget,r=parseInt(i.style.height),o=this.elements.find((function(e){return e.contains(i)}));r>0?(i.style.height="auto",n(o)):s(o)}}};this.attachEvents=function(){if(!o){var e=a.options,t=e.triggerClass,n=e.panelClass;a.handleClick=a.handleClick.bind(a),a.handleKeydown=a.handleKeydown.bind(a),a.handleFocus=a.handleFocus.bind(a),a.handleTransitionEnd=a.handleTransitionEnd.bind(a),a.elements.forEach((function(e){var s=e.querySelector(u(t)),i=e.querySelector(u(n));s.addEventListener("click",a.handleClick),s.addEventListener("keydown",a.handleKeydown),s.addEventListener("focus",a.handleFocus),i.addEventListener("webkitTransitionEnd",a.handleTransitionEnd),i.addEventListener("transitionend",a.handleTransitionEnd)})),o=!0}},this.detachEvents=function(){if(o){var e=a.options,t=e.triggerClass,n=e.panelClass;a.elements.forEach((function(e){var s=e.querySelector(u(t)),i=e.querySelector(u(n));s.removeEventListener("click",a.handleClick),s.removeEventListener("keydown",a.handleKeydown),s.removeEventListener("focus",a.handleFocus),i.removeEventListener("webkitTransitionEnd",a.handleTransitionEnd),i.removeEventListener("transitionend",a.handleTransitionEnd)})),o=!1}},this.toggle=function(e){var t=a.elements[e];t&&a.toggleElement(t)},this.open=function(e){var t=a.elements[e];t&&a.showElement(t)},this.openAll=function(){var e=a.options,t=e.activeClass,n=e.onOpen;a.elements.forEach((function(e){e.classList.contains(t)||(a.showElement(e,!1),n(e))}))},this.close=function(e){var t=a.elements[e];t&&a.closeElement(t)},this.closeAll=function(){var e=a.options,t=e.activeClass,n=e.onClose;a.elements.forEach((function(e){e.classList.contains(t)&&(a.closeElement(e,!1),n(e))}))},this.destroy=function(){i.detachEvents(),i.openAll(),a.elements.forEach((function(e){a.removeIDs(e),a.removeARIA(e),a.setTransition(e,!0)})),o=!0},this.update=function(){a.createDefinitions(),i.detachEvents(),i.attachEvents()};var l=function(e){return"string"==typeof document.documentElement.style[e]?e:(e=c(e),e="webkit".concat(e))},c=function(e){return e.charAt(0).toUpperCase()+e.slice(1)},u=function(e){return".".concat(CSS.escape(e))};a.init()}; true&&void 0!==module.exports?module.exports=n:e.Accordion=n}(window);
 
 /***/ }),
 
@@ -27,6 +26,7 @@
   \*************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "DEMO_WCB_GLOBAL_VARIABLES": () => (/* binding */ DEMO_WCB_GLOBAL_VARIABLES),
@@ -60,6 +60,7 @@ const ___wcb_global = 1;
   \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "initCarouselForWcbFaq": () => (/* binding */ initCarouselForWcbFaq)
@@ -118,6 +119,7 @@ function initCarouselForWcbFaq(div, _ref) {
   \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "handleSubmitFormForWcbForm": () => (/* binding */ handleSubmitFormForWcbForm)
@@ -217,6 +219,7 @@ function handleSubmitFormForWcbForm(div, props) {
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "initCarouselForWcbProducts": () => (/* binding */ initCarouselForWcbProducts)
@@ -281,13 +284,14 @@ function initCarouselForWcbProducts(div, props) {
   \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "CustomPlugin": () => (/* binding */ CustomPlugin)
 /* harmony export */ });
-/* harmony import */ var scroll_snap_slider_src_ScrollSnapSlider_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! scroll-snap-slider/src/ScrollSnapSlider.js */ "./node_modules/scroll-snap-slider/src/ScrollSnapSlider.js");
+/* harmony import */ var _ScrollSnapSlider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ScrollSnapSlider */ "./src/block-products/ScrollSnapSlider.ts");
 
-class CustomPlugin extends scroll_snap_slider_src_ScrollSnapSlider_js__WEBPACK_IMPORTED_MODULE_0__.ScrollSnapSlider {
+class CustomPlugin extends _ScrollSnapSlider__WEBPACK_IMPORTED_MODULE_0__.ScrollSnapSlider {
   /**
    * Pass any config here
    * @param {*} config
@@ -335,12 +339,228 @@ class CustomPlugin extends scroll_snap_slider_src_ScrollSnapSlider_js__WEBPACK_I
 
 /***/ }),
 
+/***/ "./src/block-products/ScrollSnapSlider.ts":
+/*!************************************************!*\
+  !*** ./src/block-products/ScrollSnapSlider.ts ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ScrollSnapSlider": () => (/* binding */ ScrollSnapSlider)
+/* harmony export */ });
+/**
+ * All options have sensitive defaults. The only required option is the <code>element</code>.
+ */
+
+/**
+ * @classdesc Mostly CSS slider with great performance.
+ */
+class ScrollSnapSlider {
+  /**
+   * Base element of this slider
+   */
+
+  /**
+   * additional behaviour
+   */
+
+  /**
+   * @inheritDoc
+   */
+
+  /**
+   * @inheritDoc
+   */
+
+  /**
+   * Rounding method used to calculate the current slide (e.g. Math.floor, Math.round, Math.ceil, or totally custom.)
+   *
+   * @param value - factor indicating th current position (e.g "0" for first slide, "2.5" for third slide and a half)
+   * @return f(x) - integer factor indicating the currently 'active' slide.
+   */
+
+  /**
+   * Timeout delay in milliseconds used to catch the end of scroll events
+   */
+
+  /**
+   * Calculated size of a single item
+   */
+
+  /**
+   * Computes a single number representing the slides widths.
+   * By default, this will use the first slide's <code>offsetWidth</code>.
+   * Possible values could be an average of all slides, the min or max values, ...
+   *
+   * @param slider current slider
+   * @param entries resized entries
+   * @return integer size of a slide in pixels
+   */
+
+  /**
+   * Active slide
+   */
+
+  /**
+   * Resize observer used to update item size
+   */
+
+  /**
+   * Timeout ID used to catch the end of scroll events
+   */
+
+  /**
+   * Active slide's scrollLeft in the containing element
+   */
+
+  /**
+   * Bind methods and possibly attach listeners.
+   */
+  constructor(options) {
+    Object.assign(this, {
+      scrollTimeout: 100,
+      roundingMethod: Math.round,
+      sizingMethod: slider => slider.element.firstElementChild.offsetWidth,
+      ...options
+    });
+    this.scrollTimeoutId = null;
+    this.itemSize = this.sizingMethod(this);
+    this.update();
+    this.addEventListener = this.element.addEventListener.bind(this.element);
+    this.removeEventListener = this.element.removeEventListener.bind(this.element);
+    this.plugins = new window.Map();
+    this.resizeObserver = new ResizeObserver(this.onSlideResize);
+    this.resizeObserver.observe(this.element);
+    for (const child of this.element.children) {
+      this.resizeObserver.observe(child);
+    }
+    this.attachListeners();
+  }
+
+  /**
+   * Extend the Slider's functionality with Plugins
+   *
+   * @param plugins Plugins to attach
+   * @param enabled Whether the plugins are enabled right away
+   */
+  with(plugins) {
+    let enabled = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+    for (const plugin of plugins) {
+      plugin.slider = this;
+      this.plugins.set(plugin.id, plugin);
+      enabled && plugin.enable();
+    }
+    return this;
+  }
+
+  /**
+   * Attach all necessary listeners
+   */
+  attachListeners() {
+    this.addEventListener("scroll", this.onScroll, {
+      passive: true
+    });
+  }
+
+  /**
+   * Detach all listeners
+   */
+  detachListeners() {
+    this.removeEventListener("scroll", this.onScroll);
+    this.scrollTimeoutId && window.clearTimeout(this.scrollTimeoutId);
+  }
+
+  /**
+   * Scroll to a slide by index.
+   */
+  slideTo = index => {
+    this.element.scrollTo({
+      left: index * this.itemSize
+    });
+  };
+
+  /**
+   * Free resources and listeners, disable plugins
+   */
+  destroy() {
+    this.scrollTimeoutId && window.clearTimeout(this.scrollTimeoutId);
+    this.detachListeners();
+    for (const [id, plugin] of this.plugins) {
+      plugin.disable();
+      plugin.slider = null;
+      this.plugins.delete(id);
+    }
+  }
+
+  /**
+   * Updates the computed values
+   */
+  update = () => {
+    this.slide = this.calculateSlide();
+    this.slideScrollLeft = this.slide * this.itemSize;
+  };
+
+  /**
+   * Calculates the active slide using the user-defined <code>roundingMethod</code>
+   */
+  calculateSlide() {
+    return this.roundingMethod(this.element.scrollLeft / this.itemSize);
+  }
+
+  /**
+   * Calculate all necessary things and dispatch an event when sliding stops
+   */
+  onScrollEnd = () => {
+    this.scrollTimeoutId = null;
+    this.update();
+    this.dispatch("slide-stop", this.slide);
+  };
+
+  /**
+   * Callback on resize. This will recompute the <code>itemSize</code>
+   * @param entries Entries that have changed size
+   */
+  onSlideResize = entries => {
+    this.itemSize = this.sizingMethod(this, entries);
+  };
+
+  /**
+   * Dispatches an event on the slider's element
+   */
+  dispatch(event, detail) {
+    return this.element.dispatchEvent(new window.CustomEvent(event, {
+      detail
+    }));
+  }
+
+  /**
+   * Act when scrolling starts and stops
+   */
+  onScroll = () => {
+    if (null === this.scrollTimeoutId) {
+      const direction = this.element.scrollLeft > this.slideScrollLeft ? 1 : -1;
+      this.dispatch("slide-start", this.slide + direction);
+    }
+    if (this.calculateSlide() !== this.slide) {
+      this.update();
+      this.dispatch("slide-pass", this.slide);
+    }
+    this.scrollTimeoutId && window.clearTimeout(this.scrollTimeoutId);
+    this.scrollTimeoutId = window.setTimeout(this.onScrollEnd, this.scrollTimeout);
+  };
+}
+
+/***/ }),
+
 /***/ "./src/block-testimonials/FrontendStyles.tsx":
 /*!***************************************************!*\
   !*** ./src/block-testimonials/FrontendStyles.tsx ***!
   \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "initCarouselForWcbTestimonials": () => (/* binding */ initCarouselForWcbTestimonials)
@@ -442,6 +662,7 @@ function initCarouselForWcbTestimonials(div, props) {
   \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -475,6 +696,7 @@ const getValueFromAttrsResponsives = function (properties, currentDevice) {
   \**********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -487,6 +709,7 @@ __webpack_require__.r(__webpack_exports__);
   \************************/
 /***/ ((module) => {
 
+"use strict";
 module.exports = window["React"];
 
 /***/ }),
@@ -497,6 +720,7 @@ module.exports = window["React"];
   \***************************/
 /***/ ((module) => {
 
+"use strict";
 module.exports = window["ReactDOM"];
 
 /***/ }),
@@ -507,6 +731,7 @@ module.exports = window["ReactDOM"];
   \*************************/
 /***/ ((module) => {
 
+"use strict";
 module.exports = window["jQuery"];
 
 /***/ }),
@@ -517,6 +742,7 @@ module.exports = window["jQuery"];
   \*************************/
 /***/ ((module) => {
 
+"use strict";
 module.exports = window["lodash"];
 
 /***/ }),
@@ -527,6 +753,7 @@ module.exports = window["lodash"];
   \*****************************/
 /***/ ((module) => {
 
+"use strict";
 module.exports = window["wp"]["api"];
 
 /***/ }),
@@ -537,250 +764,8 @@ module.exports = window["wp"]["api"];
   \*********************************/
 /***/ ((module) => {
 
+"use strict";
 module.exports = window["wp"]["element"];
-
-/***/ }),
-
-/***/ "./node_modules/scroll-snap-slider/src/ScrollSnapSlider.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/scroll-snap-slider/src/ScrollSnapSlider.js ***!
-  \*****************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ScrollSnapSlider": () => (/* binding */ ScrollSnapSlider)
-/* harmony export */ });
-/**
- * @classdesc Mostly CSS slider with great performance.
- */
-class ScrollSnapSlider {
-
-  /**
-   * Bind methods and possibly attach listeners.
-   * @param {Element|HTMLElement} element - element to attach listeners and dispatch events
-   * @param {Boolean} enabled - attach listeners and enable plugins now. If this is false, you will have to call slider.attachListener() once and plugin.enable() for each plugin later.
-   * @param {ScrollSnapPlugin[]} plugins - additional behaviour
-   */
-  constructor (element, enabled = true, plugins = []) {
-    /**
-     * Base element of this slider
-     * @name ScrollSnapSlider#element
-     * @type {Element|HTMLElement}
-     * @readonly
-     * @public
-     */
-    this.element = element
-
-    /**
-     * Active slide's scrollLeft in the containing element
-     * @name ScrollSnapSlider#slideScrollLeft
-     * @type {Number}
-     * @private
-     */
-    this.slideScrollLeft = this.element.scrollLeft
-
-    /**
-     * Timeout ID used to catch the end of scroll events
-     * @name ScrollSnapSlider#scrollTimeoutId
-     * @type {?Number}
-     * @private
-     */
-    this.scrollTimeoutId = null
-
-    /**
-     * @callback sizingMethod
-     * @param {ScrollSnapSlider} slider
-     * @return {Number} integer size of a slide in pixels
-     */
-
-    /**
-     * Width of each slide
-     * @type {sizingMethod}
-     * @public
-     */
-    this.sizingMethod = function (slider) {
-      return slider.element.firstElementChild.offsetWidth
-    }
-
-    /**
-     * @callback roundingMethod
-     * @param {Number} x - factor indicating th current position (e.g "0" for first slide, "2.5" for third slide and a half)
-     * @return {Number} f(x) - integer factor indicating the currently 'active' slide.
-     */
-
-    /**
-     * Rounding method used to calculate the current slide (e.g. Math.floor, Math.round, Math.ceil, or totally custom.)
-     * @name ScrollSnapSlider#roundingMethod
-     * @type {roundingMethod}
-     * @public
-     */
-    this.roundingMethod = Math.round
-
-    /**
-     * Active slide
-     * @name ScrollSnapSlider#slide
-     * @type {?Number}
-     * @public
-     */
-    this.slide = this.calculateSlide()
-
-    /**
-     * Timeout delay in milliseconds used to catch the end of scroll events
-     * @name ScrollSnapSlider#scrollTimeout
-     * @type {?Number}
-     * @public
-     */
-    this.scrollTimeout = 100
-
-    /**
-     * Options for the scroll listener (passive by default, may be overwritten for compatibility or other reasons)
-     * @name ScrollSnapSlider#listenerOptions
-     * @type {AddEventListenerOptions}
-     * @public
-     */
-    this.listenerOptions = {
-      passive: true
-    }
-
-    this.onScroll = this.onScroll.bind(this)
-    this.onScrollEnd = this.onScrollEnd.bind(this)
-    this.slideTo = this.slideTo.bind(this)
-
-    /**
-     * Adds event listener to the element
-     * @name ScrollSnapSlider#addEventListener
-     * @method
-     * @public
-     */
-    this.addEventListener = this.element.addEventListener.bind(this.element)
-
-    /**
-     * Removes event listener from the element
-     * @name ScrollSnapSlider#removeEventListener
-     * @method
-     * @public
-     */
-    this.removeEventListener = this.element.removeEventListener.bind(this.element)
-
-    enabled && this.attachListeners()
-
-    /**
-     * Maps a plugin name to its instance
-     * @type {Map<String, Object>}
-     */
-    this.plugins = new window.Map()
-    for (const plugin of plugins) {
-      this.plugins.set(plugin.id, plugin)
-      enabled && plugin.enable(this)
-    }
-  }
-
-  /**
-   * Attach all necessary listeners
-   * @return {void}
-   * @public
-   */
-  attachListeners () {
-    this.addEventListener('scroll', this.onScroll, this.listenerOptions)
-  }
-
-  /**
-   * Detach all listeners
-   * @return {void}
-   * @public
-   */
-  detachListeners () {
-    this.removeEventListener('scroll', this.onScroll, this.listenerOptions)
-    window.clearTimeout(this.scrollTimeoutId)
-  }
-
-  /**
-   * Act when scrolling starts and stops
-   * @return {void}
-   * @private
-   */
-  onScroll () {
-    if (null === this.scrollTimeoutId) {
-      const direction = (this.element.scrollLeft > this.slideScrollLeft) ? 1 : -1
-      this.dispatch('slide-start', this.slide + direction)
-    }
-
-    const floored = this.calculateSlide()
-    if (floored !== this.slide) {
-      this.slideScrollLeft = this.element.scrollLeft
-      this.slide = floored
-      this.dispatch('slide-pass', this.slide)
-    }
-
-    window.clearTimeout(this.scrollTimeoutId)
-    this.scrollTimeoutId = window.setTimeout(this.onScrollEnd, this.scrollTimeout)
-  }
-
-  /**
-   * Calculate all necessary things and dispatch an event when sliding stops
-   * @return {void}
-   * @private
-   */
-  onScrollEnd () {
-    this.scrollTimeoutId = null
-    this.slide = this.calculateSlide()
-    this.slideScrollLeft = this.element.scrollLeft
-    this.dispatch('slide-stop', this.slide)
-  }
-
-  /**
-   * Calculates the active slide.
-   * The scroll-snap-type property makes sure that the container snaps perfectly to integer multiples.
-   * @return {Number}
-   * @private
-   */
-  calculateSlide () {
-    return this.roundingMethod(this.element.scrollLeft / this.sizingMethod(this))
-  }
-
-  /**
-   * @param {String} event
-   * @param {any} detail
-   * @return {boolean}
-   * @private
-   */
-  dispatch (event, detail) {
-    return this.element.dispatchEvent(
-      new window.CustomEvent(event, {
-        detail: detail
-      })
-    )
-  }
-
-  /**
-   * Scroll to a slide by index.
-   *
-   * @param {Number} index
-   * @return {void}
-   * @public
-   */
-  slideTo (index) {
-    this.element.scrollTo({
-      left: index * this.sizingMethod(this)
-    })
-  }
-
-  /**
-   * Free resources and listeners, disable plugins
-   * @return {void}
-   * @public
-   */
-  destroy () {
-    window.clearTimeout(this.scrollTimeoutId)
-    this.detachListeners()
-
-    for (const plugin of this.plugins.values()) {
-      plugin.disable()
-    }
-  }
-}
-
 
 /***/ })
 
@@ -923,7 +908,7 @@ class ScrollSnapSlider {
 /******/ 				script.parentNode && script.parentNode.removeChild(script);
 /******/ 				doneFns && doneFns.forEach((fn) => (fn(event)));
 /******/ 				if(prev) return prev(event);
-/******/ 			};
+/******/ 			}
 /******/ 			var timeout = setTimeout(onScriptComplete.bind(null, undefined, { type: 'timeout', target: script }), 120000);
 /******/ 			script.onerror = onScriptComplete.bind(null, script.onerror);
 /******/ 			script.onload = onScriptComplete.bind(null, script.onload);
@@ -949,7 +934,7 @@ class ScrollSnapSlider {
 /******/ 		var document = __webpack_require__.g.document;
 /******/ 		if (!scriptUrl && document) {
 /******/ 			if (document.currentScript)
-/******/ 				scriptUrl = document.currentScript.src
+/******/ 				scriptUrl = document.currentScript.src;
 /******/ 			if (!scriptUrl) {
 /******/ 				var scripts = document.getElementsByTagName("script");
 /******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
@@ -1024,9 +1009,7 @@ class ScrollSnapSlider {
 /******/ 		
 /******/ 		// install a JSONP callback for chunk loading
 /******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
-/******/ 			var chunkIds = data[0];
-/******/ 			var moreModules = data[1];
-/******/ 			var runtime = data[2];
+/******/ 			var [chunkIds, moreModules, runtime] = data;
 /******/ 			// add "moreModules" to the modules object,
 /******/ 			// then flag all "chunkIds" as loaded and fire callback
 /******/ 			var moduleId, chunkId, i = 0;
@@ -1049,15 +1032,16 @@ class ScrollSnapSlider {
 /******/ 		
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunkwoostify_blocks"] = self["webpackChunkwoostify_blocks"] || [];
+/******/ 		var chunkLoadingGlobal = globalThis["webpackChunkwoostify_blocks"] = globalThis["webpackChunkwoostify_blocks"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
+"use strict";
 /*!*************************************************!*\
   !*** ./src/block-common-css/FrontendStyles.tsx ***!
   \*************************************************/

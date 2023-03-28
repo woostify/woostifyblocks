@@ -8,7 +8,7 @@ interface Props {
 const SettingsPageBlockSettings: FC<Props> = ({ allSettings, onChange }) => {
 	return (
 		<div className="divide-y">
-			<div className="pb-8">
+			<form className="pb-8">
 				<div>
 					<h3 className="p-0 flex-1 justify-right inline-flex text-lg font-medium text-gray-900">
 						Form
@@ -127,7 +127,7 @@ const SettingsPageBlockSettings: FC<Props> = ({ allSettings, onChange }) => {
 						/>
 					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 	);
 };

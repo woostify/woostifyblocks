@@ -1,4 +1,4 @@
-import { ScrollSnapSlider } from "scroll-snap-slider/src/ScrollSnapSlider.js";
+import { ScrollSnapSlider } from "./ScrollSnapSlider";
 
 export class CustomPlugin extends ScrollSnapSlider {
 	/**

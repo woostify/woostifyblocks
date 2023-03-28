@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkwoostify_blocks"] = self["webpackChunkwoostify_blocks"] || []).push([["src_block-button_GlobalCss_tsx"],{
+(globalThis["webpackChunkwoostify_blocks"] = globalThis["webpackChunkwoostify_blocks"] || []).push([["src_block-button_GlobalCss_tsx"],{
 
 /***/ "./src/block-button/GlobalCss.tsx":
 /*!****************************************!*\

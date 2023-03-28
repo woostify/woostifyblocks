@@ -238,7 +238,7 @@ const HeaderToolBarPatterns = () => {
 					<LightBulbIcon className="w-4 h-4" />
 					<span className="ml-2 text-slate-900">Free</span>
 				</button>
-				<button
+				{/* <button
 					className={`flex items-center rounded-md py-[0.4375rem] pl-2 pr-2 text-sm font-semibold lg:pr-3 ${
 						currentPricingPackage === "pro" ? "bg-white shadow" : ""
 					}`}
@@ -250,7 +250,7 @@ const HeaderToolBarPatterns = () => {
 				>
 					<KeyIcon className="w-4 h-4" />
 					<span className="ml-2 text-slate-600">Pro</span>
-				</button>
+				</button> */}
 			</div>
 		);
 	};

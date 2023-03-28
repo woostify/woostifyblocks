@@ -1,5 +1,7 @@
 import React from "react";
 
+console.log(1212121212);
+
 const WelcomePage = () => {
 	return (
 		<div className="mt-10">
@@ -24,7 +26,8 @@ const WelcomePage = () => {
 					</div>
 				</div>
 				<div className="w-full xl:w-1/3 flex-shrink-0 grid gap-4 lg:gap-5 xl:gap-8">
-					<div className="border border-slate-200 box-border rounded-2xl bg-white shadow-sm overflow-hidden transition hover:shadow-hover">
+					{/* ------------- */}
+					{/* <div className="border border-slate-200 box-border rounded-2xl bg-white shadow-sm overflow-hidden transition hover:shadow-hover">
 						<div className="p-8 pr-10">
 							<div className="flex items-center space-x-2">
 								<h3 className="text-slate-800 text-xl font-semibold">
@@ -60,7 +63,7 @@ const WelcomePage = () => {
 								Activate
 							</button>
 						</div>
-					</div>
+					</div> */}
 
 					{/* ----------- */}
 					<div className="border border-slate-200 box-border rounded-2xl bg-white shadow-sm overflow-hidden transition hover:shadow-hover">
