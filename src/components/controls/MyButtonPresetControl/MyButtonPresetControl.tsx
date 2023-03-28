@@ -68,7 +68,7 @@ const MyButtonPresetControl: FC<Props> = ({
 	const renderButton = (item: typeof BUTTON_PRESET[number]) => {
 		return (
 			<div
-				className={`${item.btnTwClass} w-full inline-flex items-center justify-center font-medium leading-6 text-sm ring-1 space-x-1.5 select-none`}
+				className={`${item.btnTwClass} flex-shrink-0 inline-flex items-center justify-center font-medium leading-6 text-sm ring-1 space-x-1.5 select-none`}
 			>
 				{item.name === "with_leading_icon" && (
 					<HeartIcon className="flex-shrink-0 w-5 h-5" />

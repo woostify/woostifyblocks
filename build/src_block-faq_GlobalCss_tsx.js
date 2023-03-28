@@ -175,7 +175,7 @@ const GlobalCss = attrs => {
       [INNER_CLASSNAME]: {
         textAlign: general_general.textAlignment
       },
-      ".wcb-faq-child__question": {
+      [FAQ_CHILD_QUESTION]: {
         display: "block"
       }
     }]
@@ -256,8 +256,7 @@ const GlobalCss = attrs => {
     styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__.getAdvanveDivWrapStyles)({
       advance_responsiveCondition,
       advance_zIndex,
-      className: WRAP_CLASSNAME,
-      defaultDisplay: "block"
+      className: WRAP_CLASSNAME
     })
   }));
 };

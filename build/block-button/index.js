@@ -5740,7 +5740,7 @@ const MyButtonPresetControl = _ref => {
   };
   const renderButton = item => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `${item.btnTwClass} w-full inline-flex items-center justify-center font-medium leading-6 text-sm ring-1 space-x-1.5 select-none`
+      className: `${item.btnTwClass} flex-shrink-0 inline-flex items-center justify-center font-medium leading-6 text-sm ring-1 space-x-1.5 select-none`
     }, item.name === "with_leading_icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_heroicons_react_24_solid__WEBPACK_IMPORTED_MODULE_5__, {
       className: "flex-shrink-0 w-5 h-5"
     }), item.name === "circular" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_heroicons_react_24_solid__WEBPACK_IMPORTED_MODULE_6__, {

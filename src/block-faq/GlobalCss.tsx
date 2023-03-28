@@ -107,7 +107,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 							[INNER_CLASSNAME]: {
 								textAlign: general_general.textAlignment,
 							},
-							".wcb-faq-child__question": {
+							[FAQ_CHILD_QUESTION]: {
 								display: "block",
 							},
 						},
@@ -228,7 +228,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 					advance_responsiveCondition,
 					advance_zIndex,
 					className: WRAP_CLASSNAME,
-					defaultDisplay: "block",
 				})}
 			/>
 		</>
