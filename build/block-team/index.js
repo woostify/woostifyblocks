@@ -5763,8 +5763,16 @@ const MyColorPicker = _ref => {
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ColorPalette, {
       className: "block-editor-color-gradient-control__panel p-4",
       colors: showDefaultPalette ? defaultColorPallete : undefined,
-      value: colorState,
-      onChange: color => handleUpdateColor(color || "")
+      value: colorState
+      // @ts-ignore
+      ,
+      enableAlpha: true,
+      onChange: color => {
+        console.log(11, {
+          color
+        });
+        handleUpdateColor(color || "");
+      }
       // @ts-ignore
       ,
       __experimentalHasMultipleOrigins: true,
