@@ -59,15 +59,8 @@ if (!function_exists("wcb__enqueue_script_to_setting_page")) {
     {
         $currentScrren = get_current_screen();
 
-        if (str_ends_with($currentScrren->id, "/settings-page")) {
-            wcb_var_dump($currentScrren);
-        }
-
-
         if (
-            !empty($currentScrren->id)
-            &&  str_starts_with($currentScrren->id, "woostifyblocks/")
-            && str_ends_with($currentScrren->id, "/settings-page")
+            !empty($currentScrren->id) && $currentScrren->id == "woostifyblocks/includes/settings-page"
         ) {
             wp_register_style('wcb-settings-page', plugin_dir_url(WCB_FILE) . 'build/____dashboard/style-index.css');
             wp_enqueue_style('wcb-settings-page');
