@@ -58,7 +58,12 @@ if (!function_exists("wcb__enqueue_script_to_setting_page")) {
     function wcb__enqueue_script_to_setting_page()
     {
         $currentScrren = get_current_screen();
-        wcb_var_dump($currentScrren);
+
+        if (str_ends_with($currentScrren->id, "/settings-page")) {
+            wcb_var_dump($currentScrren);
+        }
+
+
         if (
             !empty($currentScrren->id)
             &&  str_starts_with($currentScrren->id, "woostifyblocks/")
