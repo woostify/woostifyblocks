@@ -19,7 +19,7 @@ function wcb_var_dump($value)
     echo '</p>';
 };
 
-function vcb_var_export($value)
+function wcb_var_export($value)
 {
     echo '<pre style="color:red;"><code>';
     echo ('-----------start--wcb_var_dump-----------------');
