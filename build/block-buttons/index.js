@@ -2751,13 +2751,14 @@ const Edit = props => {
     "data-uniqueid": uniqueId
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_7__["default"], WcbAttrsForSave()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", innerBlocksProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_6__["default"], {
     uniqueId: uniqueId,
-    renderTabPanels: renderTabBodyPanels,
-    onChangeActive: tab => {
-      handleTogglePanel(tab);
-    },
-    tabDefaultActive: tabIsOpen
+    renderTabPanels: renderTabBodyPanels
+    // onChangeActive={(tab) => {
+    // 	handleTogglePanel(tab);
+    // }}
+    // tabDefaultActive={tabIsOpen}
   })));
 };
+
 const Placeholder = _ref => {
   let {
     attributes,

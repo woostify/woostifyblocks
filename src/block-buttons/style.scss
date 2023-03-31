@@ -1,3 +1,14 @@
+.editor-styles-wrapper .wcb-buttons__inner {
+	> .wp-block {
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+
 .wcb-buttons__inner {
 	display: flex;
+	> .wp-block {
+		margin-left: 0;
+		margin-right: 0;
+	}
 }

@@ -2846,13 +2846,14 @@ const Edit = props => {
     style: GAPS_VARIABLES
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_9__["default"], {
     uniqueId: uniqueId,
-    renderTabPanels: renderTabBodyPanels,
-    onChangeActive: tab => {
-      handleTogglePanel(tab);
-    },
-    tabDefaultActive: tabIsOpen
+    renderTabPanels: renderTabBodyPanels
+    // onChangeActive={(tab) => {
+    // 	handleTogglePanel(tab);
+    // }}
+    // tabDefaultActive={tabIsOpen}
   })));
 };
+
 const Placeholder = _ref2 => {
   let {
     attributes,

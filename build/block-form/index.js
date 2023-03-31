@@ -2867,13 +2867,14 @@ const Edit = props => {
     className: "wcb-form__errorMessageText"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, attributes.general_general.errorMessageText)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_controls_HelpText__WEBPACK_IMPORTED_MODULE_24__["default"], null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("(Error message: Only show on the frontend when the form submit is error.)", "wcb"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_7__["default"], {
     uniqueId: uniqueId,
-    renderTabPanels: renderTabBodyPanels,
-    onChangeActive: tab => {
-      handleTogglePanel(tab);
-    },
-    tabDefaultActive: tabIsOpen
+    renderTabPanels: renderTabBodyPanels
+    // onChangeActive={(tab) => {
+    // 	handleTogglePanel(tab);
+    // }}
+    // tabDefaultActive={tabIsOpen}
   })));
 };
+
 const Placeholder = _ref => {
   let {
     attributes,

@@ -1,5 +1,24 @@
+.editor-styles-wrapper .wcb-form__wrap {
+	.wp-block {
+		margin-left: 0;
+		margin-right: 0;
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
+.wcb-form__wrap {
+	.wp-block {
+		margin-left: 0;
+		margin-right: 0;
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
+/*  */
+
 .wcb-form__wrap {
 	@apply text-base;
+	grid-template-columns: repeat(1, minmax(0, 1fr));
 
 	[type="text"],
 	[type="email"],
@@ -83,6 +102,7 @@
 
 .wcb-form__inner {
 	display: grid;
+	grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 .wcb-form__btn-submit-wrap {
