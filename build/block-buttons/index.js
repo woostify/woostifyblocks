@@ -2814,6 +2814,7 @@ const ButtonsEdit = props => {
   const Component = hasInnerBlocks ? Edit : Placeholder;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Component, props);
 };
+console.log("buttons__inner____");
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ButtonsEdit);
 
 /***/ }),
