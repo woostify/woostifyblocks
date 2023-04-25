@@ -3263,7 +3263,7 @@ const GlobalCss = attrs => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_8__.DEMO_WCB_GLOBAL_VARIABLES;
-  const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}].${uniqueId}` || "wcb-posts-grid__wrap";
+  const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}]` || "wcb-posts-grid__wrap";
   const POST_CARD_CLASS = `${WRAP_CLASSNAME} .wcbPostCard`;
 
   // ------------------- WRAP DIV
@@ -6092,6 +6092,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const SaveCommon = _ref => {
   let {
+    anchor,
     className = "",
     uniqueId = "",
     HtmlTag = "div",
@@ -6111,7 +6112,7 @@ const SaveCommon = _ref => {
   }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(HtmlTag, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
     className: `${className} ${uniqueId} wcb-update-div`,
-    id: uniqueId,
+    id: anchor || uniqueId || undefined,
     "data-uniqueid": uniqueId,
     "data-is-wcb-save-common": true
   }), children, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {

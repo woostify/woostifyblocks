@@ -30,7 +30,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
-	const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+	const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}]`;
 	const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-form__inner`;
 	const INPUT_CLASSNAME = `${WRAP_CLASSNAME} [type="text"], ${WRAP_CLASSNAME} [type="email"], ${WRAP_CLASSNAME} [type="url"], ${WRAP_CLASSNAME} [type="password"], ${WRAP_CLASSNAME} [type="number"], ${WRAP_CLASSNAME} [type="date"], ${WRAP_CLASSNAME} [type="datetime-local"], ${WRAP_CLASSNAME} [type="month"], ${WRAP_CLASSNAME} [type="search"], ${WRAP_CLASSNAME} [type="tel"], ${WRAP_CLASSNAME} [type="time"], ${WRAP_CLASSNAME} [type="week"], ${WRAP_CLASSNAME} [multiple], ${WRAP_CLASSNAME} select, ${WRAP_CLASSNAME} textarea`;
 	const CHECKBOX_RADIO_CLASSNAME = `${WRAP_CLASSNAME} .wcb-radio__option, ${WRAP_CLASSNAME} .wcb-checkbox__option`;

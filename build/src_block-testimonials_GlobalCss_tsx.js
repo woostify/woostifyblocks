@@ -114,7 +114,7 @@ const GlobalCss = attrs => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_7__.DEMO_WCB_GLOBAL_VARIABLES;
-  const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+  const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}]`;
   const ITEM_CLASSNAME = `${WRAP_CLASSNAME} .wcb-testimonials__item`;
   const ITEM_NAME = `${WRAP_CLASSNAME} .wcb-testimonials__item-name`;
   const ITEM_CONTENT = `${WRAP_CLASSNAME} .wcb-testimonials__item-content`;

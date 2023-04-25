@@ -77,8 +77,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		});
 	}, [UNIQUE_ID]);
 	//
-	useEffect(() => {}, []);
-	//
 
 	const getPaddingBySize = (size?: BtnGroupSizes): DimensionSettings => {
 		switch (size) {
@@ -280,10 +278,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				<HOCInspectorControls
 					uniqueId={uniqueId}
 					renderTabPanels={renderTabBodyPanels}
-					// onChangeActive={(tab) => {
-					// 	handleTogglePanel(tab);
-					// }}
-					// tabDefaultActive={tabIsOpen}
 				/>
 			</div>
 		</MyCacheProvider>

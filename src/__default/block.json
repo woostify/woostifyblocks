@@ -8,7 +8,8 @@
 	"icon": "heart",
 	"description": "Example static block scaffolded with Create Block tool.",
 	"supports": {
-		"html": false
+		"html": false,
+		"align": ["wide", "full"]
 	},
 	"textdomain": "wcb-blocks",
 	"editorScript": "file:./index.js",

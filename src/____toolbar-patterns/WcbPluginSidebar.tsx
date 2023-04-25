@@ -156,6 +156,7 @@ const WcbPluginSidebar = (props) => {
 											onChange={(e) => {
 												debounce_fun(e, j);
 											}}
+											className="!w-auto"
 											showDefaultPalette
 											showCustomColorOnDefaultPallete={false}
 										/>

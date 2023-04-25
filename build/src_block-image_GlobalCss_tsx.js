@@ -106,7 +106,7 @@ const GlobalCss = attrs => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_9__.DEMO_WCB_GLOBAL_VARIABLES;
-  const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+  const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}]`;
   const IMAGE_CLASSNAME = `${WRAP_CLASSNAME} img`;
   const CAPTION_CLASSNAME = `${WRAP_CLASSNAME} figcaption.wp-element-caption`;
   const OVERLAY_BG_CLASSNAME = `${WRAP_CLASSNAME} .wcb-image__overlay-bg`;

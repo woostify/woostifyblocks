@@ -96,9 +96,7 @@ const GlobalCss = attrs => {
     // ATTRS OF BLOCK
     general_addToCartBtn,
     general_content,
-    general_featuredImage,
     general_pagination,
-    general_sortingAndFiltering,
     style_addToCardBtn,
     style_featuredImage,
     style_layout,
@@ -116,7 +114,7 @@ const GlobalCss = attrs => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_7__.DEMO_WCB_GLOBAL_VARIABLES;
-  const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}].${uniqueId}`;
+  const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}]`;
   const LIST_CLASS = `${WRAP_CLASSNAME} .wcb-products__list`;
   const POST_CARD_CLASS = `${WRAP_CLASSNAME} .wcb-products__product`;
   const ADD_TO_CART_BTN = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart a`;

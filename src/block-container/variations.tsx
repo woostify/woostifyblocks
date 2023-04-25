@@ -48,10 +48,10 @@ const getContainerAttrsByFlexWrap = (
 				Tablet: "column",
 			},
 			flexWrap: {
-				Desktop: flexWrap,
-				Tablet: "nowrap",
-				Mobile: "nowrap",
+				Desktop: "wrap",
 			},
+			alignItems: { Desktop: "stretch" },
+			justifyContent: { Desktop: "start" },
 		},
 	};
 };
@@ -67,7 +67,8 @@ const getContainerBoxAttrsByWidth = (
 			containerWidthType: "Custom",
 			customWidth: {
 				Desktop: width,
-				Tablet: "100%",
+				Tablet: width,
+				Mobile: "100%",
 			},
 		},
 	};

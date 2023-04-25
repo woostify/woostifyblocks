@@ -52,7 +52,7 @@ const GlobalCss = attrs => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_8__.DEMO_WCB_GLOBAL_VARIABLES;
-  const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+  const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}]`;
   const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-container__inner`;
 
   // ------------------- WRAP DIV
@@ -85,31 +85,38 @@ const GlobalCss = attrs => {
         color: styles_color,
         overflow: overflow,
         //
-        maxWidth: cWidthMobile,
+        // maxWidth: cWidthMobile,
+        width: cWidthMobile,
         minHeight: minHeightMobile,
         "&.is_wcb_container_child": {
-          // width: "unset",
-          flexBasis: `calc(${cWidthMobile} - (var(--wcb-gap-x)));`
+          width: cWidthMobile
+          // flexBasis: `calc(${cWidthMobile} - (var(--wcb-gap-x)));`,
+          // maxWidth: `calc(${cWidthMobile} - (var(--wcb-gap-x)));`,
         },
+
         [`@media (min-width: ${media_tablet})`]: {
-          maxWidth: cWidthTablet,
+          width: cWidthTablet,
           minHeight: minHeightTablet,
           "&.is_wcb_container_child": {
-            // width: "unset",
-            flexBasis: `calc(${cWidthTablet} - (var(--wcb-gap-x)));`
+            width: cWidthTablet
+            // flexBasis: `calc(${cWidthTablet} - (var(--wcb-gap-x)));`,
+            // maxWidth: `calc(${cWidthTablet} - (var(--wcb-gap-x)));`,
           }
         },
+
         [`@media (min-width: ${media_desktop})`]: {
-          maxWidth: cWidthDesktop,
+          width: cWidthDesktop,
           minHeight: minHeightDesktop,
           "&.is_wcb_container_child": {
-            // width: "unset",
-            flexBasis: `calc(${cWidthDesktop} - (var(--wcb-gap-x)));`
+            width: cWidthDesktop
+            // flexBasis: `calc(${cWidthDesktop} - (var(--wcb-gap-x)));`,
+            // maxWidth: `calc(${cWidthDesktop} - (var(--wcb-gap-x)));`,
           }
         }
       }
     }];
   };
+
   const getDivWrapStyles__Border = () => {
     const {} = styles_border;
     //
@@ -179,21 +186,20 @@ const GlobalCss = attrs => {
   };
   // ------------------- END WRAP DIV
 
-  // ------------------- INNER DIV
-  const getDivInnerStyles = () => {
-    return _emotion_react__WEBPACK_IMPORTED_MODULE_10__.css`
-			${INNER_CLASSNAME} {
-			}
-		`;
-  };
   const getInner__contentCustomWidth = () => {
     let {
       containerWidthType,
       contentWidthType,
       contentBoxWidth
     } = general_container;
+
+    // when container widtd = custom-width
     if (containerWidthType !== "Full Width" || contentWidthType !== "Boxed") {
-      return {};
+      return {
+        [INNER_CLASSNAME]: {
+          maxWidth: "100%"
+        }
+      };
     }
     if (contentBoxWidth.Desktop === "") {
       contentBoxWidth = {

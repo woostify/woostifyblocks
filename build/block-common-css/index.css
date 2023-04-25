@@ -1648,6 +1648,9 @@ video {
 .min-h-\[60px\] {
   min-height: 60px !important;
 }
+.\!w-auto {
+  width: auto !important;
+}
 .w-1\/12 {
   width: 8.333333% !important;
 }

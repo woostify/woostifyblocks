@@ -10,7 +10,7 @@ import {
 } from "@wordpress/block-editor";
 import { PanelBody } from "@wordpress/components";
 import { get } from "lodash";
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useRef, useState, useCallback } from "react";
 import { BlockWCBContainerAttrs } from "./attributes";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 import MyBackgroundControl from "../components/controls/MyBackgroundControl/MyBackgroundControl";
@@ -37,6 +37,7 @@ import { useSelect, useDispatch } from "@wordpress/data";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import MyCacheProvider from "../components/MyCacheProvider";
+import { WcbAttrsForSave } from "./Save";
 
 export type EditProps<T, C = any> = {
 	attributes: T;
@@ -49,22 +50,35 @@ export type EditProps<T, C = any> = {
 	onReplace: Function;
 };
 
-export const getGapStyleFromGapjObj = ({ colunmGap, rowGap }) => {
-	const MAIN_STYLES: React.CSSProperties = {
-		// @ts-ignore
-		"--wcb-gap-x": colunmGap.Mobile || colunmGap.Tablet || colunmGap.Desktop,
-		"--wcb-gap-y": rowGap.Mobile || rowGap.Tablet || rowGap.Desktop,
-		"--md-wcb-gap-x": colunmGap.Tablet || colunmGap.Desktop,
-		"--md-wcb-gap-y": rowGap.Tablet || rowGap.Desktop,
-		"--lg-wcb-gap-x": colunmGap.Desktop,
-		"--lg-wcb-gap-y": rowGap.Desktop,
-	};
-	return MAIN_STYLES;
-};
+// export const getGapStyleFromGapjObj = ({ colunmGap, rowGap }) => {
+// 	const MAIN_STYLES: React.CSSProperties = {
+// 		// @ts-ignore
+// 		"--wcb-gap-x": colunmGap.Mobile || colunmGap.Tablet || colunmGap.Desktop,
+// 		"--wcb-gap-y": rowGap.Mobile || rowGap.Tablet || rowGap.Desktop,
+// 		"--md-wcb-gap-x": colunmGap.Tablet || colunmGap.Desktop,
+// 		"--md-wcb-gap-y": rowGap.Tablet || rowGap.Desktop,
+// 		"--lg-wcb-gap-x": colunmGap.Desktop,
+// 		"--lg-wcb-gap-y": rowGap.Desktop,
+// 	};
+// 	return MAIN_STYLES;
+// };
 
 const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
-	const { uniqueId, containerClassName } = attributes;
+	const {
+		uniqueId,
+		containerClassName,
+		advance_responsiveCondition,
+		advance_zIndex,
+		general_container,
+		general_flexProperties,
+		isShowVariations,
+		styles_background,
+		styles_border,
+		styles_boxShadow,
+		styles_color,
+		styles_dimensions,
+	} = attributes;
 
 	// const { myCache, ref } = useCreateCacheEmotion();
 	const ref = useRef<HTMLDivElement>(null);
@@ -79,7 +93,7 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 	//
 	useEffect(() => {
 		setAttributes({
-			uniqueId: "wcb-container-" + clientId.substring(2, 9).replace("-", ""),
+			uniqueId: "wcb-container-" + clientId.substring(2, 9),
 		});
 	}, []);
 
@@ -95,16 +109,15 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		},
 		[clientId]
 	);
-	const { general_container, styles_background, styles_dimensions } =
-		attributes;
+
 	const { containerWidthType, htmlTag } = general_container;
 	useEffect(() => {
-		let cl =
-			containerWidthType === "Full Width"
-				? "alignfull"
-				: containerWidthType === "Boxed"
-				? "alignwide"
-				: "";
+		let cl = "";
+		// containerWidthType === "Full Width"
+		// 	? "alignfull"
+		// 	: containerWidthType === "Boxed"
+		// 	? "alignwide"
+		// 	: "";
 
 		if (hasParent) {
 			cl = "is_wcb_container_child";
@@ -220,9 +233,21 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 						>
 							<MyContainerControl
 								containerControl={attributes.general_container}
-								setAttrs__container={(data) =>
-									setAttributes({ general_container: data })
-								}
+								setAttrs__container={(data) => {
+									let newData = { general_container: data };
+									if (data.containerWidthType === "Boxed") {
+										// @ts-ignore
+										newData = { ...newData, align: "wide" };
+									} else if (data.containerWidthType === "Full Width") {
+										// @ts-ignore
+										newData = { ...newData, align: "full" };
+									} else {
+										// @ts-ignore
+										newData = { ...newData, align: "" };
+									}
+
+									setAttributes(newData);
+								}}
 								showContainerWidthType={!hasParent}
 							/>
 						</PanelBody>
@@ -278,7 +303,8 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 
 	// MAIN STYLES - CLASSES
 	const { colunmGap, rowGap } = styles_dimensions;
-	const GAPS_VARIABLES = getGapStyleFromGapjObj({ colunmGap, rowGap });
+	// const GAPS_VARIABLES = getGapStyleFromGapjObj({ colunmGap, rowGap });
+	const GAPS_VARIABLES = {};
 	//
 
 	const blockProps = useBlockProps({
@@ -295,6 +321,35 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 	});
 	//
 
+	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {
+		return {
+			uniqueId,
+			advance_responsiveCondition,
+			advance_zIndex,
+			containerClassName,
+			general_container,
+			general_flexProperties,
+			styles_background,
+			styles_border,
+			styles_boxShadow,
+			styles_color,
+			styles_dimensions,
+		};
+	}, [
+		uniqueId,
+		advance_responsiveCondition,
+		advance_zIndex,
+		containerClassName,
+		general_container,
+		general_flexProperties,
+		styles_background,
+		styles_border,
+		styles_boxShadow,
+		styles_color,
+		styles_dimensions,
+	]);
+	//
+
 	const blockWrapProps = useBlockProps({
 		ref,
 		className: `wcb-container__wrap ${uniqueId} ${containerClassName}`.trim(),
@@ -304,12 +359,10 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 			<div
 				{...blockWrapProps}
 				className={`${blockWrapProps.className} `}
-				id={uniqueId}
 				data-uniqueid={uniqueId}
 			>
 				{/*  */}
-				<GlobalCss {...attributes} />
-				{/*  */}
+				<GlobalCss {...WcbAttrsForSave()} />
 
 				<VideoBackgroundByBgControl
 					bgType={styles_background.bgType}
@@ -319,21 +372,12 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 					bgType={styles_background.bgType}
 					overlayType={styles_background.overlayType}
 				/>
-				{/*  */}
 
-				<div
-					{...innerBlocksProps}
-					// className="wcb-container__inner"
-					style={GAPS_VARIABLES}
-				/>
+				<div {...innerBlocksProps} id={undefined} style={GAPS_VARIABLES} />
 
 				<HOCInspectorControls
 					uniqueId={uniqueId}
 					renderTabPanels={renderTabBodyPanels}
-					// onChangeActive={(tab) => {
-					// 	handleTogglePanel(tab);
-					// }}
-					// tabDefaultActive={tabIsOpen}
 				/>
 			</div>
 		</MyCacheProvider>

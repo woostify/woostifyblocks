@@ -51,9 +51,9 @@ const GlobalCss = attrs => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_7__.DEMO_WCB_GLOBAL_VARIABLES;
-  const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+  const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}]`;
   const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-buttons__inner`;
-  const INNER_BUTTON = `#${uniqueId} .wcb-button__main`;
+  // const INNER_BUTTON = `#${uniqueId} .wcb-button__main`;
   const INNER_BUTTON_TEXT = `#${uniqueId} .wcb-button__text`;
 
   // ------------------- WRAP DIV
@@ -71,7 +71,7 @@ const GlobalCss = attrs => {
     value_Mobile: alignment_mobile
   } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(alignment);
 
-  // console.log(1, "---- butons global css ---");
+  // console.log(1, "---- butons global css ---", { style_dimension });
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: [{
@@ -109,7 +109,8 @@ const GlobalCss = attrs => {
     })]
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
-      className: INNER_BUTTON,
+      // className: INNER_BUTTON,
+      className: WRAP_CLASSNAME,
       padding: style_dimension.padding,
       margin: style_dimension.margin
     })

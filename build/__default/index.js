@@ -2451,7 +2451,7 @@ const GlobalCss = attrs => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_3__.DEMO_WCB_GLOBAL_VARIABLES;
-  const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+  const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}]`;
   const HEADING_CLASSNAME = `${WRAP_CLASSNAME} .wcb-heading__heading`;
 
   // ------------------- WRAP DIV
@@ -3097,6 +3097,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const SaveCommon = _ref => {
   let {
+    anchor,
     className = "",
     uniqueId = "",
     HtmlTag = "div",
@@ -3116,7 +3117,7 @@ const SaveCommon = _ref => {
   }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(HtmlTag, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
     className: `${className} ${uniqueId} wcb-update-div`,
-    id: uniqueId,
+    id: anchor || uniqueId || undefined,
     "data-uniqueid": uniqueId,
     "data-is-wcb-save-common": true
   }), children, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
@@ -6138,7 +6139,7 @@ function combine (array, callback) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/default","version":"0.1.0","title":"Heading","category":"wcb-blocks","icon":"heart","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./FrontendStyles.js"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/default","version":"0.1.0","title":"Heading","category":"wcb-blocks","icon":"heart","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false,"align":["wide","full"]},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./FrontendStyles.js"}');
 
 /***/ })
 

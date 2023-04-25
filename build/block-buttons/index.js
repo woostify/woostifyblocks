@@ -2589,8 +2589,6 @@ const Edit = props => {
     });
   }, [UNIQUE_ID]);
   //
-  (0,react__WEBPACK_IMPORTED_MODULE_5__.useEffect)(() => {}, []);
-  //
 
   const getPaddingBySize = size => {
     switch (size) {
@@ -2752,13 +2750,8 @@ const Edit = props => {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_7__["default"], WcbAttrsForSave()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", innerBlocksProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_6__["default"], {
     uniqueId: uniqueId,
     renderTabPanels: renderTabBodyPanels
-    // onChangeActive={(tab) => {
-    // 	handleTogglePanel(tab);
-    // }}
-    // tabDefaultActive={tabIsOpen}
   })));
 };
-
 const Placeholder = _ref => {
   let {
     attributes,
@@ -2870,9 +2863,9 @@ const GlobalCss = attrs => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_7__.DEMO_WCB_GLOBAL_VARIABLES;
-  const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+  const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}]`;
   const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-buttons__inner`;
-  const INNER_BUTTON = `#${uniqueId} .wcb-button__main`;
+  // const INNER_BUTTON = `#${uniqueId} .wcb-button__main`;
   const INNER_BUTTON_TEXT = `#${uniqueId} .wcb-button__text`;
 
   // ------------------- WRAP DIV
@@ -2890,7 +2883,7 @@ const GlobalCss = attrs => {
     value_Mobile: alignment_mobile
   } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(alignment);
 
-  // console.log(1, "---- butons global css ---");
+  // console.log(1, "---- butons global css ---", { style_dimension });
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: [{
@@ -2928,7 +2921,8 @@ const GlobalCss = attrs => {
     })]
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
-      className: INNER_BUTTON,
+      // className: INNER_BUTTON,
+      className: WRAP_CLASSNAME,
       padding: style_dimension.padding,
       margin: style_dimension.margin
     })
@@ -3253,10 +3247,10 @@ const WCB_BUTTONS_PANEL_STYLE_DIMENSION_DEMO = {
   ..._components_controls_MyDimensionsControl_types__WEBPACK_IMPORTED_MODULE_5__.MY_DIMENSIONS_NO_GAP_CONTROL_DEMO,
   padding: {
     Desktop: {
-      top: "10px",
-      left: "24px",
-      right: "24px",
-      bottom: "10px"
+      top: "",
+      left: "",
+      right: "",
+      bottom: ""
     }
   }
 };
@@ -3984,6 +3978,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const SaveCommon = _ref => {
   let {
+    anchor,
     className = "",
     uniqueId = "",
     HtmlTag = "div",
@@ -4003,7 +3998,7 @@ const SaveCommon = _ref => {
   }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(HtmlTag, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
     className: `${className} ${uniqueId} wcb-update-div`,
-    id: uniqueId,
+    id: anchor || uniqueId || undefined,
     "data-uniqueid": uniqueId,
     "data-is-wcb-save-common": true
   }), children, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {

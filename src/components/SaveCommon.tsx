@@ -4,6 +4,7 @@ import _ from "lodash";
 // @ts-ignore
 interface Props {
 	className?: string;
+	anchor?: string;
 	uniqueId: string;
 	HtmlTag?: React.ElementType<any>;
 	children: ReactNode;
@@ -11,6 +12,7 @@ interface Props {
 }
 
 const SaveCommon: FC<Props> = ({
+	anchor,
 	className = "",
 	uniqueId = "",
 	HtmlTag = "div",
@@ -33,7 +35,7 @@ const SaveCommon: FC<Props> = ({
 		<HtmlTag
 			{...props}
 			className={`${className} ${uniqueId} wcb-update-div`}
-			id={uniqueId}
+			id={anchor || uniqueId || undefined}
 			data-uniqueid={uniqueId}
 			data-is-wcb-save-common
 		>

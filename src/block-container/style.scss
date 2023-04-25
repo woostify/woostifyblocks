@@ -1,5 +1,11 @@
 .wcb-container__wrap {
 	position: relative;
+	/*  */
+	/*  */
+	padding: 0.75rem;
+	&:not(.is_wcb_container_child) {
+		flex: 0 1 auto;
+	}
 }
 
 .wcb-container__inner {
@@ -9,12 +15,23 @@
 	flex: 1 1 0%;
 	margin: 0 auto;
 	> * {
+		/* width: 100%; */
+		max-width: 100%;
+	}
+	> .block-list-appender {
 		width: 100%;
 	}
+	.wp-block {
+		margin: unset;
+	}
+
+	/*  */
+
 	.wcb-container__wrap {
 		&.is_wcb_container_child {
 			max-width: unset;
-			flex: 1 1 auto;
+			flex: 0 1 auto;
+			/* flex: 1 1 auto; */
 			/* margin-right: initial;
 			margin-left: initial; */
 		}

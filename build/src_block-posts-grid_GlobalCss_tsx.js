@@ -119,7 +119,7 @@ const GlobalCss = attrs => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_8__.DEMO_WCB_GLOBAL_VARIABLES;
-  const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}].${uniqueId}` || "wcb-posts-grid__wrap";
+  const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}]` || "wcb-posts-grid__wrap";
   const POST_CARD_CLASS = `${WRAP_CLASSNAME} .wcbPostCard`;
 
   // ------------------- WRAP DIV

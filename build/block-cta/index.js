@@ -2831,7 +2831,7 @@ const GlobalCss = attrs => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_7__.DEMO_WCB_GLOBAL_VARIABLES;
-  const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+  const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}]`;
   const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-cta__inner`;
   const CONTENT_CLASSNAME = `${WRAP_CLASSNAME} .wcb-cta__content`;
   const TITLE_CLASSNAME = `${WRAP_CLASSNAME} .wcb-cta__title`;
@@ -4117,6 +4117,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const SaveCommon = _ref => {
   let {
+    anchor,
     className = "",
     uniqueId = "",
     HtmlTag = "div",
@@ -4136,7 +4137,7 @@ const SaveCommon = _ref => {
   }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(HtmlTag, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
     className: `${className} ${uniqueId} wcb-update-div`,
-    id: uniqueId,
+    id: anchor || uniqueId || undefined,
     "data-uniqueid": uniqueId,
     "data-is-wcb-save-common": true
   }), children, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {

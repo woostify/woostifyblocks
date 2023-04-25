@@ -79,6 +79,9 @@ export const blokcContainerAttrs: AttrsGenericType<BlockWCBContainerAttrs> = {
 		type: "object",
 		default: {
 			...FLEX_PROPERTIES_CONTROL_DEMO,
+			alignItems: { Desktop: "stretch" },
+			justifyContent: { Desktop: "start" },
+			flexWrap: { Desktop: "wrap" },
 		},
 	},
 	styles_color: {
@@ -101,6 +104,8 @@ export const blokcContainerAttrs: AttrsGenericType<BlockWCBContainerAttrs> = {
 		type: "object",
 		default: {
 			...MY_DIMENSIONS_CONTROL_DEMO,
+			colunmGap: { Desktop: "" },
+			rowGap: { Desktop: "" },
 			margin: {
 				Desktop: {
 					bottom: "",

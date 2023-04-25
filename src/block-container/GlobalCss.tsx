@@ -27,7 +27,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
-	const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+	const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}]`;
 	const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-container__inner`;
 
 	// ------------------- WRAP DIV
@@ -60,26 +60,30 @@ const GlobalCss: FC<Props> = (attrs) => {
 					color: styles_color,
 					overflow: overflow,
 					//
-					maxWidth: cWidthMobile,
+					// maxWidth: cWidthMobile,
+					width: cWidthMobile,
 					minHeight: minHeightMobile,
 					"&.is_wcb_container_child": {
-						// width: "unset",
-						flexBasis: `calc(${cWidthMobile} - (var(--wcb-gap-x)));`,
+						width: cWidthMobile,
+						// flexBasis: `calc(${cWidthMobile} - (var(--wcb-gap-x)));`,
+						// maxWidth: `calc(${cWidthMobile} - (var(--wcb-gap-x)));`,
 					},
 					[`@media (min-width: ${media_tablet})`]: {
-						maxWidth: cWidthTablet,
+						width: cWidthTablet,
 						minHeight: minHeightTablet,
 						"&.is_wcb_container_child": {
-							// width: "unset",
-							flexBasis: `calc(${cWidthTablet} - (var(--wcb-gap-x)));`,
+							width: cWidthTablet,
+							// flexBasis: `calc(${cWidthTablet} - (var(--wcb-gap-x)));`,
+							// maxWidth: `calc(${cWidthTablet} - (var(--wcb-gap-x)));`,
 						},
 					},
 					[`@media (min-width: ${media_desktop})`]: {
-						maxWidth: cWidthDesktop,
+						width: cWidthDesktop,
 						minHeight: minHeightDesktop,
 						"&.is_wcb_container_child": {
-							// width: "unset",
-							flexBasis: `calc(${cWidthDesktop} - (var(--wcb-gap-x)));`,
+							width: cWidthDesktop,
+							// flexBasis: `calc(${cWidthDesktop} - (var(--wcb-gap-x)));`,
+							// maxWidth: `calc(${cWidthDesktop} - (var(--wcb-gap-x)));`,
 						},
 					},
 				},
@@ -150,19 +154,17 @@ const GlobalCss: FC<Props> = (attrs) => {
 	};
 	// ------------------- END WRAP DIV
 
-	// ------------------- INNER DIV
-	const getDivInnerStyles = () => {
-		return css`
-			${INNER_CLASSNAME} {
-			}
-		`;
-	};
-
 	const getInner__contentCustomWidth = (): CSSObject => {
 		let { containerWidthType, contentWidthType, contentBoxWidth } =
 			general_container;
+
+		// when container widtd = custom-width
 		if (containerWidthType !== "Full Width" || contentWidthType !== "Boxed") {
-			return {};
+			return {
+				[INNER_CLASSNAME]: {
+					maxWidth: "100%",
+				},
+			};
 		}
 
 		if (contentBoxWidth.Desktop === "") {
@@ -217,7 +219,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 			<Global styles={getDivWrapStyles__BoxShadow()} />
 			<Global styles={getDivWrapStyles__PaddingMargin()} />
 			{/*  */}
-			{/* <Global styles={getDivInnerStyles()} /> */}
 			<Global styles={getInner__contentCustomWidth()} />
 			<Global styles={getInner__flexProperties()} />
 			{/*  */}

@@ -1350,6 +1350,7 @@ const WcbPluginSidebar = props => {
     onChange: e => {
       debounce_fun(e, j);
     },
+    className: "!w-auto",
     showDefaultPalette: true,
     showCustomColorOnDefaultPallete: false
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {

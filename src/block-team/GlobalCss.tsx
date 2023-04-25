@@ -28,7 +28,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
-	const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+	const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}]`;
 
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject[] => {

@@ -1126,8 +1126,8 @@ classes.forEach(_ref => {
 
 function renderToDom(divsToUpdate, GlobalCss, funcRunOnEl) {
   divsToUpdate.forEach(div => {
-    const preEl = div.querySelector(`pre[data-wcb-block-attrs=${div.id}]`);
-    const divRenderCssEl = div.querySelector(`div[data-wcb-global-styles=${div.id}]`);
+    const preEl = div.querySelector(`pre[data-wcb-block-attrs=${div.getAttribute("data-uniqueid")}]`);
+    const divRenderCssEl = div.querySelector(`div[data-wcb-global-styles=${div.getAttribute("data-uniqueid")}]`);
     if (!preEl || !preEl.innerText || !divRenderCssEl) {
       return;
     }

@@ -57,7 +57,7 @@ const GlobalCss = attrs => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_10__.DEMO_WCB_GLOBAL_VARIABLES;
-  const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+  const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}]`;
   const BUTTON_CLASSNAME = `${WRAP_CLASSNAME} .wcb-button__main`;
   const BUTTON_TEXT = `${WRAP_CLASSNAME} .wcb-button__text`;
   const BUTTON_ICON = `${WRAP_CLASSNAME} .wcb-button__icon`;

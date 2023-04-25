@@ -17,6 +17,8 @@ import {
 	InspectorControls,
 	RichText,
 	// @ts-ignore
+	__experimentalImageSizeControl as ImageSizeControl,
+	// @ts-ignore
 	__experimentalImageURLInputUI as ImageURLInputUI,
 	// @ts-ignore
 	MediaReplaceFlow,
@@ -25,6 +27,8 @@ import {
 	BlockAlignmentControl,
 	// @ts-ignore
 	__experimentalImageEditor as ImageEditor,
+	// @ts-ignore
+	__experimentalImageEditingProvider as ImageEditingProvider,
 	// @ts-ignore
 	__experimentalGetElementClassName,
 	// @ts-ignore
@@ -731,14 +735,32 @@ const Image: FC<ImageProps> = ({
 	}
 
 	return (
-		<>
+		<ImageEditingProvider
+			id={id}
+			url={url}
+			naturalWidth={naturalWidth}
+			naturalHeight={naturalHeight}
+			clientWidth={clientWidth}
+			onSaveImage={(imageAttributes) => {
+				setAttributes(imageAttributes);
+			}}
+			isEditing={isEditingImage}
+			onFinishEditing={() => setIsEditingImage(false)}
+		>
 			{/* Hide controls during upload to avoid component remount,
 				which causes duplicated image upload. */}
-			{!temporaryURL && controls}
-			{img}
-			{showCaption && (!RichText.isEmpty(caption) || isSelected) && (
+			{/* {!temporaryURL && controls} */}
+			<ImageEditor
+				borderProps={isRounded ? undefined : borderProps}
+				url={url}
+				width={WIDTH}
+				height={HEIGHT}
+				clientWidth={clientWidth}
+				naturalHeight={naturalHeight}
+				naturalWidth={naturalWidth}
+			/>
+			{/* {showCaption && (!RichText.isEmpty(caption) || isSelected) && (
 				<RichText
-					identifier="caption"
 					className={__experimentalGetElementClassName("caption")}
 					ref={captionRef}
 					tagName="figcaption"
@@ -747,12 +769,13 @@ const Image: FC<ImageProps> = ({
 					value={caption}
 					onChange={(value) => setAttributes({ caption: value })}
 					inlineToolbar
+					// @ts-ignore
 					__unstableOnSplitAtEnd={() =>
-						insertBlocksAfter(createBlock(getDefaultBlockName()))
+						insertBlocksAfter(createBlock(getDefaultBlockName() || ""))
 					}
 				/>
-			)}
-		</>
+			)} */}
+		</ImageEditingProvider>
 	);
 };
 

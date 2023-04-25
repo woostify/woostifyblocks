@@ -74,6 +74,7 @@ const classes: {
 
 classes.forEach(({ D, C, F }) => {
 	const divs = document.querySelectorAll(D);
+
 	if (divs && divs.length) {
 		renderToDom(divs, C, F);
 	}
@@ -88,11 +89,11 @@ function renderToDom(
 ) {
 	divsToUpdate.forEach((div) => {
 		const preEl = div.querySelector(
-			`pre[data-wcb-block-attrs=${div.id}]`
+			`pre[data-wcb-block-attrs=${div.getAttribute("data-uniqueid")}]`
 		) as HTMLElement | null;
 
 		const divRenderCssEl = div.querySelector(
-			`div[data-wcb-global-styles=${div.id}]`
+			`div[data-wcb-global-styles=${div.getAttribute("data-uniqueid")}]`
 		) as HTMLElement | null;
 
 		if (!preEl || !preEl.innerText || !divRenderCssEl) {

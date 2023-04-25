@@ -2946,7 +2946,7 @@ const GlobalCss = attrs => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_10__.DEMO_WCB_GLOBAL_VARIABLES;
-  const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+  const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}]`;
   const HEADING_CLASSNAME = `${WRAP_CLASSNAME} .wcb-heading__heading`;
   const SUB_HEADING_CLASSNAME = `${WRAP_CLASSNAME} .wcb-heading__subHeading`;
   const SEPARATOR_CLASSNAME = `${WRAP_CLASSNAME} .wcb-heading__separator`;
@@ -3293,6 +3293,7 @@ function save(_ref) {
     attributes
   } = _ref;
   const {
+    anchor,
     uniqueId,
     heading,
     subHeading,
@@ -3338,7 +3339,8 @@ function save(_ref) {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_5__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     attributes: newAttrForSave,
     className: "wcb-heading__wrap",
-    uniqueId: uniqueId
+    uniqueId: uniqueId,
+    anchor: anchor
   }, blockProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, general_content.separatorPosition === "top" && renderSeparator(), general_content.showHeading ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.RichText.Content, {
     tagName: general_content.headingTag || "h2",
     className: "wcb-heading__heading",
@@ -4769,6 +4771,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const SaveCommon = _ref => {
   let {
+    anchor,
     className = "",
     uniqueId = "",
     HtmlTag = "div",
@@ -4788,7 +4791,7 @@ const SaveCommon = _ref => {
   }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(HtmlTag, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
     className: `${className} ${uniqueId} wcb-update-div`,
-    id: uniqueId,
+    id: anchor || uniqueId || undefined,
     "data-uniqueid": uniqueId,
     "data-is-wcb-save-common": true
   }), children, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
@@ -11610,7 +11613,7 @@ function combine (array, callback) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/heading","version":"0.1.0","title":"Heading","category":"wcb-blocks","icon":"heading - wcb-block-editor-block-icon","description":"Example static block scaffolded with Create Block tool.","supports":{"align":["wide","full"],"anchor":true,"__experimentalSelector":"h1,h2,h3,h4,h5,h6,div,p","__unstablePasteTextInline":true,"__experimentalSlashInserter":true},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/heading","version":"0.1.0","title":"Heading","category":"wcb-blocks","icon":"heading - wcb-block-editor-block-icon","description":"Example static block scaffolded with Create Block tool.","supports":{"anchor":true,"__experimentalSelector":"h1,h2,h3,h4,h5,h6,div,p","__unstablePasteTextInline":true,"__experimentalSlashInserter":true},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ }),
 

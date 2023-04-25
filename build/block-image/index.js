@@ -3569,7 +3569,7 @@ const GlobalCss = attrs => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_9__.DEMO_WCB_GLOBAL_VARIABLES;
-  const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+  const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}]`;
   const IMAGE_CLASSNAME = `${WRAP_CLASSNAME} img`;
   const CAPTION_CLASSNAME = `${WRAP_CLASSNAME} figcaption.wp-element-caption`;
   const OVERLAY_BG_CLASSNAME = `${WRAP_CLASSNAME} .wcb-image__overlay-bg`;
@@ -4314,18 +4314,8 @@ const Image = _ref => {
       resizeRatio: align === "center" ? 2 : 1
     }, img);
   }
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__.__experimentalImageEditingProvider, {
-    id: id,
-    url: url,
-    naturalWidth: naturalWidth,
-    naturalHeight: naturalHeight,
-    clientWidth: clientWidth,
-    onSaveImage: imageAttributes => {
-      setAttributes(imageAttributes);
-    },
-    isEditing: isEditingImage,
-    onFinishEditing: () => setIsEditingImage(false)
-  }, !temporaryURL && controls, img, showCaption && (!_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__.RichText.isEmpty(caption) || isSelected) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__.RichText, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, !temporaryURL && controls, img, showCaption && (!_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__.RichText.isEmpty(caption) || isSelected) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__.RichText, {
+    identifier: "caption",
     className: (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__.__experimentalGetElementClassName)("caption"),
     ref: captionRef,
     tagName: "figcaption",
@@ -4335,10 +4325,8 @@ const Image = _ref => {
     onChange: value => setAttributes({
       caption: value
     }),
-    inlineToolbar: true
-    // @ts-ignore
-    ,
-    __unstableOnSplitAtEnd: () => insertBlocksAfter((0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_10__.createBlock)((0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_10__.getDefaultBlockName)() || ""))
+    inlineToolbar: true,
+    __unstableOnSplitAtEnd: () => insertBlocksAfter((0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_10__.createBlock)((0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_10__.getDefaultBlockName)()))
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Image);
@@ -5716,6 +5704,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const SaveCommon = _ref => {
   let {
+    anchor,
     className = "",
     uniqueId = "",
     HtmlTag = "div",
@@ -5735,7 +5724,7 @@ const SaveCommon = _ref => {
   }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(HtmlTag, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
     className: `${className} ${uniqueId} wcb-update-div`,
-    id: uniqueId,
+    id: anchor || uniqueId || undefined,
     "data-uniqueid": uniqueId,
     "data-is-wcb-save-common": true
   }), children, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {

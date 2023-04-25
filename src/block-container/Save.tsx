@@ -5,7 +5,7 @@ import _ from "lodash";
 import { useInnerBlocksProps, useBlockProps } from "@wordpress/block-editor";
 import { BlockWCBContainerAttrs } from "./attributes";
 import "./style.scss";
-import { getGapStyleFromGapjObj } from "./Edit";
+// import { getGapStyleFromGapjObj } from "./Edit";
 import VideoBackgroundByBgControl from "../components/VideoBackgroundByBgControl";
 import OverlayBackgroundByBgControl from "../components/OverlayBackgroundByBgControl";
 import SaveCommon from "../components/SaveCommon";
@@ -16,7 +16,7 @@ export interface WcbAttrsForSave
 export default function save({
 	attributes,
 }: {
-	attributes: BlockWCBContainerAttrs;
+	attributes: BlockWCBContainerAttrs & { anchor: string; align: string };
 }) {
 	const {
 		isShowVariations,
@@ -31,20 +31,18 @@ export default function save({
 		styles_boxShadow,
 		styles_color,
 		containerClassName,
+		anchor,
+		align,
 	} = attributes;
 
 	const blockProps = useBlockProps.save({ className: "wcb-container__inner" });
 	const innerBlocksProps = useInnerBlocksProps.save(blockProps);
 
 	const { htmlTag: HtmlTag = "div", containerWidthType } = general_container;
-	// const containerWidthTypeClass =
-	// 	containerWidthType === "Full Width"
-	// 		? "alignfull"
-	// 		: containerWidthType === "Boxed"
-	// 		? "alignwide"
-	// 		: "";
+
 	const { colunmGap, rowGap } = styles_dimensions;
-	const GAPS_VARIABLES = getGapStyleFromGapjObj({ colunmGap, rowGap });
+	// const GAPS_VARIABLES = getGapStyleFromGapjObj({ colunmGap, rowGap });
+	const GAPS_VARIABLES = {};
 
 	const newAttrs: WcbAttrsForSave = {
 		styles_background,
@@ -59,12 +57,16 @@ export default function save({
 		styles_color,
 		containerClassName,
 	};
+
 	return (
 		<SaveCommon
 			attributes={newAttrs}
 			uniqueId={uniqueId}
+			anchor={anchor}
 			HtmlTag={HtmlTag}
-			className={`wcb-container__wrap ${containerClassName}`}
+			className={`wcb-container__wrap ${containerClassName} ${
+				align ? `align-${align}` : ""
+			}`}
 		>
 			<>
 				{/*  */}
@@ -78,7 +80,15 @@ export default function save({
 				/>
 				{/*  */}
 
-				<div {...innerBlocksProps} style={GAPS_VARIABLES} />
+				<div
+					{...innerBlocksProps}
+					className={(innerBlocksProps.className as string).replace(
+						/alignwide|alignfull/g,
+						""
+					)}
+					id={undefined}
+					style={GAPS_VARIABLES}
+				/>
 			</>
 		</SaveCommon>
 	);

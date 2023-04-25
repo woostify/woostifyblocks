@@ -17,10 +17,10 @@ export const WCB_BUTTONS_PANEL_STYLE_DIMENSION_DEMO: WCB_BUTTONS_PANEL_STYLE_DIM
 		...MY_DIMENSIONS_NO_GAP_CONTROL_DEMO,
 		padding: {
 			Desktop: {
-				top: "10px",
-				left: "24px",
-				right: "24px",
-				bottom: "10px",
+				top: "",
+				left: "",
+				right: "",
+				bottom: "",
 			},
 		},
 	};

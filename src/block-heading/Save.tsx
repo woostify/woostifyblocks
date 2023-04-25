@@ -11,9 +11,10 @@ export interface WcbAttrsForSave
 export default function save({
 	attributes,
 }: {
-	attributes: WcbBlockHeadingAttrs;
+	attributes: WcbBlockHeadingAttrs & { anchor: string };
 }) {
 	const {
+		anchor,
 		uniqueId,
 		heading,
 		subHeading,
@@ -61,6 +62,7 @@ export default function save({
 			attributes={newAttrForSave}
 			className="wcb-heading__wrap"
 			uniqueId={uniqueId}
+			anchor={anchor}
 			{...blockProps}
 		>
 			<>
