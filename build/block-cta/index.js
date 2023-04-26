@@ -4380,61 +4380,75 @@ __webpack_require__.r(__webpack_exports__);
 const MY_GAP_UNITS = [{
   value: "px",
   label: "px",
-  default: 32
+  default: 32,
+  step: 1
 }, {
   value: "rem",
   label: "rem",
-  default: 2
+  default: 2,
+  step: 0.01
 }, {
   value: "em",
   label: "em",
-  default: 2
+  default: 2,
+  step: 0.01
 }, {
   value: "%",
   label: "%",
-  default: 50
+  default: 50,
+  step: 0.1
 }];
 const MY_HORIZOLTAL_UNITS = [{
   value: "px",
   label: "px",
-  default: 32
+  default: 32,
+  step: 1
 }, {
   value: "rem",
   label: "rem",
-  default: 2
+  default: 2,
+  step: 0.01
 }, {
   value: "em",
   label: "em",
-  default: 2
+  default: 2,
+  step: 0.01
 }, {
   value: "%",
   label: "%",
-  default: 20
+  default: 20,
+  step: 0.1
 }, {
   value: "vw",
   label: "vw",
-  default: 20
+  default: 20,
+  step: 0.1
 }];
 const MY_VERTICAL_UNITS = [{
   value: "px",
   label: "px",
-  default: 32
+  default: 32,
+  step: 1
 }, {
   value: "rem",
   label: "rem",
-  default: 2
+  default: 2,
+  step: 0.01
 }, {
   value: "em",
   label: "em",
-  default: 2
+  default: 2,
+  step: 0.01
 }, {
   value: "%",
   label: "%",
-  default: 20
+  default: 20,
+  step: 0.1
 }, {
   value: "vh",
   label: "vh",
-  default: 20
+  default: 20,
+  step: 0.1
 }];
 const MyDimensionsControl = _ref => {
   let {
@@ -5251,7 +5265,7 @@ const MyRadioGroup = _ref => {
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         className: "absolute inset-0 z-[1]"
       })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "",
+        className: "text-xs leading-5",
         dangerouslySetInnerHTML: {
           __html: item.icon
         }
@@ -5585,15 +5599,15 @@ const MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE = {
   },
   em: {
     max: 100,
-    steps: 1
+    steps: 0.1
   },
   rm: {
     max: 100,
-    steps: 1
+    steps: 0.1
   },
   rem: {
     max: 100,
-    steps: 1
+    steps: 0.1
   }
 };
 const SpacingInputControl = _ref => {
@@ -5605,16 +5619,11 @@ const SpacingInputControl = _ref => {
     className = "",
     customUnitsValueSettings = MY_CUSTOM_UNITS_VALUE_SETTINGS
   } = _ref;
-  const [currentValue, setCurrentValue] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(value);
-  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    setCurrentValue(value);
-  }, [value]);
-  const selectedUnit = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalParseQuantityAndUnitFromRawValue)(currentValue), [currentValue])[1] || units[0].value;
-  const customRangeValue = parseFloat(currentValue !== null && currentValue !== void 0 ? currentValue : "10");
+  const selectedUnit = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalParseQuantityAndUnitFromRawValue)(value), [value])[1] || units[0].value;
+  const customRangeValue = parseFloat(value !== null && value !== void 0 ? value : "10");
   const handleCustomValueSliderChange = next => {
     const newValue = [next, selectedUnit].join("");
     onChange(newValue);
-    setCurrentValue(newValue);
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `${className} flex items-center space-x-2.5`
@@ -5633,11 +5642,10 @@ const SpacingInputControl = _ref => {
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "flex-1"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalUnitControl, {
-    onChange: newSize => {
-      setCurrentValue(newSize);
+    onChange: function (newSize) {
       onChange(newSize);
     },
-    value: currentValue,
+    value: value,
     units: units,
     min: minCustomValue,
     hideLabelFromVision: true

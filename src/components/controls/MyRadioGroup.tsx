@@ -122,7 +122,7 @@ const MyRadioGroup: FC<Props> = ({
 										<div className="absolute inset-0 z-[1]"></div>
 									</Tooltip>
 									<div
-										className=""
+										className="text-xs leading-5"
 										dangerouslySetInnerHTML={{ __html: item.icon }}
 									></div>
 								</div>

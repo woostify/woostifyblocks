@@ -3289,7 +3289,7 @@ const MyRadioGroup = _ref => {
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         className: "absolute inset-0 z-[1]"
       })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "",
+        className: "text-xs leading-5",
         dangerouslySetInnerHTML: {
           __html: item.icon
         }
