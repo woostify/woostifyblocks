@@ -25,7 +25,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const { stackOrientation, alignment, size } = general_general;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
-	const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}]`;
+	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}].wp-block`;
 	const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-buttons__inner`;
 	// const INNER_BUTTON = `#${uniqueId} .wcb-button__main`;
 	const INNER_BUTTON_TEXT = `#${uniqueId} .wcb-button__text`;

@@ -51,7 +51,7 @@ const GlobalCss = attrs => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_7__.DEMO_WCB_GLOBAL_VARIABLES;
-  const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}]`;
+  const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}].wp-block`;
   const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-buttons__inner`;
   // const INNER_BUTTON = `#${uniqueId} .wcb-button__main`;
   const INNER_BUTTON_TEXT = `#${uniqueId} .wcb-button__text`;
@@ -142,8 +142,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "getAdvanveDivWrapStyles": () => (/* binding */ getAdvanveDivWrapStyles)
 /* harmony export */ });
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _utils_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/checkResponsiveValueForOptimizeCSS */ "./src/utils/checkResponsiveValueForOptimizeCSS.ts");
+
 
 
 const getAdvanveDivWrapStyles = _ref => {
@@ -158,16 +160,28 @@ const getAdvanveDivWrapStyles = _ref => {
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES;
   //
-  const zIndexDesktop = advance_zIndex.Desktop;
-  const zIndexTablet = advance_zIndex.Tablet || zIndexDesktop;
-  const zIndexMobile = advance_zIndex.Mobile || zIndexTablet;
-  //
+
   const {
-    isHiddenOnDesktop,
-    isHiddenOnMobile,
-    isHiddenOnTablet
-  } = advance_responsiveCondition;
-  return _emotion_react__WEBPACK_IMPORTED_MODULE_1__.css`
+    mobile_v: zIndexMobile,
+    tablet_v: zIndexTablet,
+    desktop_v: zIndexDesktop
+  } = (0,_utils_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    mobile_v: advance_zIndex.Mobile || advance_zIndex.Tablet || advance_zIndex.Desktop,
+    tablet_v: advance_zIndex.Tablet || advance_zIndex.Desktop,
+    desktop_v: advance_zIndex.Desktop
+  });
+  //
+
+  const {
+    mobile_v: isHiddenOnMobile,
+    tablet_v: isHiddenOnTablet,
+    desktop_v: isHiddenOnDesktop
+  } = (0,_utils_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    mobile_v: advance_responsiveCondition.isHiddenOnMobile,
+    tablet_v: advance_responsiveCondition.isHiddenOnTablet,
+    desktop_v: advance_responsiveCondition.isHiddenOnDesktop
+  });
+  return _emotion_react__WEBPACK_IMPORTED_MODULE_2__.css`
 		[data-is-wcb-save-common] {
 			visibility: visible;
 		}
@@ -177,15 +191,56 @@ const getAdvanveDivWrapStyles = _ref => {
 			z-index: ${zIndexMobile};
 			@media (min-width: ${media_tablet}) {
 				z-index: ${zIndexTablet};
-				display: ${isHiddenOnTablet ? "none" : defaultDisplay};
+				display: ${isHiddenOnTablet !== "" ? isHiddenOnTablet ? "none" : defaultDisplay : ""};
 			}
 			@media (min-width: ${media_desktop}) {
 				z-index: ${zIndexDesktop};
-				display: ${isHiddenOnDesktop ? "none" : defaultDisplay};
+				display: ${isHiddenOnDesktop !== "" ? isHiddenOnDesktop ? "none" : defaultDisplay : ""};
 			}
 		}
 	`;
 };
+
+/***/ }),
+
+/***/ "./src/utils/checkResponsiveValueForOptimizeCSS.ts":
+/*!*********************************************************!*\
+  !*** ./src/utils/checkResponsiveValueForOptimizeCSS.ts ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const checkResponsiveValueForOptimizeCSS = _ref => {
+  let {
+    mobile_v,
+    tablet_v,
+    desktop_v
+  } = _ref;
+  let new_tablet_v = tablet_v;
+  let new_desktop_v = desktop_v;
+  if (mobile_v === tablet_v && tablet_v === desktop_v) {
+    return {
+      mobile_v,
+      tablet_v: "",
+      desktop_v: ""
+    };
+  }
+  if (desktop_v === tablet_v || desktop_v === mobile_v) {
+    new_desktop_v = "";
+  }
+  if (tablet_v === mobile_v) {
+    new_tablet_v = "";
+  }
+  return {
+    mobile_v,
+    tablet_v: new_tablet_v,
+    desktop_v: new_desktop_v
+  };
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (checkResponsiveValueForOptimizeCSS);
 
 /***/ }),
 
@@ -299,9 +354,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
 /* harmony import */ var _getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+/* harmony import */ var _checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./checkResponsiveValueForOptimizeCSS */ "./src/utils/checkResponsiveValueForOptimizeCSS.ts");
+
 
 
 
@@ -329,35 +386,109 @@ const getPaddingMarginStyles = _ref => {
   } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(padding);
   //
 
-  return _emotion_react__WEBPACK_IMPORTED_MODULE_2__.css`
+  //
+  const {
+    mobile_v: padding_Mobile_top,
+    tablet_v: padding_Tablet_top,
+    desktop_v: padding_Desktop_top
+  } = (0,_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__["default"])({
+    mobile_v: padding_Mobile?.top,
+    tablet_v: padding_Tablet?.top,
+    desktop_v: padding_Desktop?.top
+  });
+  const {
+    mobile_v: padding_Mobile_left,
+    tablet_v: padding_Tablet_left,
+    desktop_v: padding_Desktop_left
+  } = (0,_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__["default"])({
+    mobile_v: padding_Mobile?.left,
+    tablet_v: padding_Tablet?.left,
+    desktop_v: padding_Desktop?.left
+  });
+  const {
+    mobile_v: padding_Mobile_right,
+    tablet_v: padding_Tablet_right,
+    desktop_v: padding_Desktop_right
+  } = (0,_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__["default"])({
+    mobile_v: padding_Mobile?.right,
+    tablet_v: padding_Tablet?.right,
+    desktop_v: padding_Desktop?.right
+  });
+  const {
+    mobile_v: padding_Mobile_bottom,
+    tablet_v: padding_Tablet_bottom,
+    desktop_v: padding_Desktop_bottom
+  } = (0,_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__["default"])({
+    mobile_v: padding_Mobile?.bottom,
+    tablet_v: padding_Tablet?.bottom,
+    desktop_v: padding_Desktop?.bottom
+  });
+  //
+  const {
+    mobile_v: margin_Mobile_top,
+    tablet_v: margin_Tablet_top,
+    desktop_v: margin_Desktop_top
+  } = (0,_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__["default"])({
+    mobile_v: margin_Mobile?.top,
+    tablet_v: margin_Tablet?.top,
+    desktop_v: margin_Desktop?.top
+  });
+  const {
+    mobile_v: margin_Mobile_left,
+    tablet_v: margin_Tablet_left,
+    desktop_v: margin_Desktop_left
+  } = (0,_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__["default"])({
+    mobile_v: margin_Mobile?.left,
+    tablet_v: margin_Tablet?.left,
+    desktop_v: margin_Desktop?.left
+  });
+  const {
+    mobile_v: margin_Mobile_right,
+    tablet_v: margin_Tablet_right,
+    desktop_v: margin_Desktop_right
+  } = (0,_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__["default"])({
+    mobile_v: margin_Mobile?.right,
+    tablet_v: margin_Tablet?.right,
+    desktop_v: margin_Desktop?.right
+  });
+  const {
+    mobile_v: margin_Mobile_bottom,
+    tablet_v: margin_Tablet_bottom,
+    desktop_v: margin_Desktop_bottom
+  } = (0,_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__["default"])({
+    mobile_v: margin_Mobile?.bottom,
+    tablet_v: margin_Tablet?.bottom,
+    desktop_v: margin_Desktop?.bottom
+  });
+  return _emotion_react__WEBPACK_IMPORTED_MODULE_3__.css`
 		${className} {
-			padding-top: ${padding_Mobile?.top};
-			padding-right: ${padding_Mobile?.right};
-			padding-bottom: ${padding_Mobile?.bottom};
-			padding-left: ${padding_Mobile?.left};
-			margin-top: ${margin_Mobile?.top};
-			margin-right: ${margin_Mobile?.right};
-			margin-bottom: ${margin_Mobile?.bottom};
-			margin-left: ${margin_Mobile?.left};
+			padding-top: ${padding_Mobile_top};
+			padding-right: ${padding_Mobile_right};
+			padding-bottom: ${padding_Mobile_bottom};
+			padding-left: ${padding_Mobile_left};
+			margin-top: ${margin_Mobile_top};
+			margin-right: ${margin_Mobile_right};
+			margin-bottom: ${margin_Mobile_bottom};
+			margin-left: ${margin_Mobile_left};
 			@media (min-width: ${media_tablet}) {
-				padding-top: ${padding_Tablet?.top};
-				padding-right: ${padding_Tablet?.right};
-				padding-bottom: ${padding_Tablet?.bottom};
-				padding-left: ${padding_Tablet?.left};
-				margin-top: ${margin_Tablet?.top};
-				margin-right: ${margin_Tablet?.right};
-				margin-bottom: ${margin_Tablet?.bottom};
-				margin-left: ${margin_Tablet?.left};
+				padding-top: ${padding_Tablet_top};
+				padding-right: ${padding_Tablet_right};
+				padding-bottom: ${padding_Tablet_bottom};
+				padding-left: ${padding_Tablet_left};
+				margin-top: ${margin_Tablet_top};
+				margin-right: ${margin_Tablet_right};
+				margin-bottom: ${margin_Tablet_bottom};
+				margin-left: ${margin_Tablet_left};
 			}
 			@media (min-width: ${media_desktop}) {
-				padding-top: ${padding_Desktop?.top};
-				padding-right: ${padding_Desktop?.right};
-				padding-bottom: ${padding_Desktop?.bottom};
-				padding-left: ${padding_Desktop?.left};
-				margin-top: ${margin_Desktop?.top};
-				margin-right: ${margin_Desktop?.right};
-				margin-bottom: ${margin_Desktop?.bottom};
-				margin-left: ${margin_Desktop?.left};
+				padding-top: ${padding_Desktop_top};
+				padding-right: ${padding_Desktop_right};
+				padding-bottom: ${padding_Desktop_bottom};
+				padding-left: ${padding_Desktop_left};
+				margin-top: ${margin_Desktop_top};
+				margin-right: ${margin_Desktop_right};
+				margin-bottom: ${margin_Desktop_bottom};
+				margin-left: ${margin_Desktop_left};
 			}
 		}
 	`;
@@ -378,6 +509,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
 /* harmony import */ var _getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+/* harmony import */ var _checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./checkResponsiveValueForOptimizeCSS */ "./src/utils/checkResponsiveValueForOptimizeCSS.ts");
+
 
 
 function getStyleObjectFromResponsiveAttr(_ref) {
@@ -410,24 +543,37 @@ function getStyleObjectFromResponsiveAttr(_ref) {
   let prefix2 = prefix_2 || "";
   let prefix3 = prefix_3 || "";
   let prefix4 = prefix_4 || "";
+
+  //
+  const {
+    mobile_v: value_Mobile_new,
+    tablet_v: value_Tablet_new,
+    desktop_v: value_Desktop_new
+  } = (0,_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__["default"])({
+    mobile_v: value_Mobile,
+    tablet_v: value_Tablet,
+    desktop_v: value_Desktop
+  });
+  //
+
   return {
     [className]: {
-      [prefix]: `${value_Mobile}`,
-      [prefix2]: prefix_2 ? `${value_Mobile}` : null,
-      [prefix3]: prefix_3 ? `${value_Mobile}` : null,
-      [prefix4]: prefix_4 ? `${value_Mobile}` : null,
-      [`@media (min-width: ${media_tablet})`]: {
-        [prefix]: `${value_Tablet}`,
-        [prefix2]: prefix_2 ? `${value_Tablet}` : null,
-        [prefix3]: prefix_3 ? `${value_Tablet}` : null,
-        [prefix4]: prefix_4 ? `${value_Tablet}` : null
-      },
-      [`@media (min-width: ${media_desktop})`]: {
-        [prefix]: `${value_Desktop}`,
-        [prefix2]: prefix_2 ? `${value_Desktop}` : null,
-        [prefix3]: prefix_3 ? `${value_Desktop}` : null,
-        [prefix4]: prefix_4 ? `${value_Desktop}` : null
-      }
+      [prefix]: `${value_Mobile_new}`,
+      [prefix2]: prefix_2 ? `${value_Mobile_new}` : null,
+      [prefix3]: prefix_3 ? `${value_Mobile_new}` : null,
+      [prefix4]: prefix_4 ? `${value_Mobile_new}` : null,
+      [`@media (min-width: ${media_tablet})`]: value_Tablet_new ? {
+        [prefix]: `${value_Tablet_new}`,
+        [prefix2]: prefix_2 ? `${value_Tablet_new}` : null,
+        [prefix3]: prefix_3 ? `${value_Tablet_new}` : null,
+        [prefix4]: prefix_4 ? `${value_Tablet_new}` : null
+      } : undefined,
+      [`@media (min-width: ${media_desktop})`]: value_Desktop_new ? {
+        [prefix]: `${value_Desktop_new}`,
+        [prefix2]: prefix_2 ? `${value_Desktop_new}` : null,
+        [prefix3]: prefix_3 ? `${value_Desktop_new}` : null,
+        [prefix4]: prefix_4 ? `${value_Desktop_new}` : null
+      } : undefined
     }
   };
 }
@@ -447,6 +593,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
 /* harmony import */ var _font__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./font */ "./src/utils/font.ts");
+/* harmony import */ var _checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./checkResponsiveValueForOptimizeCSS */ "./src/utils/checkResponsiveValueForOptimizeCSS.ts");
+
 
 
 const getTypographyStyles = _ref => {
@@ -487,26 +635,57 @@ const getTypographyStyles = _ref => {
   const letterSpacing_Mobile = letterSpacing?.Mobile || letterSpacing_Tablet;
   //
 
+  //
+  const {
+    mobile_v: fontSize_Mobile_new,
+    tablet_v: fontSize_Tablet_new,
+    desktop_v: fontSize_Desktop_new
+  } = (0,_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__["default"])({
+    mobile_v: fontSize_Mobile,
+    tablet_v: fontSize_Tablet,
+    desktop_v: fontSize_Desktop
+  });
+  const {
+    mobile_v: lineHeight_Mobile_new,
+    tablet_v: lineHeight_Tablet_new,
+    desktop_v: lineHeight_Desktop_new
+  } = (0,_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__["default"])({
+    mobile_v: lineHeight_Mobile,
+    tablet_v: lineHeight_Tablet,
+    desktop_v: lineHeight_Desktop
+  });
+  const {
+    mobile_v: letterSpacing_Mobile_new,
+    tablet_v: letterSpacing_Tablet_new,
+    desktop_v: letterSpacing_Desktop_new
+  } = (0,_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__["default"])({
+    mobile_v: letterSpacing_Mobile,
+    tablet_v: letterSpacing_Tablet,
+    desktop_v: letterSpacing_Desktop
+  });
+  //
+
   return {
     [`${className}`]: {
       fontFamily: fontFamily,
-      fontSize: fontSize_Mobile,
       fontWeight: appearance.style?.fontWeight,
       fontStyle: appearance.style?.fontStyle,
       textDecoration,
       textTransform,
-      lineHeight: lineHeight_Mobile,
-      letterSpacing: letterSpacing_Mobile,
-      [`@media (min-width: ${media_tablet})`]: {
-        fontSize: fontSize_Tablet,
-        lineHeight: lineHeight_Tablet,
-        letterSpacing: letterSpacing_Tablet
-      },
-      [`@media (min-width: ${media_desktop})`]: {
-        fontSize: fontSize_Desktop,
-        lineHeight: lineHeight_Desktop,
-        letterSpacing: letterSpacing_Desktop
-      }
+      //
+      fontSize: fontSize_Mobile_new,
+      lineHeight: lineHeight_Mobile_new,
+      letterSpacing: letterSpacing_Mobile_new,
+      [`@media (min-width: ${media_tablet})`]: fontSize_Tablet_new || lineHeight_Tablet_new || letterSpacing_Tablet_new ? {
+        fontSize: fontSize_Tablet_new,
+        lineHeight: lineHeight_Tablet_new,
+        letterSpacing: letterSpacing_Tablet_new
+      } : undefined,
+      [`@media (min-width: ${media_desktop})`]: fontSize_Desktop_new || lineHeight_Desktop_new || letterSpacing_Desktop_new ? {
+        fontSize: fontSize_Desktop_new,
+        lineHeight: lineHeight_Desktop_new,
+        letterSpacing: letterSpacing_Desktop_new
+      } : undefined
     }
   };
 };

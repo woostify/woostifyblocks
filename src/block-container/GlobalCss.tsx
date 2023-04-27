@@ -9,6 +9,7 @@ import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives"
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { getAdvanveDivWrapStyles } from "./getAdvanveStyles";
 import { WcbAttrsForSave } from "./Save";
+import checkResponsiveValueForOptimizeCSS from "../utils/checkResponsiveValueForOptimizeCSS";
 
 interface Props extends WcbAttrsForSave {}
 
@@ -27,7 +28,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
-	const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}]`;
+	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}].wp-block`;
 	const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-container__inner`;
 
 	// ------------------- WRAP DIV
@@ -40,19 +41,37 @@ const GlobalCss: FC<Props> = (attrs) => {
 			value_Tablet: cWidthTablet,
 			value_Mobile: cWidthMobile,
 		} = getValueFromAttrsResponsives(customWidth);
-
 		if (containerWidthType !== "Custom") {
 			cWidthDesktop = undefined;
 			cWidthTablet = undefined;
 			cWidthMobile = undefined;
 		}
-
-		//
 		const {
 			value_Desktop: minHeightDesktop,
 			value_Tablet: minHeightTablet,
 			value_Mobile: minHeightMobile,
 		} = getValueFromAttrsResponsives(minHeight);
+
+		//
+		const {
+			mobile_v: cWidthMobile_new,
+			tablet_v: cWidthTablet_new,
+			desktop_v: cWidthDesktop_new,
+		} = checkResponsiveValueForOptimizeCSS({
+			mobile_v: cWidthMobile,
+			tablet_v: cWidthTablet,
+			desktop_v: cWidthDesktop,
+		});
+		const {
+			mobile_v: minHeightMobile_new,
+			tablet_v: minHeightTablet_new,
+			desktop_v: minHeightDesktop_new,
+		} = checkResponsiveValueForOptimizeCSS({
+			mobile_v: minHeightMobile,
+			tablet_v: minHeightTablet,
+			desktop_v: minHeightDesktop,
+		});
+		//
 
 		return [
 			{
@@ -61,27 +80,27 @@ const GlobalCss: FC<Props> = (attrs) => {
 					overflow: overflow,
 					//
 					// maxWidth: cWidthMobile,
-					width: cWidthMobile,
-					minHeight: minHeightMobile,
+					width: cWidthMobile_new,
+					minHeight: minHeightMobile_new,
 					"&.is_wcb_container_child": {
-						width: cWidthMobile,
+						width: cWidthMobile_new,
 						// flexBasis: `calc(${cWidthMobile} - (var(--wcb-gap-x)));`,
 						// maxWidth: `calc(${cWidthMobile} - (var(--wcb-gap-x)));`,
 					},
 					[`@media (min-width: ${media_tablet})`]: {
-						width: cWidthTablet,
-						minHeight: minHeightTablet,
+						width: cWidthTablet_new,
+						minHeight: minHeightTablet_new,
 						"&.is_wcb_container_child": {
-							width: cWidthTablet,
+							width: cWidthTablet_new,
 							// flexBasis: `calc(${cWidthTablet} - (var(--wcb-gap-x)));`,
 							// maxWidth: `calc(${cWidthTablet} - (var(--wcb-gap-x)));`,
 						},
 					},
 					[`@media (min-width: ${media_desktop})`]: {
-						width: cWidthDesktop,
-						minHeight: minHeightDesktop,
+						width: cWidthDesktop_new,
+						minHeight: minHeightDesktop_new,
 						"&.is_wcb_container_child": {
-							width: cWidthDesktop,
+							width: cWidthDesktop_new,
 							// flexBasis: `calc(${cWidthDesktop} - (var(--wcb-gap-x)));`,
 							// maxWidth: `calc(${cWidthDesktop} - (var(--wcb-gap-x)));`,
 						},
@@ -92,8 +111,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 	};
 
 	const getDivWrapStyles__Border = () => {
-		const {} = styles_border;
-		//
 		return getBorderStyles({
 			border: styles_border,
 			className: WRAP_CLASSNAME,
@@ -179,16 +196,37 @@ const GlobalCss: FC<Props> = (attrs) => {
 			value_Mobile: contentBoxWidthMobile,
 		} = getValueFromAttrsResponsives(contentBoxWidth);
 
+		const {
+			mobile_v: contentBoxWidthMobile_new,
+			tablet_v: contentBoxWidthTablet_new,
+			desktop_v: contentBoxWidthDesktop_new,
+		} = checkResponsiveValueForOptimizeCSS({
+			mobile_v: contentBoxWidthMobile,
+			tablet_v: contentBoxWidthTablet,
+			desktop_v: contentBoxWidthDesktop,
+		});
+
+		if (
+			!contentBoxWidthMobile_new &&
+			!contentBoxWidthTablet_new &&
+			!contentBoxWidthDesktop_new
+		) {
+			return {};
+		}
+
 		return {
 			[INNER_CLASSNAME]: {
-				maxWidth: contentBoxWidthMobile,
-				"> .wcb-container__wrap": {},
-				[`@media (min-width: ${media_tablet})`]: {
-					maxWidth: contentBoxWidthTablet,
-				},
-				[`@media (min-width: ${media_desktop})`]: {
-					maxWidth: contentBoxWidthDesktop,
-				},
+				maxWidth: contentBoxWidthMobile_new,
+				[`@media (min-width: ${media_tablet})`]: contentBoxWidthTablet_new
+					? {
+							maxWidth: contentBoxWidthTablet_new,
+					  }
+					: undefined,
+				[`@media (min-width: ${media_desktop})`]: contentBoxWidthDesktop_new
+					? {
+							maxWidth: contentBoxWidthDesktop_new,
+					  }
+					: undefined,
 			},
 		};
 	};

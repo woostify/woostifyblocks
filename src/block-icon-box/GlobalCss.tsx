@@ -29,7 +29,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
-	const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}]`;
+	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}].wp-block`;
 
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject[] => {

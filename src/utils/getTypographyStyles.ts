@@ -2,6 +2,7 @@ import { CSSObject } from "@emotion/react";
 import { MyTypographyControlData } from "../components/controls/MyTypographyControl/types";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { loadGoogleFont } from "./font";
+import checkResponsiveValueForOptimizeCSS from "./checkResponsiveValueForOptimizeCSS";
 
 interface Params {
 	typography: MyTypographyControlData;
@@ -41,26 +42,65 @@ const getTypographyStyles = ({ typography, className }: Params): CSSObject => {
 	const letterSpacing_Mobile = letterSpacing?.Mobile || letterSpacing_Tablet;
 	//
 
+	//
+	const {
+		mobile_v: fontSize_Mobile_new,
+		tablet_v: fontSize_Tablet_new,
+		desktop_v: fontSize_Desktop_new,
+	} = checkResponsiveValueForOptimizeCSS({
+		mobile_v: fontSize_Mobile,
+		tablet_v: fontSize_Tablet,
+		desktop_v: fontSize_Desktop,
+	});
+	const {
+		mobile_v: lineHeight_Mobile_new,
+		tablet_v: lineHeight_Tablet_new,
+		desktop_v: lineHeight_Desktop_new,
+	} = checkResponsiveValueForOptimizeCSS({
+		mobile_v: lineHeight_Mobile,
+		tablet_v: lineHeight_Tablet,
+		desktop_v: lineHeight_Desktop,
+	});
+	const {
+		mobile_v: letterSpacing_Mobile_new,
+		tablet_v: letterSpacing_Tablet_new,
+		desktop_v: letterSpacing_Desktop_new,
+	} = checkResponsiveValueForOptimizeCSS({
+		mobile_v: letterSpacing_Mobile,
+		tablet_v: letterSpacing_Tablet,
+		desktop_v: letterSpacing_Desktop,
+	});
+	//
+
 	return {
 		[`${className}`]: {
 			fontFamily: fontFamily,
-			fontSize: fontSize_Mobile,
 			fontWeight: appearance.style?.fontWeight,
 			fontStyle: appearance.style?.fontStyle,
 			textDecoration,
 			textTransform,
-			lineHeight: lineHeight_Mobile,
-			letterSpacing: letterSpacing_Mobile,
-			[`@media (min-width: ${media_tablet})`]: {
-				fontSize: fontSize_Tablet,
-				lineHeight: lineHeight_Tablet,
-				letterSpacing: letterSpacing_Tablet,
-			},
-			[`@media (min-width: ${media_desktop})`]: {
-				fontSize: fontSize_Desktop,
-				lineHeight: lineHeight_Desktop,
-				letterSpacing: letterSpacing_Desktop,
-			},
+			//
+			fontSize: fontSize_Mobile_new,
+			lineHeight: lineHeight_Mobile_new,
+			letterSpacing: letterSpacing_Mobile_new,
+			[`@media (min-width: ${media_tablet})`]:
+				fontSize_Tablet_new || lineHeight_Tablet_new || letterSpacing_Tablet_new
+					? {
+							fontSize: fontSize_Tablet_new,
+							lineHeight: lineHeight_Tablet_new,
+							letterSpacing: letterSpacing_Tablet_new,
+					  }
+					: undefined,
+			[`@media (min-width: ${media_desktop})`]:
+				fontSize_Desktop_new ||
+				lineHeight_Desktop_new ||
+				letterSpacing_Desktop_new
+					? {
+							fontSize: fontSize_Desktop_new,
+							lineHeight: lineHeight_Desktop_new,
+							letterSpacing: letterSpacing_Desktop_new,
+					  }
+					: undefined,
 		},
 	};
 };

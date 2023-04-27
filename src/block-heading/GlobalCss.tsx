@@ -12,6 +12,7 @@ import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives"
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { WcbBlockHeadingAttrs } from "./attributes";
 import { WcbAttrsForSave } from "./Save";
+import checkResponsiveValueForOptimizeCSS from "../utils/checkResponsiveValueForOptimizeCSS";
 
 interface Props extends WcbAttrsForSave {}
 
@@ -32,7 +33,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
-	const WRAP_CLASSNAME = `[data-uniqueid=${uniqueId}]`;
+	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}].wp-block`;
 	const HEADING_CLASSNAME = `${WRAP_CLASSNAME} .wcb-heading__heading`;
 	const SUB_HEADING_CLASSNAME = `${WRAP_CLASSNAME} .wcb-heading__subHeading`;
 	const SEPARATOR_CLASSNAME = `${WRAP_CLASSNAME} .wcb-heading__separator`;
@@ -45,18 +46,33 @@ const GlobalCss: FC<Props> = (attrs) => {
 				textAlignment
 			);
 		//
-
+		const {
+			mobile_v: value_Mobile_new,
+			tablet_v: value_Tablet_new,
+			desktop_v: value_Desktop_new,
+		} = checkResponsiveValueForOptimizeCSS({
+			mobile_v: value_Mobile,
+			tablet_v: value_Tablet,
+			desktop_v: value_Desktop,
+		});
 		return {
-			[`${WRAP_CLASSNAME}`]: {
-				textAlign: value_Mobile,
+			[`${WRAP_CLASSNAME}`]:
+				value_Mobile_new || value_Tablet_new || value_Desktop_new
+					? {
+							textAlign: value_Mobile_new,
 
-				[`@media (min-width: ${media_tablet})`]: {
-					textAlign: value_Tablet,
-				},
-				[`@media (min-width: ${media_desktop})`]: {
-					textAlign: value_Desktop,
-				},
-			},
+							[`@media (min-width: ${media_tablet})`]: value_Tablet_new
+								? {
+										textAlign: value_Tablet_new,
+								  }
+								: undefined,
+							[`@media (min-width: ${media_desktop})`]: value_Desktop_new
+								? {
+										textAlign: value_Desktop_new,
+								  }
+								: undefined,
+					  }
+					: undefined,
 		};
 	};
 	const getDivWrapStyles__Link = (): CSSObject => {
@@ -97,17 +113,31 @@ const GlobalCss: FC<Props> = (attrs) => {
 		} = getValueFromAttrsResponsives<DimensionSettings>(padding);
 
 		//
+		const {
+			mobile_v: padding_Mobile_new,
+			tablet_v: padding_Tablet_new,
+			desktop_v: padding_Desktop_new,
+		} = checkResponsiveValueForOptimizeCSS({
+			mobile_v: `${padding_Mobile?.top} ${padding_Mobile?.right} ${padding_Mobile?.bottom} ${padding_Mobile?.left}`,
+			tablet_v: `${padding_Tablet?.top} ${padding_Tablet?.right} ${padding_Tablet?.bottom} ${padding_Tablet?.left}`,
+			desktop_v: `${padding_Desktop?.top} ${padding_Desktop?.right} ${padding_Desktop?.bottom} ${padding_Desktop?.left}`,
+		});
+		//
 		return {
 			[`${WRAP_CLASSNAME} mark`]: {
 				color: textColor,
 				backgroundColor: bgColor,
-				padding: `${padding_Mobile?.top} ${padding_Mobile?.right} ${padding_Mobile?.bottom} ${padding_Mobile?.left}`,
-				[`@media (min-width: ${media_tablet})`]: {
-					padding: `${padding_Tablet?.top} ${padding_Tablet?.right} ${padding_Tablet?.bottom} ${padding_Tablet?.left}`,
-				},
-				[`@media (min-width: ${media_desktop})`]: {
-					padding: `${padding_Desktop?.top} ${padding_Desktop?.right} ${padding_Desktop?.bottom} ${padding_Desktop?.left}`,
-				},
+				padding: padding_Mobile_new,
+				[`@media (min-width: ${media_tablet})`]: padding_Tablet_new
+					? {
+							padding: padding_Tablet_new,
+					  }
+					: undefined,
+				[`@media (min-width: ${media_desktop})`]: padding_Desktop_new
+					? {
+							padding: padding_Desktop_new,
+					  }
+					: undefined,
 			},
 		};
 	};
