@@ -6,7 +6,6 @@ import {
 	// @ts-ignore
 	__experimentalBlockVariationPicker as BlockVariationPicker,
 	store as blockEditorStore,
-	RichText,
 	InnerBlocks,
 } from "@wordpress/block-editor";
 import { get } from "lodash";
@@ -37,10 +36,7 @@ import WcbButtonsPanel_StyleDimension, {
 } from "./WcbButtonsPanel_StyleDimension";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
-import {
-	DEFAULT_DIMENSION,
-	DimensionSettings,
-} from "../components/controls/MyDimensionsControl/types";
+import { DimensionSettings } from "../components/controls/MyDimensionsControl/types";
 import { WcbAttrsForSave } from "./Save";
 import MyCacheProvider from "../components/MyCacheProvider";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
@@ -70,13 +66,14 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
-		setAttributes({
-			uniqueId: UNIQUE_ID,
-		});
+		!uniqueId &&
+			setAttributes({
+				uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
+			});
 	}, [UNIQUE_ID]);
-	//
 
 	const getPaddingBySize = (size?: BtnGroupSizes): DimensionSettings => {
 		switch (size) {

@@ -9,7 +9,6 @@ import {
 	RichText,
 } from "@wordpress/block-editor";
 import { get } from "lodash";
-import { PanelBody } from "@wordpress/components";
 import { useInstanceId } from "@wordpress/compose";
 import React, { useEffect, FC, useRef } from "react";
 import { WcbAttrs } from "./attributes";
@@ -47,6 +46,7 @@ import WcbPostGridPanel_StyleMessages from "./WcbPostGridPanel_StyleMessages";
 import WcbFormPanel_StyleSpacing from "./WcbFormPanel_StyleSpacing";
 import HelpText from "../components/controls/HelpText";
 import MyCacheProvider from "../components/MyCacheProvider";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 export type FormChildAllowed =
 	| "wcb/input"
@@ -66,8 +66,6 @@ export type FormChildAllowed =
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 	const {
-		advance_responsiveCondition,
-		advance_zIndex,
 		general_general,
 		uniqueId,
 		general_submit_button,
@@ -91,12 +89,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
-		setAttributes({
-			uniqueId: UNIQUE_ID,
-		});
+		!uniqueId &&
+			setAttributes({
+				uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
+			});
 	}, [UNIQUE_ID]);
+	//
 	//
 	useEffect(() => {
 		if (general_general.formStyle === "simple") {

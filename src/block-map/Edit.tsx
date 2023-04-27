@@ -1,6 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import { useBlockProps } from "@wordpress/block-editor";
-import React, { useEffect, FC, useCallback, useState } from "react";
+import React, { useEffect, FC, useCallback } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
@@ -14,6 +14,7 @@ import WcbMapPanelGeneral from "./WcbMapPanelGeneral";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
 import WcbMapPanel_StyleBorder from "./WcbMapPanel_StyleBorder";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -34,12 +35,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
-		setAttributes({
-			uniqueId: UNIQUE_ID,
-		});
+		!uniqueId &&
+			setAttributes({
+				uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
+			});
 	}, [UNIQUE_ID]);
+	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
 		switch (tab.name) {

@@ -317,11 +317,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/useSetBlockPanelInfo */ "./src/hooks/useSetBlockPanelInfo.ts");
 /* harmony import */ var _WcbRadioPanelGeneral__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WcbRadioPanelGeneral */ "./src/block-radio/WcbRadioPanelGeneral.tsx");
 /* harmony import */ var _block_form_FormInputLabelRichText__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../block-form/FormInputLabelRichText */ "./src/block-form/FormInputLabelRichText.tsx");
-/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/PlusIcon.js");
-/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/XMarkIcon.js");
+/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/PlusIcon.js");
 /* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/XMarkIcon.js");
+/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_13__);
 /* harmony import */ var _utils_converUniqueId__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utils/converUniqueId */ "./src/utils/converUniqueId.ts");
+/* harmony import */ var _utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../utils/converUniqueIdToAnphaKey */ "./src/utils/converUniqueIdToAnphaKey.ts");
+
 
 
 
@@ -366,12 +368,15 @@ const Edit = props => {
     tabStylesIsPanelOpen,
     handleTogglePanel
   } = (0,_hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_7__["default"])(uniqueId);
+
+  // make uniqueid
   const UNIQUE_ID = wrapBlockProps.id;
   (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
-    setAttributes({
-      uniqueId: UNIQUE_ID
+    !uniqueId && setAttributes({
+      uniqueId: (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_11__["default"])(UNIQUE_ID)
     });
   }, [UNIQUE_ID]);
+  //
 
   //
   const RADIO_NAME = (0,_utils_converUniqueId__WEBPACK_IMPORTED_MODULE_10__["default"])(uniqueId, "radio");
@@ -432,7 +437,7 @@ const Edit = props => {
           options: [...(attributes.options || []), MY_RADIO_OPTIONS_DEMO[0]]
         });
       }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_11__, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_12__, {
       className: "w-5 h-5"
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
       className: "ml-2.5"
@@ -496,7 +501,7 @@ const Edit = props => {
           options: attributes.options.filter((_, j) => j !== index)
         });
       }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_12__, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_13__, {
       className: "w-5 h-5"
     })));
   };
@@ -1529,6 +1534,29 @@ function converUniqueId(text) {
     return prefix + "converUniqueIdReturnNull";
   }
   return prefix + text.replace(/-/g, "").replace(/ /g, "");
+}
+
+/***/ }),
+
+/***/ "./src/utils/converUniqueIdToAnphaKey.ts":
+/*!***********************************************!*\
+  !*** ./src/utils/converUniqueIdToAnphaKey.ts ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ converUniqueIdToAnphaKey)
+/* harmony export */ });
+function converUniqueIdToAnphaKey(text) {
+  let prefix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "wcb-";
+  if (!text) {
+    return prefix + "converniquedreturnnull";
+  }
+  return prefix + text.replace(/ /g, "").replace(/\d/g, "")
+  // text.substring(2, 9).replace(/-/g, "").replace(/ /g, "").replace(/\d/g, "")
+  ;
 }
 
 /***/ }),

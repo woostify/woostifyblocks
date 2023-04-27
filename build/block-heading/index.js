@@ -2619,10 +2619,11 @@ const getAdvanveDivWrapStyles = _ref => {
     tablet_v: advance_responsiveCondition.isHiddenOnTablet,
     desktop_v: advance_responsiveCondition.isHiddenOnDesktop
   });
+
+  // [data-is-wcb-save-common] {
+  // 	visibility: visible;
+  // }
   return _emotion_react__WEBPACK_IMPORTED_MODULE_2__.css`
-		[data-is-wcb-save-common] {
-			visibility: visible;
-		}
 		${className} {
 			display: ${isHiddenOnMobile ? "none" : defaultDisplay};
 			visibility: visible;
@@ -2674,6 +2675,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../components/AdvancePanelCommon */ "./src/components/AdvancePanelCommon.tsx");
 /* harmony import */ var _components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../components/MyCacheProvider */ "./src/components/MyCacheProvider.tsx");
 /* harmony import */ var _WcbHeadingPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./WcbHeadingPanel_StyleBorder */ "./src/block-heading/WcbHeadingPanel_StyleBorder.tsx");
+/* harmony import */ var _utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../utils/converUniqueIdToAnphaKey */ "./src/utils/converUniqueIdToAnphaKey.ts");
+
 
 
 
@@ -2732,12 +2735,14 @@ const Edit = props => {
   const wrapBlockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
     ref
   });
+  // make uniqueid
   const UNIQUE_ID = wrapBlockProps.id;
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
-    setAttributes({
-      uniqueId: UNIQUE_ID
+    !uniqueId && setAttributes({
+      uniqueId: (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_19__["default"])(UNIQUE_ID)
     });
   }, [UNIQUE_ID]);
+  //
   //
 
   const renderTabBodyPanels = tab => {
@@ -2962,7 +2967,7 @@ const GlobalCss = attrs => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_10__.DEMO_WCB_GLOBAL_VARIABLES;
-  const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}].wp-block`;
+  const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
   const HEADING_CLASSNAME = `${WRAP_CLASSNAME} .wcb-heading__heading`;
   const SUB_HEADING_CLASSNAME = `${WRAP_CLASSNAME} .wcb-heading__subHeading`;
   const SEPARATOR_CLASSNAME = `${WRAP_CLASSNAME} .wcb-heading__separator`;
@@ -4824,7 +4829,7 @@ const SaveCommon = _ref => {
     });
   }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(HtmlTag, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
-    className: `${className} ${uniqueId} wcb-update-div`,
+    className: `wcb-cl-common ${className} ${uniqueId} wcb-update-div`,
     id: anchor || uniqueId || undefined,
     "data-uniqueid": uniqueId,
     "data-is-wcb-save-common": true
@@ -7992,6 +7997,29 @@ const wcbGetRgb = hex => {
   rgbColor.splice(3, 1);
   return rgbColor.join(', ');
 };
+
+/***/ }),
+
+/***/ "./src/utils/converUniqueIdToAnphaKey.ts":
+/*!***********************************************!*\
+  !*** ./src/utils/converUniqueIdToAnphaKey.ts ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ converUniqueIdToAnphaKey)
+/* harmony export */ });
+function converUniqueIdToAnphaKey(text) {
+  let prefix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "wcb-";
+  if (!text) {
+    return prefix + "converniquedreturnnull";
+  }
+  return prefix + text.replace(/ /g, "").replace(/\d/g, "")
+  // text.substring(2, 9).replace(/-/g, "").replace(/ /g, "").replace(/\d/g, "")
+  ;
+}
 
 /***/ }),
 

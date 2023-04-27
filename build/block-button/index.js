@@ -2862,12 +2862,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
 /* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./Button */ "./src/block-button/Button.tsx");
 /* harmony import */ var _components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../components/MyCacheProvider */ "./src/components/MyCacheProvider.tsx");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_21__);
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/link.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/link-off.js");
-/* harmony import */ var _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @wordpress/keycodes */ "@wordpress/keycodes");
-/* harmony import */ var _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(_wordpress_keycodes__WEBPACK_IMPORTED_MODULE_22__);
+/* harmony import */ var _utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../utils/converUniqueIdToAnphaKey */ "./src/utils/converUniqueIdToAnphaKey.ts");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_22__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/link.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/link-off.js");
+/* harmony import */ var _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @wordpress/keycodes */ "@wordpress/keycodes");
+/* harmony import */ var _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(_wordpress_keycodes__WEBPACK_IMPORTED_MODULE_23__);
+
 
 
 
@@ -2929,10 +2931,12 @@ const Edit = props => {
     handleTogglePanel
   } = (0,_hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_8__["default"])(uniqueId);
   const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_18__["default"])() || "Desktop";
+
+  // make uniqueid
   const UNIQUE_ID = wrapBlockProps.id;
   (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
-    setAttributes({
-      uniqueId: UNIQUE_ID
+    !uniqueId && setAttributes({
+      uniqueId: (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_21__["default"])(UNIQUE_ID)
     });
   }, [UNIQUE_ID]);
 
@@ -3149,20 +3153,20 @@ const Edit = props => {
     uniqueId: uniqueId
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_6__["default"], WcbAttrsForSave()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockControls, {
     group: "block"
-  }, !isURLSet && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_21__.ToolbarButton, {
-    name: "link",
-    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_23__["default"],
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Link"),
-    shortcut: _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_22__.displayShortcut.primary("k"),
-    onClick: startEditing
-  }), isURLSet && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_21__.ToolbarButton, {
+  }, !isURLSet && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_22__.ToolbarButton, {
     name: "link",
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_24__["default"],
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Link"),
+    shortcut: _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_23__.displayShortcut.primary("k"),
+    onClick: startEditing
+  }), isURLSet && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_22__.ToolbarButton, {
+    name: "link",
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_25__["default"],
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Unlink"),
-    shortcut: _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_22__.displayShortcut.primaryShift("k"),
+    shortcut: _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_23__.displayShortcut.primaryShift("k"),
     onClick: unlink,
     isActive: true
-  })), isSelected && (isEditingURL || isURLSet) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_21__.Popover, {
+  })), isSelected && (isEditingURL || isURLSet) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_22__.Popover, {
     position: "bottom center",
     onClose: () => {
       setIsEditingURL(false);
@@ -3270,7 +3274,7 @@ const GlobalCss = attrs => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_10__.DEMO_WCB_GLOBAL_VARIABLES;
-  const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}].wp-block`;
+  const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
   const BUTTON_CLASSNAME = `${WRAP_CLASSNAME} .wcb-button__main`;
   const BUTTON_TEXT = `${WRAP_CLASSNAME} .wcb-button__text`;
   const BUTTON_ICON = `${WRAP_CLASSNAME} .wcb-button__icon`;
@@ -4540,10 +4544,11 @@ const getAdvanveDivWrapStyles = _ref => {
     tablet_v: advance_responsiveCondition.isHiddenOnTablet,
     desktop_v: advance_responsiveCondition.isHiddenOnDesktop
   });
+
+  // [data-is-wcb-save-common] {
+  // 	visibility: visible;
+  // }
   return _emotion_react__WEBPACK_IMPORTED_MODULE_2__.css`
-		[data-is-wcb-save-common] {
-			visibility: visible;
-		}
 		${className} {
 			display: ${isHiddenOnMobile ? "none" : defaultDisplay};
 			visibility: visible;
@@ -4953,7 +4958,7 @@ const SaveCommon = _ref => {
     });
   }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(HtmlTag, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
-    className: `${className} ${uniqueId} wcb-update-div`,
+    className: `wcb-cl-common ${className} ${uniqueId} wcb-update-div`,
     id: anchor || uniqueId || undefined,
     "data-uniqueid": uniqueId,
     "data-is-wcb-save-common": true
@@ -8675,6 +8680,29 @@ const wcbGetRgb = hex => {
   rgbColor.splice(3, 1);
   return rgbColor.join(', ');
 };
+
+/***/ }),
+
+/***/ "./src/utils/converUniqueIdToAnphaKey.ts":
+/*!***********************************************!*\
+  !*** ./src/utils/converUniqueIdToAnphaKey.ts ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ converUniqueIdToAnphaKey)
+/* harmony export */ });
+function converUniqueIdToAnphaKey(text) {
+  let prefix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "wcb-";
+  if (!text) {
+    return prefix + "converniquedreturnnull";
+  }
+  return prefix + text.replace(/ /g, "").replace(/\d/g, "")
+  // text.substring(2, 9).replace(/-/g, "").replace(/ /g, "").replace(/\d/g, "")
+  ;
+}
 
 /***/ }),
 

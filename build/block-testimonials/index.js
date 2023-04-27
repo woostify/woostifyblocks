@@ -2754,10 +2754,11 @@ const getAdvanveDivWrapStyles = _ref => {
     tablet_v: advance_responsiveCondition.isHiddenOnTablet,
     desktop_v: advance_responsiveCondition.isHiddenOnDesktop
   });
+
+  // [data-is-wcb-save-common] {
+  // 	visibility: visible;
+  // }
   return _emotion_react__WEBPACK_IMPORTED_MODULE_2__.css`
-		[data-is-wcb-save-common] {
-			visibility: visible;
-		}
 		${className} {
 			display: ${isHiddenOnMobile ? "none" : defaultDisplay};
 			visibility: visible;
@@ -2822,6 +2823,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_slick__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! react-slick */ "./node_modules/react-slick/lib/index.js");
 /* harmony import */ var slick_carousel_slick_slick_css__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! slick-carousel/slick/slick.css */ "./node_modules/slick-carousel/slick/slick.css");
 /* harmony import */ var slick_carousel_slick_slick_theme_css__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! slick-carousel/slick/slick-theme.css */ "./node_modules/slick-carousel/slick/slick-theme.css");
+/* harmony import */ var _utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../utils/converUniqueIdToAnphaKey */ "./src/utils/converUniqueIdToAnphaKey.ts");
+
 
 
 
@@ -2943,12 +2946,16 @@ const Edit = props => {
     tabStylesIsPanelOpen,
     handleTogglePanel
   } = (0,_hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_8__["default"])(uniqueId);
+
+  // make uniqueid
   const UNIQUE_ID = wrapBlockProps.id;
   (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
-    setAttributes({
-      uniqueId: UNIQUE_ID
+    !uniqueId && setAttributes({
+      uniqueId: (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_30__["default"])(UNIQUE_ID)
     });
   }, [UNIQUE_ID]);
+  //
+
   let CURRENT_DATA = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => [...Array(general_general.numberofTestimonials || 3).keys()].map((_, index) => testimonials[index] || TESTIMONIAL_ITEM_DEMO), [general_general.numberofTestimonials, testimonials]);
 
   //
@@ -3343,7 +3350,7 @@ const GlobalCss = attrs => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_7__.DEMO_WCB_GLOBAL_VARIABLES;
-  const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}].wp-block`;
+  const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
   const ITEM_CLASSNAME = `${WRAP_CLASSNAME} .wcb-testimonials__item`;
   const ITEM_NAME = `${WRAP_CLASSNAME} .wcb-testimonials__item-name`;
   const ITEM_CONTENT = `${WRAP_CLASSNAME} .wcb-testimonials__item-content`;
@@ -5417,7 +5424,7 @@ const SaveCommon = _ref => {
     });
   }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(HtmlTag, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
-    className: `${className} ${uniqueId} wcb-update-div`,
+    className: `wcb-cl-common ${className} ${uniqueId} wcb-update-div`,
     id: anchor || uniqueId || undefined,
     "data-uniqueid": uniqueId,
     "data-is-wcb-save-common": true
@@ -8776,6 +8783,29 @@ const wcbGetRgb = hex => {
   rgbColor.splice(3, 1);
   return rgbColor.join(', ');
 };
+
+/***/ }),
+
+/***/ "./src/utils/converUniqueIdToAnphaKey.ts":
+/*!***********************************************!*\
+  !*** ./src/utils/converUniqueIdToAnphaKey.ts ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ converUniqueIdToAnphaKey)
+/* harmony export */ });
+function converUniqueIdToAnphaKey(text) {
+  let prefix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "wcb-";
+  if (!text) {
+    return prefix + "converniquedreturnnull";
+  }
+  return prefix + text.replace(/ /g, "").replace(/\d/g, "")
+  // text.substring(2, 9).replace(/-/g, "").replace(/ /g, "").replace(/\d/g, "")
+  ;
+}
 
 /***/ }),
 

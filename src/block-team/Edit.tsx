@@ -19,9 +19,9 @@ import WcbTeamPanel_StyleTitle from "./WcbTeamPanel_StyleTitle";
 import WcbTeamPanel_StyleDesignation from "./WcbTeamPanel_StyleDesignation";
 import WcbTeamPanel_StyleDescription from "./WcbTeamPanel_StyleDescription";
 import WcbTeamPanel_StyleSocialIcons from "./WcbTeamPanel_StyleSocialIcons";
-import MyIcon from "../components/controls/MyIcon";
 import WcbTeamPanel_StyleImage from "./WcbTeamPanel_StyleImage";
 import MyIconFull from "../components/controls/MyIconFull";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -53,12 +53,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
-		setAttributes({
-			uniqueId: UNIQUE_ID,
-		});
+		!uniqueId &&
+			setAttributes({
+				uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
+			});
 	}, [UNIQUE_ID]);
+	//
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {

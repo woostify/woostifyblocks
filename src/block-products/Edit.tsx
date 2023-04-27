@@ -1,6 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import { BlockControls, useBlockProps } from "@wordpress/block-editor";
-import React, { useEffect, FC, useCallback, useState, useMemo } from "react";
+import React, { useEffect, FC, useCallback, useMemo } from "react";
 import ServerSideRender from "@wordpress/server-side-render";
 import { WcbAttrs } from "./attributes";
 import { settings } from "@wordpress/icons";
@@ -72,6 +72,7 @@ import WcbProductsPanel_StyleRating, {
 import { MY_BORDER_CONTROL_DEMO } from "../components/controls/MyBorderControl/types";
 import { RESPONSIVE_CONDITON_DEMO } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
 import { Z_INDEX_DEMO } from "../components/controls/MyZIndexControl/MyZIndexControl";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 interface Props extends EditProps<WcbAttrs> {}
 
@@ -106,17 +107,15 @@ const Edit: FC<Props> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
-
-	//
 	useEffect(() => {
-		if (uniqueId) {
-			return;
-		}
-		setAttributes({
-			uniqueId: UNIQUE_ID,
-		});
+		!uniqueId &&
+			setAttributes({
+				uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
+			});
 	}, [UNIQUE_ID]);
+	//
 
 	useEffect(() => {
 		if (style_layout) {

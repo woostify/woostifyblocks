@@ -21,6 +21,7 @@ import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
 import WcbHeadingPanel_StyleBorder from "./WcbHeadingPanel_StyleBorder";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -56,12 +57,15 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 
 	//
 	const wrapBlockProps = useBlockProps({ ref });
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
-		setAttributes({
-			uniqueId: UNIQUE_ID,
-		});
+		!uniqueId &&
+			setAttributes({
+				uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
+			});
 	}, [UNIQUE_ID]);
+	//
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {

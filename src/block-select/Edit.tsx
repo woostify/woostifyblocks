@@ -8,14 +8,13 @@ import HOCInspectorControls, {
 	INSPECTOR_CONTROLS_TABS,
 } from "../components/HOCInspectorControls";
 import { EditProps } from "../block-container/Edit";
-import useCreateCacheEmotion from "../hooks/useCreateCacheEmotion";
-import { CacheProvider } from "@emotion/react";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import WcbSelectPanelGeneral from "./WcbSelectPanelGeneral";
 import { FormInputLabelRichText } from "../block-form/FormInputLabelRichText";
 import { PencilIcon, PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import converUniqueId from "../utils/converUniqueId";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 export interface MySelectOption {
 	label: string;
@@ -40,13 +39,16 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
-	const UNIQUE_ID = wrapBlockProps.id;
 	const UNIQUE_NAME = converUniqueId(uniqueId, "select");
+	// make uniqueid
+	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
-		setAttributes({
-			uniqueId: UNIQUE_ID,
-		});
+		!uniqueId &&
+			setAttributes({
+				uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
+			});
 	}, [UNIQUE_ID]);
+	//
 
 	//
 	const converValueFromString = (text: string) => {

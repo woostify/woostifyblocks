@@ -34,7 +34,7 @@ const SaveCommon: FC<Props> = ({
 	return (
 		<HtmlTag
 			{...props}
-			className={`${className} ${uniqueId} wcb-update-div`}
+			className={`wcb-cl-common ${className} ${uniqueId} wcb-update-div`}
 			id={anchor || uniqueId || undefined}
 			data-uniqueid={uniqueId}
 			data-is-wcb-save-common

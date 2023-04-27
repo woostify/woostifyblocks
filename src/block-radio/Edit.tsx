@@ -14,6 +14,7 @@ import WcbRadioPanelGeneral from "./WcbRadioPanelGeneral";
 import { FormInputLabelRichText } from "../block-form/FormInputLabelRichText";
 import { PencilIcon, PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import converUniqueId from "../utils/converUniqueId";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 export interface MyRadioOption {
 	label: string;
@@ -40,12 +41,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
-		setAttributes({
-			uniqueId: UNIQUE_ID,
-		});
+		!uniqueId &&
+			setAttributes({
+				uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
+			});
 	}, [UNIQUE_ID]);
+	//
 
 	//
 	const RADIO_NAME = converUniqueId(uniqueId, "radio");

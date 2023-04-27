@@ -73,6 +73,7 @@ import { Z_INDEX_DEMO } from "../components/controls/MyZIndexControl/MyZIndexCon
 import { RESPONSIVE_CONDITON_DEMO } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
 import { MY_BOX_SHADOW_CONTROL_DEMO } from "../components/controls/MyBoxShadowControl/types";
 import { MY_BORDER_CONTROL_DEMO } from "../components/controls/MyBorderControl/types";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -110,16 +111,15 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
-
 	useEffect(() => {
-		if (uniqueId) {
-			return;
-		}
-		setAttributes({
-			uniqueId: UNIQUE_ID,
-		});
+		!uniqueId &&
+			setAttributes({
+				uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
+			});
 	}, [UNIQUE_ID]);
+	//
 	//
 	useEffect(() => {
 		if (style_layout) {

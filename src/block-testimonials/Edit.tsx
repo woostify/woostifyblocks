@@ -1,6 +1,5 @@
 import { __ } from "@wordpress/i18n";
 import { RichText, useBlockProps } from "@wordpress/block-editor";
-import { useRefEffect } from "@wordpress/compose";
 import React, { useEffect, FC, useCallback, useRef } from "react";
 import { TestimonialItem, WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
@@ -35,6 +34,7 @@ import { WcbAttrsForSave } from "./Save";
 import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 export const TESTIMONIAL_ITEM_DEMO: TestimonialItem = {
 	name: "Drink Water",
@@ -123,12 +123,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
-		setAttributes({
-			uniqueId: UNIQUE_ID,
-		});
+		!uniqueId &&
+			setAttributes({
+				uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
+			});
 	}, [UNIQUE_ID]);
+	//
 
 	let CURRENT_DATA = useMemo(
 		() =>

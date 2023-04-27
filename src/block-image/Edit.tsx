@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import { get, isEmpty } from "lodash";
+import { get } from "lodash";
 import { getBlobByURL, isBlobURL, revokeBlobURL } from "@wordpress/blob";
 import { Placeholder } from "@wordpress/components";
 import { useDispatch, useSelect } from "@wordpress/data";
@@ -38,6 +38,7 @@ import { WCB_HEADING_PANEL_DIMENSION_DEMO } from "../block-heading/WcbHeadingPan
 import { WCB_HEADING_PANEL_SEPARATOR_DEMO } from "../block-heading/WcbHeadingPanelSeparator";
 import { DEFAULT_BORDER_MAIN_SINGLE_SIDE } from "../components/controls/MyBorderControl/types";
 import { WcbBlockHeadingAttrs } from "../block-heading/attributes";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 // Much of this description is duplicated from MediaPlaceholder.
 const placeholder = (content) => {
@@ -363,12 +364,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		ref,
 		className: classes,
 	});
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
-		setAttributes({
-			uniqueId: UNIQUE_ID,
-		});
+		!uniqueId &&
+			setAttributes({
+				uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
+			});
 	}, [UNIQUE_ID]);
+	//
 	//
 	//
 	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {

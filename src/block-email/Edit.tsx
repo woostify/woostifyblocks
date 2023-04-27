@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { RichText, useBlockProps } from "@wordpress/block-editor";
+import { useBlockProps } from "@wordpress/block-editor";
 import React, { useEffect, FC, useRef } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
@@ -7,13 +7,12 @@ import HOCInspectorControls, {
 	INSPECTOR_CONTROLS_TABS,
 } from "../components/HOCInspectorControls";
 import { EditProps } from "../block-container/Edit";
-import useCreateCacheEmotion from "../hooks/useCreateCacheEmotion";
-import { CacheProvider } from "@emotion/react";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import WcbEmailPanelGeneral from "./WcbEmailPanelGeneral";
 import { FormInputLabelRichText } from "../block-form/FormInputLabelRichText";
 import converUniqueId from "../utils/converUniqueId";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -30,13 +29,16 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
-	const UNIQUE_ID = wrapBlockProps.id;
 	const UNIQUE_NAME = converUniqueId(uniqueId, "email");
+	// make uniqueid
+	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
-		setAttributes({
-			uniqueId: UNIQUE_ID,
-		});
+		!uniqueId &&
+			setAttributes({
+				uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
+			});
 	}, [UNIQUE_ID]);
+	//
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {

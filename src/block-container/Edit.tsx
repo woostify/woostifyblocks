@@ -38,6 +38,7 @@ import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 export type EditProps<T, C = any> = {
 	attributes: T;
@@ -89,13 +90,6 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		tabStylesIsPanelOpen,
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
-
-	//
-	useEffect(() => {
-		setAttributes({
-			uniqueId: "wcb-container-" + clientId.substring(2, 9),
-		});
-	}, []);
 
 	const { hasInnerBlocks, hasParent } = useSelect(
 		(select) => {
@@ -354,6 +348,17 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		ref,
 		className: `wcb-container__wrap ${uniqueId} ${containerClassName}`.trim(),
 	});
+
+	// make uniqueid
+	const UNIQUE_ID = blockWrapProps.id;
+	useEffect(() => {
+		!uniqueId &&
+			setAttributes({
+				uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
+			});
+	}, [UNIQUE_ID]);
+	//
+
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div

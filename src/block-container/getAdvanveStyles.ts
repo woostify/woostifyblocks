@@ -42,10 +42,10 @@ export const getAdvanveDivWrapStyles = ({
 		desktop_v: advance_responsiveCondition.isHiddenOnDesktop,
 	});
 
+	// [data-is-wcb-save-common] {
+	// 	visibility: visible;
+	// }
 	return css`
-		[data-is-wcb-save-common] {
-			visibility: visible;
-		}
 		${className} {
 			display: ${isHiddenOnMobile ? "none" : defaultDisplay};
 			visibility: visible;

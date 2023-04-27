@@ -32,7 +32,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
-	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}].wp-block`;
+	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
 	const ITEM_CLASSNAME = `${WRAP_CLASSNAME} .wcb-testimonials__item`;
 	const ITEM_NAME = `${WRAP_CLASSNAME} .wcb-testimonials__item-name`;
 	const ITEM_CONTENT = `${WRAP_CLASSNAME} .wcb-testimonials__item-content`;

@@ -17,12 +17,9 @@ import WcbCtaPanelLayout, {
 } from "./WcbCtaPanelLayout";
 import WcbCtaPanel_StyleTitle from "./WcbCtaPanel_StyleTitle";
 import WcbCtaPanel_StyleDescription from "./WcbCtaPanel_StyleDescription";
-import WcbCtaPanel_StyleDimension, {
-	WCB_CTA_PANEL_STYLE_DIMENSION_DEMO,
-} from "./WcbCtaPanel_StyleDimension";
+import WcbCtaPanel_StyleDimension from "./WcbCtaPanel_StyleDimension";
 import WcbCtaPanelPreset from "./WcbCtaPanelPreset";
 import { WcbAttrsForSave } from "./Save";
-import createCache, { EmotionCache } from "@emotion/cache";
 import MyCacheProvider from "../components/MyCacheProvider";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
@@ -53,12 +50,13 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
-
 	useEffect(() => {
-		setAttributes({
-			uniqueId: UNIQUE_ID,
-		});
+		!uniqueId &&
+			setAttributes({
+				uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
+			});
 	}, [UNIQUE_ID]);
 	//
 
