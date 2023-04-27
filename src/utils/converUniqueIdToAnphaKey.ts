@@ -3,7 +3,12 @@ export default function converUniqueIdToAnphaKey(
 	prefix = "wcb-"
 ) {
 	if (!text) {
-		return prefix + "converniquedreturnnull";
+		return (
+			prefix +
+			"converniquedreturnnull" +
+			Date.now() +
+			Math.random()
+		).replace(/\./g, "-");
 	}
 	return (
 		prefix + text.replace(/ /g, "").replace(/\d/g, "")

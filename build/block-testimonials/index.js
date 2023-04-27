@@ -8800,7 +8800,7 @@ __webpack_require__.r(__webpack_exports__);
 function converUniqueIdToAnphaKey(text) {
   let prefix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "wcb-";
   if (!text) {
-    return prefix + "converniquedreturnnull";
+    return (prefix + "converniquedreturnnull" + Date.now() + Math.random()).replace(/\./g, "-");
   }
   return prefix + text.replace(/ /g, "").replace(/\d/g, "")
   // text.substring(2, 9).replace(/-/g, "").replace(/ /g, "").replace(/\d/g, "")
