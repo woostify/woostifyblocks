@@ -352,10 +352,9 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 	// make uniqueid
 	const UNIQUE_ID = blockWrapProps.id;
 	useEffect(() => {
-		!uniqueId &&
-			setAttributes({
-				uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
-			});
+		setAttributes({
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
+		});
 	}, [UNIQUE_ID]);
 	//
 

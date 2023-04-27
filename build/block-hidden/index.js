@@ -136,7 +136,7 @@ const Edit = props => {
   // make uniqueid
   const UNIQUE_ID = wrapBlockProps.id;
   (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
-    !uniqueId && setAttributes({
+    setAttributes({
       uniqueId: (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_12__["default"])(UNIQUE_ID)
     });
   }, [UNIQUE_ID]);
@@ -170,8 +170,8 @@ const Edit = props => {
   return (
     // <CacheProvider value={myCache}>
     (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
-      className: `${wrapBlockProps?.className} wcb-hidden__wrap p-3 border-2 border-dashed rounded-lg ${UNIQUE_ID}`,
-      "data-uniqueid": UNIQUE_ID
+      className: `${wrapBlockProps?.className} wcb-hidden__wrap p-3 border-2 border-dashed rounded-lg ${uniqueId}`,
+      "data-uniqueid": uniqueId
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_5__["default"], {
       tabs: _components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_5__.INSPECTOR_CONTROLS_TABS.filter(item => item.name !== "Styles"),
       renderTabPanels: renderTabBodyPanels

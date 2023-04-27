@@ -2813,7 +2813,7 @@ const Edit = props => {
   // make uniqueid
   const UNIQUE_ID = wrapBlockProps.id;
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
-    !uniqueId && setAttributes({
+    setAttributes({
       uniqueId: (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_32__["default"])(UNIQUE_ID)
     });
   }, [UNIQUE_ID]);

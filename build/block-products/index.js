@@ -2866,7 +2866,7 @@ const Edit = props => {
   // make uniqueid
   const UNIQUE_ID = wrapBlockProps.id;
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
-    !uniqueId && setAttributes({
+    setAttributes({
       uniqueId: (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_29__["default"])(UNIQUE_ID)
     });
   }, [UNIQUE_ID]);
@@ -2900,15 +2900,6 @@ const Edit = props => {
   }, [style_layout]);
   //
 
-  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
-    if (!document.getElementById(UNIQUE_ID)) {
-      return;
-    }
-    // initCarouselForWcbProducts(
-    // 	document.getElementById(UNIQUE_ID) as Element,
-    // 	attributes
-    // );
-  }, [UNIQUE_ID]);
   const renderTabBodyPanels = tab => {
     switch (tab.name) {
       case "General":

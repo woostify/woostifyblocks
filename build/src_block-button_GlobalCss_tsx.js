@@ -59,18 +59,14 @@ const GlobalCss = attrs => {
   } = ___WEBPACK_IMPORTED_MODULE_10__.DEMO_WCB_GLOBAL_VARIABLES;
   const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
   const BUTTON_CLASSNAME = `${WRAP_CLASSNAME} .wcb-button__main`;
+  console.log(111, {
+    WRAP_CLASSNAME
+  });
   const BUTTON_TEXT = `${WRAP_CLASSNAME} .wcb-button__text`;
   const BUTTON_ICON = `${WRAP_CLASSNAME} .wcb-button__icon`;
 
   // ------------------- WRAP DIV
-  const getDivWrapStyles = () => {
-    return {
-      [`${WRAP_CLASSNAME}`]: {
-        [`@media (min-width: ${media_tablet})`]: {},
-        [`@media (min-width: ${media_desktop})`]: {}
-      }
-    };
-  };
+
   let {
     value_Desktop: iconSize_desktop,
     value_Tablet: iconSize_tablet,

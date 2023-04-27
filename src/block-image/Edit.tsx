@@ -367,10 +367,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
-		!uniqueId &&
-			setAttributes({
-				uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
-			});
+		setAttributes({
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
+		});
 	}, [UNIQUE_ID]);
 	//
 	//
@@ -447,8 +446,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		<MyCacheProvider uniqueKey={clientId}>
 			<figure
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-image__wrap wcb-image__wrap--${general_settings.layout} ${UNIQUE_ID}`}
-				data-uniqueid={UNIQUE_ID}
+				className={`${wrapBlockProps?.className} wcb-image__wrap wcb-image__wrap--${general_settings.layout} ${uniqueId}`}
+				data-uniqueid={uniqueId}
 			>
 				{/* CSS IN JS */}
 				<GlobalCss {...WcbAttrsForSave()} />

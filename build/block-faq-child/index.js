@@ -1928,7 +1928,7 @@ const Edit = props => {
   // make uniqueid
   const UNIQUE_ID = wrapBlockProps.id;
   (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
-    !uniqueId && setAttributes({
+    setAttributes({
       uniqueId: (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_10__["default"])(UNIQUE_ID)
     });
   }, [UNIQUE_ID]);
@@ -1964,8 +1964,8 @@ const Edit = props => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_8__["default"], {
     uniqueKey: clientId
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
-    className: `${wrapBlockProps?.className} wcb-faq-child__wrap wcb-faq-child__wrap--${layout} ${ACTIVE ? "active" : ""} ${UNIQUE_ID}`,
-    "data-uniqueid": UNIQUE_ID
+    className: `${wrapBlockProps?.className} wcb-faq-child__wrap wcb-faq-child__wrap--${layout} ${ACTIVE ? "active" : ""} ${uniqueId}`,
+    "data-uniqueid": uniqueId
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "ac-header"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {

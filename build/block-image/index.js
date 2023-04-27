@@ -3429,7 +3429,7 @@ const Edit = props => {
   // make uniqueid
   const UNIQUE_ID = wrapBlockProps.id;
   (0,react__WEBPACK_IMPORTED_MODULE_10__.useEffect)(() => {
-    !uniqueId && setAttributes({
+    setAttributes({
       uniqueId: (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_22__["default"])(UNIQUE_ID)
     });
   }, [UNIQUE_ID]);
@@ -3499,8 +3499,8 @@ const Edit = props => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_13__["default"], {
     uniqueKey: clientId
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("figure", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
-    className: `${wrapBlockProps?.className} wcb-image__wrap wcb-image__wrap--${general_settings.layout} ${UNIQUE_ID}`,
-    "data-uniqueid": UNIQUE_ID
+    className: `${wrapBlockProps?.className} wcb-image__wrap wcb-image__wrap--${general_settings.layout} ${uniqueId}`,
+    "data-uniqueid": uniqueId
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_11__["default"], WcbAttrsForSave()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (temporaryURL || url) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_Image__WEBPACK_IMPORTED_MODULE_14__["default"], {
     className: "wcb-image__image",
     temporaryURL: temporaryURL || "",

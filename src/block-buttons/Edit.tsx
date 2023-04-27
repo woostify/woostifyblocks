@@ -69,10 +69,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
-		!uniqueId &&
-			setAttributes({
-				uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
-			});
+		setAttributes({
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
+		});
 	}, [UNIQUE_ID]);
 
 	const getPaddingBySize = (size?: BtnGroupSizes): DimensionSettings => {

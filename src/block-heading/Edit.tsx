@@ -60,10 +60,9 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
-		!uniqueId &&
-			setAttributes({
-				uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
-			});
+		setAttributes({
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
+		});
 	}, [UNIQUE_ID]);
 	//
 	//
@@ -231,8 +230,8 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-heading__wrap ${UNIQUE_ID}`}
-				data-uniqueid={UNIQUE_ID}
+				className={`${wrapBlockProps?.className} wcb-heading__wrap ${uniqueId}`}
+				data-uniqueid={uniqueId}
 			>
 				<HOCInspectorControls
 					uniqueId={uniqueId}

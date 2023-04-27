@@ -110,10 +110,9 @@ const Edit: FC<Props> = (props) => {
 	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
-		!uniqueId &&
-			setAttributes({
-				uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
-			});
+		setAttributes({
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
+		});
 	}, [UNIQUE_ID]);
 	//
 
@@ -143,16 +142,6 @@ const Edit: FC<Props> = (props) => {
 		setAttributes({ ...DEFAULT });
 	}, [style_layout]);
 	//
-
-	useEffect(() => {
-		if (!document.getElementById(UNIQUE_ID)) {
-			return;
-		}
-		// initCarouselForWcbProducts(
-		// 	document.getElementById(UNIQUE_ID) as Element,
-		// 	attributes
-		// );
-	}, [UNIQUE_ID]);
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
 		switch (tab.name) {

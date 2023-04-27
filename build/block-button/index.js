@@ -2935,7 +2935,7 @@ const Edit = props => {
   // make uniqueid
   const UNIQUE_ID = wrapBlockProps.id;
   (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
-    !uniqueId && setAttributes({
+    setAttributes({
       uniqueId: (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_21__["default"])(UNIQUE_ID)
     });
   }, [UNIQUE_ID]);
@@ -3146,8 +3146,8 @@ const Edit = props => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_20__["default"], {
     uniqueKey: clientId
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
-    className: `${wrapBlockProps?.className} wcb-button__wrap ${UNIQUE_ID} `,
-    "data-uniqueid": UNIQUE_ID
+    className: `${wrapBlockProps?.className} wcb-button__wrap ${uniqueId} `,
+    "data-uniqueid": uniqueId
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_5__["default"], {
     renderTabPanels: renderTabBodyPanels,
     uniqueId: uniqueId
@@ -3276,18 +3276,14 @@ const GlobalCss = attrs => {
   } = ___WEBPACK_IMPORTED_MODULE_10__.DEMO_WCB_GLOBAL_VARIABLES;
   const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
   const BUTTON_CLASSNAME = `${WRAP_CLASSNAME} .wcb-button__main`;
+  console.log(111, {
+    WRAP_CLASSNAME
+  });
   const BUTTON_TEXT = `${WRAP_CLASSNAME} .wcb-button__text`;
   const BUTTON_ICON = `${WRAP_CLASSNAME} .wcb-button__icon`;
 
   // ------------------- WRAP DIV
-  const getDivWrapStyles = () => {
-    return {
-      [`${WRAP_CLASSNAME}`]: {
-        [`@media (min-width: ${media_tablet})`]: {},
-        [`@media (min-width: ${media_desktop})`]: {}
-      }
-    };
-  };
+
   let {
     value_Desktop: iconSize_desktop,
     value_Tablet: iconSize_tablet,

@@ -45,10 +45,9 @@ const Edit: FC<
 	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
-		!uniqueId &&
-			setAttributes({
-				uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
-			});
+		setAttributes({
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
+		});
 	}, [UNIQUE_ID]);
 	//
 
@@ -107,8 +106,8 @@ const Edit: FC<
 					wrapBlockProps?.className
 				} wcb-faq-child__wrap wcb-faq-child__wrap--${layout} ${
 					ACTIVE ? "active" : ""
-				} ${UNIQUE_ID}`}
-				data-uniqueid={UNIQUE_ID}
+				} ${uniqueId}`}
+				data-uniqueid={uniqueId}
 			>
 				<div className="ac-header">
 					<div
