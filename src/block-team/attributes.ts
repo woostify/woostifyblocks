@@ -1,4 +1,7 @@
-import { AttrsGenericType } from "../block-container/attributes";
+import {
+	AttrsGenericType,
+	WcbAttrsCommonFromWp,
+} from "../block-container/attributes";
 import {
 	MyResponsiveConditionControlData,
 	RESPONSIVE_CONDITON_DEMO,
@@ -39,7 +42,7 @@ import {
 	WCB_TEAM_PANEL_STYLE_IMAGE,
 	WCB_TEAM_PANEL_STYLE_IMAGE_DEMO,
 } from "./WcbTeamPanel_StyleImage";
-export interface WcbAttrs {
+export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	heading: string;
 	designation: string;

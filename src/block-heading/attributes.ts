@@ -1,4 +1,7 @@
-import { AttrsGenericType } from "../block-container/attributes";
+import {
+	AttrsGenericType,
+	WcbAttrsCommonFromWp,
+} from "../block-container/attributes";
 import {
 	MyResponsiveConditionControlData,
 	RESPONSIVE_CONDITON_DEMO,
@@ -44,7 +47,7 @@ import {
 	WCB_HEADING_PANEL_STYLE_BORDER_DEMO,
 } from "./WcbHeadingPanel_StyleBorder";
 
-export interface WcbBlockHeadingAttrs {
+export interface WcbBlockHeadingAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	heading: string;
 	subHeading: string;
@@ -73,13 +76,13 @@ const blokc1Attrs: AttrsGenericType<WcbBlockHeadingAttrs> = {
 		type: "string",
 		source: "html",
 		selector: ".wcb-heading__heading",
-		default: "Clik to edit HEADING",
+		default: "",
 	},
 	subHeading: {
 		type: "string",
 		source: "html",
 		selector: ".wcb-heading__subHeading",
-		default: "Clik to edit SUB HEADING",
+		default: "",
 	},
 	//
 	general_content: {

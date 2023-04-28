@@ -16,7 +16,7 @@ export interface WcbAttrsForSave
 export default function save({
 	attributes,
 }: {
-	attributes: BlockWCBContainerAttrs & { anchor: string; align: string };
+	attributes: BlockWCBContainerAttrs;
 }) {
 	const {
 		isShowVariations,

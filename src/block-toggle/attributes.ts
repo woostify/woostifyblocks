@@ -1,17 +1,12 @@
-import { AttrsGenericType } from "../block-container/attributes";
 import {
-	MyResponsiveConditionControlData,
-	RESPONSIVE_CONDITON_DEMO,
-} from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
-import {
-	MyZIndexControlData,
-	Z_INDEX_DEMO,
-} from "../components/controls/MyZIndexControl/MyZIndexControl";
+	AttrsGenericType,
+	WcbAttrsCommonFromWp,
+} from "../block-container/attributes";
 import {
 	WCB_TOGGLE_PANEL_GENERAL,
 	WCB_TOGGLE_PANEL_GENERAL_DEMO,
 } from "./WcbTogglePanelGeneral";
-export interface WcbAttrs {
+export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	label: string;
 	//

@@ -1,4 +1,7 @@
-import { AttrsGenericType } from "../block-container/attributes";
+import {
+	AttrsGenericType,
+	WcbAttrsCommonFromWp,
+} from "../block-container/attributes";
 import {
 	MyResponsiveConditionControlData,
 	RESPONSIVE_CONDITON_DEMO,
@@ -39,7 +42,7 @@ import {
 	WCB_BUTTON_PANEL_STYLE_TEXT,
 	WCB_BUTTON_PANEL_STYLE_TEXT_DEMO,
 } from "./WcbButtonPanel_StyleText";
-export interface WcbAttrs {
+export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	content: string;
 	//
@@ -66,7 +69,7 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		type: "string",
 		source: "html",
 		selector: ".wcb-button__text",
-		default: "Click here",
+		default: "",
 	},
 	// THE ATTRS OF BLOCK HERE
 	general_preset: {

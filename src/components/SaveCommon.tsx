@@ -2,24 +2,24 @@ import React, { FC, ReactNode } from "react";
 import { __ } from "@wordpress/i18n";
 import _ from "lodash";
 // @ts-ignore
-interface Props {
+interface Props<T> {
 	className?: string;
 	anchor?: string;
 	uniqueId: string;
 	HtmlTag?: React.ElementType<any>;
 	children: ReactNode;
-	attributes: Object;
+	attributes: T;
 }
 
-const SaveCommon: FC<Props> = ({
+function SaveCommon<T>({
 	anchor,
 	className = "",
 	uniqueId = "",
 	HtmlTag = "div",
 	children,
-	attributes = {},
+	attributes,
 	...props
-}) => {
+}: Props<T>) {
 	let blockJson = "";
 	try {
 		blockJson = _.escape(JSON.stringify(attributes));
@@ -47,6 +47,6 @@ const SaveCommon: FC<Props> = ({
 			</pre>
 		</HtmlTag>
 	);
-};
+}
 
 export default SaveCommon;

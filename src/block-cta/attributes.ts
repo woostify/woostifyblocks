@@ -1,4 +1,7 @@
-import { AttrsGenericType } from "../block-container/attributes";
+import {
+	AttrsGenericType,
+	WcbAttrsCommonFromWp,
+} from "../block-container/attributes";
 import {
 	MyResponsiveConditionControlData,
 	RESPONSIVE_CONDITON_DEMO,
@@ -24,7 +27,7 @@ import {
 	WCB_CTA_PANEL_STYLE_TITLE,
 	WCB_CTA_PANEL_STYLE_TITLE_DEMO,
 } from "./WcbCtaPanel_StyleTitle";
-export interface WcbAttrs {
+export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	title: string;
 	description: string;
@@ -50,14 +53,13 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		type: "string",
 		source: "html",
 		selector: ".wcb-cta__title",
-		default: "Call To Action",
+		default: "",
 	},
 	description: {
 		type: "string",
 		source: "html",
 		selector: ".wcb-cta__description",
-		default:
-			"Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo...",
+		default: "",
 	},
 
 	// ATTRS

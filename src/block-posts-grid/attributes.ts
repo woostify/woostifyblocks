@@ -1,75 +1,26 @@
-import { AttrsGenericType } from "../block-container/attributes";
 import {
-	MyBorderControlData,
-	MY_BORDER_CONTROL_DEMO,
-} from "../components/controls/MyBorderControl/types";
+	AttrsGenericType,
+	WcbAttrsCommonFromWp,
+} from "../block-container/attributes";
+import { MyBorderControlData } from "../components/controls/MyBorderControl/types";
 import { MyBoxShadowControlData } from "../components/controls/MyBoxShadowControl/MyBoxShadowControl";
-import { MY_BOX_SHADOW_CONTROL_DEMO } from "../components/controls/MyBoxShadowControl/types";
-import {
-	MyResponsiveConditionControlData,
-	RESPONSIVE_CONDITON_DEMO,
-} from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
-import {
-	MyZIndexControlData,
-	Z_INDEX_DEMO,
-} from "../components/controls/MyZIndexControl/MyZIndexControl";
-import {
-	WCB_POST_GRID_PANEL_PAGINATION,
-	WCB_POST_GRID_PANEL_PAGINATION_DEMO,
-} from "./WcbPostGridPanelPagination";
-import {
-	WCB_POST_GRID_PANEL_POST_CONTENT,
-	WCB_POST_GRID_PANEL_POST_CONTENT_DEMO,
-} from "./WcbPostGridPanelPostContent";
-import {
-	WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE,
-	WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE_DEMO,
-} from "./WcbPostGridPanelPostFeaturedImage";
-import {
-	WCB_POST_GRID_PANEL_POST_META,
-	WCB_POST_GRID_PANEL_POST_META_DEMO,
-} from "./WcbPostGridPanelPostMeta";
-import {
-	WCB_POST_GRID_PANEL_READMORE_LINK,
-	WCB_POST_GRID_PANEL_READMORE_LINK_DEMO,
-} from "./WcbPostGridPanelReadMoreLink";
-import {
-	WCB_POST_GRID_PANEL_STYLE_EXCERPT,
-	WCB_POST_GRID_PANEL_STYLE_EXCERPT_DEMO,
-} from "./WcbPostGridPanel_StyleExcerpt";
-import {
-	WCB_POST_GRID_PANEL_STYLE_FEATURED_IMAGE,
-	WCB_POST_GRID_PANEL_STYLE_FEATURED_IMAGE_DEMO,
-} from "./WcbPostGridPanel_StyleFeaturedImage";
-import {
-	WCB_POST_GRID_PANEL_STYLE_LAYOUT,
-	WCB_POST_GRID_PANEL_STYLE_LAYOUT_DEMO,
-} from "./WcbPostGridPanel_StyleLayout";
-import {
-	WCB_POST_GRID_PANEL_STYLE_META,
-	WCB_POST_GRID_PANEL_STYLE_META_DEMO,
-} from "./WcbPostGridPanel_StyleMeta";
-import {
-	WCB_POST_GRID_PANEL_STYLE_PAGINATION,
-	WCB_POST_GRID_PANEL_STYLE_PAGINATION_DEMO,
-} from "./WcbPostGridPanel_StylePagination";
-import {
-	WCB_POST_GRID_PANEL_STYLE_READMORE_LINK,
-	WCB_POST_GRID_PANEL_STYLE_READMORE_LINK_DEMO,
-} from "./WcbPostGridPanel_StyleReadmoreLink";
-import {
-	WCB_POST_GRID_PANEL_STYLE_TAXONOMY,
-	WCB_POST_GRID_PANEL_STYLE_TAXONOMY_DEMO,
-} from "./WcbPostGridPanel_StyleTaxonomy";
-import {
-	WCB_POST_GRID_PANEL_STYLE_TITLE,
-	WCB_POST_GRID_PANEL_STYLE_TITLE_DEMO,
-} from "./WcbPostGridPanel_StyleTitle";
-import {
-	WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING,
-	WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING_DEMO,
-} from "./WcbPostsGridPanelSortingAndFiltering";
-export interface WcbBlockPostsGridAttrs {
+import { MyResponsiveConditionControlData } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
+import { MyZIndexControlData } from "../components/controls/MyZIndexControl/MyZIndexControl";
+import { WCB_POST_GRID_PANEL_PAGINATION } from "./WcbPostGridPanelPagination";
+import { WCB_POST_GRID_PANEL_POST_CONTENT } from "./WcbPostGridPanelPostContent";
+import { WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE } from "./WcbPostGridPanelPostFeaturedImage";
+import { WCB_POST_GRID_PANEL_POST_META } from "./WcbPostGridPanelPostMeta";
+import { WCB_POST_GRID_PANEL_READMORE_LINK } from "./WcbPostGridPanelReadMoreLink";
+import { WCB_POST_GRID_PANEL_STYLE_EXCERPT } from "./WcbPostGridPanel_StyleExcerpt";
+import { WCB_POST_GRID_PANEL_STYLE_FEATURED_IMAGE } from "./WcbPostGridPanel_StyleFeaturedImage";
+import { WCB_POST_GRID_PANEL_STYLE_LAYOUT } from "./WcbPostGridPanel_StyleLayout";
+import { WCB_POST_GRID_PANEL_STYLE_META } from "./WcbPostGridPanel_StyleMeta";
+import { WCB_POST_GRID_PANEL_STYLE_PAGINATION } from "./WcbPostGridPanel_StylePagination";
+import { WCB_POST_GRID_PANEL_STYLE_READMORE_LINK } from "./WcbPostGridPanel_StyleReadmoreLink";
+import { WCB_POST_GRID_PANEL_STYLE_TAXONOMY } from "./WcbPostGridPanel_StyleTaxonomy";
+import { WCB_POST_GRID_PANEL_STYLE_TITLE } from "./WcbPostGridPanel_StyleTitle";
+import { WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING } from "./WcbPostsGridPanelSortingAndFiltering";
+export interface WcbBlockPostsGridAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	//
 	general_sortingAndFiltering?: WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING;

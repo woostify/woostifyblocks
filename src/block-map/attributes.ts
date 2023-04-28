@@ -1,4 +1,7 @@
-import { AttrsGenericType } from "../block-container/attributes";
+import {
+	AttrsGenericType,
+	WcbAttrsCommonFromWp,
+} from "../block-container/attributes";
 import {
 	MyResponsiveConditionControlData,
 	RESPONSIVE_CONDITON_DEMO,
@@ -16,7 +19,7 @@ import {
 	WCB_MAP_PANEL_STYLE_BORDER_DEMO,
 } from "./WcbMapPanel_StyleBorder";
 
-export interface WcbAttrs {
+export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	general_general: WCB_MAP_PANEL_GENERAL;
 	style_border: WCB_MAP_PANEL_STYLE_BORDER;

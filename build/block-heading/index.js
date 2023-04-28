@@ -4310,13 +4310,13 @@ const blokc1Attrs = {
     type: "string",
     source: "html",
     selector: ".wcb-heading__heading",
-    default: "Clik to edit HEADING"
+    default: ""
   },
   subHeading: {
     type: "string",
     source: "html",
     selector: ".wcb-heading__subHeading",
-    default: "Clik to edit SUB HEADING"
+    default: ""
   },
   //
   general_content: {
@@ -4808,14 +4808,14 @@ __webpack_require__.r(__webpack_exports__);
 
 // @ts-ignore
 
-const SaveCommon = _ref => {
+function SaveCommon(_ref) {
   let {
     anchor,
     className = "",
     uniqueId = "",
     HtmlTag = "div",
     children,
-    attributes = {},
+    attributes,
     ...props
   } = _ref;
   let blockJson = "";
@@ -4841,7 +4841,7 @@ const SaveCommon = _ref => {
       display: "none"
     }
   }, blockJson));
-};
+}
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SaveCommon);
 
 /***/ }),

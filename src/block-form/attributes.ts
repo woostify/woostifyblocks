@@ -1,4 +1,7 @@
-import { AttrsGenericType } from "../block-container/attributes";
+import {
+	AttrsGenericType,
+	WcbAttrsCommonFromWp,
+} from "../block-container/attributes";
 import {
 	MyResponsiveConditionControlData,
 	RESPONSIVE_CONDITON_DEMO,
@@ -47,7 +50,7 @@ import {
 	WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON,
 	WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON_DEMO,
 } from "./WcbPostGridPanel_StyleSubmitButton";
-export interface WcbAttrs {
+export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	btnSubmitText: string;
 	//

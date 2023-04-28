@@ -19,8 +19,10 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_dimension,
 		style_title,
 		title,
+		className,
 	} = attributes;
 	//
+	console.log(111, { attributes });
 
 	const newAttrForSave: WcbAttrsForSave = {
 		uniqueId,

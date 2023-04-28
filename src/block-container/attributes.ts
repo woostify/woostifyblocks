@@ -29,9 +29,14 @@ import {
 	MyZIndexControlData,
 	Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
-import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 
-export interface BlockWCBContainerAttrs {
+export interface WcbAttrsCommonFromWp {
+	className?: string;
+	anchor?: string;
+	align?: "" | "wide" | "full";
+}
+
+export interface BlockWCBContainerAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	containerClassName: string;
 	isShowVariations: boolean;

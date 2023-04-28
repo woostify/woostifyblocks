@@ -2781,7 +2781,7 @@ const Edit = props => {
     onChange: content => setAttributes({
       title: content
     }),
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Heading..."),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Call to action"),
     className: "wcb-cta__title"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, {
     tagName: "p",
@@ -2790,7 +2790,7 @@ const Edit = props => {
     onChange: content => setAttributes({
       description: content
     }),
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("description..."),
+    placeholder: "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo...",
     className: "wcb-cta__description"
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "wcb-cta__buttons"
@@ -2997,10 +2997,13 @@ function save(_ref) {
     style_description,
     style_dimension,
     style_title,
-    title
+    title,
+    className
   } = attributes;
   //
-
+  console.log(111, {
+    attributes
+  });
   const newAttrForSave = {
     uniqueId,
     advance_responsiveCondition,
@@ -3679,13 +3682,13 @@ const blokc1Attrs = {
     type: "string",
     source: "html",
     selector: ".wcb-cta__title",
-    default: "Call To Action"
+    default: ""
   },
   description: {
     type: "string",
     source: "html",
     selector: ".wcb-cta__description",
-    default: "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo..."
+    default: ""
   },
   // ATTRS
   general_layout: {
@@ -4134,14 +4137,14 @@ __webpack_require__.r(__webpack_exports__);
 
 // @ts-ignore
 
-const SaveCommon = _ref => {
+function SaveCommon(_ref) {
   let {
     anchor,
     className = "",
     uniqueId = "",
     HtmlTag = "div",
     children,
-    attributes = {},
+    attributes,
     ...props
   } = _ref;
   let blockJson = "";
@@ -4167,7 +4170,7 @@ const SaveCommon = _ref => {
       display: "none"
     }
   }, blockJson));
-};
+}
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SaveCommon);
 
 /***/ }),

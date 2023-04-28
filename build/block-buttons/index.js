@@ -3993,14 +3993,14 @@ __webpack_require__.r(__webpack_exports__);
 
 // @ts-ignore
 
-const SaveCommon = _ref => {
+function SaveCommon(_ref) {
   let {
     anchor,
     className = "",
     uniqueId = "",
     HtmlTag = "div",
     children,
-    attributes = {},
+    attributes,
     ...props
   } = _ref;
   let blockJson = "";
@@ -4026,7 +4026,7 @@ const SaveCommon = _ref => {
       display: "none"
     }
   }, blockJson));
-};
+}
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SaveCommon);
 
 /***/ }),

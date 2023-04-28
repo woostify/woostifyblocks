@@ -211,7 +211,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							value={attributes.title}
 							allowedFormats={["core/bold", "core/italic"]}
 							onChange={(content) => setAttributes({ title: content })}
-							placeholder={__("Heading...")}
+							placeholder={__("Call to action")}
 							className="wcb-cta__title"
 						/>
 						<RichText
@@ -219,7 +219,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							value={attributes.description}
 							allowedFormats={["core/bold", "core/italic"]}
 							onChange={(content) => setAttributes({ description: content })}
-							placeholder={__("description...")}
+							placeholder={
+								"Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo..."
+							}
 							className="wcb-cta__description"
 						/>
 					</div>
