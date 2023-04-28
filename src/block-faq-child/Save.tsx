@@ -55,7 +55,10 @@ export default function save({
 	return (
 		<div
 			{...blockProps}
-			className={`ac wcb-faq-child__wrap wcb-faq-child__wrap--${layout} `}
+			className={
+				`ac wcb-faq-child__wrap wcb-faq-child__wrap--${layout} ` +
+				` ${attributes.className}`
+			}
 			id={uniqueId}
 		>
 			<div className="ac-header">

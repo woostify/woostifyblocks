@@ -14,7 +14,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 	//
 	const blockProps = useBlockProps.save({
-		className: "wcb-select__wrap " + UNIQUE_NAME,
+		className: "wcb-select__wrap " + UNIQUE_NAME + ` ${attributes.className}`,
 	});
 
 	const renderSelect = () => {

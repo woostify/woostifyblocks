@@ -11,7 +11,9 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const UNIQUE_NAME = converUniqueId(uniqueId, "accept");
 
 	//
-	const blockProps = useBlockProps.save({ className: "wcb-accept__wrap" });
+	const blockProps = useBlockProps.save({
+		className: "wcb-accept__wrap" + ` ${attributes.className}`,
+	});
 
 	return (
 		<div {...blockProps} data-uniqueid={uniqueId}>

@@ -12,7 +12,9 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 	const UNIQUE_NAME = converUniqueId(uniqueId, "checkbox");
 	//
-	const blockProps = useBlockProps.save({ className: "wcb-checkbox__wrap" });
+	const blockProps = useBlockProps.save({
+		className: "wcb-checkbox__wrap" + ` ${attributes.className}`,
+	});
 
 	const renderCheckboxOptions = () => {
 		return (attributes.options || []).map((item, index) => (

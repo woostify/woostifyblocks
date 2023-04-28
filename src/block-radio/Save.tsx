@@ -14,7 +14,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 	//
 	const blockProps = useBlockProps.save({
-		className: "wcb-radio__wrap ",
+		className: "wcb-radio__wrap" + ` ${attributes.className}`,
 	});
 
 	const renderRadioOptions = () => {

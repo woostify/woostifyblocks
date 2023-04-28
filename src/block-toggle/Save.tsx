@@ -12,7 +12,9 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const { uniqueId, general_general } = attributes;
 	//
 	const UNIQUE_NAME = converUniqueId(uniqueId, "toggle");
-	const blockProps = useBlockProps.save({ className: "wcb-toggle__wrap" });
+	const blockProps = useBlockProps.save({
+		className: "wcb-toggle__wrap" + ` ${attributes.className}`,
+	});
 
 	return (
 		<label {...blockProps} data-uniqueid={uniqueId}>

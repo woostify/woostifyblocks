@@ -12,7 +12,9 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const UNIQUE_NAME = converUniqueId(uniqueId, "url");
 
 	//
-	const blockProps = useBlockProps.save({ className: "wcb-url__wrap" });
+	const blockProps = useBlockProps.save({
+		className: "wcb-url__wrap" + ` ${attributes.className}`,
+	});
 
 	return (
 		<label {...blockProps} data-uniqueid={uniqueId}>
