@@ -2061,7 +2061,7 @@ function save(_ref) {
   const ariaControls = uniqueId + "controls";
   const Htmltag = layout === "grid" ? "div" : "button";
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, blockProps, {
-    className: `ac wcb-faq-child__wrap wcb-faq-child__wrap--${layout} `,
+    className: `ac wcb-faq-child__wrap wcb-faq-child__wrap--${layout} ` + ` ${attributes.className || ""}`,
     id: uniqueId
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "ac-header"

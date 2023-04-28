@@ -2999,7 +2999,7 @@ function save(_ref) {
   const innerBlocksProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useInnerBlocksProps.save(blockProps);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_3__["default"], {
     attributes: newAttrForSave,
-    className: "wcb-buttons__wrap" + ` ${attributes.className}`,
+    className: "wcb-buttons__wrap" + ` ${attributes.className || ""}`,
     uniqueId: uniqueId
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps));
 }

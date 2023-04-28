@@ -35,12 +35,12 @@ export default function save({
 		align,
 	} = attributes;
 
-	const blockProps = useBlockProps.save({ className: "wcb-container__inner" });
+	const blockProps = useBlockProps.save({ className: "" });
 	const innerBlocksProps = useInnerBlocksProps.save(blockProps);
 
-	const { htmlTag: HtmlTag = "div", containerWidthType } = general_container;
+	const { htmlTag: HtmlTag = "div" } = general_container;
 
-	const { colunmGap, rowGap } = styles_dimensions;
+	// const { colunmGap, rowGap } = styles_dimensions;
 	// const GAPS_VARIABLES = getGapStyleFromGapjObj({ colunmGap, rowGap });
 	const GAPS_VARIABLES = {};
 
@@ -64,9 +64,12 @@ export default function save({
 			uniqueId={uniqueId}
 			anchor={anchor}
 			HtmlTag={HtmlTag}
-			className={`wcb-container__wrap ${
-				attributes.className
-			} ${containerClassName} ${align ? `align-${align}` : ""}`}
+			className={`wcb-container__wrap ${containerClassName} ${
+				innerBlocksProps.className || ""
+			}`}
+			// className={`wcb-container__wrap ${
+			// 	attributes.className || ""
+			// } ${containerClassName} ${innerBlocksProps.className || ""} ${align ? `align-${align}` : ""}`}
 		>
 			<>
 				{/*  */}
@@ -82,10 +85,11 @@ export default function save({
 
 				<div
 					{...innerBlocksProps}
-					className={(innerBlocksProps.className as string).replace(
-						/alignwide|alignfull/g,
-						""
-					)}
+					// className={(innerBlocksProps.className as string).replace(
+					// 	/alignwide|alignfull/g,
+					// 	""
+					// )}
+					className="wcb-container__inner"
 					id={undefined}
 					style={GAPS_VARIABLES}
 				/>

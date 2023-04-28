@@ -57,7 +57,7 @@ export default function save({
 			{...blockProps}
 			className={
 				`ac wcb-faq-child__wrap wcb-faq-child__wrap--${layout} ` +
-				` ${attributes.className}`
+				` ${attributes.className || ""}`
 			}
 			id={uniqueId}
 		>

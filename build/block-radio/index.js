@@ -592,7 +592,7 @@ function save(_ref) {
 
   //
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-    className: "wcb-radio__wrap "
+    className: "wcb-radio__wrap" + ` ${attributes.className || ""}`
   });
   const renderRadioOptions = () => {
     return (attributes.options || []).map((item, index) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {

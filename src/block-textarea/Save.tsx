@@ -13,7 +13,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const UNIQUE_NAME = converUniqueId(uniqueId, "textarea");
 	//
 	const blockProps = useBlockProps.save({
-		className: "wcb-textarea__wrap" + ` ${attributes.className}`,
+		className: "wcb-textarea__wrap" + ` ${attributes.className || ""}`,
 	});
 
 	return (

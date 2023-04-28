@@ -13,7 +13,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	//
 	const UNIQUE_NAME = converUniqueId(uniqueId, "toggle");
 	const blockProps = useBlockProps.save({
-		className: "wcb-toggle__wrap" + ` ${attributes.className}`,
+		className: "wcb-toggle__wrap" + ` ${attributes.className || ""}`,
 	});
 
 	return (

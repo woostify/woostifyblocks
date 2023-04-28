@@ -235,7 +235,7 @@ function save(_ref) {
   const UNIQUE_NAME = (0,_utils_converUniqueId__WEBPACK_IMPORTED_MODULE_6__["default"])(uniqueId, "textarea");
   //
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-    className: "wcb-textarea__wrap"
+    className: "wcb-textarea__wrap" + ` ${attributes.className || ""}`
   });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, blockProps, {
     "data-uniqueid": uniqueId

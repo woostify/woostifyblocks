@@ -3608,17 +3608,14 @@ function save(_ref) {
     align
   } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-    className: "wcb-container__inner"
+    className: ""
   });
   const innerBlocksProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useInnerBlocksProps.save(blockProps);
   const {
-    htmlTag: HtmlTag = "div",
-    containerWidthType
+    htmlTag: HtmlTag = "div"
   } = general_container;
-  const {
-    colunmGap,
-    rowGap
-  } = styles_dimensions;
+
+  // const { colunmGap, rowGap } = styles_dimensions;
   // const GAPS_VARIABLES = getGapStyleFromGapjObj({ colunmGap, rowGap });
   const GAPS_VARIABLES = {};
   const newAttrs = {
@@ -3639,7 +3636,10 @@ function save(_ref) {
     uniqueId: uniqueId,
     anchor: anchor,
     HtmlTag: HtmlTag,
-    className: `wcb-container__wrap ${attributes.className} ${containerClassName} ${align ? `align-${align}` : ""}`
+    className: `wcb-container__wrap ${containerClassName} ${innerBlocksProps.className || ""}`
+    // className={`wcb-container__wrap ${
+    // 	attributes.className || ""
+    // } ${containerClassName} ${innerBlocksProps.className || ""} ${align ? `align-${align}` : ""}`}
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_VideoBackgroundByBgControl__WEBPACK_IMPORTED_MODULE_5__["default"], {
     bgType: styles_background.bgType,
     videoData: styles_background.videoData
@@ -3647,7 +3647,11 @@ function save(_ref) {
     bgType: styles_background.bgType,
     overlayType: styles_background.overlayType
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, innerBlocksProps, {
-    className: innerBlocksProps.className.replace(/alignwide|alignfull/g, ""),
+    // className={(innerBlocksProps.className as string).replace(
+    // 	/alignwide|alignfull/g,
+    // 	""
+    // )}
+    className: "wcb-container__inner",
     id: undefined,
     style: GAPS_VARIABLES
   }))));

@@ -14,7 +14,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 	//
 	const blockProps = useBlockProps.save({
-		className: "wcb-phone__wrap" + ` ${attributes.className}`,
+		className: "wcb-phone__wrap" + ` ${attributes.className || ""}`,
 	});
 
 	return (

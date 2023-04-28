@@ -132,7 +132,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			"wcb-image__wrap " +
 			classes +
 			` wcb-image__wrap--${general_settings.layout}` +
-			` ${attributes.className}`,
+			` ${attributes.className || ""}`,
 	});
 	//
 	//

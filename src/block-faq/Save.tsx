@@ -49,7 +49,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	return (
 		<SaveCommon
 			attributes={newAttrForSave}
-			className={"wcb-faq__wrap" + ` ${attributes.className}`}
+			className={"wcb-faq__wrap" + ` ${attributes.className || ""}`}
 			uniqueId={uniqueId}
 		>
 			<div {...innerBlocksProps} />

@@ -3424,7 +3424,7 @@ function save(_ref) {
   const innerBlocksProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useInnerBlocksProps.save(blockProps);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__["default"], {
     attributes: newAttrForSave,
-    className: "wcb-button__wrap" + ` ${attributes.className}`,
+    className: "wcb-button__wrap" + ` ${attributes.className || ""}`,
     uniqueId: uniqueId
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_Button__WEBPACK_IMPORTED_MODULE_6__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     attributes: attributes,

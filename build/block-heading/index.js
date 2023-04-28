@@ -3377,7 +3377,7 @@ function save(_ref) {
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_5__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     attributes: newAttrForSave,
-    className: "wcb-heading__wrap" + ` ${attributes.className}`,
+    className: "wcb-heading__wrap" + ` ${attributes.className || ""}`,
     uniqueId: uniqueId,
     anchor: anchor
   }, blockProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, general_content.separatorPosition === "top" && renderSeparator(), general_content.showHeading ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.RichText.Content, {

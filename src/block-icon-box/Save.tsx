@@ -76,7 +76,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	return (
 		<SaveCommon
 			attributes={newAttrForSave}
-			className={"wcb-icon-box__wrap" + ` ${attributes.className}`}
+			className={"wcb-icon-box__wrap" + ` ${attributes.className || ""}`}
 			uniqueId={uniqueId}
 		>
 			{(general_icon.iconPosition === "top" ||

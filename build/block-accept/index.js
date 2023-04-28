@@ -163,7 +163,7 @@ function save(_ref) {
 
   //
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-    className: "wcb-accept__wrap"
+    className: "wcb-accept__wrap" + ` ${attributes.className || ""}`
   });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, blockProps, {
     "data-uniqueid": uniqueId

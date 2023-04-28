@@ -3268,7 +3268,7 @@ function save(_ref) {
   const HeadingTag = general_layout.headingTag;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__["default"], {
     attributes: newAttrForSave,
-    className: "wcb-icon-box__wrap" + ` ${attributes.className}`,
+    className: "wcb-icon-box__wrap" + ` ${attributes.className || ""}`,
     uniqueId: uniqueId
   }, (general_icon.iconPosition === "top" || general_icon.iconPosition === "left") && renderIcon(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wcb-icon-box__content"

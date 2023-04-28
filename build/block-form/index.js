@@ -3390,7 +3390,7 @@ function save(_ref) {
   const reCaptchaV3 = general_gg_recaptcha.enableReCaptcha && general_gg_recaptcha.version === "v3";
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_3__["default"], {
     attributes: newAttrForSave,
-    className: "wcb-form__wrap" + ` ${attributes.className}`,
+    className: "wcb-form__wrap" + ` ${attributes.className || ""}`,
     uniqueId: uniqueId,
     HtmlTag: "form"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps), reCaptchaV2 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {

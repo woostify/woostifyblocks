@@ -3554,7 +3554,7 @@ function save(_ref) {
   };
   //
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-    className: "wcb-testimonials__wrap" + ` ${attributes.className}`
+    className: "wcb-testimonials__wrap" + ` ${attributes.className || ""}`
   });
   let CURRENT_DATA = [...Array(general_general.numberofTestimonials || 3).keys()].map((_, index) => testimonials[index] || _Edit__WEBPACK_IMPORTED_MODULE_6__.TESTIMONIAL_ITEM_DEMO);
   const renderTestimonialItemContent = (item, index) => {

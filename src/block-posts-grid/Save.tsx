@@ -55,7 +55,7 @@ export default function save({
 	};
 	//
 	const blockProps = useBlockProps.save({
-		className: "wcb-posts-grid__wrap" + ` ${attributes.className}`,
+		className: "wcb-posts-grid__wrap" + ` ${attributes.className || ""}`,
 	});
 	return (
 		<SaveCommon attributes={newAttrForSave} uniqueId={uniqueId} {...blockProps}>

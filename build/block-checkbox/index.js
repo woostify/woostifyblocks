@@ -374,7 +374,7 @@ function save(_ref) {
   const UNIQUE_NAME = (0,_utils_converUniqueId__WEBPACK_IMPORTED_MODULE_6__["default"])(uniqueId, "checkbox");
   //
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-    className: "wcb-checkbox__wrap"
+    className: "wcb-checkbox__wrap" + ` ${attributes.className || ""}`
   });
   const renderCheckboxOptions = () => {
     return (attributes.options || []).map((item, index) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {

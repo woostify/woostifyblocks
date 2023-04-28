@@ -19,7 +19,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	};
 	//
 	const blockProps = useBlockProps.save({
-		className: "wcb-default__wrap " + attributes.className,
+		className: "wcb-default__wrap " + (attributes.className || ""),
 	});
 	return (
 		<SaveCommon

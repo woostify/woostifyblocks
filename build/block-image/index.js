@@ -4467,7 +4467,7 @@ function save(_ref) {
   //
   //
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__.useBlockProps.save({
-    className: "wcb-image__wrap " + classes + ` wcb-image__wrap--${general_settings.layout}` + ` ${attributes.className}`
+    className: "wcb-image__wrap " + classes + ` wcb-image__wrap--${general_settings.layout}` + ` ${attributes.className || ""}`
   });
   //
   //

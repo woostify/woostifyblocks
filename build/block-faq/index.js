@@ -3249,7 +3249,7 @@ function save(_ref) {
   //
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_3__["default"], {
     attributes: newAttrForSave,
-    className: "wcb-faq__wrap" + ` ${attributes.className}`,
+    className: "wcb-faq__wrap" + ` ${attributes.className || ""}`,
     uniqueId: uniqueId
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps));
 }
