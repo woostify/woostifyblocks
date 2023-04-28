@@ -26,7 +26,9 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_border,
 	};
 	//
-	const blockProps = useBlockProps.save({ className: "wcb-map__wrap" });
+	const blockProps = useBlockProps.save({
+		className: "wcb-map__wrap" + ` ${attributes.className}`,
+	});
 	return (
 		<SaveCommon attributes={newAttrForSave} uniqueId={uniqueId} {...blockProps}>
 			<div className="wcb-map__inner">

@@ -49,7 +49,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	};
 	//
 	const blockProps = useBlockProps.save({
-		className: "wcb-testimonials__wrap",
+		className: "wcb-testimonials__wrap" + ` ${attributes.className}`,
 	});
 
 	let CURRENT_DATA = [
@@ -168,12 +168,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	};
 
 	return (
-		<SaveCommon
-			attributes={newAttrForSave}
-			className="wcb-testimonials__wrap"
-			uniqueId={uniqueId}
-			{...blockProps}
-		>
+		<SaveCommon attributes={newAttrForSave} uniqueId={uniqueId} {...blockProps}>
 			{renderEditContent()}
 		</SaveCommon>
 	);

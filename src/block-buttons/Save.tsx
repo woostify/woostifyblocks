@@ -38,7 +38,7 @@ export default function save({ attributes }: { attributes: WcbAttrsForSave }) {
 	return (
 		<SaveCommon
 			attributes={newAttrForSave}
-			className="wcb-buttons__wrap"
+			className={"wcb-buttons__wrap" + ` ${attributes.className}`}
 			uniqueId={uniqueId}
 		>
 			<div {...innerBlocksProps} />

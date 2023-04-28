@@ -78,6 +78,7 @@ import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 	const {
+		className,
 		general_sortingAndFiltering,
 		advance_responsiveCondition,
 		advance_zIndex,
@@ -114,6 +115,7 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
+		if (uniqueId) return;
 		setAttributes({
 			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
@@ -596,6 +598,7 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	const WcbAttrsForServerSide = useMemo(() => {
 		return {
 			uniqueId,
+			className,
 			general_sortingAndFiltering,
 			general_pagination,
 			general_postContent,
@@ -605,6 +608,7 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 		};
 	}, [
 		uniqueId,
+		className,
 		general_sortingAndFiltering,
 		general_pagination,
 		general_postContent,

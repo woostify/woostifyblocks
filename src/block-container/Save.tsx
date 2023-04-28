@@ -64,9 +64,9 @@ export default function save({
 			uniqueId={uniqueId}
 			anchor={anchor}
 			HtmlTag={HtmlTag}
-			className={`wcb-container__wrap ${containerClassName} ${
-				align ? `align-${align}` : ""
-			}`}
+			className={`wcb-container__wrap ${
+				attributes.className
+			} ${containerClassName} ${align ? `align-${align}` : ""}`}
 		>
 			<>
 				{/*  */}

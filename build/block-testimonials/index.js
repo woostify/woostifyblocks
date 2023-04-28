@@ -3554,7 +3554,7 @@ function save(_ref) {
   };
   //
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-    className: "wcb-testimonials__wrap"
+    className: "wcb-testimonials__wrap" + ` ${attributes.className}`
   });
   let CURRENT_DATA = [...Array(general_general.numberofTestimonials || 3).keys()].map((_, index) => testimonials[index] || _Edit__WEBPACK_IMPORTED_MODULE_6__.TESTIMONIAL_ITEM_DEMO);
   const renderTestimonialItemContent = (item, index) => {
@@ -3643,7 +3643,6 @@ function save(_ref) {
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     attributes: newAttrForSave,
-    className: "wcb-testimonials__wrap",
     uniqueId: uniqueId
   }, blockProps), renderEditContent());
 }
@@ -5424,7 +5423,7 @@ function SaveCommon(_ref) {
     });
   }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(HtmlTag, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
-    className: `wcb-cl-common ${className} ${uniqueId} wcb-update-div`,
+    className: `wcb-cl-common wcb-update-div ${className.trim()} ${uniqueId.trim()}`,
     id: anchor || uniqueId || undefined,
     "data-uniqueid": uniqueId,
     "data-is-wcb-save-common": true

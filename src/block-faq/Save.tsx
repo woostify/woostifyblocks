@@ -37,8 +37,6 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_question,
 		style_icon,
 	};
-	// WRAP BLOCK
-	const blockProps = useBlockProps.save({ className: "wcb-faq__wrap" });
 
 	// INNER BLOCKS
 	const innerBlockProps = useBlockProps.save({
@@ -51,9 +49,8 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	return (
 		<SaveCommon
 			attributes={newAttrForSave}
-			className="wcb-faq__wrap"
+			className={"wcb-faq__wrap" + ` ${attributes.className}`}
 			uniqueId={uniqueId}
-			{...blockProps}
 		>
 			<div {...innerBlocksProps} />
 		</SaveCommon>

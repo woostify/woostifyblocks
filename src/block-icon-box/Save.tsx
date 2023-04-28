@@ -71,15 +71,13 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		);
 	};
 
-	const blockProps = useBlockProps.save({ className: "wcb-icon-box__wrap" });
 	const HeadingTag = general_layout.headingTag;
 
 	return (
 		<SaveCommon
 			attributes={newAttrForSave}
-			className="wcb-icon-box__wrap"
+			className={"wcb-icon-box__wrap" + ` ${attributes.className}`}
 			uniqueId={uniqueId}
-			{...blockProps}
 		>
 			{(general_icon.iconPosition === "top" ||
 				general_icon.iconPosition === "left") &&

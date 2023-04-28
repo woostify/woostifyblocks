@@ -281,6 +281,7 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
     ];
 
     $uniqueId =  $attributes['uniqueId'] ?? "";
+    $className =  $attributes['className'] ?? "";
 
     $sortingAndFiltering = isset($attributes["general_sortingAndFiltering"]) ? $attributes["general_sortingAndFiltering"] :  $DEFAULT_ATTRS["general_sortingAndFiltering"];
     $queries =   $sortingAndFiltering["queries"] ?? $DEFAULT_ATTRS["general_sortingAndFiltering"]["queries"];
@@ -342,7 +343,7 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
     <?php echo $content; ?>
 
     <!-- RENDER FOLLOW BY EDIT.TSX -->
-    <div class="wcb-posts-grid__wrap <?php echo esc_attr($uniqueId); ?> " data-uniqueid="<?php echo esc_attr($uniqueId); ?>">
+    <div class="wcb-posts-grid__wrap <?php echo esc_attr($uniqueId); ?> <?php echo esc_attr($className); ?>" data-uniqueid="<?php echo esc_attr($uniqueId); ?>">
         <div class="wcb-posts-grid__list-posts">
             <?php if ($the_query->have_posts()) : ?>
                 <!-- the loop -->

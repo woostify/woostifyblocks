@@ -4467,7 +4467,7 @@ function save(_ref) {
   //
   //
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__.useBlockProps.save({
-    className: "wcb-image__wrap " + classes + ` wcb-image__wrap--${general_settings.layout}`
+    className: "wcb-image__wrap " + classes + ` wcb-image__wrap--${general_settings.layout}` + ` ${attributes.className}`
   });
   //
   //
@@ -4483,7 +4483,6 @@ function save(_ref) {
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_3__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     attributes: newAttrForSave,
-    className: `wcb-image__wrap wcb-image__wrap--${general_settings.layout}`,
     uniqueId: uniqueId,
     HtmlTag: "figure"
   }, blockProps), figure, general_settings.layout === "overlay" && renderOverlay());
@@ -5743,7 +5742,7 @@ function SaveCommon(_ref) {
     });
   }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(HtmlTag, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
-    className: `wcb-cl-common ${className} ${uniqueId} wcb-update-div`,
+    className: `wcb-cl-common wcb-update-div ${className.trim()} ${uniqueId.trim()}`,
     id: anchor || uniqueId || undefined,
     "data-uniqueid": uniqueId,
     "data-is-wcb-save-common": true

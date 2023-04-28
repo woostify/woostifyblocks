@@ -2777,6 +2777,7 @@ const Edit = props => {
     clientId
   } = props;
   const {
+    className,
     general_sortingAndFiltering,
     advance_responsiveCondition,
     advance_zIndex,
@@ -2813,6 +2814,7 @@ const Edit = props => {
   // make uniqueid
   const UNIQUE_ID = wrapBlockProps.id;
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
+    if (uniqueId) return;
     setAttributes({
       uniqueId: (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_32__["default"])(UNIQUE_ID)
     });
@@ -3180,6 +3182,7 @@ const Edit = props => {
   const WcbAttrsForServerSide = (0,react__WEBPACK_IMPORTED_MODULE_2__.useMemo)(() => {
     return {
       uniqueId,
+      className,
       general_sortingAndFiltering,
       general_pagination,
       general_postContent,
@@ -3187,7 +3190,7 @@ const Edit = props => {
       general_postMeta,
       general_readmoreLink
     };
-  }, [uniqueId, general_sortingAndFiltering, general_pagination, general_postContent, general_postFeaturedImage, general_postMeta, general_readmoreLink]);
+  }, [uniqueId, className, general_sortingAndFiltering, general_pagination, general_postContent, general_postFeaturedImage, general_postMeta, general_readmoreLink]);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_26__["default"], {
     uniqueKey: clientId
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", wrapBlockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -3691,7 +3694,7 @@ function save(_ref) {
   };
   //
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-    className: "wcb-posts-grid__wrap"
+    className: "wcb-posts-grid__wrap" + ` ${attributes.className}`
   });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     attributes: newAttrForSave,
@@ -6128,7 +6131,7 @@ function SaveCommon(_ref) {
     });
   }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(HtmlTag, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
-    className: `wcb-cl-common ${className} ${uniqueId} wcb-update-div`,
+    className: `wcb-cl-common wcb-update-div ${className.trim()} ${uniqueId.trim()}`,
     id: anchor || uniqueId || undefined,
     "data-uniqueid": uniqueId,
     "data-is-wcb-save-common": true

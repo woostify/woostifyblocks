@@ -7,6 +7,7 @@ function wcb_block_products__renderCallback($attributes, $content)
     // 
     $sortingAndFilteringAttrs = $attributes['general_sortingAndFiltering'] ?? [];
     $uniqueId =  $attributes['uniqueId'] ?? "";
+    $className =  $attributes['className'] ?? "";
 
     $queryArgs = wcb_block_products_parse_filterAttributes($sortingAndFilteringAttrs);
     // 
@@ -22,7 +23,7 @@ function wcb_block_products__renderCallback($attributes, $content)
 ?>
 
     <?php echo $content; ?>
-    <div class="wcb-products__wrap <?php echo esc_attr($uniqueId); ?> " data-uniqueid="<?php echo esc_attr($uniqueId); ?>">
+    <div class="wcb-products__wrap <?php echo esc_attr($uniqueId); ?> <?php echo esc_attr($className); ?>" data-uniqueid="<?php echo esc_attr($uniqueId); ?>">
 
         <?php
         if ($loop->have_posts()) :

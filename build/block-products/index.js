@@ -2835,6 +2835,7 @@ const Edit = props => {
     clientId
   } = props;
   const {
+    className,
     advance_responsiveCondition,
     advance_zIndex,
     general_sortingAndFiltering,
@@ -2866,6 +2867,7 @@ const Edit = props => {
   // make uniqueid
   const UNIQUE_ID = wrapBlockProps.id;
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
+    if (uniqueId) return;
     setAttributes({
       uniqueId: (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_29__["default"])(UNIQUE_ID)
     });
@@ -3217,6 +3219,7 @@ const Edit = props => {
   }, [uniqueId, advance_responsiveCondition, advance_zIndex, general_sortingAndFiltering, general_content, general_featuredImage, general_addToCartBtn, general_pagination, style_title, style_featuredImage, style_layout, style_addToCardBtn, style_pagination, style_saleBadge, style_border, style_price, style_rating]);
   const WcbAttrsForServerSide = (0,react__WEBPACK_IMPORTED_MODULE_3__.useMemo)(() => {
     return {
+      className,
       uniqueId,
       general_sortingAndFiltering,
       general_content,
@@ -3224,7 +3227,7 @@ const Edit = props => {
       general_addToCartBtn,
       general_pagination
     };
-  }, [uniqueId, general_sortingAndFiltering, general_content, general_featuredImage, general_addToCartBtn, general_pagination]);
+  }, [uniqueId, className, general_sortingAndFiltering, general_content, general_featuredImage, general_addToCartBtn, general_pagination]);
   const WcbAttrsForSaveValue = WcbAttrsForSave();
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_11__["default"], {
     uniqueKey: clientId
@@ -3839,7 +3842,7 @@ function save(_ref) {
   };
   //
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-    className: "wcb-products__wrap"
+    className: "wcb-products__wrap" + ` ${attributes.className}`
   });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     attributes: newAttrForSave,
@@ -7670,7 +7673,7 @@ function SaveCommon(_ref) {
     });
   }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(HtmlTag, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
-    className: `wcb-cl-common ${className} ${uniqueId} wcb-update-div`,
+    className: `wcb-cl-common wcb-update-div ${className.trim()} ${uniqueId.trim()}`,
     id: anchor || uniqueId || undefined,
     "data-uniqueid": uniqueId,
     "data-is-wcb-save-common": true

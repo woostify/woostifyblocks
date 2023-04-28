@@ -39,7 +39,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	return (
 		<SaveCommon
 			attributes={newAttrForSave}
-			className="wcb-cta__wrap"
+			className={"wcb-cta__wrap" + ` ${attributes.className}`}
 			uniqueId={uniqueId}
 			{...blockProps}
 		>

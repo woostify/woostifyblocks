@@ -79,6 +79,7 @@ interface Props extends EditProps<WcbAttrs> {}
 const Edit: FC<Props> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 	const {
+		className,
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_sortingAndFiltering,
@@ -110,6 +111,7 @@ const Edit: FC<Props> = (props) => {
 	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
+		if (uniqueId) return;
 		setAttributes({
 			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
@@ -556,6 +558,7 @@ const Edit: FC<Props> = (props) => {
 
 	const WcbAttrsForServerSide = useMemo(() => {
 		return {
+			className,
 			uniqueId,
 			general_sortingAndFiltering,
 			general_content,
@@ -565,6 +568,7 @@ const Edit: FC<Props> = (props) => {
 		};
 	}, [
 		uniqueId,
+		className,
 		general_sortingAndFiltering,
 		general_content,
 		general_featuredImage,

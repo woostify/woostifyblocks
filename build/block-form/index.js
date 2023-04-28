@@ -3390,7 +3390,7 @@ function save(_ref) {
   const reCaptchaV3 = general_gg_recaptcha.enableReCaptcha && general_gg_recaptcha.version === "v3";
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_3__["default"], {
     attributes: newAttrForSave,
-    className: "wcb-form__wrap",
+    className: "wcb-form__wrap" + ` ${attributes.className}`,
     uniqueId: uniqueId,
     HtmlTag: "form"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps), reCaptchaV2 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -5478,7 +5478,7 @@ function SaveCommon(_ref) {
     });
   }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(HtmlTag, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
-    className: `wcb-cl-common ${className} ${uniqueId} wcb-update-div`,
+    className: `wcb-cl-common wcb-update-div ${className.trim()} ${uniqueId.trim()}`,
     id: anchor || uniqueId || undefined,
     "data-uniqueid": uniqueId,
     "data-is-wcb-save-common": true

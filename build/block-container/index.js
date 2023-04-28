@@ -3639,7 +3639,7 @@ function save(_ref) {
     uniqueId: uniqueId,
     anchor: anchor,
     HtmlTag: HtmlTag,
-    className: `wcb-container__wrap ${containerClassName} ${align ? `align-${align}` : ""}`
+    className: `wcb-container__wrap ${attributes.className} ${containerClassName} ${align ? `align-${align}` : ""}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_VideoBackgroundByBgControl__WEBPACK_IMPORTED_MODULE_5__["default"], {
     bgType: styles_background.bgType,
     videoData: styles_background.videoData
@@ -4683,7 +4683,7 @@ function SaveCommon(_ref) {
     });
   }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(HtmlTag, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
-    className: `wcb-cl-common ${className} ${uniqueId} wcb-update-div`,
+    className: `wcb-cl-common wcb-update-div ${className.trim()} ${uniqueId.trim()}`,
     id: anchor || uniqueId || undefined,
     "data-uniqueid": uniqueId,
     "data-is-wcb-save-common": true

@@ -18,7 +18,9 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		advance_zIndex,
 	};
 	//
-	const blockProps = useBlockProps.save({ className: "wcb-default__wrap" });
+	const blockProps = useBlockProps.save({
+		className: "wcb-default__wrap " + attributes.className,
+	});
 	return (
 		<SaveCommon
 			attributes={newAttrForSave}

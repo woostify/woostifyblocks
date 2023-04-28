@@ -34,7 +34,7 @@ function SaveCommon<T>({
 	return (
 		<HtmlTag
 			{...props}
-			className={`wcb-cl-common ${className} ${uniqueId} wcb-update-div`}
+			className={`wcb-cl-common wcb-update-div ${className.trim()} ${uniqueId.trim()}`}
 			id={anchor || uniqueId || undefined}
 			data-uniqueid={uniqueId}
 			data-is-wcb-save-common

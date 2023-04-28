@@ -60,7 +60,7 @@ export default function save({
 	return (
 		<SaveCommon
 			attributes={newAttrForSave}
-			className="wcb-heading__wrap"
+			className={"wcb-heading__wrap" + ` ${attributes.className}`}
 			uniqueId={uniqueId}
 			anchor={anchor}
 			{...blockProps}

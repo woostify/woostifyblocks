@@ -53,15 +53,12 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		) : null;
 	};
 
-	const blockProps = useBlockProps.save({ className: "wcb-team__wrap" });
+	const blockProps = useBlockProps.save({
+		className: "wcb-team__wrap" + ` ${attributes.className}`,
+	});
 	const HeadingTag = general_layout.headingTag;
 	return (
-		<SaveCommon
-			attributes={newAttrForSave}
-			className="wcb-team__wrap"
-			uniqueId={uniqueId}
-			{...blockProps}
-		>
+		<SaveCommon attributes={newAttrForSave} uniqueId={uniqueId} {...blockProps}>
 			{(general_image.imagePosition === "left" ||
 				general_image.imagePosition === "top") &&
 				renderImage()}
