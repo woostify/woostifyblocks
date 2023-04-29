@@ -19,6 +19,7 @@ import "./style.scss";
  */
 import Edit from "./Edit";
 import save from "./Save";
+import Save_240823 from "./Save_240823";
 import metadata from "./block.json";
 const { Fragment } = wp.element;
 const { withSelect } = wp.data;
@@ -30,6 +31,12 @@ registerBlockType(metadata.name, {
 	edit: Edit,
 	save,
 	attributes,
+	deprecated: [
+		{
+			attributes,
+			save: Save_240823,
+		},
+	],
 	icon: (
 		<svg
 			className="wcb-editor-block-icons fill-none "

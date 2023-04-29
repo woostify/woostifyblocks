@@ -2642,15 +2642,12 @@ const Edit = props => {
     advance_zIndex,
     general_container,
     general_flexProperties,
-    isShowVariations,
     styles_background,
     styles_border,
     styles_boxShadow,
     styles_color,
     styles_dimensions
   } = attributes;
-
-  // const { myCache, ref } = useCreateCacheEmotion();
   const ref = (0,react__WEBPACK_IMPORTED_MODULE_6__.useRef)(null);
   const {
     tabIsOpen,
@@ -2672,17 +2669,10 @@ const Edit = props => {
     };
   }, [clientId]);
   const {
-    containerWidthType,
-    htmlTag
+    containerWidthType
   } = general_container;
   (0,react__WEBPACK_IMPORTED_MODULE_6__.useEffect)(() => {
     let cl = "";
-    // containerWidthType === "Full Width"
-    // 	? "alignfull"
-    // 	: containerWidthType === "Boxed"
-    // 	? "alignwide"
-    // 	: "";
-
     if (hasParent) {
       cl = "is_wcb_container_child";
     }
@@ -2881,7 +2871,6 @@ const Edit = props => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_24__["default"], {
     uniqueKey: clientId
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, blockWrapProps, {
-    className: `${blockWrapProps.className} `,
     "data-uniqueid": uniqueId
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_17__["default"], WcbAttrsForSave()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_VideoBackgroundByBgControl__WEBPACK_IMPORTED_MODULE_18__["default"], {
     bgType: styles_background.bgType,
@@ -3592,7 +3581,6 @@ function save(_ref) {
     attributes
   } = _ref;
   const {
-    isShowVariations,
     styles_background,
     uniqueId,
     general_container,
@@ -3603,14 +3591,8 @@ function save(_ref) {
     styles_border,
     styles_boxShadow,
     styles_color,
-    containerClassName,
-    anchor,
-    align
+    containerClassName
   } = attributes;
-  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-    className: ""
-  });
-  const innerBlocksProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useInnerBlocksProps.save(blockProps);
   const {
     htmlTag: HtmlTag = "div"
   } = general_container;
@@ -3631,30 +3613,29 @@ function save(_ref) {
     styles_color,
     containerClassName
   };
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_7__["default"], {
+
+  //
+  const wrapBlockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
+    className: "wcb-container__wrap " + containerClassName
+  });
+  //
+  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save();
+  const innerBlocksProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useInnerBlocksProps.save(blockProps);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_7__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
     attributes: newAttrs,
     uniqueId: uniqueId,
-    anchor: anchor,
-    HtmlTag: HtmlTag,
-    className: `wcb-container__wrap ${containerClassName} ${innerBlocksProps.className || ""}`
-    // className={`wcb-container__wrap ${
-    // 	attributes.className || ""
-    // } ${containerClassName} ${innerBlocksProps.className || ""} ${align ? `align-${align}` : ""}`}
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_VideoBackgroundByBgControl__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    HtmlTag: HtmlTag
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_VideoBackgroundByBgControl__WEBPACK_IMPORTED_MODULE_5__["default"], {
     bgType: styles_background.bgType,
     videoData: styles_background.videoData
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_OverlayBackgroundByBgControl__WEBPACK_IMPORTED_MODULE_6__["default"], {
     bgType: styles_background.bgType,
     overlayType: styles_background.overlayType
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, innerBlocksProps, {
-    // className={(innerBlocksProps.className as string).replace(
-    // 	/alignwide|alignfull/g,
-    // 	""
-    // )}
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    children: innerBlocksProps.children,
     className: "wcb-container__inner",
-    id: undefined,
     style: GAPS_VARIABLES
-  }))));
+  })));
 }
 
 /***/ }),
@@ -4664,16 +4645,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// @ts-ignore
-
 function SaveCommon(_ref) {
   let {
-    anchor,
     className = "",
     uniqueId = "",
     HtmlTag = "div",
     children,
     attributes,
+    id,
     ...props
   } = _ref;
   let blockJson = "";
@@ -4687,8 +4666,8 @@ function SaveCommon(_ref) {
     });
   }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(HtmlTag, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
-    className: `wcb-cl-common wcb-update-div ${className.trim()} ${uniqueId.trim()}`,
-    id: anchor || uniqueId || undefined,
+    className: `wcb-cm wcb-update-div ${className.trim()} ${uniqueId.trim()}`,
+    id: id || attributes?.anchor,
     "data-uniqueid": uniqueId,
     "data-is-wcb-save-common": true
   }), children, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {

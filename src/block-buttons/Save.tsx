@@ -31,17 +31,23 @@ export default function save({ attributes }: { attributes: WcbAttrsForSave }) {
 		advance_responsiveCondition,
 		advance_zIndex,
 	};
+
+	//
+	const wrapBlockProps = useBlockProps.save({ className: "wcb-buttons__wrap" });
 	//
 	const blockProps = useBlockProps.save({ className: "wcb-buttons__inner" });
 	const innerBlocksProps = useInnerBlocksProps.save(blockProps);
 
 	return (
 		<SaveCommon
+			{...wrapBlockProps}
 			attributes={newAttrForSave}
-			className={"wcb-buttons__wrap" + ` ${attributes.className || ""}`}
 			uniqueId={uniqueId}
 		>
-			<div {...innerBlocksProps} />
+			<div
+				children={innerBlocksProps.children}
+				className="wcb-buttons__inner"
+			/>
 		</SaveCommon>
 	);
 }

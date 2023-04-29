@@ -11,7 +11,8 @@
   "icon": "- wcb-block-editor-block-icon lni lni-checkmark-circle text-xl",
   "description": "Example static block scaffolded with Create Block tool.",
   "supports": {
-    "__experimentalSelector": "span,label"
+    "__experimentalSelector": "span,label",
+    "anchor": true
   },
   "textdomain": "wcb-blocks",
   "editorScript": "file:./index.js",

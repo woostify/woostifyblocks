@@ -73,7 +73,6 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		advance_zIndex,
 		general_container,
 		general_flexProperties,
-		isShowVariations,
 		styles_background,
 		styles_border,
 		styles_boxShadow,
@@ -81,7 +80,6 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		styles_dimensions,
 	} = attributes;
 
-	// const { myCache, ref } = useCreateCacheEmotion();
 	const ref = useRef<HTMLDivElement>(null);
 	const {
 		tabIsOpen,
@@ -104,19 +102,12 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 		[clientId]
 	);
 
-	const { containerWidthType, htmlTag } = general_container;
+	const { containerWidthType } = general_container;
 	useEffect(() => {
 		let cl = "";
-		// containerWidthType === "Full Width"
-		// 	? "alignfull"
-		// 	: containerWidthType === "Boxed"
-		// 	? "alignwide"
-		// 	: "";
-
 		if (hasParent) {
 			cl = "is_wcb_container_child";
 		}
-
 		setAttributes({ containerClassName: cl });
 	}, [hasParent, containerWidthType]);
 
@@ -360,11 +351,7 @@ const Edit: FC<EditProps<BlockWCBContainerAttrs>> = (props) => {
 
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
-			<div
-				{...blockWrapProps}
-				className={`${blockWrapProps.className} `}
-				data-uniqueid={uniqueId}
-			>
+			<div {...blockWrapProps} data-uniqueid={uniqueId}>
 				{/*  */}
 				<GlobalCss {...WcbAttrsForSave()} />
 

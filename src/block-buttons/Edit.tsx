@@ -32,7 +32,6 @@ import {
 import WcbButtonsPanel_StyleText from "./WcbButtonsPanel_StyleText";
 import WcbButtonsPanel_StyleDimension, {
 	WCB_BUTTONS_PANEL_STYLE_DIMENSION,
-	WCB_BUTTONS_PANEL_STYLE_DIMENSION_DEMO,
 } from "./WcbButtonsPanel_StyleDimension";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
@@ -55,11 +54,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 	const ref = useRef<HTMLDivElement>(null);
 
-	// const { myCache, ref } = useCreateCacheEmotion("wcb-button");
-
 	const wrapBlockProps = useBlockProps({ ref });
 	const {
-		tabIsOpen,
 		tabAdvancesIsPanelOpen,
 		tabGeneralIsPanelOpen,
 		tabStylesIsPanelOpen,
@@ -262,7 +258,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
-				className={`wcb-buttons__wrap ${uniqueId} ${wrapBlockProps.className} `}
+				className={`wcb-buttons__wrap ${uniqueId} ${wrapBlockProps.className}`}
 				data-uniqueid={uniqueId}
 			>
 				{/*  */}

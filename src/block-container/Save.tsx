@@ -19,7 +19,6 @@ export default function save({
 	attributes: BlockWCBContainerAttrs;
 }) {
 	const {
-		isShowVariations,
 		styles_background,
 		uniqueId,
 		general_container,
@@ -31,12 +30,7 @@ export default function save({
 		styles_boxShadow,
 		styles_color,
 		containerClassName,
-		anchor,
-		align,
 	} = attributes;
-
-	const blockProps = useBlockProps.save({ className: "" });
-	const innerBlocksProps = useInnerBlocksProps.save(blockProps);
 
 	const { htmlTag: HtmlTag = "div" } = general_container;
 
@@ -58,21 +52,22 @@ export default function save({
 		containerClassName,
 	};
 
+	//
+	const wrapBlockProps = useBlockProps.save({
+		className: "wcb-container__wrap " + containerClassName,
+	});
+	//
+	const blockProps = useBlockProps.save();
+	const innerBlocksProps = useInnerBlocksProps.save(blockProps);
+
 	return (
 		<SaveCommon
+			{...wrapBlockProps}
 			attributes={newAttrs}
 			uniqueId={uniqueId}
-			anchor={anchor}
 			HtmlTag={HtmlTag}
-			className={`wcb-container__wrap ${containerClassName} ${
-				innerBlocksProps.className || ""
-			}`}
-			// className={`wcb-container__wrap ${
-			// 	attributes.className || ""
-			// } ${containerClassName} ${innerBlocksProps.className || ""} ${align ? `align-${align}` : ""}`}
 		>
 			<>
-				{/*  */}
 				<VideoBackgroundByBgControl
 					bgType={styles_background.bgType}
 					videoData={styles_background.videoData}
@@ -81,16 +76,9 @@ export default function save({
 					bgType={styles_background.bgType}
 					overlayType={styles_background.overlayType}
 				/>
-				{/*  */}
-
 				<div
-					{...innerBlocksProps}
-					// className={(innerBlocksProps.className as string).replace(
-					// 	/alignwide|alignfull/g,
-					// 	""
-					// )}
+					children={innerBlocksProps.children}
 					className="wcb-container__inner"
-					id={undefined}
 					style={GAPS_VARIABLES}
 				/>
 			</>

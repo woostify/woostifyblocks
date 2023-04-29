@@ -88,7 +88,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		tabStylesIsPanelOpen,
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
-	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
 	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;

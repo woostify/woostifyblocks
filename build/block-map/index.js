@@ -3940,16 +3940,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// @ts-ignore
-
 function SaveCommon(_ref) {
   let {
-    anchor,
     className = "",
     uniqueId = "",
     HtmlTag = "div",
     children,
     attributes,
+    id,
     ...props
   } = _ref;
   let blockJson = "";
@@ -3963,8 +3961,8 @@ function SaveCommon(_ref) {
     });
   }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(HtmlTag, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
-    className: `wcb-cl-common wcb-update-div ${className.trim()} ${uniqueId.trim()}`,
-    id: anchor || uniqueId || undefined,
+    className: `wcb-cm wcb-update-div ${className.trim()} ${uniqueId.trim()}`,
+    id: id || attributes?.anchor,
     "data-uniqueid": uniqueId,
     "data-is-wcb-save-common": true
   }), children, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {

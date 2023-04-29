@@ -147,7 +147,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// @ts-ignore
 
 
 
@@ -163,7 +162,7 @@ function save(_ref) {
 
   //
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-    className: "wcb-accept__wrap" + ` ${attributes.className || ""}`
+    className: "wcb-accept__wrap"
   });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, blockProps, {
     "data-uniqueid": uniqueId
@@ -927,7 +926,7 @@ function _extends() {
   \*************************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/accept","version":"0.1.0","title":"Accept","parent":["wcb/form"],"category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-checkmark-circle text-xl","description":"Example static block scaffolded with Create Block tool.","supports":{"__experimentalSelector":"span,label"},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/accept","version":"0.1.0","title":"Accept","parent":["wcb/form"],"category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-checkmark-circle text-xl","description":"Example static block scaffolded with Create Block tool.","supports":{"__experimentalSelector":"span,label","anchor":true},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

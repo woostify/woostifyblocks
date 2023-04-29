@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from "react";
 import { __ } from "@wordpress/i18n";
 import _ from "lodash";
-import { WcbAttrsCommonFromWp } from "../block-container/attributes";
+import { WcbAttrsCommonFromWp } from "../../block-container/attributes";
 // @ts-ignore
 interface Props<T = any> {
 	className?: string;
