@@ -78,6 +78,8 @@ import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 	const {
+		anchor,
+		align,
 		className,
 		general_sortingAndFiltering,
 		advance_responsiveCondition,

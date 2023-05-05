@@ -8,6 +8,10 @@ function wcb_block_products__renderCallback($attributes, $content)
     $sortingAndFilteringAttrs = $attributes['general_sortingAndFiltering'] ?? [];
     $uniqueId =  $attributes['uniqueId'] ?? "";
     $className =  $attributes['className'] ?? "";
+    $align =  $attributes['align'] ?? "";
+    if (!empty($align)) {
+        $className .= " align" . $align;
+    }
 
     $queryArgs = wcb_block_products_parse_filterAttributes($sortingAndFilteringAttrs);
     // 

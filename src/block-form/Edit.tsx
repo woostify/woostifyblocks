@@ -350,10 +350,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				<HOCInspectorControls
 					uniqueId={uniqueId}
 					renderTabPanels={renderTabBodyPanels}
-					// onChangeActive={(tab) => {
-					// 	handleTogglePanel(tab);
-					// }}
-					// tabDefaultActive={tabIsOpen}
 				/>
 			</form>
 		</MyCacheProvider>

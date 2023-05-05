@@ -3,10 +3,8 @@ import React, { FC } from "react";
 import { isBlobURL } from "@wordpress/blob";
 import {
 	ExternalLink,
-	PanelBody,
 	ResizableBox,
 	Spinner,
-	TextareaControl,
 	TextControl,
 	ToolbarButton,
 } from "@wordpress/components";
@@ -39,17 +37,8 @@ import {
 } from "@wordpress/element";
 import { __, sprintf, isRTL } from "@wordpress/i18n";
 import { getFilename } from "@wordpress/url";
-import {
-	createBlock,
-	getDefaultBlockName,
-	switchToBlockType,
-} from "@wordpress/blocks";
-import {
-	crop,
-	overlayText,
-	upload,
-	caption as captionIcon,
-} from "@wordpress/icons";
+import { createBlock, getDefaultBlockName } from "@wordpress/blocks";
+import { crop, upload, caption as captionIcon } from "@wordpress/icons";
 // @ts-ignore
 import { store as noticesStore } from "@wordpress/notices";
 import { store as coreStore } from "@wordpress/core-data";
@@ -300,12 +289,14 @@ const Image: FC<ImageProps> = ({
 				}
 
 				setExternalBlob(undefined);
+				// @ts-ignore
 				createSuccessNotice(__("Image uploaded."), {
 					type: "snackbar",
 				});
 			},
 			allowedTypes: ALLOWED_MEDIA_TYPES,
 			onError(message) {
+				// @ts-ignore
 				createErrorNotice(message, { type: "snackbar" });
 			},
 		});
@@ -747,7 +738,9 @@ const Image: FC<ImageProps> = ({
 					value={caption}
 					onChange={(value) => setAttributes({ caption: value })}
 					inlineToolbar
+					// @ts-ignore
 					__unstableOnSplitAtEnd={() =>
+						// @ts-ignore
 						insertBlocksAfter(createBlock(getDefaultBlockName()))
 					}
 				/>

@@ -575,7 +575,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// @ts-ignore
 
 
 
@@ -592,7 +591,7 @@ function save(_ref) {
 
   //
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-    className: "wcb-radio__wrap" + ` ${attributes.className || ""}`
+    className: "wcb-radio__wrap"
   });
   const renderRadioOptions = () => {
     return (attributes.options || []).map((item, index) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
@@ -1144,7 +1143,7 @@ const PLANS_DEMO = [{
 		</svg>
 		`
 }];
-const MyRadioGroup = _ref => {
+function MyRadioGroup(_ref) {
   let {
     onChange = () => {},
     value,
@@ -1204,7 +1203,7 @@ const MyRadioGroup = _ref => {
       }));
     });
   })));
-};
+}
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyRadioGroup);
 
 /***/ }),

@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { RichText, useBlockProps } from "@wordpress/block-editor";
+import { useBlockProps } from "@wordpress/block-editor";
 import React, { useEffect, FC } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {

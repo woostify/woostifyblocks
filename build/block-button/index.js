@@ -6872,7 +6872,7 @@ const PLANS_DEMO = [{
 		</svg>
 		`
 }];
-const MyRadioGroup = _ref => {
+function MyRadioGroup(_ref) {
   let {
     onChange = () => {},
     value,
@@ -6932,7 +6932,7 @@ const MyRadioGroup = _ref => {
       }));
     });
   })));
-};
+}
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyRadioGroup);
 
 /***/ }),

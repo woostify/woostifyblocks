@@ -1,6 +1,7 @@
 import React from "react";
 import { __ } from "@wordpress/i18n";
-import { InnerBlocks, RichText, useBlockProps } from "@wordpress/block-editor";
+import { useBlockProps } from "@wordpress/block-editor";
+import { InnerBlocks, RichText } from "@wordpress/block-editor";
 import { WcbAttrs } from "./attributes";
 import SaveCommon from "../components/SaveCommon";
 import "./style.scss";
@@ -73,10 +74,16 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 	const HeadingTag = general_layout.headingTag;
 
+	//
+	const wrapBlockProps = useBlockProps.save({
+		className: "wcb-icon-box__wrap",
+	});
+	//
+
 	return (
 		<SaveCommon
+			{...wrapBlockProps}
 			attributes={newAttrForSave}
-			className={"wcb-icon-box__wrap" + ` ${attributes.className || ""}`}
 			uniqueId={uniqueId}
 		>
 			{(general_icon.iconPosition === "top" ||

@@ -7,7 +7,7 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
     // 
 
     $DEFAULT_ATTRS = [
-        'uniqueId' => 'xxblock-ea687c0d-0eda-4ebf-a7c2-cbcaca07bbe8-xx',
+        'uniqueId' => 'xxblock-wcb_posts',
         'general_sortingAndFiltering' =>  [
             'queries' =>  [
                 'postType'              => 'post',
@@ -282,6 +282,11 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
 
     $uniqueId =  $attributes['uniqueId'] ?? "";
     $className =  $attributes['className'] ?? "";
+    $align =  $attributes['align'] ?? "";
+    if (!empty($align)) {
+        $className .= " align" . $align;
+    }
+
 
     $sortingAndFiltering = isset($attributes["general_sortingAndFiltering"]) ? $attributes["general_sortingAndFiltering"] :  $DEFAULT_ATTRS["general_sortingAndFiltering"];
     $queries =   $sortingAndFiltering["queries"] ?? $DEFAULT_ATTRS["general_sortingAndFiltering"]["queries"];

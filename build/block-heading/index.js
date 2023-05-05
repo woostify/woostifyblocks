@@ -2890,7 +2890,7 @@ const Edit = props => {
     tagName: general_content.headingTag || "h2",
     className: "wcb-heading__heading",
     value: heading,
-    placeholder: "Add heading here",
+    placeholder: "Add heading",
     onChange: heading => setAttributes({
       heading
     })
@@ -2902,7 +2902,7 @@ const Edit = props => {
     onChange: subHeading => setAttributes({
       subHeading
     }),
-    placeholder: "Add sub heading here"
+    placeholder: "Add sub heading"
   }) : null, general_content.separatorPosition === "bottom" && renderSeparator()));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
@@ -3332,7 +3332,6 @@ function save(_ref) {
     attributes
   } = _ref;
   const {
-    anchor,
     uniqueId,
     heading,
     subHeading,
@@ -3365,9 +3364,7 @@ function save(_ref) {
     styles_border
   };
   //
-  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.useBlockProps.save({
-    className: "wcb-heading__wrap"
-  });
+
   const renderSeparator = () => {
     return general_content.showSeparator ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "wcb-heading__separator-wrap"
@@ -3375,12 +3372,16 @@ function save(_ref) {
       className: "wcb-heading__separator"
     })) : null;
   };
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_5__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+
+  //
+  const wrapBlockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.useBlockProps.save({
+    className: "wcb-heading__wrap"
+  });
+  //
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_5__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
     attributes: newAttrForSave,
-    className: "wcb-heading__wrap" + ` ${attributes.className || ""}`,
-    uniqueId: uniqueId,
-    anchor: anchor
-  }, blockProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, general_content.separatorPosition === "top" && renderSeparator(), general_content.showHeading ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.RichText.Content, {
+    uniqueId: uniqueId
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, general_content.separatorPosition === "top" && renderSeparator(), general_content.showHeading ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.RichText.Content, {
     tagName: general_content.headingTag || "h2",
     className: "wcb-heading__heading",
     value: heading
@@ -6202,7 +6203,7 @@ const PLANS_DEMO = [{
 		</svg>
 		`
 }];
-const MyRadioGroup = _ref => {
+function MyRadioGroup(_ref) {
   let {
     onChange = () => {},
     value,
@@ -6262,7 +6263,7 @@ const MyRadioGroup = _ref => {
       }));
     });
   })));
-};
+}
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyRadioGroup);
 
 /***/ }),
@@ -11886,7 +11887,7 @@ function combine (array, callback) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/heading","version":"0.1.0","title":"Heading","category":"wcb-blocks","icon":"heading - wcb-block-editor-block-icon","description":"Example static block scaffolded with Create Block tool.","supports":{"anchor":true,"__experimentalSelector":"h1,h2,h3,h4,h5,h6,div,p","__unstablePasteTextInline":true,"__experimentalSlashInserter":true},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/heading","version":"0.1.0","title":"Heading","category":"wcb-blocks","icon":"heading - wcb-block-editor-block-icon","description":"Example static block scaffolded with Create Block tool.","supports":{"anchor":true,"__experimentalSelector":"h1,h2,h3,h4,h5,h6,div,p","__unstablePasteTextInline":true,"__experimentalSlashInserter":true,"align":true},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ }),
 

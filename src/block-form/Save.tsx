@@ -9,7 +9,6 @@ import {
 import { WcbAttrs } from "./attributes";
 import SaveCommon from "../components/SaveCommon";
 import "./style.scss";
-import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 
 export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const {
@@ -26,7 +25,6 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_messages,
 		style_spacing,
 		style_submit_button,
-		btnSubmitText,
 	} = attributes;
 	//
 
@@ -46,8 +44,6 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_submit_button,
 	};
 	//
-	const blockProps = useBlockProps.save({ className: "wcb-form__inner" });
-	const innerBlocksProps = useInnerBlocksProps.save(blockProps);
 
 	const reCaptchaV2 =
 		general_gg_recaptcha.enableReCaptcha &&
@@ -55,14 +51,22 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const reCaptchaV3 =
 		general_gg_recaptcha.enableReCaptcha &&
 		general_gg_recaptcha.version === "v3";
+
+	//
+	const wrapBlockProps = useBlockProps.save({ className: "wcb-form__wrap" });
+	//
+	const blockProps = useBlockProps.save({ className: "wcb-form__inner" });
+	const innerBlocksProps = useInnerBlocksProps.save(blockProps);
+	//
+
 	return (
 		<SaveCommon
+			{...wrapBlockProps}
 			attributes={newAttrForSave}
-			className={"wcb-form__wrap" + ` ${attributes.className || ""}`}
 			uniqueId={uniqueId}
 			HtmlTag="form"
 		>
-			<div {...innerBlocksProps} />
+			<div children={innerBlocksProps.children} className="wcb-form__inner" />
 			{/* V2 */}
 			{reCaptchaV2 && (
 				<div

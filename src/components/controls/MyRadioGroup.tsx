@@ -10,12 +10,12 @@ export interface MyRadioItem<T = string> {
 	icon: string;
 }
 
-interface Props {
+interface Props<T = string> {
 	className?: string;
 	labelClassName?: string;
 	contentClassName?: string;
-	value?: string;
-	onChange?: (slected: string) => void;
+	value?: T;
+	onChange?: (slected: T) => void;
 	plans?: MyRadioItem[];
 	label?: string;
 	hasResponsive?: boolean;
@@ -57,7 +57,7 @@ export const PLANS_DEMO: MyRadioItem<
 	},
 ];
 
-const MyRadioGroup: FC<Props> = ({
+function MyRadioGroup<T>({
 	onChange = () => {},
 	value,
 	className = "",
@@ -67,7 +67,7 @@ const MyRadioGroup: FC<Props> = ({
 	isWrap = false,
 	labelClassName,
 	contentClassName = "mt-3",
-}) => {
+}: Props<T>) {
 	const [selected, setSelected] = useState(value || plans[0].name);
 
 	useEffect(() => {
@@ -76,7 +76,7 @@ const MyRadioGroup: FC<Props> = ({
 		}
 	}, [value]);
 
-	const handleChangeRadio = (value: string) => {
+	const handleChangeRadio = (value) => {
 		setSelected(value);
 		onChange(value);
 	};
@@ -133,6 +133,6 @@ const MyRadioGroup: FC<Props> = ({
 			</div>
 		</RadioGroup>
 	);
-};
+}
 
 export default MyRadioGroup;

@@ -3554,7 +3554,7 @@ function save(_ref) {
   };
   //
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-    className: "wcb-testimonials__wrap" + ` ${attributes.className || ""}`
+    className: "wcb-testimonials__wrap"
   });
   let CURRENT_DATA = [...Array(general_general.numberofTestimonials || 3).keys()].map((_, index) => testimonials[index] || _Edit__WEBPACK_IMPORTED_MODULE_6__.TESTIMONIAL_ITEM_DEMO);
   const renderTestimonialItemContent = (item, index) => {
@@ -6974,7 +6974,7 @@ const PLANS_DEMO = [{
 		</svg>
 		`
 }];
-const MyRadioGroup = _ref => {
+function MyRadioGroup(_ref) {
   let {
     onChange = () => {},
     value,
@@ -7034,7 +7034,7 @@ const MyRadioGroup = _ref => {
       }));
     });
   })));
-};
+}
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyRadioGroup);
 
 /***/ }),
@@ -17716,7 +17716,7 @@ function combine (array, callback) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/testimonials","version":"0.1.0","title":"Testimonials","category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-quotation","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/testimonials","version":"0.1.0","title":"Testimonials","category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-quotation","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false,"anchor":true,"align":["full","wide"]},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ }),
 

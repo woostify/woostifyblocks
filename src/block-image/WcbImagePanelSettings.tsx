@@ -21,8 +21,10 @@ import { MySelectOption, Option } from "../types";
 import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
 import { DimensionSettings } from "../components/controls/MyDimensionsControl/types";
 
+export type Alignment = "left" | "right" | "center" | "wide" | "full" | "none";
+
 export interface WCB_IMAGE_PANEL_SETTINGS {
-	alignment: HasResponsive<TextAlignment>;
+	alignment: HasResponsive<Alignment>;
 	sizeSlug: HasResponsive<string | undefined>;
 	width: HasResponsive<number | undefined>;
 	height: HasResponsive<number | undefined>;
@@ -106,7 +108,7 @@ const WcbImagePanelSettings: FC<Props> = ({
 	//
 
 	//
-	const handleChangeTextAlignment = (selected: CSSProperties["textAlign"]) => {
+	const handleChangeImageAlignment = (selected: Alignment) => {
 		setAttr__({
 			...panelData,
 			alignment: {
@@ -158,9 +160,10 @@ const WcbImagePanelSettings: FC<Props> = ({
 			title={__("Settings", "wcb")}
 		>
 			<div className={"space-y-5"}>
-				<MyTextAlignControl
-					textAlignment={TEXT_ALIGNMENT}
-					onChange={handleChangeTextAlignment}
+				<MyRadioGroup
+					onChange={handleChangeImageAlignment}
+					value={TEXT_ALIGNMENT}
+					label={"Alignment"}
 				/>
 
 				<TextareaControl

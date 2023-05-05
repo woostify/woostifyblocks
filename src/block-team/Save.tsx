@@ -54,7 +54,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	};
 
 	const blockProps = useBlockProps.save({
-		className: "wcb-team__wrap" + ` ${attributes.className || ""}`,
+		className: "wcb-team__wrap",
 	});
 	const HeadingTag = general_layout.headingTag;
 	return (

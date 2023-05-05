@@ -11,7 +11,8 @@
     "anchor": true,
     "__experimentalSelector": "h1,h2,h3,h4,h5,h6,div,p",
     "__unstablePasteTextInline": true,
-    "__experimentalSlashInserter": true
+    "__experimentalSlashInserter": true,
+    "align": true
   },
   "textdomain": "wcb-blocks",
   "editorScript": "file:./index.js",

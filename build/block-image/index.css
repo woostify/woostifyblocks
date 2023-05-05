@@ -62,75 +62,75 @@ figure.wp-block-image:not(.wp-block) {
   margin: 0;
 }
 
-[data-align=wide] > .wp-block-image img,
-[data-align=full] > .wp-block-image img {
+[data-align=wide] > .wp-block-wcb-image img,
+[data-align=full] > .wp-block-wcb-image img {
   height: auto;
   width: 100%;
 }
 
-.wp-block[data-align=left] > .wp-block-image,
-.wp-block[data-align=center] > .wp-block-image,
-.wp-block[data-align=right] > .wp-block-image {
+.wp-block[data-align=left] > .wp-block-wcb-image,
+.wp-block[data-align=center] > .wp-block-wcb-image,
+.wp-block[data-align=right] > .wp-block-wcb-image {
   display: table;
 }
-.wp-block[data-align=left] > .wp-block-image > figcaption,
-.wp-block[data-align=center] > .wp-block-image > figcaption,
-.wp-block[data-align=right] > .wp-block-image > figcaption {
+.wp-block[data-align=left] > .wp-block-wcb-image > figcaption,
+.wp-block[data-align=center] > .wp-block-wcb-image > figcaption,
+.wp-block[data-align=right] > .wp-block-wcb-image > figcaption {
   display: table-caption;
   caption-side: bottom;
 }
 
-.wp-block[data-align=left] > .wp-block-image {
+.wp-block[data-align=left] > .wp-block-wcb-image {
   margin-right: 1em;
   margin-left: 0;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
 
-.wp-block[data-align=right] > .wp-block-image {
+.wp-block[data-align=right] > .wp-block-wcb-image {
   margin-left: 1em;
   margin-right: 0;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
 
-.wp-block[data-align=center] > .wp-block-image {
+.wp-block[data-align=center] > .wp-block-wcb-image {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 }
 
-.wp-block-image__crop-area {
+.wp-block-wcb-image__crop-area {
   position: relative;
   max-width: 100%;
   width: 100%;
   overflow: hidden;
 }
-.wp-block-image__crop-area .reactEasyCrop_Container .reactEasyCrop_Image {
+.wp-block-wcb-image__crop-area .reactEasyCrop_Container .reactEasyCrop_Image {
   border: none;
 }
 
-.wp-block-image__crop-icon {
+.wp-block-wcb-image__crop-icon {
   padding: 0 8px;
   min-width: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.wp-block-image__crop-icon svg {
+.wp-block-wcb-image__crop-icon svg {
   fill: currentColor;
 }
 
-.wp-block-image__zoom .components-popover__content {
+.wp-block-wcb-image__zoom .components-popover__content {
   min-width: 260px;
   overflow: visible !important;
 }
 
-.wp-block-image__aspect-ratio {
+.wp-block-wcb-image__aspect-ratio {
   display: flex;
   align-items: center;
 }
-.wp-block-image__aspect-ratio .components-button {
+.wp-block-wcb-image__aspect-ratio .components-button {
   padding-left: 0;
   padding-right: 0;
 }
@@ -138,8 +138,8 @@ figure.wp-block-image:not(.wp-block) {
 /* ------------------------------------------- */
 .wcb-image__wrap img {
   display: block;
-  width: inherit !important;
-  height: inherit !important;
+  width: inherit;
+  height: inherit;
 }
 /*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/components/controls/MySpacingSizesControl/styles.scss ***!

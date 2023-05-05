@@ -2777,6 +2777,8 @@ const Edit = props => {
     clientId
   } = props;
   const {
+    anchor,
+    align,
     className,
     general_sortingAndFiltering,
     advance_responsiveCondition,
@@ -3694,7 +3696,7 @@ function save(_ref) {
   };
   //
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-    className: "wcb-posts-grid__wrap" + ` ${attributes.className || ""}`
+    className: "wcb-posts-grid__wrap"
   });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     attributes: newAttrForSave,
@@ -8102,7 +8104,7 @@ const PLANS_DEMO = [{
 		</svg>
 		`
 }];
-const MyRadioGroup = _ref => {
+function MyRadioGroup(_ref) {
   let {
     onChange = () => {},
     value,
@@ -8162,7 +8164,7 @@ const MyRadioGroup = _ref => {
       }));
     });
   })));
-};
+}
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyRadioGroup);
 
 /***/ }),
@@ -13610,7 +13612,7 @@ function combine (array, callback) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/posts-grid","version":"0.1.0","title":"Posts grid","category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-grid-alt","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/posts-grid","version":"0.1.0","title":"Posts grid","category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-grid-alt","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false,"align":["full","wide"]},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ }),
 

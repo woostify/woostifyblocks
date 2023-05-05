@@ -1,11 +1,9 @@
 import React from "react";
 import { __ } from "@wordpress/i18n";
-// @ts-ignore
-import { RichText, useBlockProps } from "@wordpress/block-editor";
+import { useBlockProps } from "@wordpress/block-editor";
 import { WcbAttrs } from "./attributes";
 import "./style.scss";
 import { FormInputLabelRichTextContent } from "../block-form/FormInputLabelRichTextContent";
-import { ToggleControl } from "@wordpress/components";
 import converUniqueId from "../utils/converUniqueId";
 
 export default function save({ attributes }: { attributes: WcbAttrs }) {
@@ -13,7 +11,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	//
 	const UNIQUE_NAME = converUniqueId(uniqueId, "toggle");
 	const blockProps = useBlockProps.save({
-		className: "wcb-toggle__wrap" + ` ${attributes.className || ""}`,
+		className: "wcb-toggle__wrap",
 	});
 
 	return (

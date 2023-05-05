@@ -406,7 +406,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// @ts-ignore
 
 
 
@@ -423,7 +422,7 @@ function save(_ref) {
 
   //
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-    className: "wcb-select__wrap " + UNIQUE_NAME + ` ${attributes.className || ""}`
+    className: "wcb-select__wrap " + UNIQUE_NAME
   });
   const renderSelect = () => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("select", {

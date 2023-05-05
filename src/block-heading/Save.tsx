@@ -14,7 +14,6 @@ export default function save({
 	attributes: WcbBlockHeadingAttrs & { anchor: string };
 }) {
 	const {
-		anchor,
 		uniqueId,
 		heading,
 		subHeading,
@@ -47,7 +46,6 @@ export default function save({
 		styles_border,
 	};
 	//
-	const blockProps = useBlockProps.save({ className: "wcb-heading__wrap" });
 
 	const renderSeparator = () => {
 		return general_content.showSeparator ? (
@@ -57,13 +55,14 @@ export default function save({
 		) : null;
 	};
 
+	//
+	const wrapBlockProps = useBlockProps.save({ className: "wcb-heading__wrap" });
+	//
 	return (
 		<SaveCommon
+			{...wrapBlockProps}
 			attributes={newAttrForSave}
-			className={"wcb-heading__wrap" + ` ${attributes.className || ""}`}
 			uniqueId={uniqueId}
-			anchor={anchor}
-			{...blockProps}
 		>
 			<>
 				{general_content.separatorPosition === "top" && renderSeparator()}

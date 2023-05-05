@@ -13,16 +13,12 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		uniqueId,
 		advance_responsiveCondition,
 		advance_zIndex,
-		description,
 		general_layout,
 		style_description,
 		style_dimension,
 		style_title,
-		title,
-		className,
 	} = attributes;
 	//
-	console.log(111, { attributes });
 
 	const newAttrForSave: WcbAttrsForSave = {
 		uniqueId,
@@ -34,14 +30,13 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_title,
 	};
 	//
-	const blockProps = useBlockProps.save({ className: "wcb-cta__wrap" });
+	const wrapBlockProps = useBlockProps.save({ className: "wcb-cta__wrap" });
 
 	return (
 		<SaveCommon
+			{...wrapBlockProps}
 			attributes={newAttrForSave}
-			className={"wcb-cta__wrap" + ` ${attributes.className || ""}`}
 			uniqueId={uniqueId}
-			{...blockProps}
 		>
 			<div className="wcb-cta__inner">
 				<div className="wcb-cta__content">

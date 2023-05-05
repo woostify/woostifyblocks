@@ -149,6 +149,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { createErrorNotice } = useDispatch(noticesStore);
 
 	function onUploadError(message) {
+		// @ts-ignore
 		createErrorNotice(message, { type: "snackbar" });
 		setAttributes({
 			id: undefined,
@@ -270,39 +271,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		}
 	}
 
-	function updateAlignment(nextAlign) {
-		const extraUpdatedAttributes: Partial<WcbAttrs> = ["wide", "full"].includes(
-			nextAlign
-		)
-			? {
-					general_settings: {
-						...general_settings,
-						width: { Desktop: undefined, Tablet: undefined, Mobile: undefined },
-						height: {
-							Desktop: undefined,
-							Tablet: undefined,
-							Mobile: undefined,
-						},
-						alignment: {
-							...general_settings.alignment,
-							[deviceType]: nextAlign,
-						},
-					},
-			  }
-			: {
-					general_settings: {
-						...general_settings,
-						alignment: {
-							...general_settings.alignment,
-							[deviceType]: nextAlign,
-						},
-					},
-			  };
-		setAttributes({
-			...extraUpdatedAttributes,
-		});
-	}
-
 	let isTemp = isTemporaryImage(id, url);
 
 	// Upload a temporary image on mount.
@@ -354,7 +322,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		deviceType
 	);
 	const classes = classnames(className, {
-		[`align${align}`]: align,
+		// [`align${align}`]: align,
 		"is-transient": temporaryURL,
 		// "is-resized": !!width || !!height,
 		// [`size-${sizeSlug}`]: sizeSlug,

@@ -23,7 +23,6 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_container,
 		style_question,
 		style_icon,
-		general_preset,
 	} = attributes;
 	//
 	const newAttrForSave: WcbAttrsForSave = {
@@ -38,21 +37,23 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_icon,
 	};
 
+	//
+	const wrapBlockProps = useBlockProps.save({ className: "wcb-faq__wrap" });
 	// INNER BLOCKS
-	const innerBlockProps = useBlockProps.save({
-		className: `wcb-faq__inner ${
-			general_general.layout === "accordion" ? "accordion-container" : ""
-		} `,
-	});
+	const innerBlockProps = useBlockProps.save();
 	const innerBlocksProps = useInnerBlocksProps.save(innerBlockProps);
+	//
+	const innerClassName = `wcb-faq__inner ${
+		general_general.layout === "accordion" ? "accordion-container" : ""
+	} `;
 	//
 	return (
 		<SaveCommon
+			{...wrapBlockProps}
 			attributes={newAttrForSave}
-			className={"wcb-faq__wrap" + ` ${attributes.className || ""}`}
 			uniqueId={uniqueId}
 		>
-			<div {...innerBlocksProps} />
+			<div children={innerBlocksProps.children} className={innerClassName} />
 		</SaveCommon>
 	);
 }

@@ -250,7 +250,7 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 						tagName={general_content.headingTag || "h2"}
 						className="wcb-heading__heading"
 						value={heading}
-						placeholder="Add heading here"
+						placeholder="Add heading"
 						onChange={(heading) => setAttributes({ heading })}
 					/>
 				) : null}
@@ -264,7 +264,7 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 						className="wcb-heading__subHeading"
 						value={subHeading}
 						onChange={(subHeading) => setAttributes({ subHeading })}
-						placeholder="Add sub heading here"
+						placeholder="Add sub heading"
 					/>
 				) : null}
 

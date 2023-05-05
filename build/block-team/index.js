@@ -3317,7 +3317,7 @@ function save(_ref) {
     }) : null;
   };
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.useBlockProps.save({
-    className: "wcb-team__wrap" + ` ${attributes.className || ""}`
+    className: "wcb-team__wrap"
   });
   const HeadingTag = general_layout.headingTag;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_5__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
@@ -6649,7 +6649,7 @@ const PLANS_DEMO = [{
 		</svg>
 		`
 }];
-const MyRadioGroup = _ref => {
+function MyRadioGroup(_ref) {
   let {
     onChange = () => {},
     value,
@@ -6709,7 +6709,7 @@ const MyRadioGroup = _ref => {
       }));
     });
   })));
-};
+}
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyRadioGroup);
 
 /***/ }),
@@ -14938,7 +14938,7 @@ module.exports = JSON.parse('{"lni-500px":59907,"lni-add-files":59905,"lni-adobe
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/team","version":"0.1.0","title":"Team","category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-users","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/team","version":"0.1.0","title":"Team","category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-users","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false,"align":["wide","full"],"anchor":true},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ }),
 

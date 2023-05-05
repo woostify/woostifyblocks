@@ -49,7 +49,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	};
 	//
 	const blockProps = useBlockProps.save({
-		className: "wcb-testimonials__wrap" + ` ${attributes.className || ""}`,
+		className: "wcb-testimonials__wrap",
 	});
 
 	let CURRENT_DATA = [

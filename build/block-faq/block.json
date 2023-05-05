@@ -8,7 +8,9 @@
   "icon": "- wcb-block-editor-block-icon lni lni-support",
   "description": "Example static block scaffolded with Create Block tool.",
   "supports": {
-    "html": false
+    "html": false,
+    "anchor": true,
+    "align": true
   },
   "textdomain": "wcb-blocks",
   "editorScript": "file:./index.js",

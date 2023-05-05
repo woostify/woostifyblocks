@@ -27,7 +27,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	};
 	//
 	const blockProps = useBlockProps.save({
-		className: "wcb-map__wrap" + ` ${attributes.className || ""}`,
+		className: "wcb-map__wrap",
 	});
 	return (
 		<SaveCommon attributes={newAttrForSave} uniqueId={uniqueId} {...blockProps}>

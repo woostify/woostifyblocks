@@ -3218,6 +3218,7 @@ const Edit = props => {
     createErrorNotice
   } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_6__.useDispatch)(_wordpress_notices__WEBPACK_IMPORTED_MODULE_8__.store);
   function onUploadError(message) {
+    // @ts-ignore
     createErrorNotice(message, {
       type: "snackbar"
     });
@@ -3339,38 +3340,6 @@ const Edit = props => {
       });
     }
   }
-  function updateAlignment(nextAlign) {
-    const extraUpdatedAttributes = ["wide", "full"].includes(nextAlign) ? {
-      general_settings: {
-        ...general_settings,
-        width: {
-          Desktop: undefined,
-          Tablet: undefined,
-          Mobile: undefined
-        },
-        height: {
-          Desktop: undefined,
-          Tablet: undefined,
-          Mobile: undefined
-        },
-        alignment: {
-          ...general_settings.alignment,
-          [deviceType]: nextAlign
-        }
-      }
-    } : {
-      general_settings: {
-        ...general_settings,
-        alignment: {
-          ...general_settings.alignment,
-          [deviceType]: nextAlign
-        }
-      }
-    };
-    setAttributes({
-      ...extraUpdatedAttributes
-    });
-  }
   let isTemp = isTemporaryImage(id, url);
 
   // Upload a temporary image on mount.
@@ -3416,7 +3385,7 @@ const Edit = props => {
     currentDeviceValue: align
   } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_16__["default"])(general_settings.alignment, deviceType);
   const classes = classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, {
-    [`align${align}`]: align,
+    // [`align${align}`]: align,
     "is-transient": temporaryURL
     // "is-resized": !!width || !!height,
     // [`size-${sizeSlug}`]: sizeSlug,
@@ -3982,12 +3951,14 @@ const Image = _ref => {
           return;
         }
         setExternalBlob(undefined);
+        // @ts-ignore
         createSuccessNotice((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__.__)("Image uploaded."), {
           type: "snackbar"
         });
       },
       allowedTypes: _constants__WEBPACK_IMPORTED_MODULE_15__.ALLOWED_MEDIA_TYPES,
       onError(message) {
+        // @ts-ignore
         createErrorNotice(message, {
           type: "snackbar"
         });
@@ -4345,8 +4316,12 @@ const Image = _ref => {
     onChange: value => setAttributes({
       caption: value
     }),
-    inlineToolbar: true,
-    __unstableOnSplitAtEnd: () => insertBlocksAfter((0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_10__.createBlock)((0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_10__.getDefaultBlockName)()))
+    inlineToolbar: true
+    // @ts-ignore
+    ,
+    __unstableOnSplitAtEnd: () =>
+    // @ts-ignore
+    insertBlocksAfter((0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_10__.createBlock)((0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_10__.getDefaultBlockName)()))
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Image);
@@ -4464,12 +4439,11 @@ function save(_ref) {
     tagName: "figcaption",
     value: caption
   }));
+
   //
-  //
-  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__.useBlockProps.save({
-    className: "wcb-image__wrap " + classes + ` wcb-image__wrap--${general_settings.layout}` + ` ${attributes.className || ""}`
+  const wrapBlockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__.useBlockProps.save({
+    className: `wcb-image__wrap wcb-image__wrap--${general_settings.layout} ${classes}`.trim()
   });
-  //
   //
 
   const renderOverlay = () => {
@@ -4481,11 +4455,11 @@ function save(_ref) {
       className: "wcb-image__overlay-content"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__.InnerBlocks.Content, null))));
   };
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_3__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_3__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
     attributes: newAttrForSave,
     uniqueId: uniqueId,
     HtmlTag: "figure"
-  }, blockProps), figure, general_settings.layout === "overlay" && renderOverlay());
+  }), figure, general_settings.layout === "overlay" && renderOverlay());
 }
 
 /***/ }),
@@ -4597,7 +4571,7 @@ const WcbImagePanelSettings = _ref => {
   //
 
   //
-  const handleChangeTextAlignment = selected => {
+  const handleChangeImageAlignment = selected => {
     setAttr__({
       ...panelData,
       alignment: {
@@ -4654,9 +4628,10 @@ const WcbImagePanelSettings = _ref => {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Settings", "wcb")
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "space-y-5"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    textAlignment: TEXT_ALIGNMENT,
-    onChange: handleChangeTextAlignment
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    onChange: handleChangeImageAlignment,
+    value: TEXT_ALIGNMENT,
+    label: "Alignment"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextareaControl
   // @ts-ignore
   , {
@@ -5281,6 +5256,33 @@ const {
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_5__.name, {
+  __experimentalLabel(attributes, _ref) {
+    let {
+      context
+    } = _ref;
+    if (context === "accessibility") {
+      const {
+        caption,
+        alt,
+        url
+      } = attributes;
+      if (!url) {
+        return __("Empty");
+      }
+      if (!alt) {
+        return caption || "";
+      }
+
+      // This is intended to be read by a screen reader.
+      // A period simply means a pause, no need to translate it.
+      return alt + (caption ? ". " + caption : "");
+    }
+  },
+  getEditWrapperProps(attributes) {
+    return {
+      "data-align": attributes.general_settings?.alignment?.Desktop
+    };
+  },
   edit: _Edit__WEBPACK_IMPORTED_MODULE_3__["default"],
   save: _Save__WEBPACK_IMPORTED_MODULE_4__["default"],
   attributes: _attributes__WEBPACK_IMPORTED_MODULE_6__["default"],
@@ -7072,7 +7074,7 @@ const PLANS_DEMO = [{
 		</svg>
 		`
 }];
-const MyRadioGroup = _ref => {
+function MyRadioGroup(_ref) {
   let {
     onChange = () => {},
     value,
@@ -7132,7 +7134,7 @@ const MyRadioGroup = _ref => {
       }));
     });
   })));
-};
+}
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyRadioGroup);
 
 /***/ }),
@@ -12666,7 +12668,7 @@ function combine (array, callback) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/image","version":"0.1.0","title":"Image","category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-image","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/image","version":"0.1.0","title":"Image","category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-image","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false,"anchor":true},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ }),
 

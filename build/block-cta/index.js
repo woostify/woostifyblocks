@@ -2992,18 +2992,13 @@ function save(_ref) {
     uniqueId,
     advance_responsiveCondition,
     advance_zIndex,
-    description,
     general_layout,
     style_description,
     style_dimension,
-    style_title,
-    title,
-    className
+    style_title
   } = attributes;
   //
-  console.log(111, {
-    attributes
-  });
+
   const newAttrForSave = {
     uniqueId,
     advance_responsiveCondition,
@@ -3014,14 +3009,13 @@ function save(_ref) {
     style_title
   };
   //
-  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
+  const wrapBlockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
     className: "wcb-cta__wrap"
   });
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
     attributes: newAttrForSave,
-    className: "wcb-cta__wrap" + ` ${attributes.className || ""}`,
     uniqueId: uniqueId
-  }, blockProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "wcb-cta__inner"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "wcb-cta__content"
@@ -5232,7 +5226,7 @@ const PLANS_DEMO = [{
 		</svg>
 		`
 }];
-const MyRadioGroup = _ref => {
+function MyRadioGroup(_ref) {
   let {
     onChange = () => {},
     value,
@@ -5292,7 +5286,7 @@ const MyRadioGroup = _ref => {
       }));
     });
   })));
-};
+}
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyRadioGroup);
 
 /***/ }),
@@ -10447,7 +10441,7 @@ function combine (array, callback) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/cta","version":"0.1.0","title":"Call to action","category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-target","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/cta","version":"0.1.0","title":"Call to action","category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-target","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false,"anchor":true,"align":true},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ }),
 

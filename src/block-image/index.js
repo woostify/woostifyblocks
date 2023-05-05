@@ -26,6 +26,28 @@ import attributes from "./attributes";
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 
 registerBlockType(metadata.name, {
+	__experimentalLabel(attributes, { context }) {
+		if (context === "accessibility") {
+			const { caption, alt, url } = attributes;
+
+			if (!url) {
+				return __("Empty");
+			}
+
+			if (!alt) {
+				return caption || "";
+			}
+
+			// This is intended to be read by a screen reader.
+			// A period simply means a pause, no need to translate it.
+			return alt + (caption ? ". " + caption : "");
+		}
+	},
+	getEditWrapperProps(attributes) {
+		return {
+			"data-align": attributes.general_settings?.alignment?.Desktop,
+		};
+	},
 	edit: Edit,
 	save,
 	attributes,
