@@ -45,6 +45,7 @@ if (!function_exists('wcb_get_wcb_block_type_list')) :
                     'category' => $value->category,
                     'icon' => $value->icon,
                     'parent' => $value->parent,
+                    'description' => $value->description,
                 ];
             }
         }

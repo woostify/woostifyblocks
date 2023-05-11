@@ -11,7 +11,7 @@ interface Props {
 
 const Nav: FC<Props> = ({ currentPath, onChangePath }) => {
 	return (
-		<nav className="bg-white shadow">
+		<nav className="bg-white px-2 shadow">
 			<div className="container relative flex justify-between h-16 space-x-4">
 				{/* LOGO */}
 				<div className="flex flex-shrink-0 items-center">

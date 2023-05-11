@@ -7,7 +7,7 @@
 	"icon": "button - wcb-block-editor-block-icon text-xl",
 	"parent": ["wcb/buttons"],
 	"category": "wcb-blocks",
-	"description": "Example static block scaffolded with Create Block tool.",
+	"description": "Prompt visitors to take action with a button-style link.",
 	"supports": {
 		"anchor": true
 	},

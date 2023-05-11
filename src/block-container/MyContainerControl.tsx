@@ -27,7 +27,7 @@ export type MyContainerControlData = {
 	overflow: NonNullable<React.CSSProperties["overflow"]>;
 };
 export const CONTAINER_CONTROL_DEMO: MyContainerControlData = {
-	containerWidthType: "Full Width",
+	containerWidthType: "Custom",
 	contentWidthType: "Boxed",
 	// tai sao ko co Tablet? - vi muon th Tablet follow theo Desktop,
 	customWidth: { Desktop: "100%", Mobile: "100%" },
@@ -161,7 +161,7 @@ const MyContainerControl: FC<Props> = ({
 		const plans: MyRadioItem<MyContainerControlData["containerWidthType"]>[] =
 			DEMO_CONTAINER_WIDTH.map((item) => ({
 				name: item,
-				icon: item,
+				icon: item === "Boxed" ? "Wide" : item,
 			}));
 		return (
 			<MyRadioGroup

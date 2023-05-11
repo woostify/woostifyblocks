@@ -27,13 +27,14 @@ import variations from "./variations";
 //-----------------------------------------
 
 registerBlockType(metadata.name, {
-	edit: withSelect((select, props) => {
-		return {
-			media: props.attributes.mediaId
-				? select("core").getMedia(props.attributes.mediaId)
-				: undefined,
-		};
-	})((props) => <Edit {...props} />),
+	edit: Edit,
+	// edit: withSelect((select, props) => {
+	// 	return {
+	// 		media: props.attributes.mediaId
+	// 			? select("core").getMedia(props.attributes.mediaId)
+	// 			: undefined,
+	// 	};
+	// })((props) => <Edit {...props} />),
 	save,
 	attributes: blokc1Attrs,
 	variations: variations,

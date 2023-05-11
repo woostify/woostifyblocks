@@ -14198,7 +14198,7 @@ module.exports = JSON.parse('{"lni-500px":59907,"lni-add-files":59905,"lni-adobe
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/icon-box","version":"0.1.0","title":"Icon box","category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-clipboard","description":"Example static block scaffolded with Create Block tool.","supports":{"html":false,"anchor":true,"align":true},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/icon-box","version":"0.1.0","title":"Icon box","category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-clipboard","description":"Create a box containing an icon or image and, optionally, a title, description, and learn more text.","supports":{"html":false,"anchor":true,"align":true},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ }),
 

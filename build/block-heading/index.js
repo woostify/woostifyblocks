@@ -11887,7 +11887,7 @@ function combine (array, callback) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/heading","version":"0.1.0","title":"Heading","category":"wcb-blocks","icon":"heading - wcb-block-editor-block-icon","description":"Example static block scaffolded with Create Block tool.","supports":{"anchor":true,"__experimentalSelector":"h1,h2,h3,h4,h5,h6,div,p","__unstablePasteTextInline":true,"__experimentalSlashInserter":true,"align":true},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/heading","version":"0.1.0","title":"Heading","category":"wcb-blocks","icon":"heading - wcb-block-editor-block-icon","description":"A Heading with a simple line separator between the heading and the description.","supports":{"anchor":true,"__experimentalSelector":"h1,h2,h3,h4,h5,h6,div,p","__unstablePasteTextInline":true,"__experimentalSlashInserter":true,"align":true},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ }),
 

@@ -6,7 +6,7 @@
   "title": "Call to action",
   "category": "wcb-blocks",
   "icon": "- wcb-block-editor-block-icon lni lni-target",
-  "description": "Example static block scaffolded with Create Block tool.",
+  "description": "Add a button along with heading and description.",
   "supports": {
     "html": false,
     "anchor": true,

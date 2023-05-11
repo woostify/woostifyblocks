@@ -6,7 +6,7 @@
 	"title": "Heading",
 	"category": "wcb-blocks",
 	"icon": "heading - wcb-block-editor-block-icon",
-	"description": "Example static block scaffolded with Create Block tool.",
+	"description": "A Heading with a simple line separator between the heading and the description.",
 	"supports": {
 		"anchor": true,
 		"__experimentalSelector": "h1,h2,h3,h4,h5,h6,div,p",

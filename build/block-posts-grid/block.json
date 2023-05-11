@@ -6,7 +6,7 @@
   "title": "Posts grid",
   "category": "wcb-blocks",
   "icon": "- wcb-block-editor-block-icon lni lni-grid-alt",
-  "description": "Example static block scaffolded with Create Block tool.",
+  "description": "Display a clean grid of posts anywhere on your site.",
   "supports": {
     "html": false,
     "align": [

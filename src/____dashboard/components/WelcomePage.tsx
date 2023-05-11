@@ -1,7 +1,5 @@
 import React from "react";
 
-console.log(1212121212);
-
 const WelcomePage = () => {
 	return (
 		<div className="mt-10">
