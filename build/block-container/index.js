@@ -2625,6 +2625,19 @@ const ContainerEdit = props => {
     styles_color,
     styles_dimensions
   } = attributes;
+
+  //
+  (0,react__WEBPACK_IMPORTED_MODULE_5__.useEffect)(() => {
+    if (uniqueId) {
+      return;
+    }
+    setAttributes({
+      align: "full"
+    });
+  }, [uniqueId]);
+
+  //
+
   const ref = (0,react__WEBPACK_IMPORTED_MODULE_5__.useRef)(null);
   const {
     tabIsOpen,
@@ -2657,7 +2670,6 @@ const ContainerEdit = props => {
       containerClassName: cl
     });
   }, [hasParent, containerWidthType]);
-
   //
 
   const renderPanelBackground = () => {
@@ -2964,7 +2976,8 @@ const Placeholder = _ref => {
 const Edit = props => {
   const {
     clientId,
-    attributes
+    attributes,
+    setAttributes
   } = props;
   const {
     hasInnerBlocks,
@@ -2986,7 +2999,11 @@ const Edit = props => {
     return C;
   }, [hasParent, hasInnerBlocks, selectedVariant]);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Component, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
-    onSelect: () => setSelectedVariant(true)
+    onSelect: () => {
+      //
+      // setAttributes.align === "not-set" && setAttributes({ align: "full" });
+      setSelectedVariant(true);
+    }
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
@@ -3100,38 +3117,31 @@ const GlobalCss = attrs => {
         color: styles_color,
         overflow: overflow,
         //
-        // maxWidth: cWidthMobile,
-        width: cWidthMobile_new,
+        maxWidth: cWidthMobile_new ? cWidthMobile_new + " !important" : "",
+        // width: cWidthMobile_new,
         minHeight: minHeightMobile_new,
         "&.is_wcb_container_child": {
           width: cWidthMobile_new
-          // flexBasis: `calc(${cWidthMobile} - (var(--wcb-gap-x)));`,
-          // maxWidth: `calc(${cWidthMobile} - (var(--wcb-gap-x)));`,
         },
-
         [`@media (min-width: ${media_tablet})`]: {
-          width: cWidthTablet_new,
+          maxWidth: cWidthTablet_new ? cWidthTablet_new + " !important" : "",
+          // width: cWidthTablet_new,
           minHeight: minHeightTablet_new,
           "&.is_wcb_container_child": {
             width: cWidthTablet_new
-            // flexBasis: `calc(${cWidthTablet} - (var(--wcb-gap-x)));`,
-            // maxWidth: `calc(${cWidthTablet} - (var(--wcb-gap-x)));`,
           }
         },
-
         [`@media (min-width: ${media_desktop})`]: {
-          width: cWidthDesktop_new,
+          maxWidth: cWidthDesktop_new ? cWidthDesktop_new + " !important" : "",
+          // width: cWidthDesktop_new,
           minHeight: minHeightDesktop_new,
           "&.is_wcb_container_child": {
             width: cWidthDesktop_new
-            // flexBasis: `calc(${cWidthDesktop} - (var(--wcb-gap-x)));`,
-            // maxWidth: `calc(${cWidthDesktop} - (var(--wcb-gap-x)));`,
           }
         }
       }
     }];
   };
-
   const getDivWrapStyles__Border = () => {
     return (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
       border: styles_border,
@@ -3207,7 +3217,9 @@ const GlobalCss = attrs => {
     } = general_container;
 
     // when container widtd = custom-width
-    if (containerWidthType !== "Full Width" || contentWidthType !== "Boxed") {
+    // if (containerWidthType !== "Full Width" || contentWidthType !== "Boxed") {
+    // if (containerWidthType === "Custom" || contentWidthType !== "Boxed") {
+    if (contentWidthType === "Full Width") {
       return {
         [INNER_CLASSNAME]: {
           maxWidth: "100%"
@@ -3322,6 +3334,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
 /* harmony import */ var _components_controls_MySpacingSizesControl_SpacingInputControl__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/controls/MySpacingSizesControl/SpacingInputControl */ "./src/components/controls/MySpacingSizesControl/SpacingInputControl.tsx");
 /* harmony import */ var _components_controls_HelpText__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/controls/HelpText */ "./src/components/controls/HelpText.tsx");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_13__);
 
 
 
@@ -3335,9 +3349,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+// @ts-ignore
 
 const CONTAINER_CONTROL_DEMO = {
-  containerWidthType: "Custom",
+  containerWidthType: "Full Width",
   contentWidthType: "Boxed",
   // tai sao ko co Tablet? - vi muon th Tablet follow theo Desktop,
   customWidth: {
@@ -3346,7 +3362,7 @@ const CONTAINER_CONTROL_DEMO = {
   },
   contentBoxWidth: {
     Desktop: "",
-    Mobile: "100%"
+    Mobile: ""
   },
   minHeight: {
     Desktop: undefined
@@ -3374,6 +3390,9 @@ const MyContainerControl = _ref => {
     htmlTag,
     overflow
   } = containerControl;
+  //
+  const themeContentBoxWidth = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_13__.useSetting)("layout.contentSize");
+  const themeContentWideBoxWidth = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_13__.useSetting)("layout.wideSize");
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
     if (!showContainerWidthType && containerWidthType !== "Custom") {
       handleChangeContainerWidthType("Custom");
@@ -3437,7 +3456,7 @@ const MyContainerControl = _ref => {
     currentDeviceValue: CONTENT_BOX_WIDTH
   } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(contentBoxWidthProps, deviceType);
   if (CONTENT_BOX_WIDTH === "") {
-    CONTENT_BOX_WIDTH = ___WEBPACK_IMPORTED_MODULE_10__.DEMO_WCB_GLOBAL_VARIABLES.defaultContentWidth;
+    CONTENT_BOX_WIDTH = ___WEBPACK_IMPORTED_MODULE_10__.DEMO_WCB_GLOBAL_VARIABLES.defaultContentWidth || themeContentBoxWidth;
   }
   const {
     currentDeviceValue: MIN_HEIGHT
@@ -3452,7 +3471,8 @@ const MyContainerControl = _ref => {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Container Width", "wcb"),
       onChange: handleChangeContainerWidthType,
       contentClassName: "capitalize mt-3",
-      value: containerWidthType
+      value: containerWidthType,
+      hasResponsive: false
     });
   };
   const renderContenWidthType = () => {
@@ -3465,7 +3485,8 @@ const MyContainerControl = _ref => {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Content Width", "wcb"),
       onChange: handleChangeContenWidthType,
       contentClassName: "capitalize mt-3",
-      value: contentWidthType
+      value: contentWidthType,
+      hasResponsive: false
     });
   };
   const renderOverflow = () => {
@@ -3565,7 +3586,7 @@ const MyContainerControl = _ref => {
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: className
-  }, showContainerWidthType && renderContainerWidthType(), containerWidthType === "Custom" ? renderCustomWidth() : null, containerWidthType === "Full Width" ? renderContenWidthType() : null, containerWidthType === "Full Width" && contentWidthType === "Boxed" ? renderContentBoxWidth() : null, renderMinimumHeight(), renderHTMLTag(), renderOverflow());
+  }, showContainerWidthType && renderContainerWidthType(), containerWidthType === "Custom" ? renderCustomWidth() : null, renderContenWidthType(), contentWidthType === "Boxed" ? renderContentBoxWidth() : null, renderMinimumHeight(), renderHTMLTag(), renderOverflow());
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyContainerControl);
 

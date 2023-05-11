@@ -302,8 +302,10 @@ const App = _ref => {
   let {
     wcb_blocks_enable_disable_options,
     wcb_blocks_settings_options,
-    wcb_blocks_list
+    wcb_blocks_list,
+    wcb_layout_global_settings
   } = _ref;
+  //
   const [currentPath, setcurrentPath] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(PAGES[0].path);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
     const queryString = window.location.search;
@@ -338,7 +340,8 @@ const App = _ref => {
     initWcbBlocksList: wcb_blocks_list,
     initWcbBlocksEnableDisable: wcb_blocks_enable_disable_options
   }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_SettingsPage__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    initData: wcb_blocks_settings_options
+    initData: wcb_blocks_settings_options,
+    themeLayoutGlobal: wcb_layout_global_settings
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_hot_toast__WEBPACK_IMPORTED_MODULE_7__.Toaster, {
     position: "top-right",
     containerStyle: {
@@ -402,12 +405,14 @@ const BlocksPage = _ref => {
   } = _ref;
   const [blocksStatus, setBlocksStatus] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(initWcbBlocksEnableDisable);
   const [blocksList, setBlocksList] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(initWcbBlocksList);
-  console.log(211, {
-    initWcbBlocksList,
-    initWcbBlocksEnableDisable,
-    blocksStatus,
-    blocksList
-  });
+
+  // console.log(211, {
+  // 	initWcbBlocksList,
+  // 	initWcbBlocksEnableDisable,
+  // 	blocksStatus,
+  // 	blocksList,
+  // });
+
   const handleDisableEnableBlocks = obj => {
     if (typeof jQuery !== "function") {
       return;
@@ -694,9 +699,12 @@ const InputNumber = _ref => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
     htmlFor: id,
     className: "block text-base font-medium text-gray-700 select-none"
-  }, label), desc && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
-    className: "mt-1.5 block text-sm text-gray-500"
-  }, desc)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }, label), desc && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", {
+    className: "mt-1.5 block text-sm text-gray-500",
+    dangerouslySetInnerHTML: {
+      __html: desc
+    }
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "min-w-[140px] max-w-[180px] flex-shrink-0 relative mt-1 rounded-md"
   }, unit && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
@@ -708,7 +716,7 @@ const InputNumber = _ref => {
     },
     id: id,
     type: "number",
-    className: "block w-full rounded-md border-gray-300 pl-3 pr-11 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+    className: "number-hide-arrow block w-full rounded-md border-gray-300 pl-3 pr-11 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
   }))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InputNumber);
@@ -820,7 +828,7 @@ const Nav = _ref => {
     const isActive = currentPath === item.path;
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
       key: item.path,
-      className: `inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium focus:outline-none ring-0 shadow-none ${isActive ? "border-indigo-500 text-gray-900" : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"}`,
+      className: `inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium ring-0 shadow-none focus:ring-0 focus:outline-none ${isActive ? "border-indigo-500 text-gray-900" : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"}`,
       href: "#",
       onClick: e => {
         e.preventDefault();
@@ -906,7 +914,8 @@ const TABS = [{
 }];
 const SettingsPage = _ref => {
   let {
-    initData
+    initData,
+    themeLayoutGlobal
   } = _ref;
   const [allSettings, setAllSettings] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(initData);
   const [currentTab, setcurrentTab] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(TABS[0].name);
@@ -971,6 +980,7 @@ const SettingsPage = _ref => {
     switch (currentTab) {
       case "editor-options":
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_SettingsPageEditorOptions__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          themeLayoutGlobal: themeLayoutGlobal,
           onChange: data => {
             handleUpdateSettings(data);
           },
@@ -1152,7 +1162,8 @@ __webpack_require__.r(__webpack_exports__);
 const SettingsPageEditorOptions = _ref => {
   let {
     allSettings,
-    onChange
+    onChange,
+    themeLayoutGlobal
   } = _ref;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "divide-y"
@@ -1160,13 +1171,14 @@ const SettingsPageEditorOptions = _ref => {
     className: "pb-8"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_InputNumber__WEBPACK_IMPORTED_MODULE_2__["default"], {
     label: "Default Content Width",
-    desc: "This setting will apply to Container Block's default Content Width.",
+    desc: `This setting will apply to Container Block's default Content Width.` + (themeLayoutGlobal?.contentSize ? `<br /><i>(The content width default from Full Site Editor's Global Styles: ${themeLayoutGlobal?.contentSize})</i>` : ""),
     id: "InputNumber_DefaultContentWidth",
     value: String(parseInt(allSettings.defaultContentWidth || "")),
     onChange: e => {
+      const newV = e ? e + "px" : themeLayoutGlobal?.contentSize || "1000px";
       onChange({
         ...allSettings,
-        defaultContentWidth: e + "px"
+        defaultContentWidth: newV
       });
     }
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {

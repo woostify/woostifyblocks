@@ -1,23 +1,41 @@
 import React, { FC, useState, useEffect } from "react";
 import InputNumber from "./InputNumber";
 import MyToggle from "./MyToggle";
+import { Wcb_theme_layout_global_settings } from "../App";
 
 interface Props {
 	allSettings: typeof window.wcbGlobalVariables;
 	onChange: (data: typeof window.wcbGlobalVariables) => void;
+	themeLayoutGlobal?: Wcb_theme_layout_global_settings;
 }
 
-const SettingsPageEditorOptions: FC<Props> = ({ allSettings, onChange }) => {
+const SettingsPageEditorOptions: FC<Props> = ({
+	allSettings,
+	onChange,
+	themeLayoutGlobal,
+}) => {
 	return (
 		<div className="divide-y">
 			<div className="pb-8">
 				<InputNumber
 					label="Default Content Width"
-					desc="This setting will apply to Container Block's default Content Width."
+					desc={
+						`This setting will apply to Container Block's default Content Width.` +
+						(themeLayoutGlobal?.contentSize
+							? `<br /><i>(The content width default from Full Site Editor's Global Styles: ${themeLayoutGlobal?.contentSize})</i>`
+							: "")
+					}
 					id="InputNumber_DefaultContentWidth"
 					value={String(parseInt(allSettings.defaultContentWidth || ""))}
 					onChange={(e) => {
-						onChange({ ...allSettings, defaultContentWidth: e + "px" });
+						const newV = e
+							? e + "px"
+							: themeLayoutGlobal?.contentSize || "1000px";
+
+						onChange({
+							...allSettings,
+							defaultContentWidth: newV,
+						});
 					}}
 				/>
 			</div>

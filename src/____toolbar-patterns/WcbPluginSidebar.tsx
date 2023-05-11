@@ -149,17 +149,18 @@ const WcbPluginSidebar = (props) => {
 								</div>
 								<div className="flex flex-wrap gap-2">
 									{mycolors?.map((item, j) => (
-										<MyColorPicker
-											color={item.color}
-											key={j}
-											label=""
-											onChange={(e) => {
-												debounce_fun(e, j);
-											}}
-											className="!w-auto"
-											showDefaultPalette
-											showCustomColorOnDefaultPallete={false}
-										/>
+										<div>
+											<MyColorPicker
+												color={item.color}
+												key={j}
+												label=""
+												onChange={(e) => {
+													debounce_fun(e, j);
+												}}
+												showDefaultPalette
+												showCustomColorOnDefaultPallete={false}
+											/>
+										</div>
 									))}
 
 									<button

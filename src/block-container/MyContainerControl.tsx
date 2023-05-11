@@ -16,6 +16,8 @@ import {
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE } from "../components/controls/MySpacingSizesControl/SpacingInputControl";
 import HelpText from "../components/controls/HelpText";
+// @ts-ignore
+import { withColorContext, useSetting } from "@wordpress/block-editor";
 
 export type MyContainerControlData = {
 	containerWidthType: "Full Width" | "Boxed" | "Custom";
@@ -27,14 +29,11 @@ export type MyContainerControlData = {
 	overflow: NonNullable<React.CSSProperties["overflow"]>;
 };
 export const CONTAINER_CONTROL_DEMO: MyContainerControlData = {
-	containerWidthType: "Custom",
+	containerWidthType: "Full Width",
 	contentWidthType: "Boxed",
 	// tai sao ko co Tablet? - vi muon th Tablet follow theo Desktop,
 	customWidth: { Desktop: "100%", Mobile: "100%" },
-	contentBoxWidth: {
-		Desktop: "",
-		Mobile: "100%",
-	},
+	contentBoxWidth: { Desktop: "", Mobile: "" },
 	minHeight: { Desktop: undefined },
 	htmlTag: "div",
 	overflow: "visible",
@@ -78,6 +77,9 @@ const MyContainerControl: FC<Props> = ({
 		htmlTag,
 		overflow,
 	} = containerControl;
+	//
+	const themeContentBoxWidth = useSetting("layout.contentSize");
+	const themeContentWideBoxWidth = useSetting("layout.wideSize");
 
 	useEffect(() => {
 		if (!showContainerWidthType && containerWidthType !== "Custom") {
@@ -149,7 +151,8 @@ const MyContainerControl: FC<Props> = ({
 		deviceType
 	);
 	if (CONTENT_BOX_WIDTH === "") {
-		CONTENT_BOX_WIDTH = DEMO_WCB_GLOBAL_VARIABLES.defaultContentWidth;
+		CONTENT_BOX_WIDTH =
+			DEMO_WCB_GLOBAL_VARIABLES.defaultContentWidth || themeContentBoxWidth;
 	}
 
 	const { currentDeviceValue: MIN_HEIGHT } = getValueFromAttrsResponsives(
@@ -170,6 +173,7 @@ const MyContainerControl: FC<Props> = ({
 				onChange={handleChangeContainerWidthType}
 				contentClassName="capitalize mt-3"
 				value={containerWidthType}
+				hasResponsive={false}
 			/>
 		);
 	};
@@ -187,6 +191,7 @@ const MyContainerControl: FC<Props> = ({
 				onChange={handleChangeContenWidthType}
 				contentClassName="capitalize mt-3"
 				value={contentWidthType}
+				hasResponsive={false}
 			/>
 		);
 	};
@@ -296,10 +301,10 @@ const MyContainerControl: FC<Props> = ({
 		<div className={className}>
 			{showContainerWidthType && renderContainerWidthType()}
 			{containerWidthType === "Custom" ? renderCustomWidth() : null}
-			{containerWidthType === "Full Width" ? renderContenWidthType() : null}
-			{containerWidthType === "Full Width" && contentWidthType === "Boxed"
-				? renderContentBoxWidth()
-				: null}
+			{/* {containerWidthType !== "Custom" ? renderContenWidthType() : null} */}
+			{renderContenWidthType()}
+			{/* {containerWidthType !== "Custom" && contentWidthType === "Boxed" */}
+			{contentWidthType === "Boxed" ? renderContentBoxWidth() : null}
 			{renderMinimumHeight()}
 			{renderHTMLTag()}
 			{renderOverflow()}

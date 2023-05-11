@@ -18,11 +18,16 @@ export interface Wcb_block_Type {
 }
 export interface Wcb_blocks_enable_disable_options_Type
 	extends Record<string, "enabled" | "disabled"> {}
+export interface Wcb_theme_layout_global_settings {
+	contentSize?: string;
+	wideSize?: string;
+}
 
 interface Props {
 	wcb_blocks_enable_disable_options: Wcb_blocks_enable_disable_options_Type;
 	wcb_blocks_settings_options: typeof window.wcbGlobalVariables;
 	wcb_blocks_list: Wcb_block_Type[];
+	wcb_layout_global_settings?: Wcb_theme_layout_global_settings;
 }
 
 export type Path = "welcome" | "blocks" | "settings";
@@ -41,7 +46,9 @@ const App: FC<Props> = ({
 	wcb_blocks_enable_disable_options,
 	wcb_blocks_settings_options,
 	wcb_blocks_list,
+	wcb_layout_global_settings,
 }) => {
+	//
 	const [currentPath, setcurrentPath] = useState<Path>(PAGES[0].path);
 
 	useEffect(() => {
@@ -93,7 +100,10 @@ const App: FC<Props> = ({
 						initWcbBlocksEnableDisable={wcb_blocks_enable_disable_options}
 					/>
 				) : (
-					<SettingsPage initData={wcb_blocks_settings_options} />
+					<SettingsPage
+						initData={wcb_blocks_settings_options}
+						themeLayoutGlobal={wcb_layout_global_settings}
+					/>
 				)}
 				{/* {currentPath === "welcome" && <WelcomePage />} */}
 			</div>

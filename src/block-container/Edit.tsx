@@ -93,7 +93,7 @@ const Placeholder: FC<TPlaceholder> = ({
 };
 
 const Edit = (props) => {
-	const { clientId, attributes } = props;
+	const { clientId, attributes, setAttributes } = props;
 	const { hasInnerBlocks, hasParent } = useSelect(
 		(select) => {
 			return {
@@ -117,7 +117,16 @@ const Edit = (props) => {
 		return C;
 	}, [hasParent, hasInnerBlocks, selectedVariant]);
 
-	return <Component {...props} onSelect={() => setSelectedVariant(true)} />;
+	return (
+		<Component
+			{...props}
+			onSelect={() => {
+				//
+				// setAttributes.align === "not-set" && setAttributes({ align: "full" });
+				setSelectedVariant(true);
+			}}
+		/>
+	);
 };
 
 export default Edit;

@@ -5,6 +5,13 @@
 	&:not(.is_wcb_container_child) {
 		flex: 0 1 auto;
 	}
+	/*  */
+	.wcb-container__inner {
+		.wcb-container__wrap.is_wcb_container_child {
+			margin-block-start: 0;
+			margin-block-end: 0;
+		}
+	}
 }
 
 .wcb-container__inner {

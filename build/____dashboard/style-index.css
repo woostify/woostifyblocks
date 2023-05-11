@@ -46,6 +46,17 @@
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
 }
+.woostifyblocks-includes-settings-page-php input.number-hide-arrow {
+  /* Chrome, Safari, Edge, Opera */
+  /* Firefox */
+}
+.woostifyblocks-includes-settings-page-php input.number-hide-arrow::-webkit-outer-spin-button, .woostifyblocks-includes-settings-page-php input.number-hide-arrow::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.woostifyblocks-includes-settings-page-php input.number-hide-arrow[type=number] {
+  -moz-appearance: textfield;
+}
 
 /* ------------------------------------------------------------------ */
 button,

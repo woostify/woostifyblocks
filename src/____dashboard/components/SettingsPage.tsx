@@ -9,6 +9,7 @@ import SettingsPageEditorOptions from "./SettingsPageEditorOptions";
 import toast, { Toaster } from "react-hot-toast";
 import SettingsPageTemplates from "./SettingsPageTemplates";
 import SettingsPageBlockSettings from "./SettingsPageBlockSettings";
+import { Wcb_theme_layout_global_settings } from "../App";
 
 interface Tab {
 	name: string;
@@ -41,9 +42,10 @@ const TABS: Tab[] = [
 
 interface Props {
 	initData: typeof window.wcbGlobalVariables;
+	themeLayoutGlobal?: Wcb_theme_layout_global_settings;
 }
 
-const SettingsPage: FC<Props> = ({ initData }) => {
+const SettingsPage: FC<Props> = ({ initData, themeLayoutGlobal }) => {
 	const [allSettings, setAllSettings] = useState(initData);
 	const [currentTab, setcurrentTab] = useState(TABS[0].name);
 
@@ -131,6 +133,7 @@ const SettingsPage: FC<Props> = ({ initData }) => {
 			case "editor-options":
 				return (
 					<SettingsPageEditorOptions
+						themeLayoutGlobal={themeLayoutGlobal}
 						onChange={(data) => {
 							handleUpdateSettings(data);
 						}}

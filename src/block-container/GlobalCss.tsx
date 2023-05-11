@@ -78,30 +78,28 @@ const GlobalCss: FC<Props> = (attrs) => {
 					color: styles_color,
 					overflow: overflow,
 					//
-					// maxWidth: cWidthMobile,
-					width: cWidthMobile_new,
+					maxWidth: cWidthMobile_new ? cWidthMobile_new + " !important" : "",
+					// width: cWidthMobile_new,
 					minHeight: minHeightMobile_new,
 					"&.is_wcb_container_child": {
 						width: cWidthMobile_new,
-						// flexBasis: `calc(${cWidthMobile} - (var(--wcb-gap-x)));`,
-						// maxWidth: `calc(${cWidthMobile} - (var(--wcb-gap-x)));`,
 					},
 					[`@media (min-width: ${media_tablet})`]: {
-						width: cWidthTablet_new,
+						maxWidth: cWidthTablet_new ? cWidthTablet_new + " !important" : "",
+						// width: cWidthTablet_new,
 						minHeight: minHeightTablet_new,
 						"&.is_wcb_container_child": {
 							width: cWidthTablet_new,
-							// flexBasis: `calc(${cWidthTablet} - (var(--wcb-gap-x)));`,
-							// maxWidth: `calc(${cWidthTablet} - (var(--wcb-gap-x)));`,
 						},
 					},
 					[`@media (min-width: ${media_desktop})`]: {
-						width: cWidthDesktop_new,
+						maxWidth: cWidthDesktop_new
+							? cWidthDesktop_new + " !important"
+							: "",
+						// width: cWidthDesktop_new,
 						minHeight: minHeightDesktop_new,
 						"&.is_wcb_container_child": {
 							width: cWidthDesktop_new,
-							// flexBasis: `calc(${cWidthDesktop} - (var(--wcb-gap-x)));`,
-							// maxWidth: `calc(${cWidthDesktop} - (var(--wcb-gap-x)));`,
 						},
 					},
 				},
@@ -175,7 +173,9 @@ const GlobalCss: FC<Props> = (attrs) => {
 			general_container;
 
 		// when container widtd = custom-width
-		if (containerWidthType !== "Full Width" || contentWidthType !== "Boxed") {
+		// if (containerWidthType !== "Full Width" || contentWidthType !== "Boxed") {
+		// if (containerWidthType === "Custom" || contentWidthType !== "Boxed") {
+		if (contentWidthType === "Full Width") {
 			return {
 				[INNER_CLASSNAME]: {
 					maxWidth: "100%",

@@ -1343,17 +1343,16 @@ const WcbPluginSidebar = props => {
     className: "uppercase text-[11px] font-medium m-0"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)("Add custom colors", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_HelpText__WEBPACK_IMPORTED_MODULE_7__["default"], null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)("The custom colors will show up in your ColorPicker component.", "wcb"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "flex flex-wrap gap-2"
-  }, mycolors?.map((item, j) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, mycolors?.map((item, j) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_6__["default"], {
     color: item.color,
     key: j,
     label: "",
     onChange: e => {
       debounce_fun(e, j);
     },
-    className: "!w-auto",
     showDefaultPalette: true,
     showCustomColorOnDefaultPallete: false
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "p-2 flex items-center justify-center border rounded-lg cursor-pointer hover:border-slate-300 disabled:opacity-40",
     title: updateStatus === "loading" ? "Updating..." : "Add new color",
     onClick: addNewCustomColor,

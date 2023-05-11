@@ -17,7 +17,9 @@ import HOCInspectorControls, {
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
 import MyBoxShadowControl from "../components/controls/MyBoxShadowControl/MyBoxShadowControl";
 import MyDimensionsControl from "../components/controls/MyDimensionsControl/MyDimensionsControl";
-import MyContainerControl from "./MyContainerControl";
+import MyContainerControl, {
+	CONTAINER_CONTROL_DEMO,
+} from "./MyContainerControl";
 import MyFlexPropertiesControl from "../components/controls/MyFlexPropertiesControl/MyFlexPropertiesControl";
 import GlobalCss from "./GlobalCss";
 import VideoBackgroundByBgControl from "../components/VideoBackgroundByBgControl";
@@ -47,6 +49,16 @@ const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 		styles_color,
 		styles_dimensions,
 	} = attributes;
+
+	//
+	useEffect(() => {
+		if (uniqueId) {
+			return;
+		}
+		setAttributes({ align: "full" });
+	}, [uniqueId]);
+
+	//
 
 	const ref = useRef<HTMLDivElement>(null);
 	const {
@@ -78,7 +90,6 @@ const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 		}
 		setAttributes({ containerClassName: cl });
 	}, [hasParent, containerWidthType]);
-
 	//
 
 	const renderPanelBackground = () => {
