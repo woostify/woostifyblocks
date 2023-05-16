@@ -9,7 +9,7 @@ import SettingsPageEditorOptions from "./SettingsPageEditorOptions";
 import toast, { Toaster } from "react-hot-toast";
 import SettingsPageTemplates from "./SettingsPageTemplates";
 import SettingsPageBlockSettings from "./SettingsPageBlockSettings";
-import { Wcb_theme_layout_global_settings } from "../App";
+import { Wcb_theme_layout_global_settings } from "../../types";
 
 interface Tab {
 	name: string;

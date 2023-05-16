@@ -78,7 +78,7 @@ if (!function_exists('wcb_get_default_blocks_settings')) :
             'reCAPTCHA_v3_secret_key'   => '',
             'reCAPTCHA_v2_site_key'     => '',
             'reCAPTCHA_v2_secret_key'   => '',
-            'defaultContentWidth'       => '1140px',
+            'defaultContentWidth'       => '',
             'containerPadding'          => '10px',
             'enableTemplatesButton'     => 'true',
             'enableCopyPasteStyles'     => 'true',
@@ -136,5 +136,26 @@ if (!function_exists("wcb__is_enabled")) :
     {
         if (!isset($variable)) return null;
         return filter_var($variable, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+    }
+endif;
+
+
+// 
+if (!function_exists("wcb__get_layout_global_settings")) :
+    function wcb__get_layout_global_settings()
+    {
+        $wcb_layout_global_settings = wp_get_global_settings(['layout']);
+        // IF USING WOOSTIFYBLOCKS THEME
+        if (class_exists('Woostify_Customizer')) {
+            $customizer = new Woostify_Customizer();
+            $options = $customizer->woostify_get_woostify_options();
+            // container_width
+            if (!empty($options['container_width'] ?? '')) {
+                $wcb_layout_global_settings['contentSize'] =  $options['container_width'] . "px";
+                $wcb_layout_global_settings['contentSizeOfWoostify'] =  true;
+            }
+        }
+
+        return $wcb_layout_global_settings;
     }
 endif;

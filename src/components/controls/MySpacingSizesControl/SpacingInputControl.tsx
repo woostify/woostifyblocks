@@ -86,6 +86,7 @@ const SpacingInputControl: FC<SpacingInputControlProps> = ({
 					onChange={(newSize: string, ...props) => {
 						onChange(newSize);
 					}}
+					placeholder={`${parseInt(value || "")}`}
 					value={value}
 					units={units}
 					min={minCustomValue}

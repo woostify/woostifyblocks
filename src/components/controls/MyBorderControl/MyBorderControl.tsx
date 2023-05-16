@@ -95,18 +95,6 @@ const MyBorderControl: FC<Props> = ({
 						</MyLabelControl>
 					}
 				/>
-				{/* <BoxControl
-					label={
-						<MyLabelControl className="" hasResponsive>
-							{__("Border radius", "wcb")}
-						</MyLabelControl>
-					}
-					values={RADIUS}
-					allowReset={false}
-					onChange={(e) => {
-						handleChangeBorderRadius(e);
-					}}
-				/> */}
 			</div>
 		</div>
 	);

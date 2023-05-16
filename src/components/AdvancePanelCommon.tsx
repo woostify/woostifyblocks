@@ -8,6 +8,7 @@ import MyResponsiveConditionControl, {
 import MyZIndexControl, {
 	MyZIndexControlData,
 } from "./controls/MyZIndexControl/MyZIndexControl";
+import MyMyMotionEffectControl from "./controls/MyMotionEffectControl/MyMotionEffectControl";
 
 interface Props {
 	handleTogglePanel: (
@@ -32,6 +33,25 @@ const AdvancePanelCommon: FC<Props> = ({
 }) => {
 	return (
 		<>
+			<PanelBody
+				onToggle={() =>
+					handleTogglePanel("Advances", "MyMyMotionEffectControl")
+				}
+				initialOpen={tabAdvancesIsPanelOpen === "MyMyMotionEffectControl"}
+				opened={
+					tabAdvancesIsPanelOpen === "MyMyMotionEffectControl" || undefined
+				}
+				title={__("Motion Effect", "wcb")}
+			>
+				<MyMyMotionEffectControl
+				// data={ }
+				// onChange={}
+				// responsiveConditionControl={advance_responsiveCondition}
+				// setAttrs__responsiveCondition={(data) =>
+				// 	setAttributes({ advance_responsiveCondition: data })
+				// }
+				/>
+			</PanelBody>
 			<PanelBody
 				onToggle={() => handleTogglePanel("Advances", "Responsive Conditions")}
 				initialOpen={tabAdvancesIsPanelOpen === "Responsive Conditions"}

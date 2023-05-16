@@ -7,6 +7,7 @@ import WelcomePage from "./components/WelcomePage";
 import "./types";
 import toast, { Toaster } from "react-hot-toast";
 import SettingsPage from "./components/SettingsPage";
+import { Wcb_theme_layout_global_settings } from "../types";
 
 export interface Wcb_block_Type {
 	name: string;
@@ -18,10 +19,6 @@ export interface Wcb_block_Type {
 }
 export interface Wcb_blocks_enable_disable_options_Type
 	extends Record<string, "enabled" | "disabled"> {}
-export interface Wcb_theme_layout_global_settings {
-	contentSize?: string;
-	wideSize?: string;
-}
 
 interface Props {
 	wcb_blocks_enable_disable_options: Wcb_blocks_enable_disable_options_Type;

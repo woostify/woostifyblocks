@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect } from "react";
 import InputNumber from "./InputNumber";
 import MyToggle from "./MyToggle";
-import { Wcb_theme_layout_global_settings } from "../App";
+import { Wcb_theme_layout_global_settings } from "../../types";
 
 interface Props {
 	allSettings: typeof window.wcbGlobalVariables;
@@ -14,6 +14,18 @@ const SettingsPageEditorOptions: FC<Props> = ({
 	onChange,
 	themeLayoutGlobal,
 }) => {
+	let subStr = "";
+
+	if (!!themeLayoutGlobal?.contentSize) {
+		if (!!themeLayoutGlobal?.contentSizeOfWoostify) {
+			subStr = `<br /><i>(The content width default from Woostify theme customizer: ${themeLayoutGlobal?.contentSize})</i>`;
+		} else {
+			subStr = `<br /><i>(The content width default from Full Site Editor's Global Styles: ${themeLayoutGlobal?.contentSize})</i>`;
+		}
+		subStr =
+			"<br /><i> Leave it blank to always use the default value </i>" + subStr;
+	}
+
 	return (
 		<div className="divide-y">
 			<div className="pb-8">
@@ -21,17 +33,13 @@ const SettingsPageEditorOptions: FC<Props> = ({
 					label="Default Content Width"
 					desc={
 						`This setting will apply to Container Block's default Content Width.` +
-						(themeLayoutGlobal?.contentSize
-							? `<br /><i>(The content width default from Full Site Editor's Global Styles: ${themeLayoutGlobal?.contentSize})</i>`
-							: "")
+						subStr
 					}
 					id="InputNumber_DefaultContentWidth"
 					value={String(parseInt(allSettings.defaultContentWidth || ""))}
+					placeholder={`${parseInt(themeLayoutGlobal?.contentSize || "650")}`}
 					onChange={(e) => {
-						const newV = e
-							? e + "px"
-							: themeLayoutGlobal?.contentSize || "1000px";
-
+						const newV = e ? e + "px" : "";
 						onChange({
 							...allSettings,
 							defaultContentWidth: newV,

@@ -78,8 +78,6 @@ const MyContainerControl: FC<Props> = ({
 		overflow,
 	} = containerControl;
 	//
-	const themeContentBoxWidth = useSetting("layout.contentSize");
-	const themeContentWideBoxWidth = useSetting("layout.wideSize");
 
 	useEffect(() => {
 		if (!showContainerWidthType && containerWidthType !== "Custom") {
@@ -150,9 +148,13 @@ const MyContainerControl: FC<Props> = ({
 		contentBoxWidthProps,
 		deviceType
 	);
-	if (CONTENT_BOX_WIDTH === "") {
+
+	// defaultContentWidth là setting trong trang woosify setting
+	// window.wcbLayoutGlobalSettings la global setting của full-site-editor or cua wootify theme neu co
+	if (!CONTENT_BOX_WIDTH) {
 		CONTENT_BOX_WIDTH =
-			DEMO_WCB_GLOBAL_VARIABLES.defaultContentWidth || themeContentBoxWidth;
+			DEMO_WCB_GLOBAL_VARIABLES.defaultContentWidth ||
+			window.wcbLayoutGlobalSettings.contentSize;
 	}
 
 	const { currentDeviceValue: MIN_HEIGHT } = getValueFromAttrsResponsives(

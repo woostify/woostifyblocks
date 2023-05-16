@@ -30,6 +30,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const WRAP_CLASSNAME = `.wcb-container__wrap.${uniqueId}[data-uniqueid=${uniqueId}]`;
 	const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-container__inner`;
 
+	console.log(999, { DEMO_WCB_GLOBAL_VARIABLES });
+
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject[] => {
 		const { containerWidthType, customWidth, overflow, minHeight } =
@@ -183,7 +185,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 			};
 		}
 
-		if (contentBoxWidth.Desktop === "") {
+		if (!contentBoxWidth.Desktop) {
 			contentBoxWidth = {
 				Desktop: DEMO_WCB_GLOBAL_VARIABLES.defaultContentWidth || "",
 			};

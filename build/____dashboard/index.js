@@ -1165,17 +1165,27 @@ const SettingsPageEditorOptions = _ref => {
     onChange,
     themeLayoutGlobal
   } = _ref;
+  let subStr = "";
+  if (!!themeLayoutGlobal?.contentSize) {
+    if (!!themeLayoutGlobal?.contentSizeOfWoostify) {
+      subStr = `<br /><i>(The content width default from Woostify theme customizer: ${themeLayoutGlobal?.contentSize})</i>`;
+    } else {
+      subStr = `<br /><i>(The content width default from Full Site Editor's Global Styles: ${themeLayoutGlobal?.contentSize})</i>`;
+    }
+    subStr = "<br /><i> Leave it blank to always use the default value </i>" + subStr;
+  }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "divide-y"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-8"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_InputNumber__WEBPACK_IMPORTED_MODULE_2__["default"], {
     label: "Default Content Width",
-    desc: `This setting will apply to Container Block's default Content Width.` + (themeLayoutGlobal?.contentSize ? `<br /><i>(The content width default from Full Site Editor's Global Styles: ${themeLayoutGlobal?.contentSize})</i>` : ""),
+    desc: `This setting will apply to Container Block's default Content Width.` + subStr,
     id: "InputNumber_DefaultContentWidth",
     value: String(parseInt(allSettings.defaultContentWidth || "")),
+    placeholder: `${parseInt(themeLayoutGlobal?.contentSize || "650")}`,
     onChange: e => {
-      const newV = e ? e + "px" : themeLayoutGlobal?.contentSize || "1000px";
+      const newV = e ? e + "px" : "";
       onChange({
         ...allSettings,
         defaultContentWidth: newV

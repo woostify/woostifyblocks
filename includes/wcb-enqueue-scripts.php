@@ -1,8 +1,10 @@
 <?php
-// 
+
+// Enqueue for Frontend
 if (!function_exists("wcb__my_scripts_method")) {
     function wcb__my_scripts_method()
     {
+
         wp_enqueue_style('wcb-frontend-css', plugin_dir_url(WCB_FILE) . 'build/block-common-css/style-index.css');
         wp_localize_script(
             'jquery',
@@ -12,14 +14,30 @@ if (!function_exists("wcb__my_scripts_method")) {
                 'homeUrl' => home_url(),
             )
         );
+        wp_localize_script(
+            'jquery',
+            'wcbLayoutGlobalSettings',
+            wcb__get_layout_global_settings()
+        );
+        // 1 - JS Global -> Follow by typeof window.wcbGlobalVariables
+        wp_localize_script(
+            'jquery',
+            'wcbGlobalVariables',
+            get_option('wcb_blocks_settings_options')
+        );
     }
     add_action('wp_enqueue_scripts', 'wcb__my_scripts_method');
 }
 
-// 
+// Enqueue for admin
 if (!function_exists("wcb__my_enqueue_scripts_for_admin_editor")) {
     function wcb__my_enqueue_scripts_for_admin_editor($hook)
     {
+        wp_localize_script(
+            'jquery',
+            'wcbLayoutGlobalSettings',
+            wcb__get_layout_global_settings()
+        );
         // 1 - JS Global -> Follow by typeof window.wcbGlobalVariables
         wp_localize_script(
             'jquery',
