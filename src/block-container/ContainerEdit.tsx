@@ -31,6 +31,7 @@ import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 import { ContainerEditProps } from "./Edit";
+import { getAnimateFMotionEffectData } from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
 
 const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 	props
@@ -48,6 +49,7 @@ const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 		styles_boxShadow,
 		styles_color,
 		styles_dimensions,
+		advance_motionEffect,
 	} = attributes;
 
 	//
@@ -244,6 +246,7 @@ const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 				return (
 					<>
 						<AdvancePanelCommon
+							advance_motionEffect={advance_motionEffect}
 							advance_responsiveCondition={
 								attributes.advance_responsiveCondition
 							}
@@ -298,6 +301,7 @@ const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 			styles_boxShadow,
 			styles_color,
 			styles_dimensions,
+			advance_motionEffect,
 		};
 	}, [
 		uniqueId,
@@ -311,12 +315,16 @@ const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 		styles_boxShadow,
 		styles_color,
 		styles_dimensions,
+		advance_motionEffect,
 	]);
 	//
 
 	const blockWrapProps = useBlockProps({
 		ref,
-		className: `wcb-container__wrap ${uniqueId} ${containerClassName}`.trim(),
+		className:
+			`wcb-container__wrap ${uniqueId} ${containerClassName} ${getAnimateFMotionEffectData(
+				advance_motionEffect
+			)}`.trim(),
 	});
 
 	// make uniqueid

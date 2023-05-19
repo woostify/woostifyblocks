@@ -1,11 +1,18 @@
 /*!*******************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/block-container/style.scss ***!
   \*******************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+body .wcb-container__wrap .wp-block {
+  margin-left: initial;
+  margin-right: initial;
+}
+
+/*  */
 .wcb-container__wrap {
   position: relative;
   /*  */
   padding: 0.75rem;
-  /*  */
+  /* can xem lai cho nay, vi no dang ngan phan margin của container child */
 }
 .wcb-container__wrap:not(.is_wcb_container_child) {
   flex: 0 1 auto;
@@ -29,9 +36,6 @@
 }
 .wcb-container__inner > .block-list-appender {
   width: 100%;
-}
-.wcb-container__inner .wp-block {
-  margin: unset;
 }
 .wcb-container__inner .wcb-container__wrap.is_wcb_container_child {
   max-width: unset;

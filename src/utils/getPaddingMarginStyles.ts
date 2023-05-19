@@ -104,7 +104,7 @@ const getPaddingMarginStyles = ({ className, padding, margin }: Params) => {
 	});
 
 	return css`
-		${className} {
+		body ${className} {
 			padding-top: ${padding_Mobile_top};
 			padding-right: ${padding_Mobile_right};
 			padding-bottom: ${padding_Mobile_bottom};

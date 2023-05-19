@@ -8,7 +8,10 @@ import MyResponsiveConditionControl, {
 import MyZIndexControl, {
 	MyZIndexControlData,
 } from "./controls/MyZIndexControl/MyZIndexControl";
-import MyMyMotionEffectControl from "./controls/MyMotionEffectControl/MyMotionEffectControl";
+import MyMyMotionEffectControl, {
+	MY_MOTION_EFFECT_DEMO,
+	MyMotionEffectData,
+} from "./controls/MyMotionEffectControl/MyMotionEffectControl";
 
 interface Props {
 	handleTogglePanel: (
@@ -19,6 +22,7 @@ interface Props {
 	tabAdvancesIsPanelOpen: string | undefined;
 	advance_responsiveCondition: MyResponsiveConditionControlData;
 	advance_zIndex: MyZIndexControlData;
+	advance_motionEffect?: MyMotionEffectData;
 	setAttributes: (data) => void;
 	children?: ReactNode;
 }
@@ -28,30 +32,29 @@ const AdvancePanelCommon: FC<Props> = ({
 	tabAdvancesIsPanelOpen,
 	advance_responsiveCondition,
 	advance_zIndex,
+	advance_motionEffect = MY_MOTION_EFFECT_DEMO,
 	setAttributes,
 	children,
 }) => {
 	return (
 		<>
-			{/* <PanelBody
-				onToggle={() =>
-					handleTogglePanel("Advances", "MyMyMotionEffectControl")
-				}
-				initialOpen={tabAdvancesIsPanelOpen === "MyMyMotionEffectControl"}
-				opened={
-					tabAdvancesIsPanelOpen === "MyMyMotionEffectControl" || undefined
-				}
-				title={__("Motion Effect", "wcb")}
-			>
-				<MyMyMotionEffectControl
-				// data={ }
-				// onChange={}
-				// responsiveConditionControl={advance_responsiveCondition}
-				// setAttrs__responsiveCondition={(data) =>
-				// 	setAttributes({ advance_responsiveCondition: data })
-				// }
-				/>
-			</PanelBody> */}
+			{!!advance_motionEffect ? (
+				<PanelBody
+					onToggle={() =>
+						handleTogglePanel("Advances", "MyMyMotionEffectControl")
+					}
+					initialOpen={tabAdvancesIsPanelOpen === "MyMyMotionEffectControl"}
+					opened={
+						tabAdvancesIsPanelOpen === "MyMyMotionEffectControl" || undefined
+					}
+					title={__("Motion Effect", "wcb")}
+				>
+					<MyMyMotionEffectControl
+						data={advance_motionEffect}
+						onChange={(data) => setAttributes({ advance_motionEffect: data })}
+					/>
+				</PanelBody>
+			) : null}
 			<PanelBody
 				onToggle={() => handleTogglePanel("Advances", "Responsive Conditions")}
 				initialOpen={tabAdvancesIsPanelOpen === "Responsive Conditions"}
