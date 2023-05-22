@@ -79,6 +79,7 @@ const MyDimensionsNoGapControl: FC<Props> = ({
 				}
 				values={margin}
 				onChange={handleChangeMargin}
+				inputProps={{ min: -2000 }}
 			/>
 		</div>
 	);

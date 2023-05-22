@@ -4596,13 +4596,20 @@ const getAdvanveDivWrapStyles = _ref => {
   //
   //
   try {
-    if (advance_motionEffect && document.querySelector(className)) {
-      console.log(123, "xxx");
-      document.querySelector(className)?.className.replace(/animate__\w+/g, "");
-      document.querySelector(className)?.classList.add("animate__animated", `animate__${advance_motionEffect?.entranceAnimation}`, `animate__${advance_motionEffect?.animationDuration}`, `animate__delay-${advance_motionEffect?.animationDelay}ms`, `animate__repeat-${advance_motionEffect?.repeat}`);
+    const thisEL = document.querySelector(className);
+    if (advance_motionEffect && advance_motionEffect.entranceAnimation && thisEL) {
+      // remove old class
+      const regex = /\banimate__\S+/g;
+      const classRemoved = thisEL?.className.replace(regex, "");
+      thisEL.setAttribute("class", classRemoved);
+
+      // add new class
+      setTimeout(() => {
+        thisEL?.classList.add("animate__animated", `animate__${advance_motionEffect?.entranceAnimation}`, `animate__${advance_motionEffect?.animationDuration}`, `animate__delay-${advance_motionEffect?.animationDelay}ms`, `animate__repeat-${advance_motionEffect?.repeat}`);
+      }, 50);
     }
   } catch (error) {
-    console.log(123, "error, advance_motionEffect");
+    console.log(123, "error, advance_motionEffect", error);
   }
   const {
     mobile_v: zIndexMobile,
@@ -4682,17 +4689,7 @@ const AdvancePanelCommon = _ref => {
     setAttributes,
     children
   } = _ref;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, !!advance_motionEffect ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
-    onToggle: () => handleTogglePanel("Advances", "MyMyMotionEffectControl"),
-    initialOpen: tabAdvancesIsPanelOpen === "MyMyMotionEffectControl",
-    opened: tabAdvancesIsPanelOpen === "MyMyMotionEffectControl" || undefined,
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Motion Effect", "wcb")
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    data: advance_motionEffect,
-    onChange: data => setAttributes({
-      advance_motionEffect: data
-    })
-  })) : null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     onToggle: () => handleTogglePanel("Advances", "Responsive Conditions"),
     initialOpen: tabAdvancesIsPanelOpen === "Responsive Conditions",
     opened: tabAdvancesIsPanelOpen === "Responsive Conditions" || undefined,
@@ -6268,7 +6265,10 @@ const MyDimensionsControl = _ref => {
       hasResponsive: true
     }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Margin", "wcb")),
     values: margin,
-    onChange: handleChangeMargin
+    onChange: handleChangeMargin,
+    inputProps: {
+      min: -2000
+    }
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyDimensionsControl);
@@ -6360,7 +6360,10 @@ const MyDimensionsNoGapControl = _ref => {
       hasResponsive: true
     }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Margin", "wcb")),
     values: margin,
-    onChange: handleChangeMargin
+    onChange: handleChangeMargin,
+    inputProps: {
+      min: -2000
+    }
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyDimensionsNoGapControl);

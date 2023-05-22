@@ -5,7 +5,8 @@ interface Props extends WcbAttrs {}
 
 // --------------------------- FORM AJAX
 export function handleSubmitFormForWcbForm(div: Element, props: Props) {
-	const formId = div.id;
+	// const formId = div.id;
+	const dataUniqueid = div.getAttribute("data-uniqueid") || "";
 
 	let $ = jQuery;
 	if (typeof jQuery !== "function") {
@@ -20,13 +21,13 @@ export function handleSubmitFormForWcbForm(div: Element, props: Props) {
 		props.general_gg_recaptcha?.version === "v3";
 
 	if (reCaptchaV2) {
-		$(`#${formId} .g-recaptcha`).attr(
+		$(`.${dataUniqueid} .g-recaptcha`).attr(
 			"data-sitekey",
 			DEMO_WCB_GLOBAL_VARIABLES.reCAPTCHA_v2_site_key || ""
 		);
 	}
 
-	$("#" + formId).on("submit", function (event) {
+	$("." + dataUniqueid).on("submit", function (event) {
 		event.preventDefault();
 
 		// ----------------------------
@@ -59,9 +60,15 @@ export function handleSubmitFormForWcbForm(div: Element, props: Props) {
 				beforeSend: function () {},
 				success: function (response) {
 					// This is OK code
-					console.log(99, "-----------OK", { props });
-					$(".wcb-form__successMessageText").css("display", "block");
-					$(".wcb-form__errorMessageText").css("display", "none");
+					console.log(99, "-----------OK", { props, response, formData });
+					$(`.${dataUniqueid}` + " .wcb-form__successMessageText").css(
+						"display",
+						"block"
+					);
+					$(`.${dataUniqueid}` + " .wcb-form__errorMessageText").css(
+						"display",
+						"none"
+					);
 					if (
 						props?.general_general?.confirmationType === "url-text" &&
 						props?.general_general?.successRedirectUrl
@@ -74,8 +81,14 @@ export function handleSubmitFormForWcbForm(div: Element, props: Props) {
 						"The following error occured: " + textStatus,
 						errorThrown
 					);
-					$(".wcb-form__successMessageText").css("display", "none");
-					$(".wcb-form__errorMessageText").css("display", "block");
+					$(`.${dataUniqueid}` + " .wcb-form__successMessageText").css(
+						"display",
+						"none"
+					);
+					$(`.${dataUniqueid}` + " .wcb-form__errorMessageText").css(
+						"display",
+						"block"
+					);
 				},
 			});
 		};

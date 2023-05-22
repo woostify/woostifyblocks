@@ -30,6 +30,8 @@ export type ContainerEditProps<T, C = any> = {
 	onReplace: Function;
 };
 
+export interface EditProps<T, C = any> extends ContainerEditProps<T, C> {}
+
 export interface TPlaceholder
 	extends ContainerEditProps<BlockWCBContainerAttrs> {
 	name: string;

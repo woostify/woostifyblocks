@@ -5,29 +5,9 @@ import { WcbAttrsForSave } from "./Save";
 interface Props extends WcbAttrsForSave {}
 
 //
-// const divsToUpdate = document.querySelectorAll(
-// 	".wcb-testimonials__wrap.wcb-update-div"
-// );
-// divsToUpdate.forEach((div) => {
-// 	const preEl = div.querySelector(
-// 		`pre[data-wcb-block-attrs=${div.id}]`
-// 	) as HTMLElement | null;
-
-// 	const divRenderCssEl = div.querySelector(
-// 		`div[data-wcb-global-styles=${div.id}]`
-// 	) as HTMLElement | null;
-
-// 	if (!preEl || !preEl.innerText || !divRenderCssEl) {
-// 		return;
-// 	}
-// 	//
-// 	const props = JSON.parse(preEl?.innerText);
-// 	//
-// 	initCarousel({ id: div.id, props });
-// });
-
 export function initCarouselForWcbTestimonials(div: Element, props: Props) {
-	const id = div.id;
+	// const id = div.id;
+	const dataUniqueid = div.getAttribute("data-uniqueid") || "";
 
 	let $ = jQuery;
 	if (typeof jQuery !== "function") {
@@ -90,5 +70,5 @@ export function initCarouselForWcbTestimonials(div: Element, props: Props) {
 		],
 	};
 
-	$(`#${id} .wcb-testimonials__wrap-items`).slick?.(settings);
+	$(`.${dataUniqueid} .wcb-testimonials__wrap-items`)?.slick?.(settings);
 }

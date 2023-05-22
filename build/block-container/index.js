@@ -3853,13 +3853,20 @@ const getAdvanveDivWrapStyles = _ref => {
   //
   //
   try {
-    if (advance_motionEffect && document.querySelector(className)) {
-      console.log(123, "xxx");
-      document.querySelector(className)?.className.replace(/animate__\w+/g, "");
-      document.querySelector(className)?.classList.add("animate__animated", `animate__${advance_motionEffect?.entranceAnimation}`, `animate__${advance_motionEffect?.animationDuration}`, `animate__delay-${advance_motionEffect?.animationDelay}ms`, `animate__repeat-${advance_motionEffect?.repeat}`);
+    const thisEL = document.querySelector(className);
+    if (advance_motionEffect && advance_motionEffect.entranceAnimation && thisEL) {
+      // remove old class
+      const regex = /\banimate__\S+/g;
+      const classRemoved = thisEL?.className.replace(regex, "");
+      thisEL.setAttribute("class", classRemoved);
+
+      // add new class
+      setTimeout(() => {
+        thisEL?.classList.add("animate__animated", `animate__${advance_motionEffect?.entranceAnimation}`, `animate__${advance_motionEffect?.animationDuration}`, `animate__delay-${advance_motionEffect?.animationDelay}ms`, `animate__repeat-${advance_motionEffect?.repeat}`);
+      }, 50);
     }
   } catch (error) {
-    console.log(123, "error, advance_motionEffect");
+    console.log(123, "error, advance_motionEffect", error);
   }
   const {
     mobile_v: zIndexMobile,
@@ -4353,17 +4360,7 @@ const AdvancePanelCommon = _ref => {
     setAttributes,
     children
   } = _ref;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, !!advance_motionEffect ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
-    onToggle: () => handleTogglePanel("Advances", "MyMyMotionEffectControl"),
-    initialOpen: tabAdvancesIsPanelOpen === "MyMyMotionEffectControl",
-    opened: tabAdvancesIsPanelOpen === "MyMyMotionEffectControl" || undefined,
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Motion Effect", "wcb")
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    data: advance_motionEffect,
-    onChange: data => setAttributes({
-      advance_motionEffect: data
-    })
-  })) : null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     onToggle: () => handleTogglePanel("Advances", "Responsive Conditions"),
     initialOpen: tabAdvancesIsPanelOpen === "Responsive Conditions",
     opened: tabAdvancesIsPanelOpen === "Responsive Conditions" || undefined,
@@ -6134,7 +6131,10 @@ const MyDimensionsControl = _ref => {
       hasResponsive: true
     }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Margin", "wcb")),
     values: margin,
-    onChange: handleChangeMargin
+    onChange: handleChangeMargin,
+    inputProps: {
+      min: -2000
+    }
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyDimensionsControl);
@@ -6606,7 +6606,7 @@ const PLANS_FLEX_ALIGNITEMS_DEMO = [{
     `
 }];
 const PLANS_FLEX_JUSTIFY_CONTENT_DEMO = [{
-  name: "start",
+  name: "flex-start",
   icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M16.26 18.9V7.1C16.26 5.6 15.62 5 14.03 5H12.99C11.4 5 10.76 5.6 10.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M2.26001 18.9V12.1C2.26001 10.6 2.90001 10 4.49001 10H5.53001C7.12001 10 7.76001 10.6 7.76001 12.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -6614,7 +6614,7 @@ const PLANS_FLEX_JUSTIFY_CONTENT_DEMO = [{
         </svg>
     `
 }, {
-  name: "end",
+  name: "flex-end",
   icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M22.26 18.9V7.1C22.26 5.6 21.62 5 20.03 5H18.99C17.4 5 16.76 5.6 16.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M8.26001 18.9V12.1C8.26001 10.6 8.90001 10 10.49 10H11.53C13.12 10 13.76 10.6 13.76 12.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -6630,7 +6630,7 @@ const PLANS_FLEX_JUSTIFY_CONTENT_DEMO = [{
         </svg>
     `
 }, {
-  name: "between",
+  name: "space-between",
   icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M22.26 18.9V7.1C22.26 5.6 21.62 5 20.03 5H18.99C17.4 5 16.76 5.6 16.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M2.26001 18.9V12.1C2.26001 10.6 2.90001 10 4.49001 10H5.53001C7.12001 10 7.76001 10.6 7.76001 12.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -6638,7 +6638,7 @@ const PLANS_FLEX_JUSTIFY_CONTENT_DEMO = [{
         </svg>
     `
 }, {
-  name: "around",
+  name: "space-around",
   icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M20.26 18.9V7.1C20.26 5.6 19.62 5 18.03 5H16.99C15.4 5 14.76 5.6 14.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M4.26001 18.9V12.1C4.26001 10.6 4.90001 10 6.49001 10H7.53001C9.12001 10 9.76001 10.6 9.76001 12.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -6646,7 +6646,7 @@ const PLANS_FLEX_JUSTIFY_CONTENT_DEMO = [{
         </svg>
     `
 }, {
-  name: "evenly",
+  name: "space-evenly",
   icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M19.26 18.9V7.1C19.26 5.6 18.62 5 17.03 5H15.99C14.4 5 13.76 5.6 13.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M5.26001 18.9V12.1C5.26001 10.6 5.90001 10 7.49001 10H8.53001C10.12 10 10.76 10.6 10.76 12.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

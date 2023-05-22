@@ -9259,8 +9259,8 @@ screenfull@^5.1.0:
   integrity sha512-9BakfsO2aUQN2K9Fdbj87RJIEZ82Q9IGim7FqM5OsebfoFC6ZHXgDq/KvniuLTPdeM8wY2o6Dj3WQ7KeQCj3cA==
 
 scroll-snap-slider@barthy-koeln/scroll-snap-slider:
-  version "3.0.1"
-  resolved "https://codeload.github.com/barthy-koeln/scroll-snap-slider/tar.gz/8f9c0d078778e350cf6edbe29fb0fedfbde2d2f6"
+  version "3.1.0"
+  resolved "https://codeload.github.com/barthy-koeln/scroll-snap-slider/tar.gz/6470edbe3c2054108029d629151b7b74a7cb89e1"
 
 select-hose@^2.0.0:
   version "2.0.0"

@@ -38,7 +38,7 @@ const AdvancePanelCommon: FC<Props> = ({
 }) => {
 	return (
 		<>
-			{!!advance_motionEffect ? (
+			{/* {!!advance_motionEffect ? (
 				<PanelBody
 					onToggle={() =>
 						handleTogglePanel("Advances", "MyMyMotionEffectControl")
@@ -54,7 +54,7 @@ const AdvancePanelCommon: FC<Props> = ({
 						onChange={(data) => setAttributes({ advance_motionEffect: data })}
 					/>
 				</PanelBody>
-			) : null}
+			) : null} */}
 			<PanelBody
 				onToggle={() => handleTogglePanel("Advances", "Responsive Conditions")}
 				initialOpen={tabAdvancesIsPanelOpen === "Responsive Conditions"}

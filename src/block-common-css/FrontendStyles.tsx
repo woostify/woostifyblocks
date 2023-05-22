@@ -114,13 +114,6 @@ function renderToDom(
 		funcRunOnEl && funcRunOnEl(div, props);
 
 		//
-		// if (!!props?.advance_motionEffect?.entranceAnimation) {
-		// 	const data = props?.advance_motionEffect;
-		// 	const animationcl = ` animate__animated animate__${data?.entranceAnimation} animate__${data?.animationDuration} animate__delay-${data?.animationDelay}ms  animate__repeat-${data?.repeat}`;
-		// 	div.classList.add(animationcl);
-		// }
-
-		//
 		div.classList.remove("wcb-update-div");
 		preEl.remove();
 	});

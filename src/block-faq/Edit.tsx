@@ -48,6 +48,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_icon,
 		style_answer,
 		general_preset,
+		advance_motionEffect,
 	} = attributes;
 	//  COMMON HOOKS
 	const ref = useRef<HTMLDivElement>(null);
@@ -285,6 +286,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			style_icon,
 			style_question,
 			uniqueId,
+			advance_motionEffect,
 		};
 	}, [
 		advance_responsiveCondition,
@@ -296,6 +298,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_icon,
 		style_question,
 		uniqueId,
+		advance_motionEffect,
 	]);
 
 	return (

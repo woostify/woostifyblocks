@@ -163,13 +163,20 @@ const getAdvanveDivWrapStyles = _ref => {
   //
   //
   try {
-    if (advance_motionEffect && document.querySelector(className)) {
-      console.log(123, "xxx");
-      document.querySelector(className)?.className.replace(/animate__\w+/g, "");
-      document.querySelector(className)?.classList.add("animate__animated", `animate__${advance_motionEffect?.entranceAnimation}`, `animate__${advance_motionEffect?.animationDuration}`, `animate__delay-${advance_motionEffect?.animationDelay}ms`, `animate__repeat-${advance_motionEffect?.repeat}`);
+    const thisEL = document.querySelector(className);
+    if (advance_motionEffect && advance_motionEffect.entranceAnimation && thisEL) {
+      // remove old class
+      const regex = /\banimate__\S+/g;
+      const classRemoved = thisEL?.className.replace(regex, "");
+      thisEL.setAttribute("class", classRemoved);
+
+      // add new class
+      setTimeout(() => {
+        thisEL?.classList.add("animate__animated", `animate__${advance_motionEffect?.entranceAnimation}`, `animate__${advance_motionEffect?.animationDuration}`, `animate__delay-${advance_motionEffect?.animationDelay}ms`, `animate__repeat-${advance_motionEffect?.repeat}`);
+      }, 50);
     }
   } catch (error) {
-    console.log(123, "error, advance_motionEffect");
+    console.log(123, "error, advance_motionEffect", error);
   }
   const {
     mobile_v: zIndexMobile,
