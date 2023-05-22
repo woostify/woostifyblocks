@@ -72,36 +72,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var accordion_js_dist_accordion_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! accordion-js/dist/accordion.min.css */ "./node_modules/accordion-js/dist/accordion.min.css");
 
 
-// const divsToUpdate = document.querySelectorAll(".wcb-faq__wrap.wcb-update-div");
-// divsToUpdate.forEach((div) => {
-// 	const preEl = div.querySelector(
-// 		`pre[data-wcb-block-attrs=${div.id}]`
-// 	) as HTMLElement | null;
-// 	const divRenderCssEl = div.querySelector(
-// 		`div[data-wcb-global-styles=${div.id}]`
-// 	) as HTMLElement | null;
-// 	if (!preEl || !preEl.innerText || !divRenderCssEl) {
-// 		return;
-// 	}
-// 	//
-// 	const props = JSON.parse(preEl?.innerText);
-// 	initCarousel(div.id, props);
-
-// 	//
-// 	ReactDOM.render(<FrontendStyles {...props} />, divRenderCssEl);
-// 	//
-// 	div.classList.remove("wcb-update-div");
-// 	preEl.remove();
-// });
-
-//
 // --------------------------- FORM AJAX
 function initCarouselForWcbFaq(div, _ref) {
   let {
     general_general
   } = _ref;
-  const id = div.id;
-  const container = "#" + id + "> .accordion-container";
+  const collection = div.children;
+  for (let i = 0; i < collection.length; i++) {
+    const el = collection[i];
+    if (el.classList.contains("accordion-container")) {
+      handleAccordion(el, general_general);
+    }
+  }
+  //
+}
+
+function handleAccordion(container, general_general) {
   if (!container || general_general.layout !== "accordion") {
     return;
   }
@@ -130,7 +116,8 @@ __webpack_require__.r(__webpack_exports__);
 
 // --------------------------- FORM AJAX
 function handleSubmitFormForWcbForm(div, props) {
-  const formId = div.id;
+  // const formId = div.id;
+  const dataUniqueid = div.getAttribute("data-uniqueid") || "";
   let $ = jQuery;
   if (typeof jQuery !== "function") {
     return;
@@ -138,9 +125,9 @@ function handleSubmitFormForWcbForm(div, props) {
   const reCaptchaV2 = props.general_gg_recaptcha?.enableReCaptcha && props.general_gg_recaptcha?.version === "v2";
   const reCaptchaV3 = props.general_gg_recaptcha?.enableReCaptcha && props.general_gg_recaptcha?.version === "v3";
   if (reCaptchaV2) {
-    $(`#${formId} .g-recaptcha`).attr("data-sitekey", ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES.reCAPTCHA_v2_site_key || "");
+    $(`.${dataUniqueid} .g-recaptcha`).attr("data-sitekey", ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES.reCAPTCHA_v2_site_key || "");
   }
-  $("#" + formId).on("submit", function (event) {
+  $("." + dataUniqueid).on("submit", function (event) {
     event.preventDefault();
 
     // ----------------------------
@@ -177,18 +164,20 @@ function handleSubmitFormForWcbForm(div, props) {
         success: function (response) {
           // This is OK code
           console.log(99, "-----------OK", {
-            props
+            props,
+            response,
+            formData
           });
-          $(".wcb-form__successMessageText").css("display", "block");
-          $(".wcb-form__errorMessageText").css("display", "none");
+          $(`.${dataUniqueid}` + " .wcb-form__successMessageText").css("display", "block");
+          $(`.${dataUniqueid}` + " .wcb-form__errorMessageText").css("display", "none");
           if (props?.general_general?.confirmationType === "url-text" && props?.general_general?.successRedirectUrl) {
             window.location.href = props?.general_general?.successRedirectUrl;
           }
         },
         error: function (jqXHR, textStatus, errorThrown) {
           console.log("The following error occured: " + textStatus, errorThrown);
-          $(".wcb-form__successMessageText").css("display", "none");
-          $(".wcb-form__errorMessageText").css("display", "block");
+          $(`.${dataUniqueid}` + " .wcb-form__successMessageText").css("display", "none");
+          $(`.${dataUniqueid}` + " .wcb-form__errorMessageText").css("display", "block");
         }
       });
     };
@@ -232,14 +221,17 @@ __webpack_require__.r(__webpack_exports__);
 
 function initCarouselForWcbProducts(div, props) {
   const handleCarouselForWcbProducts = () => {
-    const sliderMultiElement = document.querySelector(`.${div.id} .scroll-snap-slider.-multi`);
-    if (!sliderMultiElement || sliderMultiElement.classList.contains("swithToScrollSnapX--None")) {
+    const dataUniqueid = div.getAttribute("data-uniqueid") || "";
+    const sliderMultiElement = document.querySelector(`.${dataUniqueid} .scroll-snap-slider.-multi`);
+    if (!sliderMultiElement || sliderMultiElement.classList.contains("swithToScrollSnapX--None") || !sliderMultiElement.firstElementChild) {
       return;
     }
-    const sliderMulti = new _MyScrollSnapSlider__WEBPACK_IMPORTED_MODULE_0__.CustomPlugin(sliderMultiElement);
-    const arrows = document.querySelector(`.${div.id} .indicators.-multi`);
-    const prev = document.querySelector(`.${div.id} .indicators.-multi .p-arrow.-prev`);
-    const next = document.querySelector(`.${div.id} .indicators.-multi .p-arrow.-next`);
+    const sliderMulti = new _MyScrollSnapSlider__WEBPACK_IMPORTED_MODULE_0__.CustomPlugin({
+      element: sliderMultiElement
+    });
+    const arrows = document.querySelector(`.${dataUniqueid} .indicators.-multi`);
+    const prev = document.querySelector(`.${dataUniqueid} .indicators.-multi .p-arrow.-prev`);
+    const next = document.querySelector(`.${dataUniqueid} .indicators.-multi .p-arrow.-next`);
     const updateArrows = function () {
       prev?.classList.toggle("-disabled", sliderMultiElement.scrollLeft === 0);
       next?.classList.toggle("-disabled", sliderMultiElement.scrollLeft + sliderMultiElement.offsetWidth === sliderMultiElement.scrollWidth);
@@ -572,29 +564,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 //
-// const divsToUpdate = document.querySelectorAll(
-// 	".wcb-testimonials__wrap.wcb-update-div"
-// );
-// divsToUpdate.forEach((div) => {
-// 	const preEl = div.querySelector(
-// 		`pre[data-wcb-block-attrs=${div.id}]`
-// 	) as HTMLElement | null;
-
-// 	const divRenderCssEl = div.querySelector(
-// 		`div[data-wcb-global-styles=${div.id}]`
-// 	) as HTMLElement | null;
-
-// 	if (!preEl || !preEl.innerText || !divRenderCssEl) {
-// 		return;
-// 	}
-// 	//
-// 	const props = JSON.parse(preEl?.innerText);
-// 	//
-// 	initCarousel({ id: div.id, props });
-// });
-
 function initCarouselForWcbTestimonials(div, props) {
-  const id = div.id;
+  // const id = div.id;
+  const dataUniqueid = div.getAttribute("data-uniqueid") || "";
   let $ = jQuery;
   if (typeof jQuery !== "function") {
     return;
@@ -653,7 +625,7 @@ function initCarouselForWcbTestimonials(div, props) {
       }
     }]
   };
-  $(`#${id} .wcb-testimonials__wrap-items`).slick?.(settings);
+  $(`.${dataUniqueid} .wcb-testimonials__wrap-items`)?.slick?.(settings);
 }
 
 /***/ }),
@@ -1143,8 +1115,8 @@ function renderToDom(divsToUpdate, GlobalCss, funcRunOnEl) {
 
     // run function if exits
     funcRunOnEl && funcRunOnEl(div, props);
-    //
 
+    //
     div.classList.remove("wcb-update-div");
     preEl.remove();
   });

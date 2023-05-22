@@ -4,7 +4,9 @@
 if (!function_exists("wcb__my_scripts_method")) {
     function wcb__my_scripts_method()
     {
-
+        // animate nay enqueue cho frontend, trong trang editor da duoc import voi npm
+        wp_enqueue_style('cdnjs-animate-css', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css', [], '4.1.1');
+        // 
         wp_enqueue_style('wcb-frontend-css', plugin_dir_url(WCB_FILE) . 'build/block-common-css/style-index.css');
         wp_localize_script(
             'jquery',

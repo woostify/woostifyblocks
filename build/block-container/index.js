@@ -2585,6 +2585,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../components/AdvancePanelCommon */ "./src/components/AdvancePanelCommon.tsx");
 /* harmony import */ var _components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../components/MyCacheProvider */ "./src/components/MyCacheProvider.tsx");
 /* harmony import */ var _utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../utils/converUniqueIdToAnphaKey */ "./src/utils/converUniqueIdToAnphaKey.ts");
+/* harmony import */ var _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../components/controls/MyMotionEffectControl/MyMotionEffectControl */ "./src/components/controls/MyMotionEffectControl/MyMotionEffectControl.tsx");
+
 
 
 
@@ -2625,7 +2627,8 @@ const ContainerEdit = props => {
     styles_border,
     styles_boxShadow,
     styles_color,
-    styles_dimensions
+    styles_dimensions,
+    advance_motionEffect
   } = attributes;
 
   //
@@ -2790,6 +2793,7 @@ const ContainerEdit = props => {
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, renderPanelBackground(), renderPanelColor(), renderPanelBorder(), renderPanelBoxShadow(), renderPanelDimensions());
       case "Advances":
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_19__["default"], {
+          advance_motionEffect: advance_motionEffect,
           advance_responsiveCondition: attributes.advance_responsiveCondition,
           advance_zIndex: attributes.advance_zIndex,
           handleTogglePanel: handleTogglePanel,
@@ -2840,14 +2844,15 @@ const ContainerEdit = props => {
       styles_border,
       styles_boxShadow,
       styles_color,
-      styles_dimensions
+      styles_dimensions,
+      advance_motionEffect
     };
-  }, [uniqueId, advance_responsiveCondition, advance_zIndex, containerClassName, general_container, general_flexProperties, styles_background, styles_border, styles_boxShadow, styles_color, styles_dimensions]);
+  }, [uniqueId, advance_responsiveCondition, advance_zIndex, containerClassName, general_container, general_flexProperties, styles_background, styles_border, styles_boxShadow, styles_color, styles_dimensions, advance_motionEffect]);
   //
 
   const blockWrapProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
     ref,
-    className: `wcb-container__wrap ${uniqueId} ${containerClassName}`.trim()
+    className: `wcb-container__wrap ${uniqueId} ${containerClassName} ${(0,_components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_22__.getAnimateFMotionEffectData)(advance_motionEffect)}`.trim()
   });
 
   // make uniqueid
@@ -3060,7 +3065,8 @@ const GlobalCss = attrs => {
     styles_color,
     styles_dimensions,
     advance_responsiveCondition,
-    advance_zIndex
+    advance_zIndex,
+    advance_motionEffect
   } = attrs;
   const {
     media_desktop,
@@ -3068,9 +3074,6 @@ const GlobalCss = attrs => {
   } = ___WEBPACK_IMPORTED_MODULE_8__.DEMO_WCB_GLOBAL_VARIABLES;
   const WRAP_CLASSNAME = `.wcb-container__wrap.${uniqueId}[data-uniqueid=${uniqueId}]`;
   const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-container__inner`;
-  console.log(999, {
-    DEMO_WCB_GLOBAL_VARIABLES: ___WEBPACK_IMPORTED_MODULE_8__.DEMO_WCB_GLOBAL_VARIABLES
-  });
 
   // ------------------- WRAP DIV
   const getDivWrapStyles = () => {
@@ -3299,6 +3302,7 @@ const GlobalCss = attrs => {
     styles: getInner__flexProperties()
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
     styles: (0,_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_9__.getAdvanveDivWrapStyles)({
+      advance_motionEffect,
       advance_responsiveCondition,
       advance_zIndex,
       className: WRAP_CLASSNAME,
@@ -3625,7 +3629,6 @@ __webpack_require__.r(__webpack_exports__);
 // @ts-ignore
 
 
-// import { getGapStyleFromGapjObj } from "./Edit";
 
 
 
@@ -3644,7 +3647,8 @@ function save(_ref) {
     styles_border,
     styles_boxShadow,
     styles_color,
-    containerClassName
+    containerClassName,
+    advance_motionEffect
   } = attributes;
   const {
     htmlTag: HtmlTag = "div"
@@ -3664,7 +3668,8 @@ function save(_ref) {
     styles_border,
     styles_boxShadow,
     styles_color,
-    containerClassName
+    containerClassName,
+    advance_motionEffect
   };
 
   //
@@ -3713,6 +3718,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_controls_MyFlexPropertiesControl_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyFlexPropertiesControl/types */ "./src/components/controls/MyFlexPropertiesControl/types.ts");
 /* harmony import */ var _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl */ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx");
 /* harmony import */ var _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/controls/MyZIndexControl/MyZIndexControl */ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx");
+/* harmony import */ var _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/controls/MyMotionEffectControl/MyMotionEffectControl */ "./src/components/controls/MyMotionEffectControl/MyMotionEffectControl.tsx");
+
 
 
 
@@ -3804,6 +3811,10 @@ const blokcContainerAttrs = {
   advance_zIndex: {
     type: "object",
     default: _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_7__.Z_INDEX_DEMO
+  },
+  advance_motionEffect: {
+    type: "object",
+    default: _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_8__.MY_MOTION_EFFECT_DEMO
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (blokcContainerAttrs);
@@ -3829,6 +3840,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const getAdvanveDivWrapStyles = _ref => {
   let {
+    advance_motionEffect,
     advance_zIndex,
     advance_responsiveCondition,
     className,
@@ -3839,7 +3851,23 @@ const getAdvanveDivWrapStyles = _ref => {
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES;
   //
+  //
+  try {
+    const thisEL = document.querySelector(className);
+    if (advance_motionEffect && advance_motionEffect.entranceAnimation && thisEL) {
+      // remove old class
+      const regex = /\banimate__\S+/g;
+      const classRemoved = thisEL?.className.replace(regex, "");
+      thisEL.setAttribute("class", classRemoved);
 
+      // add new class
+      setTimeout(() => {
+        thisEL?.classList.add("animate__animated", `animate__${advance_motionEffect?.entranceAnimation}`, `animate__${advance_motionEffect?.animationDuration}`, `animate__delay-${advance_motionEffect?.animationDelay}ms`, `animate__repeat-${advance_motionEffect?.repeat}`);
+      }, 50);
+    }
+  } catch (error) {
+    console.log(123, "error, advance_motionEffect", error);
+  }
   const {
     mobile_v: zIndexMobile,
     tablet_v: zIndexTablet,
@@ -3860,10 +3888,6 @@ const getAdvanveDivWrapStyles = _ref => {
     tablet_v: advance_responsiveCondition.isHiddenOnTablet,
     desktop_v: advance_responsiveCondition.isHiddenOnDesktop
   });
-
-  // [data-is-wcb-save-common] {
-  // 	visibility: visible;
-  // }
   return _emotion_react__WEBPACK_IMPORTED_MODULE_2__.css`
 		${className} {
 			display: ${isHiddenOnMobile ? "none" : defaultDisplay};
@@ -4318,6 +4342,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./controls/MyResponsiveConditionControl/MyResponsiveConditionControl */ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx");
 /* harmony import */ var _controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./controls/MyZIndexControl/MyZIndexControl */ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx");
+/* harmony import */ var _controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./controls/MyMotionEffectControl/MyMotionEffectControl */ "./src/components/controls/MyMotionEffectControl/MyMotionEffectControl.tsx");
+
 
 
 
@@ -4330,6 +4356,7 @@ const AdvancePanelCommon = _ref => {
     tabAdvancesIsPanelOpen,
     advance_responsiveCondition,
     advance_zIndex,
+    advance_motionEffect = _controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_6__.MY_MOTION_EFFECT_DEMO,
     setAttributes,
     children
   } = _ref;
@@ -6104,7 +6131,10 @@ const MyDimensionsControl = _ref => {
       hasResponsive: true
     }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Margin", "wcb")),
     values: margin,
-    onChange: handleChangeMargin
+    onChange: handleChangeMargin,
+    inputProps: {
+      min: -2000
+    }
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyDimensionsControl);
@@ -6576,7 +6606,7 @@ const PLANS_FLEX_ALIGNITEMS_DEMO = [{
     `
 }];
 const PLANS_FLEX_JUSTIFY_CONTENT_DEMO = [{
-  name: "start",
+  name: "flex-start",
   icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M16.26 18.9V7.1C16.26 5.6 15.62 5 14.03 5H12.99C11.4 5 10.76 5.6 10.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M2.26001 18.9V12.1C2.26001 10.6 2.90001 10 4.49001 10H5.53001C7.12001 10 7.76001 10.6 7.76001 12.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -6584,7 +6614,7 @@ const PLANS_FLEX_JUSTIFY_CONTENT_DEMO = [{
         </svg>
     `
 }, {
-  name: "end",
+  name: "flex-end",
   icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M22.26 18.9V7.1C22.26 5.6 21.62 5 20.03 5H18.99C17.4 5 16.76 5.6 16.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M8.26001 18.9V12.1C8.26001 10.6 8.90001 10 10.49 10H11.53C13.12 10 13.76 10.6 13.76 12.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -6600,7 +6630,7 @@ const PLANS_FLEX_JUSTIFY_CONTENT_DEMO = [{
         </svg>
     `
 }, {
-  name: "between",
+  name: "space-between",
   icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M22.26 18.9V7.1C22.26 5.6 21.62 5 20.03 5H18.99C17.4 5 16.76 5.6 16.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M2.26001 18.9V12.1C2.26001 10.6 2.90001 10 4.49001 10H5.53001C7.12001 10 7.76001 10.6 7.76001 12.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -6608,7 +6638,7 @@ const PLANS_FLEX_JUSTIFY_CONTENT_DEMO = [{
         </svg>
     `
 }, {
-  name: "around",
+  name: "space-around",
   icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M20.26 18.9V7.1C20.26 5.6 19.62 5 18.03 5H16.99C15.4 5 14.76 5.6 14.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M4.26001 18.9V12.1C4.26001 10.6 4.90001 10 6.49001 10H7.53001C9.12001 10 9.76001 10.6 9.76001 12.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -6616,7 +6646,7 @@ const PLANS_FLEX_JUSTIFY_CONTENT_DEMO = [{
         </svg>
     `
 }, {
-  name: "evenly",
+  name: "space-evenly",
   icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M19.26 18.9V7.1C19.26 5.6 18.62 5 17.03 5H15.99C14.4 5 13.76 5.6 13.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M5.26001 18.9V12.1C5.26001 10.6 5.90001 10 7.49001 10H8.53001C10.12 10 10.76 10.6 10.76 12.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -6818,6 +6848,323 @@ const MyMediaUploadCheck = _ref => {
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Remove", "wcb")))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyMediaUploadCheck);
+
+/***/ }),
+
+/***/ "./src/components/controls/MyMotionEffectControl/MyMotionEffectControl.tsx":
+/*!*********************************************************************************!*\
+  !*** ./src/components/controls/MyMotionEffectControl/MyMotionEffectControl.tsx ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MY_MOTION_EFFECT_DEMO": () => (/* binding */ MY_MOTION_EFFECT_DEMO),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "getAnimateFMotionEffectData": () => (/* binding */ getAnimateFMotionEffectData)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _MySelect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../MySelect */ "./src/components/controls/MySelect.tsx");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+// @ts-ignore
+
+function getAnimateFMotionEffectData(data) {
+  return "";
+  return ` animate__animated animate__${data?.entranceAnimation} animate__${data?.animationDuration} animate__delay-${data?.animationDelay}ms  animate__repeat-${data?.repeat}`;
+}
+const options = [{
+  label: "",
+  value: ""
+}, {
+  label: "Bounce",
+  value: "bounce"
+}, {
+  label: "Flash",
+  value: "flash"
+}, {
+  label: "Pulse",
+  value: "pulse"
+}, {
+  label: "Shake",
+  value: "shake"
+}, {
+  label: "Swing",
+  value: "swing"
+}, {
+  label: "Tada",
+  value: "tada"
+}, {
+  label: "Wobble",
+  value: "wobble"
+}, {
+  label: "Wave",
+  value: "wave"
+}, {
+  label: "Wobble Vertical",
+  value: "wobble-vertical"
+}, {
+  label: "Bounce In",
+  value: "bounce-in"
+}, {
+  label: "Bounce In Down",
+  value: "bounce-in-down"
+}, {
+  label: "Bounce In Left",
+  value: "bounce-in-left"
+}, {
+  label: "Bounce In Right",
+  value: "bounce-in-right"
+}, {
+  label: "Bounce In Up",
+  value: "bounce-in-up"
+}, {
+  label: "Bounce Out",
+  value: "bounce-out"
+}, {
+  label: "Bounce Out Down",
+  value: "bounce-out-down"
+}, {
+  label: "Bounce Out Left",
+  value: "bounce-out-left"
+}, {
+  label: "Bounce Out Right",
+  value: "bounce-out-right"
+}, {
+  label: "Bounce Out Up",
+  value: "bounce-out-up"
+}, {
+  label: "Fade In",
+  value: "fade-in"
+}, {
+  label: "Fade In Down",
+  value: "fade-in-down"
+}, {
+  label: "Fade In Left",
+  value: "fade-in-left"
+}, {
+  label: "Fade In Right",
+  value: "fade-in-right"
+}, {
+  label: "Fade In Up",
+  value: "fade-in-up"
+}, {
+  label: "Fade Out",
+  value: "fade-out"
+}, {
+  label: "Fade Out Down",
+  value: "fade-out-down"
+}, {
+  label: "Fade Out Left",
+  value: "fade-out-left"
+}, {
+  label: "Fade Out Right",
+  value: "fade-out-right"
+}, {
+  label: "Fade Out Up",
+  value: "fade-out-up"
+}, {
+  label: "Flip In X",
+  value: "flip-in-x"
+}, {
+  label: "Flip In Y",
+  value: "flip-in-y"
+}, {
+  label: "Flip Out X",
+  value: "flip-out-x"
+}, {
+  label: "Flip Out Y",
+  value: "flip-out-y"
+}, {
+  label: "Lightspeed In Left",
+  value: "lightspeed-in-left"
+}, {
+  label: "Lightspeed In Right",
+  value: "lightspeed-in-right"
+}, {
+  label: "Lightspeed Out Left",
+  value: "lightspeed-out-left"
+}, {
+  label: "Lightspeed Out Right",
+  value: "lightspeed-out-right"
+}, {
+  label: "Rotate In",
+  value: "rotate-in"
+}, {
+  label: "Rotate In Down",
+  value: "rotate-in-down"
+}, {
+  label: "Rotate In Left",
+  value: "rotate-in-left"
+}, {
+  label: "Rotate In Right",
+  value: "rotate-in-right"
+}, {
+  label: "Rotate In Up",
+  value: "rotate-in-up"
+}, {
+  label: "Rotate Out",
+  value: "rotate-out"
+}, {
+  label: "Rotate Out Down",
+  value: "rotate-out-down"
+}, {
+  label: "Rotate Out Left",
+  value: "rotate-out-left"
+}, {
+  label: "Rotate Out Right",
+  value: "rotate-out-right"
+}, {
+  label: "Rotate Out Up",
+  value: "rotate-out-up"
+}, {
+  label: "Rubberband",
+  value: "rubberband"
+}, {
+  label: "Shake Horizontal",
+  value: "shake-horizontal"
+}, {
+  label: "Shake Vertical",
+  value: "shake-vertical"
+}, {
+  label: "Slide In Down",
+  value: "slide-in-down"
+}, {
+  label: "Slide In Left",
+  value: "slide-in-left"
+}, {
+  label: "Slide In Right",
+  value: "slide-in-right"
+}, {
+  label: "Slide In Up",
+  value: "slide-in-up"
+}, {
+  label: "Slide Out Down",
+  value: "slide-out-down"
+}, {
+  label: "Slide Out Left",
+  value: "slide-out-left"
+}, {
+  label: "Slide Out Right",
+  value: "slide-out-right"
+}, {
+  label: "Slide Out Up",
+  value: "slide-out-up"
+}, {
+  label: "Swing In Left",
+  value: "swing-in-left"
+}, {
+  label: "Swing In Right",
+  value: "swing-in-right"
+}, {
+  label: "Swing Out Left",
+  value: "swing-out-left"
+}, {
+  label: "Swing Out Right",
+  value: "swing-out-right"
+}, {
+  label: "Tada",
+  value: "tada"
+}, {
+  label: "Wobble",
+  value: "wobble"
+}, {
+  label: "Wobble Vertical",
+  value: "wobble-vertical"
+}];
+const MY_MOTION_EFFECT_DEMO = {
+  animationDelay: 0,
+  animationDuration: "fast",
+  entranceAnimation: "",
+  repeat: "1"
+};
+const MyMyMotionEffectData = _ref => {
+  let {
+    onChange,
+    data
+  } = _ref;
+  console.log(22, "-----MyMyMotionEffectData-----", {
+    data
+  });
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "space-y-4"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MySelect__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    label: "Animation name",
+    options: options,
+    hasResponsive: false,
+    onChange: value => onChange({
+      ...data,
+      entranceAnimation: value
+    }),
+    value: data.entranceAnimation
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MySelect__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    label: "Animation duration",
+    options: [{
+      label: "Slow (2s)",
+      value: "slow"
+    }, {
+      label: "Slower (3s)",
+      value: "slower"
+    }, {
+      label: "Fast (800ms)",
+      value: "fast"
+    }, {
+      label: "Faster (500ms)",
+      value: "faster"
+    }],
+    hasResponsive: false,
+    onChange: value => onChange({
+      ...data,
+      animationDuration: value
+    }),
+    value: data.animationDuration
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalNumberControl, {
+    isShiftStepEnabled: true,
+    shiftStep: 1000,
+    step: 100,
+    __unstableInputWidth: "60px",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Animation delay (ms)"),
+    labelPosition: "edge",
+    min: 0,
+    value: data.animationDelay,
+    onChange: e => onChange({
+      ...data,
+      animationDelay: Number(e || 0) || 0
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MySelect__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    label: "Animation repeat",
+    options: [{
+      label: "1",
+      value: "1"
+    }, {
+      label: "2",
+      value: "2"
+    }, {
+      label: "3",
+      value: "3"
+    }, {
+      label: "infinite",
+      value: "infinite"
+    }],
+    hasResponsive: false,
+    onChange: value => onChange({
+      ...data,
+      repeat: value
+    }),
+    value: data.repeat
+  }));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyMyMotionEffectData);
 
 /***/ }),
 
@@ -8503,7 +8850,7 @@ const getPaddingMarginStyles = _ref => {
     desktop_v: margin_Desktop?.bottom
   });
   return _emotion_react__WEBPACK_IMPORTED_MODULE_3__.css`
-		${className} {
+		body ${className} {
 			padding-top: ${padding_Mobile_top};
 			padding-right: ${padding_Mobile_right};
 			padding-bottom: ${padding_Mobile_bottom};

@@ -112,8 +112,8 @@ function renderToDom(
 
 		// run function if exits
 		funcRunOnEl && funcRunOnEl(div, props);
-		//
 
+		//
 		div.classList.remove("wcb-update-div");
 		preEl.remove();
 	});

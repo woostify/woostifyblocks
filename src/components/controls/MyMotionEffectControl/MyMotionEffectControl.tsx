@@ -1,20 +1,16 @@
 import { __ } from "@wordpress/i18n";
-import React, { FC, CSSProperties } from "react";
-import MyRadioGroup from "../MyRadioGroup";
+import React, { FC } from "react";
 import MySelect from "../MySelect";
+// @ts-ignore
+import { __experimentalNumberControl as NumberControl } from "@wordpress/components";
 
-export interface MyMotionEffectControl {
-	entranceAnimation: string;
-	animationDuration: "slower" | "slow" | "fast" | "faster" | "";
-	animationDelay: number;
+export function getAnimateFMotionEffectData(data: MyMotionEffectData) {
+	return "";
+	return ` animate__animated animate__${data?.entranceAnimation} animate__${data?.animationDuration} animate__delay-${data?.animationDelay}ms  animate__repeat-${data?.repeat}`;
 }
 
-interface Props {
-	data: MyMotionEffectControl;
-	onChange?: (data: MyMotionEffectControl) => void;
-}
-
-const options: { label: string; value: string }[] = [
+const options = [
+	{ label: "", value: "" },
 	{ label: "Bounce", value: "bounce" },
 	{ label: "Flash", value: "flash" },
 	{ label: "Pulse", value: "pulse" },
@@ -59,35 +55,112 @@ const options: { label: string; value: string }[] = [
 	{ label: "Rotate In Up", value: "rotate-in-up" },
 	{ label: "Rotate Out", value: "rotate-out" },
 	{ label: "Rotate Out Down", value: "rotate-out-down" },
-	{ label: "Rotate-out-left", value: "rotate-out-left" },
-	{ label: "Rotate-out-right", value: "rotate-out-right" },
-	{ label: "Rotate-out-up", value: "rotate-out-up" },
+	{ label: "Rotate Out Left", value: "rotate-out-left" },
+	{ label: "Rotate Out Right", value: "rotate-out-right" },
+	{ label: "Rotate Out Up", value: "rotate-out-up" },
 	{ label: "Rubberband", value: "rubberband" },
-	{ label: "Shake-horizontal", value: "shake-horizontal" },
-	{ label: "Shake-vertical", value: "shake-vertical" },
-	{ label: "Slide-in-down", value: "slide-in-down" },
-	{ label: "Slide-in-left", value: "slide-in-left" },
-	{ label: "Slide-in-right", value: "slide-in-right" },
-	{ label: "Slide-in-up", value: "slide-in-up" },
-	{ label: "Slide-out-down", value: "slide-out-down" },
-	{ label: "Slide-out-left", value: "slide-out-left" },
-	{ label: "Slide-out-right", value: "slide-out-right" },
-	{ label: "Slide-out-up", value: "slide-out-up" },
-	{ label: "Swing-in-left", value: "swing-in-left" },
-	{ label: "Swing-in-right", value: "swing-in-right" },
-	{ label: "Swing-out-left", value: "swing-out-left" },
-	{ label: "Swing-out-right", value: "swing-out-right" },
+	{ label: "Shake Horizontal", value: "shake-horizontal" },
+	{ label: "Shake Vertical", value: "shake-vertical" },
+	{ label: "Slide In Down", value: "slide-in-down" },
+	{ label: "Slide In Left", value: "slide-in-left" },
+	{ label: "Slide In Right", value: "slide-in-right" },
+	{ label: "Slide In Up", value: "slide-in-up" },
+	{ label: "Slide Out Down", value: "slide-out-down" },
+	{ label: "Slide Out Left", value: "slide-out-left" },
+	{ label: "Slide Out Right", value: "slide-out-right" },
+	{ label: "Slide Out Up", value: "slide-out-up" },
+	{ label: "Swing In Left", value: "swing-in-left" },
+	{ label: "Swing In Right", value: "swing-in-right" },
+	{ label: "Swing Out Left", value: "swing-out-left" },
+	{ label: "Swing Out Right", value: "swing-out-right" },
 	{ label: "Tada", value: "tada" },
 	{ label: "Wobble", value: "wobble" },
-	{ label: "Wobble-vertical", value: "wobble-vertical" },
+	{ label: "Wobble Vertical", value: "wobble-vertical" },
 ];
 
-const MyMyMotionEffectControl: FC<Props> = ({ onChange, data }) => {
+export interface MyMotionEffectData {
+	entranceAnimation: string;
+	animationDuration: "slower" | "slow" | "fast" | "faster" | "";
+	animationDelay: number;
+	repeat: "1" | "2" | "3" | "infinite";
+}
+
+export const MY_MOTION_EFFECT_DEMO: MyMotionEffectData = {
+	animationDelay: 0,
+	animationDuration: "fast",
+	entranceAnimation: "",
+	repeat: "1",
+};
+
+interface Props {
+	data: MyMotionEffectData;
+	onChange: (data: MyMotionEffectData) => void;
+}
+
+const MyMyMotionEffectData: FC<Props> = ({ onChange, data }) => {
+	console.log(22, "-----MyMyMotionEffectData-----", { data });
+
 	return (
-		<div>
-			<MySelect options={options} onChange={(value) => {}} />
+		<div className="space-y-4">
+			<MySelect
+				label="Animation name"
+				options={options}
+				hasResponsive={false}
+				onChange={(value) => onChange({ ...data, entranceAnimation: value })}
+				value={data.entranceAnimation}
+			/>
+
+			<MySelect
+				label="Animation duration"
+				options={[
+					{ label: "Slow (2s)", value: "slow" },
+					{ label: "Slower (3s)", value: "slower" },
+					{ label: "Fast (800ms)", value: "fast" },
+					{ label: "Faster (500ms)", value: "faster" },
+				]}
+				hasResponsive={false}
+				onChange={(value) =>
+					onChange({
+						...data,
+						animationDuration: value as MyMotionEffectData["animationDuration"],
+					})
+				}
+				value={data.animationDuration}
+			/>
+
+			<NumberControl
+				isShiftStepEnabled={true}
+				shiftStep={1000}
+				step={100}
+				__unstableInputWidth="60px"
+				label={__("Animation delay (ms)")}
+				labelPosition="edge"
+				min={0}
+				value={data.animationDelay}
+				onChange={(e) =>
+					onChange({ ...data, animationDelay: Number(e || 0) || 0 })
+				}
+			/>
+
+			<MySelect
+				label="Animation repeat"
+				options={[
+					{ label: "1", value: "1" },
+					{ label: "2", value: "2" },
+					{ label: "3", value: "3" },
+					{ label: "infinite", value: "infinite" },
+				]}
+				hasResponsive={false}
+				onChange={(value) =>
+					onChange({
+						...data,
+						repeat: value as MyMotionEffectData["repeat"],
+					})
+				}
+				value={data.repeat}
+			/>
 		</div>
 	);
 };
 
-export default MyMyMotionEffectControl;
+export default MyMyMotionEffectData;
