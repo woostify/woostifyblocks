@@ -102,8 +102,6 @@ const MyColorPicker: FC<Props> = ({
 								// @ts-ignore
 								enableAlpha
 								onChange={(color) => {
-									console.log(11, { color });
-
 									handleUpdateColor(color || "");
 								}}
 								// @ts-ignore

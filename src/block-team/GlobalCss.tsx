@@ -50,6 +50,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const isImageBeSide =
 		general_image.imagePosition === "left" ||
 		general_image.imagePosition === "right";
+
+	if (!uniqueId) {
+		return null;
+	}
 	return (
 		<>
 			<Global styles={getDivWrapStyles()} />

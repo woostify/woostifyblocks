@@ -340,7 +340,7 @@ const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div {...blockWrapProps} data-uniqueid={uniqueId}>
 				{/*  */}
-				<GlobalCss {...WcbAttrsForSave()} />
+				{uniqueId && <GlobalCss {...WcbAttrsForSave()} />}
 
 				<VideoBackgroundByBgControl
 					bgType={styles_background.bgType}

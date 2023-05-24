@@ -91,8 +91,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 	) {
 		ALIGN_ITEMS.Mobile = "center";
 	}
-	// console.log(3, "---- CTA global css ---", { uniqueId });
 
+	if (!uniqueId) {
+		return null;
+	}
 	return (
 		<>
 			{/* <Global styles={getDivWrapStyles()} /> */}

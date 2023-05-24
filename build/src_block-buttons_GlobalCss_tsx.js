@@ -73,6 +73,9 @@ const GlobalCss = attrs => {
 
   // console.log(1, "---- butons global css ---", { style_dimension });
 
+  if (!uniqueId) {
+    return null;
+  }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: [{
       [INNER_CLASSNAME]: {
@@ -165,6 +168,10 @@ const getAdvanveDivWrapStyles = _ref => {
   try {
     const thisEL = document.querySelector(className);
     if (advance_motionEffect && advance_motionEffect.entranceAnimation && thisEL) {
+      console.log(222, {
+        thisEL
+      });
+
       // remove old class
       const regex = /\banimate__\S+/g;
       const classRemoved = thisEL?.className.replace(regex, "");
