@@ -196,6 +196,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 		);
 	};
 
+	if (!uniqueId) {
+		return null;
+	}
+
 	return (
 		<>
 			<Global styles={getDivWrapStyles()} />

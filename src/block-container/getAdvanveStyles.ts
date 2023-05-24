@@ -30,6 +30,8 @@ export const getAdvanveDivWrapStyles = ({
 			advance_motionEffect.entranceAnimation &&
 			thisEL
 		) {
+			console.log(222, { thisEL });
+
 			// remove old class
 			const regex = /\banimate__\S+/g;
 			const classRemoved = thisEL?.className.replace(regex, "");

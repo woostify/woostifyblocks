@@ -48,6 +48,9 @@ const GlobalCss: FC<Props> = (attrs) => {
 
 	// console.log(1, "---- butons global css ---", { style_dimension });
 
+	if (!uniqueId) {
+		return null;
+	}
 	return (
 		<>
 			{/* <Global styles={getDivWrapStyles()} /> */}

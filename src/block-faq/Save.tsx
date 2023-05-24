@@ -23,7 +23,9 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_container,
 		style_question,
 		style_icon,
+		advance_motionEffect,
 	} = attributes;
+
 	//
 	const newAttrForSave: WcbAttrsForSave = {
 		uniqueId,
@@ -35,6 +37,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_container,
 		style_question,
 		style_icon,
+		advance_motionEffect,
 	};
 
 	//
