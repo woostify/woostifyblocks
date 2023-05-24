@@ -5,7 +5,7 @@
  * Description:       Example block written with ESNext standard and JSX support.
  * Requires at least: 5.8
  * Requires PHP:      7.3
- * Version:           1.1.4
+ * Version:           1.1.6
  * Author:            woostify-conversion-blocks
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -19,7 +19,7 @@ defined('ABSPATH') || exit;
 
 // Define Constants.
 define('WCB_UNIQUE_NAME', 'wcb-woostify-blocks-unique');
-define('WCB_VERSION', '1.1.4');
+define('WCB_VERSION', '1.1.6');
 define('WCB_FILE', __FILE__);
 define('WCB_PLUGIN_BASE', plugin_basename(WCB_FILE));
 define('WCB_PATH', plugin_dir_path(WCB_FILE));
