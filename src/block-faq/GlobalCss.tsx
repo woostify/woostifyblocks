@@ -87,8 +87,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 
 	return (
 		<>
-			{/* <Global styles={getDivWrapStyles()} /> */}
-
 			{/* ------- INNER -------   */}
 			<Global
 				styles={[
@@ -102,6 +100,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 						value: style_container.rowGap,
 						prefix: "rowGap",
 					}),
+					{
+						[INNER_CLASSNAME]: {
+							textAlign: general_general.textAlignment,
+						},
+					},
 				]}
 			/>
 			{general_general.layout === "grid" && (
@@ -109,9 +112,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 					styles={[
 						inner_getGridCol(),
 						{
-							[INNER_CLASSNAME]: {
-								textAlign: general_general.textAlignment,
-							},
 							[FAQ_CHILD_QUESTION]: {
 								display: "block",
 							},

@@ -188,13 +188,11 @@ const WcbFaqPanelGeneral: FC<Props> = ({
 					}}
 				/>
 
-				{layout === "grid" && (
-					<MyTextAlignControl
-						textAlignment={textAlignment}
-						onChange={handleChangeTextAlignment}
-						hasResponsive={false}
-					/>
-				)}
+				<MyTextAlignControl
+					textAlignment={textAlignment}
+					onChange={handleChangeTextAlignment}
+					hasResponsive={false}
+				/>
 			</div>
 		</PanelBody>
 	);

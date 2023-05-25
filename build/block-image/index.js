@@ -3203,9 +3203,6 @@ const Edit = props => {
     style_overlay,
     style_caption
   } = attributes;
-  console.log(11122, {
-    attributes
-  });
   const [temporaryURL, setTemporaryURL] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)();
   const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_17__["default"])() || "Desktop";
   const altRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useRef)();

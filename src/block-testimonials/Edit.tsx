@@ -108,6 +108,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_arrowAndDots,
 		style_backgroundAndBorder,
 		style_dimension,
+		advance_motionEffect,
 	} = attributes;
 	//  COMMON HOOKS
 
@@ -284,6 +285,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				return (
 					<>
 						<AdvancePanelCommon
+							advance_motionEffect={advance_motionEffect}
 							advance_responsiveCondition={
 								attributes.advance_responsiveCondition
 							}
@@ -498,6 +500,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			style_content,
 			style_image,
 			style_name,
+			advance_motionEffect,
 		};
 	}, [
 		uniqueId,
@@ -513,6 +516,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_content,
 		style_image,
 		style_name,
+		advance_motionEffect,
 	]);
 
 	return (

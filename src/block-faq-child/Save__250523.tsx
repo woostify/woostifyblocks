@@ -48,6 +48,8 @@ export default function save({
 	};
 
 	const ariaControls = uniqueId + "controls";
+	const Htmltag = layout === "grid" ? "div" : "button";
+
 	//
 	const wrapBlockProps = useBlockProps.save({
 		className: `ac wcb-faq-child__wrap wcb-faq-child__wrap--${layout}`,
@@ -57,7 +59,7 @@ export default function save({
 	return (
 		<div {...wrapBlockProps}>
 			<div className="ac-header">
-				<div
+				<Htmltag
 					className={`ac-trigger wcb-faq-child__question wcb-faq-child__question--icon-${general_icon.iconPosition}`}
 					type="button"
 					aria-expanded="true"
@@ -71,7 +73,7 @@ export default function save({
 					/>
 
 					{general_icon.iconPosition === "right" && renderIcon()}
-				</div>
+				</Htmltag>
 			</div>
 			<div className="ac-panel">
 				{enableSeparator && <div className="wcb-faq-child__separator"></div>}
