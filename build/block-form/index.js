@@ -2853,6 +2853,7 @@ const Edit = props => {
         }));
       case "Advances":
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_11__["default"], {
+          advance_motionEffect: attributes.advance_motionEffect,
           advance_responsiveCondition: attributes.advance_responsiveCondition,
           advance_zIndex: attributes.advance_zIndex,
           handleTogglePanel: handleTogglePanel,
@@ -3013,7 +3014,8 @@ const GlobalCss = attrs => {
     style_submit_button,
     //
     advance_responsiveCondition,
-    advance_zIndex
+    advance_zIndex,
+    advance_motionEffect
   } = attrs;
   const {
     media_desktop,
@@ -3326,6 +3328,7 @@ const GlobalCss = attrs => {
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__.getAdvanveDivWrapStyles)({
+      advance_motionEffect,
       advance_responsiveCondition,
       advance_zIndex,
       className: WRAP_CLASSNAME,
@@ -3341,6 +3344,112 @@ const GlobalCss = attrs => {
 /*!*********************************!*\
   !*** ./src/block-form/Save.tsx ***!
   \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ save)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/SaveCommon */ "./src/components/SaveCommon.tsx");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style.scss */ "./src/block-form/style.scss");
+
+
+
+
+
+
+function save(_ref) {
+  let {
+    attributes
+  } = _ref;
+  const {
+    uniqueId,
+    advance_responsiveCondition,
+    advance_zIndex,
+    general_action,
+    general_general,
+    general_gg_recaptcha,
+    general_submit_button,
+    style_checkbox_radio_toggle,
+    style_input,
+    style_label,
+    style_messages,
+    style_spacing,
+    style_submit_button,
+    advance_motionEffect
+  } = attributes;
+  //
+
+  const newAttrForSave = {
+    uniqueId,
+    advance_responsiveCondition,
+    advance_zIndex,
+    general_action,
+    general_general,
+    general_gg_recaptcha,
+    general_submit_button,
+    style_checkbox_radio_toggle,
+    style_input,
+    style_label,
+    style_messages,
+    style_spacing,
+    style_submit_button,
+    advance_motionEffect
+  };
+  //
+
+  const reCaptchaV2 = general_gg_recaptcha.enableReCaptcha && general_gg_recaptcha.version === "v2";
+  const reCaptchaV3 = general_gg_recaptcha.enableReCaptcha && general_gg_recaptcha.version === "v3";
+
+  //
+  const wrapBlockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
+    className: "wcb-form__wrap"
+  });
+  //
+  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
+    className: "wcb-form__inner"
+  });
+  const innerBlocksProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useInnerBlocksProps.save(blockProps);
+  //
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
+    attributes: newAttrForSave,
+    uniqueId: uniqueId,
+    HtmlTag: "form"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    children: innerBlocksProps.children,
+    className: "wcb-form__inner"
+  }), reCaptchaV2 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "g-recaptcha"
+    // data-sitekey= key se duoc jQuery add o Frontend.tsx
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "wcb-form__btn-submit-wrap"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText.Content, {
+    className: `wcb-form__btn-submit ${reCaptchaV3 ? "g-recaptcha" : ""}`,
+    value: attributes.btnSubmitText,
+    tagName: "button",
+    type: "submit"
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "wcb-form__successMessageText"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, attributes.general_general.successMessageText)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "wcb-form__errorMessageText"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, attributes.general_general.errorMessageText)));
+}
+
+/***/ }),
+
+/***/ "./src/block-form/Save__250523.tsx":
+/*!*****************************************!*\
+  !*** ./src/block-form/Save__250523.tsx ***!
+  \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4875,18 +4984,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl */ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx");
-/* harmony import */ var _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/controls/MyZIndexControl/MyZIndexControl */ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx");
-/* harmony import */ var _WcbFormPanelAction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WcbFormPanelAction */ "./src/block-form/WcbFormPanelAction.tsx");
-/* harmony import */ var _WcbFormPanelGeneral__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WcbFormPanelGeneral */ "./src/block-form/WcbFormPanelGeneral.tsx");
-/* harmony import */ var _WcbFormPanelGoogleRecaptcha__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./WcbFormPanelGoogleRecaptcha */ "./src/block-form/WcbFormPanelGoogleRecaptcha.tsx");
-/* harmony import */ var _WcbFormPanelSubmitButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WcbFormPanelSubmitButton */ "./src/block-form/WcbFormPanelSubmitButton.tsx");
-/* harmony import */ var _WcbFormPanel_StyleCheckBoxRadio__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./WcbFormPanel_StyleCheckBoxRadio */ "./src/block-form/WcbFormPanel_StyleCheckBoxRadio.tsx");
-/* harmony import */ var _WcbFormPanel_StyleInput__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./WcbFormPanel_StyleInput */ "./src/block-form/WcbFormPanel_StyleInput.tsx");
-/* harmony import */ var _WcbFormPanel_StyleLabel__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WcbFormPanel_StyleLabel */ "./src/block-form/WcbFormPanel_StyleLabel.tsx");
-/* harmony import */ var _WcbFormPanel_StyleSpacing__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./WcbFormPanel_StyleSpacing */ "./src/block-form/WcbFormPanel_StyleSpacing.tsx");
-/* harmony import */ var _WcbPostGridPanel_StyleMessages__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./WcbPostGridPanel_StyleMessages */ "./src/block-form/WcbPostGridPanel_StyleMessages.tsx");
-/* harmony import */ var _WcbPostGridPanel_StyleSubmitButton__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./WcbPostGridPanel_StyleSubmitButton */ "./src/block-form/WcbPostGridPanel_StyleSubmitButton.tsx");
+/* harmony import */ var _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/controls/MyMotionEffectControl/MyMotionEffectControl */ "./src/components/controls/MyMotionEffectControl/MyMotionEffectControl.tsx");
+/* harmony import */ var _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl */ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx");
+/* harmony import */ var _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/controls/MyZIndexControl/MyZIndexControl */ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx");
+/* harmony import */ var _WcbFormPanelAction__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WcbFormPanelAction */ "./src/block-form/WcbFormPanelAction.tsx");
+/* harmony import */ var _WcbFormPanelGeneral__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./WcbFormPanelGeneral */ "./src/block-form/WcbFormPanelGeneral.tsx");
+/* harmony import */ var _WcbFormPanelGoogleRecaptcha__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WcbFormPanelGoogleRecaptcha */ "./src/block-form/WcbFormPanelGoogleRecaptcha.tsx");
+/* harmony import */ var _WcbFormPanelSubmitButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./WcbFormPanelSubmitButton */ "./src/block-form/WcbFormPanelSubmitButton.tsx");
+/* harmony import */ var _WcbFormPanel_StyleCheckBoxRadio__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./WcbFormPanel_StyleCheckBoxRadio */ "./src/block-form/WcbFormPanel_StyleCheckBoxRadio.tsx");
+/* harmony import */ var _WcbFormPanel_StyleInput__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WcbFormPanel_StyleInput */ "./src/block-form/WcbFormPanel_StyleInput.tsx");
+/* harmony import */ var _WcbFormPanel_StyleLabel__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./WcbFormPanel_StyleLabel */ "./src/block-form/WcbFormPanel_StyleLabel.tsx");
+/* harmony import */ var _WcbFormPanel_StyleSpacing__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./WcbFormPanel_StyleSpacing */ "./src/block-form/WcbFormPanel_StyleSpacing.tsx");
+/* harmony import */ var _WcbPostGridPanel_StyleMessages__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./WcbPostGridPanel_StyleMessages */ "./src/block-form/WcbPostGridPanel_StyleMessages.tsx");
+/* harmony import */ var _WcbPostGridPanel_StyleSubmitButton__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./WcbPostGridPanel_StyleSubmitButton */ "./src/block-form/WcbPostGridPanel_StyleSubmitButton.tsx");
+
 
 
 
@@ -4913,56 +5024,86 @@ const blokc1Attrs = {
   // THE ATTRS OF BLOCK HERE
   general_general: {
     type: "object",
-    default: _WcbFormPanelGeneral__WEBPACK_IMPORTED_MODULE_3__.WCB_FORM_PANEL_GENERAL_DEMO
+    default: _WcbFormPanelGeneral__WEBPACK_IMPORTED_MODULE_4__.WCB_FORM_PANEL_GENERAL_DEMO
   },
   general_submit_button: {
     type: "object",
-    default: _WcbFormPanelSubmitButton__WEBPACK_IMPORTED_MODULE_5__.WCB_FORM_PANEL_SUBMIT_BUTTON_DEMO
+    default: _WcbFormPanelSubmitButton__WEBPACK_IMPORTED_MODULE_6__.WCB_FORM_PANEL_SUBMIT_BUTTON_DEMO
   },
   general_action: {
     type: "object",
-    default: _WcbFormPanelAction__WEBPACK_IMPORTED_MODULE_2__.WCB_FORM_PANEL_ACTION_DEMO
+    default: _WcbFormPanelAction__WEBPACK_IMPORTED_MODULE_3__.WCB_FORM_PANEL_ACTION_DEMO
   },
   general_gg_recaptcha: {
     type: "object",
-    default: _WcbFormPanelGoogleRecaptcha__WEBPACK_IMPORTED_MODULE_4__.WCB_FORM_PANEL_GOOGLE_RECAPTCHA_DEMO
+    default: _WcbFormPanelGoogleRecaptcha__WEBPACK_IMPORTED_MODULE_5__.WCB_FORM_PANEL_GOOGLE_RECAPTCHA_DEMO
   },
   //
   style_label: {
     type: "object",
-    default: _WcbFormPanel_StyleLabel__WEBPACK_IMPORTED_MODULE_8__.WCB_FORM_PANEL_STYLE_LABEL_DEMO
+    default: _WcbFormPanel_StyleLabel__WEBPACK_IMPORTED_MODULE_9__.WCB_FORM_PANEL_STYLE_LABEL_DEMO
   },
   style_input: {
     type: "object",
-    default: _WcbFormPanel_StyleInput__WEBPACK_IMPORTED_MODULE_7__.WCB_FORM_PANEL_STYLE_INPUT_DEMO
+    default: _WcbFormPanel_StyleInput__WEBPACK_IMPORTED_MODULE_8__.WCB_FORM_PANEL_STYLE_INPUT_DEMO
   },
   style_checkbox_radio_toggle: {
     type: "object",
-    default: _WcbFormPanel_StyleCheckBoxRadio__WEBPACK_IMPORTED_MODULE_6__.WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO
+    default: _WcbFormPanel_StyleCheckBoxRadio__WEBPACK_IMPORTED_MODULE_7__.WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO
   },
   style_submit_button: {
     type: "object",
-    default: _WcbPostGridPanel_StyleSubmitButton__WEBPACK_IMPORTED_MODULE_11__.WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON_DEMO
+    default: _WcbPostGridPanel_StyleSubmitButton__WEBPACK_IMPORTED_MODULE_12__.WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON_DEMO
   },
   style_messages: {
     type: "object",
-    default: _WcbPostGridPanel_StyleMessages__WEBPACK_IMPORTED_MODULE_10__.WCB_FORM_PANEL_STYLE_MESSAGES_DEMO
+    default: _WcbPostGridPanel_StyleMessages__WEBPACK_IMPORTED_MODULE_11__.WCB_FORM_PANEL_STYLE_MESSAGES_DEMO
   },
   style_spacing: {
     type: "object",
-    default: _WcbFormPanel_StyleSpacing__WEBPACK_IMPORTED_MODULE_9__.WCB_FORM_PANEL_STYLE_SPACING_DEMO
+    default: _WcbFormPanel_StyleSpacing__WEBPACK_IMPORTED_MODULE_10__.WCB_FORM_PANEL_STYLE_SPACING_DEMO
   },
   // ADVANCE
   advance_responsiveCondition: {
     type: "object",
-    default: _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_0__.RESPONSIVE_CONDITON_DEMO
+    default: _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_1__.RESPONSIVE_CONDITON_DEMO
   },
   advance_zIndex: {
     type: "object",
-    default: _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_1__.Z_INDEX_DEMO
+    default: _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_2__.Z_INDEX_DEMO
+  },
+  advance_motionEffect: {
+    type: "object",
+    default: _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_0__.MY_MOTION_EFFECT_DEMO
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (blokc1Attrs);
+
+/***/ }),
+
+/***/ "./src/block-form/deprecated.tsx":
+/*!***************************************!*\
+  !*** ./src/block-form/deprecated.tsx ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Save_250523__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Save__250523 */ "./src/block-form/Save__250523.tsx");
+/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./attributes */ "./src/block-form/attributes.ts");
+
+
+const v1 = {};
+const v2 = {};
+const v3 = {
+  attributes: _attributes__WEBPACK_IMPORTED_MODULE_1__["default"],
+  save: _Save_250523__WEBPACK_IMPORTED_MODULE_0__["default"]
+};
+const deprecated = [v3, v2, v1];
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (deprecated);
 
 /***/ }),
 
@@ -4984,6 +5125,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/block-form/block.json");
 /* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./attributes */ "./src/block-form/attributes.ts");
 /* harmony import */ var _variations__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./variations */ "./src/block-form/variations.tsx");
+/* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./deprecated */ "./src/block-form/deprecated.tsx");
 
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
@@ -5015,6 +5157,7 @@ const {
 } = wp.data;
 
 
+
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_5__.name, {
@@ -5022,6 +5165,7 @@ const {
   save: _Save__WEBPACK_IMPORTED_MODULE_4__["default"],
   attributes: _attributes__WEBPACK_IMPORTED_MODULE_6__["default"],
   variations: _variations__WEBPACK_IMPORTED_MODULE_7__["default"],
+  deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_8__["default"],
   icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     className: "wcb-editor-block-icons fill-none ",
     width: 24,

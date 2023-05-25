@@ -3119,12 +3119,13 @@ const GlobalCss = attrs => {
       className: INNER_CLASSNAME,
       value: style_container.rowGap,
       prefix: "rowGap"
-    })]
-  }), general_general.layout === "grid" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
-    styles: [inner_getGridCol(), {
+    }), {
       [INNER_CLASSNAME]: {
         textAlign: general_general.textAlignment
-      },
+      }
+    }]
+  }), general_general.layout === "grid" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+    styles: [inner_getGridCol(), {
       [FAQ_CHILD_QUESTION]: {
         display: "block"
       }
@@ -3557,7 +3558,7 @@ const WcbFaqPanelGeneral = _ref => {
         headingTag: value
       });
     }
-  }), layout === "grid" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
     textAlignment: textAlignment,
     onChange: handleChangeTextAlignment,
     hasResponsive: false

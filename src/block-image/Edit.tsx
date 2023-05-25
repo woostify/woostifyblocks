@@ -115,8 +115,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_caption,
 	} = attributes;
 
-	console.log(11122, { attributes });
-
 	const [temporaryURL, setTemporaryURL] = useState<string>();
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 

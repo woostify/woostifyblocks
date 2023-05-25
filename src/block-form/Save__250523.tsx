@@ -25,7 +25,6 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_messages,
 		style_spacing,
 		style_submit_button,
-		advance_motionEffect,
 	} = attributes;
 	//
 
@@ -43,7 +42,6 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_messages,
 		style_spacing,
 		style_submit_button,
-		advance_motionEffect,
 	};
 	//
 

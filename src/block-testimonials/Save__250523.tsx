@@ -29,7 +29,6 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_image,
 		style_name,
 		testimonials,
-		advance_motionEffect,
 	} = attributes;
 	//
 
@@ -47,7 +46,6 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_dimension,
 		style_image,
 		style_name,
-		advance_motionEffect,
 	};
 	//
 	const blockProps = useBlockProps.save({
