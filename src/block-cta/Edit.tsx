@@ -36,6 +36,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_description,
 		style_dimension,
 		general_preset,
+		advance_motionEffect,
 	} = attributes;
 	//  COMMON HOOKS
 	// const { myCache, ref } = useCreateCacheEmotion("cta");
@@ -149,6 +150,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				return (
 					<>
 						<AdvancePanelCommon
+							advance_motionEffect={advance_motionEffect}
 							advance_responsiveCondition={
 								attributes.advance_responsiveCondition
 							}
@@ -174,6 +176,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			style_description,
 			style_dimension,
 			style_title,
+			advance_motionEffect,
 		};
 	}, [
 		uniqueId,
@@ -183,6 +186,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_description,
 		style_dimension,
 		style_title,
+		advance_motionEffect,
 	]);
 
 	// console.log(4, "---- CTA edit  ---" + uniqueId);

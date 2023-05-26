@@ -42,6 +42,10 @@ import {
 	WCB_TEAM_PANEL_STYLE_IMAGE,
 	WCB_TEAM_PANEL_STYLE_IMAGE_DEMO,
 } from "./WcbTeamPanel_StyleImage";
+import {
+	MY_MOTION_EFFECT_DEMO,
+	MyMotionEffectData,
+} from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	heading: string;
@@ -59,6 +63,7 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	//
 	advance_responsiveCondition: MyResponsiveConditionControlData;
 	advance_zIndex: MyZIndexControlData;
+	advance_motionEffect: MyMotionEffectData;
 }
 
 const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
@@ -130,6 +135,10 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	advance_zIndex: {
 		type: "object",
 		default: Z_INDEX_DEMO,
+	},
+	advance_motionEffect: {
+		type: "object",
+		default: MY_MOTION_EFFECT_DEMO,
 	},
 };
 

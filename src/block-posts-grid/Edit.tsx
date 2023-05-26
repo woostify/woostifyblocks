@@ -74,6 +74,7 @@ import { RESPONSIVE_CONDITON_DEMO } from "../components/controls/MyResponsiveCon
 import { MY_BOX_SHADOW_CONTROL_DEMO } from "../components/controls/MyBoxShadowControl/types";
 import { MY_BORDER_CONTROL_DEMO } from "../components/controls/MyBorderControl/types";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
+import { MY_MOTION_EFFECT_DEMO } from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
 
 const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -100,6 +101,7 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 		style_border,
 		style_boxShadow,
 		style_taxonomy,
+		advance_motionEffect,
 	} = attributes;
 	//  COMMON HOOKS
 	const ref = useRef<HTMLDivElement>(null);
@@ -151,10 +153,17 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 			//
 			advance_responsiveCondition: RESPONSIVE_CONDITON_DEMO,
 			advance_zIndex: Z_INDEX_DEMO,
+			advance_motionEffect: MY_MOTION_EFFECT_DEMO,
 		};
 
 		setAttributes({ ...DEFAULT });
 	}, [style_layout]);
+
+	useEffect(() => {
+		if (!advance_motionEffect) {
+			setAttributes({ advance_motionEffect: MY_MOTION_EFFECT_DEMO });
+		}
+	}, [advance_motionEffect]);
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
 		switch (tab.name) {
@@ -401,6 +410,7 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 					<>
 						{advance_zIndex && advance_responsiveCondition && (
 							<AdvancePanelCommon
+								advance_motionEffect={advance_motionEffect}
 								advance_responsiveCondition={advance_responsiveCondition}
 								advance_zIndex={advance_zIndex}
 								handleTogglePanel={handleTogglePanel}
@@ -569,6 +579,7 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 				style_border,
 				style_boxShadow,
 				style_taxonomy,
+				advance_motionEffect,
 			};
 			if (Object.values(cs).some((item) => !item)) {
 				return null;
@@ -595,6 +606,7 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 			style_border,
 			style_boxShadow,
 			style_taxonomy,
+			advance_motionEffect,
 		]);
 
 	const WcbAttrsForServerSide = useMemo(() => {

@@ -40,6 +40,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_description,
 		style_socialIcons,
 		style_image,
+		advance_motionEffect,
 	} = attributes;
 	//  COMMON HOOKS
 	const ref = useRef<HTMLDivElement>(null);
@@ -174,6 +175,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				return (
 					<>
 						<AdvancePanelCommon
+							advance_motionEffect={advance_motionEffect}
 							advance_responsiveCondition={
 								attributes.advance_responsiveCondition
 							}
@@ -203,6 +205,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			style_description,
 			style_socialIcons,
 			style_image,
+			advance_motionEffect,
 		};
 	}, [
 		uniqueId,
@@ -216,6 +219,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_description,
 		style_socialIcons,
 		style_image,
+		advance_motionEffect,
 	]);
 
 	const renderImage = () => {

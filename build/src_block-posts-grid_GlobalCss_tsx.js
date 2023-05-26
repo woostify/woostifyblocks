@@ -32,21 +32,22 @@ const getAdvanveDivWrapStyles = _ref => {
   //
   //
   try {
-    const thisEL = document.querySelector(className);
-    if (advance_motionEffect && advance_motionEffect.entranceAnimation && thisEL) {
+    const thisELs = document.querySelectorAll(className);
+    if (advance_motionEffect && advance_motionEffect.entranceAnimation && thisELs && thisELs.length) {
       console.log(222, {
-        thisEL
+        thisELs
       });
+      thisELs.forEach(element => {
+        // remove old class
+        const regex = /\banimate__\S+/g;
+        const classRemoved = element?.className.replace(regex, "");
+        element.setAttribute("class", classRemoved);
 
-      // remove old class
-      const regex = /\banimate__\S+/g;
-      const classRemoved = thisEL?.className.replace(regex, "");
-      thisEL.setAttribute("class", classRemoved);
-
-      // add new class
-      setTimeout(() => {
-        thisEL?.classList.add("animate__animated", `animate__${advance_motionEffect?.entranceAnimation}`, `animate__${advance_motionEffect?.animationDuration}`, `animate__delay-${advance_motionEffect?.animationDelay}ms`, `animate__repeat-${advance_motionEffect?.repeat}`);
-      }, 50);
+        // add new class
+        setTimeout(() => {
+          element?.classList.add("animate__animated", `animate__${advance_motionEffect?.entranceAnimation}`, `animate__${advance_motionEffect?.animationDuration}`, `animate__delay-${advance_motionEffect?.animationDelay}ms`, `animate__repeat-${advance_motionEffect?.repeat}`);
+        }, 50);
+      });
     }
   } catch (error) {
     console.log(123, "error, advance_motionEffect", error);
@@ -145,7 +146,8 @@ const GlobalCss = attrs => {
     style_taxonomy,
     //
     advance_responsiveCondition,
-    advance_zIndex
+    advance_zIndex,
+    advance_motionEffect
   } = attrs;
   const {
     media_desktop,
@@ -398,6 +400,9 @@ const GlobalCss = attrs => {
   if (!uniqueId) {
     return null;
   }
+  console.log(22323, {
+    advance_motionEffect
+  });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
     styles: getDivWrapStyles()
   }), general_pagination.isShowPagination ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
@@ -480,6 +485,7 @@ const GlobalCss = attrs => {
   })) : null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
     styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__.getAdvanveDivWrapStyles)({
       advance_responsiveCondition,
+      advance_motionEffect,
       advance_zIndex,
       className: WRAP_CLASSNAME,
       defaultDisplay: "block"
