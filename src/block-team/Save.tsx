@@ -25,6 +25,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_socialIcons,
 		style_title,
 		style_image,
+		advance_motionEffect,
 	} = attributes;
 	//
 
@@ -40,6 +41,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_socialIcons,
 		style_title,
 		style_image,
+		advance_motionEffect,
 	};
 	//
 

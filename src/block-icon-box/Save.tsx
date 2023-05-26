@@ -27,6 +27,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_dimension,
 		style_separator,
 		general_separator,
+		advance_motionEffect,
 	} = attributes;
 	//
 
@@ -43,6 +44,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_dimension,
 		style_separator,
 		general_separator,
+		advance_motionEffect,
 	};
 	//
 

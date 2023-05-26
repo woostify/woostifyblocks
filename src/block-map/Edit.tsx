@@ -24,6 +24,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		uniqueId,
 		general_general,
 		style_border,
+		advance_motionEffect,
 	} = attributes;
 	//  COMMON HOOKS
 	const wrapBlockProps = useBlockProps();
@@ -86,6 +87,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				return (
 					<>
 						<AdvancePanelCommon
+							advance_motionEffect={advance_motionEffect}
 							advance_responsiveCondition={
 								attributes.advance_responsiveCondition
 							}
@@ -109,6 +111,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			advance_zIndex,
 			general_general,
 			style_border,
+			advance_motionEffect,
 		};
 	}, [
 		uniqueId,
@@ -116,6 +119,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		advance_zIndex,
 		general_general,
 		style_border,
+		advance_motionEffect,
 	]);
 	//
 

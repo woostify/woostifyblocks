@@ -3,6 +3,7 @@ import {
 	WcbAttrsCommonFromWp,
 } from "../block-container/attributes";
 import { MyBorderControlData } from "../components/controls/MyBorderControl/types";
+import { MyMotionEffectData } from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
 import { MyResponsiveConditionControlData } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
 import { MyZIndexControlData } from "../components/controls/MyZIndexControl/MyZIndexControl";
 import { WCB_PRODUCTS_PANEL_SORTINGANDFILTERING } from "./WcbProducstPanelSortingAndFiltering";
@@ -40,6 +41,7 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	//
 	advance_responsiveCondition?: MyResponsiveConditionControlData;
 	advance_zIndex?: MyZIndexControlData;
+	advance_motionEffect?: MyMotionEffectData;
 }
 
 const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
@@ -115,6 +117,10 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	advance_zIndex: {
 		type: "object",
 		// default: Z_INDEX_DEMO,
+	},
+	advance_motionEffect: {
+		type: "object",
+		// default: MY_MOTION_EFFECT_DEMO,
 	},
 };
 

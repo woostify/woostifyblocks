@@ -15,6 +15,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		advance_zIndex,
 		general_general,
 		style_border,
+		advance_motionEffect,
 	} = attributes;
 	//
 
@@ -24,6 +25,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		advance_zIndex,
 		general_general,
 		style_border,
+		advance_motionEffect,
 	};
 	//
 	const blockProps = useBlockProps.save({
