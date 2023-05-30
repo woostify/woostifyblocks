@@ -12,6 +12,7 @@ import { WCB_PRODUCTS_PANEL_COTENT } from "./WcbProductsPanelContent";
 import { WCB_PRODUCTS_PANEL_FEATURED_IMAGE } from "./WcbProductsPanelFeaturedImage";
 import { WCB_PRODUCTS_PANEL_PAGINATION } from "./WcbProductsPanelPagination";
 import { WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN } from "./WcbProductsPanel_StyleAddToCartBtn";
+import { WCB_PRODUCTS_PANEL_STYLE_CATEGORY } from "./WcbProductsPanel_StyleCategory";
 import { WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE } from "./WcbProductsPanel_StyleFeaturedImage";
 import { WCB_PRODUCTS_PANEL_STYLE_LAYOUT } from "./WcbProductsPanel_StyleLayout";
 import { WCB_PRODUCTS_PANEL_STYLE_PAGINATION } from "./WcbProductsPanel_StylePagination";
@@ -29,6 +30,7 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	general_addToCartBtn?: WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN;
 	general_pagination?: WCB_PRODUCTS_PANEL_PAGINATION;
 	//
+	style_category?: WCB_PRODUCTS_PANEL_STYLE_CATEGORY;
 	style_title?: WCB_PRODUCTS_PANEL_STYLE_TITLE;
 	style_featuredImage?: WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE;
 	style_layout?: WCB_PRODUCTS_PANEL_STYLE_LAYOUT;
@@ -73,6 +75,10 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	},
 	//
 	style_title: {
+		type: "object",
+		// default: WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
+	},
+	style_category: {
 		type: "object",
 		// default: WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
 	},

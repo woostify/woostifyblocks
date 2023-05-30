@@ -98,6 +98,7 @@ function wcb_block_products__render_product($product, $attributes, $index)
         'price'     => "",
         'badge'     => "",
         'button'    => "",
+        'categories'    => "",
     );
 
 
@@ -118,6 +119,10 @@ function wcb_block_products__render_product($product, $attributes, $index)
     }
     if (wcb__is_enabled($attributes['general_addToCartBtn']['isShowButton'] ?? "")) {
         $data->button = wcb_block_products__get_button_html($product);
+    }
+
+    if (wcb__is_enabled($attributes['general_content']['isShowCategory'] ?? "")) {
+        $data->categories = wcb_block_products__get_category_html($product);
     }
 
     $btnInsideImage = ($attributes['general_addToCartBtn']['position'] ?? "") === "inside image";
@@ -148,6 +153,7 @@ function wcb_block_products__render_product($product, $attributes, $index)
                     {$saleBadge1}
                     {$btn1}
                 </div>
+                {$data->categories}
                 {$data->title}
 				{$saleBadge2}
 				{$data->rating}
@@ -185,6 +191,11 @@ function wcb_block_products__get_title_html($product, $headingTag = "div", $link
         $headingTag = 'div';
     };
     return '<' . $headingTag . ' class="wcb-products__product-title wc-block-grid__product-title"> <a href=" ' . $link . ' ">' . wp_kses_post($product->get_title()) . '</a></' . $headingTag . '>';
+}
+
+function wcb_block_products__get_category_html($product)
+{
+    return wc_get_product_category_list($product->get_id(), ", ", '<div class="wcb-products__product-categories">', '</div>');
 }
 
 

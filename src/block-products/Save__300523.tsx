@@ -28,7 +28,6 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_saleBadge,
 		style_title,
 		advance_motionEffect,
-		style_category,
 	} = attributes;
 	//
 
@@ -51,7 +50,6 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_saleBadge,
 		style_title,
 		advance_motionEffect,
-		style_category,
 	};
 	//
 	const blockProps = useBlockProps.save({
