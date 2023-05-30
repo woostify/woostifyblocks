@@ -74,6 +74,9 @@ import { RESPONSIVE_CONDITON_DEMO } from "../components/controls/MyResponsiveCon
 import { Z_INDEX_DEMO } from "../components/controls/MyZIndexControl/MyZIndexControl";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 import { MY_MOTION_EFFECT_DEMO } from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
+import WcbProductsPanel_StyleCategory, {
+	WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
+} from "./WcbProductsPanel_StyleCategory";
 
 interface Props extends EditProps<WcbAttrs> {}
 
@@ -99,6 +102,7 @@ const Edit: FC<Props> = (props) => {
 		style_price,
 		style_rating,
 		advance_motionEffect,
+		style_category,
 	} = attributes;
 	//  COMMON HOOKS
 	const wrapBlockProps = useBlockProps();
@@ -133,6 +137,7 @@ const Edit: FC<Props> = (props) => {
 			style_price: WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO,
 			style_rating: WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO,
 			style_saleBadge: WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO,
+			style_category: WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
 			style_title: WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
 			general_sortingAndFiltering: WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
 			general_content: WCB_PRODUCTS_PANEL_COTENT_DEMO,
@@ -152,6 +157,11 @@ const Edit: FC<Props> = (props) => {
 			setAttributes({ advance_motionEffect: MY_MOTION_EFFECT_DEMO });
 		}
 	}, [advance_motionEffect]);
+	useEffect(() => {
+		if (!style_category) {
+			setAttributes({ style_category: WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO });
+		}
+	}, [style_category]);
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
@@ -268,6 +278,19 @@ const Edit: FC<Props> = (props) => {
 								}}
 								panelData={style_featuredImage}
 								imagePosition="top"
+							/>
+						)}
+
+						{general_content?.isShowCategory && style_category && (
+							<WcbProductsPanel_StyleCategory
+								onToggle={() => handleTogglePanel("Styles", "_StyleCategory")}
+								initialOpen={tabStylesIsPanelOpen === "_StyleCategory"}
+								opened={tabStylesIsPanelOpen === "_StyleCategory" || undefined}
+								//
+								setAttr__={(data) => {
+									setAttributes({ style_category: data });
+								}}
+								panelData={style_category}
 							/>
 						)}
 
@@ -542,6 +565,7 @@ const Edit: FC<Props> = (props) => {
 			style_price,
 			style_rating,
 			advance_motionEffect,
+			style_category,
 		};
 		if (Object.values(cs).some((item) => !item)) {
 			return null;
@@ -566,6 +590,7 @@ const Edit: FC<Props> = (props) => {
 		style_price,
 		style_rating,
 		advance_motionEffect,
+		style_category,
 	]);
 
 	const WcbAttrsForServerSide = useMemo(() => {
