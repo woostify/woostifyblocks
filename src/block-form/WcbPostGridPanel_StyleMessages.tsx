@@ -7,13 +7,16 @@ import {
 	MY_BORDER_CONTROL_DEMO,
 } from "../components/controls/MyBorderControl/types";
 import MyDisclosure from "../components/controls/MyDisclosure";
-import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
-import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
+import {
+	MyTypographyControlData,
+	TYPOGRAPHY_CONTROL_DEMO,
+} from "../components/controls/MyTypographyControl/types";
+import MyTypographyControl from "../components/controls/MyTypographyControl/MyTypographyControl";
 
 type TabsHere = "Success" | "Error";
 
-export type WCB_FORM_PANEL_STYLE_MESSAGES = {
+type A = {
 	[K in TabsHere]: {
 		color: string;
 		backgroundColor: string;
@@ -21,8 +24,13 @@ export type WCB_FORM_PANEL_STYLE_MESSAGES = {
 	};
 };
 
+export interface WCB_FORM_PANEL_STYLE_MESSAGES extends A {
+	typography: MyTypographyControlData;
+}
+
 export const WCB_FORM_PANEL_STYLE_MESSAGES_DEMO: WCB_FORM_PANEL_STYLE_MESSAGES =
 	{
+		typography: TYPOGRAPHY_CONTROL_DEMO,
 		Success: {
 			color: "#0c4a6e",
 			backgroundColor: "#f0f9ff",
@@ -48,7 +56,6 @@ const WcbPostGridPanel_StyleMessages: FC<Props> = ({
 	onToggle,
 	opened,
 }) => {
-	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	const PanelTab: {
 		name: TabsHere;
 		title: string;
@@ -57,8 +64,6 @@ const WcbPostGridPanel_StyleMessages: FC<Props> = ({
 		{ name: "Error", title: __("Error", "wcb") },
 	];
 
-	const { Error, Success } = panelData;
-	//
 	const initialTabName: TabsHere = "Success";
 	return (
 		<PanelBody
@@ -67,57 +72,69 @@ const WcbPostGridPanel_StyleMessages: FC<Props> = ({
 			opened={opened}
 			title={__("Messages", "wcb")}
 		>
-			<TabPanel
-				className={`wcb-bodyControls__panel `}
-				activeClass="active-tab"
-				initialTabName={initialTabName}
-				tabs={PanelTab}
-			>
-				{(tab) => (
-					<div className="space-y-5">
-						<MyColorPicker
-							label={__("Text color", "wcb")}
-							color={panelData[tab.name as TabsHere].color}
-							onChange={(value) => {
-								setAttr__({
-									...panelData,
-									[tab.name]: {
-										...panelData[tab.name],
-										color: value,
-									},
-								});
-							}}
-						/>
-						<MyColorPicker
-							label={__("Background color", "wcb")}
-							color={panelData[tab.name as TabsHere].backgroundColor}
-							onChange={(value) => {
-								setAttr__({
-									...panelData,
-									[tab.name]: {
-										...panelData[tab.name],
-										backgroundColor: value,
-									},
-								});
-							}}
-						/>
+			<div className="space-y-4">
+				<MyTypographyControl
+					typographyControl={panelData.typography || TYPOGRAPHY_CONTROL_DEMO}
+					setAttrs__typography={(typography) => {
+						setAttr__({
+							...panelData,
+							typography,
+						});
+					}}
+				/>
 
-						<MyDisclosure defaultOpen label="Border">
-							<MyBorderControl
-								borderControl={panelData[tab.name as TabsHere].border}
-								setAttrs__border={(border: MyBorderControlData) => {
+				<TabPanel
+					className={`wcb-bodyControls__panel `}
+					activeClass="active-tab"
+					initialTabName={initialTabName}
+					tabs={PanelTab}
+				>
+					{(tab) => (
+						<div className="space-y-5">
+							<MyColorPicker
+								label={__("Text color", "wcb")}
+								color={panelData[tab.name as TabsHere].color}
+								onChange={(value) => {
 									setAttr__({
 										...panelData,
 										[tab.name]: {
-											border,
+											...panelData[tab.name],
+											color: value,
 										},
 									});
 								}}
 							/>
-						</MyDisclosure>
-					</div>
-				)}
-			</TabPanel>
+							<MyColorPicker
+								label={__("Background color", "wcb")}
+								color={panelData[tab.name as TabsHere].backgroundColor}
+								onChange={(value) => {
+									setAttr__({
+										...panelData,
+										[tab.name]: {
+											...panelData[tab.name],
+											backgroundColor: value,
+										},
+									});
+								}}
+							/>
+
+							<MyDisclosure defaultOpen label="Border">
+								<MyBorderControl
+									borderControl={panelData[tab.name as TabsHere].border}
+									setAttrs__border={(border: MyBorderControlData) => {
+										setAttr__({
+											...panelData,
+											[tab.name]: {
+												border,
+											},
+										});
+									}}
+								/>
+							</MyDisclosure>
+						</div>
+					)}
+				</TabPanel>
+			</div>
 		</PanelBody>
 	);
 };

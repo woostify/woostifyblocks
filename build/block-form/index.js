@@ -3259,11 +3259,7 @@ const GlobalCss = attrs => {
         ":checked": {
           backgroundColor: style_checkbox_radio_toggle.colors.Active.backgroundColor
         }
-        // ":checked::before": {
-        // 	color: style_checkbox_radio_toggle.colors.Active.color,
-        // },
       },
-
       [`${TOGGLE_CLASSNAME}`]: {
         ".wcb-toggle__slider": {
           backgroundColor: style_checkbox_radio_toggle.colors.Normal.backgroundColor
@@ -3271,12 +3267,6 @@ const GlobalCss = attrs => {
         "input:checked + .wcb-toggle__slider": {
           backgroundColor: style_checkbox_radio_toggle.colors.Active.backgroundColor
         }
-        // ".wcb-toggle__slider::before": {
-        // 	backgroundColor: style_checkbox_radio_toggle.colors.Normal.color,
-        // },
-        // "input:checked + .wcb-toggle__slider::before": {
-        // 	backgroundColor: style_checkbox_radio_toggle.colors.Active.color,
-        // },
       }
     }
   }), renderCheckboxRadioSize(), renderToggleSize(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
@@ -3284,6 +3274,11 @@ const GlobalCss = attrs => {
       className: `${SUBMIT_CLASSNAME}`,
       border: style_submit_button.border,
       isWithRadius: true
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
+    styles: (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
+      className: SUBMIT_CLASSNAME,
+      typography: style_submit_button.typography
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: {
@@ -3300,6 +3295,11 @@ const GlobalCss = attrs => {
     styles: (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
       className: `${SUBMIT_CLASSNAME}`,
       padding: style_submit_button.padding
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
+    styles: (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
+      className: `${SUCCESS_MESS_CLASSNAME}, ${ERROR_MESS_CLASSNAME}`,
+      typography: style_messages.typography
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
@@ -3508,6 +3508,112 @@ function save(_ref) {
     style_messages,
     style_spacing,
     style_submit_button
+  };
+  //
+
+  const reCaptchaV2 = general_gg_recaptcha.enableReCaptcha && general_gg_recaptcha.version === "v2";
+  const reCaptchaV3 = general_gg_recaptcha.enableReCaptcha && general_gg_recaptcha.version === "v3";
+
+  //
+  const wrapBlockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
+    className: "wcb-form__wrap"
+  });
+  //
+  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
+    className: "wcb-form__inner"
+  });
+  const innerBlocksProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useInnerBlocksProps.save(blockProps);
+  //
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
+    attributes: newAttrForSave,
+    uniqueId: uniqueId,
+    HtmlTag: "form"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    children: innerBlocksProps.children,
+    className: "wcb-form__inner"
+  }), reCaptchaV2 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "g-recaptcha"
+    // data-sitekey= key se duoc jQuery add o Frontend.tsx
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "wcb-form__btn-submit-wrap"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText.Content, {
+    className: `wcb-form__btn-submit ${reCaptchaV3 ? "g-recaptcha" : ""}`,
+    value: attributes.btnSubmitText,
+    tagName: "button",
+    type: "submit"
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "wcb-form__successMessageText"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, attributes.general_general.successMessageText)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "wcb-form__errorMessageText"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, attributes.general_general.errorMessageText)));
+}
+
+/***/ }),
+
+/***/ "./src/block-form/Save__300523.tsx":
+/*!*****************************************!*\
+  !*** ./src/block-form/Save__300523.tsx ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ save)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/SaveCommon */ "./src/components/SaveCommon.tsx");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style.scss */ "./src/block-form/style.scss");
+
+
+
+
+
+
+function save(_ref) {
+  let {
+    attributes
+  } = _ref;
+  const {
+    uniqueId,
+    advance_responsiveCondition,
+    advance_zIndex,
+    general_action,
+    general_general,
+    general_gg_recaptcha,
+    general_submit_button,
+    style_checkbox_radio_toggle,
+    style_input,
+    style_label,
+    style_messages,
+    style_spacing,
+    style_submit_button,
+    advance_motionEffect
+  } = attributes;
+  //
+
+  const newAttrForSave = {
+    uniqueId,
+    advance_responsiveCondition,
+    advance_zIndex,
+    general_action,
+    general_general,
+    general_gg_recaptcha,
+    general_submit_button,
+    style_checkbox_radio_toggle,
+    style_input,
+    style_label,
+    style_messages,
+    style_spacing,
+    style_submit_button,
+    advance_motionEffect
   };
   //
 
@@ -4756,8 +4862,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_controls_MyBorderControl_MyBorderControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyBorderControl/MyBorderControl */ "./src/components/controls/MyBorderControl/MyBorderControl.tsx");
 /* harmony import */ var _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyBorderControl/types */ "./src/components/controls/MyBorderControl/types.ts");
 /* harmony import */ var _components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/controls/MyDisclosure */ "./src/components/controls/MyDisclosure.tsx");
-/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
-/* harmony import */ var _components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/controls/MyColorPicker/MyColorPicker */ "./src/components/controls/MyColorPicker/MyColorPicker.tsx");
+/* harmony import */ var _components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/controls/MyColorPicker/MyColorPicker */ "./src/components/controls/MyColorPicker/MyColorPicker.tsx");
+/* harmony import */ var _components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/controls/MyTypographyControl/types */ "./src/components/controls/MyTypographyControl/types.ts");
+/* harmony import */ var _components_controls_MyTypographyControl_MyTypographyControl__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/controls/MyTypographyControl/MyTypographyControl */ "./src/components/controls/MyTypographyControl/MyTypographyControl.tsx");
+
 
 
 
@@ -4768,6 +4876,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const WCB_FORM_PANEL_STYLE_MESSAGES_DEMO = {
+  typography: _components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_8__.TYPOGRAPHY_CONTROL_DEMO,
   Success: {
     color: "#0c4a6e",
     backgroundColor: "#f0f9ff",
@@ -4787,7 +4896,6 @@ const WcbPostGridPanel_StyleMessages = _ref => {
     onToggle,
     opened
   } = _ref;
-  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_7__["default"])() || "Desktop";
   const PanelTab = [{
     name: "Success",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Success", "wcb")
@@ -4795,25 +4903,30 @@ const WcbPostGridPanel_StyleMessages = _ref => {
     name: "Error",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Error", "wcb")
   }];
-  const {
-    Error,
-    Success
-  } = panelData;
-  //
   const initialTabName = "Success";
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     initialOpen: initialOpen,
     onToggle: onToggle,
     opened: opened,
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Messages", "wcb")
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TabPanel, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "space-y-4"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTypographyControl_MyTypographyControl__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    typographyControl: panelData.typography || _components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_8__.TYPOGRAPHY_CONTROL_DEMO,
+    setAttrs__typography: typography => {
+      setAttr__({
+        ...panelData,
+        typography
+      });
+    }
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TabPanel, {
     className: `wcb-bodyControls__panel `,
     activeClass: "active-tab",
     initialTabName: initialTabName,
     tabs: PanelTab
   }, tab => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "space-y-5"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_7__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text color", "wcb"),
     color: panelData[tab.name].color,
     onChange: value => {
@@ -4825,7 +4938,7 @@ const WcbPostGridPanel_StyleMessages = _ref => {
         }
       });
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_7__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Background color", "wcb"),
     color: panelData[tab.name].backgroundColor,
     onChange: value => {
@@ -4850,7 +4963,7 @@ const WcbPostGridPanel_StyleMessages = _ref => {
         }
       });
     }
-  })))));
+  }))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WcbPostGridPanel_StyleMessages);
 
@@ -4883,6 +4996,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
 /* harmony import */ var _components_controls_MyColorBackgroundColorControl_MyColorBackgroundColorControl__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/controls/MyColorBackgroundColorControl/MyColorBackgroundColorControl */ "./src/components/controls/MyColorBackgroundColorControl/MyColorBackgroundColorControl.tsx");
 /* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+/* harmony import */ var _components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/controls/MyTypographyControl/types */ "./src/components/controls/MyTypographyControl/types.ts");
+/* harmony import */ var _components_controls_MyTypographyControl_MyTypographyControl__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/controls/MyTypographyControl/MyTypographyControl */ "./src/components/controls/MyTypographyControl/MyTypographyControl.tsx");
+
+
 
 
 
@@ -4904,7 +5021,8 @@ const WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON_DEMO = {
       bottom: "1rem"
     }
   },
-  border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_5__.MY_BORDER_CONTROL_DEMO
+  border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_5__.MY_BORDER_CONTROL_DEMO,
+  typography: _components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_11__.TYPOGRAPHY_CONTROL_DEMO
 };
 const WcbPostGridPanel_StyleSubmitButton = _ref => {
   let {
@@ -4918,7 +5036,8 @@ const WcbPostGridPanel_StyleSubmitButton = _ref => {
   const {
     padding: paddingProps,
     border,
-    colorAndBackgroundColor
+    colorAndBackgroundColor,
+    typography = _components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_11__.TYPOGRAPHY_CONTROL_DEMO
   } = panelData;
   const {
     currentDeviceValue: padding
@@ -4968,7 +5087,15 @@ const WcbPostGridPanel_StyleSubmitButton = _ref => {
         }
       });
     }
-  }))));
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTypographyControl_MyTypographyControl__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    typographyControl: typography || _components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_11__.TYPOGRAPHY_CONTROL_DEMO,
+    setAttrs__typography: typography => {
+      setAttr__({
+        ...panelData,
+        typography
+      });
+    }
+  })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WcbPostGridPanel_StyleSubmitButton);
 
@@ -5093,17 +5220,91 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Save_250523__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Save__250523 */ "./src/block-form/Save__250523.tsx");
-/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./attributes */ "./src/block-form/attributes.ts");
+/* harmony import */ var _Save_300523__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Save__300523 */ "./src/block-form/Save__300523.tsx");
+/* harmony import */ var _Save_250523__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Save__250523 */ "./src/block-form/Save__250523.tsx");
+/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./attributes */ "./src/block-form/attributes.ts");
+/* harmony import */ var _components_controls_MyColorBackgroundColorControl_MyColorBackgroundColorControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/controls/MyColorBackgroundColorControl/MyColorBackgroundColorControl */ "./src/components/controls/MyColorBackgroundColorControl/MyColorBackgroundColorControl.tsx");
+/* harmony import */ var _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyBorderControl/types */ "./src/components/controls/MyBorderControl/types.ts");
+
+
+
 
 
 const v1 = {};
 const v2 = {};
 const v3 = {
-  attributes: _attributes__WEBPACK_IMPORTED_MODULE_1__["default"],
-  save: _Save_250523__WEBPACK_IMPORTED_MODULE_0__["default"]
+  attributes: {
+    ..._attributes__WEBPACK_IMPORTED_MODULE_2__["default"],
+    style_submit_button: {
+      type: "object",
+      default: {
+        colorAndBackgroundColor: _components_controls_MyColorBackgroundColorControl_MyColorBackgroundColorControl__WEBPACK_IMPORTED_MODULE_3__.MY_COLOR_BGCOLOR_CONTROL_FOR_BUTTON_DEMO,
+        padding: {
+          Desktop: {
+            top: "1rem",
+            left: "2rem",
+            right: "2rem",
+            bottom: "1rem"
+          }
+        },
+        border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_4__.MY_BORDER_CONTROL_DEMO
+      }
+    },
+    style_messages: {
+      type: "object",
+      default: {
+        Success: {
+          color: "#0c4a6e",
+          backgroundColor: "#f0f9ff",
+          border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_4__.MY_BORDER_CONTROL_DEMO
+        },
+        Error: {
+          color: "#ef4444",
+          backgroundColor: "#fef2f2",
+          border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_4__.MY_BORDER_CONTROL_DEMO
+        }
+      }
+    }
+  },
+  save: _Save_250523__WEBPACK_IMPORTED_MODULE_1__["default"]
 };
-const deprecated = [v3, v2, v1];
+const v4 = {
+  attributes: {
+    ..._attributes__WEBPACK_IMPORTED_MODULE_2__["default"],
+    style_submit_button: {
+      type: "object",
+      default: {
+        colorAndBackgroundColor: _components_controls_MyColorBackgroundColorControl_MyColorBackgroundColorControl__WEBPACK_IMPORTED_MODULE_3__.MY_COLOR_BGCOLOR_CONTROL_FOR_BUTTON_DEMO,
+        padding: {
+          Desktop: {
+            top: "1rem",
+            left: "2rem",
+            right: "2rem",
+            bottom: "1rem"
+          }
+        },
+        border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_4__.MY_BORDER_CONTROL_DEMO
+      }
+    },
+    style_messages: {
+      type: "object",
+      default: {
+        Success: {
+          color: "#0c4a6e",
+          backgroundColor: "#f0f9ff",
+          border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_4__.MY_BORDER_CONTROL_DEMO
+        },
+        Error: {
+          color: "#ef4444",
+          backgroundColor: "#fef2f2",
+          border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_4__.MY_BORDER_CONTROL_DEMO
+        }
+      }
+    }
+  },
+  save: _Save_300523__WEBPACK_IMPORTED_MODULE_0__["default"]
+};
+const deprecated = [v4, v3, v2, v1];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (deprecated);
 
 /***/ }),
