@@ -381,11 +381,7 @@ const GlobalCss = attrs => {
         ":checked": {
           backgroundColor: style_checkbox_radio_toggle.colors.Active.backgroundColor
         }
-        // ":checked::before": {
-        // 	color: style_checkbox_radio_toggle.colors.Active.color,
-        // },
       },
-
       [`${TOGGLE_CLASSNAME}`]: {
         ".wcb-toggle__slider": {
           backgroundColor: style_checkbox_radio_toggle.colors.Normal.backgroundColor
@@ -393,12 +389,6 @@ const GlobalCss = attrs => {
         "input:checked + .wcb-toggle__slider": {
           backgroundColor: style_checkbox_radio_toggle.colors.Active.backgroundColor
         }
-        // ".wcb-toggle__slider::before": {
-        // 	backgroundColor: style_checkbox_radio_toggle.colors.Normal.color,
-        // },
-        // "input:checked + .wcb-toggle__slider::before": {
-        // 	backgroundColor: style_checkbox_radio_toggle.colors.Active.color,
-        // },
       }
     }
   }), renderCheckboxRadioSize(), renderToggleSize(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
@@ -406,6 +396,11 @@ const GlobalCss = attrs => {
       className: `${SUBMIT_CLASSNAME}`,
       border: style_submit_button.border,
       isWithRadius: true
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
+    styles: (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
+      className: SUBMIT_CLASSNAME,
+      typography: style_submit_button.typography
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: {
@@ -422,6 +417,11 @@ const GlobalCss = attrs => {
     styles: (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
       className: `${SUBMIT_CLASSNAME}`,
       padding: style_submit_button.padding
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
+    styles: (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
+      className: `${SUCCESS_MESS_CLASSNAME}, ${ERROR_MESS_CLASSNAME}`,
+      typography: style_messages.typography
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({

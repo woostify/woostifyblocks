@@ -1534,6 +1534,9 @@ video {
 .mt-auto {
   margin-top: auto !important;
 }
+.mb-5 {
+  margin-bottom: 1.25rem !important;
+}
 .box-border {
   box-sizing: border-box !important;
 }
@@ -2295,6 +2298,11 @@ video {
   --tw-space-y-reverse: 0 !important;
   margin-top: calc(18rem * calc(1 - var(--tw-space-y-reverse))) !important;
   margin-bottom: calc(18rem * var(--tw-space-y-reverse)) !important;
+}
+.space-x-5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0 !important;
+  margin-right: calc(1.25rem * var(--tw-space-x-reverse)) !important;
+  margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse))) !important;
 }
 .divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0 !important;
