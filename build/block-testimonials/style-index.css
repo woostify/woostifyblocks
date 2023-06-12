@@ -47,10 +47,6 @@
   align-items: flex-start;
   flex-shrink: 0;
 }
-.wcb-testimonials__item-image img {
-  -o-object-fit: cover;
-     object-fit: cover;
-}
 
 .wcb-testimonials__item-user {
   display: inline-flex;

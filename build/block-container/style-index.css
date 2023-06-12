@@ -6,6 +6,9 @@ body .wcb-container__wrap .wp-block {
   margin-left: initial;
   margin-right: initial;
 }
+body .wcb-container__wrap .wcb-container__inner {
+  margin: 0 auto;
+}
 
 /*  */
 .wcb-container__wrap {

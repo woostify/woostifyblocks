@@ -1,7 +1,6 @@
 import Save__250523 from "./Save__250523";
 import Save__100623 from "./Save__100623";
 import blokcAttrs from "./attributes";
-import { WCB_TESTIMONIALS_PANEL_STYLE_IMAGE_DEMO } from "./WcbTestimonialsPanel_StyleImage";
 
 const v1 = {};
 const v2 = {};
@@ -11,7 +10,14 @@ const v3 = {
 		style_image: {
 			type: "object",
 			default: {
-				...WCB_TESTIMONIALS_PANEL_STYLE_IMAGE_DEMO,
+				imageSize: {
+					Desktop: "3.5rem",
+				},
+				radius: {
+					Desktop: "100px",
+					Tablet: "100px",
+					Mobile: "100px",
+				},
 				padding: {
 					Desktop: {
 						top: "0.5rem",
@@ -31,7 +37,14 @@ const v4 = {
 		style_image: {
 			type: "object",
 			default: {
-				...WCB_TESTIMONIALS_PANEL_STYLE_IMAGE_DEMO,
+				imageSize: {
+					Desktop: "3.5rem",
+				},
+				radius: {
+					Desktop: "100px",
+					Tablet: "100px",
+					Mobile: "100px",
+				},
 				padding: {
 					Desktop: {
 						top: "0.5rem",
@@ -45,7 +58,34 @@ const v4 = {
 	},
 	save: Save__100623,
 };
+const v5 = {
+	attributes: {
+		...blokcAttrs,
+		style_image: {
+			type: "object",
+			default: {
+				padding: {
+					Desktop: {
+						top: "1rem",
+						left: "1rem",
+						right: "1rem",
+						bottom: "1rem",
+					},
+				},
+				imageSize: {
+					Desktop: "3.5rem",
+				},
+				radius: {
+					Desktop: "100px",
+					Tablet: "100px",
+					Mobile: "100px",
+				},
+			},
+		},
+	},
+	save: Save__100623,
+};
 
-const deprecated = [v4, v3, v2, v1];
+const deprecated = [v5, v4, v3];
 
 export default deprecated;
