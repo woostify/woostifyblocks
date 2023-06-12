@@ -2707,7 +2707,8 @@ const INIT_WCB_GLOBAL_VARIABLES = {
   // se sd khi pick container lan dau tien / or khi truong contentWidth cua container khong duoc nhap
   defaultContentWidth: window?.wcbLayoutGlobalSettings?.contentSize || "",
   enableTemplatesButton: "true",
-  enableCopyPasteStyles: "false"
+  enableCopyPasteStyles: "false",
+  googleMapKey: "AIzaSyAGVJfZMAKYfZ71nzL_v5i3LjTTWnCYwTY"
 };
 const DEMO_WCB_GLOBAL_VARIABLES = {
   ...INIT_WCB_GLOBAL_VARIABLES,
@@ -3050,6 +3051,80 @@ const GlobalCss = attrs => {
 /*!********************************!*\
   !*** ./src/block-map/Save.tsx ***!
   \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ save)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/SaveCommon */ "./src/components/SaveCommon.tsx");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style.scss */ "./src/block-map/style.scss");
+
+
+
+
+
+
+function save(_ref) {
+  let {
+    attributes
+  } = _ref;
+  const {
+    uniqueId,
+    advance_responsiveCondition,
+    advance_zIndex,
+    general_general,
+    style_border,
+    advance_motionEffect
+  } = attributes;
+  //
+
+  const newAttrForSave = {
+    uniqueId,
+    advance_responsiveCondition,
+    advance_zIndex,
+    general_general,
+    style_border,
+    advance_motionEffect
+  };
+  //
+  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
+    className: "wcb-map__wrap"
+  });
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    attributes: newAttrForSave,
+    uniqueId: uniqueId
+  }, blockProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "wcb-map__inner"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("iframe", {
+    width: "100%",
+    height: "100%",
+    loading: "lazy",
+    allowFullScreen: true,
+    referrerPolicy: "no-referrer-when-downgrade",
+    src: `https://www.google.com/maps/embed/v1/place
+						?key=AIzaSyAGVJfZMAKYfZ71nzL_v5i3LjTTWnCYwTY
+						&maptype=${general_general.mapTypeId}
+						&language=${general_general.language}
+						&zoom=${general_general.zoom}
+						&q=place_id:${general_general.placeQuery?.place_id || "ChIJdan7FLcJxkcRQrwvoy3DwiM"}`
+  })));
+}
+
+/***/ }),
+
+/***/ "./src/block-map/Save_100623.tsx":
+/*!***************************************!*\
+  !*** ./src/block-map/Save_100623.tsx ***!
+  \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3650,16 +3725,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Save_260523__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Save__260523 */ "./src/block-map/Save__260523.tsx");
-/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./attributes */ "./src/block-map/attributes.ts");
+/* harmony import */ var _Save_100623__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Save_100623 */ "./src/block-map/Save_100623.tsx");
+/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./attributes */ "./src/block-map/attributes.ts");
+
 
 
 const v1 = {};
 const v2 = {};
 const v3 = {
-  attributes: _attributes__WEBPACK_IMPORTED_MODULE_1__["default"],
+  attributes: _attributes__WEBPACK_IMPORTED_MODULE_2__["default"],
   save: _Save_260523__WEBPACK_IMPORTED_MODULE_0__["default"]
 };
-const deprecated = [v3, v2, v1];
+const v4 = {
+  attributes: _attributes__WEBPACK_IMPORTED_MODULE_2__["default"],
+  save: _Save_100623__WEBPACK_IMPORTED_MODULE_1__["default"]
+};
+const deprecated = [v4, v3, v2, v1];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (deprecated);
 
 /***/ }),

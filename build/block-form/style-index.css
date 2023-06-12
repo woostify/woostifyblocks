@@ -119,6 +119,7 @@
 
 .wcb-form__successMessageText,
 .wcb-form__errorMessageText {
+  flex: 1 1 0%;
   padding: 1.25rem;
   display: none;
 }

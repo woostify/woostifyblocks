@@ -33,8 +33,10 @@
 }
 
 .wcb-testimonials__item {
-	display: flex;
 	position: relative;
+	.wcb-testimonials__item-wrap-inner {
+		display: flex;
+	}
 }
 
 .wcb-testimonials__item-image {

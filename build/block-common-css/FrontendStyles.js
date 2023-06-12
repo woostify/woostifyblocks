@@ -45,7 +45,8 @@ const INIT_WCB_GLOBAL_VARIABLES = {
   // se sd khi pick container lan dau tien / or khi truong contentWidth cua container khong duoc nhap
   defaultContentWidth: window?.wcbLayoutGlobalSettings?.contentSize || "",
   enableTemplatesButton: "true",
-  enableCopyPasteStyles: "false"
+  enableCopyPasteStyles: "false",
+  googleMapKey: "AIzaSyAGVJfZMAKYfZ71nzL_v5i3LjTTWnCYwTY"
 };
 const DEMO_WCB_GLOBAL_VARIABLES = {
   ...INIT_WCB_GLOBAL_VARIABLES,

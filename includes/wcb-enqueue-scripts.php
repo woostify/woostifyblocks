@@ -60,7 +60,20 @@ if (!function_exists("wcb__enqueue_lineicons")) {
     }
     add_action('wp_enqueue_scripts', 'wcb__enqueue_lineicons');
     add_action('admin_enqueue_scripts', 'wcb__enqueue_lineicons');
+    // 
+
+    function wcb__enqueue_lineicons_for_gutenbeg_editor()
+    {
+        add_editor_style(plugin_dir_url(WCB_FILE) . 'public/lineicons-free-basic/icon-font/lineicons.css');
+        // for iframe 
+        add_editor_style(plugin_dir_url(WCB_FILE) . 'public/css/lineicons2.css');
+    }
+    add_action('admin_init', 'wcb__enqueue_lineicons_for_gutenbeg_editor');
 }
+
+
+
+
 
 // 
 if (!function_exists("wcb__enqueue_googleapis")) {

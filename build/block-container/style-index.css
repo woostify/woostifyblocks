@@ -34,6 +34,9 @@ body .wcb-container__wrap .wp-block {
 .wcb-container__inner > * {
   max-width: 100%;
 }
+.wcb-container__inner .wp-block[data-align=full] {
+  max-width: 100%;
+}
 .wcb-container__inner > .block-list-appender {
   width: 100%;
 }

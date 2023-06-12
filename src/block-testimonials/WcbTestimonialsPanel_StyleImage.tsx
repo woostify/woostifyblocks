@@ -31,10 +31,10 @@ export const WCB_TESTIMONIALS_PANEL_STYLE_IMAGE_DEMO: WCB_TESTIMONIALS_PANEL_STY
 	{
 		padding: {
 			Desktop: {
-				top: "0.5rem",
+				top: "1rem",
 				left: "1rem",
 				right: "1rem",
-				bottom: "0.5rem",
+				bottom: "1rem",
 			},
 		},
 		imageSize: {

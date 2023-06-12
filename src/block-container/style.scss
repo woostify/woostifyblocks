@@ -30,6 +30,10 @@ body .wcb-container__wrap .wp-block {
 	> * {
 		max-width: 100%;
 	}
+	.wp-block[data-align="full"] {
+		max-width: 100%;
+	}
+
 	> .block-list-appender {
 		width: 100%;
 	}
