@@ -565,7 +565,6 @@ __webpack_require__.r(__webpack_exports__);
 
 //
 function initCarouselForWcbTestimonials(div, props) {
-  // const id = div.id;
   const dataUniqueid = div.getAttribute("data-uniqueid") || "";
   let $ = jQuery;
   if (typeof jQuery !== "function") {
@@ -625,6 +624,7 @@ function initCarouselForWcbTestimonials(div, props) {
       }
     }]
   };
+  // @ts-ignore
   $(`.${dataUniqueid} .wcb-testimonials__wrap-items`)?.slick?.(settings);
 }
 

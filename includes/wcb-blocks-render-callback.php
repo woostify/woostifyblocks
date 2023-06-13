@@ -85,10 +85,11 @@ function wcb_block_testimonials__renderCallback($attributes, $content)
 {
     if (!is_admin()) {
         // Can js de run Slick slider
-        // wp_enqueue_script('wcb_block_testimonials__renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-testimonials/FrontendStyles.js', ["wp-element", "jquery"], null, true);
-        wp_enqueue_script('wcb-slick', plugin_dir_url(WCB_FILE) . 'public/slick/slick.min.js', ['jquery'], "1.8.0", false);
         wp_enqueue_style('wcb-slick-main', plugin_dir_url(WCB_FILE) . 'public/slick/slick.css');
         wp_enqueue_style('wcb-slick-theme', plugin_dir_url(WCB_FILE) . 'public/slick/slick-theme.css');
+
+        // tam thoi dong lai, di goi o day dan den no bi day xuong footeresss..., hien tai dang tam thoi goi o enqueue file
+        // wp_enqueue_script('wcb-slicklib', plugin_dir_url(WCB_FILE) . 'public/slick/slick.min.js', ['jquery'], "1.8.0", false);
     }
     wp_enqueue_script__block_commoncss_frontend_styles();
     return $content;
@@ -152,10 +153,10 @@ function wcb_block_container__renderCallback($attributes, $content)
 
 
 if (!function_exists('wp_enqueue_script__block_commoncss_frontend_styles')) :
-    function wp_enqueue_script__block_commoncss_frontend_styles()
+    function wp_enqueue_script__block_commoncss_frontend_styles($deps = ['wp-element', 'jquery'])
     {
         if (!is_admin()) {
-            wp_enqueue_script('wcb_block_commoncss_renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-common-css/FrontendStyles.js', ['wp-element', 'jquery'], WCB_VERSION, true);
+            wp_enqueue_script('wcb_block_commoncss_renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-common-css/FrontendStyles.js', $deps, WCB_VERSION, true);
         }
     }
 endif;

@@ -1,14 +1,19 @@
-import React, { FC, useState, useEffect } from "react";
-
+import React, { FC } from "react";
+import _ from "lodash";
 interface Props {
 	allSettings: typeof window.wcbGlobalVariables;
 	onChange: (data: typeof window.wcbGlobalVariables) => void;
 }
 
 const SettingsPageBlockSettings: FC<Props> = ({ allSettings, onChange }) => {
-	return (
-		<div className="divide-y">
-			<form className="pb-8">
+	const debounce_fun = _.debounce(function (data: Props["allSettings"]) {
+		console.log("Function debounced after 300ms!", { data });
+		onChange(data);
+	}, 300);
+
+	const renderFormSettings = () => {
+		return (
+			<form>
 				<div>
 					<h3 className="p-0 flex-1 justify-right inline-flex text-lg font-medium text-gray-900">
 						Form
@@ -30,7 +35,7 @@ const SettingsPageBlockSettings: FC<Props> = ({ allSettings, onChange }) => {
 							rel="noopener noreferrer"
 							className="font-medium underline text-slate-700"
 						>
-							read more docs
+							read more docs.
 						</a>{" "}
 					</p>
 				</div>
@@ -40,7 +45,7 @@ const SettingsPageBlockSettings: FC<Props> = ({ allSettings, onChange }) => {
 							htmlFor="reCAPTCHAv2-sitekey"
 							className="block text-sm font-medium text-gray-700 select-none"
 						>
-							reCAPTCHA v2 - site key
+							ReCAPTCHA v2 - site key
 						</label>
 						<input
 							type="text"
@@ -48,9 +53,9 @@ const SettingsPageBlockSettings: FC<Props> = ({ allSettings, onChange }) => {
 							id="reCAPTCHAv2-sitekey"
 							autoComplete="given-name"
 							className="mt-1 block w-full rounded-md border-gray-300 pl-3 pr-11 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-							value={allSettings.reCAPTCHA_v2_site_key}
+							defaultValue={allSettings.reCAPTCHA_v2_site_key}
 							onChange={(e) => {
-								onChange({
+								debounce_fun({
 									...allSettings,
 									reCAPTCHA_v2_site_key: e.currentTarget.value,
 								});
@@ -63,7 +68,7 @@ const SettingsPageBlockSettings: FC<Props> = ({ allSettings, onChange }) => {
 							htmlFor="reCAPTCHAv2-secret"
 							className="block text-sm font-medium text-gray-700 select-none"
 						>
-							reCAPTCHA v2 - secret key
+							ReCAPTCHA v2 - secret key
 						</label>
 						<input
 							type="text"
@@ -71,9 +76,9 @@ const SettingsPageBlockSettings: FC<Props> = ({ allSettings, onChange }) => {
 							id="reCAPTCHAv2-secret"
 							autoComplete="family-name"
 							className="mt-1 block w-full rounded-md border-gray-300 pl-3 pr-11 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-							value={allSettings.reCAPTCHA_v2_secret_key}
+							defaultValue={allSettings.reCAPTCHA_v2_secret_key}
 							onChange={(e) => {
-								onChange({
+								debounce_fun({
 									...allSettings,
 									reCAPTCHA_v2_secret_key: e.currentTarget.value,
 								});
@@ -86,7 +91,7 @@ const SettingsPageBlockSettings: FC<Props> = ({ allSettings, onChange }) => {
 							htmlFor="reCAPTCHAv3-sitekey"
 							className="block text-sm font-medium text-gray-700 select-none"
 						>
-							reCAPTCHA v3 - site key
+							ReCAPTCHA v3 - site key
 						</label>
 						<input
 							type="text"
@@ -94,9 +99,9 @@ const SettingsPageBlockSettings: FC<Props> = ({ allSettings, onChange }) => {
 							id="reCAPTCHAv3-sitekey"
 							autoComplete="given-name"
 							className="mt-1 block w-full rounded-md border-gray-300 pl-3 pr-11 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-							value={allSettings.reCAPTCHA_v3_site_key}
+							defaultValue={allSettings.reCAPTCHA_v3_site_key}
 							onChange={(e) => {
-								onChange({
+								debounce_fun({
 									...allSettings,
 									reCAPTCHA_v3_site_key: e.currentTarget.value,
 								});
@@ -109,7 +114,7 @@ const SettingsPageBlockSettings: FC<Props> = ({ allSettings, onChange }) => {
 							htmlFor="reCAPTCHAv3-secret"
 							className="block text-sm font-medium text-gray-700  select-none"
 						>
-							reCAPTCHA v3 - secret key
+							ReCAPTCHA v3 - secret key
 						</label>
 						<input
 							type="text"
@@ -117,9 +122,9 @@ const SettingsPageBlockSettings: FC<Props> = ({ allSettings, onChange }) => {
 							id="reCAPTCHAv3-secret"
 							autoComplete="family-name"
 							className="mt-1 block w-full rounded-md border-gray-300 pl-3 pr-11 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-							value={allSettings.reCAPTCHA_v3_secret_key}
+							defaultValue={allSettings.reCAPTCHA_v3_secret_key}
 							onChange={(e) => {
-								onChange({
+								debounce_fun({
 									...allSettings,
 									reCAPTCHA_v3_secret_key: e.currentTarget.value,
 								});
@@ -128,6 +133,12 @@ const SettingsPageBlockSettings: FC<Props> = ({ allSettings, onChange }) => {
 					</div>
 				</div>
 			</form>
+		);
+	};
+
+	return (
+		<div className="divide-y">
+			<div className="pb-8">{renderFormSettings()}</div>
 		</div>
 	);
 };

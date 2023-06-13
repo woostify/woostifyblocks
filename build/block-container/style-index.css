@@ -6,6 +6,9 @@ body .wcb-container__wrap .wp-block {
   margin-left: initial;
   margin-right: initial;
 }
+body .wcb-container__wrap .wcb-container__inner {
+  margin: 0 auto;
+}
 
 /*  */
 .wcb-container__wrap {
@@ -32,6 +35,9 @@ body .wcb-container__wrap .wp-block {
   margin: 0 auto;
 }
 .wcb-container__inner > * {
+  max-width: 100%;
+}
+.wcb-container__inner .wp-block[data-align=full] {
   max-width: 100%;
 }
 .wcb-container__inner > .block-list-appender {

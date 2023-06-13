@@ -1033,6 +1033,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 const SettingsPageBlockSettings = _ref => {
@@ -1040,99 +1043,108 @@ const SettingsPageBlockSettings = _ref => {
     allSettings,
     onChange
   } = _ref;
+  const debounce_fun = lodash__WEBPACK_IMPORTED_MODULE_2___default().debounce(function (data) {
+    console.log("Function debounced after 300ms!", {
+      data
+    });
+    onChange(data);
+  }, 300);
+  const renderFormSettings = () => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+      className: "p-0 flex-1 justify-right inline-flex text-lg font-medium text-gray-900"
+    }, "Form"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+      className: "text-sm text-slate-500 mt-2"
+    }, "To enable reCAPTCHA for your form, please follow the steps mentioned", " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      href: "https://www.google.com/recaptcha/admin/create",
+      target: "_blank",
+      rel: "noopener noreferrer",
+      className: "font-medium underline text-slate-700"
+    }, "here"), " ", "or", " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      href: "https://cloud.google.com/recaptcha-enterprise/docs/create-key",
+      target: "_blank",
+      rel: "noopener noreferrer",
+      className: "font-medium underline text-slate-700"
+    }, "read more docs."), " ")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "mt-8 grid grid-cols-6 gap-6"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "col-span-6 sm:col-span-3"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+      htmlFor: "reCAPTCHAv2-sitekey",
+      className: "block text-sm font-medium text-gray-700 select-none"
+    }, "ReCAPTCHA v2 - site key"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+      type: "text",
+      name: "reCAPTCHAv2-sitekey",
+      id: "reCAPTCHAv2-sitekey",
+      autoComplete: "given-name",
+      className: "mt-1 block w-full rounded-md border-gray-300 pl-3 pr-11 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+      defaultValue: allSettings.reCAPTCHA_v2_site_key,
+      onChange: e => {
+        debounce_fun({
+          ...allSettings,
+          reCAPTCHA_v2_site_key: e.currentTarget.value
+        });
+      }
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "col-span-6 sm:col-span-3"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+      htmlFor: "reCAPTCHAv2-secret",
+      className: "block text-sm font-medium text-gray-700 select-none"
+    }, "ReCAPTCHA v2 - secret key"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+      type: "text",
+      name: "reCAPTCHAv2-secret",
+      id: "reCAPTCHAv2-secret",
+      autoComplete: "family-name",
+      className: "mt-1 block w-full rounded-md border-gray-300 pl-3 pr-11 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+      defaultValue: allSettings.reCAPTCHA_v2_secret_key,
+      onChange: e => {
+        debounce_fun({
+          ...allSettings,
+          reCAPTCHA_v2_secret_key: e.currentTarget.value
+        });
+      }
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "col-span-6 sm:col-span-3"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+      htmlFor: "reCAPTCHAv3-sitekey",
+      className: "block text-sm font-medium text-gray-700 select-none"
+    }, "ReCAPTCHA v3 - site key"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+      type: "text",
+      name: "reCAPTCHAv3-sitekey",
+      id: "reCAPTCHAv3-sitekey",
+      autoComplete: "given-name",
+      className: "mt-1 block w-full rounded-md border-gray-300 pl-3 pr-11 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+      defaultValue: allSettings.reCAPTCHA_v3_site_key,
+      onChange: e => {
+        debounce_fun({
+          ...allSettings,
+          reCAPTCHA_v3_site_key: e.currentTarget.value
+        });
+      }
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "col-span-6 sm:col-span-3"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+      htmlFor: "reCAPTCHAv3-secret",
+      className: "block text-sm font-medium text-gray-700  select-none"
+    }, "ReCAPTCHA v3 - secret key"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+      type: "text",
+      name: "reCAPTCHAv3-secret",
+      id: "reCAPTCHAv3-secret",
+      autoComplete: "family-name",
+      className: "mt-1 block w-full rounded-md border-gray-300 pl-3 pr-11 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+      defaultValue: allSettings.reCAPTCHA_v3_secret_key,
+      onChange: e => {
+        debounce_fun({
+          ...allSettings,
+          reCAPTCHA_v3_secret_key: e.currentTarget.value
+        });
+      }
+    }))));
+  };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "divide-y"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
-    className: "pb-8"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
-    className: "p-0 flex-1 justify-right inline-flex text-lg font-medium text-gray-900"
-  }, "Form"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "text-sm text-slate-500 mt-2"
-  }, "To enable reCAPTCHA for your form, please follow the steps mentioned", " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    href: "https://www.google.com/recaptcha/admin/create",
-    target: "_blank",
-    rel: "noopener noreferrer",
-    className: "font-medium underline text-slate-700"
-  }, "here"), " ", "or", " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    href: "https://cloud.google.com/recaptcha-enterprise/docs/create-key",
-    target: "_blank",
-    rel: "noopener noreferrer",
-    className: "font-medium underline text-slate-700"
-  }, "read more docs"), " ")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "mt-8 grid grid-cols-6 gap-6"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "col-span-6 sm:col-span-3"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
-    htmlFor: "reCAPTCHAv2-sitekey",
-    className: "block text-sm font-medium text-gray-700 select-none"
-  }, "reCAPTCHA v2 - site key"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    type: "text",
-    name: "reCAPTCHAv2-sitekey",
-    id: "reCAPTCHAv2-sitekey",
-    autoComplete: "given-name",
-    className: "mt-1 block w-full rounded-md border-gray-300 pl-3 pr-11 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-    value: allSettings.reCAPTCHA_v2_site_key,
-    onChange: e => {
-      onChange({
-        ...allSettings,
-        reCAPTCHA_v2_site_key: e.currentTarget.value
-      });
-    }
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "col-span-6 sm:col-span-3"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
-    htmlFor: "reCAPTCHAv2-secret",
-    className: "block text-sm font-medium text-gray-700 select-none"
-  }, "reCAPTCHA v2 - secret key"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    type: "text",
-    name: "reCAPTCHAv2-secret",
-    id: "reCAPTCHAv2-secret",
-    autoComplete: "family-name",
-    className: "mt-1 block w-full rounded-md border-gray-300 pl-3 pr-11 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-    value: allSettings.reCAPTCHA_v2_secret_key,
-    onChange: e => {
-      onChange({
-        ...allSettings,
-        reCAPTCHA_v2_secret_key: e.currentTarget.value
-      });
-    }
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "col-span-6 sm:col-span-3"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
-    htmlFor: "reCAPTCHAv3-sitekey",
-    className: "block text-sm font-medium text-gray-700 select-none"
-  }, "reCAPTCHA v3 - site key"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    type: "text",
-    name: "reCAPTCHAv3-sitekey",
-    id: "reCAPTCHAv3-sitekey",
-    autoComplete: "given-name",
-    className: "mt-1 block w-full rounded-md border-gray-300 pl-3 pr-11 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-    value: allSettings.reCAPTCHA_v3_site_key,
-    onChange: e => {
-      onChange({
-        ...allSettings,
-        reCAPTCHA_v3_site_key: e.currentTarget.value
-      });
-    }
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "col-span-6 sm:col-span-3"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
-    htmlFor: "reCAPTCHAv3-secret",
-    className: "block text-sm font-medium text-gray-700  select-none"
-  }, "reCAPTCHA v3 - secret key"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    type: "text",
-    name: "reCAPTCHAv3-secret",
-    id: "reCAPTCHAv3-secret",
-    autoComplete: "family-name",
-    className: "mt-1 block w-full rounded-md border-gray-300 pl-3 pr-11 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
-    value: allSettings.reCAPTCHA_v3_secret_key,
-    onChange: e => {
-      onChange({
-        ...allSettings,
-        reCAPTCHA_v3_secret_key: e.currentTarget.value
-      });
-    }
-  })))));
+    className: "pb-8"
+  }, renderFormSettings()));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SettingsPageBlockSettings);
 
@@ -1155,6 +1167,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _InputNumber__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./InputNumber */ "./src/____dashboard/components/InputNumber.tsx");
 /* harmony import */ var _MyToggle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./MyToggle */ "./src/____dashboard/components/MyToggle.tsx");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -1165,6 +1180,14 @@ const SettingsPageEditorOptions = _ref => {
     onChange,
     themeLayoutGlobal
   } = _ref;
+  const debounce_fun = lodash__WEBPACK_IMPORTED_MODULE_4___default().debounce(function (data) {
+    console.log("Function debounced after 300ms!", {
+      data
+    });
+    onChange(data);
+  }, 300);
+
+  // ----------------
   let subStr = "";
   if (!!themeLayoutGlobal?.contentSize) {
     if (!!themeLayoutGlobal?.contentSizeOfWoostify) {
@@ -1182,11 +1205,11 @@ const SettingsPageEditorOptions = _ref => {
     label: "Default Content Width",
     desc: `This setting will apply to Container Block's default Content Width.` + subStr,
     id: "InputNumber_DefaultContentWidth",
-    value: String(parseInt(allSettings.defaultContentWidth || "")),
+    defaultValue: String(parseInt(allSettings.defaultContentWidth || "")),
     placeholder: `${parseInt(themeLayoutGlobal?.contentSize || "650")}`,
     onChange: e => {
       const newV = e ? e + "px" : "";
-      onChange({
+      debounce_fun({
         ...allSettings,
         defaultContentWidth: newV
       });
@@ -1197,7 +1220,7 @@ const SettingsPageEditorOptions = _ref => {
     checked: allSettings.enableCopyPasteStyles === "true",
     disabled: !!"wcb-field-disabled",
     onChange: checked => {
-      onChange({
+      debounce_fun({
         ...allSettings,
         enableCopyPasteStyles: checked ? "true" : "false"
       });
@@ -1227,6 +1250,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _MyToggle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MyToggle */ "./src/____dashboard/components/MyToggle.tsx");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -1235,6 +1261,12 @@ const SettingsPageTemplates = _ref => {
     allSettings,
     onChange
   } = _ref;
+  const debounce_fun = lodash__WEBPACK_IMPORTED_MODULE_3___default().debounce(function (data) {
+    console.log("Function debounced after 300ms!", {
+      data
+    });
+    onChange(data);
+  }, 300);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "divide-y"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -1242,7 +1274,7 @@ const SettingsPageTemplates = _ref => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyToggle__WEBPACK_IMPORTED_MODULE_2__["default"], {
     checked: allSettings.enableTemplatesButton === "true",
     onChange: checked => {
-      onChange({
+      debounce_fun({
         ...allSettings,
         enableTemplatesButton: checked ? "true" : "false"
       });
@@ -1389,6 +1421,17 @@ module.exports = window["ReactDOM"];
 
 "use strict";
 module.exports = window["jQuery"];
+
+/***/ }),
+
+/***/ "lodash":
+/*!*************************!*\
+  !*** external "lodash" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["lodash"];
 
 /***/ }),
 

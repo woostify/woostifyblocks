@@ -1,6 +1,11 @@
-body .wcb-container__wrap .wp-block {
-	margin-left: initial;
-	margin-right: initial;
+body .wcb-container__wrap {
+	.wp-block {
+		margin-left: initial;
+		margin-right: initial;
+	}
+	.wcb-container__inner {
+		margin: 0 auto;
+	}
 }
 
 /*  */
@@ -30,6 +35,10 @@ body .wcb-container__wrap .wp-block {
 	> * {
 		max-width: 100%;
 	}
+	.wp-block[data-align="full"] {
+		max-width: 100%;
+	}
+
 	> .block-list-appender {
 		width: 100%;
 	}

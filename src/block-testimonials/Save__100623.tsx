@@ -130,36 +130,33 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 					bgType={style_backgroundAndBorder.background.bgType}
 					overlayType={style_backgroundAndBorder.background.overlayType}
 				/>
+				{/* IMAGE */}
+				{imagePosition === "left" && renderTestimonialItemImage(item, index)}
 
-				<div className="wcb-testimonials__item-wrap-inner">
+				<div className="wcb-testimonials__item-inner">
 					{/* IMAGE */}
-					{imagePosition === "left" && renderTestimonialItemImage(item, index)}
+					{imagePosition === "top" && renderTestimonialItemImage(item, index)}
 
-					<div className="wcb-testimonials__item-inner">
+					{/* CONTENT */}
+					{renderTestimonialItemContent(item, index)}
+
+					<div className="wcb-testimonials__item-user">
 						{/* IMAGE */}
-						{imagePosition === "top" && renderTestimonialItemImage(item, index)}
+						{imagePosition === "bottom" &&
+							renderTestimonialItemImage(item, index)}
 
-						{/* CONTENT */}
-						{renderTestimonialItemContent(item, index)}
+						<div className="wcb-testimonials__item-nameandcompany">
+							{/* NAME */}
+							{renderTestimonialItemName(item, index)}
 
-						<div className="wcb-testimonials__item-user">
-							{/* IMAGE */}
-							{imagePosition === "bottom" &&
-								renderTestimonialItemImage(item, index)}
-
-							<div className="wcb-testimonials__item-nameandcompany">
-								{/* NAME */}
-								{renderTestimonialItemName(item, index)}
-
-								{/* COMPANY */}
-								{renderTestimonialItemCompany(item, index)}
-							</div>
+							{/* COMPANY */}
+							{renderTestimonialItemCompany(item, index)}
 						</div>
 					</div>
-
-					{/* IMAGE */}
-					{imagePosition === "right" && renderTestimonialItemImage(item, index)}
 				</div>
+
+				{/* IMAGE */}
+				{imagePosition === "right" && renderTestimonialItemImage(item, index)}
 			</div>
 		);
 	};

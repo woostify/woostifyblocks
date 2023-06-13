@@ -154,11 +154,19 @@ const GlobalCss = attrs => {
     }), {
       [`${WRAP_CLASSNAME}`]: {
         display: general_icon.iconPosition === "left" || general_icon.iconPosition === "right" ? "flex" : "block",
+        flexDirection: general_icon.stackOn === "mobile" || general_icon.stackOn === "tablet" ? general_icon.iconPosition === "right" ? "column-reverse" : "column" : undefined,
+        ".wcb-icon-box__icon-wrap, .wcb-icon-box__content": {
+          alignSelf: general_icon.verticalAlignment === "middle" ? "center" : undefined
+        },
         ".wcb-icon-box__content-title-wrap": {
           display: general_icon.iconPosition === "leftOfTitle" || general_icon.iconPosition === "rightOfTitle" ? "flex" : "block"
         },
-        [`@media (min-width: ${media_tablet})`]: {},
-        [`@media (min-width: ${media_desktop})`]: {}
+        [`@media (min-width: ${media_tablet})`]: {
+          flexDirection: general_icon.stackOn === "mobile" ? "row" : undefined
+        },
+        [`@media (min-width: ${media_desktop})`]: {
+          flexDirection: "row"
+        }
       }
     }];
   };
@@ -196,14 +204,7 @@ const GlobalCss = attrs => {
           color: style_Icon.hoverColor
         }
       }
-    }
-    // {
-    // 	[`${WRAP_CLASSNAME} .wcb-icon-full, ${WRAP_CLASSNAME} .wcb-icon-box__content-wrap`]:
-    // 		{
-    // 			alignSelf: style_Icon.imageAlignSelf,
-    // 		},
-    // },
-    ]
+    }]
   }) : null, general_layout.enablePrefix ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_6__["default"])({
       typography: style_desination.typography,

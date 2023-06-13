@@ -368,7 +368,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							if (j === index) {
 								return {
 									...item,
-									name: content,
+									companyName: content,
 								};
 							}
 							return item;
@@ -416,33 +416,35 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					bgType={style_backgroundAndBorder.background.bgType}
 					overlayType={style_backgroundAndBorder.background.overlayType}
 				/>
-				{/* IMAGE */}
-				{imagePosition === "left" && renderTestimonialItemImage(item, index)}
-
-				<div className="wcb-testimonials__item-inner">
+				<div className="wcb-testimonials__item-wrap-inner">
 					{/* IMAGE */}
-					{imagePosition === "top" && renderTestimonialItemImage(item, index)}
+					{imagePosition === "left" && renderTestimonialItemImage(item, index)}
 
-					{/* CONTENT */}
-					{renderTestimonialItemContent(item, index)}
-
-					<div className="wcb-testimonials__item-user">
+					<div className="wcb-testimonials__item-inner">
 						{/* IMAGE */}
-						{imagePosition === "bottom" &&
-							renderTestimonialItemImage(item, index)}
+						{imagePosition === "top" && renderTestimonialItemImage(item, index)}
 
-						<div className="wcb-testimonials__item-nameandcompany">
-							{/* NAME */}
-							<div>{renderTestimonialItemName(item, index)}</div>
+						{/* CONTENT */}
+						{renderTestimonialItemContent(item, index)}
 
-							{/* COMPANY */}
-							{renderTestimonialItemCompany(item, index)}
+						<div className="wcb-testimonials__item-user">
+							{/* IMAGE */}
+							{imagePosition === "bottom" &&
+								renderTestimonialItemImage(item, index)}
+
+							<div className="wcb-testimonials__item-nameandcompany">
+								{/* NAME */}
+								<div>{renderTestimonialItemName(item, index)}</div>
+
+								{/* COMPANY */}
+								{renderTestimonialItemCompany(item, index)}
+							</div>
 						</div>
 					</div>
-				</div>
 
-				{/* IMAGE */}
-				{imagePosition === "right" && renderTestimonialItemImage(item, index)}
+					{/* IMAGE */}
+					{imagePosition === "right" && renderTestimonialItemImage(item, index)}
+				</div>
 			</div>
 		);
 	};
