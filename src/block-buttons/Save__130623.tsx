@@ -20,7 +20,6 @@ export default function save({ attributes }: { attributes: WcbAttrsForSave }) {
 		general_general,
 		style_dimension,
 		style_text,
-		advance_motionEffect,
 	} = attributes;
 	//
 
@@ -31,7 +30,6 @@ export default function save({ attributes }: { attributes: WcbAttrsForSave }) {
 		style_text,
 		advance_responsiveCondition,
 		advance_zIndex,
-		advance_motionEffect,
 	};
 
 	//

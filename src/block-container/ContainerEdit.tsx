@@ -31,7 +31,6 @@ import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 import { ContainerEditProps } from "./Edit";
-import { getAnimateFMotionEffectData } from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
 
 const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 	props
@@ -321,10 +320,7 @@ const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 
 	const blockWrapProps = useBlockProps({
 		ref,
-		className:
-			`wcb-container__wrap ${uniqueId} ${containerClassName} ${getAnimateFMotionEffectData(
-				advance_motionEffect
-			)}`.trim(),
+		className: `wcb-container__wrap ${uniqueId} ${containerClassName}`.trim(),
 	});
 
 	// make uniqueid

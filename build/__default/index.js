@@ -3239,8 +3239,7 @@ const MyLabelControl = _ref => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "MY_MOTION_EFFECT_DEMO": () => (/* binding */ MY_MOTION_EFFECT_DEMO),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   "getAnimateFMotionEffectData": () => (/* binding */ getAnimateFMotionEffectData)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
@@ -3257,12 +3256,8 @@ __webpack_require__.r(__webpack_exports__);
 
 // @ts-ignore
 
-function getAnimateFMotionEffectData(data) {
-  return "";
-  return ` animate__animated animate__${data?.entranceAnimation} animate__${data?.animationDuration} animate__delay-${data?.animationDelay}ms  animate__repeat-${data?.repeat}`;
-}
 const options = [{
-  label: "",
+  label: "None",
   value: ""
 }, {
   label: "Bounce",
@@ -3274,8 +3269,17 @@ const options = [{
   label: "Pulse",
   value: "pulse"
 }, {
-  label: "Shake",
-  value: "shake"
+  label: "RubberBand",
+  value: "rubberBand"
+}, {
+  label: "ShakeX",
+  value: "shakeX"
+}, {
+  label: "ShakeY",
+  value: "shakeY"
+}, {
+  label: "HeadShake",
+  value: "headShake"
 }, {
   label: "Swing",
   value: "swing"
@@ -3286,179 +3290,143 @@ const options = [{
   label: "Wobble",
   value: "wobble"
 }, {
-  label: "Wave",
-  value: "wave"
+  label: "Jello",
+  value: "jello"
 }, {
-  label: "Wobble Vertical",
-  value: "wobble-vertical"
+  label: "HeartBeat",
+  value: "heartBeat"
 }, {
-  label: "Bounce In",
-  value: "bounce-in"
+  label: "BackInDown",
+  value: "backInDown"
 }, {
-  label: "Bounce In Down",
-  value: "bounce-in-down"
+  label: "BackInLeft",
+  value: "backInLeft"
 }, {
-  label: "Bounce In Left",
-  value: "bounce-in-left"
+  label: "BackInRight",
+  value: "backInRight"
 }, {
-  label: "Bounce In Right",
-  value: "bounce-in-right"
+  label: "BackInUp",
+  value: "backInUp"
 }, {
-  label: "Bounce In Up",
-  value: "bounce-in-up"
+  label: "BounceIn",
+  value: "bounceIn"
 }, {
-  label: "Bounce Out",
-  value: "bounce-out"
+  label: "BounceInDown",
+  value: "bounceInDown"
 }, {
-  label: "Bounce Out Down",
-  value: "bounce-out-down"
+  label: "BounceInLeft",
+  value: "bounceInLeft"
 }, {
-  label: "Bounce Out Left",
-  value: "bounce-out-left"
+  label: "BounceInRight",
+  value: "bounceInRight"
 }, {
-  label: "Bounce Out Right",
-  value: "bounce-out-right"
+  label: "BounceInUp",
+  value: "bounceInUp"
 }, {
-  label: "Bounce Out Up",
-  value: "bounce-out-up"
+  label: "FadeIn",
+  value: "fadeIn"
 }, {
-  label: "Fade In",
-  value: "fade-in"
+  label: "FadeInDown",
+  value: "fadeInDown"
 }, {
-  label: "Fade In Down",
-  value: "fade-in-down"
+  label: "FadeInDownBig",
+  value: "fadeInDownBig"
 }, {
-  label: "Fade In Left",
-  value: "fade-in-left"
+  label: "FadeInLeft",
+  value: "fadeInLeft"
 }, {
-  label: "Fade In Right",
-  value: "fade-in-right"
+  label: "FadeInLeftBig",
+  value: "fadeInLeftBig"
 }, {
-  label: "Fade In Up",
-  value: "fade-in-up"
+  label: "FadeInRight",
+  value: "fadeInRight"
 }, {
-  label: "Fade Out",
-  value: "fade-out"
+  label: "FadeInRightBig",
+  value: "fadeInRightBig"
 }, {
-  label: "Fade Out Down",
-  value: "fade-out-down"
+  label: "FadeInUp",
+  value: "fadeInUp"
 }, {
-  label: "Fade Out Left",
-  value: "fade-out-left"
+  label: "FadeInUpBig",
+  value: "fadeInUpBig"
 }, {
-  label: "Fade Out Right",
-  value: "fade-out-right"
+  label: "FadeInTopLeft",
+  value: "fadeInTopLeft"
 }, {
-  label: "Fade Out Up",
-  value: "fade-out-up"
+  label: "FadeInTopRight",
+  value: "fadeInTopRight"
 }, {
-  label: "Flip In X",
-  value: "flip-in-x"
+  label: "FadeInBottomLeft",
+  value: "fadeInBottomLeft"
 }, {
-  label: "Flip In Y",
-  value: "flip-in-y"
+  label: "FadeInBottomRight",
+  value: "fadeInBottomRight"
 }, {
-  label: "Flip Out X",
-  value: "flip-out-x"
+  label: "Flip",
+  value: "flip"
 }, {
-  label: "Flip Out Y",
-  value: "flip-out-y"
+  label: "FlipInX",
+  value: "flipInX"
 }, {
-  label: "Lightspeed In Left",
-  value: "lightspeed-in-left"
+  label: "FlipInY",
+  value: "flipInY"
 }, {
-  label: "Lightspeed In Right",
-  value: "lightspeed-in-right"
+  label: "LightSpeedInRight",
+  value: "lightSpeedInRight"
 }, {
-  label: "Lightspeed Out Left",
-  value: "lightspeed-out-left"
+  label: "LightSpeedInLeft",
+  value: "lightSpeedInLeft"
 }, {
-  label: "Lightspeed Out Right",
-  value: "lightspeed-out-right"
+  label: "RotateIn",
+  value: "rotateIn"
 }, {
-  label: "Rotate In",
-  value: "rotate-in"
+  label: "RotateInDownLeft",
+  value: "rotateInDownLeft"
 }, {
-  label: "Rotate In Down",
-  value: "rotate-in-down"
+  label: "RotateInDownRight",
+  value: "rotateInDownRight"
 }, {
-  label: "Rotate In Left",
-  value: "rotate-in-left"
+  label: "RotateInUpLeft",
+  value: "rotateInUpLeft"
 }, {
-  label: "Rotate In Right",
-  value: "rotate-in-right"
+  label: "RotateInUpRight",
+  value: "rotateInUpRight"
 }, {
-  label: "Rotate In Up",
-  value: "rotate-in-up"
+  label: "Hinge",
+  value: "hinge"
 }, {
-  label: "Rotate Out",
-  value: "rotate-out"
+  label: "JackInTheBox",
+  value: "jackInTheBox"
 }, {
-  label: "Rotate Out Down",
-  value: "rotate-out-down"
+  label: "RollIn",
+  value: "rollIn"
 }, {
-  label: "Rotate Out Left",
-  value: "rotate-out-left"
+  label: "ZoomIn",
+  value: "zoomIn"
 }, {
-  label: "Rotate Out Right",
-  value: "rotate-out-right"
+  label: "ZoomInDown",
+  value: "zoomInDown"
 }, {
-  label: "Rotate Out Up",
-  value: "rotate-out-up"
+  label: "ZoomInLeft",
+  value: "zoomInLeft"
 }, {
-  label: "Rubberband",
-  value: "rubberband"
+  label: "ZoomInRight",
+  value: "zoomInRight"
 }, {
-  label: "Shake Horizontal",
-  value: "shake-horizontal"
+  label: "ZoomInUp",
+  value: "zoomInUp"
 }, {
-  label: "Shake Vertical",
-  value: "shake-vertical"
+  label: "SlideInDown",
+  value: "slideInDown"
 }, {
-  label: "Slide In Down",
-  value: "slide-in-down"
+  label: "SlideInLeft",
+  value: "slideInLeft"
 }, {
-  label: "Slide In Left",
-  value: "slide-in-left"
+  label: "SlideInRight",
+  value: "slideInRight"
 }, {
-  label: "Slide In Right",
-  value: "slide-in-right"
-}, {
-  label: "Slide In Up",
-  value: "slide-in-up"
-}, {
-  label: "Slide Out Down",
-  value: "slide-out-down"
-}, {
-  label: "Slide Out Left",
-  value: "slide-out-left"
-}, {
-  label: "Slide Out Right",
-  value: "slide-out-right"
-}, {
-  label: "Slide Out Up",
-  value: "slide-out-up"
-}, {
-  label: "Swing In Left",
-  value: "swing-in-left"
-}, {
-  label: "Swing In Right",
-  value: "swing-in-right"
-}, {
-  label: "Swing Out Left",
-  value: "swing-out-left"
-}, {
-  label: "Swing Out Right",
-  value: "swing-out-right"
-}, {
-  label: "Tada",
-  value: "tada"
-}, {
-  label: "Wobble",
-  value: "wobble"
-}, {
-  label: "Wobble Vertical",
-  value: "wobble-vertical"
+  label: "SlideInUp",
+  value: "slideInUp"
 }];
 const MY_MOTION_EFFECT_DEMO = {
   animationDelay: 0,

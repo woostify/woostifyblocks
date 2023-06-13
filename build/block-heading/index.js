@@ -2741,7 +2741,8 @@ const Edit = props => {
     //
     general_content,
     advance_responsiveCondition,
-    advance_zIndex
+    advance_zIndex,
+    advance_motionEffect
   } = attributes;
   const {
     tabIsOpen,
@@ -2863,6 +2864,7 @@ const Edit = props => {
         }));
       case "Advances":
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_16__["default"], {
+          advance_motionEffect: advance_motionEffect,
           advance_responsiveCondition: attributes.advance_responsiveCondition,
           advance_zIndex: attributes.advance_zIndex,
           handleTogglePanel: handleTogglePanel,
@@ -2886,9 +2888,10 @@ const Edit = props => {
       styles_separator,
       styles_subHeading,
       uniqueId,
-      styles_border
+      styles_border,
+      advance_motionEffect
     };
-  }, [advance_responsiveCondition, advance_zIndex, general_content, styles_background, styles_dimensions, styles_heading, styles_highlight, styles_link, styles_separator, styles_subHeading, uniqueId, styles_border]);
+  }, [advance_responsiveCondition, advance_zIndex, general_content, styles_background, styles_dimensions, styles_heading, styles_highlight, styles_link, styles_separator, styles_subHeading, uniqueId, styles_border, advance_motionEffect]);
   const renderSeparator = () => {
     return general_content.showSeparator ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "wcb-heading__separator-wrap"
@@ -2981,7 +2984,8 @@ const GlobalCss = attrs => {
     styles_subHeading,
     advance_responsiveCondition,
     advance_zIndex,
-    styles_border
+    styles_border,
+    advance_motionEffect
   } = attrs;
   const {
     media_desktop,
@@ -3264,6 +3268,7 @@ const GlobalCss = attrs => {
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_12__.Global, {
     styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__.getAdvanveDivWrapStyles)({
+      advance_motionEffect,
       advance_responsiveCondition,
       advance_zIndex,
       className: WRAP_CLASSNAME,
@@ -3328,6 +3333,101 @@ const MyCustomButton = _ref => {
 /*!************************************!*\
   !*** ./src/block-heading/Save.tsx ***!
   \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ save)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./src/block-heading/style.scss");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components_SaveCommon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/SaveCommon */ "./src/components/SaveCommon.tsx");
+
+
+
+
+
+
+function save(_ref) {
+  let {
+    attributes
+  } = _ref;
+  const {
+    uniqueId,
+    heading,
+    subHeading,
+    advance_responsiveCondition,
+    advance_zIndex,
+    general_content,
+    styles_background,
+    styles_dimensions,
+    styles_heading,
+    styles_highlight,
+    styles_link,
+    styles_separator,
+    styles_subHeading,
+    styles_border,
+    advance_motionEffect
+  } = attributes;
+  //
+
+  const newAttrForSave = {
+    uniqueId,
+    advance_responsiveCondition,
+    advance_zIndex,
+    general_content,
+    styles_background,
+    styles_dimensions,
+    styles_heading,
+    styles_highlight,
+    styles_link,
+    styles_separator,
+    styles_subHeading,
+    styles_border,
+    advance_motionEffect
+  };
+  //
+
+  const renderSeparator = () => {
+    return general_content.showSeparator ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "wcb-heading__separator-wrap"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "wcb-heading__separator"
+    })) : null;
+  };
+
+  //
+  const wrapBlockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.useBlockProps.save({
+    className: "wcb-heading__wrap"
+  });
+  //
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_5__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
+    attributes: newAttrForSave,
+    uniqueId: uniqueId
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, general_content.separatorPosition === "top" && renderSeparator(), general_content.showHeading ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.RichText.Content, {
+    tagName: general_content.headingTag || "h2",
+    className: "wcb-heading__heading",
+    value: heading
+  }) : null, general_content.separatorPosition === "middle" && renderSeparator(), general_content.showSubHeading ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.RichText.Content, {
+    tagName: "p",
+    className: "wcb-heading__subHeading",
+    value: subHeading
+  }) : null, general_content.separatorPosition === "bottom" && renderSeparator()));
+}
+
+/***/ }),
+
+/***/ "./src/block-heading/Save__130623.tsx":
+/*!********************************************!*\
+  !*** ./src/block-heading/Save__130623.tsx ***!
+  \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4303,17 +4403,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl */ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx");
-/* harmony import */ var _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/controls/MyZIndexControl/MyZIndexControl */ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx");
-/* harmony import */ var _WcbHeadingPanelBackground__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WcbHeadingPanelBackground */ "./src/block-heading/WcbHeadingPanelBackground.tsx");
-/* harmony import */ var _WcbHeadingPanelContent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WcbHeadingPanelContent */ "./src/block-heading/WcbHeadingPanelContent.tsx");
-/* harmony import */ var _WcbHeadingPanelDimension__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./WcbHeadingPanelDimension */ "./src/block-heading/WcbHeadingPanelDimension.tsx");
-/* harmony import */ var _WcbHeadingPanelHeading__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WcbHeadingPanelHeading */ "./src/block-heading/WcbHeadingPanelHeading.tsx");
-/* harmony import */ var _WcbHeadingPanelHighlight__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./WcbHeadingPanelHighlight */ "./src/block-heading/WcbHeadingPanelHighlight.tsx");
-/* harmony import */ var _WcbHeadingPanelLink__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./WcbHeadingPanelLink */ "./src/block-heading/WcbHeadingPanelLink.tsx");
-/* harmony import */ var _WcbHeadingPanelSeparator__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WcbHeadingPanelSeparator */ "./src/block-heading/WcbHeadingPanelSeparator.tsx");
-/* harmony import */ var _WcbHeadingPanelSubHeading__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./WcbHeadingPanelSubHeading */ "./src/block-heading/WcbHeadingPanelSubHeading.tsx");
-/* harmony import */ var _WcbHeadingPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./WcbHeadingPanel_StyleBorder */ "./src/block-heading/WcbHeadingPanel_StyleBorder.tsx");
+/* harmony import */ var _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/controls/MyMotionEffectControl/MyMotionEffectControl */ "./src/components/controls/MyMotionEffectControl/MyMotionEffectControl.tsx");
+/* harmony import */ var _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl */ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx");
+/* harmony import */ var _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/controls/MyZIndexControl/MyZIndexControl */ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx");
+/* harmony import */ var _WcbHeadingPanelBackground__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WcbHeadingPanelBackground */ "./src/block-heading/WcbHeadingPanelBackground.tsx");
+/* harmony import */ var _WcbHeadingPanelContent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./WcbHeadingPanelContent */ "./src/block-heading/WcbHeadingPanelContent.tsx");
+/* harmony import */ var _WcbHeadingPanelDimension__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WcbHeadingPanelDimension */ "./src/block-heading/WcbHeadingPanelDimension.tsx");
+/* harmony import */ var _WcbHeadingPanelHeading__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./WcbHeadingPanelHeading */ "./src/block-heading/WcbHeadingPanelHeading.tsx");
+/* harmony import */ var _WcbHeadingPanelHighlight__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./WcbHeadingPanelHighlight */ "./src/block-heading/WcbHeadingPanelHighlight.tsx");
+/* harmony import */ var _WcbHeadingPanelLink__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WcbHeadingPanelLink */ "./src/block-heading/WcbHeadingPanelLink.tsx");
+/* harmony import */ var _WcbHeadingPanelSeparator__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./WcbHeadingPanelSeparator */ "./src/block-heading/WcbHeadingPanelSeparator.tsx");
+/* harmony import */ var _WcbHeadingPanelSubHeading__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./WcbHeadingPanelSubHeading */ "./src/block-heading/WcbHeadingPanelSubHeading.tsx");
+/* harmony import */ var _WcbHeadingPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./WcbHeadingPanel_StyleBorder */ "./src/block-heading/WcbHeadingPanel_StyleBorder.tsx");
+
 
 
 
@@ -4345,52 +4447,82 @@ const blokc1Attrs = {
   //
   general_content: {
     type: "object",
-    default: _WcbHeadingPanelContent__WEBPACK_IMPORTED_MODULE_3__.WCB_HEADING_PANEL_CONTENT_DEMO
+    default: _WcbHeadingPanelContent__WEBPACK_IMPORTED_MODULE_4__.WCB_HEADING_PANEL_CONTENT_DEMO
   },
   //
   styles_heading: {
     type: "object",
-    default: _WcbHeadingPanelHeading__WEBPACK_IMPORTED_MODULE_5__.WCB_HEADING_PANEL_HEADING_DEMO
+    default: _WcbHeadingPanelHeading__WEBPACK_IMPORTED_MODULE_6__.WCB_HEADING_PANEL_HEADING_DEMO
   },
   styles_separator: {
     type: "object",
-    default: _WcbHeadingPanelSeparator__WEBPACK_IMPORTED_MODULE_8__.WCB_HEADING_PANEL_SEPARATOR_DEMO
+    default: _WcbHeadingPanelSeparator__WEBPACK_IMPORTED_MODULE_9__.WCB_HEADING_PANEL_SEPARATOR_DEMO
   },
   styles_subHeading: {
     type: "object",
-    default: _WcbHeadingPanelSubHeading__WEBPACK_IMPORTED_MODULE_9__.WCB_HEADING_PANEL_SUB_HEADING_DEMO
+    default: _WcbHeadingPanelSubHeading__WEBPACK_IMPORTED_MODULE_10__.WCB_HEADING_PANEL_SUB_HEADING_DEMO
   },
   styles_link: {
     type: "object",
-    default: _WcbHeadingPanelLink__WEBPACK_IMPORTED_MODULE_7__.WCB_HEADING_PANEL_LINK_DEMO
+    default: _WcbHeadingPanelLink__WEBPACK_IMPORTED_MODULE_8__.WCB_HEADING_PANEL_LINK_DEMO
   },
   styles_highlight: {
     type: "object",
-    default: _WcbHeadingPanelHighlight__WEBPACK_IMPORTED_MODULE_6__.WCB_HEADING_PANEL_HIGHLIGHT_DEMO
+    default: _WcbHeadingPanelHighlight__WEBPACK_IMPORTED_MODULE_7__.WCB_HEADING_PANEL_HIGHLIGHT_DEMO
   },
   styles_background: {
     type: "object",
-    default: _WcbHeadingPanelBackground__WEBPACK_IMPORTED_MODULE_2__.WCB_HEADING_PANEL_BACKGROUND_DEMO
+    default: _WcbHeadingPanelBackground__WEBPACK_IMPORTED_MODULE_3__.WCB_HEADING_PANEL_BACKGROUND_DEMO
   },
   styles_border: {
     type: "object",
-    default: _WcbHeadingPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_10__.WCB_HEADING_PANEL_STYLE_BORDER_DEMO
+    default: _WcbHeadingPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_11__.WCB_HEADING_PANEL_STYLE_BORDER_DEMO
   },
   styles_dimensions: {
     type: "object",
-    default: _WcbHeadingPanelDimension__WEBPACK_IMPORTED_MODULE_4__.WCB_HEADING_PANEL_DIMENSION_DEMO
+    default: _WcbHeadingPanelDimension__WEBPACK_IMPORTED_MODULE_5__.WCB_HEADING_PANEL_DIMENSION_DEMO
   },
   //
   advance_responsiveCondition: {
     type: "object",
-    default: _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_0__.RESPONSIVE_CONDITON_DEMO
+    default: _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_1__.RESPONSIVE_CONDITON_DEMO
   },
   advance_zIndex: {
     type: "object",
-    default: _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_1__.Z_INDEX_DEMO
+    default: _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_2__.Z_INDEX_DEMO
+  },
+  advance_motionEffect: {
+    type: "object",
+    default: _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_0__.MY_MOTION_EFFECT_DEMO
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (blokc1Attrs);
+
+/***/ }),
+
+/***/ "./src/block-heading/deprecated.tsx":
+/*!******************************************!*\
+  !*** ./src/block-heading/deprecated.tsx ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Save_130623__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Save__130623 */ "./src/block-heading/Save__130623.tsx");
+/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./attributes */ "./src/block-heading/attributes.ts");
+
+
+const v1 = {};
+const v2 = {};
+const v3 = {
+  attributes: _attributes__WEBPACK_IMPORTED_MODULE_1__["default"],
+  save: _Save_130623__WEBPACK_IMPORTED_MODULE_0__["default"]
+};
+const deprecated = [v3, v2, v1];
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (deprecated);
 
 /***/ }),
 
@@ -4416,6 +4548,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_rich_text__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/rich-text */ "@wordpress/rich-text");
 /* harmony import */ var _wordpress_rich_text__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_rich_text__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _MyCustomButton__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./MyCustomButton */ "./src/block-heading/MyCustomButton.tsx");
+/* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./deprecated */ "./src/block-heading/deprecated.tsx");
 
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
@@ -4449,6 +4582,7 @@ const {
 
 
 
+
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 
 (0,_wordpress_rich_text__WEBPACK_IMPORTED_MODULE_8__.registerFormatType)(_MyCustomButton__WEBPACK_IMPORTED_MODULE_9__.WCB_FORMAT_HIGHLIGHT, {
@@ -4461,6 +4595,7 @@ const {
   edit: _Edit__WEBPACK_IMPORTED_MODULE_3__["default"],
   save: _Save__WEBPACK_IMPORTED_MODULE_4__["default"],
   attributes: _attributes__WEBPACK_IMPORTED_MODULE_6__["default"],
+  deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_10__["default"],
   icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     className: "wcb-editor-block-icons fill-none ",
     width: 24,
@@ -6196,8 +6331,7 @@ const MyLinkColorControl = _ref => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "MY_MOTION_EFFECT_DEMO": () => (/* binding */ MY_MOTION_EFFECT_DEMO),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   "getAnimateFMotionEffectData": () => (/* binding */ getAnimateFMotionEffectData)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
@@ -6214,12 +6348,8 @@ __webpack_require__.r(__webpack_exports__);
 
 // @ts-ignore
 
-function getAnimateFMotionEffectData(data) {
-  return "";
-  return ` animate__animated animate__${data?.entranceAnimation} animate__${data?.animationDuration} animate__delay-${data?.animationDelay}ms  animate__repeat-${data?.repeat}`;
-}
 const options = [{
-  label: "",
+  label: "None",
   value: ""
 }, {
   label: "Bounce",
@@ -6231,8 +6361,17 @@ const options = [{
   label: "Pulse",
   value: "pulse"
 }, {
-  label: "Shake",
-  value: "shake"
+  label: "RubberBand",
+  value: "rubberBand"
+}, {
+  label: "ShakeX",
+  value: "shakeX"
+}, {
+  label: "ShakeY",
+  value: "shakeY"
+}, {
+  label: "HeadShake",
+  value: "headShake"
 }, {
   label: "Swing",
   value: "swing"
@@ -6243,179 +6382,143 @@ const options = [{
   label: "Wobble",
   value: "wobble"
 }, {
-  label: "Wave",
-  value: "wave"
+  label: "Jello",
+  value: "jello"
 }, {
-  label: "Wobble Vertical",
-  value: "wobble-vertical"
+  label: "HeartBeat",
+  value: "heartBeat"
 }, {
-  label: "Bounce In",
-  value: "bounce-in"
+  label: "BackInDown",
+  value: "backInDown"
 }, {
-  label: "Bounce In Down",
-  value: "bounce-in-down"
+  label: "BackInLeft",
+  value: "backInLeft"
 }, {
-  label: "Bounce In Left",
-  value: "bounce-in-left"
+  label: "BackInRight",
+  value: "backInRight"
 }, {
-  label: "Bounce In Right",
-  value: "bounce-in-right"
+  label: "BackInUp",
+  value: "backInUp"
 }, {
-  label: "Bounce In Up",
-  value: "bounce-in-up"
+  label: "BounceIn",
+  value: "bounceIn"
 }, {
-  label: "Bounce Out",
-  value: "bounce-out"
+  label: "BounceInDown",
+  value: "bounceInDown"
 }, {
-  label: "Bounce Out Down",
-  value: "bounce-out-down"
+  label: "BounceInLeft",
+  value: "bounceInLeft"
 }, {
-  label: "Bounce Out Left",
-  value: "bounce-out-left"
+  label: "BounceInRight",
+  value: "bounceInRight"
 }, {
-  label: "Bounce Out Right",
-  value: "bounce-out-right"
+  label: "BounceInUp",
+  value: "bounceInUp"
 }, {
-  label: "Bounce Out Up",
-  value: "bounce-out-up"
+  label: "FadeIn",
+  value: "fadeIn"
 }, {
-  label: "Fade In",
-  value: "fade-in"
+  label: "FadeInDown",
+  value: "fadeInDown"
 }, {
-  label: "Fade In Down",
-  value: "fade-in-down"
+  label: "FadeInDownBig",
+  value: "fadeInDownBig"
 }, {
-  label: "Fade In Left",
-  value: "fade-in-left"
+  label: "FadeInLeft",
+  value: "fadeInLeft"
 }, {
-  label: "Fade In Right",
-  value: "fade-in-right"
+  label: "FadeInLeftBig",
+  value: "fadeInLeftBig"
 }, {
-  label: "Fade In Up",
-  value: "fade-in-up"
+  label: "FadeInRight",
+  value: "fadeInRight"
 }, {
-  label: "Fade Out",
-  value: "fade-out"
+  label: "FadeInRightBig",
+  value: "fadeInRightBig"
 }, {
-  label: "Fade Out Down",
-  value: "fade-out-down"
+  label: "FadeInUp",
+  value: "fadeInUp"
 }, {
-  label: "Fade Out Left",
-  value: "fade-out-left"
+  label: "FadeInUpBig",
+  value: "fadeInUpBig"
 }, {
-  label: "Fade Out Right",
-  value: "fade-out-right"
+  label: "FadeInTopLeft",
+  value: "fadeInTopLeft"
 }, {
-  label: "Fade Out Up",
-  value: "fade-out-up"
+  label: "FadeInTopRight",
+  value: "fadeInTopRight"
 }, {
-  label: "Flip In X",
-  value: "flip-in-x"
+  label: "FadeInBottomLeft",
+  value: "fadeInBottomLeft"
 }, {
-  label: "Flip In Y",
-  value: "flip-in-y"
+  label: "FadeInBottomRight",
+  value: "fadeInBottomRight"
 }, {
-  label: "Flip Out X",
-  value: "flip-out-x"
+  label: "Flip",
+  value: "flip"
 }, {
-  label: "Flip Out Y",
-  value: "flip-out-y"
+  label: "FlipInX",
+  value: "flipInX"
 }, {
-  label: "Lightspeed In Left",
-  value: "lightspeed-in-left"
+  label: "FlipInY",
+  value: "flipInY"
 }, {
-  label: "Lightspeed In Right",
-  value: "lightspeed-in-right"
+  label: "LightSpeedInRight",
+  value: "lightSpeedInRight"
 }, {
-  label: "Lightspeed Out Left",
-  value: "lightspeed-out-left"
+  label: "LightSpeedInLeft",
+  value: "lightSpeedInLeft"
 }, {
-  label: "Lightspeed Out Right",
-  value: "lightspeed-out-right"
+  label: "RotateIn",
+  value: "rotateIn"
 }, {
-  label: "Rotate In",
-  value: "rotate-in"
+  label: "RotateInDownLeft",
+  value: "rotateInDownLeft"
 }, {
-  label: "Rotate In Down",
-  value: "rotate-in-down"
+  label: "RotateInDownRight",
+  value: "rotateInDownRight"
 }, {
-  label: "Rotate In Left",
-  value: "rotate-in-left"
+  label: "RotateInUpLeft",
+  value: "rotateInUpLeft"
 }, {
-  label: "Rotate In Right",
-  value: "rotate-in-right"
+  label: "RotateInUpRight",
+  value: "rotateInUpRight"
 }, {
-  label: "Rotate In Up",
-  value: "rotate-in-up"
+  label: "Hinge",
+  value: "hinge"
 }, {
-  label: "Rotate Out",
-  value: "rotate-out"
+  label: "JackInTheBox",
+  value: "jackInTheBox"
 }, {
-  label: "Rotate Out Down",
-  value: "rotate-out-down"
+  label: "RollIn",
+  value: "rollIn"
 }, {
-  label: "Rotate Out Left",
-  value: "rotate-out-left"
+  label: "ZoomIn",
+  value: "zoomIn"
 }, {
-  label: "Rotate Out Right",
-  value: "rotate-out-right"
+  label: "ZoomInDown",
+  value: "zoomInDown"
 }, {
-  label: "Rotate Out Up",
-  value: "rotate-out-up"
+  label: "ZoomInLeft",
+  value: "zoomInLeft"
 }, {
-  label: "Rubberband",
-  value: "rubberband"
+  label: "ZoomInRight",
+  value: "zoomInRight"
 }, {
-  label: "Shake Horizontal",
-  value: "shake-horizontal"
+  label: "ZoomInUp",
+  value: "zoomInUp"
 }, {
-  label: "Shake Vertical",
-  value: "shake-vertical"
+  label: "SlideInDown",
+  value: "slideInDown"
 }, {
-  label: "Slide In Down",
-  value: "slide-in-down"
+  label: "SlideInLeft",
+  value: "slideInLeft"
 }, {
-  label: "Slide In Left",
-  value: "slide-in-left"
+  label: "SlideInRight",
+  value: "slideInRight"
 }, {
-  label: "Slide In Right",
-  value: "slide-in-right"
-}, {
-  label: "Slide In Up",
-  value: "slide-in-up"
-}, {
-  label: "Slide Out Down",
-  value: "slide-out-down"
-}, {
-  label: "Slide Out Left",
-  value: "slide-out-left"
-}, {
-  label: "Slide Out Right",
-  value: "slide-out-right"
-}, {
-  label: "Slide Out Up",
-  value: "slide-out-up"
-}, {
-  label: "Swing In Left",
-  value: "swing-in-left"
-}, {
-  label: "Swing In Right",
-  value: "swing-in-right"
-}, {
-  label: "Swing Out Left",
-  value: "swing-out-left"
-}, {
-  label: "Swing Out Right",
-  value: "swing-out-right"
-}, {
-  label: "Tada",
-  value: "tada"
-}, {
-  label: "Wobble",
-  value: "wobble"
-}, {
-  label: "Wobble Vertical",
-  value: "wobble-vertical"
+  label: "SlideInUp",
+  value: "slideInUp"
 }];
 const MY_MOTION_EFFECT_DEMO = {
   animationDelay: 0,

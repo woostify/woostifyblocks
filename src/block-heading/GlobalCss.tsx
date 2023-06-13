@@ -10,7 +10,6 @@ import getStyleObjectFromResponsiveAttr from "../utils/getStyleObjectFromRespons
 import getTypographyStyles from "../utils/getTypographyStyles";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
-import { WcbBlockHeadingAttrs } from "./attributes";
 import { WcbAttrsForSave } from "./Save";
 import checkResponsiveValueForOptimizeCSS from "../utils/checkResponsiveValueForOptimizeCSS";
 
@@ -30,6 +29,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		advance_responsiveCondition,
 		advance_zIndex,
 		styles_border,
+		advance_motionEffect,
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
@@ -286,6 +286,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 			{/*  */}
 			<Global
 				styles={getAdvanveDivWrapStyles({
+					advance_motionEffect,
 					advance_responsiveCondition,
 					advance_zIndex,
 					className: WRAP_CLASSNAME,
