@@ -6,12 +6,7 @@ function wcb_var_dump($value)
     echo ('<br />');
     echo ('<br />');
     echo ('<br />');
-    echo ('<br />');
-    echo ('<br />');
     var_dump($value);
-    echo ('<br />');
-    echo ('<br />');
-    echo ('<br />');
     echo ('<br />');
     echo ('<br />');
     echo ('<br />');

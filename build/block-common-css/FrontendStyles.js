@@ -45,8 +45,7 @@ const INIT_WCB_GLOBAL_VARIABLES = {
   // se sd khi pick container lan dau tien / or khi truong contentWidth cua container khong duoc nhap
   defaultContentWidth: window?.wcbLayoutGlobalSettings?.contentSize || "",
   enableTemplatesButton: "true",
-  enableCopyPasteStyles: "false",
-  googleMapKey: "AIzaSyAGVJfZMAKYfZ71nzL_v5i3LjTTWnCYwTY"
+  enableCopyPasteStyles: "false"
 };
 const DEMO_WCB_GLOBAL_VARIABLES = {
   ...INIT_WCB_GLOBAL_VARIABLES,
@@ -566,7 +565,6 @@ __webpack_require__.r(__webpack_exports__);
 
 //
 function initCarouselForWcbTestimonials(div, props) {
-  // const id = div.id;
   const dataUniqueid = div.getAttribute("data-uniqueid") || "";
   let $ = jQuery;
   if (typeof jQuery !== "function") {
@@ -626,6 +624,7 @@ function initCarouselForWcbTestimonials(div, props) {
       }
     }]
   };
+  // @ts-ignore
   $(`.${dataUniqueid} .wcb-testimonials__wrap-items`)?.slick?.(settings);
 }
 

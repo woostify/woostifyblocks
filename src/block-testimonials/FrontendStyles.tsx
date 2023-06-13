@@ -3,10 +3,8 @@ import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { WcbAttrsForSave } from "./Save";
 
 interface Props extends WcbAttrsForSave {}
-
 //
 export function initCarouselForWcbTestimonials(div: Element, props: Props) {
-	// const id = div.id;
 	const dataUniqueid = div.getAttribute("data-uniqueid") || "";
 
 	let $ = jQuery;
@@ -69,6 +67,6 @@ export function initCarouselForWcbTestimonials(div: Element, props: Props) {
 			},
 		],
 	};
-
+	// @ts-ignore
 	$(`.${dataUniqueid} .wcb-testimonials__wrap-items`)?.slick?.(settings);
 }

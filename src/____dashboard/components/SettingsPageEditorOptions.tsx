@@ -1,7 +1,8 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC } from "react";
 import InputNumber from "./InputNumber";
 import MyToggle from "./MyToggle";
 import { Wcb_theme_layout_global_settings } from "../../types";
+import _ from "lodash";
 
 interface Props {
 	allSettings: typeof window.wcbGlobalVariables;
@@ -14,6 +15,12 @@ const SettingsPageEditorOptions: FC<Props> = ({
 	onChange,
 	themeLayoutGlobal,
 }) => {
+	const debounce_fun = _.debounce(function (data: Props["allSettings"]) {
+		console.log("Function debounced after 300ms!", { data });
+		onChange(data);
+	}, 300);
+
+	// ----------------
 	let subStr = "";
 
 	if (!!themeLayoutGlobal?.contentSize) {
@@ -36,11 +43,11 @@ const SettingsPageEditorOptions: FC<Props> = ({
 						subStr
 					}
 					id="InputNumber_DefaultContentWidth"
-					value={String(parseInt(allSettings.defaultContentWidth || ""))}
+					defaultValue={String(parseInt(allSettings.defaultContentWidth || ""))}
 					placeholder={`${parseInt(themeLayoutGlobal?.contentSize || "650")}`}
 					onChange={(e) => {
 						const newV = e ? e + "px" : "";
-						onChange({
+						debounce_fun({
 							...allSettings,
 							defaultContentWidth: newV,
 						});
@@ -81,7 +88,7 @@ const SettingsPageEditorOptions: FC<Props> = ({
 					checked={allSettings.enableCopyPasteStyles === "true"}
 					disabled={!!"wcb-field-disabled"}
 					onChange={(checked) => {
-						onChange({
+						debounce_fun({
 							...allSettings,
 							enableCopyPasteStyles: checked ? "true" : "false",
 						});

@@ -16,8 +16,6 @@ declare global {
 		enableCopyPasteStyles?: "true" | "false";
 		// containerElementsGap?: string;
 		customColorPallete?: { name: string; color: string }[];
-		//
-		googleMapKey?: string;
 	};
 	var wcbFrontendAjaxObject: {
 		ajaxurl: string;
@@ -37,7 +35,6 @@ const INIT_WCB_GLOBAL_VARIABLES: typeof window.wcbGlobalVariables = {
 	defaultContentWidth: window?.wcbLayoutGlobalSettings?.contentSize || "",
 	enableTemplatesButton: "true",
 	enableCopyPasteStyles: "false",
-	googleMapKey: "AIzaSyAGVJfZMAKYfZ71nzL_v5i3LjTTWnCYwTY",
 };
 
 export const DEMO_WCB_GLOBAL_VARIABLES: typeof window.wcbGlobalVariables = {

@@ -2,8 +2,6 @@ import Save__250523 from "./Save__250523";
 import Save__100623 from "./Save__100623";
 import blokcAttrs from "./attributes";
 
-const v1 = {};
-const v2 = {};
 const v3 = {
 	attributes: {
 		...blokcAttrs,
@@ -31,6 +29,7 @@ const v3 = {
 	},
 	save: Save__250523,
 };
+
 const v4 = {
 	attributes: {
 		...blokcAttrs,
@@ -58,6 +57,7 @@ const v4 = {
 	},
 	save: Save__100623,
 };
+
 const v5 = {
 	attributes: {
 		...blokcAttrs,
