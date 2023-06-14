@@ -17,6 +17,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_description,
 		style_dimension,
 		style_title,
+		advance_motionEffect,
 	} = attributes;
 	//
 
@@ -28,6 +29,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_description,
 		style_dimension,
 		style_title,
+		advance_motionEffect,
 	};
 	//
 	const wrapBlockProps = useBlockProps.save({ className: "wcb-cta__wrap" });

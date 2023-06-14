@@ -29,6 +29,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_image,
 		style_name,
 		testimonials,
+		advance_motionEffect,
 	} = attributes;
 	//
 
@@ -46,6 +47,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_dimension,
 		style_image,
 		style_name,
+		advance_motionEffect,
 	};
 	//
 	const blockProps = useBlockProps.save({
@@ -128,33 +130,36 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 					bgType={style_backgroundAndBorder.background.bgType}
 					overlayType={style_backgroundAndBorder.background.overlayType}
 				/>
-				{/* IMAGE */}
-				{imagePosition === "left" && renderTestimonialItemImage(item, index)}
 
-				<div className="wcb-testimonials__item-inner">
+				<div className="wcb-testimonials__item-wrap-inner">
 					{/* IMAGE */}
-					{imagePosition === "top" && renderTestimonialItemImage(item, index)}
+					{imagePosition === "left" && renderTestimonialItemImage(item, index)}
 
-					{/* CONTENT */}
-					{renderTestimonialItemContent(item, index)}
-
-					<div className="wcb-testimonials__item-user">
+					<div className="wcb-testimonials__item-inner">
 						{/* IMAGE */}
-						{imagePosition === "bottom" &&
-							renderTestimonialItemImage(item, index)}
+						{imagePosition === "top" && renderTestimonialItemImage(item, index)}
 
-						<div className="wcb-testimonials__item-nameandcompany">
-							{/* NAME */}
-							{renderTestimonialItemName(item, index)}
+						{/* CONTENT */}
+						{renderTestimonialItemContent(item, index)}
 
-							{/* COMPANY */}
-							{renderTestimonialItemCompany(item, index)}
+						<div className="wcb-testimonials__item-user">
+							{/* IMAGE */}
+							{imagePosition === "bottom" &&
+								renderTestimonialItemImage(item, index)}
+
+							<div className="wcb-testimonials__item-nameandcompany">
+								{/* NAME */}
+								{renderTestimonialItemName(item, index)}
+
+								{/* COMPANY */}
+								{renderTestimonialItemCompany(item, index)}
+							</div>
 						</div>
 					</div>
-				</div>
 
-				{/* IMAGE */}
-				{imagePosition === "right" && renderTestimonialItemImage(item, index)}
+					{/* IMAGE */}
+					{imagePosition === "right" && renderTestimonialItemImage(item, index)}
+				</div>
 			</div>
 		);
 	};

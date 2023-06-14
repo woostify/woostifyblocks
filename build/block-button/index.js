@@ -3284,8 +3284,9 @@ const GlobalCss = attrs => {
     Tablet: iconSize_tablet + "px",
     Mobile: iconSize_mobile + "px"
   };
-
-  // console.log(2, "---- buton global css ---");
+  if (!uniqueId) {
+    return null;
+  }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: (0,_utils_getBackgroundColorGradientStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
       className: BUTTON_CLASSNAME,
@@ -4583,6 +4584,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const getAdvanveDivWrapStyles = _ref => {
   let {
+    advance_motionEffect,
     advance_zIndex,
     advance_responsiveCondition,
     className,
@@ -4593,7 +4595,28 @@ const getAdvanveDivWrapStyles = _ref => {
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES;
   //
+  //
+  try {
+    const thisELs = document.querySelectorAll(className);
+    if (advance_motionEffect && advance_motionEffect.entranceAnimation && thisELs && thisELs.length) {
+      console.log(222, {
+        thisELs
+      });
+      thisELs.forEach(element => {
+        // remove old class
+        const regex = /\banimate__\S+/g;
+        const classRemoved = element?.className.replace(regex, "");
+        element.setAttribute("class", classRemoved);
 
+        // add new class
+        setTimeout(() => {
+          element?.classList.add("animate__animated", `animate__${advance_motionEffect?.entranceAnimation}`, `animate__${advance_motionEffect?.animationDuration}`, `animate__delay-${advance_motionEffect?.animationDelay}ms`, `animate__repeat-${advance_motionEffect?.repeat}`);
+        }, 50);
+      });
+    }
+  } catch (error) {
+    console.log(123, "error, advance_motionEffect", error);
+  }
   const {
     mobile_v: zIndexMobile,
     tablet_v: zIndexTablet,
@@ -4614,10 +4637,6 @@ const getAdvanveDivWrapStyles = _ref => {
     tablet_v: advance_responsiveCondition.isHiddenOnTablet,
     desktop_v: advance_responsiveCondition.isHiddenOnDesktop
   });
-
-  // [data-is-wcb-save-common] {
-  // 	visibility: visible;
-  // }
   return _emotion_react__WEBPACK_IMPORTED_MODULE_2__.css`
 		${className} {
 			display: ${isHiddenOnMobile ? "none" : defaultDisplay};
@@ -4658,6 +4677,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./controls/MyResponsiveConditionControl/MyResponsiveConditionControl */ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx");
 /* harmony import */ var _controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./controls/MyZIndexControl/MyZIndexControl */ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx");
+/* harmony import */ var _controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./controls/MyMotionEffectControl/MyMotionEffectControl */ "./src/components/controls/MyMotionEffectControl/MyMotionEffectControl.tsx");
+
 
 
 
@@ -4670,10 +4691,21 @@ const AdvancePanelCommon = _ref => {
     tabAdvancesIsPanelOpen,
     advance_responsiveCondition,
     advance_zIndex,
+    advance_motionEffect,
     setAttributes,
     children
   } = _ref;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, !!advance_motionEffect ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    onToggle: () => handleTogglePanel("Advances", "MyMyMotionEffectControl"),
+    initialOpen: tabAdvancesIsPanelOpen === "MyMyMotionEffectControl",
+    opened: tabAdvancesIsPanelOpen === "MyMyMotionEffectControl" || undefined,
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Motion Effect", "wcb")
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    data: advance_motionEffect,
+    onChange: data => setAttributes({
+      advance_motionEffect: data
+    })
+  })) : null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     onToggle: () => handleTogglePanel("Advances", "Responsive Conditions"),
     initialOpen: tabAdvancesIsPanelOpen === "Responsive Conditions",
     opened: tabAdvancesIsPanelOpen === "Responsive Conditions" || undefined,
@@ -5990,9 +6022,6 @@ const MyColorPicker = _ref => {
       ,
       enableAlpha: true,
       onChange: color => {
-        console.log(11, {
-          color
-        });
         handleUpdateColor(color || "");
       }
       // @ts-ignore
@@ -6249,7 +6278,10 @@ const MyDimensionsControl = _ref => {
       hasResponsive: true
     }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Margin", "wcb")),
     values: margin,
-    onChange: handleChangeMargin
+    onChange: handleChangeMargin,
+    inputProps: {
+      min: -2000
+    }
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyDimensionsControl);
@@ -6341,7 +6373,10 @@ const MyDimensionsNoGapControl = _ref => {
       hasResponsive: true
     }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Margin", "wcb")),
     values: margin,
-    onChange: handleChangeMargin
+    onChange: handleChangeMargin,
+    inputProps: {
+      min: -2000
+    }
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyDimensionsNoGapControl);
@@ -6818,6 +6853,291 @@ const MyMediaUploadCheck = _ref => {
 
 /***/ }),
 
+/***/ "./src/components/controls/MyMotionEffectControl/MyMotionEffectControl.tsx":
+/*!*********************************************************************************!*\
+  !*** ./src/components/controls/MyMotionEffectControl/MyMotionEffectControl.tsx ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MY_MOTION_EFFECT_DEMO": () => (/* binding */ MY_MOTION_EFFECT_DEMO),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _MySelect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../MySelect */ "./src/components/controls/MySelect.tsx");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+// @ts-ignore
+
+const options = [{
+  label: "None",
+  value: ""
+}, {
+  label: "Bounce",
+  value: "bounce"
+}, {
+  label: "Flash",
+  value: "flash"
+}, {
+  label: "Pulse",
+  value: "pulse"
+}, {
+  label: "RubberBand",
+  value: "rubberBand"
+}, {
+  label: "ShakeX",
+  value: "shakeX"
+}, {
+  label: "ShakeY",
+  value: "shakeY"
+}, {
+  label: "HeadShake",
+  value: "headShake"
+}, {
+  label: "Swing",
+  value: "swing"
+}, {
+  label: "Tada",
+  value: "tada"
+}, {
+  label: "Wobble",
+  value: "wobble"
+}, {
+  label: "Jello",
+  value: "jello"
+}, {
+  label: "HeartBeat",
+  value: "heartBeat"
+}, {
+  label: "BackInDown",
+  value: "backInDown"
+}, {
+  label: "BackInLeft",
+  value: "backInLeft"
+}, {
+  label: "BackInRight",
+  value: "backInRight"
+}, {
+  label: "BackInUp",
+  value: "backInUp"
+}, {
+  label: "BounceIn",
+  value: "bounceIn"
+}, {
+  label: "BounceInDown",
+  value: "bounceInDown"
+}, {
+  label: "BounceInLeft",
+  value: "bounceInLeft"
+}, {
+  label: "BounceInRight",
+  value: "bounceInRight"
+}, {
+  label: "BounceInUp",
+  value: "bounceInUp"
+}, {
+  label: "FadeIn",
+  value: "fadeIn"
+}, {
+  label: "FadeInDown",
+  value: "fadeInDown"
+}, {
+  label: "FadeInDownBig",
+  value: "fadeInDownBig"
+}, {
+  label: "FadeInLeft",
+  value: "fadeInLeft"
+}, {
+  label: "FadeInLeftBig",
+  value: "fadeInLeftBig"
+}, {
+  label: "FadeInRight",
+  value: "fadeInRight"
+}, {
+  label: "FadeInRightBig",
+  value: "fadeInRightBig"
+}, {
+  label: "FadeInUp",
+  value: "fadeInUp"
+}, {
+  label: "FadeInUpBig",
+  value: "fadeInUpBig"
+}, {
+  label: "FadeInTopLeft",
+  value: "fadeInTopLeft"
+}, {
+  label: "FadeInTopRight",
+  value: "fadeInTopRight"
+}, {
+  label: "FadeInBottomLeft",
+  value: "fadeInBottomLeft"
+}, {
+  label: "FadeInBottomRight",
+  value: "fadeInBottomRight"
+}, {
+  label: "Flip",
+  value: "flip"
+}, {
+  label: "FlipInX",
+  value: "flipInX"
+}, {
+  label: "FlipInY",
+  value: "flipInY"
+}, {
+  label: "LightSpeedInRight",
+  value: "lightSpeedInRight"
+}, {
+  label: "LightSpeedInLeft",
+  value: "lightSpeedInLeft"
+}, {
+  label: "RotateIn",
+  value: "rotateIn"
+}, {
+  label: "RotateInDownLeft",
+  value: "rotateInDownLeft"
+}, {
+  label: "RotateInDownRight",
+  value: "rotateInDownRight"
+}, {
+  label: "RotateInUpLeft",
+  value: "rotateInUpLeft"
+}, {
+  label: "RotateInUpRight",
+  value: "rotateInUpRight"
+}, {
+  label: "Hinge",
+  value: "hinge"
+}, {
+  label: "JackInTheBox",
+  value: "jackInTheBox"
+}, {
+  label: "RollIn",
+  value: "rollIn"
+}, {
+  label: "ZoomIn",
+  value: "zoomIn"
+}, {
+  label: "ZoomInDown",
+  value: "zoomInDown"
+}, {
+  label: "ZoomInLeft",
+  value: "zoomInLeft"
+}, {
+  label: "ZoomInRight",
+  value: "zoomInRight"
+}, {
+  label: "ZoomInUp",
+  value: "zoomInUp"
+}, {
+  label: "SlideInDown",
+  value: "slideInDown"
+}, {
+  label: "SlideInLeft",
+  value: "slideInLeft"
+}, {
+  label: "SlideInRight",
+  value: "slideInRight"
+}, {
+  label: "SlideInUp",
+  value: "slideInUp"
+}];
+const MY_MOTION_EFFECT_DEMO = {
+  animationDelay: 0,
+  animationDuration: "fast",
+  entranceAnimation: "",
+  repeat: "1"
+};
+const MyMyMotionEffectData = _ref => {
+  let {
+    onChange,
+    data
+  } = _ref;
+  console.log(22, "-----MyMyMotionEffectData-----", {
+    data
+  });
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "space-y-4"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MySelect__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    label: "Animation name",
+    options: options,
+    hasResponsive: false,
+    onChange: value => onChange({
+      ...data,
+      entranceAnimation: value
+    }),
+    value: data.entranceAnimation
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MySelect__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    label: "Animation duration",
+    options: [{
+      label: "Slow (2s)",
+      value: "slow"
+    }, {
+      label: "Slower (3s)",
+      value: "slower"
+    }, {
+      label: "Fast (800ms)",
+      value: "fast"
+    }, {
+      label: "Faster (500ms)",
+      value: "faster"
+    }],
+    hasResponsive: false,
+    onChange: value => onChange({
+      ...data,
+      animationDuration: value
+    }),
+    value: data.animationDuration
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalNumberControl, {
+    isShiftStepEnabled: true,
+    shiftStep: 1000,
+    step: 100,
+    __unstableInputWidth: "60px",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Animation delay (ms)"),
+    labelPosition: "edge",
+    min: 0,
+    value: data.animationDelay,
+    onChange: e => onChange({
+      ...data,
+      animationDelay: Number(e || 0) || 0
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MySelect__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    label: "Animation repeat",
+    options: [{
+      label: "1",
+      value: "1"
+    }, {
+      label: "2",
+      value: "2"
+    }, {
+      label: "3",
+      value: "3"
+    }, {
+      label: "infinite",
+      value: "infinite"
+    }],
+    hasResponsive: false,
+    onChange: value => onChange({
+      ...data,
+      repeat: value
+    }),
+    value: data.repeat
+  }));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyMyMotionEffectData);
+
+/***/ }),
+
 /***/ "./src/components/controls/MyRadioGroup.tsx":
 /*!**************************************************!*\
   !*** ./src/components/controls/MyRadioGroup.tsx ***!
@@ -7131,6 +7451,54 @@ const MyResponsiveToggle = _ref => {
   })))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyResponsiveToggle);
+
+/***/ }),
+
+/***/ "./src/components/controls/MySelect.tsx":
+/*!**********************************************!*\
+  !*** ./src/components/controls/MySelect.tsx ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
+
+
+
+
+
+const MySelect = _ref => {
+  let {
+    label = "My select",
+    hasResponsive,
+    labelClass = "flex-1",
+    devices,
+    ...props
+  } = _ref;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "wcb-MySelect w-full flex justify-between items-center"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    className: labelClass,
+    hasResponsive: hasResponsive,
+    devices: devices
+  }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "flex-1"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    hideLabelFromVision: true
+  }, props))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MySelect);
 
 /***/ }),
 
@@ -9060,10 +9428,10 @@ const getBorderStyles = _ref => {
       } = mainSettings;
       CSSObject = {
         [`${className}`]: {
-          borderTop: `${top.width} ${top.style} ${top.color}`,
-          borderLeft: `${left.width} ${left.style} ${left.color}`,
-          borderRight: `${right.width} ${right.style} ${right.color}`,
-          borderBottom: `${bottom.width} ${bottom.style} ${bottom.color}`,
+          borderTop: `${top.width} ${top.style || "none"} ${top.color || ""}`,
+          borderLeft: `${left.width} ${left.style || "none"} ${left.color || ""}`,
+          borderRight: `${right.width} ${right.style || "none"} ${right.color || ""}`,
+          borderBottom: `${bottom.width} ${bottom.style || "none"} ${bottom.color || ""}`,
           "&:hover": {
             borderColor: `${hoverColor}`
           }
@@ -9077,9 +9445,9 @@ const getBorderStyles = _ref => {
       } = mainSettings;
       CSSObject = {
         [`${className}`]: {
-          border: `${width} ${style} ${color}`,
+          border: `${width} ${style || "none"} ${color || ""}`,
           "&:hover": {
-            borderColor: `${hoverColor}`
+            borderColor: `${hoverColor || ""}`
           }
         }
       };
@@ -9303,7 +9671,7 @@ const getPaddingMarginStyles = _ref => {
     desktop_v: margin_Desktop?.bottom
   });
   return _emotion_react__WEBPACK_IMPORTED_MODULE_3__.css`
-		${className} {
+		body ${className} {
 			padding-top: ${padding_Mobile_top};
 			padding-right: ${padding_Mobile_right};
 			padding-bottom: ${padding_Mobile_bottom};

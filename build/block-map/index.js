@@ -2123,421 +2123,6 @@ var weakMemoize = function weakMemoize(func) {
 
 /***/ }),
 
-/***/ "./node_modules/@googlemaps/js-api-loader/dist/index.esm.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/@googlemaps/js-api-loader/dist/index.esm.js ***!
-  \******************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "DEFAULT_ID": () => (/* binding */ DEFAULT_ID),
-/* harmony export */   "Loader": () => (/* binding */ Loader),
-/* harmony export */   "LoaderStatus": () => (/* binding */ LoaderStatus)
-/* harmony export */ });
-// do not edit .js files directly - edit src/index.jst
-
-
-
-var fastDeepEqual = function equal(a, b) {
-  if (a === b) return true;
-
-  if (a && b && typeof a == 'object' && typeof b == 'object') {
-    if (a.constructor !== b.constructor) return false;
-
-    var length, i, keys;
-    if (Array.isArray(a)) {
-      length = a.length;
-      if (length != b.length) return false;
-      for (i = length; i-- !== 0;)
-        if (!equal(a[i], b[i])) return false;
-      return true;
-    }
-
-
-
-    if (a.constructor === RegExp) return a.source === b.source && a.flags === b.flags;
-    if (a.valueOf !== Object.prototype.valueOf) return a.valueOf() === b.valueOf();
-    if (a.toString !== Object.prototype.toString) return a.toString() === b.toString();
-
-    keys = Object.keys(a);
-    length = keys.length;
-    if (length !== Object.keys(b).length) return false;
-
-    for (i = length; i-- !== 0;)
-      if (!Object.prototype.hasOwnProperty.call(b, keys[i])) return false;
-
-    for (i = length; i-- !== 0;) {
-      var key = keys[i];
-
-      if (!equal(a[key], b[key])) return false;
-    }
-
-    return true;
-  }
-
-  // true if both NaN, false otherwise
-  return a!==a && b!==b;
-};
-
-/**
- * Copyright 2019 Google LLC. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at.
- *
- *      Http://www.apache.org/licenses/LICENSE-2.0.
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-const DEFAULT_ID = "__googleMapsScriptId";
-/**
- * The status of the [[Loader]].
- */
-var LoaderStatus;
-(function (LoaderStatus) {
-    LoaderStatus[LoaderStatus["INITIALIZED"] = 0] = "INITIALIZED";
-    LoaderStatus[LoaderStatus["LOADING"] = 1] = "LOADING";
-    LoaderStatus[LoaderStatus["SUCCESS"] = 2] = "SUCCESS";
-    LoaderStatus[LoaderStatus["FAILURE"] = 3] = "FAILURE";
-})(LoaderStatus || (LoaderStatus = {}));
-/**
- * [[Loader]] makes it easier to add Google Maps JavaScript API to your application
- * dynamically using
- * [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
- * It works by dynamically creating and appending a script node to the the
- * document head and wrapping the callback function so as to return a promise.
- *
- * ```
- * const loader = new Loader({
- *   apiKey: "",
- *   version: "weekly",
- *   libraries: ["places"]
- * });
- *
- * loader.load().then((google) => {
- *   const map = new google.maps.Map(...)
- * })
- * ```
- */
-class Loader {
-    /**
-     * Creates an instance of Loader using [[LoaderOptions]]. No defaults are set
-     * using this library, instead the defaults are set by the Google Maps
-     * JavaScript API server.
-     *
-     * ```
-     * const loader = Loader({apiKey, version: 'weekly', libraries: ['places']});
-     * ```
-     */
-    constructor({ apiKey, authReferrerPolicy, channel, client, id = DEFAULT_ID, language, libraries = [], mapIds, nonce, region, retries = 3, url = "https://maps.googleapis.com/maps/api/js", version, }) {
-        this.CALLBACK = "__googleMapsCallback";
-        this.callbacks = [];
-        this.done = false;
-        this.loading = false;
-        this.errors = [];
-        this.apiKey = apiKey;
-        this.authReferrerPolicy = authReferrerPolicy;
-        this.channel = channel;
-        this.client = client;
-        this.id = id || DEFAULT_ID; // Do not allow empty string
-        this.language = language;
-        this.libraries = libraries;
-        this.mapIds = mapIds;
-        this.nonce = nonce;
-        this.region = region;
-        this.retries = retries;
-        this.url = url;
-        this.version = version;
-        if (Loader.instance) {
-            if (!fastDeepEqual(this.options, Loader.instance.options)) {
-                throw new Error(`Loader must not be called again with different options. ${JSON.stringify(this.options)} !== ${JSON.stringify(Loader.instance.options)}`);
-            }
-            return Loader.instance;
-        }
-        Loader.instance = this;
-    }
-    get options() {
-        return {
-            version: this.version,
-            apiKey: this.apiKey,
-            channel: this.channel,
-            client: this.client,
-            id: this.id,
-            libraries: this.libraries,
-            language: this.language,
-            region: this.region,
-            mapIds: this.mapIds,
-            nonce: this.nonce,
-            url: this.url,
-            authReferrerPolicy: this.authReferrerPolicy,
-        };
-    }
-    get status() {
-        if (this.errors.length) {
-            return LoaderStatus.FAILURE;
-        }
-        if (this.done) {
-            return LoaderStatus.SUCCESS;
-        }
-        if (this.loading) {
-            return LoaderStatus.LOADING;
-        }
-        return LoaderStatus.INITIALIZED;
-    }
-    get failed() {
-        return this.done && !this.loading && this.errors.length >= this.retries + 1;
-    }
-    /**
-     * CreateUrl returns the Google Maps JavaScript API script url given the [[LoaderOptions]].
-     *
-     * @ignore
-     */
-    createUrl() {
-        let url = this.url;
-        url += `?callback=${this.CALLBACK}`;
-        if (this.apiKey) {
-            url += `&key=${this.apiKey}`;
-        }
-        if (this.channel) {
-            url += `&channel=${this.channel}`;
-        }
-        if (this.client) {
-            url += `&client=${this.client}`;
-        }
-        if (this.libraries.length > 0) {
-            url += `&libraries=${this.libraries.join(",")}`;
-        }
-        if (this.language) {
-            url += `&language=${this.language}`;
-        }
-        if (this.region) {
-            url += `&region=${this.region}`;
-        }
-        if (this.version) {
-            url += `&v=${this.version}`;
-        }
-        if (this.mapIds) {
-            url += `&map_ids=${this.mapIds.join(",")}`;
-        }
-        if (this.authReferrerPolicy) {
-            url += `&auth_referrer_policy=${this.authReferrerPolicy}`;
-        }
-        return url;
-    }
-    deleteScript() {
-        const script = document.getElementById(this.id);
-        if (script) {
-            script.remove();
-        }
-    }
-    /**
-     * Load the Google Maps JavaScript API script and return a Promise.
-     */
-    load() {
-        return this.loadPromise();
-    }
-    /**
-     * Load the Google Maps JavaScript API script and return a Promise.
-     *
-     * @ignore
-     */
-    loadPromise() {
-        return new Promise((resolve, reject) => {
-            this.loadCallback((err) => {
-                if (!err) {
-                    resolve(window.google);
-                }
-                else {
-                    reject(err.error);
-                }
-            });
-        });
-    }
-    /**
-     * Load the Google Maps JavaScript API script with a callback.
-     */
-    loadCallback(fn) {
-        this.callbacks.push(fn);
-        this.execute();
-    }
-    /**
-     * Set the script on document.
-     */
-    setScript() {
-        if (document.getElementById(this.id)) {
-            // TODO wrap onerror callback for cases where the script was loaded elsewhere
-            this.callback();
-            return;
-        }
-        const url = this.createUrl();
-        const script = document.createElement("script");
-        script.id = this.id;
-        script.type = "text/javascript";
-        script.src = url;
-        script.onerror = this.loadErrorCallback.bind(this);
-        script.defer = true;
-        script.async = true;
-        if (this.nonce) {
-            script.nonce = this.nonce;
-        }
-        document.head.appendChild(script);
-    }
-    /**
-     * Reset the loader state.
-     */
-    reset() {
-        this.deleteScript();
-        this.done = false;
-        this.loading = false;
-        this.errors = [];
-        this.onerrorEvent = null;
-    }
-    resetIfRetryingFailed() {
-        if (this.failed) {
-            this.reset();
-        }
-    }
-    loadErrorCallback(e) {
-        this.errors.push(e);
-        if (this.errors.length <= this.retries) {
-            const delay = this.errors.length * Math.pow(2, this.errors.length);
-            console.log(`Failed to load Google Maps script, retrying in ${delay} ms.`);
-            setTimeout(() => {
-                this.deleteScript();
-                this.setScript();
-            }, delay);
-        }
-        else {
-            this.onerrorEvent = e;
-            this.callback();
-        }
-    }
-    setCallback() {
-        window.__googleMapsCallback = this.callback.bind(this);
-    }
-    callback() {
-        this.done = true;
-        this.loading = false;
-        this.callbacks.forEach((cb) => {
-            cb(this.onerrorEvent);
-        });
-        this.callbacks = [];
-    }
-    execute() {
-        this.resetIfRetryingFailed();
-        if (this.done) {
-            this.callback();
-        }
-        else {
-            // short circuit and warn if google.maps is already loaded
-            if (window.google && window.google.maps && window.google.maps.version) {
-                console.warn("Google Maps already loaded outside @googlemaps/js-api-loader." +
-                    "This may result in undesirable behavior as options and script parameters may not match.");
-                this.callback();
-                return;
-            }
-            if (this.loading) ;
-            else {
-                this.loading = true;
-                this.setCallback();
-                this.setScript();
-            }
-        }
-    }
-}
-
-
-//# sourceMappingURL=index.esm.js.map
-
-
-/***/ }),
-
-/***/ "./node_modules/@googlemaps/react-wrapper/dist/index.umd.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/@googlemaps/react-wrapper/dist/index.umd.js ***!
-  \******************************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-(function (global, factory) {
-     true ? factory(exports, __webpack_require__(/*! @googlemaps/js-api-loader */ "./node_modules/@googlemaps/js-api-loader/dist/index.esm.js"), __webpack_require__(/*! react */ "react")) :
-    0;
-})(this, (function (exports, jsApiLoader, React) { 'use strict';
-
-    function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
-
-    var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
-
-    /**
-     * Copyright 2021 Google LLC. All Rights Reserved.
-     *
-     * Licensed under the Apache License, Version 2.0 (the "License");
-     * you may not use this file except in compliance with the License.
-     * You may obtain a copy of the License at.
-     *
-     *      Http://www.apache.org/licenses/LICENSE-2.0.
-     *
-     * Unless required by applicable law or agreed to in writing, software
-     * distributed under the License is distributed on an "AS IS" BASIS,
-     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     * See the License for the specific language governing permissions and
-     * limitations under the License.
-     */
-    exports.Status = void 0;
-    (function (Status) {
-        Status["LOADING"] = "LOADING";
-        Status["FAILURE"] = "FAILURE";
-        Status["SUCCESS"] = "SUCCESS";
-    })(exports.Status || (exports.Status = {}));
-    /**
-     * A component to wrap the loading of the Google Maps JavaScript API.
-     *
-     * ```
-     * import { Wrapper } from '@googlemaps/react-wrapper';
-     *
-     * const MyApp = () => (
-     * 	<Wrapper apiKey={'YOUR_API_KEY'}>
-     * 		<MyMapComponent />
-     * 	</Wrapper>
-     * );
-     * ```
-     *
-     * @param props
-     */
-    const Wrapper = ({ children, render, callback, ...options }) => {
-        const [status, setStatus] = React.useState(exports.Status.LOADING);
-        React.useEffect(() => {
-            const loader = new jsApiLoader.Loader(options);
-            const setStatusAndExecuteCallback = (status) => {
-                if (callback)
-                    callback(status, loader);
-                setStatus(status);
-            };
-            setStatusAndExecuteCallback(exports.Status.LOADING);
-            loader.load().then(() => setStatusAndExecuteCallback(exports.Status.SUCCESS), () => setStatusAndExecuteCallback(exports.Status.FAILURE));
-        }, []);
-        if (status === exports.Status.SUCCESS && children)
-            return React__default["default"].createElement(React__default["default"].Fragment, null, children);
-        if (render)
-            return render(status);
-        return React__default["default"].createElement(React__default["default"].Fragment, null);
-    };
-
-    exports.Wrapper = Wrapper;
-
-    Object.defineProperty(exports, '__esModule', { value: true });
-
-}));
-
-
-/***/ }),
-
 /***/ "./node_modules/@heroicons/react/24/outline/ChevronDownIcon.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/@heroicons/react/24/outline/ChevronDownIcon.js ***!
@@ -2737,6 +2322,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const getAdvanveDivWrapStyles = _ref => {
   let {
+    advance_motionEffect,
     advance_zIndex,
     advance_responsiveCondition,
     className,
@@ -2747,7 +2333,28 @@ const getAdvanveDivWrapStyles = _ref => {
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES;
   //
+  //
+  try {
+    const thisELs = document.querySelectorAll(className);
+    if (advance_motionEffect && advance_motionEffect.entranceAnimation && thisELs && thisELs.length) {
+      console.log(222, {
+        thisELs
+      });
+      thisELs.forEach(element => {
+        // remove old class
+        const regex = /\banimate__\S+/g;
+        const classRemoved = element?.className.replace(regex, "");
+        element.setAttribute("class", classRemoved);
 
+        // add new class
+        setTimeout(() => {
+          element?.classList.add("animate__animated", `animate__${advance_motionEffect?.entranceAnimation}`, `animate__${advance_motionEffect?.animationDuration}`, `animate__delay-${advance_motionEffect?.animationDelay}ms`, `animate__repeat-${advance_motionEffect?.repeat}`);
+        }, 50);
+      });
+    }
+  } catch (error) {
+    console.log(123, "error, advance_motionEffect", error);
+  }
   const {
     mobile_v: zIndexMobile,
     tablet_v: zIndexTablet,
@@ -2768,10 +2375,6 @@ const getAdvanveDivWrapStyles = _ref => {
     tablet_v: advance_responsiveCondition.isHiddenOnTablet,
     desktop_v: advance_responsiveCondition.isHiddenOnDesktop
   });
-
-  // [data-is-wcb-save-common] {
-  // 	visibility: visible;
-  // }
   return _emotion_react__WEBPACK_IMPORTED_MODULE_2__.css`
 		${className} {
 			display: ${isHiddenOnMobile ? "none" : defaultDisplay};
@@ -2842,7 +2445,8 @@ const Edit = props => {
     advance_zIndex,
     uniqueId,
     general_general,
-    style_border
+    style_border,
+    advance_motionEffect
   } = attributes;
   //  COMMON HOOKS
   const wrapBlockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
@@ -2895,6 +2499,7 @@ const Edit = props => {
         }));
       case "Advances":
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_8__["default"], {
+          advance_motionEffect: advance_motionEffect,
           advance_responsiveCondition: attributes.advance_responsiveCondition,
           advance_zIndex: attributes.advance_zIndex,
           handleTogglePanel: handleTogglePanel,
@@ -2911,9 +2516,10 @@ const Edit = props => {
       advance_responsiveCondition,
       advance_zIndex,
       general_general,
-      style_border
+      style_border,
+      advance_motionEffect
     };
-  }, [uniqueId, advance_responsiveCondition, advance_zIndex, general_general, style_border]);
+  }, [uniqueId, advance_responsiveCondition, advance_zIndex, general_general, style_border, advance_motionEffect]);
   //
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2932,12 +2538,13 @@ const Edit = props => {
     loading: "lazy",
     allowFullScreen: true,
     referrerPolicy: "no-referrer-when-downgrade",
+    title: general_general.placeQuery || "",
     src: `https://www.google.com/maps/embed/v1/place
-						?key=AIzaSyAGVJfZMAKYfZ71nzL_v5i3LjTTWnCYwTY
+						?key=AIzaSyCLK1ZWtKchh3gykkn2o3i47pVEX5vbKdA
 						&maptype=${general_general.mapTypeId}
 						&language=${general_general.language}
 						&zoom=${general_general.zoom}
-						&q=place_id:${general_general.placeQuery?.place_id || "ChIJdan7FLcJxkcRQrwvoy3DwiM"}`
+						&q=${general_general.placeQuery?.replace?.(/ /g, "+") || "Eiffel+Tower,Paris+France"}`
   }))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
@@ -2979,7 +2586,8 @@ const GlobalCss = attrs => {
     style_border,
     //
     advance_responsiveCondition,
-    advance_zIndex
+    advance_zIndex,
+    advance_motionEffect
   } = attrs;
   const {
     media_desktop,
@@ -2997,6 +2605,9 @@ const GlobalCss = attrs => {
       }
     };
   };
+  if (!uniqueId) {
+    return null;
+  }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_6__.Global, {
     styles: [(0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
       className: WRAP_CLASSNAME,
@@ -3009,6 +2620,7 @@ const GlobalCss = attrs => {
     })]
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_6__.Global, {
     styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__.getAdvanveDivWrapStyles)({
+      advance_motionEffect,
       advance_responsiveCondition,
       advance_zIndex,
       className: WRAP_CLASSNAME,
@@ -3024,6 +2636,151 @@ const GlobalCss = attrs => {
 /*!********************************!*\
   !*** ./src/block-map/Save.tsx ***!
   \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ save)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/SaveCommon */ "./src/components/SaveCommon.tsx");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style.scss */ "./src/block-map/style.scss");
+
+
+
+
+
+
+function save(_ref) {
+  let {
+    attributes
+  } = _ref;
+  const {
+    uniqueId,
+    advance_responsiveCondition,
+    advance_zIndex,
+    general_general,
+    style_border,
+    advance_motionEffect
+  } = attributes;
+  //
+
+  const newAttrForSave = {
+    uniqueId,
+    advance_responsiveCondition,
+    advance_zIndex,
+    general_general,
+    style_border,
+    advance_motionEffect
+  };
+  //
+  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
+    className: "wcb-map__wrap"
+  });
+  const place = general_general.placeQuery?.replace?.(/ /g, "+");
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    attributes: newAttrForSave,
+    uniqueId: uniqueId
+  }, blockProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "wcb-map__inner"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("iframe", {
+    width: "100%",
+    height: "100%",
+    loading: "lazy",
+    allowFullScreen: true,
+    referrerPolicy: "no-referrer-when-downgrade",
+    title: general_general.placeQuery || "",
+    src: `https://www.google.com/maps/embed/v1/place?key=AIzaSyCLK1ZWtKchh3gykkn2o3i47pVEX5vbKdA&maptype=${general_general.mapTypeId}&language=${general_general.language}&zoom=${general_general.zoom}&q=${place || "Eiffel+Tower,Paris+France"}`
+  })));
+}
+
+/***/ }),
+
+/***/ "./src/block-map/Save_100623.tsx":
+/*!***************************************!*\
+  !*** ./src/block-map/Save_100623.tsx ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ save)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/SaveCommon */ "./src/components/SaveCommon.tsx");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style.scss */ "./src/block-map/style.scss");
+
+
+
+
+
+
+function save(_ref) {
+  let {
+    attributes
+  } = _ref;
+  const {
+    uniqueId,
+    advance_responsiveCondition,
+    advance_zIndex,
+    general_general,
+    style_border,
+    advance_motionEffect
+  } = attributes;
+  //
+
+  const newAttrForSave = {
+    uniqueId,
+    advance_responsiveCondition,
+    advance_zIndex,
+    general_general,
+    style_border,
+    advance_motionEffect
+  };
+  //
+  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
+    className: "wcb-map__wrap"
+  });
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    attributes: newAttrForSave,
+    uniqueId: uniqueId
+  }, blockProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "wcb-map__inner"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("iframe", {
+    width: "100%",
+    height: "100%",
+    loading: "lazy",
+    allowFullScreen: true,
+    referrerPolicy: "no-referrer-when-downgrade",
+    src: `https://www.google.com/maps/embed/v1/place
+						?key=AIzaSyAGVJfZMAKYfZ71nzL_v5i3LjTTWnCYwTY
+						&maptype=${general_general.mapTypeId}
+						&language=${general_general.language}
+						&zoom=${general_general.zoom}
+						&q=place_id:${general_general.placeQuery?.place_id || "ChIJdan7FLcJxkcRQrwvoy3DwiM"}`
+  })));
+}
+
+/***/ }),
+
+/***/ "./src/block-map/Save__260523.tsx":
+/*!****************************************!*\
+  !*** ./src/block-map/Save__260523.tsx ***!
+  \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3117,9 +2874,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_controls_MySpacingSizesControl_MySpacingSizesControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/controls/MySpacingSizesControl/MySpacingSizesControl */ "./src/components/controls/MySpacingSizesControl/MySpacingSizesControl.tsx");
 /* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
 /* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
-/* harmony import */ var _googlemaps_react_wrapper__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @googlemaps/react-wrapper */ "./node_modules/@googlemaps/react-wrapper/dist/index.umd.js");
-/* harmony import */ var _googlemaps_react_wrapper__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_googlemaps_react_wrapper__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/controls/MyRadioGroup */ "./src/components/controls/MyRadioGroup.tsx");
+/* harmony import */ var _components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/controls/MyRadioGroup */ "./src/components/controls/MyRadioGroup.tsx");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_10__);
 
 
 
@@ -3136,15 +2893,9 @@ const WCB_MAP_PANEL_GENERAL_DEMO = {
     Desktop: "400px"
   },
   zoom: 13,
-  // latLngs: [DEMO_LATLNG],
-  // center: DEMO_LATLNG,
   mapTypeId: "roadmap",
   language: "en",
-  placeQuery: {
-    name: "Amsterdam Centraal railway station",
-    place_id: "ChIJdan7FLcJxkcRQrwvoy3DwiM",
-    formatted_address: "Amsterdam Centraal, Stationsplein, 1012 AB Amsterdam, Hà Lan"
-  }
+  placeQuery: "Amsterdam Centraal railway station"
 };
 const WcbMapPanelGeneral = _ref => {
   let {
@@ -3165,37 +2916,12 @@ const WcbMapPanelGeneral = _ref => {
   const {
     currentDeviceValue: currentHeight
   } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_8__["default"])(height, deviceType);
-  const OPTIONS = [{
-    label: "Roadmap",
-    value: "roadmap"
-  }, {
-    label: "Satellite",
-    value: "satellite"
-  }];
-  const inputRef = (0,react__WEBPACK_IMPORTED_MODULE_3__.useRef)(null);
-  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
-    if (!inputRef || !inputRef.current) {
-      return;
-    }
-    const autocomplete = new google.maps.places.Autocomplete(inputRef.current);
-    autocomplete.addListener("place_changed", () => {
-      const place = autocomplete.getPlace();
-      console.log(1212, {
-        place
-      });
-      if (!place.geometry || !place.geometry.location) {
-        // User entered the name of a Place that was not suggested and
-        // pressed the Enter key, or the Place Details request failed.
-        window.alert("No details available for input: '" + place.name + "'");
-        return;
-      }
-      setAttr__({
-        ...panelData,
-        placeQuery: place
-      });
-      // If the place has a geometry, then present it on a map.
+  const debounce_fun = lodash__WEBPACK_IMPORTED_MODULE_10___default().debounce(function (data) {
+    console.log("Function debounced after 300ms!", {
+      data
     });
-  }, [inputRef]);
+    setAttr__(data);
+  }, 500);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     initialOpen: initialOpen,
     onToggle: onToggle,
@@ -3204,13 +2930,17 @@ const WcbMapPanelGeneral = _ref => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "WcbMapPanelGeneral space-y-5"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_4__["default"], null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Location", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    ref: inputRef,
-    id: "pac-input",
     type: "text",
-    className: "w-full",
+    className: "w-full text-sm",
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Enter a location", "wcb"),
-    defaultValue: placeQuery?.formatted_address
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    defaultValue: placeQuery,
+    onChange: e => {
+      debounce_fun({
+        ...panelData,
+        placeQuery: e.currentTarget.value
+      });
+    }
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_9__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Map Type", "wcb"),
     hasResponsive: false
     // "roadmap" | "satellite";
@@ -3496,10 +3226,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl */ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx");
-/* harmony import */ var _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/controls/MyZIndexControl/MyZIndexControl */ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx");
-/* harmony import */ var _WcbMapPanelGeneral__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WcbMapPanelGeneral */ "./src/block-map/WcbMapPanelGeneral.tsx");
-/* harmony import */ var _WcbMapPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WcbMapPanel_StyleBorder */ "./src/block-map/WcbMapPanel_StyleBorder.tsx");
+/* harmony import */ var _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/controls/MyMotionEffectControl/MyMotionEffectControl */ "./src/components/controls/MyMotionEffectControl/MyMotionEffectControl.tsx");
+/* harmony import */ var _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl */ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx");
+/* harmony import */ var _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/controls/MyZIndexControl/MyZIndexControl */ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx");
+/* harmony import */ var _WcbMapPanelGeneral__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WcbMapPanelGeneral */ "./src/block-map/WcbMapPanelGeneral.tsx");
+/* harmony import */ var _WcbMapPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./WcbMapPanel_StyleBorder */ "./src/block-map/WcbMapPanel_StyleBorder.tsx");
+
 
 
 
@@ -3512,23 +3244,87 @@ const blokc1Attrs = {
   // THE ATTRS OF BLOCK HERE
   general_general: {
     type: "object",
-    default: _WcbMapPanelGeneral__WEBPACK_IMPORTED_MODULE_2__.WCB_MAP_PANEL_GENERAL_DEMO
+    default: _WcbMapPanelGeneral__WEBPACK_IMPORTED_MODULE_3__.WCB_MAP_PANEL_GENERAL_DEMO
   },
   style_border: {
     type: "object",
-    default: _WcbMapPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_3__.WCB_MAP_PANEL_STYLE_BORDER_DEMO
+    default: _WcbMapPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_4__.WCB_MAP_PANEL_STYLE_BORDER_DEMO
   },
   // ADVANCE
   advance_responsiveCondition: {
     type: "object",
-    default: _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_0__.RESPONSIVE_CONDITON_DEMO
+    default: _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_1__.RESPONSIVE_CONDITON_DEMO
   },
   advance_zIndex: {
     type: "object",
-    default: _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_1__.Z_INDEX_DEMO
+    default: _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_2__.Z_INDEX_DEMO
+  },
+  advance_motionEffect: {
+    type: "object",
+    default: _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_0__.MY_MOTION_EFFECT_DEMO
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (blokc1Attrs);
+
+/***/ }),
+
+/***/ "./src/block-map/deprecated.tsx":
+/*!**************************************!*\
+  !*** ./src/block-map/deprecated.tsx ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Save_260523__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Save__260523 */ "./src/block-map/Save__260523.tsx");
+/* harmony import */ var _Save_100623__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Save_100623 */ "./src/block-map/Save_100623.tsx");
+/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./attributes */ "./src/block-map/attributes.ts");
+/* harmony import */ var _WcbMapPanelGeneral__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WcbMapPanelGeneral */ "./src/block-map/WcbMapPanelGeneral.tsx");
+
+
+
+
+const v1 = {};
+const v2 = {};
+const v3 = {
+  attributes: {
+    ..._attributes__WEBPACK_IMPORTED_MODULE_2__["default"],
+    general_general: {
+      type: "object",
+      default: {
+        ..._WcbMapPanelGeneral__WEBPACK_IMPORTED_MODULE_3__.WCB_MAP_PANEL_GENERAL_DEMO,
+        placeQuery: {
+          name: "Amsterdam Centraal railway station",
+          place_id: "ChIJdan7FLcJxkcRQrwvoy3DwiM",
+          formatted_address: "Amsterdam Centraal, Stationsplein, 1012 AB Amsterdam, Hà Lan"
+        }
+      }
+    }
+  },
+  save: _Save_260523__WEBPACK_IMPORTED_MODULE_0__["default"]
+};
+const v4 = {
+  attributes: {
+    ..._attributes__WEBPACK_IMPORTED_MODULE_2__["default"],
+    general_general: {
+      type: "object",
+      default: {
+        ..._WcbMapPanelGeneral__WEBPACK_IMPORTED_MODULE_3__.WCB_MAP_PANEL_GENERAL_DEMO,
+        placeQuery: {
+          name: "Amsterdam Centraal railway station",
+          place_id: "ChIJdan7FLcJxkcRQrwvoy3DwiM",
+          formatted_address: "Amsterdam Centraal, Stationsplein, 1012 AB Amsterdam, Hà Lan"
+        }
+      }
+    }
+  },
+  save: _Save_100623__WEBPACK_IMPORTED_MODULE_1__["default"]
+};
+const deprecated = [v4, v3, v2, v1];
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (deprecated);
 
 /***/ }),
 
@@ -3549,6 +3345,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Save */ "./src/block-map/Save.tsx");
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/block-map/block.json");
 /* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./attributes */ "./src/block-map/attributes.ts");
+/* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./deprecated */ "./src/block-map/deprecated.tsx");
 
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
@@ -3579,12 +3376,14 @@ const {
   withSelect
 } = wp.data;
 
+
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_5__.name, {
   edit: _Edit__WEBPACK_IMPORTED_MODULE_3__["default"],
   save: _Save__WEBPACK_IMPORTED_MODULE_4__["default"],
   attributes: _attributes__WEBPACK_IMPORTED_MODULE_6__["default"],
+  deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_7__["default"],
   icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     className: "wcb-editor-block-icons fill-none ",
     width: 24,
@@ -3636,6 +3435,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./controls/MyResponsiveConditionControl/MyResponsiveConditionControl */ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx");
 /* harmony import */ var _controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./controls/MyZIndexControl/MyZIndexControl */ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx");
+/* harmony import */ var _controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./controls/MyMotionEffectControl/MyMotionEffectControl */ "./src/components/controls/MyMotionEffectControl/MyMotionEffectControl.tsx");
+
 
 
 
@@ -3648,10 +3449,21 @@ const AdvancePanelCommon = _ref => {
     tabAdvancesIsPanelOpen,
     advance_responsiveCondition,
     advance_zIndex,
+    advance_motionEffect,
     setAttributes,
     children
   } = _ref;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, !!advance_motionEffect ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    onToggle: () => handleTogglePanel("Advances", "MyMyMotionEffectControl"),
+    initialOpen: tabAdvancesIsPanelOpen === "MyMyMotionEffectControl",
+    opened: tabAdvancesIsPanelOpen === "MyMyMotionEffectControl" || undefined,
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Motion Effect", "wcb")
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    data: advance_motionEffect,
+    onChange: data => setAttributes({
+      advance_motionEffect: data
+    })
+  })) : null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     onToggle: () => handleTogglePanel("Advances", "Responsive Conditions"),
     initialOpen: tabAdvancesIsPanelOpen === "Responsive Conditions",
     opened: tabAdvancesIsPanelOpen === "Responsive Conditions" || undefined,
@@ -4215,9 +4027,6 @@ const MyColorPicker = _ref => {
       ,
       enableAlpha: true,
       onChange: color => {
-        console.log(11, {
-          color
-        });
         handleUpdateColor(color || "");
       }
       // @ts-ignore
@@ -4427,7 +4236,10 @@ const MyDimensionsControl = _ref => {
       hasResponsive: true
     }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Margin", "wcb")),
     values: margin,
-    onChange: handleChangeMargin
+    onChange: handleChangeMargin,
+    inputProps: {
+      min: -2000
+    }
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyDimensionsControl);
@@ -4595,6 +4407,291 @@ const MyLabelControl = _ref => {
   }, help)));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyLabelControl);
+
+/***/ }),
+
+/***/ "./src/components/controls/MyMotionEffectControl/MyMotionEffectControl.tsx":
+/*!*********************************************************************************!*\
+  !*** ./src/components/controls/MyMotionEffectControl/MyMotionEffectControl.tsx ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MY_MOTION_EFFECT_DEMO": () => (/* binding */ MY_MOTION_EFFECT_DEMO),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _MySelect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../MySelect */ "./src/components/controls/MySelect.tsx");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+// @ts-ignore
+
+const options = [{
+  label: "None",
+  value: ""
+}, {
+  label: "Bounce",
+  value: "bounce"
+}, {
+  label: "Flash",
+  value: "flash"
+}, {
+  label: "Pulse",
+  value: "pulse"
+}, {
+  label: "RubberBand",
+  value: "rubberBand"
+}, {
+  label: "ShakeX",
+  value: "shakeX"
+}, {
+  label: "ShakeY",
+  value: "shakeY"
+}, {
+  label: "HeadShake",
+  value: "headShake"
+}, {
+  label: "Swing",
+  value: "swing"
+}, {
+  label: "Tada",
+  value: "tada"
+}, {
+  label: "Wobble",
+  value: "wobble"
+}, {
+  label: "Jello",
+  value: "jello"
+}, {
+  label: "HeartBeat",
+  value: "heartBeat"
+}, {
+  label: "BackInDown",
+  value: "backInDown"
+}, {
+  label: "BackInLeft",
+  value: "backInLeft"
+}, {
+  label: "BackInRight",
+  value: "backInRight"
+}, {
+  label: "BackInUp",
+  value: "backInUp"
+}, {
+  label: "BounceIn",
+  value: "bounceIn"
+}, {
+  label: "BounceInDown",
+  value: "bounceInDown"
+}, {
+  label: "BounceInLeft",
+  value: "bounceInLeft"
+}, {
+  label: "BounceInRight",
+  value: "bounceInRight"
+}, {
+  label: "BounceInUp",
+  value: "bounceInUp"
+}, {
+  label: "FadeIn",
+  value: "fadeIn"
+}, {
+  label: "FadeInDown",
+  value: "fadeInDown"
+}, {
+  label: "FadeInDownBig",
+  value: "fadeInDownBig"
+}, {
+  label: "FadeInLeft",
+  value: "fadeInLeft"
+}, {
+  label: "FadeInLeftBig",
+  value: "fadeInLeftBig"
+}, {
+  label: "FadeInRight",
+  value: "fadeInRight"
+}, {
+  label: "FadeInRightBig",
+  value: "fadeInRightBig"
+}, {
+  label: "FadeInUp",
+  value: "fadeInUp"
+}, {
+  label: "FadeInUpBig",
+  value: "fadeInUpBig"
+}, {
+  label: "FadeInTopLeft",
+  value: "fadeInTopLeft"
+}, {
+  label: "FadeInTopRight",
+  value: "fadeInTopRight"
+}, {
+  label: "FadeInBottomLeft",
+  value: "fadeInBottomLeft"
+}, {
+  label: "FadeInBottomRight",
+  value: "fadeInBottomRight"
+}, {
+  label: "Flip",
+  value: "flip"
+}, {
+  label: "FlipInX",
+  value: "flipInX"
+}, {
+  label: "FlipInY",
+  value: "flipInY"
+}, {
+  label: "LightSpeedInRight",
+  value: "lightSpeedInRight"
+}, {
+  label: "LightSpeedInLeft",
+  value: "lightSpeedInLeft"
+}, {
+  label: "RotateIn",
+  value: "rotateIn"
+}, {
+  label: "RotateInDownLeft",
+  value: "rotateInDownLeft"
+}, {
+  label: "RotateInDownRight",
+  value: "rotateInDownRight"
+}, {
+  label: "RotateInUpLeft",
+  value: "rotateInUpLeft"
+}, {
+  label: "RotateInUpRight",
+  value: "rotateInUpRight"
+}, {
+  label: "Hinge",
+  value: "hinge"
+}, {
+  label: "JackInTheBox",
+  value: "jackInTheBox"
+}, {
+  label: "RollIn",
+  value: "rollIn"
+}, {
+  label: "ZoomIn",
+  value: "zoomIn"
+}, {
+  label: "ZoomInDown",
+  value: "zoomInDown"
+}, {
+  label: "ZoomInLeft",
+  value: "zoomInLeft"
+}, {
+  label: "ZoomInRight",
+  value: "zoomInRight"
+}, {
+  label: "ZoomInUp",
+  value: "zoomInUp"
+}, {
+  label: "SlideInDown",
+  value: "slideInDown"
+}, {
+  label: "SlideInLeft",
+  value: "slideInLeft"
+}, {
+  label: "SlideInRight",
+  value: "slideInRight"
+}, {
+  label: "SlideInUp",
+  value: "slideInUp"
+}];
+const MY_MOTION_EFFECT_DEMO = {
+  animationDelay: 0,
+  animationDuration: "fast",
+  entranceAnimation: "",
+  repeat: "1"
+};
+const MyMyMotionEffectData = _ref => {
+  let {
+    onChange,
+    data
+  } = _ref;
+  console.log(22, "-----MyMyMotionEffectData-----", {
+    data
+  });
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "space-y-4"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MySelect__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    label: "Animation name",
+    options: options,
+    hasResponsive: false,
+    onChange: value => onChange({
+      ...data,
+      entranceAnimation: value
+    }),
+    value: data.entranceAnimation
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MySelect__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    label: "Animation duration",
+    options: [{
+      label: "Slow (2s)",
+      value: "slow"
+    }, {
+      label: "Slower (3s)",
+      value: "slower"
+    }, {
+      label: "Fast (800ms)",
+      value: "fast"
+    }, {
+      label: "Faster (500ms)",
+      value: "faster"
+    }],
+    hasResponsive: false,
+    onChange: value => onChange({
+      ...data,
+      animationDuration: value
+    }),
+    value: data.animationDuration
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalNumberControl, {
+    isShiftStepEnabled: true,
+    shiftStep: 1000,
+    step: 100,
+    __unstableInputWidth: "60px",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Animation delay (ms)"),
+    labelPosition: "edge",
+    min: 0,
+    value: data.animationDelay,
+    onChange: e => onChange({
+      ...data,
+      animationDelay: Number(e || 0) || 0
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MySelect__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    label: "Animation repeat",
+    options: [{
+      label: "1",
+      value: "1"
+    }, {
+      label: "2",
+      value: "2"
+    }, {
+      label: "3",
+      value: "3"
+    }, {
+      label: "infinite",
+      value: "infinite"
+    }],
+    hasResponsive: false,
+    onChange: value => onChange({
+      ...data,
+      repeat: value
+    }),
+    value: data.repeat
+  }));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyMyMotionEffectData);
 
 /***/ }),
 
@@ -5653,10 +5750,10 @@ const getBorderStyles = _ref => {
       } = mainSettings;
       CSSObject = {
         [`${className}`]: {
-          borderTop: `${top.width} ${top.style} ${top.color}`,
-          borderLeft: `${left.width} ${left.style} ${left.color}`,
-          borderRight: `${right.width} ${right.style} ${right.color}`,
-          borderBottom: `${bottom.width} ${bottom.style} ${bottom.color}`,
+          borderTop: `${top.width} ${top.style || "none"} ${top.color || ""}`,
+          borderLeft: `${left.width} ${left.style || "none"} ${left.color || ""}`,
+          borderRight: `${right.width} ${right.style || "none"} ${right.color || ""}`,
+          borderBottom: `${bottom.width} ${bottom.style || "none"} ${bottom.color || ""}`,
           "&:hover": {
             borderColor: `${hoverColor}`
           }
@@ -5670,9 +5767,9 @@ const getBorderStyles = _ref => {
       } = mainSettings;
       CSSObject = {
         [`${className}`]: {
-          border: `${width} ${style} ${color}`,
+          border: `${width} ${style || "none"} ${color || ""}`,
           "&:hover": {
-            borderColor: `${hoverColor}`
+            borderColor: `${hoverColor || ""}`
           }
         }
       };
@@ -8139,7 +8236,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;

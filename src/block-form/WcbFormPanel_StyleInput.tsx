@@ -1,12 +1,11 @@
 import {
-	ColorPicker,
 	PanelBody,
 	TabPanel,
 	// @ts-ignore
 	__experimentalBoxControl as BoxControl,
 } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
-import React, { FC, CSSProperties } from "react";
+import React, { FC } from "react";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
 import {
@@ -18,15 +17,13 @@ import { DimensionSettings } from "../components/controls/MyDimensionsControl/ty
 import MyDisclosure from "../components/controls/MyDisclosure";
 import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
-import MyTextAlignControl, {
-	TextAlignment,
-} from "../components/controls/MyTextAlignControl/MyTextAlignControl";
 import MyTypographyControl from "../components/controls/MyTypographyControl/MyTypographyControl";
 import {
 	MyTypographyControlData,
 	TYPOGRAPHY_CONTROL_DEMO,
 } from "../components/controls/MyTypographyControl/types";
 import useGetDeviceType from "../hooks/useGetDeviceType";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 
 type TabsHere = "Normal" | "Hover" | "Active";
 export interface WCB_FORM_PANEL_STYLE_INPUT {
@@ -163,9 +160,19 @@ const WcbFormPanel_StyleInput: FC<Props> = ({
 	onToggle,
 	opened,
 }) => {
-	const { textColor, typography, bgAndPlaceholder, border, padding } =
-		panelData;
+	const {
+		textColor,
+		typography,
+		bgAndPlaceholder,
+		border,
+		padding: paddingProps,
+	} = panelData;
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
+
+	const { currentDeviceValue: padding } = getValueFromAttrsResponsives(
+		paddingProps,
+		deviceType
+	);
 
 	const PanelTab: {
 		name: TabsHere;
@@ -261,7 +268,7 @@ const WcbFormPanel_StyleInput: FC<Props> = ({
 								setAttr__({
 									...panelData,
 									padding: {
-										...padding,
+										...paddingProps,
 										[deviceType]: value,
 									},
 								});

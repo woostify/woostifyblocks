@@ -27,6 +27,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		//
 		advance_responsiveCondition,
 		advance_zIndex,
+		advance_motionEffect,
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
@@ -196,6 +197,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 		);
 	};
 
+	if (!uniqueId) {
+		return null;
+	}
+
 	return (
 		<>
 			<Global styles={getDivWrapStyles()} />
@@ -298,9 +303,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 							backgroundColor:
 								style_checkbox_radio_toggle.colors.Active.backgroundColor,
 						},
-						// ":checked::before": {
-						// 	color: style_checkbox_radio_toggle.colors.Active.color,
-						// },
 					},
 
 					[`${TOGGLE_CLASSNAME}`]: {
@@ -312,12 +314,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 							backgroundColor:
 								style_checkbox_radio_toggle.colors.Active.backgroundColor,
 						},
-						// ".wcb-toggle__slider::before": {
-						// 	backgroundColor: style_checkbox_radio_toggle.colors.Normal.color,
-						// },
-						// "input:checked + .wcb-toggle__slider::before": {
-						// 	backgroundColor: style_checkbox_radio_toggle.colors.Active.color,
-						// },
 					},
 				}}
 			/>
@@ -332,6 +328,14 @@ const GlobalCss: FC<Props> = (attrs) => {
 					isWithRadius: true,
 				})}
 			/>
+
+			<Global
+				styles={getTypographyStyles({
+					className: SUBMIT_CLASSNAME,
+					typography: style_submit_button.typography,
+				})}
+			/>
+
 			<Global
 				styles={{
 					[SUBMIT_CLASSNAME]: {
@@ -356,6 +360,12 @@ const GlobalCss: FC<Props> = (attrs) => {
 			/>
 
 			{/* ------------------- STYE FOR MESSAGES ------------------------- */}
+			<Global
+				styles={getTypographyStyles({
+					className: `${SUCCESS_MESS_CLASSNAME}, ${ERROR_MESS_CLASSNAME}`,
+					typography: style_messages.typography,
+				})}
+			/>
 			<Global
 				styles={getBorderStyles({
 					className: `${SUCCESS_MESS_CLASSNAME}`,
@@ -390,6 +400,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 			{/* ------------------- ADVANCE -------------------  */}
 			<Global
 				styles={getAdvanveDivWrapStyles({
+					advance_motionEffect,
 					advance_responsiveCondition,
 					advance_zIndex,
 					className: WRAP_CLASSNAME,

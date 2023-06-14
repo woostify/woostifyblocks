@@ -1,13 +1,11 @@
-import { PanelBody, TabPanel, ToggleControl } from "@wordpress/components";
+import { PanelBody, ToggleControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
-import React, { FC, CSSProperties } from "react";
-import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
+import React, { FC } from "react";
 import MySelect from "../components/controls/MySelect";
 import SelecIcon, {
 	DEFAULT_MY_ICON,
 	MyIcon,
 } from "../components/controls/SelectIcon/SelecIcon";
-import useGetDeviceType from "../hooks/useGetDeviceType";
 import { Option } from "../types";
 
 export interface WCB_ICON_BOX_PANEL_ICON {
@@ -20,11 +18,15 @@ export interface WCB_ICON_BOX_PANEL_ICON {
 		| "leftOfTitle"
 		| "rightOfTitle"
 		| "bellowTitle";
+	stackOn: "none" | "tablet" | "mobile";
+	verticalAlignment: "top" | "middle";
 }
 
 export const WCB_ICON_BOX_PANEL_ICON_DEMO: WCB_ICON_BOX_PANEL_ICON = {
 	enableIcon: true,
 	iconPosition: "top",
+	stackOn: "none",
+	verticalAlignment: "top",
 	icon: {
 		...DEFAULT_MY_ICON,
 		iconName: "lni-checkmark-circle",
@@ -44,8 +46,8 @@ const WcbIconBoxPanelIcon: FC<Props> = ({
 	onToggle,
 	opened,
 }) => {
-	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { enableIcon, icon, iconPosition } = panelData;
+	const { enableIcon, icon, iconPosition, stackOn, verticalAlignment } =
+		panelData;
 	//
 	const PLANS_DEMO: Option<WCB_ICON_BOX_PANEL_ICON["iconPosition"]>[] = [
 		{ value: "top", label: "Top" },
@@ -55,6 +57,16 @@ const WcbIconBoxPanelIcon: FC<Props> = ({
 		{ value: "rightOfTitle", label: "Right Of Title" },
 		{ value: "bellowTitle", label: "Bellow Title" },
 	];
+	const STACK_ON_DEMO: Option<WCB_ICON_BOX_PANEL_ICON["stackOn"]>[] = [
+		{ value: "none", label: "None" },
+		{ value: "tablet", label: "Tablet" },
+		{ value: "mobile", label: "Mobile" },
+	];
+	const VERTICAL_DEMO: Option<WCB_ICON_BOX_PANEL_ICON["verticalAlignment"]>[] =
+		[
+			{ value: "top", label: "Top" },
+			{ value: "middle", label: "Middle" },
+		];
 
 	return (
 		<PanelBody
@@ -90,13 +102,53 @@ const WcbIconBoxPanelIcon: FC<Props> = ({
 							options={PLANS_DEMO}
 							value={iconPosition}
 							onChange={(value) => {
-								setAttr__({
+								let newData: WCB_ICON_BOX_PANEL_ICON = {
 									...panelData,
 									iconPosition:
 										value as WCB_ICON_BOX_PANEL_ICON["iconPosition"],
-								});
+								};
+								if (iconPosition !== "left" && iconPosition !== "right") {
+									newData = {
+										...panelData,
+										iconPosition:
+											value as WCB_ICON_BOX_PANEL_ICON["iconPosition"],
+										stackOn: "none",
+									};
+								}
+
+								setAttr__(newData);
 							}}
 						/>
+						{(iconPosition === "left" || iconPosition === "right") && (
+							<MySelect
+								label={__("Stack On", "Wcb")}
+								options={STACK_ON_DEMO}
+								value={stackOn}
+								onChange={(value) => {
+									setAttr__({
+										...panelData,
+										stackOn: value as WCB_ICON_BOX_PANEL_ICON["stackOn"],
+									});
+								}}
+							/>
+						)}
+						{(iconPosition === "left" ||
+							iconPosition === "right" ||
+							iconPosition === "leftOfTitle" ||
+							iconPosition === "rightOfTitle") && (
+							<MySelect
+								label={__("Vertical Alignment", "Wcb")}
+								options={VERTICAL_DEMO}
+								value={verticalAlignment}
+								onChange={(value) => {
+									setAttr__({
+										...panelData,
+										verticalAlignment:
+											value as WCB_ICON_BOX_PANEL_ICON["verticalAlignment"],
+									});
+								}}
+							/>
+						)}
 					</>
 				)}
 			</div>

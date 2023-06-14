@@ -24,6 +24,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		uniqueId,
 		general_general,
 		style_border,
+		advance_motionEffect,
 	} = attributes;
 	//  COMMON HOOKS
 	const wrapBlockProps = useBlockProps();
@@ -86,6 +87,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				return (
 					<>
 						<AdvancePanelCommon
+							advance_motionEffect={advance_motionEffect}
 							advance_responsiveCondition={
 								attributes.advance_responsiveCondition
 							}
@@ -109,6 +111,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			advance_zIndex,
 			general_general,
 			style_border,
+			advance_motionEffect,
 		};
 	}, [
 		uniqueId,
@@ -116,6 +119,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		advance_zIndex,
 		general_general,
 		style_border,
+		advance_motionEffect,
 	]);
 	//
 
@@ -143,14 +147,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 						loading="lazy"
 						allowFullScreen
 						referrerPolicy="no-referrer-when-downgrade"
+						title={general_general.placeQuery || ""}
 						src={`https://www.google.com/maps/embed/v1/place
-						?key=AIzaSyAGVJfZMAKYfZ71nzL_v5i3LjTTWnCYwTY
+						?key=AIzaSyCLK1ZWtKchh3gykkn2o3i47pVEX5vbKdA
 						&maptype=${general_general.mapTypeId}
 						&language=${general_general.language}
 						&zoom=${general_general.zoom}
-						&q=place_id:${
-							general_general.placeQuery?.place_id ||
-							"ChIJdan7FLcJxkcRQrwvoy3DwiM"
+						&q=${
+							general_general.placeQuery?.replace?.(/ /g, "+") ||
+							"Eiffel+Tower,Paris+France"
 						}`}
 					></iframe>
 				</div>

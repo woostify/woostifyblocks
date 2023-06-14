@@ -48,6 +48,7 @@ const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 		styles_boxShadow,
 		styles_color,
 		styles_dimensions,
+		advance_motionEffect,
 	} = attributes;
 
 	//
@@ -244,6 +245,7 @@ const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 				return (
 					<>
 						<AdvancePanelCommon
+							advance_motionEffect={advance_motionEffect}
 							advance_responsiveCondition={
 								attributes.advance_responsiveCondition
 							}
@@ -298,6 +300,7 @@ const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 			styles_boxShadow,
 			styles_color,
 			styles_dimensions,
+			advance_motionEffect,
 		};
 	}, [
 		uniqueId,
@@ -311,6 +314,7 @@ const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 		styles_boxShadow,
 		styles_color,
 		styles_dimensions,
+		advance_motionEffect,
 	]);
 	//
 
@@ -332,7 +336,7 @@ const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div {...blockWrapProps} data-uniqueid={uniqueId}>
 				{/*  */}
-				<GlobalCss {...WcbAttrsForSave()} />
+				{uniqueId && <GlobalCss {...WcbAttrsForSave()} />}
 
 				<VideoBackgroundByBgControl
 					bgType={styles_background.bgType}

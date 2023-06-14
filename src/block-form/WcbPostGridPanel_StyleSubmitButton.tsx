@@ -21,11 +21,17 @@ import MyColorBackgroundColorControl, {
 	MY_COLOR_BGCOLOR_CONTROL_FOR_BUTTON_DEMO,
 } from "../components/controls/MyColorBackgroundColorControl/MyColorBackgroundColorControl";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import {
+	MyTypographyControlData,
+	TYPOGRAPHY_CONTROL_DEMO,
+} from "../components/controls/MyTypographyControl/types";
+import MyTypographyControl from "../components/controls/MyTypographyControl/MyTypographyControl";
 
 export interface WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON {
 	colorAndBackgroundColor: MyColorBackgroundColorControlData;
 	padding: HasResponsive<DimensionSettings>;
 	border: MyBorderControlData;
+	typography: MyTypographyControlData;
 }
 
 export const WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON_DEMO: WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON =
@@ -40,6 +46,7 @@ export const WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON_DEMO: WCB_FORM_PANEL_STYLE_SUBMI
 			},
 		},
 		border: MY_BORDER_CONTROL_DEMO,
+		typography: TYPOGRAPHY_CONTROL_DEMO,
 	};
 
 interface Props
@@ -57,7 +64,12 @@ const WcbPostGridPanel_StyleSubmitButton: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
-	const { padding: paddingProps, border, colorAndBackgroundColor } = panelData;
+	const {
+		padding: paddingProps,
+		border,
+		colorAndBackgroundColor,
+		typography = TYPOGRAPHY_CONTROL_DEMO,
+	} = panelData;
 
 	const { currentDeviceValue: padding } = getValueFromAttrsResponsives(
 		paddingProps,
@@ -110,6 +122,16 @@ const WcbPostGridPanel_StyleSubmitButton: FC<Props> = ({
 						}}
 					/>
 				</MyDisclosure>
+
+				<MyTypographyControl
+					typographyControl={typography || TYPOGRAPHY_CONTROL_DEMO}
+					setAttrs__typography={(typography) => {
+						setAttr__({
+							...panelData,
+							typography,
+						});
+					}}
+				/>
 			</div>
 		</PanelBody>
 	);

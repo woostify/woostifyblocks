@@ -1,3 +1,14 @@
+body .wcb-container__wrap {
+	.wp-block {
+		margin-left: initial;
+		margin-right: initial;
+	}
+	.wcb-container__inner {
+		margin: 0 auto;
+	}
+}
+
+/*  */
 .wcb-container__wrap {
 	position: relative;
 	/*  */
@@ -5,7 +16,8 @@
 	&:not(.is_wcb_container_child) {
 		flex: 0 1 auto;
 	}
-	/*  */
+
+	/* can xem lai cho nay, vi no dang ngan phan margin của container child */
 	.wcb-container__inner {
 		.wcb-container__wrap.is_wcb_container_child {
 			margin-block-start: 0;
@@ -23,11 +35,12 @@
 	> * {
 		max-width: 100%;
 	}
+	.wp-block[data-align="full"] {
+		max-width: 100%;
+	}
+
 	> .block-list-appender {
 		width: 100%;
-	}
-	.wp-block {
-		margin: unset;
 	}
 
 	.wcb-container__wrap {

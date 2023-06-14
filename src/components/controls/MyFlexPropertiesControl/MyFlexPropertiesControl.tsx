@@ -1,7 +1,6 @@
 import { __ } from "@wordpress/i18n";
-import React, { FC, CSSProperties, Fragment } from "react";
+import React, { FC, CSSProperties } from "react";
 import useGetDeviceType from "../../../hooks/useGetDeviceType";
-import MyLabelControl from "../MyLabelControl/MyLabelControl";
 import { ResponsiveDevices } from "../MyResponsiveToggle/MyResponsiveToggle";
 import {
 	PLANS_FLEX_ALIGNITEMS_DEMO,
@@ -11,7 +10,6 @@ import {
 	PLANS_FLEX_WRAP_DEMO,
 	MyFlexPropertiesControlData,
 } from "./types";
-import { RadioGroup } from "@headlessui/react";
 import MyRadioGroup from "../MyRadioGroup";
 import getValueFromAttrsResponsives from "../../../utils/getValueFromAttrsResponsives";
 

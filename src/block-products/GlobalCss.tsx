@@ -28,10 +28,13 @@ const GlobalCss: FC<Props> = (attrs) => {
 		style_border,
 		style_price,
 		style_rating,
+		style_category,
 		//
 		advance_responsiveCondition,
 		advance_zIndex,
+		advance_motionEffect,
 	} = attrs;
+
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
 	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
@@ -286,6 +289,13 @@ const GlobalCss: FC<Props> = (attrs) => {
 		} = getCssProperyHasResponsive<string>({
 			cssProperty: style_rating.marginBottom,
 		});
+		const {
+			value_mobile: categoryMarginBottom_mobile,
+			value_tablet: categoryMarginBottom_tablet,
+			value_desktop: categoryMarginBottom_desktop,
+		} = getCssProperyHasResponsive<string>({
+			cssProperty: style_category.marginBottom,
+		});
 
 		//
 		const {
@@ -333,6 +343,15 @@ const GlobalCss: FC<Props> = (attrs) => {
 			tablet_v: ratingMarginBottom_tablet,
 			desktop_v: ratingMarginBottom_desktop,
 		});
+		const {
+			mobile_v: categoryMarginBottom_mobile_new,
+			tablet_v: categoryMarginBottom_tablet_new,
+			desktop_v: categoryMarginBottom_desktop_new,
+		} = checkResponsiveValueForOptimizeCSS({
+			mobile_v: categoryMarginBottom_mobile,
+			tablet_v: categoryMarginBottom_tablet,
+			desktop_v: categoryMarginBottom_desktop,
+		});
 		//
 		return [
 			{
@@ -367,6 +386,13 @@ const GlobalCss: FC<Props> = (attrs) => {
 						marginBottom: titleMarginBottom_mobile_new,
 						color: style_title.textColor,
 					},
+					".wcb-products__product-categories": {
+						marginBottom: categoryMarginBottom_mobile_new,
+						color: style_category.textColor,
+						a: {
+							color: style_category.textColor,
+						},
+					},
 					".wcb-products__product-salebadge": {
 						marginBottom: saleBadgeMarginBottom_mobile_new,
 						".wcb-products__product-onsale": {
@@ -393,6 +419,12 @@ const GlobalCss: FC<Props> = (attrs) => {
 												marginBottom: titleMarginBottom_tablet_new,
 										  }
 										: undefined,
+									".wcb-products__product-categories":
+										categoryMarginBottom_tablet_new
+											? {
+													marginBottom: categoryMarginBottom_tablet_new,
+											  }
+											: undefined,
 									".wcb-products__product-salebadge":
 										saleBadgeMarginBottom_tablet_new
 											? {
@@ -422,6 +454,12 @@ const GlobalCss: FC<Props> = (attrs) => {
 												marginBottom: titleMarginBottom_desktop_new,
 										  }
 										: undefined,
+									".wcb-products__product-categories":
+										categoryMarginBottom_desktop_new
+											? {
+													marginBottom: categoryMarginBottom_desktop_new,
+											  }
+											: undefined,
 									".wcb-products__product-salebadge":
 										saleBadgeMarginBottom_desktop_new
 											? {
@@ -498,6 +536,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 		};
 	};
 
+	if (!uniqueId) {
+		return null;
+	}
+
 	return (
 		<>
 			{renderDivListWrapStyle()}
@@ -508,6 +550,16 @@ const GlobalCss: FC<Props> = (attrs) => {
 					styles={getTypographyStyles({
 						className: WRAP_CLASSNAME + " .wcb-products__product-title",
 						typography: style_title.typography,
+					})}
+				/>
+			)}
+
+			{/* CATEOGRY */}
+			{general_content.isShowCategory && (
+				<Global
+					styles={getTypographyStyles({
+						className: WRAP_CLASSNAME + " .wcb-products__product-categories",
+						typography: style_category.typography,
 					})}
 				/>
 			)}
@@ -604,6 +656,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 			{/* ADVANCE  */}
 			<Global
 				styles={getAdvanveDivWrapStyles({
+					advance_motionEffect,
 					advance_responsiveCondition,
 					advance_zIndex,
 					className: WRAP_CLASSNAME,

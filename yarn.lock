@@ -1259,20 +1259,6 @@
   dependencies:
     "@floating-ui/dom" "^1.0.0"
 
-"@googlemaps/js-api-loader@^1.13.2":
-  version "1.15.1"
-  resolved "https://registry.yarnpkg.com/@googlemaps/js-api-loader/-/js-api-loader-1.15.1.tgz#7d5f1d55a4ec5c99b1d8f0708f3a46b83a71384c"
-  integrity sha512-AsnEgNsB7S/VdrHGEQUaUM2e5tmjFGKBAfzR/AqO8O7TPq/jQGvoRw5liPBw4EMF38RDsHmKDV89q/X+qiUREQ==
-  dependencies:
-    fast-deep-equal "^3.1.3"
-
-"@googlemaps/react-wrapper@^1.1.35":
-  version "1.1.35"
-  resolved "https://registry.yarnpkg.com/@googlemaps/react-wrapper/-/react-wrapper-1.1.35.tgz#fde9146b1ae02805dcad9c0fab56c4bc137b32ee"
-  integrity sha512-vK+BDQMHN0Oqr66cW3ZPWVK43BUmJJBu6P8T74tc6/fKpUJUlFEaZsupgIIRRRDW9ejB8uGagUmwOnA2gdcvbw==
-  dependencies:
-    "@googlemaps/js-api-loader" "^1.13.2"
-
 "@graphql-typed-document-node/core@^3.1.1":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@graphql-typed-document-node/core/-/core-3.2.0.tgz#5f3d96ec6b2354ad6d8a28bf216a1d97b5426861"
@@ -2026,11 +2012,6 @@
   dependencies:
     "@types/minimatch" "*"
     "@types/node" "*"
-
-"@types/google.maps@^3.52.4":
-  version "3.52.4"
-  resolved "https://registry.yarnpkg.com/@types/google.maps/-/google.maps-3.52.4.tgz#01d640d7c49f153570b22fe337a35aea7ac41eb9"
-  integrity sha512-FXtZsLDX7fbxJ03zbze3MdUjaH4Y/zRmW8O65LNIWEHJ7RqddrabusRm/U3zF1ifmqe8y4oPqBvs+vBG8kv0yQ==
 
 "@types/graceful-fs@^4.1.3":
   version "4.1.6"
@@ -3425,6 +3406,11 @@ ajv@^8.0.0, ajv@^8.0.1, ajv@^8.8.0:
     json-schema-traverse "^1.0.0"
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
+
+animate.css@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/animate.css/-/animate.css-4.1.1.tgz#614ec5a81131d7e4dc362a58143f7406abd68075"
+  integrity sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ==
 
 ansi-escapes@^4.2.1:
   version "4.3.2"
@@ -9254,8 +9240,8 @@ screenfull@^5.1.0:
   integrity sha512-9BakfsO2aUQN2K9Fdbj87RJIEZ82Q9IGim7FqM5OsebfoFC6ZHXgDq/KvniuLTPdeM8wY2o6Dj3WQ7KeQCj3cA==
 
 scroll-snap-slider@barthy-koeln/scroll-snap-slider:
-  version "3.0.1"
-  resolved "https://codeload.github.com/barthy-koeln/scroll-snap-slider/tar.gz/8f9c0d078778e350cf6edbe29fb0fedfbde2d2f6"
+  version "3.1.0"
+  resolved "https://codeload.github.com/barthy-koeln/scroll-snap-slider/tar.gz/6470edbe3c2054108029d629151b7b74a7cb89e1"
 
 select-hose@^2.0.0:
   version "2.0.0"

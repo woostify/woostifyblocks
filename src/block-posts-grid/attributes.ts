@@ -4,6 +4,7 @@ import {
 } from "../block-container/attributes";
 import { MyBorderControlData } from "../components/controls/MyBorderControl/types";
 import { MyBoxShadowControlData } from "../components/controls/MyBoxShadowControl/MyBoxShadowControl";
+import { MyMotionEffectData } from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
 import { MyResponsiveConditionControlData } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
 import { MyZIndexControlData } from "../components/controls/MyZIndexControl/MyZIndexControl";
 import { WCB_POST_GRID_PANEL_PAGINATION } from "./WcbPostGridPanelPagination";
@@ -43,6 +44,7 @@ export interface WcbBlockPostsGridAttrs extends WcbAttrsCommonFromWp {
 	//
 	advance_responsiveCondition?: MyResponsiveConditionControlData;
 	advance_zIndex?: MyZIndexControlData;
+	advance_motionEffect?: MyMotionEffectData;
 }
 
 const blokc1Attrs: AttrsGenericType<WcbBlockPostsGridAttrs> = {
@@ -125,6 +127,10 @@ const blokc1Attrs: AttrsGenericType<WcbBlockPostsGridAttrs> = {
 	advance_zIndex: {
 		type: "object",
 		// default: Z_INDEX_DEMO,
+	},
+	advance_motionEffect: {
+		type: "object",
+		// default: MY_MOTION_EFFECT_DEMO,
 	},
 };
 

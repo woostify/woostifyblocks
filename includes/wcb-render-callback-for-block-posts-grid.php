@@ -505,7 +505,7 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
         </div>
 
         <!-- pagination here -->
-        <?php if (($attributes['general_pagination']['isShowPagination'] ?? "false") === "true") : ?>
+        <?php if (wcb__is_enabled($attributes['general_pagination']['isShowPagination'] ?? "false")) : ?>
             <div class="wcb-posts-grid__pagination">
                 <?php wcb_pagination_bar($the_query, $attributes['general_pagination']); ?>
             </div>

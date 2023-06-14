@@ -19,6 +19,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const getAdvanveDivWrapStyles = _ref => {
   let {
+    advance_motionEffect,
     advance_zIndex,
     advance_responsiveCondition,
     className,
@@ -29,7 +30,28 @@ const getAdvanveDivWrapStyles = _ref => {
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES;
   //
+  //
+  try {
+    const thisELs = document.querySelectorAll(className);
+    if (advance_motionEffect && advance_motionEffect.entranceAnimation && thisELs && thisELs.length) {
+      console.log(222, {
+        thisELs
+      });
+      thisELs.forEach(element => {
+        // remove old class
+        const regex = /\banimate__\S+/g;
+        const classRemoved = element?.className.replace(regex, "");
+        element.setAttribute("class", classRemoved);
 
+        // add new class
+        setTimeout(() => {
+          element?.classList.add("animate__animated", `animate__${advance_motionEffect?.entranceAnimation}`, `animate__${advance_motionEffect?.animationDuration}`, `animate__delay-${advance_motionEffect?.animationDelay}ms`, `animate__repeat-${advance_motionEffect?.repeat}`);
+        }, 50);
+      });
+    }
+  } catch (error) {
+    console.log(123, "error, advance_motionEffect", error);
+  }
   const {
     mobile_v: zIndexMobile,
     tablet_v: zIndexTablet,
@@ -50,10 +72,6 @@ const getAdvanveDivWrapStyles = _ref => {
     tablet_v: advance_responsiveCondition.isHiddenOnTablet,
     desktop_v: advance_responsiveCondition.isHiddenOnDesktop
   });
-
-  // [data-is-wcb-save-common] {
-  // 	visibility: visible;
-  // }
   return _emotion_react__WEBPACK_IMPORTED_MODULE_2__.css`
 		${className} {
 			display: ${isHiddenOnMobile ? "none" : defaultDisplay};
@@ -119,7 +137,8 @@ const GlobalCss = attrs => {
     style_submit_button,
     //
     advance_responsiveCondition,
-    advance_zIndex
+    advance_zIndex,
+    advance_motionEffect
   } = attrs;
   const {
     media_desktop,
@@ -280,6 +299,9 @@ const GlobalCss = attrs => {
       }
     });
   };
+  if (!uniqueId) {
+    return null;
+  }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: getDivWrapStyles()
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
@@ -359,11 +381,7 @@ const GlobalCss = attrs => {
         ":checked": {
           backgroundColor: style_checkbox_radio_toggle.colors.Active.backgroundColor
         }
-        // ":checked::before": {
-        // 	color: style_checkbox_radio_toggle.colors.Active.color,
-        // },
       },
-
       [`${TOGGLE_CLASSNAME}`]: {
         ".wcb-toggle__slider": {
           backgroundColor: style_checkbox_radio_toggle.colors.Normal.backgroundColor
@@ -371,12 +389,6 @@ const GlobalCss = attrs => {
         "input:checked + .wcb-toggle__slider": {
           backgroundColor: style_checkbox_radio_toggle.colors.Active.backgroundColor
         }
-        // ".wcb-toggle__slider::before": {
-        // 	backgroundColor: style_checkbox_radio_toggle.colors.Normal.color,
-        // },
-        // "input:checked + .wcb-toggle__slider::before": {
-        // 	backgroundColor: style_checkbox_radio_toggle.colors.Active.color,
-        // },
       }
     }
   }), renderCheckboxRadioSize(), renderToggleSize(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
@@ -384,6 +396,11 @@ const GlobalCss = attrs => {
       className: `${SUBMIT_CLASSNAME}`,
       border: style_submit_button.border,
       isWithRadius: true
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
+    styles: (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
+      className: SUBMIT_CLASSNAME,
+      typography: style_submit_button.typography
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: {
@@ -400,6 +417,11 @@ const GlobalCss = attrs => {
     styles: (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
       className: `${SUBMIT_CLASSNAME}`,
       padding: style_submit_button.padding
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
+    styles: (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
+      className: `${SUCCESS_MESS_CLASSNAME}, ${ERROR_MESS_CLASSNAME}`,
+      typography: style_messages.typography
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
@@ -429,6 +451,7 @@ const GlobalCss = attrs => {
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__.getAdvanveDivWrapStyles)({
+      advance_motionEffect,
       advance_responsiveCondition,
       advance_zIndex,
       className: WRAP_CLASSNAME,
@@ -727,10 +750,10 @@ const getBorderStyles = _ref => {
       } = mainSettings;
       CSSObject = {
         [`${className}`]: {
-          borderTop: `${top.width} ${top.style} ${top.color}`,
-          borderLeft: `${left.width} ${left.style} ${left.color}`,
-          borderRight: `${right.width} ${right.style} ${right.color}`,
-          borderBottom: `${bottom.width} ${bottom.style} ${bottom.color}`,
+          borderTop: `${top.width} ${top.style || "none"} ${top.color || ""}`,
+          borderLeft: `${left.width} ${left.style || "none"} ${left.color || ""}`,
+          borderRight: `${right.width} ${right.style || "none"} ${right.color || ""}`,
+          borderBottom: `${bottom.width} ${bottom.style || "none"} ${bottom.color || ""}`,
           "&:hover": {
             borderColor: `${hoverColor}`
           }
@@ -744,9 +767,9 @@ const getBorderStyles = _ref => {
       } = mainSettings;
       CSSObject = {
         [`${className}`]: {
-          border: `${width} ${style} ${color}`,
+          border: `${width} ${style || "none"} ${color || ""}`,
           "&:hover": {
-            borderColor: `${hoverColor}`
+            borderColor: `${hoverColor || ""}`
           }
         }
       };
@@ -935,7 +958,7 @@ const getPaddingMarginStyles = _ref => {
     desktop_v: margin_Desktop?.bottom
   });
   return _emotion_react__WEBPACK_IMPORTED_MODULE_3__.css`
-		${className} {
+		body ${className} {
 			padding-top: ${padding_Mobile_top};
 			padding-right: ${padding_Mobile_right};
 			padding-bottom: ${padding_Mobile_bottom};

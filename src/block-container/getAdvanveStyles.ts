@@ -3,8 +3,10 @@ import { MyZIndexControlData } from "../components/controls/MyZIndexControl/MyZI
 import { css } from "@emotion/react";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import checkResponsiveValueForOptimizeCSS from "../utils/checkResponsiveValueForOptimizeCSS";
+import { MyMotionEffectData } from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
 
 interface Params {
+	advance_motionEffect?: MyMotionEffectData;
 	advance_zIndex: MyZIndexControlData;
 	advance_responsiveCondition: MyResponsiveConditionControlData;
 	className: string;
@@ -12,6 +14,7 @@ interface Params {
 }
 
 export const getAdvanveDivWrapStyles = ({
+	advance_motionEffect,
 	advance_zIndex,
 	advance_responsiveCondition,
 	className,
@@ -19,6 +22,37 @@ export const getAdvanveDivWrapStyles = ({
 }: Params) => {
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 	//
+	//
+	try {
+		const thisELs = document.querySelectorAll(className);
+		if (
+			advance_motionEffect &&
+			advance_motionEffect.entranceAnimation &&
+			thisELs &&
+			thisELs.length
+		) {
+			console.log(222, { thisELs });
+			thisELs.forEach((element) => {
+				// remove old class
+				const regex = /\banimate__\S+/g;
+				const classRemoved = element?.className.replace(regex, "");
+				element.setAttribute("class", classRemoved);
+
+				// add new class
+				setTimeout(() => {
+					element?.classList.add(
+						"animate__animated",
+						`animate__${advance_motionEffect?.entranceAnimation}`,
+						`animate__${advance_motionEffect?.animationDuration}`,
+						`animate__delay-${advance_motionEffect?.animationDelay}ms`,
+						`animate__repeat-${advance_motionEffect?.repeat}`
+					);
+				}, 50);
+			});
+		}
+	} catch (error) {
+		console.log(123, "error, advance_motionEffect", error);
+	}
 
 	const {
 		mobile_v: zIndexMobile,
@@ -42,9 +76,6 @@ export const getAdvanveDivWrapStyles = ({
 		desktop_v: advance_responsiveCondition.isHiddenOnDesktop,
 	});
 
-	// [data-is-wcb-save-common] {
-	// 	visibility: visible;
-	// }
 	return css`
 		${className} {
 			display: ${isHiddenOnMobile ? "none" : defaultDisplay};

@@ -16,8 +16,11 @@ function wcb_dashboard_settings_options_init()
     if (FALSE === get_option('wcb_blocks_settings_options') && FALSE === update_option('wcb_blocks_settings_options', FALSE)) {
         add_option('wcb_blocks_settings_options', wcb_get_default_blocks_settings());
     } else {
-        // check co new option thi merge laij..........
+        // vui long thuc hien dieu nay khi co them cac field moi'..........
+        // check co new option thi merge laij.......... 
+        // 01-03-2023
         $hasNewOption = array_key_exists('customColorPallete', get_option('wcb_blocks_settings_options') ?? []);
+        // 
         if (!$hasNewOption) {
             update_option('wcb_blocks_settings_options', array_merge(wcb_get_default_blocks_settings(), get_option('wcb_blocks_settings_options')));
         }

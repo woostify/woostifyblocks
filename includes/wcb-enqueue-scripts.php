@@ -4,7 +4,9 @@
 if (!function_exists("wcb__my_scripts_method")) {
     function wcb__my_scripts_method()
     {
-
+        // animate nay enqueue cho frontend, trong trang editor da duoc import voi npm
+        wp_enqueue_style('cdnjs-animate-css', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css', [], '4.1.1');
+        // 
         wp_enqueue_style('wcb-frontend-css', plugin_dir_url(WCB_FILE) . 'build/block-common-css/style-index.css');
         wp_localize_script(
             'jquery',
@@ -25,6 +27,9 @@ if (!function_exists("wcb__my_scripts_method")) {
             'wcbGlobalVariables',
             get_option('wcb_blocks_settings_options')
         );
+
+        // can xem xet lai, vi no se enqueue khi ma testimonial co duoc goi hay khong di nua....
+        wp_enqueue_script('wcb-slicklib', plugin_dir_url(WCB_FILE) . 'public/slick/slick.min.js', ['jquery'], "1.8.0", false);
     }
     add_action('wp_enqueue_scripts', 'wcb__my_scripts_method');
 }
@@ -58,16 +63,15 @@ if (!function_exists("wcb__enqueue_lineicons")) {
     }
     add_action('wp_enqueue_scripts', 'wcb__enqueue_lineicons');
     add_action('admin_enqueue_scripts', 'wcb__enqueue_lineicons');
-}
+    // 
 
-// 
-if (!function_exists("wcb__enqueue_googleapis")) {
-    // su dung trong khoi gutenberg wcbMap block
-    function wcb__enqueue_googleapis()
+    function wcb__enqueue_lineicons_for_gutenbeg_editor()
     {
-        wp_enqueue_script('googleapis', "https://maps.googleapis.com/maps/api/js?key=AIzaSyAGVJfZMAKYfZ71nzL_v5i3LjTTWnCYwTY&libraries=places&v=weekly");
+        add_editor_style(plugin_dir_url(WCB_FILE) . 'public/lineicons-free-basic/icon-font/lineicons.css');
+        // for iframe 
+        add_editor_style(plugin_dir_url(WCB_FILE) . 'public/css/lineicons2.css');
     }
-    add_action('admin_enqueue_scripts', 'wcb__enqueue_googleapis');
+    add_action('admin_init', 'wcb__enqueue_lineicons_for_gutenbeg_editor');
 }
 
 

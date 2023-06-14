@@ -35,6 +35,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		//
 		advance_responsiveCondition,
 		advance_zIndex,
+		advance_motionEffect,
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
@@ -292,6 +293,12 @@ const GlobalCss: FC<Props> = (attrs) => {
 		};
 	};
 
+	if (!uniqueId) {
+		return null;
+	}
+
+	console.log(22323, { advance_motionEffect });
+
 	return (
 		<>
 			<Global styles={getDivWrapStyles()} />
@@ -417,6 +424,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 			<Global
 				styles={getAdvanveDivWrapStyles({
 					advance_responsiveCondition,
+					advance_motionEffect,
 					advance_zIndex,
 					className: WRAP_CLASSNAME,
 					defaultDisplay: "block",

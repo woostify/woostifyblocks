@@ -9,6 +9,7 @@ import Edit from "./Edit";
 import "../style.css";
 import "../styles/index.scss";
 //-----------------------------------------
+import "animate.css";
 
 registerBlockType(metadata.name, {
 	edit: Edit,

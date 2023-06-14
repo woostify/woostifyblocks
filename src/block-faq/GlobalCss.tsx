@@ -26,6 +26,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		//
 		advance_responsiveCondition,
 		advance_zIndex,
+		advance_motionEffect,
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
@@ -80,10 +81,12 @@ const GlobalCss: FC<Props> = (attrs) => {
 		};
 	};
 
+	if (!uniqueId) {
+		return null;
+	}
+
 	return (
 		<>
-			{/* <Global styles={getDivWrapStyles()} /> */}
-
 			{/* ------- INNER -------   */}
 			<Global
 				styles={[
@@ -97,6 +100,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 						value: style_container.rowGap,
 						prefix: "rowGap",
 					}),
+					{
+						[INNER_CLASSNAME]: {
+							textAlign: general_general.textAlignment,
+						},
+					},
 				]}
 			/>
 			{general_general.layout === "grid" && (
@@ -104,9 +112,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 					styles={[
 						inner_getGridCol(),
 						{
-							[INNER_CLASSNAME]: {
-								textAlign: general_general.textAlignment,
-							},
 							[FAQ_CHILD_QUESTION]: {
 								display: "block",
 							},
@@ -225,6 +230,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 			{/* ADVANCE  */}
 			<Global
 				styles={getAdvanveDivWrapStyles({
+					advance_motionEffect,
 					advance_responsiveCondition,
 					advance_zIndex,
 					className: WRAP_CLASSNAME,

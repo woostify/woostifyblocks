@@ -5,7 +5,6 @@ import _ from "lodash";
 import { useInnerBlocksProps, useBlockProps } from "@wordpress/block-editor";
 import { BlockWCBContainerAttrs } from "./attributes";
 import "./style.scss";
-// import { getGapStyleFromGapjObj } from "./Edit";
 import VideoBackgroundByBgControl from "../components/VideoBackgroundByBgControl";
 import OverlayBackgroundByBgControl from "../components/OverlayBackgroundByBgControl";
 import SaveCommon from "../components/SaveCommon";
@@ -30,6 +29,7 @@ export default function save({
 		styles_boxShadow,
 		styles_color,
 		containerClassName,
+		advance_motionEffect,
 	} = attributes;
 
 	const { htmlTag: HtmlTag = "div" } = general_container;
@@ -50,6 +50,7 @@ export default function save({
 		styles_boxShadow,
 		styles_color,
 		containerClassName,
+		advance_motionEffect,
 	};
 
 	//

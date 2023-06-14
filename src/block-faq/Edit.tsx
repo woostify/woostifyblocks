@@ -48,6 +48,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_icon,
 		style_answer,
 		general_preset,
+		advance_motionEffect,
 	} = attributes;
 	//  COMMON HOOKS
 	const ref = useRef<HTMLDivElement>(null);
@@ -242,6 +243,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				return (
 					<>
 						<AdvancePanelCommon
+							advance_motionEffect={attributes.advance_motionEffect}
 							advance_responsiveCondition={
 								attributes.advance_responsiveCondition
 							}
@@ -285,6 +287,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			style_icon,
 			style_question,
 			uniqueId,
+			advance_motionEffect,
 		};
 	}, [
 		advance_responsiveCondition,
@@ -296,6 +299,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_icon,
 		style_question,
 		uniqueId,
+		advance_motionEffect,
 	]);
 
 	return (
@@ -312,7 +316,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				/>
 
 				{/* CSS IN JS */}
-				<GlobalCss {...WcbAttrsForSave()} />
+				{uniqueId && <GlobalCss {...WcbAttrsForSave()} />}
 
 				{/* CHILD CONTENT  */}
 				<div {...innerBlocksProps} />

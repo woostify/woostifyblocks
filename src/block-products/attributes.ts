@@ -3,6 +3,7 @@ import {
 	WcbAttrsCommonFromWp,
 } from "../block-container/attributes";
 import { MyBorderControlData } from "../components/controls/MyBorderControl/types";
+import { MyMotionEffectData } from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
 import { MyResponsiveConditionControlData } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
 import { MyZIndexControlData } from "../components/controls/MyZIndexControl/MyZIndexControl";
 import { WCB_PRODUCTS_PANEL_SORTINGANDFILTERING } from "./WcbProducstPanelSortingAndFiltering";
@@ -11,6 +12,7 @@ import { WCB_PRODUCTS_PANEL_COTENT } from "./WcbProductsPanelContent";
 import { WCB_PRODUCTS_PANEL_FEATURED_IMAGE } from "./WcbProductsPanelFeaturedImage";
 import { WCB_PRODUCTS_PANEL_PAGINATION } from "./WcbProductsPanelPagination";
 import { WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN } from "./WcbProductsPanel_StyleAddToCartBtn";
+import { WCB_PRODUCTS_PANEL_STYLE_CATEGORY } from "./WcbProductsPanel_StyleCategory";
 import { WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE } from "./WcbProductsPanel_StyleFeaturedImage";
 import { WCB_PRODUCTS_PANEL_STYLE_LAYOUT } from "./WcbProductsPanel_StyleLayout";
 import { WCB_PRODUCTS_PANEL_STYLE_PAGINATION } from "./WcbProductsPanel_StylePagination";
@@ -28,6 +30,7 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	general_addToCartBtn?: WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN;
 	general_pagination?: WCB_PRODUCTS_PANEL_PAGINATION;
 	//
+	style_category?: WCB_PRODUCTS_PANEL_STYLE_CATEGORY;
 	style_title?: WCB_PRODUCTS_PANEL_STYLE_TITLE;
 	style_featuredImage?: WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE;
 	style_layout?: WCB_PRODUCTS_PANEL_STYLE_LAYOUT;
@@ -40,6 +43,7 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	//
 	advance_responsiveCondition?: MyResponsiveConditionControlData;
 	advance_zIndex?: MyZIndexControlData;
+	advance_motionEffect?: MyMotionEffectData;
 }
 
 const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
@@ -71,6 +75,10 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	},
 	//
 	style_title: {
+		type: "object",
+		// default: WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
+	},
+	style_category: {
 		type: "object",
 		// default: WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
 	},
@@ -115,6 +123,10 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	advance_zIndex: {
 		type: "object",
 		// default: Z_INDEX_DEMO,
+	},
+	advance_motionEffect: {
+		type: "object",
+		// default: MY_MOTION_EFFECT_DEMO,
 	},
 };
 

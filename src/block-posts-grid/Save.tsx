@@ -30,6 +30,7 @@ export default function save({
 		style_readmoreLink,
 		style_taxonomy,
 		style_title,
+		advance_motionEffect,
 	} = attributes;
 	//
 	const newAttrForSave: WcbBlockPostsGridAttrs = {
@@ -52,6 +53,7 @@ export default function save({
 		style_readmoreLink,
 		style_taxonomy,
 		style_title,
+		advance_motionEffect,
 	};
 	//
 	const blockProps = useBlockProps.save({

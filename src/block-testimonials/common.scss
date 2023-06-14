@@ -33,17 +33,22 @@
 }
 
 .wcb-testimonials__item {
-	display: flex;
 	position: relative;
+	.wcb-testimonials__item-wrap-inner {
+		display: flex;
+	}
+}
+
+.wcb-testimonials__item-inner {
+	margin: 0 auto;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .wcb-testimonials__item-image {
 	display: inline-flex;
 	align-items: flex-start;
 	flex-shrink: 0;
-	img {
-		object-fit: cover;
-	}
 }
 .wcb-testimonials__item-user {
 	display: inline-flex;
