@@ -3,6 +3,10 @@ import {
 	WcbAttrsCommonFromWp,
 } from "../block-container/attributes";
 import {
+	MY_MOTION_EFFECT_DEMO,
+	MyMotionEffectData,
+} from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
+import {
 	MyResponsiveConditionControlData,
 	RESPONSIVE_CONDITON_DEMO,
 } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
@@ -65,6 +69,7 @@ export interface WcbBlockHeadingAttrs extends WcbAttrsCommonFromWp {
 
 	advance_responsiveCondition: MyResponsiveConditionControlData;
 	advance_zIndex: MyZIndexControlData;
+	advance_motionEffect: MyMotionEffectData;
 }
 
 const blokc1Attrs: AttrsGenericType<WcbBlockHeadingAttrs> = {
@@ -130,6 +135,10 @@ const blokc1Attrs: AttrsGenericType<WcbBlockHeadingAttrs> = {
 	advance_zIndex: {
 		type: "object",
 		default: Z_INDEX_DEMO,
+	},
+	advance_motionEffect: {
+		type: "object",
+		default: MY_MOTION_EFFECT_DEMO,
 	},
 };
 

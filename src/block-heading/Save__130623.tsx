@@ -28,7 +28,6 @@ export default function save({
 		styles_separator,
 		styles_subHeading,
 		styles_border,
-		advance_motionEffect,
 	} = attributes;
 	//
 
@@ -45,7 +44,6 @@ export default function save({
 		styles_separator,
 		styles_subHeading,
 		styles_border,
-		advance_motionEffect,
 	};
 	//
 

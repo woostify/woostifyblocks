@@ -45,6 +45,7 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 		general_content,
 		advance_responsiveCondition,
 		advance_zIndex,
+		advance_motionEffect,
 	} = attributes;
 
 	const {
@@ -172,6 +173,7 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 				return (
 					<>
 						<AdvancePanelCommon
+							advance_motionEffect={advance_motionEffect}
 							advance_responsiveCondition={
 								attributes.advance_responsiveCondition
 							}
@@ -202,6 +204,7 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 			styles_subHeading,
 			uniqueId,
 			styles_border,
+			advance_motionEffect,
 		};
 	}, [
 		advance_responsiveCondition,
@@ -216,6 +219,7 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 		styles_subHeading,
 		uniqueId,
 		styles_border,
+		advance_motionEffect,
 	]);
 
 	const renderSeparator = () => {
