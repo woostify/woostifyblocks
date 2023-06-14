@@ -31,12 +31,12 @@ registerBlockType(metadata.name, {
 	edit: Edit,
 	save,
 	attributes,
-	deprecated: [
-		{
-			attributes,
-			save: Save_240823,
-		},
-	],
+	// deprecated: [
+	// 	{
+	// 		attributes,
+	// 		save: Save_240823,
+	// 	},
+	// ],
 	icon: (
 		<svg
 			className="wcb-editor-block-icons fill-none "

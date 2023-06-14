@@ -4525,10 +4525,12 @@ const {
   edit: _Edit__WEBPACK_IMPORTED_MODULE_3__["default"],
   save: _Save__WEBPACK_IMPORTED_MODULE_4__["default"],
   attributes: _attributes__WEBPACK_IMPORTED_MODULE_7__["default"],
-  deprecated: [{
-    attributes: _attributes__WEBPACK_IMPORTED_MODULE_7__["default"],
-    save: _Save_240823__WEBPACK_IMPORTED_MODULE_5__["default"]
-  }],
+  // deprecated: [
+  // 	{
+  // 		attributes,
+  // 		save: Save_240823,
+  // 	},
+  // ],
   icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     className: "wcb-editor-block-icons fill-none ",
     width: 24,

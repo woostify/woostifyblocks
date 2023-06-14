@@ -32,7 +32,7 @@ registerBlockType(metadata.name, {
 	save,
 	attributes,
 	variations,
-	deprecated: deprecated,
+	// deprecated: deprecated,
 	icon: (
 		<svg
 			className="wcb-editor-block-icons fill-none "
