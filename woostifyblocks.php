@@ -20,15 +20,15 @@
 defined( 'ABSPATH' ) || exit;
 
 // Define Constants.
-define('WCB_UNIQUE_NAME', 'wcb-woostify-blocks-unique');
+define( 'WCB_UNIQUE_NAME', 'wcb-woostify-blocks-unique' );
 
-define('WCB_VERSION', '0.1.0-beta1');
+define( 'WCB_VERSION', '0.1.1-beta1' );
 
-define('WCB_FILE', __FILE__);
-define('WCB_PLUGIN_BASE', plugin_basename(WCB_FILE));
-define('WCB_PATH', plugin_dir_path(WCB_FILE));
-define('WCB_URI', plugins_url('/', WCB_FILE));
-define('WCB_BUILD_PATH', __DIR__ . '/build');
+define( 'WCB_FILE', __FILE__ );
+define( 'WCB_PLUGIN_BASE', plugin_basename( WCB_FILE ) );
+define( 'WCB_PATH', plugin_dir_path( WCB_FILE ) );
+define( 'WCB_URI', plugins_url( '/', WCB_FILE ) );
+define( 'WCB_BUILD_PATH', __DIR__ . '/build' );
 
 
 
