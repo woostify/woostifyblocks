@@ -5,9 +5,7 @@
  * Description:       WoostifyBlocks offers an extensive library of customizable blocks that seamlessly integrate with the Gutenberg editor
  * Requires at least: 5.8
  * Requires PHP:      7.3
-
-
- * Version:           0.1.0-beta1
+ * Version:           0.1.1-beta1
  * Author:            Woostify
  * Author URI:        https://woostify.com/about/
 
@@ -31,6 +29,7 @@ define('WCB_PLUGIN_BASE', plugin_basename(WCB_FILE));
 define('WCB_PATH', plugin_dir_path(WCB_FILE));
 define('WCB_URI', plugins_url('/', WCB_FILE));
 define('WCB_BUILD_PATH', __DIR__ . '/build');
+
 
 
 require plugin_dir_path( __FILE__ ) . 'includes/wcb-custom-funcs.php';
