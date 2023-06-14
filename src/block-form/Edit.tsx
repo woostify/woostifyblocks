@@ -20,7 +20,9 @@ import GlobalCss from "./GlobalCss";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
-import WcbFormPanelGeneral from "./WcbFormPanelGeneral";
+import WcbFormPanelGeneral, {
+	WCB_FORM_PANEL_GENERAL,
+} from "./WcbFormPanelGeneral";
 import { useSelect, useDispatch } from "@wordpress/data";
 import {
 	// @ts-ignore
@@ -97,30 +99,38 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		});
 	}, [UNIQUE_ID]);
 	//
-	//
-	useEffect(() => {
-		if (general_general.formStyle === "simple") {
-			setAttributes({
-				style_input: WCB_FORM_PANEL_STYLE_INPUT_DEMO__SIMPLE,
-				style_checkbox_radio_toggle:
-					WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SIMPLE,
-			});
+
+	const handleChangeFormPanelGeneral = (data: WCB_FORM_PANEL_GENERAL) => {
+		let NEW_DATA: Partial<WcbAttrs> = { general_general: data };
+
+		// when change FORM STYLE
+		if (data.formStyle !== general_general.formStyle) {
+			if (data.formStyle === "simple") {
+				NEW_DATA = {
+					general_general: data,
+					style_input: WCB_FORM_PANEL_STYLE_INPUT_DEMO__SIMPLE,
+					style_checkbox_radio_toggle:
+						WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SIMPLE,
+				};
+			} else if (data.formStyle === "solid") {
+				NEW_DATA = {
+					general_general: data,
+					style_input: WCB_FORM_PANEL_STYLE_INPUT_DEMO__SOLID,
+					style_checkbox_radio_toggle:
+						WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SOLID,
+				};
+			} else if (data.formStyle === "underline") {
+				NEW_DATA = {
+					general_general: data,
+					style_input: WCB_FORM_PANEL_STYLE_INPUT_DEMO__UNDERLINE,
+					style_checkbox_radio_toggle:
+						WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SIMPLE,
+				};
+			}
 		}
-		if (general_general.formStyle === "solid") {
-			setAttributes({
-				style_input: WCB_FORM_PANEL_STYLE_INPUT_DEMO__SOLID,
-				style_checkbox_radio_toggle:
-					WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SOLID,
-			});
-		}
-		if (general_general.formStyle === "underline") {
-			setAttributes({
-				style_input: WCB_FORM_PANEL_STYLE_INPUT_DEMO__UNDERLINE,
-				style_checkbox_radio_toggle:
-					WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SIMPLE,
-			});
-		}
-	}, [general_general.formStyle]);
+
+		setAttributes(NEW_DATA);
+	};
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
@@ -137,7 +147,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabGeneralIsPanelOpen === "General" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ general_general: data });
+								handleChangeFormPanelGeneral(data);
 							}}
 							panelData={general_general}
 						/>
