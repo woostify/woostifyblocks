@@ -5,9 +5,12 @@
  * Description:       WoostifyBlocks offers an extensive library of customizable blocks that seamlessly integrate with the Gutenberg editor
  * Requires at least: 5.8
  * Requires PHP:      7.3
+
+
  * Version:           0.1.0-beta1
  * Author:            Woostify
  * Author URI:        https://woostify.com/about/
+
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       woostifyblocks
@@ -20,7 +23,9 @@ defined( 'ABSPATH' ) || exit;
 
 // Define Constants.
 define('WCB_UNIQUE_NAME', 'wcb-woostify-blocks-unique');
+
 define('WCB_VERSION', '0.1.0-beta1');
+
 define('WCB_FILE', __FILE__);
 define('WCB_PLUGIN_BASE', plugin_basename(WCB_FILE));
 define('WCB_PATH', plugin_dir_path(WCB_FILE));
