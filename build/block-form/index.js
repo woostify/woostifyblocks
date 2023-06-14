@@ -2703,27 +2703,36 @@ const Edit = props => {
     });
   }, [UNIQUE_ID]);
   //
-  //
-  (0,react__WEBPACK_IMPORTED_MODULE_6__.useEffect)(() => {
-    if (general_general.formStyle === "simple") {
-      setAttributes({
-        style_input: _WcbFormPanel_StyleInput__WEBPACK_IMPORTED_MODULE_19__.WCB_FORM_PANEL_STYLE_INPUT_DEMO__SIMPLE,
-        style_checkbox_radio_toggle: _WcbFormPanel_StyleCheckBoxRadio__WEBPACK_IMPORTED_MODULE_20__.WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SIMPLE
-      });
+
+  const handleChangeFormPanelGeneral = data => {
+    let NEW_DATA = {
+      general_general: data
+    };
+
+    // when change FORM STYLE
+    if (data.formStyle !== general_general.formStyle) {
+      if (data.formStyle === "simple") {
+        NEW_DATA = {
+          general_general: data,
+          style_input: _WcbFormPanel_StyleInput__WEBPACK_IMPORTED_MODULE_19__.WCB_FORM_PANEL_STYLE_INPUT_DEMO__SIMPLE,
+          style_checkbox_radio_toggle: _WcbFormPanel_StyleCheckBoxRadio__WEBPACK_IMPORTED_MODULE_20__.WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SIMPLE
+        };
+      } else if (data.formStyle === "solid") {
+        NEW_DATA = {
+          general_general: data,
+          style_input: _WcbFormPanel_StyleInput__WEBPACK_IMPORTED_MODULE_19__.WCB_FORM_PANEL_STYLE_INPUT_DEMO__SOLID,
+          style_checkbox_radio_toggle: _WcbFormPanel_StyleCheckBoxRadio__WEBPACK_IMPORTED_MODULE_20__.WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SOLID
+        };
+      } else if (data.formStyle === "underline") {
+        NEW_DATA = {
+          general_general: data,
+          style_input: _WcbFormPanel_StyleInput__WEBPACK_IMPORTED_MODULE_19__.WCB_FORM_PANEL_STYLE_INPUT_DEMO__UNDERLINE,
+          style_checkbox_radio_toggle: _WcbFormPanel_StyleCheckBoxRadio__WEBPACK_IMPORTED_MODULE_20__.WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SIMPLE
+        };
+      }
     }
-    if (general_general.formStyle === "solid") {
-      setAttributes({
-        style_input: _WcbFormPanel_StyleInput__WEBPACK_IMPORTED_MODULE_19__.WCB_FORM_PANEL_STYLE_INPUT_DEMO__SOLID,
-        style_checkbox_radio_toggle: _WcbFormPanel_StyleCheckBoxRadio__WEBPACK_IMPORTED_MODULE_20__.WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SOLID
-      });
-    }
-    if (general_general.formStyle === "underline") {
-      setAttributes({
-        style_input: _WcbFormPanel_StyleInput__WEBPACK_IMPORTED_MODULE_19__.WCB_FORM_PANEL_STYLE_INPUT_DEMO__UNDERLINE,
-        style_checkbox_radio_toggle: _WcbFormPanel_StyleCheckBoxRadio__WEBPACK_IMPORTED_MODULE_20__.WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SIMPLE
-      });
-    }
-  }, [general_general.formStyle]);
+    setAttributes(NEW_DATA);
+  };
   //
 
   const renderTabBodyPanels = tab => {
@@ -2736,9 +2745,7 @@ const Edit = props => {
           //
           ,
           setAttr__: data => {
-            setAttributes({
-              general_general: data
-            });
+            handleChangeFormPanelGeneral(data);
           },
           panelData: general_general
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbFormPanelSubmitButton__WEBPACK_IMPORTED_MODULE_15__["default"], {
