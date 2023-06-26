@@ -25,6 +25,7 @@ const { withSelect } = wp.data;
 import attributes from "./attributes";
 import variations from "./variations";
 import deprecated from "./deprecated";
+import convertObjectAttrToPreview from "../utils/convertAttsToPreview";
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 
 registerBlockType(metadata.name, {
@@ -33,6 +34,23 @@ registerBlockType(metadata.name, {
 	attributes,
 	variations,
 	deprecated: deprecated,
+	example: {
+		attributes: convertObjectAttrToPreview(attributes),
+		innerBlocks: [
+			{
+				name: "wcb/input",
+				attributes: {
+					label: "Name",
+				},
+			},
+			{
+				name: "wcb/email",
+				attributes: {
+					label: "Email",
+				},
+			},
+		],
+	},
 	icon: (
 		<svg
 			className="wcb-editor-block-icons fill-none "

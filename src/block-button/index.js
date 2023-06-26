@@ -24,6 +24,7 @@ import metadata from "./block.json";
 const { Fragment } = wp.element;
 const { withSelect } = wp.data;
 import attributes from "./attributes";
+import convertObjectAttrToPreview from "../utils/convertAttsToPreview";
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 
 registerBlockType(metadata.name, {
@@ -31,6 +32,7 @@ registerBlockType(metadata.name, {
 	edit: Edit,
 	save,
 	attributes,
+	example: convertObjectAttrToPreview(attributes),
 	deprecated: [
 		{
 			attributes,

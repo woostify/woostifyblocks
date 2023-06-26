@@ -616,7 +616,12 @@ const Edit: FC<Props> = (props) => {
 	const WcbAttrsForSaveValue = WcbAttrsForSave();
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
-			<div {...wrapBlockProps}>
+			<div
+				{...wrapBlockProps}
+				className={`${
+					wrapBlockProps.className
+				} wcb-block-products-editor-swithToScrollSnapX__${style_layout?.swithToScrollSnapX.toString()}`}
+			>
 				{/* CONTROL SETTINGS */}
 				<HOCInspectorControls
 					renderTabPanels={renderTabBodyPanels}

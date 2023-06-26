@@ -5335,6 +5335,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./attributes */ "./src/block-form/attributes.ts");
 /* harmony import */ var _variations__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./variations */ "./src/block-form/variations.tsx");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./deprecated */ "./src/block-form/deprecated.tsx");
+/* harmony import */ var _utils_convertAttsToPreview__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/convertAttsToPreview */ "./src/utils/convertAttsToPreview.ts");
 
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
@@ -5367,6 +5368,7 @@ const {
 
 
 
+
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_5__.name, {
@@ -5375,6 +5377,20 @@ const {
   attributes: _attributes__WEBPACK_IMPORTED_MODULE_6__["default"],
   variations: _variations__WEBPACK_IMPORTED_MODULE_7__["default"],
   deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_8__["default"],
+  example: {
+    attributes: (0,_utils_convertAttsToPreview__WEBPACK_IMPORTED_MODULE_9__["default"])(_attributes__WEBPACK_IMPORTED_MODULE_6__["default"]),
+    innerBlocks: [{
+      name: "wcb/input",
+      attributes: {
+        label: "Name"
+      }
+    }, {
+      name: "wcb/email",
+      attributes: {
+        label: "Email"
+      }
+    }]
+  },
   icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     className: "wcb-editor-block-icons fill-none ",
     width: 24,
@@ -8742,6 +8758,29 @@ function converUniqueIdToAnphaKey(text) {
   return prefix + text.replace(/ /g, "").replace(/\d/g, "")
   // text.substring(2, 9).replace(/-/g, "").replace(/ /g, "").replace(/\d/g, "")
   ;
+}
+
+/***/ }),
+
+/***/ "./src/utils/convertAttsToPreview.ts":
+/*!*******************************************!*\
+  !*** ./src/utils/convertAttsToPreview.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ convertObjectAttrToPreview)
+/* harmony export */ });
+function convertObjectAttrToPreview(A) {
+  let B = {};
+  for (let key in A) {
+    if (A.hasOwnProperty(key)) {
+      B[key] = A[key].default;
+    }
+  }
+  return B;
 }
 
 /***/ }),

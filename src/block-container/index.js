@@ -25,6 +25,7 @@ const { withSelect } = wp.data;
 import blokc1Attrs from "./attributes";
 import variations from "./variations";
 import deprecated from "./deprecated";
+import convertObjectAttrToPreview from "../utils/convertAttsToPreview";
 //-----------------------------------------
 
 registerBlockType(metadata.name, {
@@ -32,6 +33,7 @@ registerBlockType(metadata.name, {
 	save,
 	attributes: blokc1Attrs,
 	variations: variations,
+	example: convertObjectAttrToPreview(blokc1Attrs),
 	deprecated: deprecated,
 	icon: (
 		<svg

@@ -33,6 +33,7 @@ registerBlockType(metadata.name, {
 	attributes,
 	innerBlocks: INNER_BLOCKS_TEMPLATE,
 	deprecated: deprecated,
+	example: {},
 	scope: ["inserter"],
 	icon: (
 		<svg
