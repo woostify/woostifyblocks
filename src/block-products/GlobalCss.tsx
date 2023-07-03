@@ -361,7 +361,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 					textAlign: style_layout.textAlignment,
 					backgroundColor: style_layout.backgroundColor,
 
-					".wcb-products__product-image":
+					// ".wcb-products__product-image":
+					".wcb-products__product-image-link":
 						featuredImageMarginBottom_mobile_new ||
 						featuredImageMarginBottom_tablet_new ||
 						featuredImageMarginBottom_desktop_new
@@ -482,7 +483,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 				},
 			},
 			getBorderStyles({
-				className: `${POST_CARD_CLASS} .wcb-products__product-image img`,
+				// className: `${POST_CARD_CLASS} .wcb-products__product-image`,
+				className: `${WRAP_CLASSNAME} .wcb-products__product-image-link`,
 				border: style_featuredImage.border,
 				isWithRadius: true,
 			}),

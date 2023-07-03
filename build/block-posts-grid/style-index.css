@@ -124,12 +124,4 @@
   align-items: center;
 }
 
-.wcb-products__product-add-to-cart {
-  display: inline-grid;
-  gap: 10px;
-}
-.wcb-products__product-add-to-cart .added_to_cart {
-  display: inline-block;
-}
-
 /*# sourceMappingURL=style-index.css.map*/
