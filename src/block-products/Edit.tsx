@@ -124,44 +124,49 @@ const Edit: FC<Props> = (props) => {
 	}, [UNIQUE_ID]);
 	//
 
-	useEffect(() => {
-		if (style_layout) {
-			return;
-		}
-		const DEFAULT: Omit<WcbAttrs, "uniqueId"> = {
-			style_addToCardBtn: WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO,
-			style_border: MY_BORDER_CONTROL_DEMO,
-			style_featuredImage: WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO,
-			style_layout: WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO,
-			style_pagination: WCB_PRODUCTS_PANEL_STYLE_PAGINATION_DEMO,
-			style_price: WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO,
-			style_rating: WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO,
-			style_saleBadge: WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO,
-			style_category: WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
-			style_title: WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
-			general_sortingAndFiltering: WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
-			general_content: WCB_PRODUCTS_PANEL_COTENT_DEMO,
-			general_featuredImage: WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO,
-			general_addToCartBtn: WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO,
-			general_pagination: WCB_PRODUCTS_PANEL_PAGINATION_DEMO,
-			advance_responsiveCondition: RESPONSIVE_CONDITON_DEMO,
-			advance_zIndex: Z_INDEX_DEMO,
-			advance_motionEffect: MY_MOTION_EFFECT_DEMO,
-		};
+	// useEffect(() => {
+	// 	if (style_layout) {
+	// 		return;
+	// 	}
+	// 	const DEFAULT: Omit<WcbAttrs, "uniqueId"> = {
+	// 		style_addToCardBtn: WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO,
+	// 		style_border: MY_BORDER_CONTROL_DEMO,
+	// 		style_featuredImage: WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO,
+	// 		style_layout: WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO,
+	// 		style_pagination: WCB_PRODUCTS_PANEL_STYLE_PAGINATION_DEMO,
+	// 		style_price: WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO,
+	// 		style_rating: WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO,
+	// 		style_saleBadge: WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO,
+	// 		style_category: WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
+	// 		style_title: WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
+	// 		general_sortingAndFiltering: WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
+	// 		general_content: WCB_PRODUCTS_PANEL_COTENT_DEMO,
+	// 		general_featuredImage: WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO,
+	// 		general_addToCartBtn: WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO,
+	// 		general_pagination: WCB_PRODUCTS_PANEL_PAGINATION_DEMO,
+	// 		advance_responsiveCondition: RESPONSIVE_CONDITON_DEMO,
+	// 		advance_zIndex: Z_INDEX_DEMO,
+	// 		advance_motionEffect: MY_MOTION_EFFECT_DEMO,
+	// 	};
 
-		setAttributes({ ...DEFAULT });
-	}, [style_layout]);
+	// 	setAttributes({ ...DEFAULT });
+	// }, [style_layout]);
 	//
-	useEffect(() => {
-		if (!advance_motionEffect) {
-			setAttributes({ advance_motionEffect: MY_MOTION_EFFECT_DEMO });
-		}
-	}, [advance_motionEffect]);
-	useEffect(() => {
-		if (!style_category) {
-			setAttributes({ style_category: WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO });
-		}
-	}, [style_category]);
+	// useEffect(() => {
+	// 	if (!advance_motionEffect) {
+	// 		setAttributes({ advance_motionEffect: MY_MOTION_EFFECT_DEMO });
+	// 	}
+	// }, [advance_motionEffect]);
+	// useEffect(() => {
+	// 	if (!style_category) {
+	// 		setAttributes({ style_category: WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO });
+	// 	}
+	// }, [style_category]);
+	// useEffect(() => {
+	// 	if (!style_price) {
+	// 		setAttributes({ style_price: WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO });
+	// 	}
+	// }, [style_price]);
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
@@ -632,17 +637,19 @@ const Edit: FC<Props> = (props) => {
 				<BlockControls group="block">{renderToobar()}</BlockControls>
 
 				{/* CSS IN JS */}
-				{!!uniqueId && !!style_layout && WcbAttrsForSaveValue && (
-					<GlobalCss {...WcbAttrsForSaveValue} />
-				)}
+				{!!uniqueId &&
+					!!style_layout &&
+					!!style_price &&
+					WcbAttrsForSaveValue && <GlobalCss {...WcbAttrsForSaveValue} />}
 
 				{/* CHILD CONTENT  */}
-				{uniqueId && !!style_layout && (
+				{uniqueId && !!style_layout && !!style_price && (
 					<ServerSideRender
 						block="wcb/products"
 						attributes={WcbAttrsForServerSide}
 						EmptyResponsePlaceholder={EmptyPlaceholder}
 						LoadLoadingResponsePlaceholder={LoadingPlaceholder}
+						httpMethod="POST"
 					/>
 				)}
 			</div>

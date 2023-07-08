@@ -42,6 +42,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const POST_CARD_CLASS = `${WRAP_CLASSNAME} .wcb-products__product`;
 	const ADD_TO_CART_BTN = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart a`;
 
+	console.log(23232, { WRAP_CLASSNAME });
+
 	// ------------------- WRAP DIV
 
 	const renderDivListWrapStyle = () => {

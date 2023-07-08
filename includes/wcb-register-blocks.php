@@ -63,6 +63,9 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
                         'style_featuredImage' => array(
                             'type'      => 'object',
                         ),
+                        'style_price' => array(
+                            'type'      => 'object',
+                        ),
                         'style_layout' => array(
                             'type'      => 'object',
                         ),
@@ -81,10 +84,16 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
                         'style_rating' => array(
                             'type'      => 'object',
                         ),
+                        'style_category' => array(
+                            'type'      => 'object',
+                        ),
                         'advance_responsiveCondition' => array(
                             'type'      => 'object',
                         ),
                         'advance_zIndex' => array(
+                            'type'      => 'object',
+                        ),
+                        'advance_motionEffect' => array(
                             'type'      => 'object',
                         ),
 
