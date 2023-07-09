@@ -167,6 +167,18 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
                     'style_border' => array(
                         'type'      => 'object',
                     ),
+                    'style_boxShadow' => array(
+                        'type'      => 'object',
+                    ),
+                    'advance_responsiveCondition' => array(
+                        'type'      => 'object',
+                    ),
+                    'advance_zIndex' => array(
+                        'type'      => 'object',
+                    ),
+                    'advance_motionEffect' => array(
+                        'type'      => 'object',
+                    ),
 
                 ),
                 "render_callback"     => "wcb_block_posts_grid__renderCallback",

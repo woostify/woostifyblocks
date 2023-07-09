@@ -107,7 +107,6 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	},
 
 	// THE ATTRS OF BLOCK HERE
-	// ko the request lan dau vi qua nhieu
 	general_sortingAndFiltering: {
 		type: "object",
 		default: WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
