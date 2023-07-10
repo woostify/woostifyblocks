@@ -404,15 +404,16 @@ const BlocksPage = _ref => {
     initWcbBlocksList
   } = _ref;
   const [blocksStatus, setBlocksStatus] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(initWcbBlocksEnableDisable);
-  const [blocksList, setBlocksList] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(initWcbBlocksList);
-
-  // console.log(211, {
-  // 	initWcbBlocksList,
-  // 	initWcbBlocksEnableDisable,
-  // 	blocksStatus,
-  // 	blocksList,
-  // });
-
+  // const [blocksList, setBlocksList] = useState(initWcbBlocksList);
+  const [blocksList, setBlocksList] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(function () {
+    return initWcbBlocksList;
+  }());
+  console.log(211, {
+    initWcbBlocksList,
+    initWcbBlocksEnableDisable,
+    blocksStatus,
+    blocksList
+  });
   const handleDisableEnableBlocks = obj => {
     if (typeof jQuery !== "function") {
       return;
@@ -471,9 +472,12 @@ const BlocksPage = _ref => {
       "aria-hidden": "true"
     }), "Deactive all"));
   };
-  const renderCard3 = (key, index) => {
-    const status = blocksStatus[key];
-    const currentBlock = blocksList.filter(item => item.name === key)[0];
+  const renderCard3 = (block, index) => {
+    if (block.parent) {
+      return null;
+    }
+    const status = blocksStatus[block.name];
+    const currentBlock = block;
     const {
       title = "None",
       icon = "none",
@@ -484,7 +488,7 @@ const BlocksPage = _ref => {
     if (!!parent || !currentBlock) {
       return null;
     }
-    const enabled = status === "enabled";
+    const enabled = status !== "disabled";
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
       key: name + title,
       className: "overflow-hidden rounded-xl border border-gray-200 flex flex-col"
@@ -521,11 +525,11 @@ const BlocksPage = _ref => {
       className: "flex-shrink-0"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyToggle__WEBPACK_IMPORTED_MODULE_2__["default"], {
       checked: enabled,
-      id: key,
-      name: key,
+      id: currentBlock.name,
+      name: currentBlock.name,
       onChange: checked => {
         handleDisableEnableBlocks({
-          [key]: checked ? "enabled" : "disabled"
+          [currentBlock.name]: checked ? "enabled" : "disabled"
         });
       }
     }))))));
@@ -627,7 +631,7 @@ const BlocksPage = _ref => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
       role: "list",
       className: "mt-8 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 xl:gap-x-8"
-    }, Object.keys(blocksStatus).map(renderCard3));
+    }, blocksList.map(renderCard3));
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, renderButtons(), renderGridCards());
 };

@@ -1,5 +1,15 @@
 <?php
 //============================================= block 1 ===============================================================
+function wcb_block_tabs_renderCallback($attributes, $content)
+{
+    // if (!is_admin()) {
+    //     wp_enqueue_script('wcb_block_tabs_renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-map/FrontendStyles.js', array('wp-element'), null, true);
+    // }
+    wp_enqueue_script__block_commoncss_frontend_styles();
+    return $content;
+}
+
+//============================================= block 1 ===============================================================
 function wcb_block_map_renderCallback($attributes, $content)
 {
     // if (!is_admin()) {
