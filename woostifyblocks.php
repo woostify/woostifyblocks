@@ -30,6 +30,7 @@ define('WCB_URI', plugins_url('/', WCB_FILE));
 define('WCB_BUILD_PATH', __DIR__ . '/build');
 
 
+
 require plugin_dir_path(__FILE__) . 'includes/wcb-custom-funcs.php';
 require plugin_dir_path(__FILE__) . 'includes/wcb-hooks.php';
 require plugin_dir_path(__FILE__) . 'includes/wcb-all-patterns-data.php';
@@ -40,4 +41,5 @@ require plugin_dir_path(__FILE__) . 'includes/wcb-ajax-for-dashboard-page.php';
 require plugin_dir_path(__FILE__) . 'includes/wcb-blocks-render-callback.php';
 require plugin_dir_path(__FILE__) . 'includes/wcb-register-blocks.php';
 require plugin_dir_path(__FILE__) . 'includes/wcb-menu-page.php';
+
 // end
