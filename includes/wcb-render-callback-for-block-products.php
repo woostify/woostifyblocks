@@ -93,6 +93,7 @@ function wcb_block_products__render_product($product, $attributes, $index)
     $data = (object) array(
         'permalink' => esc_url($product->get_permalink()),
         'image'     => "",
+        'gallery_image_1'     => "",
         'title'     => "",
         'rating'    => "",
         'price'     => "",
@@ -101,6 +102,12 @@ function wcb_block_products__render_product($product, $attributes, $index)
         'categories'    => "",
     );
 
+
+    if (wcb__is_enabled($attributes['general_featuredImage']['isShowFeaturedImage'] ?? "")) {
+        if (($attributes['general_featuredImage']['hoverType'] ?? "") === 'swap') {
+            $data->gallery_image_1 = wcb_block_products__get_image_gallery_image_1_html($product);
+        }
+    }
 
     if (wcb__is_enabled($attributes['general_featuredImage']['isShowFeaturedImage'] ?? "")) {
         $data->image = wcb_block_products__get_image_html($product);
@@ -142,13 +149,24 @@ function wcb_block_products__render_product($product, $attributes, $index)
     $classes .= $saleInsideImage ? " wcb-products__product--onsaleInsideImage" : "";
     $saleBadge1 = $saleInsideImage ? $data->badge : "";
     $saleBadge2 = $saleInsideImage ?   "" : $data->badge;
+    // 
+    $isSwapHover = $data->gallery_image_1 ? "<div class=\"wcb-products__product-galley_image_1\">{$data->gallery_image_1}</div>" : '';
+    // 
+    $featuredClasses = "wcb-products__product-image-link";
+    if (wcb__is_enabled($attributes['general_featuredImage']['isShowFeaturedImage'] ?? "")) {
+        if (($attributes['general_featuredImage']['hoverType'] ?? "") === 'zoom') {
+            $featuredClasses = "wcb-products__product-image-link wcb-products__product-image-link__zoom";
+        }
+    }
+
 
     return apply_filters(
         'woocommerce_blocks_product_grid_item_html',
         "<div class=\"scroll-snap-slide {$classes}\" data-index=\"{$index}\">
 				<div class=\"wcb-products__product-featured \">
-                    <a href=\"{$data->permalink}\" class=\"wcb-products__product-image-link\">
+                    <a href=\"{$data->permalink}\" class=\"{$featuredClasses}\">
                         {$data->image}
+                        {$isSwapHover}
                     </a>
                     {$saleBadge1}
                     {$btn1}
@@ -167,6 +185,17 @@ function wcb_block_products__render_product($product, $attributes, $index)
 
 
 //  
+function wcb_block_products__get_image_gallery_image_1_html($product)
+{
+
+    $attachment_ids = $product->get_gallery_image_ids();
+    if (empty($attachment_ids[0] ?? '')) {
+        return '';
+    }
+    return wp_get_attachment_image($attachment_ids[0], 'full');
+}
+
+
 function wcb_block_products__get_image_html($product)
 {
 

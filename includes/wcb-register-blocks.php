@@ -63,6 +63,9 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
                         'style_featuredImage' => array(
                             'type'      => 'object',
                         ),
+                        'style_price' => array(
+                            'type'      => 'object',
+                        ),
                         'style_layout' => array(
                             'type'      => 'object',
                         ),
@@ -81,10 +84,16 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
                         'style_rating' => array(
                             'type'      => 'object',
                         ),
+                        'style_category' => array(
+                            'type'      => 'object',
+                        ),
                         'advance_responsiveCondition' => array(
                             'type'      => 'object',
                         ),
                         'advance_zIndex' => array(
+                            'type'      => 'object',
+                        ),
+                        'advance_motionEffect' => array(
                             'type'      => 'object',
                         ),
 
@@ -156,6 +165,18 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
                         'type'      => 'object',
                     ),
                     'style_border' => array(
+                        'type'      => 'object',
+                    ),
+                    'style_boxShadow' => array(
+                        'type'      => 'object',
+                    ),
+                    'advance_responsiveCondition' => array(
+                        'type'      => 'object',
+                    ),
+                    'advance_zIndex' => array(
+                        'type'      => 'object',
+                    ),
+                    'advance_motionEffect' => array(
                         'type'      => 'object',
                     ),
 
@@ -312,6 +333,22 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
             [
                 "render_callback"     => "wcb_block_map_renderCallback",
                 "ancestor"              => (($wcb_blocks_enable_disable['wcb/map'] ?? "") !== 'disabled')  ? null : WCB_UNIQUE_NAME,
+                "view_script_handles" => []
+            ]
+        );
+
+        // tabs blocks
+        register_block_type(
+            WCB_BUILD_PATH . '/block-tabs',
+            [
+                "render_callback"     => "wcb_block_tabs_renderCallback",
+                "ancestor"              => (($wcb_blocks_enable_disable['wcb/tabs'] ?? "") !== 'disabled')  ? null : WCB_UNIQUE_NAME,
+                "view_script_handles" => []
+            ]
+        );
+        register_block_type(
+            WCB_BUILD_PATH . '/block-tab-child',
+            [
                 "view_script_handles" => []
             ]
         );

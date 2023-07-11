@@ -23,14 +23,19 @@ const BlocksPage: FC<Props> = ({
 	initWcbBlocksList,
 }) => {
 	const [blocksStatus, setBlocksStatus] = useState(initWcbBlocksEnableDisable);
-	const [blocksList, setBlocksList] = useState(initWcbBlocksList);
+	// const [blocksList, setBlocksList] = useState(initWcbBlocksList);
+	const [blocksList, setBlocksList] = useState(
+		(function () {
+			return initWcbBlocksList;
+		})()
+	);
 
-	// console.log(211, {
-	// 	initWcbBlocksList,
-	// 	initWcbBlocksEnableDisable,
-	// 	blocksStatus,
-	// 	blocksList,
-	// });
+	console.log(211, {
+		initWcbBlocksList,
+		initWcbBlocksEnableDisable,
+		blocksStatus,
+		blocksList,
+	});
 
 	const handleDisableEnableBlocks = (obj: any) => {
 		if (typeof jQuery !== "function") {
@@ -107,10 +112,13 @@ const BlocksPage: FC<Props> = ({
 		);
 	};
 
-	const renderCard3 = (key: string, index: number) => {
-		const status = blocksStatus[key];
-		const currentBlock = blocksList.filter((item) => item.name === key)[0];
+	const renderCard3 = (block: Wcb_block_Type, index: number) => {
+		if (block.parent) {
+			return null;
+		}
 
+		const status = blocksStatus[block.name];
+		const currentBlock = block;
 		const {
 			title = "None",
 			icon = "none",
@@ -123,7 +131,7 @@ const BlocksPage: FC<Props> = ({
 			return null;
 		}
 
-		const enabled = status === "enabled";
+		const enabled = status !== "disabled";
 
 		return (
 			<li
@@ -160,11 +168,11 @@ const BlocksPage: FC<Props> = ({
 							<div className="flex-shrink-0">
 								<MyToggle
 									checked={enabled}
-									id={key}
-									name={key}
+									id={currentBlock.name}
+									name={currentBlock.name}
 									onChange={(checked) => {
 										handleDisableEnableBlocks({
-											[key]: checked ? "enabled" : "disabled",
+											[currentBlock.name]: checked ? "enabled" : "disabled",
 										});
 									}}
 								/>
@@ -303,7 +311,7 @@ const BlocksPage: FC<Props> = ({
 				role="list"
 				className="mt-8 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 xl:gap-x-8"
 			>
-				{Object.keys(blocksStatus).map(renderCard3)}
+				{blocksList.map(renderCard3)}
 			</ul>
 		);
 	};

@@ -155,6 +155,9 @@ const GlobalCss = attrs => {
   const LIST_CLASS = `${WRAP_CLASSNAME} .wcb-products__list`;
   const POST_CARD_CLASS = `${WRAP_CLASSNAME} .wcb-products__product`;
   const ADD_TO_CART_BTN = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart a`;
+  console.log(23232, {
+    WRAP_CLASSNAME
+  });
 
   // ------------------- WRAP DIV
 
@@ -435,7 +438,8 @@ const GlobalCss = attrs => {
         height: !style_layout.isEqualHeight ? "max-content" : undefined,
         textAlign: style_layout.textAlignment,
         backgroundColor: style_layout.backgroundColor,
-        ".wcb-products__product-image": featuredImageMarginBottom_mobile_new || featuredImageMarginBottom_tablet_new || featuredImageMarginBottom_desktop_new ? {
+        // ".wcb-products__product-image":
+        ".wcb-products__product-image-link": featuredImageMarginBottom_mobile_new || featuredImageMarginBottom_tablet_new || featuredImageMarginBottom_desktop_new ? {
           marginBottom: featuredImageMarginBottom_mobile_new,
           [`@media (min-width: ${media_tablet})`]: featuredImageMarginBottom_tablet_new ? {
             marginBottom: featuredImageMarginBottom_tablet_new
@@ -506,7 +510,8 @@ const GlobalCss = attrs => {
         } : undefined
       }
     }, (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
-      className: `${POST_CARD_CLASS} .wcb-products__product-image img`,
+      // className: `${POST_CARD_CLASS} .wcb-products__product-image`,
+      className: `${WRAP_CLASSNAME} .wcb-products__product-image-link`,
       border: style_featuredImage.border,
       isWithRadius: true
     })];
