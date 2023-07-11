@@ -5,6 +5,9 @@ import "accordion-js/dist/accordion.min.css";
 interface Props extends WcbAttrsForSave {}
 
 // --------------------------- FORM AJAX
+
+// https://stackoverflow.com/questions/11645081/how-to-build-simple-tabs-with-jquery
+
 export function initCarouselForWcbFaq(
 	div: Element,
 	{ general_general }: Props

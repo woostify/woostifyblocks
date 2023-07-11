@@ -32,7 +32,7 @@ registerBlockType(metadata.name, {
 	save,
 	attributes,
 	example: convertObjectAttrToPreview(attributes),
-	deprecated: deprecated,
+	// deprecated: deprecated,
 	providesContext: {
 		"wcb/faq_general": "general_general",
 		"wcb/faq_icon": "general_icon",

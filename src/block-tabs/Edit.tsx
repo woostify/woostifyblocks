@@ -34,6 +34,7 @@ import WcbFaqPanelPreset from "./WcbFaqPanelPreset";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
+import WcbTabsPanelTabTitle from "./WcbTabsPanelTabTitle";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
@@ -142,6 +143,21 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							}}
 							panelData={general_preset}
 						/>
+
+						<WcbTabsPanelTabTitle
+							onToggle={() => handleTogglePanel("General", "TabTitle")}
+							initialOpen={tabGeneralIsPanelOpen === "TabTitle"}
+							opened={tabGeneralIsPanelOpen === "TabTitle" || undefined}
+							//
+							// setAttr__={(data) => {
+							// 	setAttributes({
+							// 		general_general: data,
+							// 		general_preset: { ...general_preset, preset: "" },
+							// 	});
+							// }}
+							// panelData={general_general}
+						/>
+
 						<WcbFaqPanelGeneral
 							onToggle={() => handleTogglePanel("General", "General")}
 							initialOpen={tabGeneralIsPanelOpen === "General"}

@@ -12,6 +12,9 @@ export type HtmlTagsType = React.ElementType<any>;
 export type MyTabsForColor = "Normal" | "Hover";
 export type MyTabsForActive = "Normal" | "Active";
 
+export type AlignmentH = "left" | "center" | "right";
+export type MyPosition = "left" | "right" | "top" | "bottom";
+
 export type AlignmentMatrixControlValue =
 	| "top left"
 	| "top center"
