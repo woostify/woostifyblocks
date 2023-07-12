@@ -16,30 +16,63 @@ import HOCInspectorControls, {
 import { EditProps } from "../block-container/Edit";
 import GlobalCss from "./GlobalCss";
 import "./editor.scss";
-import WcbPostsGridPanelSortingAndFiltering from "./WcbPostsGridPanelSortingAndFiltering";
+import WcbPostsGridPanelSortingAndFiltering, {
+	WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING_DEMO,
+} from "./WcbPostsGridPanelSortingAndFiltering";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
-import WcbPostGridPanelPostContent from "./WcbPostGridPanelPostContent";
-import WcbPostGridPanelPostMeta from "./WcbPostGridPanelPostMeta";
-import WcbPostGridPanelPostFeaturedImage from "./WcbPostGridPanelPostFeaturedImage";
-import WcbPostGridPanelReadMoreLink from "./WcbPostGridPanelReadMoreLink";
-import WcbPostGridPanelPagination from "./WcbPostGridPanelPagination";
-import WcbPostGridPanel_StyleLayout from "./WcbPostGridPanel_StyleLayout";
-import WcbPostGridPanel_StyleTitle from "./WcbPostGridPanel_StyleTitle";
-import WcbPostGridPanel_StyleExcerpt from "./WcbPostGridPanel_StyleExcerpt";
-import WcbPostGridPanel_StyleMeta from "./WcbPostGridPanel_StyleMeta";
-import WcbPostGridPanel_StyleReadmoreLink from "./WcbPostGridPanel_StyleReadmoreLink";
-import WcbPostGridPanel_StylePagination from "./WcbPostGridPanel_StylePagination";
-import WcbPostGridPanel_StyleFeaturedImage from "./WcbPostGridPanel_StyleFeaturedImage";
+import WcbPostGridPanelPostContent, {
+	WCB_POST_GRID_PANEL_POST_CONTENT_DEMO,
+} from "./WcbPostGridPanelPostContent";
+import WcbPostGridPanelPostMeta, {
+	WCB_POST_GRID_PANEL_POST_META_DEMO,
+} from "./WcbPostGridPanelPostMeta";
+import WcbPostGridPanelPostFeaturedImage, {
+	WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE_DEMO,
+} from "./WcbPostGridPanelPostFeaturedImage";
+import WcbPostGridPanelReadMoreLink, {
+	WCB_POST_GRID_PANEL_READMORE_LINK_DEMO,
+} from "./WcbPostGridPanelReadMoreLink";
+import WcbPostGridPanelPagination, {
+	WCB_POST_GRID_PANEL_PAGINATION_DEMO,
+} from "./WcbPostGridPanelPagination";
+import WcbPostGridPanel_StyleLayout, {
+	WCB_POST_GRID_PANEL_STYLE_LAYOUT_DEMO,
+} from "./WcbPostGridPanel_StyleLayout";
+import WcbPostGridPanel_StyleTitle, {
+	WCB_POST_GRID_PANEL_STYLE_TITLE_DEMO,
+} from "./WcbPostGridPanel_StyleTitle";
+import WcbPostGridPanel_StyleExcerpt, {
+	WCB_POST_GRID_PANEL_STYLE_EXCERPT_DEMO,
+} from "./WcbPostGridPanel_StyleExcerpt";
+import WcbPostGridPanel_StyleMeta, {
+	WCB_POST_GRID_PANEL_STYLE_META_DEMO,
+} from "./WcbPostGridPanel_StyleMeta";
+import WcbPostGridPanel_StyleReadmoreLink, {
+	WCB_POST_GRID_PANEL_STYLE_READMORE_LINK_DEMO,
+} from "./WcbPostGridPanel_StyleReadmoreLink";
+import WcbPostGridPanel_StylePagination, {
+	WCB_POST_GRID_PANEL_STYLE_PAGINATION_DEMO,
+} from "./WcbPostGridPanel_StylePagination";
+import WcbPostGridPanel_StyleFeaturedImage, {
+	WCB_POST_GRID_PANEL_STYLE_FEATURED_IMAGE_DEMO,
+} from "./WcbPostGridPanel_StyleFeaturedImage";
 import { PanelBody, Placeholder, Spinner } from "@wordpress/components";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
 import MyBoxShadowControl from "../components/controls/MyBoxShadowControl/MyBoxShadowControl";
 import { BlockControls, useBlockProps } from "@wordpress/block-editor";
-import WcbPostGridPanel_StyleTaxonomy from "./WcbPostGridPanel_StyleTaxonomy";
+import WcbPostGridPanel_StyleTaxonomy, {
+	WCB_POST_GRID_PANEL_STYLE_TAXONOMY_DEMO,
+} from "./WcbPostGridPanel_StyleTaxonomy";
 import MyCacheProvider from "../components/MyCacheProvider";
 import ServerSideRender from "@wordpress/server-side-render";
 import { Icon, file } from "@wordpress/icons";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
+import { MY_BORDER_CONTROL_DEMO } from "../components/controls/MyBorderControl/types";
+import { MY_BOX_SHADOW_CONTROL_DEMO } from "../components/controls/MyBoxShadowControl/types";
+import { RESPONSIVE_CONDITON_DEMO } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
+import { Z_INDEX_DEMO } from "../components/controls/MyZIndexControl/MyZIndexControl";
+import { MY_MOTION_EFFECT_DEMO } from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
 
 const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -84,11 +117,53 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
-		if (uniqueId) return;
+		if (uniqueId) {
+			return;
+		}
 		setAttributes({
 			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
+	//
+	//
+	useEffect(() => {
+		if (style_layout) {
+			return;
+		}
+
+		const DEFAULT: Omit<WcbBlockPostsGridAttrs, "uniqueId"> = {
+			general_sortingAndFiltering:
+				WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING_DEMO,
+			general_postContent: WCB_POST_GRID_PANEL_POST_CONTENT_DEMO,
+			general_postMeta: WCB_POST_GRID_PANEL_POST_META_DEMO,
+			general_postFeaturedImage: WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE_DEMO,
+			general_readmoreLink: WCB_POST_GRID_PANEL_READMORE_LINK_DEMO,
+			general_pagination: WCB_POST_GRID_PANEL_PAGINATION_DEMO,
+			//
+			style_layout: WCB_POST_GRID_PANEL_STYLE_LAYOUT_DEMO,
+			style_title: WCB_POST_GRID_PANEL_STYLE_TITLE_DEMO,
+			style_excerpt: WCB_POST_GRID_PANEL_STYLE_EXCERPT_DEMO,
+			style_taxonomy: WCB_POST_GRID_PANEL_STYLE_TAXONOMY_DEMO,
+			style_meta: WCB_POST_GRID_PANEL_STYLE_META_DEMO,
+			style_readmoreLink: WCB_POST_GRID_PANEL_STYLE_READMORE_LINK_DEMO,
+			style_pagination: WCB_POST_GRID_PANEL_STYLE_PAGINATION_DEMO,
+			style_featuredImage: WCB_POST_GRID_PANEL_STYLE_FEATURED_IMAGE_DEMO,
+			style_border: MY_BORDER_CONTROL_DEMO,
+			style_boxShadow: MY_BOX_SHADOW_CONTROL_DEMO,
+			//
+			advance_responsiveCondition: RESPONSIVE_CONDITON_DEMO,
+			advance_zIndex: Z_INDEX_DEMO,
+			advance_motionEffect: MY_MOTION_EFFECT_DEMO,
+		};
+
+		setAttributes({ ...DEFAULT });
+	}, [style_layout]);
+
+	useEffect(() => {
+		if (!advance_motionEffect) {
+			setAttributes({ advance_motionEffect: MY_MOTION_EFFECT_DEMO });
+		}
+	}, [advance_motionEffect]);
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {

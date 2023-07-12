@@ -41,15 +41,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const {
 		advance_responsiveCondition,
 		advance_zIndex,
+		advance_motionEffect,
 		uniqueId,
-		general_general,
-		general_icon,
+		general_tabTitle,
+		//
 		style_container,
 		style_question,
 		style_icon,
 		style_answer,
 		general_preset,
-		advance_motionEffect,
 	} = attributes;
 	//  COMMON HOOKS
 	const ref = useRef<HTMLDivElement>(null);
@@ -89,10 +89,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								if (data.preset === "carousel-simple") {
 									return setAttributes({
 										general_preset: data,
-										general_general: {
-											...general_general,
-											layout: "accordion",
-										},
 										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
 										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
 										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
@@ -102,10 +98,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								if (data.preset === "carousel-solid") {
 									return setAttributes({
 										general_preset: data,
-										general_general: {
-											...general_general,
-											layout: "accordion",
-										},
+
 										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
 										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
 										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
@@ -115,10 +108,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								if (data.preset === "grid-simple") {
 									return setAttributes({
 										general_preset: data,
-										general_general: {
-											...general_general,
-											layout: "grid",
-										},
+
 										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
 										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
 										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
@@ -127,10 +117,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								if (data.preset === "grid-solid") {
 									return setAttributes({
 										general_preset: data,
-										general_general: {
-											...general_general,
-											layout: "grid",
-										},
+
 										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
 										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
 										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
@@ -149,43 +136,14 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							initialOpen={tabGeneralIsPanelOpen === "TabTitle"}
 							opened={tabGeneralIsPanelOpen === "TabTitle" || undefined}
 							//
-							// setAttr__={(data) => {
-							// 	setAttributes({
-							// 		general_general: data,
-							// 		general_preset: { ...general_preset, preset: "" },
-							// 	});
-							// }}
-							// panelData={general_general}
-						/>
-
-						<WcbFaqPanelGeneral
-							onToggle={() => handleTogglePanel("General", "General")}
-							initialOpen={tabGeneralIsPanelOpen === "General"}
-							opened={tabGeneralIsPanelOpen === "General" || undefined}
-							//
 							setAttr__={(data) => {
 								setAttributes({
-									general_general: data,
-									general_preset: { ...general_preset, preset: "" },
+									general_tabTitle: data,
 								});
 							}}
-							panelData={general_general}
+							panelData={general_tabTitle}
+							// tabTitles={}
 						/>
-						{general_general.layout === "accordion" && (
-							<WcbFaqPanelIcon
-								onToggle={() => handleTogglePanel("General", "Icon")}
-								initialOpen={tabGeneralIsPanelOpen === "Icon"}
-								opened={tabGeneralIsPanelOpen === "Icon" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({
-										general_icon: data,
-										general_preset: { ...general_preset, preset: "" },
-									});
-								}}
-								panelData={general_icon}
-							/>
-						)}
 					</>
 				);
 			case "Styles":
@@ -224,21 +182,19 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							panelData={style_question}
 						/>
 
-						{general_general.layout === "accordion" && (
-							<WcbFaqPanel_StyleIcon
-								onToggle={() => handleTogglePanel("Styles", "_StyleIcon")}
-								initialOpen={tabStylesIsPanelOpen === "_StyleIcon"}
-								opened={tabStylesIsPanelOpen === "_StyleIcon" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({
-										style_icon: data,
-										general_preset: { ...general_preset, preset: "" },
-									});
-								}}
-								panelData={style_icon}
-							/>
-						)}
+						<WcbFaqPanel_StyleIcon
+							onToggle={() => handleTogglePanel("Styles", "_StyleIcon")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleIcon"}
+							opened={tabStylesIsPanelOpen === "_StyleIcon" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({
+									style_icon: data,
+									general_preset: { ...general_preset, preset: "" },
+								});
+							}}
+							panelData={style_icon}
+						/>
 
 						<WcbFaqPanel_StyleAnswer
 							onToggle={() => handleTogglePanel("Styles", "_StyleAnswer")}
@@ -297,20 +253,19 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		return {
 			advance_responsiveCondition,
 			advance_zIndex,
-			general_general,
-			general_icon,
+			uniqueId,
+			advance_motionEffect,
+			general_tabTitle,
+			//
 			style_answer,
 			style_container,
 			style_icon,
 			style_question,
-			uniqueId,
-			advance_motionEffect,
 		};
 	}, [
 		advance_responsiveCondition,
 		advance_zIndex,
-		general_general,
-		general_icon,
+		general_tabTitle,
 		style_answer,
 		style_container,
 		style_icon,

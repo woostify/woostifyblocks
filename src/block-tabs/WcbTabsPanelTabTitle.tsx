@@ -1,7 +1,10 @@
 import { PanelBody, ToggleControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC } from "react";
-import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
+import MyRadioGroup, {
+	ALIGNMENT_PLANS_DEMO,
+	MyRadioItem,
+} from "../components/controls/MyRadioGroup";
 import { AlignmentH, MyPosition, Option } from "../types";
 import SelecIcon, {
 	DEFAULT_MY_ICON,
@@ -62,14 +65,6 @@ const WcbTabsPanelTabTitle: FC<Props> = ({
 		{ value: "tab3", label: "Tab3" },
 	];
 
-	const PLANS_ALIGNMENT_DEMO: MyRadioItem<
-		WCB_TABS_PANEL_TAB_TITLE["tabAlignment"]
-	>[] = [
-		{ icon: "Left", name: "left" },
-		{ icon: "Center", name: "center" },
-		{ icon: "Right", name: "right" },
-	];
-
 	const PLANS_ICON_POS_DEMO: MyRadioItem<
 		WCB_TABS_PANEL_TAB_TITLE["iconPosition"]
 	>[] = [
@@ -109,7 +104,7 @@ const WcbTabsPanelTabTitle: FC<Props> = ({
 						});
 					}}
 					value={tabAlignment}
-					plans={PLANS_ALIGNMENT_DEMO}
+					plans={ALIGNMENT_PLANS_DEMO}
 				/>
 				<MyRadioGroup
 					hasResponsive={false}
@@ -121,12 +116,11 @@ const WcbTabsPanelTabTitle: FC<Props> = ({
 						});
 					}}
 					value={textAlignment}
-					plans={PLANS_ALIGNMENT_DEMO}
+					plans={ALIGNMENT_PLANS_DEMO}
 				/>
 
 				<ToggleControl
 					label="Enable Icon"
-					help={"Enable Icon"}
 					checked={enableIcon}
 					onChange={(checked) => {
 						setAttr__({ ...panelData, enableIcon: checked });
@@ -135,6 +129,16 @@ const WcbTabsPanelTabTitle: FC<Props> = ({
 
 				{enableIcon ? (
 					<>
+						<SelecIcon
+							iconData={icon}
+							onChange={(value) => {
+								setAttr__({
+									...panelData,
+									icon: value,
+								});
+							}}
+						/>
+
 						<MyRadioGroup
 							hasResponsive={false}
 							label={__("Icon Position", "wcb")}
@@ -146,16 +150,6 @@ const WcbTabsPanelTabTitle: FC<Props> = ({
 							}}
 							value={iconPosition}
 							plans={PLANS_ICON_POS_DEMO}
-						/>
-
-						<SelecIcon
-							iconData={icon}
-							onChange={(value) => {
-								setAttr__({
-									...panelData,
-									icon: value,
-								});
-							}}
 						/>
 					</>
 				) : null}

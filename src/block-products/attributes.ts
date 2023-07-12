@@ -109,78 +109,78 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	// THE ATTRS OF BLOCK HERE
 	general_sortingAndFiltering: {
 		type: "object",
-		default: WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
+		// default: WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
 	},
 	general_content: {
 		type: "object",
-		default: WCB_PRODUCTS_PANEL_COTENT_DEMO,
+		// default: WCB_PRODUCTS_PANEL_COTENT_DEMO,
 	},
 	general_featuredImage: {
 		type: "object",
-		default: WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO,
+		// default: WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO,
 	},
 	general_addToCartBtn: {
 		type: "object",
-		default: WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO,
+		// default: WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO,
 	},
 	general_pagination: {
 		type: "object",
-		default: WCB_PRODUCTS_PANEL_PAGINATION_DEMO,
+		// default: WCB_PRODUCTS_PANEL_PAGINATION_DEMO,
 	},
 	//
 	style_title: {
 		type: "object",
-		default: WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
+		// default: WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
 	},
 	style_category: {
 		type: "object",
-		default: WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
+		// default: WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
 	},
 	style_featuredImage: {
 		type: "object",
-		default: WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO,
+		// default: WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO,
 	},
 	style_layout: {
 		type: "object",
-		default: WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO,
+		// default: WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO,
 	},
 	style_addToCardBtn: {
 		type: "object",
-		default: WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO,
+		// default: WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO,
 	},
 	style_pagination: {
 		type: "object",
-		default: WCB_PRODUCTS_PANEL_STYLE_PAGINATION_DEMO,
+		// default: WCB_PRODUCTS_PANEL_STYLE_PAGINATION_DEMO,
 	},
 	style_saleBadge: {
 		type: "object",
-		default: WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO,
+		// default: WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO,
 	},
 	style_border: {
 		type: "object",
-		default: MY_BORDER_CONTROL_DEMO,
+		// default: MY_BORDER_CONTROL_DEMO,
 	},
 	style_price: {
 		type: "object",
-		default: WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO,
+		// default: WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO,
 	},
 	style_rating: {
 		type: "object",
-		default: WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO,
+		// default: WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO,
 	},
 
 	// ADVANCE
 	advance_responsiveCondition: {
 		type: "object",
-		default: RESPONSIVE_CONDITON_DEMO,
+		// default: RESPONSIVE_CONDITON_DEMO,
 	},
 	advance_zIndex: {
 		type: "object",
-		default: Z_INDEX_DEMO,
+		// default: Z_INDEX_DEMO,
 	},
 	advance_motionEffect: {
 		type: "object",
-		default: MY_MOTION_EFFECT_DEMO,
+		// default: MY_MOTION_EFFECT_DEMO,
 	},
 };
 

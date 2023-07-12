@@ -39,11 +39,15 @@ import {
 	WCB_FAQ_PANEL_STYLE_QUESTION,
 	WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
 } from "./WcbFaqPanel_StyleQuestion";
+import {
+	WCB_TABS_PANEL_TAB_TITLE,
+	WCB_TABS_PANEL_TAB_TITLE_DEMO,
+} from "./WcbTabsPanelTabTitle";
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
+	general_tabTitle: WCB_TABS_PANEL_TAB_TITLE;
+	//
 	general_preset: WCB_FAQ_PANEL_PRESET;
-	general_general: WCB_FAQ_PANEL_GENERAL;
-	general_icon: WCB_FAQ_PANEL_ICON;
 	style_container: WCB_FAQ_PANEL_STYLE_CONTAINER;
 	style_question: WCB_FAQ_PANEL_STYLE_QUESTION;
 	style_icon: WCB_FAQ_PANEL_STYLE_ICON;
@@ -59,20 +63,17 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		type: "string",
 		default: "",
 	},
+	general_tabTitle: {
+		type: "object",
+		default: WCB_TABS_PANEL_TAB_TITLE_DEMO,
+	},
 
 	// THE ATTRS OF BLOCK HERE
 	general_preset: {
 		type: "object",
 		default: WCB_FAQ_PANEL_PRESET_DEMO,
 	},
-	general_general: {
-		type: "object",
-		default: WCB_FAQ_PANEL_GENERAL_DEMO,
-	},
-	general_icon: {
-		type: "object",
-		default: WCB_FAQ_PANEL_ICON_DEMO,
-	},
+
 	style_container: {
 		type: "object",
 		default: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,

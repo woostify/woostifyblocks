@@ -17,8 +17,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const {
 		uniqueId,
 		// ATTRS OF BLOCK
-		general_general,
-		general_icon,
 		style_answer,
 		style_container,
 		style_question,
@@ -64,23 +62,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 		};
 	};
 
-	const inner_getGridCol = (): CSSObject => {
-		const { value_Desktop, value_Tablet, value_Mobile } =
-			getValueFromAttrsResponsives(general_general.columns);
-
-		return {
-			[`${INNER_CLASSNAME}`]: {
-				gridTemplateColumns: `repeat(${value_Mobile}, minmax(0, 1fr))`,
-				[`@media (min-width: ${media_tablet})`]: {
-					gridTemplateColumns: `repeat(${value_Tablet}, minmax(0, 1fr))`,
-				},
-				[`@media (min-width: ${media_desktop})`]: {
-					gridTemplateColumns: `repeat(${value_Desktop}, minmax(0, 1fr))`,
-				},
-			},
-		};
-	};
-
 	if (!uniqueId) {
 		return null;
 	}
@@ -100,25 +81,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 						value: style_container.rowGap,
 						prefix: "rowGap",
 					}),
-					{
-						[INNER_CLASSNAME]: {
-							textAlign: general_general.textAlignment,
-						},
-					},
 				]}
 			/>
-			{general_general.layout === "grid" && (
-				<Global
-					styles={[
-						inner_getGridCol(),
-						{
-							[FAQ_CHILD_QUESTION]: {
-								display: "block",
-							},
-						},
-					]}
-				/>
-			)}
 
 			{/* ------- FAQ CHILD -------  */}
 			<Global
@@ -137,15 +101,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 						className: FAQ_CHILD_SEPARATOR,
 						isWithRadius: true,
 					}),
-					{
-						[FAQ_CHILD_WRAP]: {
-							height:
-								general_general.layout === "grid" &&
-								!style_container.equalHeight
-									? "fit-content"
-									: undefined,
-						},
-					},
 				]}
 			/>
 
