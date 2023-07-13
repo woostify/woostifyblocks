@@ -43,8 +43,11 @@ import {
 	WCB_TABS_PANEL_TAB_TITLE,
 	WCB_TABS_PANEL_TAB_TITLE_DEMO,
 } from "./WcbTabsPanelTabTitle";
+import { BlockTabTitleItem } from "./types";
+
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
+	titles: BlockTabTitleItem[];
 	general_tabTitle: WCB_TABS_PANEL_TAB_TITLE;
 	//
 	general_preset: WCB_FAQ_PANEL_PRESET;
@@ -62,6 +65,13 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	uniqueId: {
 		type: "string",
 		default: "",
+	},
+	titles: {
+		type: "array",
+		default: [
+			{ id: "1", title: "Title 1" },
+			{ id: "2", title: "Title 2" },
+		],
 	},
 	general_tabTitle: {
 		type: "object",

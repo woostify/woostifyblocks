@@ -1,0 +1,1 @@
+{"version":3,"file":"block-tabs/style-index.css","mappings":";;;AACC;;IAAA;;IAAA;AAAA;;AAIA;;IAAA;AAAA,C","sources":["webpack://woostifyblocks/./src/block-tabs/style.scss"],"sourcesContent":[".wcb-tabs__titles {\r\n\t@apply flex gap-2;\r\n}\r\n\r\n.wcb-tab-child__inner {\r\n\t@apply p-3;\r\n}\r\n"],"names":[],"sourceRoot":""}

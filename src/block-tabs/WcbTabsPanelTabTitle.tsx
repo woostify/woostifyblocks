@@ -11,6 +11,7 @@ import SelecIcon, {
 	MyIcon,
 } from "../components/controls/SelectIcon/SelecIcon";
 import MySelect from "../components/controls/MySelect";
+import { BlockTabTitleItem } from "./types";
 
 export interface WCB_TABS_PANEL_TAB_TITLE {
 	enableIcon: boolean;
@@ -38,7 +39,7 @@ interface Props
 	panelData: WCB_TABS_PANEL_TAB_TITLE;
 	setAttr__: (data: WCB_TABS_PANEL_TAB_TITLE) => void;
 	//
-	tabTitles: [{ id: string; title: string }];
+	tabTitles: BlockTabTitleItem[];
 }
 
 const WcbTabsPanelTabTitle: FC<Props> = ({

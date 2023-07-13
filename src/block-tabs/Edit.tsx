@@ -1,9 +1,11 @@
 import { __ } from "@wordpress/i18n";
 import {
 	InnerBlocks,
+	RichText,
 	useBlockProps,
 	// @ts-ignore
 	useInnerBlocksProps,
+	store as blockEditorStore,
 } from "@wordpress/block-editor";
 import React, { useEffect, FC, useRef, useCallback } from "react";
 import { WcbAttrs } from "./attributes";
@@ -17,6 +19,7 @@ import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import WcbFaqPanelGeneral from "./WcbFaqPanelGeneral";
 import WcbFaqPanelIcon from "./WcbFaqPanelIcon";
+import { useSelect, useDispatch } from "@wordpress/data";
 import WcbFaqPanel_StyleContainer, {
 	WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
 	WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
@@ -35,6 +38,9 @@ import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 import WcbTabsPanelTabTitle from "./WcbTabsPanelTabTitle";
+import { Button } from "@wordpress/components";
+import { createBlock } from "@wordpress/blocks";
+import { BlockTabTitleItem } from "./types";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
@@ -44,6 +50,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		advance_motionEffect,
 		uniqueId,
 		general_tabTitle,
+		titles,
 		//
 		style_container,
 		style_question,
@@ -70,6 +77,36 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
+
+	//
+	// HOOKS
+	const { childInnerBlocks } = useSelect(
+		(select) => {
+			return {
+				// @ts-ignore
+				childInnerBlocks: select(blockEditorStore).getBlocks(clientId),
+			};
+		},
+		[clientId]
+	);
+	const { insertBlock, removeBlock } = useDispatch(blockEditorStore);
+
+	// thuc hien dieu nay khi khoi tao block lan dau
+	useEffect(() => {
+		if (!childInnerBlocks || !childInnerBlocks?.length) {
+			return;
+		}
+		if (titles?.[0]?.id !== "1") {
+			return;
+		}
+		// chi thuc hien dieu nay khi khoi tao block lan dau
+		const newTitles: BlockTabTitleItem[] = childInnerBlocks.map(
+			(block, index) => {
+				return { id: block.clientId, title: titles?.[index]?.title || "Title" };
+			}
+		);
+		setAttributes({ titles: newTitles });
+	}, []);
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
@@ -142,7 +179,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								});
 							}}
 							panelData={general_tabTitle}
-							// tabTitles={}
+							tabTitles={titles}
 						/>
 					</>
 				);
@@ -233,21 +270,21 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	};
 
 	// INNER BLOCK
-	const blockProps = useBlockProps({
-		className: `wcb-tabs__inner`,
-	});
+	// const blockProps = useBlockProps({
+	// 	className: `wcb-tabs__inner`,
+	// });
 
-	const innerBlocksProps = useInnerBlocksProps(blockProps, {
-		allowedBlocks: ["wcb/tab-child"],
-		template: [
-			["wcb/tab-child", {}],
-			["wcb/tab-child", {}],
-			["wcb/tab-child", {}],
-		],
-		renderAppender: () => {
-			return isSelected ? <InnerBlocks.DefaultBlockAppender /> : false;
-		},
-	});
+	// const innerBlocksProps = useInnerBlocksProps(blockProps, {
+	// 	allowedBlocks: ["wcb/tab-child"],
+	// 	template: [
+	// 		["wcb/tab-child", {}],
+	// 		["wcb/tab-child", {}],
+	// 		["wcb/tab-child", {}],
+	// 	],
+	// 	renderAppender: () => {
+	// 		return isSelected ? <InnerBlocks.DefaultBlockAppender /> : false;
+	// 	},
+	// });
 
 	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {
 		return {
@@ -256,6 +293,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			uniqueId,
 			advance_motionEffect,
 			general_tabTitle,
+			titles,
 			//
 			style_answer,
 			style_container,
@@ -272,6 +310,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_question,
 		uniqueId,
 		advance_motionEffect,
+		titles,
 	]);
 
 	return (
@@ -291,7 +330,64 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				{uniqueId && <GlobalCss {...WcbAttrsForSave()} />}
 
 				{/* CHILD CONTENT  */}
-				<div {...innerBlocksProps} />
+				<div className="wcb-tabs__titles">
+					{titles.map((item, _) => {
+						return (
+							<div>
+								{item.id}
+								<RichText
+									key={item.id}
+									tagName="p"
+									className="wcb-tabs__title"
+									value={item.title}
+									onChange={(value) => {
+										const newTitles = titles.map((j) =>
+											j.id !== item.id ? j : { id: j.id, title: value }
+										);
+										setAttributes({ titles: newTitles });
+									}}
+									placeholder="Title"
+								/>
+								<Button
+									onClick={() => {
+										const newTitles = titles.filter((j) => j.id !== item.id);
+										removeBlock(item.id);
+										setAttributes({ titles: newTitles });
+									}}
+								>
+									Remove
+								</Button>
+							</div>
+						);
+					})}
+
+					<Button
+						onClick={() => {
+							const newChild = createBlock("wcb/tab-child");
+							insertBlock(newChild, undefined, clientId);
+							if (newChild?.clientId) {
+								setAttributes({
+									titles: [
+										...titles,
+										{ id: newChild.clientId, title: "Title" },
+									],
+								});
+							}
+						}}
+					>
+						Add new
+					</Button>
+				</div>
+
+				<InnerBlocks
+					allowedBlocks={["wcb/tab-child"]}
+					template={[
+						["wcb/tab-child", {}],
+						["wcb/tab-child", {}],
+						["wcb/tab-child", {}],
+					]}
+				/>
+				{/* <div {...innerBlocksProps} /> */}
 			</div>
 		</MyCacheProvider>
 	);
