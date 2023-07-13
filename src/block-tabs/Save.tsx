@@ -1,10 +1,6 @@
 import React from "react";
 import { __ } from "@wordpress/i18n";
-import {
-	// @ts-ignore
-	useInnerBlocksProps,
-	useBlockProps,
-} from "@wordpress/block-editor";
+import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
 import { WcbAttrs } from "./attributes";
 import SaveCommon from "../components/SaveCommon";
 import "./style.scss";
@@ -17,8 +13,9 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		uniqueId,
 		advance_responsiveCondition,
 		advance_zIndex,
-		general_general,
-		general_icon,
+		general_preset,
+		general_tabTitle,
+		titles,
 		style_answer,
 		style_container,
 		style_question,
@@ -28,11 +25,12 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 	//
 	const newAttrForSave: WcbAttrsForSave = {
+		general_preset,
+		general_tabTitle,
+		titles,
 		uniqueId,
 		advance_responsiveCondition,
 		advance_zIndex,
-		general_general,
-		general_icon,
 		style_answer,
 		style_container,
 		style_question,
@@ -43,10 +41,10 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	//
 	const wrapBlockProps = useBlockProps.save({ className: "wcb-tabs__wrap" });
 	// INNER BLOCKS
-	const innerBlockProps = useBlockProps.save();
-	const innerBlocksProps = useInnerBlocksProps.save(innerBlockProps);
-	//
-	const innerClassName = `wcb-tabs__inner`;
+	// const innerBlockProps = useBlockProps.save();
+	// const innerBlocksProps = useInnerBlocksProps.save(innerBlockProps);
+	// //
+	// const innerClassName = `wcb-tabs__inner`;
 	//
 	return (
 		<SaveCommon
@@ -54,7 +52,8 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			attributes={newAttrForSave}
 			uniqueId={uniqueId}
 		>
-			<div children={innerBlocksProps.children} className={innerClassName} />
+			<InnerBlocks.Content />
+			{/* <div children={innerBlocksProps.children} className={innerClassName} /> */}
 		</SaveCommon>
 	);
 }

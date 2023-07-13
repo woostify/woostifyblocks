@@ -1,9 +1,11 @@
 import { __ } from "@wordpress/i18n";
 import {
 	InnerBlocks,
+	RichText,
 	useBlockProps,
 	// @ts-ignore
 	useInnerBlocksProps,
+	store as blockEditorStore,
 } from "@wordpress/block-editor";
 import React, { useEffect, FC, useRef, useCallback } from "react";
 import { WcbAttrs } from "./attributes";
@@ -17,6 +19,7 @@ import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import WcbFaqPanelGeneral from "./WcbFaqPanelGeneral";
 import WcbFaqPanelIcon from "./WcbFaqPanelIcon";
+import { useSelect, useDispatch } from "@wordpress/data";
 import WcbFaqPanel_StyleContainer, {
 	WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
 	WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
@@ -35,21 +38,25 @@ import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 import WcbTabsPanelTabTitle from "./WcbTabsPanelTabTitle";
+import { Button } from "@wordpress/components";
+import { createBlock } from "@wordpress/blocks";
+import { BlockTabTitleItem } from "./types";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
 	const {
 		advance_responsiveCondition,
 		advance_zIndex,
+		advance_motionEffect,
 		uniqueId,
-		general_general,
-		general_icon,
+		general_tabTitle,
+		titles,
+		//
 		style_container,
 		style_question,
 		style_icon,
 		style_answer,
 		general_preset,
-		advance_motionEffect,
 	} = attributes;
 	//  COMMON HOOKS
 	const ref = useRef<HTMLDivElement>(null);
@@ -70,6 +77,36 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
+
+	//
+	// HOOKS
+	const { childInnerBlocks } = useSelect(
+		(select) => {
+			return {
+				// @ts-ignore
+				childInnerBlocks: select(blockEditorStore).getBlocks(clientId),
+			};
+		},
+		[clientId]
+	);
+	const { insertBlock, removeBlock } = useDispatch(blockEditorStore);
+
+	// thuc hien dieu nay khi khoi tao block lan dau
+	useEffect(() => {
+		if (!childInnerBlocks || !childInnerBlocks?.length) {
+			return;
+		}
+		if (titles?.[0]?.id !== "1") {
+			return;
+		}
+		// chi thuc hien dieu nay khi khoi tao block lan dau
+		const newTitles: BlockTabTitleItem[] = childInnerBlocks.map(
+			(block, index) => {
+				return { id: block.clientId, title: titles?.[index]?.title || "Title" };
+			}
+		);
+		setAttributes({ titles: newTitles });
+	}, []);
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
@@ -89,10 +126,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								if (data.preset === "carousel-simple") {
 									return setAttributes({
 										general_preset: data,
-										general_general: {
-											...general_general,
-											layout: "accordion",
-										},
 										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
 										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
 										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
@@ -102,10 +135,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								if (data.preset === "carousel-solid") {
 									return setAttributes({
 										general_preset: data,
-										general_general: {
-											...general_general,
-											layout: "accordion",
-										},
+
 										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
 										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
 										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
@@ -115,10 +145,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								if (data.preset === "grid-simple") {
 									return setAttributes({
 										general_preset: data,
-										general_general: {
-											...general_general,
-											layout: "grid",
-										},
+
 										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
 										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
 										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
@@ -127,10 +154,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								if (data.preset === "grid-solid") {
 									return setAttributes({
 										general_preset: data,
-										general_general: {
-											...general_general,
-											layout: "grid",
-										},
+
 										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
 										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
 										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
@@ -149,43 +173,14 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							initialOpen={tabGeneralIsPanelOpen === "TabTitle"}
 							opened={tabGeneralIsPanelOpen === "TabTitle" || undefined}
 							//
-							// setAttr__={(data) => {
-							// 	setAttributes({
-							// 		general_general: data,
-							// 		general_preset: { ...general_preset, preset: "" },
-							// 	});
-							// }}
-							// panelData={general_general}
-						/>
-
-						<WcbFaqPanelGeneral
-							onToggle={() => handleTogglePanel("General", "General")}
-							initialOpen={tabGeneralIsPanelOpen === "General"}
-							opened={tabGeneralIsPanelOpen === "General" || undefined}
-							//
 							setAttr__={(data) => {
 								setAttributes({
-									general_general: data,
-									general_preset: { ...general_preset, preset: "" },
+									general_tabTitle: data,
 								});
 							}}
-							panelData={general_general}
+							panelData={general_tabTitle}
+							tabTitles={titles}
 						/>
-						{general_general.layout === "accordion" && (
-							<WcbFaqPanelIcon
-								onToggle={() => handleTogglePanel("General", "Icon")}
-								initialOpen={tabGeneralIsPanelOpen === "Icon"}
-								opened={tabGeneralIsPanelOpen === "Icon" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({
-										general_icon: data,
-										general_preset: { ...general_preset, preset: "" },
-									});
-								}}
-								panelData={general_icon}
-							/>
-						)}
 					</>
 				);
 			case "Styles":
@@ -224,21 +219,19 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							panelData={style_question}
 						/>
 
-						{general_general.layout === "accordion" && (
-							<WcbFaqPanel_StyleIcon
-								onToggle={() => handleTogglePanel("Styles", "_StyleIcon")}
-								initialOpen={tabStylesIsPanelOpen === "_StyleIcon"}
-								opened={tabStylesIsPanelOpen === "_StyleIcon" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({
-										style_icon: data,
-										general_preset: { ...general_preset, preset: "" },
-									});
-								}}
-								panelData={style_icon}
-							/>
-						)}
+						<WcbFaqPanel_StyleIcon
+							onToggle={() => handleTogglePanel("Styles", "_StyleIcon")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleIcon"}
+							opened={tabStylesIsPanelOpen === "_StyleIcon" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({
+									style_icon: data,
+									general_preset: { ...general_preset, preset: "" },
+								});
+							}}
+							panelData={style_icon}
+						/>
 
 						<WcbFaqPanel_StyleAnswer
 							onToggle={() => handleTogglePanel("Styles", "_StyleAnswer")}
@@ -277,46 +270,47 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	};
 
 	// INNER BLOCK
-	const blockProps = useBlockProps({
-		className: `wcb-tabs__inner`,
-	});
+	// const blockProps = useBlockProps({
+	// 	className: `wcb-tabs__inner`,
+	// });
 
-	const innerBlocksProps = useInnerBlocksProps(blockProps, {
-		allowedBlocks: ["wcb/tab-child"],
-		template: [
-			["wcb/tab-child", {}],
-			["wcb/tab-child", {}],
-			["wcb/tab-child", {}],
-		],
-		renderAppender: () => {
-			return isSelected ? <InnerBlocks.DefaultBlockAppender /> : false;
-		},
-	});
+	// const innerBlocksProps = useInnerBlocksProps(blockProps, {
+	// 	allowedBlocks: ["wcb/tab-child"],
+	// 	template: [
+	// 		["wcb/tab-child", {}],
+	// 		["wcb/tab-child", {}],
+	// 		["wcb/tab-child", {}],
+	// 	],
+	// 	renderAppender: () => {
+	// 		return isSelected ? <InnerBlocks.DefaultBlockAppender /> : false;
+	// 	},
+	// });
 
 	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {
 		return {
 			advance_responsiveCondition,
 			advance_zIndex,
-			general_general,
-			general_icon,
+			uniqueId,
+			advance_motionEffect,
+			general_tabTitle,
+			titles,
+			//
 			style_answer,
 			style_container,
 			style_icon,
 			style_question,
-			uniqueId,
-			advance_motionEffect,
 		};
 	}, [
 		advance_responsiveCondition,
 		advance_zIndex,
-		general_general,
-		general_icon,
+		general_tabTitle,
 		style_answer,
 		style_container,
 		style_icon,
 		style_question,
 		uniqueId,
 		advance_motionEffect,
+		titles,
 	]);
 
 	return (
@@ -336,7 +330,64 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				{uniqueId && <GlobalCss {...WcbAttrsForSave()} />}
 
 				{/* CHILD CONTENT  */}
-				<div {...innerBlocksProps} />
+				<div className="wcb-tabs__titles">
+					{titles.map((item, _) => {
+						return (
+							<div>
+								{item.id}
+								<RichText
+									key={item.id}
+									tagName="p"
+									className="wcb-tabs__title"
+									value={item.title}
+									onChange={(value) => {
+										const newTitles = titles.map((j) =>
+											j.id !== item.id ? j : { id: j.id, title: value }
+										);
+										setAttributes({ titles: newTitles });
+									}}
+									placeholder="Title"
+								/>
+								<Button
+									onClick={() => {
+										const newTitles = titles.filter((j) => j.id !== item.id);
+										removeBlock(item.id);
+										setAttributes({ titles: newTitles });
+									}}
+								>
+									Remove
+								</Button>
+							</div>
+						);
+					})}
+
+					<Button
+						onClick={() => {
+							const newChild = createBlock("wcb/tab-child");
+							insertBlock(newChild, undefined, clientId);
+							if (newChild?.clientId) {
+								setAttributes({
+									titles: [
+										...titles,
+										{ id: newChild.clientId, title: "Title" },
+									],
+								});
+							}
+						}}
+					>
+						Add new
+					</Button>
+				</div>
+
+				<InnerBlocks
+					allowedBlocks={["wcb/tab-child"]}
+					template={[
+						["wcb/tab-child", {}],
+						["wcb/tab-child", {}],
+						["wcb/tab-child", {}],
+					]}
+				/>
+				{/* <div {...innerBlocksProps} /> */}
 			</div>
 		</MyCacheProvider>
 	);

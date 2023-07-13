@@ -17,6 +17,7 @@ export const WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO: WCB_PRODUCTS_PANEL_FEATURED
 		featuredImageSize: "large",
 		featuredImagePosition: "top",
 		linkCompleteBox: false,
+		hoverType: "none",
 	};
 
 interface Props

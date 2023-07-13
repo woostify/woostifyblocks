@@ -2718,7 +2718,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/settings.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/settings.js");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/HOCInspectorControls */ "./src/components/HOCInspectorControls.tsx");
@@ -2747,9 +2747,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../components/MyCacheProvider */ "./src/components/MyCacheProvider.tsx");
 /* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @wordpress/server-side-render */ "@wordpress/server-side-render");
 /* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_27___default = /*#__PURE__*/__webpack_require__.n(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_27__);
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/icon/index.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/file.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/icon/index.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/file.js");
 /* harmony import */ var _utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../utils/converUniqueIdToAnphaKey */ "./src/utils/converUniqueIdToAnphaKey.ts");
+/* harmony import */ var _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../components/controls/MyBorderControl/types */ "./src/components/controls/MyBorderControl/types.ts");
+/* harmony import */ var _components_controls_MyBoxShadowControl_types__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../components/controls/MyBoxShadowControl/types */ "./src/components/controls/MyBoxShadowControl/types.ts");
+/* harmony import */ var _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl */ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx");
+/* harmony import */ var _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ../components/controls/MyZIndexControl/MyZIndexControl */ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx");
+/* harmony import */ var _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ../components/controls/MyMotionEffectControl/MyMotionEffectControl */ "./src/components/controls/MyMotionEffectControl/MyMotionEffectControl.tsx");
+
+
+
+
+
 
 
 
@@ -2829,11 +2839,53 @@ const Edit = props => {
   // make uniqueid
   const UNIQUE_ID = wrapBlockProps.id;
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
-    if (uniqueId) return;
+    if (uniqueId) {
+      return;
+    }
     setAttributes({
       uniqueId: (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_28__["default"])(UNIQUE_ID)
     });
   }, [UNIQUE_ID]);
+  //
+  //
+  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
+    if (style_layout) {
+      return;
+    }
+    const DEFAULT = {
+      general_sortingAndFiltering: _WcbPostsGridPanelSortingAndFiltering__WEBPACK_IMPORTED_MODULE_7__.WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING_DEMO,
+      general_postContent: _WcbPostGridPanelPostContent__WEBPACK_IMPORTED_MODULE_10__.WCB_POST_GRID_PANEL_POST_CONTENT_DEMO,
+      general_postMeta: _WcbPostGridPanelPostMeta__WEBPACK_IMPORTED_MODULE_11__.WCB_POST_GRID_PANEL_POST_META_DEMO,
+      general_postFeaturedImage: _WcbPostGridPanelPostFeaturedImage__WEBPACK_IMPORTED_MODULE_12__.WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE_DEMO,
+      general_readmoreLink: _WcbPostGridPanelReadMoreLink__WEBPACK_IMPORTED_MODULE_13__.WCB_POST_GRID_PANEL_READMORE_LINK_DEMO,
+      general_pagination: _WcbPostGridPanelPagination__WEBPACK_IMPORTED_MODULE_14__.WCB_POST_GRID_PANEL_PAGINATION_DEMO,
+      //
+      style_layout: _WcbPostGridPanel_StyleLayout__WEBPACK_IMPORTED_MODULE_15__.WCB_POST_GRID_PANEL_STYLE_LAYOUT_DEMO,
+      style_title: _WcbPostGridPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_16__.WCB_POST_GRID_PANEL_STYLE_TITLE_DEMO,
+      style_excerpt: _WcbPostGridPanel_StyleExcerpt__WEBPACK_IMPORTED_MODULE_17__.WCB_POST_GRID_PANEL_STYLE_EXCERPT_DEMO,
+      style_taxonomy: _WcbPostGridPanel_StyleTaxonomy__WEBPACK_IMPORTED_MODULE_25__.WCB_POST_GRID_PANEL_STYLE_TAXONOMY_DEMO,
+      style_meta: _WcbPostGridPanel_StyleMeta__WEBPACK_IMPORTED_MODULE_18__.WCB_POST_GRID_PANEL_STYLE_META_DEMO,
+      style_readmoreLink: _WcbPostGridPanel_StyleReadmoreLink__WEBPACK_IMPORTED_MODULE_19__.WCB_POST_GRID_PANEL_STYLE_READMORE_LINK_DEMO,
+      style_pagination: _WcbPostGridPanel_StylePagination__WEBPACK_IMPORTED_MODULE_20__.WCB_POST_GRID_PANEL_STYLE_PAGINATION_DEMO,
+      style_featuredImage: _WcbPostGridPanel_StyleFeaturedImage__WEBPACK_IMPORTED_MODULE_21__.WCB_POST_GRID_PANEL_STYLE_FEATURED_IMAGE_DEMO,
+      style_border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_29__.MY_BORDER_CONTROL_DEMO,
+      style_boxShadow: _components_controls_MyBoxShadowControl_types__WEBPACK_IMPORTED_MODULE_30__.MY_BOX_SHADOW_CONTROL_DEMO,
+      //
+      advance_responsiveCondition: _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_31__.RESPONSIVE_CONDITON_DEMO,
+      advance_zIndex: _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_32__.Z_INDEX_DEMO,
+      advance_motionEffect: _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_33__.MY_MOTION_EFFECT_DEMO
+    };
+    setAttributes({
+      ...DEFAULT
+    });
+  }, [style_layout]);
+  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
+    if (!advance_motionEffect) {
+      setAttributes({
+        advance_motionEffect: _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_33__.MY_MOTION_EFFECT_DEMO
+      });
+    }
+  }, [advance_motionEffect]);
   //
 
   const renderTabBodyPanels = tab => {
@@ -3045,7 +3097,7 @@ const Edit = props => {
           onToggle
         } = _ref;
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarButton, {
-          icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_29__["default"],
+          icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_34__["default"],
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Display settings"),
           onClick: onToggle
         });
@@ -3198,8 +3250,8 @@ const Edit = props => {
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
 const EmptyPlaceholder = () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Placeholder, {
-  icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_icons__WEBPACK_IMPORTED_MODULE_30__["default"], {
-    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_31__["default"]
+  icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_icons__WEBPACK_IMPORTED_MODULE_35__["default"], {
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_36__["default"]
   }),
   label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Woostify block Products", "wcb"),
   className: "wc-block-products-grid wc-block-products-category"
@@ -5626,44 +5678,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/controls/MyBorderControl/types */ "./src/components/controls/MyBorderControl/types.ts");
-/* harmony import */ var _components_controls_MyBoxShadowControl_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/controls/MyBoxShadowControl/types */ "./src/components/controls/MyBoxShadowControl/types.ts");
-/* harmony import */ var _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/controls/MyMotionEffectControl/MyMotionEffectControl */ "./src/components/controls/MyMotionEffectControl/MyMotionEffectControl.tsx");
-/* harmony import */ var _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl */ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx");
-/* harmony import */ var _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyZIndexControl/MyZIndexControl */ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx");
-/* harmony import */ var _WcbPostGridPanelPagination__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WcbPostGridPanelPagination */ "./src/block-posts-grid/WcbPostGridPanelPagination.tsx");
-/* harmony import */ var _WcbPostGridPanelPostContent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./WcbPostGridPanelPostContent */ "./src/block-posts-grid/WcbPostGridPanelPostContent.tsx");
-/* harmony import */ var _WcbPostGridPanelPostFeaturedImage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./WcbPostGridPanelPostFeaturedImage */ "./src/block-posts-grid/WcbPostGridPanelPostFeaturedImage.tsx");
-/* harmony import */ var _WcbPostGridPanelPostMeta__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WcbPostGridPanelPostMeta */ "./src/block-posts-grid/WcbPostGridPanelPostMeta.tsx");
-/* harmony import */ var _WcbPostGridPanelReadMoreLink__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./WcbPostGridPanelReadMoreLink */ "./src/block-posts-grid/WcbPostGridPanelReadMoreLink.tsx");
-/* harmony import */ var _WcbPostGridPanel_StyleExcerpt__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./WcbPostGridPanel_StyleExcerpt */ "./src/block-posts-grid/WcbPostGridPanel_StyleExcerpt.tsx");
-/* harmony import */ var _WcbPostGridPanel_StyleFeaturedImage__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./WcbPostGridPanel_StyleFeaturedImage */ "./src/block-posts-grid/WcbPostGridPanel_StyleFeaturedImage.tsx");
-/* harmony import */ var _WcbPostGridPanel_StyleLayout__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./WcbPostGridPanel_StyleLayout */ "./src/block-posts-grid/WcbPostGridPanel_StyleLayout.tsx");
-/* harmony import */ var _WcbPostGridPanel_StyleMeta__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./WcbPostGridPanel_StyleMeta */ "./src/block-posts-grid/WcbPostGridPanel_StyleMeta.tsx");
-/* harmony import */ var _WcbPostGridPanel_StylePagination__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./WcbPostGridPanel_StylePagination */ "./src/block-posts-grid/WcbPostGridPanel_StylePagination.tsx");
-/* harmony import */ var _WcbPostGridPanel_StyleReadmoreLink__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./WcbPostGridPanel_StyleReadmoreLink */ "./src/block-posts-grid/WcbPostGridPanel_StyleReadmoreLink.tsx");
-/* harmony import */ var _WcbPostGridPanel_StyleTaxonomy__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./WcbPostGridPanel_StyleTaxonomy */ "./src/block-posts-grid/WcbPostGridPanel_StyleTaxonomy.tsx");
-/* harmony import */ var _WcbPostGridPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./WcbPostGridPanel_StyleTitle */ "./src/block-posts-grid/WcbPostGridPanel_StyleTitle.tsx");
-/* harmony import */ var _WcbPostsGridPanelSortingAndFiltering__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./WcbPostsGridPanelSortingAndFiltering */ "./src/block-posts-grid/WcbPostsGridPanelSortingAndFiltering.tsx");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const blokc1Attrs = {
   uniqueId: {
     type: "string",
@@ -5671,84 +5685,103 @@ const blokc1Attrs = {
   },
   // THE ATTRS OF BLOCK HERE
   general_sortingAndFiltering: {
-    type: "object",
-    default: _WcbPostsGridPanelSortingAndFiltering__WEBPACK_IMPORTED_MODULE_18__.WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING_DEMO
+    type: "object"
+    // default: WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING_DEMO,
   },
+
   general_postContent: {
-    type: "object",
-    default: _WcbPostGridPanelPostContent__WEBPACK_IMPORTED_MODULE_6__.WCB_POST_GRID_PANEL_POST_CONTENT_DEMO
+    type: "object"
+    // default: WCB_POST_GRID_PANEL_POST_CONTENT_DEMO,
   },
+
   general_postMeta: {
-    type: "object",
-    default: _WcbPostGridPanelPostMeta__WEBPACK_IMPORTED_MODULE_8__.WCB_POST_GRID_PANEL_POST_META_DEMO
+    type: "object"
+    // default: WCB_POST_GRID_PANEL_POST_META_DEMO,
   },
+
   general_postFeaturedImage: {
-    type: "object",
-    default: _WcbPostGridPanelPostFeaturedImage__WEBPACK_IMPORTED_MODULE_7__.WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE_DEMO
+    type: "object"
+    // default: WCB_POST_GRID_PANEL_POST_FEATURED_IMAGE_DEMO,
   },
+
   general_readmoreLink: {
-    type: "object",
-    default: _WcbPostGridPanelReadMoreLink__WEBPACK_IMPORTED_MODULE_9__.WCB_POST_GRID_PANEL_READMORE_LINK_DEMO
+    type: "object"
+    // default: WCB_POST_GRID_PANEL_READMORE_LINK_DEMO,
   },
+
   general_pagination: {
-    type: "object",
-    default: _WcbPostGridPanelPagination__WEBPACK_IMPORTED_MODULE_5__.WCB_POST_GRID_PANEL_PAGINATION_DEMO
+    type: "object"
+    // default: WCB_POST_GRID_PANEL_PAGINATION_DEMO,
   },
+
   // STYLES
   style_layout: {
-    type: "object",
-    default: _WcbPostGridPanel_StyleLayout__WEBPACK_IMPORTED_MODULE_12__.WCB_POST_GRID_PANEL_STYLE_LAYOUT_DEMO
+    type: "object"
+    // default: WCB_POST_GRID_PANEL_STYLE_LAYOUT_DEMO,
   },
+
   style_title: {
-    type: "object",
-    default: _WcbPostGridPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_17__.WCB_POST_GRID_PANEL_STYLE_TITLE_DEMO
+    type: "object"
+    // default: WCB_POST_GRID_PANEL_STYLE_TITLE_DEMO,
   },
+
   style_excerpt: {
-    type: "object",
-    default: _WcbPostGridPanel_StyleExcerpt__WEBPACK_IMPORTED_MODULE_10__.WCB_POST_GRID_PANEL_STYLE_EXCERPT_DEMO
+    type: "object"
+    // default: WCB_POST_GRID_PANEL_STYLE_EXCERPT_DEMO,
   },
+
   style_taxonomy: {
-    type: "object",
-    default: _WcbPostGridPanel_StyleTaxonomy__WEBPACK_IMPORTED_MODULE_16__.WCB_POST_GRID_PANEL_STYLE_TAXONOMY_DEMO
+    type: "object"
+    // default: WCB_POST_GRID_PANEL_STYLE_TAXONOMY_DEMO,
   },
+
   style_meta: {
-    type: "object",
-    default: _WcbPostGridPanel_StyleMeta__WEBPACK_IMPORTED_MODULE_13__.WCB_POST_GRID_PANEL_STYLE_META_DEMO
+    type: "object"
+    // default: WCB_POST_GRID_PANEL_STYLE_META_DEMO,
   },
+
   style_readmoreLink: {
-    type: "object",
-    default: _WcbPostGridPanel_StyleReadmoreLink__WEBPACK_IMPORTED_MODULE_15__.WCB_POST_GRID_PANEL_STYLE_READMORE_LINK_DEMO
+    type: "object"
+    // default: WCB_POST_GRID_PANEL_STYLE_READMORE_LINK_DEMO,
   },
+
   style_pagination: {
-    type: "object",
-    default: _WcbPostGridPanel_StylePagination__WEBPACK_IMPORTED_MODULE_14__.WCB_POST_GRID_PANEL_STYLE_PAGINATION_DEMO
+    type: "object"
+    // default: WCB_POST_GRID_PANEL_STYLE_PAGINATION_DEMO,
   },
+
   style_featuredImage: {
-    type: "object",
-    default: _WcbPostGridPanel_StyleFeaturedImage__WEBPACK_IMPORTED_MODULE_11__.WCB_POST_GRID_PANEL_STYLE_FEATURED_IMAGE_DEMO
+    type: "object"
+    // default: WCB_POST_GRID_PANEL_STYLE_FEATURED_IMAGE_DEMO,
   },
+
   style_border: {
-    type: "object",
-    default: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_0__.MY_BORDER_CONTROL_DEMO
+    type: "object"
+    // default: MY_BORDER_CONTROL_DEMO,
   },
+
   style_boxShadow: {
-    type: "object",
-    default: _components_controls_MyBoxShadowControl_types__WEBPACK_IMPORTED_MODULE_1__.MY_BOX_SHADOW_CONTROL_DEMO
+    type: "object"
+    // default: MY_BOX_SHADOW_CONTROL_DEMO,
   },
+
   // ADVANCE
   advance_responsiveCondition: {
-    type: "object",
-    default: _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_3__.RESPONSIVE_CONDITON_DEMO
+    type: "object"
+    // default: RESPONSIVE_CONDITON_DEMO,
   },
+
   advance_zIndex: {
-    type: "object",
-    default: _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_4__.Z_INDEX_DEMO
+    type: "object"
+    // default: Z_INDEX_DEMO,
   },
+
   advance_motionEffect: {
-    type: "object",
-    default: _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_2__.MY_MOTION_EFFECT_DEMO
+    type: "object"
+    // default: MY_MOTION_EFFECT_DEMO,
   }
 };
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (blokc1Attrs);
 
 /***/ }),
@@ -8489,6 +8522,7 @@ const USERS_LIST_QUERY = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ALIGNMENT_PLANS_DEMO": () => (/* binding */ ALIGNMENT_PLANS_DEMO),
 /* harmony export */   "PLANS_DEMO": () => (/* binding */ PLANS_DEMO),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -8509,6 +8543,34 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const PLANS_DEMO = [{
+  name: "left",
+  icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path d="M3 4.5H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M3 9.5H12.47" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M3 14.5H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M3 19.5H12.47" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		</svg>
+		`
+}, {
+  name: "center",
+  icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path d="M3 4.5H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M7.26001 9.5H16.74" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M3 14.5H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M7.26001 19.5H16.74" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		</svg>
+		`
+}, {
+  name: "right",
+  icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path d="M3 4.5H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M11.53 9.5H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M3 14.5H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M11.53 19.5H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		</svg>
+		`
+}];
+const ALIGNMENT_PLANS_DEMO = [{
   name: "left",
   icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 		<path d="M3 4.5H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
