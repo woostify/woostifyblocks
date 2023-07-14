@@ -3066,7 +3066,7 @@ const Edit = props => {
   const renderAddnewButton = () => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
       type: "button",
-      className: "relative flex flex-shrink-0 items-center justify-center rounded-lg px-3 py-3 bg-sky-100/80 hover:bg-sky-100 text-sky-900 text-sm font-medium",
+      className: "relative flex flex-shrink-0 items-center justify-center rounded-lg px-3 bg-sky-100/80 hover:bg-sky-100 text-sky-900 text-sm font-medium",
       onClick: () => {
         const newChild = (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_19__.createBlock)("wcb/tab-child");
         insertBlock(newChild, undefined, clientId);
@@ -3087,7 +3087,7 @@ const Edit = props => {
   };
   const renderRemoveBtn = (item, index) => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
-      className: "flex-shrink-0 inline-flex items-center justify-center rounded-md h-8 w-8 bg-red-50 hover:bg-red-100 text-red-600",
+      className: "absolute bottom-full left-1/2 -translate-x-1/2 hidden group-hover:flex flex-shrink-0 items-center justify-center rounded-md h-8 w-8 bg-red-50 hover:bg-red-100 text-red-600",
       title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Remove", "wcb"),
       onClick: () => {
         const newTitles = titles.filter(j => j.id !== item.id);
@@ -3109,14 +3109,14 @@ const Edit = props => {
     renderTabPanels: renderTabBodyPanels,
     uniqueId: uniqueId
   }), uniqueId && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_6__["default"], WcbAttrsForSave()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-tabs__titles flex flex-wrap gap-2"
+    className: "wcb-tabs__titles flex flex-wrap gap-3"
   }, titles.map((item, index) => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-      className: "inline-flex flex-col items-center justify-center gap-2"
+      className: "gap-2 relative group"
     }, renderRemoveBtn(item, index), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, {
       key: item.id,
       tagName: "p",
-      className: "wcb-tabs__title !my-0",
+      className: "wcb-tabs__title !my-0 p-2",
       value: item.title,
       onFocusCapture: () => setIndexFocused(index),
       onChange: value => {
