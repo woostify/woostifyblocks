@@ -7,7 +7,7 @@ import {
 	useInnerBlocksProps,
 	store as blockEditorStore,
 } from "@wordpress/block-editor";
-import React, { useEffect, FC, useRef, useCallback } from "react";
+import React, { useEffect, FC, useRef, useCallback, useState } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
@@ -41,6 +41,8 @@ import WcbTabsPanelTabTitle from "./WcbTabsPanelTabTitle";
 import { Button } from "@wordpress/components";
 import { createBlock } from "@wordpress/blocks";
 import { BlockTabTitleItem } from "./types";
+import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import MyButton from "../components/controls/MyButton";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
@@ -70,6 +72,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
+	const [indexFocused, setIndexFocused] = useState(0);
+
 	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
@@ -78,8 +82,30 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		});
 	}, [UNIQUE_ID]);
 
+	useEffect(() => {
+		const childs = document.querySelectorAll(
+			`#block-${clientId} .wcb-tab-child__wrap`
+		);
+		console.log(7777, {
+			childs,
+			a: `#block-${clientId} .wcb-tab-child__wrap`,
+		});
+		if (!childs || !childs.length) {
+			return;
+		}
+
+		Array.from(childs).map((item, index) => {
+			if (index !== indexFocused) {
+				item.setAttribute("hidden", "");
+			} else {
+				item.removeAttribute("hidden");
+			}
+		});
+	}, [indexFocused]);
+
 	//
 	// HOOKS
+
 	const { childInnerBlocks } = useSelect(
 		(select) => {
 			return {
@@ -91,24 +117,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	);
 	const { insertBlock, removeBlock } = useDispatch(blockEditorStore);
 
-	// thuc hien dieu nay khi khoi tao block lan dau
-	useEffect(() => {
-		if (!childInnerBlocks || !childInnerBlocks?.length) {
-			return;
-		}
-		if (titles?.[0]?.id !== "1") {
-			return;
-		}
-		// chi thuc hien dieu nay khi khoi tao block lan dau
-		const newTitles: BlockTabTitleItem[] = childInnerBlocks.map(
-			(block, index) => {
-				return { id: block.clientId, title: titles?.[index]?.title || "Title" };
-			}
-		);
-		setAttributes({ titles: newTitles });
-	}, []);
 	//
-
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
 		switch (tab.name) {
 			case "General":
@@ -269,23 +278,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		}
 	};
 
-	// INNER BLOCK
-	// const blockProps = useBlockProps({
-	// 	className: `wcb-tabs__inner`,
-	// });
-
-	// const innerBlocksProps = useInnerBlocksProps(blockProps, {
-	// 	allowedBlocks: ["wcb/tab-child"],
-	// 	template: [
-	// 		["wcb/tab-child", {}],
-	// 		["wcb/tab-child", {}],
-	// 		["wcb/tab-child", {}],
-	// 	],
-	// 	renderAppender: () => {
-	// 		return isSelected ? <InnerBlocks.DefaultBlockAppender /> : false;
-	// 	},
-	// });
-
 	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {
 		return {
 			advance_responsiveCondition,
@@ -313,6 +305,46 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		titles,
 	]);
 
+	const renderAddnewButton = () => {
+		return (
+			<button
+				type="button"
+				className="relative flex flex-shrink-0 items-center justify-center rounded-lg px-3 py-3 bg-sky-100/80 hover:bg-sky-100 text-sky-900 text-sm font-medium"
+				onClick={() => {
+					const newChild = createBlock("wcb/tab-child");
+					insertBlock(newChild, undefined, clientId);
+					if (newChild?.clientId) {
+						setAttributes({
+							titles: [
+								...titles,
+								{ id: Date.now().toString(), title: "Title" },
+							],
+						});
+					}
+				}}
+			>
+				<PlusIcon className="w-5 h-5" />
+				<span className="ml-2.5">{__("Add tab", "wcb")}</span>
+			</button>
+		);
+	};
+
+	const renderRemoveBtn = (item: BlockTabTitleItem, index: number) => {
+		return (
+			<button
+				className="flex-shrink-0 inline-flex items-center justify-center rounded-md h-8 w-8 bg-red-50 hover:bg-red-100 text-red-600"
+				title={__("Remove", "wcb")}
+				onClick={() => {
+					const newTitles = titles.filter((j) => j.id !== item.id);
+					removeBlock(childInnerBlocks?.[index]?.clientId);
+					setAttributes({ titles: newTitles });
+				}}
+			>
+				<XMarkIcon className="w-5 h-5" />
+			</button>
+		);
+	};
+
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
@@ -330,16 +362,17 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				{uniqueId && <GlobalCss {...WcbAttrsForSave()} />}
 
 				{/* CHILD CONTENT  */}
-				<div className="wcb-tabs__titles">
-					{titles.map((item, _) => {
+				<div className="wcb-tabs__titles flex flex-wrap gap-2">
+					{titles.map((item, index) => {
 						return (
-							<div>
-								{item.id}
+							<div className="inline-flex flex-col items-center justify-center gap-2">
+								{renderRemoveBtn(item, index)}
 								<RichText
 									key={item.id}
 									tagName="p"
-									className="wcb-tabs__title"
+									className="wcb-tabs__title !my-0"
 									value={item.title}
+									onFocusCapture={() => setIndexFocused(index)}
 									onChange={(value) => {
 										const newTitles = titles.map((j) =>
 											j.id !== item.id ? j : { id: j.id, title: value }
@@ -348,35 +381,11 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 									}}
 									placeholder="Title"
 								/>
-								<Button
-									onClick={() => {
-										const newTitles = titles.filter((j) => j.id !== item.id);
-										removeBlock(item.id);
-										setAttributes({ titles: newTitles });
-									}}
-								>
-									Remove
-								</Button>
 							</div>
 						);
 					})}
 
-					<Button
-						onClick={() => {
-							const newChild = createBlock("wcb/tab-child");
-							insertBlock(newChild, undefined, clientId);
-							if (newChild?.clientId) {
-								setAttributes({
-									titles: [
-										...titles,
-										{ id: newChild.clientId, title: "Title" },
-									],
-								});
-							}
-						}}
-					>
-						Add new
-					</Button>
+					{renderAddnewButton()}
 				</div>
 
 				<InnerBlocks
@@ -387,7 +396,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 						["wcb/tab-child", {}],
 					]}
 				/>
-				{/* <div {...innerBlocksProps} /> */}
 			</div>
 		</MyCacheProvider>
 	);
