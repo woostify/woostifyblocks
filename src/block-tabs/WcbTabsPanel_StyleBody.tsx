@@ -33,7 +33,6 @@ export interface WCB_TABS_PANEL_STYLE_BODY {
 	backgroundColor: string;
 	colorHover: string;
 	backgroundColorHover: string;
-
 	border: MyBorderControlData;
 }
 

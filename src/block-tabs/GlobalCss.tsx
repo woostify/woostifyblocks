@@ -1,7 +1,6 @@
 import { Global, CSSObject } from "@emotion/react";
 import React, { FC } from "react";
 import { getAdvanveDivWrapStyles } from "../block-container/getAdvanveStyles";
-import getBackgroundColorGradientStyles from "../utils/getBackgroundColorGradientStyles";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import getBorderStyles from "../utils/getBorderStyles";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
@@ -33,6 +32,9 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const TITLE_WRAP_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__titles`;
 	const TITLE_CHILD_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__title_inner`;
 	const TITLE_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__title`;
+
+	const BODY_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tab-child__wrap`;
+	const ICON_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__icon`;
 
 	//
 
@@ -97,11 +99,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 						isWithRadius: true,
 					}),
 
-					// getStyleObjectFromResponsiveAttr({
-					// 	className: TITLE_CLASSNAME,
-					// 	value: style_icon.colGap,
-					// 	prefix: "gap",
-					// }),
+					getStyleObjectFromResponsiveAttr({
+						className: TITLE_CHILD_CLASSNAME,
+						value: style_icon.colGap,
+						prefix: "gap",
+					}),
 					{
 						[TITLE_CHILD_CLASSNAME]: {
 							color: style_title.color,
@@ -119,28 +121,53 @@ const GlobalCss: FC<Props> = (attrs) => {
 				]}
 			/>
 
+			{/* ------- BODY -------   */}
+			<Global
+				styles={[
+					getTypographyStyles({
+						className: BODY_CLASSNAME,
+						typography: style_body.typography,
+					}),
+					getPaddingMarginStyles({
+						className: BODY_CLASSNAME,
+						padding: style_body.padding,
+						margin: style_body.margin,
+					}),
+					getBorderStyles({
+						className: BODY_CLASSNAME,
+						border: style_body.border,
+						isWithRadius: true,
+					}),
+					{
+						[BODY_CLASSNAME]: {
+							color: style_body.color,
+							backgroundColor: style_body.backgroundColor,
+							":hover, :focus, :active": {
+								color: style_body.colorHover,
+								backgroundColor: style_body.backgroundColorHover,
+							},
+						},
+					},
+				]}
+			/>
+
 			{/* ------ ICON ---------  */}
-			{/* <Global
+			<Global
 				styles={[
 					getStyleObjectFromResponsiveAttr({
-						className: `${FAQ_CHILD_ICON}, ${FAQ_CHILD_ICON}:before, ${FAQ_CHILD_ICON} svg`,
+						className: `${ICON_CLASSNAME}, ${ICON_CLASSNAME}:before, ${ICON_CLASSNAME} svg`,
 						value: IconSizeConverted,
 						prefix: "fontSize",
 						prefix_2: "height",
 						prefix_3: "width",
 					}),
 					{
-						[FAQ_CHILD_ICON]: {
+						[ICON_CLASSNAME]: {
 							color: style_icon.color,
-						},
-						[`${WRAP_CLASSNAME} .wcb-faq-child__wrap.active`]: {
-							".wcb-faq-child__icon": {
-								color: style_icon.activeColor,
-							},
 						},
 					},
 				]}
-			/> */}
+			/>
 
 			{/* ADVANCE  */}
 			<Global

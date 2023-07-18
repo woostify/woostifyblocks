@@ -36,6 +36,7 @@ import { createBlock } from "@wordpress/blocks";
 import { BlockTabTitleItem } from "./types";
 import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import WcbTabsPanel_StyleBody from "./WcbTabsPanel_StyleBody";
+import MyIconFull from "../components/controls/MyIconFull";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
@@ -309,6 +310,19 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		);
 	};
 
+	const renderIcon = () => {
+		if (!general_tabTitle.enableIcon) {
+			return null;
+		}
+		return (
+			<>
+				{general_tabTitle.icon && (
+					<MyIconFull className="wcb-tabs__icon" icon={general_tabTitle.icon} />
+				)}
+			</>
+		);
+	};
+
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
@@ -331,6 +345,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 						return (
 							<div className="wcb-tabs__title_inner relative group">
 								{renderRemoveBtn(item, index)}
+								{(general_tabTitle.iconPosition === "left" ||
+									general_tabTitle.iconPosition === "top") &&
+									renderIcon()}
 								<RichText
 									key={item.id}
 									tagName="p"
@@ -345,6 +362,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 									}}
 									placeholder="Title"
 								/>
+								{(general_tabTitle.iconPosition === "right" ||
+									general_tabTitle.iconPosition === "bottom") &&
+									renderIcon()}
 							</div>
 						);
 					})}
