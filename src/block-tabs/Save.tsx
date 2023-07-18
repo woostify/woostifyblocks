@@ -5,8 +5,7 @@ import { WcbAttrs } from "./attributes";
 import SaveCommon from "../components/SaveCommon";
 import "./style.scss";
 
-export interface WcbAttrsForSave
-	extends Omit<WcbAttrs, "heading" | "general_preset"> {}
+export interface WcbAttrsForSave extends Omit<WcbAttrs, "general_preset"> {}
 
 export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const {
@@ -16,9 +15,6 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		general_preset,
 		general_tabTitle,
 		titles,
-		style_answer,
-		style_container,
-		style_question,
 		style_icon,
 		advance_motionEffect,
 	} = attributes;
@@ -31,9 +27,6 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		uniqueId,
 		advance_responsiveCondition,
 		advance_zIndex,
-		style_answer,
-		style_container,
-		style_question,
 		style_icon,
 		advance_motionEffect,
 	};

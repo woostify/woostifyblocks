@@ -17,32 +17,25 @@ import GlobalCss from "./GlobalCss";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
-import WcbFaqPanelGeneral from "./WcbFaqPanelGeneral";
-import WcbFaqPanelIcon from "./WcbFaqPanelIcon";
+
 import { useSelect, useDispatch } from "@wordpress/data";
-import WcbFaqPanel_StyleContainer, {
-	WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
-	WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
-} from "./WcbFaqPanel_StyleContainer";
-import WcbFaqPanel_StyleQuestion, {
-	WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
-} from "./WcbFaqPanel_StyleQuestion";
-import WcbFaqPanel_StyleAnswer, {
-	WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
-} from "./WcbFaqPanel_StyleAnswer";
-import WcbFaqPanel_StyleIcon, {
-	WCB_FAQ_PANEL_STYLE_ICON_DEMO,
-} from "./WcbFaqPanel_StyleIcon";
+
+import WcbTabsPanel_StyleTitle, {
+	WCB_TABS_PANEL_STYLE_TITLE_DEMO,
+} from "./WcbTabsPanel_StyleTitle";
+
+import WcbTabsPanel_StyleIcon, {
+	WCB_TABS_PANEL_STYLE_ICON,
+} from "./WcbTabsPanel_StyleIcon";
 import WcbFaqPanelPreset from "./WcbFaqPanelPreset";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 import WcbTabsPanelTabTitle from "./WcbTabsPanelTabTitle";
-import { Button } from "@wordpress/components";
 import { createBlock } from "@wordpress/blocks";
 import { BlockTabTitleItem } from "./types";
 import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import MyButton from "../components/controls/MyButton";
+import WcbTabsPanel_StyleBody from "./WcbTabsPanel_StyleBody";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
@@ -53,11 +46,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		uniqueId,
 		general_tabTitle,
 		titles,
+		style_title,
+		style_body,
 		//
-		style_container,
-		style_question,
 		style_icon,
-		style_answer,
 		general_preset,
 	} = attributes;
 	//  COMMON HOOKS
@@ -73,6 +65,17 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	} = useSetBlockPanelInfo(uniqueId);
 
 	const [indexFocused, setIndexFocused] = useState(0);
+	// HOOKS
+	const { childInnerBlocks } = useSelect(
+		(select) => {
+			return {
+				// @ts-ignore
+				childInnerBlocks: select(blockEditorStore).getBlocks(clientId),
+			};
+		},
+		[clientId]
+	);
+	const { insertBlock, removeBlock } = useDispatch(blockEditorStore);
 
 	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
@@ -81,15 +84,13 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
+	//
 
 	useEffect(() => {
 		const childs = document.querySelectorAll(
 			`#block-${clientId} .wcb-tab-child__wrap`
 		);
-		console.log(7777, {
-			childs,
-			a: `#block-${clientId} .wcb-tab-child__wrap`,
-		});
+
 		if (!childs || !childs.length) {
 			return;
 		}
@@ -102,20 +103,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			}
 		});
 	}, [indexFocused]);
-
-	//
-	// HOOKS
-
-	const { childInnerBlocks } = useSelect(
-		(select) => {
-			return {
-				// @ts-ignore
-				childInnerBlocks: select(blockEditorStore).getBlocks(clientId),
-			};
-		},
-		[clientId]
-	);
-	const { insertBlock, removeBlock } = useDispatch(blockEditorStore);
 
 	//
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
@@ -132,47 +119,43 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabGeneralIsPanelOpen === "Preset" || undefined}
 							//
 							setAttr__={(data) => {
-								if (data.preset === "carousel-simple") {
-									return setAttributes({
-										general_preset: data,
-										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
-										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
-										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
-										style_icon: WCB_FAQ_PANEL_STYLE_ICON_DEMO,
-									});
-								}
-								if (data.preset === "carousel-solid") {
-									return setAttributes({
-										general_preset: data,
-
-										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
-										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
-										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
-										style_icon: WCB_FAQ_PANEL_STYLE_ICON_DEMO,
-									});
-								}
-								if (data.preset === "grid-simple") {
-									return setAttributes({
-										general_preset: data,
-
-										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
-										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
-										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
-									});
-								}
-								if (data.preset === "grid-solid") {
-									return setAttributes({
-										general_preset: data,
-
-										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
-										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
-										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
-									});
-								}
-
-								setAttributes({
-									general_preset: data,
-								});
+								// if (data.preset === "carousel-simple") {
+								// 	return setAttributes({
+								// 		general_preset: data,
+								// 		style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
+								// 		style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
+								// 		style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
+								// 		style_icon: WCB_FAQ_PANEL_STYLE_ICON_DEMO,
+								// 	});
+								// }
+								// if (data.preset === "carousel-solid") {
+								// 	return setAttributes({
+								// 		general_preset: data,
+								// 		style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
+								// 		style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
+								// 		style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
+								// 		style_icon: WCB_FAQ_PANEL_STYLE_ICON_DEMO,
+								// 	});
+								// }
+								// if (data.preset === "grid-simple") {
+								// 	return setAttributes({
+								// 		general_preset: data,
+								// 		style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
+								// 		style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
+								// 		style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
+								// 	});
+								// }
+								// if (data.preset === "grid-solid") {
+								// 	return setAttributes({
+								// 		general_preset: data,
+								// 		style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
+								// 		style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
+								// 		style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
+								// 	});
+								// }
+								// setAttributes({
+								// 	general_preset: data,
+								// });
 							}}
 							panelData={general_preset}
 						/>
@@ -195,40 +178,21 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			case "Styles":
 				return (
 					<>
-						<WcbFaqPanel_StyleContainer
-							onToggle={() =>
-								handleTogglePanel("Styles", "_StyleContainer", true)
-							}
-							initialOpen={
-								tabStylesIsPanelOpen === "_StyleContainer" ||
-								tabStylesIsPanelOpen === "first"
-							}
-							opened={tabStylesIsPanelOpen === "_StyleContainer" || undefined}
+						<WcbTabsPanel_StyleTitle
+							onToggle={() => handleTogglePanel("Styles", "_StyleTitle")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleTitle"}
+							opened={tabStylesIsPanelOpen === "_StyleTitle" || undefined}
 							//
 							setAttr__={(data) => {
 								setAttributes({
-									style_container: data,
+									style_title: data,
 									general_preset: { ...general_preset, preset: "" },
 								});
 							}}
-							panelData={style_container}
+							panelData={style_title}
 						/>
 
-						<WcbFaqPanel_StyleQuestion
-							onToggle={() => handleTogglePanel("Styles", "_StyleQuestion")}
-							initialOpen={tabStylesIsPanelOpen === "_StyleQuestion"}
-							opened={tabStylesIsPanelOpen === "_StyleQuestion" || undefined}
-							//
-							setAttr__={(data) => {
-								setAttributes({
-									style_question: data,
-									general_preset: { ...general_preset, preset: "" },
-								});
-							}}
-							panelData={style_question}
-						/>
-
-						<WcbFaqPanel_StyleIcon
+						<WcbTabsPanel_StyleIcon
 							onToggle={() => handleTogglePanel("Styles", "_StyleIcon")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleIcon"}
 							opened={tabStylesIsPanelOpen === "_StyleIcon" || undefined}
@@ -242,18 +206,18 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							panelData={style_icon}
 						/>
 
-						<WcbFaqPanel_StyleAnswer
-							onToggle={() => handleTogglePanel("Styles", "_StyleAnswer")}
-							initialOpen={tabStylesIsPanelOpen === "_StyleAnswer"}
-							opened={tabStylesIsPanelOpen === "_StyleAnswer" || undefined}
+						<WcbTabsPanel_StyleBody
+							onToggle={() => handleTogglePanel("Styles", "_StyleBody")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleBody"}
+							opened={tabStylesIsPanelOpen === "_StyleBody" || undefined}
 							//
 							setAttr__={(data) => {
 								setAttributes({
-									style_answer: data,
+									style_body: data,
 									general_preset: { ...general_preset, preset: "" },
 								});
 							}}
-							panelData={style_answer}
+							panelData={style_body}
 						/>
 					</>
 				);
@@ -287,22 +251,20 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			general_tabTitle,
 			titles,
 			//
-			style_answer,
-			style_container,
 			style_icon,
-			style_question,
+			style_title,
+			style_body,
 		};
 	}, [
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_tabTitle,
-		style_answer,
-		style_container,
 		style_icon,
-		style_question,
+		style_title,
 		uniqueId,
 		advance_motionEffect,
 		titles,
+		style_body,
 	]);
 
 	const renderAddnewButton = () => {
@@ -320,6 +282,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								{ id: Date.now().toString(), title: "Title" },
 							],
 						});
+						setIndexFocused(titles.length);
 					}
 				}}
 			>
@@ -338,6 +301,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					const newTitles = titles.filter((j) => j.id !== item.id);
 					removeBlock(childInnerBlocks?.[index]?.clientId);
 					setAttributes({ titles: newTitles });
+					setIndexFocused(0);
 				}}
 			>
 				<XMarkIcon className="w-5 h-5" />
@@ -362,15 +326,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				{uniqueId && <GlobalCss {...WcbAttrsForSave()} />}
 
 				{/* CHILD CONTENT  */}
-				<div className="wcb-tabs__titles flex flex-wrap gap-3">
+				<div className="wcb-tabs__titles">
 					{titles.map((item, index) => {
 						return (
-							<div className="gap-2 relative group">
+							<div className="wcb-tabs__title_inner relative group">
 								{renderRemoveBtn(item, index)}
 								<RichText
 									key={item.id}
 									tagName="p"
-									className="wcb-tabs__title !my-0 p-2"
+									className="wcb-tabs__title"
 									value={item.title}
 									onFocusCapture={() => setIndexFocused(index)}
 									onChange={(value) => {

@@ -17,10 +17,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const {
 		uniqueId,
 		// ATTRS OF BLOCK
-		style_answer,
-		style_container,
-		style_question,
+
 		style_icon,
+		general_tabTitle,
+		style_body,
+		style_title,
 		//
 		advance_responsiveCondition,
 		advance_zIndex,
@@ -29,14 +30,9 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
 	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
-	const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-faq__inner`;
-	const FAQ_CHILD_WRAP = `${WRAP_CLASSNAME} .wcb-faq-child__wrap`;
-	const FAQ_CHILD_QUESTION = `${WRAP_CLASSNAME} .wcb-faq-child__question`;
-	const FAQ_CHILD_QUESTION_TEXT = `${WRAP_CLASSNAME} .wcb-faq-child__question-text`;
-	const FAQ_CHILD_ANSWER = `${WRAP_CLASSNAME} .wcb-faq-child__answer`;
-	const FAQ_CHILD_ANSWER_TEXT = `${WRAP_CLASSNAME} .wcb-faq-child__answer-text`;
-	const FAQ_CHILD_ICON = `${WRAP_CLASSNAME} .wcb-faq-child__icon`;
-	const FAQ_CHILD_SEPARATOR = `${WRAP_CLASSNAME} .wcb-faq-child__separator`;
+	const TITLE_WRAP_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__titles`;
+	const TITLE_CHILD_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__title_inner`;
+	const TITLE_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__title`;
 
 	//
 
@@ -68,78 +64,63 @@ const GlobalCss: FC<Props> = (attrs) => {
 
 	return (
 		<>
-			{/* ------- INNER -------   */}
+			{/* ------- TITLE -------   */}
 			<Global
 				styles={[
 					getStyleObjectFromResponsiveAttr({
-						className: INNER_CLASSNAME,
-						value: style_container.colunmGap,
+						className: TITLE_WRAP_CLASSNAME,
+						value: style_title.colunmGap,
 						prefix: "columnGap",
 					}),
 					getStyleObjectFromResponsiveAttr({
-						className: INNER_CLASSNAME,
-						value: style_container.rowGap,
+						className: TITLE_WRAP_CLASSNAME,
+						value: style_title.rowGap,
 						prefix: "rowGap",
 					}),
-				]}
-			/>
-
-			{/* ------- FAQ CHILD -------  */}
-			<Global
-				styles={[
-					getBackgroundColorGradientStyles({
-						className: FAQ_CHILD_WRAP,
-						background: style_container.background,
-					}),
-					getBorderStyles({
-						border: style_container.border,
-						className: FAQ_CHILD_WRAP,
-						isWithRadius: true,
-					}),
-					getBorderStyles({
-						border: style_container.border,
-						className: FAQ_CHILD_SEPARATOR,
-						isWithRadius: true,
-					}),
-				]}
-			/>
-
-			{/* ------ QUESTION ---------  */}
-			<Global
-				styles={[
 					getTypographyStyles({
-						className: FAQ_CHILD_QUESTION,
-						typography: style_question.typography,
+						className: TITLE_CLASSNAME,
+						typography: style_title.typography,
 					}),
 					getPaddingMarginStyles({
-						className: FAQ_CHILD_QUESTION,
-						padding: style_question.padding,
+						className: TITLE_CHILD_CLASSNAME,
+						padding: style_title.padding,
 					}),
-					getStyleObjectFromResponsiveAttr({
-						className: FAQ_CHILD_QUESTION,
-						value: style_icon.colGap,
-						prefix: "gap",
+
+					getBorderStyles({
+						className: TITLE_CHILD_CLASSNAME,
+						border: style_title.border,
+						isWithRadius: true,
 					}),
+					getBorderStyles({
+						className: TITLE_CHILD_CLASSNAME + ".active",
+						border: style_title.borderActive,
+						isWithRadius: true,
+					}),
+
+					// getStyleObjectFromResponsiveAttr({
+					// 	className: TITLE_CLASSNAME,
+					// 	value: style_icon.colGap,
+					// 	prefix: "gap",
+					// }),
 					{
-						[FAQ_CHILD_QUESTION]: {
-							color: style_question.color,
-							backgroundColor: style_question.backgroundColor,
-							":hover, :focus, :active": {
-								color: style_question.colorHover,
-								backgroundColor: style_question.backgroundColorHover,
-							},
+						[TITLE_CHILD_CLASSNAME]: {
+							color: style_title.color,
+							backgroundColor: style_title.backgroundColor,
+							// ":hover, :focus, :active": {
+							// 	color: style_title.colorA,
+							// 	backgroundColor: style_title.backgroundColorHover,
+							// },
 						},
-						[`${WRAP_CLASSNAME} .wcb-faq-child__wrap.active .wcb-faq-child__question`]:
-							{
-								color: style_question.colorHover,
-								backgroundColor: style_question.backgroundColorHover,
-							},
+						[`${TITLE_CHILD_CLASSNAME}.active .wcb-tabs__title`]: {
+							color: style_title.colorActive,
+							backgroundColor: style_title.backgroundColorActive,
+						},
 					},
 				]}
 			/>
 
 			{/* ------ ICON ---------  */}
-			<Global
+			{/* <Global
 				styles={[
 					getStyleObjectFromResponsiveAttr({
 						className: `${FAQ_CHILD_ICON}, ${FAQ_CHILD_ICON}:before, ${FAQ_CHILD_ICON} svg`,
@@ -159,28 +140,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 						},
 					},
 				]}
-			/>
-
-			{/* ------ ANSWER ---------  */}
-			<Global
-				styles={[
-					getTypographyStyles({
-						className: FAQ_CHILD_ANSWER,
-						typography: style_answer.typography,
-					}),
-					getPaddingMarginStyles({
-						className: FAQ_CHILD_ANSWER,
-						padding: style_answer.padding,
-					}),
-					{
-						[FAQ_CHILD_ANSWER]: {
-							color: style_answer.color,
-							backgroundColor: style_answer.backgroundColor,
-							// display: general_general.collapseOtherItems ? "none" : "block",
-						},
-					},
-				]}
-			/>
+			/> */}
 
 			{/* ADVANCE  */}
 			<Global
