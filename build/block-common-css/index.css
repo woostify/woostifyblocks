@@ -1,6 +1,11 @@
 /*!*********************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/block-common-css/editor.scss ***!
   \*********************************************************************************************************************************************************************************************************************************************************/
+.MyBorderControl__BorderRadiusControl .components-border-radius-control .components-base-control__label {
+  display: none !important;
+}
+
+/*  */
 .wcb-BorderBoxControl .components-base-control {
   margin-bottom: 0 !important;
 }
@@ -1148,6 +1153,9 @@ video {
 .bottom-full {
   bottom: 100% !important;
 }
+.left-1 {
+  left: 0.25rem !important;
+}
 .left-1\/2 {
   left: 50% !important;
 }
@@ -1168,6 +1176,15 @@ video {
 }
 .right-8 {
   right: 2rem !important;
+}
+.top-1 {
+  top: 0.25rem !important;
+}
+.left-3 {
+  left: 0.75rem !important;
+}
+.top-0 {
+  top: 0px !important;
 }
 .z-0 {
   z-index: 0 !important;

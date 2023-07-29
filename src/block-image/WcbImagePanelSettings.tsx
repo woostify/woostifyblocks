@@ -19,7 +19,6 @@ import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives"
 import MySelect from "../components/controls/MySelect";
 import { MySelectOption, Option } from "../types";
 import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
-import { DimensionSettings } from "../components/controls/MyDimensionsControl/types";
 
 export type Alignment = "left" | "right" | "center" | "wide" | "full" | "none";
 
@@ -35,7 +34,7 @@ export interface WCB_IMAGE_PANEL_SETTINGS {
 }
 
 export const WCB_IMAGE_PANEL_SETTINGS_DEMO: WCB_IMAGE_PANEL_SETTINGS = {
-	alignment: { Desktop: "center" },
+	alignment: { Desktop: "none" },
 	captionAlignment: { Desktop: "center" },
 	height: { Desktop: undefined },
 	sizeSlug: { Desktop: undefined },
@@ -160,11 +159,12 @@ const WcbImagePanelSettings: FC<Props> = ({
 			title={__("Settings", "wcb")}
 		>
 			<div className={"space-y-5"}>
-				<MyRadioGroup
+				{/* tam thoi khong su dung */}
+				{/* <MyRadioGroup
 					onChange={handleChangeImageAlignment}
 					value={TEXT_ALIGNMENT}
 					label={"Alignment"}
-				/>
+				/> */}
 
 				<TextareaControl
 					// @ts-ignore

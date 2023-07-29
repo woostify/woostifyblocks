@@ -26,12 +26,21 @@ export interface WCB_IMAGE_PANEL_STYLE_IMAGE {
 	border: MyBorderControlData;
 	boxShadow: MyBoxShadowControlData;
 	padding: HasResponsive<DimensionSettings>;
+	margin: HasResponsive<DimensionSettings>;
 }
 
 export const WCB_IMAGE_PANEL_STYLE_IMAGE_DEMO: WCB_IMAGE_PANEL_STYLE_IMAGE = {
 	border: MY_BORDER_CONTROL_DEMO,
 	boxShadow: MY_BOX_SHADOW_CONTROL_DEMO,
 	padding: {
+		Desktop: {
+			top: "",
+			left: "",
+			right: "",
+			bottom: "",
+		},
+	},
+	margin: {
 		Desktop: {
 			top: "",
 			left: "",
@@ -56,9 +65,13 @@ const WcbImagePanel_StyleImage: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
-	const { border, boxShadow, padding } = panelData;
+	const { border, boxShadow, padding, margin } = panelData;
 	const { currentDeviceValue: currentPadding } = getValueFromAttrsResponsives(
 		padding,
+		deviceType
+	);
+	const { currentDeviceValue: currentMargin } = getValueFromAttrsResponsives(
+		margin,
 		deviceType
 	);
 	return (
@@ -92,6 +105,23 @@ const WcbImagePanel_StyleImage: FC<Props> = ({
 					/>
 				</MyDisclosure>
 
+				<BoxControl
+					label={
+						<MyLabelControl hasResponsive className="">
+							{__("Margin", "wcb")}
+						</MyLabelControl>
+					}
+					values={currentMargin}
+					onChange={(data) => {
+						setAttr__({
+							...panelData,
+							margin: {
+								...margin,
+								[deviceType]: data,
+							},
+						});
+					}}
+				/>
 				<BoxControl
 					label={
 						<MyLabelControl hasResponsive className="">

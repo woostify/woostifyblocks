@@ -455,9 +455,9 @@ const Image: FC<ImageProps> = ({
 		<>
 			{/* @ts-ignore */}
 			<BlockControls group="block">
-				{!isContentLocked && (
+				{/* {!isContentLocked && (
 					<BlockAlignmentControl value={align} onChange={updateAlignment} />
-				)}
+				)} */}
 				{!isContentLocked && (
 					<ToolbarButton
 						onClick={() => {

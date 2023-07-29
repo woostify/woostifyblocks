@@ -2312,30 +2312,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 const checkResponsiveValueForOptimizeCSS = _ref => {
+  var _new_tablet_v, _new_desktop_v;
   let {
-    mobile_v,
-    tablet_v,
-    desktop_v
+    mobile_v = null,
+    tablet_v = null,
+    desktop_v = null
   } = _ref;
   let new_tablet_v = tablet_v;
   let new_desktop_v = desktop_v;
   if (mobile_v === tablet_v && tablet_v === desktop_v) {
     return {
       mobile_v,
-      tablet_v: "",
-      desktop_v: ""
+      tablet_v: null,
+      desktop_v: null
     };
   }
   if (desktop_v === tablet_v || desktop_v === mobile_v) {
-    new_desktop_v = "";
+    new_desktop_v = null;
   }
   if (tablet_v === mobile_v) {
-    new_tablet_v = "";
+    new_tablet_v = null;
   }
   return {
-    mobile_v,
-    tablet_v: new_tablet_v,
-    desktop_v: new_desktop_v
+    mobile_v: mobile_v !== null && mobile_v !== void 0 ? mobile_v : null,
+    tablet_v: (_new_tablet_v = new_tablet_v) !== null && _new_tablet_v !== void 0 ? _new_tablet_v : null,
+    desktop_v: (_new_desktop_v = new_desktop_v) !== null && _new_desktop_v !== void 0 ? _new_desktop_v : null
   };
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (checkResponsiveValueForOptimizeCSS);
