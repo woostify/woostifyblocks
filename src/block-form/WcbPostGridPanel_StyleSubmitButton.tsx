@@ -30,6 +30,7 @@ import MyTypographyControl from "../components/controls/MyTypographyControl/MyTy
 export interface WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON {
 	colorAndBackgroundColor: MyColorBackgroundColorControlData;
 	padding: HasResponsive<DimensionSettings>;
+	margin?: HasResponsive<DimensionSettings>;
 	border: MyBorderControlData;
 	typography: MyTypographyControlData;
 }
@@ -45,6 +46,7 @@ export const WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON_DEMO: WCB_FORM_PANEL_STYLE_SUBMI
 				bottom: "1rem",
 			},
 		},
+		margin: undefined,
 		border: MY_BORDER_CONTROL_DEMO,
 		typography: TYPOGRAPHY_CONTROL_DEMO,
 	};
@@ -65,6 +67,14 @@ const WcbPostGridPanel_StyleSubmitButton: FC<Props> = ({
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
 	const {
+		margin: marginProps = {
+			Desktop: {
+				top: "0",
+				left: "0",
+				right: "0",
+				bottom: "0",
+			},
+		},
 		padding: paddingProps,
 		border,
 		colorAndBackgroundColor,
@@ -73,6 +83,10 @@ const WcbPostGridPanel_StyleSubmitButton: FC<Props> = ({
 
 	const { currentDeviceValue: padding } = getValueFromAttrsResponsives(
 		paddingProps,
+		deviceType
+	);
+	const { currentDeviceValue: margin } = getValueFromAttrsResponsives(
+		marginProps,
 		deviceType
 	);
 	//
@@ -116,6 +130,23 @@ const WcbPostGridPanel_StyleSubmitButton: FC<Props> = ({
 								...panelData,
 								padding: {
 									...paddingProps,
+									[deviceType]: value,
+								},
+							});
+						}}
+					/>
+					<BoxControl
+						label={
+							<MyLabelControl className="" hasResponsive>
+								{__("margin", "wcb")}
+							</MyLabelControl>
+						}
+						values={margin}
+						onChange={(value: DimensionSettings) => {
+							setAttr__({
+								...panelData,
+								margin: {
+									...marginProps,
 									[deviceType]: value,
 								},
 							});

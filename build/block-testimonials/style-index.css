@@ -38,6 +38,9 @@
 .wcb-testimonials__item {
   position: relative;
 }
+.wcb-testimonials__item .wcb-testimonials__item-background {
+  position: relative;
+}
 .wcb-testimonials__item .wcb-testimonials__item-wrap-inner {
   display: flex;
 }

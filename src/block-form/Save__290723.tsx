@@ -68,27 +68,24 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			uniqueId={uniqueId}
 			HtmlTag="form"
 		>
-			<div className="wcb-form__box">
-				<div children={innerBlocksProps.children} className="wcb-form__inner" />
-				{/* V2 */}
-				{reCaptchaV2 && (
-					<div
-						className="g-recaptcha"
-						// data-sitekey= key se duoc jQuery add o Frontend.tsx
-					></div>
-				)}
+			<div children={innerBlocksProps.children} className="wcb-form__inner" />
+			{/* V2 */}
+			{reCaptchaV2 && (
+				<div
+					className="g-recaptcha"
+					// data-sitekey= key se duoc jQuery add o Frontend.tsx
+				></div>
+			)}
 
-				<div className="wcb-form__btn-submit-wrap">
-					<RichText.Content
-						className={`wcb-form__btn-submit ${
-							reCaptchaV3 ? "g-recaptcha" : ""
-						}`}
-						value={attributes.btnSubmitText}
-						tagName="button"
-						type="submit"
-					/>
-				</div>
+			<div className="wcb-form__btn-submit-wrap">
+				<RichText.Content
+					className={`wcb-form__btn-submit ${reCaptchaV3 ? "g-recaptcha" : ""}`}
+					value={attributes.btnSubmitText}
+					tagName="button"
+					type="submit"
+				/>
 			</div>
+
 			<div className="wcb-form__successMessageText">
 				<span>{attributes.general_general.successMessageText}</span>
 			</div>

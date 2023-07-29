@@ -14,6 +14,7 @@ import MyTextAlignControl, {
 	TextAlignment,
 } from "../components/controls/MyTextAlignControl/MyTextAlignControl";
 import useGetDeviceType from "../hooks/useGetDeviceType";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 
 export interface WCB_FORM_PANEL_GENERAL {
 	textAlignment: HasResponsive<TextAlignment>;
@@ -60,8 +61,10 @@ const WcbFormPanelGeneral: FC<Props> = ({
 		successMessageText,
 		successRedirectUrl,
 	} = panelData;
-	const TEXT_ALIGNMENT =
-		textAlignment[deviceType] || textAlignment.Tablet || textAlignment.Desktop;
+	const { currentDeviceValue: TEXT_ALIGNMENT } = getValueFromAttrsResponsives(
+		textAlignment,
+		deviceType
+	);
 
 	//
 	const form_style_plans: MyRadioItem<WCB_FORM_PANEL_GENERAL["formStyle"]>[] = [

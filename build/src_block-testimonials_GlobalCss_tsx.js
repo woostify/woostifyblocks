@@ -234,7 +234,7 @@ const GlobalCss = attrs => {
       className: `${WRAP_CLASSNAME} .wcb-testimonials__item-inner`,
       padding: style_dimension.padding
     }), (0,_utils_getStyleBackground__WEBPACK_IMPORTED_MODULE_9__["default"])({
-      className: ITEM_CLASSNAME,
+      className: `${ITEM_CLASSNAME} .wcb-testimonials__item-background`,
       styles_background: style_backgroundAndBorder.background
     })]
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {

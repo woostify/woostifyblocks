@@ -1,5 +1,6 @@
 import Save__300523 from "./Save__300523";
 import Save__250523 from "./Save__250523";
+import Save__290723 from "./Save__290723";
 import blokcAttrs from "./attributes";
 import { MY_COLOR_BGCOLOR_CONTROL_FOR_BUTTON_DEMO } from "../components/controls/MyColorBackgroundColorControl/MyColorBackgroundColorControl";
 import { MY_BORDER_CONTROL_DEMO } from "../components/controls/MyBorderControl/types";
@@ -78,7 +79,19 @@ const v4 = {
 	},
 	save: Save__300523,
 };
+const v5 = {
+	attributes: {
+		...blokcAttrs,
+		general_submit_button: {
+			type: "object",
+			default: {
+				textAlignment: "left",
+			},
+		},
+	},
+	save: Save__290723,
+};
 
-const deprecated = [v4, v3, v2, v1];
+const deprecated = [v5, v4, v4, v3, v2, v1];
 
 export default deprecated;

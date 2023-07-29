@@ -145,6 +145,7 @@ const GlobalCss = attrs => {
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_6__.DEMO_WCB_GLOBAL_VARIABLES;
   const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
+  const BOX_CLASSNAME = `${WRAP_CLASSNAME} .wcb-form__box`;
   const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-form__inner`;
   const INPUT_CLASSNAME = `${WRAP_CLASSNAME} [type="text"], ${WRAP_CLASSNAME} [type="email"], ${WRAP_CLASSNAME} [type="url"], ${WRAP_CLASSNAME} [type="password"], ${WRAP_CLASSNAME} [type="number"], ${WRAP_CLASSNAME} [type="date"], ${WRAP_CLASSNAME} [type="datetime-local"], ${WRAP_CLASSNAME} [type="month"], ${WRAP_CLASSNAME} [type="search"], ${WRAP_CLASSNAME} [type="tel"], ${WRAP_CLASSNAME} [type="time"], ${WRAP_CLASSNAME} [type="week"], ${WRAP_CLASSNAME} [multiple], ${WRAP_CLASSNAME} select, ${WRAP_CLASSNAME} textarea`;
   const CHECKBOX_RADIO_CLASSNAME = `${WRAP_CLASSNAME} .wcb-radio__option, ${WRAP_CLASSNAME} .wcb-checkbox__option`;
@@ -160,23 +161,72 @@ const GlobalCss = attrs => {
       textAlignment
     } = general_general;
     const {
+      position,
+      textAlignment: btnAlignment
+    } = general_submit_button;
+    const {
       value_desktop: textAlignment_desktop,
-      value_mobile: textAlignment_mobile,
-      value_tablet: textAlignment_tablet
+      value_tablet: textAlignment_tablet,
+      value_mobile: textAlignment_mobile
     } = (0,_utils_getCssProperyHasResponsive__WEBPACK_IMPORTED_MODULE_7__["default"])({
       cssProperty: textAlignment
     });
+    const {
+      value_desktop: btnAlignment_desktop,
+      value_tablet: btnAlignment_tablet,
+      value_mobile: btnAlignment_mobile
+    } = (0,_utils_getCssProperyHasResponsive__WEBPACK_IMPORTED_MODULE_7__["default"])({
+      cssProperty: btnAlignment
+    });
+    const boxflexDirectionType = position => {
+      if (position === "right") return "row";
+      if (position === "left") return "row-reverse";
+      if (position === "top") return "column-reverse";
+      return "column";
+    };
+    const {
+      value_desktop: position_desktop,
+      value_tablet: position_tablet,
+      value_mobile: position_mobile
+    } = (0,_utils_getCssProperyHasResponsive__WEBPACK_IMPORTED_MODULE_7__["default"])({
+      cssProperty: position
+    });
+    const isFlexRow = position => {
+      if (position === "right" || position === "left") return true;
+      return false;
+    };
     return {
       [`${WRAP_CLASSNAME}`]: {
         textAlign: textAlignment_mobile,
+        ".wcb-form__btn-submit-wrap": !isFlexRow(position_mobile) ? {
+          justifyContent: btnAlignment_mobile
+        } : {
+          alignItems: btnAlignment_mobile
+        },
         [`@media (min-width: ${media_tablet})`]: {
-          textAlign: textAlignment_tablet
+          textAlign: textAlignment_tablet,
+          ".wcb-form__btn-submit-wrap": !isFlexRow(position_tablet) ? {
+            justifyContent: btnAlignment_tablet
+          } : {
+            alignItems: btnAlignment_tablet
+          }
         },
         [`@media (min-width: ${media_desktop})`]: {
-          textAlign: textAlignment_desktop
+          textAlign: textAlignment_desktop,
+          ".wcb-form__btn-submit-wrap": !isFlexRow(position_desktop) ? {
+            justifyContent: btnAlignment_desktop
+          } : {
+            alignItems: btnAlignment_desktop
+          }
+        }
+      },
+      [`${BOX_CLASSNAME}`]: {
+        flexDirection: boxflexDirectionType(position_mobile),
+        [`@media (min-width: ${media_tablet})`]: {
+          flexDirection: boxflexDirectionType(position_tablet)
         },
-        ".wcb-form__btn-submit-wrap": {
-          justifyContent: general_submit_button.textAlignment
+        [`@media (min-width: ${media_desktop})`]: {
+          flexDirection: boxflexDirectionType(position_desktop)
         }
       }
     };
@@ -265,7 +315,7 @@ const GlobalCss = attrs => {
     });
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
       styles: {
-        [`${INNER_CLASSNAME}, ${WRAP_CLASSNAME}`]: {
+        [`${INNER_CLASSNAME}, ${BOX_CLASSNAME}`]: {
           rowGap: rowGap_mobile,
           [`@media (min-width: ${media_tablet})`]: {
             rowGap: rowGap_tablet
@@ -416,7 +466,8 @@ const GlobalCss = attrs => {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
       className: `${SUBMIT_CLASSNAME}`,
-      padding: style_submit_button.padding
+      padding: style_submit_button.padding,
+      margin: style_submit_button.margin
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
@@ -428,6 +479,11 @@ const GlobalCss = attrs => {
       className: `${SUCCESS_MESS_CLASSNAME}`,
       border: style_messages.Success.border,
       isWithRadius: true
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
+    styles: (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
+      className: `${SUCCESS_MESS_CLASSNAME}, ${ERROR_MESS_CLASSNAME}`,
+      margin: style_messages.margin
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: {
@@ -455,7 +511,7 @@ const GlobalCss = attrs => {
       advance_responsiveCondition,
       advance_zIndex,
       className: WRAP_CLASSNAME,
-      defaultDisplay: "grid"
+      defaultDisplay: "flex"
     })
   }));
 };

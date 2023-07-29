@@ -7,13 +7,18 @@ import MyTextAlignControl, {
 	TextAlignment,
 } from "../components/controls/MyTextAlignControl/MyTextAlignControl";
 import useGetDeviceType from "../hooks/useGetDeviceType";
+import { MyPosition } from "../types";
+import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 
 export interface WCB_FORM_PANEL_SUBMIT_BUTTON {
-	textAlignment: TextAlignment;
+	textAlignment: HasResponsive<"start" | "center" | "end">;
+	position: HasResponsive<MyPosition>;
 }
 
 export const WCB_FORM_PANEL_SUBMIT_BUTTON_DEMO: WCB_FORM_PANEL_SUBMIT_BUTTON = {
-	textAlignment: "left",
+	textAlignment: { Desktop: "start" },
+	position: { Desktop: "bottom" },
 };
 
 interface Props
@@ -31,7 +36,32 @@ const WcbFormPanelSubmitButton: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
-	const { textAlignment } = panelData;
+	const {
+		textAlignment: textAlignmentProp,
+		position: positionProp = { Desktop: "bottom" },
+	} = panelData;
+
+	const { currentDeviceValue: position } = getValueFromAttrsResponsives(
+		positionProp,
+		deviceType
+	);
+	const { currentDeviceValue: textAlignment } = getValueFromAttrsResponsives(
+		textAlignmentProp,
+		deviceType
+	);
+
+	const alignment_plan: MyRadioItem<"start" | "center" | "end">[] = [
+		{ name: "start", icon: "Start" },
+		{ name: "center", icon: "Center" },
+		{ name: "end", icon: "End" },
+	];
+
+	const position_plan: MyRadioItem<MyPosition>[] = [
+		{ name: "bottom", icon: "Bottom" },
+		{ name: "top", icon: "Top" },
+		{ name: "left", icon: "Left" },
+		{ name: "right", icon: "Right" },
+	];
 
 	return (
 		<PanelBody
@@ -41,15 +71,36 @@ const WcbFormPanelSubmitButton: FC<Props> = ({
 			title={__("Submit button", "wcb")}
 		>
 			<div className={"space-y-5"}>
-				<MyTextAlignControl
-					textAlignment={textAlignment}
+				<MyRadioGroup
+					label="Position"
+					value={position}
+					plans={position_plan}
 					onChange={(value) => {
 						setAttr__({
 							...panelData,
-							textAlignment: value,
+							position: {
+								...(positionProp || {}),
+								[deviceType]: value,
+							},
 						});
 					}}
-					hasResponsive={false}
+					hasResponsive={true}
+				/>
+
+				<MyRadioGroup
+					label="ALIGNMENT"
+					value={textAlignment}
+					plans={alignment_plan}
+					onChange={(value) => {
+						setAttr__({
+							...panelData,
+							textAlignment: {
+								...textAlignmentProp,
+								[deviceType]: value,
+							},
+						});
+					}}
+					hasResponsive={true}
 				/>
 			</div>
 		</PanelBody>

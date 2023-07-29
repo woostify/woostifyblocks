@@ -1,4 +1,9 @@
-import { PanelBody, TabPanel } from "@wordpress/components";
+import {
+	PanelBody,
+	TabPanel,
+	// @ts-ignore
+	__experimentalBoxControl as BoxControl,
+} from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC } from "react";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
@@ -13,6 +18,12 @@ import {
 	TYPOGRAPHY_CONTROL_DEMO,
 } from "../components/controls/MyTypographyControl/types";
 import MyTypographyControl from "../components/controls/MyTypographyControl/MyTypographyControl";
+import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
+import { DimensionSettings } from "../components/controls/MyDimensionsControl/types";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
+import useGetDeviceType from "../hooks/useGetDeviceType";
+import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
 
 type TabsHere = "Success" | "Error";
 
@@ -26,11 +37,13 @@ type A = {
 
 export interface WCB_FORM_PANEL_STYLE_MESSAGES extends A {
 	typography: MyTypographyControlData;
+	margin?: HasResponsive<DimensionSettings>;
 }
 
 export const WCB_FORM_PANEL_STYLE_MESSAGES_DEMO: WCB_FORM_PANEL_STYLE_MESSAGES =
 	{
 		typography: TYPOGRAPHY_CONTROL_DEMO,
+		margin: undefined,
 		Success: {
 			color: "#0c4a6e",
 			backgroundColor: "#f0f9ff",
@@ -56,6 +69,7 @@ const WcbPostGridPanel_StyleMessages: FC<Props> = ({
 	onToggle,
 	opened,
 }) => {
+	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	const PanelTab: {
 		name: TabsHere;
 		title: string;
@@ -63,6 +77,22 @@ const WcbPostGridPanel_StyleMessages: FC<Props> = ({
 		{ name: "Success", title: __("Success", "wcb") },
 		{ name: "Error", title: __("Error", "wcb") },
 	];
+
+	const {
+		margin: marginProps = {
+			Desktop: {
+				top: "0",
+				left: "0",
+				right: "0",
+				bottom: "0",
+			},
+		},
+	} = panelData;
+
+	const { currentDeviceValue: margin } = getValueFromAttrsResponsives(
+		marginProps,
+		deviceType
+	);
 
 	const initialTabName: TabsHere = "Success";
 	return (
@@ -118,7 +148,7 @@ const WcbPostGridPanel_StyleMessages: FC<Props> = ({
 								}}
 							/>
 
-							<MyDisclosure defaultOpen label="Border">
+							<MyDisclosure label="Border & Margin">
 								<MyBorderControl
 									borderControl={panelData[tab.name as TabsHere].border}
 									setAttrs__border={(border: MyBorderControlData) => {
@@ -126,6 +156,23 @@ const WcbPostGridPanel_StyleMessages: FC<Props> = ({
 											...panelData,
 											[tab.name]: {
 												border,
+											},
+										});
+									}}
+								/>
+								<BoxControl
+									label={
+										<MyLabelControl className="" hasResponsive>
+											{__("margin", "wcb")}
+										</MyLabelControl>
+									}
+									values={margin}
+									onChange={(value: DimensionSettings) => {
+										setAttr__({
+											...panelData,
+											margin: {
+												...marginProps,
+												[deviceType]: value,
 											},
 										});
 									}}
