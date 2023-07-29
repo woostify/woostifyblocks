@@ -19,18 +19,34 @@ import {
 import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
 import MyTabPanel from "../components/controls/MyTabPanel/MyTabPanel";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
+import {
+	MY_BORDER_CONTROL_DEMO,
+	MyBorderControlData,
+} from "../components/controls/MyBorderControl/types";
+import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
 
-export interface WCB_FAQ_PANEL_STYLE_QUESTION {
+export interface WCB_TABS_PANEL_STYLE_BODY {
 	typography: MyTypographyControlData;
 	padding: HasResponsive<DimensionSettings>;
+	margin: HasResponsive<DimensionSettings>;
 	color: string;
 	backgroundColor: string;
 	colorHover: string;
 	backgroundColorHover: string;
+	border: MyBorderControlData;
 }
 
-export const WCB_FAQ_PANEL_STYLE_QUESTION_DEMO: WCB_FAQ_PANEL_STYLE_QUESTION = {
+export const WCB_TABS_PANEL_STYLE_BODY_DEMO: WCB_TABS_PANEL_STYLE_BODY = {
 	typography: TYPOGRAPHY_CONTROL_DEMO,
+	border: MY_BORDER_CONTROL_DEMO,
+	margin: {
+		Desktop: {
+			top: "1rem",
+			left: "1rem",
+			right: "1rem",
+			bottom: "1rem",
+		},
+	},
 	padding: {
 		Desktop: {
 			top: "1rem",
@@ -57,12 +73,12 @@ export const PANEL_COLOR_TABS: {
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
-	panelData: WCB_FAQ_PANEL_STYLE_QUESTION;
-	setAttr__: (data: WCB_FAQ_PANEL_STYLE_QUESTION) => void;
+	panelData: WCB_TABS_PANEL_STYLE_BODY;
+	setAttr__: (data: WCB_TABS_PANEL_STYLE_BODY) => void;
 }
 
-const WcbFaqPanel_StyleQuestion: FC<Props> = ({
-	panelData = WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
+const WcbTabsPanel_StyleBody: FC<Props> = ({
+	panelData = WCB_TABS_PANEL_STYLE_BODY_DEMO,
 	setAttr__,
 	initialOpen,
 	onToggle,
@@ -72,13 +88,20 @@ const WcbFaqPanel_StyleQuestion: FC<Props> = ({
 	const {
 		typography,
 		padding,
+		margin,
 		backgroundColor,
 		backgroundColorHover,
 		color,
 		colorHover,
+
+		border,
 	} = panelData;
 	const { currentDeviceValue: currentPadding } = getValueFromAttrsResponsives(
 		padding,
+		deviceType
+	);
+	const { currentDeviceValue: currentMargin } = getValueFromAttrsResponsives(
+		margin,
 		deviceType
 	);
 
@@ -132,7 +155,7 @@ const WcbFaqPanel_StyleQuestion: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Question", "wcb")}
+			title={__("Body", "wcb")}
 		>
 			<div className={"space-y-3.5"}>
 				<MyTypographyControl
@@ -142,9 +165,20 @@ const WcbFaqPanel_StyleQuestion: FC<Props> = ({
 					}}
 				/>
 
-				<MyDisclosure defaultOpen label={__("Colors & Padding", "wcb")}>
+				<MyDisclosure label={__("Colors", "wcb")}>
 					<MyTabPanel tabs={PANEL_COLOR_TABS}>{renderColorTab}</MyTabPanel>
+				</MyDisclosure>
 
+				<MyDisclosure label={__("Border ", "wcb")}>
+					<MyBorderControl
+						borderControl={border}
+						setAttrs__border={(value) => {
+							setAttr__({ ...panelData, border: value });
+						}}
+					/>
+				</MyDisclosure>
+
+				<MyDisclosure label={__("Dimension", "wcb")}>
 					<BoxControl
 						label={
 							<MyLabelControl className="" hasResponsive>
@@ -162,10 +196,27 @@ const WcbFaqPanel_StyleQuestion: FC<Props> = ({
 							});
 						}}
 					/>
+					<BoxControl
+						label={
+							<MyLabelControl className="" hasResponsive>
+								{__("Margin", "wcb")}
+							</MyLabelControl>
+						}
+						values={currentMargin}
+						onChange={(value) => {
+							setAttr__({
+								...panelData,
+								margin: {
+									...margin,
+									[deviceType]: value,
+								},
+							});
+						}}
+					/>
 				</MyDisclosure>
 			</div>
 		</PanelBody>
 	);
 };
 
-export default WcbFaqPanel_StyleQuestion;
+export default WcbTabsPanel_StyleBody;

@@ -5,7 +5,29 @@
 
     display: flex;
 
+    flex-wrap: wrap;
+
     gap: 0.5rem
+}
+
+.wcb-tabs__title_inner {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 0.25rem;
+
+    padding: 0.5rem
+}
+
+.wcb-tabs__title {
+
+    margin: 0px;
+
+    display: inline-flex
 }
 
 .wcb-tab-child__inner {

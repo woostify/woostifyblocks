@@ -50,7 +50,7 @@ export const WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO: WCB_PRODUCTS_PANEL_STYLE_LAYO
 				right: "",
 			},
 		},
-		numberOfColumn: { Desktop: 3 },
+		numberOfColumn: { Desktop: 3, Mobile: 2, Tablet: 2 },
 		peekAfter: { Desktop: "2rem", Tablet: "2rem", Mobile: "2rem" },
 		swithToScrollSnapX: "None",
 		isEqualHeight: true,

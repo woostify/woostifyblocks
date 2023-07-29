@@ -275,30 +275,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 const checkResponsiveValueForOptimizeCSS = _ref => {
+  var _new_tablet_v, _new_desktop_v;
   let {
-    mobile_v,
-    tablet_v,
-    desktop_v
+    mobile_v = null,
+    tablet_v = null,
+    desktop_v = null
   } = _ref;
   let new_tablet_v = tablet_v;
   let new_desktop_v = desktop_v;
   if (mobile_v === tablet_v && tablet_v === desktop_v) {
     return {
       mobile_v,
-      tablet_v: "",
-      desktop_v: ""
+      tablet_v: null,
+      desktop_v: null
     };
   }
   if (desktop_v === tablet_v || desktop_v === mobile_v) {
-    new_desktop_v = "";
+    new_desktop_v = null;
   }
   if (tablet_v === mobile_v) {
-    new_tablet_v = "";
+    new_tablet_v = null;
   }
   return {
-    mobile_v,
-    tablet_v: new_tablet_v,
-    desktop_v: new_desktop_v
+    mobile_v: mobile_v !== null && mobile_v !== void 0 ? mobile_v : null,
+    tablet_v: (_new_tablet_v = new_tablet_v) !== null && _new_tablet_v !== void 0 ? _new_tablet_v : null,
+    desktop_v: (_new_desktop_v = new_desktop_v) !== null && _new_desktop_v !== void 0 ? _new_desktop_v : null
   };
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (checkResponsiveValueForOptimizeCSS);
@@ -506,19 +507,27 @@ const getBorderRadiusStyles = _ref => {
     value_Mobile: radiusMobile
   } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(radius);
   const converttted = radiusValue => {
+    let newradiusValue = radiusValue;
     if (typeof radiusValue === "string") {
-      radiusValue = {
+      newradiusValue = {
         bottomLeft: radiusValue,
         bottomRight: radiusValue,
         topLeft: radiusValue,
         topRight: radiusValue
       };
+    } else {
+      newradiusValue = {
+        bottomLeft: radiusValue?.bottomLeft,
+        bottomRight: radiusValue?.bottomRight,
+        topLeft: radiusValue?.topLeft,
+        topRight: radiusValue?.topRight
+      };
     }
-    return radiusValue;
+    return newradiusValue;
   };
   radiusDesktop = converttted(radiusDesktop);
-  radiusTablet = converttted(radiusDesktop);
-  radiusMobile = converttted(radiusDesktop);
+  radiusTablet = converttted(radiusTablet);
+  radiusMobile = converttted(radiusMobile);
   const {
     mobile_v: mobile_v_topLeft,
     tablet_v: tablet_v_topLeft,
@@ -566,13 +575,13 @@ const getBorderRadiusStyles = _ref => {
         borderTopRightRadius: tablet_v_topRight,
         borderBottomRightRadius: tablet_v_bottomRight,
         borderBottomLeftRadius: tablet_v_bottomLeft
-      } : undefined,
+      } : null,
       [`@media (min-width: ${media_desktop})`]: desktop_v_topLeft || desktop_v_topRight || desktop_v_bottomRight || desktop_v_bottomLeft ? {
         borderTopLeftRadius: desktop_v_topLeft,
         borderTopRightRadius: desktop_v_topRight,
         borderBottomRightRadius: desktop_v_bottomRight,
         borderBottomLeftRadius: desktop_v_bottomLeft
-      } : undefined
+      } : null
     }
   };
 };
@@ -932,10 +941,17 @@ function getStyleObjectFromResponsiveAttr(_ref) {
     value_Tablet,
     value_Mobile
   } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(value);
-  if (!hasUnit && !!unit && (typeof value_Desktop === "string" || typeof value_Desktop === "number")) {
-    value_Desktop = value_Desktop + unit;
-    value_Tablet = value_Tablet + unit;
-    value_Mobile = value_Mobile + unit;
+  if (!hasUnit && !!unit) {
+    if (typeof value_Desktop === "number") {
+      value_Desktop = value_Desktop + unit;
+      value_Tablet = value_Tablet + unit;
+      value_Mobile = value_Mobile + unit;
+    }
+    if (typeof value_Desktop === "string") {
+      value_Desktop = value_Desktop ? value_Desktop + unit : null;
+      value_Tablet = value_Tablet ? value_Tablet + unit : null;
+      value_Mobile = value_Mobile ? value_Mobile + unit : null;
+    }
   }
 
   //
@@ -957,21 +973,21 @@ function getStyleObjectFromResponsiveAttr(_ref) {
 
   return {
     [className]: {
-      [prefix]: `${value_Mobile_new}`,
-      [prefix2]: prefix_2 ? `${value_Mobile_new}` : null,
-      [prefix3]: prefix_3 ? `${value_Mobile_new}` : null,
-      [prefix4]: prefix_4 ? `${value_Mobile_new}` : null,
+      [prefix]: value_Mobile_new !== null && value_Mobile_new !== void 0 ? value_Mobile_new : null,
+      [prefix2]: prefix_2 ? value_Mobile_new !== null && value_Mobile_new !== void 0 ? value_Mobile_new : null : null,
+      [prefix3]: prefix_3 ? value_Mobile_new !== null && value_Mobile_new !== void 0 ? value_Mobile_new : null : null,
+      [prefix4]: prefix_4 ? value_Mobile_new !== null && value_Mobile_new !== void 0 ? value_Mobile_new : null : null,
       [`@media (min-width: ${media_tablet})`]: value_Tablet_new ? {
-        [prefix]: `${value_Tablet_new}`,
-        [prefix2]: prefix_2 ? `${value_Tablet_new}` : null,
-        [prefix3]: prefix_3 ? `${value_Tablet_new}` : null,
-        [prefix4]: prefix_4 ? `${value_Tablet_new}` : null
+        [prefix]: value_Tablet_new,
+        [prefix2]: prefix_2 ? value_Tablet_new : null,
+        [prefix3]: prefix_3 ? value_Tablet_new : null,
+        [prefix4]: prefix_4 ? value_Tablet_new : null
       } : undefined,
       [`@media (min-width: ${media_desktop})`]: value_Desktop_new ? {
-        [prefix]: `${value_Desktop_new}`,
-        [prefix2]: prefix_2 ? `${value_Desktop_new}` : null,
-        [prefix3]: prefix_3 ? `${value_Desktop_new}` : null,
-        [prefix4]: prefix_4 ? `${value_Desktop_new}` : null
+        [prefix]: value_Desktop_new,
+        [prefix2]: prefix_2 ? value_Desktop_new : null,
+        [prefix3]: prefix_3 ? value_Desktop_new : null,
+        [prefix4]: prefix_4 ? value_Desktop_new : null
       } : undefined
     }
   };

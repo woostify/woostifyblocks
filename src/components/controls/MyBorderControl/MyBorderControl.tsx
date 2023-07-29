@@ -83,17 +83,21 @@ const MyBorderControl: FC<Props> = ({
 				color={hoverColorProps}
 			/>
 
-			<div>
+			<div className="MyBorderControl__BorderRadiusControl">
+				<MyLabelControl className="mb-2" hasResponsive>
+					{__("Border radius", "wcb")}
+				</MyLabelControl>
 				<BorderRadiusControl
 					values={RADIUS}
 					onChange={(value) => {
 						handleChangeBorderRadius(value);
 					}}
-					label={
-						<MyLabelControl className="" hasResponsive>
-							{__("Border radius", "wcb")}
-						</MyLabelControl>
-					}
+					label={""}
+					// label={
+					// 	<MyLabelControl className="" hasResponsive>
+					// 		{__("Border radius", "wcb")}
+					// 	</MyLabelControl>
+					// }
 				/>
 			</div>
 		</div>

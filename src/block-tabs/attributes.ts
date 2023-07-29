@@ -14,47 +14,38 @@ import {
 	MyZIndexControlData,
 	Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
-import {
-	WCB_FAQ_PANEL_GENERAL,
-	WCB_FAQ_PANEL_GENERAL_DEMO,
-} from "./WcbFaqPanelGeneral";
-import { WCB_FAQ_PANEL_ICON, WCB_FAQ_PANEL_ICON_DEMO } from "./WcbFaqPanelIcon";
+
 import {
 	WCB_FAQ_PANEL_PRESET,
 	WCB_FAQ_PANEL_PRESET_DEMO,
 } from "./WcbFaqPanelPreset";
+
 import {
-	WCB_FAQ_PANEL_STYLE_ANSWER,
-	WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
-} from "./WcbFaqPanel_StyleAnswer";
+	WCB_TABS_PANEL_STYLE_ICON,
+	WCB_TABS_PANEL_STYLE_ICON_DEMO,
+} from "./WcbTabsPanel_StyleIcon";
 import {
-	WCB_FAQ_PANEL_STYLE_CONTAINER,
-	WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
-} from "./WcbFaqPanel_StyleContainer";
-import {
-	WCB_FAQ_PANEL_STYLE_ICON,
-	WCB_FAQ_PANEL_STYLE_ICON_DEMO,
-} from "./WcbFaqPanel_StyleIcon";
-import {
-	WCB_FAQ_PANEL_STYLE_QUESTION,
-	WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
-} from "./WcbFaqPanel_StyleQuestion";
+	WCB_TABS_PANEL_STYLE_TITLE,
+	WCB_TABS_PANEL_STYLE_TITLE_DEMO,
+} from "./WcbTabsPanel_StyleTitle";
 import {
 	WCB_TABS_PANEL_TAB_TITLE,
 	WCB_TABS_PANEL_TAB_TITLE_DEMO,
 } from "./WcbTabsPanelTabTitle";
 import { BlockTabTitleItem } from "./types";
+import {
+	WCB_TABS_PANEL_STYLE_BODY,
+	WCB_TABS_PANEL_STYLE_BODY_DEMO,
+} from "./WcbTabsPanel_StyleBody";
 
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	titles: BlockTabTitleItem[];
 	general_tabTitle: WCB_TABS_PANEL_TAB_TITLE;
-	//
+	style_title: WCB_TABS_PANEL_STYLE_TITLE;
+	style_body: WCB_TABS_PANEL_STYLE_BODY;
 	general_preset: WCB_FAQ_PANEL_PRESET;
-	style_container: WCB_FAQ_PANEL_STYLE_CONTAINER;
-	style_question: WCB_FAQ_PANEL_STYLE_QUESTION;
-	style_icon: WCB_FAQ_PANEL_STYLE_ICON;
-	style_answer: WCB_FAQ_PANEL_STYLE_ANSWER;
+	style_icon: WCB_TABS_PANEL_STYLE_ICON;
 	//
 	advance_responsiveCondition: MyResponsiveConditionControlData;
 	advance_zIndex: MyZIndexControlData;
@@ -71,34 +62,30 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		default: [
 			{ id: "1", title: "Title 1" },
 			{ id: "2", title: "Title 2" },
+			{ id: "3", title: "Title 3" },
 		],
 	},
 	general_tabTitle: {
 		type: "object",
 		default: WCB_TABS_PANEL_TAB_TITLE_DEMO,
 	},
-
+	style_title: {
+		type: "object",
+		default: WCB_TABS_PANEL_STYLE_TITLE_DEMO,
+	},
+	style_body: {
+		type: "object",
+		default: WCB_TABS_PANEL_STYLE_BODY_DEMO,
+	},
 	// THE ATTRS OF BLOCK HERE
 	general_preset: {
 		type: "object",
 		default: WCB_FAQ_PANEL_PRESET_DEMO,
 	},
 
-	style_container: {
-		type: "object",
-		default: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
-	},
-	style_question: {
-		type: "object",
-		default: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
-	},
 	style_icon: {
 		type: "object",
-		default: WCB_FAQ_PANEL_STYLE_ICON_DEMO,
-	},
-	style_answer: {
-		type: "object",
-		default: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
+		default: WCB_TABS_PANEL_STYLE_ICON_DEMO,
 	},
 
 	// ADVANCE

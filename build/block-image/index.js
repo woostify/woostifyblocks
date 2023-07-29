@@ -3605,7 +3605,10 @@ const GlobalCss = attrs => {
       padding: style_image.padding
     })]
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
-    styles: [(0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
+    styles: [(0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_6__["default"])({
+      className: IMAGE_CLASSNAME,
+      margin: style_image.margin
+    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
       className: IMAGE_CLASSNAME,
       value: general_settings.width,
       prefix: "width",
@@ -4121,10 +4124,7 @@ const Image = _ref => {
   };
   const controls = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__.BlockControls, {
     group: "block"
-  }, !isContentLocked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__.BlockAlignmentControl, {
-    value: align,
-    onChange: updateAlignment
-  }), !isContentLocked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToolbarButton, {
+  }, !isContentLocked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToolbarButton, {
     onClick: () => {
       setShowCaption(!showCaption);
       if (showCaption && caption) {
@@ -4529,7 +4529,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const WCB_IMAGE_PANEL_SETTINGS_DEMO = {
   alignment: {
-    Desktop: "center"
+    Desktop: "none"
   },
   captionAlignment: {
     Desktop: "center"
@@ -4651,11 +4651,7 @@ const WcbImagePanelSettings = _ref => {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Settings", "wcb")
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "space-y-5"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    onChange: handleChangeImageAlignment,
-    value: TEXT_ALIGNMENT,
-    label: "Alignment"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextareaControl
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextareaControl
   // @ts-ignore
   , {
     __nextHasNoMarginBottom: true,
@@ -4931,6 +4927,14 @@ const WCB_IMAGE_PANEL_STYLE_IMAGE_DEMO = {
       right: "",
       bottom: ""
     }
+  },
+  margin: {
+    Desktop: {
+      top: "",
+      left: "",
+      right: "",
+      bottom: ""
+    }
   }
 };
 const WcbImagePanel_StyleImage = _ref => {
@@ -4945,11 +4949,15 @@ const WcbImagePanel_StyleImage = _ref => {
   const {
     border,
     boxShadow,
-    padding
+    padding,
+    margin
   } = panelData;
   const {
     currentDeviceValue: currentPadding
   } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_11__["default"])(padding, deviceType);
+  const {
+    currentDeviceValue: currentMargin
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_11__["default"])(margin, deviceType);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     initialOpen: initialOpen,
     onToggle: onToggle,
@@ -4979,6 +4987,21 @@ const WcbImagePanel_StyleImage = _ref => {
       });
     }
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalBoxControl, {
+    label: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      hasResponsive: true,
+      className: ""
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Margin", "wcb")),
+    values: currentMargin,
+    onChange: data => {
+      setAttr__({
+        ...panelData,
+        margin: {
+          ...margin,
+          [deviceType]: data
+        }
+      });
+    }
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalBoxControl, {
     label: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_9__["default"], {
       hasResponsive: true,
       className: ""
@@ -5920,17 +5943,25 @@ const MyBorderControl = _ref => {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Hover border color", "wcb"),
     onChange: handleChangeBorderHoverColor,
     color: hoverColorProps
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.__experimentalBorderRadiusControl, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "MyBorderControl__BorderRadiusControl"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    className: "mb-2",
+    hasResponsive: true
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Border radius", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.__experimentalBorderRadiusControl, {
     values: RADIUS,
     onChange: value => {
       handleChangeBorderRadius(value);
     },
-    label: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      className: "",
-      hasResponsive: true
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Border radius", "wcb"))
+    label: ""
+    // label={
+    // 	<MyLabelControl className="" hasResponsive>
+    // 		{__("Border radius", "wcb")}
+    // 	</MyLabelControl>
+    // }
   })));
 };
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyBorderControl);
 
 /***/ }),
@@ -9010,30 +9041,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 const checkResponsiveValueForOptimizeCSS = _ref => {
+  var _new_tablet_v, _new_desktop_v;
   let {
-    mobile_v,
-    tablet_v,
-    desktop_v
+    mobile_v = null,
+    tablet_v = null,
+    desktop_v = null
   } = _ref;
   let new_tablet_v = tablet_v;
   let new_desktop_v = desktop_v;
   if (mobile_v === tablet_v && tablet_v === desktop_v) {
     return {
       mobile_v,
-      tablet_v: "",
-      desktop_v: ""
+      tablet_v: null,
+      desktop_v: null
     };
   }
   if (desktop_v === tablet_v || desktop_v === mobile_v) {
-    new_desktop_v = "";
+    new_desktop_v = null;
   }
   if (tablet_v === mobile_v) {
-    new_tablet_v = "";
+    new_tablet_v = null;
   }
   return {
-    mobile_v,
-    tablet_v: new_tablet_v,
-    desktop_v: new_desktop_v
+    mobile_v: mobile_v !== null && mobile_v !== void 0 ? mobile_v : null,
+    tablet_v: (_new_tablet_v = new_tablet_v) !== null && _new_tablet_v !== void 0 ? _new_tablet_v : null,
+    desktop_v: (_new_desktop_v = new_desktop_v) !== null && _new_desktop_v !== void 0 ? _new_desktop_v : null
   };
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (checkResponsiveValueForOptimizeCSS);
@@ -9222,19 +9254,27 @@ const getBorderRadiusStyles = _ref => {
     value_Mobile: radiusMobile
   } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(radius);
   const converttted = radiusValue => {
+    let newradiusValue = radiusValue;
     if (typeof radiusValue === "string") {
-      radiusValue = {
+      newradiusValue = {
         bottomLeft: radiusValue,
         bottomRight: radiusValue,
         topLeft: radiusValue,
         topRight: radiusValue
       };
+    } else {
+      newradiusValue = {
+        bottomLeft: radiusValue?.bottomLeft,
+        bottomRight: radiusValue?.bottomRight,
+        topLeft: radiusValue?.topLeft,
+        topRight: radiusValue?.topRight
+      };
     }
-    return radiusValue;
+    return newradiusValue;
   };
   radiusDesktop = converttted(radiusDesktop);
-  radiusTablet = converttted(radiusDesktop);
-  radiusMobile = converttted(radiusDesktop);
+  radiusTablet = converttted(radiusTablet);
+  radiusMobile = converttted(radiusMobile);
   const {
     mobile_v: mobile_v_topLeft,
     tablet_v: tablet_v_topLeft,
@@ -9282,13 +9322,13 @@ const getBorderRadiusStyles = _ref => {
         borderTopRightRadius: tablet_v_topRight,
         borderBottomRightRadius: tablet_v_bottomRight,
         borderBottomLeftRadius: tablet_v_bottomLeft
-      } : undefined,
+      } : null,
       [`@media (min-width: ${media_desktop})`]: desktop_v_topLeft || desktop_v_topRight || desktop_v_bottomRight || desktop_v_bottomLeft ? {
         borderTopLeftRadius: desktop_v_topLeft,
         borderTopRightRadius: desktop_v_topRight,
         borderBottomRightRadius: desktop_v_bottomRight,
         borderBottomLeftRadius: desktop_v_bottomLeft
-      } : undefined
+      } : null
     }
   };
 };
@@ -9652,10 +9692,17 @@ function getStyleObjectFromResponsiveAttr(_ref) {
     value_Tablet,
     value_Mobile
   } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(value);
-  if (!hasUnit && !!unit && (typeof value_Desktop === "string" || typeof value_Desktop === "number")) {
-    value_Desktop = value_Desktop + unit;
-    value_Tablet = value_Tablet + unit;
-    value_Mobile = value_Mobile + unit;
+  if (!hasUnit && !!unit) {
+    if (typeof value_Desktop === "number") {
+      value_Desktop = value_Desktop + unit;
+      value_Tablet = value_Tablet + unit;
+      value_Mobile = value_Mobile + unit;
+    }
+    if (typeof value_Desktop === "string") {
+      value_Desktop = value_Desktop ? value_Desktop + unit : null;
+      value_Tablet = value_Tablet ? value_Tablet + unit : null;
+      value_Mobile = value_Mobile ? value_Mobile + unit : null;
+    }
   }
 
   //
@@ -9677,21 +9724,21 @@ function getStyleObjectFromResponsiveAttr(_ref) {
 
   return {
     [className]: {
-      [prefix]: `${value_Mobile_new}`,
-      [prefix2]: prefix_2 ? `${value_Mobile_new}` : null,
-      [prefix3]: prefix_3 ? `${value_Mobile_new}` : null,
-      [prefix4]: prefix_4 ? `${value_Mobile_new}` : null,
+      [prefix]: value_Mobile_new !== null && value_Mobile_new !== void 0 ? value_Mobile_new : null,
+      [prefix2]: prefix_2 ? value_Mobile_new !== null && value_Mobile_new !== void 0 ? value_Mobile_new : null : null,
+      [prefix3]: prefix_3 ? value_Mobile_new !== null && value_Mobile_new !== void 0 ? value_Mobile_new : null : null,
+      [prefix4]: prefix_4 ? value_Mobile_new !== null && value_Mobile_new !== void 0 ? value_Mobile_new : null : null,
       [`@media (min-width: ${media_tablet})`]: value_Tablet_new ? {
-        [prefix]: `${value_Tablet_new}`,
-        [prefix2]: prefix_2 ? `${value_Tablet_new}` : null,
-        [prefix3]: prefix_3 ? `${value_Tablet_new}` : null,
-        [prefix4]: prefix_4 ? `${value_Tablet_new}` : null
+        [prefix]: value_Tablet_new,
+        [prefix2]: prefix_2 ? value_Tablet_new : null,
+        [prefix3]: prefix_3 ? value_Tablet_new : null,
+        [prefix4]: prefix_4 ? value_Tablet_new : null
       } : undefined,
       [`@media (min-width: ${media_desktop})`]: value_Desktop_new ? {
-        [prefix]: `${value_Desktop_new}`,
-        [prefix2]: prefix_2 ? `${value_Desktop_new}` : null,
-        [prefix3]: prefix_3 ? `${value_Desktop_new}` : null,
-        [prefix4]: prefix_4 ? `${value_Desktop_new}` : null
+        [prefix]: value_Desktop_new,
+        [prefix2]: prefix_2 ? value_Desktop_new : null,
+        [prefix3]: prefix_3 ? value_Desktop_new : null,
+        [prefix4]: prefix_4 ? value_Desktop_new : null
       } : undefined
     }
   };
@@ -9825,21 +9872,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 const getValueFromAttrsResponsives = function (properties, currentDevice) {
-  // let value_Desktop = properties.Desktop;
-  // let value_Tablet = properties.Tablet || value_Desktop;
-  // let value_Mobile = properties.Mobile || value_Tablet;
-
+  var _properties$Tablet, _properties$Mobile;
   const v_Desktop = properties?.Desktop;
-  const v_Tablet = typeof properties?.Tablet !== "undefined" && properties?.Tablet !== null ? properties?.Tablet : v_Desktop;
-  const v_Mobile = typeof properties?.Mobile !== "undefined" && properties?.Mobile !== null ? properties?.Mobile : v_Tablet;
+  const v_Tablet = (_properties$Tablet = properties?.Tablet) !== null && _properties$Tablet !== void 0 ? _properties$Tablet : v_Desktop;
+  const v_Mobile = (_properties$Mobile = properties?.Mobile) !== null && _properties$Mobile !== void 0 ? _properties$Mobile : v_Tablet;
   let currentDeviceValue = undefined;
   if (currentDevice) {
     currentDeviceValue = currentDevice === "Desktop" ? v_Desktop : currentDevice === "Tablet" ? v_Tablet : v_Mobile;
   }
   return {
-    value_Desktop: v_Desktop,
-    value_Tablet: v_Tablet,
-    value_Mobile: v_Mobile,
+    value_Desktop: v_Desktop !== null && v_Desktop !== void 0 ? v_Desktop : null,
+    value_Tablet: v_Tablet !== null && v_Tablet !== void 0 ? v_Tablet : null,
+    value_Mobile: v_Mobile !== null && v_Mobile !== void 0 ? v_Mobile : null,
     currentDeviceValue
   };
 };

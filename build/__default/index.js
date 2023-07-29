@@ -4258,30 +4258,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 const checkResponsiveValueForOptimizeCSS = _ref => {
+  var _new_tablet_v, _new_desktop_v;
   let {
-    mobile_v,
-    tablet_v,
-    desktop_v
+    mobile_v = null,
+    tablet_v = null,
+    desktop_v = null
   } = _ref;
   let new_tablet_v = tablet_v;
   let new_desktop_v = desktop_v;
   if (mobile_v === tablet_v && tablet_v === desktop_v) {
     return {
       mobile_v,
-      tablet_v: "",
-      desktop_v: ""
+      tablet_v: null,
+      desktop_v: null
     };
   }
   if (desktop_v === tablet_v || desktop_v === mobile_v) {
-    new_desktop_v = "";
+    new_desktop_v = null;
   }
   if (tablet_v === mobile_v) {
-    new_tablet_v = "";
+    new_tablet_v = null;
   }
   return {
-    mobile_v,
-    tablet_v: new_tablet_v,
-    desktop_v: new_desktop_v
+    mobile_v: mobile_v !== null && mobile_v !== void 0 ? mobile_v : null,
+    tablet_v: (_new_tablet_v = new_tablet_v) !== null && _new_tablet_v !== void 0 ? _new_tablet_v : null,
+    desktop_v: (_new_desktop_v = new_desktop_v) !== null && _new_desktop_v !== void 0 ? _new_desktop_v : null
   };
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (checkResponsiveValueForOptimizeCSS);
@@ -4323,21 +4324,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 const getValueFromAttrsResponsives = function (properties, currentDevice) {
-  // let value_Desktop = properties.Desktop;
-  // let value_Tablet = properties.Tablet || value_Desktop;
-  // let value_Mobile = properties.Mobile || value_Tablet;
-
+  var _properties$Tablet, _properties$Mobile;
   const v_Desktop = properties?.Desktop;
-  const v_Tablet = typeof properties?.Tablet !== "undefined" && properties?.Tablet !== null ? properties?.Tablet : v_Desktop;
-  const v_Mobile = typeof properties?.Mobile !== "undefined" && properties?.Mobile !== null ? properties?.Mobile : v_Tablet;
+  const v_Tablet = (_properties$Tablet = properties?.Tablet) !== null && _properties$Tablet !== void 0 ? _properties$Tablet : v_Desktop;
+  const v_Mobile = (_properties$Mobile = properties?.Mobile) !== null && _properties$Mobile !== void 0 ? _properties$Mobile : v_Tablet;
   let currentDeviceValue = undefined;
   if (currentDevice) {
     currentDeviceValue = currentDevice === "Desktop" ? v_Desktop : currentDevice === "Tablet" ? v_Tablet : v_Mobile;
   }
   return {
-    value_Desktop: v_Desktop,
-    value_Tablet: v_Tablet,
-    value_Mobile: v_Mobile,
+    value_Desktop: v_Desktop !== null && v_Desktop !== void 0 ? v_Desktop : null,
+    value_Tablet: v_Tablet !== null && v_Tablet !== void 0 ? v_Tablet : null,
+    value_Mobile: v_Mobile !== null && v_Mobile !== void 0 ? v_Mobile : null,
     currentDeviceValue
   };
 };

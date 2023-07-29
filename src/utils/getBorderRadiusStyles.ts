@@ -20,21 +20,30 @@ const getBorderRadiusStyles = ({ className, radius }: Params): CSSObject => {
 		value_Mobile: radiusMobile,
 	} = getValueFromAttrsResponsives(radius);
 
-	const converttted = (radiusValue?: BorderRadiusSettings) => {
+	const converttted = (radiusValue?: BorderRadiusSettings | null) => {
+		let newradiusValue = radiusValue;
 		if (typeof radiusValue === "string") {
-			radiusValue = {
+			newradiusValue = {
 				bottomLeft: radiusValue,
 				bottomRight: radiusValue,
 				topLeft: radiusValue,
 				topRight: radiusValue,
 			};
+		} else {
+			newradiusValue = {
+				bottomLeft: radiusValue?.bottomLeft,
+				bottomRight: radiusValue?.bottomRight,
+				topLeft: radiusValue?.topLeft,
+				topRight: radiusValue?.topRight,
+			};
 		}
-		return radiusValue;
+
+		return newradiusValue;
 	};
 
 	radiusDesktop = converttted(radiusDesktop);
-	radiusTablet = converttted(radiusDesktop);
-	radiusMobile = converttted(radiusDesktop);
+	radiusTablet = converttted(radiusTablet);
+	radiusMobile = converttted(radiusMobile);
 
 	const {
 		mobile_v: mobile_v_topLeft,
@@ -91,7 +100,7 @@ const getBorderRadiusStyles = ({ className, radius }: Params): CSSObject => {
 							borderBottomRightRadius: tablet_v_bottomRight,
 							borderBottomLeftRadius: tablet_v_bottomLeft,
 					  }
-					: undefined,
+					: null,
 			[`@media (min-width: ${media_desktop})`]:
 				desktop_v_topLeft ||
 				desktop_v_topRight ||
@@ -103,7 +112,7 @@ const getBorderRadiusStyles = ({ className, radius }: Params): CSSObject => {
 							borderBottomRightRadius: desktop_v_bottomRight,
 							borderBottomLeftRadius: desktop_v_bottomLeft,
 					  }
-					: undefined,
+					: null,
 		},
 	};
 };

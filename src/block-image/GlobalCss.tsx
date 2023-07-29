@@ -63,6 +63,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 			{/* -------- IMAGE img ----------  */}
 			<Global
 				styles={[
+					getPaddingMarginStyles({
+						className: IMAGE_CLASSNAME,
+						margin: style_image.margin,
+					}),
 					getStyleObjectFromResponsiveAttr({
 						className: IMAGE_CLASSNAME,
 						value: general_settings.width,

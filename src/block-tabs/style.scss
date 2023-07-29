@@ -1,5 +1,13 @@
 .wcb-tabs__titles {
-	@apply flex gap-2;
+	@apply flex flex-wrap gap-2;
+}
+
+.wcb-tabs__title_inner {
+	@apply inline-flex items-center justify-center gap-1 p-2;
+}
+
+.wcb-tabs__title {
+	@apply inline-flex m-0;
 }
 
 .wcb-tab-child__inner {
