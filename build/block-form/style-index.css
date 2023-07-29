@@ -15,11 +15,11 @@
   margin-bottom: 0;
 }
 
-/*  */
 .wcb-form__wrap {
+  display: flex;
+  flex-direction: column;
   font-size: 1rem;
   line-height: 1.5rem;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 .wcb-form__wrap [type=text],
 .wcb-form__wrap [type=email],
@@ -97,7 +97,15 @@
   content: " *";
 }
 
+/*  */
+.wcb-form__box {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
 .wcb-form__inner {
+  flex: 1 1 0%;
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }

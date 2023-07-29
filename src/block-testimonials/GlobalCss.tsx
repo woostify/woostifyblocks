@@ -162,7 +162,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 						padding: style_dimension.padding,
 					}),
 					getStyleBackground({
-						className: ITEM_CLASSNAME,
+						className: `${ITEM_CLASSNAME} .wcb-testimonials__item-background`,
 						styles_background: style_backgroundAndBorder.background,
 					}),
 				]}

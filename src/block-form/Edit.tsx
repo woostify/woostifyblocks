@@ -317,52 +317,57 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			<form
 				{...wrapBlockProps}
 				className={`wcb-form__wrap ${uniqueId} ${wrapBlockProps.className} `}
-				// id={uniqueId}
 				data-uniqueid={uniqueId}
 			>
 				{/*  */}
 				<GlobalCss {...attributes} />
 				{/*  */}
 
-				<div {...innerBlocksProps} name={useInstanceId(Edit)} />
-				<div className="wcb-form__btn-submit-wrap">
-					<RichText
-						className="wcb-form__btn-submit"
-						tagName="div" // The tag here is the element output and editable in the admin
-						value={attributes.btnSubmitText} // Any existing content, either from the database or an attribute default
-						allowedFormats={["core/bold", "core/italic"]} // Allow the content to be made bold or italic, but do not allow other formatting options
-						onChange={(content) => setAttributes({ btnSubmitText: content })} // Store updated content as a block attribute
-						placeholder={__("Submit", "wcb")} // Display this text before any content has been added by the user
-					/>
-				</div>
-				<div>
-					<div className="wcb-form__successMessageText">
-						<span>{attributes.general_general.successMessageText}</span>
+				<div className="wcb-form__box">
+					<div {...innerBlocksProps} name={useInstanceId(Edit)} />
+					<div className="wcb-form__btn-submit-wrap">
+						<RichText
+							className="wcb-form__btn-submit"
+							tagName="div" // The tag here is the element output and editable in the admin
+							value={attributes.btnSubmitText} // Any existing content, either from the database or an attribute default
+							allowedFormats={["core/bold", "core/italic"]} // Allow the content to be made bold or italic, but do not allow other formatting options
+							onChange={(content) => setAttributes({ btnSubmitText: content })} // Store updated content as a block attribute
+							placeholder={__("Submit", "wcb")} // Display this text before any content has been added by the user
+						/>
 					</div>
-					<HelpText>
-						{__(
-							"(Success message: Only show on the frontend when the form submit is successful.)",
-							"wcb"
-						)}
-					</HelpText>
 				</div>
-				<div>
-					<div className="wcb-form__errorMessageText">
-						<span>{attributes.general_general.errorMessageText}</span>
+				{/*  */}
+				{/* Error mess */}
+				<div className="w-full flex-1 flex-shrink-0">
+					<div>
+						<div className="wcb-form__successMessageText">
+							<span>{attributes.general_general.successMessageText}</span>
+						</div>
+						<HelpText>
+							{__(
+								"(Success message: Only show on the frontend when the form submit is successful.)",
+								"wcb"
+							)}
+						</HelpText>
 					</div>
-					<HelpText>
-						{__(
-							"(Error message: Only show on the frontend when the form submit is error.)",
-							"wcb"
-						)}
-					</HelpText>
+					<div>
+						<div className="wcb-form__errorMessageText">
+							<span>{attributes.general_general.errorMessageText}</span>
+						</div>
+						<HelpText>
+							{__(
+								"(Error message: Only show on the frontend when the form submit is error.)",
+								"wcb"
+							)}
+						</HelpText>
+					</div>
 				</div>
-
-				<HOCInspectorControls
-					uniqueId={uniqueId}
-					renderTabPanels={renderTabBodyPanels}
-				/>
 			</form>
+
+			<HOCInspectorControls
+				uniqueId={uniqueId}
+				renderTabPanels={renderTabBodyPanels}
+			/>
 		</MyCacheProvider>
 	);
 };

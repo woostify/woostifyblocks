@@ -407,43 +407,48 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		const { imagePosition } = general_images;
 		return (
 			<div className="wcb-testimonials__item" key={index + "-"}>
-				<div className=""></div>
-				<VideoBackgroundByBgControl
-					bgType={style_backgroundAndBorder.background.bgType}
-					videoData={style_backgroundAndBorder.background.videoData}
-				/>
-				<OverlayBackgroundByBgControl
-					bgType={style_backgroundAndBorder.background.bgType}
-					overlayType={style_backgroundAndBorder.background.overlayType}
-				/>
-				<div className="wcb-testimonials__item-wrap-inner">
-					{/* IMAGE */}
-					{imagePosition === "left" && renderTestimonialItemImage(item, index)}
-
-					<div className="wcb-testimonials__item-inner">
+				<div className="wcb-testimonials__item-background">
+					<div className=""></div>
+					<VideoBackgroundByBgControl
+						bgType={style_backgroundAndBorder.background.bgType}
+						videoData={style_backgroundAndBorder.background.videoData}
+					/>
+					<OverlayBackgroundByBgControl
+						bgType={style_backgroundAndBorder.background.bgType}
+						overlayType={style_backgroundAndBorder.background.overlayType}
+					/>
+					<div className="wcb-testimonials__item-wrap-inner">
 						{/* IMAGE */}
-						{imagePosition === "top" && renderTestimonialItemImage(item, index)}
+						{imagePosition === "left" &&
+							renderTestimonialItemImage(item, index)}
 
-						{/* CONTENT */}
-						{renderTestimonialItemContent(item, index)}
-
-						<div className="wcb-testimonials__item-user">
+						<div className="wcb-testimonials__item-inner">
 							{/* IMAGE */}
-							{imagePosition === "bottom" &&
+							{imagePosition === "top" &&
 								renderTestimonialItemImage(item, index)}
 
-							<div className="wcb-testimonials__item-nameandcompany">
-								{/* NAME */}
-								<div>{renderTestimonialItemName(item, index)}</div>
+							{/* CONTENT */}
+							{renderTestimonialItemContent(item, index)}
 
-								{/* COMPANY */}
-								{renderTestimonialItemCompany(item, index)}
+							<div className="wcb-testimonials__item-user">
+								{/* IMAGE */}
+								{imagePosition === "bottom" &&
+									renderTestimonialItemImage(item, index)}
+
+								<div className="wcb-testimonials__item-nameandcompany">
+									{/* NAME */}
+									<div>{renderTestimonialItemName(item, index)}</div>
+
+									{/* COMPANY */}
+									{renderTestimonialItemCompany(item, index)}
+								</div>
 							</div>
 						</div>
-					</div>
 
-					{/* IMAGE */}
-					{imagePosition === "right" && renderTestimonialItemImage(item, index)}
+						{/* IMAGE */}
+						{imagePosition === "right" &&
+							renderTestimonialItemImage(item, index)}
+					</div>
 				</div>
 			</div>
 		);

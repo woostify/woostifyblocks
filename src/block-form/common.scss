@@ -14,11 +14,9 @@
 		margin-bottom: 0;
 	}
 }
-/*  */
 
 .wcb-form__wrap {
-	@apply text-base;
-	grid-template-columns: repeat(1, minmax(0, 1fr));
+	@apply text-base flex flex-col;
 
 	[type="text"],
 	[type="email"],
@@ -100,7 +98,13 @@
 	}
 }
 
+/*  */
+.wcb-form__box {
+	@apply flex flex-col gap-y-4;
+}
+
 .wcb-form__inner {
+	@apply flex-1;
 	display: grid;
 	grid-template-columns: repeat(1, minmax(0, 1fr));
 }

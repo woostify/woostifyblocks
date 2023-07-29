@@ -2886,11 +2886,11 @@ const Edit = props => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_25__["default"], {
     uniqueKey: clientId
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("form", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
-    className: `wcb-form__wrap ${uniqueId} ${wrapBlockProps.className} `
-    // id={uniqueId}
-    ,
+    className: `wcb-form__wrap ${uniqueId} ${wrapBlockProps.className} `,
     "data-uniqueid": uniqueId
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_8__["default"], attributes), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, innerBlocksProps, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_8__["default"], attributes), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "wcb-form__box"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, innerBlocksProps, {
     name: (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__.useInstanceId)(Edit)
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "wcb-form__btn-submit-wrap"
@@ -2907,14 +2907,16 @@ const Edit = props => {
     }) // Store updated content as a block attribute
     ,
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Submit", "wcb") // Display this text before any content has been added by the user
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "w-full flex-1 flex-shrink-0"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "wcb-form__successMessageText"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, attributes.general_general.successMessageText)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_controls_HelpText__WEBPACK_IMPORTED_MODULE_24__["default"], null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("(Success message: Only show on the frontend when the form submit is successful.)", "wcb"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "wcb-form__errorMessageText"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, attributes.general_general.errorMessageText)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_controls_HelpText__WEBPACK_IMPORTED_MODULE_24__["default"], null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("(Error message: Only show on the frontend when the form submit is error.)", "wcb"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, attributes.general_general.errorMessageText)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_controls_HelpText__WEBPACK_IMPORTED_MODULE_24__["default"], null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("(Error message: Only show on the frontend when the form submit is error.)", "wcb"))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_7__["default"], {
     uniqueId: uniqueId,
     renderTabPanels: renderTabBodyPanels
-  })));
+  }));
 };
 const Placeholder = _ref => {
   let {
@@ -3030,6 +3032,7 @@ const GlobalCss = attrs => {
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_6__.DEMO_WCB_GLOBAL_VARIABLES;
   const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
+  const BOX_CLASSNAME = `${WRAP_CLASSNAME} .wcb-form__box`;
   const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-form__inner`;
   const INPUT_CLASSNAME = `${WRAP_CLASSNAME} [type="text"], ${WRAP_CLASSNAME} [type="email"], ${WRAP_CLASSNAME} [type="url"], ${WRAP_CLASSNAME} [type="password"], ${WRAP_CLASSNAME} [type="number"], ${WRAP_CLASSNAME} [type="date"], ${WRAP_CLASSNAME} [type="datetime-local"], ${WRAP_CLASSNAME} [type="month"], ${WRAP_CLASSNAME} [type="search"], ${WRAP_CLASSNAME} [type="tel"], ${WRAP_CLASSNAME} [type="time"], ${WRAP_CLASSNAME} [type="week"], ${WRAP_CLASSNAME} [multiple], ${WRAP_CLASSNAME} select, ${WRAP_CLASSNAME} textarea`;
   const CHECKBOX_RADIO_CLASSNAME = `${WRAP_CLASSNAME} .wcb-radio__option, ${WRAP_CLASSNAME} .wcb-checkbox__option`;
@@ -3045,23 +3048,72 @@ const GlobalCss = attrs => {
       textAlignment
     } = general_general;
     const {
+      position,
+      textAlignment: btnAlignment
+    } = general_submit_button;
+    const {
       value_desktop: textAlignment_desktop,
-      value_mobile: textAlignment_mobile,
-      value_tablet: textAlignment_tablet
+      value_tablet: textAlignment_tablet,
+      value_mobile: textAlignment_mobile
     } = (0,_utils_getCssProperyHasResponsive__WEBPACK_IMPORTED_MODULE_7__["default"])({
       cssProperty: textAlignment
     });
+    const {
+      value_desktop: btnAlignment_desktop,
+      value_tablet: btnAlignment_tablet,
+      value_mobile: btnAlignment_mobile
+    } = (0,_utils_getCssProperyHasResponsive__WEBPACK_IMPORTED_MODULE_7__["default"])({
+      cssProperty: btnAlignment
+    });
+    const boxflexDirectionType = position => {
+      if (position === "right") return "row";
+      if (position === "left") return "row-reverse";
+      if (position === "top") return "column-reverse";
+      return "column";
+    };
+    const {
+      value_desktop: position_desktop,
+      value_tablet: position_tablet,
+      value_mobile: position_mobile
+    } = (0,_utils_getCssProperyHasResponsive__WEBPACK_IMPORTED_MODULE_7__["default"])({
+      cssProperty: position
+    });
+    const isFlexRow = position => {
+      if (position === "right" || position === "left") return true;
+      return false;
+    };
     return {
       [`${WRAP_CLASSNAME}`]: {
         textAlign: textAlignment_mobile,
+        ".wcb-form__btn-submit-wrap": !isFlexRow(position_mobile) ? {
+          justifyContent: btnAlignment_mobile
+        } : {
+          alignItems: btnAlignment_mobile
+        },
         [`@media (min-width: ${media_tablet})`]: {
-          textAlign: textAlignment_tablet
+          textAlign: textAlignment_tablet,
+          ".wcb-form__btn-submit-wrap": !isFlexRow(position_tablet) ? {
+            justifyContent: btnAlignment_tablet
+          } : {
+            alignItems: btnAlignment_tablet
+          }
         },
         [`@media (min-width: ${media_desktop})`]: {
-          textAlign: textAlignment_desktop
+          textAlign: textAlignment_desktop,
+          ".wcb-form__btn-submit-wrap": !isFlexRow(position_desktop) ? {
+            justifyContent: btnAlignment_desktop
+          } : {
+            alignItems: btnAlignment_desktop
+          }
+        }
+      },
+      [`${BOX_CLASSNAME}`]: {
+        flexDirection: boxflexDirectionType(position_mobile),
+        [`@media (min-width: ${media_tablet})`]: {
+          flexDirection: boxflexDirectionType(position_tablet)
         },
-        ".wcb-form__btn-submit-wrap": {
-          justifyContent: general_submit_button.textAlignment
+        [`@media (min-width: ${media_desktop})`]: {
+          flexDirection: boxflexDirectionType(position_desktop)
         }
       }
     };
@@ -3150,7 +3202,7 @@ const GlobalCss = attrs => {
     });
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
       styles: {
-        [`${INNER_CLASSNAME}, ${WRAP_CLASSNAME}`]: {
+        [`${INNER_CLASSNAME}, ${BOX_CLASSNAME}`]: {
           rowGap: rowGap_mobile,
           [`@media (min-width: ${media_tablet})`]: {
             rowGap: rowGap_tablet
@@ -3301,7 +3353,8 @@ const GlobalCss = attrs => {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
       className: `${SUBMIT_CLASSNAME}`,
-      padding: style_submit_button.padding
+      padding: style_submit_button.padding,
+      margin: style_submit_button.margin
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
@@ -3313,6 +3366,11 @@ const GlobalCss = attrs => {
       className: `${SUCCESS_MESS_CLASSNAME}`,
       border: style_messages.Success.border,
       isWithRadius: true
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
+    styles: (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
+      className: `${SUCCESS_MESS_CLASSNAME}, ${ERROR_MESS_CLASSNAME}`,
+      margin: style_messages.margin
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
     styles: {
@@ -3340,7 +3398,7 @@ const GlobalCss = attrs => {
       advance_responsiveCondition,
       advance_zIndex,
       className: WRAP_CLASSNAME,
-      defaultDisplay: "grid"
+      defaultDisplay: "flex"
     })
   }));
 };
@@ -3433,6 +3491,8 @@ function save(_ref) {
     uniqueId: uniqueId,
     HtmlTag: "form"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "wcb-form__box"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     children: innerBlocksProps.children,
     className: "wcb-form__inner"
   }), reCaptchaV2 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
@@ -3445,7 +3505,7 @@ function save(_ref) {
     value: attributes.btnSubmitText,
     tagName: "button",
     type: "submit"
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "wcb-form__successMessageText"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, attributes.general_general.successMessageText)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "wcb-form__errorMessageText"
@@ -3515,6 +3575,112 @@ function save(_ref) {
     style_messages,
     style_spacing,
     style_submit_button
+  };
+  //
+
+  const reCaptchaV2 = general_gg_recaptcha.enableReCaptcha && general_gg_recaptcha.version === "v2";
+  const reCaptchaV3 = general_gg_recaptcha.enableReCaptcha && general_gg_recaptcha.version === "v3";
+
+  //
+  const wrapBlockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
+    className: "wcb-form__wrap"
+  });
+  //
+  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
+    className: "wcb-form__inner"
+  });
+  const innerBlocksProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useInnerBlocksProps.save(blockProps);
+  //
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
+    attributes: newAttrForSave,
+    uniqueId: uniqueId,
+    HtmlTag: "form"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    children: innerBlocksProps.children,
+    className: "wcb-form__inner"
+  }), reCaptchaV2 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "g-recaptcha"
+    // data-sitekey= key se duoc jQuery add o Frontend.tsx
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "wcb-form__btn-submit-wrap"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText.Content, {
+    className: `wcb-form__btn-submit ${reCaptchaV3 ? "g-recaptcha" : ""}`,
+    value: attributes.btnSubmitText,
+    tagName: "button",
+    type: "submit"
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "wcb-form__successMessageText"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, attributes.general_general.successMessageText)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "wcb-form__errorMessageText"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, attributes.general_general.errorMessageText)));
+}
+
+/***/ }),
+
+/***/ "./src/block-form/Save__290723.tsx":
+/*!*****************************************!*\
+  !*** ./src/block-form/Save__290723.tsx ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ save)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/SaveCommon */ "./src/components/SaveCommon.tsx");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style.scss */ "./src/block-form/style.scss");
+
+
+
+
+
+
+function save(_ref) {
+  let {
+    attributes
+  } = _ref;
+  const {
+    uniqueId,
+    advance_responsiveCondition,
+    advance_zIndex,
+    general_action,
+    general_general,
+    general_gg_recaptcha,
+    general_submit_button,
+    style_checkbox_radio_toggle,
+    style_input,
+    style_label,
+    style_messages,
+    style_spacing,
+    style_submit_button,
+    advance_motionEffect
+  } = attributes;
+  //
+
+  const newAttrForSave = {
+    uniqueId,
+    advance_responsiveCondition,
+    advance_zIndex,
+    general_action,
+    general_general,
+    general_gg_recaptcha,
+    general_submit_button,
+    style_checkbox_radio_toggle,
+    style_input,
+    style_label,
+    style_messages,
+    style_spacing,
+    style_submit_button,
+    advance_motionEffect
   };
   //
 
@@ -3795,6 +3961,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyRadioGroup */ "./src/components/controls/MyRadioGroup.tsx");
 /* harmony import */ var _components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyTextAlignControl/MyTextAlignControl */ "./src/components/controls/MyTextAlignControl/MyTextAlignControl.tsx");
 /* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
 
 
 
@@ -3831,7 +3999,9 @@ const WcbFormPanelGeneral = _ref => {
     successMessageText,
     successRedirectUrl
   } = panelData;
-  const TEXT_ALIGNMENT = textAlignment[deviceType] || textAlignment.Tablet || textAlignment.Desktop;
+  const {
+    currentDeviceValue: TEXT_ALIGNMENT
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__["default"])(textAlignment, deviceType);
 
   //
   const form_style_plans = [{
@@ -4047,8 +4217,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyTextAlignControl/MyTextAlignControl */ "./src/components/controls/MyTextAlignControl/MyTextAlignControl.tsx");
-/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
+/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
+/* harmony import */ var _components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyRadioGroup */ "./src/components/controls/MyRadioGroup.tsx");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+
 
 
 
@@ -4056,7 +4228,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const WCB_FORM_PANEL_SUBMIT_BUTTON_DEMO = {
-  textAlignment: "left"
+  textAlignment: {
+    Desktop: "start"
+  },
+  position: {
+    Desktop: "bottom"
+  }
 };
 const WcbFormPanelSubmitButton = _ref => {
   let {
@@ -4066,10 +4243,42 @@ const WcbFormPanelSubmitButton = _ref => {
     onToggle,
     opened
   } = _ref;
-  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_5__["default"])() || "Desktop";
+  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_4__["default"])() || "Desktop";
   const {
-    textAlignment
+    textAlignment: textAlignmentProp,
+    position: positionProp = {
+      Desktop: "bottom"
+    }
   } = panelData;
+  const {
+    currentDeviceValue: position
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(positionProp, deviceType);
+  const {
+    currentDeviceValue: textAlignment
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(textAlignmentProp, deviceType);
+  const alignment_plan = [{
+    name: "start",
+    icon: "Start"
+  }, {
+    name: "center",
+    icon: "Center"
+  }, {
+    name: "end",
+    icon: "End"
+  }];
+  const position_plan = [{
+    name: "bottom",
+    icon: "Bottom"
+  }, {
+    name: "top",
+    icon: "Top"
+  }, {
+    name: "left",
+    icon: "Left"
+  }, {
+    name: "right",
+    icon: "Right"
+  }];
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     initialOpen: initialOpen,
     onToggle: onToggle,
@@ -4077,15 +4286,34 @@ const WcbFormPanelSubmitButton = _ref => {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Submit button", "wcb")
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "space-y-5"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    textAlignment: textAlignment,
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    label: "Position",
+    value: position,
+    plans: position_plan,
     onChange: value => {
       setAttr__({
         ...panelData,
-        textAlignment: value
+        position: {
+          ...(positionProp || {}),
+          [deviceType]: value
+        }
       });
     },
-    hasResponsive: false
+    hasResponsive: true
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    label: "ALIGNMENT",
+    value: textAlignment,
+    plans: alignment_plan,
+    onChange: value => {
+      setAttr__({
+        ...panelData,
+        textAlignment: {
+          ...textAlignmentProp,
+          [deviceType]: value
+        }
+      });
+    },
+    hasResponsive: true
   })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WcbFormPanelSubmitButton);
@@ -4872,6 +5100,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/controls/MyColorPicker/MyColorPicker */ "./src/components/controls/MyColorPicker/MyColorPicker.tsx");
 /* harmony import */ var _components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/controls/MyTypographyControl/types */ "./src/components/controls/MyTypographyControl/types.ts");
 /* harmony import */ var _components_controls_MyTypographyControl_MyTypographyControl__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/controls/MyTypographyControl/MyTypographyControl */ "./src/components/controls/MyTypographyControl/MyTypographyControl.tsx");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
+/* harmony import */ var _components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/controls/MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
+
+
+
 
 
 
@@ -4884,6 +5118,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const WCB_FORM_PANEL_STYLE_MESSAGES_DEMO = {
   typography: _components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_8__.TYPOGRAPHY_CONTROL_DEMO,
+  margin: undefined,
   Success: {
     color: "#0c4a6e",
     backgroundColor: "#f0f9ff",
@@ -4903,6 +5138,7 @@ const WcbPostGridPanel_StyleMessages = _ref => {
     onToggle,
     opened
   } = _ref;
+  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_11__["default"])() || "Desktop";
   const PanelTab = [{
     name: "Success",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Success", "wcb")
@@ -4910,6 +5146,19 @@ const WcbPostGridPanel_StyleMessages = _ref => {
     name: "Error",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Error", "wcb")
   }];
+  const {
+    margin: marginProps = {
+      Desktop: {
+        top: "0",
+        left: "0",
+        right: "0",
+        bottom: "0"
+      }
+    }
+  } = panelData;
+  const {
+    currentDeviceValue: margin
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_10__["default"])(marginProps, deviceType);
   const initialTabName = "Success";
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     initialOpen: initialOpen,
@@ -4958,8 +5207,7 @@ const WcbPostGridPanel_StyleMessages = _ref => {
       });
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    defaultOpen: true,
-    label: "Border"
+    label: "Border & Margin"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyBorderControl_MyBorderControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
     borderControl: panelData[tab.name].border,
     setAttrs__border: border => {
@@ -4967,6 +5215,21 @@ const WcbPostGridPanel_StyleMessages = _ref => {
         ...panelData,
         [tab.name]: {
           border
+        }
+      });
+    }
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalBoxControl, {
+    label: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      className: "",
+      hasResponsive: true
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("margin", "wcb")),
+    values: margin,
+    onChange: value => {
+      setAttr__({
+        ...panelData,
+        margin: {
+          ...marginProps,
+          [deviceType]: value
         }
       });
     }
@@ -5028,6 +5291,7 @@ const WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON_DEMO = {
       bottom: "1rem"
     }
   },
+  margin: undefined,
   border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_5__.MY_BORDER_CONTROL_DEMO,
   typography: _components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_11__.TYPOGRAPHY_CONTROL_DEMO
 };
@@ -5041,6 +5305,14 @@ const WcbPostGridPanel_StyleSubmitButton = _ref => {
   } = _ref;
   const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_8__["default"])() || "Desktop";
   const {
+    margin: marginProps = {
+      Desktop: {
+        top: "0",
+        left: "0",
+        right: "0",
+        bottom: "0"
+      }
+    },
     padding: paddingProps,
     border,
     colorAndBackgroundColor,
@@ -5049,6 +5321,9 @@ const WcbPostGridPanel_StyleSubmitButton = _ref => {
   const {
     currentDeviceValue: padding
   } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_10__["default"])(paddingProps, deviceType);
+  const {
+    currentDeviceValue: margin
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_10__["default"])(marginProps, deviceType);
   //
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
@@ -5090,6 +5365,21 @@ const WcbPostGridPanel_StyleSubmitButton = _ref => {
         ...panelData,
         padding: {
           ...paddingProps,
+          [deviceType]: value
+        }
+      });
+    }
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalBoxControl, {
+    label: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      className: "",
+      hasResponsive: true
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("margin", "wcb")),
+    values: margin,
+    onChange: value => {
+      setAttr__({
+        ...panelData,
+        margin: {
+          ...marginProps,
           [deviceType]: value
         }
       });
@@ -5229,9 +5519,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Save_300523__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Save__300523 */ "./src/block-form/Save__300523.tsx");
 /* harmony import */ var _Save_250523__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Save__250523 */ "./src/block-form/Save__250523.tsx");
-/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./attributes */ "./src/block-form/attributes.ts");
-/* harmony import */ var _components_controls_MyColorBackgroundColorControl_MyColorBackgroundColorControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/controls/MyColorBackgroundColorControl/MyColorBackgroundColorControl */ "./src/components/controls/MyColorBackgroundColorControl/MyColorBackgroundColorControl.tsx");
-/* harmony import */ var _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyBorderControl/types */ "./src/components/controls/MyBorderControl/types.ts");
+/* harmony import */ var _Save_290723__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Save__290723 */ "./src/block-form/Save__290723.tsx");
+/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./attributes */ "./src/block-form/attributes.ts");
+/* harmony import */ var _components_controls_MyColorBackgroundColorControl_MyColorBackgroundColorControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyColorBackgroundColorControl/MyColorBackgroundColorControl */ "./src/components/controls/MyColorBackgroundColorControl/MyColorBackgroundColorControl.tsx");
+/* harmony import */ var _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyBorderControl/types */ "./src/components/controls/MyBorderControl/types.ts");
+
 
 
 
@@ -5241,11 +5533,11 @@ const v1 = {};
 const v2 = {};
 const v3 = {
   attributes: {
-    ..._attributes__WEBPACK_IMPORTED_MODULE_2__["default"],
+    ..._attributes__WEBPACK_IMPORTED_MODULE_3__["default"],
     style_submit_button: {
       type: "object",
       default: {
-        colorAndBackgroundColor: _components_controls_MyColorBackgroundColorControl_MyColorBackgroundColorControl__WEBPACK_IMPORTED_MODULE_3__.MY_COLOR_BGCOLOR_CONTROL_FOR_BUTTON_DEMO,
+        colorAndBackgroundColor: _components_controls_MyColorBackgroundColorControl_MyColorBackgroundColorControl__WEBPACK_IMPORTED_MODULE_4__.MY_COLOR_BGCOLOR_CONTROL_FOR_BUTTON_DEMO,
         padding: {
           Desktop: {
             top: "1rem",
@@ -5254,7 +5546,7 @@ const v3 = {
             bottom: "1rem"
           }
         },
-        border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_4__.MY_BORDER_CONTROL_DEMO
+        border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_5__.MY_BORDER_CONTROL_DEMO
       }
     },
     style_messages: {
@@ -5263,12 +5555,12 @@ const v3 = {
         Success: {
           color: "#0c4a6e",
           backgroundColor: "#f0f9ff",
-          border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_4__.MY_BORDER_CONTROL_DEMO
+          border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_5__.MY_BORDER_CONTROL_DEMO
         },
         Error: {
           color: "#ef4444",
           backgroundColor: "#fef2f2",
-          border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_4__.MY_BORDER_CONTROL_DEMO
+          border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_5__.MY_BORDER_CONTROL_DEMO
         }
       }
     }
@@ -5277,11 +5569,11 @@ const v3 = {
 };
 const v4 = {
   attributes: {
-    ..._attributes__WEBPACK_IMPORTED_MODULE_2__["default"],
+    ..._attributes__WEBPACK_IMPORTED_MODULE_3__["default"],
     style_submit_button: {
       type: "object",
       default: {
-        colorAndBackgroundColor: _components_controls_MyColorBackgroundColorControl_MyColorBackgroundColorControl__WEBPACK_IMPORTED_MODULE_3__.MY_COLOR_BGCOLOR_CONTROL_FOR_BUTTON_DEMO,
+        colorAndBackgroundColor: _components_controls_MyColorBackgroundColorControl_MyColorBackgroundColorControl__WEBPACK_IMPORTED_MODULE_4__.MY_COLOR_BGCOLOR_CONTROL_FOR_BUTTON_DEMO,
         padding: {
           Desktop: {
             top: "1rem",
@@ -5290,7 +5582,7 @@ const v4 = {
             bottom: "1rem"
           }
         },
-        border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_4__.MY_BORDER_CONTROL_DEMO
+        border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_5__.MY_BORDER_CONTROL_DEMO
       }
     },
     style_messages: {
@@ -5299,19 +5591,31 @@ const v4 = {
         Success: {
           color: "#0c4a6e",
           backgroundColor: "#f0f9ff",
-          border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_4__.MY_BORDER_CONTROL_DEMO
+          border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_5__.MY_BORDER_CONTROL_DEMO
         },
         Error: {
           color: "#ef4444",
           backgroundColor: "#fef2f2",
-          border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_4__.MY_BORDER_CONTROL_DEMO
+          border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_5__.MY_BORDER_CONTROL_DEMO
         }
       }
     }
   },
   save: _Save_300523__WEBPACK_IMPORTED_MODULE_0__["default"]
 };
-const deprecated = [v4, v3, v2, v1];
+const v5 = {
+  attributes: {
+    ..._attributes__WEBPACK_IMPORTED_MODULE_3__["default"],
+    general_submit_button: {
+      type: "object",
+      default: {
+        textAlignment: "left"
+      }
+    }
+  },
+  save: _Save_290723__WEBPACK_IMPORTED_MODULE_2__["default"]
+};
+const deprecated = [v5, v4, v4, v3, v2, v1];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (deprecated);
 
 /***/ }),
