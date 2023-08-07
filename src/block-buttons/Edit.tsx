@@ -6,7 +6,6 @@ import {
 	// @ts-ignore
 	__experimentalBlockVariationPicker as BlockVariationPicker,
 	store as blockEditorStore,
-	RichText,
 	InnerBlocks,
 } from "@wordpress/block-editor";
 import { get } from "lodash";
@@ -33,14 +32,10 @@ import {
 import WcbButtonsPanel_StyleText from "./WcbButtonsPanel_StyleText";
 import WcbButtonsPanel_StyleDimension, {
 	WCB_BUTTONS_PANEL_STYLE_DIMENSION,
-	WCB_BUTTONS_PANEL_STYLE_DIMENSION_DEMO,
 } from "./WcbButtonsPanel_StyleDimension";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
-import {
-	DEFAULT_DIMENSION,
-	DimensionSettings,
-} from "../components/controls/MyDimensionsControl/types";
+import { DimensionSettings } from "../components/controls/MyDimensionsControl/types";
 import { WcbAttrsForSave } from "./Save";
 import MyCacheProvider from "../components/MyCacheProvider";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
@@ -54,31 +49,27 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		general_general,
 		style_text,
 		style_dimension,
+		advance_motionEffect,
 	} = attributes;
 	//  COMMON HOOKS
 
 	const ref = useRef<HTMLDivElement>(null);
 
-	// const { myCache, ref } = useCreateCacheEmotion("wcb-button");
-
 	const wrapBlockProps = useBlockProps({ ref });
 	const {
-		tabIsOpen,
 		tabAdvancesIsPanelOpen,
 		tabGeneralIsPanelOpen,
 		tabStylesIsPanelOpen,
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
 		setAttributes({
-			uniqueId: UNIQUE_ID,
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
-	//
-	useEffect(() => {}, []);
-	//
 
 	const getPaddingBySize = (size?: BtnGroupSizes): DimensionSettings => {
 		switch (size) {
@@ -216,6 +207,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				return (
 					<>
 						<AdvancePanelCommon
+							advance_motionEffect={advance_motionEffect}
 							advance_responsiveCondition={
 								attributes.advance_responsiveCondition
 							}
@@ -253,6 +245,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			general_general,
 			style_dimension,
 			style_text,
+			advance_motionEffect,
 		};
 	}, [
 		uniqueId,
@@ -261,6 +254,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		general_general,
 		style_dimension,
 		style_text,
+		advance_motionEffect,
 	]);
 
 	// console.log(6, "---- Button edit  ---" + uniqueId);
@@ -268,7 +262,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
-				className={`wcb-buttons__wrap ${uniqueId} ${wrapBlockProps.className} `}
+				className={`wcb-buttons__wrap ${uniqueId} ${wrapBlockProps.className}`}
 				data-uniqueid={uniqueId}
 			>
 				{/*  */}
@@ -280,10 +274,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				<HOCInspectorControls
 					uniqueId={uniqueId}
 					renderTabPanels={renderTabBodyPanels}
-					onChangeActive={(tab) => {
-						handleTogglePanel(tab);
-					}}
-					tabDefaultActive={tabIsOpen}
 				/>
 			</div>
 		</MyCacheProvider>
@@ -349,5 +339,7 @@ const ButtonsEdit = (props) => {
 
 	return <Component {...props} />;
 };
+
+console.log("buttons__inner____");
 
 export default ButtonsEdit;

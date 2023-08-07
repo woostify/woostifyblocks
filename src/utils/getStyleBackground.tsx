@@ -3,6 +3,7 @@ import { BackgroundControlData } from "../components/controls/MyBackgroundContro
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import getBackgroundColorGradientStyles from "./getBackgroundColorGradientStyles";
 import getValueFromAttrsResponsives from "./getValueFromAttrsResponsives";
+import checkResponsiveValueForOptimizeCSS from "./checkResponsiveValueForOptimizeCSS";
 
 interface Params {
 	styles_background: BackgroundControlData;
@@ -81,27 +82,80 @@ export default function getStyleBackground({
 			? `${BG_FOCAL__DESKTOP.x * 100}% ${BG_FOCAL__DESKTOP.y * 100}%`
 			: "";
 		//
+
+		//
+		const {
+			mobile_v: SRC_new,
+			tablet_v: SRC__TABLET_new,
+			desktop_v: SRC__DESKTOP_new,
+		} = checkResponsiveValueForOptimizeCSS({
+			mobile_v: SRC,
+			tablet_v: SRC__TABLET,
+			desktop_v: SRC__DESKTOP,
+		});
+		const {
+			mobile_v: BG_REPEAT_new,
+			tablet_v: BG_REPEAT__TABLET_new,
+			desktop_v: BG_REPEAT__DESKTOP_new,
+		} = checkResponsiveValueForOptimizeCSS({
+			mobile_v: BG_REPEAT,
+			tablet_v: BG_REPEAT__TABLET,
+			desktop_v: BG_REPEAT__DESKTOP,
+		});
+		const {
+			mobile_v: BG_ATTACHMENT_new,
+			tablet_v: BG_ATTACHMENT__TABLET_new,
+			desktop_v: BG_ATTACHMENT__DESKTOP_new,
+		} = checkResponsiveValueForOptimizeCSS({
+			mobile_v: BG_ATTACHMENT,
+			tablet_v: BG_ATTACHMENT__TABLET,
+			desktop_v: BG_ATTACHMENT__DESKTOP,
+		});
+		const {
+			mobile_v: BG_SIZE_new,
+			tablet_v: BG_SIZE__TABLET_new,
+			desktop_v: BG_SIZE__DESKTOP_new,
+		} = checkResponsiveValueForOptimizeCSS({
+			mobile_v: BG_SIZE,
+			tablet_v: BG_SIZE__TABLET,
+			desktop_v: BG_SIZE__DESKTOP,
+		});
+		const {
+			mobile_v: BG_POSITION_new,
+			tablet_v: BG_POSITION__TABLET_new,
+			desktop_v: BG_POSITION__DESKTOP_new,
+		} = checkResponsiveValueForOptimizeCSS({
+			mobile_v: BG_POSITION,
+			tablet_v: BG_POSITION__TABLET,
+			desktop_v: BG_POSITION__DESKTOP,
+		});
+		//
+
 		return {
 			[`${WRAP_CLASSNAME}`]: {
-				backgroundImage: `url(${SRC})`,
-				backgroundRepeat: `${BG_REPEAT}`,
-				backgroundAttachment: `${BG_ATTACHMENT}`,
-				backgroundSize: `${BG_SIZE}`,
-				backgroundPosition: `${BG_POSITION}`,
-				[`@media (min-width: ${media_tablet})`]: {
-					backgroundImage: `url(${SRC__TABLET})`,
-					backgroundRepeat: `${BG_REPEAT__TABLET}`,
-					backgroundAttachment: `${BG_ATTACHMENT__TABLET}`,
-					backgroundSize: `${BG_SIZE__TABLET}`,
-					backgroundPosition: `${BG_POSITION__TABLET}`,
-				},
-				[`@media (min-width: ${media_desktop})`]: {
-					backgroundImage: `url(${SRC__DESKTOP})`,
-					backgroundRepeat: `${BG_REPEAT__DESKTOP}`,
-					backgroundAttachment: `${BG_ATTACHMENT__DESKTOP}`,
-					backgroundSize: `${BG_SIZE__DESKTOP}`,
-					backgroundPosition: `${BG_POSITION__DESKTOP}`,
-				},
+				backgroundImage: SRC_new ? `url(${SRC_new})` : undefined,
+				backgroundRepeat: SRC_new ? `${BG_REPEAT_new}` : undefined,
+				backgroundAttachment: SRC_new ? `${BG_ATTACHMENT_new}` : undefined,
+				backgroundSize: SRC_new ? `${BG_SIZE_new}` : undefined,
+				backgroundPosition: SRC_new ? `${BG_POSITION_new}` : undefined,
+				[`@media (min-width: ${media_tablet})`]: SRC__TABLET_new
+					? {
+							backgroundImage: `url(${SRC__TABLET_new})`,
+							backgroundRepeat: `${BG_REPEAT__TABLET_new}`,
+							backgroundAttachment: `${BG_ATTACHMENT__TABLET_new}`,
+							backgroundSize: `${BG_SIZE__TABLET_new}`,
+							backgroundPosition: `${BG_POSITION__TABLET_new}`,
+					  }
+					: undefined,
+				[`@media (min-width: ${media_desktop})`]: SRC__DESKTOP_new
+					? {
+							backgroundImage: `url(${SRC__DESKTOP_new})`,
+							backgroundRepeat: `${BG_REPEAT__DESKTOP_new}`,
+							backgroundAttachment: `${BG_ATTACHMENT__DESKTOP_new}`,
+							backgroundSize: `${BG_SIZE__DESKTOP_new}`,
+							backgroundPosition: `${BG_POSITION__DESKTOP_new}`,
+					  }
+					: undefined,
 			},
 		};
 	};

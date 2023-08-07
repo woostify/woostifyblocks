@@ -15,6 +15,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		advance_zIndex,
 		general_general,
 		style_border,
+		advance_motionEffect,
 	} = attributes;
 	//
 
@@ -24,9 +25,14 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		advance_zIndex,
 		general_general,
 		style_border,
+		advance_motionEffect,
 	};
 	//
-	const blockProps = useBlockProps.save({ className: "wcb-map__wrap" });
+	const blockProps = useBlockProps.save({
+		className: "wcb-map__wrap",
+	});
+
+	const place = general_general.placeQuery?.replace?.(/ /g, "+");
 	return (
 		<SaveCommon attributes={newAttrForSave} uniqueId={uniqueId} {...blockProps}>
 			<div className="wcb-map__inner">
@@ -36,15 +42,12 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 					loading="lazy"
 					allowFullScreen
 					referrerPolicy="no-referrer-when-downgrade"
-					src={`https://www.google.com/maps/embed/v1/place
-						?key=AIzaSyAGVJfZMAKYfZ71nzL_v5i3LjTTWnCYwTY
-						&maptype=${general_general.mapTypeId}
-						&language=${general_general.language}
-						&zoom=${general_general.zoom}
-						&q=place_id:${
-							general_general.placeQuery?.place_id ||
-							"ChIJdan7FLcJxkcRQrwvoy3DwiM"
-						}`}
+					title={general_general.placeQuery || ""}
+					src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCLK1ZWtKchh3gykkn2o3i47pVEX5vbKdA&maptype=${
+						general_general.mapTypeId
+					}&language=${general_general.language}&zoom=${
+						general_general.zoom
+					}&q=${place || "Eiffel+Tower,Paris+France"}`}
 				></iframe>
 			</div>
 		</SaveCommon>

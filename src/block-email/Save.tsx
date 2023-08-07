@@ -1,7 +1,6 @@
 import React from "react";
 import { __ } from "@wordpress/i18n";
-// @ts-ignore
-import { RichText, useBlockProps } from "@wordpress/block-editor";
+import { useBlockProps } from "@wordpress/block-editor";
 import { WcbAttrs } from "./attributes";
 import "./style.scss";
 import { FormInputLabelRichTextContent } from "../block-form/FormInputLabelRichTextContent";
@@ -12,7 +11,9 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 	const UNIQUE_NAME = converUniqueId(uniqueId, "email");
 	//
-	const blockProps = useBlockProps.save({ className: "wcb-email__wrap" });
+	const blockProps = useBlockProps.save({
+		className: "wcb-email__wrap",
+	});
 
 	return (
 		<label {...blockProps} data-uniqueid={uniqueId}>

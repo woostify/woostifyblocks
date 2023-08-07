@@ -1,10 +1,17 @@
-import { AttrsGenericType } from "../block-container/attributes";
 import {
-	MyBorderControlData,
+	AttrsGenericType,
+	WcbAttrsCommonFromWp,
+} from "../block-container/attributes";
+import {
 	MY_BORDER_CONTROL_DEMO,
+	MyBorderControlData,
 } from "../components/controls/MyBorderControl/types";
 import { MyBoxShadowControlData } from "../components/controls/MyBoxShadowControl/MyBoxShadowControl";
 import { MY_BOX_SHADOW_CONTROL_DEMO } from "../components/controls/MyBoxShadowControl/types";
+import {
+	MY_MOTION_EFFECT_DEMO,
+	MyMotionEffectData,
+} from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
 import {
 	MyResponsiveConditionControlData,
 	RESPONSIVE_CONDITON_DEMO,
@@ -69,7 +76,7 @@ import {
 	WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING,
 	WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING_DEMO,
 } from "./WcbPostsGridPanelSortingAndFiltering";
-export interface WcbBlockPostsGridAttrs {
+export interface WcbBlockPostsGridAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	//
 	general_sortingAndFiltering?: WCB_POSTS_GRID_PANEL_SORTINGANDFILTERING;
@@ -92,6 +99,7 @@ export interface WcbBlockPostsGridAttrs {
 	//
 	advance_responsiveCondition?: MyResponsiveConditionControlData;
 	advance_zIndex?: MyZIndexControlData;
+	advance_motionEffect?: MyMotionEffectData;
 }
 
 const blokc1Attrs: AttrsGenericType<WcbBlockPostsGridAttrs> = {
@@ -174,6 +182,10 @@ const blokc1Attrs: AttrsGenericType<WcbBlockPostsGridAttrs> = {
 	advance_zIndex: {
 		type: "object",
 		// default: Z_INDEX_DEMO,
+	},
+	advance_motionEffect: {
+		type: "object",
+		// default: MY_MOTION_EFFECT_DEMO,
 	},
 };
 

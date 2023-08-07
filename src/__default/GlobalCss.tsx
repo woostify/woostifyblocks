@@ -16,7 +16,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
-	const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
 	const HEADING_CLASSNAME = `${WRAP_CLASSNAME} .wcb-heading__heading`;
 
 	// ------------------- WRAP DIV
@@ -29,6 +29,9 @@ const GlobalCss: FC<Props> = (attrs) => {
 		};
 	};
 
+	if (!uniqueId) {
+		return null;
+	}
 	return (
 		<>
 			<Global styles={getDivWrapStyles()} />

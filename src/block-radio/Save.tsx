@@ -1,7 +1,6 @@
 import React from "react";
 import { __ } from "@wordpress/i18n";
-// @ts-ignore
-import { RichText, useBlockProps } from "@wordpress/block-editor";
+import { useBlockProps } from "@wordpress/block-editor";
 import _ from "lodash";
 import { WcbAttrs } from "./attributes";
 import "./style.scss";
@@ -14,7 +13,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 	//
 	const blockProps = useBlockProps.save({
-		className: "wcb-radio__wrap ",
+		className: "wcb-radio__wrap",
 	});
 
 	const renderRadioOptions = () => {

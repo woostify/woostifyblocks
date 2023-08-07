@@ -1,4 +1,11 @@
-import { AttrsGenericType } from "../block-container/attributes";
+import {
+	AttrsGenericType,
+	WcbAttrsCommonFromWp,
+} from "../block-container/attributes";
+import {
+	MY_MOTION_EFFECT_DEMO,
+	MyMotionEffectData,
+} from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
 import {
 	MyResponsiveConditionControlData,
 	RESPONSIVE_CONDITON_DEMO,
@@ -47,7 +54,7 @@ import {
 	WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON,
 	WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON_DEMO,
 } from "./WcbPostGridPanel_StyleSubmitButton";
-export interface WcbAttrs {
+export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	btnSubmitText: string;
 	//
@@ -65,6 +72,7 @@ export interface WcbAttrs {
 	//
 	advance_responsiveCondition: MyResponsiveConditionControlData;
 	advance_zIndex: MyZIndexControlData;
+	advance_motionEffect: MyMotionEffectData;
 }
 
 const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
@@ -130,6 +138,10 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	advance_zIndex: {
 		type: "object",
 		default: Z_INDEX_DEMO,
+	},
+	advance_motionEffect: {
+		type: "object",
+		default: MY_MOTION_EFFECT_DEMO,
 	},
 };
 

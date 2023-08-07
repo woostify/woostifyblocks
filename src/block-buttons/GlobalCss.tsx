@@ -7,7 +7,6 @@ import getTypographyStyles from "../utils/getTypographyStyles";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { WcbAttrs } from "./attributes";
-import { BtnGroupSizes } from "./WcbButtonsPanelGeneral";
 
 interface Props extends WcbAttrs {}
 
@@ -21,13 +20,14 @@ const GlobalCss: FC<Props> = (attrs) => {
 		//
 		advance_responsiveCondition,
 		advance_zIndex,
+		advance_motionEffect,
 	} = attrs;
 	const { stackOrientation, alignment, size } = general_general;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
-	const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
 	const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-buttons__inner`;
-	const INNER_BUTTON = `#${uniqueId} .wcb-button__main`;
+	// const INNER_BUTTON = `#${uniqueId} .wcb-button__main`;
 	const INNER_BUTTON_TEXT = `#${uniqueId} .wcb-button__text`;
 
 	// ------------------- WRAP DIV
@@ -46,8 +46,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 		value_Mobile: alignment_mobile,
 	} = getValueFromAttrsResponsives(alignment);
 
-	// console.log(1, "---- butons global css ---");
+	// console.log(1, "---- butons global css ---", { style_dimension });
 
+	if (!uniqueId) {
+		return null;
+	}
 	return (
 		<>
 			{/* <Global styles={getDivWrapStyles()} /> */}
@@ -114,7 +117,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 			{/*  BUTTON */}
 			<Global
 				styles={getPaddingMarginStyles({
-					className: INNER_BUTTON,
+					// className: INNER_BUTTON,
+					className: WRAP_CLASSNAME,
 					padding: style_dimension.padding,
 					margin: style_dimension.margin,
 				})}
@@ -131,6 +135,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 			{/* ADVANCE  */}
 			<Global
 				styles={getAdvanveDivWrapStyles({
+					advance_motionEffect,
 					advance_responsiveCondition,
 					advance_zIndex,
 					className: WRAP_CLASSNAME,

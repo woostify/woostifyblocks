@@ -11,7 +11,7 @@ interface Props {
 
 const Nav: FC<Props> = ({ currentPath, onChangePath }) => {
 	return (
-		<nav className="bg-white shadow">
+		<nav className="bg-white px-2 shadow">
 			<div className="container relative flex justify-between h-16 space-x-4">
 				{/* LOGO */}
 				<div className="flex flex-shrink-0 items-center">
@@ -35,7 +35,7 @@ const Nav: FC<Props> = ({ currentPath, onChangePath }) => {
 						return (
 							<a
 								key={item.path}
-								className={`inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium focus:outline-none ring-0 shadow-none ${
+								className={`inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium ring-0 shadow-none focus:ring-0 focus:outline-none ${
 									isActive
 										? "border-indigo-500 text-gray-900"
 										: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"

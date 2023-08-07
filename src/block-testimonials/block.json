@@ -6,9 +6,11 @@
 	"title": "Testimonials",
 	"category": "wcb-blocks",
 	"icon": "- wcb-block-editor-block-icon lni lni-quotation",
-	"description": "Example static block scaffolded with Create Block tool.",
+	"description": "Create confidence in your brand or product by showing off beautiful unique testimonials.",
 	"supports": {
-		"html": false
+		"html": false,
+		"anchor": true,
+		"align": ["full", "wide"]
 	},
 	"textdomain": "wcb-blocks",
 	"editorScript": "file:./index.js",

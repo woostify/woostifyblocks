@@ -26,10 +26,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 		//
 		advance_responsiveCondition,
 		advance_zIndex,
+		advance_motionEffect,
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
-	const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
 	const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-faq__inner`;
 	const FAQ_CHILD_WRAP = `${WRAP_CLASSNAME} .wcb-faq-child__wrap`;
 	const FAQ_CHILD_QUESTION = `${WRAP_CLASSNAME} .wcb-faq-child__question`;
@@ -80,10 +81,12 @@ const GlobalCss: FC<Props> = (attrs) => {
 		};
 	};
 
+	if (!uniqueId) {
+		return null;
+	}
+
 	return (
 		<>
-			{/* <Global styles={getDivWrapStyles()} /> */}
-
 			{/* ------- INNER -------   */}
 			<Global
 				styles={[
@@ -97,6 +100,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 						value: style_container.rowGap,
 						prefix: "rowGap",
 					}),
+					{
+						[INNER_CLASSNAME]: {
+							textAlign: general_general.textAlignment,
+						},
+					},
 				]}
 			/>
 			{general_general.layout === "grid" && (
@@ -104,10 +112,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 					styles={[
 						inner_getGridCol(),
 						{
-							[INNER_CLASSNAME]: {
-								textAlign: general_general.textAlignment,
-							},
-							".wcb-faq-child__question": {
+							[FAQ_CHILD_QUESTION]: {
 								display: "block",
 							},
 						},
@@ -225,10 +230,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 			{/* ADVANCE  */}
 			<Global
 				styles={getAdvanveDivWrapStyles({
+					advance_motionEffect,
 					advance_responsiveCondition,
 					advance_zIndex,
 					className: WRAP_CLASSNAME,
-					defaultDisplay: "block",
 				})}
 			/>
 		</>

@@ -29,6 +29,8 @@ import {
 } from "@wordpress/block-editor";
 import { registerFormatType, toggleFormat } from "@wordpress/rich-text";
 import MyCustomButton, { WCB_FORMAT_HIGHLIGHT } from "./MyCustomButton";
+import deprecated from "./deprecated";
+import convertObjectAttrToPreview from "../utils/convertAttsToPreview";
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 
 registerFormatType(WCB_FORMAT_HIGHLIGHT, {
@@ -42,6 +44,8 @@ registerBlockType(metadata.name, {
 	edit: Edit,
 	save,
 	attributes,
+	deprecated: deprecated,
+	example: convertObjectAttrToPreview(attributes),
 	icon: (
 		<svg
 			className="wcb-editor-block-icons fill-none "

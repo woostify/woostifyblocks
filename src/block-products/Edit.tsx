@@ -1,6 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import { BlockControls, useBlockProps } from "@wordpress/block-editor";
-import React, { useEffect, FC, useCallback, useState, useMemo } from "react";
+import React, { useEffect, FC, useCallback, useMemo } from "react";
 import ServerSideRender from "@wordpress/server-side-render";
 import { WcbAttrs } from "./attributes";
 import { settings } from "@wordpress/icons";
@@ -69,15 +69,21 @@ import WcbProductsPanel_StylePrice, {
 import WcbProductsPanel_StyleRating, {
 	WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO,
 } from "./WcbProductsPanel_StyleRating";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
+import WcbProductsPanel_StyleCategory, {
+	WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
+} from "./WcbProductsPanel_StyleCategory";
 import { MY_BORDER_CONTROL_DEMO } from "../components/controls/MyBorderControl/types";
 import { RESPONSIVE_CONDITON_DEMO } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
 import { Z_INDEX_DEMO } from "../components/controls/MyZIndexControl/MyZIndexControl";
+import { MY_MOTION_EFFECT_DEMO } from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
 
 interface Props extends EditProps<WcbAttrs> {}
 
 const Edit: FC<Props> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 	const {
+		className,
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_sortingAndFiltering,
@@ -95,6 +101,8 @@ const Edit: FC<Props> = (props) => {
 		style_border,
 		style_price,
 		style_rating,
+		advance_motionEffect,
+		style_category,
 	} = attributes;
 	//  COMMON HOOKS
 	const wrapBlockProps = useBlockProps();
@@ -106,17 +114,15 @@ const Edit: FC<Props> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
-
-	//
 	useEffect(() => {
-		if (uniqueId) {
-			return;
-		}
+		if (uniqueId) return;
 		setAttributes({
-			uniqueId: UNIQUE_ID,
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
+	//
 
 	useEffect(() => {
 		if (style_layout) {
@@ -131,29 +137,34 @@ const Edit: FC<Props> = (props) => {
 			style_price: WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO,
 			style_rating: WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO,
 			style_saleBadge: WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO,
+			style_category: WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
 			style_title: WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
-			advance_responsiveCondition: RESPONSIVE_CONDITON_DEMO,
-			advance_zIndex: Z_INDEX_DEMO,
 			general_sortingAndFiltering: WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
 			general_content: WCB_PRODUCTS_PANEL_COTENT_DEMO,
 			general_featuredImage: WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO,
 			general_addToCartBtn: WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO,
 			general_pagination: WCB_PRODUCTS_PANEL_PAGINATION_DEMO,
+			advance_responsiveCondition: RESPONSIVE_CONDITON_DEMO,
+			advance_zIndex: Z_INDEX_DEMO,
+			advance_motionEffect: MY_MOTION_EFFECT_DEMO,
 		};
 
 		setAttributes({ ...DEFAULT });
 	}, [style_layout]);
 	//
-
 	useEffect(() => {
-		if (!document.getElementById(UNIQUE_ID)) {
-			return;
+		if (!advance_motionEffect) {
+			setAttributes({ advance_motionEffect: MY_MOTION_EFFECT_DEMO });
 		}
-		// initCarouselForWcbProducts(
-		// 	document.getElementById(UNIQUE_ID) as Element,
-		// 	attributes
-		// );
-	}, [UNIQUE_ID]);
+	}, [advance_motionEffect]);
+	useEffect(() => {
+		if (!style_category) {
+			setAttributes({ style_category: WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO });
+		}
+	}, [style_category]);
+	//
+
+	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
 		switch (tab.name) {
@@ -272,6 +283,19 @@ const Edit: FC<Props> = (props) => {
 							/>
 						)}
 
+						{general_content?.isShowCategory && style_category && (
+							<WcbProductsPanel_StyleCategory
+								onToggle={() => handleTogglePanel("Styles", "_StyleCategory")}
+								initialOpen={tabStylesIsPanelOpen === "_StyleCategory"}
+								opened={tabStylesIsPanelOpen === "_StyleCategory" || undefined}
+								//
+								setAttr__={(data) => {
+									setAttributes({ style_category: data });
+								}}
+								panelData={style_category}
+							/>
+						)}
+
 						{general_content?.isShowTitle && style_title && (
 							<WcbProductsPanel_StyleTitle
 								onToggle={() => handleTogglePanel("Styles", "_StyleTitle")}
@@ -378,6 +402,7 @@ const Edit: FC<Props> = (props) => {
 					<>
 						{advance_responsiveCondition && advance_zIndex && (
 							<AdvancePanelCommon
+								advance_motionEffect={advance_motionEffect}
 								advance_responsiveCondition={advance_responsiveCondition}
 								advance_zIndex={advance_zIndex}
 								handleTogglePanel={handleTogglePanel}
@@ -541,6 +566,8 @@ const Edit: FC<Props> = (props) => {
 			style_border,
 			style_price,
 			style_rating,
+			advance_motionEffect,
+			style_category,
 		};
 		if (Object.values(cs).some((item) => !item)) {
 			return null;
@@ -564,10 +591,13 @@ const Edit: FC<Props> = (props) => {
 		style_border,
 		style_price,
 		style_rating,
+		advance_motionEffect,
+		style_category,
 	]);
 
 	const WcbAttrsForServerSide = useMemo(() => {
 		return {
+			className,
 			uniqueId,
 			general_sortingAndFiltering,
 			general_content,
@@ -577,6 +607,7 @@ const Edit: FC<Props> = (props) => {
 		};
 	}, [
 		uniqueId,
+		className,
 		general_sortingAndFiltering,
 		general_content,
 		general_featuredImage,
@@ -587,7 +618,12 @@ const Edit: FC<Props> = (props) => {
 	const WcbAttrsForSaveValue = WcbAttrsForSave();
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
-			<div {...wrapBlockProps}>
+			<div
+				{...wrapBlockProps}
+				className={`${
+					wrapBlockProps.className
+				} wcb-block-products-editor-swithToScrollSnapX__${style_layout?.swithToScrollSnapX.toString()}`}
+			>
 				{/* CONTROL SETTINGS */}
 				<HOCInspectorControls
 					renderTabPanels={renderTabBodyPanels}
@@ -598,17 +634,19 @@ const Edit: FC<Props> = (props) => {
 				<BlockControls group="block">{renderToobar()}</BlockControls>
 
 				{/* CSS IN JS */}
-				{!!uniqueId && !!style_layout && WcbAttrsForSaveValue && (
-					<GlobalCss {...WcbAttrsForSaveValue} />
-				)}
+				{!!uniqueId &&
+					!!style_layout &&
+					!!style_price &&
+					WcbAttrsForSaveValue && <GlobalCss {...WcbAttrsForSaveValue} />}
 
 				{/* CHILD CONTENT  */}
-				{uniqueId && !!style_layout && (
+				{uniqueId && !!style_layout && !!style_price && (
 					<ServerSideRender
 						block="wcb/products"
 						attributes={WcbAttrsForServerSide}
 						EmptyResponsePlaceholder={EmptyPlaceholder}
 						LoadLoadingResponsePlaceholder={LoadingPlaceholder}
+						httpMethod="POST"
 					/>
 				)}
 			</div>

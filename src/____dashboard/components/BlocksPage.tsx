@@ -4,10 +4,14 @@ import {
 	HeartIcon,
 	LockClosedIcon,
 	SignalSlashIcon,
+	ArrowUpRightIcon,
 } from "@heroicons/react/24/outline";
 import { Wcb_blocks_enable_disable_options_Type, Wcb_block_Type } from "../App";
 import MyToggle from "./MyToggle";
 import toast, { Toaster } from "react-hot-toast";
+import { Fragment } from "react";
+import { Menu, Transition } from "@headlessui/react";
+import { EllipsisHorizontalIcon } from "@heroicons/react/20/solid";
 
 interface Props {
 	initWcbBlocksEnableDisable: Wcb_blocks_enable_disable_options_Type;
@@ -19,9 +23,14 @@ const BlocksPage: FC<Props> = ({
 	initWcbBlocksList,
 }) => {
 	const [blocksStatus, setBlocksStatus] = useState(initWcbBlocksEnableDisable);
-	const [blocksList, setBlocksList] = useState(initWcbBlocksList);
+	// const [blocksList, setBlocksList] = useState(initWcbBlocksList);
+	const [blocksList, setBlocksList] = useState(
+		(function () {
+			return initWcbBlocksList;
+		})()
+	);
 
-	console.log(2, {
+	console.log(211, {
 		initWcbBlocksList,
 		initWcbBlocksEnableDisable,
 		blocksStatus,
@@ -103,11 +112,82 @@ const BlocksPage: FC<Props> = ({
 		);
 	};
 
-	const renderCard = (key: string, index: number) => {
+	const renderCard3 = (block: Wcb_block_Type, index: number) => {
+		if (block.parent) {
+			return null;
+		}
+
+		const status = blocksStatus[block.name];
+		const currentBlock = block;
+		const {
+			title = "None",
+			icon = "none",
+			parent,
+			name,
+			description,
+		} = currentBlock || {};
+
+		if (!!parent || !currentBlock) {
+			return null;
+		}
+
+		const enabled = status !== "disabled";
+
+		return (
+			<li
+				key={name + title}
+				className="overflow-hidden rounded-xl border border-gray-200 flex flex-col"
+			>
+				<div className="flex items-center gap-x-4 border-b border-gray-900/5 bg-gray-50 p-6 ">
+					<div className="h-11 w-11 flex-shrink-0 flex items-center justify-center rounded-lg bg-white ring-1 ring-gray-900/10">
+						<i
+							className={`text-lg w-6 h-6 text-black dashicon dashicons dashicons-${icon} ${icon}`}
+						></i>
+					</div>
+					<div className="text-sm font-medium leading-6 text-gray-900">
+						{title}
+					</div>
+					<Menu
+						as="a"
+						href={`https://woostifyblocks.com/${name.replace(/\//g, "-")}`}
+						target="_blank"
+						rel="noopener noreferrer"
+						title="View demo"
+						className="relative ml-auto text-slate-700 hover:text-black"
+					>
+						<ArrowUpRightIcon className="w-5 h-5" />
+					</Menu>
+				</div>
+				<dl className="flex-grow flex flex-col -my-3 divide-y divide-gray-100 px-6 py-4 text-sm leading-6 ">
+					<div className="flex justify-between gap-x-4 py-3">
+						<p className="text-gray-700">{description}</p>
+					</div>
+					<div className="mt-auto flex justify-between gap-x-4 py-3">
+						<dt className="text-gray-500">Turn on/off</dt>
+						<dd className="flex items-start gap-x-2">
+							<div className="flex-shrink-0">
+								<MyToggle
+									checked={enabled}
+									id={currentBlock.name}
+									name={currentBlock.name}
+									onChange={(checked) => {
+										handleDisableEnableBlocks({
+											[currentBlock.name]: checked ? "enabled" : "disabled",
+										});
+									}}
+								/>
+							</div>
+						</dd>
+					</div>
+				</dl>
+			</li>
+		);
+	};
+	const renderCard2 = (key: string, index: number) => {
 		const status = blocksStatus[key];
 		const currentBlock = blocksList.filter((item) => item.name === key)[0];
 
-		const { title = "None", icon = "none", parent } = currentBlock || {};
+		const { title = "None", icon = "none", parent, name } = currentBlock || {};
 
 		if (!!parent || !currentBlock) {
 			return null;
@@ -137,7 +217,7 @@ const BlocksPage: FC<Props> = ({
 							{title}
 						</label>
 						<a
-							href="#"
+							href={`https://woostifyblocks.com/${name.replace(/\//g, "-")}`}
 							target="_blank"
 							rel="noopener noreferrer"
 							className="focus-visible:text-slate-500 active:text-slate-500 hover:text-slate-500 focus:text-slate-400 text-slate-400 text-sm truncate"
@@ -162,12 +242,87 @@ const BlocksPage: FC<Props> = ({
 		);
 	};
 
+	const renderCard = (key: string, index: number) => {
+		const status = blocksStatus[key];
+		const currentBlock = blocksList.filter((item) => item.name === key)[0];
+
+		const {
+			title = "None",
+			icon = "none",
+			parent,
+			name,
+			description,
+		} = currentBlock || {};
+
+		if (!!parent || !currentBlock) {
+			return null;
+		}
+
+		const enabled = status === "enabled";
+		return (
+			<div
+				key={key}
+				className={`relative border rounded-xl bg-white transition-colors ${
+					enabled
+						? "border-slate-100 text-slate-800 bg-slate-50"
+						: "border-slate-200/80 hover:border-slate-300 text-slate-400"
+				}`}
+			>
+				<div className="relative z-10 p-6 flex items-start gap-x-5">
+					<div className="flex-1 min-w-0 flex flex-col items-start">
+						<div className="inline-block flex-shrink-0 rounded-md bg-indigo-500 p-3">
+							<i
+								className={`text-lg w-6 h-6 text-white dashicon dashicons dashicons-${icon} ${icon}`}
+							></i>
+						</div>
+						<label htmlFor={key} className="text-2xl font-bold my-2 block">
+							{title}
+						</label>
+						<p className="text-xs text-muted-foreground block">{description}</p>
+						<a
+							href={`https://woostifyblocks.com/${name.replace(/\//g, "-")}`}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="text-xs font-medium text-indigo-500 block"
+						>
+							View demo
+						</a>
+					</div>
+					<div className="flex-shrink-0">
+						<MyToggle
+							checked={enabled}
+							id={key}
+							name={key}
+							onChange={(checked) => {
+								handleDisableEnableBlocks({
+									[key]: checked ? "enabled" : "disabled",
+								});
+							}}
+						/>
+					</div>
+				</div>
+			</div>
+		);
+	};
+
+	const renderGridCards = () => {
+		return (
+			<ul
+				role="list"
+				className="mt-8 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 xl:gap-x-8"
+			>
+				{blocksList.map(renderCard3)}
+			</ul>
+		);
+	};
+
 	return (
 		<div>
 			{renderButtons()}
-			<div className="mt-6 grid grid-flow-row auto-rows-min grid-cols-2 gap-6 sm:grid-cols-3">
+			{/* <div className="mt-6 grid grid-flow-row auto-rows-min grid-cols-2 gap-6 sm:grid-cols-4">
 				{Object.keys(blocksStatus).map(renderCard)}
-			</div>
+			</div> */}
+			{renderGridCards()}
 		</div>
 	);
 };

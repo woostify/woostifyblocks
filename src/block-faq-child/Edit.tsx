@@ -14,6 +14,7 @@ import { WCB_FAQ_PANEL_GENERAL } from "../block-faq/WcbFaqPanelGeneral";
 import { useSelect } from "@wordpress/data";
 import MyCacheProvider from "../components/MyCacheProvider";
 import MyIconFull from "../components/controls/MyIconFull";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 const Edit: FC<
 	EditProps<
@@ -39,18 +40,13 @@ const Edit: FC<
 	const ref = useRef<HTMLDivElement>(null);
 	// const { myCache, ref } = useCreateCacheEmotion();
 	const wrapBlockProps = useBlockProps({ ref });
-	const {
-		tabIsOpen,
-		tabAdvancesIsPanelOpen,
-		tabGeneralIsPanelOpen,
-		tabStylesIsPanelOpen,
-		handleTogglePanel,
-	} = useSetBlockPanelInfo(uniqueId);
+	const {} = useSetBlockPanelInfo(uniqueId);
 
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
 		setAttributes({
-			uniqueId: UNIQUE_ID,
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
 	//
@@ -110,8 +106,8 @@ const Edit: FC<
 					wrapBlockProps?.className
 				} wcb-faq-child__wrap wcb-faq-child__wrap--${layout} ${
 					ACTIVE ? "active" : ""
-				} ${UNIQUE_ID}`}
-				data-uniqueid={UNIQUE_ID}
+				} ${uniqueId}`}
+				data-uniqueid={uniqueId}
 			>
 				<div className="ac-header">
 					<div

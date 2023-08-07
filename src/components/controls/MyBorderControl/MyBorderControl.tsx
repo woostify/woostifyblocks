@@ -74,6 +74,7 @@ const MyBorderControl: FC<Props> = ({
 				__experimentalHasMultipleOrigins={true}
 				__experimentalIsRenderedInSidebar={true}
 				size={"__unstable-large"}
+				className="wcb-BorderBoxControl"
 			/>
 
 			<MyColorPicker
@@ -82,30 +83,22 @@ const MyBorderControl: FC<Props> = ({
 				color={hoverColorProps}
 			/>
 
-			<div>
+			<div className="MyBorderControl__BorderRadiusControl">
+				<MyLabelControl className="mb-2" hasResponsive>
+					{__("Border radius", "wcb")}
+				</MyLabelControl>
 				<BorderRadiusControl
 					values={RADIUS}
 					onChange={(value) => {
 						handleChangeBorderRadius(value);
 					}}
-					label={
-						<MyLabelControl className="" hasResponsive>
-							{__("Border radius", "wcb")}
-						</MyLabelControl>
-					}
+					label={""}
+					// label={
+					// 	<MyLabelControl className="" hasResponsive>
+					// 		{__("Border radius", "wcb")}
+					// 	</MyLabelControl>
+					// }
 				/>
-				{/* <BoxControl
-					label={
-						<MyLabelControl className="" hasResponsive>
-							{__("Border radius", "wcb")}
-						</MyLabelControl>
-					}
-					values={RADIUS}
-					allowReset={false}
-					onChange={(e) => {
-						handleChangeBorderRadius(e);
-					}}
-				/> */}
 			</div>
 		</div>
 	);

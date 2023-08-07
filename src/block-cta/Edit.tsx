@@ -17,12 +17,9 @@ import WcbCtaPanelLayout, {
 } from "./WcbCtaPanelLayout";
 import WcbCtaPanel_StyleTitle from "./WcbCtaPanel_StyleTitle";
 import WcbCtaPanel_StyleDescription from "./WcbCtaPanel_StyleDescription";
-import WcbCtaPanel_StyleDimension, {
-	WCB_CTA_PANEL_STYLE_DIMENSION_DEMO,
-} from "./WcbCtaPanel_StyleDimension";
+import WcbCtaPanel_StyleDimension from "./WcbCtaPanel_StyleDimension";
 import WcbCtaPanelPreset from "./WcbCtaPanelPreset";
 import { WcbAttrsForSave } from "./Save";
-import createCache, { EmotionCache } from "@emotion/cache";
 import MyCacheProvider from "../components/MyCacheProvider";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
@@ -39,6 +36,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_description,
 		style_dimension,
 		general_preset,
+		advance_motionEffect,
 	} = attributes;
 	//  COMMON HOOKS
 	// const { myCache, ref } = useCreateCacheEmotion("cta");
@@ -53,11 +51,11 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
-
 	useEffect(() => {
 		setAttributes({
-			uniqueId: UNIQUE_ID,
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
 	//
@@ -152,6 +150,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				return (
 					<>
 						<AdvancePanelCommon
+							advance_motionEffect={advance_motionEffect}
 							advance_responsiveCondition={
 								attributes.advance_responsiveCondition
 							}
@@ -177,6 +176,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			style_description,
 			style_dimension,
 			style_title,
+			advance_motionEffect,
 		};
 	}, [
 		uniqueId,
@@ -186,6 +186,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_description,
 		style_dimension,
 		style_title,
+		advance_motionEffect,
 	]);
 
 	// console.log(4, "---- CTA edit  ---" + uniqueId);
@@ -194,8 +195,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-cta__wrap ${UNIQUE_ID}`}
-				data-uniqueid={UNIQUE_ID}
+				className={`${wrapBlockProps?.className} wcb-cta__wrap ${uniqueId}`}
+				data-uniqueid={uniqueId}
 			>
 				{/* CONTROL SETTINGS */}
 				<HOCInspectorControls
@@ -214,7 +215,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							value={attributes.title}
 							allowedFormats={["core/bold", "core/italic"]}
 							onChange={(content) => setAttributes({ title: content })}
-							placeholder={__("Heading...")}
+							placeholder={__("Call to action")}
 							className="wcb-cta__title"
 						/>
 						<RichText
@@ -222,7 +223,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							value={attributes.description}
 							allowedFormats={["core/bold", "core/italic"]}
 							onChange={(content) => setAttributes({ description: content })}
-							placeholder={__("description...")}
+							placeholder={
+								"Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo..."
+							}
 							className="wcb-cta__description"
 						/>
 					</div>

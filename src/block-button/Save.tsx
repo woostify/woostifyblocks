@@ -1,10 +1,6 @@
 import React from "react";
 import { __ } from "@wordpress/i18n";
-import {
-	// @ts-ignore
-	useInnerBlocksProps,
-	useBlockProps,
-} from "@wordpress/block-editor";
+import { useBlockProps } from "@wordpress/block-editor";
 import { WcbAttrs } from "./attributes";
 import SaveCommon from "../components/SaveCommon";
 import "./style.scss";
@@ -14,6 +10,7 @@ export interface WcbAttrsForSave extends Omit<WcbAttrs, "content"> {}
 
 export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const {
+		anchor,
 		content,
 		uniqueId,
 		advance_responsiveCondition,
@@ -30,6 +27,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	//
 
 	const newAttrForSave: WcbAttrsForSave = {
+		anchor,
 		uniqueId,
 		advance_responsiveCondition,
 		advance_zIndex,
@@ -43,16 +41,15 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_text,
 	};
 	//
-	const blockProps = useBlockProps.save({ className: "wcb-button__main" });
-	const innerBlocksProps = useInnerBlocksProps.save(blockProps);
+	const wrapBlockProps = useBlockProps.save({ className: "wcb-button__wrap" });
 
 	return (
 		<SaveCommon
+			{...wrapBlockProps}
 			attributes={newAttrForSave}
-			className="wcb-button__wrap"
 			uniqueId={uniqueId}
 		>
-			<Button attributes={attributes} isEdit={false} {...innerBlocksProps} />
+			<Button attributes={attributes} isEdit={false} />
 		</SaveCommon>
 	);
 }

@@ -1,7 +1,23 @@
 /*!**************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/block-form/style.scss ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/block-form/style.scss ***!
   \**************************************************************************************************************************************************************************************************************************************************/
+.editor-styles-wrapper .wcb-form__wrap .wp-block {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.wcb-form__wrap .wp-block {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .wcb-form__wrap {
+  display: flex;
+  flex-direction: column;
   font-size: 1rem;
   line-height: 1.5rem;
 }
@@ -81,8 +97,17 @@
   content: " *";
 }
 
+/*  */
+.wcb-form__box {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
 .wcb-form__inner {
+  flex: 1 1 0%;
   display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 .wcb-form__btn-submit-wrap {
@@ -102,6 +127,7 @@
 
 .wcb-form__successMessageText,
 .wcb-form__errorMessageText {
+  flex: 1 1 0%;
   padding: 1.25rem;
   display: none;
 }

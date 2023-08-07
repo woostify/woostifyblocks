@@ -1,4 +1,11 @@
-import { AttrsGenericType } from "../block-container/attributes";
+import {
+	AttrsGenericType,
+	WcbAttrsCommonFromWp,
+} from "../block-container/attributes";
+import {
+	MY_MOTION_EFFECT_DEMO,
+	MyMotionEffectData,
+} from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
 import {
 	MyResponsiveConditionControlData,
 	RESPONSIVE_CONDITON_DEMO,
@@ -19,7 +26,7 @@ import {
 	WCB_BUTTONS_PANEL_STYLE_TEXT,
 	WCB_BUTTONS_PANEL_STYLE_TEXT_DEMO,
 } from "./WcbButtonsPanel_StyleText";
-export interface WcbAttrs {
+export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	//
 	general_general: WCB_BUTTONS_PANEL_GENERAL;
@@ -28,6 +35,7 @@ export interface WcbAttrs {
 	//
 	advance_responsiveCondition: MyResponsiveConditionControlData;
 	advance_zIndex: MyZIndexControlData;
+	advance_motionEffect: MyMotionEffectData;
 }
 
 const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
@@ -58,6 +66,10 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	advance_zIndex: {
 		type: "object",
 		default: Z_INDEX_DEMO,
+	},
+	advance_motionEffect: {
+		type: "object",
+		default: MY_MOTION_EFFECT_DEMO,
 	},
 };
 

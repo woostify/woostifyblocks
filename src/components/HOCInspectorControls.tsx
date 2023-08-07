@@ -1,8 +1,3 @@
-import {
-	Cog6ToothIcon,
-	HomeModernIcon,
-	RectangleGroupIcon,
-} from "@heroicons/react/24/outline";
 import { InspectorControls } from "@wordpress/block-editor";
 import { TabPanel } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";

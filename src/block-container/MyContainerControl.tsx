@@ -16,6 +16,8 @@ import {
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE } from "../components/controls/MySpacingSizesControl/SpacingInputControl";
 import HelpText from "../components/controls/HelpText";
+// @ts-ignore
+import { withColorContext, useSetting } from "@wordpress/block-editor";
 
 export type MyContainerControlData = {
 	containerWidthType: "Full Width" | "Boxed" | "Custom";
@@ -29,10 +31,9 @@ export type MyContainerControlData = {
 export const CONTAINER_CONTROL_DEMO: MyContainerControlData = {
 	containerWidthType: "Full Width",
 	contentWidthType: "Boxed",
-	customWidth: { Desktop: "100%" },
-	contentBoxWidth: {
-		Desktop: "",
-	},
+	// tai sao ko co Tablet? - vi muon th Tablet follow theo Desktop,
+	customWidth: { Desktop: "100%", Mobile: "100%" },
+	contentBoxWidth: { Desktop: "", Mobile: "" },
 	minHeight: { Desktop: undefined },
 	htmlTag: "div",
 	overflow: "visible",
@@ -76,6 +77,7 @@ const MyContainerControl: FC<Props> = ({
 		htmlTag,
 		overflow,
 	} = containerControl;
+	//
 
 	useEffect(() => {
 		if (!showContainerWidthType && containerWidthType !== "Custom") {
@@ -146,8 +148,13 @@ const MyContainerControl: FC<Props> = ({
 		contentBoxWidthProps,
 		deviceType
 	);
-	if (CONTENT_BOX_WIDTH === "") {
-		CONTENT_BOX_WIDTH = DEMO_WCB_GLOBAL_VARIABLES.defaultContentWidth;
+
+	// defaultContentWidth là setting trong trang woosify setting
+	// window.wcbLayoutGlobalSettings la global setting của full-site-editor or cua wootify theme neu co
+	if (!CONTENT_BOX_WIDTH) {
+		CONTENT_BOX_WIDTH =
+			DEMO_WCB_GLOBAL_VARIABLES.defaultContentWidth ||
+			window.wcbLayoutGlobalSettings.contentSize;
 	}
 
 	const { currentDeviceValue: MIN_HEIGHT } = getValueFromAttrsResponsives(
@@ -159,7 +166,7 @@ const MyContainerControl: FC<Props> = ({
 		const plans: MyRadioItem<MyContainerControlData["containerWidthType"]>[] =
 			DEMO_CONTAINER_WIDTH.map((item) => ({
 				name: item,
-				icon: item,
+				icon: item === "Boxed" ? "Wide" : item,
 			}));
 		return (
 			<MyRadioGroup
@@ -168,6 +175,7 @@ const MyContainerControl: FC<Props> = ({
 				onChange={handleChangeContainerWidthType}
 				contentClassName="capitalize mt-3"
 				value={containerWidthType}
+				hasResponsive={false}
 			/>
 		);
 	};
@@ -185,6 +193,7 @@ const MyContainerControl: FC<Props> = ({
 				onChange={handleChangeContenWidthType}
 				contentClassName="capitalize mt-3"
 				value={contentWidthType}
+				hasResponsive={false}
 			/>
 		);
 	};
@@ -294,10 +303,10 @@ const MyContainerControl: FC<Props> = ({
 		<div className={className}>
 			{showContainerWidthType && renderContainerWidthType()}
 			{containerWidthType === "Custom" ? renderCustomWidth() : null}
-			{containerWidthType === "Full Width" ? renderContenWidthType() : null}
-			{containerWidthType === "Full Width" && contentWidthType === "Boxed"
-				? renderContentBoxWidth()
-				: null}
+			{/* {containerWidthType !== "Custom" ? renderContenWidthType() : null} */}
+			{renderContenWidthType()}
+			{/* {containerWidthType !== "Custom" && contentWidthType === "Boxed" */}
+			{contentWidthType === "Boxed" ? renderContentBoxWidth() : null}
 			{renderMinimumHeight()}
 			{renderHTMLTag()}
 			{renderOverflow()}

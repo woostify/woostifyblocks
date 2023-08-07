@@ -19,10 +19,12 @@ import "./style.scss";
  */
 import Edit from "./Edit";
 import save from "./Save";
+import Save_240823 from "./Save_240823";
 import metadata from "./block.json";
 const { Fragment } = wp.element;
 const { withSelect } = wp.data;
 import attributes from "./attributes";
+import convertObjectAttrToPreview from "../utils/convertAttsToPreview";
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 
 registerBlockType(metadata.name, {
@@ -30,6 +32,13 @@ registerBlockType(metadata.name, {
 	edit: Edit,
 	save,
 	attributes,
+	example: convertObjectAttrToPreview(attributes),
+	deprecated: [
+		{
+			attributes,
+			save: Save_240823,
+		},
+	],
 	icon: (
 		<svg
 			className="wcb-editor-block-icons fill-none "

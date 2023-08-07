@@ -1,6 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import { useBlockProps } from "@wordpress/block-editor";
-import React, { useEffect, FC, useCallback, useState } from "react";
+import React, { useEffect, FC, useCallback } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
@@ -14,6 +14,7 @@ import WcbMapPanelGeneral from "./WcbMapPanelGeneral";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
 import WcbMapPanel_StyleBorder from "./WcbMapPanel_StyleBorder";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -23,6 +24,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		uniqueId,
 		general_general,
 		style_border,
+		advance_motionEffect,
 	} = attributes;
 	//  COMMON HOOKS
 	const wrapBlockProps = useBlockProps();
@@ -34,12 +36,14 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
 		setAttributes({
-			uniqueId: UNIQUE_ID,
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
+	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
 		switch (tab.name) {
@@ -83,6 +87,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				return (
 					<>
 						<AdvancePanelCommon
+							advance_motionEffect={advance_motionEffect}
 							advance_responsiveCondition={
 								attributes.advance_responsiveCondition
 							}
@@ -106,6 +111,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			advance_zIndex,
 			general_general,
 			style_border,
+			advance_motionEffect,
 		};
 	}, [
 		uniqueId,
@@ -113,6 +119,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		advance_zIndex,
 		general_general,
 		style_border,
+		advance_motionEffect,
 	]);
 	//
 
@@ -120,8 +127,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-map__wrap ${UNIQUE_ID}`}
-				data-uniqueid={UNIQUE_ID}
+				className={`${wrapBlockProps?.className} wcb-map__wrap ${uniqueId}`}
+				data-uniqueid={uniqueId}
 			>
 				{/* CONTROL SETTINGS */}
 				<HOCInspectorControls
@@ -140,14 +147,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 						loading="lazy"
 						allowFullScreen
 						referrerPolicy="no-referrer-when-downgrade"
+						title={general_general.placeQuery || ""}
 						src={`https://www.google.com/maps/embed/v1/place
-						?key=AIzaSyAGVJfZMAKYfZ71nzL_v5i3LjTTWnCYwTY
+						?key=AIzaSyCLK1ZWtKchh3gykkn2o3i47pVEX5vbKdA
 						&maptype=${general_general.mapTypeId}
 						&language=${general_general.language}
 						&zoom=${general_general.zoom}
-						&q=place_id:${
-							general_general.placeQuery?.place_id ||
-							"ChIJdan7FLcJxkcRQrwvoy3DwiM"
+						&q=${
+							general_general.placeQuery?.replace?.(/ /g, "+") ||
+							"Eiffel+Tower,Paris+France"
 						}`}
 					></iframe>
 				</div>

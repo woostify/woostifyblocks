@@ -1,5 +1,4 @@
 import { Global, CSSObject } from "@emotion/react";
-import ReactDOM from "react-dom";
 import React, { FC } from "react";
 import { getAdvanveDivWrapStyles } from "../block-container/getAdvanveStyles";
 import getBorderStyles from "../utils/getBorderStyles";
@@ -18,10 +17,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 		//
 		advance_responsiveCondition,
 		advance_zIndex,
+		advance_motionEffect,
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
-	const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
 	const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-map__inner`;
 
 	// ------------------- WRAP DIV
@@ -33,6 +33,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 			},
 		};
 	};
+
+	if (!uniqueId) {
+		return null;
+	}
 
 	return (
 		<>
@@ -55,6 +59,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 			{/* ADVANCE  */}
 			<Global
 				styles={getAdvanveDivWrapStyles({
+					advance_motionEffect,
 					advance_responsiveCondition,
 					advance_zIndex,
 					className: WRAP_CLASSNAME,

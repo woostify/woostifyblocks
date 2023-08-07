@@ -8,6 +8,7 @@ export interface WCB_PRODUCTS_PANEL_FEATURED_IMAGE {
 	featuredImageSize: string;
 	featuredImagePosition: "top" | "background";
 	linkCompleteBox: boolean;
+	hoverType?: "swap" | "zoom" | "none";
 }
 
 export const WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO: WCB_PRODUCTS_PANEL_FEATURED_IMAGE =
@@ -16,6 +17,7 @@ export const WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO: WCB_PRODUCTS_PANEL_FEATURED
 		featuredImageSize: "large",
 		featuredImagePosition: "top",
 		linkCompleteBox: false,
+		hoverType: "none",
 	};
 
 interface Props
@@ -36,6 +38,7 @@ const WcbProductsPanelFeaturedImage: FC<Props> = ({
 		featuredImageSize,
 		featuredImagePosition,
 		linkCompleteBox,
+		hoverType,
 	} = panelData;
 
 	const POSTION_PLANS: MyRadioItem<
@@ -43,6 +46,14 @@ const WcbProductsPanelFeaturedImage: FC<Props> = ({
 	>[] = [
 		{ name: "top", icon: "Top" },
 		{ name: "background", icon: "Background" },
+	];
+
+	const HOVER_PLANS: MyRadioItem<
+		NonNullable<WCB_PRODUCTS_PANEL_FEATURED_IMAGE["hoverType"]>
+	>[] = [
+		{ name: "none", icon: "None" },
+		{ name: "swap", icon: "Swap" },
+		{ name: "zoom", icon: "Zoom" },
 	];
 
 	return (
@@ -85,6 +96,22 @@ const WcbProductsPanelFeaturedImage: FC<Props> = ({
 						}
 						checked={linkCompleteBox}
 						help={__("Links the image to the single product listing", "wcb")}
+					/>
+				) : null}
+
+				{isShowFeaturedImage ? (
+					<MyRadioGroup
+						label="Hover"
+						onChange={(selected) =>
+							setAttr__({
+								...panelData,
+								hoverType: selected as any,
+							})
+						}
+						value={hoverType}
+						plans={HOVER_PLANS}
+						hasResponsive={false}
+						isWrap
 					/>
 				) : null}
 			</div>

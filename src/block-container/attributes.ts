@@ -29,9 +29,18 @@ import {
 	MyZIndexControlData,
 	Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
-import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
+import {
+	MY_MOTION_EFFECT_DEMO,
+	MyMotionEffectData,
+} from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
 
-export interface BlockWCBContainerAttrs {
+export interface WcbAttrsCommonFromWp {
+	className?: string;
+	anchor?: string;
+	align?: "" | "wide" | "full";
+}
+
+export interface BlockWCBContainerAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	containerClassName: string;
 	isShowVariations: boolean;
@@ -44,6 +53,7 @@ export interface BlockWCBContainerAttrs {
 	styles_dimensions: MyDimensionsControlData;
 	advance_responsiveCondition: MyResponsiveConditionControlData;
 	advance_zIndex: MyZIndexControlData;
+	advance_motionEffect: MyMotionEffectData;
 }
 
 export type AttrsGenericType<T> = {
@@ -79,6 +89,9 @@ export const blokcContainerAttrs: AttrsGenericType<BlockWCBContainerAttrs> = {
 		type: "object",
 		default: {
 			...FLEX_PROPERTIES_CONTROL_DEMO,
+			alignItems: { Desktop: "stretch" },
+			justifyContent: { Desktop: "start" },
+			flexWrap: { Desktop: "wrap" },
 		},
 	},
 	styles_color: {
@@ -101,6 +114,8 @@ export const blokcContainerAttrs: AttrsGenericType<BlockWCBContainerAttrs> = {
 		type: "object",
 		default: {
 			...MY_DIMENSIONS_CONTROL_DEMO,
+			colunmGap: { Desktop: "" },
+			rowGap: { Desktop: "" },
 			margin: {
 				Desktop: {
 					bottom: "",
@@ -126,6 +141,10 @@ export const blokcContainerAttrs: AttrsGenericType<BlockWCBContainerAttrs> = {
 	advance_zIndex: {
 		type: "object",
 		default: Z_INDEX_DEMO,
+	},
+	advance_motionEffect: {
+		type: "object",
+		default: MY_MOTION_EFFECT_DEMO,
 	},
 };
 

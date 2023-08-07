@@ -7,13 +7,14 @@ import WelcomePage from "./components/WelcomePage";
 import "./types";
 import toast, { Toaster } from "react-hot-toast";
 import SettingsPage from "./components/SettingsPage";
-import "../styles/index.scss";
+import { Wcb_theme_layout_global_settings } from "../types";
 
 export interface Wcb_block_Type {
 	name: string;
 	title: string;
 	category: string;
 	icon: string;
+	description: string;
 	parent: unknown;
 }
 export interface Wcb_blocks_enable_disable_options_Type
@@ -23,6 +24,7 @@ interface Props {
 	wcb_blocks_enable_disable_options: Wcb_blocks_enable_disable_options_Type;
 	wcb_blocks_settings_options: typeof window.wcbGlobalVariables;
 	wcb_blocks_list: Wcb_block_Type[];
+	wcb_layout_global_settings?: Wcb_theme_layout_global_settings;
 }
 
 export type Path = "welcome" | "blocks" | "settings";
@@ -32,7 +34,7 @@ interface Page {
 }
 
 export const PAGES: Page[] = [
-	{ name: "Welcome", path: "welcome" },
+	// { name: "Welcome", path: "welcome" },
 	{ name: "Blocks/Extensions", path: "blocks" },
 	{ name: "Settings", path: "settings" },
 ];
@@ -41,7 +43,9 @@ const App: FC<Props> = ({
 	wcb_blocks_enable_disable_options,
 	wcb_blocks_settings_options,
 	wcb_blocks_list,
+	wcb_layout_global_settings,
 }) => {
+	//
 	const [currentPath, setcurrentPath] = useState<Path>(PAGES[0].path);
 
 	useEffect(() => {
@@ -76,7 +80,7 @@ const App: FC<Props> = ({
 				}}
 			/>
 
-			<div className="container pb-14">
+			<div className="container pb-14 px-2">
 				{currentPath !== "welcome" && (
 					<Heading
 						children={
@@ -84,16 +88,21 @@ const App: FC<Props> = ({
 						}
 					/>
 				)}
-				{currentPath === "settings" && (
+				{/* {currentPath === "settings" && (
 					<SettingsPage initData={wcb_blocks_settings_options} />
-				)}
-				{currentPath === "blocks" && (
+				)} */}
+				{currentPath === "blocks" ? (
 					<BlocksPage
 						initWcbBlocksList={wcb_blocks_list}
 						initWcbBlocksEnableDisable={wcb_blocks_enable_disable_options}
 					/>
+				) : (
+					<SettingsPage
+						initData={wcb_blocks_settings_options}
+						themeLayoutGlobal={wcb_layout_global_settings}
+					/>
 				)}
-				{currentPath === "welcome" && <WelcomePage />}
+				{/* {currentPath === "welcome" && <WelcomePage />} */}
 			</div>
 			<Toaster
 				position="top-right"

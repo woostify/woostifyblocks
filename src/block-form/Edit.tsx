@@ -9,7 +9,6 @@ import {
 	RichText,
 } from "@wordpress/block-editor";
 import { get } from "lodash";
-import { PanelBody } from "@wordpress/components";
 import { useInstanceId } from "@wordpress/compose";
 import React, { useEffect, FC, useRef } from "react";
 import { WcbAttrs } from "./attributes";
@@ -21,7 +20,9 @@ import GlobalCss from "./GlobalCss";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
-import WcbFormPanelGeneral from "./WcbFormPanelGeneral";
+import WcbFormPanelGeneral, {
+	WCB_FORM_PANEL_GENERAL,
+} from "./WcbFormPanelGeneral";
 import { useSelect, useDispatch } from "@wordpress/data";
 import {
 	// @ts-ignore
@@ -47,6 +48,7 @@ import WcbPostGridPanel_StyleMessages from "./WcbPostGridPanel_StyleMessages";
 import WcbFormPanel_StyleSpacing from "./WcbFormPanel_StyleSpacing";
 import HelpText from "../components/controls/HelpText";
 import MyCacheProvider from "../components/MyCacheProvider";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 export type FormChildAllowed =
 	| "wcb/input"
@@ -66,8 +68,6 @@ export type FormChildAllowed =
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 	const {
-		advance_responsiveCondition,
-		advance_zIndex,
 		general_general,
 		uniqueId,
 		general_submit_button,
@@ -91,36 +91,46 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
 		setAttributes({
-			uniqueId: UNIQUE_ID,
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
 	//
-	useEffect(() => {
-		if (general_general.formStyle === "simple") {
-			setAttributes({
-				style_input: WCB_FORM_PANEL_STYLE_INPUT_DEMO__SIMPLE,
-				style_checkbox_radio_toggle:
-					WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SIMPLE,
-			});
+
+	const handleChangeFormPanelGeneral = (data: WCB_FORM_PANEL_GENERAL) => {
+		let NEW_DATA: Partial<WcbAttrs> = { general_general: data };
+
+		// when change FORM STYLE
+		if (data.formStyle !== general_general.formStyle) {
+			if (data.formStyle === "simple") {
+				NEW_DATA = {
+					general_general: data,
+					style_input: WCB_FORM_PANEL_STYLE_INPUT_DEMO__SIMPLE,
+					style_checkbox_radio_toggle:
+						WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SIMPLE,
+				};
+			} else if (data.formStyle === "solid") {
+				NEW_DATA = {
+					general_general: data,
+					style_input: WCB_FORM_PANEL_STYLE_INPUT_DEMO__SOLID,
+					style_checkbox_radio_toggle:
+						WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SOLID,
+				};
+			} else if (data.formStyle === "underline") {
+				NEW_DATA = {
+					general_general: data,
+					style_input: WCB_FORM_PANEL_STYLE_INPUT_DEMO__UNDERLINE,
+					style_checkbox_radio_toggle:
+						WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SIMPLE,
+				};
+			}
 		}
-		if (general_general.formStyle === "solid") {
-			setAttributes({
-				style_input: WCB_FORM_PANEL_STYLE_INPUT_DEMO__SOLID,
-				style_checkbox_radio_toggle:
-					WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SOLID,
-			});
-		}
-		if (general_general.formStyle === "underline") {
-			setAttributes({
-				style_input: WCB_FORM_PANEL_STYLE_INPUT_DEMO__UNDERLINE,
-				style_checkbox_radio_toggle:
-					WCB_FORM_PANEL_STYLE_CHECKBOX_RADIO_TOGGLE_DEMO__SIMPLE,
-			});
-		}
-	}, [general_general.formStyle]);
+
+		setAttributes(NEW_DATA);
+	};
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
@@ -137,7 +147,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabGeneralIsPanelOpen === "General" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ general_general: data });
+								handleChangeFormPanelGeneral(data);
 							}}
 							panelData={general_general}
 						/>
@@ -259,6 +269,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				return (
 					<>
 						<AdvancePanelCommon
+							advance_motionEffect={attributes.advance_motionEffect}
 							advance_responsiveCondition={
 								attributes.advance_responsiveCondition
 							}
@@ -306,56 +317,57 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			<form
 				{...wrapBlockProps}
 				className={`wcb-form__wrap ${uniqueId} ${wrapBlockProps.className} `}
-				// id={uniqueId}
 				data-uniqueid={uniqueId}
 			>
 				{/*  */}
 				<GlobalCss {...attributes} />
 				{/*  */}
 
-				<div {...innerBlocksProps} name={useInstanceId(Edit)} />
-				<div className="wcb-form__btn-submit-wrap">
-					<RichText
-						className="wcb-form__btn-submit"
-						tagName="div" // The tag here is the element output and editable in the admin
-						value={attributes.btnSubmitText} // Any existing content, either from the database or an attribute default
-						allowedFormats={["core/bold", "core/italic"]} // Allow the content to be made bold or italic, but do not allow other formatting options
-						onChange={(content) => setAttributes({ btnSubmitText: content })} // Store updated content as a block attribute
-						placeholder={__("Submit", "wcb")} // Display this text before any content has been added by the user
-					/>
-				</div>
-				<div>
-					<div className="wcb-form__successMessageText">
-						<span>{attributes.general_general.successMessageText}</span>
+				<div className="wcb-form__box">
+					<div {...innerBlocksProps} name={useInstanceId(Edit)} />
+					<div className="wcb-form__btn-submit-wrap">
+						<RichText
+							className="wcb-form__btn-submit"
+							tagName="div" // The tag here is the element output and editable in the admin
+							value={attributes.btnSubmitText} // Any existing content, either from the database or an attribute default
+							allowedFormats={["core/bold", "core/italic"]} // Allow the content to be made bold or italic, but do not allow other formatting options
+							onChange={(content) => setAttributes({ btnSubmitText: content })} // Store updated content as a block attribute
+							placeholder={__("Submit", "wcb")} // Display this text before any content has been added by the user
+						/>
 					</div>
-					<HelpText>
-						{__(
-							"(Success message: Only show on the frontend when the form submit is successful.)",
-							"wcb"
-						)}
-					</HelpText>
 				</div>
-				<div>
-					<div className="wcb-form__errorMessageText">
-						<span>{attributes.general_general.errorMessageText}</span>
+				{/*  */}
+				{/* Error mess */}
+				<div className="w-full flex-1 flex-shrink-0">
+					<div>
+						<div className="wcb-form__successMessageText">
+							<span>{attributes.general_general.successMessageText}</span>
+						</div>
+						<HelpText>
+							{__(
+								"(Success message: Only show on the frontend when the form submit is successful.)",
+								"wcb"
+							)}
+						</HelpText>
 					</div>
-					<HelpText>
-						{__(
-							"(Error message: Only show on the frontend when the form submit is error.)",
-							"wcb"
-						)}
-					</HelpText>
+					<div>
+						<div className="wcb-form__errorMessageText">
+							<span>{attributes.general_general.errorMessageText}</span>
+						</div>
+						<HelpText>
+							{__(
+								"(Error message: Only show on the frontend when the form submit is error.)",
+								"wcb"
+							)}
+						</HelpText>
+					</div>
 				</div>
-
-				<HOCInspectorControls
-					uniqueId={uniqueId}
-					renderTabPanels={renderTabBodyPanels}
-					onChangeActive={(tab) => {
-						handleTogglePanel(tab);
-					}}
-					tabDefaultActive={tabIsOpen}
-				/>
 			</form>
+
+			<HOCInspectorControls
+				uniqueId={uniqueId}
+				renderTabPanels={renderTabBodyPanels}
+			/>
 		</MyCacheProvider>
 	);
 };

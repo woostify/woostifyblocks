@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { RichText, useBlockProps } from "@wordpress/block-editor";
+import { useBlockProps } from "@wordpress/block-editor";
 import React, { useEffect, FC } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
@@ -13,6 +13,7 @@ import WcbHiddenPanelGeneral from "./WcbHiddenPanelGeneral";
 import { FormInputLabelRichText } from "../block-form/FormInputLabelRichText";
 import converUniqueId from "../utils/converUniqueId";
 import HelpText from "../components/controls/HelpText";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -20,21 +21,18 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	//  COMMON HOOKS
 	// const { myCache, ref } = useCreateCacheEmotion();
 	const wrapBlockProps = useBlockProps();
-	const {
-		tabIsOpen,
-		tabAdvancesIsPanelOpen,
-		tabGeneralIsPanelOpen,
-		tabStylesIsPanelOpen,
-		handleTogglePanel,
-	} = useSetBlockPanelInfo(uniqueId);
+	const { tabGeneralIsPanelOpen, tabStylesIsPanelOpen, handleTogglePanel } =
+		useSetBlockPanelInfo(uniqueId);
 
 	const UNIQUE_NAME = converUniqueId(uniqueId, "hidden");
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
 		setAttributes({
-			uniqueId: UNIQUE_ID,
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
+	//
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
@@ -71,8 +69,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		// <CacheProvider value={myCache}>
 		<div
 			{...wrapBlockProps}
-			className={`${wrapBlockProps?.className} wcb-hidden__wrap p-3 border-2 border-dashed rounded-lg ${UNIQUE_ID}`}
-			data-uniqueid={UNIQUE_ID}
+			className={`${wrapBlockProps?.className} wcb-hidden__wrap p-3 border-2 border-dashed rounded-lg ${uniqueId}`}
+			data-uniqueid={uniqueId}
 		>
 			{/* CONTROL SETTINGS */}
 			<HOCInspectorControls

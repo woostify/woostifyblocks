@@ -125,15 +125,12 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			)}
 		</>
 	);
+
 	//
-	//
-	const blockProps = useBlockProps.save({
+	const wrapBlockProps = useBlockProps.save({
 		className:
-			"wcb-image__wrap " +
-			classes +
-			` wcb-image__wrap--${general_settings.layout}`,
+			`wcb-image__wrap wcb-image__wrap--${general_settings.layout} ${classes}`.trim(),
 	});
-	//
 	//
 
 	const renderOverlay = () => {
@@ -150,11 +147,10 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 	return (
 		<SaveCommon
+			{...wrapBlockProps}
 			attributes={newAttrForSave}
-			className={`wcb-image__wrap wcb-image__wrap--${general_settings.layout}`}
 			uniqueId={uniqueId}
 			HtmlTag="figure"
-			{...blockProps}
 		>
 			{figure}
 			{general_settings.layout === "overlay" && renderOverlay()}

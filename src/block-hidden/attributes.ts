@@ -1,9 +1,12 @@
-import { AttrsGenericType } from "../block-container/attributes";
+import {
+	AttrsGenericType,
+	WcbAttrsCommonFromWp,
+} from "../block-container/attributes";
 import {
 	WCB_HIDDEN_PANEL_GENERAL,
 	WCB_HIDDEN_PANEL_GENERAL_DEMO,
 } from "./WcbHiddenPanelGeneral";
-export interface WcbAttrs {
+export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	//
 	general_general: WCB_HIDDEN_PANEL_GENERAL;

@@ -1,4 +1,5 @@
 import "jquery";
+import { Wcb_theme_layout_global_settings } from "./types";
 
 declare global {
 	var wp: any | undefined;
@@ -20,6 +21,7 @@ declare global {
 		ajaxurl: string;
 		homeUrl: string;
 	};
+	var wcbLayoutGlobalSettings: Wcb_theme_layout_global_settings;
 }
 
 const INIT_WCB_GLOBAL_VARIABLES: typeof window.wcbGlobalVariables = {
@@ -29,14 +31,18 @@ const INIT_WCB_GLOBAL_VARIABLES: typeof window.wcbGlobalVariables = {
 	reCAPTCHA_v3_site_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
 	reCAPTCHA_v2_site_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
 	reCAPTCHA_v2_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
-	defaultContentWidth: "1140px",
+	// se sd khi pick container lan dau tien / or khi truong contentWidth cua container khong duoc nhap
+	defaultContentWidth: window?.wcbLayoutGlobalSettings?.contentSize || "",
 	enableTemplatesButton: "true",
 	enableCopyPasteStyles: "false",
 };
 
-export const DEMO_WCB_GLOBAL_VARIABLES = {
+export const DEMO_WCB_GLOBAL_VARIABLES: typeof window.wcbGlobalVariables = {
 	...INIT_WCB_GLOBAL_VARIABLES,
 	...(window.wcbGlobalVariables || {}),
+	defaultContentWidth:
+		window.wcbGlobalVariables?.defaultContentWidth ||
+		window.wcbLayoutGlobalSettings?.contentSize,
 };
 
 export const ___wcb_global = 1;

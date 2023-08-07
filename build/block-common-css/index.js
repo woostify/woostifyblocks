@@ -41,6 +41,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Edit */ "./src/block-common-css/Edit.tsx");
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../style.css */ "./src/style.css");
 /* harmony import */ var _styles_index_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../styles/index.scss */ "./src/styles/index.scss");
+/* harmony import */ var animate_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! animate.css */ "./node_modules/animate.css/animate.css");
 
 
 /**
@@ -58,6 +59,18 @@ __webpack_require__.r(__webpack_exports__);
   save: () => null,
   attributes: []
 });
+
+/***/ }),
+
+/***/ "./node_modules/animate.css/animate.css":
+/*!**********************************************!*\
+  !*** ./node_modules/animate.css/animate.css ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
 
 /***/ }),
 
@@ -191,9 +204,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 			}
 /******/ 			var notFulfilled = Infinity;
 /******/ 			for (var i = 0; i < deferred.length; i++) {
-/******/ 				var chunkIds = deferred[i][0];
-/******/ 				var fn = deferred[i][1];
-/******/ 				var priority = deferred[i][2];
+/******/ 				var [chunkIds, fn, priority] = deferred[i];
 /******/ 				var fulfilled = true;
 /******/ 				for (var j = 0; j < chunkIds.length; j++) {
 /******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
@@ -279,9 +290,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 		
 /******/ 		// install a JSONP callback for chunk loading
 /******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
-/******/ 			var chunkIds = data[0];
-/******/ 			var moreModules = data[1];
-/******/ 			var runtime = data[2];
+/******/ 			var [chunkIds, moreModules, runtime] = data;
 /******/ 			// add "moreModules" to the modules object,
 /******/ 			// then flag all "chunkIds" as loaded and fire callback
 /******/ 			var moduleId, chunkId, i = 0;
@@ -304,7 +313,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunkwoostify_blocks"] = self["webpackChunkwoostify_blocks"] || [];
+/******/ 		var chunkLoadingGlobal = globalThis["webpackChunkwoostifyblocks"] = globalThis["webpackChunkwoostifyblocks"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();

@@ -7,23 +7,29 @@ interface Props extends WcbAttrsForSave {}
 
 export function initCarouselForWcbProducts(div: Element, props: Props) {
 	const handleCarouselForWcbProducts = () => {
+		const dataUniqueid = div.getAttribute("data-uniqueid") || "";
+
 		const sliderMultiElement = document.querySelector(
-			`.${div.id} .scroll-snap-slider.-multi`
+			`.${dataUniqueid} .scroll-snap-slider.-multi`
 		);
 		if (
 			!sliderMultiElement ||
-			sliderMultiElement.classList.contains("swithToScrollSnapX--None")
+			sliderMultiElement.classList.contains("swithToScrollSnapX--None") ||
+			!sliderMultiElement.firstElementChild
 		) {
 			return;
 		}
 
-		const sliderMulti = new CustomPlugin(sliderMultiElement);
-		const arrows = document.querySelector(`.${div.id} .indicators.-multi`);
+		const sliderMulti = new CustomPlugin({ element: sliderMultiElement });
+
+		const arrows = document.querySelector(
+			`.${dataUniqueid} .indicators.-multi`
+		);
 		const prev = document.querySelector(
-			`.${div.id} .indicators.-multi .p-arrow.-prev`
+			`.${dataUniqueid} .indicators.-multi .p-arrow.-prev`
 		);
 		const next = document.querySelector(
-			`.${div.id} .indicators.-multi .p-arrow.-next`
+			`.${dataUniqueid} .indicators.-multi .p-arrow.-next`
 		);
 
 		const updateArrows = function () {

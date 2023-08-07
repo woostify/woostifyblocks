@@ -11,7 +11,7 @@ export interface WcbAttrsForSave
 export default function save({
 	attributes,
 }: {
-	attributes: WcbBlockHeadingAttrs;
+	attributes: WcbBlockHeadingAttrs & { anchor: string };
 }) {
 	const {
 		uniqueId,
@@ -28,6 +28,7 @@ export default function save({
 		styles_separator,
 		styles_subHeading,
 		styles_border,
+		advance_motionEffect,
 	} = attributes;
 	//
 
@@ -44,9 +45,9 @@ export default function save({
 		styles_separator,
 		styles_subHeading,
 		styles_border,
+		advance_motionEffect,
 	};
 	//
-	const blockProps = useBlockProps.save({ className: "wcb-heading__wrap" });
 
 	const renderSeparator = () => {
 		return general_content.showSeparator ? (
@@ -56,12 +57,14 @@ export default function save({
 		) : null;
 	};
 
+	//
+	const wrapBlockProps = useBlockProps.save({ className: "wcb-heading__wrap" });
+	//
 	return (
 		<SaveCommon
+			{...wrapBlockProps}
 			attributes={newAttrForSave}
-			className="wcb-heading__wrap"
 			uniqueId={uniqueId}
-			{...blockProps}
 		>
 			<>
 				{general_content.separatorPosition === "top" && renderSeparator()}

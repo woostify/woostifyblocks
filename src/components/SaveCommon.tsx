@@ -1,23 +1,26 @@
 import React, { FC, ReactNode } from "react";
 import { __ } from "@wordpress/i18n";
 import _ from "lodash";
+import { WcbAttrsCommonFromWp } from "../block-container/attributes";
 // @ts-ignore
-interface Props {
+interface Props<T = any> {
 	className?: string;
+	id?: string;
 	uniqueId: string;
 	HtmlTag?: React.ElementType<any>;
 	children: ReactNode;
-	attributes: Object;
+	attributes: WcbAttrsCommonFromWp & T;
 }
 
-const SaveCommon: FC<Props> = ({
+function SaveCommon<T>({
 	className = "",
 	uniqueId = "",
 	HtmlTag = "div",
 	children,
-	attributes = {},
+	attributes,
+	id,
 	...props
-}) => {
+}: Props<T>) {
 	let blockJson = "";
 	try {
 		blockJson = _.escape(JSON.stringify(attributes));
@@ -32,8 +35,8 @@ const SaveCommon: FC<Props> = ({
 	return (
 		<HtmlTag
 			{...props}
-			className={`${className} ${uniqueId} wcb-update-div`}
-			id={uniqueId}
+			className={`wcb-cm wcb-update-div ${className.trim()} ${uniqueId.trim()}`}
+			id={id || attributes?.anchor}
 			data-uniqueid={uniqueId}
 			data-is-wcb-save-common
 		>
@@ -45,6 +48,6 @@ const SaveCommon: FC<Props> = ({
 			</pre>
 		</HtmlTag>
 	);
-};
+}
 
 export default SaveCommon;

@@ -24,6 +24,8 @@ const { Fragment } = wp.element;
 const { withSelect } = wp.data;
 import attributes from "./attributes";
 import variations from "./variations";
+import deprecated from "./deprecated";
+import convertObjectAttrToPreview from "../utils/convertAttsToPreview";
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 
 registerBlockType(metadata.name, {
@@ -31,6 +33,10 @@ registerBlockType(metadata.name, {
 	save,
 	attributes,
 	variations,
+	example: {
+		attributes: convertObjectAttrToPreview(attributes),
+	},
+	deprecated: deprecated,
 	icon: (
 		<svg
 			className="wcb-editor-block-icons fill-none "

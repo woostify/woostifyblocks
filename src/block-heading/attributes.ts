@@ -1,4 +1,11 @@
-import { AttrsGenericType } from "../block-container/attributes";
+import {
+	AttrsGenericType,
+	WcbAttrsCommonFromWp,
+} from "../block-container/attributes";
+import {
+	MY_MOTION_EFFECT_DEMO,
+	MyMotionEffectData,
+} from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
 import {
 	MyResponsiveConditionControlData,
 	RESPONSIVE_CONDITON_DEMO,
@@ -44,7 +51,7 @@ import {
 	WCB_HEADING_PANEL_STYLE_BORDER_DEMO,
 } from "./WcbHeadingPanel_StyleBorder";
 
-export interface WcbBlockHeadingAttrs {
+export interface WcbBlockHeadingAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	heading: string;
 	subHeading: string;
@@ -62,6 +69,7 @@ export interface WcbBlockHeadingAttrs {
 
 	advance_responsiveCondition: MyResponsiveConditionControlData;
 	advance_zIndex: MyZIndexControlData;
+	advance_motionEffect: MyMotionEffectData;
 }
 
 const blokc1Attrs: AttrsGenericType<WcbBlockHeadingAttrs> = {
@@ -73,13 +81,13 @@ const blokc1Attrs: AttrsGenericType<WcbBlockHeadingAttrs> = {
 		type: "string",
 		source: "html",
 		selector: ".wcb-heading__heading",
-		default: "Clik to edit HEADING",
+		default: "",
 	},
 	subHeading: {
 		type: "string",
 		source: "html",
 		selector: ".wcb-heading__subHeading",
-		default: "Clik to edit SUB HEADING",
+		default: "",
 	},
 	//
 	general_content: {
@@ -127,6 +135,10 @@ const blokc1Attrs: AttrsGenericType<WcbBlockHeadingAttrs> = {
 	advance_zIndex: {
 		type: "object",
 		default: Z_INDEX_DEMO,
+	},
+	advance_motionEffect: {
+		type: "object",
+		default: MY_MOTION_EFFECT_DEMO,
 	},
 };
 

@@ -5,8 +5,6 @@ import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
 import getSingleDimensionStyles from "../utils/getSingleDimensionStyles";
 import getTypographyStyles from "../utils/getTypographyStyles";
 import getBorderRadiusStyles from "../utils/getBorderRadiusStyles";
-import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
-import { WcbAttrs } from "./attributes";
 import getBorderStyles from "../utils/getBorderStyles";
 import getStyleObjectFromResponsiveAttr from "../utils/getStyleObjectFromResponsiveAttr";
 import getStyleBackground from "../utils/getStyleBackground";
@@ -29,10 +27,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 		//
 		advance_responsiveCondition,
 		advance_zIndex,
+		advance_motionEffect,
 	} = attrs;
-	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
-	const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
 	const ITEM_CLASSNAME = `${WRAP_CLASSNAME} .wcb-testimonials__item`;
 	const ITEM_NAME = `${WRAP_CLASSNAME} .wcb-testimonials__item-name`;
 	const ITEM_CONTENT = `${WRAP_CLASSNAME} .wcb-testimonials__item-content`;
@@ -44,15 +42,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject[] => {
 		return [
-			{
-				// [`${WRAP_CLASSNAME}`]: {
-				// 	".slick-slider": {},
-				// 	[`@media (min-width: ${media_tablet})`]: {},
-				// 	[`@media (min-width: ${media_desktop})`]: {
-				// 		".slick-slider": {},
-				// 	},
-				// },
-			},
 			getStyleObjectFromResponsiveAttr({
 				value: general_general.textAlignment,
 				className: `${ITEM_CLASSNAME}`,
@@ -60,6 +49,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 			}),
 		];
 	};
+
+	if (!uniqueId) {
+		return null;
+	}
 
 	return (
 		<>
@@ -137,6 +130,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 						prefix_2: "width",
 						value: style_image.imageSize,
 					}),
+					{
+						[`${ITEM_IMAGE} img`]: {
+							objectFit: style_image.objectFit,
+						},
+					},
 				]}
 			/>
 
@@ -164,7 +162,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 						padding: style_dimension.padding,
 					}),
 					getStyleBackground({
-						className: ITEM_CLASSNAME,
+						className: `${ITEM_CLASSNAME} .wcb-testimonials__item-background`,
 						styles_background: style_backgroundAndBorder.background,
 					}),
 				]}
@@ -199,6 +197,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 			{/* ADVANCE  */}
 			<Global
 				styles={getAdvanveDivWrapStyles({
+					advance_motionEffect,
 					advance_responsiveCondition,
 					advance_zIndex,
 					className: WRAP_CLASSNAME,

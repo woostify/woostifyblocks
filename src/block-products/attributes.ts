@@ -1,8 +1,15 @@
-import { AttrsGenericType } from "../block-container/attributes";
 import {
-	MyBorderControlData,
+	AttrsGenericType,
+	WcbAttrsCommonFromWp,
+} from "../block-container/attributes";
+import {
 	MY_BORDER_CONTROL_DEMO,
+	MyBorderControlData,
 } from "../components/controls/MyBorderControl/types";
+import {
+	MY_MOTION_EFFECT_DEMO,
+	MyMotionEffectData,
+} from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
 import {
 	MyResponsiveConditionControlData,
 	RESPONSIVE_CONDITON_DEMO,
@@ -11,7 +18,6 @@ import {
 	MyZIndexControlData,
 	Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
-import { DEFAULT_PRODUCT_LIST_LAYOUT } from "./base-utils";
 import {
 	WCB_PRODUCTS_PANEL_SORTINGANDFILTERING,
 	WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
@@ -36,6 +42,10 @@ import {
 	WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN,
 	WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO,
 } from "./WcbProductsPanel_StyleAddToCartBtn";
+import {
+	WCB_PRODUCTS_PANEL_STYLE_CATEGORY,
+	WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
+} from "./WcbProductsPanel_StyleCategory";
 import {
 	WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE,
 	WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO,
@@ -64,7 +74,7 @@ import {
 	WCB_PRODUCTS_PANEL_STYLE_TITLE,
 	WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
 } from "./WcbProductsPanel_StyleTitle";
-export interface WcbAttrs {
+export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 
 	//
@@ -74,6 +84,7 @@ export interface WcbAttrs {
 	general_addToCartBtn?: WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN;
 	general_pagination?: WCB_PRODUCTS_PANEL_PAGINATION;
 	//
+	style_category?: WCB_PRODUCTS_PANEL_STYLE_CATEGORY;
 	style_title?: WCB_PRODUCTS_PANEL_STYLE_TITLE;
 	style_featuredImage?: WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE;
 	style_layout?: WCB_PRODUCTS_PANEL_STYLE_LAYOUT;
@@ -86,6 +97,7 @@ export interface WcbAttrs {
 	//
 	advance_responsiveCondition?: MyResponsiveConditionControlData;
 	advance_zIndex?: MyZIndexControlData;
+	advance_motionEffect?: MyMotionEffectData;
 }
 
 const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
@@ -119,6 +131,10 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	style_title: {
 		type: "object",
 		// default: WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
+	},
+	style_category: {
+		type: "object",
+		// default: WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
 	},
 	style_featuredImage: {
 		type: "object",
@@ -161,6 +177,10 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	advance_zIndex: {
 		type: "object",
 		// default: Z_INDEX_DEMO,
+	},
+	advance_motionEffect: {
+		type: "object",
+		// default: MY_MOTION_EFFECT_DEMO,
 	},
 };
 

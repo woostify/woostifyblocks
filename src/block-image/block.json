@@ -6,9 +6,10 @@
 	"title": "Image",
 	"category": "wcb-blocks",
 	"icon": "- wcb-block-editor-block-icon lni lni-image",
-	"description": "Example static block scaffolded with Create Block tool.",
+	"description": "Insert an image to make a visual statement.",
 	"supports": {
-		"html": false
+		"html": false,
+		"anchor": true
 	},
 	"textdomain": "wcb-blocks",
 	"editorScript": "file:./index.js",

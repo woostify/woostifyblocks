@@ -1,23 +1,56 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC } from "react";
 import InputNumber from "./InputNumber";
 import MyToggle from "./MyToggle";
+import { Wcb_theme_layout_global_settings } from "../../types";
+import _ from "lodash";
 
 interface Props {
 	allSettings: typeof window.wcbGlobalVariables;
 	onChange: (data: typeof window.wcbGlobalVariables) => void;
+	themeLayoutGlobal?: Wcb_theme_layout_global_settings;
 }
 
-const SettingsPageEditorOptions: FC<Props> = ({ allSettings, onChange }) => {
+const SettingsPageEditorOptions: FC<Props> = ({
+	allSettings,
+	onChange,
+	themeLayoutGlobal,
+}) => {
+	const debounce_fun = _.debounce(function (data: Props["allSettings"]) {
+		console.log("Function debounced after 300ms!", { data });
+		onChange(data);
+	}, 300);
+
+	// ----------------
+	let subStr = "";
+
+	if (!!themeLayoutGlobal?.contentSize) {
+		if (!!themeLayoutGlobal?.contentSizeOfWoostify) {
+			subStr = `<br /><i>(The content width default from Woostify theme customizer: ${themeLayoutGlobal?.contentSize})</i>`;
+		} else {
+			subStr = `<br /><i>(The content width default from Full Site Editor's Global Styles: ${themeLayoutGlobal?.contentSize})</i>`;
+		}
+		subStr =
+			"<br /><i> Leave it blank to always use the default value </i>" + subStr;
+	}
+
 	return (
 		<div className="divide-y">
 			<div className="pb-8">
 				<InputNumber
 					label="Default Content Width"
-					desc="This setting will apply to Container Block's default Content Width."
+					desc={
+						`This setting will apply to Container Block's default Content Width.` +
+						subStr
+					}
 					id="InputNumber_DefaultContentWidth"
-					value={String(parseInt(allSettings.defaultContentWidth || ""))}
+					defaultValue={String(parseInt(allSettings.defaultContentWidth || ""))}
+					placeholder={`${parseInt(themeLayoutGlobal?.contentSize || "650")}`}
 					onChange={(e) => {
-						onChange({ ...allSettings, defaultContentWidth: e + "px" });
+						const newV = e ? e + "px" : "";
+						debounce_fun({
+							...allSettings,
+							defaultContentWidth: newV,
+						});
 					}}
 				/>
 			</div>
@@ -55,7 +88,7 @@ const SettingsPageEditorOptions: FC<Props> = ({ allSettings, onChange }) => {
 					checked={allSettings.enableCopyPasteStyles === "true"}
 					disabled={!!"wcb-field-disabled"}
 					onChange={(checked) => {
-						onChange({
+						debounce_fun({
 							...allSettings,
 							enableCopyPasteStyles: checked ? "true" : "false",
 						});

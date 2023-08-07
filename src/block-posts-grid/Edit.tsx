@@ -2,7 +2,6 @@ import { __ } from "@wordpress/i18n";
 import React, { useEffect, FC, useRef, useMemo } from "react";
 import { WcbBlockPostsGridAttrs } from "./attributes";
 import { settings } from "@wordpress/icons";
-
 import {
 	Dropdown,
 	ToolbarButton,
@@ -35,7 +34,6 @@ import WcbPostGridPanelReadMoreLink, {
 	WCB_POST_GRID_PANEL_READMORE_LINK_DEMO,
 } from "./WcbPostGridPanelReadMoreLink";
 import WcbPostGridPanelPagination, {
-	WCB_POSTS_GRID_PAGINATION_PLANS_ICONS,
 	WCB_POST_GRID_PANEL_PAGINATION_DEMO,
 } from "./WcbPostGridPanelPagination";
 import WcbPostGridPanel_StyleLayout, {
@@ -69,14 +67,19 @@ import WcbPostGridPanel_StyleTaxonomy, {
 import MyCacheProvider from "../components/MyCacheProvider";
 import ServerSideRender from "@wordpress/server-side-render";
 import { Icon, file } from "@wordpress/icons";
-import { Z_INDEX_DEMO } from "../components/controls/MyZIndexControl/MyZIndexControl";
-import { RESPONSIVE_CONDITON_DEMO } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
-import { MY_BOX_SHADOW_CONTROL_DEMO } from "../components/controls/MyBoxShadowControl/types";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 import { MY_BORDER_CONTROL_DEMO } from "../components/controls/MyBorderControl/types";
+import { MY_BOX_SHADOW_CONTROL_DEMO } from "../components/controls/MyBoxShadowControl/types";
+import { RESPONSIVE_CONDITON_DEMO } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
+import { Z_INDEX_DEMO } from "../components/controls/MyZIndexControl/MyZIndexControl";
+import { MY_MOTION_EFFECT_DEMO } from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
 
 const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 	const {
+		anchor,
+		align,
+		className,
 		general_sortingAndFiltering,
 		advance_responsiveCondition,
 		advance_zIndex,
@@ -96,6 +99,7 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 		style_border,
 		style_boxShadow,
 		style_taxonomy,
+		advance_motionEffect,
 	} = attributes;
 	//  COMMON HOOKS
 	const ref = useRef<HTMLDivElement>(null);
@@ -110,16 +114,17 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
-
 	useEffect(() => {
 		if (uniqueId) {
 			return;
 		}
 		setAttributes({
-			uniqueId: UNIQUE_ID,
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
+	//
 	//
 	useEffect(() => {
 		if (style_layout) {
@@ -148,10 +153,18 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 			//
 			advance_responsiveCondition: RESPONSIVE_CONDITON_DEMO,
 			advance_zIndex: Z_INDEX_DEMO,
+			advance_motionEffect: MY_MOTION_EFFECT_DEMO,
 		};
 
 		setAttributes({ ...DEFAULT });
 	}, [style_layout]);
+
+	useEffect(() => {
+		if (!advance_motionEffect) {
+			setAttributes({ advance_motionEffect: MY_MOTION_EFFECT_DEMO });
+		}
+	}, [advance_motionEffect]);
+	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
 		switch (tab.name) {
@@ -398,6 +411,7 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 					<>
 						{advance_zIndex && advance_responsiveCondition && (
 							<AdvancePanelCommon
+								advance_motionEffect={advance_motionEffect}
 								advance_responsiveCondition={advance_responsiveCondition}
 								advance_zIndex={advance_zIndex}
 								handleTogglePanel={handleTogglePanel}
@@ -566,6 +580,7 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 				style_border,
 				style_boxShadow,
 				style_taxonomy,
+				advance_motionEffect,
 			};
 			if (Object.values(cs).some((item) => !item)) {
 				return null;
@@ -592,11 +607,13 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 			style_border,
 			style_boxShadow,
 			style_taxonomy,
+			advance_motionEffect,
 		]);
 
 	const WcbAttrsForServerSide = useMemo(() => {
 		return {
 			uniqueId,
+			className,
 			general_sortingAndFiltering,
 			general_pagination,
 			general_postContent,
@@ -606,6 +623,7 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 		};
 	}, [
 		uniqueId,
+		className,
 		general_sortingAndFiltering,
 		general_pagination,
 		general_postContent,
@@ -635,9 +653,10 @@ const Edit: FC<EditProps<WcbBlockPostsGridAttrs>> = (props) => {
 				{uniqueId && !!style_layout && (
 					<ServerSideRender
 						block="wcb/posts-grid"
-						attributes={{ ...WcbAttrsForServerSide, uniqueId }}
+						attributes={{ ...WcbAttrsForServerSide }}
 						EmptyResponsePlaceholder={EmptyPlaceholder}
 						LoadLoadingResponsePlaceholder={LoadingPlaceholder}
+						httpMethod="POST"
 					/>
 				)}
 			</div>

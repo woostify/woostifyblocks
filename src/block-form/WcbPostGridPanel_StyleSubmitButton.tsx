@@ -21,11 +21,18 @@ import MyColorBackgroundColorControl, {
 	MY_COLOR_BGCOLOR_CONTROL_FOR_BUTTON_DEMO,
 } from "../components/controls/MyColorBackgroundColorControl/MyColorBackgroundColorControl";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import {
+	MyTypographyControlData,
+	TYPOGRAPHY_CONTROL_DEMO,
+} from "../components/controls/MyTypographyControl/types";
+import MyTypographyControl from "../components/controls/MyTypographyControl/MyTypographyControl";
 
 export interface WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON {
 	colorAndBackgroundColor: MyColorBackgroundColorControlData;
 	padding: HasResponsive<DimensionSettings>;
+	margin?: HasResponsive<DimensionSettings>;
 	border: MyBorderControlData;
+	typography: MyTypographyControlData;
 }
 
 export const WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON_DEMO: WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON =
@@ -39,7 +46,9 @@ export const WCB_FORM_PANEL_STYLE_SUBMIT_BUTTON_DEMO: WCB_FORM_PANEL_STYLE_SUBMI
 				bottom: "1rem",
 			},
 		},
+		margin: undefined,
 		border: MY_BORDER_CONTROL_DEMO,
+		typography: TYPOGRAPHY_CONTROL_DEMO,
 	};
 
 interface Props
@@ -57,10 +66,27 @@ const WcbPostGridPanel_StyleSubmitButton: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
-	const { padding: paddingProps, border, colorAndBackgroundColor } = panelData;
+	const {
+		margin: marginProps = {
+			Desktop: {
+				top: "0",
+				left: "0",
+				right: "0",
+				bottom: "0",
+			},
+		},
+		padding: paddingProps,
+		border,
+		colorAndBackgroundColor,
+		typography = TYPOGRAPHY_CONTROL_DEMO,
+	} = panelData;
 
 	const { currentDeviceValue: padding } = getValueFromAttrsResponsives(
 		paddingProps,
+		deviceType
+	);
+	const { currentDeviceValue: margin } = getValueFromAttrsResponsives(
+		marginProps,
 		deviceType
 	);
 	//
@@ -109,7 +135,34 @@ const WcbPostGridPanel_StyleSubmitButton: FC<Props> = ({
 							});
 						}}
 					/>
+					<BoxControl
+						label={
+							<MyLabelControl className="" hasResponsive>
+								{__("margin", "wcb")}
+							</MyLabelControl>
+						}
+						values={margin}
+						onChange={(value: DimensionSettings) => {
+							setAttr__({
+								...panelData,
+								margin: {
+									...marginProps,
+									[deviceType]: value,
+								},
+							});
+						}}
+					/>
 				</MyDisclosure>
+
+				<MyTypographyControl
+					typographyControl={typography || TYPOGRAPHY_CONTROL_DEMO}
+					setAttrs__typography={(typography) => {
+						setAttr__({
+							...panelData,
+							typography,
+						});
+					}}
+				/>
 			</div>
 		</PanelBody>
 	);

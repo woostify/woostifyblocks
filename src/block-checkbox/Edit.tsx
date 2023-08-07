@@ -12,8 +12,9 @@ import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import WcbCheckboxPanelGeneral from "./WcbCheckboxPanelGeneral";
 import { FormInputLabelRichText } from "../block-form/FormInputLabelRichText";
-import { PencilIcon, PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import converUniqueId from "../utils/converUniqueId";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 export interface MyCheckboxOption {
 	label: string;
@@ -41,12 +42,13 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
-	const UNIQUE_ID = wrapBlockProps.id;
 	const CHECKBOX_NAME = converUniqueId(uniqueId, "checkbox");
 
+	// make uniqueid
+	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
 		setAttributes({
-			uniqueId: UNIQUE_ID,
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
 
@@ -224,8 +226,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		// <CacheProvider value={myCache}>
 		<div
 			{...wrapBlockProps}
-			className={`${wrapBlockProps?.className} wcb-checkbox__wrap ${UNIQUE_ID}`}
-			data-uniqueid={UNIQUE_ID}
+			className={`${wrapBlockProps?.className} wcb-checkbox__wrap ${uniqueId}`}
+			data-uniqueid={uniqueId}
 		>
 			{/* CONTROL SETTINGS */}
 			<HOCInspectorControls

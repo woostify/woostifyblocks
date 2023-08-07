@@ -5,7 +5,6 @@ import _ from "lodash";
 import { useInnerBlocksProps, useBlockProps } from "@wordpress/block-editor";
 import { BlockWCBContainerAttrs } from "./attributes";
 import "./style.scss";
-import { getGapStyleFromGapjObj } from "./Edit";
 import VideoBackgroundByBgControl from "../components/VideoBackgroundByBgControl";
 import OverlayBackgroundByBgControl from "../components/OverlayBackgroundByBgControl";
 import SaveCommon from "../components/SaveCommon";
@@ -19,7 +18,6 @@ export default function save({
 	attributes: BlockWCBContainerAttrs;
 }) {
 	const {
-		isShowVariations,
 		styles_background,
 		uniqueId,
 		general_container,
@@ -31,20 +29,14 @@ export default function save({
 		styles_boxShadow,
 		styles_color,
 		containerClassName,
+		advance_motionEffect,
 	} = attributes;
 
-	const blockProps = useBlockProps.save({ className: "wcb-container__inner" });
-	const innerBlocksProps = useInnerBlocksProps.save(blockProps);
+	const { htmlTag: HtmlTag = "div" } = general_container;
 
-	const { htmlTag: HtmlTag = "div", containerWidthType } = general_container;
-	// const containerWidthTypeClass =
-	// 	containerWidthType === "Full Width"
-	// 		? "alignfull"
-	// 		: containerWidthType === "Boxed"
-	// 		? "alignwide"
-	// 		: "";
-	const { colunmGap, rowGap } = styles_dimensions;
-	const GAPS_VARIABLES = getGapStyleFromGapjObj({ colunmGap, rowGap });
+	// const { colunmGap, rowGap } = styles_dimensions;
+	// const GAPS_VARIABLES = getGapStyleFromGapjObj({ colunmGap, rowGap });
+	const GAPS_VARIABLES = {};
 
 	const newAttrs: WcbAttrsForSave = {
 		styles_background,
@@ -58,16 +50,25 @@ export default function save({
 		styles_boxShadow,
 		styles_color,
 		containerClassName,
+		advance_motionEffect,
 	};
+
+	//
+	const wrapBlockProps = useBlockProps.save({
+		className: "wcb-container__wrap " + containerClassName,
+	});
+	//
+	const blockProps = useBlockProps.save();
+	const innerBlocksProps = useInnerBlocksProps.save(blockProps);
+
 	return (
 		<SaveCommon
+			{...wrapBlockProps}
 			attributes={newAttrs}
 			uniqueId={uniqueId}
 			HtmlTag={HtmlTag}
-			className={`wcb-container__wrap ${containerClassName}`}
 		>
 			<>
-				{/*  */}
 				<VideoBackgroundByBgControl
 					bgType={styles_background.bgType}
 					videoData={styles_background.videoData}
@@ -76,9 +77,11 @@ export default function save({
 					bgType={styles_background.bgType}
 					overlayType={styles_background.overlayType}
 				/>
-				{/*  */}
-
-				<div {...innerBlocksProps} style={GAPS_VARIABLES} />
+				<div
+					children={innerBlocksProps.children}
+					className="wcb-container__inner"
+					style={GAPS_VARIABLES}
+				/>
 			</>
 		</SaveCommon>
 	);

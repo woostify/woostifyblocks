@@ -1,6 +1,5 @@
 import { __ } from "@wordpress/i18n";
 import {
-	RichText,
 	useBlockProps,
 	BlockControls,
 	// @ts-ignore
@@ -55,8 +54,7 @@ import MyCacheProvider from "../components/MyCacheProvider";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 import { Popover, ToolbarButton } from "@wordpress/components";
 import { link, linkOff } from "@wordpress/icons";
-import { displayShortcut, isKeyboardEvent } from "@wordpress/keycodes";
-import { useMergeRefs } from "@wordpress/compose";
+import { displayShortcut } from "@wordpress/keycodes";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
@@ -90,12 +88,12 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		tabStylesIsPanelOpen,
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
-	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
 		setAttributes({
-			uniqueId: UNIQUE_ID,
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
 
@@ -354,8 +352,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-button__wrap ${UNIQUE_ID} `}
-				data-uniqueid={UNIQUE_ID}
+				className={`${wrapBlockProps?.className} wcb-button__wrap ${uniqueId} `}
+				data-uniqueid={uniqueId}
 			>
 				{/* CONTROL SETTINGS */}
 				<HOCInspectorControls

@@ -1,48 +1,30 @@
-import { XMarkIcon } from "@heroicons/react/24/outline";
-import {
-	PanelBody,
-	RangeControl,
-	TextControl,
-	// @ts-ignore
-	__experimentalNumberControl as NumberControl,
-} from "@wordpress/components";
+import { PanelBody, RangeControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
-import React, { FC, CSSProperties, useEffect, useRef } from "react";
-import HelpText from "../components/controls/HelpText";
+import React, { FC } from "react";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import MySelect from "../components/controls/MySelect";
 import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
 import useGetDeviceType from "../hooks/useGetDeviceType";
-import { MySelectOption } from "../types";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
-import {} from "@googlemaps/react-wrapper";
 import MyRadioGroup from "../components/controls/MyRadioGroup";
+import _ from "lodash";
 
 export interface WCB_MAP_PANEL_GENERAL {
 	height: HasResponsive<string>;
 	zoom: number;
-	// latLngs: google.maps.LatLngLiteral[];
-	// center: google.maps.LatLngLiteral;
 	language: string;
 	mapTypeId: "roadmap" | "satellite";
-	placeQuery?: google.maps.places.PlaceResult;
+	placeQuery: string;
 }
 
 export const WCB_MAP_PANEL_GENERAL_DEMO: WCB_MAP_PANEL_GENERAL = {
 	height: { Desktop: "400px" },
 	zoom: 13,
-	// latLngs: [DEMO_LATLNG],
-	// center: DEMO_LATLNG,
 	mapTypeId: "roadmap",
 	language: "en",
-	placeQuery: {
-		name: "Amsterdam Centraal railway station",
-		place_id: "ChIJdan7FLcJxkcRQrwvoy3DwiM",
-		formatted_address:
-			"Amsterdam Centraal, Stationsplein, 1012 AB Amsterdam, Hà Lan",
-	},
+	placeQuery: "Amsterdam Centraal railway station",
 };
 
 interface Props
@@ -67,31 +49,10 @@ const WcbMapPanelGeneral: FC<Props> = ({
 		deviceType
 	);
 
-	const OPTIONS: MySelectOption<WCB_MAP_PANEL_GENERAL["mapTypeId"]>[] = [
-		{ label: "Roadmap", value: "roadmap" },
-		{ label: "Satellite", value: "satellite" },
-	];
-
-	const inputRef = useRef<HTMLInputElement>(null);
-	useEffect(() => {
-		if (!inputRef || !inputRef.current) {
-			return;
-		}
-		const autocomplete = new google.maps.places.Autocomplete(inputRef.current);
-		autocomplete.addListener("place_changed", () => {
-			const place = autocomplete.getPlace();
-			console.log(1212, { place });
-
-			if (!place.geometry || !place.geometry.location) {
-				// User entered the name of a Place that was not suggested and
-				// pressed the Enter key, or the Place Details request failed.
-				window.alert("No details available for input: '" + place.name + "'");
-				return;
-			}
-			setAttr__({ ...panelData, placeQuery: place });
-			// If the place has a geometry, then present it on a map.
-		});
-	}, [inputRef]);
+	const debounce_fun = _.debounce(function (data: WCB_MAP_PANEL_GENERAL) {
+		console.log("Function debounced after 300ms!", { data });
+		setAttr__(data);
+	}, 500);
 
 	return (
 		<PanelBody
@@ -104,12 +65,13 @@ const WcbMapPanelGeneral: FC<Props> = ({
 				<div>
 					<MyLabelControl>{__("Location", "wcb")}</MyLabelControl>
 					<input
-						ref={inputRef}
-						id="pac-input"
 						type="text"
-						className="w-full"
+						className="w-full text-sm"
 						placeholder={__("Enter a location", "wcb")}
-						defaultValue={placeQuery?.formatted_address}
+						defaultValue={placeQuery}
+						onChange={(e) => {
+							debounce_fun({ ...panelData, placeQuery: e.currentTarget.value });
+						}}
 					/>
 				</div>
 

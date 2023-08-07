@@ -24,6 +24,7 @@ const { Fragment } = wp.element;
 const { withSelect } = wp.data;
 import attributes from "./attributes";
 import { INNER_BLOCKS_TEMPLATE } from "./constants";
+import deprecated from "./deprecated";
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 
 registerBlockType(metadata.name, {
@@ -31,6 +32,8 @@ registerBlockType(metadata.name, {
 	save,
 	attributes,
 	innerBlocks: INNER_BLOCKS_TEMPLATE,
+	deprecated: deprecated,
+	example: {},
 	scope: ["inserter"],
 	icon: (
 		<svg

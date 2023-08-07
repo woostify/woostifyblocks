@@ -1,4 +1,9 @@
-import { PanelBody, TabPanel } from "@wordpress/components";
+import {
+	PanelBody,
+	TabPanel,
+	// @ts-ignore
+	__experimentalBoxControl as BoxControl,
+} from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC } from "react";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
@@ -7,13 +12,22 @@ import {
 	MY_BORDER_CONTROL_DEMO,
 } from "../components/controls/MyBorderControl/types";
 import MyDisclosure from "../components/controls/MyDisclosure";
+import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
+import {
+	MyTypographyControlData,
+	TYPOGRAPHY_CONTROL_DEMO,
+} from "../components/controls/MyTypographyControl/types";
+import MyTypographyControl from "../components/controls/MyTypographyControl/MyTypographyControl";
+import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
+import { DimensionSettings } from "../components/controls/MyDimensionsControl/types";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
-import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
+import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
 
 type TabsHere = "Success" | "Error";
 
-export type WCB_FORM_PANEL_STYLE_MESSAGES = {
+type A = {
 	[K in TabsHere]: {
 		color: string;
 		backgroundColor: string;
@@ -21,8 +35,15 @@ export type WCB_FORM_PANEL_STYLE_MESSAGES = {
 	};
 };
 
+export interface WCB_FORM_PANEL_STYLE_MESSAGES extends A {
+	typography: MyTypographyControlData;
+	margin?: HasResponsive<DimensionSettings>;
+}
+
 export const WCB_FORM_PANEL_STYLE_MESSAGES_DEMO: WCB_FORM_PANEL_STYLE_MESSAGES =
 	{
+		typography: TYPOGRAPHY_CONTROL_DEMO,
+		margin: undefined,
 		Success: {
 			color: "#0c4a6e",
 			backgroundColor: "#f0f9ff",
@@ -57,8 +78,22 @@ const WcbPostGridPanel_StyleMessages: FC<Props> = ({
 		{ name: "Error", title: __("Error", "wcb") },
 	];
 
-	const { Error, Success } = panelData;
-	//
+	const {
+		margin: marginProps = {
+			Desktop: {
+				top: "0",
+				left: "0",
+				right: "0",
+				bottom: "0",
+			},
+		},
+	} = panelData;
+
+	const { currentDeviceValue: margin } = getValueFromAttrsResponsives(
+		marginProps,
+		deviceType
+	);
+
 	const initialTabName: TabsHere = "Success";
 	return (
 		<PanelBody
@@ -67,57 +102,86 @@ const WcbPostGridPanel_StyleMessages: FC<Props> = ({
 			opened={opened}
 			title={__("Messages", "wcb")}
 		>
-			<TabPanel
-				className={`wcb-bodyControls__panel `}
-				activeClass="active-tab"
-				initialTabName={initialTabName}
-				tabs={PanelTab}
-			>
-				{(tab) => (
-					<div className="space-y-5">
-						<MyColorPicker
-							label={__("Text color", "wcb")}
-							color={panelData[tab.name as TabsHere].color}
-							onChange={(value) => {
-								setAttr__({
-									...panelData,
-									[tab.name]: {
-										...panelData[tab.name],
-										color: value,
-									},
-								});
-							}}
-						/>
-						<MyColorPicker
-							label={__("Background color", "wcb")}
-							color={panelData[tab.name as TabsHere].backgroundColor}
-							onChange={(value) => {
-								setAttr__({
-									...panelData,
-									[tab.name]: {
-										...panelData[tab.name],
-										backgroundColor: value,
-									},
-								});
-							}}
-						/>
+			<div className="space-y-4">
+				<MyTypographyControl
+					typographyControl={panelData.typography || TYPOGRAPHY_CONTROL_DEMO}
+					setAttrs__typography={(typography) => {
+						setAttr__({
+							...panelData,
+							typography,
+						});
+					}}
+				/>
 
-						<MyDisclosure defaultOpen label="Border">
-							<MyBorderControl
-								borderControl={panelData[tab.name as TabsHere].border}
-								setAttrs__border={(border: MyBorderControlData) => {
+				<TabPanel
+					className={`wcb-bodyControls__panel `}
+					activeClass="active-tab"
+					initialTabName={initialTabName}
+					tabs={PanelTab}
+				>
+					{(tab) => (
+						<div className="space-y-5">
+							<MyColorPicker
+								label={__("Text color", "wcb")}
+								color={panelData[tab.name as TabsHere].color}
+								onChange={(value) => {
 									setAttr__({
 										...panelData,
 										[tab.name]: {
-											border,
+											...panelData[tab.name],
+											color: value,
 										},
 									});
 								}}
 							/>
-						</MyDisclosure>
-					</div>
-				)}
-			</TabPanel>
+							<MyColorPicker
+								label={__("Background color", "wcb")}
+								color={panelData[tab.name as TabsHere].backgroundColor}
+								onChange={(value) => {
+									setAttr__({
+										...panelData,
+										[tab.name]: {
+											...panelData[tab.name],
+											backgroundColor: value,
+										},
+									});
+								}}
+							/>
+
+							<MyDisclosure label="Border & Margin">
+								<MyBorderControl
+									borderControl={panelData[tab.name as TabsHere].border}
+									setAttrs__border={(border: MyBorderControlData) => {
+										setAttr__({
+											...panelData,
+											[tab.name]: {
+												border,
+											},
+										});
+									}}
+								/>
+								<BoxControl
+									label={
+										<MyLabelControl className="" hasResponsive>
+											{__("margin", "wcb")}
+										</MyLabelControl>
+									}
+									values={margin}
+									onChange={(value: DimensionSettings) => {
+										setAttr__({
+											...panelData,
+											margin: {
+												...marginProps,
+												[deviceType]: value,
+											},
+										});
+									}}
+								/>
+							</MyDisclosure>
+						</div>
+					)}
+				</TabPanel>
+			</div>
 		</PanelBody>
 	);
 };

@@ -1,6 +1,5 @@
 import { __ } from "@wordpress/i18n";
 import { RichText, useBlockProps } from "@wordpress/block-editor";
-import { useRefEffect } from "@wordpress/compose";
 import React, { useEffect, FC, useCallback, useRef } from "react";
 import { TestimonialItem, WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
@@ -35,6 +34,7 @@ import { WcbAttrsForSave } from "./Save";
 import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 export const TESTIMONIAL_ITEM_DEMO: TestimonialItem = {
 	name: "Drink Water",
@@ -108,6 +108,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_arrowAndDots,
 		style_backgroundAndBorder,
 		style_dimension,
+		advance_motionEffect,
 	} = attributes;
 	//  COMMON HOOKS
 
@@ -123,12 +124,14 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
 		setAttributes({
-			uniqueId: UNIQUE_ID,
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
+	//
 
 	let CURRENT_DATA = useMemo(
 		() =>
@@ -282,6 +285,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				return (
 					<>
 						<AdvancePanelCommon
+							advance_motionEffect={advance_motionEffect}
 							advance_responsiveCondition={
 								attributes.advance_responsiveCondition
 							}
@@ -364,7 +368,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							if (j === index) {
 								return {
 									...item,
-									name: content,
+									companyName: content,
 								};
 							}
 							return item;
@@ -403,42 +407,49 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		const { imagePosition } = general_images;
 		return (
 			<div className="wcb-testimonials__item" key={index + "-"}>
-				<div className=""></div>
-				<VideoBackgroundByBgControl
-					bgType={style_backgroundAndBorder.background.bgType}
-					videoData={style_backgroundAndBorder.background.videoData}
-				/>
-				<OverlayBackgroundByBgControl
-					bgType={style_backgroundAndBorder.background.bgType}
-					overlayType={style_backgroundAndBorder.background.overlayType}
-				/>
-				{/* IMAGE */}
-				{imagePosition === "left" && renderTestimonialItemImage(item, index)}
-
-				<div className="wcb-testimonials__item-inner">
-					{/* IMAGE */}
-					{imagePosition === "top" && renderTestimonialItemImage(item, index)}
-
-					{/* CONTENT */}
-					{renderTestimonialItemContent(item, index)}
-
-					<div className="wcb-testimonials__item-user">
+				<div className="wcb-testimonials__item-background">
+					<div className=""></div>
+					<VideoBackgroundByBgControl
+						bgType={style_backgroundAndBorder.background.bgType}
+						videoData={style_backgroundAndBorder.background.videoData}
+					/>
+					<OverlayBackgroundByBgControl
+						bgType={style_backgroundAndBorder.background.bgType}
+						overlayType={style_backgroundAndBorder.background.overlayType}
+					/>
+					<div className="wcb-testimonials__item-wrap-inner">
 						{/* IMAGE */}
-						{imagePosition === "bottom" &&
+						{imagePosition === "left" &&
 							renderTestimonialItemImage(item, index)}
 
-						<div className="wcb-testimonials__item-nameandcompany">
-							{/* NAME */}
-							<div>{renderTestimonialItemName(item, index)}</div>
+						<div className="wcb-testimonials__item-inner">
+							{/* IMAGE */}
+							{imagePosition === "top" &&
+								renderTestimonialItemImage(item, index)}
 
-							{/* COMPANY */}
-							{renderTestimonialItemCompany(item, index)}
+							{/* CONTENT */}
+							{renderTestimonialItemContent(item, index)}
+
+							<div className="wcb-testimonials__item-user">
+								{/* IMAGE */}
+								{imagePosition === "bottom" &&
+									renderTestimonialItemImage(item, index)}
+
+								<div className="wcb-testimonials__item-nameandcompany">
+									{/* NAME */}
+									<div>{renderTestimonialItemName(item, index)}</div>
+
+									{/* COMPANY */}
+									{renderTestimonialItemCompany(item, index)}
+								</div>
+							</div>
 						</div>
+
+						{/* IMAGE */}
+						{imagePosition === "right" &&
+							renderTestimonialItemImage(item, index)}
 					</div>
 				</div>
-
-				{/* IMAGE */}
-				{imagePosition === "right" && renderTestimonialItemImage(item, index)}
 			</div>
 		);
 	};
@@ -496,6 +507,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			style_content,
 			style_image,
 			style_name,
+			advance_motionEffect,
 		};
 	}, [
 		uniqueId,
@@ -511,14 +523,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_content,
 		style_image,
 		style_name,
+		advance_motionEffect,
 	]);
 
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-testimonials__wrap ${UNIQUE_ID}`}
-				data-uniqueid={UNIQUE_ID}
+				className={`${wrapBlockProps?.className} wcb-testimonials__wrap ${uniqueId}`}
+				data-uniqueid={uniqueId}
 			>
 				{/* CONTROL SETTINGS */}
 				<HOCInspectorControls

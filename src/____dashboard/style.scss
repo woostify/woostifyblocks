@@ -1,4 +1,6 @@
-.woostify-blocks-settings-page-php {
+.woostifyblocks-includes-settings-page-php {
+	--font-body: "";
+
 	#wpbody-content > .notice:not(.wcb-notice),
 	#wpbody-content > .error {
 		display: none !important;
@@ -16,19 +18,10 @@
 		opacity: 0.4;
 	}
 
-	button,
-	input,
-	optgroup,
-	select,
-	textarea {
-		font-family: inherit;
-		font-size: 100%;
-		font-weight: inherit;
-		line-height: inherit;
-		color: inherit;
-		margin: 0;
-		padding: 0;
+	.container {
+		@apply mx-auto;
 	}
+
 	[type="text"],
 	[type="email"],
 	[type="url"],
@@ -44,19 +37,70 @@
 	[multiple],
 	textarea,
 	select {
-		-webkit-appearance: none;
-		-moz-appearance: none;
-		appearance: none;
-		background-color: #fff;
-		border-color: #6b7280;
-		border-width: 1px;
-		border-radius: 0px;
-		padding-top: 0.5rem;
-		padding-right: 0.75rem;
-		padding-bottom: 0.5rem;
-		padding-left: 0.75rem;
-		font-size: 1rem;
-		line-height: 1.5rem;
-		--tw-shadow: 0 0 #0000;
+		@apply px-4 py-1.5;
 	}
+
+	/* button {
+		@apply inline-flex items-center rounded-xl border border-transparent px-4 py-2 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+	} */
+
+	input.number-hide-arrow {
+		/* Chrome, Safari, Edge, Opera */
+		&::-webkit-outer-spin-button,
+		&::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+
+		/* Firefox */
+		&[type="number"] {
+			-moz-appearance: textfield;
+		}
+	}
+}
+
+/* ------------------------------------------------------------------ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+	font-family: inherit;
+	font-size: 100%;
+	font-weight: inherit;
+	line-height: inherit;
+	color: inherit;
+	padding: 0;
+	margin: 0;
+}
+[type="text"],
+[type="email"],
+[type="url"],
+[type="password"],
+[type="number"],
+[type="date"],
+[type="datetime-local"],
+[type="month"],
+[type="search"],
+[type="tel"],
+[type="time"],
+[type="week"],
+[multiple],
+textarea,
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-color: #fff;
+	border-color: #6b7280;
+	border-width: 1px;
+	border-radius: 0px;
+	padding-top: 0.5rem;
+	padding-right: 0.75rem;
+	padding-bottom: 0.5rem;
+	padding-left: 0.75rem;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	--tw-shadow: 0 0 #0000;
 }

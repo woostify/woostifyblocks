@@ -22,25 +22,25 @@ interface Props {
 }
 
 export const MY_GAP_UNITS = [
-	{ value: "px", label: "px", default: 32 },
-	{ value: "rem", label: "rem", default: 2 },
-	{ value: "em", label: "em", default: 2 },
-	{ value: "%", label: "%", default: 50 },
+	{ value: "px", label: "px", default: 32, step: 1 },
+	{ value: "rem", label: "rem", default: 2, step: 0.01 },
+	{ value: "em", label: "em", default: 2, step: 0.01 },
+	{ value: "%", label: "%", default: 50, step: 0.1 },
 ];
 
 export const MY_HORIZOLTAL_UNITS = [
-	{ value: "px", label: "px", default: 32 },
-	{ value: "rem", label: "rem", default: 2 },
-	{ value: "em", label: "em", default: 2 },
-	{ value: "%", label: "%", default: 20 },
-	{ value: "vw", label: "vw", default: 20 },
+	{ value: "px", label: "px", default: 32, step: 1 },
+	{ value: "rem", label: "rem", default: 2, step: 0.01 },
+	{ value: "em", label: "em", default: 2, step: 0.01 },
+	{ value: "%", label: "%", default: 20, step: 0.1 },
+	{ value: "vw", label: "vw", default: 20, step: 0.1 },
 ];
 export const MY_VERTICAL_UNITS = [
-	{ value: "px", label: "px", default: 32 },
-	{ value: "rem", label: "rem", default: 2 },
-	{ value: "em", label: "em", default: 2 },
-	{ value: "%", label: "%", default: 20 },
-	{ value: "vh", label: "vh", default: 20 },
+	{ value: "px", label: "px", default: 32, step: 1 },
+	{ value: "rem", label: "rem", default: 2, step: 0.01 },
+	{ value: "em", label: "em", default: 2, step: 0.01 },
+	{ value: "%", label: "%", default: 20, step: 0.1 },
+	{ value: "vh", label: "vh", default: 20, step: 0.1 },
 ];
 
 const MyDimensionsControl: FC<Props> = ({
@@ -145,6 +145,7 @@ const MyDimensionsControl: FC<Props> = ({
 				}
 				values={margin}
 				onChange={handleChangeMargin}
+				inputProps={{ min: -2000 }}
 			/>
 		</div>
 	);

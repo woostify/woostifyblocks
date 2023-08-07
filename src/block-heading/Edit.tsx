@@ -21,6 +21,7 @@ import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
 import WcbHeadingPanel_StyleBorder from "./WcbHeadingPanel_StyleBorder";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -44,6 +45,7 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 		general_content,
 		advance_responsiveCondition,
 		advance_zIndex,
+		advance_motionEffect,
 	} = attributes;
 
 	const {
@@ -56,12 +58,14 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 
 	//
 	const wrapBlockProps = useBlockProps({ ref });
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
 		setAttributes({
-			uniqueId: UNIQUE_ID,
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
+	//
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
@@ -169,6 +173,7 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 				return (
 					<>
 						<AdvancePanelCommon
+							advance_motionEffect={advance_motionEffect}
 							advance_responsiveCondition={
 								attributes.advance_responsiveCondition
 							}
@@ -199,6 +204,7 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 			styles_subHeading,
 			uniqueId,
 			styles_border,
+			advance_motionEffect,
 		};
 	}, [
 		advance_responsiveCondition,
@@ -213,6 +219,7 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 		styles_subHeading,
 		uniqueId,
 		styles_border,
+		advance_motionEffect,
 	]);
 
 	const renderSeparator = () => {
@@ -227,8 +234,8 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-heading__wrap ${UNIQUE_ID}`}
-				data-uniqueid={UNIQUE_ID}
+				className={`${wrapBlockProps?.className} wcb-heading__wrap ${uniqueId}`}
+				data-uniqueid={uniqueId}
 			>
 				<HOCInspectorControls
 					uniqueId={uniqueId}
@@ -247,7 +254,7 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 						tagName={general_content.headingTag || "h2"}
 						className="wcb-heading__heading"
 						value={heading}
-						placeholder="Add heading here"
+						placeholder="Add heading"
 						onChange={(heading) => setAttributes({ heading })}
 					/>
 				) : null}
@@ -261,7 +268,7 @@ const Edit: FC<EditProps<WcbBlockHeadingAttrs>> = (props) => {
 						className="wcb-heading__subHeading"
 						value={subHeading}
 						onChange={(subHeading) => setAttributes({ subHeading })}
-						placeholder="Add sub heading here"
+						placeholder="Add sub heading"
 					/>
 				) : null}
 

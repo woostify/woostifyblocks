@@ -25,10 +25,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 		//
 		advance_responsiveCondition,
 		advance_zIndex,
+		advance_motionEffect,
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
-	const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
 
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject[] => {
@@ -50,6 +51,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const isImageBeSide =
 		general_image.imagePosition === "left" ||
 		general_image.imagePosition === "right";
+
+	if (!uniqueId) {
+		return null;
+	}
 	return (
 		<>
 			<Global styles={getDivWrapStyles()} />
@@ -194,9 +199,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 			{/* ADVANCE  */}
 			<Global
 				styles={getAdvanveDivWrapStyles({
+					advance_motionEffect,
 					advance_responsiveCondition,
 					advance_zIndex,
 					className: WRAP_CLASSNAME,
+					defaultDisplay: "block",
 				})}
 			/>
 		</>

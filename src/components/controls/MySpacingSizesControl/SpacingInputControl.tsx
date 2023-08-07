@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { useState, useMemo, useEffect } from "@wordpress/element";
+import { useMemo } from "@wordpress/element";
 import {
 	RangeControl,
 	// @ts-ignore
@@ -26,9 +26,9 @@ export const MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE = {
 	"%": { max: 100, steps: 1 },
 	vw: { max: 100, steps: 1 },
 	vh: { max: 100, steps: 1 },
-	em: { max: 100, steps: 1 },
-	rm: { max: 100, steps: 1 },
-	rem: { max: 100, steps: 1 },
+	em: { max: 100, steps: 0.1 },
+	rm: { max: 100, steps: 0.1 },
+	rem: { max: 100, steps: 0.1 },
 };
 
 export interface SpacingInputControlProps {
@@ -48,24 +48,15 @@ const SpacingInputControl: FC<SpacingInputControlProps> = ({
 	className = "",
 	customUnitsValueSettings = MY_CUSTOM_UNITS_VALUE_SETTINGS,
 }) => {
-	const [currentValue, setCurrentValue] = useState(value);
-
-	useEffect(() => {
-		setCurrentValue(value);
-	}, [value]);
-
 	const selectedUnit =
-		useMemo(
-			() => parseQuantityAndUnitFromRawValue(currentValue),
-			[currentValue]
-		)[1] || units[0].value;
+		useMemo(() => parseQuantityAndUnitFromRawValue(value), [value])[1] ||
+		units[0].value;
 
-	const customRangeValue = parseFloat(currentValue ?? "10");
+	const customRangeValue = parseFloat(value ?? "10");
 
 	const handleCustomValueSliderChange = (next: number) => {
 		const newValue = [next, selectedUnit].join("");
 		onChange(newValue);
-		setCurrentValue(newValue);
 	};
 
 	return (
@@ -92,11 +83,11 @@ const SpacingInputControl: FC<SpacingInputControlProps> = ({
 			</div>
 			<div className="flex-1">
 				<UnitControl
-					onChange={(newSize: string) => {
-						setCurrentValue(newSize);
+					onChange={(newSize: string, ...props) => {
 						onChange(newSize);
 					}}
-					value={currentValue}
+					placeholder={`${parseInt(value || "")}`}
+					value={value}
 					units={units}
 					min={minCustomValue}
 					hideLabelFromVision={true}

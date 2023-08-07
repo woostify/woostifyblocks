@@ -9,7 +9,6 @@ import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
 import getStyleObjectFromResponsiveAttr from "../utils/getStyleObjectFromResponsiveAttr";
 import getTypographyStyles from "../utils/getTypographyStyles";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
-import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { WcbAttrsForSave } from "./Save";
 
 interface Props extends WcbAttrsForSave {}
@@ -30,22 +29,13 @@ const GlobalCss: FC<Props> = (attrs) => {
 		advance_responsiveCondition,
 		advance_zIndex,
 	} = attrs;
-	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
-	const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
 	const BUTTON_CLASSNAME = `${WRAP_CLASSNAME} .wcb-button__main`;
 	const BUTTON_TEXT = `${WRAP_CLASSNAME} .wcb-button__text`;
 	const BUTTON_ICON = `${WRAP_CLASSNAME} .wcb-button__icon`;
 
 	// ------------------- WRAP DIV
-	const getDivWrapStyles = (): CSSObject => {
-		return {
-			[`${WRAP_CLASSNAME}`]: {
-				[`@media (min-width: ${media_tablet})`]: {},
-				[`@media (min-width: ${media_desktop})`]: {},
-			},
-		};
-	};
 
 	let {
 		value_Desktop: iconSize_desktop,
@@ -59,7 +49,9 @@ const GlobalCss: FC<Props> = (attrs) => {
 		Mobile: iconSize_mobile + "px",
 	};
 
-	// console.log(2, "---- buton global css ---");
+	if (!uniqueId) {
+		return null;
+	}
 	return (
 		<>
 			{/* <Global styles={getDivWrapStyles()} /> */}

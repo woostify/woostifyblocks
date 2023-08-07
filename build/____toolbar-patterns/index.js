@@ -181,42 +181,6 @@ module.exports = ForwardRef;
 
 /***/ }),
 
-/***/ "./node_modules/@heroicons/react/24/outline/KeyIcon.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/@heroicons/react/24/outline/KeyIcon.js ***!
-  \*************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-const React = __webpack_require__(/*! react */ "react");
-
-function KeyIcon({
-  title,
-  titleId,
-  ...props
-}, svgRef) {
-  return /*#__PURE__*/React.createElement("svg", Object.assign({
-    xmlns: "http://www.w3.org/2000/svg",
-    fill: "none",
-    viewBox: "0 0 24 24",
-    strokeWidth: 1.5,
-    stroke: "currentColor",
-    "aria-hidden": "true",
-    ref: svgRef,
-    "aria-labelledby": titleId
-  }, props), title ? /*#__PURE__*/React.createElement("title", {
-    id: titleId
-  }, title) : null, /*#__PURE__*/React.createElement("path", {
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    d: "M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z"
-  }));
-}
-
-const ForwardRef = React.forwardRef(KeyIcon);
-module.exports = ForwardRef;
-
-/***/ }),
-
 /***/ "./node_modules/@heroicons/react/24/outline/LightBulbIcon.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/@heroicons/react/24/outline/LightBulbIcon.js ***!
@@ -839,13 +803,15 @@ const INIT_WCB_GLOBAL_VARIABLES = {
   reCAPTCHA_v3_site_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
   reCAPTCHA_v2_site_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
   reCAPTCHA_v2_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
-  defaultContentWidth: "1140px",
+  // se sd khi pick container lan dau tien / or khi truong contentWidth cua container khong duoc nhap
+  defaultContentWidth: window?.wcbLayoutGlobalSettings?.contentSize || "",
   enableTemplatesButton: "true",
   enableCopyPasteStyles: "false"
 };
 const DEMO_WCB_GLOBAL_VARIABLES = {
   ...INIT_WCB_GLOBAL_VARIABLES,
-  ...(window.wcbGlobalVariables || {})
+  ...(window.wcbGlobalVariables || {}),
+  defaultContentWidth: window.wcbGlobalVariables?.defaultContentWidth || window.wcbLayoutGlobalSettings?.contentSize
 };
 const ___wcb_global = 1;
 
@@ -945,10 +911,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_15__);
 /* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/LightBulbIcon.js");
 /* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/KeyIcon.js");
+/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/ArrowTopRightOnSquareIcon.js");
 /* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/ArrowTopRightOnSquareIcon.js");
-/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_18__);
 /* harmony import */ var _apollo_client__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @apollo/client */ "./node_modules/@apollo/client/react/hooks/useLazyQuery.js");
 /* harmony import */ var _constant__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./constant */ "./src/____toolbar-patterns/constant.ts");
 /* harmony import */ var copy_to_clipboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! copy-to-clipboard */ "./node_modules/copy-to-clipboard/index.js");
@@ -1142,18 +1106,7 @@ const HeaderToolBarPatterns = () => {
       className: "w-4 h-4"
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
       className: "ml-2 text-slate-900"
-    }, "Free")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-      className: `flex items-center rounded-md py-[0.4375rem] pl-2 pr-2 text-sm font-semibold lg:pr-3 ${currentPricingPackage === "pro" ? "bg-white shadow" : ""}`,
-      id: "headlessui-tabs-tab-pro",
-      role: "tab",
-      type: "button",
-      "aria-selected": currentPricingPackage === "pro" ? "true" : undefined,
-      onClick: () => setCurrentPricingPackage("pro")
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_17__, {
-      className: "w-4 h-4"
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: "ml-2 text-slate-600"
-    }, "Pro")));
+    }, "Free")));
   };
   const renderSelectCategories = () => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -1233,7 +1186,7 @@ const HeaderToolBarPatterns = () => {
       target: "_blank",
       rel: "noopener noreferrer",
       className: "relative ml-2 h-9 w-9 items-center justify-center flex"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_18__, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_17__, {
       className: "w-4 h-4"
     }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "col-span-2 min-w-0"
@@ -1392,7 +1345,7 @@ const WcbPluginSidebar = props => {
     className: "uppercase text-[11px] font-medium m-0"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)("Add custom colors", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_HelpText__WEBPACK_IMPORTED_MODULE_7__["default"], null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)("The custom colors will show up in your ColorPicker component.", "wcb"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "flex flex-wrap gap-2"
-  }, mycolors?.map((item, j) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, mycolors?.map((item, j) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_6__["default"], {
     color: item.color,
     key: j,
     label: "",
@@ -1401,7 +1354,7 @@ const WcbPluginSidebar = props => {
     },
     showDefaultPalette: true,
     showCustomColorOnDefaultPallete: false
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "p-2 flex items-center justify-center border rounded-lg cursor-pointer hover:border-slate-300 disabled:opacity-40",
     title: updateStatus === "loading" ? "Updating..." : "Add new color",
     onClick: addNewCustomColor,
@@ -1648,7 +1601,7 @@ const MyColorPicker = _ref => {
     }];
     return c;
   }, [colorGradientSettings, showCustomColorOnDefaultPallete]);
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dropdown, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dropdown, {
     className: `w-full ${className}`,
     contentClassName: "my-popover-content-classname"
     // @ts-ignore
@@ -1681,8 +1634,13 @@ const MyColorPicker = _ref => {
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ColorPalette, {
       className: "block-editor-color-gradient-control__panel p-4",
       colors: showDefaultPalette ? defaultColorPallete : undefined,
-      value: colorState,
-      onChange: color => handleUpdateColor(color || "")
+      value: colorState
+      // @ts-ignore
+      ,
+      enableAlpha: true,
+      onChange: color => {
+        handleUpdateColor(color || "");
+      }
       // @ts-ignore
       ,
       __experimentalHasMultipleOrigins: true,
@@ -2643,6 +2601,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "__classPrivateFieldSet": () => (/* binding */ __classPrivateFieldSet),
 /* harmony export */   "__createBinding": () => (/* binding */ __createBinding),
 /* harmony export */   "__decorate": () => (/* binding */ __decorate),
+/* harmony export */   "__esDecorate": () => (/* binding */ __esDecorate),
 /* harmony export */   "__exportStar": () => (/* binding */ __exportStar),
 /* harmony export */   "__extends": () => (/* binding */ __extends),
 /* harmony export */   "__generator": () => (/* binding */ __generator),
@@ -2651,8 +2610,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "__makeTemplateObject": () => (/* binding */ __makeTemplateObject),
 /* harmony export */   "__metadata": () => (/* binding */ __metadata),
 /* harmony export */   "__param": () => (/* binding */ __param),
+/* harmony export */   "__propKey": () => (/* binding */ __propKey),
 /* harmony export */   "__read": () => (/* binding */ __read),
 /* harmony export */   "__rest": () => (/* binding */ __rest),
+/* harmony export */   "__runInitializers": () => (/* binding */ __runInitializers),
+/* harmony export */   "__setFunctionName": () => (/* binding */ __setFunctionName),
 /* harmony export */   "__spread": () => (/* binding */ __spread),
 /* harmony export */   "__spreadArray": () => (/* binding */ __spreadArray),
 /* harmony export */   "__spreadArrays": () => (/* binding */ __spreadArrays),
@@ -2722,6 +2684,51 @@ function __decorate(decorators, target, key, desc) {
 function __param(paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 }
+
+function __esDecorate(ctor, descriptorIn, decorators, contextIn, initializers, extraInitializers) {
+    function accept(f) { if (f !== void 0 && typeof f !== "function") throw new TypeError("Function expected"); return f; }
+    var kind = contextIn.kind, key = kind === "getter" ? "get" : kind === "setter" ? "set" : "value";
+    var target = !descriptorIn && ctor ? contextIn["static"] ? ctor : ctor.prototype : null;
+    var descriptor = descriptorIn || (target ? Object.getOwnPropertyDescriptor(target, contextIn.name) : {});
+    var _, done = false;
+    for (var i = decorators.length - 1; i >= 0; i--) {
+        var context = {};
+        for (var p in contextIn) context[p] = p === "access" ? {} : contextIn[p];
+        for (var p in contextIn.access) context.access[p] = contextIn.access[p];
+        context.addInitializer = function (f) { if (done) throw new TypeError("Cannot add initializers after decoration has completed"); extraInitializers.push(accept(f || null)); };
+        var result = (0, decorators[i])(kind === "accessor" ? { get: descriptor.get, set: descriptor.set } : descriptor[key], context);
+        if (kind === "accessor") {
+            if (result === void 0) continue;
+            if (result === null || typeof result !== "object") throw new TypeError("Object expected");
+            if (_ = accept(result.get)) descriptor.get = _;
+            if (_ = accept(result.set)) descriptor.set = _;
+            if (_ = accept(result.init)) initializers.push(_);
+        }
+        else if (_ = accept(result)) {
+            if (kind === "field") initializers.push(_);
+            else descriptor[key] = _;
+        }
+    }
+    if (target) Object.defineProperty(target, contextIn.name, descriptor);
+    done = true;
+};
+
+function __runInitializers(thisArg, initializers, value) {
+    var useValue = arguments.length > 2;
+    for (var i = 0; i < initializers.length; i++) {
+        value = useValue ? initializers[i].call(thisArg, value) : initializers[i].call(thisArg);
+    }
+    return useValue ? value : void 0;
+};
+
+function __propKey(x) {
+    return typeof x === "symbol" ? x : "".concat(x);
+};
+
+function __setFunctionName(f, name, prefix) {
+    if (typeof name === "symbol") name = name.description ? "[".concat(name.description, "]") : "";
+    return Object.defineProperty(f, "name", { configurable: true, value: prefix ? "".concat(prefix, " ", name) : name });
+};
 
 function __metadata(metadataKey, metadataValue) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
@@ -2855,7 +2862,7 @@ function __asyncGenerator(thisArg, _arguments, generator) {
 function __asyncDelegator(o) {
     var i, p;
     return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
-    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: false } : f ? f(v) : v; } : f; }
 }
 
 function __asyncValues(o) {
@@ -3693,7 +3700,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "fieldNameFromStoreName": () => (/* binding */ fieldNameFromStoreName),
 /* harmony export */   "getTypenameFromStoreObject": () => (/* binding */ getTypenameFromStoreObject),
 /* harmony export */   "hasOwn": () => (/* binding */ hasOwn),
-/* harmony export */   "isArray": () => (/* binding */ isArray),
+/* harmony export */   "isArray": () => (/* reexport safe */ _utilities_index_js__WEBPACK_IMPORTED_MODULE_0__.isArray),
 /* harmony export */   "isNullish": () => (/* binding */ isNullish),
 /* harmony export */   "makeProcessedFieldsMerger": () => (/* binding */ makeProcessedFieldsMerger),
 /* harmony export */   "normalizeConfig": () => (/* binding */ normalizeConfig),
@@ -3701,19 +3708,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "shouldCanonizeResults": () => (/* binding */ shouldCanonizeResults),
 /* harmony export */   "storeValueIsStoreObject": () => (/* binding */ storeValueIsStoreObject)
 /* harmony export */ });
-/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/compact.js");
-/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/graphql/storeUtils.js");
-/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/objects.js");
-/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/graphql/directives.js");
-/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/mergeDeep.js");
-/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/graphql/fragments.js");
-/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/graphql/getFromAST.js");
+/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/arrays.js");
+/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/compact.js");
+/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/graphql/storeUtils.js");
+/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/objects.js");
+/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/graphql/directives.js");
+/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/mergeDeep.js");
+/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/graphql/fragments.js");
+/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/graphql/getFromAST.js");
 
 var hasOwn = Object.prototype.hasOwnProperty;
 function isNullish(value) {
     return value === null || value === void 0;
 }
-var isArray = Array.isArray;
+
 function defaultDataIdFromObject(_a, context) {
     var __typename = _a.__typename, id = _a.id, _id = _a._id;
     if (typeof __typename === "string") {
@@ -3739,14 +3747,14 @@ var defaultConfig = {
     canonizeResults: false,
 };
 function normalizeConfig(config) {
-    return (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_0__.compact)(defaultConfig, config);
+    return (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_1__.compact)(defaultConfig, config);
 }
 function shouldCanonizeResults(config) {
     var value = config.canonizeResults;
     return value === void 0 ? defaultConfig.canonizeResults : value;
 }
 function getTypenameFromStoreObject(store, objectOrReference) {
-    return (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_1__.isReference)(objectOrReference)
+    return (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_2__.isReference)(objectOrReference)
         ? store.get(objectOrReference.__ref, "__typename")
         : objectOrReference && objectOrReference.__typename;
 }
@@ -3756,12 +3764,12 @@ function fieldNameFromStoreName(storeFieldName) {
     return match ? match[0] : storeFieldName;
 }
 function selectionSetMatchesResult(selectionSet, result, variables) {
-    if ((0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_2__.isNonNullObject)(result)) {
-        return isArray(result)
+    if ((0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_3__.isNonNullObject)(result)) {
+        return (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_0__.isArray)(result)
             ? result.every(function (item) { return selectionSetMatchesResult(selectionSet, item, variables); })
             : selectionSet.selections.every(function (field) {
-                if ((0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_1__.isField)(field) && (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_3__.shouldInclude)(field, variables)) {
-                    var key = (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_1__.resultKeyNameFromField)(field);
+                if ((0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_2__.isField)(field) && (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_4__.shouldInclude)(field, variables)) {
+                    var key = (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_2__.resultKeyNameFromField)(field);
                     return hasOwn.call(result, key) &&
                         (!field.selectionSet ||
                             selectionSetMatchesResult(field.selectionSet, result[key], variables));
@@ -3772,15 +3780,15 @@ function selectionSetMatchesResult(selectionSet, result, variables) {
     return false;
 }
 function storeValueIsStoreObject(value) {
-    return (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_2__.isNonNullObject)(value) &&
-        !(0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_1__.isReference)(value) &&
-        !isArray(value);
+    return (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_3__.isNonNullObject)(value) &&
+        !(0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_2__.isReference)(value) &&
+        !(0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_0__.isArray)(value);
 }
 function makeProcessedFieldsMerger() {
-    return new _utilities_index_js__WEBPACK_IMPORTED_MODULE_4__.DeepMerger;
+    return new _utilities_index_js__WEBPACK_IMPORTED_MODULE_5__.DeepMerger;
 }
 function extractFragmentContext(document, fragments) {
-    var fragmentMap = (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_5__.createFragmentMap)((0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_6__.getFragmentDefinitions)(document));
+    var fragmentMap = (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_6__.createFragmentMap)((0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_7__.getFragmentDefinitions)(document));
     return {
         fragmentMap: fragmentMap,
         lookupFragment: function (name) {
@@ -4157,7 +4165,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "keyFieldsFnFromSpecifier": () => (/* binding */ keyFieldsFnFromSpecifier)
 /* harmony export */ });
 /* harmony import */ var _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utilities/globals/index.js */ "./node_modules/@apollo/client/utilities/globals/index.js");
-/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/arrays.js");
+/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers.js */ "./node_modules/@apollo/client/utilities/common/arrays.js");
 /* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/graphql/storeUtils.js");
 /* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/mergeDeep.js");
 /* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/objects.js");
@@ -4244,13 +4252,13 @@ function getSpecifierPaths(spec) {
         var paths_1 = info.paths = [];
         var currentPath_1 = [];
         spec.forEach(function (s, i) {
-            if ((0,_helpers_js__WEBPACK_IMPORTED_MODULE_1__.isArray)(s)) {
+            if ((0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_2__.isArray)(s)) {
                 getSpecifierPaths(s).forEach(function (p) { return paths_1.push(currentPath_1.concat(p)); });
                 currentPath_1.length = 0;
             }
             else {
                 currentPath_1.push(s);
-                if (!(0,_helpers_js__WEBPACK_IMPORTED_MODULE_1__.isArray)(spec[i + 1])) {
+                if (!(0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_2__.isArray)(spec[i + 1])) {
                     paths_1.push(currentPath_1.slice(0));
                     currentPath_1.length = 0;
                 }
@@ -4265,14 +4273,14 @@ function extractKey(object, key) {
 function extractKeyPath(object, path, extract) {
     extract = extract || extractKey;
     return normalize(path.reduce(function reducer(obj, key) {
-        return (0,_helpers_js__WEBPACK_IMPORTED_MODULE_1__.isArray)(obj)
+        return (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_2__.isArray)(obj)
             ? obj.map(function (child) { return reducer(child, key); })
             : obj && extract(obj, key);
     }, object));
 }
 function normalize(value) {
     if ((0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_5__.isNonNullObject)(value)) {
-        if ((0,_helpers_js__WEBPACK_IMPORTED_MODULE_1__.isArray)(value)) {
+        if ((0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_2__.isArray)(value)) {
             return value.map(normalize);
         }
         return collectSpecifierPaths(Object.keys(value).sort(), function (path) { return extractKeyPath(value, path); });
@@ -4300,7 +4308,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wry_trie__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wry/trie */ "./node_modules/@wry/trie/lib/trie.esm.js");
 /* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/objects.js");
 /* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/canUse.js");
-/* harmony import */ var _helpers_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers.js */ "./node_modules/@apollo/client/cache/inmemory/helpers.js");
+/* harmony import */ var _helpers_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers.js */ "./node_modules/@apollo/client/utilities/common/arrays.js");
 
 
 
@@ -4439,12 +4447,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utilities/globals/index.js */ "./node_modules/@apollo/client/utilities/globals/index.js");
 /* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/graphql/storeUtils.js");
-/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/stringifyForDisplay.js");
-/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/objects.js");
+/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/stringifyForDisplay.js");
+/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/objects.js");
 /* harmony import */ var _helpers_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./helpers.js */ "./node_modules/@apollo/client/cache/inmemory/helpers.js");
-/* harmony import */ var _reactiveVars_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./reactiveVars.js */ "./node_modules/@apollo/client/cache/inmemory/reactiveVars.js");
+/* harmony import */ var _helpers_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./helpers.js */ "./node_modules/@apollo/client/utilities/common/arrays.js");
+/* harmony import */ var _reactiveVars_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./reactiveVars.js */ "./node_modules/@apollo/client/cache/inmemory/reactiveVars.js");
 /* harmony import */ var _object_canon_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./object-canon.js */ "./node_modules/@apollo/client/cache/inmemory/object-canon.js");
-/* harmony import */ var _key_extractor_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./key-extractor.js */ "./node_modules/@apollo/client/cache/inmemory/key-extractor.js");
+/* harmony import */ var _key_extractor_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./key-extractor.js */ "./node_modules/@apollo/client/cache/inmemory/key-extractor.js");
 
 
 
@@ -4507,8 +4516,8 @@ var Policies = (function () {
         var keyFn = policy && policy.keyFn || this.config.dataIdFromObject;
         while (keyFn) {
             var specifierOrId = keyFn(object, context);
-            if ((0,_helpers_js__WEBPACK_IMPORTED_MODULE_4__.isArray)(specifierOrId)) {
-                keyFn = (0,_key_extractor_js__WEBPACK_IMPORTED_MODULE_5__.keyFieldsFnFromSpecifier)(specifierOrId);
+            if ((0,_helpers_js__WEBPACK_IMPORTED_MODULE_5__.isArray)(specifierOrId)) {
+                keyFn = (0,_key_extractor_js__WEBPACK_IMPORTED_MODULE_6__.keyFieldsFnFromSpecifier)(specifierOrId);
             }
             else {
                 id = specifierOrId;
@@ -4550,7 +4559,7 @@ var Policies = (function () {
         setMerge(existing, incoming.merge);
         existing.keyFn =
             keyFields === false ? nullKeyFieldsFn :
-                (0,_helpers_js__WEBPACK_IMPORTED_MODULE_4__.isArray)(keyFields) ? (0,_key_extractor_js__WEBPACK_IMPORTED_MODULE_5__.keyFieldsFnFromSpecifier)(keyFields) :
+                (0,_helpers_js__WEBPACK_IMPORTED_MODULE_5__.isArray)(keyFields) ? (0,_key_extractor_js__WEBPACK_IMPORTED_MODULE_6__.keyFieldsFnFromSpecifier)(keyFields) :
                     typeof keyFields === "function" ? keyFields :
                         existing.keyFn;
         if (fields) {
@@ -4564,7 +4573,7 @@ var Policies = (function () {
                     var keyArgs = incoming.keyArgs, read = incoming.read, merge = incoming.merge;
                     existing.keyFn =
                         keyArgs === false ? simpleKeyArgsFn :
-                            (0,_helpers_js__WEBPACK_IMPORTED_MODULE_4__.isArray)(keyArgs) ? (0,_key_extractor_js__WEBPACK_IMPORTED_MODULE_5__.keyArgsFnFromSpecifier)(keyArgs) :
+                            (0,_helpers_js__WEBPACK_IMPORTED_MODULE_5__.isArray)(keyArgs) ? (0,_key_extractor_js__WEBPACK_IMPORTED_MODULE_6__.keyArgsFnFromSpecifier)(keyArgs) :
                                 typeof keyArgs === "function" ? keyArgs :
                                     existing.keyFn;
                     if (typeof read === "function") {
@@ -4709,8 +4718,8 @@ var Policies = (function () {
             var args = argsFromFieldSpecifier(fieldSpec);
             while (keyFn) {
                 var specifierOrString = keyFn(args, context);
-                if ((0,_helpers_js__WEBPACK_IMPORTED_MODULE_4__.isArray)(specifierOrString)) {
-                    keyFn = (0,_key_extractor_js__WEBPACK_IMPORTED_MODULE_5__.keyArgsFnFromSpecifier)(specifierOrString);
+                if ((0,_helpers_js__WEBPACK_IMPORTED_MODULE_5__.isArray)(specifierOrString)) {
+                    keyFn = (0,_key_extractor_js__WEBPACK_IMPORTED_MODULE_6__.keyArgsFnFromSpecifier)(specifierOrString);
                 }
                 else {
                     storeFieldName = specifierOrString || fieldName;
@@ -4751,7 +4760,7 @@ var Policies = (function () {
             var readOptions = makeFieldFunctionOptions(this, objectOrReference, options, context, context.store.getStorage((0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_1__.isReference)(objectOrReference)
                 ? objectOrReference.__ref
                 : objectOrReference, storeFieldName));
-            return _reactiveVars_js__WEBPACK_IMPORTED_MODULE_6__.cacheSlot.withValue(this.cache, read, [existing, readOptions]);
+            return _reactiveVars_js__WEBPACK_IMPORTED_MODULE_7__.cacheSlot.withValue(this.cache, read, [existing, readOptions]);
         }
         return existing;
     };
@@ -4822,7 +4831,7 @@ function normalizeReadFieldOptions(readFieldArgs, objectOrReference, variables) 
         }
     }
     if (__DEV__ && options.from === void 0) {
-        __DEV__ && _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant.warn("Undefined 'from' passed to readField with arguments ".concat((0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_7__.stringifyForDisplay)(Array.from(readFieldArgs))));
+        __DEV__ && _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant.warn("Undefined 'from' passed to readField with arguments ".concat((0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_8__.stringifyForDisplay)(Array.from(readFieldArgs))));
     }
     if (void 0 === options.variables) {
         options.variables = variables;
@@ -4831,11 +4840,11 @@ function normalizeReadFieldOptions(readFieldArgs, objectOrReference, variables) 
 }
 function makeMergeObjectsFunction(store) {
     return function mergeObjects(existing, incoming) {
-        if ((0,_helpers_js__WEBPACK_IMPORTED_MODULE_4__.isArray)(existing) || (0,_helpers_js__WEBPACK_IMPORTED_MODULE_4__.isArray)(incoming)) {
+        if ((0,_helpers_js__WEBPACK_IMPORTED_MODULE_5__.isArray)(existing) || (0,_helpers_js__WEBPACK_IMPORTED_MODULE_5__.isArray)(incoming)) {
             throw __DEV__ ? new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError("Cannot automatically merge arrays") : new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError(4);
         }
-        if ((0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_8__.isNonNullObject)(existing) &&
-            (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_8__.isNonNullObject)(incoming)) {
+        if ((0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_9__.isNonNullObject)(existing) &&
+            (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_9__.isNonNullObject)(incoming)) {
             var eType = store.getFieldValue(existing, "__typename");
             var iType = store.getFieldValue(incoming, "__typename");
             var typesDiffer = eType && iType && eType !== iType;
@@ -4961,7 +4970,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utilities/globals/index.js */ "./node_modules/@apollo/client/utilities/globals/index.js");
-/* harmony import */ var graphql__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! graphql */ "./node_modules/graphql/language/kinds.mjs");
+/* harmony import */ var graphql__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! graphql */ "./node_modules/graphql/language/kinds.mjs");
 /* harmony import */ var optimism__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! optimism */ "./node_modules/optimism/lib/bundle.esm.js");
 /* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/canUse.js");
 /* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/compact.js");
@@ -4970,11 +4979,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/mergeDeep.js");
 /* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/graphql/directives.js");
 /* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/graphql/transform.js");
-/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/graphql/fragments.js");
-/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/maybeDeepFreeze.js");
-/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/objects.js");
+/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/graphql/fragments.js");
+/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/maybeDeepFreeze.js");
+/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/objects.js");
 /* harmony import */ var _entityStore_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./entityStore.js */ "./node_modules/@apollo/client/cache/inmemory/entityStore.js");
 /* harmony import */ var _helpers_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./helpers.js */ "./node_modules/@apollo/client/cache/inmemory/helpers.js");
+/* harmony import */ var _helpers_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./helpers.js */ "./node_modules/@apollo/client/utilities/common/arrays.js");
 /* harmony import */ var _core_types_common_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../core/types/common.js */ "./node_modules/@apollo/client/cache/core/types/common.js");
 /* harmony import */ var _object_canon_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./object-canon.js */ "./node_modules/@apollo/client/cache/inmemory/object-canon.js");
 
@@ -5127,7 +5137,7 @@ var StoreReader = (function () {
                             _a));
                     }
                 }
-                else if ((0,_helpers_js__WEBPACK_IMPORTED_MODULE_4__.isArray)(fieldValue)) {
+                else if ((0,_helpers_js__WEBPACK_IMPORTED_MODULE_14__.isArray)(fieldValue)) {
                     fieldValue = handleMissing(_this.executeSubSelectedArray({
                         field: selection,
                         array: fieldValue,
@@ -5153,8 +5163,8 @@ var StoreReader = (function () {
                 }
             }
             else {
-                var fragment = (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_14__.getFragmentFromSelection)(selection, context.lookupFragment);
-                if (!fragment && selection.kind === graphql__WEBPACK_IMPORTED_MODULE_15__.Kind.FRAGMENT_SPREAD) {
+                var fragment = (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_15__.getFragmentFromSelection)(selection, context.lookupFragment);
+                if (!fragment && selection.kind === graphql__WEBPACK_IMPORTED_MODULE_16__.Kind.FRAGMENT_SPREAD) {
                     throw __DEV__ ? new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError("No fragment named ".concat(selection.name.value)) : new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError(5);
                 }
                 if (fragment && policies.fragmentMatches(fragment, typename)) {
@@ -5166,7 +5176,7 @@ var StoreReader = (function () {
         var finalResult = { result: result, missing: missing };
         var frozen = context.canonizeResults
             ? this.canon.admit(finalResult)
-            : (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_16__.maybeDeepFreeze)(finalResult);
+            : (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_17__.maybeDeepFreeze)(finalResult);
         if (frozen.result) {
             this.knownResults.set(frozen.result, selectionSet);
         }
@@ -5191,7 +5201,7 @@ var StoreReader = (function () {
             if (item === null) {
                 return null;
             }
-            if ((0,_helpers_js__WEBPACK_IMPORTED_MODULE_4__.isArray)(item)) {
+            if ((0,_helpers_js__WEBPACK_IMPORTED_MODULE_14__.isArray)(item)) {
                 return handleMissing(_this.executeSubSelectedArray({
                     field: field,
                     array: item,
@@ -5236,7 +5246,7 @@ function assertSelectionSetForIdValue(store, field, fieldValue) {
     if (!field.selectionSet) {
         var workSet_1 = new Set([fieldValue]);
         workSet_1.forEach(function (value) {
-            if ((0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_17__.isNonNullObject)(value)) {
+            if ((0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_18__.isNonNullObject)(value)) {
                 __DEV__ ? (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(!(0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_8__.isReference)(value), "Missing selection set for object of type ".concat((0,_helpers_js__WEBPACK_IMPORTED_MODULE_4__.getTypenameFromStoreObject)(store, value), " returned for query field ").concat(field.name.value)) : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(!(0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_8__.isReference)(value), 6);
                 Object.values(value).forEach(workSet_1.add, workSet_1);
             }
@@ -5267,8 +5277,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/graphql/storeUtils.js");
 /* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/graphql/transform.js");
 /* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/cloneDeep.js");
-/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/graphql/directives.js");
-/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/arrays.js");
+/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/graphql/directives.js");
+/* harmony import */ var _helpers_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./helpers.js */ "./node_modules/@apollo/client/utilities/common/arrays.js");
 /* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/graphql/fragments.js");
 /* harmony import */ var _helpers_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./helpers.js */ "./node_modules/@apollo/client/cache/inmemory/helpers.js");
 /* harmony import */ var _object_canon_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./object-canon.js */ "./node_modules/@apollo/client/cache/inmemory/object-canon.js");
@@ -5471,7 +5481,7 @@ var StoreWriter = (function () {
         if (!field.selectionSet || value === null) {
             return __DEV__ ? (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_10__.cloneDeep)(value) : value;
         }
-        if ((0,_helpers_js__WEBPACK_IMPORTED_MODULE_5__.isArray)(value)) {
+        if ((0,_helpers_js__WEBPACK_IMPORTED_MODULE_11__.isArray)(value)) {
             return value.map(function (item, i) {
                 var value = _this.processFieldValue(item, field, context, getChildMergeTree(mergeTree, i));
                 maybeRecycleChildMergeTree(mergeTree, i);
@@ -5496,11 +5506,11 @@ var StoreWriter = (function () {
                 return;
             visitedNode.visited = true;
             selectionSet.selections.forEach(function (selection) {
-                if (!(0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_11__.shouldInclude)(selection, context.variables))
+                if (!(0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_12__.shouldInclude)(selection, context.variables))
                     return;
                 var clientOnly = inheritedContext.clientOnly, deferred = inheritedContext.deferred;
                 if (!(clientOnly && deferred) &&
-                    (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_12__.isNonEmptyArray)(selection.directives)) {
+                    (0,_helpers_js__WEBPACK_IMPORTED_MODULE_11__.isNonEmptyArray)(selection.directives)) {
                     selection.directives.forEach(function (dir) {
                         var name = dir.name.value;
                         if (name === "client")
@@ -5539,7 +5549,7 @@ var StoreWriter = (function () {
         var _a;
         var _this = this;
         if (mergeTree.map.size && !(0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_7__.isReference)(incoming)) {
-            var e_1 = (!(0,_helpers_js__WEBPACK_IMPORTED_MODULE_5__.isArray)(incoming) &&
+            var e_1 = (!(0,_helpers_js__WEBPACK_IMPORTED_MODULE_11__.isArray)(incoming) &&
                 ((0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_7__.isReference)(existing) || (0,_helpers_js__WEBPACK_IMPORTED_MODULE_5__.storeValueIsStoreObject)(existing))) ? existing : void 0;
             var i_1 = incoming;
             if (e_1 && !getStorageArgs) {
@@ -5547,7 +5557,7 @@ var StoreWriter = (function () {
             }
             var changedFields_1;
             var getValue_1 = function (from, name) {
-                return (0,_helpers_js__WEBPACK_IMPORTED_MODULE_5__.isArray)(from)
+                return (0,_helpers_js__WEBPACK_IMPORTED_MODULE_11__.isArray)(from)
                     ? (typeof name === "number" ? from[name] : void 0)
                     : context.store.getFieldValue(from, String(name));
             };
@@ -5569,7 +5579,7 @@ var StoreWriter = (function () {
                 }
             });
             if (changedFields_1) {
-                incoming = ((0,_helpers_js__WEBPACK_IMPORTED_MODULE_5__.isArray)(i_1) ? i_1.slice(0) : (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__assign)({}, i_1));
+                incoming = ((0,_helpers_js__WEBPACK_IMPORTED_MODULE_11__.isArray)(i_1) ? i_1.slice(0) : (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__assign)({}, i_1));
                 changedFields_1.forEach(function (value, name) {
                     incoming[name] = value;
                 });
@@ -5651,8 +5661,8 @@ function warnAboutDataLoss(existingRef, incomingObj, storeFieldName, store) {
         return;
     warnings.add(typeDotName);
     var childTypenames = [];
-    if (!(0,_helpers_js__WEBPACK_IMPORTED_MODULE_5__.isArray)(existing) &&
-        !(0,_helpers_js__WEBPACK_IMPORTED_MODULE_5__.isArray)(incoming)) {
+    if (!(0,_helpers_js__WEBPACK_IMPORTED_MODULE_11__.isArray)(existing) &&
+        !(0,_helpers_js__WEBPACK_IMPORTED_MODULE_11__.isArray)(incoming)) {
         [existing, incoming].forEach(function (child) {
             var typename = store.getFieldValue(child, "__typename");
             if (typeof typename === "string" &&
@@ -5839,12 +5849,18 @@ var ApolloClient = (function () {
         return this.cache.readFragment(options, optimistic);
     };
     ApolloClient.prototype.writeQuery = function (options) {
-        this.cache.writeQuery(options);
-        this.queryManager.broadcastQueries();
+        var ref = this.cache.writeQuery(options);
+        if (options.broadcast !== false) {
+            this.queryManager.broadcastQueries();
+        }
+        return ref;
     };
     ApolloClient.prototype.writeFragment = function (options) {
-        this.cache.writeFragment(options);
-        this.queryManager.broadcastQueries();
+        var ref = this.cache.writeFragment(options);
+        if (options.broadcast !== false) {
+            this.queryManager.broadcastQueries();
+        }
+        return ref;
     };
     ApolloClient.prototype.__actionHookForDevTools = function (cb) {
         this.devToolsHookCb = cb;
@@ -5948,6 +5964,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utilities/globals/index.js */ "./node_modules/@apollo/client/utilities/globals/index.js");
 /* harmony import */ var graphql__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! graphql */ "./node_modules/graphql/language/visitor.mjs");
+/* harmony import */ var graphql__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! graphql */ "./node_modules/graphql/language/predicates.mjs");
 /* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/mergeDeep.js");
 /* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utilities/index.js */ "./node_modules/@apollo/client/utilities/graphql/directives.js");
 /* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utilities/index.js */ "./node_modules/@apollo/client/utilities/graphql/transform.js");
@@ -5963,6 +5980,7 @@ __webpack_require__.r(__webpack_exports__);
 var LocalState = (function () {
     function LocalState(_a) {
         var cache = _a.cache, client = _a.client, resolvers = _a.resolvers, fragmentMatcher = _a.fragmentMatcher;
+        this.selectionsToResolveCache = new WeakMap();
         this.cache = cache;
         if (client) {
             this.client = client;
@@ -6073,13 +6091,13 @@ var LocalState = (function () {
         if (fragmentMatcher === void 0) { fragmentMatcher = function () { return true; }; }
         if (onlyRunForcedResolvers === void 0) { onlyRunForcedResolvers = false; }
         return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(this, void 0, void 0, function () {
-            var mainDefinition, fragments, fragmentMap, definitionOperation, defaultOperationType, _a, cache, client, execContext;
+            var mainDefinition, fragments, fragmentMap, selectionsToResolve, definitionOperation, defaultOperationType, _a, cache, client, execContext, isClientFieldDescendant;
             return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__generator)(this, function (_b) {
                 mainDefinition = (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_6__.getMainDefinition)(document);
                 fragments = (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_6__.getFragmentDefinitions)(document);
                 fragmentMap = (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_7__.createFragmentMap)(fragments);
-                definitionOperation = mainDefinition
-                    .operation;
+                selectionsToResolve = this.collectSelectionsToResolve(mainDefinition, fragmentMap);
+                definitionOperation = mainDefinition.operation;
                 defaultOperationType = definitionOperation
                     ? definitionOperation.charAt(0).toUpperCase() +
                         definitionOperation.slice(1)
@@ -6092,16 +6110,18 @@ var LocalState = (function () {
                     fragmentMatcher: fragmentMatcher,
                     defaultOperationType: defaultOperationType,
                     exportedVariables: {},
+                    selectionsToResolve: selectionsToResolve,
                     onlyRunForcedResolvers: onlyRunForcedResolvers,
                 };
-                return [2, this.resolveSelectionSet(mainDefinition.selectionSet, rootValue, execContext).then(function (result) { return ({
+                isClientFieldDescendant = false;
+                return [2, this.resolveSelectionSet(mainDefinition.selectionSet, isClientFieldDescendant, rootValue, execContext).then(function (result) { return ({
                         result: result,
                         exportedVariables: execContext.exportedVariables,
                     }); })];
             });
         });
     };
-    LocalState.prototype.resolveSelectionSet = function (selectionSet, rootValue, execContext) {
+    LocalState.prototype.resolveSelectionSet = function (selectionSet, isClientFieldDescendant, rootValue, execContext) {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(this, void 0, void 0, function () {
             var fragmentMap, context, variables, resultsToMerge, execute;
             var _this = this;
@@ -6111,11 +6131,14 @@ var LocalState = (function () {
                 execute = function (selection) { return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(_this, void 0, void 0, function () {
                     var fragment, typeCondition;
                     return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__generator)(this, function (_a) {
+                        if (!isClientFieldDescendant && !execContext.selectionsToResolve.has(selection)) {
+                            return [2];
+                        }
                         if (!(0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_3__.shouldInclude)(selection, variables)) {
                             return [2];
                         }
                         if ((0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_8__.isField)(selection)) {
-                            return [2, this.resolveField(selection, rootValue, execContext).then(function (fieldResult) {
+                            return [2, this.resolveField(selection, isClientFieldDescendant, rootValue, execContext).then(function (fieldResult) {
                                     var _a;
                                     if (typeof fieldResult !== 'undefined') {
                                         resultsToMerge.push((_a = {},
@@ -6134,7 +6157,7 @@ var LocalState = (function () {
                         if (fragment && fragment.typeCondition) {
                             typeCondition = fragment.typeCondition.name.value;
                             if (execContext.fragmentMatcher(rootValue, typeCondition, context)) {
-                                return [2, this.resolveSelectionSet(fragment.selectionSet, rootValue, execContext).then(function (fragmentResult) {
+                                return [2, this.resolveSelectionSet(fragment.selectionSet, isClientFieldDescendant, rootValue, execContext).then(function (fragmentResult) {
                                         resultsToMerge.push(fragmentResult);
                                     })];
                             }
@@ -6148,11 +6171,14 @@ var LocalState = (function () {
             });
         });
     };
-    LocalState.prototype.resolveField = function (field, rootValue, execContext) {
+    LocalState.prototype.resolveField = function (field, isClientFieldDescendant, rootValue, execContext) {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(this, void 0, void 0, function () {
             var variables, fieldName, aliasedFieldName, aliasUsed, defaultResult, resultPromise, resolverType, resolverMap, resolve;
             var _this = this;
             return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__generator)(this, function (_a) {
+                if (!rootValue) {
+                    return [2, null];
+                }
                 variables = execContext.variables;
                 fieldName = field.name.value;
                 aliasedFieldName = (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_8__.resultKeyNameFromField)(field);
@@ -6176,6 +6202,7 @@ var LocalState = (function () {
                     }
                 }
                 return [2, resultPromise.then(function (result) {
+                        var _a, _b;
                         if (result === void 0) { result = defaultResult; }
                         if (field.directives) {
                             field.directives.forEach(function (directive) {
@@ -6194,29 +6221,69 @@ var LocalState = (function () {
                         if (result == null) {
                             return result;
                         }
+                        var isClientField = (_b = (_a = field.directives) === null || _a === void 0 ? void 0 : _a.some(function (d) { return d.name.value === 'client'; })) !== null && _b !== void 0 ? _b : false;
                         if (Array.isArray(result)) {
-                            return _this.resolveSubSelectedArray(field, result, execContext);
+                            return _this.resolveSubSelectedArray(field, isClientFieldDescendant || isClientField, result, execContext);
                         }
                         if (field.selectionSet) {
-                            return _this.resolveSelectionSet(field.selectionSet, result, execContext);
+                            return _this.resolveSelectionSet(field.selectionSet, isClientFieldDescendant || isClientField, result, execContext);
                         }
                     })];
             });
         });
     };
-    LocalState.prototype.resolveSubSelectedArray = function (field, result, execContext) {
+    LocalState.prototype.resolveSubSelectedArray = function (field, isClientFieldDescendant, result, execContext) {
         var _this = this;
         return Promise.all(result.map(function (item) {
             if (item === null) {
                 return null;
             }
             if (Array.isArray(item)) {
-                return _this.resolveSubSelectedArray(field, item, execContext);
+                return _this.resolveSubSelectedArray(field, isClientFieldDescendant, item, execContext);
             }
             if (field.selectionSet) {
-                return _this.resolveSelectionSet(field.selectionSet, item, execContext);
+                return _this.resolveSelectionSet(field.selectionSet, isClientFieldDescendant, item, execContext);
             }
         }));
+    };
+    LocalState.prototype.collectSelectionsToResolve = function (mainDefinition, fragmentMap) {
+        var isSingleASTNode = function (node) { return !Array.isArray(node); };
+        var selectionsToResolveCache = this.selectionsToResolveCache;
+        function collectByDefinition(definitionNode) {
+            if (!selectionsToResolveCache.has(definitionNode)) {
+                var matches_1 = new Set();
+                selectionsToResolveCache.set(definitionNode, matches_1);
+                (0,graphql__WEBPACK_IMPORTED_MODULE_5__.visit)(definitionNode, {
+                    Directive: function (node, _, __, ___, ancestors) {
+                        if (node.name.value === 'client') {
+                            ancestors.forEach(function (node) {
+                                if (isSingleASTNode(node) && (0,graphql__WEBPACK_IMPORTED_MODULE_10__.isSelectionNode)(node)) {
+                                    matches_1.add(node);
+                                }
+                            });
+                        }
+                    },
+                    FragmentSpread: function (spread, _, __, ___, ancestors) {
+                        var fragment = fragmentMap[spread.name.value];
+                        __DEV__ ? (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(fragment, "No fragment named ".concat(spread.name.value)) : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(fragment, 12);
+                        var fragmentSelections = collectByDefinition(fragment);
+                        if (fragmentSelections.size > 0) {
+                            ancestors.forEach(function (node) {
+                                if (isSingleASTNode(node) && (0,graphql__WEBPACK_IMPORTED_MODULE_10__.isSelectionNode)(node)) {
+                                    matches_1.add(node);
+                                }
+                            });
+                            matches_1.add(spread);
+                            fragmentSelections.forEach(function (selection) {
+                                matches_1.add(selection);
+                            });
+                        }
+                    }
+                });
+            }
+            return selectionsToResolveCache.get(definitionNode);
+        }
+        return collectByDefinition(mainDefinition);
     };
     return LocalState;
 }());
@@ -6607,7 +6674,7 @@ var ObservableQuery = (function (_super) {
             pollingInfo.interval === pollInterval) {
             return;
         }
-        __DEV__ ? (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(pollInterval, 'Attempted to start a polling query without a polling interval.') : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(pollInterval, 12);
+        __DEV__ ? (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(pollInterval, 'Attempted to start a polling query without a polling interval.') : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(pollInterval, 13);
         var info = pollingInfo || (this.pollingInfo = {});
         info.interval = pollInterval;
         var maybeFetch = function () {
@@ -7142,7 +7209,7 @@ var QueryManager = (function () {
         this.queries.forEach(function (_info, queryId) {
             _this.stopQueryNoBroadcast(queryId);
         });
-        this.cancelPendingFetches(__DEV__ ? new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError('QueryManager stopped while query was in flight') : new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError(13));
+        this.cancelPendingFetches(__DEV__ ? new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError('QueryManager stopped while query was in flight') : new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError(14));
     };
     QueryManager.prototype.cancelPendingFetches = function (error) {
         this.fetchCancelFns.forEach(function (cancel) { return cancel(error); });
@@ -7156,10 +7223,10 @@ var QueryManager = (function () {
             return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__generator)(this, function (_j) {
                 switch (_j.label) {
                     case 0:
-                        __DEV__ ? (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(mutation, 'mutation option is required. You must specify your GraphQL document in the mutation option.') : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(mutation, 14);
+                        __DEV__ ? (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(mutation, 'mutation option is required. You must specify your GraphQL document in the mutation option.') : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(mutation, 15);
                         __DEV__ ? (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(fetchPolicy === 'network-only' ||
                             fetchPolicy === 'no-cache', "Mutations support only 'network-only' or 'no-cache' fetchPolicy strings. The default `network-only` behavior automatically writes mutation results to the cache. Passing `no-cache` skips the cache write.") : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(fetchPolicy === 'network-only' ||
-                            fetchPolicy === 'no-cache', 15);
+                            fetchPolicy === 'no-cache', 16);
                         mutationId = this.generateMutationId();
                         _h = this.transform(mutation), document = _h.document, hasClientExports = _h.hasClientExports;
                         mutation = this.cache.transformForLink(document);
@@ -7276,7 +7343,10 @@ var QueryManager = (function () {
                     optimistic: false,
                     returnPartialData: true,
                 });
-                var mergedData = (0,_utilities_common_incrementalResult_js__WEBPACK_IMPORTED_MODULE_9__.mergeIncrementalData)(diff.result, result);
+                var mergedData = void 0;
+                if (diff.result) {
+                    mergedData = (0,_utilities_common_incrementalResult_js__WEBPACK_IMPORTED_MODULE_9__.mergeIncrementalData)(diff.result, result);
+                }
                 if (typeof mergedData !== 'undefined') {
                     result.data = mergedData;
                     cacheWrites.push({
@@ -7478,10 +7548,10 @@ var QueryManager = (function () {
         var _this = this;
         if (queryId === void 0) { queryId = this.generateQueryId(); }
         __DEV__ ? (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(options.query, 'query option is required. You must specify your GraphQL document ' +
-            'in the query option.') : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(options.query, 16);
-        __DEV__ ? (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(options.query.kind === 'Document', 'You must wrap the query string in a "gql" tag.') : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(options.query.kind === 'Document', 17);
-        __DEV__ ? (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(!options.returnPartialData, 'returnPartialData option only supported on watchQuery.') : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(!options.returnPartialData, 18);
-        __DEV__ ? (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(!options.pollInterval, 'pollInterval option only supported on watchQuery.') : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(!options.pollInterval, 19);
+            'in the query option.') : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(options.query, 17);
+        __DEV__ ? (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(options.query.kind === 'Document', 'You must wrap the query string in a "gql" tag.') : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(options.query.kind === 'Document', 18);
+        __DEV__ ? (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(!options.returnPartialData, 'returnPartialData option only supported on watchQuery.') : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(!options.returnPartialData, 19);
+        __DEV__ ? (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(!options.pollInterval, 'pollInterval option only supported on watchQuery.') : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(!options.pollInterval, 20);
         return this.fetchQuery(queryId, options).finally(function () { return _this.stopQuery(queryId); });
     };
     QueryManager.prototype.generateQueryId = function () {
@@ -7506,7 +7576,7 @@ var QueryManager = (function () {
         if (options === void 0) { options = {
             discardWatches: true,
         }; }
-        this.cancelPendingFetches(__DEV__ ? new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError('Store reset while query was in flight (not completed in link chain)') : new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError(20));
+        this.cancelPendingFetches(__DEV__ ? new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError('Store reset while query was in flight (not completed in link chain)') : new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError(21));
         this.queries.forEach(function (queryInfo) {
             if (queryInfo.observableQuery) {
                 queryInfo.networkStatus = _networkStatus_js__WEBPACK_IMPORTED_MODULE_15__.NetworkStatus.loading;
@@ -8177,7 +8247,7 @@ var ApolloLink = (function () {
         return ApolloLink.concat(this, next);
     };
     ApolloLink.prototype.request = function (operation, forward) {
-        throw __DEV__ ? new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError('request is not implemented') : new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError(21);
+        throw __DEV__ ? new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError('request is not implemented') : new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError(22);
     };
     ApolloLink.prototype.onError = function (error, observer) {
         if (observer && observer.error) {
@@ -8262,7 +8332,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var checkFetcher = function (fetcher) {
     if (!fetcher && typeof fetch === 'undefined') {
-        throw __DEV__ ? new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError("\n\"fetch\" has not been found globally and no fetcher has been configured. To fix this, install a fetch package (like https://www.npmjs.com/package/cross-fetch), instantiate the fetcher, and pass it into your HttpLink constructor. For example:\n\nimport fetch from 'cross-fetch';\nimport { ApolloClient, HttpLink } from '@apollo/client';\nconst client = new ApolloClient({\n  link: new HttpLink({ uri: '/graphql', fetch })\n});\n    ") : new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError(22);
+        throw __DEV__ ? new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError("\n\"fetch\" has not been found globally and no fetcher has been configured. To fix this, install a fetch package (like https://www.npmjs.com/package/cross-fetch), instantiate the fetcher, and pass it into your HttpLink constructor. For example:\n\nimport fetch from 'cross-fetch';\nimport { ApolloClient, HttpLink } from '@apollo/client';\nconst client = new ApolloClient({\n  link: new HttpLink({ uri: '/graphql', fetch })\n});\n    ") : new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError(23);
     }
 };
 //# sourceMappingURL=checkFetcher.js.map
@@ -9040,7 +9110,7 @@ var serializeFetchParameter = function (p, label) {
         serialized = JSON.stringify(p);
     }
     catch (e) {
-        var parseError = __DEV__ ? new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError("Network request failed. ".concat(label, " is not serializable: ").concat(e.message)) : new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError(23);
+        var parseError = __DEV__ ? new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError("Network request failed. ".concat(label, " is not serializable: ").concat(e.message)) : new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError(24);
         parseError.parseError = e;
         throw parseError;
     }
@@ -9189,7 +9259,7 @@ function validateOperation(operation) {
     for (var _i = 0, _a = Object.keys(operation); _i < _a.length; _i++) {
         var key = _a[_i];
         if (OPERATION_FIELDS.indexOf(key) < 0) {
-            throw __DEV__ ? new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError("illegal argument: ".concat(key)) : new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError(26);
+            throw __DEV__ ? new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError("illegal argument: ".concat(key)) : new _utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError(27);
         }
     }
     return operation;
@@ -9261,7 +9331,7 @@ var ApolloProvider = function (_a) {
             context = Object.assign({}, context, { client: client });
         }
         __DEV__ ? (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(context.client, 'ApolloProvider was not passed a client instance. Make ' +
-            'sure you pass in your client via the "client" prop.') : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(context.client, 28);
+            'sure you pass in your client via the "client" prop.') : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(context.client, 29);
         return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(ApolloContext.Provider, { value: context }, children));
     }));
 };
@@ -9291,7 +9361,7 @@ function useApolloClient(override) {
     var client = override || context.client;
     __DEV__ ? (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(!!client, 'Could not find "client" in the context or passed in as an option. ' +
         'Wrap the root component in an <ApolloProvider>, or pass an ApolloClient ' +
-        'instance in via options.') : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(!!client, 31);
+        'instance in via options.') : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(!!client, 32);
     return client;
 }
 //# sourceMappingURL=useApolloClient.js.map
@@ -9311,9 +9381,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/mergeOptions.js");
-/* harmony import */ var _useQuery_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./useQuery.js */ "./node_modules/@apollo/client/react/hooks/useQuery.js");
-/* harmony import */ var _useApolloClient_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./useApolloClient.js */ "./node_modules/@apollo/client/react/hooks/useApolloClient.js");
+/* harmony import */ var _utilities_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utilities/index.js */ "./node_modules/@apollo/client/utilities/common/mergeOptions.js");
+/* harmony import */ var _useQuery_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./useQuery.js */ "./node_modules/@apollo/client/react/hooks/useQuery.js");
+/* harmony import */ var _useApolloClient_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./useApolloClient.js */ "./node_modules/@apollo/client/react/hooks/useApolloClient.js");
 
 
 
@@ -9328,12 +9398,11 @@ var EAGER_METHODS = [
     'subscribeToMore',
 ];
 function useLazyQuery(query, options) {
+    var _a;
     var abortControllersRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(new Set());
-    var internalState = (0,_useQuery_js__WEBPACK_IMPORTED_MODULE_1__.useInternalState)((0,_useApolloClient_js__WEBPACK_IMPORTED_MODULE_2__.useApolloClient)(options && options.client), query);
     var execOptionsRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
-    var merged = execOptionsRef.current
-        ? (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_3__.mergeOptions)(options, execOptionsRef.current)
-        : options;
+    var merged = execOptionsRef.current ? (0,_utilities_index_js__WEBPACK_IMPORTED_MODULE_1__.mergeOptions)(options, execOptionsRef.current) : options;
+    var internalState = (0,_useQuery_js__WEBPACK_IMPORTED_MODULE_2__.useInternalState)((0,_useApolloClient_js__WEBPACK_IMPORTED_MODULE_3__.useApolloClient)(options && options.client), (_a = merged === null || merged === void 0 ? void 0 : merged.query) !== null && _a !== void 0 ? _a : query);
     var useQueryResult = internalState.useQuery((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)({}, merged), { skip: !execOptionsRef.current }));
     var initialFetchPolicy = useQueryResult.observable.options.initialFetchPolicy ||
         internalState.getDefaultFetchPolicy();
@@ -9830,7 +9899,7 @@ function parser(document) {
     var variables, type, name;
     __DEV__ ? (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(!!document && !!document.kind, "Argument of ".concat(document, " passed to parser was not a valid GraphQL ") +
         "DocumentNode. You may need to use 'graphql-tag' or another method " +
-        "to convert your operation into a document") : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(!!document && !!document.kind, 32);
+        "to convert your operation into a document") : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(!!document && !!document.kind, 33);
     var fragments = [];
     var queries = [];
     var mutations = [];
@@ -9858,11 +9927,11 @@ function parser(document) {
     __DEV__ ? (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(!fragments.length ||
         (queries.length || mutations.length || subscriptions.length), "Passing only a fragment to 'graphql' is not yet supported. " +
         "You must include a query, subscription or mutation as well") : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(!fragments.length ||
-        (queries.length || mutations.length || subscriptions.length), 33);
+        (queries.length || mutations.length || subscriptions.length), 34);
     __DEV__ ? (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(queries.length + mutations.length + subscriptions.length <= 1, "react-apollo only supports a query, subscription, or a mutation per HOC. " +
         "".concat(document, " had ").concat(queries.length, " queries, ").concat(subscriptions.length, " ") +
         "subscriptions and ".concat(mutations.length, " mutations. ") +
-        "You can use 'compose' to join multiple operation types to a component") : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(queries.length + mutations.length + subscriptions.length <= 1, 34);
+        "You can use 'compose' to join multiple operation types to a component") : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(queries.length + mutations.length + subscriptions.length <= 1, 35);
     type = queries.length ? DocumentType.Query : DocumentType.Mutation;
     if (!queries.length && !mutations.length)
         type = DocumentType.Subscription;
@@ -9873,7 +9942,7 @@ function parser(document) {
             : subscriptions;
     __DEV__ ? (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(definitions.length === 1, "react-apollo only supports one definition per HOC. ".concat(document, " had ") +
         "".concat(definitions.length, " definitions. ") +
-        "You can use 'compose' to join multiple operation types to a component") : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(definitions.length === 1, 35);
+        "You can use 'compose' to join multiple operation types to a component") : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(definitions.length === 1, 36);
     var definition = definitions[0];
     variables = definition.variableDefinitions || [];
     if (definition.name && definition.name.kind === 'Name') {
@@ -9891,7 +9960,7 @@ function verifyDocumentType(document, type) {
     var requiredOperationName = operationName(type);
     var usedOperationName = operationName(operation.type);
     __DEV__ ? (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(operation.type === type, "Running a ".concat(requiredOperationName, " requires a graphql ") +
-        "".concat(requiredOperationName, ", but a ").concat(usedOperationName, " was used instead.")) : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(operation.type === type, 36);
+        "".concat(requiredOperationName, ", but a ").concat(usedOperationName, " was used instead.")) : (0,_utilities_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(operation.type === type, 37);
 }
 //# sourceMappingURL=index.js.map
 
@@ -9906,8 +9975,10 @@ function verifyDocumentType(document, type) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "isArray": () => (/* binding */ isArray),
 /* harmony export */   "isNonEmptyArray": () => (/* binding */ isNonEmptyArray)
 /* harmony export */ });
+var isArray = Array.isArray;
 function isNonEmptyArray(value) {
     return Array.isArray(value) && value.length > 0;
 }
@@ -10061,31 +10132,6 @@ function getGraphQLErrorsFromResult(result) {
     return graphQLErrors;
 }
 //# sourceMappingURL=errorHandling.js.map
-
-/***/ }),
-
-/***/ "./node_modules/@apollo/client/utilities/common/filterInPlace.js":
-/*!***********************************************************************!*\
-  !*** ./node_modules/@apollo/client/utilities/common/filterInPlace.js ***!
-  \***********************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "filterInPlace": () => (/* binding */ filterInPlace)
-/* harmony export */ });
-function filterInPlace(array, test, context) {
-    var target = 0;
-    array.forEach(function (elem, i) {
-        if (test.call(this, elem, i, array)) {
-            array[target++] = elem;
-        }
-    }, context);
-    array.length = target;
-    return array;
-}
-//# sourceMappingURL=filterInPlace.js.map
 
 /***/ }),
 
@@ -10515,7 +10561,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function checkDEV() {
-    __DEV__ ? (0,ts_invariant__WEBPACK_IMPORTED_MODULE_0__.invariant)("boolean" === typeof _DEV_js__WEBPACK_IMPORTED_MODULE_1__["default"], _DEV_js__WEBPACK_IMPORTED_MODULE_1__["default"]) : (0,ts_invariant__WEBPACK_IMPORTED_MODULE_0__.invariant)("boolean" === typeof _DEV_js__WEBPACK_IMPORTED_MODULE_1__["default"], 38);
+    __DEV__ ? (0,ts_invariant__WEBPACK_IMPORTED_MODULE_0__.invariant)("boolean" === typeof _DEV_js__WEBPACK_IMPORTED_MODULE_1__["default"], _DEV_js__WEBPACK_IMPORTED_MODULE_1__["default"]) : (0,ts_invariant__WEBPACK_IMPORTED_MODULE_0__.invariant)("boolean" === typeof _DEV_js__WEBPACK_IMPORTED_MODULE_1__["default"], 39);
 }
 
 (0,_fix_graphql_js__WEBPACK_IMPORTED_MODULE_2__.removeTemporaryGlobals)();
@@ -10579,7 +10625,7 @@ function shouldInclude(_a, variables) {
         var evaledValue = false;
         if (ifArgument.value.kind === 'Variable') {
             evaledValue = variables && variables[ifArgument.value.name.value];
-            __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(evaledValue !== void 0, "Invalid variable referenced in @".concat(directive.name.value, " directive.")) : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(evaledValue !== void 0, 39);
+            __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(evaledValue !== void 0, "Invalid variable referenced in @".concat(directive.name.value, " directive.")) : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(evaledValue !== void 0, 40);
         }
         else {
             evaledValue = ifArgument.value.value;
@@ -10626,13 +10672,13 @@ function getInclusionDirectives(directives) {
                 return;
             var directiveArguments = directive.arguments;
             var directiveName = directive.name.value;
-            __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(directiveArguments && directiveArguments.length === 1, "Incorrect number of arguments for the @".concat(directiveName, " directive.")) : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(directiveArguments && directiveArguments.length === 1, 40);
+            __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(directiveArguments && directiveArguments.length === 1, "Incorrect number of arguments for the @".concat(directiveName, " directive.")) : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(directiveArguments && directiveArguments.length === 1, 41);
             var ifArgument = directiveArguments[0];
-            __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(ifArgument.name && ifArgument.name.value === 'if', "Invalid argument for the @".concat(directiveName, " directive.")) : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(ifArgument.name && ifArgument.name.value === 'if', 41);
+            __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(ifArgument.name && ifArgument.name.value === 'if', "Invalid argument for the @".concat(directiveName, " directive.")) : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(ifArgument.name && ifArgument.name.value === 'if', 42);
             var ifValue = ifArgument.value;
             __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(ifValue &&
                 (ifValue.kind === 'Variable' || ifValue.kind === 'BooleanValue'), "Argument for the @".concat(directiveName, " directive must be a variable or a boolean value.")) : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(ifValue &&
-                (ifValue.kind === 'Variable' || ifValue.kind === 'BooleanValue'), 42);
+                (ifValue.kind === 'Variable' || ifValue.kind === 'BooleanValue'), 43);
             result.push({ directive: directive, ifArgument: ifArgument });
         });
     }
@@ -10665,14 +10711,14 @@ function getFragmentQueryDocument(document, fragmentName) {
     document.definitions.forEach(function (definition) {
         if (definition.kind === 'OperationDefinition') {
             throw __DEV__ ? new _globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError("Found a ".concat(definition.operation, " operation").concat(definition.name ? " named '".concat(definition.name.value, "'") : '', ". ") +
-                'No operations are allowed when using a fragment as a query. Only fragments are allowed.') : new _globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError(43);
+                'No operations are allowed when using a fragment as a query. Only fragments are allowed.') : new _globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError(44);
         }
         if (definition.kind === 'FragmentDefinition') {
             fragments.push(definition);
         }
     });
     if (typeof actualFragmentName === 'undefined') {
-        __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(fragments.length === 1, "Found ".concat(fragments.length, " fragments. `fragmentName` must be provided when there is not exactly 1 fragment.")) : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(fragments.length === 1, 44);
+        __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(fragments.length === 1, "Found ".concat(fragments.length, " fragments. `fragmentName` must be provided when there is not exactly 1 fragment.")) : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(fragments.length === 1, 45);
         actualFragmentName = fragments[0].name.value;
     }
     var query = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_1__.__assign)({}, document), { definitions: (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__spreadArray)([
@@ -10713,7 +10759,7 @@ function getFragmentFromSelection(selection, fragmentMap) {
                 return fragmentMap(fragmentName);
             }
             var fragment = fragmentMap && fragmentMap[fragmentName];
-            __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(fragment, "No fragment named ".concat(fragmentName)) : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(fragment, 45);
+            __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(fragment, "No fragment named ".concat(fragmentName)) : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(fragment, 46);
             return fragment || null;
         }
         default:
@@ -10747,42 +10793,46 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function checkDocument(doc) {
-    __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(doc && doc.kind === 'Document', "Expecting a parsed GraphQL document. Perhaps you need to wrap the query string in a \"gql\" tag? http://docs.apollostack.com/apollo-client/core.html#gql") : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(doc && doc.kind === 'Document', 46);
+    __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(doc && doc.kind === 'Document', "Expecting a parsed GraphQL document. Perhaps you need to wrap the query string in a \"gql\" tag? http://docs.apollostack.com/apollo-client/core.html#gql") : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(doc && doc.kind === 'Document', 47);
     var operations = doc.definitions
         .filter(function (d) { return d.kind !== 'FragmentDefinition'; })
         .map(function (definition) {
         if (definition.kind !== 'OperationDefinition') {
-            throw __DEV__ ? new _globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError("Schema type definitions not allowed in queries. Found: \"".concat(definition.kind, "\"")) : new _globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError(47);
+            throw __DEV__ ? new _globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError("Schema type definitions not allowed in queries. Found: \"".concat(definition.kind, "\"")) : new _globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError(48);
         }
         return definition;
     });
-    __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(operations.length <= 1, "Ambiguous GraphQL document: contains ".concat(operations.length, " operations")) : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(operations.length <= 1, 48);
+    __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(operations.length <= 1, "Ambiguous GraphQL document: contains ".concat(operations.length, " operations")) : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(operations.length <= 1, 49);
     return doc;
 }
 function getOperationDefinition(doc) {
     checkDocument(doc);
-    return doc.definitions.filter(function (definition) { return definition.kind === 'OperationDefinition'; })[0];
+    return doc.definitions.filter(function (definition) {
+        return definition.kind === 'OperationDefinition';
+    })[0];
 }
 function getOperationName(doc) {
     return (doc.definitions
         .filter(function (definition) {
-        return definition.kind === 'OperationDefinition' && definition.name;
+        return definition.kind === 'OperationDefinition' && !!definition.name;
     })
         .map(function (x) { return x.name.value; })[0] || null);
 }
 function getFragmentDefinitions(doc) {
-    return doc.definitions.filter(function (definition) { return definition.kind === 'FragmentDefinition'; });
+    return doc.definitions.filter(function (definition) {
+        return definition.kind === 'FragmentDefinition';
+    });
 }
 function getQueryDefinition(doc) {
     var queryDef = getOperationDefinition(doc);
-    __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(queryDef && queryDef.operation === 'query', 'Must contain a query definition.') : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(queryDef && queryDef.operation === 'query', 49);
+    __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(queryDef && queryDef.operation === 'query', 'Must contain a query definition.') : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(queryDef && queryDef.operation === 'query', 50);
     return queryDef;
 }
 function getFragmentDefinition(doc) {
-    __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(doc.kind === 'Document', "Expecting a parsed GraphQL document. Perhaps you need to wrap the query string in a \"gql\" tag? http://docs.apollostack.com/apollo-client/core.html#gql") : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(doc.kind === 'Document', 50);
-    __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(doc.definitions.length <= 1, 'Fragment must have exactly one definition.') : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(doc.definitions.length <= 1, 51);
+    __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(doc.kind === 'Document', "Expecting a parsed GraphQL document. Perhaps you need to wrap the query string in a \"gql\" tag? http://docs.apollostack.com/apollo-client/core.html#gql") : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(doc.kind === 'Document', 51);
+    __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(doc.definitions.length <= 1, 'Fragment must have exactly one definition.') : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(doc.definitions.length <= 1, 52);
     var fragmentDef = doc.definitions[0];
-    __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(fragmentDef.kind === 'FragmentDefinition', 'Must be a fragment definition.') : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(fragmentDef.kind === 'FragmentDefinition', 52);
+    __DEV__ ? (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(fragmentDef.kind === 'FragmentDefinition', 'Must be a fragment definition.') : (0,_globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant)(fragmentDef.kind === 'FragmentDefinition', 53);
     return fragmentDef;
 }
 function getMainDefinition(queryDoc) {
@@ -10805,7 +10855,7 @@ function getMainDefinition(queryDoc) {
     if (fragmentDefinition) {
         return fragmentDefinition;
     }
-    throw __DEV__ ? new _globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError('Expected a parsed GraphQL query with a query, mutation, subscription, or a fragment.') : new _globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError(53);
+    throw __DEV__ ? new _globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError('Expected a parsed GraphQL query with a query, mutation, subscription, or a fragment.') : new _globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError(54);
 }
 function getDefaultValues(definition) {
     var defaultValues = Object.create(null);
@@ -10922,7 +10972,7 @@ function valueToObjectRepresentation(argObj, name, value, variables) {
     else {
         throw __DEV__ ? new _globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError("The inline argument \"".concat(name.value, "\" of kind \"").concat(value.kind, "\"") +
             'is not supported. Use variables instead of inline arguments to ' +
-            'overcome this limitation.') : new _globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError(54);
+            'overcome this limitation.') : new _globals_index_js__WEBPACK_IMPORTED_MODULE_0__.InvariantError(55);
     }
 }
 function storeKeyNameFromField(field, variables) {
@@ -11077,11 +11127,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _globals_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../globals/index.js */ "./node_modules/@apollo/client/utilities/globals/index.js");
-/* harmony import */ var graphql__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! graphql */ "./node_modules/graphql/language/visitor.mjs");
-/* harmony import */ var _getFromAST_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getFromAST.js */ "./node_modules/@apollo/client/utilities/graphql/getFromAST.js");
-/* harmony import */ var _common_filterInPlace_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/filterInPlace.js */ "./node_modules/@apollo/client/utilities/common/filterInPlace.js");
-/* harmony import */ var _storeUtils_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./storeUtils.js */ "./node_modules/@apollo/client/utilities/graphql/storeUtils.js");
-/* harmony import */ var _fragments_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./fragments.js */ "./node_modules/@apollo/client/utilities/graphql/fragments.js");
+/* harmony import */ var graphql__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! graphql */ "./node_modules/graphql/language/kinds.mjs");
+/* harmony import */ var graphql__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! graphql */ "./node_modules/graphql/language/visitor.mjs");
+/* harmony import */ var _getFromAST_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getFromAST.js */ "./node_modules/@apollo/client/utilities/graphql/getFromAST.js");
+/* harmony import */ var _storeUtils_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./storeUtils.js */ "./node_modules/@apollo/client/utilities/graphql/storeUtils.js");
+/* harmony import */ var _fragments_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./fragments.js */ "./node_modules/@apollo/client/utilities/graphql/fragments.js");
+/* harmony import */ var _common_arrays_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/arrays.js */ "./node_modules/@apollo/client/utilities/common/arrays.js");
 
 
 
@@ -11090,100 +11141,206 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var TYPENAME_FIELD = {
-    kind: 'Field',
+    kind: graphql__WEBPACK_IMPORTED_MODULE_1__.Kind.FIELD,
     name: {
-        kind: 'Name',
+        kind: graphql__WEBPACK_IMPORTED_MODULE_1__.Kind.NAME,
         value: '__typename',
     },
 };
 function isEmpty(op, fragmentMap) {
-    return !op || op.selectionSet.selections.every(function (selection) { return selection.kind === 'FragmentSpread' &&
+    return !op || op.selectionSet.selections.every(function (selection) { return selection.kind === graphql__WEBPACK_IMPORTED_MODULE_1__.Kind.FRAGMENT_SPREAD &&
         isEmpty(fragmentMap[selection.name.value], fragmentMap); });
 }
 function nullIfDocIsEmpty(doc) {
-    return isEmpty((0,_getFromAST_js__WEBPACK_IMPORTED_MODULE_1__.getOperationDefinition)(doc) || (0,_getFromAST_js__WEBPACK_IMPORTED_MODULE_1__.getFragmentDefinition)(doc), (0,_fragments_js__WEBPACK_IMPORTED_MODULE_2__.createFragmentMap)((0,_getFromAST_js__WEBPACK_IMPORTED_MODULE_1__.getFragmentDefinitions)(doc)))
+    return isEmpty((0,_getFromAST_js__WEBPACK_IMPORTED_MODULE_2__.getOperationDefinition)(doc) || (0,_getFromAST_js__WEBPACK_IMPORTED_MODULE_2__.getFragmentDefinition)(doc), (0,_fragments_js__WEBPACK_IMPORTED_MODULE_3__.createFragmentMap)((0,_getFromAST_js__WEBPACK_IMPORTED_MODULE_2__.getFragmentDefinitions)(doc)))
         ? null
         : doc;
 }
 function getDirectiveMatcher(directives) {
-    return function directiveMatcher(directive) {
-        return directives.some(function (dir) {
-            return (dir.name && dir.name === directive.name.value) ||
-                (dir.test && dir.test(directive));
-        });
+    var nameSet = new Set();
+    var tests = [];
+    directives.forEach(function (directive) {
+        if (directive.name) {
+            nameSet.add(directive.name);
+        }
+        else if (directive.test) {
+            tests.push(directive.test);
+        }
+    });
+    return function (directive) { return (nameSet.has(directive.name.value) ||
+        tests.some(function (test) { return test(directive); })); };
+}
+function makeInUseGetterFunction(defaultKey) {
+    var map = new Map();
+    return function inUseGetterFunction(key) {
+        if (key === void 0) { key = defaultKey; }
+        var inUse = map.get(key);
+        if (!inUse) {
+            map.set(key, inUse = {
+                variables: new Set,
+                fragmentSpreads: new Set,
+            });
+        }
+        return inUse;
     };
 }
 function removeDirectivesFromDocument(directives, doc) {
-    var variablesInUse = Object.create(null);
-    var variablesToRemove = [];
-    var fragmentSpreadsInUse = Object.create(null);
-    var fragmentSpreadsToRemove = [];
-    var modifiedDoc = nullIfDocIsEmpty((0,graphql__WEBPACK_IMPORTED_MODULE_3__.visit)(doc, {
-        Variable: {
-            enter: function (node, _key, parent) {
-                if (parent.kind !== 'VariableDefinition') {
-                    variablesInUse[node.name.value] = true;
-                }
+    var getInUseByOperationName = makeInUseGetterFunction("");
+    var getInUseByFragmentName = makeInUseGetterFunction("");
+    var getInUse = function (ancestors) {
+        for (var p = 0, ancestor = void 0; p < ancestors.length && (ancestor = ancestors[p]); ++p) {
+            if ((0,_common_arrays_js__WEBPACK_IMPORTED_MODULE_4__.isArray)(ancestor))
+                continue;
+            if (ancestor.kind === graphql__WEBPACK_IMPORTED_MODULE_1__.Kind.OPERATION_DEFINITION) {
+                return getInUseByOperationName(ancestor.name && ancestor.name.value);
+            }
+            if (ancestor.kind === graphql__WEBPACK_IMPORTED_MODULE_1__.Kind.FRAGMENT_DEFINITION) {
+                return getInUseByFragmentName(ancestor.name.value);
+            }
+        }
+        __DEV__ && _globals_index_js__WEBPACK_IMPORTED_MODULE_0__.invariant.error("Could not find operation or fragment");
+        return null;
+    };
+    var operationCount = 0;
+    for (var i = doc.definitions.length - 1; i >= 0; --i) {
+        if (doc.definitions[i].kind === graphql__WEBPACK_IMPORTED_MODULE_1__.Kind.OPERATION_DEFINITION) {
+            ++operationCount;
+        }
+    }
+    var directiveMatcher = getDirectiveMatcher(directives);
+    var hasRemoveDirective = directives.some(function (directive) { return directive.remove; });
+    var shouldRemoveField = function (nodeDirectives) { return (hasRemoveDirective &&
+        nodeDirectives &&
+        nodeDirectives.some(directiveMatcher)); };
+    var originalFragmentDefsByPath = new Map();
+    var firstVisitMadeChanges = false;
+    var fieldOrInlineFragmentVisitor = {
+        enter: function (node) {
+            if (shouldRemoveField(node.directives)) {
+                firstVisitMadeChanges = true;
+                return null;
+            }
+        },
+    };
+    var docWithoutDirectiveSubtrees = (0,graphql__WEBPACK_IMPORTED_MODULE_5__.visit)(doc, {
+        Field: fieldOrInlineFragmentVisitor,
+        InlineFragment: fieldOrInlineFragmentVisitor,
+        VariableDefinition: {
+            enter: function () {
+                return false;
             },
         },
-        Field: {
-            enter: function (node) {
-                if (directives && node.directives) {
-                    var shouldRemoveField = directives.some(function (directive) { return directive.remove; });
-                    if (shouldRemoveField &&
-                        node.directives &&
-                        node.directives.some(getDirectiveMatcher(directives))) {
-                        if (node.arguments) {
-                            node.arguments.forEach(function (arg) {
-                                if (arg.value.kind === 'Variable') {
-                                    variablesToRemove.push({
-                                        name: arg.value.name.value,
-                                    });
-                                }
-                            });
-                        }
-                        if (node.selectionSet) {
-                            getAllFragmentSpreadsFromSelectionSet(node.selectionSet).forEach(function (frag) {
-                                fragmentSpreadsToRemove.push({
-                                    name: frag.name.value,
-                                });
-                            });
-                        }
-                        return null;
-                    }
+        Variable: {
+            enter: function (node, _key, _parent, _path, ancestors) {
+                var inUse = getInUse(ancestors);
+                if (inUse) {
+                    inUse.variables.add(node.name.value);
                 }
             },
         },
         FragmentSpread: {
-            enter: function (node) {
-                fragmentSpreadsInUse[node.name.value] = true;
+            enter: function (node, _key, _parent, _path, ancestors) {
+                if (shouldRemoveField(node.directives)) {
+                    firstVisitMadeChanges = true;
+                    return null;
+                }
+                var inUse = getInUse(ancestors);
+                if (inUse) {
+                    inUse.fragmentSpreads.add(node.name.value);
+                }
             },
         },
-        Directive: {
-            enter: function (node) {
-                if (getDirectiveMatcher(directives)(node)) {
+        FragmentDefinition: {
+            enter: function (node, _key, _parent, path) {
+                originalFragmentDefsByPath.set(JSON.stringify(path), node);
+            },
+            leave: function (node, _key, _parent, path) {
+                var originalNode = originalFragmentDefsByPath.get(JSON.stringify(path));
+                if (node === originalNode) {
+                    return node;
+                }
+                if (operationCount > 0 &&
+                    node.selectionSet.selections.every(function (selection) { return (selection.kind === graphql__WEBPACK_IMPORTED_MODULE_1__.Kind.FIELD &&
+                        selection.name.value === '__typename'); })) {
+                    getInUseByFragmentName(node.name.value).removed = true;
+                    firstVisitMadeChanges = true;
                     return null;
                 }
             },
         },
+        Directive: {
+            leave: function (node) {
+                if (directiveMatcher(node)) {
+                    firstVisitMadeChanges = true;
+                    return null;
+                }
+            },
+        },
+    });
+    if (!firstVisitMadeChanges) {
+        return doc;
+    }
+    var populateTransitiveVars = function (inUse) {
+        if (!inUse.transitiveVars) {
+            inUse.transitiveVars = new Set(inUse.variables);
+            if (!inUse.removed) {
+                inUse.fragmentSpreads.forEach(function (childFragmentName) {
+                    populateTransitiveVars(getInUseByFragmentName(childFragmentName)).transitiveVars.forEach(function (varName) {
+                        inUse.transitiveVars.add(varName);
+                    });
+                });
+            }
+        }
+        return inUse;
+    };
+    var allFragmentNamesUsed = new Set();
+    docWithoutDirectiveSubtrees.definitions.forEach(function (def) {
+        if (def.kind === graphql__WEBPACK_IMPORTED_MODULE_1__.Kind.OPERATION_DEFINITION) {
+            populateTransitiveVars(getInUseByOperationName(def.name && def.name.value)).fragmentSpreads.forEach(function (childFragmentName) {
+                allFragmentNamesUsed.add(childFragmentName);
+            });
+        }
+        else if (def.kind === graphql__WEBPACK_IMPORTED_MODULE_1__.Kind.FRAGMENT_DEFINITION &&
+            operationCount === 0 &&
+            !getInUseByFragmentName(def.name.value).removed) {
+            allFragmentNamesUsed.add(def.name.value);
+        }
+    });
+    allFragmentNamesUsed.forEach(function (fragmentName) {
+        populateTransitiveVars(getInUseByFragmentName(fragmentName)).fragmentSpreads.forEach(function (childFragmentName) {
+            allFragmentNamesUsed.add(childFragmentName);
+        });
+    });
+    var fragmentWillBeRemoved = function (fragmentName) { return !!(!allFragmentNamesUsed.has(fragmentName) ||
+        getInUseByFragmentName(fragmentName).removed); };
+    var enterVisitor = {
+        enter: function (node) {
+            if (fragmentWillBeRemoved(node.name.value)) {
+                return null;
+            }
+        },
+    };
+    return nullIfDocIsEmpty((0,graphql__WEBPACK_IMPORTED_MODULE_5__.visit)(docWithoutDirectiveSubtrees, {
+        FragmentSpread: enterVisitor,
+        FragmentDefinition: enterVisitor,
+        OperationDefinition: {
+            leave: function (node) {
+                if (node.variableDefinitions) {
+                    var usedVariableNames_1 = populateTransitiveVars(getInUseByOperationName(node.name && node.name.value)).transitiveVars;
+                    if (usedVariableNames_1.size < node.variableDefinitions.length) {
+                        return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, node), { variableDefinitions: node.variableDefinitions.filter(function (varDef) { return usedVariableNames_1.has(varDef.variable.name.value); }) });
+                    }
+                }
+            },
+        },
     }));
-    if (modifiedDoc &&
-        (0,_common_filterInPlace_js__WEBPACK_IMPORTED_MODULE_4__.filterInPlace)(variablesToRemove, function (v) { return !!v.name && !variablesInUse[v.name]; }).length) {
-        modifiedDoc = removeArgumentsFromDocument(variablesToRemove, modifiedDoc);
-    }
-    if (modifiedDoc &&
-        (0,_common_filterInPlace_js__WEBPACK_IMPORTED_MODULE_4__.filterInPlace)(fragmentSpreadsToRemove, function (fs) { return !!fs.name && !fragmentSpreadsInUse[fs.name]; })
-            .length) {
-        modifiedDoc = removeFragmentSpreadFromDocument(fragmentSpreadsToRemove, modifiedDoc);
-    }
-    return modifiedDoc;
 }
 var addTypenameToDocument = Object.assign(function (doc) {
-    return (0,graphql__WEBPACK_IMPORTED_MODULE_3__.visit)(doc, {
+    return (0,graphql__WEBPACK_IMPORTED_MODULE_5__.visit)(doc, {
         SelectionSet: {
             enter: function (node, _key, parent) {
                 if (parent &&
-                    parent.kind === 'OperationDefinition') {
+                    parent.kind === graphql__WEBPACK_IMPORTED_MODULE_1__.Kind.OPERATION_DEFINITION) {
                     return;
                 }
                 var selections = node.selections;
@@ -11191,7 +11348,7 @@ var addTypenameToDocument = Object.assign(function (doc) {
                     return;
                 }
                 var skip = selections.some(function (selection) {
-                    return ((0,_storeUtils_js__WEBPACK_IMPORTED_MODULE_5__.isField)(selection) &&
+                    return ((0,_storeUtils_js__WEBPACK_IMPORTED_MODULE_7__.isField)(selection) &&
                         (selection.name.value === '__typename' ||
                             selection.name.value.lastIndexOf('__', 0) === 0));
                 });
@@ -11199,7 +11356,7 @@ var addTypenameToDocument = Object.assign(function (doc) {
                     return;
                 }
                 var field = parent;
-                if ((0,_storeUtils_js__WEBPACK_IMPORTED_MODULE_5__.isField)(field) &&
+                if ((0,_storeUtils_js__WEBPACK_IMPORTED_MODULE_7__.isField)(field) &&
                     field.directives &&
                     field.directives.some(function (d) { return d.name.value === 'export'; })) {
                     return;
@@ -11227,7 +11384,7 @@ var connectionRemoveConfig = {
     },
 };
 function removeConnectionDirectiveFromDocument(doc) {
-    return removeDirectivesFromDocument([connectionRemoveConfig], (0,_getFromAST_js__WEBPACK_IMPORTED_MODULE_1__.checkDocument)(doc));
+    return removeDirectivesFromDocument([connectionRemoveConfig], (0,_getFromAST_js__WEBPACK_IMPORTED_MODULE_2__.checkDocument)(doc));
 }
 function hasDirectivesInSelectionSet(directives, selectionSet, nestedCheck) {
     if (nestedCheck === void 0) { nestedCheck = true; }
@@ -11239,7 +11396,7 @@ function hasDirectivesInSelectionSet(directives, selectionSet, nestedCheck) {
 }
 function hasDirectivesInSelection(directives, selection, nestedCheck) {
     if (nestedCheck === void 0) { nestedCheck = true; }
-    if (!(0,_storeUtils_js__WEBPACK_IMPORTED_MODULE_5__.isField)(selection)) {
+    if (!(0,_storeUtils_js__WEBPACK_IMPORTED_MODULE_7__.isField)(selection)) {
         return true;
     }
     if (!selection.directives) {
@@ -11253,7 +11410,7 @@ function getArgumentMatcher(config) {
     return function argumentMatcher(argument) {
         return config.some(function (aConfig) {
             return argument.value &&
-                argument.value.kind === 'Variable' &&
+                argument.value.kind === graphql__WEBPACK_IMPORTED_MODULE_1__.Kind.VARIABLE &&
                 argument.value.name &&
                 (aConfig.name === argument.value.name.value ||
                     (aConfig.test && aConfig.test(argument)));
@@ -11262,7 +11419,7 @@ function getArgumentMatcher(config) {
 }
 function removeArgumentsFromDocument(config, doc) {
     var argMatcher = getArgumentMatcher(config);
-    return nullIfDocIsEmpty((0,graphql__WEBPACK_IMPORTED_MODULE_3__.visit)(doc, {
+    return nullIfDocIsEmpty((0,graphql__WEBPACK_IMPORTED_MODULE_5__.visit)(doc, {
         OperationDefinition: {
             enter: function (node) {
                 return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, node), { variableDefinitions: node.variableDefinitions ? node.variableDefinitions.filter(function (varDef) {
@@ -11303,31 +11460,18 @@ function removeFragmentSpreadFromDocument(config, doc) {
             return null;
         }
     }
-    return nullIfDocIsEmpty((0,graphql__WEBPACK_IMPORTED_MODULE_3__.visit)(doc, {
+    return nullIfDocIsEmpty((0,graphql__WEBPACK_IMPORTED_MODULE_5__.visit)(doc, {
         FragmentSpread: { enter: enter },
         FragmentDefinition: { enter: enter },
     }));
 }
-function getAllFragmentSpreadsFromSelectionSet(selectionSet) {
-    var allFragments = [];
-    selectionSet.selections.forEach(function (selection) {
-        if (((0,_storeUtils_js__WEBPACK_IMPORTED_MODULE_5__.isField)(selection) || (0,_storeUtils_js__WEBPACK_IMPORTED_MODULE_5__.isInlineFragment)(selection)) &&
-            selection.selectionSet) {
-            getAllFragmentSpreadsFromSelectionSet(selection.selectionSet).forEach(function (frag) { return allFragments.push(frag); });
-        }
-        else if (selection.kind === 'FragmentSpread') {
-            allFragments.push(selection);
-        }
-    });
-    return allFragments;
-}
 function buildQueryFromSelectionSet(document) {
-    var definition = (0,_getFromAST_js__WEBPACK_IMPORTED_MODULE_1__.getMainDefinition)(document);
+    var definition = (0,_getFromAST_js__WEBPACK_IMPORTED_MODULE_2__.getMainDefinition)(document);
     var definitionOperation = definition.operation;
     if (definitionOperation === 'query') {
         return document;
     }
-    var modifiedDoc = (0,graphql__WEBPACK_IMPORTED_MODULE_3__.visit)(document, {
+    var modifiedDoc = (0,graphql__WEBPACK_IMPORTED_MODULE_5__.visit)(document, {
         OperationDefinition: {
             enter: function (node) {
                 return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, node), { operation: 'query' });
@@ -11337,29 +11481,13 @@ function buildQueryFromSelectionSet(document) {
     return modifiedDoc;
 }
 function removeClientSetsFromDocument(document) {
-    (0,_getFromAST_js__WEBPACK_IMPORTED_MODULE_1__.checkDocument)(document);
+    (0,_getFromAST_js__WEBPACK_IMPORTED_MODULE_2__.checkDocument)(document);
     var modifiedDoc = removeDirectivesFromDocument([
         {
             test: function (directive) { return directive.name.value === 'client'; },
             remove: true,
         },
     ], document);
-    if (modifiedDoc) {
-        modifiedDoc = (0,graphql__WEBPACK_IMPORTED_MODULE_3__.visit)(modifiedDoc, {
-            FragmentDefinition: {
-                enter: function (node) {
-                    if (node.selectionSet) {
-                        var isTypenameOnly = node.selectionSet.selections.every(function (selection) {
-                            return (0,_storeUtils_js__WEBPACK_IMPORTED_MODULE_5__.isField)(selection) && selection.name.value === '__typename';
-                        });
-                        if (isTypenameOnly) {
-                            return null;
-                        }
-                    }
-                },
-            },
-        });
-    }
     return modifiedDoc;
 }
 //# sourceMappingURL=transform.js.map
@@ -11421,9 +11549,9 @@ var Concast = (function (_super) {
                 }
             },
             complete: function () {
-                var sub = _this.sub;
+                var _a = _this, sub = _a.sub, _b = _a.sources, sources = _b === void 0 ? [] : _b;
                 if (sub !== null) {
-                    var value = _this.sources.shift();
+                    var value = sources.shift();
                     if (!value) {
                         if (sub)
                             setTimeout(function () { return sub.unsubscribe(); });
@@ -11645,7 +11773,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "version": () => (/* binding */ version)
 /* harmony export */ });
-var version = '3.7.5';
+var version = '3.7.10';
 //# sourceMappingURL=version.js.map
 
 /***/ }),
@@ -15353,6 +15481,112 @@ function getTokenDesc(token) {
 
 function getTokenKindDesc(kind) {
   return (0,_lexer_mjs__WEBPACK_IMPORTED_MODULE_2__.isPunctuatorTokenKind)(kind) ? `"${kind}"` : kind;
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/graphql/language/predicates.mjs":
+/*!******************************************************!*\
+  !*** ./node_modules/graphql/language/predicates.mjs ***!
+  \******************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "isConstValueNode": () => (/* binding */ isConstValueNode),
+/* harmony export */   "isDefinitionNode": () => (/* binding */ isDefinitionNode),
+/* harmony export */   "isExecutableDefinitionNode": () => (/* binding */ isExecutableDefinitionNode),
+/* harmony export */   "isSelectionNode": () => (/* binding */ isSelectionNode),
+/* harmony export */   "isTypeDefinitionNode": () => (/* binding */ isTypeDefinitionNode),
+/* harmony export */   "isTypeExtensionNode": () => (/* binding */ isTypeExtensionNode),
+/* harmony export */   "isTypeNode": () => (/* binding */ isTypeNode),
+/* harmony export */   "isTypeSystemDefinitionNode": () => (/* binding */ isTypeSystemDefinitionNode),
+/* harmony export */   "isTypeSystemExtensionNode": () => (/* binding */ isTypeSystemExtensionNode),
+/* harmony export */   "isValueNode": () => (/* binding */ isValueNode)
+/* harmony export */ });
+/* harmony import */ var _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./kinds.mjs */ "./node_modules/graphql/language/kinds.mjs");
+
+function isDefinitionNode(node) {
+  return (
+    isExecutableDefinitionNode(node) ||
+    isTypeSystemDefinitionNode(node) ||
+    isTypeSystemExtensionNode(node)
+  );
+}
+function isExecutableDefinitionNode(node) {
+  return (
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.OPERATION_DEFINITION ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.FRAGMENT_DEFINITION
+  );
+}
+function isSelectionNode(node) {
+  return (
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.FIELD ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.FRAGMENT_SPREAD ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.INLINE_FRAGMENT
+  );
+}
+function isValueNode(node) {
+  return (
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.VARIABLE ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.INT ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.FLOAT ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.STRING ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.BOOLEAN ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.NULL ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.ENUM ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.LIST ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.OBJECT
+  );
+}
+function isConstValueNode(node) {
+  return (
+    isValueNode(node) &&
+    (node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.LIST
+      ? node.values.some(isConstValueNode)
+      : node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.OBJECT
+      ? node.fields.some((field) => isConstValueNode(field.value))
+      : node.kind !== _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.VARIABLE)
+  );
+}
+function isTypeNode(node) {
+  return (
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.NAMED_TYPE ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.LIST_TYPE ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.NON_NULL_TYPE
+  );
+}
+function isTypeSystemDefinitionNode(node) {
+  return (
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.SCHEMA_DEFINITION ||
+    isTypeDefinitionNode(node) ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.DIRECTIVE_DEFINITION
+  );
+}
+function isTypeDefinitionNode(node) {
+  return (
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.SCALAR_TYPE_DEFINITION ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.OBJECT_TYPE_DEFINITION ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.INTERFACE_TYPE_DEFINITION ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.UNION_TYPE_DEFINITION ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.ENUM_TYPE_DEFINITION ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.INPUT_OBJECT_TYPE_DEFINITION
+  );
+}
+function isTypeSystemExtensionNode(node) {
+  return node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.SCHEMA_EXTENSION || isTypeExtensionNode(node);
+}
+function isTypeExtensionNode(node) {
+  return (
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.SCALAR_TYPE_EXTENSION ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.OBJECT_TYPE_EXTENSION ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.INTERFACE_TYPE_EXTENSION ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.UNION_TYPE_EXTENSION ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.ENUM_TYPE_EXTENSION ||
+    node.kind === _kinds_mjs__WEBPACK_IMPORTED_MODULE_0__.Kind.INPUT_OBJECT_TYPE_EXTENSION
+  );
 }
 
 

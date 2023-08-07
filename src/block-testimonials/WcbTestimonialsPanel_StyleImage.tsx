@@ -6,13 +6,7 @@ import {
 } from "@wordpress/components";
 // @ts-ignore
 import { __experimentalBorderRadiusControl as BorderRadiusControl } from "@wordpress/block-editor";
-import React, { FC } from "react";
-import MyTypographyControl from "../components/controls/MyTypographyControl/MyTypographyControl";
-import {
-	MyTypographyControlData,
-	TYPOGRAPHY_CONTROL_DEMO,
-} from "../components/controls/MyTypographyControl/types";
-import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
+import React, { FC, CSSProperties } from "react";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import { DimensionSettings } from "../components/controls/MyDimensionsControl/types";
 import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
@@ -21,20 +15,23 @@ import useGetDeviceType from "../hooks/useGetDeviceType";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
 import { BorderRadiusSettings } from "../components/controls/MyBorderControl/types";
+import { Option } from "../types";
+import MySelect from "../components/controls/MySelect";
 
 export interface WCB_TESTIMONIALS_PANEL_STYLE_IMAGE {
 	padding: HasResponsive<DimensionSettings>;
 	imageSize: HasResponsive<string>;
 	radius: HasResponsive<BorderRadiusSettings>;
+	objectFit: CSSProperties["objectFit"];
 }
 export const WCB_TESTIMONIALS_PANEL_STYLE_IMAGE_DEMO: WCB_TESTIMONIALS_PANEL_STYLE_IMAGE =
 	{
 		padding: {
 			Desktop: {
-				top: "0.5rem",
+				top: "1rem",
 				left: "1rem",
 				right: "1rem",
-				bottom: "0.5rem",
+				bottom: "1rem",
 			},
 		},
 		imageSize: {
@@ -45,6 +42,7 @@ export const WCB_TESTIMONIALS_PANEL_STYLE_IMAGE_DEMO: WCB_TESTIMONIALS_PANEL_STY
 			Tablet: "100px",
 			Mobile: "100px",
 		},
+		objectFit: "cover",
 	};
 
 interface Props
@@ -61,7 +59,7 @@ const WcbTestimonialsPanel_StyleImage: FC<Props> = ({
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { padding, imageSize, radius } = panelData;
+	const { padding, imageSize, radius, objectFit } = panelData;
 	const { currentDeviceValue: currentPadding } = getValueFromAttrsResponsives(
 		padding,
 		deviceType
@@ -74,6 +72,15 @@ const WcbTestimonialsPanel_StyleImage: FC<Props> = ({
 		imageSize,
 		deviceType
 	);
+
+	const OBJECT_FIT_DEMO: Option<
+		WCB_TESTIMONIALS_PANEL_STYLE_IMAGE["objectFit"]
+	>[] = [
+		{ value: "none", label: "None" },
+		{ value: "cover", label: "Cover" },
+		{ value: "contain", label: "Contain" },
+		{ value: "fill", label: "Fill" },
+	];
 
 	//
 	return (
@@ -97,6 +104,19 @@ const WcbTestimonialsPanel_StyleImage: FC<Props> = ({
 					value={currentImageSize || "2rem"}
 					hasResponsive
 					label={__("Image size", "wcb")}
+				/>
+
+				<MySelect
+					label={__("Object Fit", "Wcb")}
+					options={OBJECT_FIT_DEMO}
+					value={objectFit}
+					onChange={(value) => {
+						setAttr__({
+							...panelData,
+							objectFit:
+								value as WCB_TESTIMONIALS_PANEL_STYLE_IMAGE["objectFit"],
+						});
+					}}
 				/>
 
 				<BorderRadiusControl

@@ -6,9 +6,11 @@
 	"title": "FAQ",
 	"category": "wcb-blocks",
 	"icon": "- wcb-block-editor-block-icon lni lni-support",
-	"description": "Example static block scaffolded with Create Block tool.",
+	"description": "Add accordions/FAQ schema to your page.",
 	"supports": {
-		"html": false
+		"html": false,
+		"anchor": true,
+		"align": true
 	},
 	"textdomain": "wcb-blocks",
 	"editorScript": "file:./index.js",

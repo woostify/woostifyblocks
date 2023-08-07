@@ -4,9 +4,6 @@ import {
 	useBlockProps,
 	// @ts-ignore
 	useInnerBlocksProps,
-	// @ts-ignore
-	__experimentalBlockVariationPicker as BlockVariationPicker,
-	store as blockEditorStore,
 } from "@wordpress/block-editor";
 import React, { useEffect, FC, useRef, useCallback } from "react";
 import { WcbAttrs } from "./attributes";
@@ -18,13 +15,10 @@ import GlobalCss from "./GlobalCss";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
-import WcbFaqPanelGeneral, {
-	WCB_FAQ_PANEL_GENERAL_DEMO,
-} from "./WcbFaqPanelGeneral";
+import WcbFaqPanelGeneral from "./WcbFaqPanelGeneral";
 import WcbFaqPanelIcon from "./WcbFaqPanelIcon";
 import WcbFaqPanel_StyleContainer, {
 	WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
-	WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SIMPLE,
 	WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
 } from "./WcbFaqPanel_StyleContainer";
 import WcbFaqPanel_StyleQuestion, {
@@ -39,6 +33,7 @@ import WcbFaqPanel_StyleIcon, {
 import WcbFaqPanelPreset from "./WcbFaqPanelPreset";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
@@ -53,6 +48,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_icon,
 		style_answer,
 		general_preset,
+		advance_motionEffect,
 	} = attributes;
 	//  COMMON HOOKS
 	const ref = useRef<HTMLDivElement>(null);
@@ -66,10 +62,11 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
 		setAttributes({
-			uniqueId: UNIQUE_ID,
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
 	//
@@ -246,6 +243,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				return (
 					<>
 						<AdvancePanelCommon
+							advance_motionEffect={attributes.advance_motionEffect}
 							advance_responsiveCondition={
 								attributes.advance_responsiveCondition
 							}
@@ -289,6 +287,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			style_icon,
 			style_question,
 			uniqueId,
+			advance_motionEffect,
 		};
 	}, [
 		advance_responsiveCondition,
@@ -300,14 +299,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_icon,
 		style_question,
 		uniqueId,
+		advance_motionEffect,
 	]);
 
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-faq__wrap p-2 ${UNIQUE_ID}`}
-				data-uniqueid={UNIQUE_ID}
+				className={`${wrapBlockProps?.className} wcb-faq__wrap p-2 ${uniqueId}`}
+				data-uniqueid={uniqueId}
 			>
 				{/* CONTROL SETTINGS */}
 				<HOCInspectorControls
@@ -316,7 +316,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				/>
 
 				{/* CSS IN JS */}
-				<GlobalCss {...WcbAttrsForSave()} />
+				{uniqueId && <GlobalCss {...WcbAttrsForSave()} />}
 
 				{/* CHILD CONTENT  */}
 				<div {...innerBlocksProps} />

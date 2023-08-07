@@ -3,10 +3,8 @@ import React, { FC } from "react";
 import { isBlobURL } from "@wordpress/blob";
 import {
 	ExternalLink,
-	PanelBody,
 	ResizableBox,
 	Spinner,
-	TextareaControl,
 	TextControl,
 	ToolbarButton,
 } from "@wordpress/components";
@@ -17,8 +15,6 @@ import {
 	InspectorControls,
 	RichText,
 	// @ts-ignore
-	__experimentalImageSizeControl as ImageSizeControl,
-	// @ts-ignore
 	__experimentalImageURLInputUI as ImageURLInputUI,
 	// @ts-ignore
 	MediaReplaceFlow,
@@ -27,8 +23,6 @@ import {
 	BlockAlignmentControl,
 	// @ts-ignore
 	__experimentalImageEditor as ImageEditor,
-	// @ts-ignore
-	__experimentalImageEditingProvider as ImageEditingProvider,
 	// @ts-ignore
 	__experimentalGetElementClassName,
 	// @ts-ignore
@@ -43,17 +37,8 @@ import {
 } from "@wordpress/element";
 import { __, sprintf, isRTL } from "@wordpress/i18n";
 import { getFilename } from "@wordpress/url";
-import {
-	createBlock,
-	getDefaultBlockName,
-	switchToBlockType,
-} from "@wordpress/blocks";
-import {
-	crop,
-	overlayText,
-	upload,
-	caption as captionIcon,
-} from "@wordpress/icons";
+import { createBlock, getDefaultBlockName } from "@wordpress/blocks";
+import { crop, upload, caption as captionIcon } from "@wordpress/icons";
 // @ts-ignore
 import { store as noticesStore } from "@wordpress/notices";
 import { store as coreStore } from "@wordpress/core-data";
@@ -304,12 +289,14 @@ const Image: FC<ImageProps> = ({
 				}
 
 				setExternalBlob(undefined);
+				// @ts-ignore
 				createSuccessNotice(__("Image uploaded."), {
 					type: "snackbar",
 				});
 			},
 			allowedTypes: ALLOWED_MEDIA_TYPES,
 			onError(message) {
+				// @ts-ignore
 				createErrorNotice(message, { type: "snackbar" });
 			},
 		});
@@ -468,9 +455,9 @@ const Image: FC<ImageProps> = ({
 		<>
 			{/* @ts-ignore */}
 			<BlockControls group="block">
-				{!isContentLocked && (
+				{/* {!isContentLocked && (
 					<BlockAlignmentControl value={align} onChange={updateAlignment} />
-				)}
+				)} */}
 				{!isContentLocked && (
 					<ToolbarButton
 						onClick={() => {
@@ -735,24 +722,14 @@ const Image: FC<ImageProps> = ({
 	}
 
 	return (
-		<ImageEditingProvider
-			id={id}
-			url={url}
-			naturalWidth={naturalWidth}
-			naturalHeight={naturalHeight}
-			clientWidth={clientWidth}
-			onSaveImage={(imageAttributes) => {
-				setAttributes(imageAttributes);
-			}}
-			isEditing={isEditingImage}
-			onFinishEditing={() => setIsEditingImage(false)}
-		>
+		<>
 			{/* Hide controls during upload to avoid component remount,
 				which causes duplicated image upload. */}
 			{!temporaryURL && controls}
 			{img}
 			{showCaption && (!RichText.isEmpty(caption) || isSelected) && (
 				<RichText
+					identifier="caption"
 					className={__experimentalGetElementClassName("caption")}
 					ref={captionRef}
 					tagName="figcaption"
@@ -763,11 +740,12 @@ const Image: FC<ImageProps> = ({
 					inlineToolbar
 					// @ts-ignore
 					__unstableOnSplitAtEnd={() =>
-						insertBlocksAfter(createBlock(getDefaultBlockName() || ""))
+						// @ts-ignore
+						insertBlocksAfter(createBlock(getDefaultBlockName()))
 					}
 				/>
 			)}
-		</ImageEditingProvider>
+		</>
 	);
 };
 

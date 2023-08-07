@@ -12,6 +12,7 @@ import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import WcbDatePanelGeneral from "./WcbDatePanelGeneral";
 import { FormInputLabelRichText } from "../block-form/FormInputLabelRichText";
 import converUniqueId from "../utils/converUniqueId";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -29,10 +30,11 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	} = useSetBlockPanelInfo(uniqueId);
 
 	const UNIQUE_NAME = converUniqueId(uniqueId, "date");
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
 		setAttributes({
-			uniqueId: UNIQUE_ID,
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
 	//
@@ -71,8 +73,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		// <CacheProvider value={myCache}>
 		<div
 			{...wrapBlockProps}
-			className={`${wrapBlockProps?.className} wcb-date__wrap ${UNIQUE_ID}`}
-			data-uniqueid={UNIQUE_ID}
+			className={`${wrapBlockProps?.className} wcb-date__wrap ${uniqueId}`}
+			data-uniqueid={uniqueId}
 		>
 			{/* CONTROL SETTINGS */}
 			<HOCInspectorControls

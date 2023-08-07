@@ -24,7 +24,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
-	const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
 	const IMAGE_CLASSNAME = `${WRAP_CLASSNAME} img`;
 	const CAPTION_CLASSNAME = `${WRAP_CLASSNAME} figcaption.wp-element-caption`;
 	const OVERLAY_BG_CLASSNAME = `${WRAP_CLASSNAME} .wcb-image__overlay-bg`;
@@ -39,6 +39,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 			},
 		};
 	};
+
+	if (!uniqueId) {
+		return null;
+	}
 
 	return (
 		<>
@@ -59,6 +63,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 			{/* -------- IMAGE img ----------  */}
 			<Global
 				styles={[
+					getPaddingMarginStyles({
+						className: IMAGE_CLASSNAME,
+						margin: style_image.margin,
+					}),
 					getStyleObjectFromResponsiveAttr({
 						className: IMAGE_CLASSNAME,
 						value: general_settings.width,

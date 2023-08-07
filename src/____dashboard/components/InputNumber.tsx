@@ -25,7 +25,10 @@ const InputNumber: FC<Props> = ({
 					{label}
 				</label>
 				{desc && (
-					<span className="mt-1.5 block text-sm text-gray-500">{desc}</span>
+					<p
+						className="mt-1.5 block text-sm text-gray-500"
+						dangerouslySetInnerHTML={{ __html: desc }}
+					/>
 				)}
 			</div>
 			<div className="min-w-[140px] max-w-[180px] flex-shrink-0 relative mt-1 rounded-md">
@@ -42,7 +45,7 @@ const InputNumber: FC<Props> = ({
 					}}
 					id={id}
 					type="number"
-					className="block w-full rounded-md border-gray-300 pl-3 pr-11 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+					className="number-hide-arrow block w-full rounded-md border-gray-300 pl-3 pr-11 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
 				/>
 			</div>
 		</div>

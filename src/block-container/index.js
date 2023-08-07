@@ -24,19 +24,17 @@ const { Fragment } = wp.element;
 const { withSelect } = wp.data;
 import blokc1Attrs from "./attributes";
 import variations from "./variations";
+import deprecated from "./deprecated";
+import convertObjectAttrToPreview from "../utils/convertAttsToPreview";
 //-----------------------------------------
 
 registerBlockType(metadata.name, {
-	edit: withSelect((select, props) => {
-		return {
-			media: props.attributes.mediaId
-				? select("core").getMedia(props.attributes.mediaId)
-				: undefined,
-		};
-	})((props) => <Edit {...props} />),
+	edit: Edit,
 	save,
 	attributes: blokc1Attrs,
 	variations: variations,
+	example: convertObjectAttrToPreview(blokc1Attrs),
+	deprecated: deprecated,
 	icon: (
 		<svg
 			className="wcb-editor-block-icons fill-none "

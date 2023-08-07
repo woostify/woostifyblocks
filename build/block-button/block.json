@@ -9,9 +9,9 @@
     "wcb/buttons"
   ],
   "category": "wcb-blocks",
-  "description": "Example static block scaffolded with Create Block tool.",
+  "description": "Prompt visitors to take action with a button-style link.",
   "supports": {
-    "html": false
+    "anchor": true
   },
   "textdomain": "wcb-blocks",
   "editorScript": "file:./index.js",

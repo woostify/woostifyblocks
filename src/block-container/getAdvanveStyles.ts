@@ -1,9 +1,12 @@
 import { MyResponsiveConditionControlData } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
 import { MyZIndexControlData } from "../components/controls/MyZIndexControl/MyZIndexControl";
-import { Global, css } from "@emotion/react";
+import { css } from "@emotion/react";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
+import checkResponsiveValueForOptimizeCSS from "../utils/checkResponsiveValueForOptimizeCSS";
+import { MyMotionEffectData } from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
 
 interface Params {
+	advance_motionEffect?: MyMotionEffectData;
 	advance_zIndex: MyZIndexControlData;
 	advance_responsiveCondition: MyResponsiveConditionControlData;
 	className: string;
@@ -11,6 +14,7 @@ interface Params {
 }
 
 export const getAdvanveDivWrapStyles = ({
+	advance_motionEffect,
 	advance_zIndex,
 	advance_responsiveCondition,
 	className,
@@ -18,23 +22,80 @@ export const getAdvanveDivWrapStyles = ({
 }: Params) => {
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 	//
-	const zIndexDesktop = advance_zIndex.Desktop;
-	const zIndexTablet = advance_zIndex.Tablet || zIndexDesktop;
-	const zIndexMobile = advance_zIndex.Mobile || zIndexTablet;
 	//
-	const { isHiddenOnDesktop, isHiddenOnMobile, isHiddenOnTablet } =
-		advance_responsiveCondition;
+	try {
+		const thisELs = document.querySelectorAll(className);
+		if (
+			advance_motionEffect &&
+			advance_motionEffect.entranceAnimation &&
+			thisELs &&
+			thisELs.length
+		) {
+			console.log(222, { thisELs });
+			thisELs.forEach((element) => {
+				// remove old class
+				const regex = /\banimate__\S+/g;
+				const classRemoved = element?.className.replace(regex, "");
+				element.setAttribute("class", classRemoved);
+
+				// add new class
+				setTimeout(() => {
+					element?.classList.add(
+						"animate__animated",
+						`animate__${advance_motionEffect?.entranceAnimation}`,
+						`animate__${advance_motionEffect?.animationDuration}`,
+						`animate__delay-${advance_motionEffect?.animationDelay}ms`,
+						`animate__repeat-${advance_motionEffect?.repeat}`
+					);
+				}, 50);
+			});
+		}
+	} catch (error) {
+		console.log(123, "error, advance_motionEffect", error);
+	}
+
+	const {
+		mobile_v: zIndexMobile,
+		tablet_v: zIndexTablet,
+		desktop_v: zIndexDesktop,
+	} = checkResponsiveValueForOptimizeCSS({
+		mobile_v:
+			advance_zIndex.Mobile || advance_zIndex.Tablet || advance_zIndex.Desktop,
+		tablet_v: advance_zIndex.Tablet || advance_zIndex.Desktop,
+		desktop_v: advance_zIndex.Desktop,
+	});
+	//
+
+	const {
+		mobile_v: isHiddenOnMobile,
+		tablet_v: isHiddenOnTablet,
+		desktop_v: isHiddenOnDesktop,
+	} = checkResponsiveValueForOptimizeCSS({
+		mobile_v: advance_responsiveCondition.isHiddenOnMobile,
+		tablet_v: advance_responsiveCondition.isHiddenOnTablet,
+		desktop_v: advance_responsiveCondition.isHiddenOnDesktop,
+	});
+
 	return css`
 		${className} {
 			display: ${isHiddenOnMobile ? "none" : defaultDisplay};
+			visibility: visible;
 			z-index: ${zIndexMobile};
 			@media (min-width: ${media_tablet}) {
 				z-index: ${zIndexTablet};
-				display: ${isHiddenOnTablet ? "none" : defaultDisplay};
+				display: ${isHiddenOnTablet !== ""
+					? isHiddenOnTablet
+						? "none"
+						: defaultDisplay
+					: ""};
 			}
 			@media (min-width: ${media_desktop}) {
 				z-index: ${zIndexDesktop};
-				display: ${isHiddenOnDesktop ? "none" : defaultDisplay};
+				display: ${isHiddenOnDesktop !== ""
+					? isHiddenOnDesktop
+						? "none"
+						: defaultDisplay
+					: ""};
 			}
 		}
 	`;

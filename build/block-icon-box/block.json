@@ -6,9 +6,11 @@
   "title": "Icon box",
   "category": "wcb-blocks",
   "icon": "- wcb-block-editor-block-icon lni lni-clipboard",
-  "description": "Example static block scaffolded with Create Block tool.",
+  "description": "Create a box containing an icon or image and, optionally, a title, description, and learn more text.",
   "supports": {
-    "html": false
+    "html": false,
+    "anchor": true,
+    "align": true
   },
   "textdomain": "wcb-blocks",
   "editorScript": "file:./index.js",

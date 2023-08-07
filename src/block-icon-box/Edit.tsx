@@ -18,12 +18,12 @@ import WcbTeamPanel_StyleTitle from "./WcbTeamPanel_StyleTitle";
 import WcbTeamPanel_StyleDesignation from "./WcbTeamPanel_StyleDesignation";
 import WcbTeamPanel_StyleDescription from "./WcbTeamPanel_StyleDescription";
 import WcbIconBoxPanel_StyleIcons from "./WcbIconBoxPanel_StyleIcons";
-import MyIcon from "../components/controls/MyIcon";
 import MyIconFull from "../components/controls/MyIconFull";
 import WcbIconBoxPanel_StyleSeparator from "./WcbIconBoxPanel_StyleSeparator";
 import WcbIconBoxPanel_StyleDimension from "./WcbIconBoxPanel_StyleDimension";
 import WcbIconBoxPanelSeparator from "./WcbIconBoxPanelSeparator";
 import { MY_DIMENSIONS_NO_GAP_DEMO__EMPTY } from "../components/controls/MyDimensionsControl/types";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -43,6 +43,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_separator,
 		style_dimension,
 		general_separator,
+		advance_motionEffect,
 	} = attributes;
 	//  COMMON HOOKS
 	const ref = useRef<HTMLDivElement>(null);
@@ -56,12 +57,14 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
 		setAttributes({
-			uniqueId: UNIQUE_ID,
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
+	//
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
@@ -295,6 +298,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				return (
 					<>
 						<AdvancePanelCommon
+							advance_motionEffect={advance_motionEffect}
 							advance_responsiveCondition={
 								attributes.advance_responsiveCondition
 							}
@@ -325,6 +329,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			style_dimension,
 			general_icon,
 			general_separator,
+			advance_motionEffect,
 		};
 	}, [
 		uniqueId,
@@ -339,6 +344,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_dimension,
 		general_icon,
 		general_separator,
+		advance_motionEffect,
 	]);
 
 	const renderIcon = () => {
@@ -373,8 +379,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-icon-box__wrap ${UNIQUE_ID}`}
-				data-uniqueid={UNIQUE_ID}
+				className={`${wrapBlockProps?.className} wcb-icon-box__wrap ${uniqueId}`}
+				data-uniqueid={uniqueId}
 			>
 				{/* CONTROL SETTINGS */}
 				<HOCInspectorControls

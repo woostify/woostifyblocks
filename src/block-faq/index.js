@@ -23,12 +23,16 @@ import metadata from "./block.json";
 const { Fragment } = wp.element;
 const { withSelect } = wp.data;
 import attributes from "./attributes";
+import deprecated from "./deprecated";
+import convertObjectAttrToPreview from "../utils/convertAttsToPreview";
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 
 registerBlockType(metadata.name, {
 	edit: Edit,
 	save,
 	attributes,
+	example: convertObjectAttrToPreview(attributes),
+	deprecated: deprecated,
 	providesContext: {
 		"wcb/faq_general": "general_general",
 		"wcb/faq_icon": "general_icon",

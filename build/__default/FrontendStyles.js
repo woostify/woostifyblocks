@@ -1038,7 +1038,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var pkg = {
 	name: "@emotion/react",
-	version: "11.10.5",
+	version: "11.10.6",
 	main: "dist/emotion-react.cjs.js",
 	module: "dist/emotion-react.esm.js",
 	browser: {
@@ -1101,7 +1101,7 @@ var pkg = {
 	},
 	dependencies: {
 		"@babel/runtime": "^7.18.3",
-		"@emotion/babel-plugin": "^11.10.5",
+		"@emotion/babel-plugin": "^11.10.6",
 		"@emotion/cache": "^11.10.5",
 		"@emotion/serialize": "^1.1.1",
 		"@emotion/use-insertion-effect-with-fallbacks": "^1.0.0",
@@ -1110,24 +1110,19 @@ var pkg = {
 		"hoist-non-react-statics": "^3.3.1"
 	},
 	peerDependencies: {
-		"@babel/core": "^7.0.0",
 		react: ">=16.8.0"
 	},
 	peerDependenciesMeta: {
-		"@babel/core": {
-			optional: true
-		},
 		"@types/react": {
 			optional: true
 		}
 	},
 	devDependencies: {
-		"@babel/core": "^7.18.5",
 		"@definitelytyped/dtslint": "0.0.112",
-		"@emotion/css": "11.10.5",
+		"@emotion/css": "11.10.6",
 		"@emotion/css-prettifier": "1.1.1",
 		"@emotion/server": "11.10.0",
-		"@emotion/styled": "11.10.5",
+		"@emotion/styled": "11.10.6",
 		"html-tag-names": "^1.1.2",
 		react: "16.14.0",
 		"svg-tag-names": "^1.1.1",
@@ -2138,13 +2133,15 @@ const INIT_WCB_GLOBAL_VARIABLES = {
   reCAPTCHA_v3_site_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
   reCAPTCHA_v2_site_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
   reCAPTCHA_v2_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
-  defaultContentWidth: "1140px",
+  // se sd khi pick container lan dau tien / or khi truong contentWidth cua container khong duoc nhap
+  defaultContentWidth: window?.wcbLayoutGlobalSettings?.contentSize || "",
   enableTemplatesButton: "true",
   enableCopyPasteStyles: "false"
 };
 const DEMO_WCB_GLOBAL_VARIABLES = {
   ...INIT_WCB_GLOBAL_VARIABLES,
-  ...(window.wcbGlobalVariables || {})
+  ...(window.wcbGlobalVariables || {}),
+  defaultContentWidth: window.wcbGlobalVariables?.defaultContentWidth || window.wcbLayoutGlobalSettings?.contentSize
 };
 const ___wcb_global = 1;
 
@@ -2184,7 +2181,7 @@ const GlobalCss = attrs => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_3__.DEMO_WCB_GLOBAL_VARIABLES;
-  const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+  const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
   const HEADING_CLASSNAME = `${WRAP_CLASSNAME} .wcb-heading__heading`;
 
   // ------------------- WRAP DIV
@@ -2196,6 +2193,9 @@ const GlobalCss = attrs => {
       }
     };
   };
+  if (!uniqueId) {
+    return null;
+  }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_4__.Global, {
     styles: getDivWrapStyles()
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_4__.Global, {
@@ -2221,12 +2221,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "getAdvanveDivWrapStyles": () => (/* binding */ getAdvanveDivWrapStyles)
 /* harmony export */ });
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _utils_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/checkResponsiveValueForOptimizeCSS */ "./src/utils/checkResponsiveValueForOptimizeCSS.ts");
+
 
 
 const getAdvanveDivWrapStyles = _ref => {
   let {
+    advance_motionEffect,
     advance_zIndex,
     advance_responsiveCondition,
     className,
@@ -2237,30 +2240,106 @@ const getAdvanveDivWrapStyles = _ref => {
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES;
   //
-  const zIndexDesktop = advance_zIndex.Desktop;
-  const zIndexTablet = advance_zIndex.Tablet || zIndexDesktop;
-  const zIndexMobile = advance_zIndex.Mobile || zIndexTablet;
   //
+  try {
+    const thisELs = document.querySelectorAll(className);
+    if (advance_motionEffect && advance_motionEffect.entranceAnimation && thisELs && thisELs.length) {
+      console.log(222, {
+        thisELs
+      });
+      thisELs.forEach(element => {
+        // remove old class
+        const regex = /\banimate__\S+/g;
+        const classRemoved = element?.className.replace(regex, "");
+        element.setAttribute("class", classRemoved);
+
+        // add new class
+        setTimeout(() => {
+          element?.classList.add("animate__animated", `animate__${advance_motionEffect?.entranceAnimation}`, `animate__${advance_motionEffect?.animationDuration}`, `animate__delay-${advance_motionEffect?.animationDelay}ms`, `animate__repeat-${advance_motionEffect?.repeat}`);
+        }, 50);
+      });
+    }
+  } catch (error) {
+    console.log(123, "error, advance_motionEffect", error);
+  }
   const {
-    isHiddenOnDesktop,
-    isHiddenOnMobile,
-    isHiddenOnTablet
-  } = advance_responsiveCondition;
-  return _emotion_react__WEBPACK_IMPORTED_MODULE_1__.css`
+    mobile_v: zIndexMobile,
+    tablet_v: zIndexTablet,
+    desktop_v: zIndexDesktop
+  } = (0,_utils_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    mobile_v: advance_zIndex.Mobile || advance_zIndex.Tablet || advance_zIndex.Desktop,
+    tablet_v: advance_zIndex.Tablet || advance_zIndex.Desktop,
+    desktop_v: advance_zIndex.Desktop
+  });
+  //
+
+  const {
+    mobile_v: isHiddenOnMobile,
+    tablet_v: isHiddenOnTablet,
+    desktop_v: isHiddenOnDesktop
+  } = (0,_utils_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    mobile_v: advance_responsiveCondition.isHiddenOnMobile,
+    tablet_v: advance_responsiveCondition.isHiddenOnTablet,
+    desktop_v: advance_responsiveCondition.isHiddenOnDesktop
+  });
+  return _emotion_react__WEBPACK_IMPORTED_MODULE_2__.css`
 		${className} {
 			display: ${isHiddenOnMobile ? "none" : defaultDisplay};
+			visibility: visible;
 			z-index: ${zIndexMobile};
 			@media (min-width: ${media_tablet}) {
 				z-index: ${zIndexTablet};
-				display: ${isHiddenOnTablet ? "none" : defaultDisplay};
+				display: ${isHiddenOnTablet !== "" ? isHiddenOnTablet ? "none" : defaultDisplay : ""};
 			}
 			@media (min-width: ${media_desktop}) {
 				z-index: ${zIndexDesktop};
-				display: ${isHiddenOnDesktop ? "none" : defaultDisplay};
+				display: ${isHiddenOnDesktop !== "" ? isHiddenOnDesktop ? "none" : defaultDisplay : ""};
 			}
 		}
 	`;
 };
+
+/***/ }),
+
+/***/ "./src/utils/checkResponsiveValueForOptimizeCSS.ts":
+/*!*********************************************************!*\
+  !*** ./src/utils/checkResponsiveValueForOptimizeCSS.ts ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const checkResponsiveValueForOptimizeCSS = _ref => {
+  var _new_tablet_v, _new_desktop_v;
+  let {
+    mobile_v = null,
+    tablet_v = null,
+    desktop_v = null
+  } = _ref;
+  let new_tablet_v = tablet_v;
+  let new_desktop_v = desktop_v;
+  if (mobile_v === tablet_v && tablet_v === desktop_v) {
+    return {
+      mobile_v,
+      tablet_v: null,
+      desktop_v: null
+    };
+  }
+  if (desktop_v === tablet_v || desktop_v === mobile_v) {
+    new_desktop_v = null;
+  }
+  if (tablet_v === mobile_v) {
+    new_tablet_v = null;
+  }
+  return {
+    mobile_v: mobile_v !== null && mobile_v !== void 0 ? mobile_v : null,
+    tablet_v: (_new_tablet_v = new_tablet_v) !== null && _new_tablet_v !== void 0 ? _new_tablet_v : null,
+    desktop_v: (_new_desktop_v = new_desktop_v) !== null && _new_desktop_v !== void 0 ? _new_desktop_v : null
+  };
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (checkResponsiveValueForOptimizeCSS);
 
 /***/ }),
 

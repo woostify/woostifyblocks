@@ -16,6 +16,7 @@ export interface WCB_PRODUCTS_PANEL_COTENT {
 	isShowSKU: boolean;
 	isShowSaleBadge: boolean;
 	isShowTitle: boolean;
+	isShowCategory: boolean;
 	titleHtmlTag: HtmlTagsType;
 	//
 	saleBadgePosition: "Inside image" | "bottom";
@@ -36,6 +37,7 @@ export const WCB_PRODUCTS_PANEL_COTENT_DEMO: WCB_PRODUCTS_PANEL_COTENT = {
 	isShowRating: true,
 	isShowSaleBadge: true,
 	isShowSKU: true,
+	isShowCategory: true,
 	showSaleBadgeDiscoutPercent: false,
 	//
 	isShowTitle: true,
@@ -67,6 +69,7 @@ const WcbProductsPanelContent: FC<Props> = ({
 		isShowSKU,
 		isShowSaleBadge,
 		saleBadgePosition,
+		isShowCategory,
 	} = panelData;
 
 	const renderSaleDisclosure = () => {
@@ -133,6 +136,14 @@ const WcbProductsPanelContent: FC<Props> = ({
 		>
 			<div className={"space-y-5"}>
 				<ToggleControl
+					label={__("Product category", "wcb")}
+					onChange={(checked) =>
+						setAttr__({ ...panelData, isShowCategory: checked })
+					}
+					checked={isShowCategory}
+				/>
+
+				<ToggleControl
 					label={__("Product title", "wcb")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowTitle: checked })
@@ -155,14 +166,6 @@ const WcbProductsPanelContent: FC<Props> = ({
 					}
 					checked={isShowPrice}
 				/>
-
-				{/* <ToggleControl
-					label={__("Product SKU", "wcb")}
-					onChange={(checked) =>
-						setAttr__({ ...panelData, isShowSKU: checked })
-					}
-					checked={isShowSKU}
-				/> */}
 
 				{isShowSaleBadge ? (
 					renderSaleDisclosure()

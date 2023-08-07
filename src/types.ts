@@ -12,6 +12,9 @@ export type HtmlTagsType = React.ElementType<any>;
 export type MyTabsForColor = "Normal" | "Hover";
 export type MyTabsForActive = "Normal" | "Active";
 
+export type AlignmentH = "left" | "center" | "right";
+export type MyPosition = "left" | "right" | "top" | "bottom";
+
 export type AlignmentMatrixControlValue =
 	| "top left"
 	| "top center"
@@ -23,3 +26,9 @@ export type AlignmentMatrixControlValue =
 	| "bottom left"
 	| "bottom center"
 	| "bottom right";
+
+export interface Wcb_theme_layout_global_settings {
+	contentSize?: string;
+	wideSize?: string;
+	contentSizeOfWoostify?: boolean;
+}

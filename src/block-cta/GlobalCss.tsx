@@ -22,10 +22,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 		//
 		advance_responsiveCondition,
 		advance_zIndex,
+		advance_motionEffect,
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
-	const WRAP_CLASSNAME = `#${uniqueId}.${uniqueId}`;
+	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
 	const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-cta__inner`;
 	const CONTENT_CLASSNAME = `${WRAP_CLASSNAME} .wcb-cta__content`;
 	const TITLE_CLASSNAME = `${WRAP_CLASSNAME} .wcb-cta__title`;
@@ -91,8 +92,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 	) {
 		ALIGN_ITEMS.Mobile = "center";
 	}
-	// console.log(3, "---- CTA global css ---", { uniqueId });
 
+	if (!uniqueId) {
+		return null;
+	}
 	return (
 		<>
 			{/* <Global styles={getDivWrapStyles()} /> */}
@@ -177,6 +180,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 			{/* ADVANCE  */}
 			<Global
 				styles={getAdvanveDivWrapStyles({
+					advance_motionEffect,
 					advance_responsiveCondition,
 					advance_zIndex,
 					className: WRAP_CLASSNAME,

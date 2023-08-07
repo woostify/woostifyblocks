@@ -1,37 +1,11 @@
 /*!**********************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/block-testimonials/style.scss ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/block-testimonials/style.scss ***!
   \**********************************************************************************************************************************************************************************************************************************************************/
-/* .glide {
-	position: relative;
-}
-
-.glide__arrow {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	padding: 0.5rem;
-	&--left {
-		left: -1rem;
-	}
-	&--right {
-		right: -1rem;
-	}
-}
-
-.glide__bullets {
-	text-align: center;
-}
-
-.glide__bullet {
-	@apply w-2 h-2 mx-1.5;
-	background-color: gray;
-	border-radius: 999px;
-	&.glide__bullet--active {
-		background-color: black;
-	}
-} */
 /*  */
 /*  */
+.wcb-testimonials__wrap {
+  padding: 32px;
+}
 .wcb-testimonials__wrap .slick-dots {
   position: relative;
   bottom: auto;
@@ -44,6 +18,8 @@
 }
 .wcb-testimonials__wrap .slick-prev,
 .wcb-testimonials__wrap .slick-next {
+  z-index: 3;
+  background: #fff;
   color: black;
   padding: 0.5rem;
   width: unset;
@@ -60,8 +36,19 @@
 }
 
 .wcb-testimonials__item {
-  display: flex;
   position: relative;
+}
+.wcb-testimonials__item .wcb-testimonials__item-background {
+  position: relative;
+}
+.wcb-testimonials__item .wcb-testimonials__item-wrap-inner {
+  display: flex;
+}
+
+.wcb-testimonials__item-inner {
+  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .wcb-testimonials__item-image {

@@ -6,9 +6,11 @@
 	"title": "Team",
 	"category": "wcb-blocks",
 	"icon": "- wcb-block-editor-block-icon lni lni-users",
-	"description": "Example static block scaffolded with Create Block tool.",
+	"description": "A beautifully display the details about your team members.",
 	"supports": {
-		"html": false
+		"html": false,
+		"align": ["wide", "full"],
+		"anchor": true
 	},
 	"textdomain": "wcb-blocks",
 	"editorScript": "file:./index.js",

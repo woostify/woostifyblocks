@@ -3,6 +3,7 @@ import React, { FC, Fragment, useState, useEffect, CSSProperties } from "react";
 import { RadioGroup } from "@headlessui/react";
 import MyLabelControl from "./MyLabelControl/MyLabelControl";
 import { Tooltip } from "@wordpress/components";
+import { AlignmentH } from "../../types";
 
 export interface MyRadioItem<T = string> {
 	label?: string;
@@ -10,12 +11,12 @@ export interface MyRadioItem<T = string> {
 	icon: string;
 }
 
-interface Props {
+interface Props<T = string> {
 	className?: string;
 	labelClassName?: string;
 	contentClassName?: string;
-	value?: string;
-	onChange?: (slected: string) => void;
+	value?: T;
+	onChange?: (slected: T) => void;
 	plans?: MyRadioItem[];
 	label?: string;
 	hasResponsive?: boolean;
@@ -57,7 +58,40 @@ export const PLANS_DEMO: MyRadioItem<
 	},
 ];
 
-const MyRadioGroup: FC<Props> = ({
+export const ALIGNMENT_PLANS_DEMO: MyRadioItem<AlignmentH>[] = [
+	{
+		name: "left",
+		icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path d="M3 4.5H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M3 9.5H12.47" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M3 14.5H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M3 19.5H12.47" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		</svg>
+		`,
+	},
+	{
+		name: "center",
+		icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path d="M3 4.5H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M7.26001 9.5H16.74" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M3 14.5H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M7.26001 19.5H16.74" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		</svg>
+		`,
+	},
+	{
+		name: "right",
+		icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path d="M3 4.5H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M11.53 9.5H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M3 14.5H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M11.53 19.5H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		</svg>
+		`,
+	},
+];
+
+function MyRadioGroup<T>({
 	onChange = () => {},
 	value,
 	className = "",
@@ -67,7 +101,7 @@ const MyRadioGroup: FC<Props> = ({
 	isWrap = false,
 	labelClassName,
 	contentClassName = "mt-3",
-}) => {
+}: Props<T>) {
 	const [selected, setSelected] = useState(value || plans[0].name);
 
 	useEffect(() => {
@@ -76,7 +110,7 @@ const MyRadioGroup: FC<Props> = ({
 		}
 	}, [value]);
 
-	const handleChangeRadio = (value: string) => {
+	const handleChangeRadio = (value) => {
 		setSelected(value);
 		onChange(value);
 	};
@@ -122,7 +156,7 @@ const MyRadioGroup: FC<Props> = ({
 										<div className="absolute inset-0 z-[1]"></div>
 									</Tooltip>
 									<div
-										className=""
+										className="text-xs leading-5"
 										dangerouslySetInnerHTML={{ __html: item.icon }}
 									></div>
 								</div>
@@ -133,6 +167,6 @@ const MyRadioGroup: FC<Props> = ({
 			</div>
 		</RadioGroup>
 	);
-};
+}
 
 export default MyRadioGroup;

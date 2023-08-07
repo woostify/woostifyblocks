@@ -6,9 +6,10 @@
   "title": "Buttons",
   "category": "wcb-blocks",
   "icon": "- wcb-block-editor-block-icon lni lni-page-break",
-  "description": "Example static block scaffolded with Create Block tool.",
+  "description": "Prompt visitors to take action with a group of button-style links.",
   "supports": {
-    "html": false
+    "html": false,
+    "anchor": true
   },
   "textdomain": "wcb-blocks",
   "editorScript": "file:./index.js",

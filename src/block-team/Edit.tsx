@@ -19,9 +19,9 @@ import WcbTeamPanel_StyleTitle from "./WcbTeamPanel_StyleTitle";
 import WcbTeamPanel_StyleDesignation from "./WcbTeamPanel_StyleDesignation";
 import WcbTeamPanel_StyleDescription from "./WcbTeamPanel_StyleDescription";
 import WcbTeamPanel_StyleSocialIcons from "./WcbTeamPanel_StyleSocialIcons";
-import MyIcon from "../components/controls/MyIcon";
 import WcbTeamPanel_StyleImage from "./WcbTeamPanel_StyleImage";
 import MyIconFull from "../components/controls/MyIconFull";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -40,6 +40,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_description,
 		style_socialIcons,
 		style_image,
+		advance_motionEffect,
 	} = attributes;
 	//  COMMON HOOKS
 	const ref = useRef<HTMLDivElement>(null);
@@ -53,12 +54,14 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
 		setAttributes({
-			uniqueId: UNIQUE_ID,
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
+	//
 	//
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
@@ -172,6 +175,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				return (
 					<>
 						<AdvancePanelCommon
+							advance_motionEffect={advance_motionEffect}
 							advance_responsiveCondition={
 								attributes.advance_responsiveCondition
 							}
@@ -201,6 +205,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			style_description,
 			style_socialIcons,
 			style_image,
+			advance_motionEffect,
 		};
 	}, [
 		uniqueId,
@@ -214,6 +219,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_description,
 		style_socialIcons,
 		style_image,
+		advance_motionEffect,
 	]);
 
 	const renderImage = () => {
@@ -232,8 +238,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-team__wrap ${UNIQUE_ID}`}
-				data-uniqueid={UNIQUE_ID}
+				className={`${wrapBlockProps?.className} wcb-team__wrap ${uniqueId}`}
+				data-uniqueid={uniqueId}
 			>
 				{/* CONTROL SETTINGS */}
 				<HOCInspectorControls

@@ -6,9 +6,11 @@
   "title": "Google maps",
   "category": "wcb-blocks",
   "icon": "- wcb-block-editor-block-icon lni lni-map",
-  "description": "Example static block scaffolded with Create Block tool.",
+  "description": "Add customize and beautify the maps on your website.",
   "supports": {
-    "html": false
+    "html": false,
+    "anchor": true,
+    "align": true
   },
   "textdomain": "wcb-blocks",
   "editorScript": "file:./index.js",

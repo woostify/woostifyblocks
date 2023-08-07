@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import { get, isEmpty } from "lodash";
+import { get } from "lodash";
 import { getBlobByURL, isBlobURL, revokeBlobURL } from "@wordpress/blob";
 import { Placeholder } from "@wordpress/components";
 import { useDispatch, useSelect } from "@wordpress/data";
@@ -38,6 +38,7 @@ import { WCB_HEADING_PANEL_DIMENSION_DEMO } from "../block-heading/WcbHeadingPan
 import { WCB_HEADING_PANEL_SEPARATOR_DEMO } from "../block-heading/WcbHeadingPanelSeparator";
 import { DEFAULT_BORDER_MAIN_SINGLE_SIDE } from "../components/controls/MyBorderControl/types";
 import { WcbBlockHeadingAttrs } from "../block-heading/attributes";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 // Much of this description is duplicated from MediaPlaceholder.
 const placeholder = (content) => {
@@ -148,6 +149,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { createErrorNotice } = useDispatch(noticesStore);
 
 	function onUploadError(message) {
+		// @ts-ignore
 		createErrorNotice(message, { type: "snackbar" });
 		setAttributes({
 			id: undefined,
@@ -269,39 +271,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		}
 	}
 
-	function updateAlignment(nextAlign) {
-		const extraUpdatedAttributes: Partial<WcbAttrs> = ["wide", "full"].includes(
-			nextAlign
-		)
-			? {
-					general_settings: {
-						...general_settings,
-						width: { Desktop: undefined, Tablet: undefined, Mobile: undefined },
-						height: {
-							Desktop: undefined,
-							Tablet: undefined,
-							Mobile: undefined,
-						},
-						alignment: {
-							...general_settings.alignment,
-							[deviceType]: nextAlign,
-						},
-					},
-			  }
-			: {
-					general_settings: {
-						...general_settings,
-						alignment: {
-							...general_settings.alignment,
-							[deviceType]: nextAlign,
-						},
-					},
-			  };
-		setAttributes({
-			...extraUpdatedAttributes,
-		});
-	}
-
 	let isTemp = isTemporaryImage(id, url);
 
 	// Upload a temporary image on mount.
@@ -353,7 +322,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		deviceType
 	);
 	const classes = classnames(className, {
-		[`align${align}`]: align,
+		// [`align${align}`]: align,
 		"is-transient": temporaryURL,
 		// "is-resized": !!width || !!height,
 		// [`size-${sizeSlug}`]: sizeSlug,
@@ -363,12 +332,14 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		ref,
 		className: classes,
 	});
+	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
 		setAttributes({
-			uniqueId: UNIQUE_ID,
+			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
+	//
 	//
 	//
 	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {
@@ -443,8 +414,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		<MyCacheProvider uniqueKey={clientId}>
 			<figure
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-image__wrap wcb-image__wrap--${general_settings.layout} ${UNIQUE_ID}`}
-				data-uniqueid={UNIQUE_ID}
+				className={`${wrapBlockProps?.className} wcb-image__wrap wcb-image__wrap--${general_settings.layout} ${uniqueId}`}
+				data-uniqueid={uniqueId}
 			>
 				{/* CSS IN JS */}
 				<GlobalCss {...WcbAttrsForSave()} />

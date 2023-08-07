@@ -53,10 +53,10 @@ export const WCB_BUTTON_PANEL_STYLE_DIMENSION_DEMO_PRIMARY: WCB_BUTTON_PANEL_STY
 		},
 		margin: {
 			Desktop: {
-				top: "",
-				left: "",
-				right: "",
-				bottom: "",
+				top: "0",
+				left: "0",
+				right: "0",
+				bottom: "0",
 			},
 		},
 		colGap: { Desktop: "8px" },

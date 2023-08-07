@@ -1,11 +1,14 @@
-import { AttrsGenericType } from "../block-container/attributes";
+import {
+	AttrsGenericType,
+	WcbAttrsCommonFromWp,
+} from "../block-container/attributes";
 import { WCB_FAQ_PANEL_GENERAL } from "../block-faq/WcbFaqPanelGeneral";
 import {
 	WCB_FAQ_PANEL_ICON,
 	WCB_FAQ_PANEL_ICON_DEMO,
 } from "../block-faq/WcbFaqPanelIcon";
 
-export interface WcbAttrs {
+export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	question: string;
 	answer: string;

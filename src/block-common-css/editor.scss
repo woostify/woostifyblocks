@@ -1,3 +1,17 @@
+.MyBorderControl__BorderRadiusControl {
+	.components-border-radius-control .components-base-control__label {
+		display: none !important;
+	}
+}
+
+/*  */
+.wcb-BorderBoxControl {
+	.components-base-control {
+		margin-bottom: 0 !important;
+	}
+}
+/*  */
+
 .wcb-products__wrap,
 .wcb-posts-grid__wrap {
 	a {

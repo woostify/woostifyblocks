@@ -173,11 +173,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/useSetBlockPanelInfo */ "./src/hooks/useSetBlockPanelInfo.ts");
 /* harmony import */ var _WcbSelectPanelGeneral__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WcbSelectPanelGeneral */ "./src/block-select/WcbSelectPanelGeneral.tsx");
 /* harmony import */ var _block_form_FormInputLabelRichText__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../block-form/FormInputLabelRichText */ "./src/block-form/FormInputLabelRichText.tsx");
-/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/PlusIcon.js");
-/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/XMarkIcon.js");
+/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/PlusIcon.js");
 /* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/XMarkIcon.js");
+/* harmony import */ var _heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_13__);
 /* harmony import */ var _utils_converUniqueId__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utils/converUniqueId */ "./src/utils/converUniqueId.ts");
+/* harmony import */ var _utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../utils/converUniqueIdToAnphaKey */ "./src/utils/converUniqueIdToAnphaKey.ts");
+
 
 
 
@@ -216,13 +218,15 @@ const Edit = props => {
     tabStylesIsPanelOpen,
     handleTogglePanel
   } = (0,_hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_7__["default"])(uniqueId);
-  const UNIQUE_ID = wrapBlockProps.id;
   const UNIQUE_NAME = (0,_utils_converUniqueId__WEBPACK_IMPORTED_MODULE_10__["default"])(uniqueId, "select");
+  // make uniqueid
+  const UNIQUE_ID = wrapBlockProps.id;
   (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
     setAttributes({
-      uniqueId: UNIQUE_ID
+      uniqueId: (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_11__["default"])(UNIQUE_ID)
     });
   }, [UNIQUE_ID]);
+  //
 
   //
   const converValueFromString = text => {
@@ -276,7 +280,7 @@ const Edit = props => {
           options: [...(attributes.options || []), MY_RADIO_OPTIONS_DEMO[0]]
         });
       }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_11__, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_12__, {
       className: "w-5 h-5"
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
       className: "ml-2.5"
@@ -334,7 +338,7 @@ const Edit = props => {
           options: attributes.options.filter((_, j) => j !== index)
         });
       }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_12__, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_13__, {
       className: "w-5 h-5"
     })));
   };
@@ -356,8 +360,8 @@ const Edit = props => {
   return (
     // <CacheProvider value={myCache}>
     (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
-      className: `${wrapBlockProps?.className} wcb-select__wrap ${UNIQUE_ID}`,
-      "data-uniqueid": UNIQUE_ID
+      className: `${wrapBlockProps?.className} wcb-select__wrap ${uniqueId}`,
+      "data-uniqueid": uniqueId
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_5__["default"], {
       tabs: _components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_5__.INSPECTOR_CONTROLS_TABS.filter(item => item.name !== "Styles"),
       renderTabPanels: renderTabBodyPanels
@@ -402,7 +406,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// @ts-ignore
 
 
 
@@ -560,6 +563,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Save */ "./src/block-select/Save.tsx");
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/block-select/block.json");
 /* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./attributes */ "./src/block-select/attributes.ts");
+/* harmony import */ var _utils_convertAttsToPreview__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/convertAttsToPreview */ "./src/utils/convertAttsToPreview.ts");
 
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
@@ -590,12 +594,14 @@ const {
   withSelect
 } = wp.data;
 
+
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_5__.name, {
   edit: _Edit__WEBPACK_IMPORTED_MODULE_3__["default"],
   save: _Save__WEBPACK_IMPORTED_MODULE_4__["default"],
   attributes: _attributes__WEBPACK_IMPORTED_MODULE_6__["default"],
+  example: (0,_utils_convertAttsToPreview__WEBPACK_IMPORTED_MODULE_7__["default"])(_attributes__WEBPACK_IMPORTED_MODULE_6__["default"]),
   icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     className: "wcb-editor-block-icons fill-none ",
     width: 24,
@@ -1009,6 +1015,52 @@ function converUniqueId(text) {
 
 /***/ }),
 
+/***/ "./src/utils/converUniqueIdToAnphaKey.ts":
+/*!***********************************************!*\
+  !*** ./src/utils/converUniqueIdToAnphaKey.ts ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ converUniqueIdToAnphaKey)
+/* harmony export */ });
+function converUniqueIdToAnphaKey(text) {
+  let prefix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "wcb-";
+  if (!text) {
+    return (prefix + "converniquedreturnnull" + Date.now() + Math.random()).replace(/\./g, "-");
+  }
+  return prefix + text.replace(/ /g, "").replace(/\d/g, "")
+  // text.substring(2, 9).replace(/-/g, "").replace(/ /g, "").replace(/\d/g, "")
+  ;
+}
+
+/***/ }),
+
+/***/ "./src/utils/convertAttsToPreview.ts":
+/*!*******************************************!*\
+  !*** ./src/utils/convertAttsToPreview.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ convertObjectAttrToPreview)
+/* harmony export */ });
+function convertObjectAttrToPreview(A) {
+  let B = {};
+  for (let key in A) {
+    if (A.hasOwnProperty(key)) {
+      B[key] = A[key].default;
+    }
+  }
+  return B;
+}
+
+/***/ }),
+
 /***/ "./src/block-select/editor.scss":
 /*!**************************************!*\
   !*** ./src/block-select/editor.scss ***!
@@ -1193,9 +1245,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 			}
 /******/ 			var notFulfilled = Infinity;
 /******/ 			for (var i = 0; i < deferred.length; i++) {
-/******/ 				var chunkIds = deferred[i][0];
-/******/ 				var fn = deferred[i][1];
-/******/ 				var priority = deferred[i][2];
+/******/ 				var [chunkIds, fn, priority] = deferred[i];
 /******/ 				var fulfilled = true;
 /******/ 				for (var j = 0; j < chunkIds.length; j++) {
 /******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
@@ -1281,9 +1331,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 		
 /******/ 		// install a JSONP callback for chunk loading
 /******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
-/******/ 			var chunkIds = data[0];
-/******/ 			var moreModules = data[1];
-/******/ 			var runtime = data[2];
+/******/ 			var [chunkIds, moreModules, runtime] = data;
 /******/ 			// add "moreModules" to the modules object,
 /******/ 			// then flag all "chunkIds" as loaded and fire callback
 /******/ 			var moduleId, chunkId, i = 0;
@@ -1306,7 +1354,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunkwoostify_blocks"] = self["webpackChunkwoostify_blocks"] || [];
+/******/ 		var chunkLoadingGlobal = globalThis["webpackChunkwoostifyblocks"] = globalThis["webpackChunkwoostifyblocks"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();

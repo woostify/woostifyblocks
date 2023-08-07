@@ -1,10 +1,13 @@
-import { AttrsGenericType } from "../block-container/attributes";
+import {
+	AttrsGenericType,
+	WcbAttrsCommonFromWp,
+} from "../block-container/attributes";
 import { MyRadioOption, MY_RADIO_OPTIONS_DEMO } from "./Edit";
 import {
 	WCB_RADIO_PANEL_GENERAL,
 	WCB_RADIO_PANEL_GENERAL_DEMO,
 } from "./WcbRadioPanelGeneral";
-export interface WcbAttrs {
+export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	label: string;
 	//

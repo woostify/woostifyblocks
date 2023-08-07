@@ -27,10 +27,16 @@ const getBorderStyles = ({
 			const { bottom, left, right, top } = mainSettings as BorderMain4Side;
 			CSSObject = {
 				[`${className}`]: {
-					borderTop: `${top.width} ${top.style} ${top.color}`,
-					borderLeft: `${left.width} ${left.style} ${left.color}`,
-					borderRight: `${right.width} ${right.style} ${right.color}`,
-					borderBottom: `${bottom.width} ${bottom.style} ${bottom.color}`,
+					borderTop: `${top.width} ${top.style || "none"} ${top.color || ""}`,
+					borderLeft: `${left.width} ${left.style || "none"} ${
+						left.color || ""
+					}`,
+					borderRight: `${right.width} ${right.style || "none"} ${
+						right.color || ""
+					}`,
+					borderBottom: `${bottom.width} ${bottom.style || "none"} ${
+						bottom.color || ""
+					}`,
 					"&:hover": {
 						borderColor: `${hoverColor}`,
 					},
@@ -41,9 +47,9 @@ const getBorderStyles = ({
 
 			CSSObject = {
 				[`${className}`]: {
-					border: `${width} ${style} ${color}`,
+					border: `${width} ${style || "none"} ${color || ""}`,
 					"&:hover": {
-						borderColor: `${hoverColor}`,
+						borderColor: `${hoverColor || ""}`,
 					},
 				},
 			};

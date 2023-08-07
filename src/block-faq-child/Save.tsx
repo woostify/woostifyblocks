@@ -21,12 +21,9 @@ export default function save({
 		general_icon,
 		headingTag,
 		layout,
-		defaultExtend,
 		enableSeparator,
 	} = attributes;
 	//
-
-	const blockProps = useBlockProps.save({ className: "wcb-faq-child__wrap" });
 
 	const renderIcon = () => {
 		if (!general_icon.enableIcon || layout !== "accordion") {
@@ -51,15 +48,16 @@ export default function save({
 	};
 
 	const ariaControls = uniqueId + "controls";
-	const Htmltag = layout === "grid" ? "div" : "button";
+	//
+	const wrapBlockProps = useBlockProps.save({
+		className: `ac wcb-faq-child__wrap wcb-faq-child__wrap--${layout}`,
+	});
+	//
+
 	return (
-		<div
-			{...blockProps}
-			className={`ac wcb-faq-child__wrap wcb-faq-child__wrap--${layout} `}
-			id={uniqueId}
-		>
+		<div {...wrapBlockProps}>
 			<div className="ac-header">
-				<Htmltag
+				<div
 					className={`ac-trigger wcb-faq-child__question wcb-faq-child__question--icon-${general_icon.iconPosition}`}
 					type="button"
 					aria-expanded="true"
@@ -73,7 +71,7 @@ export default function save({
 					/>
 
 					{general_icon.iconPosition === "right" && renderIcon()}
-				</Htmltag>
+				</div>
 			</div>
 			<div className="ac-panel">
 				{enableSeparator && <div className="wcb-faq-child__separator"></div>}
