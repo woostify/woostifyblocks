@@ -1,0 +1,26 @@
+.wcb-countdown__inner {
+	display: flex;
+	justify-content: space-between;
+}
+
+.wcb-countdown__buttons {
+	flex-shrink: 0;
+}
+
+.wcb-countdown__title,
+.wcb-countdown__description {
+	margin: 0;
+}
+
+.wcb-countdown__description {
+	line-height: 1.5;
+}
+.wcb-countdown__box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 155px;
+    height: 155px;
+    aspect-ratio: 1;
+    justify-content: center;
+}
