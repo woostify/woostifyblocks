@@ -15,16 +15,15 @@ import WcbCountdownPanelLayout, {
 	WCB_COUNTDOWN_PANEL_LAYOUT_PRESET_CENTER_DEMO,
 	WCB_COUNTDOWN_PANEL_LAYOUT_PRESET_LEFT_DEMO,
 } from "./WcbCountdownPanelLayout";
-import WcbCountdownPanelIcon from "./WcbCountdownPanelIcon";
 import WcbCountdownPanelDate from "./WcbCountdownPanelDate";
-import WcbCountdownPanel_StyleIcons from "./WcbCountdownPanel_StyleIcons";
 import WcbCountdownPanel_StyleTitle from "./WcbCountdownPanel_StyleTitle";
-import WcbCountdownPanel_StyleDescription from "./WcbCountdownPanel_StyleDescription";
+import WcbCountdownPanel_StyleNumber from "./WcbCountdownPanel_StyleNumber";
 import WcbCountdownPanel_StyleDimension from "./WcbCountdownPanel_StyleDimension";
 import WcbCountdownPanelPreset from "./WcbCountdownPanelPreset";
 import { WcbAttrsForSave } from "./Save";
 import MyCacheProvider from "../components/MyCacheProvider";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
+import '../../public/js/countdown/wcb-countdown.js';
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -33,22 +32,18 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		advance_zIndex,
 		uniqueId,
 		general_layout,
-		general_icon,
 		general_date,
 		day_label,
 		hrs_label,
 		min_label,
 		sec_label,
 		style_label,
-		title,
-		style_Icon,
-		style_description,
+		style_number,
 		style_dimension,
 		general_preset,
 		advance_motionEffect,
 	} = attributes;
 	//  COMMON HOOKS
-	// const { myCache, ref } = useCreateCacheEmotion("countdown");
 	const ref = useRef<HTMLDivElement>(null);
 
 	const wrapBlockProps = useBlockProps({ ref });
@@ -67,18 +62,16 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 		var cd_date = general_date.date.split("T");
-		
 		const data = {
-			'block_id'            : UNIQUE_ID,
-			'endDateTime'       : cd_date[0],
-			'showDays'         : true,
-			'showHours'       : true,
-			'showMinutes' : true, 
-			'isFrontend' : true, 
-			'timerEndAction' : cd_date[1],
-			'redirectURL' : ''
+			'block_id': UNIQUE_ID,
+			'endDateTime': cd_date[0],
+			'showDays': true,
+			'showHours': true,
+			'showMinutes': true, 
+			'isFrontend': true, 
+			'timerEndAction': cd_date[1],
+			'redirectURL': ''
 		}
-		console.log(data);
 		WCBCountdown.init('.wcb-countdown__content', data);
 
 	}, [UNIQUE_ID, attributes]);
@@ -88,32 +81,19 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			case "General":
 				return (
 					<>
-						<WcbCountdownPanelPreset
-							onToggle={() => handleTogglePanel("General", "Preset", true)}
-							initialOpen={
-								tabGeneralIsPanelOpen === "Preset" ||
-								tabGeneralIsPanelOpen === "first"
-							}
-							opened={tabGeneralIsPanelOpen === "Preset" || undefined}
+						<WcbCountdownPanelDate
+							onToggle={() => handleTogglePanel("General", "Timer End Date & Time", true)}
+							initialOpen={tabGeneralIsPanelOpen === "Timer End Date & Time" ||
+							tabGeneralIsPanelOpen === "first"}
+							opened={tabGeneralIsPanelOpen === "Timer End Date & Time" || undefined}
 							//
 							setAttr__={(data) => {
-								if (!data.preset) {
-									return setAttributes({
-										general_preset: data,
-										general_layout: WCB_COUNTDOWN_PANEL_LAYOUT_DEMO,
-									});
-								}
-								setAttributes({
-									general_preset: data,
-									general_layout:
-										data.preset === "preset-center"
-											? WCB_COUNTDOWN_PANEL_LAYOUT_PRESET_CENTER_DEMO
-											: WCB_COUNTDOWN_PANEL_LAYOUT_PRESET_LEFT_DEMO,
+								return setAttributes({
+									general_date: data
 								});
 							}}
-							panelData={general_preset}
+							panelData={general_date}
 						/>
-
 						<WcbCountdownPanelLayout
 							onToggle={() => handleTogglePanel("General", "Layout")}
 							initialOpen={tabGeneralIsPanelOpen === "Layout"}
@@ -129,81 +109,30 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							}}
 							panelData={general_layout}
 						/>
-						<WcbCountdownPanelDate
-							onToggle={() => handleTogglePanel("General", "Timer End Date & Time")}
-							initialOpen={tabGeneralIsPanelOpen === "Timer End Date & Time"}
-							opened={tabGeneralIsPanelOpen === "Timer End Date & Time" || undefined}
+						<WcbCountdownPanelPreset
+							onToggle={() => handleTogglePanel("General", "Preset")}
+							initialOpen={
+								tabGeneralIsPanelOpen === "Preset"
+							}
+							opened={tabGeneralIsPanelOpen === "Preset" || undefined}
 							//
 							setAttr__={(data) => {
-								return setAttributes({
-									general_date: data
-								});
-							}}
-							panelData={general_date}
-						/>
-						<WcbCountdownPanelIcon
-							onToggle={() => handleTogglePanel("General", "Icon")}
-							initialOpen={tabGeneralIsPanelOpen === "Icon"}
-							opened={tabGeneralIsPanelOpen === "Icon" || undefined}
-							//
-							setAttr__={(data) => {
-								if (
-									data.iconPosition === "leftOfTitle" ||
-									data.iconPosition === "left"
-								) {
+								if (!data.preset) {
 									return setAttributes({
-										general_icon: data,
-										general_layout: {
-											...general_layout,
-											textAlignment: {
-												Desktop: "left",
-												Tablet: "left",
-												Mobile: "left",
-											},
-										}
+										general_preset: data,
 									});
 								}
-								if (
-									data.iconPosition === "rightOfTitle" ||
-									data.iconPosition === "right"
-								) {
-									return setAttributes({
-										general_icon: data,
-										general_layout: {
-											...general_layout,
-											textAlignment: {
-												Desktop: "right",
-												Tablet: "right",
-												Mobile: "right",
-											},
-										}
-									});
-								}
-
-								return setAttributes({
-									general_icon: data
+								setAttributes({
+									general_preset: data,
 								});
 							}}
-							panelData={general_icon}
+							panelData={general_preset}
 						/>
 					</>
 				);
 			case "Styles":
 				return (
 					<>
-						{general_icon.enableIcon && (
-							<WcbCountdownPanel_StyleIcons
-								onToggle={() => handleTogglePanel("Styles", "_StyleIcons")}
-								initialOpen={tabStylesIsPanelOpen === "_StyleIcons"}
-								opened={tabStylesIsPanelOpen === "_StyleIcons" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({ style_Icon: data });
-								}}
-								panelData={style_Icon}
-							/>
-						)}
-
 						<WcbCountdownPanel_StyleTitle
 							onToggle={() => handleTogglePanel("Styles", "_StyleTitle", true)}
 							initialOpen={
@@ -217,15 +146,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							}}
 							panelData={style_label}
 						/>
-						<WcbCountdownPanel_StyleDescription
-							onToggle={() => handleTogglePanel("Styles", "_StyleDescription")}
-							initialOpen={tabStylesIsPanelOpen === "_StyleDescription"}
-							opened={tabStylesIsPanelOpen === "_StyleDescription" || undefined}
+						<WcbCountdownPanel_StyleNumber
+							onToggle={() => handleTogglePanel("Styles", "_StyleNumber", true)}
+							initialOpen={ tabStylesIsPanelOpen === "_StyleTitle" }
+							opened={tabStylesIsPanelOpen === "_StyleNumber" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ style_description: data });
+								setAttributes({ style_number: data });
 							}}
-							panelData={style_description}
+							panelData={style_number}
 						/>
 						<WcbCountdownPanel_StyleDimension
 							onToggle={() => handleTogglePanel("Styles", "_StyleDimension")}
@@ -266,12 +195,11 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			advance_responsiveCondition,
 			advance_zIndex,
 			general_layout,
+			general_preset,
 			general_date,
-			general_icon,
-			style_description,
 			style_dimension,
-			style_Icon,
 			style_label,
+			style_number,
 			advance_motionEffect,
 		};
 	}, [
@@ -279,16 +207,14 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_layout,
+		general_preset,
 		general_date,
-		general_icon,
-		style_description,
 		style_dimension,
 		style_label,
-		style_Icon,
+		style_number,
 		advance_motionEffect,
 	]);
 
-	// console.log(4, "---- COUNTDOWN edit  ---" + uniqueId);
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
@@ -307,9 +233,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 				{/* CHILD CONTENT  */}
 				<div className="wcb-countdown__inner">
-					<div className="wcb-countdown__content flex items-center">
-						<div className="wcb-countdown__box w-150 items-center justify-center">
-							<div className="wcb-countdown-day"></div>
+					<div className={`wcb-countdown__content ${ general_preset.preset }`}>
+						<div className="wcb-countdown__box">
+							<div className="wcb-countdown__number wcb-countdown-day"></div>
 							{general_date.enableLabel && (
 								<RichText
 									tagName={'span'}
@@ -320,8 +246,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								/>
 							)}
 						</div>
-						<div className="wcb-countdown__box w-150 items-center justify-center">
-							<div className="wcb-countdown-hrs"></div>
+						<div className="wcb-countdown__box">
+							<div className="wcb-countdown__number wcb-countdown-hrs"></div>
 							{general_date.enableLabel && (
 								<RichText
 									tagName={'span'}
@@ -332,8 +258,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								/>
 							)}
 						</div>
-						<div className="wcb-countdown__box w-150 items-center justify-center">
-							<div className="wcb-countdown-mins"></div>
+						<div className="wcb-countdown__box">
+							<div className="wcb-countdown__number wcb-countdown-mins"></div>
 							{general_date.enableLabel && (
 								<RichText
 									tagName={'span'}
@@ -344,8 +270,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								/>
 							)}
 						</div>
-						<div className="wcb-countdown__box w-150 items-center justify-center">
-							<div className="wcb-countdown-secs"></div>
+						<div className="wcb-countdown__box">
+							<div className="wcb-countdown__number wcb-countdown-secs"></div>
 							{general_date.enableLabel && (
 								<RichText
 									tagName={'span'}

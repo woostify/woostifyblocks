@@ -7,33 +7,28 @@ import {
 	TYPOGRAPHY_CONTROL_DEMO,
 } from "../components/controls/MyTypographyControl/types";
 import MyDisclosure from "../components/controls/MyDisclosure";
-import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
-import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
-import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 
 export interface WCB_COUNTDOWN_PANEL_STYLE_TITLE {
 	typography: MyTypographyControlData;
 	textColor: string;
-	marginBottom: HasResponsive<string>;
 }
 
 export const WCB_COUNTDOWN_PANEL_STYLE_TITLE_DEMO: WCB_COUNTDOWN_PANEL_STYLE_TITLE = {
 	typography: {
 		...TYPOGRAPHY_CONTROL_DEMO,
-		fontSizes: { Desktop: "2.25rem" },
+		fontSizes: { Desktop: "56px" },
 		appearance: {
 			...TYPOGRAPHY_CONTROL_DEMO.appearance,
 			style: {
 				...TYPOGRAPHY_CONTROL_DEMO.appearance.style,
-				fontWeight: "500",
+				fontWeight: "400",
 			},
 		},
 	},
-	textColor: "#171717",
-	marginBottom: { Desktop: "1rem" },
+	textColor: "inherit",
 };
 
 interface Props
@@ -50,12 +45,7 @@ const WcbCountdownPanel_StyleTitle: FC<Props> = ({
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { typography, textColor, marginBottom } = panelData;
-
-	const { currentDeviceValue: MARGIN_BOTTOM } = getValueFromAttrsResponsives(
-		marginBottom,
-		deviceType
-	);
+	const { typography, textColor } = panelData;
 
 	//
 	return (
@@ -63,7 +53,7 @@ const WcbCountdownPanel_StyleTitle: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Title", "wcb")}
+			title={__("Label", "wcb")}
 		>
 			<div className="space-y-2.5">
 				<MyTypographyControl
@@ -85,21 +75,6 @@ const WcbCountdownPanel_StyleTitle: FC<Props> = ({
 							});
 						}}
 						color={textColor}
-					/>
-
-					<MySpacingSizesControl
-						onChange={(value) => {
-							setAttr__({
-								...panelData,
-								marginBottom: {
-									...marginBottom,
-									[deviceType]: value,
-								},
-							});
-						}}
-						value={MARGIN_BOTTOM || ""}
-						label={__("Margin bottom", "wcb")}
-						hasResponsive
 					/>
 				</MyDisclosure>
 			</div>

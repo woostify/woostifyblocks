@@ -2,7 +2,9 @@ import { Global, CSSObject } from "@emotion/react";
 import React, { FC, CSSProperties } from "react";
 import { getAdvanveDivWrapStyles } from "../block-container/getAdvanveStyles";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
+import getColorAndGradientStyles from "../utils/getColorAndGradientStyles";
 import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
+import getFlexPropertiesStyles from "../utils/getFlexPropertiesStyles";
 import getStyleObjectFromResponsiveAttr from "../utils/getStyleObjectFromResponsiveAttr";
 import getTypographyStyles from "../utils/getTypographyStyles";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
@@ -17,11 +19,9 @@ const GlobalCss: FC<Props> = (attrs) => {
 		uniqueId,
 		// ATTRS OF BLOCK
 		general_layout,
-		general_icon,
-		style_description,
-		style_Icon,
 		style_dimension,
 		style_label,
+		style_number,
 		//
 		advance_responsiveCondition,
 		advance_zIndex,
@@ -30,9 +30,9 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
 	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
-	const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-countdown__inner`;
 	const CONTENT_CLASSNAME = `${WRAP_CLASSNAME} .wcb-countdown__content`;
 	const LABEL_CLASSNAME = `${WRAP_CLASSNAME} .wcb-countdown__label`;
+	const NUMBER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-countdown__number`;
 	const BOX_CLASSNAME = `${WRAP_CLASSNAME} .wcb-countdown__box`;
 
 	// ------------------- WRAP DIV
@@ -43,6 +43,40 @@ const GlobalCss: FC<Props> = (attrs) => {
 				[`@media (min-width: ${media_desktop})`]: {},
 			},
 		};
+	};
+
+	// ------------------- LABEL
+	const getInner__Label_typography = () => {
+		const { typography } = style_label;
+
+		return getTypographyStyles({
+			typography,
+			className: LABEL_CLASSNAME,
+		});
+	};
+	const getInner__Label_color = () => {
+		const { textColor } = style_label;
+		return getColorAndGradientStyles({
+			textColor,
+			className: LABEL_CLASSNAME,
+		});
+	};
+
+	// ------------------- NUMBER
+	const getInner__Number_typography = () => {
+		const { typography } = style_number;
+
+		return getTypographyStyles({
+			typography,
+			className: NUMBER_CLASSNAME,
+		});
+	};
+	const getInner__Number_color = () => {
+		const { textColor } = style_number;
+		return getColorAndGradientStyles({
+			textColor,
+			className: NUMBER_CLASSNAME,
+		});
 	};
 
 	const {
@@ -133,15 +167,36 @@ const GlobalCss: FC<Props> = (attrs) => {
 					prefix: "width",
 				})}
 			/>
+			{/* Flex css */}
+			<Global
+				styles={getFlexPropertiesStyles({
+					flexProperties: general_layout.flexDirection,
+					className: CONTENT_CLASSNAME,
+				})}
+			/>
 
+			{/* LABEL CSS */}
+			<Global styles={getInner__Label_typography()} />
+			<Global styles={getInner__Label_color()} />
+			
+			{/* NUMBER CSS */}
+			<Global styles={getInner__Number_typography()} />
+			<Global styles={getInner__Number_color()} />
+			<Global
+				styles={getStyleObjectFromResponsiveAttr({
+					className: NUMBER_CLASSNAME,
+					value: style_number.marginBottom,
+					prefix: "marginBottom",
+				})}
+			/>
 			{/* ADVANCE  */}
 			<Global
 				styles={getAdvanveDivWrapStyles({
 					advance_motionEffect,
 					advance_responsiveCondition,
 					advance_zIndex,
-					className: WRAP_CLASSNAME,
-					defaultDisplay: "block",
+					className: CONTENT_CLASSNAME,
+					defaultDisplay: "flex",
 				})}
 			/>
 		</>

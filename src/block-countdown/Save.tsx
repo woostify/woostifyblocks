@@ -13,13 +13,13 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_layout,
-		general_icon,
 		general_date,
 		day_label,
 		hrs_label,
 		min_label,
 		sec_label,
-		advance_motionEffect
+		advance_motionEffect,
+		general_preset
 	} = attributes;
 
 	const newAttrForSave: WcbAttrsForSave = {
@@ -27,13 +27,13 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_layout,
-		general_icon,
 		general_date,
 		day_label,
 		hrs_label,
 		min_label,
 		sec_label,
-		advance_motionEffect
+		advance_motionEffect,
+		general_preset
 	};
 
 	const wrapBlockProps = useBlockProps.save({ className: "wcb-countdown__wrap" });
@@ -45,9 +45,9 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			uniqueId={uniqueId}
 		>
 			<div className="wcb-countdown__inner">
-					<div className="wcb-countdown__content flex items-center">
-						<div className="wcb-countdown__box w-150 items-center justify-center">
-							<div className="wcb-countdown-day"></div>
+					<div className={`wcb-countdown__content ${ general_preset.preset }`}>
+						<div className="wcb-countdown__box">
+							<div className="countdown__number wcb-countdown-day"></div>
 							{general_date.enableLabel && (
 								<RichText.Content
 									tagName='span'
@@ -56,8 +56,8 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 								/>
 							)}
 						</div>
-						<div className="wcb-countdown__box w-150 items-center justify-center">
-							<div className="wcb-countdown-hrs"></div>
+						<div className="wcb-countdown__box">
+							<div className="countdown__number wcb-countdown-hrs"></div>
 							{general_date.enableLabel && (
 								<RichText.Content
 									tagName='span'
@@ -66,8 +66,8 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 								/>
 							)}
 						</div>
-						<div className="wcb-countdown__box w-150 items-center justify-center">
-							<div className="wcb-countdown-mins"></div>
+						<div className="wcb-countdown__box">
+							<div className="countdown__number wcb-countdown-mins"></div>
 							{general_date.enableLabel && (
 								<RichText.Content
 									tagName='span'
@@ -76,8 +76,8 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 								/>
 							)}
 						</div>
-						<div className="wcb-countdown__box w-150 items-center justify-center">
-							<div className="wcb-countdown-secs"></div>
+						<div className="wcb-countdown__box">
+							<div className="countdown__number wcb-countdown-secs"></div>
 							{general_date.enableLabel && (
 								<RichText.Content
 									tagName='span'

@@ -7,31 +7,43 @@ import {
 	TYPOGRAPHY_CONTROL_DEMO,
 } from "../components/controls/MyTypographyControl/types";
 import MyDisclosure from "../components/controls/MyDisclosure";
-import MyUnitControl from "../components/controls/MyUnitControl";
-import { MY_GAP_UNITS } from "../components/controls/MyDimensionsControl/MyDimensionsControl";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
-import { WCB_COUNTDOWN_PANEL_STYLE_TITLE } from "./WcbCountdownPanel_StyleTitle";
+import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 
-export const WCB_COUNTDOWN_PANEL_STYLE_DESCRIPTION_DEMO: WCB_COUNTDOWN_PANEL_STYLE_TITLE = {
+export interface WCB_COUNTDOWN_PANEL_STYLE_NUMBER {
+	typography: MyTypographyControlData;
+	textColor: string;
+	marginBottom: HasResponsive<string>;
+}
+
+export const WCB_COUNTDOWN_PANEL_STYLE_NUMBER_DEMO: WCB_COUNTDOWN_PANEL_STYLE_NUMBER = {
 	typography: {
 		...TYPOGRAPHY_CONTROL_DEMO,
+		fontSizes: { Desktop: "14px" },
+		appearance: {
+			...TYPOGRAPHY_CONTROL_DEMO.appearance,
+			style: {
+				...TYPOGRAPHY_CONTROL_DEMO.appearance.style,
+				fontWeight: "400",
+			},
+		},
 	},
-	textColor: "#171717",
-	marginBottom: { Desktop: "0rem" },
+	textColor: "inherit",
+	marginBottom: { Desktop: "1px" },
 };
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
-	panelData: WCB_COUNTDOWN_PANEL_STYLE_TITLE;
-	setAttr__: (data: WCB_COUNTDOWN_PANEL_STYLE_TITLE) => void;
+	panelData: WCB_COUNTDOWN_PANEL_STYLE_NUMBER;
+	setAttr__: (data: WCB_COUNTDOWN_PANEL_STYLE_NUMBER) => void;
 }
 
-const WcbCountdownPanel_StyleDescription: FC<Props> = ({
-	panelData = WCB_COUNTDOWN_PANEL_STYLE_DESCRIPTION_DEMO,
+const WcbCountdownPanel_StyleNumber: FC<Props> = ({
+	panelData = WCB_COUNTDOWN_PANEL_STYLE_NUMBER_DEMO,
 	setAttr__,
 	initialOpen,
 	onToggle,
@@ -44,13 +56,14 @@ const WcbCountdownPanel_StyleDescription: FC<Props> = ({
 		marginBottom,
 		deviceType
 	);
+
 	//
 	return (
 		<PanelBody
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Description", "wcb")}
+			title={__("Number", "wcb")}
 		>
 			<div className="space-y-2.5">
 				<MyTypographyControl
@@ -74,7 +87,7 @@ const WcbCountdownPanel_StyleDescription: FC<Props> = ({
 						color={textColor}
 					/>
 
-					<MyUnitControl
+					<MySpacingSizesControl
 						onChange={(value) => {
 							setAttr__({
 								...panelData,
@@ -85,10 +98,8 @@ const WcbCountdownPanel_StyleDescription: FC<Props> = ({
 							});
 						}}
 						value={MARGIN_BOTTOM || ""}
-						units={MY_GAP_UNITS}
 						label={__("Margin bottom", "wcb")}
 						hasResponsive
-						className="flex-col space-y-2"
 					/>
 				</MyDisclosure>
 			</div>
@@ -96,4 +107,4 @@ const WcbCountdownPanel_StyleDescription: FC<Props> = ({
 	);
 };
 
-export default WcbCountdownPanel_StyleDescription;
+export default WcbCountdownPanel_StyleNumber;

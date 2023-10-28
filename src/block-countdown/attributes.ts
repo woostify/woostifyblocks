@@ -22,30 +22,25 @@ import {
 	WCB_COUNTDOWN_PANEL_PRESET,
 	WCB_COUNTDOWN_PANEL_PRESET_DEMO,
 } from "./WcbCountdownPanelPreset";
-import { WCB_COUNTDOWN_PANEL_STYLE_DESCRIPTION_DEMO } from "./WcbCountdownPanel_StyleDescription";
 import {
 	WCB_COUNTDOWN_PANEL_STYLE_DIMENSION,
 	WCB_COUNTDOWN_PANEL_STYLE_DIMENSION_DEMO,
 } from "./WcbCountdownPanel_StyleDimension";
 
-// Icon
-import {
-	WCB_COUNTDOWN_PANEL_ICON,
-	WCB_COUNTDOWN_PANEL_ICON_DEMO,
-} from "./WcbCountdownPanelIcon";
 import {
 	WCB_COUNTDOWN_PANEL_DATE,
 	WCB_COUNTDOWN_PANEL_DATE_DEMO,
 } from "./WcbCountdownPanelDate";
-import {
-	WCB_COUNTDOWN_PANEL_STYLE_ICON,
-	WCB_COUNTDOWN_PANEL_STYLE_ICON_DEMO,
-} from "./WcbCountdownPanel_StyleIcons";
 
 import {
 	WCB_COUNTDOWN_PANEL_STYLE_TITLE,
 	WCB_COUNTDOWN_PANEL_STYLE_TITLE_DEMO,
 } from "./WcbCountdownPanel_StyleTitle";
+
+import {
+	WCB_COUNTDOWN_PANEL_STYLE_NUMBER,
+	WCB_COUNTDOWN_PANEL_STYLE_NUMBER_DEMO,
+} from "./WcbCountdownPanel_StyleNumber";
 
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
@@ -58,10 +53,8 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	general_layout: WCB_COUNTDOWN_PANEL_LAYOUT;
 	general_preset: WCB_COUNTDOWN_PANEL_PRESET;
 	general_date: WCB_COUNTDOWN_PANEL_DATE;
-	general_icon: WCB_COUNTDOWN_PANEL_ICON;
-	style_Icon: WCB_COUNTDOWN_PANEL_STYLE_ICON;
 	style_label: WCB_COUNTDOWN_PANEL_STYLE_TITLE;
-	style_description: WCB_COUNTDOWN_PANEL_STYLE_TITLE;
+	style_number: WCB_COUNTDOWN_PANEL_STYLE_NUMBER;
 	style_dimension: WCB_COUNTDOWN_PANEL_STYLE_DIMENSION;
 	//
 	advance_responsiveCondition: MyResponsiveConditionControlData;
@@ -121,21 +114,13 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		type: "object",
 		default: WCB_COUNTDOWN_PANEL_DATE_DEMO,
 	},
-	general_icon: {
-		type: "object",
-		default: WCB_COUNTDOWN_PANEL_ICON_DEMO,
-	},
-	style_Icon: {
-		type: "object",
-		default: WCB_COUNTDOWN_PANEL_STYLE_ICON_DEMO,
-	},
 	style_label: {
 		type: "object",
 		default: WCB_COUNTDOWN_PANEL_STYLE_TITLE_DEMO,
 	},
-	style_description: {
+	style_number: {
 		type: "object",
-		default: WCB_COUNTDOWN_PANEL_STYLE_DESCRIPTION_DEMO,
+		default: WCB_COUNTDOWN_PANEL_STYLE_NUMBER_DEMO,
 	},
 	style_dimension: {
 		type: "object",

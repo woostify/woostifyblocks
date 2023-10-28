@@ -5,8 +5,9 @@ import React, { FC, CSSProperties } from "react";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import ResetButton from "../components/controls/ResetButton";
 import useGetDeviceType from "../hooks/useGetDeviceType";
+import { COUNTDOWN_PRESET } from "./types";
 export interface WCB_COUNTDOWN_PANEL_PRESET {
-	preset: "preset-left" | "preset-center" | "";
+	preset: "wcb-countdown-1" | "wcb-countdown-2" | "wcb-countdown-3" | "wcb-countdown-4" | "wcb-countdown-5";
 }
 
 export const WCB_COUNTDOWN_PANEL_PRESET_DEMO: WCB_COUNTDOWN_PANEL_PRESET = {
@@ -18,14 +19,6 @@ interface Props
 	panelData: WCB_COUNTDOWN_PANEL_PRESET;
 	setAttr__: (data: WCB_COUNTDOWN_PANEL_PRESET) => void;
 }
-
-export const COUNTDOWN_PRESET: {
-	name: WCB_COUNTDOWN_PANEL_PRESET["preset"];
-	twClass: string;
-}[] = [
-	{ name: "preset-left", twClass: "" },
-	{ name: "preset-center", twClass: "justify-center items-center" },
-];
 
 const WcbCountdownPanelPreset: FC<Props> = ({
 	panelData = WCB_COUNTDOWN_PANEL_PRESET_DEMO,
@@ -59,12 +52,9 @@ const WcbCountdownPanelPreset: FC<Props> = ({
 											} `}
 										>
 											<div
-												className={`flex-1 flex flex-col gap-1 ${item.twClass}`}
+												className={`flex-1 flex flex-col gap-1`}
+												dangerouslySetInnerHTML={{ __html: item.icon }}
 											>
-												<div className="rounded w-8/12 h-1 bg-gray-400 mb-0.5"></div>
-												<div className="rounded w-10/12 h-0.5 bg-gray-300"></div>
-												<div className="rounded w-7/12 h-0.5 bg-gray-300"></div>
-												<div className="rounded w-3/12 h-2 bg-gray-500 mt-1"></div>
 											</div>
 										</div>
 									)}
