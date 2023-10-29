@@ -23,7 +23,7 @@ export interface WCB_COUNTDOWN_PANEL_STYLE_NUMBER {
 export const WCB_COUNTDOWN_PANEL_STYLE_NUMBER_DEMO: WCB_COUNTDOWN_PANEL_STYLE_NUMBER = {
 	typography: {
 		...TYPOGRAPHY_CONTROL_DEMO,
-		fontSizes: { Desktop: "14px" },
+		fontSizes: { Desktop: "56px" },
 		appearance: {
 			...TYPOGRAPHY_CONTROL_DEMO.appearance,
 			style: {

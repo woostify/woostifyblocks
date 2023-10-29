@@ -238,7 +238,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							<div className="wcb-countdown__number wcb-countdown-day"></div>
 							{general_date.enableLabel && (
 								<RichText
-									tagName={'span'}
+									tagName={'div'}
 									value={day_label}
 									allowedFormats={["core/bold", "core/italic"]}
 									onChange={(content) => setAttributes({ day_label: content })}
@@ -250,7 +250,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							<div className="wcb-countdown__number wcb-countdown-hrs"></div>
 							{general_date.enableLabel && (
 								<RichText
-									tagName={'span'}
+									tagName={'div'}
 									value={hrs_label}
 									allowedFormats={["core/bold", "core/italic"]}
 									onChange={(content) => setAttributes({ hrs_label: content })}
@@ -262,7 +262,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							<div className="wcb-countdown__number wcb-countdown-mins"></div>
 							{general_date.enableLabel && (
 								<RichText
-									tagName={'span'}
+									tagName={'div'}
 									value={min_label}
 									allowedFormats={["core/bold", "core/italic"]}
 									onChange={(content) => setAttributes({ min_label: content })}
@@ -274,7 +274,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							<div className="wcb-countdown__number wcb-countdown-secs"></div>
 							{general_date.enableLabel && (
 								<RichText
-									tagName={'span'}
+									tagName={'div'}
 									value={sec_label}
 									allowedFormats={["core/bold", "core/italic"]}
 									onChange={(content) => setAttributes({ sec_label: content })}
