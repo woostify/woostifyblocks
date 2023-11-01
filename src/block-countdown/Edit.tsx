@@ -246,7 +246,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							{general_date.enableLabel && (
 								<RichText
 									tagName={'div'}
-									value={day_label}
+									value={hrs_label}
 									allowedFormats={["core/bold", "core/italic"]}
 									onChange={(content) => setAttributes({ hrs_label: content })}
 									className="wcb-countdown__hour"
@@ -258,7 +258,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							{general_date.enableLabel && (
 								<RichText
 									tagName={'div'}
-									value={day_label}
+									value={min_label}
 									allowedFormats={["core/bold", "core/italic"]}
 									onChange={(content) => setAttributes({ min_label: content })}
 									className="wcb-countdown__minute"
@@ -270,7 +270,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							{general_date.enableLabel && (
 								<RichText
 									tagName={'div'}
-									value={day_label}
+									value={sec_label}
 									allowedFormats={["core/bold", "core/italic"]}
 									onChange={(content) => setAttributes({ sec_label: content })}
 									className="wcb-countdown__seconds"
