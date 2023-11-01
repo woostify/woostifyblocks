@@ -10,11 +10,7 @@ import GlobalCss from "./GlobalCss";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
-import WcbCountdownPanelLayout, {
-	WCB_COUNTDOWN_PANEL_LAYOUT_DEMO,
-	WCB_COUNTDOWN_PANEL_LAYOUT_PRESET_CENTER_DEMO,
-	WCB_COUNTDOWN_PANEL_LAYOUT_PRESET_LEFT_DEMO,
-} from "./WcbCountdownPanelLayout";
+import WcbCountdownPanelLayout from "./WcbCountdownPanelLayout";
 import WcbCountdownPanelDate from "./WcbCountdownPanelDate";
 import WcbCountdownPanel_StyleTitle from "./WcbCountdownPanel_StyleTitle";
 import WcbCountdownPanel_StyleNumber from "./WcbCountdownPanel_StyleNumber";
@@ -241,7 +237,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 									value={day_label}
 									allowedFormats={["core/bold", "core/italic"]}
 									onChange={(content) => setAttributes({ day_label: content })}
-									className="wcb-countdown__label"
+									className="wcb-countdown__day"
 								/>
 							)}
 						</div>
@@ -253,7 +249,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 									value={day_label}
 									allowedFormats={["core/bold", "core/italic"]}
 									onChange={(content) => setAttributes({ hrs_label: content })}
-									className="wcb-countdown__label"
+									className="wcb-countdown__hour"
 								/>
 							)}
 						</div>
@@ -265,7 +261,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 									value={day_label}
 									allowedFormats={["core/bold", "core/italic"]}
 									onChange={(content) => setAttributes({ min_label: content })}
-									className="wcb-countdown__label"
+									className="wcb-countdown__minute"
 								/>
 							)}
 						</div>
@@ -277,7 +273,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 									value={day_label}
 									allowedFormats={["core/bold", "core/italic"]}
 									onChange={(content) => setAttributes({ sec_label: content })}
-									className="wcb-countdown__label"
+									className="wcb-countdown__seconds"
 								/>
 							)}
 						</div>
