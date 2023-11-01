@@ -24,7 +24,6 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		advance_motionEffect,
 		general_preset
 	} = attributes;
-	console.log(attributes);
 	const newAttrForSave: WcbAttrsForSave = {
 		uniqueId,
 		advance_responsiveCondition,

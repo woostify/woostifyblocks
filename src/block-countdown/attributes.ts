@@ -44,7 +44,6 @@ import {
 
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
-	title: string;
 	day_label: string;
 	hrs_label: string;
 	min_label: string;
@@ -69,35 +68,28 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	},
 
 	// THE ATTRS OF BLOCK HERE
-	title: {
-		type: "string",
-		source: "html",
-		selector: ".wcb-countdown__title",
-		default: "",
-	},
-
 	day_label: {
 		type: "string",
 		source: "html",
-		selector: ".wcb-countdown-day__label",
+		selector: ".wcb-icon-box__day",
 		default: "DAYS",
 	},
 	hrs_label: {
 		type: "string",
 		source: "html",
-		selector: ".wcb-countdown-hrs__label",
+		selector: ".wcb-icon-box__hour",
 		default: "HOURS",
 	},
 	min_label: {
 		type: "string",
 		source: "html",
-		selector: ".wcb-countdown-min__label",
+		selector: ".wcb-icon-box__minute",
 		default: "MINUTES",
 	},
 	sec_label: {
 		type: "string",
 		source: "html",
-		selector: ".wcb-countdown-sec__label",
+		selector: ".wcb-icon-box__seconds",
 		default: "SECONDS",
 	},
 

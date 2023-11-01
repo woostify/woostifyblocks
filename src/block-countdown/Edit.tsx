@@ -45,7 +45,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	} = attributes;
 	//  COMMON HOOKS
 	const ref = useRef<HTMLDivElement>(null);
-
 	const wrapBlockProps = useBlockProps({ ref });
 	const {
 		tabIsOpen,
@@ -251,7 +250,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							{general_date.enableLabel && (
 								<RichText
 									tagName={'div'}
-									value={hrs_label}
+									value={day_label}
 									allowedFormats={["core/bold", "core/italic"]}
 									onChange={(content) => setAttributes({ hrs_label: content })}
 									className="wcb-countdown__label"
@@ -263,7 +262,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							{general_date.enableLabel && (
 								<RichText
 									tagName={'div'}
-									value={min_label}
+									value={day_label}
 									allowedFormats={["core/bold", "core/italic"]}
 									onChange={(content) => setAttributes({ min_label: content })}
 									className="wcb-countdown__label"
@@ -275,7 +274,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							{general_date.enableLabel && (
 								<RichText
 									tagName={'div'}
-									value={sec_label}
+									value={day_label}
 									allowedFormats={["core/bold", "core/italic"]}
 									onChange={(content) => setAttributes({ sec_label: content })}
 									className="wcb-countdown__label"
