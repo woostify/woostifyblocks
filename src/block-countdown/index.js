@@ -18,7 +18,7 @@ import "./style.scss";
  * Internal dependencies
  */
 import Edit from "./Edit";
-import save from "./Save";
+import Save from "./Save";
 import metadata from "./block.json";
 import attributes from "./attributes";
 import deprecated from "./deprecated";
@@ -27,7 +27,7 @@ import convertObjectAttrToPreview from "../utils/convertAttsToPreview";
 
 registerBlockType(metadata.name, {
 	edit: Edit,
-	save,
+	save: Save,
 	attributes,
 	deprecated: deprecated,
 	example: convertObjectAttrToPreview(attributes),

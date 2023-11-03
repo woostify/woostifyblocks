@@ -4,7 +4,7 @@ import { initCarouselForWcbFaq } from "../block-faq/FrontendStyles";
 import { handleSubmitFormForWcbForm } from "../block-form/FrontendStyles";
 import { initCarouselForWcbTestimonials } from "../block-testimonials/FrontendStyles";
 import { initCarouselForWcbProducts } from "../block-products/FrontendStyles";
-import { initCountDown } from "../block-countdown/FrontendStyles";
+import { initCountDown } from "../block-countdown/FrontendScript";
 
 const classes: {
 	D: string;
@@ -53,6 +53,10 @@ const classes: {
 	{
 		D: ".wcb-icon-box__wrap.wcb-update-div",
 		C: React.lazy(() => import("../block-icon-box/GlobalCss")),
+	},
+	{
+		D: ".wcb-icon-box__wrap.wcb-update-div",
+		C: React.lazy(() => import("../block-icon-box-1/GlobalCss")),
 	},
 	{
 		D: ".wcb-image__wrap.wcb-update-div",

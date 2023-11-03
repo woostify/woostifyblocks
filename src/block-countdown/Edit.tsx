@@ -56,14 +56,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		setAttributes({
 			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
+
 		var cd_date = general_date.date.split("T");
 		const data = {
 			'block_id': UNIQUE_ID,
 			'endDateTime': cd_date[0],
 			'showDays': true,
 			'showHours': true,
-			'showMinutes': true, 
-			'isFrontend': true, 
+			'showMinutes': true,
+			'isFrontend': true,
 			'timerEndAction': cd_date[1],
 			'redirectURL': ''
 		}
@@ -79,7 +80,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 						<WcbCountdownPanelDate
 							onToggle={() => handleTogglePanel("General", "Timer End Date & Time", true)}
 							initialOpen={tabGeneralIsPanelOpen === "Timer End Date & Time" ||
-							tabGeneralIsPanelOpen === "first"}
+								tabGeneralIsPanelOpen === "first"}
 							opened={tabGeneralIsPanelOpen === "Timer End Date & Time" || undefined}
 							//
 							setAttr__={(data) => {
@@ -143,7 +144,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 						/>
 						<WcbCountdownPanel_StyleNumber
 							onToggle={() => handleTogglePanel("Styles", "_StyleNumber", true)}
-							initialOpen={ tabStylesIsPanelOpen === "_StyleTitle" }
+							initialOpen={tabStylesIsPanelOpen === "_StyleTitle"}
 							opened={tabStylesIsPanelOpen === "_StyleNumber" || undefined}
 							//
 							setAttr__={(data) => {
@@ -228,14 +229,14 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 				{/* CHILD CONTENT  */}
 				<div className="wcb-countdown__inner">
-					<div className={`wcb-countdown__content ${ general_preset.preset }`}>
+					<div className={`wcb-countdown__content ${general_preset.preset}`}>
 						<div className="wcb-countdown__box">
 							<div className="wcb-countdown__number wcb-countdown-day"></div>
 							{general_date.enableLabel && (
 								<RichText
-									tagName={'div'}
+									tagName="div"
 									value={day_label}
-									allowedFormats={["core/bold", "core/italic"]}
+									allowedFormats={[]}
 									onChange={(content) => setAttributes({ day_label: content })}
 									className="wcb-countdown__day"
 								/>
@@ -245,9 +246,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							<div className="wcb-countdown__number wcb-countdown-hrs"></div>
 							{general_date.enableLabel && (
 								<RichText
-									tagName={'div'}
+									tagName="div"
 									value={hrs_label}
-									allowedFormats={["core/bold", "core/italic"]}
+									allowedFormats={[]}
 									onChange={(content) => setAttributes({ hrs_label: content })}
 									className="wcb-countdown__hour"
 								/>
@@ -257,9 +258,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							<div className="wcb-countdown__number wcb-countdown-mins"></div>
 							{general_date.enableLabel && (
 								<RichText
-									tagName={'div'}
+									tagName="div"
 									value={min_label}
-									allowedFormats={["core/bold", "core/italic"]}
+									allowedFormats={[]}
 									onChange={(content) => setAttributes({ min_label: content })}
 									className="wcb-countdown__minute"
 								/>
@@ -269,9 +270,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							<div className="wcb-countdown__number wcb-countdown-secs"></div>
 							{general_date.enableLabel && (
 								<RichText
-									tagName={'div'}
+									tagName="div"
 									value={sec_label}
-									allowedFormats={["core/bold", "core/italic"]}
+									allowedFormats={[]}
 									onChange={(content) => setAttributes({ sec_label: content })}
 									className="wcb-countdown__seconds"
 								/>
