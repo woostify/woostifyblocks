@@ -3,12 +3,10 @@ import React, { FC, CSSProperties } from "react";
 import { getAdvanveDivWrapStyles } from "../block-container/getAdvanveStyles";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import getColorAndGradientStyles from "../utils/getColorAndGradientStyles";
-import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
 import getFlexPropertiesStyles from "../utils/getFlexPropertiesStyles";
 import getStyleObjectFromResponsiveAttr from "../utils/getStyleObjectFromResponsiveAttr";
 import getTypographyStyles from "../utils/getTypographyStyles";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
-import getBorderStyles from "../utils/getBorderStyles";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { WcbAttrsForSave } from "./Save";
 

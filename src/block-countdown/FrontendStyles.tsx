@@ -13,6 +13,7 @@ const FrontendStyles: FC<Props> = (attrs) => {
 const divsToUpdate = document.querySelectorAll(
 	".wcb-countdown__wrap.wcb-update-div"
 );
+
 divsToUpdate.forEach((div) => {
 	const preEl = div.querySelector(
 		`pre[data-wcb-block-attrs=${div.id}]`

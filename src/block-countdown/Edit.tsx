@@ -26,13 +26,13 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const {
 		advance_responsiveCondition,
 		advance_zIndex,
+		daylabel,
+		hrslabel,
+		minlabel,
+		seclabel,
+		general_date,
 		uniqueId,
 		general_layout,
-		general_date,
-		day_label,
-		hrs_label,
-		min_label,
-		sec_label,
 		style_label,
 		style_number,
 		style_dimension,
@@ -228,57 +228,47 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				<GlobalCss {...WcbAttrsForSave()} />
 
 				{/* CHILD CONTENT  */}
-				<div className="wcb-countdown__inner">
-					<div className={`wcb-countdown__content ${general_preset.preset}`}>
+		
+				<div className={`wcb-countdown__content ${general_preset.preset}`}>
 						<div className="wcb-countdown__box">
 							<div className="wcb-countdown__number wcb-countdown-day"></div>
-							{general_date.enableLabel && (
-								<RichText
-									tagName="div"
-									value={day_label}
-									allowedFormats={[]}
-									onChange={(content) => setAttributes({ day_label: content })}
-									className="wcb-countdown__day"
-								/>
-							)}
-						</div>
+							<RichText
+								tagName="div"
+								value={daylabel}
+								allowedFormats={[]}
+								onChange={(content) => setAttributes({ daylabel: content })}
+								className="wcb-countdown__label wcb-countdown__daylabel"
+							/>
+							</div>
 						<div className="wcb-countdown__box">
 							<div className="wcb-countdown__number wcb-countdown-hrs"></div>
-							{general_date.enableLabel && (
-								<RichText
-									tagName="div"
-									value={hrs_label}
-									allowedFormats={[]}
-									onChange={(content) => setAttributes({ hrs_label: content })}
-									className="wcb-countdown__hour"
-								/>
-							)}
-						</div>
-						<div className="wcb-countdown__box">
+							<RichText
+								tagName="div"
+								value={hrslabel}
+								allowedFormats={[]}
+								onChange={(content) => setAttributes({ hrslabel: content })}
+								className="wcb-countdown__label wcb-countdown__hrslabel"
+							/>
+							</div><div className="wcb-countdown__box">
 							<div className="wcb-countdown__number wcb-countdown-mins"></div>
-							{general_date.enableLabel && (
+							<RichText
+								tagName="div"
+								value={minlabel}
+								allowedFormats={[]}
+								onChange={(content) => setAttributes({ minlabel: content })}
+								className="wcb-countdown__label wcb-countdown__minlabel"
+							/>
+							</div>
+							<div className="wcb-countdown__box">
+								<div className="wcb-countdown__number wcb-countdown-secs"></div>
 								<RichText
 									tagName="div"
-									value={min_label}
+									value={seclabel}
 									allowedFormats={[]}
-									onChange={(content) => setAttributes({ min_label: content })}
-									className="wcb-countdown__minute"
+									onChange={(content) => setAttributes({ seclabel: content })}
+									className="wcb-countdown__label wcb-countdown__seclabel"
 								/>
-							)}
-						</div>
-						<div className="wcb-countdown__box">
-							<div className="wcb-countdown__number wcb-countdown-secs"></div>
-							{general_date.enableLabel && (
-								<RichText
-									tagName="div"
-									value={sec_label}
-									allowedFormats={[]}
-									onChange={(content) => setAttributes({ sec_label: content })}
-									className="wcb-countdown__seconds"
-								/>
-							)}
-						</div>
-					</div>
+							</div>
 				</div>
 			</div>
 		</MyCacheProvider>

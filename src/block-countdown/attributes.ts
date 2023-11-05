@@ -44,10 +44,10 @@ import {
 
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
-	day_label: string;
-	hrs_label: string;
-	min_label: string;
-	sec_label: string;
+	daylabel: string;
+	hrslabel: string;
+	minlabel: string;
+	seclabel: string;
 	//
 	general_layout: WCB_COUNTDOWN_PANEL_LAYOUT;
 	general_preset: WCB_COUNTDOWN_PANEL_PRESET;
@@ -68,32 +68,32 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	},
 
 	// THE ATTRS OF BLOCK HERE
-	day_label: {
+	daylabel: {
 		type: "string",
 		source: "html",
-		selector: ".wcb-icon-box__day",
+		selector: ".wcb-countdown__daylabel",
 		default: "DAYS",
 	},
-	hrs_label: {
+	hrslabel: {
 		type: "string",
 		source: "html",
-		selector: ".wcb-icon-box__hour",
+		selector: ".wcb-countdown__hrslabel",
 		default: "HOURS",
 	},
-	min_label: {
+	minlabel: {
 		type: "string",
 		source: "html",
-		selector: ".wcb-icon-box__minute",
+		selector: ".wcb-countdown__minlabel",
 		default: "MINUTES",
 	},
-	sec_label: {
+	seclabel: {
 		type: "string",
 		source: "html",
-		selector: ".wcb-icon-box__seconds",
+		selector: ".wcb-countdown__seclabel",
 		default: "SECONDS",
 	},
+	//
 
-	// ATTRS
 	general_layout: {
 		type: "object",
 		default: WCB_COUNTDOWN_PANEL_LAYOUT_DEMO,
@@ -118,7 +118,8 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		type: "object",
 		default: WCB_COUNTDOWN_PANEL_STYLE_DIMENSION_DEMO,
 	},
-	//
+
+	// ADVANCE
 	advance_responsiveCondition: {
 		type: "object",
 		default: RESPONSIVE_CONDITON_DEMO,

@@ -1,11 +1,14 @@
+import React from "react";
 import { __ } from "@wordpress/i18n";
-import { RichText, useBlockProps } from "@wordpress/block-editor";
-import React, { useEffect } from "react";
+import { useBlockProps } from "@wordpress/block-editor";
+import { InnerBlocks, RichText } from "@wordpress/block-editor";
 import { WcbAttrs } from "./attributes";
 import SaveCommon from "../components/SaveCommon";
 import "./style.scss";
+import MyIconFull from "../components/controls/MyIconFull";
+
 export interface WcbAttrsForSave
-	extends Omit<WcbAttrs, "day_label" | "hrs_label" | "min_label" | "sec_label"> { }
+	extends Omit<WcbAttrs, "heading" | "designation" | "description"> { }
 
 export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const {
@@ -14,16 +17,17 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		advance_zIndex,
 		general_layout,
 		general_date,
-		day_label,
-		hrs_label,
-		min_label,
-		sec_label,
+		daylabel,
+		hrslabel,
+		minlabel,
+		seclabel,
 		style_label,
 		style_number,
 		style_dimension,
 		advance_motionEffect,
 		general_preset
 	} = attributes;
+	//
 
 	const newAttrForSave: WcbAttrsForSave = {
 		uniqueId,
@@ -37,8 +41,11 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		advance_motionEffect,
 		general_preset
 	};
-
-	const wrapBlockProps = useBlockProps.save({ className: "wcb-countdown__wrap" });
+	//
+	const wrapBlockProps = useBlockProps.save({
+		className: "wcb-countdown__wrap",
+	});
+	//
 
 	return (
 		<SaveCommon
@@ -46,48 +53,44 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			attributes={newAttrForSave}
 			uniqueId={uniqueId}
 		>
-			<div className="wcb-countdown__inner">
-				<div className={`wcb-countdown__content ${general_preset.preset}`}>
-					<div className="wcb-countdown__box">
-						<div className="wcb-countdown__number wcb-countdown-day"></div>
-						{general_date.enableLabel && (
-							<RichText.Content
-								tagName='div'
-								value={day_label}
-								className="wcb-countdown__label"
-							/>
-						)}
-					</div>
-					<div className="wcb-countdown__box">
-						<div className="wcb-countdown__number wcb-countdown-hrs"></div>
-						{general_date.enableLabel && (
-							<RichText.Content
-								tagName='div'
-								value={hrs_label}
-								className="wcb-countdown__label"
-							/>
-						)}
-					</div>
-					<div className="wcb-countdown__box">
-						<div className="wcb-countdown__number wcb-countdown-mins"></div>
-						{general_date.enableLabel && (
-							<RichText.Content
-								tagName='div'
-								value={min_label}
-								className="wcb-countdown__label"
-							/>
-						)}
-					</div>
-					<div className="wcb-countdown__box">
-						<div className="wcb-countdown__number wcb-countdown-secs"></div>
-						{general_date.enableLabel && (
-							<RichText.Content
-								tagName='div'
-								value={sec_label}
-								className="wcb-countdown__label"
-							/>
-						)}
-					</div>
+			{/* CHILD CONTENT  */}
+
+			<div className={`wcb-countdown__content ${general_preset.preset}`}>
+
+				<div className="wcb-countdown__box">
+					<div className="wcb-countdown__number wcb-countdown-day"></div>
+					<RichText.Content
+						tagName='div'
+						value={daylabel}
+						className="wcb-countdown__label wcb-countdown__daylabel"
+					/>
+				</div>
+				<div className="wcb-countdown__box">
+					<div className="wcb-countdown__number wcb-countdown-hrs"></div>
+
+					<RichText.Content
+						tagName='div'
+						value={hrslabel}
+						className="wcb-countdown__label wcb-countdown__hrslabel"
+					/>
+				</div>
+				<div className="wcb-countdown__box">
+					<div className="wcb-countdown__number wcb-countdown-mins"></div>
+
+					<RichText.Content
+						tagName='div'
+						value={minlabel}
+						className="wcb-countdown__label wcb-countdown__minlabel"
+					/>
+				</div>
+				<div className="wcb-countdown__box">
+					<div className="wcb-countdown__number wcb-countdown-secs"></div>
+
+					<RichText.Content
+						tagName='div'
+						value={seclabel}
+						className="wcb-countdown__label wcb-countdown__seclabel"
+					/>
 				</div>
 			</div>
 		</SaveCommon>
