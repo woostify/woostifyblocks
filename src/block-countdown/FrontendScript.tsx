@@ -17,5 +17,5 @@ export function initCountDown(
 		'timerEndAction': cd_date[1],
 		'redirectURL': ''
 	}
-	WCBCountdown.init('.wcb-countdown__content', data);
+	WCBCountdown.init(`#${props.uniqueId} .wcb-countdown__content`, data);
 }

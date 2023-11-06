@@ -68,7 +68,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			'timerEndAction': cd_date[1],
 			'redirectURL': ''
 		}
-		WCBCountdown.init('.wcb-countdown__content', data);
+		WCBCountdown.init(`#${UNIQUE_ID} .wcb-countdown__content`, data);
 
 	}, [UNIQUE_ID, attributes]);
 	//

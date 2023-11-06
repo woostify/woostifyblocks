@@ -28,8 +28,7 @@ const WcbCountdownPanelDate: FC<Props> = ({
 	onToggle,
 	opened,
 }) => {
-	const { enableLabel, date } =
-		panelData;
+	const { enableLabel, date } = panelData;
 	return (
 		<PanelBody
 			initialOpen={initialOpen}

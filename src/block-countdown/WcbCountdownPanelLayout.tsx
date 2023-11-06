@@ -4,7 +4,6 @@ import React, { FC, CSSProperties } from "react";
 import HelpText from "../components/controls/HelpText";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import { PLANS_FLEX_DIRECTIONS_DEMO } from "../components/controls/MyFlexPropertiesControl/types";
-import MyHeadingTagControl from "../components/controls/MyHeadingTagControl/MyHeadingTagControl";
 import MyRadioGroup from "../components/controls/MyRadioGroup";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
@@ -16,28 +15,24 @@ import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives"
 
 export interface WCB_COUNTDOWN_PANEL_LAYOUT {
 	textAlignment: HasResponsive<TextAlignment>;
-	headingTag: keyof HTMLElementTagNameMap;
 	contentWidth: HasResponsive<string>;
 	flexDirection: HasResponsive<CSSProperties["flexDirection"]>;
 }
 
 export const WCB_COUNTDOWN_PANEL_LAYOUT_PRESET_LEFT_DEMO: WCB_COUNTDOWN_PANEL_LAYOUT = {
 	textAlignment: { Desktop: "left" },
-	headingTag: "h3",
-	contentWidth: { Desktop: "70%" },
+	contentWidth: { Desktop: "100%" },
 	flexDirection: { Desktop: "column" },
 };
 export const WCB_COUNTDOWN_PANEL_LAYOUT_PRESET_CENTER_DEMO: WCB_COUNTDOWN_PANEL_LAYOUT = {
 	textAlignment: { Desktop: "center" },
-	headingTag: "h3",
-	contentWidth: { Desktop: "70%" },
+	contentWidth: { Desktop: "100%" },
 	flexDirection: { Desktop: "column" },
 };
 
 export const WCB_COUNTDOWN_PANEL_LAYOUT_DEMO: WCB_COUNTDOWN_PANEL_LAYOUT = {
 	textAlignment: { Desktop: "left" },
-	headingTag: "h3",
-	contentWidth: { Desktop: "70%" },
+	contentWidth: { Desktop: "100%" },
 	flexDirection: { Desktop: "row" },
 };
 
@@ -56,7 +51,7 @@ const WcbCountdownPanelLayout: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
-	const { textAlignment, contentWidth, headingTag, flexDirection } = panelData;
+	const { textAlignment, contentWidth, flexDirection } = panelData;
 
 	const { currentDeviceValue: TEXT_ALIGNMENT } = getValueFromAttrsResponsives(
 		textAlignment,
@@ -111,13 +106,6 @@ const WcbCountdownPanelLayout: FC<Props> = ({
 					<HelpText>{__("Flex property between content and button.")}</HelpText>
 				</div>
 
-				<MyHeadingTagControl
-					tag={headingTag}
-					onChange={(value) => {
-						setAttr__({ ...panelData, headingTag: value });
-					}}
-				/>
-
 				<MySpacingSizesControl
 					label={__("Content width", "wcb")}
 					onChange={(value) => {
@@ -129,8 +117,8 @@ const WcbCountdownPanelLayout: FC<Props> = ({
 							},
 						});
 					}}
-					value={CONTENT_WIDTH || "50%"}
-					units={[{ value: "%", label: "%", default: 50 }]}
+					value={CONTENT_WIDTH || "100%"}
+					units={[{ value: "%", label: "%", default: 100 }]}
 				/>
 			</div>
 		</PanelBody>

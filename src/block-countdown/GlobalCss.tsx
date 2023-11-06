@@ -160,7 +160,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 
 			<Global
 				styles={getStyleObjectFromResponsiveAttr({
-					className: BOX_CLASSNAME,
+					className: WRAP_CLASSNAME,
 					value: general_layout.contentWidth,
 					prefix: "width",
 				})}

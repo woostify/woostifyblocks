@@ -55,10 +55,6 @@ const classes: {
 		C: React.lazy(() => import("../block-icon-box/GlobalCss")),
 	},
 	{
-		D: ".wcb-icon-box__wrap.wcb-update-div",
-		C: React.lazy(() => import("../block-icon-box-1/GlobalCss")),
-	},
-	{
 		D: ".wcb-image__wrap.wcb-update-div",
 		C: React.lazy(() => import("../block-image/GlobalCss")),
 	},

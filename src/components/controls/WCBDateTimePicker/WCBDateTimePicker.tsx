@@ -17,17 +17,17 @@ const WCBDateTimePicker: FC<Props> = ({
     const [ new_date, setDate ] = useState( new Date() );
 
     useEffect(() => {
-		setDate(date.countdown_date);
-	}, [date.countdown_date]);
+		setDate(date);
+	}, [date]);
 
     const handleDateSelect = (d: string) => {
-		setDate(d);
+		setDate(date);
 		onChange(d);
 	};
 
     return (
         <DateTimePicker
-            currentDate={ date.countdown_date }
+            selected={ date }
             onChange={(new_date) => {
                 handleDateSelect(new_date || "");
             }}

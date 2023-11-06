@@ -6,18 +6,9 @@
 .wcb-countdown__buttons {
 	flex-shrink: 0;
 }
-
-.wcb-countdown__title,
-.wcb-countdown__description {
-	margin: 0;
-}
-
-.wcb-countdown__description {
-	line-height: 1.5;
-}
 .wcb-countdown__box {
     position: relative;
-    width: 155px;
+    width: 25%;
     text-align: center;
 }
 .wcb-countdown__content {
@@ -58,7 +49,10 @@
     &.wcb-countdown-5{
         .wcb-countdown__box .wcb-countdown__number{
            display: inline-block;
-           margin-right: 22px;
+           margin-right: 5px;
+        }
+        .wcb-countdown__label {
+            display: inline-block;
         }
     }
     .wcb-countdown__box:not(:last-child) {

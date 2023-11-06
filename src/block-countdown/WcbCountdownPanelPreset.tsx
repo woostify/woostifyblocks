@@ -11,7 +11,7 @@ export interface WCB_COUNTDOWN_PANEL_PRESET {
 }
 
 export const WCB_COUNTDOWN_PANEL_PRESET_DEMO: WCB_COUNTDOWN_PANEL_PRESET = {
-	preset: "",
+	preset: "wcb-countdown-1",
 };
 
 interface Props
