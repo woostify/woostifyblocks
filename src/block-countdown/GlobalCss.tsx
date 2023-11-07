@@ -174,12 +174,24 @@ const GlobalCss: FC<Props> = (attrs) => {
 			/>
 
 			{/* LABEL CSS */}
-			<Global styles={getInner__Label_typography()} />
-			<Global styles={getInner__Label_color()} />
+			<Global styles={[
+				getInner__Label_typography(),
+				{
+					[LABEL_CLASSNAME]: {
+						color: style_label.textColor,
+					},
+				},
+			]} />
 			
 			{/* NUMBER CSS */}
-			<Global styles={getInner__Number_typography()} />
-			<Global styles={getInner__Number_color()} />
+			<Global styles={[
+				getInner__Number_typography(),
+				{
+					[NUMBER_CLASSNAME]: {
+						color: style_number.textColor,
+					},
+				},
+			]} />
 			<Global
 				styles={getStyleObjectFromResponsiveAttr({
 					className: NUMBER_CLASSNAME,

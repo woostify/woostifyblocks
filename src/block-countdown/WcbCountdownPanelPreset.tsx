@@ -37,7 +37,7 @@ const WcbCountdownPanelPreset: FC<Props> = ({
 			<RadioGroup value={panelData.preset} onChange={setPreset}>
 				<RadioGroup.Label className="relative flex items-center justify-between ">
 					<span>{__("Select Preset", "wcb")}</span>
-					<ResetButton onClick={() => setPreset("")} />
+					<ResetButton onClick={() => setPreset(WCB_COUNTDOWN_PANEL_PRESET_DEMO.preset)} />
 				</RadioGroup.Label>
 				<div className={"relative p-3 bg-slate-50 mt-3 rounded-lg"}>
 					<div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))]"></div>

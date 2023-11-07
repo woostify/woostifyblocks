@@ -8,11 +8,17 @@ import WCBDateTimePicker, {
 export interface WCB_COUNTDOWN_PANEL_DATE {
 	enableLabel: boolean;
 	date: countdown_date;
+	show_day: boolean;
+	show_hour: boolean;
+	show_minute: boolean;
 }
 
 export const WCB_COUNTDOWN_PANEL_DATE_DEMO: WCB_COUNTDOWN_PANEL_DATE = {
 	enableLabel: true,
-	date: new Date().toJSON()
+	date: new Date().toJSON(),
+	show_day: true,
+	show_hour: true,
+	show_minute: true,
 };
 
 interface Props
@@ -28,7 +34,7 @@ const WcbCountdownPanelDate: FC<Props> = ({
 	onToggle,
 	opened,
 }) => {
-	const { enableLabel, date } = panelData;
+	const { enableLabel, date, show_day, show_hour, show_minute } = panelData;
 	return (
 		<PanelBody
 			initialOpen={initialOpen}
@@ -54,6 +60,34 @@ const WcbCountdownPanelDate: FC<Props> = ({
 						});
 					}}
 				/>
+				<ToggleControl
+					label={__("Show Days", "wcb")}
+					checked={show_day}
+					className="mb-0"
+					onChange={(checked) => {
+						setAttr__({ ...panelData, show_day: checked });
+					}}
+				/>
+				{!show_day && (
+					<ToggleControl
+						label={__("Show Hours", "wcb")}
+						checked={show_hour}
+						className="mb-0"
+						onChange={(checked) => {
+							setAttr__({ ...panelData, show_hour: checked });
+						}}
+					/>
+				)}
+				{!show_hour && (
+					<ToggleControl
+						label={__("Show Minutes", "wcb")}
+						checked={show_minute}
+						className="mb-0"
+						onChange={(checked) => {
+							setAttr__({ ...panelData, show_minute: checked });
+						}}
+					/>
+				)}
 			</div>
 		</PanelBody>
 	);
