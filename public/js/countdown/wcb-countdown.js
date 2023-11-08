@@ -118,10 +118,14 @@ WCBCountdown = {
 	},
 
 	changeEndTime( mainSelector, data = {}, ref ) {
+		this.elements[ mainSelector ] = this.getElement( mainSelector );
 		clearInterval( this.countdownInterval[ mainSelector ] );
 
 		if ( typeof this.elements[ mainSelector ] !== 'undefined' ) {
 			// Ensures instantaneous refresh of value.
+			if (typeof ref == 'undefined') {
+				ref = this.elements[ mainSelector ];
+			}
 			this.updateCountdown( mainSelector, data, ref );
 
             this.countdownInterval[ mainSelector ] = setInterval( () => {

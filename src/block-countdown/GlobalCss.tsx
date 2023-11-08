@@ -52,13 +52,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 			className: LABEL_CLASSNAME,
 		});
 	};
-	const getInner__Label_color = () => {
-		const { textColor } = style_label;
-		return getColorAndGradientStyles({
-			textColor,
-			className: LABEL_CLASSNAME,
-		});
-	};
 
 	// ------------------- NUMBER
 	const getInner__Number_typography = () => {
@@ -69,24 +62,19 @@ const GlobalCss: FC<Props> = (attrs) => {
 			className: NUMBER_CLASSNAME,
 		});
 	};
-	const getInner__Number_color = () => {
-		const { textColor } = style_number;
-		return getColorAndGradientStyles({
-			textColor,
-			className: NUMBER_CLASSNAME,
-		});
-	};
 
 	const {
 		value_Desktop: textAlignment_Desktop,
 		value_Tablet: textAlignment_tablet,
 		value_Mobile: textAlignment_mobile,
 	} = getValueFromAttrsResponsives(general_layout.textAlignment);
+
 	const {
 		value_Desktop: flexDirection_Desktop,
 		value_Tablet: flexDirection_tablet,
 		value_Mobile: flexDirection_mobile,
 	} = getValueFromAttrsResponsives(general_layout.flexDirection);
+
 	// FLEX COL
 	let ALIGN_ITEMS: HasResponsive<CSSProperties["alignItems"]> = {
 		Desktop:
@@ -131,6 +119,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	if (!uniqueId) {
 		return null;
 	}
+	
 	return (
 		<>
 			{ <Global styles={getDivWrapStyles()} /> }
