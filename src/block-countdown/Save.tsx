@@ -56,36 +56,38 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			{/* CHILD CONTENT  */}
 
 			<div className={`wcb-countdown__content ${general_preset.preset}`}>
-
-				<div className="wcb-countdown__box">
-					<div className="wcb-countdown__number wcb-countdown-day"></div>
-					<RichText.Content
-						tagName='div'
-						value={daylabel}
-						className="wcb-countdown__label wcb-countdown__daylabel"
-					/>
-				</div>
-				<div className="wcb-countdown__box">
-					<div className="wcb-countdown__number wcb-countdown-hrs"></div>
-
-					<RichText.Content
-						tagName='div'
-						value={hrslabel}
-						className="wcb-countdown__label wcb-countdown__hrslabel"
-					/>
-				</div>
-				<div className="wcb-countdown__box">
-					<div className="wcb-countdown__number wcb-countdown-mins"></div>
-
-					<RichText.Content
-						tagName='div'
-						value={minlabel}
-						className="wcb-countdown__label wcb-countdown__minlabel"
-					/>
-				</div>
+				{general_date.show_day && (
+					<div className="wcb-countdown__box">
+						<div className="wcb-countdown__number wcb-countdown-day"></div>
+						<RichText.Content
+							tagName='div'
+							value={daylabel}
+							className="wcb-countdown__label wcb-countdown__daylabel"
+						/>
+					</div>
+				)}
+				{general_date.show_hour && (
+					<div className="wcb-countdown__box">
+						<div className="wcb-countdown__number wcb-countdown-hrs"></div>
+						<RichText.Content
+							tagName='div'
+							value={hrslabel}
+							className="wcb-countdown__label wcb-countdown__hrslabel"
+						/>
+					</div>
+				)}
+				{general_date.show_minute && (
+					<div className="wcb-countdown__box">
+						<div className="wcb-countdown__number wcb-countdown-mins"></div>
+						<RichText.Content
+							tagName='div'
+							value={minlabel}
+							className="wcb-countdown__label wcb-countdown__minlabel"
+						/>
+					</div>
+				)}
 				<div className="wcb-countdown__box">
 					<div className="wcb-countdown__number wcb-countdown-secs"></div>
-
 					<RichText.Content
 						tagName='div'
 						value={seclabel}

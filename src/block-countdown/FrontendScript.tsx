@@ -10,9 +10,9 @@ export function initCountDown(
 	const data = {
 		'block_id': props.uniqueId,
 		'endDateTime': cd_date[0],
-		'showDays': true,
-		'showHours': true,
-		'showMinutes': true, 
+		'showDays': props.general_date.show_day,
+		'showHours': props.general_date.show_hour,
+		'showMinutes': props.general_date.show_minute, 
 		'isFrontend': true, 
 		'timerEndAction': cd_date[1],
 		'redirectURL': ''
