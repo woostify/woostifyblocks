@@ -1,44 +1,37 @@
 import { PanelBody } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
-import React, { FC, CSSProperties } from "react";
-import HelpText from "../components/controls/HelpText";
+import React, { FC } from "react";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
-import MyDimensionsNoGapControl from "../components/controls/MyDimensionsControl/MyDimensionsNoGapControl";
-import {
-	MyDimensionsNoGapControlData,
-	MY_DIMENSIONS_NO_GAP_CONTROL_DEMO,
-} from "../components/controls/MyDimensionsControl/types";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
-
-export interface WCB_COUNTDOWN_PANEL_STYLE_DIMENSION
-	extends MyDimensionsNoGapControlData {
-	gap: HasResponsive<string>;
+export interface WCB_COUNTDOWN_PANEL_STYLE_DIMENSION {
+	gap_boxes: HasResponsive<string>;
+	width_box: HasResponsive<string>;
+	gap_number: HasResponsive<string>;
+	background: ''
 }
 
 export const WCB_COUNTDOWN_PANEL_STYLE_DIMENSION_DEMO: WCB_COUNTDOWN_PANEL_STYLE_DIMENSION =
-	{
-		...MY_DIMENSIONS_NO_GAP_CONTROL_DEMO,
-		padding: {
-			Desktop: {
-				top: "",
-				left: "",
-				right: "",
-				bottom: "",
-			},
-		},
-		margin: {
-			Desktop: {
-				top: "",
-				left: "",
-				right: "",
-				bottom: "",
-			},
-		},
-		gap: { Desktop: "1.75rem" },
-	};
+{
+	gap_boxes: {
+		Desktop: "40px",
+		Tablet: "20px",
+		Mobile: "10px"
+	},
+	width_box: {
+		Desktop: "155px",
+		Tablet: "120px",
+		Mobile: "65px"
+	},
+	gap_number: {
+		Desktop: "1px",
+		Tablet: "0px",
+		Mobile: "0px"
+	},
+	background: ""
+};
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
@@ -54,40 +47,74 @@ const WcbCountdownPanel_StyleDimension: FC<Props> = ({
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { gap } = panelData;
-	const { currentDeviceValue: currentColgap } = getValueFromAttrsResponsives(
-		gap,
-		deviceType
+
+	const { gap_boxes, width_box, gap_number, background } = panelData;
+	const { currentDeviceValue: currentGapBox } = getValueFromAttrsResponsives(
+		gap_boxes,
+		deviceType,
 	);
+
+	const { currentDeviceValue: currentWidthBox } = getValueFromAttrsResponsives(
+		width_box,
+		deviceType,
+	);
+
+	const { currentDeviceValue: currentGapNumber } = getValueFromAttrsResponsives(
+		gap_number,
+		deviceType,
+	);
+
 	return (
 		<PanelBody
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Dimension", "wcb")}
+			title={__("Boxes", "wcb")}
 		>
 			<div className="space-y-5">
-				<MyDimensionsNoGapControl
-					dimensionControl={panelData}
-					setAttrs__dimensions={(data) => setAttr__({ ...panelData, ...data })}
-				/>
 				<div>
 					<MySpacingSizesControl
 						onChange={(data) => {
 							setAttr__({
 								...panelData,
-								gap: {
-									...gap,
+								gap_boxes: {
+									...gap_boxes,
 									[deviceType]: data,
 								},
 							});
 						}}
-						value={currentColgap || "0"}
-						label={__("Gap between content & button", "wcb")}
+						value={currentGapBox || "40"}
+						label={__("Spacing between boxes", "wcb")}
 					/>
-					<HelpText>
-						{__("Spacing between content and button.", "wcb")}
-					</HelpText>
+
+					<MySpacingSizesControl
+						onChange={(data) => {
+							setAttr__({
+								...panelData,
+								width_box: {
+									...width_box,
+									[deviceType]: data,
+								},
+							});
+						}}
+						value={currentWidthBox || "150"}
+						label={__("Width of a box", "wcb")}
+					/>
+
+					<MySpacingSizesControl
+						onChange={(data) => {
+							setAttr__({
+								...panelData,
+								gap_number: {
+									...gap_number,
+									[deviceType]: data,
+								},
+							});
+						}}
+						value={currentGapNumber || "1"}
+						label={__("Spacing between number and label", "wcb")}
+					/>
+
 				</div>
 			</div>
 		</PanelBody>

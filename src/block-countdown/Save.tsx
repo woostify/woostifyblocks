@@ -1,11 +1,10 @@
 import React from "react";
 import { __ } from "@wordpress/i18n";
 import { useBlockProps } from "@wordpress/block-editor";
-import { InnerBlocks, RichText } from "@wordpress/block-editor";
+import { RichText } from "@wordpress/block-editor";
 import { WcbAttrs } from "./attributes";
 import SaveCommon from "../components/SaveCommon";
 import "./style.scss";
-import MyIconFull from "../components/controls/MyIconFull";
 
 export interface WcbAttrsForSave
 	extends Omit<WcbAttrs, "heading" | "designation" | "description"> { }
@@ -23,6 +22,9 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		seclabel,
 		style_label,
 		style_number,
+		style_background,
+		style_border,
+		style_boxshadow,
 		style_dimension,
 		advance_motionEffect,
 		general_preset
@@ -35,8 +37,15 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		advance_zIndex,
 		general_layout,
 		general_date,
+		daylabel,
+		hrslabel,
+		minlabel,
+		seclabel,
 		style_label,
 		style_number,
+		style_background,
+		style_border,
+		style_boxshadow,
 		style_dimension,
 		advance_motionEffect,
 		general_preset

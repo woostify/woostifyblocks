@@ -42,6 +42,21 @@ import {
 	WCB_COUNTDOWN_PANEL_STYLE_NUMBER_DEMO,
 } from "./WcbCountdownPanel_StyleNumber";
 
+import {
+	WCB_BUTTON_PANEL_STYLE_BACKGROUND,
+	WCB_BUTTON_PANEL_STYLE_BACKGROUND_DEMO,
+} from "./WcbButtonPanel_StyleBackground";
+
+import {
+	WCB_BUTTON_PANEL_STYLE_BORDER,
+	WCB_BUTTON_PANEL_STYLE_BORDER_DEMO,
+} from "./WcbButtonPanel_StyleBorder";
+
+import {
+	WCB_BUTTON_PANEL_STYLE_BOXSHADOW,
+	WCB_BUTTON_PANEL_STYLE_BOXSHADOW_DEMO,
+} from "./WcbButtonPanel_StyleBoxshadow";
+
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	daylabel: string;
@@ -53,7 +68,10 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	general_preset: WCB_COUNTDOWN_PANEL_PRESET;
 	general_date: WCB_COUNTDOWN_PANEL_DATE;
 	style_label: WCB_COUNTDOWN_PANEL_STYLE_TITLE;
+	style_background: WCB_BUTTON_PANEL_STYLE_BACKGROUND;
 	style_number: WCB_COUNTDOWN_PANEL_STYLE_NUMBER;
+	style_border: WCB_BUTTON_PANEL_STYLE_BORDER;
+	style_boxshadow: WCB_BUTTON_PANEL_STYLE_BOXSHADOW;
 	style_dimension: WCB_COUNTDOWN_PANEL_STYLE_DIMENSION;
 	//
 	advance_responsiveCondition: MyResponsiveConditionControlData;
@@ -113,6 +131,18 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	style_number: {
 		type: "object",
 		default: WCB_COUNTDOWN_PANEL_STYLE_NUMBER_DEMO,
+	},
+	style_background: {
+		type: "object",
+		default: WCB_BUTTON_PANEL_STYLE_BACKGROUND_DEMO,
+	},
+	style_border: {
+		type: "object",
+		default: WCB_BUTTON_PANEL_STYLE_BORDER_DEMO,
+	},
+	style_boxshadow: {
+		type: "object",
+		default: WCB_BUTTON_PANEL_STYLE_BOXSHADOW_DEMO,
 	},
 	style_dimension: {
 		type: "object",

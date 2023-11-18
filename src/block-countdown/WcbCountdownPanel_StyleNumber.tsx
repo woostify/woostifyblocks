@@ -7,23 +7,21 @@ import {
 	TYPOGRAPHY_CONTROL_DEMO,
 } from "../components/controls/MyTypographyControl/types";
 import MyDisclosure from "../components/controls/MyDisclosure";
-import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
-import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
-import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
-import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
-import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 
 export interface WCB_COUNTDOWN_PANEL_STYLE_NUMBER {
 	typography: MyTypographyControlData;
 	textColor: string;
-	marginBottom: HasResponsive<string>;
 }
 
 export const WCB_COUNTDOWN_PANEL_STYLE_NUMBER_DEMO: WCB_COUNTDOWN_PANEL_STYLE_NUMBER = {
 	typography: {
 		...TYPOGRAPHY_CONTROL_DEMO,
-		fontSizes: { Desktop: "56px" },
+		fontSizes: {
+			Desktop: "56px",
+			Tablet: "38px",
+			Mobile: "20px"
+		},
 		appearance: {
 			...TYPOGRAPHY_CONTROL_DEMO.appearance,
 			style: {
@@ -33,7 +31,6 @@ export const WCB_COUNTDOWN_PANEL_STYLE_NUMBER_DEMO: WCB_COUNTDOWN_PANEL_STYLE_NU
 		},
 	},
 	textColor: "inherit",
-	marginBottom: { Desktop: "1px" },
 };
 
 interface Props
@@ -49,13 +46,7 @@ const WcbCountdownPanel_StyleNumber: FC<Props> = ({
 	onToggle,
 	opened,
 }) => {
-	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { typography, textColor, marginBottom } = panelData;
-
-	const { currentDeviceValue: MARGIN_BOTTOM } = getValueFromAttrsResponsives(
-		marginBottom,
-		deviceType
-	);
+	const { typography, textColor } = panelData;
 
 	//
 	return (
@@ -87,20 +78,6 @@ const WcbCountdownPanel_StyleNumber: FC<Props> = ({
 						color={textColor}
 					/>
 
-					<MySpacingSizesControl
-						onChange={(value) => {
-							setAttr__({
-								...panelData,
-								marginBottom: {
-									...marginBottom,
-									[deviceType]: value,
-								},
-							});
-						}}
-						value={MARGIN_BOTTOM || ""}
-						label={__("Margin bottom", "wcb")}
-						hasResponsive
-					/>
 				</MyDisclosure>
 			</div>
 		</PanelBody>

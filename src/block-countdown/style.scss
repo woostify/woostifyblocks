@@ -1,14 +1,5 @@
-.wcb-countdown__content {
-	display: flex;
-	justify-content: space-between;
-}
-
-.wcb-countdown__buttons {
-	flex-shrink: 0;
-}
 .wcb-countdown__box {
     position: relative;
-    width: 25%;
     text-align: center;
 }
 .wcb-countdown__content {
@@ -16,9 +7,7 @@
         .wcb-countdown__box {
             display: flex;
             flex-direction: column;
-            height: 155px;
             aspect-ratio: 1;
-            justify-content: center;
         }
     }
     &.wcb-countdown-1{
@@ -30,7 +19,7 @@
     &.wcb-countdown-2{
         .wcb-countdown__box{
             border-radius: 50%;
-            border: 1px solid rgba(33,33,33,0.67);
+            border: 1px solid #333333;
         }
     }
     &.wcb-countdown-3{
@@ -55,7 +44,7 @@
             display: inline-block;
         }
     }
-    .wcb-countdown__box:not(:last-child) {
-        margin-right: 40px;
+    .wcb-countdown__box {
+        justify-content: center;
     }
 }

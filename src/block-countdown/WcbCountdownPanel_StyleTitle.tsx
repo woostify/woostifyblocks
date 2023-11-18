@@ -19,7 +19,11 @@ export interface WCB_COUNTDOWN_PANEL_STYLE_TITLE {
 export const WCB_COUNTDOWN_PANEL_STYLE_TITLE_DEMO: WCB_COUNTDOWN_PANEL_STYLE_TITLE = {
 	typography: {
 		...TYPOGRAPHY_CONTROL_DEMO,
-		fontSizes: { Desktop: "14px" },
+		fontSizes: { 
+			Desktop: "14px",
+			Tablet: "14px",
+			Mobile: "11px" 
+		},
 		appearance: {
 			...TYPOGRAPHY_CONTROL_DEMO.appearance,
 			style: {

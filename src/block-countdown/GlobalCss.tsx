@@ -1,8 +1,10 @@
 import { Global, CSSObject } from "@emotion/react";
 import React, { FC, CSSProperties } from "react";
+import getBorderStyles from "../utils/getBorderStyles";
+import getBoxShadowStyles from "../utils/getBoxShadowStyles";
+import getBackgroundColorGradientStyles from "../utils/getBackgroundColorGradientStyles";
 import { getAdvanveDivWrapStyles } from "../block-container/getAdvanveStyles";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
-import getColorAndGradientStyles from "../utils/getColorAndGradientStyles";
 import getFlexPropertiesStyles from "../utils/getFlexPropertiesStyles";
 import getStyleObjectFromResponsiveAttr from "../utils/getStyleObjectFromResponsiveAttr";
 import getTypographyStyles from "../utils/getTypographyStyles";
@@ -10,7 +12,7 @@ import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives"
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { WcbAttrsForSave } from "./Save";
 
-interface Props extends WcbAttrsForSave {}
+interface Props extends WcbAttrsForSave { }
 
 const GlobalCss: FC<Props> = (attrs) => {
 	const {
@@ -19,12 +21,17 @@ const GlobalCss: FC<Props> = (attrs) => {
 		general_layout,
 		style_dimension,
 		style_label,
+		style_background,
 		style_number,
+		style_border,
+		style_boxshadow,
+		general_preset,
 		//
 		advance_responsiveCondition,
 		advance_zIndex,
 		advance_motionEffect,
 	} = attrs;
+
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
 	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
@@ -38,6 +45,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		return {
 			[`${WRAP_CLASSNAME}`]: {
 				[`@media (min-width: ${media_tablet})`]: {},
+				[`@media (min-width: ${media_desktop})`]: {},
 				[`@media (min-width: ${media_desktop})`]: {},
 			},
 		};
@@ -81,20 +89,20 @@ const GlobalCss: FC<Props> = (attrs) => {
 			textAlignment_Desktop === "left"
 				? "start"
 				: textAlignment_Desktop === "right"
-				? "end"
-				: "center",
+					? "end"
+					: "center",
 		Tablet:
 			textAlignment_tablet === "left"
 				? "start"
 				: textAlignment_tablet === "right"
-				? "end"
-				: "center",
+					? "end"
+					: "center",
 		Mobile:
 			textAlignment_mobile === "left"
 				? "start"
 				: textAlignment_mobile === "right"
-				? "end"
-				: "center",
+					? "end"
+					: "center",
 	};
 
 	if (
@@ -119,11 +127,26 @@ const GlobalCss: FC<Props> = (attrs) => {
 	if (!uniqueId) {
 		return null;
 	}
-	
+
 	return (
 		<>
-			{ <Global styles={getDivWrapStyles()} /> }
+			{<Global styles={getDivWrapStyles()} />}
 
+			{/* BORDER  */}
+			<Global
+				styles={getBorderStyles({
+					className: BOX_CLASSNAME,
+					border: style_border,
+					isWithRadius: true,
+				})}
+			/>
+			{/* BOXSHADOW  */}
+			<Global
+				styles={getBoxShadowStyles({
+					className: BOX_CLASSNAME,
+					boxShadow: style_boxshadow,
+				})}
+			/>
 			{/* INNER  */}
 			<Global
 				styles={[
@@ -144,8 +167,39 @@ const GlobalCss: FC<Props> = (attrs) => {
 						value: general_layout.flexDirection,
 						prefix: "flexDirection",
 					}),
+
+					getStyleObjectFromResponsiveAttr({
+						className: BOX_CLASSNAME + '+ div',
+						value: style_dimension.gap_boxes,
+						prefix: "marginLeft",
+					}),
+
+					getStyleObjectFromResponsiveAttr({
+						className: BOX_CLASSNAME,
+						value: style_dimension.width_box,
+						prefix: "width",
+					}),
+
+					getBackgroundColorGradientStyles({
+						className: BOX_CLASSNAME,
+						background: style_background.normal,
+						backgroundHover: style_background.hover,
+					})
+
 				]}
 			/>
+
+			{ general_preset.preset != 'wcb-countdown-5' && (
+				<Global
+					styles={
+						getStyleObjectFromResponsiveAttr({
+							className: BOX_CLASSNAME,
+							value: style_dimension.width_box,
+							prefix: "height",
+						})
+					}
+				/>
+			)}
 
 			<Global
 				styles={getStyleObjectFromResponsiveAttr({
@@ -171,7 +225,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 					},
 				},
 			]} />
-			
+
 			{/* NUMBER CSS */}
 			<Global styles={[
 				getInner__Number_typography(),
@@ -184,7 +238,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 			<Global
 				styles={getStyleObjectFromResponsiveAttr({
 					className: NUMBER_CLASSNAME,
-					value: style_number.marginBottom,
+					value: style_dimension.gap_number,
 					prefix: "marginBottom",
 				})}
 			/>

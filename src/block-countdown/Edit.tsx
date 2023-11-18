@@ -16,6 +16,19 @@ import WcbCountdownPanel_StyleTitle from "./WcbCountdownPanel_StyleTitle";
 import WcbCountdownPanel_StyleNumber from "./WcbCountdownPanel_StyleNumber";
 import WcbCountdownPanel_StyleDimension from "./WcbCountdownPanel_StyleDimension";
 import WcbCountdownPanelPreset from "./WcbCountdownPanelPreset";
+import WcbButtonPanel_StyleBorder, {
+	WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_1,
+	WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_2,
+	WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_3,
+	WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_4,
+	WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_5,
+} from "./WcbButtonPanel_StyleBorder";
+import WcbButtonPanel_StyleBackground, {
+	WCB_BUTTON_PANEL_STYLE_BACKGROUND_PRESET_1,
+	WCB_BUTTON_PANEL_STYLE_BACKGROUND_PRESET_3,
+	WCB_BUTTON_PANEL_STYLE_BACKGROUND_DEMO_WHITE,
+} from "./WcbButtonPanel_StyleBackground";
+import WcbButtonPanel_StyleBoxshadow from "./WcbButtonPanel_StyleBoxshadow";
 import { WcbAttrsForSave } from "./Save";
 import MyCacheProvider from "../components/MyCacheProvider";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
@@ -35,6 +48,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		general_layout,
 		style_label,
 		style_number,
+		style_background,
+		style_border,
+		style_boxshadow,
 		style_dimension,
 		general_preset,
 		advance_motionEffect,
@@ -113,13 +129,27 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabGeneralIsPanelOpen === "Preset" || undefined}
 							//
 							setAttr__={(data) => {
-								if (!data.preset) {
-									return setAttributes({
-										general_preset: data,
-									});
-								}
+								const { preset } = data;
 								setAttributes({
 									general_preset: data,
+								});
+								setAttributes({
+									style_border:
+										preset === "wcb-countdown-1"
+											? WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_1
+											: preset === "wcb-countdown-2"
+											? WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_2
+											: preset === "wcb-countdown-3"
+											? WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_3
+											: preset === "wcb-countdown-4"
+											? WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_4
+											: WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_5,
+									style_background:
+										preset === "wcb-countdown-1"
+										? WCB_BUTTON_PANEL_STYLE_BACKGROUND_PRESET_1
+										: preset === "wcb-countdown-3"
+										? WCB_BUTTON_PANEL_STYLE_BACKGROUND_PRESET_3
+										: WCB_BUTTON_PANEL_STYLE_BACKGROUND_DEMO_WHITE,
 								});
 							}}
 							panelData={general_preset}
@@ -129,19 +159,18 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			case "Styles":
 				return (
 					<>
-						<WcbCountdownPanel_StyleTitle
-							onToggle={() => handleTogglePanel("Styles", "_StyleTitle", true)}
-							initialOpen={
-								tabStylesIsPanelOpen === "_StyleTitle" ||
-								tabStylesIsPanelOpen === "first"
-							}
-							opened={tabStylesIsPanelOpen === "_StyleTitle" || undefined}
+						<WcbCountdownPanel_StyleDimension
+							onToggle={() => handleTogglePanel("Styles", "_StyleDimension")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleDimension" ||
+							tabStylesIsPanelOpen === "first"}
+							opened={tabStylesIsPanelOpen === "_StyleDimension" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ style_label: data });
+								setAttributes({ style_dimension: data });
 							}}
-							panelData={style_label}
+							panelData={style_dimension}
 						/>
+
 						<WcbCountdownPanel_StyleNumber
 							onToggle={() => handleTogglePanel("Styles", "_StyleNumber", true)}
 							initialOpen={tabStylesIsPanelOpen === "_StyleTitle"}
@@ -152,16 +181,62 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							}}
 							panelData={style_number}
 						/>
-						<WcbCountdownPanel_StyleDimension
-							onToggle={() => handleTogglePanel("Styles", "_StyleDimension")}
-							initialOpen={tabStylesIsPanelOpen === "_StyleDimension"}
-							opened={tabStylesIsPanelOpen === "_StyleDimension" || undefined}
+
+						<WcbCountdownPanel_StyleTitle
+							onToggle={() => handleTogglePanel("Styles", "_StyleTitle", true)}
+							initialOpen={
+								tabStylesIsPanelOpen === "_StyleTitle"
+							}
+							opened={tabStylesIsPanelOpen === "_StyleTitle" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ style_dimension: data });
+								setAttributes({ style_label: data });
 							}}
-							panelData={style_dimension}
+							panelData={style_label}
 						/>
+
+						<WcbButtonPanel_StyleBackground
+							onToggle={() => handleTogglePanel("Styles", "_StyleBackground")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleBackground"}
+							opened={tabStylesIsPanelOpen === "_StyleBackground" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({
+									style_background: data,
+									general_preset: { ...general_preset, preset: "" },
+								});
+							}}
+							panelData={style_background}
+						/>
+
+						<WcbButtonPanel_StyleBorder
+							onToggle={() => handleTogglePanel("Styles", "_StyleBorder")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleBorder"}
+							opened={tabStylesIsPanelOpen === "_StyleBorder" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({
+									style_border: data,
+									general_preset: { ...general_preset, preset: "" },
+								});
+							}}
+							panelData={style_border}
+						/>
+
+						<WcbButtonPanel_StyleBoxshadow
+							onToggle={() => handleTogglePanel("Styles", "_StyleBoxshadow")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleBoxshadow"}
+							opened={tabStylesIsPanelOpen === "_StyleBoxshadow" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({
+									style_boxshadow: data,
+									general_preset: { ...general_preset, preset: "" },
+								});
+							}}
+							panelData={style_boxshadow}
+						/>
+						
 					</>
 				);
 			case "Advances":
@@ -193,9 +268,12 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			general_layout,
 			general_preset,
 			general_date,
+			style_background,
 			style_dimension,
 			style_label,
 			style_number,
+			style_border,
+			style_boxshadow,
 			advance_motionEffect,
 		};
 	}, [
@@ -205,9 +283,12 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		general_layout,
 		general_preset,
 		general_date,
+		style_background,
 		style_dimension,
 		style_label,
 		style_number,
+		style_border,
+		style_boxshadow,
 		advance_motionEffect,
 	]);
 
