@@ -4,7 +4,7 @@
 	"name": "wcb/counter",
 	"version": "0.1.0",
 	"title": "Counter",
-	"category": "wcb-counter",
+	"category": "wcb-blocks",
 	"icon": "- wcb-block-editor-block-icon lni lni-clipboard",
 	"description": "Create a box containing an icon or image and, optionally, a title, description, and learn more text.",
 	"supports": {
@@ -12,7 +12,7 @@
 		"anchor": true,
 		"align": true
 	},
-	"textdomain": "wcb-counter",
+	"textdomain": "wcb-blocks",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css"
