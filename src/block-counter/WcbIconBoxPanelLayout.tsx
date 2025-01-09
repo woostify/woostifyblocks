@@ -1,4 +1,4 @@
-import { PanelBody, ToggleControl } from "@wordpress/components";
+import { PanelBody, ToggleControl, RangeControl, TextControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
@@ -17,6 +17,10 @@ export interface WCB_ICON_BOX_PANEL_LAYOUT {
 	enableTitle: boolean;
 	enableDescription: boolean;
 	enableCTAButton: boolean;
+	startNumber: number;
+	endNumber: number;
+	decimalNumber: number;
+	numberPrefix: string;
 }
 
 export const WCB_ICON_BOX_PANEL_LAYOUT_DEMO: WCB_ICON_BOX_PANEL_LAYOUT = {
@@ -26,6 +30,10 @@ export const WCB_ICON_BOX_PANEL_LAYOUT_DEMO: WCB_ICON_BOX_PANEL_LAYOUT = {
 	enablePrefix: false,
 	enableTitle: true,
 	enableCTAButton: false,
+	startNumber: 0,
+	endNumber: 80,
+	decimalNumber: 80,
+	numberPrefix: '',
 };
 
 interface Props
@@ -50,6 +58,10 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 		enablePrefix,
 		enableTitle,
 		enableCTAButton,
+		startNumber,
+		endNumber,
+		decimalNumber,
+		numberPrefix,
 	} = panelData;
 
 	const { currentDeviceValue: TEXT_ALIGNMENT } = getValueFromAttrsResponsives(
@@ -82,31 +94,49 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 					onChange={handleChangeTextAlignment}
 				/>
 
-				<ToggleControl
-					label={__("Enable prefix", "wcb")}
-					checked={enablePrefix}
-					className="mb-0"
-					onChange={(checked) => {
-						setAttr__({ ...panelData, enablePrefix: checked });
-					}}
-				/>
-				<ToggleControl
-					label={__("Enable title", "wcb")}
-					checked={enableTitle}
-					className="mb-0"
-					onChange={(checked) => {
-						setAttr__({ ...panelData, enableTitle: checked });
+				<MyHeadingTagControl
+					tag={headingTag}
+					onChange={(value) => {
+						setAttr__({ ...panelData, headingTag: value });
 					}}
 				/>
 
-				{enableTitle && (
-					<MyHeadingTagControl
-						tag={headingTag}
-						onChange={(value) => {
-							setAttr__({ ...panelData, headingTag: value });
-						}}
-					/>
-				)}
+				<RangeControl
+					label={__("Starting Number", "wcb")}
+					value={startNumber}
+					onChange={(value = 0) => {
+						setAttr__({ ...panelData, startNumber: value});
+					}}
+					required
+				/>
+
+				<RangeControl
+					label={__("Ending Number", "wcb")}
+					value={endNumber}
+					onChange={(value = 0) => {
+						setAttr__({ ...panelData, endNumber: value});
+					}}
+					required
+				/>
+
+				<RangeControl
+					label={__("Decimal Places", "wcb")}
+					value={decimalNumber}
+					onChange={(value = 80) => {
+						setAttr__({ ...panelData, decimalNumber: value});
+					}}
+					required
+				/>
+				
+
+				<TextControl
+					label={__("Number Prefix", "wcb")}
+					type="text"
+					value={numberPrefix}
+					onChange={(value) => {
+						setAttr__({ ...panelData, numberPrefix: value });
+					}}
+				/>
 
 				<ToggleControl
 					label={__("Enable description", "wcb")}
@@ -117,14 +147,6 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 					}}
 				/>
 
-				<ToggleControl
-					label={__("Enable CTA button", "wcb")}
-					checked={enableCTAButton}
-					className="mb-0"
-					onChange={(checked) => {
-						setAttr__({ ...panelData, enableCTAButton: checked });
-					}}
-				/>
 			</div>
 		</PanelBody>
 	);

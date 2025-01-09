@@ -84,7 +84,7 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		type: "string",
 		source: "html",
 		selector: ".wcb-icon-box__heading",
-		default: "John Doe",
+		default: "80",
 	},
 	designation: {
 		type: "string",
@@ -96,8 +96,7 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		type: "string",
 		source: "html",
 		selector: ".wcb-icon-box__description",
-		default:
-			"Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+		default: "Add Your Title Here…",
 	},
 	//
 

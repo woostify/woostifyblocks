@@ -115,7 +115,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								setAttributes({
 									general_layout: data,
 									general_preset: {
-										preset: "",
+										preset: "center",
 									},
 								});
 							}}

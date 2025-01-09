@@ -214,7 +214,7 @@ function wcb_block_products__get_image_html($product)
 }
 
 
-function wcb_block_products__get_title_html($product, $headingTag = "div", $link)
+function wcb_block_products__get_title_html($product, $headingTag = "div", $link = '')
 {
     if (empty($headingTag)) {
         $headingTag = 'div';

@@ -6,7 +6,7 @@
 	"title": "Counter",
 	"category": "wcb-blocks",
 	"icon": "- wcb-block-editor-block-icon lni lni-clipboard",
-	"description": "Create a box containing an icon or image and, optionally, a title, description, and learn more text.",
+	"description": "This block allows you to add number counter.",
 	"supports": {
 		"html": false,
 		"anchor": true,
