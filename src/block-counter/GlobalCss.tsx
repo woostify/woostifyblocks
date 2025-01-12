@@ -24,8 +24,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 		advance_zIndex,
 		general_icon,
 		style_dimension,
-		style_separator,
-		general_separator,
 		advance_motionEffect,
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
@@ -174,30 +172,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 								color: style_title.textColor,
 							},
 						},
-					]}
-				/>
-			) : null}
-
-			{/* ----------- SEPARATOR ----------- */}
-			{general_separator.enableSeparator ? (
-				<Global
-					styles={[
-						getBorderStyles({
-							border: {
-								mainSettings: style_separator.border,
-							},
-							className: `${WRAP_CLASSNAME} .wcb-icon-box__separator`,
-						}),
-						getStyleObjectFromResponsiveAttr({
-							className: `${WRAP_CLASSNAME} .wcb-icon-box__separator`,
-							value: style_separator.width,
-							prefix: "width",
-						}),
-						getStyleObjectFromResponsiveAttr({
-							className: `${WRAP_CLASSNAME} .wcb-icon-box__separator`,
-							value: style_separator.marginBottom,
-							prefix: "marginBottom",
-						}),
 					]}
 				/>
 			) : null}

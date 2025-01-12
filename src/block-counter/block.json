@@ -5,7 +5,7 @@
 	"version": "0.1.0",
 	"title": "Counter",
 	"category": "wcb-blocks",
-	"icon": "- wcb-block-editor-block-icon lni lni-clipboard",
+	"icon": "- wcb-block-editor-block-icon lni lni-image",
 	"description": "This block allows you to add number counter.",
 	"supports": {
 		"html": false,

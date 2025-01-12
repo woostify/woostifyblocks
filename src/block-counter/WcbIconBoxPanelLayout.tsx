@@ -1,4 +1,4 @@
-import { PanelBody, ToggleControl, RangeControl, TextControl } from "@wordpress/components";
+import { PanelBody, ToggleControl, RangeControl, TextControl, SelectControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
@@ -17,10 +17,14 @@ export interface WCB_ICON_BOX_PANEL_LAYOUT {
 	enableTitle: boolean;
 	enableDescription: boolean;
 	enableCTAButton: boolean;
-	startNumber: number;
-	endNumber: number;
-	decimalNumber: number;
+	type: string;
+	startNumber: string;
+	endNumber: string;
+	decimalNumber: string;
 	numberPrefix: string;
+	numberSuffix: string;
+	thousand: string;
+	animationDuration: string;
 }
 
 export const WCB_ICON_BOX_PANEL_LAYOUT_DEMO: WCB_ICON_BOX_PANEL_LAYOUT = {
@@ -30,10 +34,14 @@ export const WCB_ICON_BOX_PANEL_LAYOUT_DEMO: WCB_ICON_BOX_PANEL_LAYOUT = {
 	enablePrefix: false,
 	enableTitle: true,
 	enableCTAButton: false,
-	startNumber: 0,
-	endNumber: 80,
-	decimalNumber: 80,
+	type: 'numner',
+	startNumber: '0',
+	endNumber: '80',
+	decimalNumber: '80',
 	numberPrefix: '',
+	numberSuffix: '%',
+	thousand: '',
+	animationDuration: '1500',
 };
 
 interface Props
@@ -58,10 +66,14 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 		enablePrefix,
 		enableTitle,
 		enableCTAButton,
+		type,
 		startNumber,
 		endNumber,
 		decimalNumber,
 		numberPrefix,
+		numberSuffix,
+		thousand,
+		animationDuration,
 	} = panelData;
 
 	const { currentDeviceValue: TEXT_ALIGNMENT } = getValueFromAttrsResponsives(
@@ -94,6 +106,19 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 					onChange={handleChangeTextAlignment}
 				/>
 
+				<SelectControl
+					label="Type"
+					value={type}
+					options={[
+						{ label: 'Number', value: 'number' },
+						{ label: 'Circle', value: 'circle' },
+						{ label: 'Bar', value: 'bar' },
+					]}
+					onChange={(value) => {
+						setAttr__({ ...panelData, type: value });
+					}}
+				/>
+
 				<MyHeadingTagControl
 					tag={headingTag}
 					onChange={(value) => {
@@ -101,33 +126,32 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 					}}
 				/>
 
-				<RangeControl
+				<TextControl
 					label={__("Starting Number", "wcb")}
+					type="number"
 					value={startNumber}
-					onChange={(value = 0) => {
+					onChange={(value) => {
 						setAttr__({ ...panelData, startNumber: value});
 					}}
-					required
 				/>
 
-				<RangeControl
+				<TextControl
 					label={__("Ending Number", "wcb")}
+					type="number"
 					value={endNumber}
-					onChange={(value = 0) => {
+					onChange={(value) => {
 						setAttr__({ ...panelData, endNumber: value});
 					}}
-					required
-				/>
-
-				<RangeControl
-					label={__("Decimal Places", "wcb")}
-					value={decimalNumber}
-					onChange={(value = 80) => {
-						setAttr__({ ...panelData, decimalNumber: value});
-					}}
-					required
 				/>
 				
+				<TextControl
+					label={__("Decimal Places", "wcb")}
+					type="number"
+					value={decimalNumber}
+					onChange={(value) => {
+						setAttr__({ ...panelData, decimalNumber: value });
+					}}
+				/>
 
 				<TextControl
 					label={__("Number Prefix", "wcb")}
@@ -135,6 +159,38 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 					value={numberPrefix}
 					onChange={(value) => {
 						setAttr__({ ...panelData, numberPrefix: value });
+					}}
+				/>
+
+				<TextControl
+					label={__("Number Suffix", "wcb")}
+					type="text"
+					value={numberSuffix}
+					onChange={(value) => {
+						setAttr__({ ...panelData, numberSuffix: value });
+					}}
+				/>
+
+				<TextControl
+					label={__("Animation Duration", "wcb")}
+					type="number"
+					value={animationDuration}
+					onChange={(value) => {
+						setAttr__({ ...panelData, animationDuration: value });
+					}}
+				/>
+
+				<SelectControl
+					label="Thousand(s)"
+					value={thousand}
+					options={[
+						{ label: 'None', value: '' },
+						{ label: 'Comma', value: ',' },
+						{ label: 'Whitespace', value: ' ' },
+						{ label: 'Apostrophe', value: '\'' },
+					]}
+					onChange={(value) => {
+						setAttr__({ ...panelData, thousand: value });
 					}}
 				/>
 

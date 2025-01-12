@@ -25,8 +25,6 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_title,
 		general_icon,
 		style_dimension,
-		style_separator,
-		general_separator,
 		advance_motionEffect,
 	} = attributes;
 	//
@@ -42,8 +40,6 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_title,
 		general_icon,
 		style_dimension,
-		style_separator,
-		general_separator,
 		advance_motionEffect,
 	};
 	//
@@ -58,19 +54,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 						</div>
 					</div>
 				)}
-				{general_separator.position === "afterIcon" && renderSeparator()}
 			</>
-		);
-	};
-
-	const renderSeparator = () => {
-		if (!general_separator.enableSeparator) {
-			return null;
-		}
-		return (
-			<div className="wcb-icon-box__separator-wrap">
-				<div className="wcb-icon-box__separator"></div>
-			</div>
 		);
 	};
 
@@ -78,7 +62,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 	//
 	const wrapBlockProps = useBlockProps.save({
-		className: "wcb-icon-box__wrap",
+		className: "wcb-counter-box__wrap",
 	});
 	//
 
@@ -106,23 +90,22 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 							/>
 						)}
 
-						{general_separator.position === "afterPrefix" && renderSeparator()}
-
 						{general_layout.enableTitle && (
-							<RichText.Content
-								tagName={HeadingTag}
-								value={heading}
-								placeholder={__("Heading...")}
-								className="wcb-icon-box__heading"
-							/>
+							<div className="wcb-icon-box__number">
+								<span>
+									{ general_layout.numberPrefix }
+								</span>
+								{ general_layout.endNumber }
+								<span>
+									{ general_layout.numberSuffix}
+								</span>
+							</div>
 						)}
 					</div>
 					{(general_icon.iconPosition === "rightOfTitle" ||
 						general_icon.iconPosition === "bellowTitle") &&
 						renderIcon()}
 				</div>
-
-				{general_separator.position === "afterTitle" && renderSeparator()}
 
 				{general_layout.enableDescription && (
 					<RichText.Content
@@ -132,8 +115,6 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 						className="wcb-icon-box__description"
 					/>
 				)}
-
-				{general_separator.position === "afterDescription" && renderSeparator()}
 
 				{general_layout.enableCTAButton && <InnerBlocks.Content />}
 			</div>

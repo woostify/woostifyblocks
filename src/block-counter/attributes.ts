@@ -37,17 +37,10 @@ import {
 } from "./WcbIconBoxPanel_StyleIcons";
 
 import {
-	WCB_ICON_BOX_PANEL_STYLE_SEPARATOR,
-	WCB_ICON_BOX_PANEL_STYLE_SEPARATOR_DEMO,
-} from "./WcbIconBoxPanel_StyleSeparator";
-import {
 	WCB_ICON_BOX_PANEL_STYLE_DIMENSION,
 	WCB_ICON_BOX_PANEL_STYLE_DIMENSION_DEMO,
 } from "./WcbIconBoxPanel_StyleDimension";
-import {
-	WCB_ICON_BOX_PANEL_SEPARATOR,
-	WCB_ICON_BOX_PANEL_SEPARATOR_DEMO,
-} from "./WcbIconBoxPanelSeparator";
+
 import {
 	MY_MOTION_EFFECT_DEMO,
 	MyMotionEffectData,
@@ -55,15 +48,14 @@ import {
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	heading: string;
+	endNumber: string;
 	designation: string;
 	description: string;
 	//
 	general_layout: WCB_ICON_BOX_PANEL_LAYOUT;
 	general_icon: WCB_ICON_BOX_PANEL_ICON;
-	general_separator: WCB_ICON_BOX_PANEL_SEPARATOR;
 	style_title: WCB_ICON_BOX_PANEL_STYLE_TITLE;
 	style_desination: WCB_ICON_BOX_PANEL_STYLE_DESIGNATION;
-	style_separator: WCB_ICON_BOX_PANEL_STYLE_SEPARATOR;
 	style_description: WCB_ICON_BOX_PANEL_STYLE_DESCRIPTION;
 	style_Icon: WCB_ICON_BOX_PANEL_STYLE_ICON;
 	style_dimension: WCB_ICON_BOX_PANEL_STYLE_DIMENSION;
@@ -80,7 +72,7 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	},
 
 	// THE ATTRS OF BLOCK HERE
-	heading: {
+	endNumber: {
 		type: "string",
 		source: "html",
 		selector: ".wcb-icon-box__heading",
@@ -108,11 +100,6 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		type: "object",
 		default: WCB_ICON_BOX_PANEL_ICON_DEMO,
 	},
-	general_separator: {
-		type: "object",
-		default: WCB_ICON_BOX_PANEL_SEPARATOR_DEMO,
-	},
-
 	style_title: {
 		type: "object",
 		default: WCB_ICON_BOX_PANEL_STYLE_TITLE_DEMO,
@@ -120,10 +107,6 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	style_desination: {
 		type: "object",
 		default: WCB_ICON_BOX_PANEL_STYLE_DESIGNATION_DEMO,
-	},
-	style_separator: {
-		type: "object",
-		default: WCB_ICON_BOX_PANEL_STYLE_SEPARATOR_DEMO,
 	},
 	style_description: {
 		type: "object",

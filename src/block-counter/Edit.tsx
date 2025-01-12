@@ -19,9 +19,7 @@ import WcbTeamPanel_StyleDesignation from "./WcbTeamPanel_StyleDesignation";
 import WcbTeamPanel_StyleDescription from "./WcbTeamPanel_StyleDescription";
 import WcbIconBoxPanel_StyleIcons from "./WcbIconBoxPanel_StyleIcons";
 import MyIconFull from "../components/controls/MyIconFull";
-import WcbIconBoxPanel_StyleSeparator from "./WcbIconBoxPanel_StyleSeparator";
 import WcbIconBoxPanel_StyleDimension from "./WcbIconBoxPanel_StyleDimension";
-import WcbIconBoxPanelSeparator from "./WcbIconBoxPanelSeparator";
 import { MY_DIMENSIONS_NO_GAP_DEMO__EMPTY } from "../components/controls/MyDimensionsControl/types";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
@@ -30,7 +28,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const {
 		advance_responsiveCondition,
 		advance_zIndex,
-		heading,
+		endNumber,
 		description,
 		designation,
 		uniqueId,
@@ -40,9 +38,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_desination,
 		style_description,
 		style_Icon,
-		style_separator,
 		style_dimension,
-		general_separator,
 		advance_motionEffect,
 	} = attributes;
 	//  COMMON HOOKS
@@ -98,10 +94,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								) {
 									return setAttributes({
 										general_icon: data,
-										general_separator: {
-											...general_separator,
-											position: "afterTitle",
-										},
 										general_layout: {
 											...general_layout,
 											textAlignment: {
@@ -130,10 +122,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								) {
 									return setAttributes({
 										general_icon: data,
-										general_separator: {
-											...general_separator,
-											position: "afterTitle",
-										},
 										general_layout: {
 											...general_layout,
 											textAlignment: {
@@ -175,33 +163,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								});
 							}}
 							panelData={general_icon}
-						/>
-
-						<WcbIconBoxPanelSeparator
-							onToggle={() => handleTogglePanel("General", "Separator")}
-							initialOpen={tabGeneralIsPanelOpen === "Separator"}
-							opened={tabGeneralIsPanelOpen === "Separator" || undefined}
-							//
-							showOptionAfterIcon={
-								general_icon.iconPosition === "top" ||
-								general_icon.iconPosition === "bellowTitle"
-							}
-							setAttr__={(data) => {
-								if (
-									data.position === "afterIcon" &&
-									general_icon.iconPosition !== "top" &&
-									general_icon.iconPosition !== "bellowTitle"
-								) {
-									return setAttributes({
-										general_separator: {
-											...general_separator,
-											position: "afterTitle",
-										},
-									});
-								}
-								return setAttributes({ general_separator: data });
-							}}
-							panelData={general_separator}
 						/>
 					</>
 				);
@@ -254,18 +215,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							/>
 						)}
 
-						{general_separator.enableSeparator && (
-							<WcbIconBoxPanel_StyleSeparator
-								onToggle={() => handleTogglePanel("Styles", "_StyleSeparator")}
-								initialOpen={tabStylesIsPanelOpen === "_StyleSeparator"}
-								opened={tabStylesIsPanelOpen === "_StyleSeparator" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({ style_separator: data });
-								}}
-								panelData={style_separator}
-							/>
-						)}
 						{general_layout.enableDescription && (
 							<WcbTeamPanel_StyleDescription
 								onToggle={() =>
@@ -325,10 +274,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			style_desination,
 			style_description,
 			style_Icon,
-			style_separator,
 			style_dimension,
 			general_icon,
-			general_separator,
 			advance_motionEffect,
 		};
 	}, [
@@ -340,10 +287,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_desination,
 		style_description,
 		style_Icon,
-		style_separator,
 		style_dimension,
 		general_icon,
-		general_separator,
 		advance_motionEffect,
 	]);
 
@@ -357,19 +302,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 						</div>
 					</div>
 				)}
-				{general_separator.position === "afterIcon" && renderSeparator()}
 			</>
-		);
-	};
-
-	const renderSeparator = () => {
-		if (!general_separator.enableSeparator) {
-			return null;
-		}
-		return (
-			<div className="wcb-icon-box__separator-wrap">
-				<div className="wcb-icon-box__separator"></div>
-			</div>
 		);
 	};
 
@@ -413,26 +346,22 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								/>
 							)}
 
-							{general_separator.position === "afterPrefix" &&
-								renderSeparator()}
-
 							{general_layout.enableTitle && (
-								<RichText
-									tagName={HeadingTag}
-									value={heading}
-									allowedFormats={["core/bold", "core/italic"]}
-									onChange={(content) => setAttributes({ heading: content })}
-									placeholder={__("Heading of box")}
-									className="wcb-icon-box__heading"
-								/>
+								<div className="wcb-icon-box__number">
+									<span>
+										{ general_layout.numberPrefix }
+									</span>
+									{ general_layout.endNumber }
+									<span>
+										{ general_layout.numberSuffix}
+									</span>
+								</div>
 							)}
 						</div>
 						{(general_icon.iconPosition === "rightOfTitle" ||
 							general_icon.iconPosition === "bellowTitle") &&
 							renderIcon()}
 					</div>
-
-					{general_separator.position === "afterTitle" && renderSeparator()}
 
 					{general_layout.enableDescription && (
 						<RichText
@@ -444,9 +373,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							className="wcb-icon-box__description"
 						/>
 					)}
-
-					{general_separator.position === "afterDescription" &&
-						renderSeparator()}
 
 					{general_layout.enableCTAButton && (
 						<InnerBlocks allowedBlocks={[]} template={[["wcb/button", {}]]} />

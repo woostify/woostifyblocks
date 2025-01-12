@@ -1,5 +1,4 @@
-import Save__260523 from "./Save__260523";
-import Save__100623 from "./Save__100623";
+import Save from "./Save";
 import blokc1Attrs from "./attributes";
 import { DEFAULT_MY_ICON } from "../components/controls/SelectIcon/SelecIcon";
 
@@ -20,26 +19,9 @@ const v3 = {
 			},
 		},
 	},
-	save: Save__260523,
-};
-const v4 = {
-	attributes: {
-		...blokc1Attrs,
-		general_icon: {
-			type: "object",
-			default: {
-				enableIcon: true,
-				iconPosition: "top",
-				icon: {
-					...DEFAULT_MY_ICON,
-					iconName: "lni-checkmark-circle",
-				},
-			},
-		},
-	},
-	save: Save__100623,
+	save: Save,
 };
 
-const deprecated = [v4, v3, v2, v1];
+const deprecated = [v3, v2, v1];
 
 export default deprecated;
