@@ -126,28 +126,34 @@ const WcbButtonPanelContent: FC<Props> = ({
 					}}
 				/>
 
-				<SelecIcon
-					iconData={icon}
-					onChange={(value) => {
-						setAttr__({
-							...panelData,
-							icon: value,
-						});
-					}}
-				/>
+				{
+					enableIcon && (
+						<>
+							<SelecIcon
+								iconData={icon}
+								onChange={(value) => {
+									setAttr__({
+										...panelData,
+										icon: value,
+									});
+								}}
+							/>
 
-				<MyRadioGroup
-					label={__("Icon position", "wcb")}
-					value={iconPosition}
-					onChange={(value) => {
-						setAttr__({
-							...panelData,
-							iconPosition: value as typeof iconPosition,
-						});
-					}}
-					hasResponsive={false}
-					plans={PLANS_DEMO}
-				/>
+							<MyRadioGroup
+								label={__("Icon position", "wcb")}
+								value={iconPosition}
+								onChange={(value) => {
+									setAttr__({
+										...panelData,
+										iconPosition: value as typeof iconPosition,
+									});
+								}}
+								hasResponsive={false}
+								plans={PLANS_DEMO}
+							/>
+						</>
+					)
+				}
 
 				<div>
 					<MyLabelControl className="mb-0">{__("Link", "wcb")}</MyLabelControl>
