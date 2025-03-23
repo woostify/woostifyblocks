@@ -70,6 +70,10 @@ const classes: {
 		C: React.lazy(() => import("../block-testimonials/GlobalCss")),
 		F: initCarouselForWcbTestimonials,
 	},
+	{
+		D: ".wcb-tabs__wrap.wcb-update-div",
+		C: React.lazy(() => import("../block-tabs/GlobalCss")),
+	},
 ];
 
 classes.forEach(({ D, C, F }) => {
