@@ -657,13 +657,14 @@ const Edit: FC<Props> = (props) => {
 export default withSpokenMessages(Edit);
 
 const EmptyPlaceholder = () => (
-	<Placeholder
-		icon={<Icon icon={file} />}
-		label={__("Woostify block Products", "wcb")}
-		className="wc-block-products-grid wc-block-products-category"
-	>
-		{__("No products were found that matched your selection.", "wcb")}
-	</Placeholder>
+	// <Placeholder
+	// 	icon={<Icon icon={file} />}
+	// 	label={__("Woostify block Products", "wcb")}
+	// 	className="wc-block-products-grid wc-block-products-category"
+	// >
+	// 	{__("No products were found that matched your selection.", "wcb")}
+	// </Placeholder>
+	<></>
 );
 const LoadingPlaceholder = () => (
 	<div>
