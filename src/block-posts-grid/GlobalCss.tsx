@@ -228,8 +228,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 				// METAS
 				".wcbPostCard__meta": {
 					marginBottom: marginBottom_mobile,
-					".wcbPostCard__meta-author-name": {
-						color: style_meta.authorTextColor,
+					".wcbPostCard__meta-author": {
+						color: style_meta.authorColor,
 					},
 					".wcbPostCard__meta-date-and-comments": {
 						color: style_meta.dateTextColor,

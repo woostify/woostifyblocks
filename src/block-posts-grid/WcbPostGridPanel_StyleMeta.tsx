@@ -18,7 +18,7 @@ import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives"
 export interface WCB_POST_GRID_PANEL_STYLE_META {
 	authorTypography: MyTypographyControlData;
 	dateTypography: MyTypographyControlData;
-	authorTextColor: string;
+	authorColor: string;
 	dateTextColor: string;
 	marginBottom: HasResponsive<string>;
 }
@@ -41,7 +41,7 @@ export const WCB_POST_GRID_PANEL_STYLE_META_DEMO: WCB_POST_GRID_PANEL_STYLE_META
 			...TYPOGRAPHY_CONTROL_DEMO,
 			fontSizes: { Desktop: "14px" },
 		},
-		authorTextColor: "#171717",
+		authorColor: "#171717",
 		dateTextColor: "#a3a3a3",
 		marginBottom: { Desktop: "2rem" },
 	};
@@ -63,7 +63,7 @@ const WcbPostGridPanel_StyleMeta: FC<Props> = ({
 	const {
 		authorTypography,
 		dateTypography,
-		authorTextColor,
+		authorColor,
 		dateTextColor,
 		marginBottom,
 	} = panelData;
@@ -108,10 +108,10 @@ const WcbPostGridPanel_StyleMeta: FC<Props> = ({
 						onChange={(color) => {
 							setAttr__({
 								...panelData,
-								authorTextColor: color,
+								authorColor: color,
 							});
 						}}
-						color={authorTextColor}
+						color={authorColor}
 					/>
 					<MyColorPicker
 						label={__("Date/comment color", "wcb")}
