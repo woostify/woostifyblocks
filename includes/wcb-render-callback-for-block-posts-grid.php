@@ -297,6 +297,10 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
     }, $queries["selectedTerms"]);
 
     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+    
+    $posts_per_page = $queries["numberOfItems"];
+    $offset = $queries["isOffsetStartingPost"] ? $queries["offsetPost"] : ($paged - 1) * $posts_per_page;
+
     $the_query = new WP_Query([
         'post_type'         => $queries['postType'],
         'author'            => $queries['selectedAuthorId'],
@@ -310,7 +314,7 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
         'post__not_in'          => boolval($queries["isExcludeCurrentPost"]) ? [get_the_ID()] : [],
         'posts_per_page'        => $queries["numberOfItems"],
         'ignore_sticky_posts'   => true,
-        'offset'                => $queries["offsetPost"],
+        'offset'                => $offset,
         'orderby'               => $queries["orderBy"],
         'order'                 => $queries["order"],
         'paged'                 => $paged
