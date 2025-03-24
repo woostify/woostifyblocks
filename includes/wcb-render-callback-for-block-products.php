@@ -280,6 +280,7 @@ function wcb_block_products__add_percentage_to_sale_badge($product)
     return '<span class="onsale">' . esc_html__('SALE', 'wcb') . ' ' . $percentage . '</span>';
 }
 
+
 function wcb_block_products__get_sale_badge_html($product,  $showSaleBadgeDiscoutPercent)
 {
 
@@ -397,24 +398,149 @@ endif;
 
 
 if (!function_exists("wcb_block_products_set_ordering_query_args")) :
+
     function wcb_block_products_set_ordering_query_args(&$query_args, $attributes)
     {
-
-        $query_args['orderby'] = $attributes['orderBy'] ?? "date";
-        $query_args['order'] = $attributes['order'] ?? "DESC";
-
-        $query_args = array_merge(
-            $query_args,
-            WC()->query->get_catalog_ordering_args($query_args['orderby'], $query_args['order'])
-        );
+        $order_by = $attributes['orderBy'] ?? 'date';
+        $order = $attributes['order'] ?? 'DESC';
+        $keyword = $attributes['keyword'] ?? ''; 
+    
+        // Flag variable to check if the orderby is handled in the switch
+        $is_handled = false;
+    
+        switch ($order_by) {
+            case 'ID':
+                $query_args['orderby'] = 'ID';
+                $query_args['order'] = $order;
+                $is_handled = true;
+                break;
+    
+            case 'date ID':
+                $query_args['orderby'] = 'date ID';
+                $query_args['order'] = $order;
+                $is_handled = true;
+                break;
+    
+            case 'title':
+                $query_args['orderby'] = 'title';
+                $query_args['order'] = $order;
+                $is_handled = true;
+                break;
+    
+            case 'menu_order title':
+                $query_args['orderby'] = 'menu_order title';
+                $query_args['order'] = $order;
+                $is_handled = true;
+                break;
+    
+            case 'popularity':
+                $query_args['meta_key'] = 'total_sales'; 
+                $query_args['orderby'] = 'meta_value_num';
+                $query_args['order'] = $order;
+                $is_handled = true;
+                break;
+    
+            case 'price':
+                $query_args['meta_key'] = '_price';
+                $query_args['orderby'] = 'meta_value_num';
+                $query_args['order'] = $order;
+                $is_handled = true;
+                break;
+    
+            case 'rating':
+                $query_args['meta_key'] = '_wc_average_rating'; 
+                $query_args['orderby'] = 'meta_value_num';
+                $query_args['order'] = $order;
+                $is_handled = true;
+                break;
+    
+            case 'relevance':
+                if (!empty($keyword)) {
+                    $query_args['orderby'] = 'relevance';
+                    $query_args['order'] = $order;
+                } else {
+                    // if not keyword, fallback return date
+                    $query_args['orderby'] = 'date';
+                    $query_args['order'] = $order;
+                }
+                $is_handled = true;
+                break;
+    
+            case 'rand':
+                $query_args['orderby'] = 'rand';
+                // no need 'order' so 'rand' is random
+                $is_handled = true;
+                break;
+    
+            default:
+                $query_args['orderby'] = 'date';
+                $query_args['order'] = $order;
+                break;
+        }
+    
+        // Only apply WooCommerce Catalog Ordering to cases that are not processed in switches (Default)
+        if (!$is_handled) {
+            $query_args = array_merge(
+                $query_args,
+                WC()->query->get_catalog_ordering_args($query_args['orderby'], $query_args['order'])
+            );
+        }
     }
 endif;
 
 if (!function_exists("wcb_block_products_set_block_query_args")) :
+    /**
+     * Get product IDs that are on sale.
+     *
+     * @return array Array of product IDs.
+     */
+    function wc_get_product_ids_on_sale_myself() {
+        $product_ids_on_sale = get_transient('wc_product_ids_on_sale');
+
+        if (false === $product_ids_on_sale) {
+            $product_ids_on_sale = array();
+
+            // Load all product IDs.
+            $args = array(
+                'post_type'      => 'product',
+                'posts_per_page' => -1,
+                'post_status'    => 'publish',
+                'fields'         => 'ids',
+            );
+
+            $product_ids = get_posts($args);
+
+            // Check each product to see if it's on sale.
+            foreach ($product_ids as $product_id) {
+                $product = wc_get_product($product_id);
+                if ($product && $product->is_on_sale()) {
+                    $product_ids_on_sale[] = $product_id;
+                }
+            }
+
+            // Also include variations if they are on sale.
+            $args['post_type'] = 'product_variation';
+            $variation_ids     = get_posts($args);
+
+            foreach ($variation_ids as $variation_id) {
+                $variation = wc_get_product($variation_id);
+                if ($variation && $variation->is_on_sale()) {
+                    $product_ids_on_sale[] = $variation->get_parent_id();
+                }
+            }
+
+            // Remove duplicates and store in transient.
+            $product_ids_on_sale = array_unique($product_ids_on_sale);
+            set_transient('wc_product_ids_on_sale', $product_ids_on_sale, DAY_IN_SECONDS);
+        }
+
+        return apply_filters('woocommerce_product_ids_on_sale', $product_ids_on_sale);
+    }
+
     function wcb_block_products_set_block_query_args(&$query_args, $filtersAttrs)
     {
         if (wcb__is_enabled($filtersAttrs['isOnSale'] ?? "")) {
-            $query_args['post__in'] = array_merge(array(0), wc_get_product_ids_on_sale());
+            $query_args['post__in'] = array_merge(array(0), wc_get_product_ids_on_sale_myself());
         }
     }
 endif;
