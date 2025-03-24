@@ -297,6 +297,10 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
     }, $queries["selectedTerms"]);
 
     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+    
+    $posts_per_page = $queries["numberOfItems"];
+    $offset = $queries["isOffsetStartingPost"] ? $queries["offsetPost"] : ($paged - 1) * $posts_per_page;
+
     $the_query = new WP_Query([
         'post_type'         => $queries['postType'],
         'author'            => $queries['selectedAuthorId'],
@@ -310,7 +314,7 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
         'post__not_in'          => boolval($queries["isExcludeCurrentPost"]) ? [get_the_ID()] : [],
         'posts_per_page'        => $queries["numberOfItems"],
         'ignore_sticky_posts'   => true,
-        'offset'                => $queries["offsetPost"],
+        'offset'                => $offset,
         'orderby'               => $queries["orderBy"],
         'order'                 => $queries["order"],
         'paged'                 => $paged
@@ -440,14 +444,14 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
                                 <?php if (boolval($attributes['general_postMeta']['isShowAuthor'] ?? true)) : ?>
                                     <div class="wcbPostCard__meta-author">
                                         <?php if (boolval($attributes['general_postMeta']['isShowMetaIcon'] ?? true)) : ?>
-                                            <span class="wcbPostCard__meta-icon">
+                                            <span class="wcbPostCard__meta-icon wcbPostCard__meta-author">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16px" height="16px">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
                                                 </svg>
 
                                             </span>
                                         <?php endif; ?>
-                                        <a class="wcbPostCard__meta-author-name" href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>" title="<?php echo esc_attr(get_the_author()); ?>"><?php the_author(); ?></a>
+                                        <a class="wcbPostCard__meta-author" href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>" title="<?php echo esc_attr(get_the_author()); ?>"><?php the_author(); ?></a>
                                     </div>
                                 <?php endif; ?>
 
