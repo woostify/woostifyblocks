@@ -41,6 +41,8 @@ import {
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	titles: BlockTabTitleItem[];
+	tabContents: string[]; // Lưu nội dung của các tab
+    activeTabIndex: number;
 	general_tabTitle: WCB_TABS_PANEL_TAB_TITLE;
 	style_title: WCB_TABS_PANEL_STYLE_TITLE;
 	style_body: WCB_TABS_PANEL_STYLE_BODY;
@@ -60,11 +62,19 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	titles: {
 		type: "array",
 		default: [
-			{ id: "1", title: "Title 1" },
-			{ id: "2", title: "Title 2" },
-			{ id: "3", title: "Title 3" },
+			{ id: "1", title: "Tab 1", dataTabIndex: 0 },
+			{ id: "2", title: "Tab 2", dataTabIndex: 1 },
+			{ id: "3", title: "Tab 3", dataTabIndex: 2 },
 		],
 	},
+	tabContents: {
+        type: "array",
+        default: ["", "", ""],
+    },
+    activeTabIndex: {
+        type: "number",
+        default: 0, // Mặc định tab đầu tiên được chọn
+    },
 	general_tabTitle: {
 		type: "object",
 		default: WCB_TABS_PANEL_TAB_TITLE_DEMO,
