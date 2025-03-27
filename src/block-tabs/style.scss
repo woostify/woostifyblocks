@@ -15,39 +15,39 @@
 }
 
 .wcb-tabs__wrap {
-    @apply w-full; // Đảm bảo block chiếm toàn bộ chiều rộng
+    @apply w-full;
 }
 
 .wcb-tabs__titles {
-    @apply flex flex-wrap gap-2 mb-4; // Khoảng cách giữa các tab và margin dưới
+    @apply flex flex-wrap gap-2 mb-4;
 }
 
 .wcb-tabs__title_inner {
     @apply inline-flex items-center justify-center gap-2 px-4 py-2 cursor-pointer;
-    border: 1px solid #d1d5db; // Viền xám nhạt (màu Tailwind gray-300)
-    border-radius: 4px; // Bo góc nhẹ
+    border: 1px solid #d1d5db;
+    border-radius: 4px; 
     transition: background-color 0.3s, border-color 0.3s;
 
     &:hover {
-        background-color: #f9fafb; // Hiệu ứng hover (Tailwind gray-50)
+        background-color: #f9fafb; 
     }
 }
 
 .wcb-tabs__title {
-    @apply m-0 text-base font-medium text-gray-700; // Font chữ cho tiêu đề tab
+    @apply m-0 text-base font-medium text-gray-700; 
 }
 
 .wcb-tab-child__wrap {
 	margin-top: 10px;
 	margin-bottom: 10px;
-    @apply border border-gray-300 rounded-md p-4; // Viền và padding cho nội dung tab
+    @apply border border-gray-300 rounded-md p-4; 
     display: block;
 
     &[hidden] {
-        display: none; // Ẩn nội dung khi không active
+        display: none; 
     }
 }
 
 .wcb-tab-child__inner {
-    @apply text-gray-600; // Màu chữ cho nội dung tab
+    @apply text-gray-600; 
 }

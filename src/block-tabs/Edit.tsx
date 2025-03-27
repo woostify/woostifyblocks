@@ -408,7 +408,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 						return (
 							<div 
 								className="wcb-tabs__title_inner relative group"
-								data-tab-index={item.dataTabIndex} // Đảm bảo dòng này tồn tại
+								data-tab-index={item.dataTabIndex}
                             	key={item.id}
 							>
 								{renderRemoveBtn(item, index)}
