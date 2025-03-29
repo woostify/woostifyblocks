@@ -67,7 +67,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	return (
 		<>
 			{/* ------- TITLE -------   */}
-			<Global
+			{/* <Global
 				styles={[
 					getStyleObjectFromResponsiveAttr({
 						className: TITLE_WRAP_CLASSNAME,
@@ -119,10 +119,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 						},
 					},
 				]}
-			/>
+			/> */}
 
 			{/* ------- BODY -------   */}
-			<Global
+			{/* <Global
 				styles={[
 					getTypographyStyles({
 						className: BODY_CLASSNAME,
@@ -149,7 +149,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 						},
 					},
 				]}
-			/>
+			/> */}
 
 			{/* ------ ICON ---------  */}
 			<Global
