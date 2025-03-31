@@ -34,7 +34,7 @@ export const CTA_PRESET: {
     { name: "grid-solid", twClass: "justify-center items-center" },
 ];
 
-const WcbFaqPanelPreset: FC<Props> = ({
+const WcbTabsPanelPreset: FC<Props> = ({
     panelData = WCB_FAQ_PANEL_PRESET_DEMO,
     setAttr__,
     initialOpen,
@@ -316,4 +316,4 @@ const WcbFaqPanelPreset: FC<Props> = ({
     );
 };
 
-export default WcbFaqPanelPreset;
+export default WcbTabsPanelPreset;
