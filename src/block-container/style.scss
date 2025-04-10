@@ -50,3 +50,7 @@ body .wcb-container__wrap {
 		}
 	}
 }
+
+.wcb-container__wrap .wcb-container__inner  {
+    justify-content: space-around !important;
+}

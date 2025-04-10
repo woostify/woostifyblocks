@@ -10,12 +10,14 @@ interface Params {
 	border: Partial<MyBorderControlData>;
 	className: string;
 	isWithRadius?: boolean;
+	isWithIframe?: boolean;
 }
 
 const getBorderStyles = ({
 	border,
 	className,
 	isWithRadius = false,
+	isWithIframe = false,
 }: Params): CSSObject => {
 	const { hoverColor, mainSettings, radius } = border;
 	//
@@ -59,7 +61,7 @@ const getBorderStyles = ({
 	// RAIDUS
 	let radiusCSSObject: CSSObject = { [`${className}`]: {} };
 	if (isWithRadius && radius) {
-		radiusCSSObject = getBorderRadiusStyles({ radius, className });
+		radiusCSSObject = getBorderRadiusStyles({ radius, className, isWithIframe });
 	}
 
 	//

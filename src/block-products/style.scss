@@ -58,8 +58,13 @@
 	font-size: 16px;
 
 	&.wcb-products__product--btnInsideImage {
+		.wcb-products__product-featured {
+            position: relative; /* Đảm bảo container của ảnh là tham chiếu cho button */
+        }
+	
 		.wcb-products__product-add-to-cart {
-			@apply absolute left-1/2 bottom-5 z-10 opacity-0 invisible transition-opacity w-full;
+			@apply absolute left-1/2 z-10 opacity-0 invisible transition-opacity;
+			top: 40%;
 			transform: translateX(-50%);
 		}
 		&:hover {
