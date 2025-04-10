@@ -47,6 +47,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 						className: WRAP_CLASSNAME,
 						border: style_border,
 						isWithRadius: true,
+						isWithIframe: true,
 					}),
 					getStyleObjectFromResponsiveAttr({
 						className: INNER_CLASSNAME,
