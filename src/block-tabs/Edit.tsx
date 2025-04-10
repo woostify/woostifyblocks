@@ -47,6 +47,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		uniqueId,
 		general_tabTitle,
 		titles,
+		tabContents,
+		activeTabIndex,
 		style_title,
 		style_body,
 		//
@@ -86,6 +88,60 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		});
 	}, [UNIQUE_ID]);
 	//
+	// Synchronze indexFocused with activeTabIndex
+	useEffect(() => {
+		if (indexFocused !== activeTabIndex) {
+			setAttributes({ activeTabIndex: indexFocused });
+		}
+	}, [indexFocused, activeTabIndex, setAttributes]);
+
+	// Synchronze number childInnerBlocks with titles and tabContents
+	useEffect(() => {
+		if (childInnerBlocks.length !== titles.length) {
+			const newTitles = [...titles];
+			const newTabContents = [...tabContents];
+
+			// if childInnerBlocks < titles, add childInnerBlocks
+			if (childInnerBlocks.length < titles.length) {
+				for (let i = childInnerBlocks.length; i < titles.length; i++) {
+					const newChild = createBlock("wcb/tab-child", {});
+					insertBlock(newChild, i, clientId);
+				}
+			}
+			// if childInnerBlocks > titles, remove childInnerBlocks
+			else if (childInnerBlocks.length > titles.length) {
+				for (let i = titles.length; i < childInnerBlocks.length; i++) {
+					removeBlock(childInnerBlocks[i].clientId);
+				}
+			}
+
+			// Synchronze tabContents with titles
+			if (tabContents.length !== titles.length) {
+				while (newTabContents.length < titles.length) {
+					newTabContents.push("");
+				}
+				while (newTabContents.length > titles.length) {
+					newTabContents.pop();
+				}
+				setAttributes({ tabContents: newTabContents });
+			}
+		}
+	}, [childInnerBlocks, titles, tabContents, insertBlock, removeBlock, clientId, setAttributes]);
+
+	// Update tabContents when childInnerBlocks change
+	useEffect(() => {
+		if (childInnerBlocks.length === titles.length) {
+			const newTabContents = childInnerBlocks.map((block: any) => {
+				// Get content from childInnerBlocks 
+				const innerContent = block.innerBlocks
+					?.map((innerBlock: any) => innerBlock.attributes.content || "")
+					.join("\n") || "";
+				return innerContent;
+			});
+			setAttributes({ tabContents: newTabContents });
+		}
+	}, [childInnerBlocks, titles.length, setAttributes]);
+	
 
 	useEffect(() => {
 		const childs = document.querySelectorAll(
@@ -276,12 +332,14 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				onClick={() => {
 					const newChild = createBlock("wcb/tab-child");
 					insertBlock(newChild, undefined, clientId);
+					const newTabContents = [...tabContents, ""];
 					if (newChild?.clientId) {
 						setAttributes({
 							titles: [
 								...titles,
-								{ id: Date.now().toString(), title: "Title" },
+								{ id: Date.now().toString(), title: "Tab", dataTabIndex: titles.length },
 							],
+							tabContents: newTabContents,
 						});
 						setIndexFocused(titles.length);
 					}
@@ -299,9 +357,14 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				className="absolute bottom-full left-1/2 -translate-x-1/2 hidden group-hover:flex flex-shrink-0 items-center justify-center rounded-md h-8 w-8 bg-red-50 hover:bg-red-100 text-red-600"
 				title={__("Remove", "wcb")}
 				onClick={() => {
-					const newTitles = titles.filter((j) => j.id !== item.id);
+					const newTitles = titles
+                    .filter((j) => j.id !== item.id)
+                    .map((t, i) => ({ ...t, dataTabIndex: i }));
 					removeBlock(childInnerBlocks?.[index]?.clientId);
-					setAttributes({ titles: newTitles });
+					const newTabContents = tabContents.filter((_, i) => i !== index);
+					setAttributes({ titles: newTitles,
+						tabContents: newTabContents,
+					 });
 					setIndexFocused(0);
 				}}
 			>
@@ -343,7 +406,11 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				<div className="wcb-tabs__titles">
 					{titles.map((item, index) => {
 						return (
-							<div className="wcb-tabs__title_inner relative group">
+							<div 
+								className="wcb-tabs__title_inner relative group"
+								data-tab-index={item.dataTabIndex}
+                            	key={item.id}
+							>
 								{renderRemoveBtn(item, index)}
 								{(general_tabTitle.iconPosition === "left" ||
 									general_tabTitle.iconPosition === "top") &&
