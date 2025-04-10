@@ -84,7 +84,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	} = getValueFromAttrsResponsives(general_layout.flexDirection);
 
 	// FLEX COL
-	let ALIGN_ITEMS: HasResponsive<CSSProperties["alignItems"]> = {
+	let ALIGN_ITEMS: HasResponsive<CSSProperties["justifyContent"]> = {
 		Desktop:
 			textAlignment_Desktop === "left"
 				? "start"
@@ -104,25 +104,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 					? "end"
 					: "center",
 	};
-
-	if (
-		flexDirection_Desktop === "row" ||
-		flexDirection_Desktop === "row-reverse"
-	) {
-		ALIGN_ITEMS.Desktop = "center";
-	}
-	if (
-		flexDirection_tablet === "row" ||
-		flexDirection_tablet === "row-reverse"
-	) {
-		ALIGN_ITEMS.Tablet = "center";
-	}
-	if (
-		flexDirection_mobile === "row" ||
-		flexDirection_mobile === "row-reverse"
-	) {
-		ALIGN_ITEMS.Mobile = "center";
-	}
 
 	if (!uniqueId) {
 		return null;
@@ -159,7 +140,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 					getStyleObjectFromResponsiveAttr({
 						className: CONTENT_CLASSNAME,
 						value: ALIGN_ITEMS,
-						prefix: "alignItems",
+						prefix: "justifyContent",
 					}),
 
 					getStyleObjectFromResponsiveAttr({

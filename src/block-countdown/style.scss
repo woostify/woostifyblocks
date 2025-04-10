@@ -47,4 +47,19 @@
     .wcb-countdown__box {
         justify-content: center;
     }
+    .wcb-justify-center {
+        justify-content: center;
+    }
+    .wcb-justify-end {
+        justify-content: end;
+    }
+    .wcb-justify-start {
+        justify-content: start;
+    }
+    .wcb-flex-col {
+        flex-direction: column;
+    }
+    .wcb-flex-row {
+        flex-direction: row;
+    }
 }
