@@ -7,7 +7,7 @@ import ResetButton from "../components/controls/ResetButton";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import { COUNTDOWN_PRESET } from "./types";
 export interface WCB_COUNTDOWN_PANEL_PRESET {
-	preset: "wcb-countdown-1" | "wcb-countdown-2" | "wcb-countdown-3" | "wcb-countdown-4" | "wcb-countdown-5";
+	preset: "wcb-countdown-1" | "wcb-countdown-2" | "wcb-countdown-3" | "wcb-countdown-4" | "wcb-countdown-5" | "";
 }
 
 export const WCB_COUNTDOWN_PANEL_PRESET_DEMO: WCB_COUNTDOWN_PANEL_PRESET = {
