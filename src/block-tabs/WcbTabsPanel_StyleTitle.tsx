@@ -45,10 +45,10 @@ export const WCB_TABS_PANEL_STYLE_TITLE_DEMO: WCB_TABS_PANEL_STYLE_TITLE = {
 	borderActive: MY_BORDER_CONTROL_DEMO,
 	padding: {
 		Desktop: {
-			top: "1rem",
-			left: "1rem",
-			right: "1rem",
-			bottom: "1rem",
+			top: "0rem",
+			left: "0rem",
+			right: "0rem",
+			bottom: "0rem",
 		},
 	},
 	backgroundColor: "",
