@@ -65,8 +65,31 @@ const GlobalCss: FC<Props> = (attrs) => {
 						display:
 							general_icon.iconPosition === "leftOfTitle" ||
 							general_icon.iconPosition === "rightOfTitle"
-								? "flex"
-								: "block",
+							? "flex"
+							: "block",
+					},
+
+					// Styles for circle type
+					".wcb-icon-box__progress-circle-wrap": {
+						position: "relative",
+						display: "flex",
+						justifyContent: "center",
+						alignItems: "center",
+					},
+
+					".wcb-icon-box__number-inside": {
+						fontSize: "50px",
+					},
+
+					".wcb-icon-box__title": {
+						fontSize: "16px",
+						color: "#666",
+						marginTop: "10px",
+					},
+
+					".wcb-icon-box__icon": {
+						fontSize: "20px",
+						marginBottom: "10px",
 					},
 
 					[`@media (min-width: ${media_tablet})`]: {
@@ -198,7 +221,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 				/>
 			) : null}
 
-			{/* ADVANCE  */}
+			{/* ADVANCE */}
 			<Global
 				styles={getAdvanveDivWrapStyles({
 					advance_responsiveCondition,
