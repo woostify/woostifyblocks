@@ -1,6 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import { InnerBlocks, RichText, useBlockProps } from "@wordpress/block-editor";
-import React, { useEffect, FC, useRef, useCallback } from "react";
+import React, { useState, useEffect, FC, useRef, useCallback } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
@@ -41,9 +41,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_dimension,
 		advance_motionEffect,
 	} = attributes;
-	//  COMMON HOOKS
+
+	// COMMON HOOKS
 	const ref = useRef<HTMLDivElement>(null);
-	// const { myCache, ref } = useCreateCacheEmotion();
 	const wrapBlockProps = useBlockProps({ ref });
 	const {
 		tabIsOpen,
@@ -53,15 +53,152 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
 
-	// make uniqueid
+	// Make uniqueId
 	const UNIQUE_ID = wrapBlockProps.id;
 	useEffect(() => {
 		setAttributes({
 			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
-	//
-	//
+
+	// State manage value current_number
+	const [currentNumber, setCurrentNumber] = useState(
+		parseInt(general_layout?.startNumber) || 0
+	);
+
+	useEffect(() => {
+		const targetNumber = parseInt(endNumber) || 0;
+		const duration = parseInt(general_layout?.animationDuration) || 1500;
+		const incrementTime = duration / (targetNumber || 1);
+		let current = parseInt(general_layout?.startNumber) || 0;
+
+		setCurrentNumber(current);
+
+		const interval = setInterval(() => {
+			current += 1;
+			setCurrentNumber(current);
+
+			if (current >= targetNumber) {
+				setCurrentNumber(targetNumber);
+				clearInterval(interval);
+			}
+		}, incrementTime);
+
+		return () => clearInterval(interval);
+	}, [
+		endNumber,
+		general_layout?.animationDuration,
+		general_layout?.startNumber,
+		general_layout?.decimalNumber,
+		general_layout?.type,
+	]);
+
+	// Format number before display
+	const formatNumber = (num: number, decimalPlaces: string) => {
+		const decimal = parseInt(decimalPlaces);
+		if (!decimal || isNaN(decimal)) return num.toString();
+		return num.toFixed(decimal);
+	};
+
+    // Calculate progress for the circle (0 to 100%)
+    const calculateProgress = () => {
+        const end = parseInt(endNumber) || 0;
+        const current = currentNumber;
+
+        // Calculate the ratio of curlentnumber compared to the maximum value (100%)
+        const maxValue = 100;
+        const progress = (current / maxValue) * 100;
+
+        // The maximum progress limit is equal to the ratio of Endnumber compared to Maxvalue
+        const endProgress = (end / maxValue) * 100;
+        return Math.min(progress, endProgress);
+    };
+
+    // Render the progress circle with content inside
+    const renderProgressCircle = () => {
+        const radius = 150; // Tăng radius để hình tròn lớn hơn (từ 90 lên 120)
+        const stroke = 5;
+        const normalizedRadius = radius - stroke * 2;
+        const circumference = normalizedRadius * 2 * Math.PI;
+        const progress = calculateProgress();
+        const strokeDashoffset = circumference - (progress / 100) * circumference;
+
+        return (
+            <div
+                className="wcb-icon-box__progress-circle-wrap"
+                style={{
+                    position: "relative",
+                    width: `${radius * 2}px`,
+                    height: `${radius * 2}px`,
+                    margin: "0 auto",
+                }}
+            >
+                <svg
+                    height={radius * 2}
+                    width={radius * 2}
+                    style={{ transform: "rotate(-90deg)" }}
+                >
+                    <circle
+                        stroke="#e0e0e0"
+                        fill="transparent"
+                        strokeWidth={stroke}
+                        r={normalizedRadius}
+                        cx={radius}
+                        cy={radius}
+                    />
+                    <circle
+                        stroke="#007cba"
+                        fill="transparent"
+                        strokeWidth={stroke}
+                        strokeDasharray={`${circumference} ${circumference}`}
+                        style={{ strokeDashoffset }}
+                        r={normalizedRadius}
+                        cx={radius}
+                        cy={radius}
+                    />
+                </svg>
+                <div
+                    style={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        textAlign: "center",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        gap: "10px",
+                        maxWidth: `${radius * 1.5}px`, // Limit the content width to not overflow
+                        padding: "10px",
+                    }}
+                >
+                    {general_icon.enableIcon && (
+                        <div className="wcb-icon-box__icon">
+                            <MyIconFull icon={general_icon.icon} />
+                        </div>
+                    )}
+                    <div className="wcb-icon-box__number-inside">
+                        {formatNumber(currentNumber, general_layout?.decimalNumber)}
+                        {general_layout.numberSuffix}
+                    </div>
+                    {general_layout.enableDescription && (
+                        <RichText
+                            tagName="div"
+                            value={description}
+                            allowedFormats={["core/bold", "core/italic"]}
+                            onChange={(content) => setAttributes({ description: content })}
+                            placeholder={__("Description of box ...")}
+                            className="wcb-icon-box__description"
+                            style={{
+                                wordBreak: "break-word", 
+                                maxWidth: "100%", 
+                            }}
+                        />
+                    )}
+                </div>
+            </div>
+        );
+    };
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
 		switch (tab.name) {
@@ -75,7 +212,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								tabGeneralIsPanelOpen === "first"
 							}
 							opened={tabGeneralIsPanelOpen === "Layout" || undefined}
-							//
 							setAttr__={(data) => {
 								setAttributes({ general_layout: data });
 							}}
@@ -86,7 +222,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							onToggle={() => handleTogglePanel("General", "Icon")}
 							initialOpen={tabGeneralIsPanelOpen === "Icon"}
 							opened={tabGeneralIsPanelOpen === "Icon" || undefined}
-							//
 							setAttr__={(data) => {
 								if (
 									data.iconPosition === "leftOfTitle" ||
@@ -295,7 +430,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const renderIcon = () => {
 		return (
 			<>
-				{general_icon.enableIcon && (
+				{general_icon.enableIcon && general_layout.type !== "circle" && (
 					<div className="wcb-icon-box__icon-wrap">
 						<div className="wcb-icon-box__icon">
 							<MyIconFull icon={general_icon.icon} />
@@ -326,14 +461,18 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 				{(general_icon.iconPosition === "top" ||
 					general_icon.iconPosition === "left") &&
+					general_layout.type !== "circle" &&
 					renderIcon()}
 
-				{/* CHILD CONTENT  */}
-				<div className="wcb-icon-box__content">
+				{/* CHILD CONTENT */}
+				<div className="wcb-icon-box__content" style={{ textAlign: "center" }}>
 					<div className="wcb-icon-box__content-title-wrap">
-						{general_icon.iconPosition === "leftOfTitle" && renderIcon()}
+						{general_icon.iconPosition === "leftOfTitle" &&
+							general_layout.type !== "circle" &&
+							renderIcon()}
+
 						<div className="wcb-icon-box__content-title">
-							{general_layout.enablePrefix && (
+							{general_layout.enablePrefix && general_layout.type !== "circle" && (
 								<RichText
 									tagName="div"
 									value={designation}
@@ -346,24 +485,26 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								/>
 							)}
 
-							{general_layout.enableTitle && (
-								<div className="wcb-icon-box__number">
-									<span>
-										{ general_layout.numberPrefix }
-									</span>
-									{ general_layout.endNumber }
-									<span>
-										{ general_layout.numberSuffix}
-									</span>
+							{general_layout.enableTitle && general_layout.type !== "circle" && (
+								<div>
+									<div className="wcb-icon-box__number">
+										<span>{general_layout.numberPrefix}</span>
+										{formatNumber(currentNumber, general_layout?.decimalNumber)}
+										<span>{general_layout.numberSuffix}</span>
+									</div>
 								</div>
 							)}
+
+							{general_layout.type === "circle" && renderProgressCircle()}
 						</div>
+
 						{(general_icon.iconPosition === "rightOfTitle" ||
 							general_icon.iconPosition === "bellowTitle") &&
+							general_layout.type !== "circle" &&
 							renderIcon()}
 					</div>
 
-					{general_layout.enableDescription && (
+					{general_layout.enableDescription && general_layout.type !== "circle" &&(
 						<RichText
 							tagName="div"
 							value={description}
@@ -379,7 +520,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					)}
 				</div>
 
-				{general_icon.iconPosition === "right" && renderIcon()}
+				{general_icon.iconPosition === "right" &&
+					general_layout.type !== "circle" &&
+					renderIcon()}
 			</div>
 		</MyCacheProvider>
 	);

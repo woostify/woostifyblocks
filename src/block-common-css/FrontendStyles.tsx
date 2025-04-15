@@ -77,7 +77,7 @@ const classes: {
 		F: initTabsForWcbTabs,
 	},
 	{
-		D: ".wcb-counter__wrap.wcb-update-div",
+		D: ".wcb-counter-box__wrap.wcb-update-div",
 		C: React.lazy(() => import("../block-counter/GlobalCss")),
 	},
 ];
