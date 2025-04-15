@@ -76,6 +76,10 @@ const classes: {
 		C: React.lazy(() => import("../block-tabs/GlobalCss")),
 		F: initTabsForWcbTabs,
 	},
+	{
+		D: ".wcb-counter__wrap.wcb-update-div",
+		C: React.lazy(() => import("../block-counter/GlobalCss")),
+	},
 ];
 
 classes.forEach(({ D, C, F }) => {
