@@ -5,6 +5,7 @@ import { handleSubmitFormForWcbForm } from "../block-form/FrontendStyles";
 import { initCarouselForWcbTestimonials } from "../block-testimonials/FrontendStyles";
 import { initCarouselForWcbProducts } from "../block-products/FrontendStyles";
 import { initCountDown } from "../block-countdown/FrontendScript";
+import { initTabsForWcbTabs } from "../block-tabs/FrontendStyles";
 
 const classes: {
 	D: string;
@@ -75,6 +76,11 @@ const classes: {
 		D: ".wcb-countdown__wrap.wcb-update-div",
 		C: React.lazy(() => import("../block-countdown/GlobalCss")),
 		F: initCountDown,
+	},
+	{
+		D: ".wcb-tabs__wrap.wcb-update-div",
+		C: React.lazy(() => import("../block-tabs/GlobalCss")),
+		F: initTabsForWcbTabs,
 	},
 ];
 
