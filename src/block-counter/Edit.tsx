@@ -67,7 +67,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	);
 
 	useEffect(() => {
-		const targetNumber = parseInt(endNumber) || 0;
+		const targetNumber = parseInt(general_layout?.endNumber) || 0;
 		const duration = parseInt(general_layout?.animationDuration) || 1500;
 		const incrementTime = duration / (targetNumber || 1);
 		let current = parseInt(general_layout?.startNumber) || 0;
@@ -91,6 +91,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		general_layout?.startNumber,
 		general_layout?.decimalNumber,
 		general_layout?.type,
+        general_layout?.endNumber
 	]);
 
 	// Format number before display
@@ -102,7 +103,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
     // Calculate progress for the circle (0 to 100%)
     const calculateProgress = () => {
-        const end = parseInt(endNumber) || 0;
+        const end = parseInt(general_layout?.endNumber) || 0;
         const current = currentNumber;
 
         // Calculate the ratio of curlentnumber compared to the maximum value (100%)
@@ -116,7 +117,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
     // Render the progress circle with content inside
     const renderProgressCircle = () => {
-        const radius = 150; // Tăng radius để hình tròn lớn hơn (từ 90 lên 120)
+        const radius = 150; 
         const stroke = 5;
         const normalizedRadius = radius - stroke * 2;
         const circumference = normalizedRadius * 2 * Math.PI;
@@ -212,6 +213,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								tabGeneralIsPanelOpen === "first"
 							}
 							opened={tabGeneralIsPanelOpen === "Layout" || undefined}
+							//
 							setAttr__={(data) => {
 								setAttributes({ general_layout: data });
 							}}
@@ -222,6 +224,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							onToggle={() => handleTogglePanel("General", "Icon")}
 							initialOpen={tabGeneralIsPanelOpen === "Icon"}
 							opened={tabGeneralIsPanelOpen === "Icon" || undefined}
+							//
 							setAttr__={(data) => {
 								if (
 									data.iconPosition === "leftOfTitle" ||
