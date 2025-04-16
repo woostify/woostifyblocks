@@ -200,6 +200,55 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
             </div>
         );
     };
+	
+	const renderProgressBar = () => {
+		const progress = calculateProgress(); // Use the updated calculateProgressBar function
+	
+		return (
+			<div className="wcb-icon-box__progress-bar-wrap" style={{ width: "100%", textAlign: "center" }}>
+				<div
+					style={{
+						width: "100%",
+						backgroundColor: "#e0e0e0", // Background color for the unfilled portion
+						height: "32px", // Height of the bar
+						borderRadius: "5px", // Optional: rounded edges
+						overflow: "hidden", // Ensure the fill doesn't overflow
+						position: "relative",
+					}}
+				>
+					<div
+						style={{
+							width: `${progress}%`, // Dynamic width based on progress
+							height: "100%",
+							backgroundColor: "#007cba", // Blue fill color as in the image
+							transition: "transparent", // Smooth transition for the fill
+							color: "white",
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "end",
+							paddingRight: "4px"
+						}}
+					>
+						{Math.round(progress)}%
+					</div>
+				</div>
+				{general_layout.enableDescription && (
+					<RichText
+						tagName="div"
+						value={description}
+						allowedFormats={["core/bold", "core/italic"]}
+						onChange={(content) => setAttributes({ description: content })}
+						placeholder={__("Description of box ...")}
+						className="wcb-icon-box__description"
+						style={{
+							wordBreak: "break-word",
+							maxWidth: "100%",
+						}}
+					/>
+				)}
+			</div>
+		);
+	};
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
 		switch (tab.name) {
@@ -465,6 +514,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				{(general_icon.iconPosition === "top" ||
 					general_icon.iconPosition === "left") &&
 					general_layout.type !== "circle" &&
+					general_layout.type !== "bar" &&
 					renderIcon()}
 
 				{/* CHILD CONTENT */}
@@ -472,23 +522,30 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					<div className="wcb-icon-box__content-title-wrap">
 						{general_icon.iconPosition === "leftOfTitle" &&
 							general_layout.type !== "circle" &&
+							general_layout.type !== "bar" &&
 							renderIcon()}
 
 						<div className="wcb-icon-box__content-title">
-							{general_layout.enablePrefix && general_layout.type !== "circle" && (
-								<RichText
-									tagName="div"
-									value={designation}
-									allowedFormats={[]}
-									onChange={(content) =>
-										setAttributes({ designation: content })
-									}
-									placeholder={__("Write a Prefix")}
-									className="wcb-icon-box__designation"
-								/>
-							)}
-
-							{general_layout.enableTitle && general_layout.type !== "circle" && (
+							{
+								general_layout.enablePrefix && 
+								general_layout.type !== "circle" && 
+								general_layout.type !== "bar" &&(
+									<RichText
+										tagName="div"
+										value={designation}
+										allowedFormats={[]}
+										onChange={(content) =>
+											setAttributes({ designation: content })
+										}
+										placeholder={__("Write a Prefix")}
+										className="wcb-icon-box__designation"
+									/>
+								)
+							}
+							{
+								general_layout.enableTitle && 
+								general_layout.type !== "circle" && 
+								general_layout.type !== "bar" && (
 								<div>
 									<div className="wcb-icon-box__number">
 										<span>{general_layout.numberPrefix}</span>
@@ -499,24 +556,30 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							)}
 
 							{general_layout.type === "circle" && renderProgressCircle()}
+							{general_layout.type === "bar" && renderProgressBar()}
 						</div>
 
 						{(general_icon.iconPosition === "rightOfTitle" ||
 							general_icon.iconPosition === "bellowTitle") &&
 							general_layout.type !== "circle" &&
+							general_layout.type !== "bar" &&
 							renderIcon()}
 					</div>
 
-					{general_layout.enableDescription && general_layout.type !== "circle" &&(
-						<RichText
-							tagName="div"
-							value={description}
-							allowedFormats={["core/bold", "core/italic"]}
-							onChange={(content) => setAttributes({ description: content })}
-							placeholder={__("Description of box ...")}
-							className="wcb-icon-box__description"
-						/>
-					)}
+					{
+						general_layout.enableDescription && 
+						general_layout.type !== "circle" &&
+						general_layout.type !== "bar" && (
+							<RichText
+								tagName="div"
+								value={description}
+								allowedFormats={["core/bold", "core/italic"]}
+								onChange={(content) => setAttributes({ description: content })}
+								placeholder={__("Description of box ...")}
+								className="wcb-icon-box__description"
+							/>
+						)
+					}
 
 					{general_layout.enableCTAButton && (
 						<InnerBlocks allowedBlocks={[]} template={[["wcb/button", {}]]} />
@@ -525,6 +588,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 				{general_icon.iconPosition === "right" &&
 					general_layout.type !== "circle" &&
+					general_layout.type !== "bar" &&
 					renderIcon()}
 			</div>
 		</MyCacheProvider>
