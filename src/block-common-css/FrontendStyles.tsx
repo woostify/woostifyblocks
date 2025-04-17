@@ -4,6 +4,7 @@ import { initCarouselForWcbFaq } from "../block-faq/FrontendStyles";
 import { handleSubmitFormForWcbForm } from "../block-form/FrontendStyles";
 import { initCarouselForWcbTestimonials } from "../block-testimonials/FrontendStyles";
 import { initCarouselForWcbProducts } from "../block-products/FrontendStyles";
+import { initCountDown } from "../block-countdown/FrontendScript";
 import { initTabsForWcbTabs } from "../block-tabs/FrontendStyles";
 
 const classes: {
@@ -70,6 +71,11 @@ const classes: {
 		D: ".wcb-testimonials__wrap.wcb-update-div",
 		C: React.lazy(() => import("../block-testimonials/GlobalCss")),
 		F: initCarouselForWcbTestimonials,
+	},
+	{
+		D: ".wcb-countdown__wrap.wcb-update-div",
+		C: React.lazy(() => import("../block-countdown/GlobalCss")),
+		F: initCountDown,
 	},
 	{
 		D: ".wcb-tabs__wrap.wcb-update-div",
