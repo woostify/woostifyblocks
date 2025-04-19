@@ -131,7 +131,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
                     position: "relative",
                     width: `${radius * 2}px`,
                     height: `${radius * 2}px`,
-                    margin: "0 auto",
                 }}
             >
                 <svg
@@ -178,10 +177,11 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
                             <MyIconFull icon={general_icon.icon} />
                         </div>
                     )}
-                    <div className="wcb-icon-box__number-inside">
-                        {formatNumber(currentNumber, general_layout?.decimalNumber)}
-                        {general_layout.numberSuffix}
-                    </div>
+					<div className="wcb-icon-box__number">
+						<span>{general_layout.numberPrefix}</span>
+						{formatNumber(currentNumber, general_layout?.decimalNumber)}
+						<span>{general_layout.numberSuffix}</span>
+					</div>
                     {general_layout.enableDescription && (
                         <RichText
                             tagName="div"
@@ -205,12 +205,12 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		const progress = calculateProgress(); // Use the updated calculateProgressBar function
 	
 		return (
-			<div className="wcb-icon-box__progress-bar-wrap" style={{ width: "100%", textAlign: "center" }}>
+			<div className="wcb-icon-box__progress-bar-wrap">
 				<div
 					style={{
 						width: "100%",
 						backgroundColor: "#e0e0e0", // Background color for the unfilled portion
-						height: "32px", // Height of the bar
+						height: "100%", // Height of the bar
 						borderRadius: "5px", // Optional: rounded edges
 						overflow: "hidden", // Ensure the fill doesn't overflow
 						position: "relative",
@@ -229,8 +229,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							paddingRight: "4px"
 						}}
 					>
-						{Math.round(progress)}%
+						<div className="wcb-icon-box__number" style={{
+							marginBottom: "0px"
+						}}>
+							<span>{general_layout.numberPrefix}</span>
+							{formatNumber(currentNumber, general_layout?.decimalNumber)}
+							<span>{general_layout.numberSuffix}</span>
+						</div>
 					</div>
+					
 				</div>
 				{general_layout.enableDescription && (
 					<RichText
@@ -275,6 +282,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabGeneralIsPanelOpen === "Icon" || undefined}
 							//
 							setAttr__={(data) => {
+								debugger
 								if (
 									data.iconPosition === "leftOfTitle" ||
 									data.iconPosition === "left"
@@ -363,6 +371,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								opened={tabStylesIsPanelOpen === "_StyleIcons" || undefined}
 								//
 								setAttr__={(data) => {
+									debugger
 									setAttributes({ style_Icon: data });
 								}}
 								panelData={style_Icon}
@@ -396,6 +405,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								opened={tabStylesIsPanelOpen === "_StyleTitle" || undefined}
 								//
 								setAttr__={(data) => {
+									debugger
 									setAttributes({ style_title: data });
 								}}
 								panelData={style_title}
@@ -518,7 +528,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					renderIcon()}
 
 				{/* CHILD CONTENT */}
-				<div className="wcb-icon-box__content" style={{ textAlign: "center" }}>
+				<div className="wcb-icon-box__content">
 					<div className="wcb-icon-box__content-title-wrap">
 						{general_icon.iconPosition === "leftOfTitle" &&
 							general_layout.type !== "circle" &&

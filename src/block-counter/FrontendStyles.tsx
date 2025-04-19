@@ -11,7 +11,6 @@ const FrontendStyles: FC<Props> = (attrs) => {
 
 // Animation logic for circle and bar layouts
 export function animateProgressElements () {
-	debugger
     // Target all circle and bar wrappers
     const circleWrappers = document.querySelectorAll(".wcb-icon-box__progress-circle-wrap");
     const barWrappers = document.querySelectorAll(".wcb-icon-box__progress-bar-wrap");
@@ -26,7 +25,7 @@ export function animateProgressElements () {
         const numberSuffix = wrapper.getAttribute("data-number-suffix") || "";
 
         const circle = wrapper.querySelector(".wcb-icon-box__progress-circle") as SVGCircleElement;
-        const numberDisplay = wrapper.querySelector(".wcb-icon-box__number-inside") as HTMLElement;
+        const numberDisplay = wrapper.querySelector(".wcb-icon-box__number") as HTMLElement;
 
         if (!circle || !numberDisplay) return;
 
@@ -64,28 +63,36 @@ export function animateProgressElements () {
         const animationDuration = parseInt(wrapper.getAttribute("data-animation-duration") || "1500");
 
         const bar = wrapper.querySelector(".wcb-icon-box__progress-bar") as HTMLElement;
+        const numberDisplay = wrapper.querySelector(".wcb-icon-box__number") as HTMLElement;
+        const numberValue = wrapper.querySelector(".wcb-icon-box__number-value") as HTMLElement;
 
-        if (!bar) return;
+        if (!bar || !numberDisplay || !numberValue) return;
+
+        numberDisplay.style.marginTop = "12px"
+        numberDisplay.style.marginBottom = "12px"
 
         const maxValue = 100;
         let current = startNumber;
         const incrementTime = animationDuration / (endNumber - startNumber || 1);
 
         const updateBar = () => {
-            const progress = ((current - startNumber) / (endNumber - startNumber)) * (endNumber / maxValue) * 100;
-            bar.style.width = `${progress}%`;
-            bar.textContent = `${Math.round(progress)}%`;
+            const progress = ((current - startNumber) / (endNumber - startNumber)) * endNumber;
+            const widthPercentage = (progress / maxValue) * 100;
+
+            bar.style.width = `${widthPercentage}%`;
+            numberValue.textContent = `${Math.round(progress)}`;
 
             if (current < endNumber) {
                 current += 1;
                 setTimeout(updateBar, incrementTime);
             } else {
                 bar.style.width = `${(endNumber / maxValue) * 100}%`;
-                bar.textContent = `${Math.round((endNumber / maxValue) * 100)}%`;
+                numberValue.textContent = `${Math.round(endNumber)}`;
             }
         };
 
         if (startNumber !== endNumber) {
+            numberValue.textContent = `${startNumber}`;
             updateBar();
         }
     });

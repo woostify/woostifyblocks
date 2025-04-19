@@ -70,20 +70,23 @@ const GlobalCss: FC<Props> = (attrs) => {
                     // Styles for circle type
                     ".wcb-icon-box__progress-circle-wrap": {
                         position: "relative",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
+                        margin:   
+                            general_layout.textAlignment.Desktop === "left" ? "" :
+                            general_layout.textAlignment.Tablet === "left" ? "" :
+                            general_layout.textAlignment.Desktop === "right" ? "0 0 0 auto" :
+                            general_layout.textAlignment.Tablet === "right" ? "0 0 0 auto" : "0 auto"
+                            
                     },
 
                     // Styles for bar type
                     ".wcb-icon-box__progress-bar-wrap": {
                         position: "relative",
                         width: "100%",
-                        textAlign: "center",
-                    },
-
-                    ".wcb-icon-box__number-inside": {
-                        fontSize: "50px",
+                        textAlign: 
+                            general_layout.textAlignment.Desktop === "left" ? "start" :
+                            general_layout.textAlignment.Tablet === "left" ? "start" :
+                            general_layout.textAlignment.Desktop === "right" ? "end" :
+                            general_layout.textAlignment.Tablet === "right" ? "end" : "center"
                     },
 
                     ".wcb-icon-box__title": {
@@ -166,15 +169,15 @@ const GlobalCss: FC<Props> = (attrs) => {
                     styles={[
                         getTypographyStyles({
                             typography: style_desination.typography,
-                            className: `${WRAP_CLASSNAME} .wcb-icon-box__designation`,
+                            className: `${WRAP_CLASSNAME} .wcb-icon-box__number`,
                         }),
                         getStyleObjectFromResponsiveAttr({
-                            className: `${WRAP_CLASSNAME} .wcb-icon-box__designation`,
+                            className: `${WRAP_CLASSNAME} .wcb-icon-box__number`,
                             value: style_desination.marginBottom,
                             prefix: "marginBottom",
                         }),
                         {
-                            [`${WRAP_CLASSNAME} .wcb-icon-box__designation`]: {
+                            [`${WRAP_CLASSNAME} .wcb-icon-box__number`]: {
                                 color: style_desination.textColor,
                             },
                         },
@@ -188,15 +191,15 @@ const GlobalCss: FC<Props> = (attrs) => {
                     styles={[
                         getTypographyStyles({
                             typography: style_title.typography,
-                            className: `${WRAP_CLASSNAME} .wcb-icon-box__heading`,
+                            className: `${WRAP_CLASSNAME} .wcb-icon-box__number`,
                         }),
                         getStyleObjectFromResponsiveAttr({
-                            className: `${WRAP_CLASSNAME} .wcb-icon-box__heading`,
+                            className: `${WRAP_CLASSNAME} .wcb-icon-box__number`,
                             value: style_title.marginBottom,
                             prefix: "marginBottom",
                         }),
                         {
-                            [`${WRAP_CLASSNAME} .wcb-icon-box__heading`]: {
+                            [`${WRAP_CLASSNAME} .wcb-icon-box__number`]: {
                                 color: style_title.textColor,
                             },
                         },

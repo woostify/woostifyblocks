@@ -62,7 +62,6 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
                     position: "relative",
                     width: `${radius * 2}px`,
                     height: `${radius * 2}px`,
-                    margin: "0 auto",
                 }}
                 data-start-number={general_layout?.startNumber || "0"}
                 data-end-number={general_layout?.endNumber || "0"}
@@ -115,10 +114,15 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
                             <MyIconFull icon={general_icon.icon} />
                         </div>
                     )}
-                    <div className="wcb-icon-box__number-inside">
+                    {/* <div className="wcb-icon-box__number-inside">
                         {formatNumber(general_layout?.startNumber || "0", general_layout?.decimalNumber)}
                         {general_layout.numberSuffix}
-                    </div>
+                    </div> */}
+                    <div className="wcb-icon-box__number">
+						<span>{general_layout.numberPrefix}</span>
+						{formatNumber(general_layout?.startNumber || "0", general_layout?.decimalNumber)}
+						<span>{general_layout.numberSuffix}</span>
+					</div>
                     {general_layout.enableDescription && (
                         <RichText.Content
                             tagName="div"
@@ -141,16 +145,17 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
         return (
             <div
                 className="wcb-icon-box__progress-bar-wrap"
-                style={{ width: "100%", textAlign: "center" }}
                 data-start-number={general_layout?.startNumber || "0"}
                 data-end-number={general_layout?.endNumber || "0"}
                 data-animation-duration={general_layout?.animationDuration || "1500"}
+                data-number-prefix={general_layout?.numberPrefix || ""}
+                data-number-suffix={general_layout?.numberSuffix || ""}
             >
                 <div
                     style={{
                         width: "100%",
                         backgroundColor: "#e0e0e0",
-                        height: "32px",
+                        height: "100%",
                         borderRadius: "5px",
                         overflow: "hidden",
                         position: "relative",
@@ -162,7 +167,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
                             width: "0%", // Initially set to 0% progress
                             height: "100%",
                             backgroundColor: "#007cba",
-                            transition: "width 0.3s ease-in-out",
+                            transition: "transparent",
                             color: "white",
                             display: "flex",
                             alignItems: "center",
@@ -170,7 +175,13 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
                             paddingRight: "4px",
                         }}
                     >
-                        0%
+                    <div className="wcb-icon-box__number" style={{
+							marginBottom: "0px"
+						}}>
+							<span>{general_layout.numberPrefix}</span>
+                            <span className="wcb-icon-box__number-value">0</span>
+							<span>{general_layout.numberSuffix}</span>
+						</div>
                     </div>
                 </div>
                 {general_layout.enableDescription && (
