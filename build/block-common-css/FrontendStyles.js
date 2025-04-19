@@ -1,6 +1,19 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./node_modules/accordion-js/dist/accordion.min.css":
+/*!**********************************************************!*\
+  !*** ./node_modules/accordion-js/dist/accordion.min.css ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./node_modules/accordion-js/dist/accordion.min.js":
 /*!*********************************************************!*\
   !*** ./node_modules/accordion-js/dist/accordion.min.js ***!
@@ -29,8 +42,8 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "DEMO_WCB_GLOBAL_VARIABLES": () => (/* binding */ DEMO_WCB_GLOBAL_VARIABLES),
-/* harmony export */   "___wcb_global": () => (/* binding */ ___wcb_global)
+/* harmony export */   DEMO_WCB_GLOBAL_VARIABLES: () => (/* binding */ DEMO_WCB_GLOBAL_VARIABLES),
+/* harmony export */   ___wcb_global: () => (/* binding */ ___wcb_global)
 /* harmony export */ });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
@@ -65,7 +78,7 @@ const ___wcb_global = 1;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "initCarouselForWcbFaq": () => (/* binding */ initCarouselForWcbFaq)
+/* harmony export */   initCarouselForWcbFaq: () => (/* binding */ initCarouselForWcbFaq)
 /* harmony export */ });
 /* harmony import */ var accordion_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! accordion-js */ "./node_modules/accordion-js/dist/accordion.min.js");
 /* harmony import */ var accordion_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(accordion_js__WEBPACK_IMPORTED_MODULE_0__);
@@ -73,10 +86,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // --------------------------- FORM AJAX
-function initCarouselForWcbFaq(div, _ref) {
-  let {
-    general_general
-  } = _ref;
+function initCarouselForWcbFaq(div, {
+  general_general
+}) {
   const collection = div.children;
   for (let i = 0; i < collection.length; i++) {
     const el = collection[i];
@@ -86,7 +98,6 @@ function initCarouselForWcbFaq(div, _ref) {
   }
   //
 }
-
 function handleAccordion(container, general_general) {
   if (!container || general_general.layout !== "accordion") {
     return;
@@ -110,7 +121,7 @@ function handleAccordion(container, general_general) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "handleSubmitFormForWcbForm": () => (/* binding */ handleSubmitFormForWcbForm)
+/* harmony export */   handleSubmitFormForWcbForm: () => (/* binding */ handleSubmitFormForWcbForm)
 /* harmony export */ });
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
 
@@ -213,7 +224,7 @@ function handleSubmitFormForWcbForm(div, props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "initCarouselForWcbProducts": () => (/* binding */ initCarouselForWcbProducts)
+/* harmony export */   initCarouselForWcbProducts: () => (/* binding */ initCarouselForWcbProducts)
 /* harmony export */ });
 /* harmony import */ var _MyScrollSnapSlider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MyScrollSnapSlider */ "./src/block-products/MyScrollSnapSlider.tsx");
 // @ts-nocheck
@@ -281,7 +292,7 @@ function initCarouselForWcbProducts(div, props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "CustomPlugin": () => (/* binding */ CustomPlugin)
+/* harmony export */   CustomPlugin: () => (/* binding */ CustomPlugin)
 /* harmony export */ });
 /* harmony import */ var _ScrollSnapSlider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ScrollSnapSlider */ "./src/block-products/ScrollSnapSlider.ts");
 
@@ -290,9 +301,7 @@ class CustomPlugin extends _ScrollSnapSlider__WEBPACK_IMPORTED_MODULE_0__.Scroll
    * Pass any config here
    * @param {*} config
    */
-  constructor(element) {
-    let enabled = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-    let plugins = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+  constructor(element, enabled = true, plugins = []) {
     super(element, enabled, plugins);
   }
 
@@ -342,7 +351,7 @@ class CustomPlugin extends _ScrollSnapSlider__WEBPACK_IMPORTED_MODULE_0__.Scroll
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ScrollSnapSlider": () => (/* binding */ ScrollSnapSlider)
+/* harmony export */   ScrollSnapSlider: () => (/* binding */ ScrollSnapSlider)
 /* harmony export */ });
 /**
  * All options have sensitive defaults. The only required option is the <code>element</code>.
@@ -439,8 +448,7 @@ class ScrollSnapSlider {
    * @param plugins Plugins to attach
    * @param enabled Whether the plugins are enabled right away
    */
-  with(plugins) {
-    let enabled = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+  with(plugins, enabled = true) {
     for (const plugin of plugins) {
       plugin.slider = this;
       this.plugins.set(plugin.id, plugin);
@@ -548,6 +556,109 @@ class ScrollSnapSlider {
 
 /***/ }),
 
+/***/ "./src/block-tabs/FrontendStyles.tsx":
+/*!*******************************************!*\
+  !*** ./src/block-tabs/FrontendStyles.tsx ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   initCarouselForWcbFaq: () => (/* binding */ initCarouselForWcbFaq),
+/* harmony export */   initTabsForWcbTabs: () => (/* binding */ initTabsForWcbTabs)
+/* harmony export */ });
+/* harmony import */ var accordion_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! accordion-js */ "./node_modules/accordion-js/dist/accordion.min.js");
+/* harmony import */ var accordion_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(accordion_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var accordion_js_dist_accordion_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! accordion-js/dist/accordion.min.css */ "./node_modules/accordion-js/dist/accordion.min.css");
+
+
+// --------------------------- FORM AJAX
+
+// https://stackoverflow.com/questions/11645081/how-to-build-simple-tabs-with-jquery
+
+function initCarouselForWcbFaq(div, {
+  general_general
+}) {
+  const collection = div.children;
+  for (let i = 0; i < collection.length; i++) {
+    const el = collection[i];
+    if (el.classList.contains("accordion-container")) {
+      handleAccordion(el, general_general);
+    }
+  }
+  //
+}
+function handleAccordion(container, general_general) {
+  if (!container || general_general.layout !== "accordion") {
+    return;
+  }
+  new (accordion_js__WEBPACK_IMPORTED_MODULE_0___default())(container, {
+    duration: 400,
+    showMultiple: general_general?.showMultiple,
+    openOnInit: !general_general.collapseOtherItems ? [...Array(99).keys()] : general_general?.expandFirstItem ? [0] : [],
+    activeClass: "active"
+  });
+}
+
+// Handle event click tabs
+function initTabsForWcbTabs(div, props) {
+  const handleTabsForWcbTabs = () => {
+    const dataUniqueid = div.getAttribute("data-uniqueid") || "";
+    const tabWrap = document.querySelector(`.wcb-tabs__wrap[data-uniqueid="${dataUniqueid}"]`);
+    if (!tabWrap) {
+      console.warn("No .wcb-tabs__wrap element found for uniqueid:", dataUniqueid);
+      return;
+    }
+    const titles = tabWrap.querySelectorAll(".wcb-tabs__title_inner");
+    const contents = tabWrap.querySelectorAll(".wcb-tab-child__wrap");
+    if (!titles.length || !contents.length) {
+      console.warn("Tabs block: No titles or contents found.");
+      return;
+    }
+
+    // Init status origin: show tab 1
+    contents.forEach((content, index) => {
+      content.setAttribute("role", "tabpanel");
+      if (index !== 0) {
+        content.setAttribute("hidden", "");
+      } else {
+        content.removeAttribute("hidden");
+        titles[0].classList.add("active");
+      }
+    });
+
+    // Assign click event to tab
+    titles.forEach((title, index) => {
+      title.addEventListener("click", () => {
+        const tabIndex = title.getAttribute("data-tab-index") !== null ? parseInt(title.getAttribute("data-tab-index")) : index;
+        if (isNaN(tabIndex) || !contents[tabIndex]) {
+          console.warn("Tabs block: Invalid tab index or content not found.");
+          return;
+        }
+        titles.forEach(t => t.classList.remove("active"));
+        title.classList.add("active");
+        contents.forEach(content => content.setAttribute("hidden", ""));
+        contents[tabIndex].removeAttribute("hidden");
+      });
+    });
+  };
+  const domObserver = new MutationObserver(() => {
+    if (document.querySelector(`.wcb-tabs__wrap[data-uniqueid="${div.getAttribute("data-uniqueid")}"]`)) {
+      domObserver.disconnect();
+      setTimeout(() => {
+        handleTabsForWcbTabs();
+      }, 500);
+    }
+  });
+  domObserver.observe(document.body || document, {
+    childList: true,
+    subtree: true
+  });
+}
+
+/***/ }),
+
 /***/ "./src/block-testimonials/FrontendStyles.tsx":
 /*!***************************************************!*\
   !*** ./src/block-testimonials/FrontendStyles.tsx ***!
@@ -557,7 +668,7 @@ class ScrollSnapSlider {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "initCarouselForWcbTestimonials": () => (/* binding */ initCarouselForWcbTestimonials)
+/* harmony export */   initCarouselForWcbTestimonials: () => (/* binding */ initCarouselForWcbTestimonials)
 /* harmony export */ });
 /* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
@@ -661,38 +772,14 @@ const getValueFromAttrsResponsives = function (properties, currentDevice) {
 
 /***/ }),
 
-/***/ "./node_modules/accordion-js/dist/accordion.min.css":
-/*!**********************************************************!*\
-  !*** ./node_modules/accordion-js/dist/accordion.min.css ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "react":
-/*!************************!*\
-  !*** external "React" ***!
-  \************************/
+/***/ "@wordpress/api":
+/*!*****************************!*\
+  !*** external ["wp","api"] ***!
+  \*****************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = window["React"];
-
-/***/ }),
-
-/***/ "react-dom":
-/*!***************************!*\
-  !*** external "ReactDOM" ***!
-  \***************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = window["ReactDOM"];
+module.exports = window["wp"]["api"];
 
 /***/ }),
 
@@ -718,25 +805,25 @@ module.exports = window["lodash"];
 
 /***/ }),
 
-/***/ "@wordpress/api":
-/*!*****************************!*\
-  !*** external ["wp","api"] ***!
-  \*****************************/
+/***/ "react":
+/*!************************!*\
+  !*** external "React" ***!
+  \************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = window["wp"]["api"];
+module.exports = window["React"];
 
 /***/ }),
 
-/***/ "@wordpress/element":
-/*!*********************************!*\
-  !*** external ["wp","element"] ***!
-  \*********************************/
+/***/ "react-dom":
+/*!***************************!*\
+  !*** external "ReactDOM" ***!
+  \***************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = window["wp"]["element"];
+module.exports = window["ReactDOM"];
 
 /***/ })
 
@@ -867,6 +954,7 @@ module.exports = window["wp"]["element"];
 /******/ 					script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 				}
 /******/ 				script.setAttribute("data-webpack", dataWebpackPrefix + key);
+/******/ 		
 /******/ 				script.src = url;
 /******/ 			}
 /******/ 			inProgress[url] = [done];
@@ -904,17 +992,20 @@ module.exports = window["wp"]["element"];
 /******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
 /******/ 		var document = __webpack_require__.g.document;
 /******/ 		if (!scriptUrl && document) {
-/******/ 			if (document.currentScript)
+/******/ 			if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT')
 /******/ 				scriptUrl = document.currentScript.src;
 /******/ 			if (!scriptUrl) {
 /******/ 				var scripts = document.getElementsByTagName("script");
-/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
+/******/ 				}
 /******/ 			}
 /******/ 		}
 /******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
 /******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
 /******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
-/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		scriptUrl = scriptUrl.replace(/^blob:/, "").replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
 /******/ 		__webpack_require__.p = scriptUrl + "../";
 /******/ 	})();
 /******/ 	
@@ -963,7 +1054,7 @@ module.exports = window["wp"]["element"];
 /******/ 								}
 /******/ 							};
 /******/ 							__webpack_require__.l(url, loadingEnded, "chunk-" + chunkId, chunkId);
-/******/ 						} else installedChunks[chunkId] = 0;
+/******/ 						}
 /******/ 					}
 /******/ 				}
 /******/ 		};
@@ -1010,23 +1101,23 @@ module.exports = window["wp"]["element"];
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+// This entry needs to be wrapped in an IIFE because it needs to be in strict mode.
 (() => {
 "use strict";
 /*!*************************************************!*\
   !*** ./src/block-common-css/FrontendStyles.tsx ***!
   \*************************************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "react-dom");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _block_faq_FrontendStyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../block-faq/FrontendStyles */ "./src/block-faq/FrontendStyles.tsx");
-/* harmony import */ var _block_form_FrontendStyles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../block-form/FrontendStyles */ "./src/block-form/FrontendStyles.tsx");
-/* harmony import */ var _block_testimonials_FrontendStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../block-testimonials/FrontendStyles */ "./src/block-testimonials/FrontendStyles.tsx");
-/* harmony import */ var _block_products_FrontendStyles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../block-products/FrontendStyles */ "./src/block-products/FrontendStyles.tsx");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "react-dom");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _block_faq_FrontendStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../block-faq/FrontendStyles */ "./src/block-faq/FrontendStyles.tsx");
+/* harmony import */ var _block_form_FrontendStyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../block-form/FrontendStyles */ "./src/block-form/FrontendStyles.tsx");
+/* harmony import */ var _block_testimonials_FrontendStyles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../block-testimonials/FrontendStyles */ "./src/block-testimonials/FrontendStyles.tsx");
+/* harmony import */ var _block_products_FrontendStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../block-products/FrontendStyles */ "./src/block-products/FrontendStyles.tsx");
+/* harmony import */ var _block_tabs_FrontendStyles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../block-tabs/FrontendStyles */ "./src/block-tabs/FrontendStyles.tsx");
+
 
 
 
@@ -1036,57 +1127,60 @@ __webpack_require__.r(__webpack_exports__);
 
 const classes = [{
   D: ".wcb-button__wrap.wcb-update-div",
-  C: react__WEBPACK_IMPORTED_MODULE_1___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-button_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-button/GlobalCss */ "./src/block-button/GlobalCss.tsx")))
+  C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-button_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-button/GlobalCss */ "./src/block-button/GlobalCss.tsx")))
 }, {
   D: ".wcb-buttons__wrap.wcb-update-div",
-  C: react__WEBPACK_IMPORTED_MODULE_1___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-buttons_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-buttons/GlobalCss */ "./src/block-buttons/GlobalCss.tsx")))
+  C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-buttons_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-buttons/GlobalCss */ "./src/block-buttons/GlobalCss.tsx")))
 }, {
   D: ".wcb-cta__wrap.wcb-update-div",
-  C: react__WEBPACK_IMPORTED_MODULE_1___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-cta_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-cta/GlobalCss */ "./src/block-cta/GlobalCss.tsx")))
+  C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-cta_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-cta/GlobalCss */ "./src/block-cta/GlobalCss.tsx")))
 }, {
   D: ".wcb-products__wrap.wcb-update-div",
-  C: react__WEBPACK_IMPORTED_MODULE_1___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-products_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-products/GlobalCss */ "./src/block-products/GlobalCss.tsx"))),
-  F: _block_products_FrontendStyles__WEBPACK_IMPORTED_MODULE_6__.initCarouselForWcbProducts
+  C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-products_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-products/GlobalCss */ "./src/block-products/GlobalCss.tsx"))),
+  F: _block_products_FrontendStyles__WEBPACK_IMPORTED_MODULE_5__.initCarouselForWcbProducts
 }, {
   D: ".wcb-posts-grid__wrap.wcb-update-div",
-  C: react__WEBPACK_IMPORTED_MODULE_1___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-posts-grid_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-posts-grid/GlobalCss */ "./src/block-posts-grid/GlobalCss.tsx")))
+  C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-posts-grid_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-posts-grid/GlobalCss */ "./src/block-posts-grid/GlobalCss.tsx")))
 }, {
   D: ".wcb-container__wrap.wcb-update-div",
-  C: react__WEBPACK_IMPORTED_MODULE_1___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("src_block-container_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-container/GlobalCss */ "./src/block-container/GlobalCss.tsx")))
+  C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("src_block-container_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-container/GlobalCss */ "./src/block-container/GlobalCss.tsx")))
 }, {
   D: ".wcb-faq__wrap.wcb-update-div",
-  C: react__WEBPACK_IMPORTED_MODULE_1___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-faq_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-faq/GlobalCss */ "./src/block-faq/GlobalCss.tsx"))),
-  F: _block_faq_FrontendStyles__WEBPACK_IMPORTED_MODULE_3__.initCarouselForWcbFaq
+  C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-faq_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-faq/GlobalCss */ "./src/block-faq/GlobalCss.tsx"))),
+  F: _block_faq_FrontendStyles__WEBPACK_IMPORTED_MODULE_2__.initCarouselForWcbFaq
 }, {
   D: ".wcb-form__wrap.wcb-update-div",
-  C: react__WEBPACK_IMPORTED_MODULE_1___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-form_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-form/GlobalCss */ "./src/block-form/GlobalCss.tsx"))),
-  F: _block_form_FrontendStyles__WEBPACK_IMPORTED_MODULE_4__.handleSubmitFormForWcbForm
+  C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-form_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-form/GlobalCss */ "./src/block-form/GlobalCss.tsx"))),
+  F: _block_form_FrontendStyles__WEBPACK_IMPORTED_MODULE_3__.handleSubmitFormForWcbForm
 }, {
   D: ".wcb-heading__wrap.wcb-update-div",
-  C: react__WEBPACK_IMPORTED_MODULE_1___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-heading_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-heading/GlobalCss */ "./src/block-heading/GlobalCss.tsx")))
+  C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-heading_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-heading/GlobalCss */ "./src/block-heading/GlobalCss.tsx")))
 }, {
   D: ".wcb-icon-box__wrap.wcb-update-div",
-  C: react__WEBPACK_IMPORTED_MODULE_1___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-icon-box_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-icon-box/GlobalCss */ "./src/block-icon-box/GlobalCss.tsx")))
+  C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-icon-box_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-icon-box/GlobalCss */ "./src/block-icon-box/GlobalCss.tsx")))
 }, {
   D: ".wcb-image__wrap.wcb-update-div",
-  C: react__WEBPACK_IMPORTED_MODULE_1___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-image_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-image/GlobalCss */ "./src/block-image/GlobalCss.tsx")))
+  C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-image_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-image/GlobalCss */ "./src/block-image/GlobalCss.tsx")))
 }, {
   D: ".wcb-map__wrap.wcb-update-div",
-  C: react__WEBPACK_IMPORTED_MODULE_1___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("src_block-map_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-map/GlobalCss */ "./src/block-map/GlobalCss.tsx")))
+  C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("src_block-map_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-map/GlobalCss */ "./src/block-map/GlobalCss.tsx")))
 }, {
   D: ".wcb-team__wrap.wcb-update-div",
-  C: react__WEBPACK_IMPORTED_MODULE_1___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-team_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-team/GlobalCss */ "./src/block-team/GlobalCss.tsx")))
+  C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-team_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-team/GlobalCss */ "./src/block-team/GlobalCss.tsx")))
 }, {
   D: ".wcb-testimonials__wrap.wcb-update-div",
-  C: react__WEBPACK_IMPORTED_MODULE_1___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-testimonials_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-testimonials/GlobalCss */ "./src/block-testimonials/GlobalCss.tsx"))),
-  F: _block_testimonials_FrontendStyles__WEBPACK_IMPORTED_MODULE_5__.initCarouselForWcbTestimonials
+  C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-testimonials_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-testimonials/GlobalCss */ "./src/block-testimonials/GlobalCss.tsx"))),
+  F: _block_testimonials_FrontendStyles__WEBPACK_IMPORTED_MODULE_4__.initCarouselForWcbTestimonials
+}, {
+  D: ".wcb-tabs__wrap.wcb-update-div",
+  C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_emotion_react_dist_emotion-react_browser_esm_js"), __webpack_require__.e("vendors-node_modules_color-rgba_index_mjs"), __webpack_require__.e("src_block-tabs_GlobalCss_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-tabs/GlobalCss */ "./src/block-tabs/GlobalCss.tsx"))),
+  F: _block_tabs_FrontendStyles__WEBPACK_IMPORTED_MODULE_6__.initTabsForWcbTabs
 }];
-classes.forEach(_ref => {
-  let {
-    D,
-    C,
-    F
-  } = _ref;
+classes.forEach(({
+  D,
+  C,
+  F
+}) => {
   const divs = document.querySelectorAll(D);
   if (divs && divs.length) {
     renderToDom(divs, C, F);
@@ -1106,9 +1200,11 @@ function renderToDom(divsToUpdate, GlobalCss, funcRunOnEl) {
     const props = JSON.parse(preEl?.innerText);
     //
 
-    react_dom__WEBPACK_IMPORTED_MODULE_2___default().render((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_1__.Suspense, {
-      fallback: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null)
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(GlobalCss, props)), divRenderCssEl);
+    react_dom__WEBPACK_IMPORTED_MODULE_1___default().render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
+      fallback: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null)
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(GlobalCss, {
+      ...props
+    })), divRenderCssEl);
 
     // run function if exits
     funcRunOnEl && funcRunOnEl(div, props);

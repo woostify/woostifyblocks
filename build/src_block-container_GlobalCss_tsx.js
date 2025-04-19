@@ -11,20 +11,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_controls_MyBoxShadowControl_getBoxShadowStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/controls/MyBoxShadowControl/getBoxShadowStyles */ "./src/components/controls/MyBoxShadowControl/getBoxShadowStyles.ts");
-/* harmony import */ var _utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getBorderStyles */ "./src/utils/getBorderStyles.ts");
-/* harmony import */ var _utils_getFlexPropertiesStyles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/getFlexPropertiesStyles */ "./src/utils/getFlexPropertiesStyles.ts");
-/* harmony import */ var _utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/getPaddingMarginStyles */ "./src/utils/getPaddingMarginStyles.ts");
-/* harmony import */ var _utils_getStyleBackground__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/getStyleBackground */ "./src/utils/getStyleBackground.tsx");
-/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
-/* harmony import */ var _getAdvanveStyles__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./getAdvanveStyles */ "./src/block-container/getAdvanveStyles.ts");
-/* harmony import */ var _utils_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utils/checkResponsiveValueForOptimizeCSS */ "./src/utils/checkResponsiveValueForOptimizeCSS.ts");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
+/* harmony import */ var _components_controls_MyBoxShadowControl_getBoxShadowStyles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/controls/MyBoxShadowControl/getBoxShadowStyles */ "./src/components/controls/MyBoxShadowControl/getBoxShadowStyles.ts");
+/* harmony import */ var _utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/getBorderStyles */ "./src/utils/getBorderStyles.ts");
+/* harmony import */ var _utils_getFlexPropertiesStyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getFlexPropertiesStyles */ "./src/utils/getFlexPropertiesStyles.ts");
+/* harmony import */ var _utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/getPaddingMarginStyles */ "./src/utils/getPaddingMarginStyles.ts");
+/* harmony import */ var _utils_getStyleBackground__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/getStyleBackground */ "./src/utils/getStyleBackground.tsx");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var _getAdvanveStyles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./getAdvanveStyles */ "./src/block-container/getAdvanveStyles.ts");
+/* harmony import */ var _utils_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/checkResponsiveValueForOptimizeCSS */ "./src/utils/checkResponsiveValueForOptimizeCSS.ts");
 
 
 
@@ -54,7 +52,7 @@ const GlobalCss = attrs => {
   const {
     media_desktop,
     media_tablet
-  } = ___WEBPACK_IMPORTED_MODULE_8__.DEMO_WCB_GLOBAL_VARIABLES;
+  } = ___WEBPACK_IMPORTED_MODULE_7__.DEMO_WCB_GLOBAL_VARIABLES;
   const WRAP_CLASSNAME = `.wcb-container__wrap.${uniqueId}[data-uniqueid=${uniqueId}]`;
   const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-container__inner`;
 
@@ -70,7 +68,7 @@ const GlobalCss = attrs => {
       value_Desktop: cWidthDesktop,
       value_Tablet: cWidthTablet,
       value_Mobile: cWidthMobile
-    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__["default"])(customWidth);
+    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(customWidth);
     if (containerWidthType !== "Custom") {
       cWidthDesktop = undefined;
       cWidthTablet = undefined;
@@ -80,14 +78,14 @@ const GlobalCss = attrs => {
       value_Desktop: minHeightDesktop,
       value_Tablet: minHeightTablet,
       value_Mobile: minHeightMobile
-    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__["default"])(minHeight);
+    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(minHeight);
 
     //
     const {
       mobile_v: cWidthMobile_new,
       tablet_v: cWidthTablet_new,
       desktop_v: cWidthDesktop_new
-    } = (0,_utils_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_10__["default"])({
+    } = (0,_utils_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_9__["default"])({
       mobile_v: cWidthMobile,
       tablet_v: cWidthTablet,
       desktop_v: cWidthDesktop
@@ -96,7 +94,7 @@ const GlobalCss = attrs => {
       mobile_v: minHeightMobile_new,
       tablet_v: minHeightTablet_new,
       desktop_v: minHeightDesktop_new
-    } = (0,_utils_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_10__["default"])({
+    } = (0,_utils_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_9__["default"])({
       mobile_v: minHeightMobile,
       tablet_v: minHeightTablet,
       desktop_v: minHeightDesktop
@@ -134,7 +132,7 @@ const GlobalCss = attrs => {
     }];
   };
   const getDivWrapStyles__Border = () => {
-    return (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
+    return (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_2__["default"])({
       border: styles_border,
       className: WRAP_CLASSNAME,
       isWithRadius: true
@@ -168,17 +166,17 @@ const GlobalCss = attrs => {
     let VALUE_H = "";
     //
     if (presetClass) {
-      VALUE = (0,_components_controls_MyBoxShadowControl_getBoxShadowStyles__WEBPACK_IMPORTED_MODULE_2__.getShadowStyleValueFromTwPreset)(presetClass, color);
+      VALUE = (0,_components_controls_MyBoxShadowControl_getBoxShadowStyles__WEBPACK_IMPORTED_MODULE_1__.getShadowStyleValueFromTwPreset)(presetClass, color);
     } else {
       VALUE = `${horizontal}px ${vertical}px ${blur}px ${spread}px ${color} ${position === "inset" ? position : ""}`;
     }
     //
     if (presetClass_h) {
-      VALUE_H = (0,_components_controls_MyBoxShadowControl_getBoxShadowStyles__WEBPACK_IMPORTED_MODULE_2__.getShadowStyleValueFromTwPreset)(presetClass_h, color_h);
+      VALUE_H = (0,_components_controls_MyBoxShadowControl_getBoxShadowStyles__WEBPACK_IMPORTED_MODULE_1__.getShadowStyleValueFromTwPreset)(presetClass_h, color_h);
     } else {
       VALUE_H = `${horizontal_h}px ${vertical_h}px ${blur_h}px ${spread_h}px ${color_h} ${position_h === "inset" ? position_h : ""}`;
     }
-    return _emotion_react__WEBPACK_IMPORTED_MODULE_11__.css`
+    return (0,_emotion_react__WEBPACK_IMPORTED_MODULE_10__.css)`
 			${WRAP_CLASSNAME} {
 				box-shadow: ${VALUE};
 				&:hover {
@@ -192,7 +190,7 @@ const GlobalCss = attrs => {
       margin,
       padding
     } = styles_dimensions;
-    return (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
+    return (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
       margin,
       padding,
       className: WRAP_CLASSNAME
@@ -219,19 +217,19 @@ const GlobalCss = attrs => {
     }
     if (!contentBoxWidth.Desktop) {
       contentBoxWidth = {
-        Desktop: ___WEBPACK_IMPORTED_MODULE_8__.DEMO_WCB_GLOBAL_VARIABLES.defaultContentWidth || ""
+        Desktop: ___WEBPACK_IMPORTED_MODULE_7__.DEMO_WCB_GLOBAL_VARIABLES.defaultContentWidth || ""
       };
     }
     const {
       value_Desktop: contentBoxWidthDesktop,
       value_Tablet: contentBoxWidthTablet,
       value_Mobile: contentBoxWidthMobile
-    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__["default"])(contentBoxWidth);
+    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(contentBoxWidth);
     const {
       mobile_v: contentBoxWidthMobile_new,
       tablet_v: contentBoxWidthTablet_new,
       desktop_v: contentBoxWidthDesktop_new
-    } = (0,_utils_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_10__["default"])({
+    } = (0,_utils_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_9__["default"])({
       mobile_v: contentBoxWidthMobile,
       tablet_v: contentBoxWidthTablet,
       desktop_v: contentBoxWidthDesktop
@@ -257,7 +255,7 @@ const GlobalCss = attrs => {
       colunmGap,
       rowGap
     } = styles_dimensions;
-    return (0,_utils_getFlexPropertiesStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
+    return (0,_utils_getFlexPropertiesStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
       flexProperties: {
         ...general_flexProperties,
         colunmGap,
@@ -269,25 +267,25 @@ const GlobalCss = attrs => {
   if (!uniqueId) {
     return null;
   }
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getDivWrapStyles()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
-    styles: (0,_utils_getStyleBackground__WEBPACK_IMPORTED_MODULE_6__["default"])({
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+    styles: (0,_utils_getStyleBackground__WEBPACK_IMPORTED_MODULE_5__["default"])({
       className: WRAP_CLASSNAME,
       styles_background
     })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getDivWrapStyles__Border()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getDivWrapStyles__BoxShadow()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getDivWrapStyles__PaddingMargin()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getInner__contentCustomWidth()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getInner__flexProperties()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
-    styles: (0,_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_9__.getAdvanveDivWrapStyles)({
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+    styles: (0,_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_8__.getAdvanveDivWrapStyles)({
       advance_motionEffect,
       advance_responsiveCondition,
       advance_zIndex,
@@ -296,7 +294,7 @@ const GlobalCss = attrs => {
     })
   }));
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (react__WEBPACK_IMPORTED_MODULE_1___default().memo(GlobalCss));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (react__WEBPACK_IMPORTED_MODULE_0___default().memo(GlobalCss));
 
 /***/ }),
 
@@ -308,7 +306,7 @@ const GlobalCss = attrs => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getAdvanveDivWrapStyles": () => (/* binding */ getAdvanveDivWrapStyles)
+/* harmony export */   getAdvanveDivWrapStyles: () => (/* binding */ getAdvanveDivWrapStyles)
 /* harmony export */ });
 /* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
@@ -316,14 +314,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const getAdvanveDivWrapStyles = _ref => {
-  let {
-    advance_motionEffect,
-    advance_zIndex,
-    advance_responsiveCondition,
-    className,
-    defaultDisplay
-  } = _ref;
+const getAdvanveDivWrapStyles = ({
+  advance_motionEffect,
+  advance_zIndex,
+  advance_responsiveCondition,
+  className,
+  defaultDisplay
+}) => {
   const {
     media_desktop,
     media_tablet
@@ -371,7 +368,7 @@ const getAdvanveDivWrapStyles = _ref => {
     tablet_v: advance_responsiveCondition.isHiddenOnTablet,
     desktop_v: advance_responsiveCondition.isHiddenOnDesktop
   });
-  return _emotion_react__WEBPACK_IMPORTED_MODULE_2__.css`
+  return (0,_emotion_react__WEBPACK_IMPORTED_MODULE_2__.css)`
 		${className} {
 			display: ${isHiddenOnMobile ? "none" : defaultDisplay};
 			visibility: visible;
@@ -398,10 +395,9 @@ const getAdvanveDivWrapStyles = _ref => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getShadowStyleValueFromTwPreset": () => (/* binding */ getShadowStyleValueFromTwPreset)
+/* harmony export */   getShadowStyleValueFromTwPreset: () => (/* binding */ getShadowStyleValueFromTwPreset)
 /* harmony export */ });
-const getShadowStyleValueFromTwPreset = function (presetClass) {
-  let color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+const getShadowStyleValueFromTwPreset = (presetClass, color = "") => {
   switch (presetClass) {
     case "shadow-sm":
       return `0 1px 2px 0 ${color || "rgb(0 0 0 / 0.05)"}`;
@@ -434,13 +430,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-const checkResponsiveValueForOptimizeCSS = _ref => {
-  var _new_tablet_v, _new_desktop_v;
-  let {
-    mobile_v = null,
-    tablet_v = null,
-    desktop_v = null
-  } = _ref;
+const checkResponsiveValueForOptimizeCSS = ({
+  mobile_v = null,
+  tablet_v = null,
+  desktop_v = null
+}) => {
   let new_tablet_v = tablet_v;
   let new_desktop_v = desktop_v;
   if (mobile_v === tablet_v && tablet_v === desktop_v) {
@@ -458,8 +452,8 @@ const checkResponsiveValueForOptimizeCSS = _ref => {
   }
   return {
     mobile_v: mobile_v !== null && mobile_v !== void 0 ? mobile_v : null,
-    tablet_v: (_new_tablet_v = new_tablet_v) !== null && _new_tablet_v !== void 0 ? _new_tablet_v : null,
-    desktop_v: (_new_desktop_v = new_desktop_v) !== null && _new_desktop_v !== void 0 ? _new_desktop_v : null
+    tablet_v: new_tablet_v !== null && new_tablet_v !== void 0 ? new_tablet_v : null,
+    desktop_v: new_desktop_v !== null && new_desktop_v !== void 0 ? new_desktop_v : null
   };
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (checkResponsiveValueForOptimizeCSS);
@@ -476,12 +470,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-const getBackgroundColorGradientStyles = _ref => {
-  let {
-    className,
-    background,
-    backgroundHover
-  } = _ref;
+const getBackgroundColorGradientStyles = ({
+  className,
+  background,
+  backgroundHover
+}) => {
   const {
     bgType,
     color,
@@ -550,17 +543,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const getBorderRadiusStyles = _ref => {
-  let {
-    className,
-    radius
-  } = _ref;
+const getBorderRadiusStyles = ({
+  className,
+  radius,
+  isWithIframe = false
+}) => {
   const {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES;
-  //
-
   let {
     value_Desktop: radiusDesktop,
     value_Tablet: radiusTablet,
@@ -624,23 +615,26 @@ const getBorderRadiusStyles = _ref => {
     tablet_v: radiusTablet?.bottomLeft,
     desktop_v: radiusDesktop?.bottomLeft
   });
+
+  // Check if className is for iframe
+  const applyImportant = isWithIframe ? "!important" : "";
   return {
     [`${className}`]: {
-      borderTopLeftRadius: mobile_v_topLeft,
-      borderTopRightRadius: mobile_v_topRight,
-      borderBottomRightRadius: mobile_v_bottomRight,
-      borderBottomLeftRadius: mobile_v_bottomLeft,
+      borderTopLeftRadius: `${mobile_v_topLeft} ${applyImportant}`,
+      borderTopRightRadius: `${mobile_v_topRight} ${applyImportant}`,
+      borderBottomRightRadius: `${mobile_v_bottomRight} ${applyImportant}`,
+      borderBottomLeftRadius: `${mobile_v_bottomLeft} ${applyImportant}`,
       [`@media (min-width: ${media_tablet})`]: tablet_v_topLeft || tablet_v_topRight || tablet_v_bottomRight || tablet_v_bottomLeft ? {
-        borderTopLeftRadius: tablet_v_topLeft,
-        borderTopRightRadius: tablet_v_topRight,
-        borderBottomRightRadius: tablet_v_bottomRight,
-        borderBottomLeftRadius: tablet_v_bottomLeft
+        borderTopLeftRadius: `${tablet_v_topLeft} ${applyImportant}`,
+        borderTopRightRadius: `${tablet_v_topRight} ${applyImportant}`,
+        borderBottomRightRadius: `${tablet_v_bottomRight} ${applyImportant}`,
+        borderBottomLeftRadius: `${tablet_v_bottomLeft} ${applyImportant}`
       } : null,
       [`@media (min-width: ${media_desktop})`]: desktop_v_topLeft || desktop_v_topRight || desktop_v_bottomRight || desktop_v_bottomLeft ? {
-        borderTopLeftRadius: desktop_v_topLeft,
-        borderTopRightRadius: desktop_v_topRight,
-        borderBottomRightRadius: desktop_v_bottomRight,
-        borderBottomLeftRadius: desktop_v_bottomLeft
+        borderTopLeftRadius: `${desktop_v_topLeft} ${applyImportant}`,
+        borderTopRightRadius: `${desktop_v_topRight} ${applyImportant}`,
+        borderBottomRightRadius: `${desktop_v_bottomRight} ${applyImportant}`,
+        borderBottomLeftRadius: `${desktop_v_bottomLeft} ${applyImportant}`
       } : null
     }
   };
@@ -661,12 +655,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _getBorderRadiusStyles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getBorderRadiusStyles */ "./src/utils/getBorderRadiusStyles.ts");
 
-const getBorderStyles = _ref => {
-  let {
-    border,
-    className,
-    isWithRadius = false
-  } = _ref;
+const getBorderStyles = ({
+  border,
+  className,
+  isWithRadius = false,
+  isWithIframe = false
+}) => {
   const {
     hoverColor,
     mainSettings,
@@ -721,7 +715,8 @@ const getBorderStyles = _ref => {
   if (isWithRadius && radius) {
     radiusCSSObject = (0,_getBorderRadiusStyles__WEBPACK_IMPORTED_MODULE_0__["default"])({
       radius,
-      className
+      className,
+      isWithIframe
     });
   }
 
@@ -761,11 +756,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const getFlexPropertiesStyles = _ref => {
-  let {
-    flexProperties,
-    className
-  } = _ref;
+const getFlexPropertiesStyles = ({
+  flexProperties,
+  className
+}) => {
   const {
     media_desktop,
     media_tablet
@@ -926,12 +920,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const getPaddingMarginStyles = _ref => {
-  let {
-    className,
-    padding,
-    margin
-  } = _ref;
+const getPaddingMarginStyles = ({
+  className,
+  padding,
+  margin
+}) => {
   const {
     media_desktop,
     media_tablet
@@ -1024,7 +1017,7 @@ const getPaddingMarginStyles = _ref => {
     tablet_v: margin_Tablet?.bottom,
     desktop_v: margin_Desktop?.bottom
   });
-  return _emotion_react__WEBPACK_IMPORTED_MODULE_3__.css`
+  return (0,_emotion_react__WEBPACK_IMPORTED_MODULE_3__.css)`
 		body ${className} {
 			padding-top: ${padding_Mobile_top};
 			padding-right: ${padding_Mobile_right};
@@ -1079,11 +1072,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function getStyleBackground(_ref) {
-  let {
-    styles_background,
-    className
-  } = _ref;
+function getStyleBackground({
+  styles_background,
+  className
+}) {
   const WRAP_CLASSNAME = className;
   const {
     media_desktop,

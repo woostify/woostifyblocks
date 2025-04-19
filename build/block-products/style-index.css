@@ -1,6 +1,7 @@
 /*!******************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/block-products/style.scss ***!
   \******************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
 .wcb-products__wrap {
   display: none;
   position: relative;
@@ -12,13 +13,13 @@
   /* zoom hover */
   /* hover swap  */
 }
-.wcb-products__wrap .wcb-products__product-image-link__zoom .wcb-products__product-image {
+.wcb-products__wrap .wcb-products__product-image-link__zoom .wcb-products__product-image{
   position: relative;
   display: block;
   aspect-ratio: 1 / 1;
   overflow: hidden;
 }
-.wcb-products__wrap .wcb-products__product-image-link__zoom img {
+.wcb-products__wrap .wcb-products__product-image-link__zoom img{
   position: absolute;
   top: 0px;
   right: 0px;
@@ -35,7 +36,7 @@
 .wcb-products__wrap .wcb-products__product-image-link__zoom:hover img {
   transform: scale(1.06);
 }
-.wcb-products__wrap .wcb-products__product-image-link .wcb-products__product-galley_image_1 img {
+.wcb-products__wrap .wcb-products__product-image-link .wcb-products__product-galley_image_1 img{
   position: absolute;
   top: 0px;
   right: 0px;
@@ -50,7 +51,7 @@
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
 }
-.wcb-products__wrap .wcb-products__product-image-link:hover .wcb-products__product-galley_image_1 img {
+.wcb-products__wrap .wcb-products__product-image-link:hover .wcb-products__product-galley_image_1 img{
   z-index: 1;
   opacity: 1;
 }
@@ -72,24 +73,26 @@
   /* RATING */
   /*  */
 }
-.wcb-products__product.wcb-products__product--btnInsideImage .wcb-products__product-add-to-cart {
+.wcb-products__product.wcb-products__product--btnInsideImage .wcb-products__product-featured {
+  position: relative; /* Đảm bảo container của ảnh là tham chiếu cho button */
+}
+.wcb-products__product.wcb-products__product--btnInsideImage .wcb-products__product-add-to-cart{
   visibility: hidden;
   position: absolute;
   left: 50%;
-  bottom: 1.25rem;
   z-index: 10;
-  width: 100%;
   opacity: 0;
   transition-property: opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+  top: 40%;
   transform: translateX(-50%);
 }
-.wcb-products__product.wcb-products__product--btnInsideImage:hover .wcb-products__product-add-to-cart {
+.wcb-products__product.wcb-products__product--btnInsideImage:hover .wcb-products__product-add-to-cart{
   visibility: visible;
   opacity: 1;
 }
-.wcb-products__product.wcb-products__product--onsaleInsideImage .wcb-products__product-salebadge {
+.wcb-products__product.wcb-products__product--onsaleInsideImage .wcb-products__product-salebadge{
   position: absolute;
   left: 0.5rem;
   top: 0.5rem;
@@ -218,7 +221,7 @@ body:not(.wp-admin) .scroll-snap-slider:not(.-show-scroll-bar)::-webkit-scrollba
 .wcb-products__wrap .indicators.-hidden {
   opacity: 0;
 }
-.wcb-products__wrap .indicators .p-arrow {
+.wcb-products__wrap .indicators .p-arrow{
   position: absolute;
   top: 50%;
   z-index: 30;
@@ -240,15 +243,15 @@ body:not(.wp-admin) .scroll-snap-slider:not(.-show-scroll-bar)::-webkit-scrollba
 .wcb-products__wrap .indicators .p-arrow-disable {
   opacity: 0;
 }
-.wcb-products__wrap .indicators .p-arrow svg {
+.wcb-products__wrap .indicators .p-arrow svg{
   height: 1.5rem;
   width: 1.5rem;
 }
-.wcb-products__wrap .indicators .-next {
+.wcb-products__wrap .indicators .-next{
   right: -1rem;
   left: auto;
 }
-.wcb-products__wrap .indicators .-prev {
+.wcb-products__wrap .indicators .-prev{
   left: -1rem;
   right: auto;
 }
