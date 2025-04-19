@@ -9,7 +9,7 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getAdvanveDivWrapStyles": () => (/* binding */ getAdvanveDivWrapStyles)
+/* harmony export */   getAdvanveDivWrapStyles: () => (/* binding */ getAdvanveDivWrapStyles)
 /* harmony export */ });
 /* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
@@ -17,14 +17,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const getAdvanveDivWrapStyles = _ref => {
-  let {
-    advance_motionEffect,
-    advance_zIndex,
-    advance_responsiveCondition,
-    className,
-    defaultDisplay
-  } = _ref;
+const getAdvanveDivWrapStyles = ({
+  advance_motionEffect,
+  advance_zIndex,
+  advance_responsiveCondition,
+  className,
+  defaultDisplay
+}) => {
   const {
     media_desktop,
     media_tablet
@@ -72,7 +71,7 @@ const getAdvanveDivWrapStyles = _ref => {
     tablet_v: advance_responsiveCondition.isHiddenOnTablet,
     desktop_v: advance_responsiveCondition.isHiddenOnDesktop
   });
-  return _emotion_react__WEBPACK_IMPORTED_MODULE_2__.css`
+  return (0,_emotion_react__WEBPACK_IMPORTED_MODULE_2__.css)`
 		${className} {
 			display: ${isHiddenOnMobile ? "none" : defaultDisplay};
 			visibility: visible;
@@ -101,17 +100,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../block-container/getAdvanveStyles */ "./src/block-container/getAdvanveStyles.ts");
-/* harmony import */ var _utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getPaddingMarginStyles */ "./src/utils/getPaddingMarginStyles.ts");
-/* harmony import */ var _utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/getStyleObjectFromResponsiveAttr */ "./src/utils/getStyleObjectFromResponsiveAttr.ts");
-/* harmony import */ var _utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/getTypographyStyles */ "./src/utils/getTypographyStyles.ts");
-/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
+/* harmony import */ var _block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../block-container/getAdvanveStyles */ "./src/block-container/getAdvanveStyles.ts");
+/* harmony import */ var _utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/getPaddingMarginStyles */ "./src/utils/getPaddingMarginStyles.ts");
+/* harmony import */ var _utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getStyleObjectFromResponsiveAttr */ "./src/utils/getStyleObjectFromResponsiveAttr.ts");
+/* harmony import */ var _utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/getTypographyStyles */ "./src/utils/getTypographyStyles.ts");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
 
 
 
@@ -137,7 +134,7 @@ const GlobalCss = attrs => {
   const {
     media_desktop,
     media_tablet
-  } = ___WEBPACK_IMPORTED_MODULE_7__.DEMO_WCB_GLOBAL_VARIABLES;
+  } = ___WEBPACK_IMPORTED_MODULE_6__.DEMO_WCB_GLOBAL_VARIABLES;
   const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
   const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-cta__inner`;
   const CONTENT_CLASSNAME = `${WRAP_CLASSNAME} .wcb-cta__content`;
@@ -157,12 +154,12 @@ const GlobalCss = attrs => {
     value_Desktop: textAlignment_Desktop,
     value_Tablet: textAlignment_tablet,
     value_Mobile: textAlignment_mobile
-  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(general_layout.textAlignment);
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_5__["default"])(general_layout.textAlignment);
   const {
     value_Desktop: flexDirection_Desktop,
     value_Tablet: flexDirection_tablet,
     value_Mobile: flexDirection_mobile
-  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(general_layout.flexDirection);
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_5__["default"])(general_layout.flexDirection);
   // FLEX COL
   let ALIGN_ITEMS = {
     Desktop: textAlignment_Desktop === "left" ? "start" : textAlignment_Desktop === "right" ? "end" : "center",
@@ -181,38 +178,38 @@ const GlobalCss = attrs => {
   if (!uniqueId) {
     return null;
   }
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
-    styles: [(0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_4__["default"])({
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
+    styles: [(0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_3__["default"])({
       className: INNER_CLASSNAME,
       value: general_layout.textAlignment,
       prefix: "textAlign"
-    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_4__["default"])({
+    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_3__["default"])({
       className: INNER_CLASSNAME,
       value: ALIGN_ITEMS,
       prefix: "alignItems"
-    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_4__["default"])({
+    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_3__["default"])({
       className: INNER_CLASSNAME,
       value: general_layout.flexDirection,
       prefix: "flexDirection"
-    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_4__["default"])({
+    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_3__["default"])({
       className: INNER_CLASSNAME,
       value: style_dimension.gap,
       prefix: "gap"
-    }), (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
+    }), (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_2__["default"])({
       className: INNER_CLASSNAME,
       ...style_dimension
     })]
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
-    styles: (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_4__["default"])({
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
+    styles: (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_3__["default"])({
       className: CONTENT_CLASSNAME,
       value: general_layout.contentWidth,
       prefix: "width"
     })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
-    styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
+    styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
       className: TITLE_CLASSNAME,
       typography: style_title.typography
-    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_4__["default"])({
+    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_3__["default"])({
       className: TITLE_CLASSNAME,
       value: style_title.marginBottom,
       prefix: "marginBottom"
@@ -221,11 +218,11 @@ const GlobalCss = attrs => {
         color: style_title.textColor
       }
     }]
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
-    styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
+    styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
       className: DESC_CLASSNAME,
       typography: style_description.typography
-    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_4__["default"])({
+    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_3__["default"])({
       className: DESC_CLASSNAME,
       value: style_description.marginBottom,
       prefix: "marginBottom"
@@ -234,8 +231,8 @@ const GlobalCss = attrs => {
         color: style_description.textColor
       }
     }]
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_8__.Global, {
-    styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__.getAdvanveDivWrapStyles)({
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
+    styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_1__.getAdvanveDivWrapStyles)({
       advance_motionEffect,
       advance_responsiveCondition,
       advance_zIndex,
@@ -244,7 +241,7 @@ const GlobalCss = attrs => {
     })
   }));
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (react__WEBPACK_IMPORTED_MODULE_1___default().memo(GlobalCss));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (react__WEBPACK_IMPORTED_MODULE_0___default().memo(GlobalCss));
 
 /***/ }),
 
@@ -258,13 +255,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-const checkResponsiveValueForOptimizeCSS = _ref => {
-  var _new_tablet_v, _new_desktop_v;
-  let {
-    mobile_v = null,
-    tablet_v = null,
-    desktop_v = null
-  } = _ref;
+const checkResponsiveValueForOptimizeCSS = ({
+  mobile_v = null,
+  tablet_v = null,
+  desktop_v = null
+}) => {
   let new_tablet_v = tablet_v;
   let new_desktop_v = desktop_v;
   if (mobile_v === tablet_v && tablet_v === desktop_v) {
@@ -282,8 +277,8 @@ const checkResponsiveValueForOptimizeCSS = _ref => {
   }
   return {
     mobile_v: mobile_v !== null && mobile_v !== void 0 ? mobile_v : null,
-    tablet_v: (_new_tablet_v = new_tablet_v) !== null && _new_tablet_v !== void 0 ? _new_tablet_v : null,
-    desktop_v: (_new_desktop_v = new_desktop_v) !== null && _new_desktop_v !== void 0 ? _new_desktop_v : null
+    tablet_v: new_tablet_v !== null && new_tablet_v !== void 0 ? new_tablet_v : null,
+    desktop_v: new_desktop_v !== null && new_desktop_v !== void 0 ? new_desktop_v : null
   };
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (checkResponsiveValueForOptimizeCSS);
@@ -298,8 +293,8 @@ const checkResponsiveValueForOptimizeCSS = _ref => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "wcbCreateColor": () => (/* binding */ wcbCreateColor),
-/* harmony export */   "wcbGetRgb": () => (/* binding */ wcbGetRgb)
+/* harmony export */   wcbCreateColor: () => (/* binding */ wcbCreateColor),
+/* harmony export */   wcbGetRgb: () => (/* binding */ wcbGetRgb)
 /* harmony export */ });
 /* harmony import */ var color_rgba__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! color-rgba */ "./node_modules/color-rgba/index.mjs");
 
@@ -331,11 +326,11 @@ const wcbGetRgb = hex => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "createLinkTagWithGoogleFont": () => (/* binding */ createLinkTagWithGoogleFont),
-/* harmony export */   "getGoogleFontURL": () => (/* binding */ getGoogleFontURL),
-/* harmony export */   "isGoogleFontEnqueued": () => (/* binding */ isGoogleFontEnqueued),
-/* harmony export */   "isWebFont": () => (/* binding */ isWebFont),
-/* harmony export */   "loadGoogleFont": () => (/* binding */ loadGoogleFont)
+/* harmony export */   createLinkTagWithGoogleFont: () => (/* binding */ createLinkTagWithGoogleFont),
+/* harmony export */   getGoogleFontURL: () => (/* binding */ getGoogleFontURL),
+/* harmony export */   isGoogleFontEnqueued: () => (/* binding */ isGoogleFontEnqueued),
+/* harmony export */   isWebFont: () => (/* binding */ isWebFont),
+/* harmony export */   loadGoogleFont: () => (/* binding */ loadGoogleFont)
 /* harmony export */ });
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! . */ "./src/utils/index.js");
 
@@ -373,8 +368,7 @@ const loadGoogleFont = fontName => {
     }
   }, 50);
 };
-const createLinkTagWithGoogleFont = function () {
-  let fontName = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+const createLinkTagWithGoogleFont = (fontName = "") => {
   const link = document.createElement("link");
   link.classList.add("wcb-google-fonts");
   link.setAttribute("data-font-name", fontName);
@@ -383,8 +377,7 @@ const createLinkTagWithGoogleFont = function () {
   link.setAttribute("type", "text/css");
   return link;
 };
-const isGoogleFontEnqueued = function (fontName) {
-  let head = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document.querySelector("head");
+const isGoogleFontEnqueued = (fontName, head = document.querySelector("head")) => {
   return head.querySelector(`[data-font-name="${fontName}"]`);
 };
 
@@ -408,12 +401,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const getPaddingMarginStyles = _ref => {
-  let {
-    className,
-    padding,
-    margin
-  } = _ref;
+const getPaddingMarginStyles = ({
+  className,
+  padding,
+  margin
+}) => {
   const {
     media_desktop,
     media_tablet
@@ -506,7 +498,7 @@ const getPaddingMarginStyles = _ref => {
     tablet_v: margin_Tablet?.bottom,
     desktop_v: margin_Desktop?.bottom
   });
-  return _emotion_react__WEBPACK_IMPORTED_MODULE_3__.css`
+  return (0,_emotion_react__WEBPACK_IMPORTED_MODULE_3__.css)`
 		body ${className} {
 			padding-top: ${padding_Mobile_top};
 			padding-right: ${padding_Mobile_right};
@@ -559,17 +551,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function getStyleObjectFromResponsiveAttr(_ref) {
-  let {
-    className,
-    prefix,
-    prefix_2,
-    prefix_3,
-    prefix_4,
-    value,
-    hasUnit = true,
-    unit
-  } = _ref;
+function getStyleObjectFromResponsiveAttr({
+  className,
+  prefix,
+  prefix_2,
+  prefix_3,
+  prefix_4,
+  value,
+  hasUnit = true,
+  unit
+}) {
   const {
     media_desktop,
     media_tablet
@@ -650,11 +641,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const getTypographyStyles = _ref => {
-  let {
-    typography,
-    className
-  } = _ref;
+const getTypographyStyles = ({
+  typography,
+  className
+}) => {
   if (!typography || !className) {
     return {};
   }
@@ -754,11 +744,11 @@ const getTypographyStyles = _ref => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "convertToResponsiveStyle": () => (/* binding */ convertToResponsiveStyle),
-/* harmony export */   "createStyleTagWithGlobalStyleContent": () => (/* binding */ createStyleTagWithGlobalStyleContent),
-/* harmony export */   "isStyleTagAdded": () => (/* binding */ isStyleTagAdded),
-/* harmony export */   "removeOldStyleTag": () => (/* binding */ removeOldStyleTag),
-/* harmony export */   "renderGlobalStyle": () => (/* binding */ renderGlobalStyle)
+/* harmony export */   convertToResponsiveStyle: () => (/* binding */ convertToResponsiveStyle),
+/* harmony export */   createStyleTagWithGlobalStyleContent: () => (/* binding */ createStyleTagWithGlobalStyleContent),
+/* harmony export */   isStyleTagAdded: () => (/* binding */ isStyleTagAdded),
+/* harmony export */   removeOldStyleTag: () => (/* binding */ removeOldStyleTag),
+/* harmony export */   renderGlobalStyle: () => (/* binding */ renderGlobalStyle)
 /* harmony export */ });
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! . */ "./src/utils/index.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "lodash");
@@ -832,16 +822,14 @@ const createStyleTagWithGlobalStyleContent = () => {
   style.textContent = convertToResponsiveStyle();
   return style;
 };
-const removeOldStyleTag = function () {
-  let head = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document.querySelector('head');
+const removeOldStyleTag = (head = document.querySelector('head')) => {
   if (!isStyleTagAdded(head)) {
     return;
   }
   const oldTag = head.querySelector('.wcb-global-style');
   oldTag.remove();
 };
-const isStyleTagAdded = function () {
-  let head = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document.querySelector('head');
+const isStyleTagAdded = (head = document.querySelector('head')) => {
   return head.querySelector('.wcb-global-style');
 };
 
@@ -855,23 +843,23 @@ const isStyleTagAdded = function () {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "JSToCSS": () => (/* binding */ JSToCSS),
-/* harmony export */   "capitalizeFirstLetter": () => (/* binding */ capitalizeFirstLetter),
-/* harmony export */   "convertToResponsiveStyle": () => (/* reexport safe */ _global_style__WEBPACK_IMPORTED_MODULE_2__.convertToResponsiveStyle),
-/* harmony export */   "createLinkTagWithGoogleFont": () => (/* reexport safe */ _font__WEBPACK_IMPORTED_MODULE_0__.createLinkTagWithGoogleFont),
-/* harmony export */   "createStyleTagWithGlobalStyleContent": () => (/* reexport safe */ _global_style__WEBPACK_IMPORTED_MODULE_2__.createStyleTagWithGlobalStyleContent),
-/* harmony export */   "getDocumentHead": () => (/* binding */ getDocumentHead),
-/* harmony export */   "getGoogleFontURL": () => (/* reexport safe */ _font__WEBPACK_IMPORTED_MODULE_0__.getGoogleFontURL),
-/* harmony export */   "isEditingContent": () => (/* binding */ isEditingContent),
-/* harmony export */   "isEditingPost": () => (/* binding */ isEditingPost),
-/* harmony export */   "isGoogleFontEnqueued": () => (/* reexport safe */ _font__WEBPACK_IMPORTED_MODULE_0__.isGoogleFontEnqueued),
-/* harmony export */   "isStyleTagAdded": () => (/* reexport safe */ _global_style__WEBPACK_IMPORTED_MODULE_2__.isStyleTagAdded),
-/* harmony export */   "isWebFont": () => (/* reexport safe */ _font__WEBPACK_IMPORTED_MODULE_0__.isWebFont),
-/* harmony export */   "loadGoogleFont": () => (/* reexport safe */ _font__WEBPACK_IMPORTED_MODULE_0__.loadGoogleFont),
-/* harmony export */   "removeOldStyleTag": () => (/* reexport safe */ _global_style__WEBPACK_IMPORTED_MODULE_2__.removeOldStyleTag),
-/* harmony export */   "renderGlobalStyle": () => (/* reexport safe */ _global_style__WEBPACK_IMPORTED_MODULE_2__.renderGlobalStyle),
-/* harmony export */   "wcbCreateColor": () => (/* reexport safe */ _color__WEBPACK_IMPORTED_MODULE_1__.wcbCreateColor),
-/* harmony export */   "wcbGetRgb": () => (/* reexport safe */ _color__WEBPACK_IMPORTED_MODULE_1__.wcbGetRgb)
+/* harmony export */   JSToCSS: () => (/* binding */ JSToCSS),
+/* harmony export */   capitalizeFirstLetter: () => (/* binding */ capitalizeFirstLetter),
+/* harmony export */   convertToResponsiveStyle: () => (/* reexport safe */ _global_style__WEBPACK_IMPORTED_MODULE_2__.convertToResponsiveStyle),
+/* harmony export */   createLinkTagWithGoogleFont: () => (/* reexport safe */ _font__WEBPACK_IMPORTED_MODULE_0__.createLinkTagWithGoogleFont),
+/* harmony export */   createStyleTagWithGlobalStyleContent: () => (/* reexport safe */ _global_style__WEBPACK_IMPORTED_MODULE_2__.createStyleTagWithGlobalStyleContent),
+/* harmony export */   getDocumentHead: () => (/* binding */ getDocumentHead),
+/* harmony export */   getGoogleFontURL: () => (/* reexport safe */ _font__WEBPACK_IMPORTED_MODULE_0__.getGoogleFontURL),
+/* harmony export */   isEditingContent: () => (/* binding */ isEditingContent),
+/* harmony export */   isEditingPost: () => (/* binding */ isEditingPost),
+/* harmony export */   isGoogleFontEnqueued: () => (/* reexport safe */ _font__WEBPACK_IMPORTED_MODULE_0__.isGoogleFontEnqueued),
+/* harmony export */   isStyleTagAdded: () => (/* reexport safe */ _global_style__WEBPACK_IMPORTED_MODULE_2__.isStyleTagAdded),
+/* harmony export */   isWebFont: () => (/* reexport safe */ _font__WEBPACK_IMPORTED_MODULE_0__.isWebFont),
+/* harmony export */   loadGoogleFont: () => (/* reexport safe */ _font__WEBPACK_IMPORTED_MODULE_0__.loadGoogleFont),
+/* harmony export */   removeOldStyleTag: () => (/* reexport safe */ _global_style__WEBPACK_IMPORTED_MODULE_2__.removeOldStyleTag),
+/* harmony export */   renderGlobalStyle: () => (/* reexport safe */ _global_style__WEBPACK_IMPORTED_MODULE_2__.renderGlobalStyle),
+/* harmony export */   wcbCreateColor: () => (/* reexport safe */ _color__WEBPACK_IMPORTED_MODULE_1__.wcbCreateColor),
+/* harmony export */   wcbGetRgb: () => (/* reexport safe */ _color__WEBPACK_IMPORTED_MODULE_1__.wcbGetRgb)
 /* harmony export */ });
 /* harmony import */ var _font__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./font */ "./src/utils/font.ts");
 /* harmony import */ var _color__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./color */ "./src/utils/color.js");
