@@ -282,7 +282,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabGeneralIsPanelOpen === "Icon" || undefined}
 							//
 							setAttr__={(data) => {
-								debugger
 								if (
 									data.iconPosition === "leftOfTitle" ||
 									data.iconPosition === "left"
@@ -371,7 +370,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								opened={tabStylesIsPanelOpen === "_StyleIcons" || undefined}
 								//
 								setAttr__={(data) => {
-									debugger
 									setAttributes({ style_Icon: data });
 								}}
 								panelData={style_Icon}
@@ -405,7 +403,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								opened={tabStylesIsPanelOpen === "_StyleTitle" || undefined}
 								//
 								setAttr__={(data) => {
-									debugger
 									setAttributes({ style_title: data });
 								}}
 								panelData={style_title}

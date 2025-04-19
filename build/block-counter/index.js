@@ -7965,7 +7965,6 @@ const Edit = props => {
           //
           ,
           setAttr__: data => {
-            debugger;
             if (data.iconPosition === "leftOfTitle" || data.iconPosition === "left") {
               return setAttributes({
                 general_icon: data,
@@ -8043,7 +8042,6 @@ const Edit = props => {
           //
           ,
           setAttr__: data => {
-            debugger;
             setAttributes({
               style_Icon: data
             });
@@ -8068,7 +8066,6 @@ const Edit = props => {
           //
           ,
           setAttr__: data => {
-            debugger;
             setAttributes({
               style_title: data
             });
