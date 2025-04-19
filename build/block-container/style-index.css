@@ -21,10 +21,8 @@ body .wcb-container__wrap .wcb-container__inner {
   flex: 0 1 auto;
 }
 .wcb-container__wrap .wcb-container__inner .wcb-container__wrap.is_wcb_container_child {
-  -webkit-margin-before: 0;
-          margin-block-start: 0;
-  -webkit-margin-after: 0;
-          margin-block-end: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 .wcb-container__inner {
@@ -46,6 +44,10 @@ body .wcb-container__wrap .wcb-container__inner {
 .wcb-container__inner .wcb-container__wrap.is_wcb_container_child {
   max-width: unset;
   flex: 0 1 auto;
+}
+
+.wcb-container__wrap .wcb-container__inner {
+  justify-content: space-around !important;
 }
 
 /*# sourceMappingURL=style-index.css.map*/
