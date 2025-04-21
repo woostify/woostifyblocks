@@ -119,12 +119,12 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 					}}
 				/>
 
-				<MyHeadingTagControl
+				{/* <MyHeadingTagControl
 					tag={headingTag}
 					onChange={(value) => {
 						setAttr__({ ...panelData, headingTag: value });
 					}}
-				/>
+				/> */}
 
 				<TextControl
 					label={__("Starting Number", "wcb")}
