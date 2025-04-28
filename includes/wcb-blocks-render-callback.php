@@ -161,6 +161,12 @@ function wcb_block_container__renderCallback($attributes, $content)
     return $content;
 }
 
+//============================================= block 1 ===============================================================
+function wcb_block_slider_renderCallback($attributes, $content)
+{
+    wp_enqueue_script__block_commoncss_frontend_styles();
+    return $content;
+}
 
 if (!function_exists('wp_enqueue_script__block_commoncss_frontend_styles')) :
     function wp_enqueue_script__block_commoncss_frontend_styles($deps = ['wp-element', 'jquery'])
