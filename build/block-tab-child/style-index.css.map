@@ -1,1 +1,0 @@
-{"version":3,"file":"block-tab-child/style-index.css","mappings":";;;AAAA;EACC;EACA;AACD,C","sources":["webpack://woostifyblocks/./src/block-tab-child/style.scss"],"sourcesContent":[".wcb-tab-child__wrap {\n\twidth: 100%;\n\tmax-width: 100%;\n}\n"],"names":[],"sourceRoot":""}
