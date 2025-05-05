@@ -41,12 +41,12 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	};
 
 	//
-	const wrapBlockProps = useBlockProps.save({ className: "wcb-faq__wrap" });
+	const wrapBlockProps = useBlockProps.save({ className: "wcb-slider__wrap" });
 	// INNER BLOCKS
 	const innerBlockProps = useBlockProps.save();
 	const innerBlocksProps = useInnerBlocksProps.save(innerBlockProps);
 	//
-	const innerClassName = `wcb-faq__inner ${
+	const innerClassName = `wcb-slider__inner ${
 		general_general.layout === "accordion" ? "accordion-container" : ""
 	} `;
 	//

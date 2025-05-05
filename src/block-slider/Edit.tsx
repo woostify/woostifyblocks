@@ -262,7 +262,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 	// INNER BLOCK
 	const blockProps = useBlockProps({
-		className: `wcb-faq__inner`,
+		className: `wcb-slider__inner`,
 	});
 
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
@@ -307,7 +307,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-faq__wrap p-2 ${uniqueId}`}
+				className={`${wrapBlockProps?.className} wcb-slider__wrap p-2 ${uniqueId}`}
 				data-uniqueid={uniqueId}
 			>
 				{/* CONTROL SETTINGS */}

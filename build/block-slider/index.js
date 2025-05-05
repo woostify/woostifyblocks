@@ -2967,7 +2967,7 @@ const Edit = props => {
 
   // INNER BLOCK
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
-    className: `wcb-faq__inner`
+    className: `wcb-slider__inner`
   });
   const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useInnerBlocksProps)(blockProps, {
     allowedBlocks: ["wcb/icon-box"],
@@ -2993,7 +2993,7 @@ const Edit = props => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_16__["default"], {
     uniqueKey: clientId
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
-    className: `${wrapBlockProps?.className} wcb-faq__wrap p-2 ${uniqueId}`,
+    className: `${wrapBlockProps?.className} wcb-slider__wrap p-2 ${uniqueId}`,
     "data-uniqueid": uniqueId
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_4__["default"], {
     renderTabPanels: renderTabBodyPanels,
@@ -3059,14 +3059,14 @@ const GlobalCss = attrs => {
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_6__.DEMO_WCB_GLOBAL_VARIABLES;
   const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
-  const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-faq__inner`;
-  const FAQ_CHILD_WRAP = `${WRAP_CLASSNAME} .wcb-faq-child__wrap`;
-  const FAQ_CHILD_QUESTION = `${WRAP_CLASSNAME} .wcb-faq-child__question`;
-  const FAQ_CHILD_QUESTION_TEXT = `${WRAP_CLASSNAME} .wcb-faq-child__question-text`;
-  const FAQ_CHILD_ANSWER = `${WRAP_CLASSNAME} .wcb-faq-child__answer`;
-  const FAQ_CHILD_ANSWER_TEXT = `${WRAP_CLASSNAME} .wcb-faq-child__answer-text`;
-  const FAQ_CHILD_ICON = `${WRAP_CLASSNAME} .wcb-faq-child__icon`;
-  const FAQ_CHILD_SEPARATOR = `${WRAP_CLASSNAME} .wcb-faq-child__separator`;
+  const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-slider__inner`;
+  const FAQ_CHILD_WRAP = `${WRAP_CLASSNAME} .wcb-slider-child__wrap`;
+  const FAQ_CHILD_QUESTION = `${WRAP_CLASSNAME} .wcb-slider-child__question`;
+  const FAQ_CHILD_QUESTION_TEXT = `${WRAP_CLASSNAME} .wcb-slider-child__question-text`;
+  const FAQ_CHILD_ANSWER = `${WRAP_CLASSNAME} .wcb-slider-child__answer`;
+  const FAQ_CHILD_ANSWER_TEXT = `${WRAP_CLASSNAME} .wcb-slider-child__answer-text`;
+  const FAQ_CHILD_ICON = `${WRAP_CLASSNAME} .wcb-slider-child__icon`;
+  const FAQ_CHILD_SEPARATOR = `${WRAP_CLASSNAME} .wcb-slider-child__separator`;
 
   //
 
@@ -3168,7 +3168,7 @@ const GlobalCss = attrs => {
           backgroundColor: style_question.backgroundColorHover
         }
       },
-      [`${WRAP_CLASSNAME} .wcb-faq-child__wrap.active .wcb-faq-child__question`]: {
+      [`${WRAP_CLASSNAME} .wcb-slider-child__wrap.active .wcb-slider-child__question`]: {
         color: style_question.colorHover,
         backgroundColor: style_question.backgroundColorHover
       }
@@ -3184,8 +3184,8 @@ const GlobalCss = attrs => {
       [FAQ_CHILD_ICON]: {
         color: style_icon.color
       },
-      [`${WRAP_CLASSNAME} .wcb-faq-child__wrap.active`]: {
-        ".wcb-faq-child__icon": {
+      [`${WRAP_CLASSNAME} .wcb-slider-child__wrap.active`]: {
+        ".wcb-slider-child__icon": {
           color: style_icon.activeColor
         }
       }
@@ -3276,13 +3276,13 @@ function save(_ref) {
 
   //
   const wrapBlockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-    className: "wcb-faq__wrap"
+    className: "wcb-slider__wrap"
   });
   // INNER BLOCKS
   const innerBlockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save();
   const innerBlocksProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useInnerBlocksProps.save(innerBlockProps);
   //
-  const innerClassName = `wcb-faq__inner ${general_general.layout === "accordion" ? "accordion-container" : ""} `;
+  const innerClassName = `wcb-slider__inner ${general_general.layout === "accordion" ? "accordion-container" : ""} `;
   //
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
     attributes: newAttrForSave,
@@ -3352,13 +3352,13 @@ function save(_ref) {
 
   //
   const wrapBlockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-    className: "wcb-faq__wrap"
+    className: "wcb-slider__wrap"
   });
   // INNER BLOCKS
   const innerBlockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save();
   const innerBlocksProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useInnerBlocksProps.save(innerBlockProps);
   //
-  const innerClassName = `wcb-faq__inner ${general_general.layout === "accordion" ? "accordion-container" : ""} `;
+  const innerClassName = `wcb-slider__inner ${general_general.layout === "accordion" ? "accordion-container" : ""} `;
   //
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
     attributes: newAttrForSave,
