@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
@@ -317,3 +318,6 @@ module.exports = window["React"];
 /******/ })()
 ;
 //# sourceMappingURL=index.js.map
+=======
+(()=>{"use strict";var e,r={8750:()=>{const e=window.wp.blocks,r=JSON.parse('{"u2":"create-block-wcbxxyyyzz/wcbxxyyyzz-blocks-common-css"}'),o=window.wp.element,t=(window.React,()=>(0,o.createElement)("div",null,"Edit"));(0,e.registerBlockType)(r.u2,{edit:t,save:()=>null,attributes:[]})}},o={};function t(e){var i=o[e];if(void 0!==i)return i.exports;var l=o[e]={exports:{}};return r[e](l,l.exports,t),l.exports}t.m=r,e=[],t.O=(r,o,i,l)=>{if(!o){var n=1/0;for(v=0;v<e.length;v++){for(var[o,i,l]=e[v],s=!0,a=0;a<o.length;a++)(!1&l||n>=l)&&Object.keys(t.O).every((e=>t.O[e](o[a])))?o.splice(a--,1):(s=!1,l<n&&(n=l));if(s){e.splice(v--,1);var c=i();void 0!==c&&(r=c)}}return r}l=l||0;for(var v=e.length;v>0&&e[v-1][2]>l;v--)e[v]=e[v-1];e[v]=[o,i,l]},t.o=(e,r)=>Object.prototype.hasOwnProperty.call(e,r),(()=>{var e={8297:0,9952:0};t.O.j=r=>0===e[r];var r=(r,o)=>{var i,l,[n,s,a]=o,c=0;if(n.some((r=>0!==e[r]))){for(i in s)t.o(s,i)&&(t.m[i]=s[i]);if(a)var v=a(t)}for(r&&r(o);c<n.length;c++)l=n[c],t.o(e,l)&&e[l]&&e[l][0](),e[l]=0;return t.O(v)},o=globalThis.webpackChunkwoostifyblocks=globalThis.webpackChunkwoostifyblocks||[];o.forEach(r.bind(null,0)),o.push=r.bind(null,o.push.bind(o))})();var i=t.O(void 0,[9952],(()=>t(8750)));i=t.O(i)})();
+>>>>>>> 54932786 (add build)
