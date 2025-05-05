@@ -34,6 +34,7 @@ import WcbFaqPanelPreset from "./WcbFaqPanelPreset";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
+import { Swiper } from 'swiper/react';
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
@@ -262,8 +263,18 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 	// INNER BLOCK
 	const blockProps = useBlockProps({
-		className: `wcb-slider__inner`,
+		className: `swiper-wrapper`,
 	});
+
+	const swiperRef = useRef();
+
+	const settings = {
+		slidesPerView: 1,
+		autoplay: false,
+		loop: false,
+		effect: 'slide',
+		allowTouchMove: false
+	};
 
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		allowedBlocks: ["wcb/icon-box"],
@@ -320,7 +331,14 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				{uniqueId && <GlobalCss {...WcbAttrsForSave()} />}
 
 				{/* CHILD CONTENT  */}
-				<div {...innerBlocksProps} />
+
+				<Swiper
+					ref={ swiperRef }
+					{ ...settings }
+				>
+					<div {...innerBlocksProps} />
+				</Swiper>
+				
 			</div>
 		</MyCacheProvider>
 	);
