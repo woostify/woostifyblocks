@@ -1,1 +1,33 @@
-.wcb-slider-child__wrap .wcb-slider-child__item{position:relative}.wcb-slider-child__wrap .wcb-slider-child__item .wcb-slider-child__item-background{position:relative}.wcb-slider-child__wrap .wcb-slider-child__item .wcb-slider-child__item-wrap-inner{display:flex;gap:1rem}.wcb-slider-child__wrap[data-image-position=left] .wcb-slider-child__item-wrap-inner,.wcb-slider-child__wrap[data-image-position=right] .wcb-slider-child__item-wrap-inner{flex-direction:row}.wcb-slider-child__btn{display:flex;justify-content:center}.wcb-slider-child__btn-inner{display:flex;background-color:#121314;color:#fff;width:10rem;height:50px;align-items:center;justify-content:center}
+/*!**********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/block-slider-child/style.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************/
+.wcb-slider-child__wrap .wcb-slider-child__item {
+  position: relative;
+}
+.wcb-slider-child__wrap .wcb-slider-child__item .wcb-slider-child__item-background {
+  position: relative;
+}
+.wcb-slider-child__wrap .wcb-slider-child__item .wcb-slider-child__item-wrap-inner {
+  display: flex;
+  gap: 1rem;
+}
+.wcb-slider-child__wrap[data-image-position=left] .wcb-slider-child__item-wrap-inner, .wcb-slider-child__wrap[data-image-position=right] .wcb-slider-child__item-wrap-inner {
+  flex-direction: row;
+}
+
+.wcb-slider-child__btn {
+  display: flex;
+  justify-content: center;
+}
+
+.wcb-slider-child__btn-inner {
+  display: flex;
+  background-color: #121314;
+  color: white;
+  width: 10rem;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+/*# sourceMappingURL=style-index.css.map*/
