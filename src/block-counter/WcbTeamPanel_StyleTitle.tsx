@@ -22,7 +22,10 @@ export interface WCB_ICON_BOX_PANEL_STYLE_TITLE {
 
 export const WCB_ICON_BOX_PANEL_STYLE_TITLE_DEMO: WCB_ICON_BOX_PANEL_STYLE_TITLE =
 	{
-		typography: TYPOGRAPHY_CONTROL_DEMO,
+		typography: {
+			...TYPOGRAPHY_CONTROL_DEMO,
+			fontSizes: { Desktop: "36px" },
+		},
 		textColor: "#171717",
 		marginBottom: { Desktop: "1rem" },
 	};
@@ -53,7 +56,7 @@ const WcbTeamPanel_StyleTitle: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Title", "wcb")}
+			title={__("Number", "wcb")}
 		>
 			<div className="space-y-2.5">
 				<MyTypographyControl
