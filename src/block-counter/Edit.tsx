@@ -363,7 +363,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			case "Styles":
 				return (
 					<>
-						{general_icon.enableIcon && (
+						{general_icon.enableIcon && general_layout.type !== "bar" && (
 							<WcbIconBoxPanel_StyleIcons
 								onToggle={() => handleTogglePanel("Styles", "_StyleIcons")}
 								initialOpen={tabStylesIsPanelOpen === "_StyleIcons"}
@@ -373,6 +373,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 									setAttributes({ style_Icon: data });
 								}}
 								panelData={style_Icon}
+								generalLayoutType={general_layout.type}
 							/>
 						)}
 						{general_layout.enablePrefix && (
@@ -425,6 +426,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								panelData={style_description}
 							/>
 						)}
+						
 						<WcbIconBoxPanel_StyleDimension
 							onToggle={() => handleTogglePanel("Styles", "_StyleDimension")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleDimension"}
@@ -435,6 +437,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							}}
 							panelData={style_dimension}
 						/>
+						
 					</>
 				);
 			case "Advances":

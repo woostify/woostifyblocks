@@ -123,8 +123,8 @@ const GlobalCss: FC<Props> = (attrs) => {
             <Global
                 styles={getPaddingMarginStyles({
                     className: WRAP_CLASSNAME,
-                    margin: style_dimension.margin,
-                    padding: style_dimension.padding,
+                    margin: style_dimension?.margin,
+                    padding: style_dimension?.padding,
                 })}
             />
 
@@ -134,11 +134,11 @@ const GlobalCss: FC<Props> = (attrs) => {
                     styles={[
                         getPaddingMarginStyles({
                             className: `${WRAP_CLASSNAME} .wcb-icon-box__icon-wrap`,
-                            margin: style_Icon.dimensions.margin,
+                            margin: style_Icon.dimensions?.margin,
                         }),
                         getPaddingMarginStyles({
-                            className: `${WRAP_CLASSNAME} .wcb-icon-box__icon`,
-                            padding: style_Icon.dimensions.padding,
+                            className: `${WRAP_CLASSNAME} .wcb-icon-box__icon-wrap`,
+                            padding: style_Icon.dimensions?.padding,
                         }),
                         getBorderStyles({
                             border: style_Icon.border,

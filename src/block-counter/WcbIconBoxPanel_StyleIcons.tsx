@@ -58,6 +58,7 @@ interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
 	panelData: WCB_ICON_BOX_PANEL_STYLE_ICON;
 	setAttr__: (data: WCB_ICON_BOX_PANEL_STYLE_ICON) => void;
+	generalLayoutType: string;
 }
 
 const WcbIconBoxPanel_StyleIcons: FC<Props> = ({
@@ -66,6 +67,7 @@ const WcbIconBoxPanel_StyleIcons: FC<Props> = ({
 	initialOpen,
 	onToggle,
 	opened,
+	generalLayoutType,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	const { color, hoverColor, iconSize, dimensions, border } = panelData;
@@ -118,24 +120,28 @@ const WcbIconBoxPanel_StyleIcons: FC<Props> = ({
 					label={__("Hover color", "wcb")}
 				/>
 
-				<div className="space-y-4">
-					<MyDisclosure label="Border">
-						<MyBorderControl
-							borderControl={border}
-							setAttrs__border={(data) => {
-								setAttr__({ ...panelData, border: data });
-							}}
-						/>
-					</MyDisclosure>
-					<MyDisclosure label="Dimensions">
-						<MyDimensionsNoGapControl
-							dimensionControl={dimensions}
-							setAttrs__dimensions={(data) => {
-								setAttr__({ ...panelData, dimensions: data });
-							}}
-						/>
-					</MyDisclosure>
-				</div>
+				{
+					generalLayoutType !== "circle" && (
+					<div className="space-y-4">
+						<MyDisclosure label="Border">
+							<MyBorderControl
+								borderControl={border}
+								setAttrs__border={(data) => {
+									setAttr__({ ...panelData, border: data });
+								}}
+							/>
+						</MyDisclosure>
+						<MyDisclosure label="Dimensions">
+							<MyDimensionsNoGapControl
+								dimensionControl={dimensions}
+								setAttrs__dimensions={(data) => {
+									setAttr__({ ...panelData, dimensions: data });
+								}}
+							/>
+						</MyDisclosure>
+					</div>
+				)}
+
 			</div>
 		</PanelBody>
 	);
