@@ -6867,7 +6867,7 @@ const WCB_COUNTDOWN_PANEL_LAYOUT_PRESET_CENTER_DEMO = {
 };
 const WCB_COUNTDOWN_PANEL_LAYOUT_DEMO = {
   textAlignment: {
-    Desktop: "left"
+    Desktop: "center"
   },
   contentWidth: {
     Desktop: "100%"

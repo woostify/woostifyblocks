@@ -31,7 +31,7 @@ export const WCB_COUNTDOWN_PANEL_LAYOUT_PRESET_CENTER_DEMO: WCB_COUNTDOWN_PANEL_
 };
 
 export const WCB_COUNTDOWN_PANEL_LAYOUT_DEMO: WCB_COUNTDOWN_PANEL_LAYOUT = {
-	textAlignment: { Desktop: "left" },
+	textAlignment: { Desktop: "center" },
 	contentWidth: { Desktop: "100%" },
 	flexDirection: { Desktop: "row" },
 };
