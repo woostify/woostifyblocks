@@ -95,7 +95,7 @@ const WcbButtonPanelContent: FC<Props> = ({
 		iconPosition,
 		isHiddenText,
 		link,
-		openInNewWindow,
+		openInNewWindow
 	} = panelData;
 
 	const PLANS_DEMO: MyRadioItem<WCB_BUTTON_PANEL_CONTENT["iconPosition"]>[] = [
@@ -160,15 +160,13 @@ const WcbButtonPanelContent: FC<Props> = ({
 
 					<LinkControl
 						className="WcbButtonPanelContent__inline-link-input"
-						value={{ url, opensInNewTab }}
+						value={{ url }}
 						onChange={({
 							url: newURL = "",
-							opensInNewTab: newOpensInNewTab,
 						}) => {
 							setAttr__({
 								...panelData,
 								link: newURL,
-								openInNewWindow: newOpensInNewTab,
 							});
 						}}
 						onRemove={() => {
@@ -212,6 +210,13 @@ const WcbButtonPanelContent: FC<Props> = ({
 					checked={isHiddenText}
 					onChange={(checked) => {
 						setAttr__({ ...panelData, isHiddenText: checked });
+					}}
+				/>
+				<ToggleControl
+					label={__("Open in new windown", "wcb")}
+					checked={openInNewWindow}
+					onChange={(checked) => {
+						setAttr__({ ...panelData, openInNewWindow: checked });
 					}}
 				/>
 			</div>
