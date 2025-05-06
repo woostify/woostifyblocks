@@ -11352,12 +11352,21 @@ const MyDimensionsNoGapControl = ({
 
   //
 
+  const addUnitIfMissing = value => {
+    if (!value) return "";
+    return isNaN(Number(value)) ? value.toString() : `${value}px`;
+  };
   const handleChangeMargin = value => {
     setAttrs__dimensions({
       ...dimensionControl,
       margin: {
         ...marginProps,
-        [deviceType]: value
+        [deviceType]: {
+          top: addUnitIfMissing(value.top),
+          left: addUnitIfMissing(value.left),
+          right: addUnitIfMissing(value.right),
+          bottom: addUnitIfMissing(value.bottom)
+        }
       }
     });
   };
@@ -11366,7 +11375,12 @@ const MyDimensionsNoGapControl = ({
       ...dimensionControl,
       padding: {
         ...paddingProps,
-        [deviceType]: value
+        [deviceType]: {
+          top: addUnitIfMissing(value.top),
+          left: addUnitIfMissing(value.left),
+          right: addUnitIfMissing(value.right),
+          bottom: addUnitIfMissing(value.bottom)
+        }
       }
     });
   };
