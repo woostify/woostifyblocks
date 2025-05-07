@@ -35,6 +35,23 @@ import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 import '../../public/js/countdown/wcb-countdown.js';
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
+	if (props.attributes.cover) {
+		return (
+			<div
+				className="flex justify-center items-center"
+				style={{ width: "100%", height: "100%" }}
+			>
+				<div
+					className="svg-container"
+					style={{
+						width: "400px",
+						height: "300px",
+					}}
+					dangerouslySetInnerHTML={{ __html: props.attributes.cover }}
+				></div>
+			</div>
+		);
+	}
 	const { attributes, setAttributes, clientId } = props;
 	const {
 		advance_responsiveCondition,

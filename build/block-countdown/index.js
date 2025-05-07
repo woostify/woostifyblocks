@@ -5654,6 +5654,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const Edit = props => {
+  if (props.attributes.cover) {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "flex justify-center items-center",
+      style: {
+        width: "100%",
+        height: "100%"
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "svg-container",
+      style: {
+        width: "400px",
+        height: "300px"
+      },
+      dangerouslySetInnerHTML: {
+        __html: props.attributes.cover
+      }
+    }));
+  }
   const {
     attributes,
     setAttributes,
@@ -7382,6 +7400,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const blokc1Attrs = {
+  cover: {
+    type: 'string',
+    default: ''
+  },
   uniqueId: {
     type: "string",
     default: ""
@@ -7535,7 +7557,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/block-countdown/block.json");
 /* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./attributes */ "./src/block-countdown/attributes.ts");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./deprecated */ "./src/block-countdown/deprecated.tsx");
-/* harmony import */ var _utils_convertAttsToPreview__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/convertAttsToPreview */ "./src/utils/convertAttsToPreview.ts");
 
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
@@ -7561,15 +7582,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_5__.name, {
   edit: _Edit__WEBPACK_IMPORTED_MODULE_3__["default"],
   save: _Save__WEBPACK_IMPORTED_MODULE_4__["default"],
-  attributes: _attributes__WEBPACK_IMPORTED_MODULE_6__["default"],
+  attributes: {
+    ..._attributes__WEBPACK_IMPORTED_MODULE_6__["default"]
+  },
   deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_7__["default"],
-  example: (0,_utils_convertAttsToPreview__WEBPACK_IMPORTED_MODULE_8__["default"])(_attributes__WEBPACK_IMPORTED_MODULE_6__["default"]),
+  example: {
+    attributes: {
+      cover: '<svg width="200" height="200" viewBox="0 0 325 245" fill="none" xmlns="http://www.w3.org/2000/svg">' + '<path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"></path>' + '<circle cx="80.3564" cy="136" r="20.6301" fill="#E6E6E6"></circle>' + '<rect x="73.0564" y="125.566" width="6.28647" height="14.814" fill="#B6B6B6"></rect>' + '<rect x="81.3699" y="125.566" width="6.28647" height="14.814" fill="#B6B6B6"></rect>' + '<path d="M72.5025 145.801C72.5025 145.249 72.9502 144.801 73.5025 144.801H87.2104C87.7627 144.801 88.2104 145.249 88.2104 145.801C88.2104 146.354 87.7627 146.801 87.2104 146.801H73.5025C72.9502 146.801 72.5025 146.354 72.5025 145.801Z" fill="#B6B6B6"></path>' + '<circle cx="135.119" cy="136" r="20.6301" fill="#E6E6E6"></circle>' + '<rect x="127.819" y="125.566" width="6.28647" height="14.814" fill="#B6B6B6"></rect>' + '<rect x="136.132" y="125.566" width="6.28647" height="14.814" fill="#B6B6B6"></rect>' + '<path d="M127.265 145.801C127.265 145.249 127.713 144.801 128.265 144.801H141.973C142.525 144.801 142.973 145.249 142.973 145.801C142.973 146.354 142.525 146.801 141.973 146.801H128.265C127.713 146.801 127.265 146.354 127.265 145.801Z" fill="#B6B6B6"></path>' + '<circle cx="189.881" cy="136" r="20.6301" fill="#E6E6E6"></circle>' + '<rect x="182.581" y="125.566" width="6.28647" height="14.814" fill="#B6B6B6"></rect>' + '<rect x="190.895" y="125.566" width="6.28647" height="14.814" fill="#B6B6B6"></rect>' + '<path d="M182.027 145.801C182.027 145.249 182.475 144.801 183.027 144.801H196.735C197.287 144.801 197.735 145.249 197.735 145.801C197.735 146.354 197.287 146.801 196.735 146.801H183.027C182.475 146.801 182.027 146.354 182.027 145.801Z" fill="#B6B6B6"></path>' + '<circle cx="244.644" cy="136" r="20.6301" fill="#E6E6E6"></circle>' + '<rect x="237.344" y="125.566" width="6.28647" height="14.814" fill="#B6B6B6"></rect>' + '<rect x="245.657" y="125.566" width="6.28647" height="14.814" fill="#B6B6B6"></rect>' + '<path d="M236.79 145.801C236.79 145.249 237.237 144.801 237.79 144.801H251.498C252.05 144.801 252.498 145.249 252.498 145.801C252.498 146.354 252.05 146.801 251.498 146.801H237.79C237.237 146.801 236.79 146.354 236.79 145.801Z" fill="#B6B6B6"></path>' + '</svg>'
+    }
+  },
   icon: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     width: 24,
     height: 24,
@@ -11544,29 +11570,6 @@ function converUniqueIdToAnphaKey(text, prefix = "wcb-") {
   return prefix + text.replace(/ /g, "").replace(/\d/g, "")
   // text.substring(2, 9).replace(/-/g, "").replace(/ /g, "").replace(/\d/g, "")
   ;
-}
-
-/***/ }),
-
-/***/ "./src/utils/convertAttsToPreview.ts":
-/*!*******************************************!*\
-  !*** ./src/utils/convertAttsToPreview.ts ***!
-  \*******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ convertObjectAttrToPreview)
-/* harmony export */ });
-function convertObjectAttrToPreview(A) {
-  let B = {};
-  for (let key in A) {
-    if (A.hasOwnProperty(key)) {
-      B[key] = A[key].default;
-    }
-  }
-  return B;
 }
 
 /***/ }),
