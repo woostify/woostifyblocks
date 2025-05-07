@@ -41,21 +41,37 @@ const MyDimensionsNoGapControl: FC<Props> = ({
 
 	//
 
+	const addUnitIfMissing = (value: string | number): string => {
+		if (!value) return "";
+		return isNaN(Number(value)) ? value.toString() : `${value}px`;
+	};
+	
 	const handleChangeMargin = (value: DimensionSettings) => {
 		setAttrs__dimensions({
 			...dimensionControl,
 			margin: {
 				...marginProps,
-				[deviceType]: value,
+				[deviceType]: {
+					top: addUnitIfMissing(value.top),
+					left: addUnitIfMissing(value.left),
+					right: addUnitIfMissing(value.right),
+					bottom: addUnitIfMissing(value.bottom),
+				},
 			},
 		});
 	};
+	
 	const handleChangePadding = (value: DimensionSettings) => {
 		setAttrs__dimensions({
 			...dimensionControl,
 			padding: {
 				...paddingProps,
-				[deviceType]: value,
+				[deviceType]: {
+					top: addUnitIfMissing(value.top),
+					left: addUnitIfMissing(value.left),
+					right: addUnitIfMissing(value.right),
+					bottom: addUnitIfMissing(value.bottom),
+				},
 			},
 		});
 	};
