@@ -9572,7 +9572,7 @@ const blokc1Attrs = {
     type: "string",
     source: "html",
     selector: ".wcb-icon-list__heading",
-    default: "John Doe"
+    default: "List item"
   },
   designation: {
     type: "string",
