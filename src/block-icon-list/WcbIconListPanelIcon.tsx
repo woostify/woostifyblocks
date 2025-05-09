@@ -16,15 +16,19 @@ export interface WCB_ICON_LIST_PANEL_ICON {
 		| "right"
 		| "leftOfTitle"
 		| "rightOfTitle"
+	stackOn: "none" | "tablet" | "mobile";
+	verticalAlignment: "top" | "middle";
 }
 
-export const WCB_ICON_BOX_PANEL_ICON_DEMO: WCB_ICON_LIST_PANEL_ICON = {
+export const WCB_ICON_LIST_PANEL_ICON_DEMO: WCB_ICON_LIST_PANEL_ICON = {
 	enableIcon: true,
 	iconPosition: "leftOfTitle",
 	icon: {
 		...DEFAULT_MY_ICON,
 		iconName: "lni-checkmark-circle",
 	},
+	stackOn: "none",
+	verticalAlignment: "top",
 };
 
 interface Props
@@ -33,8 +37,8 @@ interface Props
 	setAttr__: (data: WCB_ICON_LIST_PANEL_ICON) => void;
 }
 
-const WcbIconBoxPanelIcon: FC<Props> = ({
-	panelData = WCB_ICON_BOX_PANEL_ICON_DEMO,
+const WcbIconListPanelIcon: FC<Props> = ({
+	panelData = WCB_ICON_LIST_PANEL_ICON_DEMO,
 	setAttr__,
 	initialOpen,
 	onToggle,
@@ -105,4 +109,4 @@ const WcbIconBoxPanelIcon: FC<Props> = ({
 	);
 };
 
-export default WcbIconBoxPanelIcon;
+export default WcbIconListPanelIcon;

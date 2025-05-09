@@ -17,13 +17,13 @@ import useGetDeviceType from "../hooks/useGetDeviceType";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
 
-export interface WCB_ICON_BOX_PANEL_STYLE_SEPARATOR {
+export interface WCB_ICON_LIST_PANEL_STYLE_SEPARATOR {
 	border: BorderMainSingleSide;
 	width: HasResponsive<string>;
 	marginBottom: HasResponsive<string>;
 }
 
-export const WCB_ICON_BOX_PANEL_STYLE_SEPARATOR_DEMO: WCB_ICON_BOX_PANEL_STYLE_SEPARATOR =
+export const WCB_ICON_LIST_PANEL_STYLE_SEPARATOR_DEMO: WCB_ICON_LIST_PANEL_STYLE_SEPARATOR =
 	{
 		border: {
 			...DEFAULT_BORDER_MAIN_SINGLE_SIDE,
@@ -35,12 +35,12 @@ export const WCB_ICON_BOX_PANEL_STYLE_SEPARATOR_DEMO: WCB_ICON_BOX_PANEL_STYLE_S
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
-	panelData: WCB_ICON_BOX_PANEL_STYLE_SEPARATOR;
-	setAttr__: (data: WCB_ICON_BOX_PANEL_STYLE_SEPARATOR) => void;
+	panelData: WCB_ICON_LIST_PANEL_STYLE_SEPARATOR;
+	setAttr__: (data: WCB_ICON_LIST_PANEL_STYLE_SEPARATOR) => void;
 }
 
-const WcbIconBoxPanel_StyleSeparator: FC<Props> = ({
-	panelData = WCB_ICON_BOX_PANEL_STYLE_SEPARATOR_DEMO,
+const WcbIconListPanel_StyleSeparator: FC<Props> = ({
+	panelData = WCB_ICON_LIST_PANEL_STYLE_SEPARATOR_DEMO,
 	setAttr__,
 	initialOpen,
 	onToggle,
@@ -113,4 +113,4 @@ const WcbIconBoxPanel_StyleSeparator: FC<Props> = ({
 	);
 };
 
-export default WcbIconBoxPanel_StyleSeparator;
+export default WcbIconListPanel_StyleSeparator;

@@ -14,8 +14,8 @@ import WcbIconBoxPanelLayout from "./WcbIconListPanelLayout";
 import WcbIconBoxPanelIcon from "./WcbIconListPanelIcon";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
-import WcbTeamPanel_StyleTitle from "./WcbTeamPanel_StyleTitle";
-import WcbTeamPanel_StyleDesignation from "./WcbTeamPanel_StyleDesignation";
+import WcbTeamPanel_StyleTitle from "./WcbIconListPanel_StyleTitle";
+import WcbTeamPanel_StyleDesignation from "./WcbIconListPanel_StyleDesignation";
 import WcbIconBoxPanel_StyleIcons from "./WcbIconListPanel_StyleIcons";
 import MyIconFull from "../components/controls/MyIconFull";
 import WcbIconBoxPanel_StyleSeparator from "./WcbIconListPanel_StyleSeparator";
@@ -70,7 +70,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			case "General":
 				return (
 					<>
-					<WcbIconBoxPanelIcon
+						<WcbIconBoxPanelIcon
 							onToggle={() => handleTogglePanel("General", "Icon")}
 							initialOpen={tabGeneralIsPanelOpen === "Icon"}
 							opened={tabGeneralIsPanelOpen === "Icon" || undefined}
@@ -346,7 +346,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				{/* CSS IN JS */}
 				<GlobalCss {...WcbAttrsForSave()} />
 
-				{(general_icon.iconPosition === "top" ||
+				{(
 					general_icon.iconPosition === "left") &&
 					renderIcon()}
 
@@ -379,8 +379,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								/>
 							)}
 						</div>
-						{(general_icon.iconPosition === "rightOfTitle" ||
-							general_icon.iconPosition === "bellowTitle") &&
+						{(general_icon.iconPosition === "rightOfTitle") &&
 							renderIcon()}
 					</div>
 
@@ -411,8 +410,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								/>
 							)}
 						</div>
-						{(general_icon.iconPosition === "rightOfTitle" ||
-							general_icon.iconPosition === "bellowTitle") &&
+						{(general_icon.iconPosition === "rightOfTitle") &&
 							renderIcon()}
 					</div>
 
@@ -443,8 +441,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								/>
 							)}
 						</div>
-						{(general_icon.iconPosition === "rightOfTitle" ||
-							general_icon.iconPosition === "bellowTitle") &&
+						{(general_icon.iconPosition === "rightOfTitle") &&
 							renderIcon()}
 					</div>
 				</div>

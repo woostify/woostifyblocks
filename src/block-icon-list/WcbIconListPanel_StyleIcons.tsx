@@ -19,7 +19,7 @@ import {
 import MyDisclosure from "../components/controls/MyDisclosure";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
 
-export interface WCB_ICON_BOX_PANEL_STYLE_ICON {
+export interface WCB_ICON_LIST_PANEL_STYLE_ICON {
 	color: string;
 	hoverColor: string;
 	iconSize: HasResponsive<string>;
@@ -27,7 +27,7 @@ export interface WCB_ICON_BOX_PANEL_STYLE_ICON {
 	border: MyBorderControlData;
 }
 
-export const WCB_ICON_BOX_PANEL_STYLE_ICON_DEMO: WCB_ICON_BOX_PANEL_STYLE_ICON =
+export const WCB_ICON_LIST_PANEL_STYLE_ICON_DEMO: WCB_ICON_LIST_PANEL_STYLE_ICON =
 	{
 		color: "#334155",
 		hoverColor: "",
@@ -56,12 +56,12 @@ export const WCB_ICON_BOX_PANEL_STYLE_ICON_DEMO: WCB_ICON_BOX_PANEL_STYLE_ICON =
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
-	panelData: WCB_ICON_BOX_PANEL_STYLE_ICON;
-	setAttr__: (data: WCB_ICON_BOX_PANEL_STYLE_ICON) => void;
+	panelData: WCB_ICON_LIST_PANEL_STYLE_ICON;
+	setAttr__: (data: WCB_ICON_LIST_PANEL_STYLE_ICON) => void;
 }
 
-const WcbIconBoxPanel_StyleIcons: FC<Props> = ({
-	panelData = WCB_ICON_BOX_PANEL_STYLE_ICON_DEMO,
+const WcbIconListPanel_StyleIcons: FC<Props> = ({
+	panelData = WCB_ICON_LIST_PANEL_STYLE_ICON_DEMO,
 	setAttr__,
 	initialOpen,
 	onToggle,
@@ -141,4 +141,4 @@ const WcbIconBoxPanel_StyleIcons: FC<Props> = ({
 	);
 };
 
-export default WcbIconBoxPanel_StyleIcons;
+export default WcbIconListPanel_StyleIcons;

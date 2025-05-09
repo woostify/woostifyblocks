@@ -6,25 +6,25 @@ import MySelect from "../components/controls/MySelect";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import { Option } from "../types";
 
-export interface WCB_ICON_BOX_PANEL_SEPARATOR {
+export interface WCB_ICON_LIST_PANEL_SEPARATOR {
 	enableSeparator: boolean;
 	position: "afterIcon" | "afterPrefix" | "afterTitle" | "afterDescription";
 }
 
-export const WCB_ICON_BOX_PANEL_SEPARATOR_DEMO: WCB_ICON_BOX_PANEL_SEPARATOR = {
+export const WCB_ICON_LIST_PANEL_SEPARATOR_DEMO: WCB_ICON_LIST_PANEL_SEPARATOR = {
 	enableSeparator: false,
 	position: "afterTitle",
 };
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
-	panelData: WCB_ICON_BOX_PANEL_SEPARATOR;
-	setAttr__: (data: WCB_ICON_BOX_PANEL_SEPARATOR) => void;
+	panelData: WCB_ICON_LIST_PANEL_SEPARATOR;
+	setAttr__: (data: WCB_ICON_LIST_PANEL_SEPARATOR) => void;
 	showOptionAfterIcon: boolean;
 }
 
-const WcbIconBoxPanelSeparator: FC<Props> = ({
-	panelData = WCB_ICON_BOX_PANEL_SEPARATOR_DEMO,
+const WcbIconListPanelSeparator: FC<Props> = ({
+	panelData = WCB_ICON_LIST_PANEL_SEPARATOR_DEMO,
 	setAttr__,
 	initialOpen,
 	onToggle,
@@ -35,7 +35,7 @@ const WcbIconBoxPanelSeparator: FC<Props> = ({
 
 	const { enableSeparator, position } = panelData;
 
-	let PLANS_DEMO: Option<WCB_ICON_BOX_PANEL_SEPARATOR["position"]>[] = [
+	let PLANS_DEMO: Option<WCB_ICON_LIST_PANEL_SEPARATOR["position"]>[] = [
 		{ value: "afterPrefix", label: "After Prefix" },
 		{ value: "afterTitle", label: "After Title" },
 		{ value: "afterDescription", label: "After Description" },
@@ -70,7 +70,7 @@ const WcbIconBoxPanelSeparator: FC<Props> = ({
 						onChange={(value) => {
 							setAttr__({
 								...panelData,
-								position: value as WCB_ICON_BOX_PANEL_SEPARATOR["position"],
+								position: value as WCB_ICON_LIST_PANEL_SEPARATOR["position"],
 							});
 						}}
 					/>
@@ -80,4 +80,4 @@ const WcbIconBoxPanelSeparator: FC<Props> = ({
 	);
 };
 
-export default WcbIconBoxPanelSeparator;
+export default WcbIconListPanelSeparator;

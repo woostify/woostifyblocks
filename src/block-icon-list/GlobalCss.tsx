@@ -39,11 +39,13 @@ const GlobalCss: FC<Props> = (attrs) => {
 
 			{
 				[`${WRAP_CLASSNAME}`]: {
+
 					display:
 						general_icon.iconPosition === "left" ||
 						general_icon.iconPosition === "right"
 							? "flex"
 							: "block",
+
 					flexDirection:
 						general_icon.stackOn === "mobile" ||
 						general_icon.stackOn === "tablet"
@@ -51,6 +53,20 @@ const GlobalCss: FC<Props> = (attrs) => {
 								? "column-reverse"
 								: "column"
 							: undefined,
+
+					
+					".wcb-icon-list__content": {
+						display: "flex",
+						flexDirection:  "column",
+						alignItems:
+							general_layout.textAlignment.Desktop ===  "center" 
+								? "center" :
+							general_layout.textAlignment.Desktop === "left" 
+								? "flex-start" :
+							general_layout.textAlignment.Desktop === "right" 
+								? "flex-end" 
+								: undefined,
+					},
 
 					".wcb-icon-list__icon-wrap, .wcb-icon-list__content": {
 						alignSelf:

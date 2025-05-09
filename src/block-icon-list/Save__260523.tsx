@@ -17,9 +17,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		advance_zIndex,
 		general_layout,
 		heading,
-		description,
 		designation,
-		style_description,
 		style_desination,
 		style_Icon,
 		style_title,
@@ -35,7 +33,6 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_layout,
-		style_description,
 		style_desination,
 		style_Icon,
 		style_title,
@@ -86,7 +83,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			attributes={newAttrForSave}
 			uniqueId={uniqueId}
 		>
-			{(general_icon.iconPosition === "top" ||
+			{(
 				general_icon.iconPosition === "left") &&
 				renderIcon()}
 
@@ -115,8 +112,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 							/>
 						)}
 					</div>
-					{(general_icon.iconPosition === "rightOfTitle" ||
-						general_icon.iconPosition === "bellowTitle") &&
+					{(general_icon.iconPosition === "rightOfTitle") &&
 						renderIcon()}
 				</div>
 

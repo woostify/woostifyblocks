@@ -7,10 +7,10 @@ import {
 	MY_DIMENSIONS_NO_GAP_CONTROL_DEMO,
 } from "../components/controls/MyDimensionsControl/types";
 
-export interface WCB_ICON_BOX_PANEL_STYLE_DIMENSION
+export interface WCB_ICON_LIST_PANEL_STYLE_DIMENSION
 	extends MyDimensionsNoGapControlData {}
 
-export const WCB_ICON_BOX_PANEL_STYLE_DIMENSION_DEMO: WCB_ICON_BOX_PANEL_STYLE_DIMENSION =
+export const WCB_ICON_LIST_PANEL_STYLE_DIMENSION_DEMO: WCB_ICON_LIST_PANEL_STYLE_DIMENSION =
 	{
 		...MY_DIMENSIONS_NO_GAP_CONTROL_DEMO,
 		padding: {
@@ -33,12 +33,12 @@ export const WCB_ICON_BOX_PANEL_STYLE_DIMENSION_DEMO: WCB_ICON_BOX_PANEL_STYLE_D
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
-	panelData: WCB_ICON_BOX_PANEL_STYLE_DIMENSION;
-	setAttr__: (data: WCB_ICON_BOX_PANEL_STYLE_DIMENSION) => void;
+	panelData: WCB_ICON_LIST_PANEL_STYLE_DIMENSION;
+	setAttr__: (data: WCB_ICON_LIST_PANEL_STYLE_DIMENSION) => void;
 }
 
-const WcbIconBoxPanel_StyleDimension: FC<Props> = ({
-	panelData = WCB_ICON_BOX_PANEL_STYLE_DIMENSION_DEMO,
+const WcbIconListPanel_StyleDimension: FC<Props> = ({
+	panelData = WCB_ICON_LIST_PANEL_STYLE_DIMENSION_DEMO,
 	setAttr__,
 	initialOpen,
 	onToggle,
@@ -61,4 +61,4 @@ const WcbIconBoxPanel_StyleDimension: FC<Props> = ({
 	);
 };
 
-export default WcbIconBoxPanel_StyleDimension;
+export default WcbIconListPanel_StyleDimension;

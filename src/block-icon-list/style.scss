@@ -12,10 +12,13 @@
 }
 .wcb-icon-list__icon {
 	display: inline-block;
+	margin: 1rem;
 }
 
 .wcb-icon-list__content-title {
-	flex-grow: 1;
+	flex-grow: 0;
+	margin: 1rem;
+	margin: auto;
 }
 
 .wcb-icon-list__heading {
