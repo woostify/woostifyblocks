@@ -8365,7 +8365,7 @@ function save({
     ...wrapBlockProps,
     attributes: newAttrForSave,
     uniqueId: uniqueId
-  }, general_icon.iconPosition === "left" && renderIcon(), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wcb-icon-list__content"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wcb-icon-list__content-title-wrap"
