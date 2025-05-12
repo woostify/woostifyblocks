@@ -36,23 +36,12 @@ const GlobalCss: FC<Props> = (attrs) => {
 				value: general_layout.textAlignment,
 				prefix: "textAlign",
 			}),
-
 			{
 				[`${WRAP_CLASSNAME}`]: {
-
-					display:
-						general_icon.iconPosition === "left" ||
-						general_icon.iconPosition === "right"
-							? "flex"
-							: "block",
-
+					
 					flexDirection:
 						general_icon.stackOn === "mobile" ||
-						general_icon.stackOn === "tablet"
-							? general_icon.iconPosition === "right"
-								? "column-reverse"
-								: "column"
-							: undefined,
+						general_icon.stackOn === "tablet" ? "column-reverse" : "column",
 
 					
 					".wcb-icon-list__content": {
@@ -60,10 +49,16 @@ const GlobalCss: FC<Props> = (attrs) => {
 						flexDirection:  "column",
 						alignItems:
 							general_layout.textAlignment.Desktop ===  "center" 
+							|| general_layout.textAlignment.Mobile ===  "center" 
+							|| general_layout.textAlignment.Tablet ===  "center"
 								? "center" :
 							general_layout.textAlignment.Desktop === "left" 
+							|| general_layout.textAlignment.Mobile === "left"
+							|| general_layout.textAlignment.Tablet === "left"
 								? "flex-start" :
 							general_layout.textAlignment.Desktop === "right" 
+							|| general_layout.textAlignment.Mobile === "right"
+							|| general_layout.textAlignment.Tablet === "right"
 								? "flex-end" 
 								: undefined,
 					},
@@ -73,6 +68,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 							general_icon.verticalAlignment === "middle"
 								? "center"
 								: undefined,
+					},
+
+					".wcb-icon-list__icon-wrap": {
+						order: general_icon.iconPosition === "leftOfTitle" ? "0" : "2",
 					},
 
 					".wcb-icon-list__content-title-wrap": {

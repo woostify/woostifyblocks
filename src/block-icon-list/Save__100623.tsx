@@ -88,9 +88,6 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			attributes={newAttrForSave}
 			uniqueId={uniqueId}
 		>
-			{(general_icon.iconPosition === "top" ||
-				general_icon.iconPosition === "left") &&
-				renderIcon()}
 
 			{/* CHILD CONTENT  */}
 			<div className="wcb-icon-list__content">
@@ -117,8 +114,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 							/>
 						)}
 					</div>
-					{(general_icon.iconPosition === "rightOfTitle" ||
-						general_icon.iconPosition === "bellowTitle") &&
+					{(general_icon.iconPosition === "rightOfTitle") &&
 						renderIcon()}
 				</div>
 

@@ -11,11 +11,7 @@ import { Option } from "../types";
 export interface WCB_ICON_LIST_PANEL_ICON {
 	enableIcon: boolean;
 	icon: MyIcon;
-	iconPosition:
-		"left"
-		| "right"
-		| "leftOfTitle"
-		| "rightOfTitle"
+	iconPosition: "leftOfTitle" | "rightOfTitle"
 	stackOn: "none" | "tablet" | "mobile";
 	verticalAlignment: "top" | "middle";
 }
@@ -60,50 +56,29 @@ const WcbIconListPanelIcon: FC<Props> = ({
 			title={__("Icon", "wcb")}
 		>
 			<div className={"space-y-5"}>
-				<ToggleControl
-					label={__("Enable Icon", "wcb")}
-					checked={enableIcon}
-					className="mb-0"
-					onChange={(checked) => {
-						setAttr__({ ...panelData, enableIcon: checked });
+				<SelecIcon
+					iconData={icon}
+					onChange={(value) => {
+						setAttr__({
+							...panelData,
+							icon: value,
+						});
 					}}
 				/>
 
-				{enableIcon && (
-					<>
-						<SelecIcon
-							iconData={icon}
-							onChange={(value) => {
-								setAttr__({
-									...panelData,
-									icon: value,
-								});
-							}}
-						/>
-
-						<MySelect
-							label={__("Position", "Wcb")}
-							options={PLANS_DEMO}
-							value={iconPosition}
-							onChange={(value) => {
-								let newData: WCB_ICON_LIST_PANEL_ICON = {
-									...panelData,
-									iconPosition:
-										value as WCB_ICON_LIST_PANEL_ICON["iconPosition"],
-								};
-								if (iconPosition !== "left" && iconPosition !== "right") {
-									newData = {
-										...panelData,
-										iconPosition:
-											value as WCB_ICON_LIST_PANEL_ICON["iconPosition"],
-									};
-								}
-
-								setAttr__(newData);
-							}}
-						/>
-					</>
-				)}
+				<MySelect
+					label={__("Position", "Wcb")}
+					options={PLANS_DEMO}
+					value={iconPosition}
+					onChange={(value) => {
+						let newData: WCB_ICON_LIST_PANEL_ICON = {
+							...panelData,
+							iconPosition:
+								value as WCB_ICON_LIST_PANEL_ICON["iconPosition"],
+						};
+						setAttr__(newData);
+					}}
+				/>	
 			</div>
 		</PanelBody>
 	);

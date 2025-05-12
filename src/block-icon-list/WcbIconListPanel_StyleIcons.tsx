@@ -36,10 +36,10 @@ export const WCB_ICON_LIST_PANEL_STYLE_ICON_DEMO: WCB_ICON_LIST_PANEL_STYLE_ICON
 			...MY_DIMENSIONS_NO_GAP_CONTROL_DEMO,
 			margin: {
 				Desktop: {
-					top: "1rem",
-					left: "1rem",
-					right: "1rem",
-					bottom: "1rem",
+					top: "",
+					left: "",
+					right: "",
+					bottom: "",
 				},
 			},
 			padding: {

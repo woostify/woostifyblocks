@@ -57,7 +57,6 @@ const WcbIconListPanelLayout: FC<Props> = ({
 		setAttr__({
 			...panelData,
 			textAlignment: {
-				...textAlignment,
 				[deviceType]: selected,
 			},
 		});

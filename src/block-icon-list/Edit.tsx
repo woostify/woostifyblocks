@@ -76,71 +76,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabGeneralIsPanelOpen === "Icon" || undefined}
 							//
 							setAttr__={(data) => {
-								if (
-									data.iconPosition === "leftOfTitle" ||
-									data.iconPosition === "left"
-								) {
-									return setAttributes({
-										general_icon: data,
-										general_separator: {
-											...general_separator,
-											position: "afterTitle",
-										},
-										general_layout: {
-											...general_layout,
-											textAlignment: {
-												Desktop: "left",
-												Tablet: "left",
-												Mobile: "left",
-											},
-										},
-										style_Icon: {
-											...style_Icon,
-											dimensions: {
-												...MY_DIMENSIONS_NO_GAP_DEMO__EMPTY,
-												margin: {
-													Desktop: {
-														...MY_DIMENSIONS_NO_GAP_DEMO__EMPTY.margin.Desktop,
-														right: "1rem",
-													},
-												},
-											},
-										},
-									});
-								}
-								if (
-									data.iconPosition === "rightOfTitle" ||
-									data.iconPosition === "right"
-								) {
-									return setAttributes({
-										general_icon: data,
-										general_separator: {
-											...general_separator,
-											position: "afterTitle",
-										},
-										general_layout: {
-											...general_layout,
-											textAlignment: {
-												Desktop: "right",
-												Tablet: "right",
-												Mobile: "right",
-											},
-										},
-										style_Icon: {
-											...style_Icon,
-											dimensions: {
-												...MY_DIMENSIONS_NO_GAP_DEMO__EMPTY,
-												margin: {
-													Desktop: {
-														...MY_DIMENSIONS_NO_GAP_DEMO__EMPTY.margin.Desktop,
-														left: "1rem",
-													},
-												},
-											},
-										},
-									});
-								}
-
 								return setAttributes({
 									general_icon: data,
 									style_Icon: {
@@ -150,8 +85,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 											margin: {
 												Desktop: {
 													...MY_DIMENSIONS_NO_GAP_DEMO__EMPTY.margin.Desktop,
-													top: "1rem",
-													bottom: "1rem",
 												},
 											},
 										},
@@ -304,32 +237,16 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 	const renderIcon = () => {
 		return (
-			<>
-				{general_icon.enableIcon && (
-					<div className="wcb-icon-list__icon-wrap">
-						<div className="wcb-icon-list__icon">
-							<MyIconFull icon={general_icon.icon} />
-						</div>
-					</div>
-				)}
-				{general_separator.position === "afterIcon" && renderSeparator()}
-			</>
-		);
-	};
-
-	const renderSeparator = () => {
-		if (!general_separator.enableSeparator) {
-			return null;
-		}
-		return (
-			<div className="wcb-icon-list__separator-wrap">
-				<div className="wcb-icon-list__separator"></div>
+			<div className="wcb-icon-list__icon-wrap">
+				<div className="wcb-icon-list__icon">
+					<MyIconFull icon={general_icon.icon} />
+				</div>
 			</div>
 		);
 	};
 
-	const HeadingTag = general_layout.headingTag;
 
+	const HeadingTag = general_layout.headingTag;
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
@@ -345,10 +262,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 				{/* CSS IN JS */}
 				<GlobalCss {...WcbAttrsForSave()} />
-
-				{(
-					general_icon.iconPosition === "left") &&
-					renderIcon()}
 
 				{/* CHILD CONTENT  */}
 				<div className="wcb-icon-list__content">
