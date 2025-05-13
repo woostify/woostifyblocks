@@ -54,9 +54,9 @@ import {
 } from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
-	heading: string;
-	designation: string;
-	description: string;
+	heading_1: string;
+	heading_2: string;
+	heading_3: string;
 	//
 	general_layout: WCB_ICON_LIST_PANEL_LAYOUT;
 	general_icon: WCB_ICON_LIST_PANEL_ICON;
@@ -80,26 +80,26 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	},
 
 	// THE ATTRS OF BLOCK HERE
-	heading: {
+	heading_1: {
 		type: "string",
 		source: "html",
 		selector: ".wcb-icon-list__heading",
 		default: "List item",
 	},
-	designation: {
+
+	heading_2: {
 		type: "string",
 		source: "html",
-		selector: ".wcb-icon-list__designation",
-		default: "Write a Prefix",
+		selector: ".wcb-icon-list__heading",
+		default: "List item",
 	},
-	description: {
+
+	heading_3: {
 		type: "string",
 		source: "html",
-		selector: ".wcb-icon-list__description",
-		default:
-			"Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+		selector: ".wcb-icon-list__heading",
+		default: "List item",
 	},
-	//
 
 	general_layout: {
 		type: "object",

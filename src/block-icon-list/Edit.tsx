@@ -28,9 +28,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const {
 		advance_responsiveCondition,
 		advance_zIndex,
-		heading,
-		description,
-		designation,
+		heading_1,
+		heading_2,
+		heading_3,
 		uniqueId,
 		general_layout,
 		general_icon,
@@ -209,6 +209,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			advance_responsiveCondition,
 			advance_zIndex,
 			general_layout,
+			heading_1,
+			heading_2,
+			heading_3,
 			style_title,
 			style_desination,
 			style_description,
@@ -224,6 +227,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_layout,
+		heading_1,
+		heading_2,
+		heading_3,
 		style_title,
 		style_desination,
 		style_description,
@@ -268,27 +274,14 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					<div className="wcb-icon-list__content-title-wrap">
 						{general_icon.iconPosition === "leftOfTitle" && renderIcon()}
 						<div className="wcb-icon-list__content-title">
-							{general_layout.enablePrefix && (
-								<RichText
-									tagName="div"
-									value={designation}
-									allowedFormats={[]}
-									onChange={(content) =>
-										setAttributes({ designation: content })
-									}
-									placeholder={__("Write a Prefix")}
-									className="wcb-icon-list__designation"
-								/>
-							)}
-
 							{general_layout.enableTitle && (
 								<RichText
 									tagName={HeadingTag}
-									value={heading}
+									value={heading_1}
 									allowedFormats={["core/bold", "core/italic"]}
-									onChange={(content) => setAttributes({ heading: content })}
+									onChange={(content) => setAttributes({ heading_1: content })}
 									placeholder={__("Heading of box")}
-									className="wcb-icon-list__heading"
+									className="wcb-icon-box__heading"
 								/>
 							)}
 						</div>
@@ -299,27 +292,14 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					<div className="wcb-icon-list__content-title-wrap">
 						{general_icon.iconPosition === "leftOfTitle" && renderIcon()}
 						<div className="wcb-icon-list__content-title">
-							{general_layout.enablePrefix && (
-								<RichText
-									tagName="div"
-									value={designation}
-									allowedFormats={[]}
-									onChange={(content) =>
-										setAttributes({ designation: content })
-									}
-									placeholder={__("Write a Prefix")}
-									className="wcb-icon-list__designation"
-								/>
-							)}
-
 							{general_layout.enableTitle && (
 								<RichText
 									tagName={HeadingTag}
-									value={heading}
+									value={heading_2}
 									allowedFormats={["core/bold", "core/italic"]}
-									onChange={(content) => setAttributes({ heading: content })}
+									onChange={(content) => setAttributes({ heading_2: content })}
 									placeholder={__("Heading of box")}
-									className="wcb-icon-list__heading"
+									className="wcb-icon-box__heading"
 								/>
 							)}
 						</div>
@@ -330,27 +310,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					<div className="wcb-icon-list__content-title-wrap">
 						{general_icon.iconPosition === "leftOfTitle" && renderIcon()}
 						<div className="wcb-icon-list__content-title">
-							{general_layout.enablePrefix && (
-								<RichText
-									tagName="div"
-									value={designation}
-									allowedFormats={[]}
-									onChange={(content) =>
-										setAttributes({ designation: content })
-									}
-									placeholder={__("Write a Prefix")}
-									className="wcb-icon-list__designation"
-								/>
-							)}
 
 							{general_layout.enableTitle && (
 								<RichText
 									tagName={HeadingTag}
-									value={heading}
+									value={heading_3}
 									allowedFormats={["core/bold", "core/italic"]}
-									onChange={(content) => setAttributes({ heading: content })}
+									onChange={(content) => setAttributes({ heading_3: content })}
 									placeholder={__("Heading of box")}
-									className="wcb-icon-list__heading"
+									className="wcb-icon-box__heading"
 								/>
 							)}
 						</div>

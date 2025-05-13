@@ -7740,9 +7740,9 @@ const Edit = props => {
   const {
     advance_responsiveCondition,
     advance_zIndex,
-    heading,
-    description,
-    designation,
+    heading_1,
+    heading_2,
+    heading_3,
     uniqueId,
     general_layout,
     general_icon,
@@ -7899,6 +7899,9 @@ const Edit = props => {
       advance_responsiveCondition,
       advance_zIndex,
       general_layout,
+      heading_1,
+      heading_2,
+      heading_3,
       style_title,
       style_desination,
       style_description,
@@ -7909,7 +7912,7 @@ const Edit = props => {
       general_separator,
       advance_motionEffect
     };
-  }, [uniqueId, advance_responsiveCondition, advance_zIndex, general_layout, style_title, style_desination, style_description, style_Icon, style_separator, style_dimension, general_icon, general_separator, advance_motionEffect]);
+  }, [uniqueId, advance_responsiveCondition, advance_zIndex, general_layout, heading_1, heading_2, heading_3, style_title, style_desination, style_description, style_Icon, style_separator, style_dimension, general_icon, general_separator, advance_motionEffect]);
   const renderIcon = () => {
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "wcb-icon-list__icon-wrap"
@@ -7937,68 +7940,41 @@ const Edit = props => {
     className: "wcb-icon-list__content-title-wrap"
   }, general_icon.iconPosition === "leftOfTitle" && renderIcon(), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wcb-icon-list__content-title"
-  }, general_layout.enablePrefix && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-    tagName: "div",
-    value: designation,
-    allowedFormats: [],
-    onChange: content => setAttributes({
-      designation: content
-    }),
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Write a Prefix"),
-    className: "wcb-icon-list__designation"
-  }), general_layout.enableTitle && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  }, general_layout.enableTitle && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: HeadingTag,
-    value: heading,
+    value: heading_1,
     allowedFormats: ["core/bold", "core/italic"],
     onChange: content => setAttributes({
-      heading: content
+      heading_1: content
     }),
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Heading of box"),
-    className: "wcb-icon-list__heading"
+    className: "wcb-icon-box__heading"
   })), general_icon.iconPosition === "rightOfTitle" && renderIcon()), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wcb-icon-list__content-title-wrap"
   }, general_icon.iconPosition === "leftOfTitle" && renderIcon(), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wcb-icon-list__content-title"
-  }, general_layout.enablePrefix && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-    tagName: "div",
-    value: designation,
-    allowedFormats: [],
-    onChange: content => setAttributes({
-      designation: content
-    }),
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Write a Prefix"),
-    className: "wcb-icon-list__designation"
-  }), general_layout.enableTitle && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  }, general_layout.enableTitle && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: HeadingTag,
-    value: heading,
+    value: heading_2,
     allowedFormats: ["core/bold", "core/italic"],
     onChange: content => setAttributes({
-      heading: content
+      heading_2: content
     }),
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Heading of box"),
-    className: "wcb-icon-list__heading"
+    className: "wcb-icon-box__heading"
   })), general_icon.iconPosition === "rightOfTitle" && renderIcon()), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wcb-icon-list__content-title-wrap"
   }, general_icon.iconPosition === "leftOfTitle" && renderIcon(), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wcb-icon-list__content-title"
-  }, general_layout.enablePrefix && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-    tagName: "div",
-    value: designation,
-    allowedFormats: [],
-    onChange: content => setAttributes({
-      designation: content
-    }),
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Write a Prefix"),
-    className: "wcb-icon-list__designation"
-  }), general_layout.enableTitle && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  }, general_layout.enableTitle && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: HeadingTag,
-    value: heading,
+    value: heading_3,
     allowedFormats: ["core/bold", "core/italic"],
     onChange: content => setAttributes({
-      heading: content
+      heading_3: content
     }),
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Heading of box"),
-    className: "wcb-icon-list__heading"
+    className: "wcb-icon-box__heading"
   })), general_icon.iconPosition === "rightOfTitle" && renderIcon()))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
@@ -8041,6 +8017,7 @@ const GlobalCss = attrs => {
     general_layout,
     style_desination,
     style_Icon,
+    style_title,
     //
     advance_responsiveCondition,
     advance_zIndex,
@@ -8065,7 +8042,7 @@ const GlobalCss = attrs => {
         flexDirection: general_icon.stackOn === "mobile" || general_icon.stackOn === "tablet" ? "column-reverse" : "column",
         ".wcb-icon-list__content": {
           display: "flex",
-          flexDirection: "column",
+          flexDirection: general_layout.layout === "vertical" ? "column" : "row",
           alignItems: general_layout.textAlignment.Desktop === "center" || general_layout.textAlignment.Mobile === "center" || general_layout.textAlignment.Tablet === "center" ? "center" : general_layout.textAlignment.Desktop === "left" || general_layout.textAlignment.Mobile === "left" || general_layout.textAlignment.Tablet === "left" ? "flex-start" : general_layout.textAlignment.Desktop === "right" || general_layout.textAlignment.Mobile === "right" || general_layout.textAlignment.Tablet === "right" ? "flex-end" : undefined
         },
         ".wcb-icon-list__icon-wrap, .wcb-icon-list__content": {
@@ -8119,6 +8096,19 @@ const GlobalCss = attrs => {
         ":hover": {
           color: style_Icon.hoverColor
         }
+      }
+    }]
+  }) : null, general_layout.enableTitle ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
+    styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
+      typography: style_title.typography,
+      className: `${WRAP_CLASSNAME} .wcb-icon-box__heading`
+    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_4__["default"])({
+      className: `${WRAP_CLASSNAME} .wcb-icon-box__heading`,
+      value: style_title.marginBottom,
+      prefix: "marginBottom"
+    }), {
+      [`${WRAP_CLASSNAME} .wcb-icon-box__heading`]: {
+        color: style_title.textColor
       }
     }]
   }) : null, general_layout.enablePrefix ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
@@ -8183,8 +8173,9 @@ function save({
     advance_responsiveCondition,
     advance_zIndex,
     general_layout,
-    heading,
-    designation,
+    heading_1,
+    heading_2,
+    heading_3,
     style_description,
     style_desination,
     style_Icon,
@@ -8202,6 +8193,9 @@ function save({
     advance_responsiveCondition,
     advance_zIndex,
     general_layout,
+    heading_1,
+    heading_2,
+    heading_3,
     style_description,
     style_desination,
     style_Icon,
@@ -8251,17 +8245,30 @@ function save({
     className: "wcb-icon-list__content-title-wrap"
   }, general_icon.iconPosition === "leftOfTitle" && renderIcon(), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wcb-icon-list__content-title"
-  }, general_layout.enablePrefix && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
-    tagName: "div",
-    value: designation,
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Designation..."),
-    className: "wcb-icon-list__designation"
-  }), general_separator.position === "afterPrefix" && renderSeparator(), general_layout.enableTitle && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+  }, general_layout.enableTitle && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
     tagName: HeadingTag,
-    value: heading,
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Heading..."),
-    className: "wcb-icon-list__heading"
-  })), general_icon.iconPosition === "rightOfTitle" && renderIcon()), general_separator.position === "afterTitle" && renderSeparator()));
+    value: heading_1,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Heading of box"),
+    className: "wcb-icon-box__heading"
+  })), general_icon.iconPosition === "rightOfTitle" && renderIcon()), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "wcb-icon-list__content-title-wrap"
+  }, general_icon.iconPosition === "leftOfTitle" && renderIcon(), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "wcb-icon-list__content-title"
+  }, general_layout.enableTitle && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+    tagName: HeadingTag,
+    value: heading_2,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Heading of box"),
+    className: "wcb-icon-box__heading"
+  })), general_icon.iconPosition === "rightOfTitle" && renderIcon()), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "wcb-icon-list__content-title-wrap"
+  }, general_icon.iconPosition === "leftOfTitle" && renderIcon(), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "wcb-icon-list__content-title"
+  }, general_layout.enableTitle && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+    tagName: HeadingTag,
+    value: heading_3,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Heading of box"),
+    className: "wcb-icon-box__heading"
+  })), general_icon.iconPosition === "rightOfTitle" && renderIcon())));
 }
 
 /***/ }),
@@ -8480,7 +8487,7 @@ function save({
     ...wrapBlockProps,
     attributes: newAttrForSave,
     uniqueId: uniqueId
-  }, general_icon.iconPosition === "left" && renderIcon(), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wcb-icon-list__content"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wcb-icon-list__content-title-wrap"
@@ -8611,6 +8618,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyTextAlignControl/MyTextAlignControl */ "./src/components/controls/MyTextAlignControl/MyTextAlignControl.tsx");
 /* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
 /* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+/* harmony import */ var _components_controls_MySelect__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/controls/MySelect */ "./src/components/controls/MySelect.tsx");
+
 
 
 
@@ -8620,6 +8629,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const WCB_ICON_LIST_PANEL_LAYOUT_DEMO = {
+  layout: "vertical",
   textAlignment: {
     Desktop: "left"
   },
@@ -8639,13 +8649,12 @@ const WcbIconListPanelLayout = ({
     textAlignment,
     headingTag,
     enablePrefix,
-    enableTitle
+    enableTitle,
+    layout
   } = panelData;
   const {
     currentDeviceValue: TEXT_ALIGNMENT
   } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(textAlignment, deviceType);
-
-  //
   const handleChangeTextAlignment = selected => {
     setAttr__({
       ...panelData,
@@ -8654,8 +8663,13 @@ const WcbIconListPanelLayout = ({
       }
     });
   };
-  //
-
+  const PLANS_DEMO = [{
+    value: "horizontal",
+    label: "Horizontal"
+  }, {
+    value: "vertical",
+    label: "Vertical"
+  }];
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     initialOpen: initialOpen,
     onToggle: onToggle,
@@ -8663,11 +8677,21 @@ const WcbIconListPanelLayout = ({
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Content", "wcb")
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "space-y-5"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MySelect__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Layout", "Wcb"),
+    options: PLANS_DEMO,
+    value: layout,
+    onChange: value => {
+      setAttr__({
+        ...panelData,
+        layout: value
+      });
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
     textAlignment: TEXT_ALIGNMENT,
     onChange: handleChangeTextAlignment
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Enable prefix", "wcb"),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Icon Alignment", "wcb"),
     checked: enablePrefix,
     className: "mb-0",
     onChange: checked => {
@@ -9381,7 +9405,7 @@ const WCB_ICON_LIST_PANEL_STYLE_TITLE_DEMO = {
   typography: _components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_4__.TYPOGRAPHY_CONTROL_DEMO,
   textColor: "#171717",
   marginBottom: {
-    Desktop: "1rem"
+    Desktop: ""
   }
 };
 const WcbIconListPanel_StyleTitle = ({
@@ -9487,26 +9511,24 @@ const blokc1Attrs = {
     default: ""
   },
   // THE ATTRS OF BLOCK HERE
-  heading: {
+  heading_1: {
     type: "string",
     source: "html",
     selector: ".wcb-icon-list__heading",
     default: "List item"
   },
-  designation: {
+  heading_2: {
     type: "string",
     source: "html",
-    selector: ".wcb-icon-list__designation",
-    default: "Write a Prefix"
+    selector: ".wcb-icon-list__heading",
+    default: "List item"
   },
-  description: {
+  heading_3: {
     type: "string",
     source: "html",
-    selector: ".wcb-icon-list__description",
-    default: "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
+    selector: ".wcb-icon-list__heading",
+    default: "List item"
   },
-  //
-
   general_layout: {
     type: "object",
     default: _WcbIconListPanelLayout__WEBPACK_IMPORTED_MODULE_3__.WCB_ICON_LIST_PANEL_LAYOUT_DEMO

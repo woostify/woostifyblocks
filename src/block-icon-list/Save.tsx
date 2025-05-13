@@ -16,8 +16,9 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_layout,
-		heading,
-		designation,
+		heading_1,
+		heading_2,
+		heading_3,
 		style_description,
 		style_desination,
 		style_Icon,
@@ -35,6 +36,9 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_layout,
+		heading_1,
+		heading_2,
+		heading_3,
 		style_description,
 		style_desination,
 		style_Icon,
@@ -90,35 +94,55 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 			{/* CHILD CONTENT  */}
 			<div className="wcb-icon-list__content">
-				<div className="wcb-icon-list__content-title-wrap">
-					{general_icon.iconPosition === "leftOfTitle" && renderIcon()}
-					<div className="wcb-icon-list__content-title">
-						{general_layout.enablePrefix && (
-							<RichText.Content
-								tagName="div"
-								value={designation}
-								placeholder={__("Designation...")}
-								className="wcb-icon-list__designation"
-							/>
-						)}
+					<div className="wcb-icon-list__content-title-wrap">
+						{general_icon.iconPosition === "leftOfTitle" && renderIcon()}
+						<div className="wcb-icon-list__content-title">
 
-						{general_separator.position === "afterPrefix" && renderSeparator()}
-
-						{general_layout.enableTitle && (
-							<RichText.Content
-								tagName={HeadingTag}
-								value={heading}
-								placeholder={__("Heading...")}
-								className="wcb-icon-list__heading"
-							/>
-						)}
+							{general_layout.enableTitle && (
+								<RichText.Content
+									tagName={HeadingTag}
+									value={heading_1}
+									placeholder={__("Heading of box")}
+									className="wcb-icon-box__heading"
+								/>
+							)}
+						</div>
+						{(general_icon.iconPosition === "rightOfTitle") &&
+							renderIcon()}
 					</div>
-					{general_icon.iconPosition === "rightOfTitle" &&
-						renderIcon()}
-				</div>
 
-				{general_separator.position === "afterTitle" && renderSeparator()}
-			</div>
+					<div className="wcb-icon-list__content-title-wrap">
+						{general_icon.iconPosition === "leftOfTitle" && renderIcon()}
+						<div className="wcb-icon-list__content-title">
+							{general_layout.enableTitle && (
+								<RichText.Content
+									tagName={HeadingTag}
+									value={heading_2}
+									placeholder={__("Heading of box")}
+									className="wcb-icon-box__heading"
+								/>
+							)}
+						</div>
+						{(general_icon.iconPosition === "rightOfTitle") &&
+							renderIcon()}
+					</div>
+
+					<div className="wcb-icon-list__content-title-wrap">
+						{general_icon.iconPosition === "leftOfTitle" && renderIcon()}
+						<div className="wcb-icon-list__content-title">
+							{general_layout.enableTitle && (
+								<RichText.Content
+									tagName={HeadingTag}
+									value={heading_3}
+									placeholder={__("Heading of box")}
+									className="wcb-icon-box__heading"
+								/>
+							)}
+						</div>
+						{(general_icon.iconPosition === "rightOfTitle") &&
+							renderIcon()}
+					</div>
+				</div>
 		</SaveCommon>
 	);
 }

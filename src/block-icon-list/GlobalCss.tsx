@@ -17,6 +17,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		general_layout,
 		style_desination,
 		style_Icon,
+		style_title,
 		//
 		advance_responsiveCondition,
 		advance_zIndex,
@@ -46,7 +47,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 					
 					".wcb-icon-list__content": {
 						display: "flex",
-						flexDirection:  "column",
+						flexDirection:  general_layout.layout === "vertical" ? "column" : "row",
 						alignItems:
 							general_layout.textAlignment.Desktop ===  "center" 
 							|| general_layout.textAlignment.Mobile ===  "center" 
@@ -144,6 +145,29 @@ const GlobalCss: FC<Props> = (attrs) => {
 					]}
 				/>
 			) : null}
+
+			{/* --------- TITLE --------- */}
+			{general_layout.enableTitle ? (
+				<Global
+					styles={[
+						getTypographyStyles({
+							typography: style_title.typography,
+							className: `${WRAP_CLASSNAME} .wcb-icon-box__heading`,
+						}),
+						getStyleObjectFromResponsiveAttr({
+							className: `${WRAP_CLASSNAME} .wcb-icon-box__heading`,
+							value: style_title.marginBottom,
+							prefix: "marginBottom",
+						}),
+						{
+							[`${WRAP_CLASSNAME} .wcb-icon-box__heading`]: {
+								color: style_title.textColor,
+							},
+						},
+					]}
+				/>
+			) : null}
+
 
 			{/* --------- DESIGNATION --------- */}
 			{general_layout.enablePrefix ? (

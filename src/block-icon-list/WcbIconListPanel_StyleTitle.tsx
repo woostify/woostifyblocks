@@ -24,7 +24,7 @@ export const WCB_ICON_LIST_PANEL_STYLE_TITLE_DEMO: WCB_ICON_LIST_PANEL_STYLE_TIT
 	{
 		typography: TYPOGRAPHY_CONTROL_DEMO,
 		textColor: "#171717",
-		marginBottom: { Desktop: "1rem" },
+		marginBottom: { Desktop: "" },
 	};
 
 interface Props

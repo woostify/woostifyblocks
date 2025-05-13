@@ -83,9 +83,6 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			attributes={newAttrForSave}
 			uniqueId={uniqueId}
 		>
-			{(
-				general_icon.iconPosition === "left") &&
-				renderIcon()}
 
 			{/* CHILD CONTENT  */}
 			<div className="wcb-icon-list__content">
