@@ -100,14 +100,6 @@ const WcbIconListPanelLayout: FC<Props> = ({
                 />
 
                 <ToggleControl
-                    label={__("Icon Alignment", "wcb")}
-                    checked={enablePrefix}
-                    className="mb-0"
-                    onChange={(checked) => {
-                        setAttr__({ ...panelData, enablePrefix: checked });
-                    }}
-                />
-                <ToggleControl
                     label={__("Enable title", "wcb")}
                     checked={enableTitle}
                     className="mb-0"

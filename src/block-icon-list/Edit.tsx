@@ -11,17 +11,25 @@ import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import WcbIconBoxPanelLayout from "./WcbIconListPanelLayout";
+import WcbIconListPreset from "./WcbIconListPanelPreset";
 import WcbIconBoxPanelIcon from "./WcbIconListPanelIcon";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
 import WcbTeamPanel_StyleTitle from "./WcbIconListPanel_StyleTitle";
 import WcbTeamPanel_StyleDesignation from "./WcbIconListPanel_StyleDesignation";
-import WcbIconBoxPanel_StyleIcons from "./WcbIconListPanel_StyleIcons";
 import MyIconFull from "../components/controls/MyIconFull";
 import WcbIconBoxPanel_StyleSeparator from "./WcbIconListPanel_StyleSeparator";
 import WcbIconBoxPanel_StyleDimension from "./WcbIconListPanel_StyleDimension";
 import { MY_DIMENSIONS_NO_GAP_DEMO__EMPTY } from "../components/controls/MyDimensionsControl/types";
+import { 
+	WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_1, 
+	WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_2, 
+	WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_3,
+	WCB_ICON_LIST_PANEL_STYLE_ICON_DEMO
+} from "./WcbIconListPanel_StyleIcons";
+import WcbIconBoxPanel_StyleIcons from "./WcbIconListPanel_StyleIcons";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
+import WcbIconListPanelPreset from "./WcbIconListPanelPreset";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -34,6 +42,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		uniqueId,
 		general_layout,
 		general_icon,
+		general_preset,
 		style_title,
 		style_desination,
 		style_description,
@@ -106,6 +115,32 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								setAttributes({ general_layout: data });
 							}}
 							panelData={general_layout}
+						/>
+
+						<WcbIconListPanelPreset
+							onToggle={() => handleTogglePanel("General", "Preset")}
+							initialOpen={
+								tabGeneralIsPanelOpen === "Preset"
+							}
+							opened={tabGeneralIsPanelOpen === "Preset" || undefined}
+							//
+							setAttr__={(data) => {
+								const { preset } = data;
+								setAttributes({
+									general_preset: data,
+								});
+								setAttributes({
+									style_Icon:
+										preset === "wcb-icon-list-1"
+										? WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_1
+										: preset === "wcb-icon-list-2"
+										? WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_2
+										: preset === "wcb-icon-list-3"
+										? WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_3
+										: WCB_ICON_LIST_PANEL_STYLE_ICON_DEMO,
+								});
+							}}
+							panelData={general_preset}
 						/>
 					</>
 				);
@@ -209,6 +244,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			advance_responsiveCondition,
 			advance_zIndex,
 			general_layout,
+			general_preset,
 			heading_1,
 			heading_2,
 			heading_3,
@@ -227,6 +263,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_layout,
+		general_preset,
 		heading_1,
 		heading_2,
 		heading_3,

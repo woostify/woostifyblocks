@@ -52,6 +52,7 @@ import {
 	MY_MOTION_EFFECT_DEMO,
 	MyMotionEffectData,
 } from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
+import { WCB_ICON_LIST_PANEL_PRESET, WCB_ICON_LIST_PANEL_PRESET_DEMO } from "./WcbIconListPanelPreset";
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	heading_1: string;
@@ -61,6 +62,7 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	general_layout: WCB_ICON_LIST_PANEL_LAYOUT;
 	general_icon: WCB_ICON_LIST_PANEL_ICON;
 	general_separator: WCB_ICON_LIST_PANEL_SEPARATOR;
+	general_preset: WCB_ICON_LIST_PANEL_PRESET;
 	style_title: WCB_ICON_LIST_PANEL_STYLE_TITLE;
 	style_desination: WCB_ICON_LIST_PANEL_STYLE_DESIGNATION;
 	style_separator: WCB_ICON_LIST_PANEL_STYLE_SEPARATOR;
@@ -112,6 +114,11 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	general_separator: {
 		type: "object",
 		default: WCB_ICON_LIST_PANEL_SEPARATOR_DEMO,
+	},
+
+	general_preset: {
+		type: "object",
+		default: WCB_ICON_LIST_PANEL_PRESET_DEMO,
 	},
 
 	style_title: {

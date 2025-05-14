@@ -10,7 +10,7 @@
 }
 
 .wcb-icon-list__icon {
-  display: inline-block;
+  display: flex;
   margin: 1rem;
 }
 
