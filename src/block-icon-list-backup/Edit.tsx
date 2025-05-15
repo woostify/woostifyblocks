@@ -1,6 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { InnerBlocks, RichText, useBlockProps, 	// @ts-ignore
-	useInnerBlocksProps,} from "@wordpress/block-editor";
+import { InnerBlocks, RichText, useBlockProps } from "@wordpress/block-editor";
 import React, { useEffect, FC, useRef, useCallback } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
@@ -239,23 +238,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		}
 	};
 
-	const {} = attributes;
-	const ALLOWED_BLOCKS = ["wcb/icon"];
-	const TEMPLATE = [
-		["wcb/icon", {}],
-		["wcb/icon", {}],
-		["wcb/icon", {}],
-	];
-
-	const blockProps = useBlockProps({
-		className: `wcb-icon__content-title-wrap`,
-	});
-	const innerBlocksProps = useInnerBlocksProps(blockProps, {
-		allowedBlocks: ALLOWED_BLOCKS,
-		template: TEMPLATE,
-		renderAppender: () => <InnerBlocks.DefaultBlockAppender />
-	});
-
 	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {
 		return {
 			uniqueId,
@@ -296,6 +278,18 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		advance_motionEffect,
 	]);
 
+	const renderIcon = () => {
+		return (
+			<div className="wcb-icon-list__icon-wrap">
+				<div className="wcb-icon-list__icon">
+					<MyIconFull icon={general_icon.icon} />
+				</div>
+			</div>
+		);
+	};
+
+
+	const HeadingTag = general_layout.headingTag;
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
@@ -313,7 +307,62 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				<GlobalCss {...WcbAttrsForSave()} />
 
 				{/* CHILD CONTENT  */}
-				<div className="wcb-icon-list__content" {...innerBlocksProps} />
+				<div className="wcb-icon-list__content">
+					<div className="wcb-icon-list__content-title-wrap">
+						{general_icon.iconPosition === "leftOfTitle" && renderIcon()}
+						<div className="wcb-icon-list__content-title">
+							{general_layout.enableTitle && (
+								<RichText
+									tagName={HeadingTag}
+									value={heading_1}
+									allowedFormats={["core/bold", "core/italic"]}
+									onChange={(content) => setAttributes({ heading_1: content })}
+									placeholder={__("Heading of box")}
+									className="wcb-icon-box__heading"
+								/>
+							)}
+						</div>
+						{(general_icon.iconPosition === "rightOfTitle") &&
+							renderIcon()}
+					</div>
+
+					<div className="wcb-icon-list__content-title-wrap">
+						{general_icon.iconPosition === "leftOfTitle" && renderIcon()}
+						<div className="wcb-icon-list__content-title">
+							{general_layout.enableTitle && (
+								<RichText
+									tagName={HeadingTag}
+									value={heading_2}
+									allowedFormats={["core/bold", "core/italic"]}
+									onChange={(content) => setAttributes({ heading_2: content })}
+									placeholder={__("Heading of box")}
+									className="wcb-icon-box__heading"
+								/>
+							)}
+						</div>
+						{(general_icon.iconPosition === "rightOfTitle") &&
+							renderIcon()}
+					</div>
+
+					<div className="wcb-icon-list__content-title-wrap">
+						{general_icon.iconPosition === "leftOfTitle" && renderIcon()}
+						<div className="wcb-icon-list__content-title">
+
+							{general_layout.enableTitle && (
+								<RichText
+									tagName={HeadingTag}
+									value={heading_3}
+									allowedFormats={["core/bold", "core/italic"]}
+									onChange={(content) => setAttributes({ heading_3: content })}
+									placeholder={__("Heading of box")}
+									className="wcb-icon-box__heading"
+								/>
+							)}
+						</div>
+						{(general_icon.iconPosition === "rightOfTitle") &&
+							renderIcon()}
+					</div>
+				</div>
 			</div>
 		</MyCacheProvider>
 	);

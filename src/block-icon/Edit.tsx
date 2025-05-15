@@ -1,6 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { InnerBlocks, RichText, useBlockProps, 	// @ts-ignore
-	useInnerBlocksProps,} from "@wordpress/block-editor";
+import { InnerBlocks, RichText, useBlockProps } from "@wordpress/block-editor";
 import React, { useEffect, FC, useRef, useCallback } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
@@ -11,8 +10,6 @@ import GlobalCss from "./GlobalCss";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
-import WcbIconBoxPanelLayout from "./WcbIconListPanelLayout";
-import WcbIconListPreset from "./WcbIconListPanelPreset";
 import WcbIconBoxPanelIcon from "./WcbIconListPanelIcon";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
@@ -22,28 +19,18 @@ import MyIconFull from "../components/controls/MyIconFull";
 import WcbIconBoxPanel_StyleSeparator from "./WcbIconListPanel_StyleSeparator";
 import WcbIconBoxPanel_StyleDimension from "./WcbIconListPanel_StyleDimension";
 import { MY_DIMENSIONS_NO_GAP_DEMO__EMPTY } from "../components/controls/MyDimensionsControl/types";
-import { 
-	WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_1, 
-	WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_2, 
-	WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_3,
-	WCB_ICON_LIST_PANEL_STYLE_ICON_DEMO
-} from "./WcbIconListPanel_StyleIcons";
 import WcbIconBoxPanel_StyleIcons from "./WcbIconListPanel_StyleIcons";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
-import WcbIconListPanelPreset from "./WcbIconListPanelPreset";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
 	const {
 		advance_responsiveCondition,
 		advance_zIndex,
-		heading_1,
-		heading_2,
-		heading_3,
+		heading,
 		uniqueId,
 		general_layout,
 		general_icon,
-		general_preset,
 		style_title,
 		style_desination,
 		style_description,
@@ -102,46 +89,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								});
 							}}
 							panelData={general_icon}
-						/>
-
-						<WcbIconBoxPanelLayout
-							onToggle={() => handleTogglePanel("General", "Content", true)}
-							initialOpen={
-								tabGeneralIsPanelOpen === "Content" ||
-								tabGeneralIsPanelOpen === "first"
-							}
-							opened={tabGeneralIsPanelOpen === "Content" || undefined}
-							//
-							setAttr__={(data) => {
-								setAttributes({ general_layout: data });
-							}}
-							panelData={general_layout}
-						/>
-
-						<WcbIconListPanelPreset
-							onToggle={() => handleTogglePanel("General", "Preset")}
-							initialOpen={
-								tabGeneralIsPanelOpen === "Preset"
-							}
-							opened={tabGeneralIsPanelOpen === "Preset" || undefined}
-							//
-							setAttr__={(data) => {
-								const { preset } = data;
-								setAttributes({
-									general_preset: data,
-								});
-								setAttributes({
-									style_Icon:
-										preset === "wcb-icon-list-1"
-										? WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_1
-										: preset === "wcb-icon-list-2"
-										? WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_2
-										: preset === "wcb-icon-list-3"
-										? WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_3
-										: WCB_ICON_LIST_PANEL_STYLE_ICON_DEMO,
-								});
-							}}
-							panelData={general_preset}
 						/>
 					</>
 				);
@@ -239,33 +186,13 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		}
 	};
 
-	const {} = attributes;
-	const ALLOWED_BLOCKS = ["wcb/icon"];
-	const TEMPLATE = [
-		["wcb/icon", {}],
-		["wcb/icon", {}],
-		["wcb/icon", {}],
-	];
-
-	const blockProps = useBlockProps({
-		className: `wcb-icon__content-title-wrap`,
-	});
-	const innerBlocksProps = useInnerBlocksProps(blockProps, {
-		allowedBlocks: ALLOWED_BLOCKS,
-		template: TEMPLATE,
-		renderAppender: () => <InnerBlocks.DefaultBlockAppender />
-	});
-
 	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {
 		return {
 			uniqueId,
 			advance_responsiveCondition,
 			advance_zIndex,
 			general_layout,
-			general_preset,
-			heading_1,
-			heading_2,
-			heading_3,
+			heading,
 			style_title,
 			style_desination,
 			style_description,
@@ -281,10 +208,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_layout,
-		general_preset,
-		heading_1,
-		heading_2,
-		heading_3,
+		heading,
 		style_title,
 		style_desination,
 		style_description,
@@ -296,11 +220,23 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		advance_motionEffect,
 	]);
 
+
+	const renderIcon = () => {
+		return (
+			<div className="wcb-icon-list__icon-wrap">
+				<div className="wcb-icon-list__icon">
+					<MyIconFull icon={general_icon.icon} />
+				</div>
+			</div>
+		);
+	};
+
+	const HeadingTag = general_layout.headingTag;
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-icon-list__wrap ${uniqueId}`}
+				className={`${wrapBlockProps?.className} wcb-icon__wrap ${uniqueId}`}
 				data-uniqueid={uniqueId}
 			>
 				{/* CONTROL SETTINGS */}
@@ -313,7 +249,23 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				<GlobalCss {...WcbAttrsForSave()} />
 
 				{/* CHILD CONTENT  */}
-				<div className="wcb-icon-list__content" {...innerBlocksProps} />
+					<div className="wcb-icon-list__content-title-wrap">
+						{general_icon.iconPosition === "leftOfTitle" && renderIcon()}
+						<div className="wcb-icon-list__content-title">
+							{general_layout.enableTitle && (
+								<RichText
+									tagName={HeadingTag}
+									value={heading}
+									allowedFormats={["core/bold", "core/italic"]}
+									onChange={(content) => setAttributes({ heading: content })}
+									placeholder={__("Heading of box")}
+									className="wcb-icon-box__heading"
+								/>
+							)}
+						</div>
+						{(general_icon.iconPosition === "rightOfTitle") &&
+							renderIcon()}
+					</div>
 			</div>
 		</MyCacheProvider>
 	);

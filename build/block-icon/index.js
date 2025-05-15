@@ -7678,10 +7678,10 @@ const getAdvanveDivWrapStyles = ({
 
 /***/ }),
 
-/***/ "./src/block-icon-list/Edit.tsx":
-/*!**************************************!*\
-  !*** ./src/block-icon-list/Edit.tsx ***!
-  \**************************************/
+/***/ "./src/block-icon/Edit.tsx":
+/*!*********************************!*\
+  !*** ./src/block-icon/Edit.tsx ***!
+  \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7691,27 +7691,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/HOCInspectorControls */ "./src/components/HOCInspectorControls.tsx");
-/* harmony import */ var _GlobalCss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./GlobalCss */ "./src/block-icon-list/GlobalCss.tsx");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/block-icon-list/editor.scss");
-/* harmony import */ var _hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/useSetBlockPanelInfo */ "./src/hooks/useSetBlockPanelInfo.ts");
-/* harmony import */ var _components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/AdvancePanelCommon */ "./src/components/AdvancePanelCommon.tsx");
-/* harmony import */ var _WcbIconListPanelLayout__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./WcbIconListPanelLayout */ "./src/block-icon-list/WcbIconListPanelLayout.tsx");
-/* harmony import */ var _WcbIconListPanelIcon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WcbIconListPanelIcon */ "./src/block-icon-list/WcbIconListPanelIcon.tsx");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/HOCInspectorControls */ "./src/components/HOCInspectorControls.tsx");
+/* harmony import */ var _GlobalCss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./GlobalCss */ "./src/block-icon/GlobalCss.tsx");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/block-icon/editor.scss");
+/* harmony import */ var _hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hooks/useSetBlockPanelInfo */ "./src/hooks/useSetBlockPanelInfo.ts");
+/* harmony import */ var _components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/AdvancePanelCommon */ "./src/components/AdvancePanelCommon.tsx");
+/* harmony import */ var _WcbIconListPanelIcon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WcbIconListPanelIcon */ "./src/block-icon/WcbIconListPanelIcon.tsx");
 /* harmony import */ var _components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/MyCacheProvider */ "./src/components/MyCacheProvider.tsx");
-/* harmony import */ var _WcbIconListPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./WcbIconListPanel_StyleTitle */ "./src/block-icon-list/WcbIconListPanel_StyleTitle.tsx");
-/* harmony import */ var _WcbIconListPanel_StyleDesignation__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./WcbIconListPanel_StyleDesignation */ "./src/block-icon-list/WcbIconListPanel_StyleDesignation.tsx");
+/* harmony import */ var _WcbIconListPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./WcbIconListPanel_StyleTitle */ "./src/block-icon/WcbIconListPanel_StyleTitle.tsx");
+/* harmony import */ var _WcbIconListPanel_StyleDesignation__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./WcbIconListPanel_StyleDesignation */ "./src/block-icon/WcbIconListPanel_StyleDesignation.tsx");
 /* harmony import */ var _components_controls_MyIconFull__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/controls/MyIconFull */ "./src/components/controls/MyIconFull.tsx");
-/* harmony import */ var _WcbIconListPanel_StyleSeparator__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./WcbIconListPanel_StyleSeparator */ "./src/block-icon-list/WcbIconListPanel_StyleSeparator.tsx");
-/* harmony import */ var _WcbIconListPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./WcbIconListPanel_StyleDimension */ "./src/block-icon-list/WcbIconListPanel_StyleDimension.tsx");
+/* harmony import */ var _WcbIconListPanel_StyleSeparator__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./WcbIconListPanel_StyleSeparator */ "./src/block-icon/WcbIconListPanel_StyleSeparator.tsx");
+/* harmony import */ var _WcbIconListPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./WcbIconListPanel_StyleDimension */ "./src/block-icon/WcbIconListPanel_StyleDimension.tsx");
 /* harmony import */ var _components_controls_MyDimensionsControl_types__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/controls/MyDimensionsControl/types */ "./src/components/controls/MyDimensionsControl/types.ts");
-/* harmony import */ var _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./WcbIconListPanel_StyleIcons */ "./src/block-icon-list/WcbIconListPanel_StyleIcons.tsx");
+/* harmony import */ var _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./WcbIconListPanel_StyleIcons */ "./src/block-icon/WcbIconListPanel_StyleIcons.tsx");
 /* harmony import */ var _utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../utils/converUniqueIdToAnphaKey */ "./src/utils/converUniqueIdToAnphaKey.ts");
-/* harmony import */ var _WcbIconListPanelPreset__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./WcbIconListPanelPreset */ "./src/block-icon-list/WcbIconListPanelPreset.tsx");
-
-
 
 
 
@@ -7740,13 +7738,10 @@ const Edit = props => {
   const {
     advance_responsiveCondition,
     advance_zIndex,
-    heading_1,
-    heading_2,
-    heading_3,
+    heading,
     uniqueId,
     general_layout,
     general_icon,
-    general_preset,
     style_title,
     style_desination,
     style_description,
@@ -7759,7 +7754,7 @@ const Edit = props => {
   //  COMMON HOOKS
   const ref = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   // const { myCache, ref } = useCreateCacheEmotion();
-  const wrapBlockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
+  const wrapBlockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
     ref
   });
   const {
@@ -7768,7 +7763,7 @@ const Edit = props => {
     tabGeneralIsPanelOpen,
     tabStylesIsPanelOpen,
     handleTogglePanel
-  } = (0,_hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_5__["default"])(uniqueId);
+  } = (0,_hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_6__["default"])(uniqueId);
 
   // make uniqueid
   const UNIQUE_ID = wrapBlockProps.id;
@@ -7806,36 +7801,6 @@ const Edit = props => {
             });
           },
           panelData: general_icon
-        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconListPanelLayout__WEBPACK_IMPORTED_MODULE_7__["default"], {
-          onToggle: () => handleTogglePanel("General", "Content", true),
-          initialOpen: tabGeneralIsPanelOpen === "Content" || tabGeneralIsPanelOpen === "first",
-          opened: tabGeneralIsPanelOpen === "Content" || undefined
-          //
-          ,
-          setAttr__: data => {
-            setAttributes({
-              general_layout: data
-            });
-          },
-          panelData: general_layout
-        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconListPanelPreset__WEBPACK_IMPORTED_MODULE_18__["default"], {
-          onToggle: () => handleTogglePanel("General", "Preset"),
-          initialOpen: tabGeneralIsPanelOpen === "Preset",
-          opened: tabGeneralIsPanelOpen === "Preset" || undefined
-          //
-          ,
-          setAttr__: data => {
-            const {
-              preset
-            } = data;
-            setAttributes({
-              general_preset: data
-            });
-            setAttributes({
-              style_Icon: preset === "wcb-icon-list-1" ? _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_1 : preset === "wcb-icon-list-2" ? _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_2 : preset === "wcb-icon-list-3" ? _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_3 : _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_DEMO
-            });
-          },
-          panelData: general_preset
         }));
       case "Styles":
         return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, general_icon.enableIcon && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__["default"], {
@@ -7900,7 +7865,7 @@ const Edit = props => {
           panelData: style_dimension
         }));
       case "Advances":
-        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_7__["default"], {
           advance_motionEffect: advance_motionEffect,
           advance_responsiveCondition: attributes.advance_responsiveCondition,
           advance_zIndex: attributes.advance_zIndex,
@@ -7912,27 +7877,13 @@ const Edit = props => {
         return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null);
     }
   };
-  const {} = attributes;
-  const ALLOWED_BLOCKS = ["wcb/icon"];
-  const TEMPLATE = [["wcb/icon", {}], ["wcb/icon", {}], ["wcb/icon", {}]];
-  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
-    className: `wcb-icon__content-title-wrap`
-  });
-  const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useInnerBlocksProps)(blockProps, {
-    allowedBlocks: ALLOWED_BLOCKS,
-    template: TEMPLATE,
-    renderAppender: () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.DefaultBlockAppender, null)
-  });
   const WcbAttrsForSave = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(() => {
     return {
       uniqueId,
       advance_responsiveCondition,
       advance_zIndex,
       general_layout,
-      general_preset,
-      heading_1,
-      heading_2,
-      heading_3,
+      heading,
       style_title,
       style_desination,
       style_description,
@@ -7943,7 +7894,7 @@ const Edit = props => {
       general_separator,
       advance_motionEffect
     };
-  }, [uniqueId, advance_responsiveCondition, advance_zIndex, general_layout, general_preset, heading_1, heading_2, heading_3, style_title, style_desination, style_description, style_Icon, style_separator, style_dimension, general_icon, general_separator, advance_motionEffect]);
+  }, [uniqueId, advance_responsiveCondition, advance_zIndex, general_layout, heading, style_title, style_desination, style_description, style_Icon, style_separator, style_dimension, general_icon, general_separator, advance_motionEffect]);
   const renderIcon = () => {
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "wcb-icon-list__icon-wrap"
@@ -7958,26 +7909,36 @@ const Edit = props => {
     uniqueKey: clientId
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...wrapBlockProps,
-    className: `${wrapBlockProps?.className} wcb-icon-list__wrap ${uniqueId}`,
+    className: `${wrapBlockProps?.className} wcb-icon__wrap ${uniqueId}`,
     "data-uniqueid": uniqueId
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_3__["default"], {
     renderTabPanels: renderTabBodyPanels,
     uniqueId: uniqueId
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_4__["default"], {
     ...WcbAttrsForSave()
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wcb-icon-list__content",
-    ...innerBlocksProps
-  })));
+    className: "wcb-icon-list__content-title-wrap"
+  }, general_icon.iconPosition === "leftOfTitle" && renderIcon(), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "wcb-icon-list__content-title"
+  }, general_layout.enableTitle && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: HeadingTag,
+    value: heading,
+    allowedFormats: ["core/bold", "core/italic"],
+    onChange: content => setAttributes({
+      heading: content
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Heading of box"),
+    className: "wcb-icon-box__heading"
+  })), general_icon.iconPosition === "rightOfTitle" && renderIcon())));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
 
 /***/ }),
 
-/***/ "./src/block-icon-list/GlobalCss.tsx":
-/*!*******************************************!*\
-  !*** ./src/block-icon-list/GlobalCss.tsx ***!
-  \*******************************************/
+/***/ "./src/block-icon/GlobalCss.tsx":
+/*!**************************************!*\
+  !*** ./src/block-icon/GlobalCss.tsx ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -8130,10 +8091,10 @@ const GlobalCss = attrs => {
 
 /***/ }),
 
-/***/ "./src/block-icon-list/Save.tsx":
-/*!**************************************!*\
-  !*** ./src/block-icon-list/Save.tsx ***!
-  \**************************************/
+/***/ "./src/block-icon/Save.tsx":
+/*!*********************************!*\
+  !*** ./src/block-icon/Save.tsx ***!
+  \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -8148,7 +8109,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_SaveCommon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/SaveCommon */ "./src/components/SaveCommon.tsx");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "./src/block-icon-list/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "./src/block-icon/style.scss");
 /* harmony import */ var _components_controls_MyIconFull__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyIconFull */ "./src/components/controls/MyIconFull.tsx");
 
 
@@ -8166,9 +8127,7 @@ function save({
     advance_responsiveCondition,
     advance_zIndex,
     general_layout,
-    heading_1,
-    heading_2,
-    heading_3,
+    heading,
     style_description,
     style_desination,
     style_Icon,
@@ -8186,9 +8145,7 @@ function save({
     advance_responsiveCondition,
     advance_zIndex,
     general_layout,
-    heading_1,
-    heading_2,
-    heading_3,
+    heading,
     style_description,
     style_desination,
     style_Icon,
@@ -8203,9 +8160,9 @@ function save({
 
   const renderIcon = () => {
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, general_icon.enableIcon && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "wcb-icon-list__icon-wrap"
+      className: "wcb-icon__icon-wrap"
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "wcb-icon-list__icon"
+      className: "wcb-icon__icon"
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyIconFull__WEBPACK_IMPORTED_MODULE_5__["default"], {
       icon: general_icon.icon
     }))), general_separator.position === "afterIcon" && renderSeparator());
@@ -8215,16 +8172,16 @@ function save({
       return null;
     }
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "wcb-icon-list__separator-wrap"
+      className: "wcb-icon__separator-wrap"
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "wcb-icon-list__separator"
+      className: "wcb-icon__separator"
     }));
   };
   const HeadingTag = general_layout.headingTag;
 
   //
   const wrapBlockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save({
-    className: "wcb-icon-list__wrap"
+    className: "wcb-icon__wrap"
   });
   //
 
@@ -8233,32 +8190,14 @@ function save({
     attributes: newAttrForSave,
     uniqueId: uniqueId
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wcb-icon-list__content"
+    className: "wcb-icon__content"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wcb-icon-list__content-title-wrap"
+    className: "wcb-icon__content-title-wrap"
   }, general_icon.iconPosition === "leftOfTitle" && renderIcon(), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wcb-icon-list__content-title"
+    className: "wcb-icon__content-title"
   }, general_layout.enableTitle && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
     tagName: HeadingTag,
-    value: heading_1,
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Heading of box"),
-    className: "wcb-icon-box__heading"
-  })), general_icon.iconPosition === "rightOfTitle" && renderIcon()), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wcb-icon-list__content-title-wrap"
-  }, general_icon.iconPosition === "leftOfTitle" && renderIcon(), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wcb-icon-list__content-title"
-  }, general_layout.enableTitle && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
-    tagName: HeadingTag,
-    value: heading_2,
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Heading of box"),
-    className: "wcb-icon-box__heading"
-  })), general_icon.iconPosition === "rightOfTitle" && renderIcon()), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wcb-icon-list__content-title-wrap"
-  }, general_icon.iconPosition === "leftOfTitle" && renderIcon(), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wcb-icon-list__content-title"
-  }, general_layout.enableTitle && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
-    tagName: HeadingTag,
-    value: heading_3,
+    value: heading,
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Heading of box"),
     className: "wcb-icon-box__heading"
   })), general_icon.iconPosition === "rightOfTitle" && renderIcon())));
@@ -8266,10 +8205,10 @@ function save({
 
 /***/ }),
 
-/***/ "./src/block-icon-list/Save__100623.tsx":
-/*!**********************************************!*\
-  !*** ./src/block-icon-list/Save__100623.tsx ***!
-  \**********************************************/
+/***/ "./src/block-icon/Save__100623.tsx":
+/*!*****************************************!*\
+  !*** ./src/block-icon/Save__100623.tsx ***!
+  \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -8284,7 +8223,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_SaveCommon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/SaveCommon */ "./src/components/SaveCommon.tsx");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "./src/block-icon-list/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "./src/block-icon/style.scss");
 /* harmony import */ var _components_controls_MyIconFull__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyIconFull */ "./src/components/controls/MyIconFull.tsx");
 
 
@@ -8386,10 +8325,10 @@ function save({
 
 /***/ }),
 
-/***/ "./src/block-icon-list/Save__260523.tsx":
-/*!**********************************************!*\
-  !*** ./src/block-icon-list/Save__260523.tsx ***!
-  \**********************************************/
+/***/ "./src/block-icon/Save__260523.tsx":
+/*!*****************************************!*\
+  !*** ./src/block-icon/Save__260523.tsx ***!
+  \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -8404,7 +8343,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_SaveCommon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/SaveCommon */ "./src/components/SaveCommon.tsx");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "./src/block-icon-list/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "./src/block-icon/style.scss");
 /* harmony import */ var _components_controls_MyIconFull__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyIconFull */ "./src/components/controls/MyIconFull.tsx");
 
 
@@ -8501,10 +8440,10 @@ function save({
 
 /***/ }),
 
-/***/ "./src/block-icon-list/WcbIconListPanelIcon.tsx":
-/*!******************************************************!*\
-  !*** ./src/block-icon-list/WcbIconListPanelIcon.tsx ***!
-  \******************************************************/
+/***/ "./src/block-icon/WcbIconListPanelIcon.tsx":
+/*!*************************************************!*\
+  !*** ./src/block-icon/WcbIconListPanelIcon.tsx ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -8589,10 +8528,10 @@ const WcbIconListPanelIcon = ({
 
 /***/ }),
 
-/***/ "./src/block-icon-list/WcbIconListPanelLayout.tsx":
-/*!********************************************************!*\
-  !*** ./src/block-icon-list/WcbIconListPanelLayout.tsx ***!
-  \********************************************************/
+/***/ "./src/block-icon/WcbIconListPanelLayout.tsx":
+/*!***************************************************!*\
+  !*** ./src/block-icon/WcbIconListPanelLayout.tsx ***!
+  \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -8707,97 +8646,10 @@ const WcbIconListPanelLayout = ({
 
 /***/ }),
 
-/***/ "./src/block-icon-list/WcbIconListPanelPreset.tsx":
-/*!********************************************************!*\
-  !*** ./src/block-icon-list/WcbIconListPanelPreset.tsx ***!
-  \********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   WCB_ICON_LIST_PANEL_PRESET_DEMO: () => (/* binding */ WCB_ICON_LIST_PANEL_PRESET_DEMO),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/radio-group/radio-group.js");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_controls_ResetButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/controls/ResetButton */ "./src/components/controls/ResetButton.tsx");
-/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
-/* harmony import */ var _block_icon_list_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../block-icon-list/types */ "./src/block-icon-list/types.ts");
-
-
-
-
-
-
-
-
-const WCB_ICON_LIST_PANEL_PRESET_DEMO = {
-  preset: "wcb-icon-list-1"
-};
-const WcbIconListPanelPreset = ({
-  panelData = WCB_ICON_LIST_PANEL_PRESET_DEMO,
-  setAttr__,
-  initialOpen,
-  onToggle,
-  opened
-}) => {
-  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_4__["default"])() || "Desktop";
-  const setPreset = preset => {
-    setAttr__({
-      preset: preset
-    });
-  };
-  const renderRadioPreset = () => {
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_6__.RadioGroup, {
-      value: panelData.preset,
-      onChange: setPreset
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_6__.RadioGroup.Label, {
-      className: "relative flex items-center justify-between "
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Select Preset", "wcb")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_ResetButton__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      onClick: () => setPreset(WCB_ICON_LIST_PANEL_PRESET_DEMO.preset)
-    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "relative p-3 bg-slate-50 mt-3 rounded-lg"
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))]"
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "relative grid grid-cols-2 gap-3"
-    }, _block_icon_list_types__WEBPACK_IMPORTED_MODULE_5__.ICON_LIST_PRESET.map(item => {
-      return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_6__.RadioGroup.Option, {
-        key: item.name,
-        value: item.name
-      }, ({
-        checked
-      }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: `relative flex items-center justify-center w-full p-3 cursor-pointer rounded-lg hover:ring-2 ring-offset-1 ring-sky-400 ${checked ? "bg-white ring-2" : "bg-white"} `
-      }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: `flex-1 flex flex-col gap-1`,
-        dangerouslySetInnerHTML: {
-          __html: item.icon
-        }
-      })));
-    }))));
-  };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
-    initialOpen: initialOpen,
-    onToggle: onToggle,
-    opened: opened,
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Preset", "wcb")
-  }, renderRadioPreset());
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WcbIconListPanelPreset);
-
-/***/ }),
-
-/***/ "./src/block-icon-list/WcbIconListPanelSeparator.tsx":
-/*!***********************************************************!*\
-  !*** ./src/block-icon-list/WcbIconListPanelSeparator.tsx ***!
-  \***********************************************************/
+/***/ "./src/block-icon/WcbIconListPanelSeparator.tsx":
+/*!******************************************************!*\
+  !*** ./src/block-icon/WcbIconListPanelSeparator.tsx ***!
+  \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -8886,10 +8738,10 @@ const WcbIconListPanelSeparator = ({
 
 /***/ }),
 
-/***/ "./src/block-icon-list/WcbIconListPanel_StyleDescription.tsx":
-/*!*******************************************************************!*\
-  !*** ./src/block-icon-list/WcbIconListPanel_StyleDescription.tsx ***!
-  \*******************************************************************/
+/***/ "./src/block-icon/WcbIconListPanel_StyleDescription.tsx":
+/*!**************************************************************!*\
+  !*** ./src/block-icon/WcbIconListPanel_StyleDescription.tsx ***!
+  \**************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -8991,10 +8843,10 @@ const WcbTeamPanel_StyleDescription = ({
 
 /***/ }),
 
-/***/ "./src/block-icon-list/WcbIconListPanel_StyleDesignation.tsx":
-/*!*******************************************************************!*\
-  !*** ./src/block-icon-list/WcbIconListPanel_StyleDesignation.tsx ***!
-  \*******************************************************************/
+/***/ "./src/block-icon/WcbIconListPanel_StyleDesignation.tsx":
+/*!**************************************************************!*\
+  !*** ./src/block-icon/WcbIconListPanel_StyleDesignation.tsx ***!
+  \**************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -9101,10 +8953,10 @@ const WcbIconListPanel_StyleDesignation = ({
 
 /***/ }),
 
-/***/ "./src/block-icon-list/WcbIconListPanel_StyleDimension.tsx":
-/*!*****************************************************************!*\
-  !*** ./src/block-icon-list/WcbIconListPanel_StyleDimension.tsx ***!
-  \*****************************************************************/
+/***/ "./src/block-icon/WcbIconListPanel_StyleDimension.tsx":
+/*!************************************************************!*\
+  !*** ./src/block-icon/WcbIconListPanel_StyleDimension.tsx ***!
+  \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -9172,10 +9024,10 @@ const WcbIconListPanel_StyleDimension = ({
 
 /***/ }),
 
-/***/ "./src/block-icon-list/WcbIconListPanel_StyleIcons.tsx":
-/*!*************************************************************!*\
-  !*** ./src/block-icon-list/WcbIconListPanel_StyleIcons.tsx ***!
-  \*************************************************************/
+/***/ "./src/block-icon/WcbIconListPanel_StyleIcons.tsx":
+/*!********************************************************!*\
+  !*** ./src/block-icon/WcbIconListPanel_StyleIcons.tsx ***!
+  \********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -9494,10 +9346,10 @@ const WcbIconListPanel_StyleIcons = ({
 
 /***/ }),
 
-/***/ "./src/block-icon-list/WcbIconListPanel_StyleSeparator.tsx":
-/*!*****************************************************************!*\
-  !*** ./src/block-icon-list/WcbIconListPanel_StyleSeparator.tsx ***!
-  \*****************************************************************/
+/***/ "./src/block-icon/WcbIconListPanel_StyleSeparator.tsx":
+/*!************************************************************!*\
+  !*** ./src/block-icon/WcbIconListPanel_StyleSeparator.tsx ***!
+  \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -9605,10 +9457,10 @@ const WcbIconListPanel_StyleSeparator = ({
 
 /***/ }),
 
-/***/ "./src/block-icon-list/WcbIconListPanel_StyleTitle.tsx":
-/*!*************************************************************!*\
-  !*** ./src/block-icon-list/WcbIconListPanel_StyleTitle.tsx ***!
-  \*************************************************************/
+/***/ "./src/block-icon/WcbIconListPanel_StyleTitle.tsx":
+/*!********************************************************!*\
+  !*** ./src/block-icon/WcbIconListPanel_StyleTitle.tsx ***!
+  \********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -9710,10 +9562,10 @@ const WcbIconListPanel_StyleTitle = ({
 
 /***/ }),
 
-/***/ "./src/block-icon-list/attributes.ts":
-/*!*******************************************!*\
-  !*** ./src/block-icon-list/attributes.ts ***!
-  \*******************************************/
+/***/ "./src/block-icon/attributes.ts":
+/*!**************************************!*\
+  !*** ./src/block-icon/attributes.ts ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -9723,18 +9575,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl */ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx");
 /* harmony import */ var _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/controls/MyZIndexControl/MyZIndexControl */ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx");
-/* harmony import */ var _WcbIconListPanelIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WcbIconListPanelIcon */ "./src/block-icon-list/WcbIconListPanelIcon.tsx");
-/* harmony import */ var _WcbIconListPanelLayout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WcbIconListPanelLayout */ "./src/block-icon-list/WcbIconListPanelLayout.tsx");
-/* harmony import */ var _WcbIconListPanel_StyleDesignation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./WcbIconListPanel_StyleDesignation */ "./src/block-icon-list/WcbIconListPanel_StyleDesignation.tsx");
-/* harmony import */ var _WcbIconListPanel_StyleDescription__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WcbIconListPanel_StyleDescription */ "./src/block-icon-list/WcbIconListPanel_StyleDescription.tsx");
-/* harmony import */ var _WcbIconListPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./WcbIconListPanel_StyleTitle */ "./src/block-icon-list/WcbIconListPanel_StyleTitle.tsx");
-/* harmony import */ var _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./WcbIconListPanel_StyleIcons */ "./src/block-icon-list/WcbIconListPanel_StyleIcons.tsx");
-/* harmony import */ var _WcbIconListPanel_StyleSeparator__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WcbIconListPanel_StyleSeparator */ "./src/block-icon-list/WcbIconListPanel_StyleSeparator.tsx");
-/* harmony import */ var _WcbIconListPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./WcbIconListPanel_StyleDimension */ "./src/block-icon-list/WcbIconListPanel_StyleDimension.tsx");
-/* harmony import */ var _WcbIconListPanelSeparator__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./WcbIconListPanelSeparator */ "./src/block-icon-list/WcbIconListPanelSeparator.tsx");
+/* harmony import */ var _WcbIconListPanelIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WcbIconListPanelIcon */ "./src/block-icon/WcbIconListPanelIcon.tsx");
+/* harmony import */ var _WcbIconListPanelLayout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WcbIconListPanelLayout */ "./src/block-icon/WcbIconListPanelLayout.tsx");
+/* harmony import */ var _WcbIconListPanel_StyleDesignation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./WcbIconListPanel_StyleDesignation */ "./src/block-icon/WcbIconListPanel_StyleDesignation.tsx");
+/* harmony import */ var _WcbIconListPanel_StyleDescription__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WcbIconListPanel_StyleDescription */ "./src/block-icon/WcbIconListPanel_StyleDescription.tsx");
+/* harmony import */ var _WcbIconListPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./WcbIconListPanel_StyleTitle */ "./src/block-icon/WcbIconListPanel_StyleTitle.tsx");
+/* harmony import */ var _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./WcbIconListPanel_StyleIcons */ "./src/block-icon/WcbIconListPanel_StyleIcons.tsx");
+/* harmony import */ var _WcbIconListPanel_StyleSeparator__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WcbIconListPanel_StyleSeparator */ "./src/block-icon/WcbIconListPanel_StyleSeparator.tsx");
+/* harmony import */ var _WcbIconListPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./WcbIconListPanel_StyleDimension */ "./src/block-icon/WcbIconListPanel_StyleDimension.tsx");
+/* harmony import */ var _WcbIconListPanelSeparator__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./WcbIconListPanelSeparator */ "./src/block-icon/WcbIconListPanelSeparator.tsx");
 /* harmony import */ var _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/controls/MyMotionEffectControl/MyMotionEffectControl */ "./src/components/controls/MyMotionEffectControl/MyMotionEffectControl.tsx");
-/* harmony import */ var _WcbIconListPanelPreset__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./WcbIconListPanelPreset */ "./src/block-icon-list/WcbIconListPanelPreset.tsx");
-
 
 
 
@@ -9753,19 +9603,7 @@ const blokc1Attrs = {
     default: ""
   },
   // THE ATTRS OF BLOCK HERE
-  heading_1: {
-    type: "string",
-    source: "html",
-    selector: ".wcb-icon-list__heading",
-    default: "List item"
-  },
-  heading_2: {
-    type: "string",
-    source: "html",
-    selector: ".wcb-icon-list__heading",
-    default: "List item"
-  },
-  heading_3: {
+  heading: {
     type: "string",
     source: "html",
     selector: ".wcb-icon-list__heading",
@@ -9782,10 +9620,6 @@ const blokc1Attrs = {
   general_separator: {
     type: "object",
     default: _WcbIconListPanelSeparator__WEBPACK_IMPORTED_MODULE_10__.WCB_ICON_LIST_PANEL_SEPARATOR_DEMO
-  },
-  general_preset: {
-    type: "object",
-    default: _WcbIconListPanelPreset__WEBPACK_IMPORTED_MODULE_12__.WCB_ICON_LIST_PANEL_PRESET_DEMO
   },
   style_title: {
     type: "object",
@@ -9829,21 +9663,21 @@ const blokc1Attrs = {
 
 /***/ }),
 
-/***/ "./src/block-icon-list/block.json":
-/*!****************************************!*\
-  !*** ./src/block-icon-list/block.json ***!
-  \****************************************/
+/***/ "./src/block-icon/block.json":
+/*!***********************************!*\
+  !*** ./src/block-icon/block.json ***!
+  \***********************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/icon-list","version":"0.1.0","title":"Icon List","category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-clipboard","description":"Create a list highlighted with icons/images.","supports":{"html":false,"anchor":true,"align":true},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/icon","version":"0.1.0","title":"Icon","category":"wcb-blocks","icon":"- wcb-block-editor-block-icon lni lni-clipboard","description":"Create a list highlighted with icons/images.","supports":{"html":false,"anchor":true,"align":true},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ }),
 
-/***/ "./src/block-icon-list/deprecated.tsx":
-/*!********************************************!*\
-  !*** ./src/block-icon-list/deprecated.tsx ***!
-  \********************************************/
+/***/ "./src/block-icon/deprecated.tsx":
+/*!***************************************!*\
+  !*** ./src/block-icon/deprecated.tsx ***!
+  \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -9851,9 +9685,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Save_260523__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Save__260523 */ "./src/block-icon-list/Save__260523.tsx");
-/* harmony import */ var _Save_100623__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Save__100623 */ "./src/block-icon-list/Save__100623.tsx");
-/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./attributes */ "./src/block-icon-list/attributes.ts");
+/* harmony import */ var _Save_260523__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Save__260523 */ "./src/block-icon/Save__260523.tsx");
+/* harmony import */ var _Save_100623__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Save__100623 */ "./src/block-icon/Save__100623.tsx");
+/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./attributes */ "./src/block-icon/attributes.ts");
 /* harmony import */ var _components_controls_SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/controls/SelectIcon/SelecIcon */ "./src/components/controls/SelectIcon/SelecIcon.tsx");
 
 
@@ -9900,10 +9734,10 @@ const deprecated = [v4, v3, v2, v1];
 
 /***/ }),
 
-/***/ "./src/block-icon-list/editor.scss":
-/*!*****************************************!*\
-  !*** ./src/block-icon-list/editor.scss ***!
-  \*****************************************/
+/***/ "./src/block-icon/editor.scss":
+/*!************************************!*\
+  !*** ./src/block-icon/editor.scss ***!
+  \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -9913,10 +9747,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/block-icon-list/index.js":
-/*!**************************************!*\
-  !*** ./src/block-icon-list/index.js ***!
-  \**************************************/
+/***/ "./src/block-icon/index.js":
+/*!*********************************!*\
+  !*** ./src/block-icon/index.js ***!
+  \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -9925,12 +9759,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./src/block-icon-list/style.scss");
-/* harmony import */ var _Edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Edit */ "./src/block-icon-list/Edit.tsx");
-/* harmony import */ var _Save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Save */ "./src/block-icon-list/Save.tsx");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/block-icon-list/block.json");
-/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./attributes */ "./src/block-icon-list/attributes.ts");
-/* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./deprecated */ "./src/block-icon-list/deprecated.tsx");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./src/block-icon/style.scss");
+/* harmony import */ var _Edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Edit */ "./src/block-icon/Edit.tsx");
+/* harmony import */ var _Save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Save */ "./src/block-icon/Save.tsx");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/block-icon/block.json");
+/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./attributes */ "./src/block-icon/attributes.ts");
+/* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./deprecated */ "./src/block-icon/deprecated.tsx");
 /* harmony import */ var _utils_convertAttsToPreview__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/convertAttsToPreview */ "./src/utils/convertAttsToPreview.ts");
 
 /**
@@ -10008,40 +9842,16 @@ const {
 
 /***/ }),
 
-/***/ "./src/block-icon-list/style.scss":
-/*!****************************************!*\
-  !*** ./src/block-icon-list/style.scss ***!
-  \****************************************/
+/***/ "./src/block-icon/style.scss":
+/*!***********************************!*\
+  !*** ./src/block-icon/style.scss ***!
+  \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
-
-/***/ }),
-
-/***/ "./src/block-icon-list/types.ts":
-/*!**************************************!*\
-  !*** ./src/block-icon-list/types.ts ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   ICON_LIST_PRESET: () => (/* binding */ ICON_LIST_PRESET)
-/* harmony export */ });
-const ICON_LIST_PRESET = [{
-  name: "wcb-icon-list-1",
-  icon: `<svg xmlns="http://www.w3.org/2000/svg" width="115" height="90" viewBox="0 0 325 245" fill="none"> <path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M118.8 135.771C118.8 133.903 120.222 132.389 121.975 132.389H247.53C249.283 132.389 250.705 133.903 250.705 135.771C250.705 137.639 249.283 139.153 247.53 139.153H121.975C120.222 139.153 118.8 137.639 118.8 135.771Z" fill="#D2D2D2"></path> <circle cx="88.361" cy="135.771" r="14.6561" fill="#B6B6B6"></circle> <path d="M95.6556 136.301C95.9485 136.008 95.9485 135.533 95.6556 135.24L90.8827 130.467C90.5898 130.175 90.1149 130.175 89.822 130.467C89.5291 130.76 89.5291 131.235 89.822 131.528L94.0646 135.771L89.822 140.013C89.5291 140.306 89.5291 140.781 89.822 141.074C90.1149 141.367 90.5898 141.367 90.8827 141.074L95.6556 136.301ZM95.1253 135.021H81.5966V136.521H95.1253V135.021Z" fill="white"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M118.8 189.885C118.8 188.017 120.222 186.503 121.975 186.503H247.53C249.283 186.503 250.705 188.017 250.705 189.885C250.705 191.753 249.283 193.268 247.53 193.268H121.975C120.222 193.268 118.8 191.753 118.8 189.885Z" fill="#D2D2D2"></path> <circle cx="88.361" cy="189.885" r="14.6561" fill="#B6B6B6"></circle> <path d="M95.6556 190.416C95.9485 190.123 95.9485 189.648 95.6556 189.355L90.8827 184.582C90.5898 184.289 90.1149 184.289 89.822 184.582C89.5291 184.875 89.5291 185.35 89.822 185.643L94.0646 189.885L89.822 194.128C89.5291 194.421 89.5291 194.896 89.822 195.189C90.1149 195.481 90.5898 195.481 90.8827 195.189L95.6556 190.416ZM95.1253 189.135H81.5966V190.635H95.1253V189.135Z" fill="white"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M118.8 81.6561C118.8 79.7882 120.222 78.2739 121.975 78.2739H247.53C249.283 78.2739 250.705 79.7882 250.705 81.6561C250.705 83.524 249.283 85.0383 247.53 85.0383H121.975C120.222 85.0383 118.8 83.524 118.8 81.6561Z" fill="#D2D2D2"></path> <circle cx="88.361" cy="81.6561" r="14.6561" fill="#B6B6B6"></circle> <path d="M95.6556 82.1863C95.9485 81.8934 95.9485 81.4186 95.6556 81.1257L90.8827 76.3527C90.5898 76.0598 90.1149 76.0598 89.822 76.3527C89.5291 76.6456 89.5291 77.1205 89.822 77.4134L94.0646 81.656L89.822 85.8986C89.5291 86.1915 89.5291 86.6664 89.822 86.9593C90.1149 87.2522 90.5898 87.2522 90.8827 86.9593L95.6556 82.1863ZM95.1253 80.906H81.5966V82.406H95.1253V80.906Z" fill="white"></path> </svg>`
-}, {
-  name: "wcb-icon-list-2",
-  icon: `<svg xmlns="http://www.w3.org/2000/svg" width="115" height="90" viewBox="0 0 325 245" fill="none"> <path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M120.096 135.771C120.096 133.903 121.517 132.388 123.27 132.388H248.825C250.579 132.388 252 133.903 252 135.771C252 137.639 250.579 139.153 248.825 139.153H123.27C121.517 139.153 120.096 137.639 120.096 135.771Z" fill="#D2D2D2"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M120.096 189.885C120.096 188.017 121.517 186.503 123.27 186.503H248.825C250.579 186.503 252 188.017 252 189.885C252 191.753 250.579 193.268 248.825 193.268H123.27C121.517 193.268 120.096 191.753 120.096 189.885Z" fill="#D2D2D2"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M120.096 81.6561C120.096 79.7882 121.517 78.2739 123.27 78.2739H248.825C250.579 78.2739 252 79.7882 252 81.6561C252 83.524 250.579 85.0383 248.825 85.0383H123.27C121.517 85.0383 120.096 83.524 120.096 81.6561Z" fill="#D2D2D2"></path> <circle cx="89.6561" cy="81.6561" r="14.6561" fill="#B6B6B6"></circle> <circle cx="89.6561" cy="81.656" r="11.2739" fill="white"></circle> <path d="M96.9507 82.1863C97.2436 81.8934 97.2436 81.4186 96.9507 81.1257L92.1777 76.3527C91.8848 76.0598 91.41 76.0598 91.1171 76.3527C90.8242 76.6456 90.8242 77.1205 91.1171 77.4134L95.3597 81.656L91.1171 85.8986C90.8242 86.1915 90.8242 86.6664 91.1171 86.9593C91.41 87.2522 91.8848 87.2522 92.1777 86.9593L96.9507 82.1863ZM96.4204 80.906H82.8917V82.406H96.4204V80.906Z" fill="#B6B6B6"></path> <circle cx="89.6561" cy="135.771" r="14.6561" fill="#B6B6B6"></circle> <circle cx="89.6561" cy="135.771" r="11.2739" fill="white"></circle> <path d="M96.9507 136.301C97.2436 136.008 97.2436 135.533 96.9507 135.24L92.1777 130.467C91.8848 130.175 91.41 130.175 91.1171 130.467C90.8242 130.76 90.8242 131.235 91.1171 131.528L95.3597 135.771L91.1171 140.013C90.8242 140.306 90.8242 140.781 91.1171 141.074C91.41 141.367 91.8848 141.367 92.1777 141.074L96.9507 136.301ZM96.4204 135.021H82.8917V136.521H96.4204V135.021Z" fill="#B6B6B6"></path> <circle cx="89.6561" cy="189.885" r="14.6561" fill="#B6B6B6"></circle> <circle cx="89.6561" cy="189.885" r="11.2739" fill="white"></circle> <path d="M96.9507 190.416C97.2436 190.123 97.2436 189.648 96.9507 189.355L92.1777 184.582C91.8848 184.289 91.41 184.289 91.1171 184.582C90.8242 184.875 90.8242 185.35 91.1171 185.643L95.3597 189.885L91.1171 194.128C90.8242 194.421 90.8242 194.896 91.1171 195.189C91.41 195.481 91.8848 195.481 92.1777 195.189L96.9507 190.416ZM96.4204 189.135H82.8917V190.635H96.4204V189.135Z" fill="#B6B6B6"></path> </svg>`
-}, {
-  name: "wcb-icon-list-3",
-  icon: `<svg xmlns="http://www.w3.org/2000/svg" width="115" height="90" viewBox="0 0 325 245" fill="none"> <path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M120.096 135.771C120.096 133.903 121.517 132.388 123.27 132.388H248.825C250.579 132.388 252 133.903 252 135.771C252 137.639 250.579 139.153 248.825 139.153H123.27C121.517 139.153 120.096 137.639 120.096 135.771Z" fill="#D2D2D2"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M120.096 189.885C120.096 188.017 121.517 186.503 123.27 186.503H248.825C250.579 186.503 252 188.017 252 189.885C252 191.753 250.579 193.268 248.825 193.268H123.27C121.517 193.268 120.096 191.753 120.096 189.885Z" fill="#D2D2D2"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M120.096 81.6561C120.096 79.7882 121.517 78.2739 123.27 78.2739H248.825C250.579 78.2739 252 79.7882 252 81.6561C252 83.524 250.579 85.0383 248.825 85.0383H123.27C121.517 85.0383 120.096 83.524 120.096 81.6561Z" fill="#D2D2D2"></path> <circle cx="89.6561" cy="81.6561" r="14.1561" stroke="#B6B6B6" fill="none"></circle> <circle cx="89.656" cy="81.656" r="11.2739" fill="#B6B6B6"></circle> <path d="M96.9507 82.1863C97.2436 81.8934 97.2436 81.4186 96.9507 81.1257L92.1778 76.3527C91.8849 76.0598 91.41 76.0598 91.1171 76.3527C90.8242 76.6456 90.8242 77.1205 91.1171 77.4134L95.3598 81.656L91.1171 85.8986C90.8242 86.1915 90.8242 86.6664 91.1171 86.9593C91.41 87.2522 91.8849 87.2522 92.1778 86.9593L96.9507 82.1863ZM96.4204 80.906H82.8917V82.406H96.4204V80.906Z" fill="white"></path> <circle cx="89.6561" cy="135.771" r="14.1561" stroke="#B6B6B6" fill="none"></circle> <circle cx="89.656" cy="135.771" r="11.2739" fill="#B6B6B6"></circle> <path d="M96.9507 136.301C97.2436 136.008 97.2436 135.533 96.9507 135.24L92.1778 130.467C91.8849 130.175 91.41 130.175 91.1171 130.467C90.8242 130.76 90.8242 131.235 91.1171 131.528L95.3598 135.771L91.1171 140.013C90.8242 140.306 90.8242 140.781 91.1171 141.074C91.41 141.367 91.8849 141.367 92.1778 141.074L96.9507 136.301ZM96.4204 135.021H82.8917V136.521H96.4204V135.021Z" fill="white"></path> <circle cx="89.6561" cy="189.885" r="14.1561" stroke="#B6B6B6" fill="none"></circle> <circle cx="89.656" cy="189.885" r="11.2739" fill="#B6B6B6"></circle> <path d="M96.9507 190.416C97.2436 190.123 97.2436 189.648 96.9507 189.355L92.1778 184.582C91.8849 184.289 91.41 184.289 91.1171 184.582C90.8242 184.875 90.8242 185.35 91.1171 185.643L95.3598 189.885L91.1171 194.128C90.8242 194.421 90.8242 194.896 91.1171 195.189C91.41 195.481 91.8849 195.481 92.1778 195.189L96.9507 190.416ZM96.4204 189.135H82.8917V190.635H96.4204V189.135Z" fill="white"></path> </svg>`
-}];
 
 /***/ }),
 
@@ -14991,8 +14801,8 @@ module.exports = window["React"];
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"block-icon-list/index": 0,
-/******/ 			"block-icon-list/style-index": 0
+/******/ 			"block-icon/index": 0,
+/******/ 			"block-icon/style-index": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -15042,7 +14852,7 @@ module.exports = window["React"];
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["block-icon-list/style-index"], () => (__webpack_require__("./src/block-icon-list/index.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["block-icon/style-index"], () => (__webpack_require__("./src/block-icon/index.js")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

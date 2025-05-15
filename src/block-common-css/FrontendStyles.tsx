@@ -92,6 +92,10 @@ const classes: {
 		D: ".wcb-icon-list__wrap.wcb-update-div",
 		C: React.lazy(() => import("../block-icon-list/GlobalCss")),
 	},
+	{
+		D: ".wcb-icon__wrap.wcb-update-div",
+		C: React.lazy(() => import("../block-icon/GlobalCss")),
+	},
 ];
 
 classes.forEach(({ D, C, F }) => {
