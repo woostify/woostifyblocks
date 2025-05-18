@@ -31,10 +31,14 @@ const GlobalCss: FC<Props> = (attrs) => {
     const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
     const TITLE_WRAP_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__titles`;
     const TITLE_CHILD_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__title_inner`;
+    const TITLE_CHILD_CLASSNAME_SELECTED = `${WRAP_CLASSNAME} .wcb-tabs__title_inner-selected`;
 	const TITLE_CHILD_BUTTON_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__title_inner_btn`;
     const TITLE_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__title`;
+    const TITLE_CLASSNAME_SELECTED = `${WRAP_CLASSNAME} .wcb-tabs__title-selected`;
     const BODY_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tab-child__wrap`;
+    const BODY_CHILD_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tab-child__inner`;
     const ICON_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__icon`;
+    const ICON_CLASSNAME_SELECTED = `${WRAP_CLASSNAME} .wcb-tabs__icon-selected`;
     const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__contents`;
 
     const IconSizeConverted: HasResponsive<string> = {
@@ -80,13 +84,23 @@ const GlobalCss: FC<Props> = (attrs) => {
                                 display: "flex",
                                 flexDirection: "column",
                                 gap: "0.5rem",
+                                justifyContent: 
+                                    general_tabTitle.tabAlignment === "left" ? "flex-start" :
+                                    general_tabTitle.tabAlignment === "right" ? "flex-end" :
+                                    general_tabTitle.tabAlignment === "center" ? "center" : "flex-start",
                             },
                         },
                         {
                             [TITLE_CHILD_CLASSNAME]: {
+                                display: "flex",    
+                                flexDirection: "row",
                                 width: "100%",
                                 padding: "0.5rem",
                                 boxSizing: "border-box",
+                                justifyContent: 
+                                    general_tabTitle.textAlignment === "left" ? "flex-start" :
+                                    general_tabTitle.textAlignment === "right" ? "flex-end" :
+                                    general_tabTitle.textAlignment === "center" ? "center" : "flex-start",
                             },
                         },
                         {
@@ -104,6 +118,32 @@ const GlobalCss: FC<Props> = (attrs) => {
                     ]}
                 />
             )}
+
+            {general_general.layout === "accordion" && (
+                <Global
+                    styles={[
+                        {
+                            [TITLE_WRAP_CLASSNAME]: {
+                                display: "flex",
+                                flexDirection: "row",
+                                gap: "0.5rem",
+                                justifyContent: 
+                                    general_tabTitle.tabAlignment === "left" ? "flex-start" :
+                                    general_tabTitle.tabAlignment === "right" ? "flex-end" :
+                                    general_tabTitle.tabAlignment === "center" ? "center" : "flex-start",
+                            },
+                            [TITLE_CHILD_CLASSNAME]: {
+                                display: "flex",    
+                                flexDirection: "row",
+                                justifyContent: 
+                                    general_tabTitle.textAlignment === "left" ? "flex-start" :
+                                    general_tabTitle.textAlignment === "right" ? "flex-end" :
+                                    general_tabTitle.textAlignment === "center" ? "center" : "flex-start",
+                            },
+                        },
+                    ]}
+                />
+            )}
             <Global
                 styles={[
                     getBackgroundColorGradientStyles({ className: BODY_CLASSNAME, background: style_container.background }),
@@ -111,19 +151,36 @@ const GlobalCss: FC<Props> = (attrs) => {
                     getTypographyStyles({ className: TITLE_CLASSNAME, typography: style_title.typography }),
                     getPaddingMarginStyles({ className: TITLE_CLASSNAME, padding: style_title.padding }),
                     {
+                        [TITLE_CHILD_CLASSNAME]: {
+                            backgroundColor: style_title.backgroundColor,
+                        },
                         [TITLE_CLASSNAME]: {
                             color: style_title.color,
-                            backgroundColor: style_title.backgroundColor,
-                            ":hover, :focus, :active": { color: style_title.colorHover, backgroundColor: style_title.backgroundColorHover },
                         },
-                        [`${WRAP_CLASSNAME} .wcb-tabs__title_inner.active .wcb-tabs__title`]: {
-                            color: style_title.colorHover,
-                            backgroundColor: style_title.backgroundColorHover,
+                        [TITLE_CHILD_CLASSNAME_SELECTED]: {
+                            backgroundColor: style_title.backgroundColorActive,
                         },
+                        [TITLE_CLASSNAME_SELECTED]: {
+                            color: style_title.colorActive,
+                        }
                     },
                     getTypographyStyles({ className: BODY_CLASSNAME, typography: style_body.typography }),
                     getPaddingMarginStyles({ className: BODY_CLASSNAME, padding: style_body.padding }),
-                    { [BODY_CLASSNAME]: { color: style_body.color, backgroundColor: style_body.backgroundColor } },
+                    { 
+                        [BODY_CLASSNAME]: { 
+                            color: style_body.color, 
+                            backgroundColor: style_body.backgroundColor,
+                            '&:hover': {
+                                backgroundColor: style_body.backgroundColorHover,
+                            }
+                        },
+                        [BODY_CHILD_CLASSNAME]: {
+                            color: style_body.color,
+                            '&:hover': {
+                                color: style_body.colorHover,
+                            }
+                        }
+                    },
                 ]}
             />
             <Global
@@ -137,7 +194,7 @@ const GlobalCss: FC<Props> = (attrs) => {
                     }),
                     {
                         [ICON_CLASSNAME]: { color: style_icon.color },
-                        [`${WRAP_CLASSNAME} .wcb-tabs__title_inner.active .wcb-tabs__icon`]: { color: style_icon.activeColor },
+                        [ICON_CLASSNAME_SELECTED]: { color: style_icon.activeColor },
                     },
                 ]}
             />

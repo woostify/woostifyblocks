@@ -43,9 +43,9 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
     const wrapBlockProps = useBlockProps.save({ className: "wcb-tabs__wrap" });
 
-    const renderIcon = () => {
+    const renderIcon = (index: number) => {
         if (!general_tabTitle.enableIcon) return null;
-        return general_tabTitle.icon ? <MyIconFull className="wcb-tabs__icon" icon={general_tabTitle.icon} /> : null;
+        return general_tabTitle.icon ? <MyIconFull className={`wcb-tabs__icon ${activeTabIndex === index ? "wcb-tabs__icon-selected" : ""}`} icon={general_tabTitle.icon} /> : null;
     };
 
     return (
@@ -53,10 +53,17 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
             <div className="wcb-tabs__contents">
                 <div className="wcb-tabs__titles">
                     {titles.map((item, index) => (
-                        <div className="wcb-tabs__title_inner relative group" key={item.id} data-tab-index={item.dataTabIndex}>
-                            {(general_tabTitle.iconPosition === "left" || general_tabTitle.iconPosition === "top") && renderIcon()}
-                            <RichText.Content tagName="p" className="wcb-tabs__title" value={item.title} placeholder="Title" />
-                            {(general_tabTitle.iconPosition === "right" || general_tabTitle.iconPosition === "bottom") && renderIcon()}
+                        <div 
+                            className={`wcb-tabs__title_inner relative group ${activeTabIndex === index ? "wcb-tabs__title_inner-selected" : ""}`} 
+                            key={item.id} 
+                            data-tab-index={item.dataTabIndex}>
+                            {(general_tabTitle.iconPosition === "left" || general_tabTitle.iconPosition === "top") && renderIcon(index)}
+                            <RichText.Content 
+                                tagName="p" 
+                                className={`wcb-tabs__title ${activeTabIndex === index ? "wcb-tabs__title-selected" : ""}`}
+                                value={item.title} 
+                                placeholder="Title" />
+                            {(general_tabTitle.iconPosition === "right" || general_tabTitle.iconPosition === "bottom") && renderIcon(index)}
                         </div>
                     ))}
                 </div>

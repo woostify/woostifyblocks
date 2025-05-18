@@ -68,7 +68,7 @@ export const PANEL_COLOR_TABS: {
 	title: string;
 }[] = [
 	{ name: "Normal", title: __("Normal", "wcb") },
-	{ name: "Hover", title: __("Hover/Active", "wcb") },
+	{ name: "Hover", title: __("Hover", "wcb") },
 ];
 
 interface Props
