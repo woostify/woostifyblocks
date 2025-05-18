@@ -159,12 +159,11 @@ const WcbImagePanelSettings: FC<Props> = ({
 			title={__("Settings", "wcb")}
 		>
 			<div className={"space-y-5"}>
-				{/* tam thoi khong su dung */}
-				{/* <MyRadioGroup
+				<MyRadioGroup
 					onChange={handleChangeImageAlignment}
 					value={TEXT_ALIGNMENT}
 					label={"Alignment"}
-				/> */}
+				/>
 
 				<TextareaControl
 					// @ts-ignore

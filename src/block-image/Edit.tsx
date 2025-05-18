@@ -350,7 +350,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			general_settings,
 			style_image,
 			style_overlay,
-			style_caption,
+			style_caption
 		};
 	}, [
 		uniqueId,
