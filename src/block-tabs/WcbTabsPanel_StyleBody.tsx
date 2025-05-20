@@ -42,8 +42,8 @@ export const WCB_TABS_PANEL_STYLE_BODY_DEMO: WCB_TABS_PANEL_STYLE_BODY = {
 	margin: {
 		Desktop: {
 			top: "1rem",
-			left: "1rem",
-			right: "1rem",
+			left: "0rem",
+			right: "0rem",
 			bottom: "1rem",
 		},
 	},

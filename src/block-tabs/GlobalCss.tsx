@@ -165,7 +165,7 @@ const GlobalCss: FC<Props> = (attrs) => {
                         }
                     },
                     getTypographyStyles({ className: BODY_CLASSNAME, typography: style_body.typography }),
-                    getPaddingMarginStyles({ className: BODY_CLASSNAME, padding: style_body.padding }),
+                    getPaddingMarginStyles({ className: BODY_CLASSNAME, padding: style_body.padding, margin: style_body.margin }),
                     { 
                         [BODY_CLASSNAME]: { 
                             color: style_body.color, 
@@ -206,6 +206,31 @@ const GlobalCss: FC<Props> = (attrs) => {
                     className: WRAP_CLASSNAME,
                 })}
             />
+            {/* BORDER TITLE  */}
+            <Global
+				styles={[
+                    getBorderStyles({
+                            className: TITLE_CHILD_CLASSNAME,
+                            border: style_title.border,
+                            isWithRadius: true,
+                    }),
+                    getBorderStyles({
+                            className: TITLE_CHILD_CLASSNAME_SELECTED,
+                            border: style_title.borderActive,
+                            isWithRadius: true,
+                    }),
+                ]}
+			/>
+            {/* BORDER BODY  */}
+            <Global
+				styles={[
+                    getBorderStyles({
+                            className: BODY_CLASSNAME,
+                            border: style_body.border,
+                            isWithRadius: true,
+                    }),
+                ]}
+			/>
         </>
     );
 };

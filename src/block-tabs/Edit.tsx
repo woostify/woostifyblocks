@@ -23,7 +23,7 @@ import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 import WcbTabsPanelTabTitle from "./WcbTabsPanelTabTitle";
-import { createBlock } from "@wordpress/blocks";
+import { createBlock, serialize } from "@wordpress/blocks";
 import { BlockTabTitleItem } from "./types";
 import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import WcbTabsPanel_StyleBody, { WCB_TABS_PANEL_STYLE_BODY_DEMO } from "./WcbTabsPanel_StyleBody";
@@ -108,12 +108,12 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
     useEffect(() => {
         if (childInnerBlocks.length === titles.length) {
 			const newTabContents = childInnerBlocks.map((block: any) => {
-				// Get content from childInnerBlocks 
-				const innerContent = block.innerBlocks
-					?.map((innerBlock: any) => innerBlock.attributes.content || "")
-					.join("\n") || "";
-				return innerContent;
-			});
+            // Serialize innerBlocks to HTML
+            const innerContent = block.innerBlocks
+                ? serialize(block.innerBlocks)
+                : "";
+            return innerContent;
+        });
             setAttributes({ tabContents: newTabContents });
         }
     }, [childInnerBlocks, titles.length, setAttributes]);

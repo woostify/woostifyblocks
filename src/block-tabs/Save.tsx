@@ -67,17 +67,20 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
                         </div>
                     ))}
                 </div>
-                {titles.map((_, index) => (
-                    <div
-                        key={index}
-                        className="wp-block-wcb-tab-child wcb-tab-child__wrap"
-                        hidden={index !== activeTabIndex}
-                    >
-                        <div className="wcb-tab-child__inner">
-                            <div dangerouslySetInnerHTML={{ __html: tabContents[index] }} />
+                <div className="wcb-tabs__content-wrap">
+                    {titles.map((_, index) => (
+                        <div
+                            key={index}
+                            className="wp-block-wcb-tab-child wcb-tab-child__wrap"
+                            role="tabpanel"
+                            id={`tabpanel-${uniqueId}-${index}`}
+                            aria-labelledby={`tab-${uniqueId}-${index}`}
+                            hidden={index !== activeTabIndex}
+                        >
+                            <div className="wcb-tab-child__inner" dangerouslySetInnerHTML={{ __html: tabContents[index] }} />
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </SaveCommon>
     );
