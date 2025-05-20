@@ -23,7 +23,7 @@ export interface WCB_TABS_PANEL_TAB_TITLE {
 }
 
 export const WCB_TABS_PANEL_TAB_TITLE_DEMO: WCB_TABS_PANEL_TAB_TITLE = {
-	textAlignment: "left",
+	textAlignment: "center",
 	tabAlignment: "left",
 	iconPosition: "left",
 	initOpenTab: "",
