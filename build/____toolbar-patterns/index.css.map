@@ -1,0 +1,1 @@
+{"version":3,"file":"____toolbar-patterns/index.css","mappings":";;;AAAA;EACC;AACD,C","sources":["webpack://woostifyblocks/./src/____toolbar-patterns/editor.scss"],"sourcesContent":["#wcb-block-templates-button-wrap {\n\tflex-grow: 9999;\n}\n"],"names":[],"sourceRoot":""}
