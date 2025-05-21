@@ -39,6 +39,9 @@ import { WCB_HEADING_PANEL_SEPARATOR_DEMO } from "../block-heading/WcbHeadingPan
 import { DEFAULT_BORDER_MAIN_SINGLE_SIDE } from "../components/controls/MyBorderControl/types";
 import { WcbBlockHeadingAttrs } from "../block-heading/attributes";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
+import {
+	MediaUploadData,
+} from "../components/controls/MyMediaUploadCheck";
 
 // Much of this description is duplicated from MediaPlaceholder.
 const placeholder = (content) => {
@@ -110,6 +113,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		title,
 		uniqueId,
 		general_settings,
+		general_image,
 		style_image,
 		style_overlay,
 		style_caption,
@@ -216,6 +220,13 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			additionalAttributes = { url };
 		}
 
+		const mediaUploadData: MediaUploadData = {
+			mediaId: media.id || 0,
+			mediaUrl: media.url,
+			mediaSrcSet: media.srcset || "",
+			sizes: media.sizes || media.media_details?.sizes || {},
+		};
+
 		// Check if default link setting should be used.
 		let linkDestination = attributes.linkDestination;
 		if (!linkDestination) {
@@ -259,6 +270,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			...mediaAttributes,
 			...additionalAttributes,
 			linkDestination,
+			general_image: {
+			...general_image,
+			image: mediaUploadData,
+    },
 		});
 	}
 
