@@ -9,9 +9,12 @@ import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyR
 import MyTextAlignControl, { TextAlignment } from "../components/controls/MyTextAlignControl/MyTextAlignControl";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import MySelect from "../components/controls/MySelect";
+import { MySelectOption } from "../types";
 
 export interface WCB_TAGS_PANEL_GENERAL {
     layout: "accordion" | "grid";
+    style: "horizontalStyle1" | "horizontalStyle2" | "verticalStyle1" | "verticalStyle2";
     headingTag: keyof HTMLElementTagNameMap;
     collapseOtherItems: boolean;
     expandFirstItem: boolean;
@@ -24,6 +27,7 @@ export interface WCB_TAGS_PANEL_GENERAL {
 
 export const WCB_TAGS_PANEL_GENERAL_DEMO: WCB_TAGS_PANEL_GENERAL = {
     layout: "accordion",
+    style: "horizontalStyle1",
     headingTag: "div",
     collapseOtherItems: true,
     columns: { Desktop: 2 },
@@ -56,6 +60,7 @@ const WcbTabsPanelGeneral: FC<Props> = ({
         showMultiple,
         expandFirstItem,
         headingTag,
+        style,
         layout,
     } = panelData;
 
@@ -94,9 +99,34 @@ const WcbTabsPanelGeneral: FC<Props> = ({
         );
     };
 
+    const OPTION_STYLE_OPEN_TAB_DEMO: MySelectOption<WCB_TAGS_PANEL_GENERAL["style"]>[] = [
+        { label: "Horizontal Style 1", value: "horizontalStyle1" },
+        { label: "Horizontal Style 2", value: "horizontalStyle2" },
+        { label: "Vertical Style 1", value: "verticalStyle1" },
+        { label: "Vertical Style 2", value: "verticalStyle2" },
+    ];
+
+    // filter options with layout
+    const filteredStyleOptions =
+    layout === "accordion"
+        ? OPTION_STYLE_OPEN_TAB_DEMO.filter(opt => opt.value.startsWith("horizontal"))
+        : OPTION_STYLE_OPEN_TAB_DEMO.filter(opt => opt.value.startsWith("vertical"));
+
+
     return (
         <PanelBody initialOpen={initialOpen} onToggle={onToggle} opened={opened} title={__("General", "wcb")}>
             <div className="space-y-5">
+                <MySelect
+                    label={__("Style", "Wcb")}
+                    options={filteredStyleOptions}
+                    value={style}
+                    onChange={(value) => {
+                        setAttr__({
+                            ...panelData,
+                            style: value as WCB_TAGS_PANEL_GENERAL["style"],
+                        });
+                    }}
+                />
                 <MyRadioGroup
                     hasResponsive={false}
                     label={__("Layout", "wcb")}

@@ -1,5 +1,5 @@
-import { Global, CSSObject } from "@emotion/react";
 import React, { FC } from "react";
+import { Global, CSSObject } from "@emotion/react";
 import { getAdvanveDivWrapStyles } from "../block-container/getAdvanveStyles";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import getBorderStyles from "../utils/getBorderStyles";
@@ -12,6 +12,19 @@ import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 
 interface Props extends WcbAttrsForSave {}
+
+const getFlexAlignment = (align: string) => {
+    switch (align) {
+        case "left":
+            return "flex-start";
+        case "right":
+            return "flex-end";
+        case "center":
+            return "center";
+        default:
+            return "flex-start";
+    }
+};
 
 const GlobalCss: FC<Props> = (attrs) => {
     const {
@@ -28,11 +41,13 @@ const GlobalCss: FC<Props> = (attrs) => {
     } = attrs;
     const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
+    if (!uniqueId) return null;
+
     const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
     const TITLE_WRAP_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__titles`;
     const TITLE_CHILD_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__title_inner`;
     const TITLE_CHILD_CLASSNAME_SELECTED = `${WRAP_CLASSNAME} .wcb-tabs__title_inner-selected`;
-	const TITLE_CHILD_BUTTON_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__title_inner_btn`;
+    const TITLE_CHILD_BUTTON_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__title_inner_btn`;
     const TITLE_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__title`;
     const TITLE_CLASSNAME_SELECTED = `${WRAP_CLASSNAME} .wcb-tabs__title-selected`;
     const BODY_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tab-child__wrap`;
@@ -47,19 +62,6 @@ const GlobalCss: FC<Props> = (attrs) => {
         Mobile: `${getValueFromAttrsResponsives(style_icon.size).value_Mobile}px`,
     };
 
-    const inner_getGridCol = (): CSSObject => {
-        const { value_Desktop, value_Tablet, value_Mobile } = getValueFromAttrsResponsives(general_general.columns);
-        return {
-            [`${INNER_CLASSNAME}`]: {
-                gridTemplateColumns: `repeat(${value_Mobile}, minmax(0, 1fr))`,
-                [`@media (min-width: ${media_tablet})`]: { gridTemplateColumns: `repeat(${value_Tablet}, minmax(0, 1fr))` },
-                [`@media (min-width: ${media_desktop})`]: { gridTemplateColumns: `repeat(${value_Desktop}, minmax(0, 1fr))` },
-            },
-        };
-    };
-
-    if (!uniqueId) return null;
-
     return (
         <>
             <Global
@@ -69,13 +71,16 @@ const GlobalCss: FC<Props> = (attrs) => {
                     { [INNER_CLASSNAME]: { textAlign: general_general.textAlignment } },
                 ]}
             />
-            {general_general.layout === "grid" && (
+
+            {(general_general.layout === "grid" ||
+                general_general.style === "verticalStyle1" ||
+                general_general.style === "verticalStyle2") && (
                 <Global
                     styles={[
                         {
                             [INNER_CLASSNAME]: {
                                 display: "grid",
-                                gridTemplateColumns: "1fr 3fr", 
+                                gridTemplateColumns: "1fr 3fr",
                                 gap: "1rem",
                             },
                         },
@@ -84,23 +89,17 @@ const GlobalCss: FC<Props> = (attrs) => {
                                 display: "flex",
                                 flexDirection: "column",
                                 gap: "0.5rem",
-                                justifyContent: 
-                                    general_tabTitle.tabAlignment === "left" ? "flex-start" :
-                                    general_tabTitle.tabAlignment === "right" ? "flex-end" :
-                                    general_tabTitle.tabAlignment === "center" ? "center" : "flex-start",
+                                justifyContent: getFlexAlignment(general_tabTitle.tabAlignment),
                             },
                         },
                         {
                             [TITLE_CHILD_CLASSNAME]: {
-                                display: "flex",    
+                                display: "flex",
                                 flexDirection: "row",
                                 width: "100%",
                                 padding: "0.5rem",
                                 boxSizing: "border-box",
-                                justifyContent: 
-                                    general_tabTitle.textAlignment === "left" ? "flex-start" :
-                                    general_tabTitle.textAlignment === "right" ? "flex-end" :
-                                    general_tabTitle.textAlignment === "center" ? "center" : "flex-start",
+                                justifyContent: getFlexAlignment(general_tabTitle.textAlignment),
                             },
                         },
                         {
@@ -110,16 +109,18 @@ const GlobalCss: FC<Props> = (attrs) => {
                                 boxSizing: "border-box",
                             },
                         },
-						{
-							[TITLE_CHILD_BUTTON_CLASSNAME]: {
-								padding: "0.6rem"
-							}
-						}
+                        {
+                            [TITLE_CHILD_BUTTON_CLASSNAME]: {
+                                padding: "0.6rem",
+                            },
+                        },
                     ]}
                 />
             )}
 
-            {general_general.layout === "accordion" && (
+            {(general_general.layout === "accordion" ||
+                general_general.style === "horizontalStyle1" ||
+                general_general.style === "horizontalStyle3") && (
                 <Global
                     styles={[
                         {
@@ -127,23 +128,62 @@ const GlobalCss: FC<Props> = (attrs) => {
                                 display: "flex",
                                 flexDirection: "row",
                                 gap: "0.5rem",
-                                justifyContent: 
-                                    general_tabTitle.tabAlignment === "left" ? "flex-start" :
-                                    general_tabTitle.tabAlignment === "right" ? "flex-end" :
-                                    general_tabTitle.tabAlignment === "center" ? "center" : "flex-start",
+                                justifyContent: getFlexAlignment(general_tabTitle.tabAlignment),
                             },
                             [TITLE_CHILD_CLASSNAME]: {
-                                display: "flex",    
+                                display: "flex",
                                 flexDirection: "row",
-                                justifyContent: 
-                                    general_tabTitle.textAlignment === "left" ? "flex-start" :
-                                    general_tabTitle.textAlignment === "right" ? "flex-end" :
-                                    general_tabTitle.textAlignment === "center" ? "center" : "flex-start",
+                                justifyContent: getFlexAlignment(general_tabTitle.textAlignment),
                             },
                         },
                     ]}
                 />
             )}
+
+            {general_general.style === "horizontalStyle2" && (
+                <Global
+                    styles={[
+                        {
+                            [TITLE_WRAP_CLASSNAME]: {
+                                display: "flex",
+                                flexDirection: "row",
+                                gap: "0.5rem",
+                                justifyContent: getFlexAlignment(general_tabTitle.tabAlignment),
+                                borderBottom: "2px solid #d1d5db",
+                                marginBottom: "0",
+                                background: "#fff",
+                            },
+                            [TITLE_CHILD_CLASSNAME]: {
+                                display: "flex",
+                                flexDirection: "row",
+                                justifyContent: getFlexAlignment(general_tabTitle.textAlignment),
+                                background: "none",
+                                border: "none",
+                                borderRadius: "0",
+                                marginBottom: "-2px",
+                                zIndex: 1,
+                            },
+                            [TITLE_CHILD_CLASSNAME_SELECTED]: {
+                                background: style_title.backgroundColorActive || "#fff",
+                                border: "none",
+                                borderTop: "2px solid #d1d5db",
+                                borderRight: "2px solid #d1d5db",
+                                borderLeft: "2px solid #d1d5db",
+                                borderRadius: "0",
+                                marginBottom: "-2px",
+                                zIndex: 2,
+                            },
+                            [BODY_CLASSNAME]: {
+                                border: "1px solid #d1d5db",
+                                borderTop: "none",
+                                marginTop: "0",
+                                padding: "2rem",
+                            },
+                        },
+                    ]}
+                />
+            )}
+
             <Global
                 styles={[
                     getBackgroundColorGradientStyles({ className: BODY_CLASSNAME, background: style_container.background }),
@@ -162,24 +202,24 @@ const GlobalCss: FC<Props> = (attrs) => {
                         },
                         [TITLE_CLASSNAME_SELECTED]: {
                             color: style_title.colorActive,
-                        }
+                        },
                     },
                     getTypographyStyles({ className: BODY_CLASSNAME, typography: style_body.typography }),
                     getPaddingMarginStyles({ className: BODY_CLASSNAME, padding: style_body.padding, margin: style_body.margin }),
-                    { 
-                        [BODY_CLASSNAME]: { 
-                            color: style_body.color, 
+                    {
+                        [BODY_CLASSNAME]: {
+                            color: style_body.color,
                             backgroundColor: style_body.backgroundColor,
-                            '&:hover': {
+                            "&:hover": {
                                 backgroundColor: style_body.backgroundColorHover,
-                            }
+                            },
                         },
                         [BODY_CHILD_CLASSNAME]: {
                             color: style_body.color,
-                            '&:hover': {
+                            "&:hover": {
                                 color: style_body.colorHover,
-                            }
-                        }
+                            },
+                        },
                     },
                 ]}
             />
@@ -206,31 +246,31 @@ const GlobalCss: FC<Props> = (attrs) => {
                     className: WRAP_CLASSNAME,
                 })}
             />
-            {/* BORDER TITLE  */}
+            {/* BORDER TITLE */}
             <Global
-				styles={[
+                styles={[
                     getBorderStyles({
-                            className: TITLE_CHILD_CLASSNAME,
-                            border: style_title.border,
-                            isWithRadius: true,
+                        className: TITLE_CHILD_CLASSNAME,
+                        border: style_title.border,
+                        isWithRadius: true,
                     }),
                     getBorderStyles({
-                            className: TITLE_CHILD_CLASSNAME_SELECTED,
-                            border: style_title.borderActive,
-                            isWithRadius: true,
+                        className: TITLE_CHILD_CLASSNAME_SELECTED,
+                        border: style_title.borderActive,
+                        isWithRadius: true,
                     }),
                 ]}
-			/>
-            {/* BORDER BODY  */}
+            />
+            {/* BORDER BODY */}
             <Global
-				styles={[
+                styles={[
                     getBorderStyles({
-                            className: BODY_CLASSNAME,
-                            border: style_body.border,
-                            isWithRadius: true,
+                        className: BODY_CLASSNAME,
+                        border: style_body.border,
+                        isWithRadius: true,
                     }),
                 ]}
-			/>
+            />
         </>
     );
 };

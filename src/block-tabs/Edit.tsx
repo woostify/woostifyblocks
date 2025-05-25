@@ -204,6 +204,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
                             opened={tabStylesIsPanelOpen === "_StyleTitle" || undefined}
                             setAttr__={(data) => setAttributes({ style_title: data, general_preset: { ...general_preset, preset: "" } })}
                             panelData={style_title}
+                            style={attributes.general_general.style}
                         />
                         <WcbTabsPanel_StyleIcon
                             onToggle={() => handleTogglePanel("Styles", "_StyleIcon")}

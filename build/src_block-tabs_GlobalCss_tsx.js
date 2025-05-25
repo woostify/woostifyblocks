@@ -33,6 +33,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const getFlexAlignment = align => {
+  switch (align) {
+    case "left":
+      return "flex-start";
+    case "right":
+      return "flex-end";
+    case "center":
+      return "center";
+    default:
+      return "flex-start";
+  }
+};
 const GlobalCss = attrs => {
   const {
     uniqueId,
@@ -50,6 +62,7 @@ const GlobalCss = attrs => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_5__.DEMO_WCB_GLOBAL_VARIABLES;
+  if (!uniqueId) return null;
   const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
   const TITLE_WRAP_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__titles`;
   const TITLE_CHILD_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__title_inner`;
@@ -67,25 +80,6 @@ const GlobalCss = attrs => {
     Tablet: `${(0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_2__["default"])(style_icon.size).value_Tablet}px`,
     Mobile: `${(0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_2__["default"])(style_icon.size).value_Mobile}px`
   };
-  const inner_getGridCol = () => {
-    const {
-      value_Desktop,
-      value_Tablet,
-      value_Mobile
-    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_2__["default"])(general_general.columns);
-    return {
-      [`${INNER_CLASSNAME}`]: {
-        gridTemplateColumns: `repeat(${value_Mobile}, minmax(0, 1fr))`,
-        [`@media (min-width: ${media_tablet})`]: {
-          gridTemplateColumns: `repeat(${value_Tablet}, minmax(0, 1fr))`
-        },
-        [`@media (min-width: ${media_desktop})`]: {
-          gridTemplateColumns: `repeat(${value_Desktop}, minmax(0, 1fr))`
-        }
-      }
-    };
-  };
-  if (!uniqueId) return null;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
     styles: [(0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_6__["default"])({
       className: INNER_CLASSNAME,
@@ -100,7 +94,7 @@ const GlobalCss = attrs => {
         textAlign: general_general.textAlignment
       }
     }]
-  }), general_general.layout === "grid" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), (general_general.layout === "grid" || general_general.style === "verticalStyle1" || general_general.style === "verticalStyle2") && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
     styles: [{
       [INNER_CLASSNAME]: {
         display: "grid",
@@ -112,7 +106,7 @@ const GlobalCss = attrs => {
         display: "flex",
         flexDirection: "column",
         gap: "0.5rem",
-        justifyContent: general_tabTitle.tabAlignment === "left" ? "flex-start" : general_tabTitle.tabAlignment === "right" ? "flex-end" : general_tabTitle.tabAlignment === "center" ? "center" : "flex-start"
+        justifyContent: getFlexAlignment(general_tabTitle.tabAlignment)
       }
     }, {
       [TITLE_CHILD_CLASSNAME]: {
@@ -121,7 +115,7 @@ const GlobalCss = attrs => {
         width: "100%",
         padding: "0.5rem",
         boxSizing: "border-box",
-        justifyContent: general_tabTitle.textAlignment === "left" ? "flex-start" : general_tabTitle.textAlignment === "right" ? "flex-end" : general_tabTitle.textAlignment === "center" ? "center" : "flex-start"
+        justifyContent: getFlexAlignment(general_tabTitle.textAlignment)
       }
     }, {
       [BODY_CLASSNAME]: {
@@ -134,18 +128,56 @@ const GlobalCss = attrs => {
         padding: "0.6rem"
       }
     }]
-  }), general_general.layout === "accordion" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), (general_general.layout === "accordion" || general_general.style === "horizontalStyle1" || general_general.style === "horizontalStyle3") && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
     styles: [{
       [TITLE_WRAP_CLASSNAME]: {
         display: "flex",
         flexDirection: "row",
         gap: "0.5rem",
-        justifyContent: general_tabTitle.tabAlignment === "left" ? "flex-start" : general_tabTitle.tabAlignment === "right" ? "flex-end" : general_tabTitle.tabAlignment === "center" ? "center" : "flex-start"
+        justifyContent: getFlexAlignment(general_tabTitle.tabAlignment)
       },
       [TITLE_CHILD_CLASSNAME]: {
         display: "flex",
         flexDirection: "row",
-        justifyContent: general_tabTitle.textAlignment === "left" ? "flex-start" : general_tabTitle.textAlignment === "right" ? "flex-end" : general_tabTitle.textAlignment === "center" ? "center" : "flex-start"
+        justifyContent: getFlexAlignment(general_tabTitle.textAlignment)
+      }
+    }]
+  }), general_general.style === "horizontalStyle2" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+    styles: [{
+      [TITLE_WRAP_CLASSNAME]: {
+        display: "flex",
+        flexDirection: "row",
+        gap: "0.5rem",
+        justifyContent: getFlexAlignment(general_tabTitle.tabAlignment),
+        borderBottom: "2px solid #d1d5db",
+        marginBottom: "0",
+        background: "#fff"
+      },
+      [TITLE_CHILD_CLASSNAME]: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: getFlexAlignment(general_tabTitle.textAlignment),
+        background: "none",
+        border: "none",
+        borderRadius: "0",
+        marginBottom: "-2px",
+        zIndex: 1
+      },
+      [TITLE_CHILD_CLASSNAME_SELECTED]: {
+        background: style_title.backgroundColorActive || "#fff",
+        border: "none",
+        borderTop: "2px solid #d1d5db",
+        borderRight: "2px solid #d1d5db",
+        borderLeft: "2px solid #d1d5db",
+        borderRadius: "0",
+        marginBottom: "-2px",
+        zIndex: 2
+      },
+      [BODY_CLASSNAME]: {
+        border: "1px solid #d1d5db",
+        borderTop: "none",
+        marginTop: "0",
+        padding: "2rem"
       }
     }]
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
@@ -186,13 +218,13 @@ const GlobalCss = attrs => {
       [BODY_CLASSNAME]: {
         color: style_body.color,
         backgroundColor: style_body.backgroundColor,
-        '&:hover': {
+        "&:hover": {
           backgroundColor: style_body.backgroundColorHover
         }
       },
       [BODY_CHILD_CLASSNAME]: {
         color: style_body.color,
-        '&:hover': {
+        "&:hover": {
           color: style_body.colorHover
         }
       }
