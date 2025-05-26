@@ -58,19 +58,22 @@ const GlobalCss = attrs => {
       prefix: "textAlign"
     }), {
       [`${WRAP_CLASSNAME}`]: {
-        flexDirection: general_icon.stackOn === "mobile" || general_icon.stackOn === "tablet" ? "column-reverse" : "column",
-        ".wcb-icon-list__content": {
+        ".wcb-icon-list__icon-wrap": {
           display: "flex",
           flexDirection: general_layout.layout === "vertical" ? "column" : "row",
-          alignItems: general_layout.textAlignment.Desktop === "center" || general_layout.textAlignment.Mobile === "center" || general_layout.textAlignment.Tablet === "center" ? "center" : general_layout.textAlignment.Desktop === "left" || general_layout.textAlignment.Mobile === "left" || general_layout.textAlignment.Tablet === "left" ? "flex-start" : general_layout.textAlignment.Desktop === "right" || general_layout.textAlignment.Mobile === "right" || general_layout.textAlignment.Tablet === "right" ? "flex-end" : undefined
+          ...(general_layout.layout === "vertical" ? {
+            alignItems: general_layout.textAlignment.Desktop === "center" || general_layout.textAlignment.Mobile === "center" || general_layout.textAlignment.Tablet === "center" ? "center" : general_layout.textAlignment.Desktop === "left" || general_layout.textAlignment.Mobile === "left" || general_layout.textAlignment.Tablet === "left" ? "flex-start" : general_layout.textAlignment.Desktop === "right" || general_layout.textAlignment.Mobile === "right" || general_layout.textAlignment.Tablet === "right" ? "flex-end" : undefined
+          } : {
+            justifyContent: general_layout.textAlignment.Desktop === "center" || general_layout.textAlignment.Mobile === "center" || general_layout.textAlignment.Tablet === "center" ? "center" : general_layout.textAlignment.Desktop === "left" || general_layout.textAlignment.Mobile === "left" || general_layout.textAlignment.Tablet === "left" ? "flex-start" : general_layout.textAlignment.Desktop === "right" || general_layout.textAlignment.Mobile === "right" || general_layout.textAlignment.Tablet === "right" ? "flex-end" : undefined
+          })
         },
-        ".wcb-icon-list__icon-wrap, .wcb-icon-list__content": {
+        ".wcb-icon__icon-wrap, .wcb-icon__content": {
           alignSelf: general_icon.verticalAlignment === "middle" ? "center" : undefined
         },
-        ".wcb-icon-list__icon-wrap": {
+        ".wcb-icon__icon-wrap": {
           order: general_icon.iconPosition === "leftOfTitle" ? "0" : "2"
         },
-        ".wcb-icon-list__content-title-wrap": {
+        ".wcb-icon__content-title-wrap": {
           display: general_icon.iconPosition === "leftOfTitle" || general_icon.iconPosition === "rightOfTitle" ? "flex" : "block"
         },
         [`@media (min-width: ${media_tablet})`]: {
@@ -95,14 +98,14 @@ const GlobalCss = attrs => {
     })
   }), general_icon.enableIcon ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
     styles: [(0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
-      className: `${WRAP_CLASSNAME} .wcb-icon-list__icon-wrap`,
+      className: `${WRAP_CLASSNAME} .wcb-icon__icon`,
       margin: style_Icon.dimensions.margin
     }), (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
-      className: `${WRAP_CLASSNAME} .wcb-icon-list__icon`,
+      className: `${WRAP_CLASSNAME} .wcb-icon__icon`,
       padding: style_Icon.dimensions.padding
     }), (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_2__["default"])({
       border: style_Icon.border,
-      className: `${WRAP_CLASSNAME} .wcb-icon-list__icon`,
+      className: `${WRAP_CLASSNAME} .wcb-icon__icon`,
       isWithRadius: true
     }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_4__["default"])({
       className: `${WRAP_CLASSNAME} .wcb-icon-full`,

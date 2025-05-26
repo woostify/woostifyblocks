@@ -7693,17 +7693,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/HOCInspectorControls */ "./src/components/HOCInspectorControls.tsx");
-/* harmony import */ var _GlobalCss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./GlobalCss */ "./src/block-icon-list/GlobalCss.tsx");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/block-icon-list/editor.scss");
-/* harmony import */ var _hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/useSetBlockPanelInfo */ "./src/hooks/useSetBlockPanelInfo.ts");
-/* harmony import */ var _components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/AdvancePanelCommon */ "./src/components/AdvancePanelCommon.tsx");
-/* harmony import */ var _WcbIconListPanelLayout__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./WcbIconListPanelLayout */ "./src/block-icon-list/WcbIconListPanelLayout.tsx");
-/* harmony import */ var _WcbIconListPanelIcon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WcbIconListPanelIcon */ "./src/block-icon-list/WcbIconListPanelIcon.tsx");
-/* harmony import */ var _components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/MyCacheProvider */ "./src/components/MyCacheProvider.tsx");
-/* harmony import */ var _WcbIconListPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./WcbIconListPanel_StyleTitle */ "./src/block-icon-list/WcbIconListPanel_StyleTitle.tsx");
-/* harmony import */ var _WcbIconListPanel_StyleDesignation__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./WcbIconListPanel_StyleDesignation */ "./src/block-icon-list/WcbIconListPanel_StyleDesignation.tsx");
-/* harmony import */ var _components_controls_MyIconFull__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/controls/MyIconFull */ "./src/components/controls/MyIconFull.tsx");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/HOCInspectorControls */ "./src/components/HOCInspectorControls.tsx");
+/* harmony import */ var _GlobalCss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./GlobalCss */ "./src/block-icon-list/GlobalCss.tsx");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/block-icon-list/editor.scss");
+/* harmony import */ var _hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hooks/useSetBlockPanelInfo */ "./src/hooks/useSetBlockPanelInfo.ts");
+/* harmony import */ var _components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/AdvancePanelCommon */ "./src/components/AdvancePanelCommon.tsx");
+/* harmony import */ var _WcbIconListPanelLayout__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WcbIconListPanelLayout */ "./src/block-icon-list/WcbIconListPanelLayout.tsx");
+/* harmony import */ var _WcbIconListPanelIcon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./WcbIconListPanelIcon */ "./src/block-icon-list/WcbIconListPanelIcon.tsx");
+/* harmony import */ var _components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/MyCacheProvider */ "./src/components/MyCacheProvider.tsx");
+/* harmony import */ var _WcbIconListPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./WcbIconListPanel_StyleTitle */ "./src/block-icon-list/WcbIconListPanel_StyleTitle.tsx");
+/* harmony import */ var _WcbIconListPanel_StyleDesignation__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./WcbIconListPanel_StyleDesignation */ "./src/block-icon-list/WcbIconListPanel_StyleDesignation.tsx");
 /* harmony import */ var _WcbIconListPanel_StyleSeparator__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./WcbIconListPanel_StyleSeparator */ "./src/block-icon-list/WcbIconListPanel_StyleSeparator.tsx");
 /* harmony import */ var _WcbIconListPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./WcbIconListPanel_StyleDimension */ "./src/block-icon-list/WcbIconListPanel_StyleDimension.tsx");
 /* harmony import */ var _components_controls_MyDimensionsControl_types__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/controls/MyDimensionsControl/types */ "./src/components/controls/MyDimensionsControl/types.ts");
@@ -7768,7 +7769,7 @@ const Edit = props => {
     tabGeneralIsPanelOpen,
     tabStylesIsPanelOpen,
     handleTogglePanel
-  } = (0,_hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_5__["default"])(uniqueId);
+  } = (0,_hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_6__["default"])(uniqueId);
 
   // make uniqueid
   const UNIQUE_ID = wrapBlockProps.id;
@@ -7783,30 +7784,15 @@ const Edit = props => {
   const renderTabBodyPanels = tab => {
     switch (tab.name) {
       case "General":
-        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconListPanelIcon__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconListPanelIcon__WEBPACK_IMPORTED_MODULE_9__["default"], {
           onToggle: () => handleTogglePanel("General", "Icon"),
           initialOpen: tabGeneralIsPanelOpen === "Icon",
           opened: tabGeneralIsPanelOpen === "Icon" || undefined
           //
           ,
-          setAttr__: data => {
-            return setAttributes({
-              general_icon: data,
-              style_Icon: {
-                ...style_Icon,
-                dimensions: {
-                  ..._components_controls_MyDimensionsControl_types__WEBPACK_IMPORTED_MODULE_15__.MY_DIMENSIONS_NO_GAP_DEMO__EMPTY,
-                  margin: {
-                    Desktop: {
-                      ..._components_controls_MyDimensionsControl_types__WEBPACK_IMPORTED_MODULE_15__.MY_DIMENSIONS_NO_GAP_DEMO__EMPTY.margin.Desktop
-                    }
-                  }
-                }
-              }
-            });
-          },
+          setAttr__: handleChangeIcon,
           panelData: general_icon
-        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconListPanelLayout__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconListPanelLayout__WEBPACK_IMPORTED_MODULE_8__["default"], {
           onToggle: () => handleTogglePanel("General", "Content", true),
           initialOpen: tabGeneralIsPanelOpen === "Content" || tabGeneralIsPanelOpen === "first",
           opened: tabGeneralIsPanelOpen === "Content" || undefined
@@ -7815,6 +7801,12 @@ const Edit = props => {
           setAttr__: data => {
             setAttributes({
               general_layout: data
+            });
+            // Update layout for all child blocks
+            innerBlockClientIds.forEach(childId => {
+              updateBlockAttributes(childId, {
+                general_layout: data
+              });
             });
           },
           panelData: general_layout
@@ -7834,6 +7826,12 @@ const Edit = props => {
             setAttributes({
               style_Icon: preset === "wcb-icon-list-1" ? _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_1 : preset === "wcb-icon-list-2" ? _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_2 : preset === "wcb-icon-list-3" ? _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_3 : _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_DEMO
             });
+            // Update layout for all child blocks
+            innerBlockClientIds.forEach(childId => {
+              updateBlockAttributes(childId, {
+                style_Icon: preset === "wcb-icon-list-1" ? _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_1 : preset === "wcb-icon-list-2" ? _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_2 : preset === "wcb-icon-list-3" ? _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_3 : _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_DEMO
+              });
+            });
           },
           panelData: general_preset
         }));
@@ -7850,7 +7848,7 @@ const Edit = props => {
             });
           },
           panelData: style_Icon
-        }), general_layout.enablePrefix && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconListPanel_StyleDesignation__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        }), general_layout.enablePrefix && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconListPanel_StyleDesignation__WEBPACK_IMPORTED_MODULE_12__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleDesignation"),
           initialOpen: tabStylesIsPanelOpen === "_StyleDesignation",
           opened: tabStylesIsPanelOpen === "_StyleDesignation" || undefined
@@ -7862,7 +7860,7 @@ const Edit = props => {
             });
           },
           panelData: style_desination
-        }), general_layout.enableTitle && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconListPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        }), general_layout.enableTitle && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconListPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_11__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleTitle", true),
           initialOpen: tabStylesIsPanelOpen === "_StyleTitle" || tabStylesIsPanelOpen === "first",
           opened: tabStylesIsPanelOpen === "_StyleTitle" || undefined
@@ -7900,7 +7898,7 @@ const Edit = props => {
           panelData: style_dimension
         }));
       case "Advances":
-        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_7__["default"], {
           advance_motionEffect: advance_motionEffect,
           advance_responsiveCondition: attributes.advance_responsiveCondition,
           advance_zIndex: attributes.advance_zIndex,
@@ -7916,13 +7914,50 @@ const Edit = props => {
   const ALLOWED_BLOCKS = ["wcb/icon"];
   const TEMPLATE = [["wcb/icon", {}], ["wcb/icon", {}], ["wcb/icon", {}]];
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
-    className: `wcb-icon__content-title-wrap`
+    className: `wcb-icon-list__icon-wrap`
   });
   const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useInnerBlocksProps)(blockProps, {
     allowedBlocks: ALLOWED_BLOCKS,
     template: TEMPLATE,
     renderAppender: () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.DefaultBlockAppender, null)
   });
+
+  /**
+   * Retrieves the `updateBlockAttributes` action dispatcher from the block editor store.
+   * This function allows updating the attributes of a specific block within the editor.
+   *
+   * @see https://developer.wordpress.org/block-editor/reference-guides/data/data-core-block-editor/#updateblockattributes
+   */
+  const {
+    updateBlockAttributes
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useDispatch)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.store);
+
+  // Get list clientId if child blocks
+  const innerBlockClientIds = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useSelect)(select => select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.store).getBlockOrder ? select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.store).getBlockOrder(clientId) : [], [clientId]);
+
+  // update icon for all child blocks
+  const handleChangeIcon = data => {
+    setAttributes({
+      general_icon: data,
+      style_Icon: {
+        ...style_Icon,
+        dimensions: {
+          ..._components_controls_MyDimensionsControl_types__WEBPACK_IMPORTED_MODULE_15__.MY_DIMENSIONS_NO_GAP_DEMO__EMPTY,
+          margin: {
+            Desktop: {
+              ..._components_controls_MyDimensionsControl_types__WEBPACK_IMPORTED_MODULE_15__.MY_DIMENSIONS_NO_GAP_DEMO__EMPTY.margin.Desktop
+            }
+          }
+        }
+      }
+    });
+    // Update icon for all child blocks
+    innerBlockClientIds.forEach(childId => {
+      updateBlockAttributes(childId, {
+        general_icon: data
+      });
+    });
+  };
   const WcbAttrsForSave = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(() => {
     return {
       uniqueId,
@@ -7944,29 +7979,18 @@ const Edit = props => {
       advance_motionEffect
     };
   }, [uniqueId, advance_responsiveCondition, advance_zIndex, general_layout, general_preset, heading_1, heading_2, heading_3, style_title, style_desination, style_description, style_Icon, style_separator, style_dimension, general_icon, general_separator, advance_motionEffect]);
-  const renderIcon = () => {
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "wcb-icon-list__icon-wrap"
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "wcb-icon-list__icon"
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyIconFull__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      icon: general_icon.icon
-    })));
-  };
-  const HeadingTag = general_layout.headingTag;
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_9__["default"], {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_10__["default"], {
     uniqueKey: clientId
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...wrapBlockProps,
-    className: `${wrapBlockProps?.className} wcb-icon-list__wrap ${uniqueId}`,
+    className: `${wrapBlockProps?.className} ${uniqueId}`,
     "data-uniqueid": uniqueId
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_3__["default"], {
     renderTabPanels: renderTabBodyPanels,
     uniqueId: uniqueId
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_4__["default"], {
     ...WcbAttrsForSave()
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wcb-icon-list__content",
     ...innerBlocksProps
   })));
 };
@@ -8032,19 +8056,22 @@ const GlobalCss = attrs => {
       prefix: "textAlign"
     }), {
       [`${WRAP_CLASSNAME}`]: {
-        flexDirection: general_icon.stackOn === "mobile" || general_icon.stackOn === "tablet" ? "column-reverse" : "column",
-        ".wcb-icon-list__content": {
+        ".wcb-icon-list__icon-wrap": {
           display: "flex",
           flexDirection: general_layout.layout === "vertical" ? "column" : "row",
-          alignItems: general_layout.textAlignment.Desktop === "center" || general_layout.textAlignment.Mobile === "center" || general_layout.textAlignment.Tablet === "center" ? "center" : general_layout.textAlignment.Desktop === "left" || general_layout.textAlignment.Mobile === "left" || general_layout.textAlignment.Tablet === "left" ? "flex-start" : general_layout.textAlignment.Desktop === "right" || general_layout.textAlignment.Mobile === "right" || general_layout.textAlignment.Tablet === "right" ? "flex-end" : undefined
+          ...(general_layout.layout === "vertical" ? {
+            alignItems: general_layout.textAlignment.Desktop === "center" || general_layout.textAlignment.Mobile === "center" || general_layout.textAlignment.Tablet === "center" ? "center" : general_layout.textAlignment.Desktop === "left" || general_layout.textAlignment.Mobile === "left" || general_layout.textAlignment.Tablet === "left" ? "flex-start" : general_layout.textAlignment.Desktop === "right" || general_layout.textAlignment.Mobile === "right" || general_layout.textAlignment.Tablet === "right" ? "flex-end" : undefined
+          } : {
+            justifyContent: general_layout.textAlignment.Desktop === "center" || general_layout.textAlignment.Mobile === "center" || general_layout.textAlignment.Tablet === "center" ? "center" : general_layout.textAlignment.Desktop === "left" || general_layout.textAlignment.Mobile === "left" || general_layout.textAlignment.Tablet === "left" ? "flex-start" : general_layout.textAlignment.Desktop === "right" || general_layout.textAlignment.Mobile === "right" || general_layout.textAlignment.Tablet === "right" ? "flex-end" : undefined
+          })
         },
-        ".wcb-icon-list__icon-wrap, .wcb-icon-list__content": {
+        ".wcb-icon__icon-wrap, .wcb-icon__content": {
           alignSelf: general_icon.verticalAlignment === "middle" ? "center" : undefined
         },
-        ".wcb-icon-list__icon-wrap": {
+        ".wcb-icon__icon-wrap": {
           order: general_icon.iconPosition === "leftOfTitle" ? "0" : "2"
         },
-        ".wcb-icon-list__content-title-wrap": {
+        ".wcb-icon__content-title-wrap": {
           display: general_icon.iconPosition === "leftOfTitle" || general_icon.iconPosition === "rightOfTitle" ? "flex" : "block"
         },
         [`@media (min-width: ${media_tablet})`]: {
@@ -8069,14 +8096,14 @@ const GlobalCss = attrs => {
     })
   }), general_icon.enableIcon ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
     styles: [(0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
-      className: `${WRAP_CLASSNAME} .wcb-icon-list__icon-wrap`,
+      className: `${WRAP_CLASSNAME} .wcb-icon__icon`,
       margin: style_Icon.dimensions.margin
     }), (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
-      className: `${WRAP_CLASSNAME} .wcb-icon-list__icon`,
+      className: `${WRAP_CLASSNAME} .wcb-icon__icon`,
       padding: style_Icon.dimensions.padding
     }), (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_2__["default"])({
       border: style_Icon.border,
-      className: `${WRAP_CLASSNAME} .wcb-icon-list__icon`,
+      className: `${WRAP_CLASSNAME} .wcb-icon__icon`,
       isWithRadius: true
     }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_4__["default"])({
       className: `${WRAP_CLASSNAME} .wcb-icon-full`,

@@ -45,7 +45,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 						general_icon.stackOn === "tablet" ? "column-reverse" : "column",
 
 					
-					".wcb-icon-list__content": {
+					".wcb-icon__content": {
 						display: "flex",
 						flexDirection:  general_layout.layout === "vertical" ? "column" : "row",
 						alignItems:
@@ -64,18 +64,18 @@ const GlobalCss: FC<Props> = (attrs) => {
 								: undefined,
 					},
 
-					".wcb-icon-list__icon-wrap, .wcb-icon-list__content": {
+					".wcb-icon__icon-wrap, .wcb-icon__content": {
 						alignSelf:
 							general_icon.verticalAlignment === "middle"
 								? "center"
 								: undefined,
 					},
 
-					".wcb-icon-list__icon-wrap": {
+					".wcb-icon__icon-wrap": {
 						order: general_icon.iconPosition === "leftOfTitle" ? "0" : "2",
 					},
 
-					".wcb-icon-list__content-title-wrap": {
+					".wcb-icon__content-title-wrap": {
 						display:
 							general_icon.iconPosition === "leftOfTitle" ||
 							general_icon.iconPosition === "rightOfTitle"
@@ -116,16 +116,16 @@ const GlobalCss: FC<Props> = (attrs) => {
 				<Global
 					styles={[
 						getPaddingMarginStyles({
-							className: `${WRAP_CLASSNAME} .wcb-icon-list__icon-wrap`,
+							className: `${WRAP_CLASSNAME} .wcb-icon__icon-wrap`,
 							margin: style_Icon.dimensions.margin,
 						}),
 						getPaddingMarginStyles({
-							className: `${WRAP_CLASSNAME} .wcb-icon-list__icon`,
+							className: `${WRAP_CLASSNAME} .wcb-icon__icon`,
 							padding: style_Icon.dimensions.padding,
 						}),
 						getBorderStyles({
 							border: style_Icon.border,
-							className: `${WRAP_CLASSNAME} .wcb-icon-list__icon`,
+							className: `${WRAP_CLASSNAME} .wcb-icon__icon`,
 							isWithRadius: true,
 						}),
 						getStyleObjectFromResponsiveAttr({
@@ -175,15 +175,15 @@ const GlobalCss: FC<Props> = (attrs) => {
 					styles={[
 						getTypographyStyles({
 							typography: style_desination.typography,
-							className: `${WRAP_CLASSNAME} .wcb-icon-list__designation`,
+							className: `${WRAP_CLASSNAME} .wcb-icon__designation`,
 						}),
 						getStyleObjectFromResponsiveAttr({
-							className: `${WRAP_CLASSNAME} .wcb-icon-list__designation`,
+							className: `${WRAP_CLASSNAME} .wcb-icon__designation`,
 							value: style_desination.marginBottom,
 							prefix: "marginBottom",
 						}),
 						{
-							[`${WRAP_CLASSNAME} .wcb-icon-list__designation`]: {
+							[`${WRAP_CLASSNAME} .wcb-icon__designation`]: {
 								color: style_desination.textColor,
 							},
 						},

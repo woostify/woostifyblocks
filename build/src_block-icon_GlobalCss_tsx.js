@@ -59,18 +59,18 @@ const GlobalCss = attrs => {
     }), {
       [`${WRAP_CLASSNAME}`]: {
         flexDirection: general_icon.stackOn === "mobile" || general_icon.stackOn === "tablet" ? "column-reverse" : "column",
-        ".wcb-icon-list__content": {
+        ".wcb-icon__content": {
           display: "flex",
           flexDirection: general_layout.layout === "vertical" ? "column" : "row",
           alignItems: general_layout.textAlignment.Desktop === "center" || general_layout.textAlignment.Mobile === "center" || general_layout.textAlignment.Tablet === "center" ? "center" : general_layout.textAlignment.Desktop === "left" || general_layout.textAlignment.Mobile === "left" || general_layout.textAlignment.Tablet === "left" ? "flex-start" : general_layout.textAlignment.Desktop === "right" || general_layout.textAlignment.Mobile === "right" || general_layout.textAlignment.Tablet === "right" ? "flex-end" : undefined
         },
-        ".wcb-icon-list__icon-wrap, .wcb-icon-list__content": {
+        ".wcb-icon__icon-wrap, .wcb-icon__content": {
           alignSelf: general_icon.verticalAlignment === "middle" ? "center" : undefined
         },
-        ".wcb-icon-list__icon-wrap": {
+        ".wcb-icon__icon-wrap": {
           order: general_icon.iconPosition === "leftOfTitle" ? "0" : "2"
         },
-        ".wcb-icon-list__content-title-wrap": {
+        ".wcb-icon__content-title-wrap": {
           display: general_icon.iconPosition === "leftOfTitle" || general_icon.iconPosition === "rightOfTitle" ? "flex" : "block"
         },
         [`@media (min-width: ${media_tablet})`]: {
@@ -95,14 +95,14 @@ const GlobalCss = attrs => {
     })
   }), general_icon.enableIcon ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
     styles: [(0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
-      className: `${WRAP_CLASSNAME} .wcb-icon-list__icon-wrap`,
+      className: `${WRAP_CLASSNAME} .wcb-icon__icon-wrap`,
       margin: style_Icon.dimensions.margin
     }), (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
-      className: `${WRAP_CLASSNAME} .wcb-icon-list__icon`,
+      className: `${WRAP_CLASSNAME} .wcb-icon__icon`,
       padding: style_Icon.dimensions.padding
     }), (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_2__["default"])({
       border: style_Icon.border,
-      className: `${WRAP_CLASSNAME} .wcb-icon-list__icon`,
+      className: `${WRAP_CLASSNAME} .wcb-icon__icon`,
       isWithRadius: true
     }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_4__["default"])({
       className: `${WRAP_CLASSNAME} .wcb-icon-full`,
@@ -133,13 +133,13 @@ const GlobalCss = attrs => {
   }) : null, general_layout.enablePrefix ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
     styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
       typography: style_desination.typography,
-      className: `${WRAP_CLASSNAME} .wcb-icon-list__designation`
+      className: `${WRAP_CLASSNAME} .wcb-icon__designation`
     }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_4__["default"])({
-      className: `${WRAP_CLASSNAME} .wcb-icon-list__designation`,
+      className: `${WRAP_CLASSNAME} .wcb-icon__designation`,
       value: style_desination.marginBottom,
       prefix: "marginBottom"
     }), {
-      [`${WRAP_CLASSNAME} .wcb-icon-list__designation`]: {
+      [`${WRAP_CLASSNAME} .wcb-icon__designation`]: {
         color: style_desination.textColor
       }
     }]

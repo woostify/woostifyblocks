@@ -1,7 +1,41 @@
 /*!***************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/block-icon/editor.scss ***!
   \***************************************************************************************************************************************************************************************************************************************************/
+.wcb-icon__content {
+  flex-grow: 1;
+}
 
+.wcb-icon__icon-wrap {
+  flex-shrink: 0;
+}
+
+.wcb-icon__icon {
+  display: flex;
+  margin: 1rem;
+  align-content: center;
+}
+
+.wcb-icon__content-title {
+  flex-grow: 0;
+  margin: 1rem;
+}
+
+.wcb-icon__heading {
+  margin: 0;
+}
+
+.wcb-icon__separator {
+  display: inline-block;
+}
+
+.wcb-icon__content-wrap {
+  flex-grow: 1;
+}
+
+.wcb-icon__image {
+  flex-shrink: 0;
+  display: inline-block;
+}
 /*!***********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/components/controls/SelectIcon/editor.scss ***!
   \***********************************************************************************************************************************************************************************************************************************************************************/

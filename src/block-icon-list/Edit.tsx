@@ -1,6 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import { InnerBlocks, RichText, useBlockProps, 	// @ts-ignore
-	useInnerBlocksProps,} from "@wordpress/block-editor";
+	useInnerBlocksProps, store as blockEditorStore} from "@wordpress/block-editor";
+import { useSelect, useDispatch } from "@wordpress/data";
 import React, { useEffect, FC, useRef, useCallback } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
@@ -85,22 +86,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							initialOpen={tabGeneralIsPanelOpen === "Icon"}
 							opened={tabGeneralIsPanelOpen === "Icon" || undefined}
 							//
-							setAttr__={(data) => {
-								return setAttributes({
-									general_icon: data,
-									style_Icon: {
-										...style_Icon,
-										dimensions: {
-											...MY_DIMENSIONS_NO_GAP_DEMO__EMPTY,
-											margin: {
-												Desktop: {
-													...MY_DIMENSIONS_NO_GAP_DEMO__EMPTY.margin.Desktop,
-												},
-											},
-										},
-									},
-								});
-							}}
+							setAttr__={handleChangeIcon}
 							panelData={general_icon}
 						/>
 
@@ -114,6 +100,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							//
 							setAttr__={(data) => {
 								setAttributes({ general_layout: data });
+								// Update layout for all child blocks
+								innerBlockClientIds.forEach((childId) => {
+									updateBlockAttributes(childId, { general_layout: data });
+								});
 							}}
 							panelData={general_layout}
 						/>
@@ -139,6 +129,19 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 										: preset === "wcb-icon-list-3"
 										? WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_3
 										: WCB_ICON_LIST_PANEL_STYLE_ICON_DEMO,
+								});
+								// Update layout for all child blocks
+								innerBlockClientIds.forEach((childId) => {
+									updateBlockAttributes(childId, { 
+										style_Icon: 
+											preset === "wcb-icon-list-1"
+											? WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_1
+											: preset === "wcb-icon-list-2"
+											? WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_2
+											: preset === "wcb-icon-list-3"	
+											? WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_3
+											: WCB_ICON_LIST_PANEL_STYLE_ICON_DEMO,
+									 });
 								});
 							}}
 							panelData={general_preset}
@@ -248,13 +251,52 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	];
 
 	const blockProps = useBlockProps({
-		className: `wcb-icon__content-title-wrap`,
+		className: `wcb-icon-list__icon-wrap`,
 	});
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
 		template: TEMPLATE,
 		renderAppender: () => <InnerBlocks.DefaultBlockAppender />
 	});
+
+	/**
+	 * Retrieves the `updateBlockAttributes` action dispatcher from the block editor store.
+	 * This function allows updating the attributes of a specific block within the editor.
+	 *
+	 * @see https://developer.wordpress.org/block-editor/reference-guides/data/data-core-block-editor/#updateblockattributes
+	 */
+	const { updateBlockAttributes } = useDispatch(blockEditorStore);
+
+	// Get list clientId if child blocks
+	const innerBlockClientIds = useSelect(
+		(select: typeof wp.data.select) =>
+			select(blockEditorStore).getBlockOrder
+				? select(blockEditorStore).getBlockOrder(clientId)
+				: [],
+		[clientId]
+	);
+
+	// update icon for all child blocks
+	const handleChangeIcon = (data) => {
+		setAttributes({
+			general_icon: data,
+			style_Icon: {
+				...style_Icon,
+				dimensions: {
+					...MY_DIMENSIONS_NO_GAP_DEMO__EMPTY,
+					margin: {
+						Desktop: {
+							...MY_DIMENSIONS_NO_GAP_DEMO__EMPTY.margin.Desktop,
+						},
+					},
+				},
+			},
+		});
+		// Update icon for all child blocks
+		innerBlockClientIds.forEach((childId) => {
+			updateBlockAttributes(childId, { general_icon: data });
+		});
+	};
 
 	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {
 		return {
@@ -300,7 +342,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-icon-list__wrap ${uniqueId}`}
+				className={`${wrapBlockProps?.className} ${uniqueId}`}
 				data-uniqueid={uniqueId}
 			>
 				{/* CONTROL SETTINGS */}
@@ -313,7 +355,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				<GlobalCss {...WcbAttrsForSave()} />
 
 				{/* CHILD CONTENT  */}
-				<div className="wcb-icon-list__content" {...innerBlocksProps} />
+				<div {...innerBlocksProps} />
 			</div>
 		</MyCacheProvider>
 	);

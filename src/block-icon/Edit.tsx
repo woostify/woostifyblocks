@@ -223,9 +223,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 	const renderIcon = () => {
 		return (
-			<div className="wcb-icon-list__icon-wrap">
-				<div className="wcb-icon-list__icon">
-					<MyIconFull icon={general_icon.icon} />
+			<div className="wcb-icon__icon-wrap">
+				<div className="wcb-icon__icon">
+					<MyIconFull icon={attributes.general_icon.icon} />
 				</div>
 			</div>
 		);
@@ -249,9 +249,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				<GlobalCss {...WcbAttrsForSave()} />
 
 				{/* CHILD CONTENT  */}
-					<div className="wcb-icon-list__content-title-wrap">
+					<div className="wcb-icon__content-title-wrap">
 						{general_icon.iconPosition === "leftOfTitle" && renderIcon()}
-						<div className="wcb-icon-list__content-title">
+						<div className="wcb-icon__content-title">
 							{general_layout.enableTitle && (
 								<RichText
 									tagName={HeadingTag}

@@ -39,43 +39,56 @@ const GlobalCss: FC<Props> = (attrs) => {
 			}),
 			{
 				[`${WRAP_CLASSNAME}`]: {
-					
-					flexDirection:
-						general_icon.stackOn === "mobile" ||
-						general_icon.stackOn === "tablet" ? "column-reverse" : "column",
-
-					
-					".wcb-icon-list__content": {
+					".wcb-icon-list__icon-wrap": {
 						display: "flex",
-						flexDirection:  general_layout.layout === "vertical" ? "column" : "row",
-						alignItems:
-							general_layout.textAlignment.Desktop ===  "center" 
-							|| general_layout.textAlignment.Mobile ===  "center" 
-							|| general_layout.textAlignment.Tablet ===  "center"
-								? "center" :
-							general_layout.textAlignment.Desktop === "left" 
-							|| general_layout.textAlignment.Mobile === "left"
-							|| general_layout.textAlignment.Tablet === "left"
-								? "flex-start" :
-							general_layout.textAlignment.Desktop === "right" 
-							|| general_layout.textAlignment.Mobile === "right"
-							|| general_layout.textAlignment.Tablet === "right"
-								? "flex-end" 
-								: undefined,
+						flexDirection: general_layout.layout === "vertical" ? "column" : "row",
+						...(general_layout.layout === "vertical"
+							? {
+									alignItems:
+										general_layout.textAlignment.Desktop === "center" ||
+										general_layout.textAlignment.Mobile === "center" ||
+										general_layout.textAlignment.Tablet === "center"
+											? "center"
+											: general_layout.textAlignment.Desktop === "left" ||
+											  general_layout.textAlignment.Mobile === "left" ||
+											  general_layout.textAlignment.Tablet === "left"
+											? "flex-start"
+											: general_layout.textAlignment.Desktop === "right" ||
+											  general_layout.textAlignment.Mobile === "right" ||
+											  general_layout.textAlignment.Tablet === "right"
+											? "flex-end"
+											: undefined,
+							  }
+							: {
+									justifyContent:
+										general_layout.textAlignment.Desktop === "center" ||
+										general_layout.textAlignment.Mobile === "center" ||
+										general_layout.textAlignment.Tablet === "center"
+											? "center"
+											: general_layout.textAlignment.Desktop === "left" ||
+											  general_layout.textAlignment.Mobile === "left" ||
+											  general_layout.textAlignment.Tablet === "left"
+											? "flex-start"
+											: general_layout.textAlignment.Desktop === "right" ||
+											  general_layout.textAlignment.Mobile === "right" ||
+											  general_layout.textAlignment.Tablet === "right"
+											? "flex-end"
+											: undefined,
+							  }),
 					},
 
-					".wcb-icon-list__icon-wrap, .wcb-icon-list__content": {
+					".wcb-icon__icon-wrap, .wcb-icon__content": {
 						alignSelf:
 							general_icon.verticalAlignment === "middle"
 								? "center"
 								: undefined,
 					},
 
-					".wcb-icon-list__icon-wrap": {
+					".wcb-icon__icon-wrap": {
 						order: general_icon.iconPosition === "leftOfTitle" ? "0" : "2",
 					},
 
-					".wcb-icon-list__content-title-wrap": {
+					".wcb-icon__content-title-wrap": {
 						display:
 							general_icon.iconPosition === "leftOfTitle" ||
 							general_icon.iconPosition === "rightOfTitle"
@@ -116,16 +129,16 @@ const GlobalCss: FC<Props> = (attrs) => {
 				<Global
 					styles={[
 						getPaddingMarginStyles({
-							className: `${WRAP_CLASSNAME} .wcb-icon-list__icon-wrap`,
+							className: `${WRAP_CLASSNAME} .wcb-icon__icon`,
 							margin: style_Icon.dimensions.margin,
 						}),
 						getPaddingMarginStyles({
-							className: `${WRAP_CLASSNAME} .wcb-icon-list__icon`,
+							className: `${WRAP_CLASSNAME} .wcb-icon__icon`,
 							padding: style_Icon.dimensions.padding,
 						}),
 						getBorderStyles({
 							border: style_Icon.border,
-							className: `${WRAP_CLASSNAME} .wcb-icon-list__icon`,
+							className: `${WRAP_CLASSNAME} .wcb-icon__icon`,
 							isWithRadius: true,
 						}),
 						getStyleObjectFromResponsiveAttr({
