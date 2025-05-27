@@ -159,6 +159,12 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								//
 								setAttr__={(data) => {
 									setAttributes({ style_Icon: data });
+									// Update icon for all child blocks
+									innerBlockClientIds.forEach((childId) => {
+									updateBlockAttributes(childId, { 
+										style_Icon: data,
+									 	});
+									});
 								}}
 								panelData={style_Icon}
 							/>
