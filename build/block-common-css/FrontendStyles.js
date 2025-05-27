@@ -5125,17 +5125,31 @@ function initTabsForWcbTabs(div, props) {
         titles[0].classList.add("active");
       }
     });
-
-    // Assign click event to tab
     titles.forEach((title, index) => {
       title.addEventListener("click", () => {
-        const tabIndex = title.getAttribute("data-tab-index") !== null ? parseInt(title.getAttribute("data-tab-index")) : index;
+        const tabIndex = title.getAttribute("data-tab-index") !== null ? parseInt(title.getAttribute("data-tab-index") || "") : index;
         if (isNaN(tabIndex) || !contents[tabIndex]) {
           console.warn("Tabs block: Invalid tab index or content not found.");
           return;
         }
-        titles.forEach(t => t.classList.remove("active"));
-        title.classList.add("active");
+
+        // Remove selected classes from all tabs and icons
+        titles.forEach(t => {
+          t.classList.remove("active", "wcb-tabs__title_inner-selected");
+          const icon = t.querySelector(".wcb-tabs__icon");
+          const titleText = t.querySelector(".wcb-tabs__title");
+          icon?.classList.remove("wcb-tabs__icon-selected");
+          titleText?.classList.remove("wcb-tabs__title-selected");
+        });
+
+        // Add selected classes to current tab and icon
+        title.classList.add("active", "wcb-tabs__title_inner-selected");
+        const currentIcon = title.querySelector(".wcb-tabs__icon");
+        const currentTitleText = title.querySelector(".wcb-tabs__title");
+        currentIcon?.classList.add("wcb-tabs__icon-selected");
+        currentTitleText?.classList.add("wcb-tabs__title-selected");
+
+        // Show selected content
         contents.forEach(content => content.setAttribute("hidden", ""));
         contents[tabIndex].removeAttribute("hidden");
       });
@@ -6573,6 +6587,12 @@ const classes = [{
   D: ".wcb-counter-box__wrap.wcb-update-div",
   C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => Promise.resolve(/*! import() */).then(__webpack_require__.bind(__webpack_require__, /*! ../block-counter/GlobalCss */ "./src/block-counter/GlobalCss.tsx"))),
   F: _block_counter_FrontendStyles__WEBPACK_IMPORTED_MODULE_8__.animateProgressElements
+}, {
+  D: ".wcb-icon-list__wrap.wcb-update-div",
+  C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => __webpack_require__.e(/*! import() */ "src_block-icon-list_GlobalCss_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../block-icon-list/GlobalCss */ "./src/block-icon-list/GlobalCss.tsx")))
+}, {
+  D: ".wcb-icon__wrap.wcb-update-div",
+  C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => __webpack_require__.e(/*! import() */ "src_block-icon_GlobalCss_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../block-icon/GlobalCss */ "./src/block-icon/GlobalCss.tsx")))
 }];
 classes.forEach(({
   D,

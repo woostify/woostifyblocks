@@ -7978,8 +7978,8 @@ const Edit = props => {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (childInnerBlocks.length === titles.length) {
       const newTabContents = childInnerBlocks.map(block => {
-        // Get content from childInnerBlocks 
-        const innerContent = block.innerBlocks?.map(innerBlock => innerBlock.attributes.content || "").join("\n") || "";
+        // Serialize innerBlocks to HTML
+        const innerContent = block.innerBlocks ? (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_15__.serialize)(block.innerBlocks) : "";
         return innerContent;
       });
       setAttributes({
@@ -7997,9 +7997,34 @@ const Edit = props => {
   const renderTabBodyPanels = tab => {
     switch (tab.name) {
       case "General":
-        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbTabsPanelPreset__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbTabsPanelGeneral__WEBPACK_IMPORTED_MODULE_19__["default"], {
+          onToggle: () => handleTogglePanel("General", "General"),
+          initialOpen: tabGeneralIsPanelOpen === "General" || tabGeneralIsPanelOpen === "first",
+          opened: tabGeneralIsPanelOpen === "General" || undefined,
+          setAttr__: data => setAttributes({
+            general_general: data,
+            general_preset: {
+              ...general_preset,
+              preset: ""
+            }
+          }),
+          panelData: general_general
+        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbTabsPanelTabTitle__WEBPACK_IMPORTED_MODULE_14__["default"], {
+          onToggle: () => handleTogglePanel("General", "TabTitle"),
+          initialOpen: tabGeneralIsPanelOpen === "TabTitle",
+          opened: tabGeneralIsPanelOpen === "TabTitle" || undefined,
+          setAttr__: data => setAttributes({
+            general_tabTitle: data,
+            general_preset: {
+              ...general_preset,
+              preset: ""
+            }
+          }),
+          panelData: general_tabTitle,
+          tabTitles: titles
+        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbTabsPanelPreset__WEBPACK_IMPORTED_MODULE_11__["default"], {
           onToggle: () => handleTogglePanel("General", "Preset", true),
-          initialOpen: tabGeneralIsPanelOpen === "Preset" || tabGeneralIsPanelOpen === "first",
+          initialOpen: tabGeneralIsPanelOpen === "Preset",
           opened: tabGeneralIsPanelOpen === "Preset" || undefined,
           setAttr__: data => {
             if (data.preset === "carousel-simple") {
@@ -8055,31 +8080,6 @@ const Edit = props => {
             }
           },
           panelData: general_preset
-        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbTabsPanelGeneral__WEBPACK_IMPORTED_MODULE_19__["default"], {
-          onToggle: () => handleTogglePanel("General", "General"),
-          initialOpen: tabGeneralIsPanelOpen === "General",
-          opened: tabGeneralIsPanelOpen === "General" || undefined,
-          setAttr__: data => setAttributes({
-            general_general: data,
-            general_preset: {
-              ...general_preset,
-              preset: ""
-            }
-          }),
-          panelData: general_general
-        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbTabsPanelTabTitle__WEBPACK_IMPORTED_MODULE_14__["default"], {
-          onToggle: () => handleTogglePanel("General", "TabTitle"),
-          initialOpen: tabGeneralIsPanelOpen === "TabTitle",
-          opened: tabGeneralIsPanelOpen === "TabTitle" || undefined,
-          setAttr__: data => setAttributes({
-            general_tabTitle: data,
-            general_preset: {
-              ...general_preset,
-              preset: ""
-            }
-          }),
-          panelData: general_tabTitle,
-          tabTitles: titles
         }));
       case "Styles":
         return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbTabsPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -8093,8 +8093,9 @@ const Edit = props => {
               preset: ""
             }
           }),
-          panelData: style_title
-        }), general_general.layout === "accordion" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbTabsPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_10__["default"], {
+          panelData: style_title,
+          style: attributes.general_general.style
+        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbTabsPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_10__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleIcon"),
           initialOpen: tabStylesIsPanelOpen === "_StyleIcon",
           opened: tabStylesIsPanelOpen === "_StyleIcon" || undefined,
@@ -8188,10 +8189,10 @@ const Edit = props => {
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_heroicons_react_24_outline__WEBPACK_IMPORTED_MODULE_21__, {
     className: "w-5 h-5"
   }));
-  const renderIcon = () => {
+  const renderIcon = index => {
     if (!general_tabTitle.enableIcon) return null;
     return general_tabTitle.icon ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyIconFull__WEBPACK_IMPORTED_MODULE_17__["default"], {
-      className: "wcb-tabs__icon",
+      className: `wcb-tabs__icon ${activeTabIndex === index ? "wcb-tabs__icon-selected" : ""}`,
       icon: general_tabTitle.icon
     }) : null;
   };
@@ -8211,13 +8212,13 @@ const Edit = props => {
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wcb-tabs__titles"
   }, titles.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wcb-tabs__title_inner relative group",
+    className: `wcb-tabs__title_inner relative group ${activeTabIndex === index ? "wcb-tabs__title_inner-selected" : ""}`,
     "data-tab-index": item.dataTabIndex,
     key: item.id
-  }, renderRemoveBtn(item, index), (general_tabTitle.iconPosition === "left" || general_tabTitle.iconPosition === "top") && renderIcon(), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  }, renderRemoveBtn(item, index), (general_tabTitle.iconPosition === "left" || general_tabTitle.iconPosition === "top") && renderIcon(index), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     key: item.id,
     tagName: "p",
-    className: "wcb-tabs__title",
+    className: `wcb-tabs__title ${activeTabIndex === index ? "wcb-tabs__title-selected" : ""}`,
     value: item.title,
     onFocusCapture: () => setIndexFocused(index),
     onChange: value => {
@@ -8230,7 +8231,7 @@ const Edit = props => {
       });
     },
     placeholder: "Title"
-  }), (general_tabTitle.iconPosition === "right" || general_tabTitle.iconPosition === "bottom") && renderIcon())), renderAddnewButton()), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks, {
+  }), (general_tabTitle.iconPosition === "right" || general_tabTitle.iconPosition === "bottom") && renderIcon(index))), renderAddnewButton()), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks, {
     allowedBlocks: ["wcb/tab-child"],
     template: [["wcb/tab-child", {}], ["wcb/tab-child", {}], ["wcb/tab-child", {}]]
   }))));
@@ -8272,6 +8273,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const getFlexAlignment = align => {
+  switch (align) {
+    case "left":
+      return "flex-start";
+    case "right":
+      return "flex-end";
+    case "center":
+      return "center";
+    default:
+      return "flex-start";
+  }
+};
 const GlobalCss = attrs => {
   const {
     uniqueId,
@@ -8289,38 +8302,24 @@ const GlobalCss = attrs => {
     media_desktop,
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_5__.DEMO_WCB_GLOBAL_VARIABLES;
+  if (!uniqueId) return null;
   const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
   const TITLE_WRAP_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__titles`;
   const TITLE_CHILD_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__title_inner`;
+  const TITLE_CHILD_CLASSNAME_SELECTED = `${WRAP_CLASSNAME} .wcb-tabs__title_inner-selected`;
   const TITLE_CHILD_BUTTON_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__title_inner_btn`;
   const TITLE_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__title`;
+  const TITLE_CLASSNAME_SELECTED = `${WRAP_CLASSNAME} .wcb-tabs__title-selected`;
   const BODY_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tab-child__wrap`;
+  const BODY_CHILD_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tab-child__inner`;
   const ICON_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__icon`;
+  const ICON_CLASSNAME_SELECTED = `${WRAP_CLASSNAME} .wcb-tabs__icon-selected`;
   const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-tabs__contents`;
   const IconSizeConverted = {
     Desktop: `${(0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_2__["default"])(style_icon.size).value_Desktop}px`,
     Tablet: `${(0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_2__["default"])(style_icon.size).value_Tablet}px`,
     Mobile: `${(0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_2__["default"])(style_icon.size).value_Mobile}px`
   };
-  const inner_getGridCol = () => {
-    const {
-      value_Desktop,
-      value_Tablet,
-      value_Mobile
-    } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_2__["default"])(general_general.columns);
-    return {
-      [`${INNER_CLASSNAME}`]: {
-        gridTemplateColumns: `repeat(${value_Mobile}, minmax(0, 1fr))`,
-        [`@media (min-width: ${media_tablet})`]: {
-          gridTemplateColumns: `repeat(${value_Tablet}, minmax(0, 1fr))`
-        },
-        [`@media (min-width: ${media_desktop})`]: {
-          gridTemplateColumns: `repeat(${value_Desktop}, minmax(0, 1fr))`
-        }
-      }
-    };
-  };
-  if (!uniqueId) return null;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
     styles: [(0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_6__["default"])({
       className: INNER_CLASSNAME,
@@ -8335,7 +8334,7 @@ const GlobalCss = attrs => {
         textAlign: general_general.textAlignment
       }
     }]
-  }), general_general.layout === "grid" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), (general_general.layout === "grid" || general_general.style === "verticalStyle1" || general_general.style === "verticalStyle2") && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
     styles: [{
       [INNER_CLASSNAME]: {
         display: "grid",
@@ -8346,13 +8345,17 @@ const GlobalCss = attrs => {
       [TITLE_WRAP_CLASSNAME]: {
         display: "flex",
         flexDirection: "column",
-        gap: "0.5rem"
+        gap: "0.5rem",
+        justifyContent: getFlexAlignment(general_tabTitle.tabAlignment)
       }
     }, {
       [TITLE_CHILD_CLASSNAME]: {
+        display: "flex",
+        flexDirection: "row",
         width: "100%",
         padding: "0.5rem",
-        boxSizing: "border-box"
+        boxSizing: "border-box",
+        justifyContent: getFlexAlignment(general_tabTitle.textAlignment)
       }
     }, {
       [BODY_CLASSNAME]: {
@@ -8363,6 +8366,58 @@ const GlobalCss = attrs => {
     }, {
       [TITLE_CHILD_BUTTON_CLASSNAME]: {
         padding: "0.6rem"
+      }
+    }]
+  }), (general_general.layout === "accordion" || general_general.style === "horizontalStyle1" || general_general.style === "horizontalStyle3") && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+    styles: [{
+      [TITLE_WRAP_CLASSNAME]: {
+        display: "flex",
+        flexDirection: "row",
+        gap: "0.5rem",
+        justifyContent: getFlexAlignment(general_tabTitle.tabAlignment)
+      },
+      [TITLE_CHILD_CLASSNAME]: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: getFlexAlignment(general_tabTitle.textAlignment)
+      }
+    }]
+  }), general_general.style === "horizontalStyle2" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+    styles: [{
+      [TITLE_WRAP_CLASSNAME]: {
+        display: "flex",
+        flexDirection: "row",
+        gap: "0.5rem",
+        justifyContent: getFlexAlignment(general_tabTitle.tabAlignment),
+        borderBottom: "2px solid #d1d5db",
+        marginBottom: "0",
+        background: "#fff"
+      },
+      [TITLE_CHILD_CLASSNAME]: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: getFlexAlignment(general_tabTitle.textAlignment),
+        background: "none",
+        border: "none",
+        borderRadius: "0",
+        marginBottom: "-2px",
+        zIndex: 1
+      },
+      [TITLE_CHILD_CLASSNAME_SELECTED]: {
+        background: style_title.backgroundColorActive || "#fff",
+        border: "none",
+        borderTop: "2px solid #d1d5db",
+        borderRight: "2px solid #d1d5db",
+        borderLeft: "2px solid #d1d5db",
+        borderRadius: "0",
+        marginBottom: "-2px",
+        zIndex: 2
+      },
+      [BODY_CLASSNAME]: {
+        border: "1px solid #d1d5db",
+        borderTop: "none",
+        marginTop: "0",
+        padding: "2rem"
       }
     }]
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
@@ -8380,28 +8435,38 @@ const GlobalCss = attrs => {
       className: TITLE_CLASSNAME,
       padding: style_title.padding
     }), {
-      [TITLE_CLASSNAME]: {
-        color: style_title.color,
-        backgroundColor: style_title.backgroundColor,
-        ":hover, :focus, :active": {
-          color: style_title.colorHover,
-          backgroundColor: style_title.backgroundColorHover
-        }
+      [TITLE_CHILD_CLASSNAME]: {
+        backgroundColor: style_title.backgroundColor
       },
-      [`${WRAP_CLASSNAME} .wcb-tabs__title_inner.active .wcb-tabs__title`]: {
-        color: style_title.colorHover,
-        backgroundColor: style_title.backgroundColorHover
+      [TITLE_CLASSNAME]: {
+        color: style_title.color
+      },
+      [TITLE_CHILD_CLASSNAME_SELECTED]: {
+        backgroundColor: style_title.backgroundColorActive
+      },
+      [TITLE_CLASSNAME_SELECTED]: {
+        color: style_title.colorActive
       }
     }, (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_7__["default"])({
       className: BODY_CLASSNAME,
       typography: style_body.typography
     }), (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_8__["default"])({
       className: BODY_CLASSNAME,
-      padding: style_body.padding
+      padding: style_body.padding,
+      margin: style_body.margin
     }), {
       [BODY_CLASSNAME]: {
         color: style_body.color,
-        backgroundColor: style_body.backgroundColor
+        backgroundColor: style_body.backgroundColor,
+        "&:hover": {
+          backgroundColor: style_body.backgroundColorHover
+        }
+      },
+      [BODY_CHILD_CLASSNAME]: {
+        color: style_body.color,
+        "&:hover": {
+          color: style_body.colorHover
+        }
       }
     }]
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
@@ -8415,7 +8480,7 @@ const GlobalCss = attrs => {
       [ICON_CLASSNAME]: {
         color: style_icon.color
       },
-      [`${WRAP_CLASSNAME} .wcb-tabs__title_inner.active .wcb-tabs__icon`]: {
+      [ICON_CLASSNAME_SELECTED]: {
         color: style_icon.activeColor
       }
     }]
@@ -8426,6 +8491,22 @@ const GlobalCss = attrs => {
       advance_zIndex,
       className: WRAP_CLASSNAME
     })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+    styles: [(0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
+      className: TITLE_CHILD_CLASSNAME,
+      border: style_title.border,
+      isWithRadius: true
+    }), (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
+      className: TITLE_CHILD_CLASSNAME_SELECTED,
+      border: style_title.borderActive,
+      isWithRadius: true
+    })]
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+    styles: [(0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
+      className: BODY_CLASSNAME,
+      border: style_body.border,
+      isWithRadius: true
+    })]
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (react__WEBPACK_IMPORTED_MODULE_0___default().memo(GlobalCss));
@@ -8492,10 +8573,10 @@ function save({
   const wrapBlockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
     className: "wcb-tabs__wrap"
   });
-  const renderIcon = () => {
+  const renderIcon = index => {
     if (!general_tabTitle.enableIcon) return null;
     return general_tabTitle.icon ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyIconFull__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      className: "wcb-tabs__icon",
+      className: `wcb-tabs__icon ${activeTabIndex === index ? "wcb-tabs__icon-selected" : ""}`,
       icon: general_tabTitle.icon
     }) : null;
   };
@@ -8508,21 +8589,25 @@ function save({
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wcb-tabs__titles"
   }, titles.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wcb-tabs__title_inner relative group",
+    className: `wcb-tabs__title_inner relative group ${activeTabIndex === index ? "wcb-tabs__title_inner-selected" : ""}`,
     key: item.id,
     "data-tab-index": item.dataTabIndex
-  }, (general_tabTitle.iconPosition === "left" || general_tabTitle.iconPosition === "top") && renderIcon(), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+  }, (general_tabTitle.iconPosition === "left" || general_tabTitle.iconPosition === "top") && renderIcon(index), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "p",
-    className: "wcb-tabs__title",
+    className: `wcb-tabs__title ${activeTabIndex === index ? "wcb-tabs__title-selected" : ""}`,
     value: item.title,
     placeholder: "Title"
-  }), (general_tabTitle.iconPosition === "right" || general_tabTitle.iconPosition === "bottom") && renderIcon()))), titles.map((_, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), (general_tabTitle.iconPosition === "right" || general_tabTitle.iconPosition === "bottom") && renderIcon(index)))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "wcb-tabs__content-wrap"
+  }, titles.map((_, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     key: index,
     className: "wp-block-wcb-tab-child wcb-tab-child__wrap",
+    role: "tabpanel",
+    id: `tabpanel-${uniqueId}-${index}`,
+    "aria-labelledby": `tab-${uniqueId}-${index}`,
     hidden: index !== activeTabIndex
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wcb-tab-child__inner"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "wcb-tab-child__inner",
     dangerouslySetInnerHTML: {
       __html: tabContents[index]
     }
@@ -8555,6 +8640,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/controls/MyTextAlignControl/MyTextAlignControl */ "./src/components/controls/MyTextAlignControl/MyTextAlignControl.tsx");
 /* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
 /* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+/* harmony import */ var _components_controls_MySelect__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/controls/MySelect */ "./src/components/controls/MySelect.tsx");
+
 
 
 
@@ -8567,6 +8654,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const WCB_TAGS_PANEL_GENERAL_DEMO = {
   layout: "accordion",
+  style: "horizontalStyle1",
   headingTag: "div",
   collapseOtherItems: true,
   columns: {
@@ -8595,6 +8683,7 @@ const WcbTabsPanelGeneral = ({
     showMultiple,
     expandFirstItem,
     headingTag,
+    style,
     layout
   } = panelData;
   const {
@@ -8635,6 +8724,22 @@ const WcbTabsPanelGeneral = ({
       })
     }));
   };
+  const OPTION_STYLE_OPEN_TAB_DEMO = [{
+    label: "Horizontal Style 1",
+    value: "horizontalStyle1"
+  }, {
+    label: "Horizontal Style 2",
+    value: "horizontalStyle2"
+  }, {
+    label: "Vertical Style 1",
+    value: "verticalStyle1"
+  }, {
+    label: "Vertical Style 2",
+    value: "verticalStyle2"
+  }];
+
+  // filter options with layout
+  const filteredStyleOptions = layout === "accordion" ? OPTION_STYLE_OPEN_TAB_DEMO.filter(opt => opt.value.startsWith("horizontal")) : OPTION_STYLE_OPEN_TAB_DEMO.filter(opt => opt.value.startsWith("vertical"));
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     initialOpen: initialOpen,
     onToggle: onToggle,
@@ -8642,7 +8747,17 @@ const WcbTabsPanelGeneral = ({
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("General", "wcb")
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "space-y-5"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MySelect__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Style", "Wcb"),
+    options: filteredStyleOptions,
+    value: style,
+    onChange: value => {
+      setAttr__({
+        ...panelData,
+        style: value
+      });
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_5__["default"], {
     hasResponsive: false,
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Layout", "wcb"),
     onChange: value => setAttr__({
@@ -9006,7 +9121,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const WCB_TABS_PANEL_TAB_TITLE_DEMO = {
-  textAlignment: "left",
+  textAlignment: "center",
   tabAlignment: "left",
   iconPosition: "left",
   initOpenTab: "",
@@ -9176,9 +9291,9 @@ const WCB_TABS_PANEL_STYLE_BODY_DEMO = {
   border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_11__.MY_BORDER_CONTROL_DEMO,
   margin: {
     Desktop: {
-      top: "1rem",
-      left: "1rem",
-      right: "1rem",
+      top: "0rem",
+      left: "0rem",
+      right: "0rem",
       bottom: "1rem"
     }
   },
@@ -9200,7 +9315,7 @@ const PANEL_COLOR_TABS = [{
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Normal", "wcb")
 }, {
   name: "Hover",
-  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Hover/Active", "wcb")
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Hover", "wcb")
 }];
 const WcbTabsPanel_StyleBody = ({
   panelData = WCB_TABS_PANEL_STYLE_BODY_DEMO,
@@ -9713,7 +9828,8 @@ const WcbTabsPanel_StyleTitle = ({
   setAttr__,
   initialOpen,
   onToggle,
-  opened
+  opened,
+  style
 }) => {
   const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_6__["default"])() || "Desktop";
   const {
@@ -9832,7 +9948,10 @@ const WcbTabsPanel_StyleTitle = ({
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Colors", "wcb")
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTabPanel_MyTabPanel__WEBPACK_IMPORTED_MODULE_9__["default"], {
     tabs: PANEL_COLOR_TABS
-  }, renderColorTab)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, renderColorTab)),
+  // Render border settings only if the style is not horizontalStyle2
+  // If style is horizontalStyle2, use default CSS from GlobalCss file
+  style !== "horizontalStyle2" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_3__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Border", "wcb")
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTabPanel_MyTabPanel__WEBPACK_IMPORTED_MODULE_9__["default"], {
     tabs: PANEL_COLOR_TABS

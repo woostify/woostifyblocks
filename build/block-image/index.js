@@ -6823,7 +6823,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const Image = ({
   temporaryURL,
   attributes,
@@ -8496,7 +8495,6 @@ const {
 const {
   withSelect
 } = wp.data;
-
 
 
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
