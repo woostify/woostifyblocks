@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*!****************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/block-slider/style.scss ***!
   \****************************************************************************************************************************************************************************************************************************************************/
@@ -62,3 +63,79 @@
 =======
 .wcb-slider-child__wrap{overflow:hidden}.wcb-slider-child__wrap.active .wcb-icon-full.wcb-slider-child__icon--active{display:block}.wcb-slider-child__wrap.active .wcb-icon-full.wcb-slider-child__icon--inactive{display:none}.wcb-slider-child__wrap,.wcb-slider-child__separator{border-width:1px;--tw-border-opacity:1;border-color:rgb(209 213 219 / var(--tw-border-opacity))}.wcb-slider-child__separator{border-bottom-width:0 !important;border-left-width:0 !important;border-right-width:0 !important}.wcb-slider__inner{display:grid;grid-template-columns:repeat(1, minmax(0, 1fr))}.wcb-slider-child__question{display:flex;width:100%;flex:1 1 0%;align-items:center;overflow:hidden;font-size:1rem;line-height:1.5rem}.wcb-slider-child__question:focus{outline:2px solid transparent;outline-offset:2px}.wcb-slider-child__question{font-weight:500;color:#111827}.wcb-slider-child__question--icon-right{justify-content:space-between}.wcb-slider-child__answer{color:#4b5563;font-size:1rem;line-height:1.5rem}.wcb-icon-full.wcb-slider-child__icon--active{display:none}.wcb-icon-full.wcb-slider-child__icon--inactive{display:block}.wcb-slider-child__question-text,.wcb-slider-child__answer-text{margin:0}
 >>>>>>> 54932786 (add build)
+=======
+/*!****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/block-slider/style.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************/
+.wcb-slider-child__wrap {
+  overflow: hidden;
+}
+.wcb-slider-child__wrap.active .wcb-icon-full.wcb-slider-child__icon--active {
+  display: block;
+}
+.wcb-slider-child__wrap.active .wcb-icon-full.wcb-slider-child__icon--inactive {
+  display: none;
+}
+
+.wcb-slider-child__wrap,
+.wcb-slider-child__separator {
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+
+.wcb-slider-child__separator {
+  border-bottom-width: 0 !important;
+  border-left-width: 0 !important;
+  border-right-width: 0 !important;
+}
+
+.wcb-slider__inner {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.wcb-slider-child__question {
+  display: flex;
+  width: 100%;
+  flex: 1 1 0%;
+  align-items: center;
+  overflow: hidden;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.wcb-slider-child__question:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.wcb-slider-child__question {
+  font-weight: 500;
+  color: #111827;
+}
+.wcb-slider-child__question--icon-right {
+  justify-content: space-between;
+}
+
+.wcb-slider-child__answer {
+  color: #4b5563;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.wcb-icon-full.wcb-slider-child__icon--active {
+  display: none;
+}
+
+.wcb-icon-full.wcb-slider-child__icon--inactive {
+  display: block;
+}
+
+.wcb-slider-child__question-text,
+.wcb-slider-child__answer-text {
+  margin: 0;
+}
+
+/*# sourceMappingURL=style-index.css.map*/
+>>>>>>> 83c63faf (update slider block)
