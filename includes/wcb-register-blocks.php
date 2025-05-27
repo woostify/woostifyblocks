@@ -358,7 +358,8 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
             WCB_BUILD_PATH . '/block-slider',
             [
                 "render_callback"     => "wcb_block_slider_renderCallback",
-                "ancestor"              => (($wcb_blocks_enable_disable['wcb/slider'] ?? "") !== 'disabled')  ? null : WCB_UNIQUE_NAME,"view_script_handles" => []
+                "ancestor"              => (($wcb_blocks_enable_disable['wcb/slider'] ?? "") !== 'disabled')  ? null : WCB_UNIQUE_NAME,
+                "view_script_handles" => []
             ]
         );
 

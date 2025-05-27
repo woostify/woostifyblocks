@@ -6,6 +6,7 @@ import {
 	useInnerBlocksProps,
 } from "@wordpress/block-editor";
 import React, { useEffect, FC, useRef, useCallback } from "react";
+import { useMemo, memo } from '@wordpress/element';
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
@@ -34,7 +35,8 @@ import WcbFaqPanelPreset from "./WcbFaqPanelPreset";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
-import { Swiper } from 'swiper/react';
+import { Swiper } from 'swiper/react'
+import Slider, { Settings } from "react-slick";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
@@ -262,31 +264,46 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	};
 
 	// INNER BLOCK
-	const blockProps = useBlockProps({
-		className: `swiper-wrapper`,
-	});
+	const blockProps = useBlockProps();
 
 	const swiperRef = useRef();
 
-	const settings = {
-		slidesPerView: 1,
-		autoplay: false,
-		loop: false,
-		effect: 'slide',
-		allowTouchMove: false
+	const settings: Settings = {
+		slidesToScroll: 1,
+		adaptiveHeight: true,
 	};
 
-	const innerBlocksProps = useInnerBlocksProps(blockProps, {
-		allowedBlocks: ["wcb/icon-box"],
-		template: [
+	// const innerBlocksProps = useInnerBlocksProps(blockProps, {
+	// 	allowedBlocks: ["wcb/icon-box"],
+	// 	template: [
+	// 		["wcb/icon-box", {}],
+	// 		["wcb/icon-box", {}],
+	// 	],
+	// 	renderAppender: () => {
+	// 		return isSelected ? <InnerBlocks.DefaultBlockAppender /> : false;
+	// 	},
+	// });
+	const getSliderTemplate = useMemo( () => {
+		const sliderTemplate = [
 			["wcb/icon-box", {}],
 			["wcb/icon-box", {}],
 			["wcb/icon-box", {}],
-		],
-		renderAppender: () => {
-			return isSelected ? <InnerBlocks.DefaultBlockAppender /> : false;
+		];
+		return sliderTemplate;
+	}, []);
+
+	const innerBlocksProps = useInnerBlocksProps(
+		{
+			className: `swiper-wrapper`,
+			slot: 'container-start',
 		},
-	});
+		{
+			allowedBlocks: ["wcb/icon-box"],
+			template: getSliderTemplate,
+			renderAppender: false,
+			orientation: 'horizontal',
+		}
+	);
 
 	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {
 		return {
@@ -332,12 +349,22 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 				{/* CHILD CONTENT  */}
 
-				<Swiper
-					ref={ swiperRef }
-					{ ...settings }
-				>
-					<div {...innerBlocksProps} />
-				</Swiper>
+				<Slider {...settings}>
+					<InnerBlocks 
+						allowedBlocks={["wcb/icon-box"]} 
+						template={
+							[
+								["wcb/icon-box", {}],
+							]}
+					/>
+					<InnerBlocks 
+						allowedBlocks={["wcb/icon-box"]} 
+						template={
+							[
+								["wcb/icon-box", {}],
+							]}
+					/>
+				</Slider>
 				
 			</div>
 		</MyCacheProvider>
