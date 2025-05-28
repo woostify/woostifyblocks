@@ -28,86 +28,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
 	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
-
-	// ------------------- WRAP DIV
-	const getDivWrapStyles = (): CSSObject[] => {
-		return [
-			getStyleObjectFromResponsiveAttr({
-				className: WRAP_CLASSNAME,
-				value: general_layout.textAlignment,
-				prefix: "textAlign",
-			}),
-			{
-				[`${WRAP_CLASSNAME}`]: {
-					".wcb-icon-list__icon-wrap": {
-						display: "flex",
-						flexDirection: general_layout.layout === "vertical" ? "column" : "row",
-						...(general_layout.layout === "vertical"
-							? {
-									alignItems:
-										general_layout.textAlignment.Desktop === "center" ||
-										general_layout.textAlignment.Mobile === "center" ||
-										general_layout.textAlignment.Tablet === "center"
-											? "center"
-											: general_layout.textAlignment.Desktop === "left" ||
-											  general_layout.textAlignment.Mobile === "left" ||
-											  general_layout.textAlignment.Tablet === "left"
-											? "flex-start"
-											: general_layout.textAlignment.Desktop === "right" ||
-											  general_layout.textAlignment.Mobile === "right" ||
-											  general_layout.textAlignment.Tablet === "right"
-											? "flex-end"
-											: undefined,
-							  }
-							: {
-									justifyContent:
-										general_layout.textAlignment.Desktop === "center" ||
-										general_layout.textAlignment.Mobile === "center" ||
-										general_layout.textAlignment.Tablet === "center"
-											? "center"
-											: general_layout.textAlignment.Desktop === "left" ||
-											  general_layout.textAlignment.Mobile === "left" ||
-											  general_layout.textAlignment.Tablet === "left"
-											? "flex-start"
-											: general_layout.textAlignment.Desktop === "right" ||
-											  general_layout.textAlignment.Mobile === "right" ||
-											  general_layout.textAlignment.Tablet === "right"
-											? "flex-end"
-											: undefined,
-							  }),
-					},
-
-					".wcb-icon__icon-wrap, .wcb-icon__content": {
-						alignSelf:
-							general_icon.verticalAlignment === "middle"
-								? "center"
-								: undefined,
-					},
-
-					".wcb-icon__icon-wrap": {
-						order: general_icon.iconPosition === "leftOfTitle" ? "0" : "2",
-					},
-
-					".wcb-icon__content-title-wrap": {
-						display:
-							general_icon.iconPosition === "leftOfTitle" ||
-							general_icon.iconPosition === "rightOfTitle"
-								? "flex"
-								: "block",
-					},
-
-					[`@media (min-width: ${media_tablet})`]: {
-						flexDirection:
-							general_icon.stackOn === "mobile" ? "row" : undefined,
-					},
-
-					[`@media (min-width: ${media_desktop})`]: {
-						flexDirection: "row",
-					},
-				},
-			},
-		];
-	};
+	const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-icon-list__icon-wrap`;
 
 	if (!uniqueId) {
 		return null;
@@ -115,7 +36,82 @@ const GlobalCss: FC<Props> = (attrs) => {
 
 	return (
 		<>
-			<Global styles={getDivWrapStyles()} />
+			{/* INNER_CLASSNAME  */}
+			<Global styles={[
+				{
+					[`${INNER_CLASSNAME}`]: {
+							display: "flex",
+							flexDirection: general_layout.layout === "vertical" ? "column" : "row",
+							...(general_layout.layout === "vertical"
+								? {
+										alignItems:
+											general_layout.textAlignment.Desktop === "center" ||
+											general_layout.textAlignment.Mobile === "center" ||
+											general_layout.textAlignment.Tablet === "center"
+												? "center"
+												: general_layout.textAlignment.Desktop === "left" ||
+												general_layout.textAlignment.Mobile === "left" ||
+												general_layout.textAlignment.Tablet === "left"
+												? "flex-start"
+												: general_layout.textAlignment.Desktop === "right" ||
+												general_layout.textAlignment.Mobile === "right" ||
+												general_layout.textAlignment.Tablet === "right"
+												? "flex-end"
+												: undefined,
+								}
+								: {
+										justifyContent:
+											general_layout.textAlignment.Desktop === "center" ||
+											general_layout.textAlignment.Mobile === "center" ||
+											general_layout.textAlignment.Tablet === "center"
+												? "center"
+												: general_layout.textAlignment.Desktop === "left" ||
+												general_layout.textAlignment.Mobile === "left" ||
+												general_layout.textAlignment.Tablet === "left"
+												? "flex-start"
+												: general_layout.textAlignment.Desktop === "right" ||
+												general_layout.textAlignment.Mobile === "right" ||
+												general_layout.textAlignment.Tablet === "right"
+												? "flex-end"
+												: undefined,
+								}),
+						},
+
+						".wcb-icon__icon-wrap, .wcb-icon__content": {
+							alignSelf:
+								general_icon.verticalAlignment === "middle"
+									? "center"
+									: undefined,
+						},
+
+						".wcb-icon__icon-wrap": {
+							order: general_icon.iconPosition === "leftOfTitle" ? "0" : "2",
+						},
+
+						".wcb-icon__content-title-wrap": {
+							display:
+								general_icon.iconPosition === "leftOfTitle" ||
+								general_icon.iconPosition === "rightOfTitle"
+									? "flex"
+									: "block",
+						},
+
+						[`@media (min-width: ${media_tablet})`]: {
+							flexDirection:
+								general_icon.stackOn === "mobile" ? "row" : undefined,
+						},
+
+						[`@media (min-width: ${media_desktop})`]: {
+							flexDirection: "row",
+						},
+				},
+				getStyleObjectFromResponsiveAttr({
+					className: INNER_CLASSNAME,
+					value: general_layout.textAlignment,
+					prefix: "textAlign",
+				}),
+			]}/>
+
 			<Global
 				styles={getPaddingMarginStyles({
 					className: WRAP_CLASSNAME,

@@ -8053,47 +8053,41 @@ const GlobalCss = attrs => {
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_6__.DEMO_WCB_GLOBAL_VARIABLES;
   const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
-
-  // ------------------- WRAP DIV
-  const getDivWrapStyles = () => {
-    return [(0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_4__["default"])({
-      className: WRAP_CLASSNAME,
-      value: general_layout.textAlignment,
-      prefix: "textAlign"
-    }), {
-      [`${WRAP_CLASSNAME}`]: {
-        ".wcb-icon-list__icon-wrap": {
-          display: "flex",
-          flexDirection: general_layout.layout === "vertical" ? "column" : "row",
-          ...(general_layout.layout === "vertical" ? {
-            alignItems: general_layout.textAlignment.Desktop === "center" || general_layout.textAlignment.Mobile === "center" || general_layout.textAlignment.Tablet === "center" ? "center" : general_layout.textAlignment.Desktop === "left" || general_layout.textAlignment.Mobile === "left" || general_layout.textAlignment.Tablet === "left" ? "flex-start" : general_layout.textAlignment.Desktop === "right" || general_layout.textAlignment.Mobile === "right" || general_layout.textAlignment.Tablet === "right" ? "flex-end" : undefined
-          } : {
-            justifyContent: general_layout.textAlignment.Desktop === "center" || general_layout.textAlignment.Mobile === "center" || general_layout.textAlignment.Tablet === "center" ? "center" : general_layout.textAlignment.Desktop === "left" || general_layout.textAlignment.Mobile === "left" || general_layout.textAlignment.Tablet === "left" ? "flex-start" : general_layout.textAlignment.Desktop === "right" || general_layout.textAlignment.Mobile === "right" || general_layout.textAlignment.Tablet === "right" ? "flex-end" : undefined
-          })
-        },
-        ".wcb-icon__icon-wrap, .wcb-icon__content": {
-          alignSelf: general_icon.verticalAlignment === "middle" ? "center" : undefined
-        },
-        ".wcb-icon__icon-wrap": {
-          order: general_icon.iconPosition === "leftOfTitle" ? "0" : "2"
-        },
-        ".wcb-icon__content-title-wrap": {
-          display: general_icon.iconPosition === "leftOfTitle" || general_icon.iconPosition === "rightOfTitle" ? "flex" : "block"
-        },
-        [`@media (min-width: ${media_tablet})`]: {
-          flexDirection: general_icon.stackOn === "mobile" ? "row" : undefined
-        },
-        [`@media (min-width: ${media_desktop})`]: {
-          flexDirection: "row"
-        }
-      }
-    }];
-  };
+  const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-icon-list__icon-wrap`;
   if (!uniqueId) {
     return null;
   }
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
-    styles: getDivWrapStyles()
+    styles: [{
+      [`${INNER_CLASSNAME}`]: {
+        display: "flex",
+        flexDirection: general_layout.layout === "vertical" ? "column" : "row",
+        ...(general_layout.layout === "vertical" ? {
+          alignItems: general_layout.textAlignment.Desktop === "center" || general_layout.textAlignment.Mobile === "center" || general_layout.textAlignment.Tablet === "center" ? "center" : general_layout.textAlignment.Desktop === "left" || general_layout.textAlignment.Mobile === "left" || general_layout.textAlignment.Tablet === "left" ? "flex-start" : general_layout.textAlignment.Desktop === "right" || general_layout.textAlignment.Mobile === "right" || general_layout.textAlignment.Tablet === "right" ? "flex-end" : undefined
+        } : {
+          justifyContent: general_layout.textAlignment.Desktop === "center" || general_layout.textAlignment.Mobile === "center" || general_layout.textAlignment.Tablet === "center" ? "center" : general_layout.textAlignment.Desktop === "left" || general_layout.textAlignment.Mobile === "left" || general_layout.textAlignment.Tablet === "left" ? "flex-start" : general_layout.textAlignment.Desktop === "right" || general_layout.textAlignment.Mobile === "right" || general_layout.textAlignment.Tablet === "right" ? "flex-end" : undefined
+        })
+      },
+      ".wcb-icon__icon-wrap, .wcb-icon__content": {
+        alignSelf: general_icon.verticalAlignment === "middle" ? "center" : undefined
+      },
+      ".wcb-icon__icon-wrap": {
+        order: general_icon.iconPosition === "leftOfTitle" ? "0" : "2"
+      },
+      ".wcb-icon__content-title-wrap": {
+        display: general_icon.iconPosition === "leftOfTitle" || general_icon.iconPosition === "rightOfTitle" ? "flex" : "block"
+      },
+      [`@media (min-width: ${media_tablet})`]: {
+        flexDirection: general_icon.stackOn === "mobile" ? "row" : undefined
+      },
+      [`@media (min-width: ${media_desktop})`]: {
+        flexDirection: "row"
+      }
+    }, (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_4__["default"])({
+      className: INNER_CLASSNAME,
+      value: general_layout.textAlignment,
+      prefix: "textAlign"
+    })]
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
     styles: (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
       className: WRAP_CLASSNAME,
@@ -8224,17 +8218,25 @@ function save({
     general_separator,
     advance_motionEffect
   };
-  const wrapBlockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
-  const innerBlocksProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useInnerBlocksProps.save(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
-    className: "wcb-icon-list__icon-wrap"
-  }));
+  const dynamicStyle = {
+    display: "flex",
+    flexDirection: general_layout.layout === "vertical" ? "column" : "row",
+    ...(general_layout.layout === "vertical" ? {
+      alignItems: general_layout.textAlignment.Desktop === "center" || general_layout.textAlignment.Mobile === "center" || general_layout.textAlignment.Tablet === "center" ? "center" : general_layout.textAlignment.Desktop === "left" || general_layout.textAlignment.Mobile === "left" || general_layout.textAlignment.Tablet === "left" ? "flex-start" : general_layout.textAlignment.Desktop === "right" || general_layout.textAlignment.Mobile === "right" || general_layout.textAlignment.Tablet === "right" ? "flex-end" : undefined
+    } : {
+      justifyContent: general_layout.textAlignment.Desktop === "center" || general_layout.textAlignment.Mobile === "center" || general_layout.textAlignment.Tablet === "center" ? "center" : general_layout.textAlignment.Desktop === "left" || general_layout.textAlignment.Mobile === "left" || general_layout.textAlignment.Tablet === "left" ? "flex-start" : general_layout.textAlignment.Desktop === "right" || general_layout.textAlignment.Mobile === "right" || general_layout.textAlignment.Tablet === "right" ? "flex-end" : undefined
+    })
+  };
+  const wrapBlockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
+    className: "wcb-icon-list__icon-wrap",
+    style: dynamicStyle
+  });
+  const innerBlocksProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useInnerBlocksProps.save(wrapBlockProps);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_2__["default"], {
     ...wrapBlockProps,
     attributes: newAttrForSave,
     uniqueId: uniqueId
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    ...innerBlocksProps
-  }));
+  }, innerBlocksProps.children);
 }
 
 /***/ }),
@@ -9928,12 +9930,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const {
-  Fragment
-} = wp.element;
-const {
-  withSelect
-} = wp.data;
 
 
 
