@@ -187,6 +187,9 @@
   white-space: normal;
   word-break: break-word;
 }
+.wcb-products__product-add-to-cart .added_to_cart .woostify-svg-icon {
+  display: none;
+}
 
 /*  */
 /*  */

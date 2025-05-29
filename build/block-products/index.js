@@ -3352,9 +3352,6 @@ const GlobalCss = attrs => {
   const LIST_CLASS = `${WRAP_CLASSNAME} .wcb-products__list`;
   const POST_CARD_CLASS = `${WRAP_CLASSNAME} .wcb-products__product`;
   const ADD_TO_CART_BTN = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart a`;
-  console.log(23232, {
-    WRAP_CLASSNAME
-  });
 
   // ------------------- WRAP DIV
 
@@ -3758,6 +3755,9 @@ const GlobalCss = attrs => {
         [`@media (min-width: ${media_desktop})`]: marginBottom_desktop_new ? {
           marginBottom: marginBottom_desktop_new
         } : undefined
+      },
+      [`${ADD_TO_CART_BTN}.added`]: {
+        display: "none"
       }
     };
   };
