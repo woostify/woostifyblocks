@@ -3450,6 +3450,9 @@ const GlobalCss = attrs => {
           marginBottom: titleMarginBottom_mobile,
           ">a": {
             color: style_title.textColor
+          },
+          ">a:hover": {
+            color: style_title.textHoverColor
           }
         },
         ".wcbPostCard__excerpt": {
@@ -5491,6 +5494,7 @@ __webpack_require__.r(__webpack_exports__);
 const WCB_POST_GRID_PANEL_STYLE_TITLE_DEMO = {
   typography: _components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_5__.TYPOGRAPHY_CONTROL_DEMO,
   textColor: "#171717",
+  textHoverColor: "#0284c7",
   marginBottom: {
     Desktop: "0.5rem"
   }
@@ -5507,6 +5511,7 @@ const WcbPostGridPanel_StyleTitle = _ref => {
   const {
     typography,
     textColor,
+    textHoverColor,
     marginBottom
   } = panelData;
   const {
@@ -5539,6 +5544,15 @@ const WcbPostGridPanel_StyleTitle = _ref => {
       });
     },
     color: textColor
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Hover color", "wcb"),
+    onChange: color => {
+      setAttr__({
+        ...panelData,
+        textHoverColor: color
+      });
+    },
+    color: textHoverColor
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyUnitControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
     onChange: value => {
       setAttr__({
