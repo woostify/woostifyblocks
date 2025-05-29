@@ -7,6 +7,10 @@ import SelecIcon, {
 	MyIcon,
 } from "../components/controls/SelectIcon/SelecIcon";
 import { Option } from "../types";
+import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
+// @ts-ignore
+import { __experimentalLinkControl as LinkControl } from "@wordpress/block-editor";
+
 
 export interface WCB_ICON_LIST_PANEL_ICON {
 	enableIcon: boolean;
@@ -14,6 +18,9 @@ export interface WCB_ICON_LIST_PANEL_ICON {
 	iconPosition: "leftOfTitle" | "rightOfTitle"
 	stackOn: "none" | "tablet" | "mobile";
 	verticalAlignment: "top" | "middle";
+	link: string;
+	openInNewWindow: boolean;
+	addNofollowToLink: boolean;
 }
 
 export const WCB_ICON_LIST_PANEL_ICON_DEMO: WCB_ICON_LIST_PANEL_ICON = {
@@ -25,6 +32,9 @@ export const WCB_ICON_LIST_PANEL_ICON_DEMO: WCB_ICON_LIST_PANEL_ICON = {
 	},
 	stackOn: "none",
 	verticalAlignment: "top",
+	link: "",
+	openInNewWindow: false,
+	addNofollowToLink: true,
 };
 
 interface Props
@@ -47,6 +57,8 @@ const WcbIconListPanelIcon: FC<Props> = ({
 		{ value: "leftOfTitle", label: "Left Of Title" },
 		{ value: "rightOfTitle", label: "Right Of Title" },
 	];
+
+	const url = panelData.link;
 
 	return (
 		<PanelBody
@@ -79,6 +91,32 @@ const WcbIconListPanelIcon: FC<Props> = ({
 						setAttr__(newData);
 					}}
 				/>	
+				
+				<div>
+					<MyLabelControl className="mb-0">{__("Link", "wcb")}</MyLabelControl>
+
+					<LinkControl
+						className="WcbButtonPanelContent__inline-link-input"
+						value={{ url }}
+						onChange={({
+							url: newURL = "",
+						}) => {
+							setAttr__({
+								...panelData,
+								link: newURL,
+							});
+						}}
+						onRemove={() => {
+							setAttr__({
+								...panelData,
+								link: "",
+								openInNewWindow: false,
+								addNofollowToLink: false,
+							});
+						}}
+					/>
+				</div>
+
 			</div>
 		</PanelBody>
 	);

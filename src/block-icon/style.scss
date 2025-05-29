@@ -7,3 +7,49 @@
 		margin-bottom: 4px;
 	}
 }
+
+.wp-block-wcb-icon {
+	&.wcb-icon__wrap {
+		position: relative;
+	}
+
+	.wcb-icon__content {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+	}
+
+	.wcb-icon__content-title-wrap {
+		display: flex;
+		align-items: center;
+		gap: 2rem;
+	}
+
+	.wcb-icon__icon-wrap {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.wcb-icon__icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		transition: all 0.3s ease;
+
+		i {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+
+	.wcb-icon__content-title {
+		flex: 1;
+	}
+
+	.wcb-icon-box__heading {
+		margin: 0;
+		padding: 0;
+	}
+}

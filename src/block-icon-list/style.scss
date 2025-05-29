@@ -4,6 +4,7 @@
 
 .wcb-icon-list__icon-wrap {
 	flex-shrink: 0;
+	gap: 1rem;
 }
 .wcb-icon-list__icon {
 	display: flex;
@@ -31,4 +32,31 @@
 .wcb-icon-list__image {
 	flex-shrink: 0;
 	display: inline-block;
+}
+
+.wcb-icon-list {
+    &__wrap {
+        width: 100%;
+    }
+
+    &__container {
+        width: 100%;
+        display: flex;
+        gap: 1rem; // Khoảng cách giữa các items
+    }
+
+    // Styles cho từng item
+    .wcb-icon__icon-wrap {
+        display: flex;
+        align-items: center;
+    }
+
+    .wcb-icon__content {
+        flex: 1;
+    }
+
+    .wcb-icon__content-title-wrap {
+        display: flex;
+        align-items: center;
+    }
 }

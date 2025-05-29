@@ -1,106 +1,75 @@
 import React from "react";
 import { 
-	useBlockProps, 
-	// @ts-ignore
-	useInnerBlocksProps } from "@wordpress/block-editor";
+    useBlockProps, 
+	//@ts-ignore
+    useInnerBlocksProps 
+} from "@wordpress/block-editor";
 import { WcbAttrs } from "./attributes";
 import SaveCommon from "../components/SaveCommon";
 import "./style.scss";
 
 export interface WcbAttrsForSave
-	extends Omit<WcbAttrs, "heading" | "designation" | "description"> {}
+    extends Omit<WcbAttrs, "heading" | "designation" | "description"> {}
 
 export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const {
 		uniqueId,
-		advance_responsiveCondition,
-		advance_zIndex,
 		general_layout,
-		heading_1,
-		heading_2,
-		heading_3,
-		style_description,
-		style_desination,
-		style_Icon,
-		style_title,
-		general_icon,
 		style_dimension,
-		style_separator,
-		general_separator,
-		advance_motionEffect,
 	} = attributes;
 
-	const newAttrForSave: WcbAttrsForSave = {
-		uniqueId,
-		advance_responsiveCondition,
-		advance_zIndex,
-		general_layout,
-		heading_1,
-		heading_2,
-		heading_3,
-		style_description,
-		style_desination,
-		style_Icon,
-		style_title,
-		general_icon,
-		style_dimension,
-		style_separator,
-		general_separator,
-		advance_motionEffect,
-	};
-
-	const dynamicStyle = {
+	const containerStyles = {
 		display: "flex",
 		flexDirection: general_layout.layout === "vertical" ? "column" : "row",
 		...(general_layout.layout === "vertical"
 			? {
-				alignItems:
-					general_layout.textAlignment.Desktop === "center" ||
-					general_layout.textAlignment.Mobile === "center" ||
-					general_layout.textAlignment.Tablet === "center"
-						? "center"
-						: general_layout.textAlignment.Desktop === "left" ||
-							general_layout.textAlignment.Mobile === "left" ||
-							general_layout.textAlignment.Tablet === "left"
-						? "flex-start"
-						: general_layout.textAlignment.Desktop === "right" ||
-							general_layout.textAlignment.Mobile === "right" ||
-							general_layout.textAlignment.Tablet === "right"
-						? "flex-end"
-						: undefined,
-				}
+				alignItems: general_layout.textAlignment.Desktop === "center"
+					? "center"
+					: general_layout.textAlignment.Desktop === "left"
+					? "flex-start"
+					: "flex-end",
+			}
 			: {
-				justifyContent:
-					general_layout.textAlignment.Desktop === "center" ||
-					general_layout.textAlignment.Mobile === "center" ||
-					general_layout.textAlignment.Tablet === "center"
-						? "center"
-						: general_layout.textAlignment.Desktop === "left" ||
-							general_layout.textAlignment.Mobile === "left" ||
-							general_layout.textAlignment.Tablet === "left"
-						? "flex-start"
-						: general_layout.textAlignment.Desktop === "right" ||
-							general_layout.textAlignment.Mobile === "right" ||
-							general_layout.textAlignment.Tablet === "right"
-						? "flex-end"
-						: undefined,
+				justifyContent: general_layout.textAlignment.Desktop === "center"
+					? "center"
+					: general_layout.textAlignment.Desktop === "left"
+					? "flex-start"
+					: "flex-end",
+			}),
+		...(style_dimension?.padding?.Desktop && {
+			paddingTop: style_dimension.padding.Desktop.top || "",
+			paddingRight: style_dimension.padding.Desktop.right || "",
+			paddingBottom: style_dimension.padding.Desktop.bottom || "",
+			paddingLeft: style_dimension.padding.Desktop.left || "",
 		}),
-	}
+		...(style_dimension?.margin?.Desktop && {
+			marginTop: style_dimension.margin.Desktop.top || "",
+			marginRight: style_dimension.margin.Desktop.right || "",
+			marginBottom: style_dimension.margin.Desktop.bottom || "",
+			marginLeft: style_dimension.margin.Desktop.left || "",
+		}),
+	};
 
+	// Wrapper block props with className same as Edit component
 	const wrapBlockProps = useBlockProps.save({
-        className: "wcb-icon-list__icon-wrap",
-        style: dynamicStyle,
-    });
+		className: "wcb-icon-list__wrap",
+	});
 
-    const innerBlocksProps = useInnerBlocksProps.save(wrapBlockProps);
+	// Container for list items with className wcb-icon-list__icon-wrap like Edit component
+	const blockProps = useBlockProps.save({
+		className: "wcb-icon-list__icon-wrap",
+		style: containerStyles
+	});
+
+	const innerBlocksProps = useInnerBlocksProps.save(blockProps);
 
 	return (
 		<SaveCommon
 			{...wrapBlockProps}
-			attributes={newAttrForSave}
+			attributes={attributes}
 			uniqueId={uniqueId}
 		>
-			{innerBlocksProps.children}
+			<div {...innerBlocksProps} />
 		</SaveCommon>
 	);
 }

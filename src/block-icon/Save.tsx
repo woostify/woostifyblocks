@@ -53,7 +53,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 				{general_icon.enableIcon && (
 					<div className="wcb-icon__icon-wrap">
 						<div className="wcb-icon__icon">
-							<MyIconFull icon={general_icon.icon} />
+							<i className={`lni ${general_icon.icon.iconName} wcb-icon-full`}></i>
 						</div>
 					</div>
 				)}
@@ -77,7 +77,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 	//
 	const wrapBlockProps = useBlockProps.save({
-		className: "wcb-icon__wrap",
+		className: "wp-block-wcb-icon wcb-icon__wrap"
 	});
 	//
 
@@ -90,9 +90,9 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 			{/* CHILD CONTENT  */}
 			<div className="wcb-icon__content">
-					<div className="wcb-icon__content-title-wrap">
+				<div className="wcb-icon__content-title-wrap">
 						{general_icon.iconPosition === "leftOfTitle" && renderIcon()}
-						<div className="wcb-icon__content-title">
+					<div className="wcb-icon__content-title">
 
 							{general_layout.enableTitle && (
 								<RichText.Content

@@ -27,7 +27,7 @@ export interface WCB_ICON_LIST_PANEL_LAYOUT {
 export const WCB_ICON_LIST_PANEL_LAYOUT_DEMO: WCB_ICON_LIST_PANEL_LAYOUT = {
     layout: "vertical",
     textAlignment: { Desktop: "left" },
-    headingTag: "h4",
+    headingTag: "p",
     enablePrefix: false,
     enableTitle: true,
 };

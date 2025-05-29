@@ -20,17 +20,16 @@ import "./style.scss";
 import Edit from "./Edit";
 import save from "./Save";
 import metadata from "./block.json";
-const { Fragment } = wp.element;
-const { withSelect } = wp.data;
 import attributes from "./attributes";
 import deprecated from "./deprecated";
 import convertObjectAttrToPreview from "../utils/convertAttsToPreview";
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 
 registerBlockType(metadata.name, {
+	...metadata,
+	attributes,
 	edit: Edit,
 	save,
-	attributes,
 	deprecated: deprecated,
 	example: convertObjectAttrToPreview(attributes),
 	icon: (

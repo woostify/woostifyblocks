@@ -7,8 +7,12 @@ import getStyleObjectFromResponsiveAttr from "../utils/getStyleObjectFromRespons
 import getTypographyStyles from "../utils/getTypographyStyles";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { WcbAttrsForSave } from "./Save";
+import { WcbAttrs } from "./attributes";
 
-interface Props extends WcbAttrsForSave {}
+interface Props extends WcbAttrsForSave {
+	attributes: WcbAttrs;
+	clientId: string;
+}
 
 const GlobalCss: FC<Props> = (attrs) => {
 	const {
@@ -28,6 +32,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
 	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
+	const ICON_CLASS = `${WRAP_CLASSNAME} .wcb-icon__icon`;
 
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject[] => {
@@ -94,6 +99,38 @@ const GlobalCss: FC<Props> = (attrs) => {
 				},
 			},
 		];
+	};
+
+	// ICON CSS
+	const renderIconCss = () => {
+		const { color, hoverColor, iconSize, dimensions, border } = style_Icon;
+
+		return `
+			${ICON_CLASS} {
+				color: ${color};
+				font-size: ${iconSize.Desktop};
+				padding: ${dimensions.padding.Desktop.top} ${dimensions.padding.Desktop.right} ${dimensions.padding.Desktop.bottom} ${dimensions.padding.Desktop.left};
+				margin: ${dimensions.margin.Desktop.top} ${dimensions.margin.Desktop.right} ${dimensions.margin.Desktop.bottom} ${dimensions.margin.Desktop.left};
+				border-radius: ${border.radius.Desktop};
+			}
+			${ICON_CLASS}:hover {
+				color: ${hoverColor || color};
+			}
+
+			@media (max-width: 768px) {
+				${ICON_CLASS} {
+					font-size: ${iconSize.Tablet};
+					border-radius: ${border.radius.Tablet};
+				}
+			}
+
+			@media (max-width: 576px) {
+				${ICON_CLASS} {
+					font-size: ${iconSize.Mobile};
+					border-radius: ${border.radius.Mobile};
+				}
+			}
+		`;
 	};
 
 	if (!uniqueId) {
@@ -200,6 +237,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 					className: WRAP_CLASSNAME,
 				})}
 			/>
+
+			<style>{renderIconCss()}</style>
 		</>
 	);
 };
