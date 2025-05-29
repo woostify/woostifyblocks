@@ -7710,6 +7710,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_controls_MyDimensionsControl_types__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/controls/MyDimensionsControl/types */ "./src/components/controls/MyDimensionsControl/types.ts");
 /* harmony import */ var _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./WcbIconListPanel_StyleIcons */ "./src/block-icon/WcbIconListPanel_StyleIcons.tsx");
 /* harmony import */ var _utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../utils/converUniqueIdToAnphaKey */ "./src/utils/converUniqueIdToAnphaKey.ts");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var _components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../components/controls/MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
 
 
 
@@ -7727,6 +7730,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+// @ts-ignore
 
 
 const Edit = props => {
@@ -7749,7 +7756,10 @@ const Edit = props => {
     style_separator,
     style_dimension,
     general_separator,
-    advance_motionEffect
+    advance_motionEffect,
+    link,
+    openInNewWindow,
+    addNofollowToLink
   } = attributes;
   //  COMMON HOOKS
   const ref = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
@@ -7801,7 +7811,50 @@ const Edit = props => {
             });
           },
           panelData: general_icon
-        }));
+        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_18__.PanelBody, {
+          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Link settings", "wcb"),
+          initialOpen: tabGeneralIsPanelOpen === "Link",
+          onToggle: () => handleTogglePanel("General", "Link")
+        }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+          className: "space-y-5"
+        }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_19__["default"], {
+          className: "mb-0"
+        }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Link", "wcb")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.__experimentalLinkControl, {
+          className: "WcbButtonPanelContent__inline-link-input",
+          value: {
+            url: link
+          },
+          onChange: ({
+            url: newURL = ""
+          }) => {
+            setAttributes({
+              link: newURL
+            });
+          },
+          onRemove: () => {
+            setAttributes({
+              link: "",
+              openInNewWindow: false,
+              addNofollowToLink: false
+            });
+          }
+        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_18__.ToggleControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Open in new tab", "wcb"),
+          checked: openInNewWindow,
+          onChange: checked => {
+            setAttributes({
+              openInNewWindow: checked
+            });
+          }
+        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_18__.ToggleControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Add nofollow", "wcb"),
+          checked: addNofollowToLink,
+          onChange: checked => {
+            setAttributes({
+              addNofollowToLink: checked
+            });
+          }
+        }))));
       case "Styles":
         return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, general_icon.enableIcon && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleIcons"),
@@ -7892,9 +7945,12 @@ const Edit = props => {
       style_dimension,
       general_icon,
       general_separator,
-      advance_motionEffect
+      advance_motionEffect,
+      link,
+      openInNewWindow,
+      addNofollowToLink
     };
-  }, [uniqueId, advance_responsiveCondition, advance_zIndex, general_layout, heading, style_title, style_desination, style_description, style_Icon, style_separator, style_dimension, general_icon, general_separator, advance_motionEffect]);
+  }, [uniqueId, advance_responsiveCondition, advance_zIndex, general_layout, heading, style_title, style_desination, style_description, style_Icon, style_separator, style_dimension, general_icon, general_separator, advance_motionEffect, link, openInNewWindow, addNofollowToLink]);
   const renderIcon = () => {
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "wcb-icon__icon-wrap"
@@ -7915,7 +7971,8 @@ const Edit = props => {
     renderTabPanels: renderTabBodyPanels,
     uniqueId: uniqueId
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    ...WcbAttrsForSave()
+    attributes: attributes,
+    clientId: clientId
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wcb-icon__content-title-wrap"
   }, general_icon.iconPosition === "leftOfTitle" && renderIcon(), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -8148,6 +8205,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_SaveCommon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/SaveCommon */ "./src/components/SaveCommon.tsx");
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "./src/block-icon/style.scss");
+/* harmony import */ var _components_controls_MyIconFull__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyIconFull */ "./src/components/controls/MyIconFull.tsx");
+
 
 
 
@@ -8172,7 +8231,10 @@ function save({
     style_dimension,
     style_separator,
     general_separator,
-    advance_motionEffect
+    advance_motionEffect,
+    link,
+    openInNewWindow,
+    addNofollowToLink
   } = attributes;
   //
 
@@ -8190,7 +8252,10 @@ function save({
     style_dimension,
     style_separator,
     general_separator,
-    advance_motionEffect
+    advance_motionEffect,
+    link,
+    openInNewWindow,
+    addNofollowToLink
   };
   //
 
@@ -8199,8 +8264,8 @@ function save({
       className: "wcb-icon__icon-wrap"
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "wcb-icon__icon"
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
-      className: `lni ${general_icon.icon.iconName} wcb-icon-full`
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyIconFull__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      icon: general_icon.icon
     }))), general_separator.position === "afterIcon" && renderSeparator());
   };
   const renderSeparator = () => {
@@ -8221,11 +8286,7 @@ function save({
   });
   //
 
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    ...wrapBlockProps,
-    attributes: newAttrForSave,
-    uniqueId: uniqueId
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  const renderContent = () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wcb-icon__content"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wcb-icon__content-title-wrap"
@@ -8236,7 +8297,19 @@ function save({
     value: heading,
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Heading of box"),
     className: "wcb-icon-box__heading"
-  })), general_icon.iconPosition === "rightOfTitle" && renderIcon())));
+  })), general_icon.iconPosition === "rightOfTitle" && renderIcon()));
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    ...wrapBlockProps,
+    attributes: attributes,
+    uniqueId: uniqueId
+  }, link ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    ...wrapBlockProps,
+    href: link,
+    target: openInNewWindow ? "_blank" : undefined,
+    rel: addNofollowToLink ? "nofollow" : undefined
+  }, renderContent()) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ...wrapBlockProps
+  }, renderContent()));
 }
 
 /***/ }),
@@ -8496,17 +8569,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_controls_MySelect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/controls/MySelect */ "./src/components/controls/MySelect.tsx");
 /* harmony import */ var _components_controls_SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/SelectIcon/SelecIcon */ "./src/components/controls/SelectIcon/SelecIcon.tsx");
-/* harmony import */ var _components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__);
 
 
 
 
 
-
-
-// @ts-ignore
 
 const WCB_ICON_LIST_PANEL_ICON_DEMO = {
   enableIcon: true,
@@ -8516,10 +8583,7 @@ const WCB_ICON_LIST_PANEL_ICON_DEMO = {
     iconName: "lni-checkmark-circle"
   },
   stackOn: "none",
-  verticalAlignment: "top",
-  link: "",
-  openInNewWindow: false,
-  addNofollowToLink: true
+  verticalAlignment: "top"
 };
 const WcbIconListPanelIcon = ({
   panelData = WCB_ICON_LIST_PANEL_ICON_DEMO,
@@ -8541,7 +8605,6 @@ const WcbIconListPanelIcon = ({
     value: "rightOfTitle",
     label: "Right Of Title"
   }];
-  const url = panelData.link;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     initialOpen: initialOpen,
     onToggle: onToggle,
@@ -8568,30 +8631,7 @@ const WcbIconListPanelIcon = ({
       };
       setAttr__(newData);
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    className: "mb-0"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Link", "wcb")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.__experimentalLinkControl, {
-    className: "WcbButtonPanelContent__inline-link-input",
-    value: {
-      url
-    },
-    onChange: ({
-      url: newURL = ""
-    }) => {
-      setAttr__({
-        ...panelData,
-        link: newURL
-      });
-    },
-    onRemove: () => {
-      setAttr__({
-        ...panelData,
-        link: "",
-        openInNewWindow: false,
-        addNofollowToLink: false
-      });
-    }
-  }))));
+  })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WcbIconListPanelIcon);
 
@@ -9726,6 +9766,19 @@ const blokc1Attrs = {
   advance_motionEffect: {
     type: "object",
     default: _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_11__.MY_MOTION_EFFECT_DEMO
+  },
+  // Link attributes
+  link: {
+    type: "string",
+    default: ""
+  },
+  openInNewWindow: {
+    type: "boolean",
+    default: false
+  },
+  addNofollowToLink: {
+    type: "boolean",
+    default: false
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (blokc1Attrs);

@@ -26,6 +26,9 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_separator,
 		general_separator,
 		advance_motionEffect,
+		link,
+		openInNewWindow,
+		addNofollowToLink,
 	} = attributes;
 	//
 
@@ -44,6 +47,9 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_separator,
 		general_separator,
 		advance_motionEffect,
+		link,
+		openInNewWindow,
+		addNofollowToLink,
 	};
 	//
 
@@ -53,7 +59,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 				{general_icon.enableIcon && (
 					<div className="wcb-icon__icon-wrap">
 						<div className="wcb-icon__icon">
-							<i className={`lni ${general_icon.icon.iconName} wcb-icon-full`}></i>
+							<MyIconFull icon={general_icon.icon} />
 						</div>
 					</div>
 				)}
@@ -81,32 +87,46 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	});
 	//
 
+	const renderContent = () => (
+		<div className="wcb-icon__content">
+			<div className="wcb-icon__content-title-wrap">
+				{general_icon.iconPosition === "leftOfTitle" && renderIcon()}
+				<div className="wcb-icon__content-title">
+					{general_layout.enableTitle && (
+						<RichText.Content
+							tagName={HeadingTag}
+							value={heading}
+							placeholder={__("Heading of box")}
+							className="wcb-icon-box__heading"
+						/>
+					)}
+				</div>
+				{(general_icon.iconPosition === "rightOfTitle") &&
+					renderIcon()}
+			</div>
+		</div>
+	);
+
 	return (
 		<SaveCommon
 			{...wrapBlockProps}
-			attributes={newAttrForSave}
+			attributes={attributes}
 			uniqueId={uniqueId}
 		>
-
-			{/* CHILD CONTENT  */}
-			<div className="wcb-icon__content">
-				<div className="wcb-icon__content-title-wrap">
-						{general_icon.iconPosition === "leftOfTitle" && renderIcon()}
-					<div className="wcb-icon__content-title">
-
-							{general_layout.enableTitle && (
-								<RichText.Content
-									tagName={HeadingTag}
-									value={heading}
-									placeholder={__("Heading of box")}
-									className="wcb-icon-box__heading"
-								/>
-							)}
-						</div>
-						{(general_icon.iconPosition === "rightOfTitle") &&
-							renderIcon()}
-					</div>
+			{link ? (
+				<a
+					{...wrapBlockProps}
+					href={link}
+					target={openInNewWindow ? "_blank" : undefined}
+					rel={addNofollowToLink ? "nofollow" : undefined}
+				>
+					{renderContent()}
+				</a>
+			) : (
+				<div {...wrapBlockProps}>
+					{renderContent()}
 				</div>
+			)}
 		</SaveCommon>
 	);
 }

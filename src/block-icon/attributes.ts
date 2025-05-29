@@ -69,6 +69,10 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	advance_responsiveCondition: MyResponsiveConditionControlData;
 	advance_zIndex: MyZIndexControlData;
 	advance_motionEffect: MyMotionEffectData;
+	// Link attributes
+	link: string;
+	openInNewWindow: boolean;
+	addNofollowToLink: boolean;
 }
 
 const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
@@ -136,6 +140,19 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	advance_motionEffect: {
 		type: "object",
 		default: MY_MOTION_EFFECT_DEMO,
+	},
+	// Link attributes
+	link: {
+		type: "string",
+		default: "",
+	},
+	openInNewWindow: {
+		type: "boolean",
+		default: false,
+	},
+	addNofollowToLink: {
+		type: "boolean",
+		default: false,
 	},
 };
 

@@ -21,6 +21,10 @@ import WcbIconBoxPanel_StyleDimension from "./WcbIconListPanel_StyleDimension";
 import { MY_DIMENSIONS_NO_GAP_DEMO__EMPTY } from "../components/controls/MyDimensionsControl/types";
 import WcbIconBoxPanel_StyleIcons from "./WcbIconListPanel_StyleIcons";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
+import { PanelBody, ToggleControl } from "@wordpress/components";
+// @ts-ignore
+import { __experimentalLinkControl as LinkControl } from '@wordpress/block-editor';
+import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -39,6 +43,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_dimension,
 		general_separator,
 		advance_motionEffect,
+		link,
+		openInNewWindow,
+		addNofollowToLink,
 	} = attributes;
 	//  COMMON HOOKS
 	const ref = useRef<HTMLDivElement>(null);
@@ -90,6 +97,51 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							}}
 							panelData={general_icon}
 						/>
+
+						<PanelBody
+							title={__("Link settings", "wcb")}
+							initialOpen={tabGeneralIsPanelOpen === "Link"}
+							onToggle={() => handleTogglePanel("General", "Link")}
+						>
+							<div className="space-y-5">
+								<MyLabelControl className="mb-0">{__("Link", "wcb")}</MyLabelControl>
+
+								<LinkControl
+									className="WcbButtonPanelContent__inline-link-input"
+									value={{ url: link }}
+									onChange={({
+										url: newURL = "",
+									}) => {
+										setAttributes({
+											link: newURL,
+										});
+									}}
+									onRemove={() => {
+										setAttributes({
+											link: "",
+											openInNewWindow: false,
+											addNofollowToLink: false,
+										});
+									}}
+								/>
+
+								<ToggleControl
+									label={__("Open in new tab", "wcb")}
+									checked={openInNewWindow}
+									onChange={(checked) => {
+										setAttributes({ openInNewWindow: checked });
+									}}
+								/>
+
+								<ToggleControl
+									label={__("Add nofollow", "wcb")}
+									checked={addNofollowToLink}
+									onChange={(checked) => {
+										setAttributes({ addNofollowToLink: checked });
+									}}
+								/>
+							</div>
+						</PanelBody>
 					</>
 				);
 			case "Styles":
@@ -202,6 +254,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			general_icon,
 			general_separator,
 			advance_motionEffect,
+			link,
+			openInNewWindow,
+			addNofollowToLink,
 		};
 	}, [
 		uniqueId,
@@ -218,6 +273,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		general_icon,
 		general_separator,
 		advance_motionEffect,
+		link,
+		openInNewWindow,
+		addNofollowToLink,
 	]);
 
 
@@ -246,7 +304,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				/>
 
 				{/* CSS IN JS */}
-				<GlobalCss {...WcbAttrsForSave()} />
+				<GlobalCss attributes={attributes} clientId={clientId} />
 
 				{/* CHILD CONTENT  */}
 					<div className="wcb-icon__content-title-wrap">

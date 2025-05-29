@@ -11,6 +11,14 @@
 .wp-block-wcb-icon {
 	&.wcb-icon__wrap {
 		position: relative;
+		text-decoration: none;
+		color: inherit;
+		
+		&:hover {
+			.wcb-icon__icon {
+				color: var(--iconHoverColor);
+			}
+		}
 	}
 
 	.wcb-icon__content {
@@ -36,6 +44,7 @@
 		align-items: center;
 		justify-content: center;
 		transition: all 0.3s ease;
+		color: var(--iconColor);
 
 		i {
 			display: inline-flex;
