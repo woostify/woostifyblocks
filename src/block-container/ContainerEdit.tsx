@@ -140,7 +140,11 @@ const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 			>
 				<MyBorderControl
 					borderControl={attributes.styles_border}
-					setAttrs__border={(data) => setAttributes({ styles_border: data })}
+					setAttrs__border={(data) => setAttributes(
+						{ 
+							styles_border: data 
+						}
+					)}
 				/>
 			</PanelBody>
 		);

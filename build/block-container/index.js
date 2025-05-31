@@ -5394,6 +5394,7 @@ const GlobalCss = attrs => {
     }];
   };
   const getDivWrapStyles__Border = () => {
+    debugger;
     return (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_2__["default"])({
       border: styles_border,
       className: WRAP_CLASSNAME,
@@ -7757,6 +7758,7 @@ const MyBorderControl = ({
     radius: radiusProps
   } = borderControl;
   const handleChangeBorder = newBorders => {
+    debugger;
     setAttrs__border({
       ...borderControl,
       mainSettings: newBorders
@@ -10821,7 +10823,7 @@ const getBorderStyles = ({
     [`${className}`]: {}
   };
   if (mainSettings) {
-    if (mainSettings?.top) {
+    if (mainSettings?.top && mainSettings?.left && mainSettings?.right && mainSettings?.bottom) {
       const {
         bottom,
         left,

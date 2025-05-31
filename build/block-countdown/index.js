@@ -8339,6 +8339,7 @@ const MyBorderControl = ({
     radius: radiusProps
   } = borderControl;
   const handleChangeBorder = newBorders => {
+    debugger;
     setAttrs__border({
       ...borderControl,
       mainSettings: newBorders
@@ -11856,7 +11857,7 @@ const getBorderStyles = ({
     [`${className}`]: {}
   };
   if (mainSettings) {
-    if (mainSettings?.top) {
+    if (mainSettings?.top && mainSettings?.left && mainSettings?.right && mainSettings?.bottom) {
       const {
         bottom,
         left,
