@@ -188,6 +188,9 @@ const GlobalCss = attrs => {
           marginBottom: titleMarginBottom_mobile,
           ">a": {
             color: style_title.textColor
+          },
+          ">a:hover": {
+            color: style_title.textHoverColor
           }
         },
         ".wcbPostCard__excerpt": {
