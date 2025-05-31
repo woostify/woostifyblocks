@@ -41,9 +41,9 @@ export const WCB_TABS_PANEL_STYLE_BODY_DEMO: WCB_TABS_PANEL_STYLE_BODY = {
 	border: MY_BORDER_CONTROL_DEMO,
 	margin: {
 		Desktop: {
-			top: "1rem",
-			left: "1rem",
-			right: "1rem",
+			top: "0rem",
+			left: "0rem",
+			right: "0rem",
 			bottom: "1rem",
 		},
 	},
@@ -68,7 +68,7 @@ export const PANEL_COLOR_TABS: {
 	title: string;
 }[] = [
 	{ name: "Normal", title: __("Normal", "wcb") },
-	{ name: "Hover", title: __("Hover/Active", "wcb") },
+	{ name: "Hover", title: __("Hover", "wcb") },
 ];
 
 interface Props
