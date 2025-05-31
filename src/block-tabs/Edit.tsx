@@ -108,12 +108,12 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
     useEffect(() => {
         if (childInnerBlocks.length === titles.length) {
 			const newTabContents = childInnerBlocks.map((block: any) => {
-            // Serialize innerBlocks to HTML
-            const innerContent = block.innerBlocks
-                ? serialize(block.innerBlocks)
-                : "";
-            return innerContent;
-        });
+				// Get content from childInnerBlocks 
+				const innerContent = block.innerBlocks
+					?.map((innerBlock: any) => innerBlock.attributes.content || "")
+					.join("\n") || "";
+				return innerContent;
+			});
             setAttributes({ tabContents: newTabContents });
         }
     }, [childInnerBlocks, titles.length, setAttributes]);
