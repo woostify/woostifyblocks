@@ -8139,7 +8139,7 @@ const Edit = props => {
     uniqueKey: clientId
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...wrapBlockProps,
-    className: `${wrapBlockProps?.className} wcb-icon-box__wrap ${uniqueId}`,
+    className: `${wrapBlockProps?.className} wcb-counter-box__wrap ${uniqueId}`,
     "data-uniqueid": uniqueId
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_3__["default"], {
     renderTabPanels: renderTabBodyPanels,

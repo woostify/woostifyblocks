@@ -18,6 +18,7 @@ import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives"
 export interface WCB_POST_GRID_PANEL_STYLE_TITLE {
 	typography: MyTypographyControlData;
 	textColor: string;
+	textHoverColor: string;
 	marginBottom: HasResponsive<string>;
 }
 
@@ -25,6 +26,7 @@ export const WCB_POST_GRID_PANEL_STYLE_TITLE_DEMO: WCB_POST_GRID_PANEL_STYLE_TIT
 	{
 		typography: TYPOGRAPHY_CONTROL_DEMO,
 		textColor: "#171717",
+		textHoverColor: "#0284c7",
 		marginBottom: { Desktop: "0.5rem" },
 	};
 
@@ -42,7 +44,7 @@ const WcbPostGridPanel_StyleTitle: FC<Props> = ({
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { typography, textColor, marginBottom } = panelData;
+	const { typography, textColor, textHoverColor, marginBottom } = panelData;
 
 	const { currentDeviceValue: MARGIN_BOTTOM } = getValueFromAttrsResponsives(
 		marginBottom,
@@ -76,6 +78,17 @@ const WcbPostGridPanel_StyleTitle: FC<Props> = ({
 							});
 						}}
 						color={textColor}
+					/>
+
+					<MyColorPicker
+						label={__("Hover color", "wcb")}
+						onChange={(color) => {
+							setAttr__({
+								...panelData,
+								textHoverColor: color,
+							});
+						}}
+						color={textHoverColor}
 					/>
 
 					<MyUnitControl
