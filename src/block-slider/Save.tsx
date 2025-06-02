@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
 import { WcbAttrs } from "./attributes";
 import GlobalCss from "./GlobalCss";
@@ -16,6 +17,19 @@ import { RESPONSIVE_CONDITON_DEMO } from "../components/controls/MyResponsiveCon
 import { Z_INDEX_DEMO } from "../components/controls/MyZIndexControl/MyZIndexControl";
 import { MY_MOTION_EFFECT_DEMO } from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
 import "./style.scss";
+=======
+import { __ } from "@wordpress/i18n";
+import { RichText, useBlockProps } from "@wordpress/block-editor";
+import { SliderItem, WcbAttrs } from "./attributes";
+import SaveCommon from "../components/SaveCommon";
+import "./style.scss";
+import { SLIDER_ITEM_DEMO } from "./Edit";
+import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import getImageUrlBySize from "../utils/getImageUrlBySize";
+import VideoBackgroundByBgControl from "../components/VideoBackgroundByBgControl";
+import OverlayBackgroundByBgControl from "../components/OverlayBackgroundByBgControl";
+>>>>>>> cecf4af2 (add action next to slider continue)
 
 export interface WcbAttrsForSave extends WcbAttrs {}
 
@@ -61,6 +75,132 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		"data-uniqueid": uniqueId,
 	});
 
+<<<<<<< HEAD
+=======
+	let CURRENT_DATA = [
+		...Array(general_general.numberofTestimonials || 3).keys(),
+	].map((_, index) => testimonials[index] || SLIDER_ITEM_DEMO);
+
+	const renderTestimonialItemContent = (
+		item: SliderItem,
+		index: number
+	) => {
+		return (
+			<RichText.Content
+				tagName="div"
+				className="wcb-slider__item-content"
+				value={item.content}
+			/>
+		);
+	};
+
+	const renderTestimonialItemName = (item: SliderItem, index: number) => {
+		return (
+			<RichText.Content
+				tagName="div"
+				className="wcb-slider__item-name"
+				value={item.name}
+			/>
+		);
+	};
+
+	const renderTestimonialItemCompany = (
+		item: SliderItem,
+		index: number
+	) => {
+		return (
+			<RichText.Content
+				tagName="div"
+				className="wcb-slider__item-company"
+				value={item.companyName}
+			/>
+		);
+	};
+
+	const renderTestimonialItemImage = (item: SliderItem, index: number) => {
+		const { images, isShowImage, imageSize } = general_images;
+		const { imageSize: imageSizeAttr } = style_image;
+		const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
+		const { mediaId, mediaSrcSet } = images[index] || {};
+		if (!isShowImage || !mediaId) {
+			return null;
+		}
+		const { value_Desktop, value_Mobile, value_Tablet } =
+			getValueFromAttrsResponsives(imageSizeAttr);
+		const url = getImageUrlBySize(images[index], imageSize);
+		return (
+			<div className="wcb-slider__item-image">
+				<img
+					src={url}
+					alt=""
+					srcSet={mediaSrcSet}
+					sizes={`(max-width: ${media_tablet}) ${value_Mobile}, (max-width: ${media_desktop}) ${value_Tablet}, ${value_Desktop}`}
+				/>
+			</div>
+		);
+	};
+
+	const renderTestimonialItem = (item: SliderItem, index: number) => {
+		const { imagePosition } = general_images;
+		return (
+			<div className="wcb-slider__item" key={index}>
+				<div className="wcb-slider__item-background">
+					<div className=""></div>
+					<VideoBackgroundByBgControl
+						bgType={style_backgroundAndBorder.background.bgType}
+						videoData={style_backgroundAndBorder.background.videoData}
+					/>
+					<OverlayBackgroundByBgControl
+						bgType={style_backgroundAndBorder.background.bgType}
+						overlayType={style_backgroundAndBorder.background.overlayType}
+					/>
+
+					<div className="wcb-slider__item-wrap-inner">
+						{/* IMAGE */}
+						{imagePosition === "left" &&
+							renderTestimonialItemImage(item, index)}
+
+						<div className="wcb-slider__item-inner">
+							{/* IMAGE */}
+							{imagePosition === "top" &&
+								renderTestimonialItemImage(item, index)}
+
+							{/* CONTENT */}
+							{renderTestimonialItemContent(item, index)}
+
+							<div className="wcb-slider__item-user">
+								{/* IMAGE */}
+								{imagePosition === "bottom" &&
+									renderTestimonialItemImage(item, index)}
+
+								<div className="wcb-slider__item-nameandcompany">
+									{/* NAME */}
+									{renderTestimonialItemName(item, index)}
+
+									{/* COMPANY */}
+									{renderTestimonialItemCompany(item, index)}
+								</div>
+							</div>
+						</div>
+
+						{/* IMAGE */}
+						{imagePosition === "right" &&
+							renderTestimonialItemImage(item, index)}
+					</div>
+				</div>
+			</div>
+		);
+	};
+
+	const renderEditContent = () => {
+		return (
+			<div className="wcb-slider__wrap-items">
+				{CURRENT_DATA.map(renderTestimonialItem)}
+			</div>
+		);
+	};
+
+>>>>>>> cecf4af2 (add action next to slider continue)
 	return (
 		<div {...blockProps}>
 			{/* Frontend CSS injection elements */}
