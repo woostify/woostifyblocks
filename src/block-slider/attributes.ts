@@ -30,16 +30,16 @@ import {
 import {
 	WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS,
 	WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS_DEMO,
-} from "./WcbTestimonialsPanel_StyleArrowDots";
+} from "./WcbSliderPanel_StyleArrowDots";
 import {
 	WCB_TESTIMONIALS_PANEL_STYLE_BACKGROUND_BORDER,
 	WCB_TESTIMONIALS_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
-} from "./WcbTestimonialsPanel_StyleBackground";
+} from "./WcbSliderPanel_StyleBackground";
 import {
 	WCB_TESTIMONIALS_PANEL_STYLE_COMPANY,
 	WCB_TESTIMONIALS_PANEL_STYLE_COMPANY_DEMO,
-} from "./WcbTestimonialsPanel_StyleCompany";
-import { WCB_TESTIMONIALS_PANEL_STYLE_CONTENT_DEMO } from "./WcbTestimonialsPanel_StyleContent";
+} from "./WcbSliderPanel_StyleCompany";
+import { WCB_TESTIMONIALS_PANEL_STYLE_CONTENT_DEMO } from "./WcbSliderPanel_StyleContent";
 import {
 	WCB_TESTIMONIALS_PANEL_STYLE_DIMENSION,
 	WCB_TESTIMONIALS_PANEL_STYLE_DIMENSION_DEMO,
@@ -51,9 +51,9 @@ import {
 import {
 	WCB_TESTIMONIALS_PANEL_STYLE_NAME,
 	WCB_TESTIMONIALS_PANEL_STYLE_NAME_DEMO,
-} from "./WcbTestimonialsPanel_StyleName";
+} from "./WcbSliderPanel_StyleName";
 
-export interface TestimonialItem {
+export interface SliderItem {
 	content: string;
 	name: string;
 	companyName: string;
@@ -61,7 +61,7 @@ export interface TestimonialItem {
 
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
-	testimonials: TestimonialItem[];
+	testimonials: SliderItem[];
 	//
 	general_general: WCB_TESTIMONIALS_PANEL_GENERAL;
 	general_images: WCB_TESTIMONIALS_PANEL_IMAGES;

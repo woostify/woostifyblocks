@@ -14,11 +14,11 @@ import {
 } from "../components/controls/MyBorderControl/types";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
 
-export interface WCB_TESTIMONIALS_PANEL_STYLE_BACKGROUND_BORDER {
+export interface WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER {
 	background: BackgroundControlData;
 	border: MyBorderControlData;
 }
-export const WCB_TESTIMONIALS_PANEL_STYLE_BACKGROUND_BORDER_DEMO: WCB_TESTIMONIALS_PANEL_STYLE_BACKGROUND_BORDER =
+export const WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO: WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER =
 	{
 		background: STYLES_BG_DEMO,
 		border: MY_BORDER_CONTROL_DEMO,
@@ -26,12 +26,12 @@ export const WCB_TESTIMONIALS_PANEL_STYLE_BACKGROUND_BORDER_DEMO: WCB_TESTIMONIA
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
-	panelData: WCB_TESTIMONIALS_PANEL_STYLE_BACKGROUND_BORDER;
-	setAttr__: (data: WCB_TESTIMONIALS_PANEL_STYLE_BACKGROUND_BORDER) => void;
+	panelData: WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER;
+	setAttr__: (data: WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER) => void;
 }
 
 const WcbTestimonialsPanel_StyleBackground: FC<Props> = ({
-	panelData = WCB_TESTIMONIALS_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
+	panelData = WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
 	setAttr__,
 	initialOpen,
 	onToggle,

@@ -8,11 +8,11 @@ import {
 } from "../components/controls/MyTypographyControl/types";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 
-export interface WCB_TESTIMONIALS_PANEL_STYLE_COMPANY {
+export interface WCB_SLIDER_PANEL_STYLE_COMPANY {
 	typography: MyTypographyControlData;
 	textColor: string;
 }
-export const WCB_TESTIMONIALS_PANEL_STYLE_COMPANY_DEMO: WCB_TESTIMONIALS_PANEL_STYLE_COMPANY =
+export const WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO: WCB_SLIDER_PANEL_STYLE_COMPANY =
 	{
 		typography: TYPOGRAPHY_CONTROL_DEMO,
 		textColor: "#6b7280",
@@ -20,12 +20,12 @@ export const WCB_TESTIMONIALS_PANEL_STYLE_COMPANY_DEMO: WCB_TESTIMONIALS_PANEL_S
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
-	panelData: WCB_TESTIMONIALS_PANEL_STYLE_COMPANY;
-	setAttr__: (data: WCB_TESTIMONIALS_PANEL_STYLE_COMPANY) => void;
+	panelData: WCB_SLIDER_PANEL_STYLE_COMPANY;
+	setAttr__: (data: WCB_SLIDER_PANEL_STYLE_COMPANY) => void;
 }
 
 const WcbTestimonialsPanel_StyleCompany: FC<Props> = ({
-	panelData = WCB_TESTIMONIALS_PANEL_STYLE_COMPANY_DEMO,
+	panelData = WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO,
 	setAttr__,
 	initialOpen,
 	onToggle,

@@ -1,6 +1,6 @@
 /*  */
 /*  */
-.wcb-testimonials__wrap {
+.wcb-slider__wrap {
 	padding: 32px;
 
 	.slick-dots {
@@ -32,28 +32,28 @@
 	}
 }
 
-.wcb-testimonials__item {
+.wcb-slider__item {
 	position: relative;
-	.wcb-testimonials__item-background {
+	.wcb-slider__item-background {
 		position: relative;
 	}
-	.wcb-testimonials__item-wrap-inner {
+	.wcb-slider__item-wrap-inner {
 		display: flex;
 	}
 }
 
-.wcb-testimonials__item-inner {
+.wcb-slider__item-inner {
 	margin: 0 auto;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.wcb-testimonials__item-image {
+.wcb-slider__item-image {
 	display: inline-flex;
 	align-items: flex-start;
 	flex-shrink: 0;
 }
-.wcb-testimonials__item-user {
+.wcb-slider__item-user {
 	display: inline-flex;
 	align-items: center;
 }

@@ -14,12 +14,12 @@ import WcbTestimonialsPanelGeneral from "./WcbTestimonialsPanelGeneral";
 import WcbTestimonialsPanelImages from "./WcbTestimonialsPanelImages";
 import WcbTestimonialsPanelCarousel from "./WcbTestimonialsPanelCarousel";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
-import WcbTestimonialsPanel_StyleName from "./WcbTestimonialsPanel_StyleName";
-import WcbTestimonialsPanel_StyleContent from "./WcbTestimonialsPanel_StyleContent";
-import WcbTestimonialsPanel_StyleCompany from "./WcbTestimonialsPanel_StyleCompany";
+import WcbTestimonialsPanel_StyleName from "./WcbSliderPanel_StyleName";
+import WcbTestimonialsPanel_StyleContent from "./WcbSliderPanel_StyleContent";
+import WcbTestimonialsPanel_StyleCompany from "./WcbSliderPanel_StyleCompany";
 import WcbTestimonialsPanel_StyleImage from "./WcbTestimonialsPanel_StyleImage";
-import WcbTestimonialsPanel_StyleArrowDots from "./WcbTestimonialsPanel_StyleArrowDots";
-import WcbTestimonialsPanel_StyleBackground from "./WcbTestimonialsPanel_StyleBackground";
+import WcbTestimonialsPanel_StyleArrowDots from "./WcbSliderPanel_StyleArrowDots";
+import WcbTestimonialsPanel_StyleBackground from "./WcbSliderPanel_StyleBackground";
 import WcbTestimonialsPanel_StyleDimension from "./WcbTestimonialsPanel_StyleDimension";
 import getImageUrlBySize from "../utils/getImageUrlBySize";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
@@ -40,7 +40,7 @@ export const TESTIMONIAL_ITEM_DEMO: TestimonialItem = {
 	name: "Drink Water",
 	companyName: "CEO of Meta",
 	content:
-		"I have been working with these guys for years now! With lots of hard work and timely communication, they made sure they delivered the best to me. Highly recommended!",
+		"Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
 };
 
 function SampleNextArrow(props) {

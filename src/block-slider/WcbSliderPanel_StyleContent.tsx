@@ -7,10 +7,10 @@ import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
-import { WCB_TESTIMONIALS_PANEL_STYLE_NAME } from "./WcbTestimonialsPanel_StyleName";
+import { WCB_SLIDER_PANEL_STYLE_NAME } from "./WcbSliderPanel_StyleName";
 import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
 
-export const WCB_TESTIMONIALS_PANEL_STYLE_CONTENT_DEMO: WCB_TESTIMONIALS_PANEL_STYLE_NAME =
+export const WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO: WCB_SLIDER_PANEL_STYLE_NAME =
 	{
 		typography: {
 			...TYPOGRAPHY_CONTROL_DEMO,
@@ -22,12 +22,12 @@ export const WCB_TESTIMONIALS_PANEL_STYLE_CONTENT_DEMO: WCB_TESTIMONIALS_PANEL_S
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
-	panelData: WCB_TESTIMONIALS_PANEL_STYLE_NAME;
-	setAttr__: (data: WCB_TESTIMONIALS_PANEL_STYLE_NAME) => void;
+	panelData: WCB_SLIDER_PANEL_STYLE_NAME;
+	setAttr__: (data: WCB_SLIDER_PANEL_STYLE_NAME) => void;
 }
 
 const WcbTestimonialsPanel_StyleContent: FC<Props> = ({
-	panelData = WCB_TESTIMONIALS_PANEL_STYLE_CONTENT_DEMO,
+	panelData = WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO,
 	setAttr__,
 	initialOpen,
 	onToggle,
