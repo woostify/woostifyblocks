@@ -109,7 +109,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 	};
 
 	const getDivWrapStyles__Border = () => {
-		debugger
 		return getBorderStyles({
 			border: styles_border,
 			className: WRAP_CLASSNAME,

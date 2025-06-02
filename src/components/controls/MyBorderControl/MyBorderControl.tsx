@@ -37,7 +37,6 @@ const MyBorderControl: FC<Props> = ({
 	} = borderControl;
 
 	const handleChangeBorder = (newBorders: BorderMainSettings) => {
-		debugger
 		setAttrs__border({
 			...borderControl,
 			mainSettings: newBorders,
