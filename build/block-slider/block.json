@@ -5,12 +5,15 @@
   "version": "0.1.0",
   "title": "Slider",
   "category": "wcb-blocks",
-  "icon": "- wcb-block-editor-block-icon lni lni-support",
-  "description": "Add accordions/FAQ schema to your page.",
+  "icon": "- wcb-block-editor-block-icon lni lni-quotation",
+  "description": "Create beautiful sliders with slider block.",
   "supports": {
     "html": false,
     "anchor": true,
-    "align": true
+    "align": [
+      "full",
+      "wide"
+    ]
   },
   "textdomain": "wcb-blocks",
   "editorScript": "file:./index.js",

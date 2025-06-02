@@ -1,13 +1,7 @@
 import { __ } from "@wordpress/i18n";
-import {
-	InnerBlocks,
-	useBlockProps,
-	// @ts-ignore
-	useInnerBlocksProps,
-} from "@wordpress/block-editor";
-import React, { useEffect, FC, useRef, useCallback } from "react";
-import { useMemo, memo } from '@wordpress/element';
-import { WcbAttrs } from "./attributes";
+import { RichText, useBlockProps } from "@wordpress/block-editor";
+import React, { useEffect, FC, useCallback, useRef } from "react";
+import { TestimonialItem, WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
 } from "../components/HOCInspectorControls";
@@ -16,27 +10,86 @@ import GlobalCss from "./GlobalCss";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
-import WcbFaqPanelGeneral from "./WcbFaqPanelGeneral";
-import WcbFaqPanelIcon from "./WcbFaqPanelIcon";
-import WcbFaqPanel_StyleContainer, {
-	WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
-	WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
-} from "./WcbFaqPanel_StyleContainer";
-import WcbFaqPanel_StyleQuestion, {
-	WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
-} from "./WcbFaqPanel_StyleQuestion";
-import WcbFaqPanel_StyleAnswer, {
-	WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
-} from "./WcbFaqPanel_StyleAnswer";
-import WcbFaqPanel_StyleIcon, {
-	WCB_FAQ_PANEL_STYLE_ICON_DEMO,
-} from "./WcbFaqPanel_StyleIcon";
-import WcbFaqPanelPreset from "./WcbFaqPanelPreset";
+import WcbTestimonialsPanelGeneral from "./WcbTestimonialsPanelGeneral";
+import WcbTestimonialsPanelImages from "./WcbTestimonialsPanelImages";
+import WcbTestimonialsPanelCarousel from "./WcbTestimonialsPanelCarousel";
+import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
+import WcbTestimonialsPanel_StyleName from "./WcbTestimonialsPanel_StyleName";
+import WcbTestimonialsPanel_StyleContent from "./WcbTestimonialsPanel_StyleContent";
+import WcbTestimonialsPanel_StyleCompany from "./WcbTestimonialsPanel_StyleCompany";
+import WcbTestimonialsPanel_StyleImage from "./WcbTestimonialsPanel_StyleImage";
+import WcbTestimonialsPanel_StyleArrowDots from "./WcbTestimonialsPanel_StyleArrowDots";
+import WcbTestimonialsPanel_StyleBackground from "./WcbTestimonialsPanel_StyleBackground";
+import WcbTestimonialsPanel_StyleDimension from "./WcbTestimonialsPanel_StyleDimension";
+import getImageUrlBySize from "../utils/getImageUrlBySize";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import OverlayBackgroundByBgControl from "../components/OverlayBackgroundByBgControl";
+import VideoBackgroundByBgControl from "../components/VideoBackgroundByBgControl";
+import _ from "lodash";
+import { useMemo } from "@wordpress/element";
+import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
+import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
-import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
-import { Swiper } from 'swiper/react'
 import Slider, { Settings } from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
+
+export const TESTIMONIAL_ITEM_DEMO: TestimonialItem = {
+	name: "Drink Water",
+	companyName: "CEO of Meta",
+	content:
+		"I have been working with these guys for years now! With lots of hard work and timely communication, they made sure they delivered the best to me. Highly recommended!",
+};
+
+function SampleNextArrow(props) {
+	const { className, style, onClick } = props;
+	return (
+		<div
+			className={className}
+			style={{ ...style, display: "block" }}
+			onClick={onClick}
+		>
+			<svg
+				fill="none"
+				viewBox="0 0 24 24"
+				strokeWidth={1.5}
+				stroke="currentColor"
+			>
+				<path
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					d="M8.25 4.5l7.5 7.5-7.5 7.5"
+				/>
+			</svg>
+		</div>
+	);
+}
+
+function SamplePrevArrow(props) {
+	const { className, style, onClick } = props;
+	return (
+		<div
+			className={className}
+			style={{ ...style, display: "block" }}
+			onClick={onClick}
+		>
+			<svg
+				fill="none"
+				viewBox="0 0 24 24"
+				strokeWidth={1.5}
+				stroke="currentColor"
+			>
+				<path
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					d="M15.75 19.5L8.25 12l7.5-7.5"
+				/>
+			</svg>
+		</div>
+	);
+}
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
@@ -44,19 +97,25 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		advance_responsiveCondition,
 		advance_zIndex,
 		uniqueId,
+		testimonials,
 		general_general,
-		general_icon,
-		style_container,
-		style_question,
-		style_icon,
-		style_answer,
-		general_preset,
+		general_images,
+		general_carousel,
+		style_name,
+		style_content,
+		style_company,
+		style_image,
+		style_arrowAndDots,
+		style_backgroundAndBorder,
+		style_dimension,
 		advance_motionEffect,
 	} = attributes;
 	//  COMMON HOOKS
+
+	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	const ref = useRef<HTMLDivElement>(null);
-	// const { myCache, ref } = useCreateCacheEmotion();
 	const wrapBlockProps = useBlockProps({ ref });
+
 	const {
 		tabIsOpen,
 		tabAdvancesIsPanelOpen,
@@ -74,171 +133,151 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	}, [UNIQUE_ID]);
 	//
 
+	let CURRENT_DATA = useMemo(
+		() =>
+			[...Array(general_general.numberofTestimonials || 3).keys()].map(
+				(_, index) => testimonials[index] || TESTIMONIAL_ITEM_DEMO
+			),
+		[general_general.numberofTestimonials, testimonials]
+	);
+
+	//
+
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
 		switch (tab.name) {
 			case "General":
 				return (
 					<>
-						<WcbFaqPanelPreset
-							onToggle={() => handleTogglePanel("General", "Preset", true)}
+						<WcbTestimonialsPanelGeneral
+							onToggle={() => handleTogglePanel("General", "Heading", true)}
 							initialOpen={
-								tabGeneralIsPanelOpen === "Preset" ||
+								tabGeneralIsPanelOpen === "Heading" ||
 								tabGeneralIsPanelOpen === "first"
 							}
-							opened={tabGeneralIsPanelOpen === "Preset" || undefined}
+							opened={tabGeneralIsPanelOpen === "Heading" || undefined}
 							//
 							setAttr__={(data) => {
-								if (data.preset === "carousel-simple") {
-									return setAttributes({
-										general_preset: data,
-										general_general: {
-											...general_general,
-											layout: "accordion",
-										},
-										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
-										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
-										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
-										style_icon: WCB_FAQ_PANEL_STYLE_ICON_DEMO,
+								if (
+									data.numberofTestimonials !==
+									general_general.numberofTestimonials
+								) {
+									const newtestimonials = [
+										...Array(general_general.numberofTestimonials || 3).keys(),
+									].map(
+										(_, index) => testimonials[index] || TESTIMONIAL_ITEM_DEMO
+									);
+									setAttributes({
+										general_general: data,
+										testimonials: newtestimonials,
 									});
+								} else {
+									setAttributes({ general_general: data });
 								}
-								if (data.preset === "carousel-solid") {
-									return setAttributes({
-										general_preset: data,
-										general_general: {
-											...general_general,
-											layout: "accordion",
-										},
-										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
-										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
-										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
-										style_icon: WCB_FAQ_PANEL_STYLE_ICON_DEMO,
-									});
-								}
-								if (data.preset === "grid-simple") {
-									return setAttributes({
-										general_preset: data,
-										general_general: {
-											...general_general,
-											layout: "grid",
-										},
-										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
-										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
-										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
-									});
-								}
-								if (data.preset === "grid-solid") {
-									return setAttributes({
-										general_preset: data,
-										general_general: {
-											...general_general,
-											layout: "grid",
-										},
-										style_container: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO_SOLID,
-										style_answer: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
-										style_question: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
-									});
-								}
-
-								setAttributes({
-									general_preset: data,
-								});
-							}}
-							panelData={general_preset}
-						/>
-						<WcbFaqPanelGeneral
-							onToggle={() => handleTogglePanel("General", "General")}
-							initialOpen={tabGeneralIsPanelOpen === "General"}
-							opened={tabGeneralIsPanelOpen === "General" || undefined}
-							//
-							setAttr__={(data) => {
-								setAttributes({
-									general_general: data,
-									general_preset: { ...general_preset, preset: "" },
-								});
 							}}
 							panelData={general_general}
 						/>
-						{general_general.layout === "accordion" && (
-							<WcbFaqPanelIcon
-								onToggle={() => handleTogglePanel("General", "Icon")}
-								initialOpen={tabGeneralIsPanelOpen === "Icon"}
-								opened={tabGeneralIsPanelOpen === "Icon" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({
-										general_icon: data,
-										general_preset: { ...general_preset, preset: "" },
-									});
-								}}
-								panelData={general_icon}
-							/>
-						)}
+
+						<WcbTestimonialsPanelImages
+							onToggle={() => handleTogglePanel("General", "PanelImages")}
+							initialOpen={tabGeneralIsPanelOpen === "PanelImages"}
+							opened={tabGeneralIsPanelOpen === "PanelImages" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ general_images: data });
+							}}
+							panelData={general_images}
+							numberOfItems={general_general.numberofTestimonials}
+						/>
+
+						<WcbTestimonialsPanelCarousel
+							onToggle={() => handleTogglePanel("General", "Carousel")}
+							initialOpen={tabGeneralIsPanelOpen === "Carousel"}
+							opened={tabGeneralIsPanelOpen === "Carousel" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({
+									general_carousel: data,
+								});
+							}}
+							panelData={general_carousel}
+						/>
 					</>
 				);
 			case "Styles":
 				return (
 					<>
-						<WcbFaqPanel_StyleContainer
-							onToggle={() =>
-								handleTogglePanel("Styles", "_StyleContainer", true)
-							}
+						<WcbTestimonialsPanel_StyleName
+							onToggle={() => handleTogglePanel("Styles", "_StyleName", true)}
 							initialOpen={
-								tabStylesIsPanelOpen === "_StyleContainer" ||
+								tabStylesIsPanelOpen === "_StyleName" ||
 								tabStylesIsPanelOpen === "first"
 							}
-							opened={tabStylesIsPanelOpen === "_StyleContainer" || undefined}
+							opened={tabStylesIsPanelOpen === "_StyleName" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({
-									style_container: data,
-									general_preset: { ...general_preset, preset: "" },
-								});
+								setAttributes({ style_name: data });
 							}}
-							panelData={style_container}
+							panelData={style_name}
 						/>
-
-						<WcbFaqPanel_StyleQuestion
-							onToggle={() => handleTogglePanel("Styles", "_StyleQuestion")}
-							initialOpen={tabStylesIsPanelOpen === "_StyleQuestion"}
-							opened={tabStylesIsPanelOpen === "_StyleQuestion" || undefined}
+						<WcbTestimonialsPanel_StyleContent
+							onToggle={() => handleTogglePanel("Styles", "_StyleContent")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleContent"}
+							opened={tabStylesIsPanelOpen === "_StyleContent" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({
-									style_question: data,
-									general_preset: { ...general_preset, preset: "" },
-								});
+								setAttributes({ style_content: data });
 							}}
-							panelData={style_question}
+							panelData={style_content}
 						/>
-
-						{general_general.layout === "accordion" && (
-							<WcbFaqPanel_StyleIcon
-								onToggle={() => handleTogglePanel("Styles", "_StyleIcon")}
-								initialOpen={tabStylesIsPanelOpen === "_StyleIcon"}
-								opened={tabStylesIsPanelOpen === "_StyleIcon" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({
-										style_icon: data,
-										general_preset: { ...general_preset, preset: "" },
-									});
-								}}
-								panelData={style_icon}
-							/>
-						)}
-
-						<WcbFaqPanel_StyleAnswer
-							onToggle={() => handleTogglePanel("Styles", "_StyleAnswer")}
-							initialOpen={tabStylesIsPanelOpen === "_StyleAnswer"}
-							opened={tabStylesIsPanelOpen === "_StyleAnswer" || undefined}
+						<WcbTestimonialsPanel_StyleCompany
+							onToggle={() => handleTogglePanel("Styles", "_StyleCompany")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleCompany"}
+							opened={tabStylesIsPanelOpen === "_StyleCompany" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({
-									style_answer: data,
-									general_preset: { ...general_preset, preset: "" },
-								});
+								setAttributes({ style_company: data });
 							}}
-							panelData={style_answer}
+							panelData={style_company}
+						/>
+						<WcbTestimonialsPanel_StyleImage
+							onToggle={() => handleTogglePanel("Styles", "_StyleImage")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleImage"}
+							opened={tabStylesIsPanelOpen === "_StyleImage" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_image: data });
+							}}
+							panelData={style_image}
+						/>
+						<WcbTestimonialsPanel_StyleArrowDots
+							onToggle={() => handleTogglePanel("Styles", "_StyleArrowDots")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleArrowDots"}
+							opened={tabStylesIsPanelOpen === "_StyleArrowDots" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_arrowAndDots: data });
+							}}
+							panelData={style_arrowAndDots}
+						/>
+						<WcbTestimonialsPanel_StyleBackground
+							onToggle={() => handleTogglePanel("Styles", "_StyleBackground")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleBackground"}
+							opened={tabStylesIsPanelOpen === "_StyleBackground" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_backgroundAndBorder: data });
+							}}
+							panelData={style_backgroundAndBorder}
+						/>
+						<WcbTestimonialsPanel_StyleDimension
+							onToggle={() => handleTogglePanel("Styles", "_StyleDimension")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleDimension"}
+							opened={tabStylesIsPanelOpen === "_StyleDimension" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_dimension: data });
+							}}
+							panelData={style_dimension}
 						/>
 					</>
 				);
@@ -246,7 +285,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				return (
 					<>
 						<AdvancePanelCommon
-							advance_motionEffect={attributes.advance_motionEffect}
+							advance_motionEffect={advance_motionEffect}
 							advance_responsiveCondition={
 								attributes.advance_responsiveCondition
 							}
@@ -263,71 +302,227 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		}
 	};
 
-	// INNER BLOCK
-	const blockProps = useBlockProps();
-
-	const swiperRef = useRef();
-
-	const settings: Settings = {
-		slidesToScroll: 1,
-		adaptiveHeight: true,
+	const renderTestimonialItemContent = (
+		item: TestimonialItem,
+		index: number
+	) => {
+		return (
+			<RichText
+				tagName="div"
+				className="wcb-slider__item-content"
+				value={item.content}
+				onChange={(content) => {
+					setAttributes({
+						testimonials: CURRENT_DATA.map((item, j) => {
+							if (j === index) {
+								return {
+									...item,
+									content: content,
+								};
+							}
+							return item;
+						}),
+					});
+				}}
+				placeholder={__("Content of testimonials")}
+			/>
+		);
 	};
 
-	// const innerBlocksProps = useInnerBlocksProps(blockProps, {
-	// 	allowedBlocks: ["wcb/icon-box"],
-	// 	template: [
-	// 		["wcb/icon-box", {}],
-	// 		["wcb/icon-box", {}],
-	// 	],
-	// 	renderAppender: () => {
-	// 		return isSelected ? <InnerBlocks.DefaultBlockAppender /> : false;
-	// 	},
-	// });
-	const getSliderTemplate = useMemo( () => {
-		const sliderTemplate = [
-			["wcb/icon-box", {}],
-			["wcb/icon-box", {}],
-			["wcb/icon-box", {}],
-		];
-		return sliderTemplate;
-	}, []);
+	const renderTestimonialItemName = (item: TestimonialItem, index: number) => {
+		return (
+			<RichText
+				tagName="div"
+				className="wcb-slider__item-name"
+				value={item.name}
+				onChange={(content) => {
+					setAttributes({
+						testimonials: CURRENT_DATA.map((item, j) => {
+							if (j === index) {
+								return {
+									...item,
+									name: content,
+								};
+							}
+							return item;
+						}),
+					});
+				}}
+				placeholder={__("Name")}
+			/>
+		);
+	};
 
-	const innerBlocksProps = useInnerBlocksProps(
-		{
-			className: `swiper-wrapper`,
-			slot: 'container-start',
-		},
-		{
-			allowedBlocks: ["wcb/icon-box"],
-			template: getSliderTemplate,
-			renderAppender: false,
-			orientation: 'horizontal',
+	const renderTestimonialItemCompany = (
+		item: TestimonialItem,
+		index: number
+	) => {
+		return (
+			<RichText
+				tagName="div"
+				className="wcb-slider__item-company"
+				value={item.companyName}
+				onChange={(content) => {
+					setAttributes({
+						testimonials: CURRENT_DATA.map((item, j) => {
+							if (j === index) {
+								return {
+									...item,
+									companyName: content,
+								};
+							}
+							return item;
+						}),
+					});
+				}}
+				placeholder={__("Company Name")}
+			/>
+		);
+	};
+
+	const renderTestimonialItemImage = (item: TestimonialItem, index: number) => {
+		const { images, isShowImage, imageSize } = general_images;
+		const { imageSize: imageSizeAttr } = style_image;
+		const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
+		const { mediaId, mediaSrcSet } = images[index] || {};
+		if (!isShowImage || !mediaId) {
+			return null;
 		}
-	);
+		const { value_Desktop, value_Mobile, value_Tablet } =
+			getValueFromAttrsResponsives(imageSizeAttr);
+		const url = getImageUrlBySize(images[index], imageSize);
+		return (
+			<div className="wcb-slider__item-image">
+				<img
+					src={url}
+					alt=""
+					srcSet={mediaSrcSet}
+					sizes={`(max-width: ${media_tablet}) ${value_Mobile}, (max-width: ${media_desktop}) ${value_Tablet}, ${value_Desktop}`}
+				/>
+			</div>
+		);
+	};
+
+	const renderTestimonialItem = (item: TestimonialItem, index: number) => {
+		const { imagePosition } = general_images;
+		return (
+			<div className="wcb-slider__item" key={index + "-"}>
+				<div className="wcb-slider__item-background">
+					<div className=""></div>
+					<VideoBackgroundByBgControl
+						bgType={style_backgroundAndBorder.background.bgType}
+						videoData={style_backgroundAndBorder.background.videoData}
+					/>
+					<OverlayBackgroundByBgControl
+						bgType={style_backgroundAndBorder.background.bgType}
+						overlayType={style_backgroundAndBorder.background.overlayType}
+					/>
+					<div className="wcb-slider__item-wrap-inner">
+						{/* IMAGE */}
+						{imagePosition === "left" &&
+							renderTestimonialItemImage(item, index)}
+
+						<div className="wcb-slider__item-inner">
+							{/* IMAGE */}
+							{imagePosition === "top" &&
+								renderTestimonialItemImage(item, index)}
+
+							{/* CONTENT */}
+							{renderTestimonialItemContent(item, index)}
+
+							<div className="wcb-slider__item-user">
+								{/* IMAGE */}
+								{imagePosition === "bottom" &&
+									renderTestimonialItemImage(item, index)}
+
+								<div className="wcb-slider__item-nameandcompany">
+									{/* NAME */}
+									<div>{renderTestimonialItemName(item, index)}</div>
+
+									{/* COMPANY */}
+									{renderTestimonialItemCompany(item, index)}
+								</div>
+							</div>
+						</div>
+
+						{/* IMAGE */}
+						{imagePosition === "right" &&
+							renderTestimonialItemImage(item, index)}
+					</div>
+				</div>
+			</div>
+		);
+	};
+
+	const renderEditContent = () => {
+		const {
+			animationDuration,
+			autoplaySpeed,
+			hoverpause,
+			isAutoPlay,
+			rewind,
+			showArrowsDots,
+			adaptiveHeight,
+		} = general_carousel;
+		const { colGap, columns } = general_general;
+
+		const { currentDeviceValue: currentColumns } = getValueFromAttrsResponsives(
+			columns,
+			deviceType
+		);
+
+		const settings: Settings = {
+			infinite: rewind,
+			speed: animationDuration || 500,
+			autoplay: isAutoPlay,
+			autoplaySpeed,
+			//
+			slidesToShow: currentColumns,
+			slidesToScroll: 1,
+			nextArrow: <SampleNextArrow />,
+			prevArrow: <SamplePrevArrow />,
+
+			dots: showArrowsDots !== "Arrow",
+			arrows: showArrowsDots !== "Dot",
+			adaptiveHeight: true,
+			pauseOnHover: hoverpause,
+		};
+		return (
+			<Slider {...settings}>{CURRENT_DATA.map(renderTestimonialItem)}</Slider>
+		);
+	};
 
 	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {
 		return {
+			uniqueId,
 			advance_responsiveCondition,
 			advance_zIndex,
 			general_general,
-			general_icon,
-			style_answer,
-			style_container,
-			style_icon,
-			style_question,
-			uniqueId,
+			style_dimension,
+			general_carousel,
+			general_images,
+			style_arrowAndDots,
+			style_backgroundAndBorder,
+			style_company,
+			style_content,
+			style_image,
+			style_name,
 			advance_motionEffect,
 		};
 	}, [
+		uniqueId,
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_general,
-		general_icon,
-		style_answer,
-		style_container,
-		style_icon,
-		style_question,
-		uniqueId,
+		style_dimension,
+		general_carousel,
+		general_images,
+		style_arrowAndDots,
+		style_backgroundAndBorder,
+		style_company,
+		style_content,
+		style_image,
+		style_name,
 		advance_motionEffect,
 	]);
 
@@ -335,7 +530,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-slider__wrap p-2 ${uniqueId}`}
+				className={`${wrapBlockProps?.className} wcb-slider__wrap ${uniqueId}`}
 				data-uniqueid={uniqueId}
 			>
 				{/* CONTROL SETTINGS */}
@@ -345,27 +540,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				/>
 
 				{/* CSS IN JS */}
-				{uniqueId && <GlobalCss {...WcbAttrsForSave()} />}
+				<GlobalCss {...WcbAttrsForSave()} />
 
 				{/* CHILD CONTENT  */}
-
-				<Slider {...settings}>
-					<InnerBlocks 
-						allowedBlocks={["wcb/icon-box"]} 
-						template={
-							[
-								["wcb/icon-box", {}],
-							]}
-					/>
-					<InnerBlocks 
-						allowedBlocks={["wcb/icon-box"]} 
-						template={
-							[
-								["wcb/icon-box", {}],
-							]}
-					/>
-				</Slider>
-				
+				{renderEditContent()}
 			</div>
 		</MyCacheProvider>
 	);

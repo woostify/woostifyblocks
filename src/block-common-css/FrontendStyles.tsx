@@ -82,6 +82,11 @@ const classes: {
 		C: React.lazy(() => import("../block-counter/GlobalCss")),
 		F: animateProgressElements,
 	},
+		{
+		D: ".wcb-slider__wrap.wcb-update-div",
+		C: React.lazy(() => import("../block-slider/GlobalCss")),
+		F: initCarouselForWcbTestimonials,
+	},
 ];
 
 classes.forEach(({ D, C, F }) => {

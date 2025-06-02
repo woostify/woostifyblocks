@@ -14,40 +14,66 @@ import {
 	MyZIndexControlData,
 	Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
+import { TESTIMONIAL_ITEM_DEMO } from "./Edit";
 import {
-	WCB_FAQ_PANEL_GENERAL,
-	WCB_FAQ_PANEL_GENERAL_DEMO,
-} from "./WcbFaqPanelGeneral";
-import { WCB_FAQ_PANEL_ICON, WCB_FAQ_PANEL_ICON_DEMO } from "./WcbFaqPanelIcon";
+	WCB_TESTIMONIALS_PANEL_CAROUSEL,
+	WCB_TESTIMONIALS_PANEL_CAROUSEL_DEMO,
+} from "./WcbTestimonialsPanelCarousel";
 import {
-	WCB_FAQ_PANEL_PRESET,
-	WCB_FAQ_PANEL_PRESET_DEMO,
-} from "./WcbFaqPanelPreset";
+	WCB_TESTIMONIALS_PANEL_GENERAL,
+	WCB_TESTIMONIALS_PANEL_GENERAL_DEMO,
+} from "./WcbTestimonialsPanelGeneral";
 import {
-	WCB_FAQ_PANEL_STYLE_ANSWER,
-	WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
-} from "./WcbFaqPanel_StyleAnswer";
+	WCB_TESTIMONIALS_PANEL_IMAGES,
+	WCB_TESTIMONIALS_PANEL_IMAGES_DEMO,
+} from "./WcbTestimonialsPanelImages";
 import {
-	WCB_FAQ_PANEL_STYLE_CONTAINER,
-	WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
-} from "./WcbFaqPanel_StyleContainer";
+	WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS,
+	WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS_DEMO,
+} from "./WcbTestimonialsPanel_StyleArrowDots";
 import {
-	WCB_FAQ_PANEL_STYLE_ICON,
-	WCB_FAQ_PANEL_STYLE_ICON_DEMO,
-} from "./WcbFaqPanel_StyleIcon";
+	WCB_TESTIMONIALS_PANEL_STYLE_BACKGROUND_BORDER,
+	WCB_TESTIMONIALS_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
+} from "./WcbTestimonialsPanel_StyleBackground";
 import {
-	WCB_FAQ_PANEL_STYLE_QUESTION,
-	WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
-} from "./WcbFaqPanel_StyleQuestion";
+	WCB_TESTIMONIALS_PANEL_STYLE_COMPANY,
+	WCB_TESTIMONIALS_PANEL_STYLE_COMPANY_DEMO,
+} from "./WcbTestimonialsPanel_StyleCompany";
+import { WCB_TESTIMONIALS_PANEL_STYLE_CONTENT_DEMO } from "./WcbTestimonialsPanel_StyleContent";
+import {
+	WCB_TESTIMONIALS_PANEL_STYLE_DIMENSION,
+	WCB_TESTIMONIALS_PANEL_STYLE_DIMENSION_DEMO,
+} from "./WcbTestimonialsPanel_StyleDimension";
+import {
+	WCB_TESTIMONIALS_PANEL_STYLE_IMAGE,
+	WCB_TESTIMONIALS_PANEL_STYLE_IMAGE_DEMO,
+} from "./WcbTestimonialsPanel_StyleImage";
+import {
+	WCB_TESTIMONIALS_PANEL_STYLE_NAME,
+	WCB_TESTIMONIALS_PANEL_STYLE_NAME_DEMO,
+} from "./WcbTestimonialsPanel_StyleName";
+
+export interface TestimonialItem {
+	content: string;
+	name: string;
+	companyName: string;
+}
+
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
-	general_preset: WCB_FAQ_PANEL_PRESET;
-	general_general: WCB_FAQ_PANEL_GENERAL;
-	general_icon: WCB_FAQ_PANEL_ICON;
-	style_container: WCB_FAQ_PANEL_STYLE_CONTAINER;
-	style_question: WCB_FAQ_PANEL_STYLE_QUESTION;
-	style_icon: WCB_FAQ_PANEL_STYLE_ICON;
-	style_answer: WCB_FAQ_PANEL_STYLE_ANSWER;
+	testimonials: TestimonialItem[];
+	//
+	general_general: WCB_TESTIMONIALS_PANEL_GENERAL;
+	general_images: WCB_TESTIMONIALS_PANEL_IMAGES;
+	general_carousel: WCB_TESTIMONIALS_PANEL_CAROUSEL;
+	//
+	style_name: WCB_TESTIMONIALS_PANEL_STYLE_NAME;
+	style_content: WCB_TESTIMONIALS_PANEL_STYLE_NAME;
+	style_company: WCB_TESTIMONIALS_PANEL_STYLE_COMPANY;
+	style_image: WCB_TESTIMONIALS_PANEL_STYLE_IMAGE;
+	style_arrowAndDots: WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS;
+	style_backgroundAndBorder: WCB_TESTIMONIALS_PANEL_STYLE_BACKGROUND_BORDER;
+	style_dimension: WCB_TESTIMONIALS_PANEL_STYLE_DIMENSION;
 	//
 	advance_responsiveCondition: MyResponsiveConditionControlData;
 	advance_zIndex: MyZIndexControlData;
@@ -60,36 +86,57 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		default: "",
 	},
 
-	// THE ATTRS OF BLOCK HERE
-	general_preset: {
-		type: "object",
-		default: WCB_FAQ_PANEL_PRESET_DEMO,
-	},
-	general_general: {
-		type: "object",
-		default: WCB_FAQ_PANEL_GENERAL_DEMO,
-	},
-	general_icon: {
-		type: "object",
-		default: WCB_FAQ_PANEL_ICON_DEMO,
-	},
-	style_container: {
-		type: "object",
-		default: WCB_FAQ_PANEL_STYLE_CONTAINER_DEMO,
-	},
-	style_question: {
-		type: "object",
-		default: WCB_FAQ_PANEL_STYLE_QUESTION_DEMO,
-	},
-	style_icon: {
-		type: "object",
-		default: WCB_FAQ_PANEL_STYLE_ICON_DEMO,
-	},
-	style_answer: {
-		type: "object",
-		default: WCB_FAQ_PANEL_STYLE_ANSWER_DEMO,
+	testimonials: {
+		type: "array",
+		default: [
+			TESTIMONIAL_ITEM_DEMO,
+			TESTIMONIAL_ITEM_DEMO,
+			TESTIMONIAL_ITEM_DEMO,
+		],
 	},
 
+	// THE ATTRS OF BLOCK HERE
+	general_general: {
+		type: "object",
+		default: WCB_TESTIMONIALS_PANEL_GENERAL_DEMO,
+	},
+	general_images: {
+		type: "object",
+		default: WCB_TESTIMONIALS_PANEL_IMAGES_DEMO,
+	},
+	general_carousel: {
+		type: "object",
+		default: WCB_TESTIMONIALS_PANEL_CAROUSEL_DEMO,
+	},
+	//
+	style_name: {
+		type: "object",
+		default: WCB_TESTIMONIALS_PANEL_STYLE_NAME_DEMO,
+	},
+	style_content: {
+		type: "object",
+		default: WCB_TESTIMONIALS_PANEL_STYLE_CONTENT_DEMO,
+	},
+	style_company: {
+		type: "object",
+		default: WCB_TESTIMONIALS_PANEL_STYLE_COMPANY_DEMO,
+	},
+	style_image: {
+		type: "object",
+		default: WCB_TESTIMONIALS_PANEL_STYLE_IMAGE_DEMO,
+	},
+	style_arrowAndDots: {
+		type: "object",
+		default: WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS_DEMO,
+	},
+	style_backgroundAndBorder: {
+		type: "object",
+		default: WCB_TESTIMONIALS_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
+	},
+	style_dimension: {
+		type: "object",
+		default: WCB_TESTIMONIALS_PANEL_STYLE_DIMENSION_DEMO,
+	},
 	// ADVANCE
 	advance_responsiveCondition: {
 		type: "object",

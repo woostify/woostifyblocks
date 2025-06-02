@@ -1,0 +1,59 @@
+/*  */
+/*  */
+.wcb-testimonials__wrap {
+	padding: 32px;
+
+	.slick-dots {
+		position: relative;
+		bottom: auto;
+	}
+	.slick-dots li {
+		margin: 0px;
+	}
+	.slick-dots li button:before {
+		font-size: 8px;
+	}
+
+	.slick-prev,
+	.slick-next {
+		z-index: 3;
+		background: #fff;
+		color: black;
+		padding: 0.5rem;
+		width: unset;
+		height: unset;
+		&:hover {
+			color: black;
+		}
+		&::before {
+			content: "";
+			display: none;
+		}
+	}
+}
+
+.wcb-testimonials__item {
+	position: relative;
+	.wcb-testimonials__item-background {
+		position: relative;
+	}
+	.wcb-testimonials__item-wrap-inner {
+		display: flex;
+	}
+}
+
+.wcb-testimonials__item-inner {
+	margin: 0 auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wcb-testimonials__item-image {
+	display: inline-flex;
+	align-items: flex-start;
+	flex-shrink: 0;
+}
+.wcb-testimonials__item-user {
+	display: inline-flex;
+	align-items: center;
+}

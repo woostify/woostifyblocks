@@ -1,15 +1,14 @@
 import { Global, CSSObject } from "@emotion/react";
 import React, { FC } from "react";
 import { getAdvanveDivWrapStyles } from "../block-container/getAdvanveStyles";
-import getBackgroundColorGradientStyles from "../utils/getBackgroundColorGradientStyles";
-import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
-import getBorderStyles from "../utils/getBorderStyles";
-import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
-import { WcbAttrsForSave } from "./Save";
-import getStyleObjectFromResponsiveAttr from "../utils/getStyleObjectFromResponsiveAttr";
-import getTypographyStyles from "../utils/getTypographyStyles";
 import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
-import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
+import getSingleDimensionStyles from "../utils/getSingleDimensionStyles";
+import getTypographyStyles from "../utils/getTypographyStyles";
+import getBorderRadiusStyles from "../utils/getBorderRadiusStyles";
+import getBorderStyles from "../utils/getBorderStyles";
+import getStyleObjectFromResponsiveAttr from "../utils/getStyleObjectFromResponsiveAttr";
+import getStyleBackground from "../utils/getStyleBackground";
+import { WcbAttrsForSave } from "./Save";
 
 interface Props extends WcbAttrsForSave {}
 
@@ -18,67 +17,37 @@ const GlobalCss: FC<Props> = (attrs) => {
 		uniqueId,
 		// ATTRS OF BLOCK
 		general_general,
-		general_icon,
-		style_answer,
-		style_container,
-		style_question,
-		style_icon,
+		style_arrowAndDots,
+		style_backgroundAndBorder,
+		style_company,
+		style_content,
+		style_dimension,
+		style_image,
+		style_name,
 		//
 		advance_responsiveCondition,
 		advance_zIndex,
 		advance_motionEffect,
 	} = attrs;
-	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
 	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
-	const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-slider__inner`;
-	const FAQ_CHILD_WRAP = `${WRAP_CLASSNAME} .wcb-slider-child__wrap`;
-	const FAQ_CHILD_QUESTION = `${WRAP_CLASSNAME} .wcb-slider-child__question`;
-	const FAQ_CHILD_QUESTION_TEXT = `${WRAP_CLASSNAME} .wcb-slider-child__question-text`;
-	const FAQ_CHILD_ANSWER = `${WRAP_CLASSNAME} .wcb-slider-child__answer`;
-	const FAQ_CHILD_ANSWER_TEXT = `${WRAP_CLASSNAME} .wcb-slider-child__answer-text`;
-	const FAQ_CHILD_ICON = `${WRAP_CLASSNAME} .wcb-slider-child__icon`;
-	const FAQ_CHILD_SEPARATOR = `${WRAP_CLASSNAME} .wcb-slider-child__separator`;
-
-	//
-
-	let {
-		value_Desktop: iconSize_desktop,
-		value_Tablet: iconSize_tablet,
-		value_Mobile: iconSize_mobile,
-	} = getValueFromAttrsResponsives(style_icon.size);
-
-	const IconSizeConverted: HasResponsive<string> = {
-		Desktop: iconSize_desktop + "px",
-		Tablet: iconSize_tablet + "px",
-		Mobile: iconSize_mobile + "px",
-	};
+	const ITEM_CLASSNAME = `${WRAP_CLASSNAME} .wcb-slider__item`;
+	const ITEM_NAME = `${WRAP_CLASSNAME} .wcb-slider__item-name`;
+	const ITEM_CONTENT = `${WRAP_CLASSNAME} .wcb-slider__item-content`;
+	const ITEM_COMPANY = `${WRAP_CLASSNAME} .wcb-slider__item-company`;
+	const ITEM_IMAGE = `${WRAP_CLASSNAME} .wcb-slider__item-image`;
+	const SLICK_ARROW = `${WRAP_CLASSNAME} .slick-arrow`;
+	const SLICK_DOTS = `${WRAP_CLASSNAME} .slick-dots`;
 
 	// ------------------- WRAP DIV
-	const getDivWrapStyles = (): CSSObject => {
-		return {
-			[`${WRAP_CLASSNAME}`]: {
-				[`@media (min-width: ${media_tablet})`]: {},
-				[`@media (min-width: ${media_desktop})`]: {},
-			},
-		};
-	};
-
-	const inner_getGridCol = (): CSSObject => {
-		const { value_Desktop, value_Tablet, value_Mobile } =
-			getValueFromAttrsResponsives(general_general.columns);
-
-		return {
-			[`${INNER_CLASSNAME}`]: {
-				gridTemplateColumns: `repeat(${value_Mobile}, minmax(0, 1fr))`,
-				[`@media (min-width: ${media_tablet})`]: {
-					gridTemplateColumns: `repeat(${value_Tablet}, minmax(0, 1fr))`,
-				},
-				[`@media (min-width: ${media_desktop})`]: {
-					gridTemplateColumns: `repeat(${value_Desktop}, minmax(0, 1fr))`,
-				},
-			},
-		};
+	const getDivWrapStyles = (): CSSObject[] => {
+		return [
+			getStyleObjectFromResponsiveAttr({
+				value: general_general.textAlignment,
+				className: `${ITEM_CLASSNAME}`,
+				prefix: "textAlign",
+			}),
+		];
 	};
 
 	if (!uniqueId) {
@@ -87,141 +56,139 @@ const GlobalCss: FC<Props> = (attrs) => {
 
 	return (
 		<>
-			{/* ------- INNER -------   */}
-			<Global
-				styles={[
-					getStyleObjectFromResponsiveAttr({
-						className: INNER_CLASSNAME,
-						value: style_container.colunmGap,
-						prefix: "columnGap",
-					}),
-					getStyleObjectFromResponsiveAttr({
-						className: INNER_CLASSNAME,
-						value: style_container.rowGap,
-						prefix: "rowGap",
-					}),
-					{
-						[INNER_CLASSNAME]: {
-							textAlign: general_general.textAlignment,
-						},
-					},
-				]}
-			/>
-			{general_general.layout === "grid" && (
-				<Global
-					styles={[
-						inner_getGridCol(),
-						{
-							[FAQ_CHILD_QUESTION]: {
-								display: "block",
-							},
-						},
-					]}
-				/>
-			)}
+			<Global styles={getDivWrapStyles()} />
 
-			{/* ------- FAQ CHILD -------  */}
-			<Global
-				styles={[
-					getBackgroundColorGradientStyles({
-						className: FAQ_CHILD_WRAP,
-						background: style_container.background,
-					}),
-					getBorderStyles({
-						border: style_container.border,
-						className: FAQ_CHILD_WRAP,
-						isWithRadius: true,
-					}),
-					getBorderStyles({
-						border: style_container.border,
-						className: FAQ_CHILD_SEPARATOR,
-						isWithRadius: true,
-					}),
-					{
-						[FAQ_CHILD_WRAP]: {
-							height:
-								general_general.layout === "grid" &&
-								!style_container.equalHeight
-									? "fit-content"
-									: undefined,
-						},
-					},
-				]}
-			/>
-
-			{/* ------ QUESTION ---------  */}
+			{/* ITEM NAME  */}
 			<Global
 				styles={[
 					getTypographyStyles({
-						className: FAQ_CHILD_QUESTION,
-						typography: style_question.typography,
+						typography: style_name.typography,
+						className: ITEM_NAME,
 					}),
-					getPaddingMarginStyles({
-						className: FAQ_CHILD_QUESTION,
-						padding: style_question.padding,
-					}),
-					getStyleObjectFromResponsiveAttr({
-						className: FAQ_CHILD_QUESTION,
-						value: style_icon.colGap,
-						prefix: "gap",
+					getSingleDimensionStyles({
+						value: style_name.marginBottom,
+						className: ITEM_NAME,
+						prefix: "marginBottom",
 					}),
 					{
-						[FAQ_CHILD_QUESTION]: {
-							color: style_question.color,
-							backgroundColor: style_question.backgroundColor,
-							":hover, :focus, :active": {
-								color: style_question.colorHover,
-								backgroundColor: style_question.backgroundColorHover,
-							},
-						},
-						[`${WRAP_CLASSNAME} .wcb-slider-child__wrap.active .wcb-slider-child__question`]:
-							{
-								color: style_question.colorHover,
-								backgroundColor: style_question.backgroundColorHover,
-							},
-					},
-				]}
-			/>
-
-			{/* ------ ICON ---------  */}
-			<Global
-				styles={[
-					getStyleObjectFromResponsiveAttr({
-						className: `${FAQ_CHILD_ICON}, ${FAQ_CHILD_ICON}:before, ${FAQ_CHILD_ICON} svg`,
-						value: IconSizeConverted,
-						prefix: "fontSize",
-						prefix_2: "height",
-						prefix_3: "width",
-					}),
-					{
-						[FAQ_CHILD_ICON]: {
-							color: style_icon.color,
-						},
-						[`${WRAP_CLASSNAME} .wcb-slider-child__wrap.active`]: {
-							".wcb-slider-child__icon": {
-								color: style_icon.activeColor,
-							},
+						[ITEM_NAME]: {
+							color: style_name.textColor,
 						},
 					},
 				]}
 			/>
 
-			{/* ------ ANSWER ---------  */}
+			{/* ITEM CONTENT  */}
 			<Global
 				styles={[
 					getTypographyStyles({
-						className: FAQ_CHILD_ANSWER,
-						typography: style_answer.typography,
+						typography: style_content.typography,
+						className: ITEM_CONTENT,
 					}),
-					getPaddingMarginStyles({
-						className: FAQ_CHILD_ANSWER,
-						padding: style_answer.padding,
+					getSingleDimensionStyles({
+						value: style_content.marginBottom,
+						className: ITEM_CONTENT,
+						prefix: "marginBottom",
 					}),
 					{
-						[FAQ_CHILD_ANSWER]: {
-							color: style_answer.color,
-							backgroundColor: style_answer.backgroundColor,
-							// display: general_general.collapseOtherItems ? "none" : "block",
+						[ITEM_CONTENT]: {
+							color: style_content.textColor,
+						},
+					},
+				]}
+			/>
+
+			{/* ITEM COMPANY  */}
+			<Global
+				styles={[
+					getTypographyStyles({
+						typography: style_company.typography,
+						className: ITEM_COMPANY,
+					}),
+					{
+						[ITEM_COMPANY]: {
+							color: style_company.textColor,
+						},
+					},
+				]}
+			/>
+
+			{/* ITEM IMAGE  */}
+			<Global
+				styles={[
+					getPaddingMarginStyles({
+						padding: style_image.padding,
+						className: ITEM_IMAGE,
+					}),
+					getBorderRadiusStyles({
+						radius: style_image.radius,
+						className: `${ITEM_IMAGE} img`,
+					}),
+					getStyleObjectFromResponsiveAttr({
+						className: `${ITEM_IMAGE} img`,
+						prefix: "height",
+						prefix_2: "width",
+						value: style_image.imageSize,
+					}),
+					{
+						[`${ITEM_IMAGE} img`]: {
+							objectFit: style_image.objectFit,
+						},
+					},
+				]}
+			/>
+
+			{/* ITEM WRAP  */}
+			<Global
+				styles={[
+					getBorderStyles({
+						border: style_backgroundAndBorder.border,
+						className: ITEM_CLASSNAME,
+						isWithRadius: true,
+					}),
+					getStyleObjectFromResponsiveAttr({
+						className: ITEM_CLASSNAME,
+						value: general_general.colGap,
+						prefix: "paddingLeft",
+						prefix_2: "paddingRight",
+					}),
+					getStyleObjectFromResponsiveAttr({
+						className: ITEM_CLASSNAME,
+						value: style_arrowAndDots.dotsMarginTop,
+						prefix: "marginBottom",
+					}),
+					getPaddingMarginStyles({
+						className: `${WRAP_CLASSNAME} .wcb-slider__item-inner`,
+						padding: style_dimension.padding,
+					}),
+					getStyleBackground({
+						className: `${ITEM_CLASSNAME} .wcb-slider__item-background`,
+						styles_background: style_backgroundAndBorder.background,
+					}),
+				]}
+			/>
+
+			{/* SLICK ARROW & DOTS  */}
+			<Global
+				styles={[
+					getBorderStyles({
+						border: style_arrowAndDots.border,
+						className: SLICK_ARROW,
+						isWithRadius: true,
+					}),
+					{
+						[`${SLICK_ARROW} svg`]: {
+							width: style_arrowAndDots.arrowSize,
+							height: style_arrowAndDots.arrowSize,
+							color: style_arrowAndDots.color,
+						},
+					},
+
+					{
+						[`${SLICK_DOTS} li`]: {
+							"button:before": {
+								color: style_arrowAndDots.color,
+							},
 						},
 					},
 				]}
@@ -234,6 +201,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 					advance_responsiveCondition,
 					advance_zIndex,
 					className: WRAP_CLASSNAME,
+					defaultDisplay: "block",
 				})}
 			/>
 		</>
