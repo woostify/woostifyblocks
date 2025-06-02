@@ -1,7 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import { RichText, useBlockProps } from "@wordpress/block-editor";
 import React, { useEffect, FC, useCallback, useRef } from "react";
-import { TestimonialItem, WcbAttrs } from "./attributes";
+import { SliderItem, WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
 } from "../components/HOCInspectorControls";
@@ -10,17 +10,17 @@ import GlobalCss from "./GlobalCss";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
-import WcbTestimonialsPanelGeneral from "./WcbTestimonialsPanelGeneral";
-import WcbTestimonialsPanelImages from "./WcbTestimonialsPanelImages";
-import WcbTestimonialsPanelCarousel from "./WcbTestimonialsPanelCarousel";
+import WcbTestimonialsPanelGeneral from "./WcbSliderPanelGeneral";
+import WcbTestimonialsPanelImages from "./WcbSliderPanelImages";
+import WcbTestimonialsPanelCarousel from "./WcbSliderPanelCarousel";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import WcbTestimonialsPanel_StyleName from "./WcbSliderPanel_StyleName";
 import WcbTestimonialsPanel_StyleContent from "./WcbSliderPanel_StyleContent";
 import WcbTestimonialsPanel_StyleCompany from "./WcbSliderPanel_StyleCompany";
-import WcbTestimonialsPanel_StyleImage from "./WcbTestimonialsPanel_StyleImage";
+import WcbTestimonialsPanel_StyleImage from "./WcbSliderPanel_StyleImage";
 import WcbTestimonialsPanel_StyleArrowDots from "./WcbSliderPanel_StyleArrowDots";
 import WcbTestimonialsPanel_StyleBackground from "./WcbSliderPanel_StyleBackground";
-import WcbTestimonialsPanel_StyleDimension from "./WcbTestimonialsPanel_StyleDimension";
+import WcbTestimonialsPanel_StyleDimension from "./WcbSliderPanel_StyleDimension";
 import getImageUrlBySize from "../utils/getImageUrlBySize";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import OverlayBackgroundByBgControl from "../components/OverlayBackgroundByBgControl";
@@ -36,11 +36,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
-export const TESTIMONIAL_ITEM_DEMO: TestimonialItem = {
-	name: "Drink Water",
-	companyName: "CEO of Meta",
+export const SLIDER_ITEM_DEMO: SliderItem = {
+	name: "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+	companyName: "Read More",
 	content:
-		"Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+		"Slider",
 };
 
 function SampleNextArrow(props) {
@@ -136,7 +136,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	let CURRENT_DATA = useMemo(
 		() =>
 			[...Array(general_general.numberofTestimonials || 3).keys()].map(
-				(_, index) => testimonials[index] || TESTIMONIAL_ITEM_DEMO
+				(_, index) => testimonials[index] || SLIDER_ITEM_DEMO
 			),
 		[general_general.numberofTestimonials, testimonials]
 	);
@@ -164,7 +164,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 									const newtestimonials = [
 										...Array(general_general.numberofTestimonials || 3).keys(),
 									].map(
-										(_, index) => testimonials[index] || TESTIMONIAL_ITEM_DEMO
+										(_, index) => testimonials[index] || SLIDER_ITEM_DEMO
 									);
 									setAttributes({
 										general_general: data,
@@ -303,7 +303,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	};
 
 	const renderTestimonialItemContent = (
-		item: TestimonialItem,
+		item: SliderItem,
 		index: number
 	) => {
 		return (
@@ -329,7 +329,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		);
 	};
 
-	const renderTestimonialItemName = (item: TestimonialItem, index: number) => {
+	const renderTestimonialItemName = (item: SliderItem, index: number) => {
 		return (
 			<RichText
 				tagName="div"
@@ -354,7 +354,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	};
 
 	const renderTestimonialItemCompany = (
-		item: TestimonialItem,
+		item: SliderItem,
 		index: number
 	) => {
 		return (
@@ -380,7 +380,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		);
 	};
 
-	const renderTestimonialItemImage = (item: TestimonialItem, index: number) => {
+	const renderTestimonialItemImage = (item: SliderItem, index: number) => {
 		const { images, isShowImage, imageSize } = general_images;
 		const { imageSize: imageSizeAttr } = style_image;
 		const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
@@ -403,7 +403,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		);
 	};
 
-	const renderTestimonialItem = (item: TestimonialItem, index: number) => {
+	const renderTestimonialItem = (item: SliderItem, index: number) => {
 		const { imagePosition } = general_images;
 		return (
 			<div className="wcb-slider__item" key={index + "-"}>

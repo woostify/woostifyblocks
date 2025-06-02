@@ -16,41 +16,41 @@ import {
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
 import { TESTIMONIAL_ITEM_DEMO } from "./Edit";
 import {
-	WCB_TESTIMONIALS_PANEL_CAROUSEL,
-	WCB_TESTIMONIALS_PANEL_CAROUSEL_DEMO,
-} from "./WcbTestimonialsPanelCarousel";
+	WCB_SLIDER_PANEL_CAROUSEL,
+	WCB_SLIDER_PANEL_CAROUSEL_DEMO,
+} from "./WcbSliderPanelCarousel";
 import {
-	WCB_TESTIMONIALS_PANEL_GENERAL,
-	WCB_TESTIMONIALS_PANEL_GENERAL_DEMO,
-} from "./WcbTestimonialsPanelGeneral";
+	WCB_SLIDER_PANEL_GENERAL,
+	WCB_SLIDER_PANEL_GENERAL_DEMO,
+} from "./WcbSliderPanelGeneral";
 import {
-	WCB_TESTIMONIALS_PANEL_IMAGES,
-	WCB_TESTIMONIALS_PANEL_IMAGES_DEMO,
-} from "./WcbTestimonialsPanelImages";
+	WCB_SLIDER_PANEL_IMAGES,
+	WCB_SLIDER_PANEL_IMAGES_DEMO,
+} from "./WcbSliderPanelImages";
 import {
-	WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS,
-	WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS_DEMO,
+	WCB_SLIDER_PANEL_STYLE_ARROW_DOTS,
+	WCB_SLIDER_PANEL_STYLE_ARROW_DOTS_DEMO,
 } from "./WcbSliderPanel_StyleArrowDots";
 import {
-	WCB_TESTIMONIALS_PANEL_STYLE_BACKGROUND_BORDER,
-	WCB_TESTIMONIALS_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
+	WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER,
+	WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
 } from "./WcbSliderPanel_StyleBackground";
 import {
-	WCB_TESTIMONIALS_PANEL_STYLE_COMPANY,
-	WCB_TESTIMONIALS_PANEL_STYLE_COMPANY_DEMO,
+	WCB_SLIDER_PANEL_STYLE_COMPANY,
+	WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO,
 } from "./WcbSliderPanel_StyleCompany";
-import { WCB_TESTIMONIALS_PANEL_STYLE_CONTENT_DEMO } from "./WcbSliderPanel_StyleContent";
+import { WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO } from "./WcbSliderPanel_StyleContent";
 import {
-	WCB_TESTIMONIALS_PANEL_STYLE_DIMENSION,
-	WCB_TESTIMONIALS_PANEL_STYLE_DIMENSION_DEMO,
-} from "./WcbTestimonialsPanel_StyleDimension";
+	WCB_SLIDER_PANEL_STYLE_DIMENSION,
+	WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO,
+} from "./WcbSliderPanel_StyleDimension";
 import {
-	WCB_TESTIMONIALS_PANEL_STYLE_IMAGE,
-	WCB_TESTIMONIALS_PANEL_STYLE_IMAGE_DEMO,
-} from "./WcbTestimonialsPanel_StyleImage";
+	WCB_SLIDER_PANEL_STYLE_IMAGE,
+	WCB_SLIDER_PANEL_STYLE_IMAGE_DEMO,
+} from "./WcbSliderPanel_StyleImage";
 import {
-	WCB_TESTIMONIALS_PANEL_STYLE_NAME,
-	WCB_TESTIMONIALS_PANEL_STYLE_NAME_DEMO,
+	WCB_SLIDER_PANEL_STYLE_NAME,
+	WCB_SLIDER_PANEL_STYLE_NAME_DEMO,
 } from "./WcbSliderPanel_StyleName";
 
 export interface SliderItem {
@@ -63,17 +63,17 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	testimonials: SliderItem[];
 	//
-	general_general: WCB_TESTIMONIALS_PANEL_GENERAL;
-	general_images: WCB_TESTIMONIALS_PANEL_IMAGES;
-	general_carousel: WCB_TESTIMONIALS_PANEL_CAROUSEL;
+	general_general: WCB_SLIDER_PANEL_GENERAL;
+	general_images: WCB_SLIDER_PANEL_IMAGES;
+	general_carousel: WCB_SLIDER_PANEL_CAROUSEL;
 	//
-	style_name: WCB_TESTIMONIALS_PANEL_STYLE_NAME;
-	style_content: WCB_TESTIMONIALS_PANEL_STYLE_NAME;
-	style_company: WCB_TESTIMONIALS_PANEL_STYLE_COMPANY;
-	style_image: WCB_TESTIMONIALS_PANEL_STYLE_IMAGE;
-	style_arrowAndDots: WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS;
-	style_backgroundAndBorder: WCB_TESTIMONIALS_PANEL_STYLE_BACKGROUND_BORDER;
-	style_dimension: WCB_TESTIMONIALS_PANEL_STYLE_DIMENSION;
+	style_name: WCB_SLIDER_PANEL_STYLE_NAME;
+	style_content: WCB_SLIDER_PANEL_STYLE_NAME;
+	style_company: WCB_SLIDER_PANEL_STYLE_COMPANY;
+	style_image: WCB_SLIDER_PANEL_STYLE_IMAGE;
+	style_arrowAndDots: WCB_SLIDER_PANEL_STYLE_ARROW_DOTS;
+	style_backgroundAndBorder: WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER;
+	style_dimension: WCB_SLIDER_PANEL_STYLE_DIMENSION;
 	//
 	advance_responsiveCondition: MyResponsiveConditionControlData;
 	advance_zIndex: MyZIndexControlData;
@@ -98,44 +98,44 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	// THE ATTRS OF BLOCK HERE
 	general_general: {
 		type: "object",
-		default: WCB_TESTIMONIALS_PANEL_GENERAL_DEMO,
+		default: WCB_SLIDER_PANEL_GENERAL_DEMO,
 	},
 	general_images: {
 		type: "object",
-		default: WCB_TESTIMONIALS_PANEL_IMAGES_DEMO,
+		default: WCB_SLIDER_PANEL_IMAGES_DEMO,
 	},
 	general_carousel: {
 		type: "object",
-		default: WCB_TESTIMONIALS_PANEL_CAROUSEL_DEMO,
+		default: WCB_SLIDER_PANEL_CAROUSEL_DEMO,
 	},
 	//
 	style_name: {
 		type: "object",
-		default: WCB_TESTIMONIALS_PANEL_STYLE_NAME_DEMO,
+		default: WCB_SLIDER_PANEL_STYLE_NAME_DEMO,
 	},
 	style_content: {
 		type: "object",
-		default: WCB_TESTIMONIALS_PANEL_STYLE_CONTENT_DEMO,
+		default: WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO,
 	},
 	style_company: {
 		type: "object",
-		default: WCB_TESTIMONIALS_PANEL_STYLE_COMPANY_DEMO,
+		default: WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO,
 	},
 	style_image: {
 		type: "object",
-		default: WCB_TESTIMONIALS_PANEL_STYLE_IMAGE_DEMO,
+		default: WCB_SLIDER_PANEL_STYLE_IMAGE_DEMO,
 	},
 	style_arrowAndDots: {
 		type: "object",
-		default: WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS_DEMO,
+		default: WCB_SLIDER_PANEL_STYLE_ARROW_DOTS_DEMO,
 	},
 	style_backgroundAndBorder: {
 		type: "object",
-		default: WCB_TESTIMONIALS_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
+		default: WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
 	},
 	style_dimension: {
 		type: "object",
-		default: WCB_TESTIMONIALS_PANEL_STYLE_DIMENSION_DEMO,
+		default: WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO,
 	},
 	// ADVANCE
 	advance_responsiveCondition: {
