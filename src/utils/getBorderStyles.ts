@@ -25,7 +25,10 @@ const getBorderStyles = ({
 	// MAIN BORDER
 	let CSSObject: CSSObject = { [`${className}`]: {} };
 	if (mainSettings) {
-		if ((mainSettings as BorderMain4Side)?.top) {
+		if ((mainSettings as BorderMain4Side)?.top && 
+			(mainSettings as BorderMain4Side)?.left && 
+			(mainSettings as BorderMain4Side)?.right && 
+			(mainSettings as BorderMain4Side)?.bottom) {
 			const { bottom, left, right, top } = mainSettings as BorderMain4Side;
 			CSSObject = {
 				[`${className}`]: {
