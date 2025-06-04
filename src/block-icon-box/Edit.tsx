@@ -112,15 +112,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 										},
 										style_Icon: {
 											...style_Icon,
-											dimensions: {
-												...MY_DIMENSIONS_NO_GAP_DEMO__EMPTY,
-												margin: {
-													Desktop: {
-														...MY_DIMENSIONS_NO_GAP_DEMO__EMPTY.margin.Desktop,
-														right: "1rem",
-													},
-												},
-											},
 										},
 									});
 								}
@@ -144,15 +135,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 										},
 										style_Icon: {
 											...style_Icon,
-											dimensions: {
-												...MY_DIMENSIONS_NO_GAP_DEMO__EMPTY,
-												margin: {
-													Desktop: {
-														...MY_DIMENSIONS_NO_GAP_DEMO__EMPTY.margin.Desktop,
-														left: "1rem",
-													},
-												},
-											},
 										},
 									});
 								}
@@ -161,16 +143,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 									general_icon: data,
 									style_Icon: {
 										...style_Icon,
-										dimensions: {
-											...MY_DIMENSIONS_NO_GAP_DEMO__EMPTY,
-											margin: {
-												Desktop: {
-													...MY_DIMENSIONS_NO_GAP_DEMO__EMPTY.margin.Desktop,
-													top: "1rem",
-													bottom: "1rem",
-												},
-											},
-										},
 									},
 								});
 							}}
