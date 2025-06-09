@@ -380,7 +380,6 @@ const Image: FC<ImageProps> = ({
 							opened={tabGeneralIsPanelOpen === "first" || undefined}
 							//
 							setAttr__={(data) => {
-								debugger
 								setAttributes({ general_image:  {
 									...data,
 								} });

@@ -36,7 +36,6 @@ const WcbImagePanelImages: FC<Props> = ({
 	onToggle,
 	opened,
 }) => {
-	debugger
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	const {
 		image,
@@ -66,7 +65,6 @@ const WcbImagePanelImages: FC<Props> = ({
 					<MyMediaUploadCheck
 						imageData={image}
 						onChange={(data) => {
-							debugger
 							setAttr__({
 								...panelData,
 								image: data,
