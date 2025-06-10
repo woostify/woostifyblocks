@@ -35,7 +35,7 @@ export interface WCB_IMAGE_PANEL_SETTINGS {
 }
 
 export const WCB_IMAGE_PANEL_SETTINGS_DEMO: WCB_IMAGE_PANEL_SETTINGS = {
-	alignment: { Desktop: "none" },
+	alignment: { Desktop: "center" },
 	captionAlignment: { Desktop: "center" },
 	height: { Desktop: undefined },
 	sizeSlug: { Desktop: undefined },
