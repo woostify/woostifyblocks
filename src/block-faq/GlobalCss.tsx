@@ -227,7 +227,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 						[FAQ_CHILD_ANSWER]: {
 							".wcb-faq-child__answer-text": {
 								color: style_answer.color,
-								backgroundColor: style_answer.backgroundColor,
 							}
 						},
 					},

@@ -3206,8 +3206,7 @@ const GlobalCss = attrs => {
     }), {
       [FAQ_CHILD_ANSWER]: {
         ".wcb-faq-child__answer-text": {
-          color: style_answer.color,
-          backgroundColor: style_answer.backgroundColor
+          color: style_answer.color
         }
       }
     }]
@@ -4016,15 +4015,6 @@ const WcbFaqPanel_StyleAnswer = _ref => {
       });
     },
     color: color
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Background color", "wcb"),
-    onChange: value => {
-      setAttr__({
-        ...panelData,
-        backgroundColor: value
-      });
-    },
-    color: backgroundColor
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalBoxControl, {
     label: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_9__["default"], {
       className: "",
