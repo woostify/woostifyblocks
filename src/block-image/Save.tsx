@@ -98,7 +98,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const image = (
 		<img
 			src={url}
-			alt={alt}
+			alt={alt || ""}
 			className={imageClasses || undefined}
 			style={borderProps.style}
 			width={WIDTH}
@@ -116,13 +116,12 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			) : (
 				image
 			)}
-			{!RichText.isEmpty(caption) && (
-				<RichText.Content
-					className={__experimentalGetElementClassName("caption")}
-					tagName="figcaption"
-					value={caption}
-				/>
-			)}
+			{/ * Always render figure to avoid authentication errors */}
+			<RichText.Content
+				className={__experimentalGetElementClassName("caption")}
+				tagName="figcaption"
+				value={caption || ""}
+			/>
 		</>
 	);
 
