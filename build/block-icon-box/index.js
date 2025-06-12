@@ -2658,9 +2658,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _WcbIconBoxPanel_StyleSeparator__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./WcbIconBoxPanel_StyleSeparator */ "./src/block-icon-box/WcbIconBoxPanel_StyleSeparator.tsx");
 /* harmony import */ var _WcbIconBoxPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./WcbIconBoxPanel_StyleDimension */ "./src/block-icon-box/WcbIconBoxPanel_StyleDimension.tsx");
 /* harmony import */ var _WcbIconBoxPanelSeparator__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./WcbIconBoxPanelSeparator */ "./src/block-icon-box/WcbIconBoxPanelSeparator.tsx");
-/* harmony import */ var _components_controls_MyDimensionsControl_types__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../components/controls/MyDimensionsControl/types */ "./src/components/controls/MyDimensionsControl/types.ts");
-/* harmony import */ var _utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../utils/converUniqueIdToAnphaKey */ "./src/utils/converUniqueIdToAnphaKey.ts");
-
+/* harmony import */ var _utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../utils/converUniqueIdToAnphaKey */ "./src/utils/converUniqueIdToAnphaKey.ts");
 
 
 
@@ -2725,7 +2723,7 @@ const Edit = props => {
   const UNIQUE_ID = wrapBlockProps.id;
   (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
     setAttributes({
-      uniqueId: (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_22__["default"])(UNIQUE_ID)
+      uniqueId: (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_21__["default"])(UNIQUE_ID)
     });
   }, [UNIQUE_ID]);
   //
@@ -2769,16 +2767,7 @@ const Edit = props => {
                   }
                 },
                 style_Icon: {
-                  ...style_Icon,
-                  dimensions: {
-                    ..._components_controls_MyDimensionsControl_types__WEBPACK_IMPORTED_MODULE_21__.MY_DIMENSIONS_NO_GAP_DEMO__EMPTY,
-                    margin: {
-                      Desktop: {
-                        ..._components_controls_MyDimensionsControl_types__WEBPACK_IMPORTED_MODULE_21__.MY_DIMENSIONS_NO_GAP_DEMO__EMPTY.margin.Desktop,
-                        right: "1rem"
-                      }
-                    }
-                  }
+                  ...style_Icon
                 }
               });
             }
@@ -2798,33 +2787,14 @@ const Edit = props => {
                   }
                 },
                 style_Icon: {
-                  ...style_Icon,
-                  dimensions: {
-                    ..._components_controls_MyDimensionsControl_types__WEBPACK_IMPORTED_MODULE_21__.MY_DIMENSIONS_NO_GAP_DEMO__EMPTY,
-                    margin: {
-                      Desktop: {
-                        ..._components_controls_MyDimensionsControl_types__WEBPACK_IMPORTED_MODULE_21__.MY_DIMENSIONS_NO_GAP_DEMO__EMPTY.margin.Desktop,
-                        left: "1rem"
-                      }
-                    }
-                  }
+                  ...style_Icon
                 }
               });
             }
             return setAttributes({
               general_icon: data,
               style_Icon: {
-                ...style_Icon,
-                dimensions: {
-                  ..._components_controls_MyDimensionsControl_types__WEBPACK_IMPORTED_MODULE_21__.MY_DIMENSIONS_NO_GAP_DEMO__EMPTY,
-                  margin: {
-                    Desktop: {
-                      ..._components_controls_MyDimensionsControl_types__WEBPACK_IMPORTED_MODULE_21__.MY_DIMENSIONS_NO_GAP_DEMO__EMPTY.margin.Desktop,
-                      top: "1rem",
-                      bottom: "1rem"
-                    }
-                  }
-                }
+                ...style_Icon
               }
             });
           },
@@ -5378,13 +5348,27 @@ const MyBorderControl = _ref => {
     });
   };
   const handleChangeBorderRadius = newRadius => {
-    setAttrs__border({
-      ...borderControl,
-      radius: {
-        ...radiusProps,
-        [deviceType]: newRadius
-      }
-    });
+    // If Desktop and Tablet/Mobile are default or all 3 devices are the same then set for all 3 devices
+    const allEqual = radiusProps.Desktop === radiusProps.Tablet && radiusProps.Desktop === radiusProps.Mobile;
+    if (deviceType === "Desktop" && ((radiusProps.Tablet === undefined || radiusProps.Tablet === "0") && (radiusProps.Mobile === undefined || radiusProps.Mobile === "0") || allEqual)) {
+      setAttrs__border({
+        ...borderControl,
+        radius: {
+          Desktop: newRadius,
+          Tablet: newRadius,
+          Mobile: newRadius
+        }
+      });
+    } else {
+      // Otherwise, just update the current device type
+      setAttrs__border({
+        ...borderControl,
+        radius: {
+          ...radiusProps,
+          [deviceType]: newRadius
+        }
+      });
+    }
   };
 
   //
