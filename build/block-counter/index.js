@@ -3086,7 +3086,7 @@ const Edit = props => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_12__["default"], {
     uniqueKey: clientId
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
-    className: `${wrapBlockProps?.className} wcb-icon-box__wrap ${uniqueId}`,
+    className: `${wrapBlockProps?.className} wcb-counter-box__wrap ${uniqueId}`,
     "data-uniqueid": uniqueId
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_5__["default"], {
     renderTabPanels: renderTabBodyPanels,
@@ -5152,13 +5152,27 @@ const MyBorderControl = _ref => {
     });
   };
   const handleChangeBorderRadius = newRadius => {
-    setAttrs__border({
-      ...borderControl,
-      radius: {
-        ...radiusProps,
-        [deviceType]: newRadius
-      }
-    });
+    // If Desktop and Tablet/Mobile are default or all 3 devices are the same then set for all 3 devices
+    const allEqual = radiusProps.Desktop === radiusProps.Tablet && radiusProps.Desktop === radiusProps.Mobile;
+    if (deviceType === "Desktop" && ((radiusProps.Tablet === undefined || radiusProps.Tablet === "0") && (radiusProps.Mobile === undefined || radiusProps.Mobile === "0") || allEqual)) {
+      setAttrs__border({
+        ...borderControl,
+        radius: {
+          Desktop: newRadius,
+          Tablet: newRadius,
+          Mobile: newRadius
+        }
+      });
+    } else {
+      // Otherwise, just update the current device type
+      setAttrs__border({
+        ...borderControl,
+        radius: {
+          ...radiusProps,
+          [deviceType]: newRadius
+        }
+      });
+    }
   };
 
   //

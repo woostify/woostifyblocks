@@ -5385,13 +5385,27 @@ const MyBorderControl = _ref => {
     });
   };
   const handleChangeBorderRadius = newRadius => {
-    setAttrs__border({
-      ...borderControl,
-      radius: {
-        ...radiusProps,
-        [deviceType]: newRadius
-      }
-    });
+    // If Desktop and Tablet/Mobile are default or all 3 devices are the same then set for all 3 devices
+    const allEqual = radiusProps.Desktop === radiusProps.Tablet && radiusProps.Desktop === radiusProps.Mobile;
+    if (deviceType === "Desktop" && ((radiusProps.Tablet === undefined || radiusProps.Tablet === "0") && (radiusProps.Mobile === undefined || radiusProps.Mobile === "0") || allEqual)) {
+      setAttrs__border({
+        ...borderControl,
+        radius: {
+          Desktop: newRadius,
+          Tablet: newRadius,
+          Mobile: newRadius
+        }
+      });
+    } else {
+      // Otherwise, just update the current device type
+      setAttrs__border({
+        ...borderControl,
+        radius: {
+          ...radiusProps,
+          [deviceType]: newRadius
+        }
+      });
+    }
   };
 
   //

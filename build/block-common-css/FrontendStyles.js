@@ -2422,7 +2422,7 @@ function animateProgressElements() {
 ;
 
 // Run the animation logic after the DOM is updated
-const divsToUpdate = document.querySelectorAll(".wcb-icon-box__wrap.wcb-update-div");
+const divsToUpdate = document.querySelectorAll(".wcb-counter-box__wrap.wcb-update-div");
 divsToUpdate.forEach(div => {
   const preEl = div.querySelector(`pre[data-wcb-block-attrs=${div.id}]`);
   const divRenderCssEl = div.querySelector(`div[data-wcb-global-styles=${div.id}]`);
