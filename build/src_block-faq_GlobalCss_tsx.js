@@ -157,15 +157,21 @@ const GlobalCss = attrs => {
       prefix: "gap"
     }), {
       [FAQ_CHILD_QUESTION]: {
-        color: style_question.color,
         backgroundColor: style_question.backgroundColor,
+        ".wcb-faq-child__icon, .wcb-faq-child__question-text": {
+          color: style_question.color
+        },
         ":hover, :focus, :active": {
-          color: style_question.colorHover,
-          backgroundColor: style_question.backgroundColorHover
+          backgroundColor: style_question.backgroundColorHover,
+          ".wcb-faq-child__icon, .wcb-faq-child__question-text": {
+            color: style_question.colorHover
+          }
         }
       },
       [`${WRAP_CLASSNAME} .wcb-faq-child__wrap.active .wcb-faq-child__question`]: {
-        color: style_question.colorHover,
+        ".wcb-faq-child__icon, .wcb-faq-child__question-text": {
+          color: style_question.colorHover
+        },
         backgroundColor: style_question.backgroundColorHover
       }
     }]
@@ -195,9 +201,9 @@ const GlobalCss = attrs => {
       padding: style_answer.padding
     }), {
       [FAQ_CHILD_ANSWER]: {
-        color: style_answer.color,
-        backgroundColor: style_answer.backgroundColor
-        // display: general_general.collapseOtherItems ? "none" : "block",
+        ".wcb-faq-child__answer-text": {
+          color: style_answer.color
+        }
       }
     }]
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {

@@ -1939,7 +1939,6 @@ const Edit = props => {
   //
 
   (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
-    console.log(12, "------ FAQ CHILD setAttributes ON useEffect --------");
     setAttributes({
       layout: context["wcb/faq_general"]?.layout,
       headingTag: context["wcb/faq_general"]?.headingTag,
