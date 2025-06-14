@@ -1,0 +1,32 @@
+.wcb-icon-list__content {
+	flex-grow: 1;
+}
+
+.wcb-icon-list__icon-wrap {
+	flex-shrink: 0;
+}
+.wcb-icon-list__icon {
+	display: flex;
+    align-content: center;
+}
+
+.wcb-icon-list__content-title {
+	flex-grow: 0;
+}
+
+.wcb-icon-list__heading {
+	margin: 0;
+}
+
+.wcb-icon-list__separator {
+	display: inline-block;
+}
+
+.wcb-icon-list__content-wrap {
+	flex-grow: 1;
+}
+
+.wcb-icon-list__image {
+	flex-shrink: 0;
+	display: inline-block;
+}
