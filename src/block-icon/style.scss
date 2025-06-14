@@ -9,13 +9,13 @@
 }
 
 .wcb-icon-list__wrap {
-	position: relative;
-	text-decoration: none;
-	color: inherit;
-	
-	&:hover {
+		position: relative;
+		text-decoration: none;
+		color: inherit;
+		
+		&:hover {
 		.wcb-icon-list__icon {
-			color: var(--iconHoverColor);
+				color: var(--iconHoverColor);
 		}
 	}
 

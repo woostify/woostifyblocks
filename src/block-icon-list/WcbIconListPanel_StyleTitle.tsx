@@ -1,6 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import { PanelBody } from "@wordpress/components";
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import MyTypographyControl from "../components/controls/MyTypographyControl/MyTypographyControl";
 import {
 	MyTypographyControlData,
@@ -43,6 +43,40 @@ const WcbIconListPanel_StyleTitle: FC<Props> = ({
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	const { typography, textColor, marginBottom } = panelData;
 
+	// Normalize typography appearance.style to ensure it's always an object
+	useEffect(() => {
+		let needsUpdate = false;
+		let updatedTypography = { ...typography };
+
+		// Fix appearance.style if it's an array
+		if (typography?.appearance?.style && Array.isArray(typography.appearance.style)) {
+			updatedTypography.appearance = {
+				...typography.appearance,
+				style: {},
+			};
+			needsUpdate = true;
+		}
+
+		// Fix lineHeight if it's an array
+		if (typography?.lineHeight && Array.isArray(typography.lineHeight)) {
+			updatedTypography.lineHeight = { Desktop: undefined };
+			needsUpdate = true;
+		}
+
+		// Fix letterSpacing if it's an array
+		if (typography?.letterSpacing && Array.isArray(typography.letterSpacing)) {
+			updatedTypography.letterSpacing = { Desktop: undefined };
+			needsUpdate = true;
+		}
+
+		if (needsUpdate) {
+			setAttr__({
+				...panelData,
+				typography: updatedTypography,
+			});
+		}
+	}, [typography?.appearance?.style, typography?.lineHeight, typography?.letterSpacing, panelData, setAttr__]);
+
 	const { currentDeviceValue: MARGIN_BOTTOM } = getValueFromAttrsResponsives(
 		marginBottom,
 		deviceType
@@ -82,7 +116,7 @@ const WcbIconListPanel_StyleTitle: FC<Props> = ({
 							setAttr__({
 								...panelData,
 								marginBottom: {
-									...marginBottom,
+									...marginBottom,   
 									[deviceType]: value,
 								},
 							});

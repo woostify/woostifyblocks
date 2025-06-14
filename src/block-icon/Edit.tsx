@@ -325,7 +325,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 						{(general_icon.iconPosition === "rightOfTitle") &&
 							renderIcon()}
 					</div>
-				</div>
+					</div>
 			</div>
 		</MyCacheProvider>
 	);
