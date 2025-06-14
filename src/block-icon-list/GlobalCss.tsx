@@ -29,6 +29,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 
 	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
 	const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-icon-list__icon-wrap`;
+	const CONTENT_CLASSNAME = `${WRAP_CLASSNAME} .wcb-icon-list__content`;
 
 	if (!uniqueId) {
 		return null;
@@ -40,6 +41,48 @@ const GlobalCss: FC<Props> = (attrs) => {
 			<Global styles={[
 				{
 					[`${INNER_CLASSNAME}`]: {
+							display: "flex",
+							flexDirection: general_layout.layout === "vertical" ? "column" : "row",
+						},
+
+						".wcb-icon-list__icon-wrap, .wcb-icon-list__content": {
+							alignSelf:
+								general_icon.verticalAlignment === "middle"
+									? "center"
+									: undefined,
+						},
+
+						".wcb-icon-list__icon-wrap": {
+							order: general_icon.iconPosition === "leftOfTitle" ? "0" : "2",
+						},
+
+						".wcb-icon-list__content-title-wrap": {
+							display:
+								general_icon.iconPosition === "leftOfTitle" ||
+								general_icon.iconPosition === "rightOfTitle"
+									? "flex"
+									: "block",
+						},
+
+						[`@media (min-width: ${media_tablet})`]: {
+							flexDirection:
+								general_icon.stackOn === "mobile" ? "row" : undefined,
+						},
+
+						[`@media (min-width: ${media_desktop})`]: {
+							flexDirection: "row",
+						},
+				},
+				getStyleObjectFromResponsiveAttr({
+					className: INNER_CLASSNAME,
+					value: general_layout.textAlignment,
+					prefix: "textAlign",
+				}),
+			]}/>
+
+			<Global styles={[
+				{
+					[`${CONTENT_CLASSNAME}`]: {
 							display: "flex",
 							flexDirection: general_layout.layout === "vertical" ? "column" : "row",
 							...(general_layout.layout === "vertical"
@@ -75,34 +118,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 												? "flex-end"
 												: undefined,
 								}),
-						},
-
-						".wcb-icon-list__icon-wrap, .wcb-icon-list__content": {
-							alignSelf:
-								general_icon.verticalAlignment === "middle"
-									? "center"
-									: undefined,
-						},
-
-						".wcb-icon-list__icon-wrap": {
-							order: general_icon.iconPosition === "leftOfTitle" ? "0" : "2",
-						},
-
-						".wcb-icon-list__content-title-wrap": {
-							display:
-								general_icon.iconPosition === "leftOfTitle" ||
-								general_icon.iconPosition === "rightOfTitle"
-									? "flex"
-									: "block",
-						},
-
-						[`@media (min-width: ${media_tablet})`]: {
-							flexDirection:
-								general_icon.stackOn === "mobile" ? "row" : undefined,
-						},
-
-						[`@media (min-width: ${media_desktop})`]: {
-							flexDirection: "row",
 						},
 				},
 				getStyleObjectFromResponsiveAttr({
