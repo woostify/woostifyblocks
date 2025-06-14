@@ -55,9 +55,6 @@ import {
 import { WCB_ICON_LIST_PANEL_PRESET, WCB_ICON_LIST_PANEL_PRESET_DEMO } from "./WcbIconListPanelPreset";
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
-	heading_1: string;
-	heading_2: string;
-	heading_3: string;
 	//
 	general_layout: WCB_ICON_LIST_PANEL_LAYOUT;
 	general_icon: WCB_ICON_LIST_PANEL_ICON;
@@ -82,27 +79,6 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	},
 
 	// THE ATTRS OF BLOCK HERE
-	heading_1: {
-		type: "string",
-		source: "html",
-		selector: ".wcb-icon-list__heading",
-		default: "List item",
-	},
-
-	heading_2: {
-		type: "string",
-		source: "html",
-		selector: ".wcb-icon-list__heading",
-		default: "List item",
-	},
-
-	heading_3: {
-		type: "string",
-		source: "html",
-		selector: ".wcb-icon-list__heading",
-		default: "List item",
-	},
-
 	general_layout: {
 		type: "object",
 		default: WCB_ICON_LIST_PANEL_LAYOUT_DEMO,

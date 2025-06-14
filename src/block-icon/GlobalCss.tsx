@@ -32,7 +32,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
 	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
-	const ICON_CLASS = `${WRAP_CLASSNAME} .wcb-icon__icon`;
+	const ICON_CLASS = `${WRAP_CLASSNAME} .wcb-icon-list__icon`;
 
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject[] => {
@@ -50,7 +50,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 						general_icon.stackOn === "tablet" ? "column-reverse" : "column",
 
 					
-					".wcb-icon__content": {
+					".wcb-icon-list__content": {
 						display: "flex",
 						flexDirection:  general_layout.layout === "vertical" ? "column" : "row",
 						alignItems:
@@ -69,18 +69,18 @@ const GlobalCss: FC<Props> = (attrs) => {
 								: undefined,
 					},
 
-					".wcb-icon__icon-wrap, .wcb-icon__content": {
+					".wcb-icon-list__icon-wrap, .wcb-icon-list__content": {
 						alignSelf:
 							general_icon.verticalAlignment === "middle"
 								? "center"
 								: undefined,
 					},
 
-					".wcb-icon__icon-wrap": {
+					".wcb-icon-list__icon-wrap": {
 						order: general_icon.iconPosition === "leftOfTitle" ? "0" : "2",
 					},
 
-					".wcb-icon__content-title-wrap": {
+					".wcb-icon-list__content-title-wrap": {
 						display:
 							general_icon.iconPosition === "leftOfTitle" ||
 							general_icon.iconPosition === "rightOfTitle"
@@ -153,16 +153,16 @@ const GlobalCss: FC<Props> = (attrs) => {
 				<Global
 					styles={[
 						getPaddingMarginStyles({
-							className: `${WRAP_CLASSNAME} .wcb-icon__icon-wrap`,
+							className: `${WRAP_CLASSNAME} .wcb-icon-list__icon-wrap`,
 							margin: style_Icon.dimensions.margin,
 						}),
 						getPaddingMarginStyles({
-							className: `${WRAP_CLASSNAME} .wcb-icon__icon`,
+							className: `${WRAP_CLASSNAME} .wcb-icon-list__icon`,
 							padding: style_Icon.dimensions.padding,
 						}),
 						getBorderStyles({
 							border: style_Icon.border,
-							className: `${WRAP_CLASSNAME} .wcb-icon__icon`,
+							className: `${WRAP_CLASSNAME} .wcb-icon-list__icon`,
 							isWithRadius: true,
 						}),
 						getStyleObjectFromResponsiveAttr({
@@ -189,15 +189,15 @@ const GlobalCss: FC<Props> = (attrs) => {
 					styles={[
 						getTypographyStyles({
 							typography: style_title.typography,
-							className: `${WRAP_CLASSNAME} .wcb-icon-box__heading`,
+							className: `${WRAP_CLASSNAME} .wcb-icon-list__heading`,
 						}),
 						getStyleObjectFromResponsiveAttr({
-							className: `${WRAP_CLASSNAME} .wcb-icon-box__heading`,
+							className: `${WRAP_CLASSNAME} .wcb-icon-list__heading`,
 							value: style_title.marginBottom,
 							prefix: "marginBottom",
 						}),
 						{
-							[`${WRAP_CLASSNAME} .wcb-icon-box__heading`]: {
+							[`${WRAP_CLASSNAME} .wcb-icon-list__heading`]: {
 								color: style_title.textColor,
 							},
 						},
@@ -212,15 +212,15 @@ const GlobalCss: FC<Props> = (attrs) => {
 					styles={[
 						getTypographyStyles({
 							typography: style_desination.typography,
-							className: `${WRAP_CLASSNAME} .wcb-icon__designation`,
+							className: `${WRAP_CLASSNAME} .wcb-icon-list__designation`,
 						}),
 						getStyleObjectFromResponsiveAttr({
-							className: `${WRAP_CLASSNAME} .wcb-icon__designation`,
+							className: `${WRAP_CLASSNAME} .wcb-icon-list__designation`,
 							value: style_desination.marginBottom,
 							prefix: "marginBottom",
 						}),
 						{
-							[`${WRAP_CLASSNAME} .wcb-icon__designation`]: {
+							[`${WRAP_CLASSNAME} .wcb-icon-list__designation`]: {
 								color: style_desination.textColor,
 							},
 						},

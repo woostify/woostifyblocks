@@ -281,8 +281,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 	const renderIcon = () => {
 		return (
-			<div className="wcb-icon__icon-wrap">
-				<div className="wcb-icon__icon">
+			<div className="wcb-icon-list__icon-wrap">
+				<div className="wcb-icon-list__icon">
 					<MyIconFull icon={attributes.general_icon.icon} />
 				</div>
 			</div>
@@ -294,7 +294,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-icon__wrap ${uniqueId}`}
+				className={`${wrapBlockProps?.className} wcb-icon-list__wrap ${uniqueId}`}
 				data-uniqueid={uniqueId}
 			>
 				{/* CONTROL SETTINGS */}
@@ -307,9 +307,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				<GlobalCss attributes={attributes} clientId={clientId} />
 
 				{/* CHILD CONTENT  */}
-					<div className="wcb-icon__content-title-wrap">
+				<div className="wcb-icon-list__content">
+					<div className="wcb-icon-list__content-title-wrap">
 						{general_icon.iconPosition === "leftOfTitle" && renderIcon()}
-						<div className="wcb-icon__content-title">
+						<div className="wcb-icon-list__content-title">
 							{general_layout.enableTitle && (
 								<RichText
 									tagName={HeadingTag}
@@ -317,13 +318,14 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 									allowedFormats={["core/bold", "core/italic"]}
 									onChange={(content) => setAttributes({ heading: content })}
 									placeholder={__("Heading of box")}
-									className="wcb-icon-box__heading"
+									className="wcb-icon-list__heading"
 								/>
 							)}
 						</div>
 						{(general_icon.iconPosition === "rightOfTitle") &&
 							renderIcon()}
 					</div>
+				</div>
 			</div>
 		</MyCacheProvider>
 	);

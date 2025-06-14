@@ -38,9 +38,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const {
 		advance_responsiveCondition,
 		advance_zIndex,
-		heading_1,
-		heading_2,
-		heading_3,
 		uniqueId,
 		general_layout,
 		general_icon,
@@ -248,7 +245,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		}
 	};
 
-	const {} = attributes;
 	const ALLOWED_BLOCKS = ["wcb/icon"];
 	const TEMPLATE = [
 		["wcb/icon", {}],
@@ -256,10 +252,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		["wcb/icon", {}],
 	];
 
-	const blockProps = useBlockProps({
+	const innerBlocksProps = useInnerBlocksProps({
 		className: `wcb-icon-list__icon-wrap`,
-	});
-	const innerBlocksProps = useInnerBlocksProps(blockProps, {
+	}, {
 		allowedBlocks: ALLOWED_BLOCKS,
 		template: TEMPLATE,
 		renderAppender: () => <InnerBlocks.DefaultBlockAppender />
@@ -311,9 +306,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			advance_zIndex,
 			general_layout,
 			general_preset,
-			heading_1,
-			heading_2,
-			heading_3,
 			style_title,
 			style_desination,
 			style_description,
@@ -330,9 +322,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		advance_zIndex,
 		general_layout,
 		general_preset,
-		heading_1,
-		heading_2,
-		heading_3,
 		style_title,
 		style_desination,
 		style_description,

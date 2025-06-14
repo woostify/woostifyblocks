@@ -9,7 +9,7 @@ import SaveCommon from "../components/SaveCommon";
 import "./style.scss";
 
 export interface WcbAttrsForSave
-    extends Omit<WcbAttrs, "heading" | "designation" | "description"> {}
+    extends Omit<WcbAttrs, "designation" | "description"> {}
 
 export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const {
@@ -55,13 +55,11 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		className: "wcb-icon-list__wrap",
 	});
 
-	// Container for list items with className wcb-icon-list__icon-wrap like Edit component
-	const blockProps = useBlockProps.save({
+	// Container for list items - không dùng useBlockProps.save nữa để tránh duplicate
+	const innerBlocksProps = useInnerBlocksProps.save({
 		className: "wcb-icon-list__icon-wrap",
 		style: containerStyles
 	});
-
-	const innerBlocksProps = useInnerBlocksProps.save(blockProps);
 
 	return (
 		<SaveCommon

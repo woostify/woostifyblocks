@@ -8,7 +8,7 @@ import "./style.scss";
 import MyIconFull from "../components/controls/MyIconFull";
 
 export interface WcbAttrsForSave
-	extends Omit<WcbAttrs, "heading" | "designation" | "description"> {}
+	extends Omit<WcbAttrs, "designation" | "description"> {}
 
 export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const {
@@ -57,8 +57,8 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		return (
 			<>
 				{general_icon.enableIcon && (
-					<div className="wcb-icon__icon-wrap">
-						<div className="wcb-icon__icon">
+					<div className="wcb-icon-list__icon-wrap">
+						<div className="wcb-icon-list__icon">
 							<MyIconFull icon={general_icon.icon} />
 						</div>
 					</div>
@@ -73,8 +73,8 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			return null;
 		}
 		return (
-			<div className="wcb-icon__separator-wrap">
-				<div className="wcb-icon__separator"></div>
+			<div className="wcb-icon-list__separator-wrap">
+				<div className="wcb-icon-list__separator"></div>
 			</div>
 		);
 	};
@@ -83,21 +83,21 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 	//
 	const wrapBlockProps = useBlockProps.save({
-		className: "wp-block-wcb-icon wcb-icon__wrap"
+		className: "wcb-icon-list__wrap"
 	});
 	//
 
 	const renderContent = () => (
-		<div className="wcb-icon__content">
-			<div className="wcb-icon__content-title-wrap">
+		<div className="wcb-icon-list__content">
+			<div className="wcb-icon-list__content-title-wrap">
 				{general_icon.iconPosition === "leftOfTitle" && renderIcon()}
-				<div className="wcb-icon__content-title">
+				<div className="wcb-icon-list__content-title">
 					{general_layout.enableTitle && (
 						<RichText.Content
 							tagName={HeadingTag}
 							value={heading}
 							placeholder={__("Heading of box")}
-							className="wcb-icon-box__heading"
+							className="wcb-icon-list__heading"
 						/>
 					)}
 				</div>
@@ -115,7 +115,6 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		>
 			{link ? (
 				<a
-					{...wrapBlockProps}
 					href={link}
 					target={openInNewWindow ? "_blank" : undefined}
 					rel={addNofollowToLink ? "nofollow" : undefined}
@@ -123,9 +122,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 					{renderContent()}
 				</a>
 			) : (
-				<div {...wrapBlockProps}>
-					{renderContent()}
-				</div>
+					renderContent()
 			)}
 		</SaveCommon>
 	);

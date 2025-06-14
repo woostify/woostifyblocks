@@ -1,32 +1,32 @@
-.wcb-icon__content {
+.wcb-icon-list__content {
 	flex-grow: 1;
 }
 
-.wcb-icon__icon-wrap {
+.wcb-icon-list__icon-wrap {
 	flex-shrink: 0;
 }
-.wcb-icon__icon {
+.wcb-icon-list__icon {
 	display: flex;
     align-content: center;
 }
 
-.wcb-icon__content-title {
+.wcb-icon-list__content-title {
 	flex-grow: 0;
 }
 
-.wcb-icon__heading {
+.wcb-icon-list__heading {
 	margin: 0;
 }
 
-.wcb-icon__separator {
+.wcb-icon-list__separator {
 	display: inline-block;
 }
 
-.wcb-icon__content-wrap {
+.wcb-icon-list__content-wrap {
 	flex-grow: 1;
 }
 
-.wcb-icon__image {
+.wcb-icon-list__image {
 	flex-shrink: 0;
 	display: inline-block;
 }
