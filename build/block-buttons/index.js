@@ -2743,8 +2743,6 @@ const Edit = props => {
       advance_motionEffect
     };
   }, [uniqueId, advance_responsiveCondition, advance_zIndex, general_general, style_dimension, style_text, advance_motionEffect]);
-
-  // console.log(6, "---- Button edit  ---" + uniqueId);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_17__["default"], {
     uniqueKey: clientId
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
@@ -3688,6 +3686,16 @@ const RenderIcon = props => {
   }, props.children));
 };
 const variations = [{
+  name: "one-button",
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("One button"),
+  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("One button"),
+  icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RenderIcon, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "col-span-5 row-span-2 bg-[#007cba]"
+  })),
+  innerBlocks: [["wcb/button", undefined]],
+  scope: ["block"],
+  isDefault: true
+}, {
   name: "two-buttons",
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Two buttons"),
   description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Two buttons"),
