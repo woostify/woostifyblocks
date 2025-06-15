@@ -118,6 +118,42 @@ const GlobalCss = attrs => {
         }
       }
     }]
+  }) : null, general_settings.hoverImage === "zoomin" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+    styles: [{
+      [IMAGE_CLASSNAME]: {
+        transition: "transform 0.3s ease-in-out"
+      },
+      [`${WRAP_CLASSNAME}:hover img`]: {
+        transform: "scale(1.05)"
+      }
+    }]
+  }) : general_settings.hoverImage === "slide" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+    styles: [{
+      [IMAGE_CLASSNAME]: {
+        transition: "transform 0.3s cubic-bezier(0.4,0,0.2,1)"
+      },
+      [`${WRAP_CLASSNAME}:hover img`]: {
+        transform: "translateX(-20px)"
+      }
+    }]
+  }) : general_settings.hoverImage === "grayscale" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+    styles: [{
+      [IMAGE_CLASSNAME]: {
+        transition: "filter 0.3s ease-in-out"
+      },
+      [`${WRAP_CLASSNAME}:hover img`]: {
+        filter: "grayscale(100%)"
+      }
+    }]
+  }) : general_settings.hoverImage === "blur" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+    styles: [{
+      [IMAGE_CLASSNAME]: {
+        transition: "filter 0.3s ease-in-out"
+      },
+      [`${WRAP_CLASSNAME}:hover img`]: {
+        filter: "blur(2px)"
+      }
+    }]
   }) : null, general_settings.layout !== "overlay" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: [(0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
       className: CAPTION_CLASSNAME,

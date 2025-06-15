@@ -50,6 +50,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		title,
 		url,
 		general_settings,
+		general_image,
 		style_image,
 		style_overlay,
 		style_caption,
@@ -61,6 +62,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_settings,
+		general_image,
 		style_image,
 		style_overlay,
 		style_caption,
@@ -125,12 +127,15 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			)}
 		</>
 	);
-
-	//
+	
 	const wrapBlockProps = useBlockProps.save({
-		className:
-			`wcb-image__wrap wcb-image__wrap--${general_settings.layout} ${classes}`.trim(),
+		className: `woostify-container wcb-image__wrap wcb-image__wrap--${general_settings.layout} ${classes}`.trim(),
+		style: {
+			display: "flex",
+			justifyContent: attributes.general_settings?.alignment?.Desktop
+		},
 	});
+
 	//
 
 	const renderOverlay = () => {
