@@ -46,6 +46,7 @@ const GlobalCss = attrs => {
     style_content,
     style_dimension,
     style_image,
+    style_rating,
     style_name,
     //
     advance_responsiveCondition,
@@ -58,6 +59,7 @@ const GlobalCss = attrs => {
   const ITEM_CONTENT = `${WRAP_CLASSNAME} .wcb-testimonials__item-content`;
   const ITEM_COMPANY = `${WRAP_CLASSNAME} .wcb-testimonials__item-company`;
   const ITEM_IMAGE = `${WRAP_CLASSNAME} .wcb-testimonials__item-image`;
+  const ITEM_RATING = `${WRAP_CLASSNAME} .wcb-testimonials__item-rating`;
   const SLICK_ARROW = `${WRAP_CLASSNAME} .slick-arrow`;
   const SLICK_DOTS = `${WRAP_CLASSNAME} .slick-dots`;
 
@@ -163,6 +165,16 @@ const GlobalCss = attrs => {
         "button:before": {
           color: style_arrowAndDots.color
         }
+      }
+    }]
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+    styles: [(0,_utils_getSingleDimensionStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
+      value: style_rating.marginBottom,
+      className: ITEM_RATING,
+      prefix: "marginBottom"
+    }), {
+      [`${ITEM_RATING} .active`]: {
+        color: style_rating.color
       }
     }]
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {

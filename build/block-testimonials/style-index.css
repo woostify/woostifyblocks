@@ -3,9 +3,6 @@
   \**********************************************************************************************************************************************************************************************************************************************************/
 /*  */
 /*  */
-.wcb-testimonials__wrap {
-  padding: 32px;
-}
 .wcb-testimonials__wrap .slick-dots {
   position: relative;
   bottom: auto;
@@ -43,6 +40,12 @@
 }
 .wcb-testimonials__item .wcb-testimonials__item-wrap-inner {
   display: flex;
+}
+.wcb-testimonials__item .wcb-testimonials__item-rating {
+  position: relative;
+}
+.wcb-testimonials__item .wcb-testimonials__item-rating .wcb-star {
+  display: inline-block;
 }
 
 .wcb-testimonials__item-inner {
