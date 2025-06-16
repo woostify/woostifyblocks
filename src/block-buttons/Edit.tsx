@@ -256,8 +256,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_text,
 		advance_motionEffect,
 	]);
-
-	// console.log(6, "---- Button edit  ---" + uniqueId);
+	
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
