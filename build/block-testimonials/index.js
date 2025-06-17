@@ -3259,7 +3259,6 @@ const Edit = props => {
     }));
   };
   const renderTestimonialItemRating = (item, index) => {
-    const startActive = 4;
     const {
       ratings,
       isShowRating,
@@ -3366,7 +3365,7 @@ const Edit = props => {
       style_name,
       advance_motionEffect
     };
-  }, [uniqueId, advance_responsiveCondition, advance_zIndex, general_general, style_dimension, general_carousel, general_images, style_arrowAndDots, style_backgroundAndBorder, style_company, style_content, style_image, style_name, advance_motionEffect]);
+  }, [uniqueId, advance_responsiveCondition, advance_zIndex, general_general, style_dimension, general_carousel, general_images, style_arrowAndDots, style_backgroundAndBorder, style_company, style_content, style_image, style_rating, style_name, advance_motionEffect]);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_28__["default"], {
     uniqueKey: clientId
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
@@ -3629,6 +3628,7 @@ function save(_ref) {
     style_dimension,
     style_image,
     style_name,
+    style_rating,
     testimonials,
     advance_motionEffect
   } = attributes;
@@ -3649,6 +3649,7 @@ function save(_ref) {
     style_dimension,
     style_image,
     style_name,
+    style_rating,
     advance_motionEffect
   };
   //
@@ -3715,8 +3716,7 @@ function save(_ref) {
   const renderTestimonialItemRating = (item, index) => {
     const {
       ratings,
-      isShowRating,
-      ratingPosition
+      isShowRating
     } = general_rating;
     const {
       media_desktop,
@@ -4003,6 +4003,7 @@ function save(_ref) {
     general_general,
     general_carousel,
     general_images,
+    general_rating,
     style_arrowAndDots,
     style_backgroundAndBorder,
     style_company,
@@ -4021,6 +4022,7 @@ function save(_ref) {
     general_general,
     general_carousel,
     general_images,
+    general_rating,
     style_arrowAndDots,
     style_backgroundAndBorder,
     style_company,

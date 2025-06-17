@@ -29,6 +29,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_dimension,
 		style_image,
 		style_name,
+		style_rating,
 		testimonials,
 		advance_motionEffect,
 	} = attributes;
@@ -49,6 +50,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_dimension,
 		style_image,
 		style_name,
+		style_rating,
 		advance_motionEffect,
 	};
 	//
@@ -120,7 +122,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	};
 
 	const renderTestimonialItemRating = (item: TestimonialItem, index: number) => {
-		const { ratings, isShowRating, ratingPosition } = general_rating;
+		const { ratings, isShowRating } = general_rating;
 		const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 		if (!isShowRating) {
 			return null;
@@ -193,7 +195,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 							{/* RATING */}
 							{ ratingPosition === "bottom" && 
 								renderTestimonialItemRating(item, index) }
-								
+
 						</div>
 
 						{/* IMAGE */}

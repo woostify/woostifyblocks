@@ -430,7 +430,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	};
 
 	const renderTestimonialItemRating = (item: TestimonialItem, index: number) => {
-		const startActive = 4;
 		const { ratings, isShowRating, ratingPosition } = general_rating;
 		const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 		if (!isShowRating) {
@@ -583,6 +582,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_company,
 		style_content,
 		style_image,
+		style_rating,
 		style_name,
 		advance_motionEffect,
 	]);
