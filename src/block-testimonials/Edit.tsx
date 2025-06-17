@@ -202,6 +202,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								setAttributes({ general_rating: data });
 							}}
 							panelData={general_rating}
+							numberOfItems={general_general.numberofTestimonials}
 						/>
 
 						<WcbTestimonialsPanelCarousel
@@ -430,15 +431,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 	const renderTestimonialItemRating = (item: TestimonialItem, index: number) => {
 		const startActive = 4;
-		const { isShowRating, ratingPosition } = general_rating;
+		const { ratings, isShowRating, ratingPosition } = general_rating;
 		const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 		if (!isShowRating) {
 			return null;
 		}
 		return (
 			<div className="wcb-testimonials__item-rating">
-				{Array.from({ length: 5 }, (_, i) => {
-					const clsActive = i < startActive ? 'active' : '';
+				{ ratings[index] && Array.from({ length: 5 }, (_, i) => {
+					const clsActive = i < ratings[index] ? 'active' : '';
 					return (
 						<span key={i} className={`wcb-star ${clsActive}`}>
 							★
@@ -451,6 +452,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 	const renderTestimonialItem = (item: TestimonialItem, index: number) => {
 		const { imagePosition } = general_images;
+		const { ratingPosition } = general_rating;
 		return (
 			<div className="wcb-testimonials__item" key={index + "-"}>
 				<div className="wcb-testimonials__item-background">
@@ -470,7 +472,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 						<div className="wcb-testimonials__item-inner">
 							{/* RATING */}
-							{ renderTestimonialItemRating(item, index) }
+							{ ratingPosition === "top" && 
+								renderTestimonialItemRating(item, index) }
 
 							{/* IMAGE */}
 							{imagePosition === "top" &&
@@ -478,6 +481,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 							{/* CONTENT */}
 							{renderTestimonialItemContent(item, index)}
+
+							{/* RATING */}
+							{ ratingPosition === "middle" && 
+								renderTestimonialItemRating(item, index) }
 
 							<div className="wcb-testimonials__item-user">
 								{/* IMAGE */}
@@ -492,6 +499,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 									{renderTestimonialItemCompany(item, index)}
 								</div>
 							</div>
+
+							{/* RATING */}
+							{ ratingPosition === "bottom" && 
+								renderTestimonialItemRating(item, index) }
 						</div>
 
 						{/* IMAGE */}

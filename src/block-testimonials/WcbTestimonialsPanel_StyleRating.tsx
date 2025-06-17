@@ -4,23 +4,20 @@ import React, { FC } from "react";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
-import MyUnitControl from "../components/controls/MyUnitControl";
 import { MY_GAP_UNITS } from "../components/controls/MyDimensionsControl/MyDimensionsControl";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
-
-export interface WCB_TESTIMONIALS_PANEL_STYLE_RATING {
-	marginBottom: HasResponsive<string>;
-	color: string;
-	ratingValue: number;
-}
+import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
 
 export const WCB_TESTIMONIALS_PANEL_STYLE_RATING_DEMO: WCB_TESTIMONIALS_PANEL_STYLE_RATING =
 	{
 		color: "#FF8B00",
-		ratingValue: 5,
 		marginBottom: { Desktop: "0.25rem" },
 	};
+export interface WCB_TESTIMONIALS_PANEL_STYLE_RATING {
+	marginBottom: HasResponsive<string>;
+	color: string;
+}
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
@@ -28,7 +25,7 @@ interface Props
 	setAttr__: (data: WCB_TESTIMONIALS_PANEL_STYLE_RATING) => void;
 }
 
-const WcbProductsPanel_StyleRating: FC<Props> = ({
+const WcbTestimonialsPanel_StyleRating: FC<Props> = ({
 	panelData = WCB_TESTIMONIALS_PANEL_STYLE_RATING_DEMO,
 	setAttr__,
 	initialOpen,
@@ -37,7 +34,7 @@ const WcbProductsPanel_StyleRating: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
-	const { color, marginBottom, ratingValue } = panelData;
+	const { color, marginBottom } = panelData;
 
 	const { currentDeviceValue: MARGIN_BOTTOM } = getValueFromAttrsResponsives(
 		marginBottom,
@@ -54,18 +51,6 @@ const WcbProductsPanel_StyleRating: FC<Props> = ({
 			title={__("Rating", "wcb")}
 		>
 			<div className="space-y-2.5">
-				<RangeControl
-					label={__("Rating", "wcb")}
-					value={ratingValue}
-					onChange={(value = 5) => {
-						setAttr__({
-							...panelData,
-							ratingValue: value,
-						});
-					}}
-					min={1}
-					max={5}
-				/>
 
 				<MyColorPicker
 					label={__("Color", "wcb")}
@@ -78,7 +63,7 @@ const WcbProductsPanel_StyleRating: FC<Props> = ({
 					color={color}
 				/>
 
-				<MyUnitControl
+				<MySpacingSizesControl
 					onChange={(value) => {
 						setAttr__({
 							...panelData,
@@ -98,4 +83,4 @@ const WcbProductsPanel_StyleRating: FC<Props> = ({
 	);
 };
 
-export default WcbProductsPanel_StyleRating;
+export default WcbTestimonialsPanel_StyleRating;
