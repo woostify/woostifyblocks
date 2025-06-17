@@ -1,1 +1,21 @@
-.wcb-team__wrap .wcb-team__socials-icons>a:first-child{margin-left:0 !important}.wcb-team__heading{margin:0}.wcb-team__content-wrap{flex-grow:1}.wcb-team__image{flex-shrink:0;display:inline-block}
+/*!**************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/block-team/style.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************/
+.wcb-team__wrap .wcb-team__socials-icons > a:first-child {
+  margin-left: 0 !important;
+}
+
+.wcb-team__heading {
+  margin: 0;
+}
+
+.wcb-team__content-wrap {
+  flex-grow: 1;
+}
+
+.wcb-team__image {
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+/*# sourceMappingURL=style-index.css.map*/
