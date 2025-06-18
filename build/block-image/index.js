@@ -4414,7 +4414,16 @@ function save(_ref) {
     uniqueId,
     advance_responsiveCondition,
     advance_zIndex,
-    general_settings,
+    general_settings: {
+      ...general_settings,
+      // Make sure Height and Width are always object, not array
+      height: typeof general_settings.height === 'object' && !Array.isArray(general_settings.height) ? general_settings.height : {
+        Desktop: undefined
+      },
+      width: typeof general_settings.width === 'object' && !Array.isArray(general_settings.width) ? general_settings.width : {
+        Desktop: undefined
+      }
+    },
     style_image,
     style_overlay,
     style_caption
@@ -4445,7 +4454,7 @@ function save(_ref) {
   });
   const image = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
     src: url,
-    alt: alt,
+    alt: alt || "",
     className: imageClasses || undefined,
     style: borderProps.style,
     width: WIDTH,
@@ -4457,10 +4466,10 @@ function save(_ref) {
     href: href,
     target: linkTarget,
     rel: newRel
-  }, image) : image, !_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__.RichText.isEmpty(caption) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__.RichText.Content, {
+  }, image) : image, / * Always render figure to avoid authentication errors */, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__.RichText.Content, {
     className: (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__.__experimentalGetElementClassName)("caption"),
     tagName: "figcaption",
-    value: caption
+    value: caption || ""
   }));
 
   //
@@ -5166,6 +5175,7 @@ const blokc1Attrs = {
     type: "string",
     source: "html",
     selector: "figcaption",
+    default: "",
     __experimentalRole: "content"
   },
   title: {
@@ -5795,7 +5805,40 @@ function SaveCommon(_ref) {
   } = _ref;
   let blockJson = "";
   try {
-    blockJson = lodash__WEBPACK_IMPORTED_MODULE_3___default().escape(JSON.stringify(attributes));
+    // Normalize data to prevent array vs object inconsistency
+    const normalizeData = obj => {
+      if (Array.isArray(obj)) {
+        return obj.length === 0 ? {} : obj;
+      }
+      if (obj && typeof obj === 'object') {
+        const normalized = {};
+        for (const [key, value] of Object.entries(obj)) {
+          normalized[key] = normalizeData(value);
+        }
+        return normalized;
+      }
+      return obj;
+    };
+
+    // Special handling for responsive values to ensure consistency
+    const normalizeResponsiveObject = obj => {
+      if (!obj || typeof obj !== 'object' || Array.isArray(obj)) {
+        return {};
+      }
+
+      // For responsive objects, ensure they have proper structure
+      const normalized = {};
+      ['Desktop', 'Tablet', 'Mobile'].forEach(device => {
+        if (obj[device] !== undefined && obj[device] !== null && obj[device] !== '') {
+          normalized[device] = obj[device];
+        }
+      });
+
+      // Only return object if it has at least one valid responsive value
+      return Object.keys(normalized).length > 0 ? normalized : {};
+    };
+    const normalizedAttributes = normalizeData(attributes);
+    blockJson = lodash__WEBPACK_IMPORTED_MODULE_3___default().escape(JSON.stringify(normalizedAttributes));
   } catch (error) {
     console.log("attributes JSON.stringify error on SAVE function", {
       error,

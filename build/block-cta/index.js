@@ -4296,7 +4296,40 @@ function SaveCommon(_ref) {
   } = _ref;
   let blockJson = "";
   try {
-    blockJson = lodash__WEBPACK_IMPORTED_MODULE_3___default().escape(JSON.stringify(attributes));
+    // Normalize data to prevent array vs object inconsistency
+    const normalizeData = obj => {
+      if (Array.isArray(obj)) {
+        return obj.length === 0 ? {} : obj;
+      }
+      if (obj && typeof obj === 'object') {
+        const normalized = {};
+        for (const [key, value] of Object.entries(obj)) {
+          normalized[key] = normalizeData(value);
+        }
+        return normalized;
+      }
+      return obj;
+    };
+
+    // Special handling for responsive values to ensure consistency
+    const normalizeResponsiveObject = obj => {
+      if (!obj || typeof obj !== 'object' || Array.isArray(obj)) {
+        return {};
+      }
+
+      // For responsive objects, ensure they have proper structure
+      const normalized = {};
+      ['Desktop', 'Tablet', 'Mobile'].forEach(device => {
+        if (obj[device] !== undefined && obj[device] !== null && obj[device] !== '') {
+          normalized[device] = obj[device];
+        }
+      });
+
+      // Only return object if it has at least one valid responsive value
+      return Object.keys(normalized).length > 0 ? normalized : {};
+    };
+    const normalizedAttributes = normalizeData(attributes);
+    blockJson = lodash__WEBPACK_IMPORTED_MODULE_3___default().escape(JSON.stringify(normalizedAttributes));
   } catch (error) {
     console.log("attributes JSON.stringify error on SAVE function", {
       error,

@@ -2926,8 +2926,8 @@ const Edit = props => {
   (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
     if (childInnerBlocks.length === titles.length) {
       const newTabContents = childInnerBlocks.map(block => {
-        // Serialize innerBlocks to HTML
-        const innerContent = block.innerBlocks ? (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_17__.serialize)(block.innerBlocks) : "";
+        // Get content from childInnerBlocks 
+        const innerContent = block.innerBlocks?.map(innerBlock => innerBlock.attributes.content || "").join("\n") || "";
         return innerContent;
       });
       setAttributes({
@@ -3548,9 +3548,7 @@ function save(_ref) {
     className: `wcb-tabs__title ${activeTabIndex === index ? "wcb-tabs__title-selected" : ""}`,
     value: item.title,
     placeholder: "Title"
-  }), (general_tabTitle.iconPosition === "right" || general_tabTitle.iconPosition === "bottom") && renderIcon(index)))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-tabs__content-wrap"
-  }, titles.map((_, index) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }), (general_tabTitle.iconPosition === "right" || general_tabTitle.iconPosition === "bottom") && renderIcon(index)))), titles.map((_, index) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     key: index,
     className: "wp-block-wcb-tab-child wcb-tab-child__wrap",
     role: "tabpanel",
@@ -3558,7 +3556,8 @@ function save(_ref) {
     "aria-labelledby": `tab-${uniqueId}-${index}`,
     hidden: index !== activeTabIndex
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-tab-child__inner",
+    className: "wcb-tab-child__inner"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     dangerouslySetInnerHTML: {
       __html: tabContents[index]
     }
@@ -5548,7 +5547,40 @@ function SaveCommon(_ref) {
   } = _ref;
   let blockJson = "";
   try {
-    blockJson = lodash__WEBPACK_IMPORTED_MODULE_3___default().escape(JSON.stringify(attributes));
+    // Normalize data to prevent array vs object inconsistency
+    const normalizeData = obj => {
+      if (Array.isArray(obj)) {
+        return obj.length === 0 ? {} : obj;
+      }
+      if (obj && typeof obj === 'object') {
+        const normalized = {};
+        for (const [key, value] of Object.entries(obj)) {
+          normalized[key] = normalizeData(value);
+        }
+        return normalized;
+      }
+      return obj;
+    };
+
+    // Special handling for responsive values to ensure consistency
+    const normalizeResponsiveObject = obj => {
+      if (!obj || typeof obj !== 'object' || Array.isArray(obj)) {
+        return {};
+      }
+
+      // For responsive objects, ensure they have proper structure
+      const normalized = {};
+      ['Desktop', 'Tablet', 'Mobile'].forEach(device => {
+        if (obj[device] !== undefined && obj[device] !== null && obj[device] !== '') {
+          normalized[device] = obj[device];
+        }
+      });
+
+      // Only return object if it has at least one valid responsive value
+      return Object.keys(normalized).length > 0 ? normalized : {};
+    };
+    const normalizedAttributes = normalizeData(attributes);
+    blockJson = lodash__WEBPACK_IMPORTED_MODULE_3___default().escape(JSON.stringify(normalizedAttributes));
   } catch (error) {
     console.log("attributes JSON.stringify error on SAVE function", {
       error,

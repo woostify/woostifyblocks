@@ -3880,7 +3880,9 @@ function save(_ref) {
   const {
     uniqueId,
     advance_responsiveCondition,
-    advance_zIndex,
+    advance_zIndex = {
+      Desktop: undefined
+    },
     general_addToCartBtn,
     general_content,
     general_featuredImage,
@@ -3900,26 +3902,75 @@ function save(_ref) {
   } = attributes;
   //
 
+  // Data validation and normalization to ensure consistent structure
+  const ensureObjectStructure = value => {
+    if (value === null || value === undefined) return {};
+    if (Array.isArray(value) && value.length === 0) return {};
+    if (typeof value === 'object') return value;
+    return {};
+  };
+
+  // Special handling for responsive values to ensure consistency
+  const normalizeResponsiveObject = obj => {
+    if (!obj || typeof obj !== 'object' || Array.isArray(obj)) {
+      return {};
+    }
+
+    // For responsive objects, ensure they have proper structure
+    const normalized = {};
+    ['Desktop', 'Tablet', 'Mobile'].forEach(device => {
+      if (obj[device] !== undefined && obj[device] !== null && obj[device] !== '') {
+        normalized[device] = obj[device];
+      }
+    });
+
+    // Only return object if it has at least one valid responsive value
+    return Object.keys(normalized).length > 0 ? normalized : {};
+  };
+  const ensureTypographyConsistency = typography => {
+    if (!typography) return {};
+    return {
+      ...typography,
+      lineHeight: normalizeResponsiveObject(typography.lineHeight),
+      letterSpacing: normalizeResponsiveObject(typography.letterSpacing),
+      style: ensureObjectStructure(typography.style)
+    };
+  };
   const newAttrForSave = {
     uniqueId,
-    advance_responsiveCondition,
-    advance_zIndex,
-    general_addToCartBtn,
-    general_content,
-    general_featuredImage,
-    general_pagination,
-    general_sortingAndFiltering,
-    style_addToCardBtn,
-    style_border,
-    style_featuredImage,
-    style_layout,
-    style_pagination,
-    style_price,
-    style_rating,
-    style_saleBadge,
-    style_title,
-    advance_motionEffect,
-    style_category
+    advance_responsiveCondition: ensureObjectStructure(advance_responsiveCondition),
+    advance_zIndex: ensureObjectStructure(advance_zIndex),
+    general_addToCartBtn: ensureObjectStructure(general_addToCartBtn),
+    general_content: ensureObjectStructure(general_content),
+    general_featuredImage: ensureObjectStructure(general_featuredImage),
+    general_pagination: ensureObjectStructure(general_pagination),
+    general_sortingAndFiltering: ensureObjectStructure(general_sortingAndFiltering),
+    style_addToCardBtn: style_addToCardBtn ? {
+      ...style_addToCardBtn,
+      typography: ensureTypographyConsistency(style_addToCardBtn.typography)
+    } : undefined,
+    style_border: ensureObjectStructure(style_border),
+    style_featuredImage: ensureObjectStructure(style_featuredImage),
+    style_layout: ensureObjectStructure(style_layout),
+    style_pagination: ensureObjectStructure(style_pagination),
+    style_price: style_price ? {
+      ...style_price,
+      typography: ensureTypographyConsistency(style_price.typography)
+    } : undefined,
+    style_rating: ensureObjectStructure(style_rating),
+    style_saleBadge: style_saleBadge ? {
+      ...style_saleBadge,
+      typography: ensureTypographyConsistency(style_saleBadge.typography)
+    } : undefined,
+    style_title: style_title ? {
+      ...style_title,
+      typography: ensureTypographyConsistency(style_title.typography)
+    } : undefined,
+    advance_motionEffect: ensureObjectStructure(advance_motionEffect),
+    style_category: style_category ? {
+      ...style_category,
+      typography: ensureTypographyConsistency(style_category.typography)
+    } : undefined
   };
   //
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
@@ -8204,7 +8255,40 @@ function SaveCommon(_ref) {
   } = _ref;
   let blockJson = "";
   try {
-    blockJson = lodash__WEBPACK_IMPORTED_MODULE_3___default().escape(JSON.stringify(attributes));
+    // Normalize data to prevent array vs object inconsistency
+    const normalizeData = obj => {
+      if (Array.isArray(obj)) {
+        return obj.length === 0 ? {} : obj;
+      }
+      if (obj && typeof obj === 'object') {
+        const normalized = {};
+        for (const [key, value] of Object.entries(obj)) {
+          normalized[key] = normalizeData(value);
+        }
+        return normalized;
+      }
+      return obj;
+    };
+
+    // Special handling for responsive values to ensure consistency
+    const normalizeResponsiveObject = obj => {
+      if (!obj || typeof obj !== 'object' || Array.isArray(obj)) {
+        return {};
+      }
+
+      // For responsive objects, ensure they have proper structure
+      const normalized = {};
+      ['Desktop', 'Tablet', 'Mobile'].forEach(device => {
+        if (obj[device] !== undefined && obj[device] !== null && obj[device] !== '') {
+          normalized[device] = obj[device];
+        }
+      });
+
+      // Only return object if it has at least one valid responsive value
+      return Object.keys(normalized).length > 0 ? normalized : {};
+    };
+    const normalizedAttributes = normalizeData(attributes);
+    blockJson = lodash__WEBPACK_IMPORTED_MODULE_3___default().escape(JSON.stringify(normalizedAttributes));
   } catch (error) {
     console.log("attributes JSON.stringify error on SAVE function", {
       error,

@@ -74,7 +74,7 @@ const MyButtonPresetControl: FC<Props> = ({
 					<HeartIcon className="flex-shrink-0 w-5 h-5" />
 				)}
 				{item.name === "circular" && (
-					<PlusIcon className="flex-shrink-0 w-5 h-5" />
+					<HeartIcon className="flex-shrink-0 w-5 h-5" />
 				)}
 				{item.name !== "circular" && <span>Button</span>}
 				{item.name === "with_trailing_icons" && (
