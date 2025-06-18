@@ -221,13 +221,7 @@ const WcbImagePanelSettings: FC<Props> = ({
 				>
 					<ImageSizeControl
 						onChangeImage={updateImage}
-						onChange={({
-							width,
-							height,
-						}: {
-							width?: number;
-							height?: number;
-						}) => {
+						onChange={({ width, height }) => {
 							if (
 								typeof width === "undefined" &&
 								typeof height === "undefined"
