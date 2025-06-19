@@ -23,7 +23,41 @@ function SaveCommon<T>({
 }: Props<T>) {
 	let blockJson = "";
 	try {
-		blockJson = _.escape(JSON.stringify(attributes));
+		// Normalize data to prevent array vs object inconsistency
+		const normalizeData = (obj: any): any => {
+			if (Array.isArray(obj)) {
+				return obj.length === 0 ? {} : obj;
+			}
+			if (obj && typeof obj === 'object') {
+				const normalized: any = {};
+				for (const [key, value] of Object.entries(obj)) {
+					normalized[key] = normalizeData(value);
+				}
+				return normalized;
+			}
+			return obj;
+		};
+
+		// Special handling for responsive values to ensure consistency
+		const normalizeResponsiveObject = (obj: any) => {
+			if (!obj || typeof obj !== 'object' || Array.isArray(obj)) {
+				return {};
+			}
+			
+			// For responsive objects, ensure they have proper structure
+			const normalized: any = {};
+			['Desktop', 'Tablet', 'Mobile'].forEach(device => {
+				if (obj[device] !== undefined && obj[device] !== null && obj[device] !== '') {
+					normalized[device] = obj[device];
+				}
+			});
+			
+			// Only return object if it has at least one valid responsive value
+			return Object.keys(normalized).length > 0 ? normalized : {};
+		};
+
+		const normalizedAttributes = normalizeData(attributes);
+		blockJson = _.escape(JSON.stringify(normalizedAttributes));
 	} catch (error) {
 		console.log("attributes JSON.stringify error on SAVE function", {
 			error,
