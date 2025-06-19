@@ -1,8 +1,6 @@
 /*  */
 /*  */
 .wcb-testimonials__wrap {
-	padding: 32px;
-
 	.slick-dots {
 		position: relative;
 		bottom: auto;
@@ -39,6 +37,12 @@
 	}
 	.wcb-testimonials__item-wrap-inner {
 		display: flex;
+	}
+	.wcb-testimonials__item-rating {
+		position: relative;
+		.wcb-star {
+			display: inline-block;
+		}
 	}
 }
 
