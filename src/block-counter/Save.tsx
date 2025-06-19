@@ -8,7 +8,7 @@ import "./style.scss";
 import MyIconFull from "../components/controls/MyIconFull";
 
 export interface WcbAttrsForSave
-    extends Omit<WcbAttrs, "heading" | "designation" | "description"> {}
+    extends Omit<WcbAttrs, "heading" | "description"> {}
 
 export default function save({ attributes }: { attributes: WcbAttrs }) {
     const {
@@ -18,6 +18,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
         general_layout,
         description,
         designation,
+        endNumber,
         style_description,
         style_desination,
         style_Icon,
@@ -32,6 +33,8 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
         advance_responsiveCondition,
         advance_zIndex,
         general_layout,
+        endNumber,
+        designation,
         style_description,
         style_desination,
         style_Icon,
@@ -260,7 +263,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 								>
                                     <span>{general_layout.numberPrefix}</span>
 									<span className="wcb-icon-box__number-value">
-										{formatNumber(general_layout.endNumber, general_layout?.decimalNumber)}
+										{formatNumber(general_layout.startNumber, general_layout?.decimalNumber)}
 									</span>
                                     <span>{general_layout.numberSuffix}</span>
                                 </div>
