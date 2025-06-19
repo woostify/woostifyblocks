@@ -103,6 +103,7 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		type: "string",
 		source: "html",
 		selector: "figcaption",
+		default: "",
 		__experimentalRole: "content",
 	},
 	title: {
