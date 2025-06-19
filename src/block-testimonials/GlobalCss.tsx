@@ -23,6 +23,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		style_content,
 		style_dimension,
 		style_image,
+		style_rating,
 		style_name,
 		//
 		advance_responsiveCondition,
@@ -36,6 +37,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const ITEM_CONTENT = `${WRAP_CLASSNAME} .wcb-testimonials__item-content`;
 	const ITEM_COMPANY = `${WRAP_CLASSNAME} .wcb-testimonials__item-company`;
 	const ITEM_IMAGE = `${WRAP_CLASSNAME} .wcb-testimonials__item-image`;
+	const ITEM_RATING = `${WRAP_CLASSNAME} .wcb-testimonials__item-rating`;
 	const SLICK_ARROW = `${WRAP_CLASSNAME} .slick-arrow`;
 	const SLICK_DOTS = `${WRAP_CLASSNAME} .slick-dots`;
 
@@ -192,6 +194,24 @@ const GlobalCss: FC<Props> = (attrs) => {
 						},
 					},
 				]}
+				
+			/>
+
+			{/* RATING */}
+			<Global
+				styles={[
+					getSingleDimensionStyles({
+						value: style_rating.marginBottom,
+						className: ITEM_RATING,
+						prefix: "marginBottom",
+					}),
+					{
+						[`${ITEM_RATING} .active`]: {
+							color: style_rating.color,
+						},
+					},
+				]}
+				
 			/>
 
 			{/* ADVANCE  */}
