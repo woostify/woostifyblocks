@@ -174,8 +174,10 @@ const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 			>
 				<MyDimensionsControl
 					dimensionControl={attributes.styles_dimensions}
-					setAttrs__dimensions={(data) =>
-						setAttributes({ styles_dimensions: data })
+					setAttrs__dimensions={(data) => {
+							debugger
+							setAttributes({ styles_dimensions: data })
+						}
 					}
 				/>
 			</PanelBody>
