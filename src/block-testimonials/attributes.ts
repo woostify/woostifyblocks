@@ -28,6 +28,10 @@ import {
 	WCB_TESTIMONIALS_PANEL_IMAGES_DEMO,
 } from "./WcbTestimonialsPanelImages";
 import {
+	WCB_TESTIMONIALS_PANEL_RATING,
+	WCB_TESTIMONIALS_PANEL_RATING_DEMO,
+} from "./WcbTestimonialsPanelRating";
+import {
 	WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS,
 	WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS_DEMO,
 } from "./WcbTestimonialsPanel_StyleArrowDots";
@@ -49,6 +53,10 @@ import {
 	WCB_TESTIMONIALS_PANEL_STYLE_IMAGE_DEMO,
 } from "./WcbTestimonialsPanel_StyleImage";
 import {
+	WCB_TESTIMONIALS_PANEL_STYLE_RATING,
+	WCB_TESTIMONIALS_PANEL_STYLE_RATING_DEMO,
+} from "./WcbTestimonialsPanel_StyleRating";
+import {
 	WCB_TESTIMONIALS_PANEL_STYLE_NAME,
 	WCB_TESTIMONIALS_PANEL_STYLE_NAME_DEMO,
 } from "./WcbTestimonialsPanel_StyleName";
@@ -65,12 +73,14 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	//
 	general_general: WCB_TESTIMONIALS_PANEL_GENERAL;
 	general_images: WCB_TESTIMONIALS_PANEL_IMAGES;
+	general_rating: WCB_TESTIMONIALS_PANEL_RATING;
 	general_carousel: WCB_TESTIMONIALS_PANEL_CAROUSEL;
 	//
 	style_name: WCB_TESTIMONIALS_PANEL_STYLE_NAME;
 	style_content: WCB_TESTIMONIALS_PANEL_STYLE_NAME;
 	style_company: WCB_TESTIMONIALS_PANEL_STYLE_COMPANY;
 	style_image: WCB_TESTIMONIALS_PANEL_STYLE_IMAGE;
+	style_rating: WCB_TESTIMONIALS_PANEL_STYLE_RATING;
 	style_arrowAndDots: WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS;
 	style_backgroundAndBorder: WCB_TESTIMONIALS_PANEL_STYLE_BACKGROUND_BORDER;
 	style_dimension: WCB_TESTIMONIALS_PANEL_STYLE_DIMENSION;
@@ -104,6 +114,10 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		type: "object",
 		default: WCB_TESTIMONIALS_PANEL_IMAGES_DEMO,
 	},
+	general_rating: {
+		type: "object",
+		default: WCB_TESTIMONIALS_PANEL_RATING_DEMO,
+	},
 	general_carousel: {
 		type: "object",
 		default: WCB_TESTIMONIALS_PANEL_CAROUSEL_DEMO,
@@ -124,6 +138,10 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	style_image: {
 		type: "object",
 		default: WCB_TESTIMONIALS_PANEL_STYLE_IMAGE_DEMO,
+	},
+	style_rating: {
+		type: "object",
+		default: WCB_TESTIMONIALS_PANEL_STYLE_RATING_DEMO,
 	},
 	style_arrowAndDots: {
 		type: "object",
