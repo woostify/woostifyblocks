@@ -29,17 +29,19 @@ export interface WCB_IMAGE_PANEL_SETTINGS {
 	height: HasResponsive<number | undefined>;
 	captionAlignment: HasResponsive<TextAlignment>;
 	objectFit: HasResponsive<NonNullable<CSSProperties["objectFit"]>>;
+	hoverImage: "static" | "zoomin" | "slide" | "grayscale" | "blur";
 	layout: "normal" | "overlay";
 	contentAlignment: CSSProperties["justifyItems"];
 }
 
 export const WCB_IMAGE_PANEL_SETTINGS_DEMO: WCB_IMAGE_PANEL_SETTINGS = {
-	alignment: { Desktop: "none" },
+	alignment: { Desktop: "center" },
 	captionAlignment: { Desktop: "center" },
 	height: { Desktop: undefined },
 	sizeSlug: { Desktop: undefined },
 	width: { Desktop: undefined },
 	objectFit: { Desktop: "initial" },
+	hoverImage: "static",
 	layout: "normal",
 	contentAlignment: "center",
 };
@@ -138,6 +140,15 @@ const WcbImagePanelSettings: FC<Props> = ({
 		{ value: "contain", label: "Contain" },
 	];
 
+	const HOVER_IMAGE_OPTIONS: MySelectOption<
+		NonNullable<WCB_IMAGE_PANEL_SETTINGS["hoverImage"]>>[] = [
+		{ value: "static", label: "Static" },
+		{ value: "zoomin", label: "Zoom In" },
+		{ value: "slide", label: "Slide" },
+		{ value: "grayscale", label: "Grayscale" },
+		{ value: "blur", label: "Blur" },
+	];
+
 	const PLANS_LAYOUT: MyRadioItem<WCB_IMAGE_PANEL_SETTINGS["layout"]>[] = [
 		{ name: "normal", icon: "Normal" },
 		{ name: "overlay", icon: "Overlay" },
@@ -159,12 +170,11 @@ const WcbImagePanelSettings: FC<Props> = ({
 			title={__("Settings", "wcb")}
 		>
 			<div className={"space-y-5"}>
-				{/* tam thoi khong su dung */}
-				{/* <MyRadioGroup
+				<MyRadioGroup
 					onChange={handleChangeImageAlignment}
 					value={TEXT_ALIGNMENT}
 					label={"Alignment"}
-				/> */}
+				/>
 
 				<TextareaControl
 					// @ts-ignore
@@ -276,6 +286,18 @@ const WcbImagePanelSettings: FC<Props> = ({
 					}}
 					value={currentObjectFit}
 					options={OBJECT_FIT_OPTIONS}
+				/>
+
+				<MySelect
+					label={__("On Hover Image", "wcb")}
+					onChange={(value) => {
+						setAttr__({
+							...panelData,
+							hoverImage: value as WCB_IMAGE_PANEL_SETTINGS["hoverImage"],
+						});
+					}}
+					value={panelData.hoverImage}
+					options={HOVER_IMAGE_OPTIONS}
 				/>
 
 				{panelData.layout !== "overlay" && (
