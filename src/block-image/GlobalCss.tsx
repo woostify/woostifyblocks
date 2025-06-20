@@ -25,6 +25,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
 	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
+	const IMAGE_FIGURE = `${WRAP_CLASSNAME}.wp-block-wcb-image`;
 	const IMAGE_CLASSNAME = `${WRAP_CLASSNAME} img`;
 	const CAPTION_CLASSNAME = `${WRAP_CLASSNAME} figcaption.wp-element-caption`;
 	const OVERLAY_BG_CLASSNAME = `${WRAP_CLASSNAME} .wcb-image__overlay-bg`;
@@ -211,6 +212,22 @@ const GlobalCss: FC<Props> = (attrs) => {
 					className: WRAP_CLASSNAME,
 					defaultDisplay: "block",
 				})}
+			/>
+			
+			{/* IMAGE ALIGNMENT */}
+			<Global
+				styles={[
+					{
+						[`${IMAGE_FIGURE}.alignright`]: {
+							marginLeft: 'auto',
+    						marginRight: 0,
+						},
+						[`${IMAGE_FIGURE}.alignleft`]: {
+							marginLeft: 0,
+    						marginRight: 'auto',
+						},
+					},
+				]}
 			/>
 		</>
 	);
