@@ -25,6 +25,8 @@ import { PanelBody, ToggleControl } from "@wordpress/components";
 // @ts-ignore
 import { __experimentalLinkControl as LinkControl } from '@wordpress/block-editor';
 import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
+import { useParentContext } from "./useParentContext";
+import GlobalCssChild from "./GlobalCssChild";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -58,6 +60,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		tabStylesIsPanelOpen,
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
+
+	// Parent context detection
+	const { isChildOfIconList, parentAttributes } = useParentContext(clientId);
 
 	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
@@ -296,6 +301,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				{...wrapBlockProps}
 				className={`${wrapBlockProps?.className} wcb-icon-list__wrap ${uniqueId}`}
 				data-uniqueid={uniqueId}
+				data-block-type="icon-item"
 			>
 				{/* CONTROL SETTINGS */}
 				<HOCInspectorControls
@@ -304,7 +310,11 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				/>
 
 				{/* CSS IN JS */}
-				<GlobalCss attributes={attributes} clientId={clientId} />
+				{isChildOfIconList ? (
+					<GlobalCssChild {...WcbAttrsForSave()} attributes={attributes} clientId={clientId} />
+				) : (
+					<GlobalCss {...WcbAttrsForSave()} attributes={attributes} clientId={clientId} />
+				)}
 
 				{/* CHILD CONTENT  */}
 				<div className="wcb-icon-list__content">

@@ -14,7 +14,7 @@ interface Props extends WcbAttrsForSave {
 	clientId: string;
 }
 
-const GlobalCss: FC<Props> = (attrs) => {
+const GlobalCssChild: FC<Props> = (attrs) => {
 	const {
 		uniqueId,
 		// ATTRS OF BLOCK
@@ -31,10 +31,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 	} = attrs;
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
+	// Higher specificity selector for child blocks
 	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}][data-block-type="icon-item"]`;
 	const ICON_CLASS = `${WRAP_CLASSNAME} .wcb-icon-list__icon`;
 
-	// ------------------- WRAP DIV
+	// ------------------- WRAP DIV với higher specificity
 	const getDivWrapStyles = (): CSSObject[] => {
 		return [
 			getStyleObjectFromResponsiveAttr({
@@ -42,21 +43,20 @@ const GlobalCss: FC<Props> = (attrs) => {
 				value: general_layout.textAlignment,
 				prefix: "textAlign",
 			}),
-							{
-					[`${WRAP_CLASSNAME}`]: {
-					
+			{
+				// Inline style with specificity max level
+				[`${WRAP_CLASSNAME}.wcb-icon-list__wrap`]: {
 					flexDirection:
 						general_icon.stackOn === "mobile" ||
 						general_icon.stackOn === "tablet" ? "column-reverse" : "column",
 
-					
 					".wcb-icon-list__content": {
 						display: "flex",
-						flexDirection:  general_layout.layout === "vertical" ? "column" : "row",
+						flexDirection: general_layout.layout === "vertical" ? "column" : "row",
 						alignItems:
-							general_layout.textAlignment.Desktop ===  "center" 
-							|| general_layout.textAlignment.Mobile ===  "center" 
-							|| general_layout.textAlignment.Tablet ===  "center"
+							general_layout.textAlignment.Desktop === "center" 
+							|| general_layout.textAlignment.Mobile === "center" 
+							|| general_layout.textAlignment.Tablet === "center"
 								? "center" :
 							general_layout.textAlignment.Desktop === "left" 
 							|| general_layout.textAlignment.Mobile === "left"
@@ -101,38 +101,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 		];
 	};
 
-	// ICON CSS
-	const renderIconCss = () => {
-		const { color, hoverColor, iconSize, dimensions, border } = style_Icon;
-
-		return `
-			${ICON_CLASS} {
-				color: ${color};
-				font-size: ${iconSize.Desktop};
-				padding: ${dimensions.padding.Desktop.top} ${dimensions.padding.Desktop.right} ${dimensions.padding.Desktop.bottom} ${dimensions.padding.Desktop.left};
-				margin: ${dimensions.margin.Desktop.top} ${dimensions.margin.Desktop.right} ${dimensions.margin.Desktop.bottom} ${dimensions.margin.Desktop.left};
-				border-radius: ${border.radius.Desktop};
-			}
-			${ICON_CLASS}:hover {
-				color: ${hoverColor || color};
-			}
-
-			@media (max-width: 768px) {
-				${ICON_CLASS} {
-					font-size: ${iconSize.Tablet};
-					border-radius: ${border.radius.Tablet};
-				}
-			}
-
-			@media (max-width: 576px) {
-				${ICON_CLASS} {
-					font-size: ${iconSize.Mobile};
-					border-radius: ${border.radius.Mobile};
-				}
-			}
-		`;
-	};
-
 	if (!uniqueId) {
 		return null;
 	}
@@ -148,7 +116,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 				})}
 			/>
 
-			{/* --------- ICON --------- */}
+			{/* --------- ICON with higher specificity --------- */}
 			{general_icon.enableIcon ? (
 				<Global
 					styles={[
@@ -183,7 +151,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 				/>
 			) : null}
 
-			{/* --------- TITLE --------- */}
+			{/* --------- TITLE with higher specificity --------- */}
 			{general_layout.enableTitle ? (
 				<Global
 					styles={[
@@ -204,43 +172,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 					]}
 				/>
 			) : null}
-
-
-			{/* --------- DESIGNATION --------- */}
-			{general_layout.enablePrefix ? (
-				<Global
-					styles={[
-						getTypographyStyles({
-							typography: style_desination.typography,
-							className: `${WRAP_CLASSNAME} .wcb-icon-list__designation`,
-						}),
-						getStyleObjectFromResponsiveAttr({
-							className: `${WRAP_CLASSNAME} .wcb-icon-list__designation`,
-							value: style_desination.marginBottom,
-							prefix: "marginBottom",
-						}),
-						{
-							[`${WRAP_CLASSNAME} .wcb-icon-list__designation`]: {
-								color: style_desination.textColor,
-							},
-						},
-					]}
-				/>
-			) : null}
-
-			{/* ADVANCE  */}
-			<Global
-				styles={getAdvanveDivWrapStyles({
-					advance_responsiveCondition,
-					advance_motionEffect,
-					advance_zIndex,
-					className: WRAP_CLASSNAME,
-				})}
-			/>
-
-			<style>{renderIconCss()}</style>
 		</>
 	);
 };
 
-export default React.memo(GlobalCss);
+export default GlobalCssChild; 

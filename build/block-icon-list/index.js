@@ -7873,6 +7873,12 @@ const Edit = props => {
             setAttributes({
               style_title: data
             });
+            // Update icon for all child blocks
+            innerBlockClientIds.forEach(childId => {
+              updateBlockAttributes(childId, {
+                style_title: data
+              });
+            });
           },
           panelData: style_title
         }), general_separator.enableSeparator && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconListPanel_StyleSeparator__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -8132,7 +8138,7 @@ const GlobalCss = attrs => {
       prefix: "marginBottom"
     }), {
       [`${WRAP_CLASSNAME} .wcb-icon-list__heading`]: {
-        color: style_title.textColor
+        color: `${style_title.textColor}`
       }
     }]
   }) : null, general_layout.enablePrefix ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
@@ -8189,7 +8195,8 @@ function save({
   const {
     uniqueId,
     general_layout,
-    style_dimension
+    style_dimension,
+    style_title
   } = attributes;
   const containerStyles = {
     display: "flex",

@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { InnerBlocks, RichText, useBlockProps, 	// @ts-ignore
+import { InnerBlocks, useBlockProps, 	// @ts-ignore
 	useInnerBlocksProps, store as blockEditorStore} from "@wordpress/block-editor";
 import { useSelect, useDispatch } from "@wordpress/data";
 import React, { useEffect, FC, useRef, useCallback } from "react";
@@ -13,13 +13,11 @@ import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import WcbIconBoxPanelLayout from "./WcbIconListPanelLayout";
-import WcbIconListPreset from "./WcbIconListPanelPreset";
 import WcbIconBoxPanelIcon from "./WcbIconListPanelIcon";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
 import WcbTeamPanel_StyleTitle from "./WcbIconListPanel_StyleTitle";
 import WcbTeamPanel_StyleDesignation from "./WcbIconListPanel_StyleDesignation";
-import MyIconFull from "../components/controls/MyIconFull";
 import WcbIconBoxPanel_StyleSeparator from "./WcbIconListPanel_StyleSeparator";
 import WcbIconBoxPanel_StyleDimension from "./WcbIconListPanel_StyleDimension";
 import { MY_DIMENSIONS_NO_GAP_DEMO__EMPTY } from "../components/controls/MyDimensionsControl/types";
@@ -158,10 +156,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 									setAttributes({ style_Icon: data });
 									// Update icon for all child blocks
 									innerBlockClientIds.forEach((childId) => {
-									updateBlockAttributes(childId, { 
-										style_Icon: data,
-									 	});
-									});
+										updateBlockAttributes(childId, { 
+											style_Icon: data,
+											});
+										});
 								}}
 								panelData={style_Icon}
 							/>
@@ -195,7 +193,14 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								//
 								setAttr__={(data) => {
 									setAttributes({ style_title: data });
-								}}
+										// Update icon for all child blocks
+										innerBlockClientIds.forEach((childId) => {
+											updateBlockAttributes(childId, { 
+												style_title: data,
+												});
+											});
+										}
+									}
 								panelData={style_title}
 							/>
 						)}

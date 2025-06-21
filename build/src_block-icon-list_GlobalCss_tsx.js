@@ -136,7 +136,7 @@ const GlobalCss = attrs => {
       prefix: "marginBottom"
     }), {
       [`${WRAP_CLASSNAME} .wcb-icon-list__heading`]: {
-        color: style_title.textColor
+        color: `${style_title.textColor}`
       }
     }]
   }) : null, general_layout.enablePrefix ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {

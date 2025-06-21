@@ -83,7 +83,8 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 	//
 	const wrapBlockProps = useBlockProps.save({
-		className: "wcb-icon-list__wrap"
+		className: "wcb-icon-list__wrap",
+		"data-block-type": "icon-item"
 	});
 	//
 
