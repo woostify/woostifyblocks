@@ -115,28 +115,23 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								setAttributes({
 									general_preset: data,
 								});
+								const newStyleIcon = preset === "wcb-icon-list-1"
+									? WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_1
+									: preset === "wcb-icon-list-2"
+									? WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_2
+									: preset === "wcb-icon-list-3"
+									? WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_3
+									: WCB_ICON_LIST_PANEL_STYLE_ICON_DEMO;
+								
 								setAttributes({
-									style_Icon:
-										preset === "wcb-icon-list-1"
-										? WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_1
-										: preset === "wcb-icon-list-2"
-										? WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_2
-										: preset === "wcb-icon-list-3"
-										? WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_3
-										: WCB_ICON_LIST_PANEL_STYLE_ICON_DEMO,
+									style_Icon: newStyleIcon,
 								});
-								// Update layout for all child blocks
+								
+								// Update layout for all child blocks with new preset
 								innerBlockClientIds.forEach((childId) => {
 									updateBlockAttributes(childId, { 
-										style_Icon: 
-											preset === "wcb-icon-list-1"
-											? WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_1
-											: preset === "wcb-icon-list-2"
-											? WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_2
-											: preset === "wcb-icon-list-3"	
-											? WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_3
-											: WCB_ICON_LIST_PANEL_STYLE_ICON_DEMO,
-									 });
+										style_Icon: newStyleIcon,
+									});
 								});
 							}}
 							panelData={general_preset}
@@ -193,14 +188,13 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								//
 								setAttr__={(data) => {
 									setAttributes({ style_title: data });
-										// Update icon for all child blocks
-										innerBlockClientIds.forEach((childId) => {
-											updateBlockAttributes(childId, { 
-												style_title: data,
-												});
-											});
-										}
-									}
+									// Update title style for all child blocks
+									innerBlockClientIds.forEach((childId) => {
+										updateBlockAttributes(childId, { 
+											style_title: data,
+										});
+									});
+								}}
 								panelData={style_title}
 							/>
 						)}
@@ -262,7 +256,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	}, {
 		allowedBlocks: ALLOWED_BLOCKS,
 		template: TEMPLATE,
-		renderAppender: () => <InnerBlocks.DefaultBlockAppender />
+				renderAppender: () => <InnerBlocks.DefaultBlockAppender />
 	});
 
 	/**

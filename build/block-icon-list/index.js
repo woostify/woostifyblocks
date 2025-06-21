@@ -7820,13 +7820,15 @@ const Edit = props => {
             setAttributes({
               general_preset: data
             });
+            const newStyleIcon = preset === "wcb-icon-list-1" ? _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_1 : preset === "wcb-icon-list-2" ? _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_2 : preset === "wcb-icon-list-3" ? _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_3 : _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_DEMO;
             setAttributes({
-              style_Icon: preset === "wcb-icon-list-1" ? _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_1 : preset === "wcb-icon-list-2" ? _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_2 : preset === "wcb-icon-list-3" ? _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_3 : _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_DEMO
+              style_Icon: newStyleIcon
             });
-            // Update layout for all child blocks
+
+            // Update layout for all child blocks with new preset
             innerBlockClientIds.forEach(childId => {
               updateBlockAttributes(childId, {
-                style_Icon: preset === "wcb-icon-list-1" ? _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_1 : preset === "wcb-icon-list-2" ? _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_2 : preset === "wcb-icon-list-3" ? _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_PRESET_3 : _WcbIconListPanel_StyleIcons__WEBPACK_IMPORTED_MODULE_16__.WCB_ICON_LIST_PANEL_STYLE_ICON_DEMO
+                style_Icon: newStyleIcon
               });
             });
           },
@@ -7873,7 +7875,7 @@ const Edit = props => {
             setAttributes({
               style_title: data
             });
-            // Update icon for all child blocks
+            // Update title style for all child blocks
             innerBlockClientIds.forEach(childId => {
               updateBlockAttributes(childId, {
                 style_title: data
@@ -8138,7 +8140,7 @@ const GlobalCss = attrs => {
       prefix: "marginBottom"
     }), {
       [`${WRAP_CLASSNAME} .wcb-icon-list__heading`]: {
-        color: `${style_title.textColor}`
+        color: style_title.textColor
       }
     }]
   }) : null, general_layout.enablePrefix ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
@@ -8195,8 +8197,7 @@ function save({
   const {
     uniqueId,
     general_layout,
-    style_dimension,
-    style_title
+    style_dimension
   } = attributes;
   const containerStyles = {
     display: "flex",
