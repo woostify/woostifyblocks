@@ -50,6 +50,7 @@ const GlobalCss = attrs => {
     media_tablet
   } = ___WEBPACK_IMPORTED_MODULE_9__.DEMO_WCB_GLOBAL_VARIABLES;
   const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
+  const IMAGE_FIGURE = `${WRAP_CLASSNAME}.wp-block-wcb-image`;
   const IMAGE_CLASSNAME = `${WRAP_CLASSNAME} img`;
   const CAPTION_CLASSNAME = `${WRAP_CLASSNAME} figcaption.wp-element-caption`;
   const OVERLAY_BG_CLASSNAME = `${WRAP_CLASSNAME} .wcb-image__overlay-bg`;
@@ -118,6 +119,42 @@ const GlobalCss = attrs => {
         }
       }
     }]
+  }) : null, general_settings.hoverImage === "zoomin" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+    styles: [{
+      [IMAGE_CLASSNAME]: {
+        transition: "transform 0.3s ease-in-out"
+      },
+      [`${WRAP_CLASSNAME}:hover img`]: {
+        transform: "scale(1.05)"
+      }
+    }]
+  }) : general_settings.hoverImage === "slide" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+    styles: [{
+      [IMAGE_CLASSNAME]: {
+        transition: "transform 0.3s cubic-bezier(0.4,0,0.2,1)"
+      },
+      [`${WRAP_CLASSNAME}:hover img`]: {
+        transform: "translateX(-20px)"
+      }
+    }]
+  }) : general_settings.hoverImage === "grayscale" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+    styles: [{
+      [IMAGE_CLASSNAME]: {
+        transition: "filter 0.3s ease-in-out"
+      },
+      [`${WRAP_CLASSNAME}:hover img`]: {
+        filter: "grayscale(100%)"
+      }
+    }]
+  }) : general_settings.hoverImage === "blur" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+    styles: [{
+      [IMAGE_CLASSNAME]: {
+        transition: "filter 0.3s ease-in-out"
+      },
+      [`${WRAP_CLASSNAME}:hover img`]: {
+        filter: "blur(2px)"
+      }
+    }]
   }) : null, general_settings.layout !== "overlay" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: [(0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
       className: CAPTION_CLASSNAME,
@@ -141,6 +178,17 @@ const GlobalCss = attrs => {
       className: WRAP_CLASSNAME,
       defaultDisplay: "block"
     })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+    styles: [{
+      [`${IMAGE_FIGURE}.alignright`]: {
+        marginLeft: 'auto',
+        marginRight: 0
+      },
+      [`${IMAGE_FIGURE}.alignleft`]: {
+        marginLeft: 0,
+        marginRight: 'auto'
+      }
+    }]
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (react__WEBPACK_IMPORTED_MODULE_1___default().memo(GlobalCss));
