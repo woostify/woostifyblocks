@@ -1,10 +1,10 @@
 import React from "react";
 import { __ } from "@wordpress/i18n";
 import { RichText, useBlockProps } from "@wordpress/block-editor";
-import { TestimonialItem, WcbAttrs } from "./attributes";
+import { SliderItem, WcbAttrs } from "./attributes";
 import SaveCommon from "../components/SaveCommon";
 import "./style.scss";
-import { TESTIMONIAL_ITEM_DEMO } from "./Edit";
+import { SLIDER_ITEM_DEMO } from "./Edit";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import getImageUrlBySize from "../utils/getImageUrlBySize";
@@ -18,6 +18,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		uniqueId,
 		advance_responsiveCondition,
 		advance_zIndex,
+		advance_motionEffect,
 		general_general,
 		general_carousel,
 		general_images,
@@ -36,6 +37,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		uniqueId,
 		advance_responsiveCondition,
 		advance_zIndex,
+		advance_motionEffect,
 		general_general,
 		general_carousel,
 		general_images,
@@ -54,10 +56,10 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 	let CURRENT_DATA = [
 		...Array(general_general.numberofTestimonials || 3).keys(),
-	].map((_, index) => testimonials[index] || TESTIMONIAL_ITEM_DEMO);
+	].map((_, index) => testimonials[index] || SLIDER_ITEM_DEMO);
 
 	const renderTestimonialItemContent = (
-		item: TestimonialItem,
+		item: SliderItem,
 		index: number
 	) => {
 		return (
@@ -69,7 +71,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		);
 	};
 
-	const renderTestimonialItemName = (item: TestimonialItem, index: number) => {
+	const renderTestimonialItemName = (item: SliderItem, index: number) => {
 		return (
 			<RichText.Content
 				tagName="div"
@@ -80,7 +82,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	};
 
 	const renderTestimonialItemCompany = (
-		item: TestimonialItem,
+		item: SliderItem,
 		index: number
 	) => {
 		return (
@@ -92,7 +94,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		);
 	};
 
-	const renderTestimonialItemImage = (item: TestimonialItem, index: number) => {
+	const renderTestimonialItemImage = (item: SliderItem, index: number) => {
 		const { images, isShowImage, imageSize } = general_images;
 		const { imageSize: imageSizeAttr } = style_image;
 		const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
@@ -115,7 +117,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		);
 	};
 
-	const renderTestimonialItem = (item: TestimonialItem, index: number) => {
+	const renderTestimonialItem = (item: SliderItem, index: number) => {
 		const { imagePosition } = general_images;
 		return (
 			<div className="wcb-testimonials__item" key={index}>
