@@ -1,0 +1,4 @@
+.wcb-checkbox__wrap label {-webkit-user-select: none;-moz-user-select: none;user-select: none
+}.wcb-checkbox__option {display: inline-flex;align-items: center
+}.wcb-checkbox__option-label {margin-left: 0.5rem
+}

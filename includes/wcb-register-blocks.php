@@ -353,21 +353,34 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
             ]
         );
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        // Slider blocks
+>>>>>>> d06ee69877b4ce37be6b1beb5439ab7f70922dfe
         register_block_type(
             WCB_BUILD_PATH . '/block-slider',
             [
                 "render_callback"     => "wcb_block_slider_renderCallback",
                 "ancestor"              => (($wcb_blocks_enable_disable['wcb/slider'] ?? "") !== 'disabled')  ? null : WCB_UNIQUE_NAME,
+<<<<<<< HEAD
                 "view_script_handles" => []
             ]
         );
 
 
+=======
+=======
+>>>>>>> d06ee69877b4ce37be6b1beb5439ab7f70922dfe
         register_block_type(
             WCB_BUILD_PATH . '/block-countdown',
             [
                 "render_callback"     => "wcb_block_countdown_renderCallback",
                 "ancestor"              => (($wcb_blocks_enable_disable['wcb/countdown'] ?? "") !== 'disabled') ? null : WCB_UNIQUE_NAME,
+<<<<<<< HEAD
+=======
+>>>>>>> 602c8f1338caa9e71b2a7743da4efed7a68762d1
+>>>>>>> d06ee69877b4ce37be6b1beb5439ab7f70922dfe
                 "view_script_handles" => []
             ]
         );
