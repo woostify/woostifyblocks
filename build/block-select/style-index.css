@@ -1,0 +1,4 @@
+.wcb-select__wrap label {-webkit-user-select: none;-moz-user-select: none;user-select: none
+}.wcb-select__option {display: inline-flex;align-items: center
+}.wcb-select__option-label {margin-left: 0.5rem
+}
