@@ -187,3 +187,13 @@ if (!function_exists('wp_enqueue_script__block_commoncss_frontend_styles')) :
         }
     }
 endif;
+
+//============================================= block 1 ===============================================================
+function wcb_block_countdown_renderCallback($attributes, $content)
+{
+    // if (!is_admin()) {
+    //     wp_enqueue_script('wcb_block_icon_box_renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-icon-box/FrontendStyles.js', array('wp-element'), null, true);
+    // }
+    wp_enqueue_script__block_commoncss_frontend_styles();
+    return $content;
+}

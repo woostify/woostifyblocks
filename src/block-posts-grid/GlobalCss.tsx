@@ -175,6 +175,9 @@ const GlobalCss: FC<Props> = (attrs) => {
 						">a": {
 							color: style_title.textColor,
 						},
+						">a:hover": {
+							color: style_title.textHoverColor,
+						},
 					},
 					".wcbPostCard__excerpt": {
 						marginBottom: excerptMarginBottom_mobile,

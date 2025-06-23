@@ -25,6 +25,7 @@ import {
 	MyBorderControlData,
 } from "../components/controls/MyBorderControl/types";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
+import { WCB_TAGS_PANEL_GENERAL } from "./WcbTabsPanelGeneral";
 
 export interface WCB_TABS_PANEL_STYLE_TITLE {
 	typography: MyTypographyControlData;
@@ -73,6 +74,7 @@ interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
 	panelData: WCB_TABS_PANEL_STYLE_TITLE;
 	setAttr__: (data: WCB_TABS_PANEL_STYLE_TITLE) => void;
+	style: WCB_TAGS_PANEL_GENERAL["style"];
 }
 
 const WcbTabsPanel_StyleTitle: FC<Props> = ({
@@ -81,6 +83,7 @@ const WcbTabsPanel_StyleTitle: FC<Props> = ({
 	initialOpen,
 	onToggle,
 	opened,
+	style,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	const {
@@ -196,10 +199,16 @@ const WcbTabsPanel_StyleTitle: FC<Props> = ({
 				<MyDisclosure label={__("Colors", "wcb")}>
 					<MyTabPanel tabs={PANEL_COLOR_TABS}>{renderColorTab}</MyTabPanel>
 				</MyDisclosure>
-
-				<MyDisclosure label={__("Border", "wcb")}>
-					<MyTabPanel tabs={PANEL_COLOR_TABS}>{renderBorderTab}</MyTabPanel>
-				</MyDisclosure>
+				
+				{
+					// Render border settings only if the style is not horizontalStyle2
+					// If style is horizontalStyle2, use default CSS from GlobalCss file
+					style !== "horizontalStyle2" && (
+						<MyDisclosure label={__("Border", "wcb")}>
+							<MyTabPanel tabs={PANEL_COLOR_TABS}>{renderBorderTab}</MyTabPanel>
+						</MyDisclosure>
+					)
+				}
 
 				<MyDisclosure label={__("Dimension", "wcb")}>
 					<BoxControl

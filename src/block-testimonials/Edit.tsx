@@ -12,12 +12,14 @@ import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import WcbTestimonialsPanelGeneral from "./WcbTestimonialsPanelGeneral";
 import WcbTestimonialsPanelImages from "./WcbTestimonialsPanelImages";
+import WcbTestimonialsPanelRating from "./WcbTestimonialsPanelRating";
 import WcbTestimonialsPanelCarousel from "./WcbTestimonialsPanelCarousel";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import WcbTestimonialsPanel_StyleName from "./WcbTestimonialsPanel_StyleName";
 import WcbTestimonialsPanel_StyleContent from "./WcbTestimonialsPanel_StyleContent";
 import WcbTestimonialsPanel_StyleCompany from "./WcbTestimonialsPanel_StyleCompany";
 import WcbTestimonialsPanel_StyleImage from "./WcbTestimonialsPanel_StyleImage";
+import WcbTestimonialsPanel_StyleRating from "./WcbTestimonialsPanel_StyleRating";
 import WcbTestimonialsPanel_StyleArrowDots from "./WcbTestimonialsPanel_StyleArrowDots";
 import WcbTestimonialsPanel_StyleBackground from "./WcbTestimonialsPanel_StyleBackground";
 import WcbTestimonialsPanel_StyleDimension from "./WcbTestimonialsPanel_StyleDimension";
@@ -25,7 +27,7 @@ import getImageUrlBySize from "../utils/getImageUrlBySize";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import OverlayBackgroundByBgControl from "../components/OverlayBackgroundByBgControl";
 import VideoBackgroundByBgControl from "../components/VideoBackgroundByBgControl";
-import _ from "lodash";
+import _, { forEach } from "lodash";
 import { useMemo } from "@wordpress/element";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
@@ -100,11 +102,13 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		testimonials,
 		general_general,
 		general_images,
+		general_rating,
 		general_carousel,
 		style_name,
 		style_content,
 		style_company,
 		style_image,
+		style_rating,
 		style_arrowAndDots,
 		style_backgroundAndBorder,
 		style_dimension,
@@ -189,6 +193,18 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							numberOfItems={general_general.numberofTestimonials}
 						/>
 
+						<WcbTestimonialsPanelRating
+							onToggle={() => handleTogglePanel("General", "PanelRating")}
+							initialOpen={tabGeneralIsPanelOpen === "PanelRating"}
+							opened={tabGeneralIsPanelOpen === "PanelRating" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ general_rating: data });
+							}}
+							panelData={general_rating}
+							numberOfItems={general_general.numberofTestimonials}
+						/>
+
 						<WcbTestimonialsPanelCarousel
 							onToggle={() => handleTogglePanel("General", "Carousel")}
 							initialOpen={tabGeneralIsPanelOpen === "Carousel"}
@@ -248,6 +264,16 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								setAttributes({ style_image: data });
 							}}
 							panelData={style_image}
+						/>
+						<WcbTestimonialsPanel_StyleRating
+							onToggle={() => handleTogglePanel("Styles", "_StyleRating")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleRating"}
+							opened={tabStylesIsPanelOpen === "_StyleRating" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_rating: data });
+							}}
+							panelData={style_rating}
 						/>
 						<WcbTestimonialsPanel_StyleArrowDots
 							onToggle={() => handleTogglePanel("Styles", "_StyleArrowDots")}
@@ -403,8 +429,29 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		);
 	};
 
+	const renderTestimonialItemRating = (item: TestimonialItem, index: number) => {
+		const { ratings, isShowRating, ratingPosition } = general_rating;
+		const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
+		if (!isShowRating) {
+			return null;
+		}
+		return (
+			<div className="wcb-testimonials__item-rating">
+				{ ratings[index] && Array.from({ length: 5 }, (_, i) => {
+					const clsActive = i < ratings[index] ? 'active' : '';
+					return (
+						<span key={i} className={`wcb-star ${clsActive}`}>
+							★
+						</span>
+					);
+				})}
+			</div>
+		);
+	};
+
 	const renderTestimonialItem = (item: TestimonialItem, index: number) => {
 		const { imagePosition } = general_images;
+		const { ratingPosition } = general_rating;
 		return (
 			<div className="wcb-testimonials__item" key={index + "-"}>
 				<div className="wcb-testimonials__item-background">
@@ -423,12 +470,20 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							renderTestimonialItemImage(item, index)}
 
 						<div className="wcb-testimonials__item-inner">
+							{/* RATING */}
+							{ ratingPosition === "top" && 
+								renderTestimonialItemRating(item, index) }
+
 							{/* IMAGE */}
 							{imagePosition === "top" &&
 								renderTestimonialItemImage(item, index)}
 
 							{/* CONTENT */}
 							{renderTestimonialItemContent(item, index)}
+
+							{/* RATING */}
+							{ ratingPosition === "middle" && 
+								renderTestimonialItemRating(item, index) }
 
 							<div className="wcb-testimonials__item-user">
 								{/* IMAGE */}
@@ -443,6 +498,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 									{renderTestimonialItemCompany(item, index)}
 								</div>
 							</div>
+
+							{/* RATING */}
+							{ ratingPosition === "bottom" && 
+								renderTestimonialItemRating(item, index) }
 						</div>
 
 						{/* IMAGE */}
@@ -506,6 +565,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			style_company,
 			style_content,
 			style_image,
+			style_rating,
 			style_name,
 			advance_motionEffect,
 		};
@@ -522,6 +582,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_company,
 		style_content,
 		style_image,
+		style_rating,
 		style_name,
 		advance_motionEffect,
 	]);

@@ -21,6 +21,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		general_general,
 		general_carousel,
 		general_images,
+		general_rating,
 		style_arrowAndDots,
 		style_backgroundAndBorder,
 		style_company,
@@ -28,6 +29,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_dimension,
 		style_image,
 		style_name,
+		style_rating,
 		testimonials,
 		advance_motionEffect,
 	} = attributes;
@@ -40,6 +42,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		general_general,
 		general_carousel,
 		general_images,
+		general_rating,
 		style_arrowAndDots,
 		style_backgroundAndBorder,
 		style_company,
@@ -47,6 +50,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_dimension,
 		style_image,
 		style_name,
+		style_rating,
 		advance_motionEffect,
 	};
 	//
@@ -117,8 +121,29 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		);
 	};
 
+	const renderTestimonialItemRating = (item: TestimonialItem, index: number) => {
+		const { ratings, isShowRating } = general_rating;
+		const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
+		if (!isShowRating) {
+			return null;
+		}
+		return (
+			<div className="wcb-testimonials__item-rating">
+				{ ratings[index] && Array.from({ length: 5 }, (_, i) => {
+					const clsActive = i < ratings[index] ? 'active' : '';
+					return (
+						<span key={i} className={`wcb-star ${clsActive}`}>
+							★
+						</span>
+					);
+				})}
+			</div>
+		);
+	};
+
 	const renderTestimonialItem = (item: TestimonialItem, index: number) => {
 		const { imagePosition } = general_images;
+		const { ratingPosition } = general_rating;
 		return (
 			<div className="wcb-testimonials__item" key={index}>
 				<div className="wcb-testimonials__item-background">
@@ -138,12 +163,20 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 							renderTestimonialItemImage(item, index)}
 
 						<div className="wcb-testimonials__item-inner">
+							{/* RATING */}
+							{ ratingPosition === "top" && 
+								renderTestimonialItemRating(item, index) }
+							
 							{/* IMAGE */}
 							{imagePosition === "top" &&
 								renderTestimonialItemImage(item, index)}
 
 							{/* CONTENT */}
 							{renderTestimonialItemContent(item, index)}
+
+							{/* RATING */}
+							{ ratingPosition === "middle" && 
+								renderTestimonialItemRating(item, index) }
 
 							<div className="wcb-testimonials__item-user">
 								{/* IMAGE */}
@@ -158,6 +191,11 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 									{renderTestimonialItemCompany(item, index)}
 								</div>
 							</div>
+
+							{/* RATING */}
+							{ ratingPosition === "bottom" && 
+								renderTestimonialItemRating(item, index) }
+
 						</div>
 
 						{/* IMAGE */}

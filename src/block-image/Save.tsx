@@ -50,6 +50,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		title,
 		url,
 		general_settings,
+		general_image,
 		style_image,
 		style_overlay,
 		style_caption,
@@ -60,7 +61,16 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		uniqueId,
 		advance_responsiveCondition,
 		advance_zIndex,
-		general_settings,
+		general_settings: {
+			...general_settings,
+			// Make sure Height and Width are always object, not array
+			height: typeof general_settings.height === 'object' && !Array.isArray(general_settings.height) 
+				? general_settings.height 
+				: { Desktop: undefined },
+			width: typeof general_settings.width === 'object' && !Array.isArray(general_settings.width) 
+				? general_settings.width 
+				: { Desktop: undefined },
+		},
 		style_image,
 		style_overlay,
 		style_caption,
@@ -98,7 +108,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const image = (
 		<img
 			src={url}
-			alt={alt}
+			alt={alt || ""}
 			className={imageClasses || undefined}
 			style={borderProps.style}
 			width={WIDTH}
@@ -116,21 +126,23 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			) : (
 				image
 			)}
-			{!RichText.isEmpty(caption) && (
+			{/ * Always render figure to avoid authentication errors */}
 				<RichText.Content
 					className={__experimentalGetElementClassName("caption")}
 					tagName="figcaption"
-					value={caption}
+				value={caption || ""}
 				/>
-			)}
 		</>
 	);
-
-	//
+	
 	const wrapBlockProps = useBlockProps.save({
-		className:
-			`wcb-image__wrap wcb-image__wrap--${general_settings.layout} ${classes}`.trim(),
+		className: `woostify-container wcb-image__wrap wcb-image__wrap--${general_settings.layout} ${classes}`.trim(),
+		style: {
+			display: "flex",
+			justifyContent: attributes.general_settings?.alignment?.Desktop
+		},
 	});
+
 	//
 
 	const renderOverlay = () => {

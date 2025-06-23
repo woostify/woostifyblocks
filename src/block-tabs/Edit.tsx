@@ -23,7 +23,7 @@ import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 import WcbTabsPanelTabTitle from "./WcbTabsPanelTabTitle";
-import { createBlock } from "@wordpress/blocks";
+import { createBlock, serialize } from "@wordpress/blocks";
 import { BlockTabTitleItem } from "./types";
 import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import WcbTabsPanel_StyleBody, { WCB_TABS_PANEL_STYLE_BODY_DEMO } from "./WcbTabsPanel_StyleBody";
@@ -133,9 +133,24 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
             case "General":
                 return (
                     <>
+                        <WcbTabsPanelGeneral
+                            onToggle={() => handleTogglePanel("General", "General")}
+                            initialOpen={tabGeneralIsPanelOpen === "General" || tabGeneralIsPanelOpen === "first"}
+                            opened={tabGeneralIsPanelOpen === "General" || undefined}
+                            setAttr__={(data) => setAttributes({ general_general: data, general_preset: { ...general_preset, preset: "" } })}
+                            panelData={general_general}
+                        />
+                        <WcbTabsPanelTabTitle
+                            onToggle={() => handleTogglePanel("General", "TabTitle")}
+                            initialOpen={tabGeneralIsPanelOpen === "TabTitle"}
+                            opened={tabGeneralIsPanelOpen === "TabTitle" || undefined}
+                            setAttr__={(data) => setAttributes({ general_tabTitle: data, general_preset: { ...general_preset, preset: "" } })}
+                            panelData={general_tabTitle}
+                            tabTitles={titles}
+                        />
                         <WcbTabsPanelPreset
                             onToggle={() => handleTogglePanel("General", "Preset", true)}
-                            initialOpen={tabGeneralIsPanelOpen === "Preset" || tabGeneralIsPanelOpen === "first"}
+                            initialOpen={tabGeneralIsPanelOpen === "Preset"}
                             opened={tabGeneralIsPanelOpen === "Preset" || undefined}
                             setAttr__={(data) => {
                                 if (data.preset === "carousel-simple") {
@@ -178,21 +193,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
                             }}
                             panelData={general_preset}
                         />
-                        <WcbTabsPanelGeneral
-                            onToggle={() => handleTogglePanel("General", "General")}
-                            initialOpen={tabGeneralIsPanelOpen === "General"}
-                            opened={tabGeneralIsPanelOpen === "General" || undefined}
-                            setAttr__={(data) => setAttributes({ general_general: data, general_preset: { ...general_preset, preset: "" } })}
-                            panelData={general_general}
-                        />
-                        <WcbTabsPanelTabTitle
-                            onToggle={() => handleTogglePanel("General", "TabTitle")}
-                            initialOpen={tabGeneralIsPanelOpen === "TabTitle"}
-                            opened={tabGeneralIsPanelOpen === "TabTitle" || undefined}
-                            setAttr__={(data) => setAttributes({ general_tabTitle: data, general_preset: { ...general_preset, preset: "" } })}
-                            panelData={general_tabTitle}
-                            tabTitles={titles}
-                        />
                     </>
                 );
             case "Styles":
@@ -204,16 +204,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
                             opened={tabStylesIsPanelOpen === "_StyleTitle" || undefined}
                             setAttr__={(data) => setAttributes({ style_title: data, general_preset: { ...general_preset, preset: "" } })}
                             panelData={style_title}
+                            style={attributes.general_general.style}
                         />
-                        {general_general.layout === "accordion" && (
-                            <WcbTabsPanel_StyleIcon
-                                onToggle={() => handleTogglePanel("Styles", "_StyleIcon")}
-                                initialOpen={tabStylesIsPanelOpen === "_StyleIcon"}
-                                opened={tabStylesIsPanelOpen === "_StyleIcon" || undefined}
-                                setAttr__={(data) => setAttributes({ style_icon: data, general_preset: { ...general_preset, preset: "" } })}
-                                panelData={style_icon}
-                            />
-                        )}
+                        <WcbTabsPanel_StyleIcon
+                            onToggle={() => handleTogglePanel("Styles", "_StyleIcon")}
+                            initialOpen={tabStylesIsPanelOpen === "_StyleIcon"}
+                            opened={tabStylesIsPanelOpen === "_StyleIcon" || undefined}
+                            setAttr__={(data) => setAttributes({ style_icon: data, general_preset: { ...general_preset, preset: "" } })}
+                            panelData={style_icon}
+                        />
                         <WcbTabsPanel_StyleBody
                             onToggle={() => handleTogglePanel("Styles", "_StyleBody")}
                             initialOpen={tabStylesIsPanelOpen === "_StyleBody"}
@@ -305,9 +304,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
         </button>
     );
 
-    const renderIcon = () => {
+    const renderIcon = (index: number) => {
         if (!general_tabTitle.enableIcon) return null;
-        return general_tabTitle.icon ? <MyIconFull className="wcb-tabs__icon" icon={general_tabTitle.icon} /> : null;
+        return general_tabTitle.icon ? <MyIconFull className={`wcb-tabs__icon ${activeTabIndex === index ? "wcb-tabs__icon-selected" : ""}`} icon={general_tabTitle.icon} /> : null;
     };
 
     return (
@@ -318,13 +317,13 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
                 <div className="wcb-tabs__contents">
                     <div className="wcb-tabs__titles">
                         {titles.map((item, index) => (
-                            <div className="wcb-tabs__title_inner relative group" data-tab-index={item.dataTabIndex} key={item.id}>
+                            <div className={`wcb-tabs__title_inner relative group ${activeTabIndex === index ? "wcb-tabs__title_inner-selected" : ""}`} data-tab-index={item.dataTabIndex} key={item.id}>
                                 {renderRemoveBtn(item, index)}
-                                {(general_tabTitle.iconPosition === "left" || general_tabTitle.iconPosition === "top") && renderIcon()}
+                                {(general_tabTitle.iconPosition === "left" || general_tabTitle.iconPosition === "top") && renderIcon(index)}
                                 <RichText
                                     key={item.id}
                                     tagName="p"
-                                    className="wcb-tabs__title"
+                                    className={`wcb-tabs__title ${activeTabIndex === index ? "wcb-tabs__title-selected" : ""}`}
                                     value={item.title}
                                     onFocusCapture={() => setIndexFocused(index)}
                                     onChange={(value) => {
@@ -333,7 +332,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
                                     }}
                                     placeholder="Title"
                                 />
-                                {(general_tabTitle.iconPosition === "right" || general_tabTitle.iconPosition === "bottom") && renderIcon()}
+                                {(general_tabTitle.iconPosition === "right" || general_tabTitle.iconPosition === "bottom") && renderIcon(index)}
                             </div>
                         ))}
                         {renderAddnewButton()}
