@@ -30,6 +30,13 @@ if (!function_exists("wcb__my_scripts_method")) {
 
         // can xem xet lai, vi no se enqueue khi ma testimonial co duoc goi hay khong di nua....
         wp_enqueue_script('wcb-slicklib', plugin_dir_url(WCB_FILE) . 'public/slick/slick.min.js', ['jquery'], "1.8.0", false);
+
+        wp_enqueue_script(
+            'wcb-countdown-lib',
+            plugin_dir_url(WCB_FILE) . 'public/js/countdown/wcb-countdown.js',
+            array('jquery'),
+            true
+        );
     }
     add_action('wp_enqueue_scripts', 'wcb__my_scripts_method');
 }

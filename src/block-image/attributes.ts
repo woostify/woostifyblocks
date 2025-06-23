@@ -26,10 +26,15 @@ import {
 	WCB_IMAGE_PANEL_STYLE_OVERLAY,
 	WCB_IMAGE_PANEL_STYLE_OVERLAY_DEMO,
 } from "./WcbImagePanel_StyleOverlay";
+import {
+	WCB_IMAGE_PANEL_IMAGES,
+	WCB_IMAGE_PANEL_IMAGES_DEMO,
+} from "./WcbImagePanelImages";
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	//
 	general_settings: WCB_IMAGE_PANEL_SETTINGS;
+	general_image: WCB_IMAGE_PANEL_IMAGES;
 	style_image: WCB_IMAGE_PANEL_STYLE_IMAGE;
 	style_overlay: WCB_IMAGE_PANEL_STYLE_OVERLAY;
 	style_caption: WCB_IMAGE_PANEL_STYLE_CAPTION;
@@ -60,6 +65,10 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	general_settings: {
 		type: "object",
 		default: WCB_IMAGE_PANEL_SETTINGS_DEMO,
+	},
+	general_image:{
+		type: "object",
+		default: WCB_IMAGE_PANEL_IMAGES_DEMO,
 	},
 	style_image: {
 		type: "object",
@@ -94,6 +103,7 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		type: "string",
 		source: "html",
 		selector: "figcaption",
+		default: "",
 		__experimentalRole: "content",
 	},
 	title: {

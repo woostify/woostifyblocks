@@ -59,6 +59,7 @@ import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives"
 import WcbImagePanel_StyleImage from "./WcbImagePanel_StyleImage";
 import WcbImagePanel_StyleOverlay from "./WcbImagePanel_StyleOverlay";
 import WcbImagePanel_StyleCaption from "./WcbImagePanel_StyleCaption";
+import WcbImagePanelImages from "./WcbImagePanelImages";
 
 type ImageProps = EditProps<WcbAttrs> & {
 	temporaryURL: string;
@@ -99,6 +100,7 @@ const Image: FC<ImageProps> = ({
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_settings,
+		general_image,
 		uniqueId,
 		style_image,
 		style_overlay,
@@ -114,6 +116,16 @@ const Image: FC<ImageProps> = ({
 		// "Desktop"
 		deviceType
 	);
+
+	useEffect(() => {
+		if (
+			general_image.image.mediaUrl !== url
+		) {
+			setAttributes({
+				url: general_image.image.mediaUrl,
+			});
+		}
+	}, [general_image.image, url, id, setAttributes]);
 
 	const { image, multiImageSelection } = useSelect(
 		(select) => {
@@ -362,11 +374,23 @@ const Image: FC<ImageProps> = ({
 			case "General":
 				return (
 					<>
+						<WcbImagePanelImages
+							onToggle={() => handleTogglePanel("General", "Images")}
+							initialOpen={tabGeneralIsPanelOpen === "General"}
+							opened={tabGeneralIsPanelOpen === "first" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ general_image:  {
+									...data,
+								} });
+							}}
+							panelData={general_image}
+						/>
 						<WcbImagePanelSettings
 							onToggle={() => handleTogglePanel("General", "General", true)}
 							initialOpen={
 								tabGeneralIsPanelOpen === "General" ||
-								tabGeneralIsPanelOpen === "first"
+								tabGeneralIsPanelOpen === "settings"
 							}
 							opened={tabGeneralIsPanelOpen === "General" || undefined}
 							//
