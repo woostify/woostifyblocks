@@ -353,8 +353,6 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
             ]
         );
 
-
-        // Slider blocks
         register_block_type(
             WCB_BUILD_PATH . '/block-slider',
             [
@@ -363,7 +361,7 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
                 "view_script_handles" => []
             ]
         );
-        
+ 
         // SLIDER CHILD
         register_block_type(
             WCB_BUILD_PATH . '/block-slider-child',
@@ -371,7 +369,6 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
                 "view_script_handles" => []
             ]
         );
-
 
         register_block_type(
             WCB_BUILD_PATH . '/block-countdown',
