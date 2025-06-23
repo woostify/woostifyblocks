@@ -87,7 +87,7 @@ const WcbIconListPanel_StyleTitle: FC<Props> = ({
 								},
 							});
 						}}
-						value={MARGIN_BOTTOM || ""}
+						value={MARGIN_BOTTOM || "0rem"}
 						label={__("Margin bottom", "wcb")}
 						hasResponsive
 					/>
