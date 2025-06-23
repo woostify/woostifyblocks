@@ -30,7 +30,7 @@ import {
 import {
     WCB_ICON_PANEL_DATE,
     WCB_ICON_PANEL_DATE_DEMO,
-} from "./WcbIconPanelDate";
+} from "./WcbIconPanelIcon";
 
 import {
     WCB_ICON_PANEL_STYLE_TITLE,

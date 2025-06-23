@@ -5,8 +5,8 @@
 	"version": "0.1.0",
 	"title": "Icon",
 	"category": "wcb-blocks",
-	"icon": "- wcb-block-editor-block-icon lni lni-target",
-	"description": "Add a icon block with days, hours, minutes, and seconds.",
+	"icon": "icon - wcb-block-editor-block-icon lni lni-target",
+	"description": "Add stunning customizable icons to your website.",
 	"supports": {
 		"html": false,
 		"anchor": true,

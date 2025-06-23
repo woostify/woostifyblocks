@@ -11,7 +11,7 @@ import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import WcbIconPanelLayout from "./WcbIconPanelLayout";
-import WcbIconPanelDate from "./WcbIconPanelDate";
+import WcbIconPanelDate from "./WcbIconPanelIcon";
 import WcbIconPanel_StyleTitle from "./WcbIconPanel_StyleTitle";
 import WcbIconPanel_StyleNumber from "./WcbIconPanel_StyleNumber";
 import WcbIconPanel_StyleDimension from "./WcbIconPanel_StyleDimension";
@@ -32,7 +32,6 @@ import WcbButtonPanel_StyleBoxshadow from "./WcbButtonPanel_StyleBoxshadow";
 import { WcbAttrsForSave } from "./Save";
 import MyCacheProvider from "../components/MyCacheProvider";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
-import '../../public/js/icon/wcb-icon.js';
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	if (props.attributes.cover) {
@@ -89,19 +88,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		setAttributes({
 			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
-
-		var cd_date = general_date.date.split("T");
-		const data = {
-			'block_id': UNIQUE_ID,
-			'endDateTime': cd_date[0],
-			'showDays': general_date.show_day,
-			'showHours': general_date.show_hour,
-			'showMinutes': general_date.show_minute,
-			'isFrontend': true,
-			'timerEndAction': cd_date[1],
-			'redirectURL': ''
-		}
-		WCBIcon.changeEndTime(`#${UNIQUE_ID} .wcb-icon__content`, data);
 
 	}, [UNIQUE_ID, attributes]);
 	//
