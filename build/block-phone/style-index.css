@@ -1,0 +1,1 @@
+.wcb-phone__inner{display:flex}.wcb-phone__inner > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.wcb-phone__country-code-select{flex:1;width:100%}.wcb-phone__tel-input{flex:2;width:100%}

@@ -51,7 +51,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	};
 	//
 	const blockProps = useBlockProps.save({
-		className: "wcb-testimonials__wrap",
+		className: "wcb-slider__wrap",
 	});
 
 	let CURRENT_DATA = [
@@ -65,7 +65,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		return (
 			<RichText.Content
 				tagName="div"
-				className="wcb-testimonials__item-content"
+				className="wcb-slider__item-content"
 				value={item.content}
 			/>
 		);
@@ -75,7 +75,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		return (
 			<RichText.Content
 				tagName="div"
-				className="wcb-testimonials__item-name"
+				className="wcb-slider__item-name"
 				value={item.name}
 			/>
 		);
@@ -88,7 +88,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		return (
 			<RichText.Content
 				tagName="div"
-				className="wcb-testimonials__item-company"
+				className="wcb-slider__item-company"
 				value={item.companyName}
 			/>
 		);
@@ -106,7 +106,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			getValueFromAttrsResponsives(imageSizeAttr);
 		const url = getImageUrlBySize(images[index], imageSize);
 		return (
-			<div className="wcb-testimonials__item-image">
+			<div className="wcb-slider__item-image">
 				<img
 					src={url}
 					alt=""
@@ -120,7 +120,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const renderTestimonialItem = (item: SliderItem, index: number) => {
 		const { imagePosition } = general_images;
 		return (
-			<div className="wcb-testimonials__item" key={index}>
+			<div className="wcb-slider__item" key={index}>
 				<div className=""></div>
 				<VideoBackgroundByBgControl
 					bgType={style_backgroundAndBorder.background.bgType}
@@ -133,19 +133,19 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 				{/* IMAGE */}
 				{imagePosition === "left" && renderTestimonialItemImage(item, index)}
 
-				<div className="wcb-testimonials__item-inner">
+				<div className="wcb-slider__item-inner">
 					{/* IMAGE */}
 					{imagePosition === "top" && renderTestimonialItemImage(item, index)}
 
 					{/* CONTENT */}
 					{renderTestimonialItemContent(item, index)}
 
-					<div className="wcb-testimonials__item-user">
+					<div className="wcb-slider__item-user">
 						{/* IMAGE */}
 						{imagePosition === "bottom" &&
 							renderTestimonialItemImage(item, index)}
 
-						<div className="wcb-testimonials__item-nameandcompany">
+						<div className="wcb-slider__item-nameandcompany">
 							{/* NAME */}
 							{renderTestimonialItemName(item, index)}
 
@@ -163,7 +163,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 	const renderEditContent = () => {
 		return (
-			<div className="wcb-testimonials__wrap-items">
+			<div className="wcb-slider__wrap-items">
 				{CURRENT_DATA.map(renderTestimonialItem)}
 			</div>
 		);

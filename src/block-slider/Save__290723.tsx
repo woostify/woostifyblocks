@@ -1,10 +1,10 @@
 import React from "react";
 import { __ } from "@wordpress/i18n";
 import { RichText, useBlockProps } from "@wordpress/block-editor";
-import { TestimonialItem, WcbAttrs } from "./attributes";
+import { SliderItem, WcbAttrs } from "./attributes";
 import SaveCommon from "../components/SaveCommon";
 import "./style.scss";
-import { TESTIMONIAL_ITEM_DEMO } from "./Edit";
+import { SLIDER_ITEM_DEMO } from "./Edit";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import getImageUrlBySize from "../utils/getImageUrlBySize";
@@ -51,21 +51,21 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	};
 	//
 	const blockProps = useBlockProps.save({
-		className: "wcb-testimonials__wrap",
+		className: "wcb-slider__wrap",
 	});
 
 	let CURRENT_DATA = [
 		...Array(general_general.numberofTestimonials || 3).keys(),
-	].map((_, index) => testimonials[index] || TESTIMONIAL_ITEM_DEMO);
+	].map((_, index) => testimonials[index] || SLIDER_ITEM_DEMO);
 
 	const renderTestimonialItemContent = (
-		item: TestimonialItem,
+		item: SliderItem,
 		index: number
 	) => {
 		return (
 			<RichText.Content
 				tagName="div"
-				className="wcb-testimonials__item-content"
+				className="wcb-slider__item-content"
 				value={item.content}
 			/>
 		);
@@ -75,26 +75,26 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		return (
 			<RichText.Content
 				tagName="div"
-				className="wcb-testimonials__item-name"
+				className="wcb-slider__item-name"
 				value={item.name}
 			/>
 		);
 	};
 
 	const renderTestimonialItemCompany = (
-		item: TestimonialItem,
+		item: SliderItem,
 		index: number
 	) => {
 		return (
 			<RichText.Content
 				tagName="div"
-				className="wcb-testimonials__item-company"
+				className="wcb-slider__item-company"
 				value={item.companyName}
 			/>
 		);
 	};
 
-	const renderTestimonialItemImage = (item: TestimonialItem, index: number) => {
+	const renderTestimonialItemImage = (item: SliderItem, index: number) => {
 		const { images, isShowImage, imageSize } = general_images;
 		const { imageSize: imageSizeAttr } = style_image;
 		const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
@@ -106,7 +106,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			getValueFromAttrsResponsives(imageSizeAttr);
 		const url = getImageUrlBySize(images[index], imageSize);
 		return (
-			<div className="wcb-testimonials__item-image">
+			<div className="wcb-slider__item-image">
 				<img
 					src={url}
 					alt=""
@@ -117,10 +117,10 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		);
 	};
 
-	const renderTestimonialItem = (item: TestimonialItem, index: number) => {
+	const renderTestimonialItem = (item: SliderItem, index: number) => {
 		const { imagePosition } = general_images;
 		return (
-			<div className="wcb-testimonials__item" key={index}>
+			<div className="wcb-slider__item" key={index}>
 				<div className=""></div>
 				<VideoBackgroundByBgControl
 					bgType={style_backgroundAndBorder.background.bgType}
@@ -131,23 +131,23 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 					overlayType={style_backgroundAndBorder.background.overlayType}
 				/>
 
-				<div className="wcb-testimonials__item-wrap-inner">
+				<div className="wcb-slider__item-wrap-inner">
 					{/* IMAGE */}
 					{imagePosition === "left" && renderTestimonialItemImage(item, index)}
 
-					<div className="wcb-testimonials__item-inner">
+					<div className="wcb-slider__item-inner">
 						{/* IMAGE */}
 						{imagePosition === "top" && renderTestimonialItemImage(item, index)}
 
 						{/* CONTENT */}
 						{renderTestimonialItemContent(item, index)}
 
-						<div className="wcb-testimonials__item-user">
+						<div className="wcb-slider__item-user">
 							{/* IMAGE */}
 							{imagePosition === "bottom" &&
 								renderTestimonialItemImage(item, index)}
 
-							<div className="wcb-testimonials__item-nameandcompany">
+							<div className="wcb-slider__item-nameandcompany">
 								{/* NAME */}
 								{renderTestimonialItemName(item, index)}
 
@@ -166,7 +166,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 	const renderEditContent = () => {
 		return (
-			<div className="wcb-testimonials__wrap-items">
+			<div className="wcb-slider__wrap-items">
 				{CURRENT_DATA.map(renderTestimonialItem)}
 			</div>
 		);

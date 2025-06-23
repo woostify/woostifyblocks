@@ -68,5 +68,5 @@ export function initCarouselForWcbTestimonials(div: Element, props: Props) {
 		],
 	};
 	// @ts-ignore
-	$(`.${dataUniqueid} .wcb-testimonials__wrap-items`)?.slick?.(settings);
+	$(`.${dataUniqueid} .wcb-slider__wrap-items`)?.slick?.(settings);
 }
