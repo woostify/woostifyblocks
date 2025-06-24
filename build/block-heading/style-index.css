@@ -1,13 +1,1 @@
-/*!*****************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/block-heading/style.scss ***!
-  \*****************************************************************************************************************************************************************************************************************************************************/
-.wcb-heading__heading,
-.wcb-heading__subHeading {
-  margin: 0;
-}
-
-.wcb-heading__separator {
-  display: inline-block;
-}
-
-/*# sourceMappingURL=style-index.css.map*/
+.wcb-heading__heading,.wcb-heading__subHeading{margin:0}.wcb-heading__separator{display:inline-block}
