@@ -7,6 +7,10 @@
   "category": "wcb-blocks",
   "icon": "- wcb-block-editor-block-icon lni lni-quotation",
   "description": "Create beautiful sliders with slider block.",
+  "providesContext": {
+    "wcb/slider_general": "general_general",
+    "wcb/slider_images": "general_images"
+  },
   "supports": {
     "html": false,
     "anchor": true,

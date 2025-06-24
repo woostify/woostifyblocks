@@ -1,7 +1,8 @@
 import { __ } from "@wordpress/i18n";
-import { RichText, useBlockProps } from "@wordpress/block-editor";
+import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
+import { useSelect, useDispatch } from "@wordpress/data";
 import React, { useEffect, FC, useCallback, useRef } from "react";
-import { SliderItem, WcbAttrs } from "./attributes";
+import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
 } from "../components/HOCInspectorControls";
@@ -13,7 +14,6 @@ import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import WcbTestimonialsPanelGeneral from "./WcbSliderPanelGeneral";
 import WcbTestimonialsPanelImages from "./WcbSliderPanelImages";
 import WcbTestimonialsPanelCarousel from "./WcbSliderPanelCarousel";
-import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import WcbTestimonialsPanel_StyleName from "./WcbSliderPanel_StyleName";
 import WcbTestimonialsPanel_StyleContent from "./WcbSliderPanel_StyleContent";
 import WcbTestimonialsPanel_StyleCompany from "./WcbSliderPanel_StyleCompany";
@@ -21,12 +21,7 @@ import WcbTestimonialsPanel_StyleImage from "./WcbSliderPanel_StyleImage";
 import WcbTestimonialsPanel_StyleArrowDots from "./WcbSliderPanel_StyleArrowDots";
 import WcbTestimonialsPanel_StyleBackground from "./WcbSliderPanel_StyleBackground";
 import WcbTestimonialsPanel_StyleDimension from "./WcbSliderPanel_StyleDimension";
-import getImageUrlBySize from "../utils/getImageUrlBySize";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
-import OverlayBackgroundByBgControl from "../components/OverlayBackgroundByBgControl";
-import VideoBackgroundByBgControl from "../components/VideoBackgroundByBgControl";
-import _ from "lodash";
-import { useMemo } from "@wordpress/element";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyCacheProvider from "../components/MyCacheProvider";
@@ -35,13 +30,6 @@ import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
-
-export const SLIDER_ITEM_DEMO: SliderItem = {
-	name: "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
-	companyName: "Read More",
-	content:
-		"Slider",
-};
 
 function SampleNextArrow(props) {
 	const { className, style, onClick } = props;
@@ -97,7 +85,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		advance_responsiveCondition,
 		advance_zIndex,
 		uniqueId,
-		testimonials,
 		general_general,
 		general_images,
 		general_carousel,
@@ -110,7 +97,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_dimension,
 		advance_motionEffect,
 	} = attributes;
-	//  COMMON HOOKS
 
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	const ref = useRef<HTMLDivElement>(null);
@@ -131,17 +117,17 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
-	//
 
-	let CURRENT_DATA = useMemo(
-		() =>
-			[...Array(general_general.numberofTestimonials || 3).keys()].map(
-				(_, index) => testimonials[index] || SLIDER_ITEM_DEMO
-			),
-		[general_general.numberofTestimonials, testimonials]
-	);
+	// Get inner blocks and selection state for Spectra-like editing
+	const { innerBlocks, selectedBlockClientId } = useSelect((select: any) => {
+		const { getBlocks, getSelectedBlockClientId } = select("core/block-editor");
+		return {
+			innerBlocks: getBlocks(clientId) || [],
+			selectedBlockClientId: getSelectedBlockClientId(),
+		};
+	}, [clientId]);
 
-	//
+	const { selectBlock } = useDispatch("core/block-editor") as any;
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
 		switch (tab.name) {
@@ -155,24 +141,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								tabGeneralIsPanelOpen === "first"
 							}
 							opened={tabGeneralIsPanelOpen === "Heading" || undefined}
-							//
 							setAttr__={(data) => {
-								if (
-									data.numberofTestimonials !==
-									general_general.numberofTestimonials
-								) {
-									const newtestimonials = [
-										...Array(general_general.numberofTestimonials || 3).keys(),
-									].map(
-										(_, index) => testimonials[index] || SLIDER_ITEM_DEMO
-									);
-									setAttributes({
-										general_general: data,
-										testimonials: newtestimonials,
-									});
-								} else {
-									setAttributes({ general_general: data });
-								}
+								setAttributes({ general_general: data });
 							}}
 							panelData={general_general}
 						/>
@@ -181,19 +151,17 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							onToggle={() => handleTogglePanel("General", "PanelImages")}
 							initialOpen={tabGeneralIsPanelOpen === "PanelImages"}
 							opened={tabGeneralIsPanelOpen === "PanelImages" || undefined}
-							//
 							setAttr__={(data) => {
 								setAttributes({ general_images: data });
 							}}
 							panelData={general_images}
-							numberOfItems={general_general.numberofTestimonials}
+							numberOfItems={innerBlocks.length}
 						/>
 
 						<WcbTestimonialsPanelCarousel
 							onToggle={() => handleTogglePanel("General", "Carousel")}
 							initialOpen={tabGeneralIsPanelOpen === "Carousel"}
 							opened={tabGeneralIsPanelOpen === "Carousel" || undefined}
-							//
 							setAttr__={(data) => {
 								setAttributes({
 									general_carousel: data,
@@ -213,7 +181,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								tabStylesIsPanelOpen === "first"
 							}
 							opened={tabStylesIsPanelOpen === "_StyleName" || undefined}
-							//
 							setAttr__={(data) => {
 								setAttributes({ style_name: data });
 							}}
@@ -223,7 +190,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							onToggle={() => handleTogglePanel("Styles", "_StyleContent")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleContent"}
 							opened={tabStylesIsPanelOpen === "_StyleContent" || undefined}
-							//
 							setAttr__={(data) => {
 								setAttributes({ style_content: data });
 							}}
@@ -233,7 +199,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							onToggle={() => handleTogglePanel("Styles", "_StyleCompany")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleCompany"}
 							opened={tabStylesIsPanelOpen === "_StyleCompany" || undefined}
-							//
 							setAttr__={(data) => {
 								setAttributes({ style_company: data });
 							}}
@@ -243,7 +208,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							onToggle={() => handleTogglePanel("Styles", "_StyleImage")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleImage"}
 							opened={tabStylesIsPanelOpen === "_StyleImage" || undefined}
-							//
 							setAttr__={(data) => {
 								setAttributes({ style_image: data });
 							}}
@@ -253,7 +217,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							onToggle={() => handleTogglePanel("Styles", "_StyleArrowDots")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleArrowDots"}
 							opened={tabStylesIsPanelOpen === "_StyleArrowDots" || undefined}
-							//
 							setAttr__={(data) => {
 								setAttributes({ style_arrowAndDots: data });
 							}}
@@ -263,7 +226,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							onToggle={() => handleTogglePanel("Styles", "_StyleBackground")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleBackground"}
 							opened={tabStylesIsPanelOpen === "_StyleBackground" || undefined}
-							//
 							setAttr__={(data) => {
 								setAttributes({ style_backgroundAndBorder: data });
 							}}
@@ -273,7 +235,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							onToggle={() => handleTogglePanel("Styles", "_StyleDimension")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleDimension"}
 							opened={tabStylesIsPanelOpen === "_StyleDimension" || undefined}
-							//
 							setAttr__={(data) => {
 								setAttributes({ style_dimension: data });
 							}}
@@ -302,152 +263,42 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		}
 	};
 
-	const renderTestimonialItemContent = (
-		item: SliderItem,
-		index: number
-	) => {
+	// Render editable slider child - direct inline editing like Spectra
+	const renderEditableSliderChild = (block: any, index: number) => {
+		const isChildSelected = selectedBlockClientId === block.clientId;
+		const blockType = wp.blocks?.getBlockType?.(block.name);
+		const BlockEdit = blockType?.edit;
+		
 		return (
-			<RichText
-				tagName="div"
-				className="wcb-slider__item-content"
-				value={item.content}
-				onChange={(content) => {
-					setAttributes({
-						testimonials: CURRENT_DATA.map((item, j) => {
-							if (j === index) {
-								return {
-									...item,
-									content: content,
-								};
-							}
-							return item;
-						}),
-					});
+			<div 
+				key={block.clientId} 
+				className={`wcb-slider__item ${isChildSelected ? 'is-child-selected' : ''}`}
+				onClick={(e) => {
+					// When clicking on child, select it to show its inspector controls
+					if (!isChildSelected) {
+						e.stopPropagation();
+						selectBlock(block.clientId);
+					}
 				}}
-				placeholder={__("Content of testimonials")}
-			/>
-		);
-	};
-
-	const renderTestimonialItemName = (item: SliderItem, index: number) => {
-		return (
-			<RichText
-				tagName="div"
-				className="wcb-slider__item-name"
-				value={item.name}
-				onChange={(content) => {
-					setAttributes({
-						testimonials: CURRENT_DATA.map((item, j) => {
-							if (j === index) {
-								return {
-									...item,
-									name: content,
-								};
-							}
-							return item;
-						}),
-					});
-				}}
-				placeholder={__("Name")}
-			/>
-		);
-	};
-
-	const renderTestimonialItemCompany = (
-		item: SliderItem,
-		index: number
-	) => {
-		return (
-			<RichText
-				tagName="div"
-				className="wcb-slider__item-company"
-				value={item.companyName}
-				onChange={(content) => {
-					setAttributes({
-						testimonials: CURRENT_DATA.map((item, j) => {
-							if (j === index) {
-								return {
-									...item,
-									companyName: content,
-								};
-							}
-							return item;
-						}),
-					});
-				}}
-				placeholder={__("Company Name")}
-			/>
-		);
-	};
-
-	const renderTestimonialItemImage = (item: SliderItem, index: number) => {
-		const { images, isShowImage, imageSize } = general_images;
-		const { imageSize: imageSizeAttr } = style_image;
-		const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
-		const { mediaId, mediaSrcSet } = images[index] || {};
-		if (!isShowImage || !mediaId) {
-			return null;
-		}
-		const { value_Desktop, value_Mobile, value_Tablet } =
-			getValueFromAttrsResponsives(imageSizeAttr);
-		const url = getImageUrlBySize(images[index], imageSize);
-		return (
-			<div className="wcb-slider__item-image">
-				<img
-					src={url}
-					alt=""
-					srcSet={mediaSrcSet}
-					sizes={`(max-width: ${media_tablet}) ${value_Mobile}, (max-width: ${media_desktop}) ${value_Tablet}, ${value_Desktop}`}
-				/>
-			</div>
-		);
-	};
-
-	const renderTestimonialItem = (item: SliderItem, index: number) => {
-		const { imagePosition } = general_images;
-		return (
-			<div className="wcb-slider__item" key={index + "-"}>
+			>
 				<div className="wcb-slider__item-background">
-					<div className=""></div>
-					<VideoBackgroundByBgControl
-						bgType={style_backgroundAndBorder.background.bgType}
-						videoData={style_backgroundAndBorder.background.videoData}
-					/>
-					<OverlayBackgroundByBgControl
-						bgType={style_backgroundAndBorder.background.bgType}
-						overlayType={style_backgroundAndBorder.background.overlayType}
-					/>
 					<div className="wcb-slider__item-wrap-inner">
-						{/* IMAGE */}
-						{imagePosition === "left" &&
-							renderTestimonialItemImage(item, index)}
-
 						<div className="wcb-slider__item-inner">
-							{/* IMAGE */}
-							{imagePosition === "top" &&
-								renderTestimonialItemImage(item, index)}
-
-							{/* CONTENT */}
-							{renderTestimonialItemContent(item, index)}
-
-							<div className="wcb-slider__item-user">
-								{/* IMAGE */}
-								{imagePosition === "bottom" &&
-									renderTestimonialItemImage(item, index)}
-
-								<div className="wcb-slider__item-nameandcompany">
-									{/* NAME */}
-									<div>{renderTestimonialItemName(item, index)}</div>
-
-									{/* COMPANY */}
-									{renderTestimonialItemCompany(item, index)}
-								</div>
+							<div className={`wcb-slider-child__wrap ${block.attributes?.uniqueId || ''}`}>
+								{/* Direct inline editing - render the actual block edit component */}
+								<BlockEdit
+									attributes={block.attributes}
+									setAttributes={(newAttributes: any) => {
+										wp.data.dispatch("core/block-editor").updateBlockAttributes(
+											block.clientId,
+											newAttributes
+										);
+									}}
+									clientId={block.clientId}
+									isSelected={isChildSelected}
+								/>
 							</div>
 						</div>
-
-						{/* IMAGE */}
-						{imagePosition === "right" &&
-							renderTestimonialItemImage(item, index)}
 					</div>
 				</div>
 			</div>
@@ -476,19 +327,51 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			speed: animationDuration || 500,
 			autoplay: isAutoPlay,
 			autoplaySpeed,
-			//
-			slidesToShow: currentColumns,
+			slidesToShow: Number(currentColumns) || 1,
 			slidesToScroll: 1,
 			nextArrow: <SampleNextArrow />,
 			prevArrow: <SamplePrevArrow />,
-
 			dots: showArrowsDots !== "Arrow",
 			arrows: showArrowsDots !== "Dot",
-			adaptiveHeight: true,
+			adaptiveHeight: adaptiveHeight,
 			pauseOnHover: hoverpause,
 		};
+
+		// If no inner blocks, show template like FAQ block
+		if (innerBlocks.length === 0) {
+			return (
+				<div className="wcb-slider__wrap-items">
+					<InnerBlocks
+						allowedBlocks={["wcb/slider-child"]}
+						template={[
+							["wcb/slider-child"],
+							["wcb/slider-child"],
+							["wcb/slider-child"],
+						]}
+						templateLock={false}
+						renderAppender={isSelected ? InnerBlocks.DefaultBlockAppender : undefined}
+					/>
+				</div>
+			);
+		}
+
+		// Spectra-like experience: Always show slider with editable content
 		return (
-			<Slider {...settings}>{CURRENT_DATA.map(renderTestimonialItem)}</Slider>
+			<div className="wcb-slider__wrap-items">
+				<Slider {...settings}>
+					{innerBlocks.map(renderEditableSliderChild)}
+				</Slider>
+				{/* Hidden InnerBlocks for appender when selected */}
+				{isSelected && (
+					<div style={{ display: 'none' }}>
+						<InnerBlocks
+							allowedBlocks={["wcb/slider-child"]}
+							templateLock={false}
+							renderAppender={() => <InnerBlocks.DefaultBlockAppender />}
+						/>
+					</div>
+				)}
+			</div>
 		);
 	};
 
@@ -526,23 +409,29 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		advance_motionEffect,
 	]);
 
+	// Check if a child block is selected
+	const isChildBlockSelected = innerBlocks.some(block => block.clientId === selectedBlockClientId);
+	const shouldShowParentControls = isSelected || (!isChildBlockSelected && selectedBlockClientId === clientId);
+
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-slider__wrap ${uniqueId}`}
+				className={`${wrapBlockProps?.className} wcb-slider__wrap ${uniqueId} ${isChildBlockSelected ? 'has-child-selected' : ''}`}
 				data-uniqueid={uniqueId}
 			>
-				{/* CONTROL SETTINGS */}
-				<HOCInspectorControls
-					renderTabPanels={renderTabBodyPanels}
-					uniqueId={uniqueId}
-				/>
+				{/* CONTROL SETTINGS - Only show when parent is selected, not when child is selected */}
+				{shouldShowParentControls && (
+					<HOCInspectorControls
+						renderTabPanels={renderTabBodyPanels}
+						uniqueId={uniqueId}
+					/>
+				)}
 
 				{/* CSS IN JS */}
 				<GlobalCss {...WcbAttrsForSave()} />
 
-				{/* CHILD CONTENT  */}
+				{/* CHILD CONTENT */}
 				{renderEditContent()}
 			</div>
 		</MyCacheProvider>

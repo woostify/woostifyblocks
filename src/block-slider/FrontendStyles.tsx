@@ -4,7 +4,7 @@ import { WcbAttrsForSave } from "./Save";
 
 interface Props extends WcbAttrsForSave {}
 //
-export function initCarouselForWcbTestimonials(div: Element, props: Props) {
+export function initCarouselForWcbSliders(div: Element, props: Props) {
 	const dataUniqueid = div.getAttribute("data-uniqueid") || "";
 
 	let $ = jQuery;

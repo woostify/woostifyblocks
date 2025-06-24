@@ -14,7 +14,7 @@ import {
 	MyZIndexControlData,
 	Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
-import { SLIDER_ITEM_DEMO } from "./Edit";
+// SLIDER_ITEM_DEMO moved to child component
 import {
 	WCB_SLIDER_PANEL_CAROUSEL,
 	WCB_SLIDER_PANEL_CAROUSEL_DEMO,
@@ -53,15 +53,8 @@ import {
 	WCB_SLIDER_PANEL_STYLE_NAME_DEMO,
 } from "./WcbSliderPanel_StyleName";
 
-export interface SliderItem {
-	content: string;
-	name: string;
-	companyName: string;
-}
-
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
-	testimonials: SliderItem[];
 	//
 	general_general: WCB_SLIDER_PANEL_GENERAL;
 	general_images: WCB_SLIDER_PANEL_IMAGES;
@@ -86,14 +79,7 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		default: "",
 	},
 
-	testimonials: {
-		type: "array",
-		default: [
-			SLIDER_ITEM_DEMO,
-			SLIDER_ITEM_DEMO,
-			SLIDER_ITEM_DEMO,
-		],
-	},
+	// testimonials moved to individual slider-child blocks
 
 	// THE ATTRS OF BLOCK HERE
 	general_general: {

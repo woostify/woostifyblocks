@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { initCarouselForWcbFaq } from "../block-faq/FrontendStyles";
 import { handleSubmitFormForWcbForm } from "../block-form/FrontendStyles";
 import { initCarouselForWcbTestimonials } from "../block-testimonials/FrontendStyles";
+import { initCarouselForWcbSliders } from "../block-slider/FrontendStyles";
 import { initCarouselForWcbProducts } from "../block-products/FrontendStyles";
 import { initCountDown } from "../block-countdown/FrontendScript";
 import { initTabsForWcbTabs } from "../block-tabs/FrontendStyles";
@@ -91,10 +92,10 @@ const classes: {
 		{
 		D: ".wcb-slider__wrap.wcb-update-div",
 		C: React.lazy(() => import("../block-slider/GlobalCss")),
-		F: initCarouselForWcbTestimonials,
+		F: initCarouselForWcbSliders,
 	},
 ];
-
+       
 classes.forEach(({ D, C, F }) => {
 	const divs = document.querySelectorAll(D);
 
