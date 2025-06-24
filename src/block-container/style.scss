@@ -51,6 +51,12 @@ body .wcb-container__wrap {
 	}
 }
 
+/* Nested containers should not have gap for their children */
+.wcb-container__wrap.is_wcb_container_child .wcb-container__inner {
+	column-gap: 0 !important;
+	row-gap: 0 !important;
+}
+
 .wcb-container__wrap .wcb-container__inner  {
     justify-content: space-around !important;
 }
