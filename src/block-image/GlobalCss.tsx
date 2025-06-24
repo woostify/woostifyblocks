@@ -25,6 +25,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
 	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
+	const IMAGE_FIGURE = `${WRAP_CLASSNAME}.wp-block-wcb-image`;
 	const IMAGE_CLASSNAME = `${WRAP_CLASSNAME} img`;
 	const CAPTION_CLASSNAME = `${WRAP_CLASSNAME} figcaption.wp-element-caption`;
 	const OVERLAY_BG_CLASSNAME = `${WRAP_CLASSNAME} .wcb-image__overlay-bg`;
@@ -120,6 +121,63 @@ const GlobalCss: FC<Props> = (attrs) => {
 				/>
 			) : null}
 
+			{/* -------- ON HOVER IMAGE ----------  */}
+			{
+				general_settings.hoverImage === "zoomin" ? (
+					<Global
+						styles={[
+							{
+								[IMAGE_CLASSNAME]: {
+									transition: "transform 0.3s ease-in-out",
+								},
+								[`${WRAP_CLASSNAME}:hover img`]: {
+									transform: "scale(1.05)",
+								},
+							},
+						]}
+					/>
+				) : general_settings.hoverImage === "slide" ? (
+					<Global
+						styles={[
+							{
+								[IMAGE_CLASSNAME]: {
+									transition: "transform 0.3s cubic-bezier(0.4,0,0.2,1)",
+								},
+								[`${WRAP_CLASSNAME}:hover img`]: {
+									transform: "translateX(-20px)",
+								},
+							},
+						]}
+					/>
+				) : general_settings.hoverImage === "grayscale" ? (
+					<Global
+						styles={[
+							{
+								[IMAGE_CLASSNAME]: {
+									transition: "filter 0.3s ease-in-out",
+								},
+								[`${WRAP_CLASSNAME}:hover img`]: {
+									filter: "grayscale(100%)",
+								},
+							},
+						]}
+					/>
+				) : general_settings.hoverImage === "blur" ? (
+					<Global
+						styles={[
+							{
+								[IMAGE_CLASSNAME]: {
+									transition: "filter 0.3s ease-in-out",
+								},
+								[`${WRAP_CLASSNAME}:hover img`]: {
+									filter: "blur(2px)",
+								},
+							},
+						]}
+					/>
+				) : null
+			}
+
 			{/* -------- CAPTION ----------  */}
 			{general_settings.layout !== "overlay" ? (
 				<Global
@@ -154,6 +212,22 @@ const GlobalCss: FC<Props> = (attrs) => {
 					className: WRAP_CLASSNAME,
 					defaultDisplay: "block",
 				})}
+			/>
+			
+			{/* IMAGE ALIGNMENT */}
+			<Global
+				styles={[
+					{
+						[`${IMAGE_FIGURE}.alignright`]: {
+							marginLeft: 'auto',
+    						marginRight: 0,
+						},
+						[`${IMAGE_FIGURE}.alignleft`]: {
+							marginLeft: 0,
+    						marginRight: 'auto',
+						},
+					},
+				]}
 			/>
 		</>
 	);

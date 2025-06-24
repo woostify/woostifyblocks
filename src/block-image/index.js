@@ -24,6 +24,7 @@ const { Fragment } = wp.element;
 const { withSelect } = wp.data;
 import attributes from "./attributes";
 import convertObjectAttrToPreview from "../utils/convertAttsToPreview";
+import useGetDeviceType from "../hooks/useGetDeviceType";
 //------------------ TAILWINDCSS AND COMMON CSS -----------------
 
 registerBlockType(metadata.name, {
@@ -45,8 +46,12 @@ registerBlockType(metadata.name, {
 		}
 	},
 	getEditWrapperProps(attributes) {
+		const deviceType = useGetDeviceType() || "Desktop";
 		return {
-			"data-align": attributes.general_settings?.alignment?.Desktop,
+			"data-align": 
+				deviceType === "Desktop" ? attributes.general_settings?.alignment?.Desktop :
+				deviceType === "Tablet" ? attributes.general_settings?.alignment?.Tablet : 
+				attributes.general_settings?.alignment?.Mobile,
 		};
 	},
 	edit: Edit,
