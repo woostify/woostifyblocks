@@ -17,6 +17,7 @@ import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives"
 export interface WCB_ICON_LIST_PANEL_STYLE_TITLE {
 	typography: MyTypographyControlData;
 	textColor: string;
+	textColorHover: string;
 	marginBottom: HasResponsive<string>;
 }
 
@@ -24,6 +25,7 @@ export const WCB_ICON_LIST_PANEL_STYLE_TITLE_DEMO: WCB_ICON_LIST_PANEL_STYLE_TIT
 	{
 		typography: TYPOGRAPHY_CONTROL_DEMO,
 		textColor: "#171717",
+		textColorHover: "#171717",
 		marginBottom: { Desktop: "" },
 	};
 
@@ -41,7 +43,7 @@ const WcbIconListPanel_StyleTitle: FC<Props> = ({
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { typography, textColor, marginBottom } = panelData;
+	const { typography, textColor, textColorHover, marginBottom } = panelData;
 
 	const { currentDeviceValue: MARGIN_BOTTOM } = getValueFromAttrsResponsives(
 		marginBottom,
@@ -67,6 +69,7 @@ const WcbIconListPanel_StyleTitle: FC<Props> = ({
 				/>
 
 				<MyDisclosure defaultOpen label="More styles">
+
 					<MyColorPicker
 						onChange={(color) => {
 							setAttr__({
@@ -75,6 +78,14 @@ const WcbIconListPanel_StyleTitle: FC<Props> = ({
 							});
 						}}
 						color={textColor}
+					/>
+
+					<MyColorPicker
+						label={__("Hover color", "wcb")}
+						onChange={(value) => {
+							setAttr__({ ...panelData, textColorHover: value });
+						}}
+						color={textColorHover}
 					/>
 
 					<MySpacingSizesControl

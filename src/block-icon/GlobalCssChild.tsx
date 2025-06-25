@@ -168,6 +168,9 @@ const GlobalCssChild: FC<Props> = (attrs) => {
 							[`${WRAP_CLASSNAME} .wcb-icon-list__heading`]: {
 								color: style_title.textColor,
 							},
+							[`${WRAP_CLASSNAME} .wcb-icon-list__heading:hover`]: {
+								color: style_title.textColorHover,
+							},
 						},
 					]}
 				/>

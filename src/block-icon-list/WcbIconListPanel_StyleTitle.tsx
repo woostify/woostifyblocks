@@ -17,15 +17,17 @@ import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives"
 export interface WCB_ICON_LIST_PANEL_STYLE_TITLE {
 	typography: MyTypographyControlData;
 	textColor: string;
+	textColorHover: string;
 	marginBottom: HasResponsive<string>;
 }
 
 export const WCB_ICON_LIST_PANEL_STYLE_TITLE_DEMO: WCB_ICON_LIST_PANEL_STYLE_TITLE =
-	{
-		typography: TYPOGRAPHY_CONTROL_DEMO,
-		textColor: "#171717",
-		marginBottom: { Desktop: "" },
-	};
+{
+	typography: TYPOGRAPHY_CONTROL_DEMO,
+	textColor: "#171717",
+	textColorHover: "#171717",
+	marginBottom: { Desktop: "" },
+};
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
@@ -41,7 +43,7 @@ const WcbIconListPanel_StyleTitle: FC<Props> = ({
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { typography, textColor, marginBottom } = panelData;
+	const { typography, textColor, textColorHover, marginBottom } = panelData;
 
 	// Normalize typography appearance.style to ensure it's always an object
 	useEffect(() => {
@@ -109,6 +111,14 @@ const WcbIconListPanel_StyleTitle: FC<Props> = ({
 							});
 						}}
 						color={textColor}
+					/>
+
+					<MyColorPicker
+						label={__("Hover color", "wcb")}
+						onChange={(value) => {
+							setAttr__({ ...panelData, textColorHover: value });
+						}}
+						color={textColorHover}
 					/>
 
 					<MySpacingSizesControl
