@@ -2375,166 +2375,6 @@ module.exports = ForwardRef;
 
 /***/ }),
 
-/***/ "./node_modules/@wordpress/icons/build-module/library/format-capitalize.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/@wordpress/icons/build-module/library/format-capitalize.js ***!
-  \*********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
-/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
-
-
-/**
- * WordPress dependencies
- */
-
-const formatCapitalize = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
-  xmlns: "http://www.w3.org/2000/svg",
-  viewBox: "0 0 24 24"
-}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
-  d: "M7.1 6.8L3.1 18h1.6l1.1-3h4.3l1.1 3h1.6l-4-11.2H7.1zm-.8 6.8L8 8.9l1.7 4.7H6.3zm14.5-1.5c-.3-.6-.7-1.1-1.2-1.5-.6-.4-1.2-.6-1.9-.6-.5 0-.9.1-1.4.3-.4.2-.8.5-1.1.8V6h-1.4v12h1.3l.2-1c.2.4.6.6 1 .8.4.2.9.3 1.4.3.7 0 1.2-.2 1.8-.5.5-.4 1-.9 1.3-1.5.3-.6.5-1.3.5-2.1-.1-.6-.2-1.3-.5-1.9zm-1.7 4c-.4.5-.9.8-1.6.8s-1.2-.2-1.7-.7c-.4-.5-.7-1.2-.7-2.1 0-.9.2-1.6.7-2.1.4-.5 1-.7 1.7-.7s1.2.3 1.6.8c.4.5.6 1.2.6 2 .1.8-.2 1.4-.6 2z"
-}));
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (formatCapitalize);
-//# sourceMappingURL=format-capitalize.js.map
-
-/***/ }),
-
-/***/ "./node_modules/@wordpress/icons/build-module/library/format-lowercase.js":
-/*!********************************************************************************!*\
-  !*** ./node_modules/@wordpress/icons/build-module/library/format-lowercase.js ***!
-  \********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
-/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
-
-
-/**
- * WordPress dependencies
- */
-
-const formatLowercase = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
-  xmlns: "http://www.w3.org/2000/svg",
-  viewBox: "0 0 24 24"
-}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
-  d: "M11 16.8c-.1-.1-.2-.3-.3-.5v-2.6c0-.9-.1-1.7-.3-2.2-.2-.5-.5-.9-.9-1.2-.4-.2-.9-.3-1.6-.3-.5 0-1 .1-1.5.2s-.9.3-1.2.6l.2 1.2c.4-.3.7-.4 1.1-.5.3-.1.7-.2 1-.2.6 0 1 .1 1.3.4.3.2.4.7.4 1.4-1.2 0-2.3.2-3.3.7s-1.4 1.1-1.4 2.1c0 .7.2 1.2.7 1.6.4.4 1 .6 1.8.6.9 0 1.7-.4 2.4-1.2.1.3.2.5.4.7.1.2.3.3.6.4.3.1.6.1 1.1.1h.1l.2-1.2h-.1c-.4.1-.6 0-.7-.1zM9.2 16c-.2.3-.5.6-.9.8-.3.1-.7.2-1.1.2-.4 0-.7-.1-.9-.3-.2-.2-.3-.5-.3-.9 0-.6.2-1 .7-1.3.5-.3 1.3-.4 2.5-.5v2zm10.6-3.9c-.3-.6-.7-1.1-1.2-1.5-.6-.4-1.2-.6-1.9-.6-.5 0-.9.1-1.4.3-.4.2-.8.5-1.1.8V6h-1.4v12h1.3l.2-1c.2.4.6.6 1 .8.4.2.9.3 1.4.3.7 0 1.2-.2 1.8-.5.5-.4 1-.9 1.3-1.5.3-.6.5-1.3.5-2.1-.1-.6-.2-1.3-.5-1.9zm-1.7 4c-.4.5-.9.8-1.6.8s-1.2-.2-1.7-.7c-.4-.5-.7-1.2-.7-2.1 0-.9.2-1.6.7-2.1.4-.5 1-.7 1.7-.7s1.2.3 1.6.8c.4.5.6 1.2.6 2s-.2 1.4-.6 2z"
-}));
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (formatLowercase);
-//# sourceMappingURL=format-lowercase.js.map
-
-/***/ }),
-
-/***/ "./node_modules/@wordpress/icons/build-module/library/format-strikethrough.js":
-/*!************************************************************************************!*\
-  !*** ./node_modules/@wordpress/icons/build-module/library/format-strikethrough.js ***!
-  \************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
-/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
-
-
-/**
- * WordPress dependencies
- */
-
-const formatStrikethrough = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
-  xmlns: "http://www.w3.org/2000/svg",
-  viewBox: "0 0 24 24"
-}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
-  d: "M9.1 9v-.5c0-.6.2-1.1.7-1.4.5-.3 1.2-.5 2-.5.7 0 1.4.1 2.1.3.7.2 1.4.5 2.1.9l.2-1.9c-.6-.3-1.2-.5-1.9-.7-.8-.1-1.6-.2-2.4-.2-1.5 0-2.7.3-3.6 1-.8.7-1.2 1.5-1.2 2.6V9h2zM20 12H4v1h8.3c.3.1.6.2.8.3.5.2.9.5 1.1.8.3.3.4.7.4 1.2 0 .7-.2 1.1-.8 1.5-.5.3-1.2.5-2.1.5-.8 0-1.6-.1-2.4-.3-.8-.2-1.5-.5-2.2-.8L7 18.1c.5.2 1.2.4 2 .6.8.2 1.6.3 2.4.3 1.7 0 3-.3 3.9-1 .9-.7 1.3-1.6 1.3-2.8 0-.9-.2-1.7-.7-2.2H20v-1z"
-}));
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (formatStrikethrough);
-//# sourceMappingURL=format-strikethrough.js.map
-
-/***/ }),
-
-/***/ "./node_modules/@wordpress/icons/build-module/library/format-underline.js":
-/*!********************************************************************************!*\
-  !*** ./node_modules/@wordpress/icons/build-module/library/format-underline.js ***!
-  \********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
-/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
-
-
-/**
- * WordPress dependencies
- */
-
-const formatUnderline = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
-  xmlns: "http://www.w3.org/2000/svg",
-  viewBox: "0 0 24 24"
-}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
-  d: "M7 18v1h10v-1H7zm5-2c1.5 0 2.6-.4 3.4-1.2.8-.8 1.1-2 1.1-3.5V5H15v5.8c0 1.2-.2 2.1-.6 2.8-.4.7-1.2 1-2.4 1s-2-.3-2.4-1c-.4-.7-.6-1.6-.6-2.8V5H7.5v6.2c0 1.5.4 2.7 1.1 3.5.8.9 1.9 1.3 3.4 1.3z"
-}));
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (formatUnderline);
-//# sourceMappingURL=format-underline.js.map
-
-/***/ }),
-
-/***/ "./node_modules/@wordpress/icons/build-module/library/format-uppercase.js":
-/*!********************************************************************************!*\
-  !*** ./node_modules/@wordpress/icons/build-module/library/format-uppercase.js ***!
-  \********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
-/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
-
-
-/**
- * WordPress dependencies
- */
-
-const formatUppercase = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
-  xmlns: "http://www.w3.org/2000/svg",
-  viewBox: "0 0 24 24"
-}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
-  d: "M6.1 6.8L2.1 18h1.6l1.1-3h4.3l1.1 3h1.6l-4-11.2H6.1zm-.8 6.8L7 8.9l1.7 4.7H5.3zm15.1-.7c-.4-.5-.9-.8-1.6-1 .4-.2.7-.5.8-.9.2-.4.3-.9.3-1.4 0-.9-.3-1.6-.8-2-.6-.5-1.3-.7-2.4-.7h-3.5V18h4.2c1.1 0 2-.3 2.6-.8.6-.6 1-1.4 1-2.4-.1-.8-.3-1.4-.6-1.9zm-5.7-4.7h1.8c.6 0 1.1.1 1.4.4.3.2.5.7.5 1.3 0 .6-.2 1.1-.5 1.3-.3.2-.8.4-1.4.4h-1.8V8.2zm4 8c-.4.3-.9.5-1.5.5h-2.6v-3.8h2.6c1.4 0 2 .6 2 1.9.1.6-.1 1-.5 1.4z"
-}));
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (formatUppercase);
-//# sourceMappingURL=format-uppercase.js.map
-
-/***/ }),
-
 /***/ "./node_modules/@wordpress/icons/build-module/library/plus.js":
 /*!********************************************************************!*\
   !*** ./node_modules/@wordpress/icons/build-module/library/plus.js ***!
@@ -2717,20 +2557,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./editor.scss */ "./src/block-icon/editor.scss");
 /* harmony import */ var _hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/useSetBlockPanelInfo */ "./src/hooks/useSetBlockPanelInfo.ts");
 /* harmony import */ var _components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/AdvancePanelCommon */ "./src/components/AdvancePanelCommon.tsx");
-/* harmony import */ var _WcbIconPanelLayout__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./WcbIconPanelLayout */ "./src/block-icon/WcbIconPanelLayout.tsx");
-/* harmony import */ var _WcbIconPanelIcon__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./WcbIconPanelIcon */ "./src/block-icon/WcbIconPanelIcon.tsx");
-/* harmony import */ var _WcbIconPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./WcbIconPanel_StyleTitle */ "./src/block-icon/WcbIconPanel_StyleTitle.tsx");
-/* harmony import */ var _WcbIconPanel_StyleNumber__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./WcbIconPanel_StyleNumber */ "./src/block-icon/WcbIconPanel_StyleNumber.tsx");
-/* harmony import */ var _WcbIconPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./WcbIconPanel_StyleDimension */ "./src/block-icon/WcbIconPanel_StyleDimension.tsx");
-/* harmony import */ var _WcbIconPanelPreset__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./WcbIconPanelPreset */ "./src/block-icon/WcbIconPanelPreset.tsx");
-/* harmony import */ var _WcbButtonPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./WcbButtonPanel_StyleBorder */ "./src/block-icon/WcbButtonPanel_StyleBorder.tsx");
-/* harmony import */ var _WcbButtonPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./WcbButtonPanel_StyleBackground */ "./src/block-icon/WcbButtonPanel_StyleBackground.tsx");
-/* harmony import */ var _WcbButtonPanel_StyleBoxshadow__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./WcbButtonPanel_StyleBoxshadow */ "./src/block-icon/WcbButtonPanel_StyleBoxshadow.tsx");
-/* harmony import */ var _components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../components/MyCacheProvider */ "./src/components/MyCacheProvider.tsx");
-/* harmony import */ var _utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../utils/converUniqueIdToAnphaKey */ "./src/utils/converUniqueIdToAnphaKey.ts");
-
-
-
+/* harmony import */ var _WcbIconPanelIcon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./WcbIconPanelIcon */ "./src/block-icon/WcbIconPanelIcon.tsx");
+/* harmony import */ var _WcbIconPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./WcbIconPanel_StyleIcon */ "./src/block-icon/WcbIconPanel_StyleIcon.tsx");
+/* harmony import */ var _WcbIconPanelPreset__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./WcbIconPanelPreset */ "./src/block-icon/WcbIconPanelPreset.tsx");
+/* harmony import */ var _WcbButtonPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./WcbButtonPanel_StyleBorder */ "./src/block-icon/WcbButtonPanel_StyleBorder.tsx");
+/* harmony import */ var _WcbButtonPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./WcbButtonPanel_StyleBackground */ "./src/block-icon/WcbButtonPanel_StyleBackground.tsx");
+/* harmony import */ var _WcbButtonPanel_StyleBoxshadow__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./WcbButtonPanel_StyleBoxshadow */ "./src/block-icon/WcbButtonPanel_StyleBoxshadow.tsx");
+/* harmony import */ var _components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/MyCacheProvider */ "./src/components/MyCacheProvider.tsx");
+/* harmony import */ var _utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../utils/converUniqueIdToAnphaKey */ "./src/utils/converUniqueIdToAnphaKey.ts");
 
 
 
@@ -2775,19 +2609,12 @@ const Edit = props => {
   const {
     advance_responsiveCondition,
     advance_zIndex,
-    daylabel,
-    hrslabel,
-    minlabel,
-    seclabel,
-    general_date,
     uniqueId,
-    general_layout,
-    style_label,
-    style_number,
+    general_icon,
+    style_icon,
     style_background,
     style_border,
     style_boxshadow,
-    style_dimension,
     general_preset,
     advance_motionEffect
   } = attributes;
@@ -2808,41 +2635,26 @@ const Edit = props => {
   const UNIQUE_ID = wrapBlockProps.id;
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
     setAttributes({
-      uniqueId: (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_19__["default"])(UNIQUE_ID)
+      uniqueId: (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_16__["default"])(UNIQUE_ID)
     });
   }, [UNIQUE_ID, attributes]);
   //
   const renderTabBodyPanels = tab => {
     switch (tab.name) {
       case "General":
-        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbIconPanelIcon__WEBPACK_IMPORTED_MODULE_10__["default"], {
-          onToggle: () => handleTogglePanel("General", "Timer End Date & Time", true),
-          initialOpen: tabGeneralIsPanelOpen === "Timer End Date & Time" || tabGeneralIsPanelOpen === "first",
-          opened: tabGeneralIsPanelOpen === "Timer End Date & Time" || undefined
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbIconPanelIcon__WEBPACK_IMPORTED_MODULE_9__["default"], {
+          onToggle: () => handleTogglePanel("General", "Icon"),
+          initialOpen: tabGeneralIsPanelOpen === "Icon",
+          opened: tabGeneralIsPanelOpen === "Icon" || undefined
           //
           ,
           setAttr__: data => {
             return setAttributes({
-              general_date: data
+              general_icon: data
             });
           },
-          panelData: general_date
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbIconPanelLayout__WEBPACK_IMPORTED_MODULE_9__["default"], {
-          onToggle: () => handleTogglePanel("General", "Layout"),
-          initialOpen: tabGeneralIsPanelOpen === "Layout",
-          opened: tabGeneralIsPanelOpen === "Layout" || undefined
-          //
-          ,
-          setAttr__: data => {
-            setAttributes({
-              general_layout: data,
-              general_preset: {
-                preset: ""
-              }
-            });
-          },
-          panelData: general_layout
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbIconPanelPreset__WEBPACK_IMPORTED_MODULE_14__["default"], {
+          panelData: general_icon
+        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbIconPanelPreset__WEBPACK_IMPORTED_MODULE_11__["default"], {
           onToggle: () => handleTogglePanel("General", "Preset"),
           initialOpen: tabGeneralIsPanelOpen === "Preset",
           opened: tabGeneralIsPanelOpen === "Preset" || undefined
@@ -2856,50 +2668,26 @@ const Edit = props => {
               general_preset: data
             });
             setAttributes({
-              style_border: preset === "wcb-icon-1" ? _WcbButtonPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_15__.WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_1 : preset === "wcb-icon-2" ? _WcbButtonPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_15__.WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_2 : preset === "wcb-icon-3" ? _WcbButtonPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_15__.WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_3 : preset === "wcb-icon-4" ? _WcbButtonPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_15__.WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_4 : _WcbButtonPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_15__.WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_5,
-              style_background: preset === "wcb-icon-1" ? _WcbButtonPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_16__.WCB_BUTTON_PANEL_STYLE_BACKGROUND_PRESET_1 : preset === "wcb-icon-3" ? _WcbButtonPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_16__.WCB_BUTTON_PANEL_STYLE_BACKGROUND_PRESET_3 : _WcbButtonPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_16__.WCB_BUTTON_PANEL_STYLE_BACKGROUND_DEMO_WHITE
+              style_border: preset === "wcb-icon-1" ? _WcbButtonPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_12__.WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_1 : preset === "wcb-icon-2" ? _WcbButtonPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_12__.WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_2 : preset === "wcb-icon-3" ? _WcbButtonPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_12__.WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_3 : preset === "wcb-icon-4" ? _WcbButtonPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_12__.WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_4 : _WcbButtonPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_12__.WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_5,
+              style_background: preset === "wcb-icon-1" ? _WcbButtonPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_13__.WCB_BUTTON_PANEL_STYLE_BACKGROUND_PRESET_1 : preset === "wcb-icon-3" ? _WcbButtonPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_13__.WCB_BUTTON_PANEL_STYLE_BACKGROUND_PRESET_3 : _WcbButtonPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_13__.WCB_BUTTON_PANEL_STYLE_BACKGROUND_DEMO_WHITE
             });
           },
           panelData: general_preset
         }));
       case "Styles":
-        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbIconPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_13__["default"], {
-          onToggle: () => handleTogglePanel("Styles", "_StyleDimension"),
-          initialOpen: tabStylesIsPanelOpen === "_StyleDimension" || tabStylesIsPanelOpen === "first",
-          opened: tabStylesIsPanelOpen === "_StyleDimension" || undefined
-          //
-          ,
-          setAttr__: data => {
-            setAttributes({
-              style_dimension: data
-            });
-          },
-          panelData: style_dimension
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbIconPanel_StyleNumber__WEBPACK_IMPORTED_MODULE_12__["default"], {
-          onToggle: () => handleTogglePanel("Styles", "_StyleNumber", true),
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbIconPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_10__["default"], {
+          onToggle: () => handleTogglePanel("Styles", "_StyleIcon", true),
           initialOpen: tabStylesIsPanelOpen === "_StyleTitle",
-          opened: tabStylesIsPanelOpen === "_StyleNumber" || undefined
+          opened: tabStylesIsPanelOpen === "_StyleIcon" || undefined
           //
           ,
           setAttr__: data => {
             setAttributes({
-              style_number: data
+              style_icon: data
             });
           },
-          panelData: style_number
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbIconPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_11__["default"], {
-          onToggle: () => handleTogglePanel("Styles", "_StyleTitle", true),
-          initialOpen: tabStylesIsPanelOpen === "_StyleTitle",
-          opened: tabStylesIsPanelOpen === "_StyleTitle" || undefined
-          //
-          ,
-          setAttr__: data => {
-            setAttributes({
-              style_label: data
-            });
-          },
-          panelData: style_label
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbButtonPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_16__["default"], {
+          panelData: style_icon
+        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbButtonPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_13__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleBackground"),
           initialOpen: tabStylesIsPanelOpen === "_StyleBackground",
           opened: tabStylesIsPanelOpen === "_StyleBackground" || undefined
@@ -2910,12 +2698,12 @@ const Edit = props => {
               style_background: data,
               general_preset: {
                 ...general_preset,
-                preset: ""
+                preset: "wcb-icon-1"
               }
             });
           },
           panelData: style_background
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbButtonPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbButtonPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_12__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleBorder"),
           initialOpen: tabStylesIsPanelOpen === "_StyleBorder",
           opened: tabStylesIsPanelOpen === "_StyleBorder" || undefined
@@ -2926,12 +2714,12 @@ const Edit = props => {
               style_border: data,
               general_preset: {
                 ...general_preset,
-                preset: ""
+                preset: "wcb-icon-1"
               }
             });
           },
           panelData: style_border
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbButtonPanel_StyleBoxshadow__WEBPACK_IMPORTED_MODULE_17__["default"], {
+        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_WcbButtonPanel_StyleBoxshadow__WEBPACK_IMPORTED_MODULE_14__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleBoxshadow"),
           initialOpen: tabStylesIsPanelOpen === "_StyleBoxshadow",
           opened: tabStylesIsPanelOpen === "_StyleBoxshadow" || undefined
@@ -2942,7 +2730,7 @@ const Edit = props => {
               style_boxshadow: data,
               general_preset: {
                 ...general_preset,
-                preset: ""
+                preset: "wcb-icon-1"
               }
             });
           },
@@ -2966,19 +2754,16 @@ const Edit = props => {
       uniqueId,
       advance_responsiveCondition,
       advance_zIndex,
-      general_layout,
+      general_icon,
       general_preset,
-      general_date,
       style_background,
-      style_dimension,
-      style_label,
-      style_number,
+      style_icon,
       style_border,
       style_boxshadow,
       advance_motionEffect
     };
-  }, [uniqueId, advance_responsiveCondition, advance_zIndex, general_layout, general_preset, general_date, style_background, style_dimension, style_label, style_number, style_border, style_boxshadow, advance_motionEffect]);
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_18__["default"], {
+  }, [uniqueId, advance_responsiveCondition, advance_zIndex, general_icon, general_preset, style_background, style_icon, style_border, style_boxshadow, advance_motionEffect]);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_15__["default"], {
     uniqueKey: clientId
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
     className: `${wrapBlockProps?.className} wcb-icon__wrap ${uniqueId}`,
@@ -2986,57 +2771,7 @@ const Edit = props => {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_4__["default"], {
     renderTabPanels: renderTabBodyPanels,
     uniqueId: uniqueId
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_5__["default"], WcbAttrsForSave()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: `wcb-icon__content ${general_preset.preset}`
-  }, general_date.show_day && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-icon__box"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-icon__number wcb-icon-day"
-  }), general_date.enableLabel && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-    tagName: "div",
-    value: daylabel,
-    allowedFormats: [],
-    onChange: content => setAttributes({
-      daylabel: content
-    }),
-    className: "wcb-icon__label wcb-icon__daylabel"
-  })), general_date.show_hour && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-icon__box"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-icon__number wcb-icon-hrs"
-  }), general_date.enableLabel && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-    tagName: "div",
-    value: hrslabel,
-    allowedFormats: [],
-    onChange: content => setAttributes({
-      hrslabel: content
-    }),
-    className: "wcb-icon__label wcb-icon__hrslabel"
-  })), general_date.show_minute && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-icon__box"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-icon__number wcb-icon-mins"
-  }), general_date.enableLabel && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-    tagName: "div",
-    value: minlabel,
-    allowedFormats: [],
-    onChange: content => setAttributes({
-      minlabel: content
-    }),
-    className: "wcb-icon__label wcb-icon__minlabel"
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-icon__box"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-icon__number wcb-icon-secs"
-  }), general_date.enableLabel && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-    tagName: "div",
-    value: seclabel,
-    allowedFormats: [],
-    onChange: content => setAttributes({
-      seclabel: content
-    }),
-    className: "wcb-icon__label wcb-icon__seclabel"
-  })))));
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_5__["default"], WcbAttrsForSave())));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
 
@@ -3055,22 +2790,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/getBorderStyles */ "./src/utils/getBorderStyles.ts");
 /* harmony import */ var _utils_getBoxShadowStyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getBoxShadowStyles */ "./src/utils/getBoxShadowStyles.ts");
-/* harmony import */ var _utils_getBackgroundColorGradientStyles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/getBackgroundColorGradientStyles */ "./src/utils/getBackgroundColorGradientStyles.ts");
-/* harmony import */ var _block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../block-container/getAdvanveStyles */ "./src/block-container/getAdvanveStyles.ts");
-/* harmony import */ var _utils_getFlexPropertiesStyles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/getFlexPropertiesStyles */ "./src/utils/getFlexPropertiesStyles.ts");
-/* harmony import */ var _utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/getStyleObjectFromResponsiveAttr */ "./src/utils/getStyleObjectFromResponsiveAttr.ts");
-/* harmony import */ var _utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/getTypographyStyles */ "./src/utils/getTypographyStyles.ts");
-/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
-
-
-
-
+/* harmony import */ var _block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../block-container/getAdvanveStyles */ "./src/block-container/getAdvanveStyles.ts");
+/* harmony import */ var _utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/getTypographyStyles */ "./src/utils/getTypographyStyles.ts");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
 
 
 
@@ -3083,11 +2810,9 @@ const GlobalCss = attrs => {
   const {
     uniqueId,
     // ATTRS OF BLOCK
-    general_layout,
-    style_dimension,
-    style_label,
+    general_icon,
     style_background,
-    style_number,
+    style_icon,
     style_border,
     style_boxshadow,
     general_preset,
@@ -3099,7 +2824,7 @@ const GlobalCss = attrs => {
   const {
     media_desktop,
     media_tablet
-  } = ___WEBPACK_IMPORTED_MODULE_10__.DEMO_WCB_GLOBAL_VARIABLES;
+  } = ___WEBPACK_IMPORTED_MODULE_6__.DEMO_WCB_GLOBAL_VARIABLES;
   const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
   const CONTENT_CLASSNAME = `${WRAP_CLASSNAME} .wcb-icon__content`;
   const LABEL_CLASSNAME = `${WRAP_CLASSNAME} .wcb-icon__label`;
@@ -3117,123 +2842,40 @@ const GlobalCss = attrs => {
     };
   };
 
-  // ------------------- LABEL
-  const getInner__Label_typography = () => {
-    const {
-      typography
-    } = style_label;
-    return (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_8__["default"])({
-      typography,
-      className: LABEL_CLASSNAME
-    });
-  };
-
   // ------------------- NUMBER
   const getInner__Number_typography = () => {
     const {
       typography
-    } = style_number;
-    return (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_8__["default"])({
+    } = style_icon;
+    return (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
       typography,
       className: NUMBER_CLASSNAME
     });
   };
-  const {
-    value_Desktop: textAlignment_Desktop,
-    value_Tablet: textAlignment_tablet,
-    value_Mobile: textAlignment_mobile
-  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_9__["default"])(general_layout.textAlignment);
-  const {
-    value_Desktop: flexDirection_Desktop,
-    value_Tablet: flexDirection_tablet,
-    value_Mobile: flexDirection_mobile
-  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_9__["default"])(general_layout.flexDirection);
-
-  // FLEX COL
-  let ALIGN_ITEMS = {
-    Desktop: textAlignment_Desktop === "left" ? "start" : textAlignment_Desktop === "right" ? "end" : "center",
-    Tablet: textAlignment_tablet === "left" ? "start" : textAlignment_tablet === "right" ? "end" : "center",
-    Mobile: textAlignment_mobile === "left" ? "start" : textAlignment_mobile === "right" ? "end" : "center"
-  };
   if (!uniqueId) {
     return null;
   }
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
     styles: getDivWrapStyles()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
     styles: (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_2__["default"])({
       className: BOX_CLASSNAME,
       border: style_border,
       isWithRadius: true
     })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
     styles: (0,_utils_getBoxShadowStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
       className: BOX_CLASSNAME,
       boxShadow: style_boxshadow
     })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
-    styles: [(0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
-      className: CONTENT_CLASSNAME,
-      value: general_layout.textAlignment,
-      prefix: "textAlign"
-    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
-      className: CONTENT_CLASSNAME,
-      value: ALIGN_ITEMS,
-      prefix: "justifyContent"
-    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
-      className: CONTENT_CLASSNAME,
-      value: general_layout.flexDirection,
-      prefix: "flexDirection"
-    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
-      className: BOX_CLASSNAME + '+ div',
-      value: style_dimension.gap_boxes,
-      prefix: "marginLeft"
-    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
-      className: BOX_CLASSNAME,
-      value: style_dimension.width_box,
-      prefix: "width"
-    }), (0,_utils_getBackgroundColorGradientStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
-      className: BOX_CLASSNAME,
-      background: style_background.normal,
-      backgroundHover: style_background.hover
-    })]
-  }), general_preset.preset != 'wcb-icon-5' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
-    styles: (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
-      className: BOX_CLASSNAME,
-      value: style_dimension.width_box,
-      prefix: "height"
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
-    styles: (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
-      className: WRAP_CLASSNAME,
-      value: general_layout.contentWidth,
-      prefix: "width"
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
-    styles: (0,_utils_getFlexPropertiesStyles__WEBPACK_IMPORTED_MODULE_6__["default"])({
-      flexProperties: general_layout.flexDirection,
-      className: CONTENT_CLASSNAME
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
-    styles: [getInner__Label_typography(), {
-      [LABEL_CLASSNAME]: {
-        color: style_label.textColor
-      }
-    }]
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
     styles: [getInner__Number_typography(), {
       [NUMBER_CLASSNAME]: {
-        color: style_number.textColor
+        color: style_icon.textColor
       }
     }]
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
-    styles: (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
-      className: NUMBER_CLASSNAME,
-      value: style_dimension.gap_number,
-      prefix: "marginBottom"
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_11__.Global, {
-    styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_5__.getAdvanveDivWrapStyles)({
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
+    styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_4__.getAdvanveDivWrapStyles)({
       advance_motionEffect,
       advance_responsiveCondition,
       advance_zIndex,
@@ -3272,7 +2914,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 function save(_ref) {
   let {
     attributes
@@ -3281,18 +2922,11 @@ function save(_ref) {
     uniqueId,
     advance_responsiveCondition,
     advance_zIndex,
-    general_layout,
-    general_date,
-    daylabel,
-    hrslabel,
-    minlabel,
-    seclabel,
-    style_label,
-    style_number,
+    general_icon,
+    style_icon,
     style_background,
     style_border,
     style_boxshadow,
-    style_dimension,
     advance_motionEffect,
     general_preset
   } = attributes;
@@ -3302,18 +2936,11 @@ function save(_ref) {
     uniqueId,
     advance_responsiveCondition,
     advance_zIndex,
-    general_layout,
-    general_date,
-    daylabel,
-    hrslabel,
-    minlabel,
-    seclabel,
-    style_label,
-    style_number,
+    general_icon,
+    style_icon,
     style_background,
     style_border,
     style_boxshadow,
-    style_dimension,
     advance_motionEffect,
     general_preset
   };
@@ -3322,87 +2949,14 @@ function save(_ref) {
     className: "wcb-icon__wrap"
   });
 
-  // Get text alignment values from general_layout
-  const textAlignment_Desktop = general_layout.textAlignment.Desktop || "center";
-  const textAlignment_tablet = general_layout.textAlignment.Tablet || textAlignment_Desktop;
-  const textAlignment_mobile = general_layout.textAlignment.Mobile || textAlignment_tablet;
-
-  // Get flex direction values
-  const flexDirection_Desktop = general_layout.flexDirection.Desktop || "row";
-  const flexDirection_tablet = general_layout.flexDirection.Tablet || flexDirection_Desktop;
-  const flexDirection_mobile = general_layout.flexDirection.Mobile || flexDirection_tablet;
-
-  // Calculate alignment based on text alignment
-  let ALIGN_ITEMS = {
-    Desktop: textAlignment_Desktop === "left" ? "start" : textAlignment_Desktop === "right" ? "end" : "center",
-    Tablet: textAlignment_tablet === "left" ? "start" : textAlignment_tablet === "right" ? "end" : "center",
-    Mobile: textAlignment_mobile === "left" ? "start" : textAlignment_mobile === "right" ? "end" : "center"
-  };
-
   // Generate class names for layout
-  const getLayoutClasses = () => {
-    const classes = [`wcb-icon__content ${general_preset.preset}`];
-
-    // Add flex direction classes
-    if (flexDirection_Desktop === "column") {
-      classes.push("wcb-flex-col");
-    } else {
-      classes.push("wcb-flex-row");
-    }
-
-    // Add alignment classes
-    if (ALIGN_ITEMS.Desktop === "start") {
-      classes.push("wcb-justify-start");
-    } else if (ALIGN_ITEMS.Desktop === "end") {
-      classes.push("wcb-justify-end");
-    } else {
-      classes.push("wcb-justify-center");
-    }
-
-    // Add responsive classes
-    classes.push("wcb-layout-desktop-" + textAlignment_Desktop);
-    if (textAlignment_tablet) classes.push("wcb-layout-tablet-" + textAlignment_tablet);
-    if (textAlignment_mobile) classes.push("wcb-layout-mobile-" + textAlignment_mobile);
-    return classes.join(" ");
-  };
+  const classes = [`wcb-icon__content ${general_preset.preset}`];
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, wrapBlockProps, {
     attributes: newAttrForSave,
     uniqueId: uniqueId
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: getLayoutClasses()
-  }, general_date.show_day && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-icon__box"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-icon__number wcb-icon-day"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText.Content, {
-    tagName: "div",
-    value: daylabel,
-    className: "wcb-icon__label wcb-icon__daylabel"
-  })), general_date.show_hour && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-icon__box"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-icon__number wcb-icon-hrs"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText.Content, {
-    tagName: "div",
-    value: hrslabel,
-    className: "wcb-icon__label wcb-icon__hrslabel"
-  })), general_date.show_minute && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-icon__box"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-icon__number wcb-icon-mins"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText.Content, {
-    tagName: "div",
-    value: minlabel,
-    className: "wcb-icon__label wcb-icon__minlabel"
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-icon__box"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "wcb-icon__number wcb-icon-secs"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText.Content, {
-    tagName: "div",
-    value: seclabel,
-    className: "wcb-icon__label wcb-icon__seclabel"
-  }))));
+    className: `wcb-icon__content ${general_preset.preset}`
+  }));
 }
 
 /***/ }),
@@ -3727,19 +3281,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_controls_SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/SelectIcon/SelecIcon */ "./src/components/controls/SelectIcon/SelecIcon.tsx");
+/* harmony import */ var _components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyTextAlignControl/MyTextAlignControl */ "./src/components/controls/MyTextAlignControl/MyTextAlignControl.tsx");
+/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+/* harmony import */ var _components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/controls/MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
+/* harmony import */ var _components_controls_SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/controls/SelectIcon/SelecIcon */ "./src/components/controls/SelectIcon/SelecIcon.tsx");
+
+
+
+
 
 
 
 
 
 const WCB_ICON_BOX_PANEL_ICON_DEMO = {
-  enableIcon: true,
-  iconPosition: "top",
-  stackOn: "none",
-  verticalAlignment: "top",
+  size: {
+    Desktop: 20
+  },
+  alignment: {
+    Desktop: "center"
+  },
   icon: {
-    ..._components_controls_SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_4__.DEFAULT_MY_ICON,
+    ..._components_controls_SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_8__.DEFAULT_MY_ICON,
     iconName: "lni-checkmark-circle"
   }
 };
@@ -3751,50 +3315,31 @@ const WcbIconBoxPanelIcon = _ref => {
     onToggle,
     opened
   } = _ref;
+  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_5__["default"])() || "Desktop";
   const {
-    enableIcon,
     icon,
-    iconPosition,
-    stackOn,
-    verticalAlignment
+    alignment,
+    size
   } = panelData;
   //
-  const PLANS_DEMO = [{
-    value: "top",
-    label: "Top"
-  }, {
-    value: "left",
-    label: "Left"
-  }, {
-    value: "right",
-    label: "Right"
-  }, {
-    value: "leftOfTitle",
-    label: "Left Of Title"
-  }, {
-    value: "rightOfTitle",
-    label: "Right Of Title"
-  }, {
-    value: "bellowTitle",
-    label: "Bellow Title"
-  }];
-  const STACK_ON_DEMO = [{
-    value: "none",
-    label: "None"
-  }, {
-    value: "tablet",
-    label: "Tablet"
-  }, {
-    value: "mobile",
-    label: "Mobile"
-  }];
-  const VERTICAL_DEMO = [{
-    value: "top",
-    label: "Top"
-  }, {
-    value: "middle",
-    label: "Middle"
-  }];
+  const {
+    currentDeviceValue: TEXT_ALIGNMENT
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(alignment, deviceType);
+  //
+  const handleChangeTextAlignment = selected => {
+    setAttr__({
+      ...panelData,
+      alignment: {
+        ...alignment,
+        [deviceType]: selected
+      }
+    });
+  };
+  //
+
+  const {
+    currentDeviceValue: currentSize
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(size, deviceType);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     initialOpen: initialOpen,
     onToggle: onToggle,
@@ -3802,7 +3347,7 @@ const WcbIconBoxPanelIcon = _ref => {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Icon", "wcb")
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "space-y-5"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_8__["default"], {
     iconData: icon,
     onChange: value => {
       setAttr__({
@@ -3810,159 +3355,28 @@ const WcbIconBoxPanelIcon = _ref => {
         icon: value
       });
     }
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+    label: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      hasResponsive: true
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Size", "wcb")),
+    value: currentSize || 16,
+    onChange: value => {
+      setAttr__({
+        ...panelData,
+        size: {
+          ...size,
+          [deviceType]: value
+        }
+      });
+    },
+    min: 2,
+    max: 200
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    textAlignment: TEXT_ALIGNMENT,
+    onChange: handleChangeTextAlignment
   })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WcbIconBoxPanelIcon);
-
-/***/ }),
-
-/***/ "./src/block-icon/WcbIconPanelLayout.tsx":
-/*!***********************************************!*\
-  !*** ./src/block-icon/WcbIconPanelLayout.tsx ***!
-  \***********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "WCB_ICON_PANEL_LAYOUT_DEMO": () => (/* binding */ WCB_ICON_PANEL_LAYOUT_DEMO),
-/* harmony export */   "WCB_ICON_PANEL_LAYOUT_PRESET_CENTER_DEMO": () => (/* binding */ WCB_ICON_PANEL_LAYOUT_PRESET_CENTER_DEMO),
-/* harmony export */   "WCB_ICON_PANEL_LAYOUT_PRESET_LEFT_DEMO": () => (/* binding */ WCB_ICON_PANEL_LAYOUT_PRESET_LEFT_DEMO),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_controls_HelpText__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/HelpText */ "./src/components/controls/HelpText.tsx");
-/* harmony import */ var _components_controls_MyFlexPropertiesControl_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyFlexPropertiesControl/types */ "./src/components/controls/MyFlexPropertiesControl/types.ts");
-/* harmony import */ var _components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/controls/MyRadioGroup */ "./src/components/controls/MyRadioGroup.tsx");
-/* harmony import */ var _components_controls_MySpacingSizesControl_MySpacingSizesControl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/controls/MySpacingSizesControl/MySpacingSizesControl */ "./src/components/controls/MySpacingSizesControl/MySpacingSizesControl.tsx");
-/* harmony import */ var _components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/controls/MyTextAlignControl/MyTextAlignControl */ "./src/components/controls/MyTextAlignControl/MyTextAlignControl.tsx");
-/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
-/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
-
-
-
-
-
-
-
-
-
-
-
-const WCB_ICON_PANEL_LAYOUT_PRESET_LEFT_DEMO = {
-  textAlignment: {
-    Desktop: "left"
-  },
-  contentWidth: {
-    Desktop: "100%"
-  },
-  flexDirection: {
-    Desktop: "column"
-  }
-};
-const WCB_ICON_PANEL_LAYOUT_PRESET_CENTER_DEMO = {
-  textAlignment: {
-    Desktop: "center"
-  },
-  contentWidth: {
-    Desktop: "100%"
-  },
-  flexDirection: {
-    Desktop: "column"
-  }
-};
-const WCB_ICON_PANEL_LAYOUT_DEMO = {
-  textAlignment: {
-    Desktop: "center"
-  },
-  contentWidth: {
-    Desktop: "100%"
-  },
-  flexDirection: {
-    Desktop: "row"
-  }
-};
-const WcbIconPanelLayout = _ref => {
-  let {
-    panelData = WCB_ICON_PANEL_LAYOUT_DEMO,
-    setAttr__,
-    initialOpen,
-    onToggle,
-    opened
-  } = _ref;
-  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_9__["default"])() || "Desktop";
-  const {
-    textAlignment,
-    contentWidth,
-    flexDirection
-  } = panelData;
-  const {
-    currentDeviceValue: TEXT_ALIGNMENT
-  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_10__["default"])(textAlignment, deviceType);
-  const {
-    currentDeviceValue: CONTENT_WIDTH
-  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_10__["default"])(contentWidth, deviceType);
-  const {
-    currentDeviceValue: FLEX_DIRECTION
-  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_10__["default"])(flexDirection, deviceType);
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
-    initialOpen: initialOpen,
-    onToggle: onToggle,
-    opened: opened,
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Layout", "wcb")
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "space-y-5"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    textAlignment: TEXT_ALIGNMENT,
-    onChange: value => {
-      setAttr__({
-        ...panelData,
-        textAlignment: {
-          ...textAlignment,
-          [deviceType]: value
-        }
-      });
-    }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Flex Direction", "wcb"),
-    onChange: value => {
-      setAttr__({
-        ...panelData,
-        flexDirection: {
-          ...flexDirection,
-          [deviceType]: value
-        }
-      });
-    },
-    plans: _components_controls_MyFlexPropertiesControl_types__WEBPACK_IMPORTED_MODULE_5__.PLANS_FLEX_DIRECTIONS_DEMO,
-    value: FLEX_DIRECTION
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_HelpText__WEBPACK_IMPORTED_MODULE_4__["default"], null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Flex property between content and button."))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MySpacingSizesControl_MySpacingSizesControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Content width", "wcb"),
-    onChange: value => {
-      setAttr__({
-        ...panelData,
-        contentWidth: {
-          ...contentWidth,
-          [deviceType]: value
-        }
-      });
-    },
-    value: CONTENT_WIDTH || "100%",
-    units: [{
-      value: "%",
-      label: "%",
-      default: 100
-    }]
-  })));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WcbIconPanelLayout);
 
 /***/ }),
 
@@ -4059,57 +3473,41 @@ const WcbIconPanelPreset = _ref => {
 
 /***/ }),
 
-/***/ "./src/block-icon/WcbIconPanel_StyleDimension.tsx":
-/*!********************************************************!*\
-  !*** ./src/block-icon/WcbIconPanel_StyleDimension.tsx ***!
-  \********************************************************/
+/***/ "./src/block-icon/WcbIconPanel_StyleIcon.tsx":
+/*!***************************************************!*\
+  !*** ./src/block-icon/WcbIconPanel_StyleIcon.tsx ***!
+  \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "WCB_ICON_PANEL_STYLE_DIMENSION_DEMO": () => (/* binding */ WCB_ICON_PANEL_STYLE_DIMENSION_DEMO),
+/* harmony export */   "WCB_ICON_PANEL_STYLE_ICON_DEMO": () => (/* binding */ WCB_ICON_PANEL_STYLE_ICON_DEMO),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_controls_MySpacingSizesControl_MySpacingSizesControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/controls/MySpacingSizesControl/MySpacingSizesControl */ "./src/components/controls/MySpacingSizesControl/MySpacingSizesControl.tsx");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
-/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyColorPicker/MyColorPicker */ "./src/components/controls/MyColorPicker/MyColorPicker.tsx");
 
 
 
 
 
 
-
-const WCB_ICON_PANEL_STYLE_DIMENSION_DEMO = {
-  gap_boxes: {
-    Desktop: "40px",
-    Tablet: "20px",
-    Mobile: "10px"
-  },
-  width_box: {
-    Desktop: "155px",
-    Tablet: "120px",
-    Mobile: "65px"
-  },
-  gap_number: {
-    Desktop: "1px",
-    Tablet: "0px",
-    Mobile: "0px"
-  },
-  background: ""
+const WCB_ICON_PANEL_STYLE_ICON_DEMO = {
+  color: "#fff",
+  hoverColor: "#fff"
 };
-const WcbIconPanel_StyleDimension = _ref => {
+const WcbIconPanel_StyleIcon = _ref => {
   let {
-    panelData = WCB_ICON_PANEL_STYLE_DIMENSION_DEMO,
+    panelData = WCB_ICON_PANEL_STYLE_ICON_DEMO,
     setAttr__,
     initialOpen,
     onToggle,
@@ -4117,261 +3515,37 @@ const WcbIconPanel_StyleDimension = _ref => {
   } = _ref;
   const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_4__["default"])() || "Desktop";
   const {
-    gap_boxes,
-    width_box,
-    gap_number,
-    background
+    color,
+    hoverColor
   } = panelData;
-  const {
-    currentDeviceValue: currentGapBox
-  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_5__["default"])(gap_boxes, deviceType);
-  const {
-    currentDeviceValue: currentWidthBox
-  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_5__["default"])(width_box, deviceType);
-  const {
-    currentDeviceValue: currentGapNumber
-  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_5__["default"])(gap_number, deviceType);
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     initialOpen: initialOpen,
     onToggle: onToggle,
     opened: opened,
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Boxes", "wcb")
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Icon", "wcb")
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "space-y-5"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MySpacingSizesControl_MySpacingSizesControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    onChange: data => {
-      setAttr__({
-        ...panelData,
-        gap_boxes: {
-          ...gap_boxes,
-          [deviceType]: data
-        }
-      });
-    },
-    value: currentGapBox || "40",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Spacing between boxes", "wcb")
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MySpacingSizesControl_MySpacingSizesControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    onChange: data => {
-      setAttr__({
-        ...panelData,
-        width_box: {
-          ...width_box,
-          [deviceType]: data
-        }
-      });
-    },
-    value: currentWidthBox || "150",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Width of a box", "wcb")
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MySpacingSizesControl_MySpacingSizesControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    onChange: data => {
-      setAttr__({
-        ...panelData,
-        gap_number: {
-          ...gap_number,
-          [deviceType]: data
-        }
-      });
-    },
-    value: currentGapNumber || "1",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Spacing between number and label", "wcb")
-  }))));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WcbIconPanel_StyleDimension);
-
-/***/ }),
-
-/***/ "./src/block-icon/WcbIconPanel_StyleNumber.tsx":
-/*!*****************************************************!*\
-  !*** ./src/block-icon/WcbIconPanel_StyleNumber.tsx ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "WCB_ICON_PANEL_STYLE_NUMBER_DEMO": () => (/* binding */ WCB_ICON_PANEL_STYLE_NUMBER_DEMO),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_controls_MyTypographyControl_MyTypographyControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyTypographyControl/MyTypographyControl */ "./src/components/controls/MyTypographyControl/MyTypographyControl.tsx");
-/* harmony import */ var _components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyTypographyControl/types */ "./src/components/controls/MyTypographyControl/types.ts");
-/* harmony import */ var _components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/controls/MyDisclosure */ "./src/components/controls/MyDisclosure.tsx");
-/* harmony import */ var _components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/controls/MyColorPicker/MyColorPicker */ "./src/components/controls/MyColorPicker/MyColorPicker.tsx");
-
-
-
-
-
-
-
-
-const WCB_ICON_PANEL_STYLE_NUMBER_DEMO = {
-  typography: {
-    ..._components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_5__.TYPOGRAPHY_CONTROL_DEMO,
-    fontSizes: {
-      Desktop: "56px",
-      Tablet: "38px",
-      Mobile: "20px"
-    },
-    appearance: {
-      ..._components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_5__.TYPOGRAPHY_CONTROL_DEMO.appearance,
-      style: {
-        ..._components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_5__.TYPOGRAPHY_CONTROL_DEMO.appearance.style,
-        fontWeight: "400"
-      }
-    }
-  },
-  textColor: "inherit"
-};
-const WcbIconPanel_StyleNumber = _ref => {
-  let {
-    panelData = WCB_ICON_PANEL_STYLE_NUMBER_DEMO,
-    setAttr__,
-    initialOpen,
-    onToggle,
-    opened
-  } = _ref;
-  const {
-    typography,
-    textColor
-  } = panelData;
-
-  //
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
-    initialOpen: initialOpen,
-    onToggle: onToggle,
-    opened: opened,
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Number", "wcb")
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "space-y-2.5"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTypographyControl_MyTypographyControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    typographyControl: typography,
-    setAttrs__typography: typography => {
-      setAttr__({
-        ...panelData,
-        typography
-      });
-    }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    defaultOpen: true,
-    label: "More styles"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_5__["default"], {
     onChange: color => {
       setAttr__({
         ...panelData,
-        textColor: color
+        color
       });
     },
-    color: textColor
-  }))));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WcbIconPanel_StyleNumber);
-
-/***/ }),
-
-/***/ "./src/block-icon/WcbIconPanel_StyleTitle.tsx":
-/*!****************************************************!*\
-  !*** ./src/block-icon/WcbIconPanel_StyleTitle.tsx ***!
-  \****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "WCB_ICON_PANEL_STYLE_TITLE_DEMO": () => (/* binding */ WCB_ICON_PANEL_STYLE_TITLE_DEMO),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_controls_MyTypographyControl_MyTypographyControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyTypographyControl/MyTypographyControl */ "./src/components/controls/MyTypographyControl/MyTypographyControl.tsx");
-/* harmony import */ var _components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyTypographyControl/types */ "./src/components/controls/MyTypographyControl/types.ts");
-/* harmony import */ var _components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/controls/MyDisclosure */ "./src/components/controls/MyDisclosure.tsx");
-/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
-/* harmony import */ var _components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/controls/MyColorPicker/MyColorPicker */ "./src/components/controls/MyColorPicker/MyColorPicker.tsx");
-
-
-
-
-
-
-
-
-
-const WCB_ICON_PANEL_STYLE_TITLE_DEMO = {
-  typography: {
-    ..._components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_5__.TYPOGRAPHY_CONTROL_DEMO,
-    fontSizes: {
-      Desktop: "14px",
-      Tablet: "14px",
-      Mobile: "11px"
-    },
-    appearance: {
-      ..._components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_5__.TYPOGRAPHY_CONTROL_DEMO.appearance,
-      style: {
-        ..._components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_5__.TYPOGRAPHY_CONTROL_DEMO.appearance.style,
-        fontWeight: "400"
-      }
-    }
-  },
-  textColor: "inherit"
-};
-const WcbIconPanel_StyleTitle = _ref => {
-  let {
-    panelData = WCB_ICON_PANEL_STYLE_TITLE_DEMO,
-    setAttr__,
-    initialOpen,
-    onToggle,
-    opened
-  } = _ref;
-  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_7__["default"])() || "Desktop";
-  const {
-    typography,
-    textColor
-  } = panelData;
-
-  //
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
-    initialOpen: initialOpen,
-    onToggle: onToggle,
-    opened: opened,
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Label", "wcb")
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "space-y-2.5"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTypographyControl_MyTypographyControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    typographyControl: typography,
-    setAttrs__typography: typography => {
-      setAttr__({
-        ...panelData,
-        typography
-      });
-    }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    defaultOpen: true,
-    label: "More styles"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    color: color,
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Color", "wcb")
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_5__["default"], {
     onChange: color => {
       setAttr__({
         ...panelData,
-        textColor: color
+        hoverColor: color
       });
     },
-    color: textColor
-  }))));
+    color: hoverColor,
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Hover color", "wcb")
+  })));
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WcbIconPanel_StyleTitle);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WcbIconPanel_StyleIcon);
 
 /***/ }),
 
@@ -4389,18 +3563,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/controls/MyMotionEffectControl/MyMotionEffectControl */ "./src/components/controls/MyMotionEffectControl/MyMotionEffectControl.tsx");
 /* harmony import */ var _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl */ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx");
 /* harmony import */ var _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/controls/MyZIndexControl/MyZIndexControl */ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx");
-/* harmony import */ var _WcbIconPanelLayout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WcbIconPanelLayout */ "./src/block-icon/WcbIconPanelLayout.tsx");
+/* harmony import */ var _WcbIconPanelIcon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WcbIconPanelIcon */ "./src/block-icon/WcbIconPanelIcon.tsx");
 /* harmony import */ var _WcbIconPanelPreset__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./WcbIconPanelPreset */ "./src/block-icon/WcbIconPanelPreset.tsx");
-/* harmony import */ var _WcbIconPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WcbIconPanel_StyleDimension */ "./src/block-icon/WcbIconPanel_StyleDimension.tsx");
-/* harmony import */ var _WcbIconPanelIcon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./WcbIconPanelIcon */ "./src/block-icon/WcbIconPanelIcon.tsx");
-/* harmony import */ var _WcbIconPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./WcbIconPanel_StyleTitle */ "./src/block-icon/WcbIconPanel_StyleTitle.tsx");
-/* harmony import */ var _WcbIconPanel_StyleNumber__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WcbIconPanel_StyleNumber */ "./src/block-icon/WcbIconPanel_StyleNumber.tsx");
-/* harmony import */ var _WcbButtonPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./WcbButtonPanel_StyleBackground */ "./src/block-icon/WcbButtonPanel_StyleBackground.tsx");
-/* harmony import */ var _WcbButtonPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./WcbButtonPanel_StyleBorder */ "./src/block-icon/WcbButtonPanel_StyleBorder.tsx");
-/* harmony import */ var _WcbButtonPanel_StyleBoxshadow__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./WcbButtonPanel_StyleBoxshadow */ "./src/block-icon/WcbButtonPanel_StyleBoxshadow.tsx");
-
-
-
+/* harmony import */ var _WcbIconPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WcbIconPanel_StyleIcon */ "./src/block-icon/WcbIconPanel_StyleIcon.tsx");
+/* harmony import */ var _WcbButtonPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./WcbButtonPanel_StyleBackground */ "./src/block-icon/WcbButtonPanel_StyleBackground.tsx");
+/* harmony import */ var _WcbButtonPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./WcbButtonPanel_StyleBorder */ "./src/block-icon/WcbButtonPanel_StyleBorder.tsx");
+/* harmony import */ var _WcbButtonPanel_StyleBoxshadow__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WcbButtonPanel_StyleBoxshadow */ "./src/block-icon/WcbButtonPanel_StyleBoxshadow.tsx");
 
 
 
@@ -4419,68 +3587,31 @@ const blokc1Attrs = {
     type: "string",
     default: ""
   },
-  // THE ATTRS OF BLOCK HERE
-  daylabel: {
-    type: "string",
-    source: "html",
-    selector: ".wcb-icon__daylabel",
-    default: "DAYS"
-  },
-  hrslabel: {
-    type: "string",
-    source: "html",
-    selector: ".wcb-icon__hrslabel",
-    default: "HOURS"
-  },
-  minlabel: {
-    type: "string",
-    source: "html",
-    selector: ".wcb-icon__minlabel",
-    default: "MINUTES"
-  },
-  seclabel: {
-    type: "string",
-    source: "html",
-    selector: ".wcb-icon__seclabel",
-    default: "SECONDS"
-  },
   //
 
-  general_layout: {
+  general_icon: {
     type: "object",
-    default: _WcbIconPanelLayout__WEBPACK_IMPORTED_MODULE_3__.WCB_ICON_PANEL_LAYOUT_DEMO
+    default: _WcbIconPanelIcon__WEBPACK_IMPORTED_MODULE_3__.WCB_ICON_BOX_PANEL_ICON_DEMO
   },
   general_preset: {
     type: "object",
     default: _WcbIconPanelPreset__WEBPACK_IMPORTED_MODULE_4__.WCB_ICON_PANEL_PRESET_DEMO
   },
-  general_date: {
+  style_icon: {
     type: "object",
-    default: _WcbIconPanelIcon__WEBPACK_IMPORTED_MODULE_6__.WCB_ICON_PANEL_DATE_DEMO
-  },
-  style_label: {
-    type: "object",
-    default: _WcbIconPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_7__.WCB_ICON_PANEL_STYLE_TITLE_DEMO
-  },
-  style_number: {
-    type: "object",
-    default: _WcbIconPanel_StyleNumber__WEBPACK_IMPORTED_MODULE_8__.WCB_ICON_PANEL_STYLE_NUMBER_DEMO
+    default: _WcbIconPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_5__.WCB_ICON_PANEL_STYLE_ICON_DEMO
   },
   style_background: {
     type: "object",
-    default: _WcbButtonPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_9__.WCB_BUTTON_PANEL_STYLE_BACKGROUND_DEMO
+    default: _WcbButtonPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_6__.WCB_BUTTON_PANEL_STYLE_BACKGROUND_DEMO
   },
   style_border: {
     type: "object",
-    default: _WcbButtonPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_10__.WCB_BUTTON_PANEL_STYLE_BORDER_DEMO
+    default: _WcbButtonPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_7__.WCB_BUTTON_PANEL_STYLE_BORDER_DEMO
   },
   style_boxshadow: {
     type: "object",
-    default: _WcbButtonPanel_StyleBoxshadow__WEBPACK_IMPORTED_MODULE_11__.WCB_BUTTON_PANEL_STYLE_BOXSHADOW_DEMO
-  },
-  style_dimension: {
-    type: "object",
-    default: _WcbIconPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_5__.WCB_ICON_PANEL_STYLE_DIMENSION_DEMO
+    default: _WcbButtonPanel_StyleBoxshadow__WEBPACK_IMPORTED_MODULE_8__.WCB_BUTTON_PANEL_STYLE_BOXSHADOW_DEMO
   },
   // ADVANCE
   advance_responsiveCondition: {
@@ -4621,19 +3752,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 const ICON_PRESET = [{
   name: "wcb-icon-1",
-  icon: `<svg width="115" height="90" viewBox="0 0 325 245" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"></path><circle cx="80.3564" cy="136" r="20.6301" fill="#E6E6E6"></circle><rect x="73.0564" y="125.566" width="6.28647" height="14.814" fill="#B6B6B6"></rect><rect x="81.3699" y="125.566" width="6.28647" height="14.814" fill="#B6B6B6"></rect><path d="M72.5025 145.801C72.5025 145.249 72.9502 144.801 73.5025 144.801H87.2104C87.7627 144.801 88.2104 145.249 88.2104 145.801C88.2104 146.354 87.7627 146.801 87.2104 146.801H73.5025C72.9502 146.801 72.5025 146.354 72.5025 145.801Z" fill="#B6B6B6"></path><circle cx="135.119" cy="136" r="20.6301" fill="#E6E6E6"></circle><rect x="127.819" y="125.566" width="6.28647" height="14.814" fill="#B6B6B6"></rect><rect x="136.132" y="125.566" width="6.28647" height="14.814" fill="#B6B6B6"></rect><path d="M127.265 145.801C127.265 145.249 127.713 144.801 128.265 144.801H141.973C142.525 144.801 142.973 145.249 142.973 145.801C142.973 146.354 142.525 146.801 141.973 146.801H128.265C127.713 146.801 127.265 146.354 127.265 145.801Z" fill="#B6B6B6"></path><circle cx="189.881" cy="136" r="20.6301" fill="#E6E6E6"></circle><rect x="182.581" y="125.566" width="6.28647" height="14.814" fill="#B6B6B6"></rect><rect x="190.895" y="125.566" width="6.28647" height="14.814" fill="#B6B6B6"></rect><path d="M182.027 145.801C182.027 145.249 182.475 144.801 183.027 144.801H196.735C197.287 144.801 197.735 145.249 197.735 145.801C197.735 146.354 197.287 146.801 196.735 146.801H183.027C182.475 146.801 182.027 146.354 182.027 145.801Z" fill="#B6B6B6"></path><circle cx="244.644" cy="136" r="20.6301" fill="#E6E6E6"></circle><rect x="237.344" y="125.566" width="6.28647" height="14.814" fill="#B6B6B6"></rect><rect x="245.657" y="125.566" width="6.28647" height="14.814" fill="#B6B6B6"></rect><path d="M236.79 145.801C236.79 145.249 237.237 144.801 237.79 144.801H251.498C252.05 144.801 252.498 145.249 252.498 145.801C252.498 146.354 252.05 146.801 251.498 146.801H237.79C237.237 146.801 236.79 146.354 236.79 145.801Z" fill="#B6B6B6"></path></svg>`
+  icon: `<svg width="115" height="90" viewBox="0 0 325 245" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"/><circle cx="162.619" cy="136.119" r="30" fill="#B6B6B6"/><path d="M161.512 118.9C161.922 117.917 163.316 117.917 163.726 118.9L167.605 128.193C167.778 128.608 168.168 128.891 168.615 128.927L178.652 129.744C179.715 129.831 180.145 131.156 179.336 131.851L171.697 138.412C171.356 138.704 171.207 139.162 171.311 139.599L173.635 149.397C173.881 150.434 172.754 151.254 171.844 150.699L163.243 145.461C162.86 145.227 162.378 145.227 161.995 145.461L153.394 150.699C152.484 151.254 151.356 150.434 151.602 149.397L153.927 139.599C154.031 139.162 153.882 138.704 153.541 138.412L145.901 131.851C145.093 131.156 145.523 129.831 146.586 129.744L156.623 128.927C157.07 128.891 157.46 128.608 157.633 128.193L161.512 118.9Z" fill="white"/></svg>`
 }, {
   name: "wcb-icon-2",
-  icon: `<svg width="115" height="90" viewBox="0 0 325 245" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"></path><circle cx="80.3565" cy="136" r="20.1301" stroke="#B6B6B6" fill="none"></circle><rect x="73.5565" y="126.066" width="5.28647" height="13.814" fill="#B6B6B6" stroke="#B6B6B6"></rect><rect x="81.87" y="126.066" width="5.28647" height="13.814" fill="#B6B6B6" stroke="#B6B6B6"></rect><path d="M73.0025 145.801C73.0025 145.525 73.2264 145.301 73.5025 145.301H87.2104C87.4865 145.301 87.7104 145.525 87.7104 145.801C87.7104 146.077 87.4865 146.301 87.2104 146.301H73.5025C73.2264 146.301 73.0025 146.077 73.0025 145.801Z" fill="#B6B6B6" stroke="#B6B6B6"></path><circle cx="135.119" cy="136" r="20.1301" stroke="#B6B6B6" fill="none"></circle><rect x="128.319" y="126.066" width="5.28647" height="13.814" fill="#B6B6B6" stroke="#B6B6B6"></rect><rect x="136.632" y="126.066" width="5.28647" height="13.814" fill="#B6B6B6" stroke="#B6B6B6"></rect><path d="M127.765 145.801C127.765 145.525 127.989 145.301 128.265 145.301H141.973C142.249 145.301 142.473 145.525 142.473 145.801C142.473 146.077 142.249 146.301 141.973 146.301H128.265C127.989 146.301 127.765 146.077 127.765 145.801Z" fill="#B6B6B6" stroke="#B6B6B6"></path><circle cx="189.881" cy="136" r="20.1301" stroke="#B6B6B6" fill="none"></circle><rect x="183.081" y="126.066" width="5.28647" height="13.814" fill="#B6B6B6" stroke="#B6B6B6"></rect><rect x="191.395" y="126.066" width="5.28647" height="13.814" fill="#B6B6B6" stroke="#B6B6B6"></rect><path d="M182.527 145.801C182.527 145.525 182.751 145.301 183.027 145.301H196.735C197.011 145.301 197.235 145.525 197.235 145.801C197.235 146.077 197.011 146.301 196.735 146.301H183.027C182.751 146.301 182.527 146.077 182.527 145.801Z" fill="#B6B6B6" stroke="#B6B6B6"></path><circle cx="244.644" cy="136" r="20.1301" stroke="#B6B6B6" fill="none"></circle><rect x="237.844" y="126.066" width="5.28647" height="13.814" fill="#B6B6B6" stroke="#B6B6B6"></rect><rect x="246.157" y="126.066" width="5.28647" height="13.814" fill="#B6B6B6" stroke="#B6B6B6"></rect><path d="M237.29 145.801C237.29 145.525 237.514 145.301 237.79 145.301H251.498C251.774 145.301 251.998 145.525 251.998 145.801C251.998 146.077 251.774 146.301 251.498 146.301H237.79C237.514 146.301 237.29 146.077 237.29 145.801Z" fill="#B6B6B6" stroke="#B6B6B6"></path><circle cx="106.635" cy="132.526" r="1.30509" fill="#B6B6B6"></circle><circle cx="106.635" cy="139.473" r="1.30509" fill="#B6B6B6"></circle><circle cx="162.5" cy="132.526" r="1.30509" fill="#B6B6B6"></circle><circle cx="162.5" cy="139.473" r="1.30509" fill="#B6B6B6"></circle><circle cx="217.625" cy="132.527" r="1.30509" fill="#B6B6B6"></circle><circle cx="217.625" cy="139.473" r="1.30509" fill="#B6B6B6"></circle></svg>`
+  icon: `<svg width="115" height="90" viewBox="0 0 325 245" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"/><path d="M192.119 136C192.119 152.225 178.913 165.381 162.619 165.381C146.325 165.381 133.119 152.225 133.119 136C133.119 119.775 146.325 106.619 162.619 106.619C178.913 106.619 192.119 119.775 192.119 136Z" stroke="#959595" fill="none"/><path d="M161.512 118.848C161.924 117.867 163.314 117.867 163.726 118.848L167.604 128.105C167.778 128.518 168.167 128.801 168.614 128.837L178.643 129.65C179.707 129.736 180.137 131.064 179.326 131.758L171.699 138.281C171.357 138.574 171.208 139.033 171.312 139.471L173.634 149.219C173.881 150.255 172.755 151.075 171.844 150.523L163.241 145.304C162.859 145.072 162.379 145.072 161.996 145.304L153.394 150.523C152.483 151.075 151.357 150.255 151.604 149.219L153.926 139.471C154.03 139.033 153.88 138.574 153.538 138.281L145.912 131.758C145.101 131.064 145.531 129.736 146.595 129.65L156.624 128.837C157.071 128.801 157.46 128.518 157.633 128.105L161.512 118.848Z" fill="#B6B6B6"/></svg>`
 }, {
   name: "wcb-icon-3",
-  icon: `<svg width="115" height="90" viewBox="0 0 325 245" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"></path><rect x="65.1709" y="119.366" width="42.796" height="30.1343" fill="#B6B6B6"></rect><rect x="79.2689" y="123.816" width="6.28647" height="14.814" fill="white"></rect><rect x="87.5824" y="123.816" width="6.28647" height="14.814" fill="white"></rect><path d="M78.7149 144.051C78.7149 143.498 79.1626 143.051 79.7149 143.051H93.4228C93.9751 143.051 94.4228 143.498 94.4228 144.051C94.4228 144.603 93.9751 145.051 93.4228 145.051H79.7149C79.1626 145.051 78.7149 144.603 78.7149 144.051Z" fill="white"></path><rect x="115.792" y="119.366" width="42.796" height="30.1343" fill="#B6B6B6"></rect><rect x="129.89" y="123.816" width="6.28647" height="14.814" fill="white"></rect><rect x="138.203" y="123.816" width="6.28647" height="14.814" fill="white"></rect><path d="M129.336 144.051C129.336 143.498 129.783 143.051 130.336 143.051H144.044C144.596 143.051 145.044 143.498 145.044 144.051C145.044 144.603 144.596 145.051 144.044 145.051H130.336C129.783 145.051 129.336 144.603 129.336 144.051Z" fill="white"></path><rect x="166.412" y="119.366" width="42.796" height="30.1343" fill="#B6B6B6"></rect><rect x="180.51" y="123.816" width="6.28647" height="14.814" fill="white"></rect><rect x="188.824" y="123.816" width="6.28647" height="14.814" fill="white"></rect><path d="M179.956 144.051C179.956 143.498 180.404 143.051 180.956 143.051H194.664C195.217 143.051 195.664 143.498 195.664 144.051C195.664 144.603 195.217 145.051 194.664 145.051H180.956C180.404 145.051 179.956 144.603 179.956 144.051Z" fill="white"></path><rect x="217.033" y="119.366" width="42.796" height="30.1343" fill="#B6B6B6"></rect><rect x="231.131" y="123.816" width="6.28647" height="14.814" fill="white"></rect><rect x="239.445" y="123.816" width="6.28647" height="14.814" fill="white"></rect><path d="M230.577 144.051C230.577 143.498 231.025 143.051 231.577 143.051H245.285C245.837 143.051 246.285 143.498 246.285 144.051C246.285 144.603 245.837 145.051 245.285 145.051H231.577C231.025 145.051 230.577 144.603 230.577 144.051Z" fill="white"></path><rect x="65.1709" y="119.366" width="42.796" height="30.1343" fill="#B6B6B6"></rect><rect x="79.2689" y="123.816" width="6.28647" height="14.814" fill="white"></rect><rect x="87.5824" y="123.816" width="6.28647" height="14.814" fill="white"></rect><path d="M78.7149 144.051C78.7149 143.498 79.1626 143.051 79.7149 143.051H93.4228C93.9751 143.051 94.4228 143.498 94.4228 144.051C94.4228 144.603 93.9751 145.051 93.4228 145.051H79.7149C79.1626 145.051 78.7149 144.603 78.7149 144.051Z" fill="white"></path><rect x="115.792" y="119.366" width="42.796" height="30.1343" fill="#B6B6B6"></rect><rect x="129.89" y="123.816" width="6.28647" height="14.814" fill="white"></rect><rect x="138.203" y="123.816" width="6.28647" height="14.814" fill="white"></rect><path d="M129.336 144.051C129.336 143.498 129.783 143.051 130.336 143.051H144.044C144.596 143.051 145.044 143.498 145.044 144.051C145.044 144.603 144.596 145.051 144.044 145.051H130.336C129.783 145.051 129.336 144.603 129.336 144.051Z" fill="white"></path><rect x="166.412" y="119.366" width="42.796" height="30.1343" fill="#B6B6B6"></rect><rect x="180.51" y="123.816" width="6.28647" height="14.814" fill="white"></rect><rect x="188.824" y="123.816" width="6.28647" height="14.814" fill="white"></rect><path d="M179.956 144.051C179.956 143.498 180.404 143.051 180.956 143.051H194.664C195.217 143.051 195.664 143.498 195.664 144.051C195.664 144.603 195.217 145.051 194.664 145.051H180.956C180.404 145.051 179.956 144.603 179.956 144.051Z" fill="white"></path><rect x="217.033" y="119.366" width="42.796" height="30.1343" fill="#B6B6B6"></rect><rect x="231.131" y="123.816" width="6.28647" height="14.814" fill="white"></rect><rect x="239.445" y="123.816" width="6.28647" height="14.814" fill="white"></rect><path d="M230.577 144.051C230.577 143.498 231.025 143.051 231.577 143.051H245.285C245.837 143.051 246.285 143.498 246.285 144.051C246.285 144.603 245.837 145.051 245.285 145.051H231.577C231.025 145.051 230.577 144.603 230.577 144.051Z" fill="white"></path></svg>`
+  icon: `<svg width="115" height="90" viewBox="0 0 325 245" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"/><rect x="132.902" y="106" width="60.1963" height="60" rx="5" fill="#B6B6B6"/><path d="M161.893 118.849C162.305 117.867 163.695 117.867 164.107 118.849L167.986 128.105C168.159 128.519 168.548 128.801 168.995 128.837L179.024 129.651C180.088 129.737 180.518 131.065 179.707 131.759L172.081 138.282C171.738 138.574 171.589 139.034 171.693 139.472L174.015 149.219C174.262 150.256 173.136 151.076 172.225 150.523L163.622 145.304C163.24 145.072 162.76 145.072 162.378 145.304L153.775 150.523C152.864 151.076 151.738 150.256 151.985 149.219L154.307 139.472C154.411 139.034 154.261 138.574 153.919 138.282L146.293 131.759C145.482 131.065 145.912 129.737 146.976 129.651L157.005 128.837C157.452 128.801 157.841 128.519 158.014 128.105L161.893 118.849Z" fill="white"/></svg>`
 }, {
   name: "wcb-icon-4",
-  icon: `<svg width="115" height="90" viewBox="0 0 325 245" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"></path><rect x="71.2434" y="125.94" width="7.20791" height="16.9854" fill="#B6B6B6"></rect><rect x="80.7755" y="125.94" width="7.20791" height="16.9854" fill="#B6B6B6"></rect><rect x="66.0374" y="119.866" width="41.796" height="29.1343" stroke="#B6B6B6" fill="none"></rect><path d="M90.3075 134.433C90.3075 133.8 90.8208 133.287 91.4541 133.287H101.481C102.114 133.287 102.627 133.8 102.627 134.433V134.433C102.627 135.066 102.114 135.58 101.481 135.58H91.4541C90.8208 135.58 90.3075 135.066 90.3075 134.433V134.433Z" fill="#B6B6B6"></path><rect x="121.62" y="125.94" width="7.20791" height="16.9854" fill="#B6B6B6"></rect><rect x="131.152" y="125.94" width="7.20791" height="16.9854" fill="#B6B6B6"></rect><rect x="116.414" y="119.866" width="41.796" height="29.1343" stroke="#B6B6B6" fill="none"></rect><path d="M140.684 134.433C140.684 133.8 141.197 133.287 141.831 133.287H151.857C152.49 133.287 153.004 133.8 153.004 134.433V134.433C153.004 135.066 152.49 135.58 151.857 135.58H141.831C141.197 135.58 140.684 135.066 140.684 134.433V134.433Z" fill="#B6B6B6"></path><rect x="171.996" y="125.94" width="7.20791" height="16.9854" fill="#B6B6B6"></rect><rect x="181.528" y="125.94" width="7.20791" height="16.9854" fill="#B6B6B6"></rect><rect x="166.79" y="119.866" width="41.796" height="29.1343" stroke="#B6B6B6" fill="none"></rect><path d="M191.06 134.433C191.06 133.8 191.574 133.287 192.207 133.287H202.234C202.867 133.287 203.38 133.8 203.38 134.433V134.433C203.38 135.066 202.867 135.58 202.234 135.58H192.207C191.574 135.58 191.06 135.066 191.06 134.433V134.433Z" fill="#B6B6B6"></path><rect x="222.373" y="125.94" width="7.20791" height="16.9854" fill="#B6B6B6"></rect><rect x="231.905" y="125.94" width="7.20791" height="16.9854" fill="#B6B6B6"></rect><path d="M241.437 134.433C241.437 133.8 241.95 133.287 242.583 133.287H252.61C253.243 133.287 253.757 133.8 253.757 134.433V134.433C253.757 135.066 253.243 135.58 252.61 135.58H242.583C241.95 135.58 241.437 135.066 241.437 134.433V134.433Z" fill="#B6B6B6"></path><rect x="217.167" y="119.866" width="41.796" height="29.1343" stroke="#B6B6B6" fill="none"></rect></svg>`
-}, {
-  name: "wcb-icon-5",
-  icon: `<svg width="115" height="90" viewBox="0 0 325 245" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"></path><rect x="65.4309" y="125.65" width="8.78394" height="20.6993" fill="#B6B6B6"></rect><rect x="77.0472" y="125.65" width="8.78394" height="20.6993" fill="#B6B6B6"></rect><path d="M88.6635 144.952C88.6635 144.181 89.289 143.555 90.0607 143.555H102.28C103.051 143.555 103.677 144.181 103.677 144.952C103.677 145.724 103.051 146.35 102.28 146.35H90.0607C89.289 146.35 88.6635 145.724 88.6635 144.952Z" fill="#B6B6B6"></path><rect x="117.395" y="125.65" width="8.78394" height="20.6993" fill="#B6B6B6"></rect><rect x="129.011" y="125.65" width="8.78394" height="20.6993" fill="#B6B6B6"></rect><path d="M140.628 144.952C140.628 144.181 141.253 143.555 142.025 143.555H154.244C155.015 143.555 155.641 144.181 155.641 144.952C155.641 145.724 155.015 146.35 154.244 146.35H142.025C141.253 146.35 140.628 145.724 140.628 144.952Z" fill="#B6B6B6"></path><rect x="169.359" y="125.65" width="8.78394" height="20.6993" fill="#B6B6B6"></rect><rect x="180.975" y="125.65" width="8.78394" height="20.6993" fill="#B6B6B6"></rect><path d="M192.592 144.952C192.592 144.181 193.217 143.555 193.989 143.555H206.208C206.979 143.555 207.605 144.181 207.605 144.952C207.605 145.724 206.979 146.35 206.208 146.35H193.989C193.217 146.35 192.592 145.724 192.592 144.952Z" fill="#B6B6B6"></path><rect x="221.323" y="125.65" width="8.78394" height="20.6993" fill="#B6B6B6"></rect><rect x="232.939" y="125.65" width="8.78394" height="20.6993" fill="#B6B6B6"></rect><path d="M244.556 144.952C244.556 144.181 245.181 143.555 245.953 143.555H258.172C258.943 143.555 259.569 144.181 259.569 144.952C259.569 145.724 258.943 146.35 258.172 146.35H245.953C245.181 146.35 244.556 145.724 244.556 144.952Z" fill="#B6B6B6"></path></svg>`
+  icon: `<svg width="115" height="90" viewBox="0 0 325 245" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"/><rect x="133.402" y="106.5" width="59.1963" height="59" rx="4.5" stroke="#959595" fill="none"/><path d="M161.893 118.849C162.305 117.867 163.695 117.867 164.107 118.849L167.986 128.105C168.159 128.519 168.548 128.801 168.995 128.837L179.024 129.651C180.088 129.737 180.518 131.065 179.707 131.759L172.081 138.282C171.738 138.574 171.589 139.034 171.693 139.472L174.015 149.219C174.262 150.256 173.136 151.076 172.225 150.523L163.622 145.304C163.24 145.072 162.76 145.072 162.378 145.304L153.775 150.523C152.864 151.076 151.738 150.256 151.985 149.219L154.307 139.472C154.411 139.034 154.261 138.574 153.919 138.282L146.293 131.759C145.482 131.065 145.912 129.737 146.976 129.651L157.005 128.837C157.452 128.801 157.841 128.519 158.014 128.105L161.893 118.849Z" fill="#B6B6B6"/></svg>`
 }];
 
 /***/ }),
@@ -5087,36 +4215,6 @@ function SaveCommon(_ref) {
   }, blockJson));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SaveCommon);
-
-/***/ }),
-
-/***/ "./src/components/controls/HelpText.tsx":
-/*!**********************************************!*\
-  !*** ./src/components/controls/HelpText.tsx ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-
-
-const HelpText = _ref => {
-  let {
-    children,
-    className = "my-1"
-  } = _ref;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: `components-form-token-field__help ${className}`
-  }, children);
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HelpText);
 
 /***/ }),
 
@@ -5941,376 +5039,6 @@ const MyColorPicker = _ref => {
 
 /***/ }),
 
-/***/ "./src/components/controls/MyCombobox.tsx":
-/*!************************************************!*\
-  !*** ./src/components/controls/MyCombobox.tsx ***!
-  \************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-
-
-
-const MyComboboxControl = _ref => {
-  let {
-    onChange,
-    options,
-    value,
-    label
-  } = _ref;
-  const [fontSize, setFontSize] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(value || "");
-  const [filteredOptions, setFilteredOptions] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(options);
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
-    setFontSize(value || "");
-  }, [value]);
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ComboboxControl, {
-    label: label,
-    value: fontSize,
-    onChange: value => {
-      setFontSize(value || "");
-      onChange(value || "");
-    },
-    options: filteredOptions,
-    onFilterValueChange: inputValue => setFilteredOptions(options.filter(option => option.label.toLowerCase().startsWith(inputValue.toLowerCase())))
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyComboboxControl);
-
-/***/ }),
-
-/***/ "./src/components/controls/MyDimensionsControl/MyDimensionsControl.tsx":
-/*!*****************************************************************************!*\
-  !*** ./src/components/controls/MyDimensionsControl/MyDimensionsControl.tsx ***!
-  \*****************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "MY_GAP_UNITS": () => (/* binding */ MY_GAP_UNITS),
-/* harmony export */   "MY_HORIZOLTAL_UNITS": () => (/* binding */ MY_HORIZOLTAL_UNITS),
-/* harmony export */   "MY_VERTICAL_UNITS": () => (/* binding */ MY_VERTICAL_UNITS),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
-/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./types */ "./src/components/controls/MyDimensionsControl/types.ts");
-/* harmony import */ var _MySpacingSizesControl_MySpacingSizesControl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../MySpacingSizesControl/MySpacingSizesControl */ "./src/components/controls/MySpacingSizesControl/MySpacingSizesControl.tsx");
-/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
-
-
-
-
-
-
-
-
-
-const MY_GAP_UNITS = [{
-  value: "px",
-  label: "px",
-  default: 32,
-  step: 1
-}, {
-  value: "rem",
-  label: "rem",
-  default: 2,
-  step: 0.01
-}, {
-  value: "em",
-  label: "em",
-  default: 2,
-  step: 0.01
-}, {
-  value: "%",
-  label: "%",
-  default: 50,
-  step: 0.1
-}];
-const MY_HORIZOLTAL_UNITS = [{
-  value: "px",
-  label: "px",
-  default: 32,
-  step: 1
-}, {
-  value: "rem",
-  label: "rem",
-  default: 2,
-  step: 0.01
-}, {
-  value: "em",
-  label: "em",
-  default: 2,
-  step: 0.01
-}, {
-  value: "%",
-  label: "%",
-  default: 20,
-  step: 0.1
-}, {
-  value: "vw",
-  label: "vw",
-  default: 20,
-  step: 0.1
-}];
-const MY_VERTICAL_UNITS = [{
-  value: "px",
-  label: "px",
-  default: 32,
-  step: 1
-}, {
-  value: "rem",
-  label: "rem",
-  default: 2,
-  step: 0.01
-}, {
-  value: "em",
-  label: "em",
-  default: 2,
-  step: 0.01
-}, {
-  value: "%",
-  label: "%",
-  default: 20,
-  step: 0.1
-}, {
-  value: "vh",
-  label: "vh",
-  default: 20,
-  step: 0.1
-}];
-const MyDimensionsControl = _ref => {
-  let {
-    className = "space-y-5",
-    dimensionControl = _types__WEBPACK_IMPORTED_MODULE_6__.MY_DIMENSIONS_CONTROL_DEMO,
-    setAttrs__dimensions
-  } = _ref;
-  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_5__["default"])() || "Desktop";
-  //
-  const {
-    colunmGap: colunmGapProps,
-    rowGap: rowGapProps,
-    margin: marginProps,
-    padding: paddingProps
-  } = dimensionControl;
-  const {
-    currentDeviceValue: colunmGap
-  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_8__["default"])(colunmGapProps, deviceType);
-  const {
-    currentDeviceValue: rowGap
-  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_8__["default"])(rowGapProps, deviceType);
-  const {
-    currentDeviceValue: margin
-  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_8__["default"])(marginProps, deviceType);
-  const {
-    currentDeviceValue: padding
-  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_8__["default"])(paddingProps, deviceType);
-
-  //
-  const setRowGrap = value => {
-    setAttrs__dimensions({
-      ...dimensionControl,
-      rowGap: {
-        ...rowGapProps,
-        [deviceType]: value
-      }
-    });
-  };
-  const setColumnGap = value => {
-    setAttrs__dimensions({
-      ...dimensionControl,
-      colunmGap: {
-        ...colunmGapProps,
-        [deviceType]: value
-      }
-    });
-  };
-  const handleChangeMargin = value => {
-    setAttrs__dimensions({
-      ...dimensionControl,
-      margin: {
-        ...marginProps,
-        [deviceType]: value
-      }
-    });
-  };
-  const handleChangePadding = value => {
-    setAttrs__dimensions({
-      ...dimensionControl,
-      padding: {
-        ...paddingProps,
-        [deviceType]: value
-      }
-    });
-  };
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: className
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MySpacingSizesControl_MySpacingSizesControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    onChange: setRowGrap,
-    value: rowGap || "0",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Row Gap", "wcb")
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MySpacingSizesControl_MySpacingSizesControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    onChange: setColumnGap,
-    value: colunmGap || "0",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Column Gap", "wcb")
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalBoxControl, {
-    label: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      className: "",
-      hasResponsive: true
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Padding", "wcb")),
-    values: padding,
-    onChange: handleChangePadding
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalBoxControl, {
-    label: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      className: "",
-      hasResponsive: true
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Margin", "wcb")),
-    values: margin,
-    onChange: handleChangeMargin,
-    inputProps: {
-      min: -2000
-    }
-  }));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyDimensionsControl);
-
-/***/ }),
-
-/***/ "./src/components/controls/MyDimensionsControl/types.ts":
-/*!**************************************************************!*\
-  !*** ./src/components/controls/MyDimensionsControl/types.ts ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "DEFAULT_DIMENSION": () => (/* binding */ DEFAULT_DIMENSION),
-/* harmony export */   "MY_DIMENSIONS_CONTROL_DEMO": () => (/* binding */ MY_DIMENSIONS_CONTROL_DEMO),
-/* harmony export */   "MY_DIMENSIONS_NO_GAP_CONTROL_DEMO": () => (/* binding */ MY_DIMENSIONS_NO_GAP_CONTROL_DEMO),
-/* harmony export */   "MY_DIMENSIONS_NO_GAP_DEMO__EMPTY": () => (/* binding */ MY_DIMENSIONS_NO_GAP_DEMO__EMPTY),
-/* harmony export */   "MY_DIMENSIONS_NO_MARGIN_CONTROL_DEMO": () => (/* binding */ MY_DIMENSIONS_NO_MARGIN_CONTROL_DEMO),
-/* harmony export */   "MY_DIMENSIONS_NO_PADDING_CONTROL_DEMO": () => (/* binding */ MY_DIMENSIONS_NO_PADDING_CONTROL_DEMO)
-/* harmony export */ });
-const DEFAULT_DIMENSION = {
-  top: "12px",
-  left: "12px",
-  right: "12px",
-  bottom: "12px"
-};
-const MY_DIMENSIONS_CONTROL_DEMO = {
-  colunmGap: {
-    Desktop: "1.5rem"
-  },
-  rowGap: {
-    Desktop: "1.5rem"
-  },
-  margin: {
-    Desktop: {
-      top: "",
-      left: "",
-      right: "",
-      bottom: ""
-    }
-  },
-  padding: {
-    Desktop: {
-      top: "1rem",
-      left: "1rem",
-      right: "1rem",
-      bottom: "1rem"
-    }
-  }
-};
-const MY_DIMENSIONS_NO_GAP_CONTROL_DEMO = {
-  margin: {
-    Desktop: {
-      top: "",
-      left: "",
-      right: "",
-      bottom: ""
-    }
-  },
-  padding: {
-    Desktop: {
-      top: "1rem",
-      left: "1rem",
-      right: "1rem",
-      bottom: "1rem"
-    }
-  }
-};
-const MY_DIMENSIONS_NO_GAP_DEMO__EMPTY = {
-  margin: {
-    Desktop: {
-      top: "",
-      left: "",
-      right: "",
-      bottom: ""
-    }
-  },
-  padding: {
-    Desktop: {
-      top: "",
-      left: "",
-      right: "",
-      bottom: ""
-    }
-  }
-};
-const MY_DIMENSIONS_NO_MARGIN_CONTROL_DEMO = {
-  colunmGap: {
-    Desktop: "1.5rem"
-  },
-  rowGap: {
-    Desktop: "1.5rem"
-  },
-  padding: {
-    Desktop: {
-      top: "1rem",
-      left: "1rem",
-      right: "1rem",
-      bottom: "1rem"
-    }
-  }
-};
-const MY_DIMENSIONS_NO_PADDING_CONTROL_DEMO = {
-  colunmGap: {
-    Desktop: "1.5rem"
-  },
-  rowGap: {
-    Desktop: "1.5rem"
-  },
-  margin: {
-    Desktop: {
-      top: "",
-      left: "",
-      right: "",
-      bottom: ""
-    }
-  }
-};
-
-/***/ }),
-
 /***/ "./src/components/controls/MyDisclosure.tsx":
 /*!**************************************************!*\
   !*** ./src/components/controls/MyDisclosure.tsx ***!
@@ -6398,202 +5126,6 @@ const MyDisclosure = _ref => {
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyDisclosure);
-
-/***/ }),
-
-/***/ "./src/components/controls/MyFlexPropertiesControl/types.ts":
-/*!******************************************************************!*\
-  !*** ./src/components/controls/MyFlexPropertiesControl/types.ts ***!
-  \******************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FLEX_PROPERTIES_CONTROL_DEMO": () => (/* binding */ FLEX_PROPERTIES_CONTROL_DEMO),
-/* harmony export */   "PLANS_FLEX_ALIGNITEMS_DEMO": () => (/* binding */ PLANS_FLEX_ALIGNITEMS_DEMO),
-/* harmony export */   "PLANS_FLEX_DIRECTIONS_DEMO": () => (/* binding */ PLANS_FLEX_DIRECTIONS_DEMO),
-/* harmony export */   "PLANS_FLEX_JUSTIFY_CONTENT_DEMO": () => (/* binding */ PLANS_FLEX_JUSTIFY_CONTENT_DEMO),
-/* harmony export */   "PLANS_FLEX_WRAP_DEMO": () => (/* binding */ PLANS_FLEX_WRAP_DEMO)
-/* harmony export */ });
-const FLEX_PROPERTIES_CONTROL_DEMO = {
-  flexDirection: {
-    Desktop: "column",
-    Tablet: "column"
-  },
-  alignItems: {
-    Desktop: "center"
-  },
-  justifyContent: {
-    Desktop: "center"
-  },
-  flexWrap: {
-    Desktop: "nowrap"
-  }
-};
-const PLANS_FLEX_DIRECTIONS_DEMO = [{
-  name: "row",
-  icon: `<svg class="scale-[.65]" width="38" height="24" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M13.5 4.1L13.5 19.9C13.5 21.4 14.14 22 15.73 22L19.77 22C21.36 22 22 21.4 22 19.9L22 4.1C22 2.6 21.36 2 19.77 2L15.73 2C14.14 2 13.5 2.6 13.5 4.1Z" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M2 4.1L2 19.9C2 21.4 2.64 22 4.23 22L8.27 22C9.86 22 10.5 21.4 10.5 19.9L10.5 4.1C10.5 2.6 9.86 2 8.27 2L4.23 2C2.64 2 2 2.6 2 4.1Z" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M28.43 18.0702L34.5 12.0002L28.43 5.93018" stroke="currentColor" stroke-width="2.1" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M17.5 12L34.33 12" stroke="currentColor" stroke-width="2.1" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    `
-}, {
-  name: "column",
-  icon: `<svg class="scale-[.65]"  width="24" height="38" viewBox="0 0 24 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M19.9 13.5L4.1 13.5C2.6 13.5 2 14.14 2 15.73L2 19.77C2 21.36 2.6 22 4.1 22L19.9 22C21.4 22 22 21.36 22 19.77L22 15.73C22 14.14 21.4 13.5 19.9 13.5Z" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M19.9 2L4.1 2C2.6 2 2 2.64 2 4.23L2 8.27C2 9.86 2.6 10.5 4.1 10.5L19.9 10.5C21.4 10.5 22 9.86 22 8.27L22 4.23C22 2.64 21.4 2 19.9 2Z" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M5.93001 28.43L12 34.5L18.07 28.43" stroke="currentColor" stroke-width="2.1" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M12 17.5001L12 34.3301" stroke="currentColor" stroke-width="2.1" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    `
-}, {
-  name: "row-reverse",
-  icon: `<svg class="scale-[.65]"  width="38" height="24" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M24.5 19.9V4.1C24.5 2.6 23.86 2 22.27 2H18.23C16.64 2 16 2.6 16 4.1V19.9C16 21.4 16.64 22 18.23 22H22.27C23.86 22 24.5 21.4 24.5 19.9Z" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M36 19.9V4.1C36 2.6 35.36 2 33.77 2H29.73C28.14 2 27.5 2.6 27.5 4.1V19.9C27.5 21.4 28.14 22 29.73 22H33.77C35.36 22 36 21.4 36 19.9Z" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M9.57 5.92982L3.5 11.9998L9.57 18.0698" stroke="currentColor" stroke-width="2.1" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M20.5 12L3.67004 12" stroke="currentColor" stroke-width="2.1" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    `
-}, {
-  name: "column-reverse",
-  icon: `<svg class="scale-[.65]" width="24" height="38" viewBox="0 0 24 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M4.1 24.5L19.9 24.5C21.4 24.5 22 23.86 22 22.27L22 18.23C22 16.64 21.4 16 19.9 16L4.1 16C2.6 16 2 16.64 2 18.23L2 22.27C2 23.86 2.6 24.5 4.1 24.5Z" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M4.1 36L19.9 36C21.4 36 22 35.36 22 33.77L22 29.73C22 28.14 21.4 27.5 19.9 27.5L4.1 27.5C2.6 27.5 2 28.14 2 29.73L2 33.77C2 35.36 2.6 36 4.1 36Z" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M18.07 9.57L12 3.5L5.92999 9.57" stroke="currentColor" stroke-width="2.1" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M12 20.4999L12 3.66992" stroke="currentColor" stroke-width="2.1" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    `
-}];
-const PLANS_FLEX_ALIGNITEMS_DEMO = [{
-  name: "start",
-  icon: ` <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M19.26 5.1001V16.9001C19.26 18.4001 18.62 19.0001 17.03 19.0001H15.99C14.4 19.0001 13.76 18.4001 13.76 16.9001V5.1001" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M5.26 5.1001V11.9001C5.26 13.4001 5.9 14.0001 7.49 14.0001H8.53C10.12 14.0001 10.76 13.4001 10.76 11.9001V5.1001" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M2 5H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    `
-}, {
-  name: "center",
-  icon: ` <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M4.75 17.4V6.6C4.75 5.1 5.39 4.5 6.98 4.5H8.02C9.61 4.5 10.25 5.1 10.25 6.6V17.4C10.25 18.9 9.61 19.5 8.02 19.5H6.98C5.39 19.5 4.75 18.9 4.75 17.4Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M13.25 15.4V8.6C13.25 7.1 13.89 6.5 15.48 6.5H16.52C18.11 6.5 18.75 7.1 18.75 8.6V15.4C18.75 16.9 18.11 17.5 16.52 17.5H15.48C13.89 17.5 13.25 16.9 13.25 15.4Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M2 12H4.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M11 12H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M22 12H19.31" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        
-    `
-}, {
-  name: "end",
-  icon: ` <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M19.26 18.9V7.1C19.26 5.6 18.62 5 17.03 5H15.99C14.4 5 13.76 5.6 13.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M5.25999 18.9V12.1C5.25999 10.6 5.89999 10 7.48999 10H8.52999C10.12 10 10.76 10.6 10.76 12.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M2 19H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        
-    `
-}, {
-  name: "baseline",
-  icon: ` <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M4.75 17.4V6.6C4.75 5.1 5.39 4.5 6.98 4.5H8.02C9.61 4.5 10.25 5.1 10.25 6.6V17.4C10.25 18.9 9.61 19.5 8.02 19.5H6.98C5.39 19.5 4.75 18.9 4.75 17.4Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M13.25 13.4V6.6C13.25 5.1 13.89 4.5 15.48 4.5H16.52C18.11 4.5 18.75 5.1 18.75 6.6V13.4C18.75 14.9 18.11 15.5 16.52 15.5H15.48C13.89 15.5 13.25 14.9 13.25 13.4Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M2 12H4.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M11 12H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M22 12L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        
-    `
-}, {
-  name: "stretch",
-  icon: ` <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M19.26 18.9V7.1C19.26 5.6 18.62 5 17.03 5H15.99C14.4 5 13.76 5.6 13.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M5 19V8.30337C5 5.94382 5.69818 5 7.43273 5H8.56727C10.3018 5 11 5.94382 11 8.30337V19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M2 19H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        
-    `
-}];
-const PLANS_FLEX_JUSTIFY_CONTENT_DEMO = [{
-  name: "flex-start",
-  icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M16.26 18.9V7.1C16.26 5.6 15.62 5 14.03 5H12.99C11.4 5 10.76 5.6 10.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M2.26001 18.9V12.1C2.26001 10.6 2.90001 10 4.49001 10H5.53001C7.12001 10 7.76001 10.6 7.76001 12.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M2 19H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    `
-}, {
-  name: "flex-end",
-  icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M22.26 18.9V7.1C22.26 5.6 21.62 5 20.03 5H18.99C17.4 5 16.76 5.6 16.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M8.26001 18.9V12.1C8.26001 10.6 8.90001 10 10.49 10H11.53C13.12 10 13.76 10.6 13.76 12.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M2 19H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    `
-}, {
-  name: "center",
-  icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M19.26 18.9V7.1C19.26 5.6 18.62 5 17.03 5H15.99C14.4 5 13.76 5.6 13.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M5.26001 18.9V12.1C5.26001 10.6 5.90001 10 7.49001 10H8.53001C10.12 10 10.76 10.6 10.76 12.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M2 19H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    `
-}, {
-  name: "space-between",
-  icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M22.26 18.9V7.1C22.26 5.6 21.62 5 20.03 5H18.99C17.4 5 16.76 5.6 16.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M2.26001 18.9V12.1C2.26001 10.6 2.90001 10 4.49001 10H5.53001C7.12001 10 7.76001 10.6 7.76001 12.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M2 19H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    `
-}, {
-  name: "space-around",
-  icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20.26 18.9V7.1C20.26 5.6 19.62 5 18.03 5H16.99C15.4 5 14.76 5.6 14.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M4.26001 18.9V12.1C4.26001 10.6 4.90001 10 6.49001 10H7.53001C9.12001 10 9.76001 10.6 9.76001 12.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M2 19H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    `
-}, {
-  name: "space-evenly",
-  icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M19.26 18.9V7.1C19.26 5.6 18.62 5 17.03 5H15.99C14.4 5 13.76 5.6 13.76 7.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M5.26001 18.9V12.1C5.26001 10.6 5.90001 10 7.49001 10H8.53001C10.12 10 10.76 10.6 10.76 12.1V18.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M2 19H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    `
-}];
-const PLANS_FLEX_WRAP_DEMO = [{
-  name: "nowrap",
-  icon: `<svg width="33" height="24" viewBox="0 0 33 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M22 14.27V10.23C22 8.64 21.36 8 19.77 8H15.73C14.14 8 13.5 8.64 13.5 10.23V14.27C13.5 15.86 14.14 16.5 15.73 16.5H19.77C21.36 16.5 22 15.86 22 14.27Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M31.77 8H27.73C26.14 8 25.5 8.64 25.5 10.23V14.27C25.5 15.86 26.14 16.5 27.73 16.5H31.77" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M10.5 14.52V9.98C10.5 8.57 9.86 8 8.27 8H4.23C2.64 8 2 8.57 2 9.98V14.51C2 15.93 2.64 16.49 4.23 16.49H8.27C9.86 16.5 10.5 15.93 10.5 14.52Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    `
-}, {
-  name: "wrap",
-  icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M22 8.27V4.23C22 2.64 21.36 2 19.77 2H15.73C14.14 2 13.5 2.64 13.5 4.23V8.27C13.5 9.86 14.14 10.5 15.73 10.5H19.77C21.36 10.5 22 9.86 22 8.27Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M10.5 8.52V3.98C10.5 2.57 9.86 2 8.27 2H4.23C2.64 2 2 2.57 2 3.98V8.51C2 9.93 2.64 10.49 4.23 10.49H8.27C9.86 10.5 10.5 9.93 10.5 8.52Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M21 14C21 17.87 17.87 21 14 21L15.05 19.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M10.5 19.77V15.73C10.5 14.14 9.86 13.5 8.27 13.5H4.23C2.64 13.5 2 14.14 2 15.73V19.77C2 21.36 2.64 22 4.23 22H8.27C9.86 22 10.5 21.36 10.5 19.77Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    `
-}, {
-  name: "wrap-reverse",
-  icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M22 15.73V19.77C22 21.36 21.36 22 19.77 22H15.73C14.14 22 13.5 21.36 13.5 19.77V15.73C13.5 14.14 14.14 13.5 15.73 13.5H19.77C21.36 13.5 22 14.14 22 15.73Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M10.5 15.48V20.02C10.5 21.43 9.86 22 8.27 22H4.23C2.64 22 2 21.43 2 20.02L2 15.49C2 14.07 2.64 13.51 4.23 13.51H8.27C9.86 13.5 10.5 14.07 10.5 15.48Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M21 10C21 6.13 17.87 3 14 3L15.05 4.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M10.5 4.23V8.27C10.5 9.86 9.86 10.5 8.27 10.5H4.23C2.64 10.5 2 9.86 2 8.27L2 4.23C2 2.64 2.64 2 4.23 2H8.27C9.86 2 10.5 2.64 10.5 4.23Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        
-    `
-}];
 
 /***/ }),
 
@@ -7538,192 +6070,6 @@ const MySelect = _ref => {
 
 /***/ }),
 
-/***/ "./src/components/controls/MySpacingSizesControl/MySpacingSizesControl.tsx":
-/*!*********************************************************************************!*\
-  !*** ./src/components/controls/MySpacingSizesControl/MySpacingSizesControl.tsx ***!
-  \*********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styles.scss */ "./src/components/controls/MySpacingSizesControl/styles.scss");
-/* harmony import */ var _SpacingInputControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SpacingInputControl */ "./src/components/controls/MySpacingSizesControl/SpacingInputControl.tsx");
-/* harmony import */ var _MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
-
-
-
-
-
-
-const MySpacingSizesControl = _ref => {
-  let {
-    className = "",
-    label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Margin bottom", "wcb"),
-    hasResponsive = true,
-    units,
-    minCustomValue,
-    value = "1rem",
-    onChange = () => {},
-    customUnitsValueSettings
-  } = _ref;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `MySpacingSizesControl ${className}`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    hasResponsive: hasResponsive
-  }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_SpacingInputControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    value: value,
-    onChange: onChange,
-    minCustomValue: minCustomValue,
-    units: units,
-    customUnitsValueSettings: customUnitsValueSettings
-  }));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MySpacingSizesControl);
-
-/***/ }),
-
-/***/ "./src/components/controls/MySpacingSizesControl/SpacingInputControl.tsx":
-/*!*******************************************************************************!*\
-  !*** ./src/components/controls/MySpacingSizesControl/SpacingInputControl.tsx ***!
-  \*******************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "MY_CUSTOM_UNITS_VALUE_SETTINGS": () => (/* binding */ MY_CUSTOM_UNITS_VALUE_SETTINGS),
-/* harmony export */   "MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE": () => (/* binding */ MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _MyDimensionsControl_MyDimensionsControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../MyDimensionsControl/MyDimensionsControl */ "./src/components/controls/MyDimensionsControl/MyDimensionsControl.tsx");
-
-
-
-
-
-const MY_CUSTOM_UNITS_VALUE_SETTINGS = {
-  px: {
-    max: 1000,
-    steps: 1
-  },
-  "%": {
-    max: 100,
-    steps: 1
-  },
-  vw: {
-    max: 100,
-    steps: 1
-  },
-  vh: {
-    max: 100,
-    steps: 1
-  },
-  em: {
-    max: 50,
-    steps: 0.1
-  },
-  rm: {
-    max: 50,
-    steps: 0.1
-  },
-  rem: {
-    max: 50,
-    steps: 0.1
-  }
-};
-const MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE = {
-  px: {
-    max: 2000,
-    steps: 1
-  },
-  "%": {
-    max: 100,
-    steps: 1
-  },
-  vw: {
-    max: 100,
-    steps: 1
-  },
-  vh: {
-    max: 100,
-    steps: 1
-  },
-  em: {
-    max: 100,
-    steps: 0.1
-  },
-  rm: {
-    max: 100,
-    steps: 0.1
-  },
-  rem: {
-    max: 100,
-    steps: 0.1
-  }
-};
-const SpacingInputControl = _ref => {
-  let {
-    value = "10px",
-    onChange,
-    minCustomValue = 0,
-    units = _MyDimensionsControl_MyDimensionsControl__WEBPACK_IMPORTED_MODULE_3__.MY_GAP_UNITS,
-    className = "",
-    customUnitsValueSettings = MY_CUSTOM_UNITS_VALUE_SETTINGS
-  } = _ref;
-  const selectedUnit = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalParseQuantityAndUnitFromRawValue)(value), [value])[1] || units[0].value;
-  const customRangeValue = parseFloat(value !== null && value !== void 0 ? value : "10");
-  const handleCustomValueSliderChange = next => {
-    const newValue = [next, selectedUnit].join("");
-    onChange(newValue);
-  };
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `${className} flex items-center space-x-2.5`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "flex-[1.5]"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
-    value: customRangeValue,
-    min: minCustomValue,
-    max: customUnitsValueSettings[selectedUnit].max,
-    step: customUnitsValueSettings[selectedUnit].steps
-    // @ts-ignore
-    ,
-    withInputField: false,
-    onChange: handleCustomValueSliderChange,
-    className: "m-0"
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "flex-1"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalUnitControl, {
-    onChange: function (newSize) {
-      onChange(newSize);
-    },
-    placeholder: `${parseInt(value || "")}`,
-    value: value,
-    units: units,
-    min: minCustomValue,
-    hideLabelFromVision: true
-    // size={"__unstable-large"}
-  })));
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SpacingInputControl);
-
-/***/ }),
-
 /***/ "./src/components/controls/MyTextAlignControl/MyTextAlignControl.tsx":
 /*!***************************************************************************!*\
   !*** ./src/components/controls/MyTextAlignControl/MyTextAlignControl.tsx ***!
@@ -7765,434 +6111,6 @@ const MyTextAlignControl = _ref => {
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyTextAlignControl);
-
-/***/ }),
-
-/***/ "./src/components/controls/MyTextDecorationControl/MyTextDecorationControl.tsx":
-/*!*************************************************************************************!*\
-  !*** ./src/components/controls/MyTextDecorationControl/MyTextDecorationControl.tsx ***!
-  \*************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/format-underline.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/format-strikethrough.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
-
-
-
-
-
-
-const TEXT_DECORATIONS = [{
-  name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("None"),
-  value: "none",
-  icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("svg", {
-    viewBox: "0 0 24 24",
-    className: "w-6 h-6",
-    "aria-hidden": "true",
-    focusable: "false"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("path", {
-    d: "M7 11.5h10V13H7z"
-  }))
-}, {
-  name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Underline"),
-  value: "underline",
-  icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"]
-}, {
-  name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Strikethrough"),
-  value: "line-through",
-  icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"]
-}];
-const MyTextDecorationControl = _ref => {
-  let {
-    value = "none",
-    onChange = () => {},
-    ...props
-  } = _ref;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
-    __experimentalIsIconGroup: true,
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Decoration"),
-    value: value,
-    onChange: onChange
-  }), TEXT_DECORATIONS.map(textDecoration => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
-      key: textDecoration.value,
-      value: textDecoration.value,
-      icon: textDecoration.icon,
-      label: textDecoration.name,
-      title: textDecoration.name
-    });
-  }));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyTextDecorationControl);
-
-/***/ }),
-
-/***/ "./src/components/controls/MyTextTransformControl/MyTextTransformControl.tsx":
-/*!***********************************************************************************!*\
-  !*** ./src/components/controls/MyTextTransformControl/MyTextTransformControl.tsx ***!
-  \***********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/format-uppercase.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/format-lowercase.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/format-capitalize.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
-
-
-
-
-
-
-const TEXT_TRANSFORMS = [{
-  name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("None"),
-  value: "none",
-  icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("svg", {
-    viewBox: "0 0 24 24",
-    className: "w-6 h-6",
-    "aria-hidden": "true",
-    focusable: "false"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("path", {
-    d: "M7 11.5h10V13H7z"
-  }))
-}, {
-  name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Uppercase"),
-  value: "uppercase",
-  icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"]
-}, {
-  name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Lowercase"),
-  value: "lowercase",
-  icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"]
-}, {
-  name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Capitalize"),
-  value: "capitalize",
-  icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["default"]
-}];
-const MyTextTransformControl = _ref => {
-  let {
-    value = "none",
-    onChange = () => {},
-    ...props
-  } = _ref;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
-    __experimentalIsIconGroup: true,
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Letter case"),
-    value: value,
-    onChange: onChange
-  }), TEXT_TRANSFORMS.map(textTransform => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
-      key: textTransform.value,
-      value: textTransform.value,
-      icon: textTransform.icon,
-      label: textTransform.name
-    });
-  }));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyTextTransformControl);
-
-/***/ }),
-
-/***/ "./src/components/controls/MyTypographyControl/MyTypographyControl.tsx":
-/*!*****************************************************************************!*\
-  !*** ./src/components/controls/MyTypographyControl/MyTypographyControl.tsx ***!
-  \*****************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
-/* harmony import */ var _MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./types */ "./src/components/controls/MyTypographyControl/types.ts");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _SelectFontAppearance__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../SelectFontAppearance */ "./src/components/controls/SelectFontAppearance.tsx");
-/* harmony import */ var _MyTextDecorationControl_MyTextDecorationControl__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../MyTextDecorationControl/MyTextDecorationControl */ "./src/components/controls/MyTextDecorationControl/MyTextDecorationControl.tsx");
-/* harmony import */ var _MyTextTransformControl_MyTextTransformControl__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../MyTextTransformControl/MyTextTransformControl */ "./src/components/controls/MyTextTransformControl/MyTextTransformControl.tsx");
-/* harmony import */ var _WcbFontFamilyPicker_WcbFontFamilyPicker__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../WcbFontFamilyPicker/WcbFontFamilyPicker */ "./src/components/controls/WcbFontFamilyPicker/WcbFontFamilyPicker.tsx");
-/* harmony import */ var _MyDisclosure__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../MyDisclosure */ "./src/components/controls/MyDisclosure.tsx");
-/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
-
-
-
-
-
-
-
-
-
-
-
-
-
-const MyTypographyControl = _ref => {
-  let {
-    className = "space-y-5",
-    typographyControl = _types__WEBPACK_IMPORTED_MODULE_5__.TYPOGRAPHY_CONTROL_DEMO,
-    setAttrs__typography = () => {},
-    label = "Typography",
-    disclosureDefaultOpen
-  } = _ref;
-  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_3__["default"])() || "Desktop";
-  const {
-    fontSizes: fontSizesProps,
-    appearance,
-    textDecoration,
-    textTransform,
-    lineHeight: lineHeightProps,
-    letterSpacing: letterSpacingProps,
-    fontFamily
-  } = typographyControl;
-  const {
-    currentDeviceValue: FONT_SIZE
-  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_12__["default"])(fontSizesProps, deviceType);
-  const {
-    currentDeviceValue: LINE_HEIGHT
-  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_12__["default"])(lineHeightProps, deviceType);
-  const {
-    currentDeviceValue: LETTER_SPACING
-  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_12__["default"])(letterSpacingProps, deviceType);
-
-  //
-  const handleChangeFontFamily = newFont => {
-    setAttrs__typography({
-      ...typographyControl,
-      fontFamily: newFont
-    });
-  };
-  const handleChangeFontAppearance = value => {
-    setAttrs__typography({
-      ...typographyControl,
-      appearance: value || _SelectFontAppearance__WEBPACK_IMPORTED_MODULE_7__.FONT_APPEARANCE_OPTIONS[0]
-    });
-  };
-  const handleChangeTextDecoration = value => {
-    setAttrs__typography({
-      ...typographyControl,
-      textDecoration: value
-    });
-  };
-  const handleChangeTextTransform = value => {
-    setAttrs__typography({
-      ...typographyControl,
-      textTransform: value
-    });
-  };
-  const handleChangeLineHeight = value => {
-    setAttrs__typography({
-      ...typographyControl,
-      lineHeight: {
-        ...lineHeightProps,
-        [deviceType]: value
-      }
-    });
-  };
-  const handleChangeLetterSpacing = value => {
-    setAttrs__typography({
-      ...typographyControl,
-      letterSpacing: {
-        ...letterSpacingProps,
-        [deviceType]: value
-      }
-    });
-  };
-  const handleChangeFontSize = newFontSize => {
-    setAttrs__typography({
-      ...typographyControl,
-      fontSizes: {
-        ...fontSizesProps,
-        [deviceType]: newFontSize
-      }
-    });
-  };
-  //
-  const renderFontFamily = () => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbFontFamilyPicker_WcbFontFamilyPicker__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      selectedFont: fontFamily,
-      onChangeFontFamily: handleChangeFontFamily
-    }));
-  };
-  //
-  const renderFontsizePicker = () => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "relative"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      className: "flex absolute right-8 -top-0.5 z-10",
-      hasResponsive: true,
-      children: ""
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.FontSizePicker
-    // @ts-ignore
-    , {
-      __nextHasNoMarginBottom: true
-      // @ts-ignore
-      ,
-      fontSizes: _types__WEBPACK_IMPORTED_MODULE_5__.FONT_SIZES_DEMO
-      // @ts-ignore
-      ,
-      value: FONT_SIZE,
-      fallbackFontSize: 16
-      // @ts-ignore
-      ,
-      onChange: handleChangeFontSize
-    }));
-  };
-  const renderAppearance = () => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_SelectFontAppearance__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      onChange: _ref2 => {
-        let {
-          selectedItem
-        } = _ref2;
-        return handleChangeFontAppearance(selectedItem);
-      },
-      value: appearance
-    });
-  };
-  const renderLineHeight = () => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "flex justify-between space-x-3 items-center"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      hasResponsive: true,
-      className: "flex-shrink-0",
-      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Line height", "wcb")
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.__experimentalNumberControl, {
-      onChange: handleChangeLineHeight,
-      value: LINE_HEIGHT,
-      step: 0.1,
-      min: 0,
-      max: 100,
-      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("1.5", "wcb")
-    }));
-  };
-  const renderLetterSpacing = () => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "flex justify-between space-x-3 items-center"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      hasResponsive: true,
-      className: "flex-shrink-0",
-      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Letter spacing", "wcb")
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.__experimentalUnitControl, {
-      onChange: handleChangeLetterSpacing,
-      value: LETTER_SPACING,
-      units: [{
-        value: "px",
-        label: "px",
-        default: 0
-      }, {
-        value: "%",
-        label: "%",
-        default: 0
-      }, {
-        value: "em",
-        label: "em",
-        default: 0
-      }]
-    }));
-  };
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyDisclosure__WEBPACK_IMPORTED_MODULE_11__["default"], {
-    defaultOpen: disclosureDefaultOpen,
-    label: label
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: className
-  }, renderFontFamily(), renderFontsizePicker(), renderAppearance(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyTextDecorationControl_MyTextDecorationControl__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    value: textDecoration,
-    onChange: handleChangeTextDecoration
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyTextTransformControl_MyTextTransformControl__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    value: textTransform,
-    onChange: handleChangeTextTransform
-  }), renderLineHeight(), renderLetterSpacing()));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyTypographyControl);
-
-/***/ }),
-
-/***/ "./src/components/controls/MyTypographyControl/types.ts":
-/*!**************************************************************!*\
-  !*** ./src/components/controls/MyTypographyControl/types.ts ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FONT_SIZES_DEMO": () => (/* binding */ FONT_SIZES_DEMO),
-/* harmony export */   "TYPOGRAPHY_CONTROL_DEMO": () => (/* binding */ TYPOGRAPHY_CONTROL_DEMO)
-/* harmony export */ });
-/* harmony import */ var _SelectFontAppearance__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../SelectFontAppearance */ "./src/components/controls/SelectFontAppearance.tsx");
-
-const TYPOGRAPHY_CONTROL_DEMO = {
-  fontSizes: {
-    Desktop: ""
-  },
-  appearance: _SelectFontAppearance__WEBPACK_IMPORTED_MODULE_0__.FONT_APPEARANCE_OPTIONS[0],
-  textDecoration: undefined,
-  textTransform: undefined,
-  lineHeight: {
-    Desktop: undefined
-  },
-  letterSpacing: {
-    Desktop: undefined
-  },
-  fontFamily: undefined
-};
-const FONT_SIZES_DEMO = [{
-  name: "Tiny",
-  slug: "tiny",
-  size: "8px"
-}, {
-  name: "Small",
-  slug: "small",
-  size: "12px"
-}, {
-  name: "Normal",
-  slug: "normal",
-  size: "16px"
-}, {
-  name: "Big",
-  slug: "big",
-  size: "26px"
-}, {
-  name: "Bigger",
-  slug: "bigger",
-  size: "30px"
-}, {
-  name: "Huge",
-  slug: "huge",
-  size: "36px"
-}];
 
 /***/ }),
 
@@ -8308,185 +6226,6 @@ const ResetButton = _ref => {
   }, props));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ResetButton);
-
-/***/ }),
-
-/***/ "./src/components/controls/SelectFontAppearance.tsx":
-/*!**********************************************************!*\
-  !*** ./src/components/controls/SelectFontAppearance.tsx ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FONT_APPEARANCE_OPTIONS": () => (/* binding */ FONT_APPEARANCE_OPTIONS),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-
-
-
-
-const FONT_APPEARANCE_OPTIONS = [{
-  key: "default",
-  name: "Default",
-  style: {
-    fontWeight: undefined,
-    fontStyle: undefined
-  }
-}, {
-  key: "thin",
-  name: "Thin",
-  style: {
-    fontWeight: "100",
-    fontStyle: "normal"
-  }
-}, {
-  key: "ExtraLight",
-  name: "Extra Light",
-  style: {
-    fontWeight: "200",
-    fontStyle: "normal"
-  }
-}, {
-  key: "light",
-  name: "Light",
-  style: {
-    fontWeight: "300",
-    fontStyle: "normal"
-  }
-}, {
-  key: "Regular",
-  name: "Regular",
-  style: {
-    fontWeight: "400",
-    fontStyle: "normal"
-  }
-}, {
-  key: "Medium",
-  name: "Medium",
-  style: {
-    fontWeight: "500",
-    fontStyle: "normal"
-  }
-}, {
-  key: "SemiBold",
-  name: "Semi Bold",
-  style: {
-    fontWeight: "600",
-    fontStyle: "normal"
-  }
-}, {
-  key: "Bold",
-  name: "Bold",
-  style: {
-    fontWeight: "700",
-    fontStyle: "normal"
-  }
-}, {
-  key: "ExtraBold",
-  name: "Extra Bold",
-  style: {
-    fontWeight: "800",
-    fontStyle: "normal"
-  }
-}, {
-  key: "Black",
-  name: "Black",
-  style: {
-    fontWeight: "900",
-    fontStyle: "normal"
-  }
-},
-//
-{
-  key: "thin_italic",
-  name: "Thin Italic",
-  style: {
-    fontWeight: "100",
-    fontStyle: "italic"
-  }
-}, {
-  key: "ExtraLight_italic",
-  name: "Extra Light Italic",
-  style: {
-    fontWeight: "200",
-    fontStyle: "italic"
-  }
-}, {
-  key: "light_italic",
-  name: "Light Italic",
-  style: {
-    fontWeight: "300",
-    fontStyle: "italic"
-  }
-}, {
-  key: "Regular_italic",
-  name: "Regular Italic",
-  style: {
-    fontWeight: "400",
-    fontStyle: "italic"
-  }
-}, {
-  key: "Medium_italic",
-  name: "Medium Italic",
-  style: {
-    fontWeight: "500",
-    fontStyle: "italic"
-  }
-}, {
-  key: "SemiBold_italic",
-  name: "Semi Bold Italic",
-  style: {
-    fontWeight: "600",
-    fontStyle: "italic"
-  }
-}, {
-  key: "Bold_italic",
-  name: "Bold Italic",
-  style: {
-    fontWeight: "700",
-    fontStyle: "italic"
-  }
-}, {
-  key: "ExtraBold_italic",
-  name: "Extra Bold Italic",
-  style: {
-    fontWeight: "800",
-    fontStyle: "italic"
-  }
-}, {
-  key: "Black_italic",
-  name: "Black Italic",
-  style: {
-    fontWeight: "900",
-    fontStyle: "italic"
-  }
-}];
-const SelectFontAppearance = _ref => {
-  let {
-    onChange,
-    value
-  } = _ref;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.CustomSelectControl
-  //  @ts-ignore
-  , {
-    __nextUnconstrainedWidth: true,
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Appearance", "wcb"),
-    options: FONT_APPEARANCE_OPTIONS,
-    onChange: onChange,
-    value: value
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SelectFontAppearance);
 
 /***/ }),
 
@@ -8792,89 +6531,6 @@ const SelecIcon = _ref => {
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SelecIcon);
-
-/***/ }),
-
-/***/ "./src/components/controls/WcbFontFamilyPicker/WcbFontFamilyPicker.tsx":
-/*!*****************************************************************************!*\
-  !*** ./src/components/controls/WcbFontFamilyPicker/WcbFontFamilyPicker.tsx ***!
-  \*****************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _google_fonts_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./google-fonts.json */ "./src/components/controls/WcbFontFamilyPicker/google-fonts.json");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils */ "./src/utils/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _MyCombobox__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../MyCombobox */ "./src/components/controls/MyCombobox.tsx");
-/* harmony import */ var _MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
-
-
-
-
-
-
-
-const WcbFontFamilyPicker = _ref => {
-  let {
-    onChangeFontFamily,
-    selectedFont
-  } = _ref;
-  const [fontFamily, setFontFamily] = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(selectedFont);
-  (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
-    setFontFamily(selectedFont);
-  }, [selectedFont]);
-  const systemFonts = [{
-    value: "Arial",
-    label: "Arial"
-  }, {
-    value: "Helvetica",
-    label: "Helvetica"
-  }, {
-    value: "Times New Roman",
-    label: "Times New Roman"
-  }, {
-    value: "Georgia",
-    label: "Georgia"
-  }];
-  const googleFontsList = [];
-  Object.keys(_google_fonts_json__WEBPACK_IMPORTED_MODULE_1__).forEach(k => {
-    googleFontsList.push({
-      value: k,
-      label: k
-    });
-  });
-  const handleChangeFont = newFont => {
-    setFontFamily(newFont || "");
-    onChangeFontFamily(newFont || "");
-    googleFontsList.some(font => {
-      if (font.value === newFont) {
-        (0,_utils__WEBPACK_IMPORTED_MODULE_3__.loadGoogleFont)(newFont);
-        return true;
-      }
-      return false;
-    });
-    (0,_utils__WEBPACK_IMPORTED_MODULE_3__.loadGoogleFont)("");
-  };
-  const FONTS = [{
-    value: "",
-    label: "Default"
-  }, ...systemFonts, ...googleFontsList];
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_6__["default"], null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Font Family", "wcb")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyCombobox__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    value: fontFamily || "",
-    options: FONTS,
-    onChange: handleChangeFont
-  }));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WcbFontFamilyPicker);
 
 /***/ }),
 
@@ -9292,75 +6948,6 @@ const isGoogleFontEnqueued = function (fontName) {
 
 /***/ }),
 
-/***/ "./src/utils/getBackgroundColorGradientStyles.ts":
-/*!*******************************************************!*\
-  !*** ./src/utils/getBackgroundColorGradientStyles.ts ***!
-  \*******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-const getBackgroundColorGradientStyles = _ref => {
-  let {
-    className,
-    background,
-    backgroundHover
-  } = _ref;
-  const {
-    bgType,
-    color,
-    gradient
-  } = background;
-  const {
-    bgType: bgType_h,
-    color: color_h,
-    gradient: gradient_h
-  } = backgroundHover || {};
-  if (bgType !== "color" && bgType !== "gradient") {
-    return {};
-  }
-  let preBgName = "";
-  let bgValue = "";
-  if (bgType === "color") {
-    preBgName = "backgroundColor";
-    bgValue = color;
-  }
-  // Backgroud gradient
-  if (bgType === "gradient") {
-    preBgName = "backgroundImage";
-    bgValue = gradient;
-  }
-  //
-  //
-  let preBgName_h = "";
-  let bgValue_h = "";
-  if (bgType_h === "color") {
-    preBgName_h = "backgroundColor";
-    bgValue_h = color_h || "";
-  }
-  // Backgroud gradient
-  if (bgType_h === "gradient") {
-    preBgName_h = "backgroundImage";
-    bgValue_h = gradient_h || "";
-  }
-  //
-  //
-  return {
-    [`${className}`]: {
-      [`${preBgName}`]: `${bgValue}`,
-      ":hover": {
-        [`${preBgName_h}`]: `${bgValue_h || null}`
-      }
-    }
-  };
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getBackgroundColorGradientStyles);
-
-/***/ }),
-
 /***/ "./src/utils/getBorderRadiusStyles.ts":
 /*!********************************************!*\
   !*** ./src/utils/getBorderRadiusStyles.ts ***!
@@ -9643,262 +7230,6 @@ const getBoxShadowStyles = _ref => {
   };
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getBoxShadowStyles);
-
-/***/ }),
-
-/***/ "./src/utils/getFlexPropertiesStyles.ts":
-/*!**********************************************!*\
-  !*** ./src/utils/getFlexPropertiesStyles.ts ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
-/* harmony import */ var _getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
-/* harmony import */ var _checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./checkResponsiveValueForOptimizeCSS */ "./src/utils/checkResponsiveValueForOptimizeCSS.ts");
-
-
-
-const getFlexPropertiesStyles = _ref => {
-  let {
-    flexProperties,
-    className
-  } = _ref;
-  const {
-    media_desktop,
-    media_tablet
-  } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES;
-
-  //
-  const {
-    alignItems,
-    flexDirection,
-    flexWrap,
-    justifyContent,
-    colunmGap,
-    rowGap
-  } = flexProperties;
-  //
-
-  const {
-    value_Desktop: flexDirection_Desktop,
-    value_Tablet: flexDirection_Tablet,
-    value_Mobile: flexDirection_Mobile
-  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(flexDirection);
-  //
-  const {
-    value_Desktop: alignItems_Desktop,
-    value_Tablet: alignItems_Tablet,
-    value_Mobile: alignItems_Mobile
-  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(alignItems);
-  //
-  const {
-    value_Desktop: flexWrap_Desktop,
-    value_Tablet: flexWrap_Tablet,
-    value_Mobile: flexWrap_Mobile
-  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(flexWrap);
-  //
-  const {
-    value_Desktop: justifyContent_Desktop,
-    value_Tablet: justifyContent_Tablet,
-    value_Mobile: justifyContent_Mobile
-  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(justifyContent);
-
-  //
-  const {
-    value_Desktop: colunmGap_Desktop,
-    value_Tablet: colunmGap_Tablet,
-    value_Mobile: colunmGap_Mobile
-  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(colunmGap);
-  //
-  const {
-    value_Desktop: rowGap_Desktop,
-    value_Tablet: rowGap_Tablet,
-    value_Mobile: rowGap_Mobile
-  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(rowGap);
-  //
-
-  //
-  const {
-    mobile_v: flexDirection_Mobile_new,
-    tablet_v: flexDirection_Tablet_new,
-    desktop_v: flexDirection_Desktop_new
-  } = (0,_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__["default"])({
-    mobile_v: flexDirection_Mobile,
-    tablet_v: flexDirection_Tablet,
-    desktop_v: flexDirection_Desktop
-  });
-  const {
-    mobile_v: alignItems_Mobile_new,
-    tablet_v: alignItems_Tablet_new,
-    desktop_v: alignItems_Desktop_new
-  } = (0,_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__["default"])({
-    mobile_v: alignItems_Mobile,
-    tablet_v: alignItems_Tablet,
-    desktop_v: alignItems_Desktop
-  });
-  const {
-    mobile_v: flexWrap_Mobile_new,
-    tablet_v: flexWrap_Tablet_new,
-    desktop_v: flexWrap_Desktop_new
-  } = (0,_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__["default"])({
-    mobile_v: flexWrap_Mobile,
-    tablet_v: flexWrap_Tablet,
-    desktop_v: flexWrap_Desktop
-  });
-  const {
-    mobile_v: justifyContent_Mobile_new,
-    tablet_v: justifyContent_Tablet_new,
-    desktop_v: justifyContent_Desktop_new
-  } = (0,_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__["default"])({
-    mobile_v: justifyContent_Mobile,
-    tablet_v: justifyContent_Tablet,
-    desktop_v: justifyContent_Desktop
-  });
-  const {
-    mobile_v: colunmGap_Mobile_new,
-    tablet_v: colunmGap_Tablet_new,
-    desktop_v: colunmGap_Desktop_new
-  } = (0,_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__["default"])({
-    mobile_v: colunmGap_Mobile,
-    tablet_v: colunmGap_Tablet,
-    desktop_v: colunmGap_Desktop
-  });
-  const {
-    mobile_v: rowGap_Mobile_new,
-    tablet_v: rowGap_Tablet_new,
-    desktop_v: rowGap_Desktop_new
-  } = (0,_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__["default"])({
-    mobile_v: rowGap_Mobile,
-    tablet_v: rowGap_Tablet,
-    desktop_v: rowGap_Desktop
-  });
-  //
-
-  return {
-    [`${className}`]: {
-      flexDirection: flexDirection_Mobile_new,
-      alignItems: alignItems_Mobile_new,
-      flexWrap: flexWrap_Mobile_new,
-      justifyContent: justifyContent_Mobile_new,
-      columnGap: colunmGap_Mobile_new,
-      rowGap: rowGap_Mobile_new,
-      [`@media (min-width: ${media_tablet})`]: flexDirection_Tablet_new || alignItems_Tablet_new || flexWrap_Tablet_new || justifyContent_Tablet_new || colunmGap_Tablet_new || rowGap_Tablet_new ? {
-        flexDirection: flexDirection_Tablet_new,
-        alignItems: alignItems_Tablet_new,
-        flexWrap: flexWrap_Tablet_new,
-        justifyContent: justifyContent_Tablet_new,
-        columnGap: colunmGap_Tablet_new,
-        rowGap: rowGap_Tablet_new
-      } : undefined,
-      [`@media (min-width: ${media_desktop})`]: flexDirection_Desktop_new || alignItems_Desktop_new || flexWrap_Desktop_new || justifyContent_Desktop_new || colunmGap_Desktop_new || rowGap_Desktop_new ? {
-        flexDirection: flexDirection_Desktop_new,
-        alignItems: alignItems_Desktop_new,
-        flexWrap: flexWrap_Desktop_new,
-        justifyContent: justifyContent_Desktop_new,
-        columnGap: colunmGap_Desktop_new,
-        rowGap: rowGap_Desktop_new
-      } : undefined
-    }
-  };
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getFlexPropertiesStyles);
-
-/***/ }),
-
-/***/ "./src/utils/getStyleObjectFromResponsiveAttr.ts":
-/*!*******************************************************!*\
-  !*** ./src/utils/getStyleObjectFromResponsiveAttr.ts ***!
-  \*******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
-/* harmony import */ var _getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
-/* harmony import */ var _checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./checkResponsiveValueForOptimizeCSS */ "./src/utils/checkResponsiveValueForOptimizeCSS.ts");
-
-
-
-function getStyleObjectFromResponsiveAttr(_ref) {
-  let {
-    className,
-    prefix,
-    prefix_2,
-    prefix_3,
-    prefix_4,
-    value,
-    hasUnit = true,
-    unit
-  } = _ref;
-  const {
-    media_desktop,
-    media_tablet
-  } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES;
-  let {
-    value_Desktop,
-    value_Tablet,
-    value_Mobile
-  } = (0,_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_1__["default"])(value);
-  if (!hasUnit && !!unit) {
-    if (typeof value_Desktop === "number") {
-      value_Desktop = value_Desktop + unit;
-      value_Tablet = value_Tablet + unit;
-      value_Mobile = value_Mobile + unit;
-    }
-    if (typeof value_Desktop === "string") {
-      value_Desktop = value_Desktop ? value_Desktop + unit : null;
-      value_Tablet = value_Tablet ? value_Tablet + unit : null;
-      value_Mobile = value_Mobile ? value_Mobile + unit : null;
-    }
-  }
-
-  //
-  let prefix2 = prefix_2 || "";
-  let prefix3 = prefix_3 || "";
-  let prefix4 = prefix_4 || "";
-
-  //
-  const {
-    mobile_v: value_Mobile_new,
-    tablet_v: value_Tablet_new,
-    desktop_v: value_Desktop_new
-  } = (0,_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_2__["default"])({
-    mobile_v: value_Mobile,
-    tablet_v: value_Tablet,
-    desktop_v: value_Desktop
-  });
-  //
-
-  return {
-    [className]: {
-      [prefix]: value_Mobile_new !== null && value_Mobile_new !== void 0 ? value_Mobile_new : null,
-      [prefix2]: prefix_2 ? value_Mobile_new !== null && value_Mobile_new !== void 0 ? value_Mobile_new : null : null,
-      [prefix3]: prefix_3 ? value_Mobile_new !== null && value_Mobile_new !== void 0 ? value_Mobile_new : null : null,
-      [prefix4]: prefix_4 ? value_Mobile_new !== null && value_Mobile_new !== void 0 ? value_Mobile_new : null : null,
-      [`@media (min-width: ${media_tablet})`]: value_Tablet_new ? {
-        [prefix]: value_Tablet_new,
-        [prefix2]: prefix_2 ? value_Tablet_new : null,
-        [prefix3]: prefix_3 ? value_Tablet_new : null,
-        [prefix4]: prefix_4 ? value_Tablet_new : null
-      } : undefined,
-      [`@media (min-width: ${media_desktop})`]: value_Desktop_new ? {
-        [prefix]: value_Desktop_new,
-        [prefix2]: prefix_2 ? value_Desktop_new : null,
-        [prefix3]: prefix_3 ? value_Desktop_new : null,
-        [prefix4]: prefix_4 ? value_Desktop_new : null
-      } : undefined
-    }
-  };
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getStyleObjectFromResponsiveAttr);
 
 /***/ }),
 
@@ -10790,19 +8121,6 @@ __webpack_require__.r(__webpack_exports__);
 /*!***********************************!*\
   !*** ./src/block-icon/style.scss ***!
   \***********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./src/components/controls/MySpacingSizesControl/styles.scss":
-/*!*******************************************************************!*\
-  !*** ./src/components/controls/MySpacingSizesControl/styles.scss ***!
-  \*******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -15471,17 +12789,6 @@ module.exports = JSON.parse('{"lni-500px":59907,"lni-add-files":59905,"lni-adobe
 
 "use strict";
 module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"wcb/icon","version":"0.1.0","title":"Icon","category":"wcb-blocks","icon":"icon - wcb-block-editor-block-icon lni lni-target","description":"Add stunning customizable icons to your website.","supports":{"html":false,"anchor":true,"align":true},"textdomain":"wcb-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
-
-/***/ }),
-
-/***/ "./src/components/controls/WcbFontFamilyPicker/google-fonts.json":
-/*!***********************************************************************!*\
-  !*** ./src/components/controls/WcbFontFamilyPicker/google-fonts.json ***!
-  \***********************************************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = JSON.parse('{"Roboto":{"weight":["100","100italic","300","300italic","regular","italic","500","500italic","700","700italic","900","900italic"],"fallback":"sans-serif"},"Open Sans":{"weight":["300","300italic","regular","italic","600","600italic","700","700italic","800","800italic"],"fallback":"sans-serif"},"Noto Sans JP":{"weight":["100","300","regular","500","700","900"],"fallback":"sans-serif"},"Lato":{"weight":["100","100italic","300","300italic","regular","italic","700","700italic","900","900italic"],"fallback":"sans-serif"},"Montserrat":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic","800","800italic","900","900italic"],"fallback":"sans-serif"},"Roboto Condensed":{"weight":["300","300italic","regular","italic","700","700italic"],"fallback":"sans-serif"},"Source Sans Pro":{"weight":["200","200italic","300","300italic","regular","italic","600","600italic","700","700italic","900","900italic"],"fallback":"sans-serif"},"Oswald":{"weight":["200","300","regular","500","600","700"],"fallback":"sans-serif"},"Poppins":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic","800","800italic","900","900italic"],"fallback":"sans-serif"},"Roboto Mono":{"weight":["100","200","300","regular","500","600","700","100italic","200italic","300italic","italic","500italic","600italic","700italic"],"fallback":"monospace"},"Noto Sans":{"weight":["regular","italic","700","700italic"],"fallback":"sans-serif"},"Raleway":{"weight":["100","200","300","regular","500","600","700","800","900","100italic","200italic","300italic","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"sans-serif"},"PT Sans":{"weight":["regular","italic","700","700italic"],"fallback":"sans-serif"},"Roboto Slab":{"weight":["100","200","300","regular","500","600","700","800","900"],"fallback":"serif"},"Merriweather":{"weight":["300","300italic","regular","italic","700","700italic","900","900italic"],"fallback":"serif"},"Ubuntu":{"weight":["300","300italic","regular","italic","500","500italic","700","700italic"],"fallback":"sans-serif"},"Playfair Display":{"weight":["regular","500","600","700","800","900","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"serif"},"Nunito":{"weight":["200","200italic","300","300italic","regular","italic","600","600italic","700","700italic","800","800italic","900","900italic"],"fallback":"sans-serif"},"Noto Sans KR":{"weight":["100","300","regular","500","700","900"],"fallback":"sans-serif"},"Open Sans Condensed":{"weight":["300","300italic","700"],"fallback":"sans-serif"},"Rubik":{"weight":["300","regular","500","600","700","800","900","300italic","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"sans-serif"},"Lora":{"weight":["regular","500","600","700","italic","500italic","600italic","700italic"],"fallback":"serif"},"Work Sans":{"weight":["100","200","300","regular","500","600","700","800","900","100italic","200italic","300italic","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"sans-serif"},"Mukta":{"weight":["200","300","regular","500","600","700","800"],"fallback":"sans-serif"},"Noto Sans TC":{"weight":["100","300","regular","500","700","900"],"fallback":"sans-serif"},"Nunito Sans":{"weight":["200","200italic","300","300italic","regular","italic","600","600italic","700","700italic","800","800italic","900","900italic"],"fallback":"sans-serif"},"PT Serif":{"weight":["regular","italic","700","700italic"],"fallback":"serif"},"Nanum Gothic":{"weight":["regular","700","800"],"fallback":"sans-serif"},"Inter":{"weight":["100","200","300","regular","500","600","700","800","900"],"fallback":"sans-serif"},"Fira Sans":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic","800","800italic","900","900italic"],"fallback":"sans-serif"},"Noto Serif":{"weight":["regular","italic","700","700italic"],"fallback":"serif"},"Quicksand":{"weight":["300","regular","500","600","700"],"fallback":"sans-serif"},"Titillium Web":{"weight":["200","200italic","300","300italic","regular","italic","600","600italic","700","700italic","900"],"fallback":"sans-serif"},"Hind Siliguri":{"weight":["300","regular","500","600","700"],"fallback":"sans-serif"},"Karla":{"weight":["200","300","regular","500","600","700","800","200italic","300italic","italic","500italic","600italic","700italic","800italic"],"fallback":"sans-serif"},"Barlow":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic","800","800italic","900","900italic"],"fallback":"sans-serif"},"Inconsolata":{"weight":["200","300","regular","500","600","700","800","900"],"fallback":"monospace"},"Heebo":{"weight":["100","200","300","regular","500","600","700","800","900"],"fallback":"sans-serif"},"Noto Sans SC":{"weight":["100","300","regular","500","700","900"],"fallback":"sans-serif"},"Oxygen":{"weight":["300","regular","700"],"fallback":"sans-serif"},"Source Code Pro":{"weight":["200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic","900","900italic"],"fallback":"monospace"},"Anton":{"weight":["regular"],"fallback":"sans-serif"},"Josefin Sans":{"weight":["100","200","300","regular","500","600","700","100italic","200italic","300italic","italic","500italic","600italic","700italic"],"fallback":"sans-serif"},"Arimo":{"weight":["regular","500","600","700","italic","500italic","600italic","700italic"],"fallback":"sans-serif"},"PT Sans Narrow":{"weight":["regular","700"],"fallback":"sans-serif"},"IBM Plex Sans":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic"],"fallback":"sans-serif"},"Dosis":{"weight":["200","300","regular","500","600","700","800"],"fallback":"sans-serif"},"Noto Sans HK":{"weight":["100","300","regular","500","700","900"],"fallback":"sans-serif"},"Libre Franklin":{"weight":["100","200","300","regular","500","600","700","800","900","100italic","200italic","300italic","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"sans-serif"},"Libre Baskerville":{"weight":["regular","italic","700"],"fallback":"serif"},"Cabin":{"weight":["regular","500","600","700","italic","500italic","600italic","700italic"],"fallback":"sans-serif"},"Hind":{"weight":["300","regular","500","600","700"],"fallback":"sans-serif"},"Bitter":{"weight":["100","200","300","regular","500","600","700","800","900","100italic","200italic","300italic","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"serif"},"Crimson Text":{"weight":["regular","italic","600","600italic","700","700italic"],"fallback":"serif"},"Bebas Neue":{"weight":["regular"],"fallback":"display"},"Lobster":{"weight":["regular"],"fallback":"display"},"Yanone Kaffeesatz":{"weight":["200","300","regular","500","600","700"],"fallback":"sans-serif"},"Dancing Script":{"weight":["regular","500","600","700"],"fallback":"handwriting"},"Cairo":{"weight":["200","300","regular","600","700","900"],"fallback":"sans-serif"},"Abel":{"weight":["regular"],"fallback":"sans-serif"},"Fjalla One":{"weight":["regular"],"fallback":"sans-serif"},"Varela Round":{"weight":["regular"],"fallback":"sans-serif"},"Source Serif Pro":{"weight":["200","200italic","300","300italic","regular","italic","600","600italic","700","700italic","900","900italic"],"fallback":"serif"},"Arvo":{"weight":["regular","italic","700","700italic"],"fallback":"serif"},"EB Garamond":{"weight":["regular","500","600","700","800","italic","500italic","600italic","700italic","800italic"],"fallback":"serif"},"Barlow Condensed":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic","800","800italic","900","900italic"],"fallback":"sans-serif"},"Architects Daughter":{"weight":["regular"],"fallback":"handwriting"},"Zilla Slab":{"weight":["300","300italic","regular","italic","500","500italic","600","600italic","700","700italic"],"fallback":"serif"},"Indie Flower":{"weight":["regular"],"fallback":"handwriting"},"Mulish":{"weight":["200","300","regular","500","600","700","800","900","200italic","300italic","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"sans-serif"},"Comfortaa":{"weight":["300","regular","500","600","700"],"fallback":"display"},"DM Sans":{"weight":["regular","italic","500","500italic","700","700italic"],"fallback":"sans-serif"},"Pacifico":{"weight":["regular"],"fallback":"handwriting"},"Exo 2":{"weight":["100","200","300","regular","500","600","700","800","900","100italic","200italic","300italic","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"sans-serif"},"Kanit":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic","800","800italic","900","900italic"],"fallback":"sans-serif"},"Prompt":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic","800","800italic","900","900italic"],"fallback":"sans-serif"},"Shadows Into Light":{"weight":["regular"],"fallback":"handwriting"},"Questrial":{"weight":["regular"],"fallback":"sans-serif"},"Merriweather Sans":{"weight":["300","regular","500","600","700","800","300italic","italic","500italic","600italic","700italic","800italic"],"fallback":"sans-serif"},"Teko":{"weight":["300","regular","500","600","700"],"fallback":"sans-serif"},"Balsamiq Sans":{"weight":["regular","italic","700","700italic"],"fallback":"display"},"Asap":{"weight":["regular","500","600","700","italic","500italic","600italic","700italic"],"fallback":"sans-serif"},"Hind Madurai":{"weight":["300","regular","500","600","700"],"fallback":"sans-serif"},"Cormorant Garamond":{"weight":["300","300italic","regular","italic","500","500italic","600","600italic","700","700italic"],"fallback":"serif"},"Antic Slab":{"weight":["regular"],"fallback":"serif"},"Archivo Narrow":{"weight":["regular","italic","500","500italic","600","600italic","700","700italic"],"fallback":"sans-serif"},"Overpass":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","600","600italic","700","700italic","800","800italic","900","900italic"],"fallback":"sans-serif"},"Abril Fatface":{"weight":["regular"],"fallback":"display"},"Slabo 27px":{"weight":["regular"],"fallback":"serif"},"Exo":{"weight":["100","200","300","regular","500","600","700","800","900","100italic","200italic","300italic","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"sans-serif"},"Assistant":{"weight":["200","300","regular","500","600","700","800"],"fallback":"sans-serif"},"Maven Pro":{"weight":["regular","500","600","700","800","900"],"fallback":"sans-serif"},"Domine":{"weight":["regular","500","600","700"],"fallback":"serif"},"Fira Sans Condensed":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic","800","800italic","900","900italic"],"fallback":"sans-serif"},"Caveat":{"weight":["regular","500","600","700"],"fallback":"handwriting"},"Rajdhani":{"weight":["300","regular","500","600","700"],"fallback":"sans-serif"},"IBM Plex Serif":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic"],"fallback":"serif"},"Martel":{"weight":["200","300","regular","600","700","800","900"],"fallback":"serif"},"Play":{"weight":["regular","700"],"fallback":"sans-serif"},"Amatic SC":{"weight":["regular","700"],"fallback":"handwriting"},"Bree Serif":{"weight":["regular"],"fallback":"serif"},"Tajawal":{"weight":["200","300","regular","500","700","800","900"],"fallback":"sans-serif"},"Noto Serif JP":{"weight":["200","300","regular","500","600","700","900"],"fallback":"serif"},"Righteous":{"weight":["regular"],"fallback":"display"},"Satisfy":{"weight":["regular"],"fallback":"handwriting"},"Signika":{"weight":["300","regular","500","600","700"],"fallback":"sans-serif"},"Catamaran":{"weight":["100","200","300","regular","500","600","700","800","900"],"fallback":"sans-serif"},"Acme":{"weight":["regular"],"fallback":"sans-serif"},"Manrope":{"weight":["200","300","regular","500","600","700","800"],"fallback":"sans-serif"},"Fredoka One":{"weight":["regular"],"fallback":"display"},"Nanum Myeongjo":{"weight":["regular","700","800"],"fallback":"serif"},"ABeeZee":{"weight":["regular","italic"],"fallback":"sans-serif"},"Amiri":{"weight":["regular","italic","700","700italic"],"fallback":"serif"},"Patrick Hand":{"weight":["regular"],"fallback":"handwriting"},"PT Sans Caption":{"weight":["regular","700"],"fallback":"sans-serif"},"Archivo":{"weight":["100","200","300","regular","500","600","700","800","900","100italic","200italic","300italic","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"sans-serif"},"Alfa Slab One":{"weight":["regular"],"fallback":"display"},"Cinzel":{"weight":["regular","500","600","700","800","900"],"fallback":"serif"},"Crete Round":{"weight":["regular","italic"],"fallback":"serif"},"Permanent Marker":{"weight":["regular"],"fallback":"handwriting"},"Alegreya Sans":{"weight":["100","100italic","300","300italic","regular","italic","500","500italic","700","700italic","800","800italic","900","900italic"],"fallback":"sans-serif"},"Almarai":{"weight":["300","regular","700","800"],"fallback":"sans-serif"},"Barlow Semi Condensed":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic","800","800italic","900","900italic"],"fallback":"sans-serif"},"Russo One":{"weight":["regular"],"fallback":"sans-serif"},"Vollkorn":{"weight":["regular","500","600","700","800","900","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"serif"},"Sarabun":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic","800","800italic"],"fallback":"sans-serif"},"Krona One":{"weight":["regular"],"fallback":"sans-serif"},"M PLUS Rounded 1c":{"weight":["100","300","regular","500","700","800","900"],"fallback":"sans-serif"},"Noticia Text":{"weight":["regular","italic","700","700italic"],"fallback":"serif"},"Courgette":{"weight":["regular"],"fallback":"handwriting"},"Monda":{"weight":["regular","700"],"fallback":"sans-serif"},"Alegreya":{"weight":["regular","500","600","700","800","900","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"serif"},"Frank Ruhl Libre":{"weight":["300","regular","500","700","900"],"fallback":"serif"},"Patua One":{"weight":["regular"],"fallback":"display"},"Ubuntu Condensed":{"weight":["regular"],"fallback":"sans-serif"},"Great Vibes":{"weight":["regular"],"fallback":"handwriting"},"Quattrocento Sans":{"weight":["regular","italic","700","700italic"],"fallback":"sans-serif"},"M PLUS 1p":{"weight":["100","300","regular","500","700","800","900"],"fallback":"sans-serif"},"Spartan":{"weight":["100","200","300","regular","500","600","700","800","900"],"fallback":"sans-serif"},"Yantramanav":{"weight":["100","300","regular","500","700","900"],"fallback":"sans-serif"},"Lobster Two":{"weight":["regular","italic","700","700italic"],"fallback":"display"},"Archivo Black":{"weight":["regular"],"fallback":"sans-serif"},"Kaushan Script":{"weight":["regular"],"fallback":"handwriting"},"Tinos":{"weight":["regular","italic","700","700italic"],"fallback":"serif"},"Cardo":{"weight":["regular","italic","700"],"fallback":"serif"},"Orbitron":{"weight":["regular","500","600","700","800","900"],"fallback":"sans-serif"},"Sacramento":{"weight":["regular"],"fallback":"handwriting"},"IBM Plex Mono":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic"],"fallback":"monospace"},"Francois One":{"weight":["regular"],"fallback":"sans-serif"},"Luckiest Guy":{"weight":["regular"],"fallback":"display"},"Gothic A1":{"weight":["100","200","300","regular","500","600","700","800","900"],"fallback":"sans-serif"},"Kalam":{"weight":["300","regular","700"],"fallback":"handwriting"},"Parisienne":{"weight":["regular"],"fallback":"handwriting"},"Gloria Hallelujah":{"weight":["regular"],"fallback":"handwriting"},"Didact Gothic":{"weight":["regular"],"fallback":"sans-serif"},"Cantarell":{"weight":["regular","italic","700","700italic"],"fallback":"sans-serif"},"Press Start 2P":{"weight":["regular"],"fallback":"display"},"Jost":{"weight":["100","200","300","regular","500","600","700","800","900","100italic","200italic","300italic","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"sans-serif"},"Rokkitt":{"weight":["100","200","300","regular","500","600","700","800","900"],"fallback":"serif"},"Paytone One":{"weight":["regular"],"fallback":"sans-serif"},"Prata":{"weight":["regular"],"fallback":"serif"},"Baloo 2":{"weight":["regular","500","600","700","800"],"fallback":"display"},"Cuprum":{"weight":["regular","500","600","700","italic","500italic","600italic","700italic"],"fallback":"sans-serif"},"Chivo":{"weight":["300","300italic","regular","italic","700","700italic","900","900italic"],"fallback":"sans-serif"},"Encode Sans":{"weight":["100","200","300","regular","500","600","700","800","900"],"fallback":"sans-serif"},"News Cycle":{"weight":["regular","700"],"fallback":"sans-serif"},"Old Standard TT":{"weight":["regular","italic","700"],"fallback":"serif"},"Hind Guntur":{"weight":["300","regular","500","600","700"],"fallback":"sans-serif"},"Pathway Gothic One":{"weight":["regular"],"fallback":"sans-serif"},"Red Hat Display":{"weight":["regular","italic","500","500italic","700","700italic","900","900italic"],"fallback":"sans-serif"},"Public Sans":{"weight":["100","200","300","regular","500","600","700","800","900","100italic","200italic","300italic","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"sans-serif"},"Secular One":{"weight":["regular"],"fallback":"sans-serif"},"Volkhov":{"weight":["regular","italic","700","700italic"],"fallback":"serif"},"Concert One":{"weight":["regular"],"fallback":"display"},"Asap Condensed":{"weight":["regular","italic","500","500italic","600","600italic","700","700italic"],"fallback":"sans-serif"},"Montserrat Alternates":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic","800","800italic","900","900italic"],"fallback":"sans-serif"},"Ropa Sans":{"weight":["regular","italic"],"fallback":"sans-serif"},"Josefin Slab":{"weight":["100","200","300","regular","500","600","700","100italic","200italic","300italic","italic","500italic","600italic","700italic"],"fallback":"serif"},"Poiret One":{"weight":["regular"],"fallback":"display"},"Passion One":{"weight":["regular","700","900"],"fallback":"display"},"Padauk":{"weight":["regular","700"],"fallback":"sans-serif"},"Changa":{"weight":["200","300","regular","500","600","700","800"],"fallback":"sans-serif"},"Saira Condensed":{"weight":["100","200","300","regular","500","600","700","800","900"],"fallback":"sans-serif"},"Ultra":{"weight":["regular"],"fallback":"serif"},"Quattrocento":{"weight":["regular","700"],"fallback":"serif"},"Arapey":{"weight":["regular","italic"],"fallback":"serif"},"Vidaloka":{"weight":["regular"],"fallback":"serif"},"Playfair Display SC":{"weight":["regular","italic","700","700italic","900","900italic"],"fallback":"serif"},"Cookie":{"weight":["regular"],"fallback":"handwriting"},"Chakra Petch":{"weight":["300","300italic","regular","italic","500","500italic","600","600italic","700","700italic"],"fallback":"sans-serif"},"Istok Web":{"weight":["regular","italic","700","700italic"],"fallback":"sans-serif"},"Cormorant":{"weight":["300","300italic","regular","italic","500","500italic","600","600italic","700","700italic"],"fallback":"serif"},"DM Serif Display":{"weight":["regular","italic"],"fallback":"serif"},"Neuton":{"weight":["200","300","regular","italic","700","800"],"fallback":"serif"},"Spectral":{"weight":["200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic","800","800italic"],"fallback":"serif"},"Sawarabi Mincho":{"weight":["regular"],"fallback":"sans-serif"},"Lemonada":{"weight":["300","regular","500","600","700"],"fallback":"display"},"Yellowtail":{"weight":["regular"],"fallback":"handwriting"},"Handlee":{"weight":["regular"],"fallback":"handwriting"},"Merienda":{"weight":["regular","700"],"fallback":"handwriting"},"Philosopher":{"weight":["regular","italic","700","700italic"],"fallback":"sans-serif"},"Sanchez":{"weight":["regular","italic"],"fallback":"serif"},"Hammersmith One":{"weight":["regular"],"fallback":"sans-serif"},"Special Elite":{"weight":["regular"],"fallback":"display"},"Economica":{"weight":["regular","italic","700","700italic"],"fallback":"sans-serif"},"Staatliches":{"weight":["regular"],"fallback":"display"},"Sriracha":{"weight":["regular"],"fallback":"handwriting"},"Hind Vadodara":{"weight":["300","regular","500","600","700"],"fallback":"sans-serif"},"Monoton":{"weight":["regular"],"fallback":"display"},"Ruda":{"weight":["regular","500","600","700","800","900"],"fallback":"sans-serif"},"Advent Pro":{"weight":["100","200","300","regular","500","600","700"],"fallback":"sans-serif"},"Saira":{"weight":["100","200","300","regular","500","600","700","800","900","100italic","200italic","300italic","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"sans-serif"},"Homemade Apple":{"weight":["regular"],"fallback":"handwriting"},"Sigmar One":{"weight":["regular"],"fallback":"display"},"Mitr":{"weight":["200","300","regular","500","600","700"],"fallback":"sans-serif"},"Bangers":{"weight":["regular"],"fallback":"display"},"Khand":{"weight":["300","regular","500","600","700"],"fallback":"sans-serif"},"Faustina":{"weight":["regular","500","600","700","italic","500italic","600italic","700italic"],"fallback":"serif"},"Saira Semi Condensed":{"weight":["100","200","300","regular","500","600","700","800","900"],"fallback":"sans-serif"},"Cabin Condensed":{"weight":["regular","500","600","700"],"fallback":"sans-serif"},"Gudea":{"weight":["regular","italic","700"],"fallback":"sans-serif"},"Fira Sans Extra Condensed":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic","800","800italic","900","900italic"],"fallback":"sans-serif"},"DM Serif Text":{"weight":["regular","italic"],"fallback":"serif"},"El Messiri":{"weight":["regular","500","600","700"],"fallback":"sans-serif"},"Electrolize":{"weight":["regular"],"fallback":"sans-serif"},"Taviraj":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic","800","800italic","900","900italic"],"fallback":"serif"},"PT Mono":{"weight":["regular"],"fallback":"monospace"},"Gentium Basic":{"weight":["regular","italic","700","700italic"],"fallback":"serif"},"Space Mono":{"weight":["regular","italic","700","700italic"],"fallback":"monospace"},"Alice":{"weight":["regular"],"fallback":"serif"},"Unica One":{"weight":["regular"],"fallback":"display"},"Ubuntu Mono":{"weight":["regular","italic","700","700italic"],"fallback":"monospace"},"Pragati Narrow":{"weight":["regular","700"],"fallback":"sans-serif"},"Noto Serif TC":{"weight":["200","300","regular","500","600","700","900"],"fallback":"serif"},"Amaranth":{"weight":["regular","italic","700","700italic"],"fallback":"sans-serif"},"Karma":{"weight":["300","regular","500","600","700"],"fallback":"serif"},"Actor":{"weight":["regular"],"fallback":"sans-serif"},"Nanum Pen Script":{"weight":["regular"],"fallback":"handwriting"},"Noto Serif SC":{"weight":["200","300","regular","500","600","700","900"],"fallback":"serif"},"Tangerine":{"weight":["regular","700"],"fallback":"handwriting"},"Carter One":{"weight":["regular"],"fallback":"display"},"Neucha":{"weight":["regular"],"fallback":"handwriting"},"Unna":{"weight":["regular","italic","700","700italic"],"fallback":"serif"},"Pontano Sans":{"weight":["regular"],"fallback":"sans-serif"},"Bai Jamjuree":{"weight":["200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic"],"fallback":"sans-serif"},"Marck Script":{"weight":["regular"],"fallback":"handwriting"},"BenchNine":{"weight":["300","regular","700"],"fallback":"sans-serif"},"Fugaz One":{"weight":["regular"],"fallback":"display"},"Yeseva One":{"weight":["regular"],"fallback":"display"},"Eczar":{"weight":["regular","500","600","700","800"],"fallback":"serif"},"Bad Script":{"weight":["regular"],"fallback":"handwriting"},"Viga":{"weight":["regular"],"fallback":"sans-serif"},"Gentium Book Basic":{"weight":["regular","italic","700","700italic"],"fallback":"serif"},"Jura":{"weight":["300","regular","500","600","700"],"fallback":"sans-serif"},"Allura":{"weight":["regular"],"fallback":"handwriting"},"Palanquin":{"weight":["100","200","300","regular","500","600","700"],"fallback":"sans-serif"},"Sawarabi Gothic":{"weight":["regular"],"fallback":"sans-serif"},"Rock Salt":{"weight":["regular"],"fallback":"handwriting"},"Lusitana":{"weight":["regular","700"],"fallback":"serif"},"Alef":{"weight":["regular","700"],"fallback":"sans-serif"},"Julius Sans One":{"weight":["regular"],"fallback":"sans-serif"},"Tenor Sans":{"weight":["regular"],"fallback":"sans-serif"},"Nothing You Could Do":{"weight":["regular"],"fallback":"handwriting"},"Cutive Mono":{"weight":["regular"],"fallback":"monospace"},"Khula":{"weight":["300","regular","600","700","800"],"fallback":"sans-serif"},"Adamina":{"weight":["regular"],"fallback":"serif"},"Playball":{"weight":["regular"],"fallback":"display"},"Audiowide":{"weight":["regular"],"fallback":"display"},"Jaldi":{"weight":["regular","700"],"fallback":"sans-serif"},"Black Ops One":{"weight":["regular"],"fallback":"display"},"Signika Negative":{"weight":["300","regular","600","700"],"fallback":"sans-serif"},"Shadows Into Light Two":{"weight":["regular"],"fallback":"handwriting"},"Armata":{"weight":["regular"],"fallback":"sans-serif"},"Mali":{"weight":["200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic"],"fallback":"handwriting"},"Antic":{"weight":["regular"],"fallback":"sans-serif"},"Varela":{"weight":["regular"],"fallback":"sans-serif"},"Berkshire Swash":{"weight":["regular"],"fallback":"handwriting"},"Aleo":{"weight":["300","300italic","regular","italic","700","700italic"],"fallback":"serif"},"Gelasio":{"weight":["regular","italic","500","500italic","600","600italic","700","700italic"],"fallback":"serif"},"Rufina":{"weight":["regular","700"],"fallback":"serif"},"Markazi Text":{"weight":["regular","500","600","700"],"fallback":"serif"},"Nanum Gothic Coding":{"weight":["regular","700"],"fallback":"monospace"},"Allan":{"weight":["regular","700"],"fallback":"display"},"Noto Serif KR":{"weight":["200","300","regular","500","600","700","900"],"fallback":"serif"},"Abhaya Libre":{"weight":["regular","500","600","700","800"],"fallback":"serif"},"Quantico":{"weight":["regular","italic","700","700italic"],"fallback":"sans-serif"},"Marcellus":{"weight":["regular"],"fallback":"serif"},"Sorts Mill Goudy":{"weight":["regular","italic"],"fallback":"serif"},"Alata":{"weight":["regular"],"fallback":"sans-serif"},"Knewave":{"weight":["regular"],"fallback":"display"},"Alex Brush":{"weight":["regular"],"fallback":"handwriting"},"Aclonica":{"weight":["regular"],"fallback":"sans-serif"},"Gruppo":{"weight":["regular"],"fallback":"display"},"Damion":{"weight":["regular"],"fallback":"handwriting"},"Itim":{"weight":["regular"],"fallback":"handwriting"},"Bungee":{"weight":["regular"],"fallback":"display"},"Gochi Hand":{"weight":["regular"],"fallback":"handwriting"},"Mr Dafoe":{"weight":["regular"],"fallback":"handwriting"},"Freckle Face":{"weight":["regular"],"fallback":"display"},"Baloo Chettan 2":{"weight":["regular","500","600","700","800"],"fallback":"display"},"Trirong":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic","800","800italic","900","900italic"],"fallback":"serif"},"Kosugi Maru":{"weight":["regular"],"fallback":"sans-serif"},"Rubik Mono One":{"weight":["regular"],"fallback":"sans-serif"},"Fira Mono":{"weight":["regular","500","700"],"fallback":"monospace"},"Cantata One":{"weight":["regular"],"fallback":"serif"},"Suez One":{"weight":["regular"],"fallback":"serif"},"Niconne":{"weight":["regular"],"fallback":"handwriting"},"Six Caps":{"weight":["regular"],"fallback":"sans-serif"},"Miriam Libre":{"weight":["regular","700"],"fallback":"sans-serif"},"Sarala":{"weight":["regular","700"],"fallback":"sans-serif"},"Sintony":{"weight":["regular","700"],"fallback":"sans-serif"},"Titan One":{"weight":["regular"],"fallback":"display"},"Encode Sans Condensed":{"weight":["100","200","300","regular","500","600","700","800","900"],"fallback":"sans-serif"},"Cousine":{"weight":["regular","italic","700","700italic"],"fallback":"monospace"},"PT Serif Caption":{"weight":["regular","italic"],"fallback":"serif"},"Courier Prime":{"weight":["regular","italic","700","700italic"],"fallback":"monospace"},"Overlock":{"weight":["regular","italic","700","700italic","900","900italic"],"fallback":"display"},"Allerta":{"weight":["regular"],"fallback":"sans-serif"},"Arsenal":{"weight":["regular","italic","700","700italic"],"fallback":"sans-serif"},"Black Han Sans":{"weight":["regular"],"fallback":"sans-serif"},"Squada One":{"weight":["regular"],"fallback":"display"},"Lateef":{"weight":["regular"],"fallback":"handwriting"},"Arima Madurai":{"weight":["100","200","300","regular","500","700","800","900"],"fallback":"display"},"Ramabhadra":{"weight":["regular"],"fallback":"sans-serif"},"Covered By Your Grace":{"weight":["regular"],"fallback":"handwriting"},"Martel Sans":{"weight":["200","300","regular","600","700","800","900"],"fallback":"sans-serif"},"Rancho":{"weight":["regular"],"fallback":"handwriting"},"Enriqueta":{"weight":["regular","500","600","700"],"fallback":"serif"},"Syncopate":{"weight":["regular","700"],"fallback":"sans-serif"},"Pinyon Script":{"weight":["regular"],"fallback":"handwriting"},"Chewy":{"weight":["regular"],"fallback":"display"},"Oleo Script":{"weight":["regular","700"],"fallback":"display"},"Kreon":{"weight":["300","regular","500","600","700"],"fallback":"serif"},"Candal":{"weight":["regular"],"fallback":"sans-serif"},"Spinnaker":{"weight":["regular"],"fallback":"sans-serif"},"Reem Kufi":{"weight":["regular"],"fallback":"sans-serif"},"Krub":{"weight":["200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic"],"fallback":"sans-serif"},"Michroma":{"weight":["regular"],"fallback":"sans-serif"},"Annie Use Your Telescope":{"weight":["regular"],"fallback":"handwriting"},"Lilita One":{"weight":["regular"],"fallback":"display"},"Coda":{"weight":["regular","800"],"fallback":"display"},"Fredericka the Great":{"weight":["regular"],"fallback":"display"},"Mukta Malar":{"weight":["200","300","regular","500","600","700","800"],"fallback":"sans-serif"},"Bowlby One SC":{"weight":["regular"],"fallback":"display"},"Average":{"weight":["regular"],"fallback":"serif"},"Londrina Solid":{"weight":["100","300","regular","900"],"fallback":"display"},"New Tegomin":{"weight":["regular"],"fallback":"serif"},"Glegoo":{"weight":["regular","700"],"fallback":"serif"},"Pridi":{"weight":["200","300","regular","500","600","700"],"fallback":"serif"},"Boogaloo":{"weight":["regular"],"fallback":"display"},"Red Hat Text":{"weight":["regular","italic","500","500italic","700","700italic"],"fallback":"sans-serif"},"Aldrich":{"weight":["regular"],"fallback":"sans-serif"},"Basic":{"weight":["regular"],"fallback":"sans-serif"},"Capriola":{"weight":["regular"],"fallback":"sans-serif"},"Forum":{"weight":["regular"],"fallback":"display"},"Reenie Beanie":{"weight":["regular"],"fallback":"handwriting"},"Laila":{"weight":["300","regular","500","600","700"],"fallback":"sans-serif"},"Alegreya Sans SC":{"weight":["100","100italic","300","300italic","regular","italic","500","500italic","700","700italic","800","800italic","900","900italic"],"fallback":"sans-serif"},"Share Tech Mono":{"weight":["regular"],"fallback":"monospace"},"Italianno":{"weight":["regular"],"fallback":"handwriting"},"Lalezar":{"weight":["regular"],"fallback":"display"},"Lexend Deca":{"weight":["regular"],"fallback":"sans-serif"},"Caveat Brush":{"weight":["regular"],"fallback":"handwriting"},"Shrikhand":{"weight":["regular"],"fallback":"display"},"Creepster":{"weight":["regular"],"fallback":"display"},"Kameron":{"weight":["regular","700"],"fallback":"serif"},"Coda Caption":{"weight":["800"],"fallback":"sans-serif"},"Goudy Bookletter 1911":{"weight":["regular"],"fallback":"serif"},"Coming Soon":{"weight":["regular"],"fallback":"handwriting"},"Saira Extra Condensed":{"weight":["100","200","300","regular","500","600","700","800","900"],"fallback":"sans-serif"},"Yrsa":{"weight":["300","regular","500","600","700"],"fallback":"serif"},"Telex":{"weight":["regular"],"fallback":"sans-serif"},"Bevan":{"weight":["regular"],"fallback":"display"},"Voltaire":{"weight":["regular"],"fallback":"sans-serif"},"Days One":{"weight":["regular"],"fallback":"sans-serif"},"Cabin Sketch":{"weight":["regular","700"],"fallback":"display"},"Norican":{"weight":["regular"],"fallback":"handwriting"},"Rambla":{"weight":["regular","italic","700","700italic"],"fallback":"sans-serif"},"Mukta Vaani":{"weight":["200","300","regular","500","600","700","800"],"fallback":"sans-serif"},"Average Sans":{"weight":["regular"],"fallback":"sans-serif"},"Arbutus Slab":{"weight":["regular"],"fallback":"serif"},"Sansita":{"weight":["regular","italic","700","700italic","800","800italic","900","900italic"],"fallback":"sans-serif"},"Mada":{"weight":["200","300","regular","500","600","700","900"],"fallback":"sans-serif"},"Just Another Hand":{"weight":["regular"],"fallback":"handwriting"},"Nobile":{"weight":["regular","italic","500","500italic","700","700italic"],"fallback":"sans-serif"},"Gilda Display":{"weight":["regular"],"fallback":"serif"},"VT323":{"weight":["regular"],"fallback":"monospace"},"Mandali":{"weight":["regular"],"fallback":"sans-serif"},"Caudex":{"weight":["regular","italic","700","700italic"],"fallback":"serif"},"Anonymous Pro":{"weight":["regular","italic","700","700italic"],"fallback":"monospace"},"Bentham":{"weight":["regular"],"fallback":"serif"},"Overpass Mono":{"weight":["300","regular","600","700"],"fallback":"monospace"},"Sen":{"weight":["regular","700","800"],"fallback":"sans-serif"},"Kadwa":{"weight":["regular","700"],"fallback":"serif"},"Cambay":{"weight":["regular","italic","700","700italic"],"fallback":"sans-serif"},"Yesteryear":{"weight":["regular"],"fallback":"handwriting"},"Molengo":{"weight":["regular"],"fallback":"sans-serif"},"Nixie One":{"weight":["regular"],"fallback":"display"},"Scada":{"weight":["regular","italic","700","700italic"],"fallback":"sans-serif"},"Crimson Pro":{"weight":["200","300","regular","500","600","700","800","900","200italic","300italic","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"serif"},"Arizonia":{"weight":["regular"],"fallback":"handwriting"},"Racing Sans One":{"weight":["regular"],"fallback":"display"},"Scheherazade":{"weight":["regular","700"],"fallback":"serif"},"Seaweed Script":{"weight":["regular"],"fallback":"display"},"Belleza":{"weight":["regular"],"fallback":"sans-serif"},"Harmattan":{"weight":["regular","700"],"fallback":"sans-serif"},"Leckerli One":{"weight":["regular"],"fallback":"handwriting"},"Ovo":{"weight":["regular"],"fallback":"serif"},"Merienda One":{"weight":["regular"],"fallback":"handwriting"},"Holtwood One SC":{"weight":["regular"],"fallback":"serif"},"Cinzel Decorative":{"weight":["regular","700","900"],"fallback":"display"},"Literata":{"weight":["200","300","regular","500","600","700","800","900","200italic","300italic","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"serif"},"Mrs Saint Delafield":{"weight":["regular"],"fallback":"handwriting"},"Schoolbell":{"weight":["regular"],"fallback":"handwriting"},"Bungee Inline":{"weight":["regular"],"fallback":"display"},"Herr Von Muellerhoff":{"weight":["regular"],"fallback":"handwriting"},"Oranienbaum":{"weight":["regular"],"fallback":"serif"},"Baloo Tamma 2":{"weight":["regular","500","600","700","800"],"fallback":"display"},"Sniglet":{"weight":["regular","800"],"fallback":"display"},"Bubblegum Sans":{"weight":["regular"],"fallback":"display"},"Rochester":{"weight":["regular"],"fallback":"handwriting"},"Judson":{"weight":["regular","italic","700"],"fallback":"serif"},"Marcellus SC":{"weight":["regular"],"fallback":"serif"},"Darker Grotesque":{"weight":["300","regular","500","600","700","800","900"],"fallback":"sans-serif"},"Changa One":{"weight":["regular","italic"],"fallback":"display"},"Alegreya SC":{"weight":["regular","italic","500","500italic","700","700italic","800","800italic","900","900italic"],"fallback":"serif"},"Pattaya":{"weight":["regular"],"fallback":"sans-serif"},"Mallanna":{"weight":["regular"],"fallback":"sans-serif"},"Share":{"weight":["regular","italic","700","700italic"],"fallback":"display"},"Podkova":{"weight":["regular","500","600","700","800"],"fallback":"serif"},"Allerta Stencil":{"weight":["regular"],"fallback":"sans-serif"},"Charm":{"weight":["regular","700"],"fallback":"handwriting"},"Niramit":{"weight":["200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic"],"fallback":"sans-serif"},"Halant":{"weight":["300","regular","500","600","700"],"fallback":"serif"},"Graduate":{"weight":["regular"],"fallback":"display"},"Nanum Brush Script":{"weight":["regular"],"fallback":"handwriting"},"Amita":{"weight":["regular","700"],"fallback":"handwriting"},"Rozha One":{"weight":["regular"],"fallback":"serif"},"Kristi":{"weight":["regular"],"fallback":"handwriting"},"Biryani":{"weight":["200","300","regular","600","700","800","900"],"fallback":"sans-serif"},"Lustria":{"weight":["regular"],"fallback":"serif"},"Delius":{"weight":["regular"],"fallback":"handwriting"},"Suranna":{"weight":["regular"],"fallback":"serif"},"Amethysta":{"weight":["regular"],"fallback":"serif"},"Contrail One":{"weight":["regular"],"fallback":"display"},"Averia Serif Libre":{"weight":["300","300italic","regular","italic","700","700italic"],"fallback":"display"},"Do Hyeon":{"weight":["regular"],"fallback":"sans-serif"},"IBM Plex Sans Condensed":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic"],"fallback":"sans-serif"},"Marvel":{"weight":["regular","italic","700","700italic"],"fallback":"sans-serif"},"Rye":{"weight":["regular"],"fallback":"display"},"Fauna One":{"weight":["regular"],"fallback":"serif"},"Corben":{"weight":["regular","700"],"fallback":"display"},"Cedarville Cursive":{"weight":["regular"],"fallback":"handwriting"},"Jockey One":{"weight":["regular"],"fallback":"sans-serif"},"Libre Caslon Text":{"weight":["regular","italic","700"],"fallback":"serif"},"Carrois Gothic":{"weight":["regular"],"fallback":"sans-serif"},"Calligraffitti":{"weight":["regular"],"fallback":"handwriting"},"Trocchi":{"weight":["regular"],"fallback":"serif"},"Spectral SC":{"weight":["200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic","800","800italic"],"fallback":"serif"},"Coustard":{"weight":["regular","900"],"fallback":"serif"},"Copse":{"weight":["regular"],"fallback":"serif"},"Athiti":{"weight":["200","300","regular","500","600","700"],"fallback":"sans-serif"},"Carme":{"weight":["regular"],"fallback":"sans-serif"},"Rosario":{"weight":["300","regular","500","600","700","300italic","italic","500italic","600italic","700italic"],"fallback":"sans-serif"},"Limelight":{"weight":["regular"],"fallback":"display"},"Jua":{"weight":["regular"],"fallback":"sans-serif"},"Petit Formal Script":{"weight":["regular"],"fallback":"handwriting"},"Love Ya Like A Sister":{"weight":["regular"],"fallback":"display"},"GFS Didot":{"weight":["regular"],"fallback":"serif"},"Aladin":{"weight":["regular"],"fallback":"handwriting"},"Palanquin Dark":{"weight":["regular","500","600","700"],"fallback":"sans-serif"},"Amiko":{"weight":["regular","600","700"],"fallback":"sans-serif"},"Cormorant Infant":{"weight":["300","300italic","regular","italic","500","500italic","600","600italic","700","700italic"],"fallback":"serif"},"Wallpoet":{"weight":["regular"],"fallback":"display"},"Magra":{"weight":["regular","700"],"fallback":"sans-serif"},"Grand Hotel":{"weight":["regular"],"fallback":"handwriting"},"Sunflower":{"weight":["300","500","700"],"fallback":"sans-serif"},"Big Shoulders Display":{"weight":["100","300","regular","500","600","700","800","900"],"fallback":"display"},"Slabo 13px":{"weight":["regular"],"fallback":"serif"},"Pangolin":{"weight":["regular"],"fallback":"handwriting"},"Mr De Haviland":{"weight":["regular"],"fallback":"handwriting"},"K2D":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic","800","800italic"],"fallback":"sans-serif"},"Marmelad":{"weight":["regular"],"fallback":"sans-serif"},"Thasadith":{"weight":["regular","italic","700","700italic"],"fallback":"sans-serif"},"La Belle Aurore":{"weight":["regular"],"fallback":"handwriting"},"Hanuman":{"weight":["regular","700"],"fallback":"serif"},"Metrophobic":{"weight":["regular"],"fallback":"sans-serif"},"Epilogue":{"weight":["100","200","300","regular","500","600","700","800","900","100italic","200italic","300italic","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"sans-serif"},"Radley":{"weight":["regular","italic"],"fallback":"serif"},"Poly":{"weight":["regular","italic"],"fallback":"serif"},"Commissioner":{"weight":["100","200","300","regular","500","600","700","800","900"],"fallback":"sans-serif"},"Averia Libre":{"weight":["300","300italic","regular","italic","700","700italic"],"fallback":"display"},"IM Fell Double Pica":{"weight":["regular","italic"],"fallback":"serif"},"Comic Neue":{"weight":["300","300italic","regular","italic","700","700italic"],"fallback":"handwriting"},"Baskervville":{"weight":["regular","italic"],"fallback":"serif"},"Kelly Slab":{"weight":["regular"],"fallback":"display"},"Oxygen Mono":{"weight":["regular"],"fallback":"monospace"},"Maitree":{"weight":["200","300","regular","500","600","700"],"fallback":"serif"},"Buenard":{"weight":["regular","700"],"fallback":"serif"},"Duru Sans":{"weight":["regular"],"fallback":"sans-serif"},"Baloo Da 2":{"weight":["regular","500","600","700","800"],"fallback":"display"},"Grandstander":{"weight":["100","200","300","regular","500","600","700","800","900","100italic","200italic","300italic","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"display"},"Balthazar":{"weight":["regular"],"fallback":"serif"},"ZCOOL XiaoWei":{"weight":["regular"],"fallback":"serif"},"Cutive":{"weight":["regular"],"fallback":"serif"},"Antic Didone":{"weight":["regular"],"fallback":"serif"},"Waiting for the Sunrise":{"weight":["regular"],"fallback":"handwriting"},"B612 Mono":{"weight":["regular","italic","700","700italic"],"fallback":"monospace"},"Chonburi":{"weight":["regular"],"fallback":"display"},"Montaga":{"weight":["regular"],"fallback":"serif"},"UnifrakturMaguntia":{"weight":["regular"],"fallback":"display"},"Kosugi":{"weight":["regular"],"fallback":"sans-serif"},"Gravitas One":{"weight":["regular"],"fallback":"display"},"Mirza":{"weight":["regular","500","600","700"],"fallback":"display"},"Manjari":{"weight":["100","regular","700"],"fallback":"sans-serif"},"Alike":{"weight":["regular"],"fallback":"serif"},"Lekton":{"weight":["regular","italic","700"],"fallback":"sans-serif"},"Sora":{"weight":["100","200","300","regular","500","600","700","800"],"fallback":"sans-serif"},"Gabriela":{"weight":["regular"],"fallback":"serif"},"Lemon":{"weight":["regular"],"fallback":"display"},"Esteban":{"weight":["regular"],"fallback":"serif"},"Alatsi":{"weight":["regular"],"fallback":"sans-serif"},"Turret Road":{"weight":["200","300","regular","500","700","800"],"fallback":"display"},"Monsieur La Doulaise":{"weight":["regular"],"fallback":"handwriting"},"Pompiere":{"weight":["regular"],"fallback":"display"},"Cormorant SC":{"weight":["300","regular","500","600","700"],"fallback":"serif"},"Kurale":{"weight":["regular"],"fallback":"serif"},"Frijole":{"weight":["regular"],"fallback":"display"},"Rammetto One":{"weight":["regular"],"fallback":"display"},"Chelsea Market":{"weight":["regular"],"fallback":"display"},"Megrim":{"weight":["regular"],"fallback":"display"},"IM Fell English":{"weight":["regular","italic"],"fallback":"serif"},"Oregano":{"weight":["regular","italic"],"fallback":"display"},"Andada":{"weight":["regular"],"fallback":"serif"},"Mate":{"weight":["regular","italic"],"fallback":"serif"},"Convergence":{"weight":["regular"],"fallback":"sans-serif"},"Rouge Script":{"weight":["regular"],"fallback":"handwriting"},"Bowlby One":{"weight":["regular"],"fallback":"display"},"Emilys Candy":{"weight":["regular"],"fallback":"display"},"Wendy One":{"weight":["regular"],"fallback":"sans-serif"},"Fira Code":{"weight":["300","regular","500","600","700"],"fallback":"monospace"},"Dawning of a New Day":{"weight":["regular"],"fallback":"handwriting"},"Sue Ellen Francisco":{"weight":["regular"],"fallback":"handwriting"},"Gurajada":{"weight":["regular"],"fallback":"serif"},"David Libre":{"weight":["regular","500","700"],"fallback":"serif"},"Sofia":{"weight":["regular"],"fallback":"handwriting"},"Short Stack":{"weight":["regular"],"fallback":"handwriting"},"Chau Philomene One":{"weight":["regular","italic"],"fallback":"sans-serif"},"Bellefair":{"weight":["regular"],"fallback":"serif"},"Belgrano":{"weight":["regular"],"fallback":"serif"},"Expletus Sans":{"weight":["regular","italic","500","500italic","600","600italic","700","700italic"],"fallback":"display"},"Original Surfer":{"weight":["regular"],"fallback":"display"},"Doppio One":{"weight":["regular"],"fallback":"sans-serif"},"Be Vietnam":{"weight":["100","100italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic","800","800italic"],"fallback":"sans-serif"},"Sail":{"weight":["regular"],"fallback":"display"},"Inder":{"weight":["regular"],"fallback":"sans-serif"},"Give You Glory":{"weight":["regular"],"fallback":"handwriting"},"IM Fell DW Pica":{"weight":["regular","italic"],"fallback":"serif"},"McLaren":{"weight":["regular"],"fallback":"display"},"Encode Sans Semi Condensed":{"weight":["100","200","300","regular","500","600","700","800","900"],"fallback":"sans-serif"},"Bungee Shade":{"weight":["regular"],"fallback":"display"},"Baumans":{"weight":["regular"],"fallback":"display"},"Brawler":{"weight":["regular"],"fallback":"serif"},"Tenali Ramakrishna":{"weight":["regular"],"fallback":"sans-serif"},"Ceviche One":{"weight":["regular"],"fallback":"display"},"B612":{"weight":["regular","italic","700","700italic"],"fallback":"sans-serif"},"Zeyada":{"weight":["regular"],"fallback":"handwriting"},"Mountains of Christmas":{"weight":["regular","700"],"fallback":"display"},"Sedgwick Ave":{"weight":["regular"],"fallback":"handwriting"},"Gugi":{"weight":["regular"],"fallback":"display"},"Oleo Script Swash Caps":{"weight":["regular","700"],"fallback":"display"},"Skranji":{"weight":["regular","700"],"fallback":"display"},"Meddon":{"weight":["regular"],"fallback":"handwriting"},"NTR":{"weight":["regular"],"fallback":"sans-serif"},"Finger Paint":{"weight":["regular"],"fallback":"display"},"Blinker":{"weight":["100","200","300","regular","600","700","800","900"],"fallback":"sans-serif"},"Fanwood Text":{"weight":["regular","italic"],"fallback":"serif"},"Grenze Gotisch":{"weight":["100","200","300","regular","500","600","700","800","900"],"fallback":"display"},"Hepta Slab":{"weight":["100","200","300","regular","500","600","700","800","900"],"fallback":"serif"},"Anaheim":{"weight":["regular"],"fallback":"sans-serif"},"Major Mono Display":{"weight":["regular"],"fallback":"monospace"},"Quando":{"weight":["regular"],"fallback":"serif"},"Andika":{"weight":["regular"],"fallback":"sans-serif"},"Qwigley":{"weight":["regular"],"fallback":"handwriting"},"Vast Shadow":{"weight":["regular"],"fallback":"display"},"Happy Monkey":{"weight":["regular"],"fallback":"display"},"Montez":{"weight":["regular"],"fallback":"handwriting"},"Proza Libre":{"weight":["regular","italic","500","500italic","600","600italic","700","700italic","800","800italic"],"fallback":"sans-serif"},"Homenaje":{"weight":["regular"],"fallback":"sans-serif"},"Ma Shan Zheng":{"weight":["regular"],"fallback":"handwriting"},"Loved by the King":{"weight":["regular"],"fallback":"handwriting"},"Trade Winds":{"weight":["regular"],"fallback":"display"},"Stardos Stencil":{"weight":["regular","700"],"fallback":"display"},"Raleway Dots":{"weight":["regular"],"fallback":"display"},"Libre Barcode 39":{"weight":["regular"],"fallback":"display"},"Recursive":{"weight":["300","regular","500","600","700","800","900"],"fallback":"sans-serif"},"Numans":{"weight":["regular"],"fallback":"sans-serif"},"RocknRoll One":{"weight":["regular"],"fallback":"sans-serif"},"Rakkas":{"weight":["regular"],"fallback":"display"},"Mouse Memoirs":{"weight":["regular"],"fallback":"sans-serif"},"BioRhyme":{"weight":["200","300","regular","700","800"],"fallback":"serif"},"Ranchers":{"weight":["regular"],"fallback":"display"},"Patrick Hand SC":{"weight":["regular"],"fallback":"handwriting"},"Codystar":{"weight":["300","regular"],"fallback":"display"},"Rasa":{"weight":["300","regular","500","600","700"],"fallback":"serif"},"Meera Inimai":{"weight":["regular"],"fallback":"sans-serif"},"Clicker Script":{"weight":["regular"],"fallback":"handwriting"},"DM Mono":{"weight":["300","300italic","regular","italic","500","500italic"],"fallback":"monospace"},"Gaegu":{"weight":["300","regular","700"],"fallback":"handwriting"},"Aguafina Script":{"weight":["regular"],"fallback":"handwriting"},"Unkempt":{"weight":["regular","700"],"fallback":"display"},"Over the Rainbow":{"weight":["regular"],"fallback":"handwriting"},"Fondamento":{"weight":["regular","italic"],"fallback":"handwriting"},"Battambang":{"weight":["regular","700"],"fallback":"display"},"Cambo":{"weight":["regular"],"fallback":"serif"},"Crafty Girls":{"weight":["regular"],"fallback":"handwriting"},"Nova Mono":{"weight":["regular"],"fallback":"monospace"},"Tillana":{"weight":["regular","500","600","700","800"],"fallback":"handwriting"},"Alike Angular":{"weight":["regular"],"fallback":"serif"},"Kumbh Sans":{"weight":["300","regular","700"],"fallback":"sans-serif"},"Katibeh":{"weight":["regular"],"fallback":"display"},"Sarpanch":{"weight":["regular","500","600","700","800","900"],"fallback":"sans-serif"},"Antonio":{"weight":["100","200","300","regular","500","600","700"],"fallback":"sans-serif"},"Mansalva":{"weight":["regular"],"fallback":"handwriting"},"Faster One":{"weight":["regular"],"fallback":"display"},"Federo":{"weight":["regular"],"fallback":"sans-serif"},"Dokdo":{"weight":["regular"],"fallback":"handwriting"},"Hi Melody":{"weight":["regular"],"fallback":"handwriting"},"Euphoria Script":{"weight":["regular"],"fallback":"handwriting"},"Orienta":{"weight":["regular"],"fallback":"sans-serif"},"Space Grotesk":{"weight":["300","regular","500","600","700"],"fallback":"sans-serif"},"Galada":{"weight":["regular"],"fallback":"display"},"Timmana":{"weight":["regular"],"fallback":"sans-serif"},"JetBrains Mono":{"weight":["100","200","300","regular","500","600","700","800","100italic","200italic","300italic","italic","500italic","600italic","700italic","800italic"],"fallback":"monospace"},"Baloo Thambi 2":{"weight":["regular","500","600","700","800"],"fallback":"display"},"Averia Sans Libre":{"weight":["300","300italic","regular","italic","700","700italic"],"fallback":"display"},"UnifrakturCook":{"weight":["700"],"fallback":"display"},"Tauri":{"weight":["regular"],"fallback":"sans-serif"},"Share Tech":{"weight":["regular"],"fallback":"sans-serif"},"Walter Turncoat":{"weight":["regular"],"fallback":"handwriting"},"Geo":{"weight":["regular","italic"],"fallback":"sans-serif"},"Atma":{"weight":["300","regular","500","600","700"],"fallback":"display"},"Almendra":{"weight":["regular","italic","700","700italic"],"fallback":"serif"},"Jomhuria":{"weight":["regular"],"fallback":"display"},"Strait":{"weight":["regular"],"fallback":"sans-serif"},"Encode Sans Expanded":{"weight":["100","200","300","regular","500","600","700","800","900"],"fallback":"sans-serif"},"Metamorphous":{"weight":["regular"],"fallback":"display"},"Iceland":{"weight":["regular"],"fallback":"display"},"Ledger":{"weight":["regular"],"fallback":"serif"},"Poller One":{"weight":["regular"],"fallback":"display"},"Vollkorn SC":{"weight":["regular","600","700","900"],"fallback":"serif"},"Vesper Libre":{"weight":["regular","500","700","900"],"fallback":"serif"},"Aref Ruqaa":{"weight":["regular","700"],"fallback":"serif"},"Livvic":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic","900","900italic"],"fallback":"sans-serif"},"Caladea":{"weight":["regular","italic","700","700italic"],"fallback":"serif"},"Montserrat Subrayada":{"weight":["regular","700"],"fallback":"sans-serif"},"Vampiro One":{"weight":["regular"],"fallback":"display"},"Farro":{"weight":["300","regular","500","700"],"fallback":"sans-serif"},"New Rocker":{"weight":["regular"],"fallback":"display"},"Delius Swash Caps":{"weight":["regular"],"fallback":"handwriting"},"Calistoga":{"weight":["regular"],"fallback":"display"},"Carrois Gothic SC":{"weight":["regular"],"fallback":"sans-serif"},"Italiana":{"weight":["regular"],"fallback":"serif"},"Inknut Antiqua":{"weight":["300","regular","500","600","700","800","900"],"fallback":"serif"},"Life Savers":{"weight":["regular","700","800"],"fallback":"display"},"Imprima":{"weight":["regular"],"fallback":"sans-serif"},"Mako":{"weight":["regular"],"fallback":"sans-serif"},"Lily Script One":{"weight":["regular"],"fallback":"display"},"Bilbo Swash Caps":{"weight":["regular"],"fallback":"handwriting"},"IM Fell English SC":{"weight":["regular"],"fallback":"serif"},"Red Rose":{"weight":["300","regular","500","600","700"],"fallback":"display"},"Shojumaru":{"weight":["regular"],"fallback":"display"},"Prosto One":{"weight":["regular"],"fallback":"display"},"Bodoni Moda":{"weight":["regular","500","600","700","800","900","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"serif"},"Mukta Mahee":{"weight":["200","300","regular","500","600","700","800"],"fallback":"sans-serif"},"Bubbler One":{"weight":["regular"],"fallback":"sans-serif"},"The Girl Next Door":{"weight":["regular"],"fallback":"handwriting"},"Artifika":{"weight":["regular"],"fallback":"serif"},"Cantora One":{"weight":["regular"],"fallback":"sans-serif"},"Scope One":{"weight":["regular"],"fallback":"serif"},"Yusei Magic":{"weight":["regular"],"fallback":"sans-serif"},"Oxanium":{"weight":["200","300","regular","500","600","700","800"],"fallback":"display"},"Tienne":{"weight":["regular","700","900"],"fallback":"serif"},"Salsa":{"weight":["regular"],"fallback":"display"},"Flamenco":{"weight":["300","regular"],"fallback":"display"},"Port Lligat Sans":{"weight":["regular"],"fallback":"sans-serif"},"Denk One":{"weight":["regular"],"fallback":"sans-serif"},"Fontdiner Swanky":{"weight":["regular"],"fallback":"display"},"Nova Round":{"weight":["regular"],"fallback":"display"},"Gafata":{"weight":["regular"],"fallback":"sans-serif"},"Cormorant Upright":{"weight":["300","regular","500","600","700"],"fallback":"serif"},"Cherry Cream Soda":{"weight":["regular"],"fallback":"display"},"Asul":{"weight":["regular","700"],"fallback":"sans-serif"},"Big Shoulders Text":{"weight":["100","300","regular","500","600","700","800","900"],"fallback":"display"},"Voces":{"weight":["regular"],"fallback":"display"},"Dynalight":{"weight":["regular"],"fallback":"display"},"Peralta":{"weight":["regular"],"fallback":"display"},"Mina":{"weight":["regular","700"],"fallback":"sans-serif"},"Headland One":{"weight":["regular"],"fallback":"serif"},"Medula One":{"weight":["regular"],"fallback":"display"},"Englebert":{"weight":["regular"],"fallback":"sans-serif"},"Nova Square":{"weight":["regular"],"fallback":"display"},"Delius Unicase":{"weight":["regular","700"],"fallback":"handwriting"},"Sumana":{"weight":["regular","700"],"fallback":"serif"},"Bilbo":{"weight":["regular"],"fallback":"handwriting"},"Engagement":{"weight":["regular"],"fallback":"handwriting"},"ZCOOL QingKe HuangYou":{"weight":["regular"],"fallback":"display"},"Fresca":{"weight":["regular"],"fallback":"sans-serif"},"Ranga":{"weight":["regular","700"],"fallback":"display"},"Orelega One":{"weight":["regular"],"fallback":"display"},"Zen Dots":{"weight":["regular"],"fallback":"display"},"Shippori Mincho":{"weight":["regular","500","600","700","800"],"fallback":"serif"},"Henny Penny":{"weight":["regular"],"fallback":"display"},"Della Respira":{"weight":["regular"],"fallback":"serif"},"Cherry Swash":{"weight":["regular","700"],"fallback":"display"},"Notable":{"weight":["regular"],"fallback":"sans-serif"},"Arya":{"weight":["regular","700"],"fallback":"sans-serif"},"Slackey":{"weight":["regular"],"fallback":"display"},"Vibur":{"weight":["regular"],"fallback":"handwriting"},"Coiny":{"weight":["regular"],"fallback":"display"},"Lexend Zetta":{"weight":["regular"],"fallback":"sans-serif"},"Elsie":{"weight":["regular","900"],"fallback":"display"},"Fjord One":{"weight":["regular"],"fallback":"serif"},"Puritan":{"weight":["regular","italic","700","700italic"],"fallback":"sans-serif"},"Just Me Again Down Here":{"weight":["regular"],"fallback":"handwriting"},"Khmer":{"weight":["regular"],"fallback":"display"},"Girassol":{"weight":["regular"],"fallback":"display"},"Bellota Text":{"weight":["300","300italic","regular","italic","700","700italic"],"fallback":"display"},"Yatra One":{"weight":["regular"],"fallback":"display"},"Stalemate":{"weight":["regular"],"fallback":"handwriting"},"Wire One":{"weight":["regular"],"fallback":"sans-serif"},"Spicy Rice":{"weight":["regular"],"fallback":"display"},"Saira Stencil One":{"weight":["regular"],"fallback":"display"},"Kite One":{"weight":["regular"],"fallback":"sans-serif"},"Port Lligat Slab":{"weight":["regular"],"fallback":"serif"},"Baloo Bhaina 2":{"weight":["regular","500","600","700","800"],"fallback":"display"},"Pavanam":{"weight":["regular"],"fallback":"sans-serif"},"Eater":{"weight":["regular"],"fallback":"display"},"Text Me One":{"weight":["regular"],"fallback":"sans-serif"},"Ribeye":{"weight":["regular"],"fallback":"display"},"Pirata One":{"weight":["regular"],"fallback":"display"},"Amarante":{"weight":["regular"],"fallback":"display"},"Milonga":{"weight":["regular"],"fallback":"display"},"Habibi":{"weight":["regular"],"fallback":"serif"},"Ruslan Display":{"weight":["regular"],"fallback":"display"},"Encode Sans Semi Expanded":{"weight":["100","200","300","regular","500","600","700","800","900"],"fallback":"sans-serif"},"Nokora":{"weight":["regular","700"],"fallback":"serif"},"Rowdies":{"weight":["300","regular","700"],"fallback":"display"},"Kranky":{"weight":["regular"],"fallback":"display"},"Bigelow Rules":{"weight":["regular"],"fallback":"display"},"League Script":{"weight":["regular"],"fallback":"handwriting"},"Swanky and Moo Moo":{"weight":["regular"],"fallback":"handwriting"},"Karantina":{"weight":["300","regular","700"],"fallback":"display"},"Lovers Quarrel":{"weight":["regular"],"fallback":"handwriting"},"Mate SC":{"weight":["regular"],"fallback":"serif"},"Manuale":{"weight":["regular","500","600","700","italic","500italic","600italic","700italic"],"fallback":"serif"},"Germania One":{"weight":["regular"],"fallback":"display"},"Sura":{"weight":["regular","700"],"fallback":"serif"},"Sarina":{"weight":["regular"],"fallback":"display"},"Macondo Swash Caps":{"weight":["regular"],"fallback":"display"},"Kotta One":{"weight":["regular"],"fallback":"serif"},"IM Fell French Canon SC":{"weight":["regular"],"fallback":"serif"},"Julee":{"weight":["regular"],"fallback":"handwriting"},"Charmonman":{"weight":["regular","700"],"fallback":"handwriting"},"Shanti":{"weight":["regular"],"fallback":"sans-serif"},"Gamja Flower":{"weight":["regular"],"fallback":"handwriting"},"Averia Gruesa Libre":{"weight":["regular"],"fallback":"display"},"Stint Ultra Expanded":{"weight":["regular"],"fallback":"display"},"Uncial Antiqua":{"weight":["regular"],"fallback":"display"},"Mystery Quest":{"weight":["regular"],"fallback":"display"},"Goldman":{"weight":["regular","700"],"fallback":"display"},"Paprika":{"weight":["regular"],"fallback":"display"},"IM Fell French Canon":{"weight":["regular","italic"],"fallback":"serif"},"Prociono":{"weight":["regular"],"fallback":"serif"},"Kodchasan":{"weight":["200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic"],"fallback":"sans-serif"},"Libre Barcode 39 Text":{"weight":["regular"],"fallback":"display"},"Quintessential":{"weight":["regular"],"fallback":"handwriting"},"Moul":{"weight":["regular"],"fallback":"display"},"Libre Barcode 128":{"weight":["regular"],"fallback":"display"},"Ramaraja":{"weight":["regular"],"fallback":"serif"},"Modak":{"weight":["regular"],"fallback":"display"},"Song Myung":{"weight":["regular"],"fallback":"serif"},"East Sea Dokdo":{"weight":["regular"],"fallback":"handwriting"},"Crushed":{"weight":["regular"],"fallback":"display"},"Dekko":{"weight":["regular"],"fallback":"handwriting"},"Chilanka":{"weight":["regular"],"fallback":"handwriting"},"Hanalei Fill":{"weight":["regular"],"fallback":"display"},"Mogra":{"weight":["regular"],"fallback":"display"},"Baloo Tammudu 2":{"weight":["regular","500","600","700","800"],"fallback":"display"},"Baloo Bhai 2":{"weight":["regular","500","600","700","800"],"fallback":"display"},"Libre Barcode 39 Extended Text":{"weight":["regular"],"fallback":"display"},"Rosarivo":{"weight":["regular","italic"],"fallback":"serif"},"KoHo":{"weight":["200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic"],"fallback":"sans-serif"},"Offside":{"weight":["regular"],"fallback":"display"},"Reggae One":{"weight":["regular"],"fallback":"display"},"Syne":{"weight":["regular","500","600","700","800"],"fallback":"sans-serif"},"Zilla Slab Highlight":{"weight":["regular","700"],"fallback":"display"},"Donegal One":{"weight":["regular"],"fallback":"serif"},"Bellota":{"weight":["300","300italic","regular","italic","700","700italic"],"fallback":"display"},"Stoke":{"weight":["300","regular"],"fallback":"serif"},"Cormorant Unicase":{"weight":["300","regular","500","600","700"],"fallback":"serif"},"Cagliostro":{"weight":["regular"],"fallback":"sans-serif"},"Rationale":{"weight":["regular"],"fallback":"sans-serif"},"Margarine":{"weight":["regular"],"fallback":"display"},"Sancreek":{"weight":["regular"],"fallback":"display"},"Inria Serif":{"weight":["300","300italic","regular","italic","700","700italic"],"fallback":"serif"},"Overlock SC":{"weight":["regular"],"fallback":"display"},"Nosifer":{"weight":["regular"],"fallback":"display"},"Libre Barcode EAN13 Text":{"weight":["regular"],"fallback":"display"},"Yeon Sung":{"weight":["regular"],"fallback":"display"},"Ruluko":{"weight":["regular"],"fallback":"sans-serif"},"Simonetta":{"weight":["regular","italic","900","900italic"],"fallback":"display"},"Lakki Reddy":{"weight":["regular"],"fallback":"handwriting"},"Baloo Paaji 2":{"weight":["regular","500","600","700","800"],"fallback":"display"},"Chango":{"weight":["regular"],"fallback":"display"},"Galdeano":{"weight":["regular"],"fallback":"sans-serif"},"Fahkwang":{"weight":["200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic"],"fallback":"sans-serif"},"Elsie Swash Caps":{"weight":["regular","900"],"fallback":"display"},"Buda":{"weight":["300"],"fallback":"display"},"Condiment":{"weight":["regular"],"fallback":"handwriting"},"Barrio":{"weight":["regular"],"fallback":"display"},"Chicle":{"weight":["regular"],"fallback":"display"},"Angkor":{"weight":["regular"],"fallback":"display"},"Akronim":{"weight":["regular"],"fallback":"display"},"Tomorrow":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic","800","800italic","900","900italic"],"fallback":"sans-serif"},"Sonsie One":{"weight":["regular"],"fallback":"display"},"Kumar One":{"weight":["regular"],"fallback":"display"},"Autour One":{"weight":["regular"],"fallback":"display"},"Libre Caslon Display":{"weight":["regular"],"fallback":"serif"},"Farsan":{"weight":["regular"],"fallback":"display"},"Fenix":{"weight":["regular"],"fallback":"serif"},"Solway":{"weight":["300","regular","500","700","800"],"fallback":"serif"},"Kulim Park":{"weight":["200","200italic","300","300italic","regular","italic","600","600italic","700","700italic"],"fallback":"sans-serif"},"Stint Ultra Condensed":{"weight":["regular"],"fallback":"display"},"Metal":{"weight":["regular"],"fallback":"display"},"Rum Raisin":{"weight":["regular"],"fallback":"sans-serif"},"Redressed":{"weight":["regular"],"fallback":"handwriting"},"Tulpen One":{"weight":["regular"],"fallback":"display"},"Petrona":{"weight":["100","200","300","regular","500","600","700","800","900","100italic","200italic","300italic","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"serif"},"Marko One":{"weight":["regular"],"fallback":"serif"},"Asar":{"weight":["regular"],"fallback":"serif"},"Nova Flat":{"weight":["regular"],"fallback":"display"},"Koulen":{"weight":["regular"],"fallback":"display"},"Lexend Exa":{"weight":["regular"],"fallback":"sans-serif"},"Londrina Outline":{"weight":["regular"],"fallback":"display"},"Cute Font":{"weight":["regular"],"fallback":"display"},"IM Fell Great Primer":{"weight":["regular","italic"],"fallback":"serif"},"Junge":{"weight":["regular"],"fallback":"serif"},"Stylish":{"weight":["regular"],"fallback":"sans-serif"},"Lexend":{"weight":["100","300","regular","500","600","700","800"],"fallback":"sans-serif"},"Spirax":{"weight":["regular"],"fallback":"display"},"Piazzolla":{"weight":["100","200","300","regular","500","600","700","800","900","100italic","200italic","300italic","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"serif"},"Piedra":{"weight":["regular"],"fallback":"display"},"Ribeye Marrow":{"weight":["regular"],"fallback":"display"},"Dorsa":{"weight":["regular"],"fallback":"sans-serif"},"Ibarra Real Nova":{"weight":["regular","500","600","700","italic","500italic","600italic","700italic"],"fallback":"serif"},"IM Fell DW Pica SC":{"weight":["regular"],"fallback":"serif"},"Wellfleet":{"weight":["regular"],"fallback":"display"},"Eagle Lake":{"weight":["regular"],"fallback":"handwriting"},"Meie Script":{"weight":["regular"],"fallback":"handwriting"},"Goblin One":{"weight":["regular"],"fallback":"display"},"Flavors":{"weight":["regular"],"fallback":"display"},"Gotu":{"weight":["regular"],"fallback":"sans-serif"},"Linden Hill":{"weight":["regular","italic"],"fallback":"serif"},"Chathura":{"weight":["100","300","regular","700","800"],"fallback":"sans-serif"},"Croissant One":{"weight":["regular"],"fallback":"display"},"Jomolhari":{"weight":["regular"],"fallback":"serif"},"Srisakdi":{"weight":["regular","700"],"fallback":"display"},"Modern Antiqua":{"weight":["regular"],"fallback":"display"},"Joti One":{"weight":["regular"],"fallback":"display"},"Kavoon":{"weight":["regular"],"fallback":"display"},"Sulphur Point":{"weight":["300","regular","700"],"fallback":"sans-serif"},"Castoro":{"weight":["regular","italic"],"fallback":"serif"},"Chela One":{"weight":["regular"],"fallback":"display"},"Atomic Age":{"weight":["regular"],"fallback":"display"},"Maiden Orange":{"weight":["regular"],"fallback":"display"},"Ruthie":{"weight":["regular"],"fallback":"handwriting"},"Bayon":{"weight":["regular"],"fallback":"display"},"Potta One":{"weight":["regular"],"fallback":"display"},"Iceberg":{"weight":["regular"],"fallback":"display"},"Bigshot One":{"weight":["regular"],"fallback":"display"},"Gorditas":{"weight":["regular","700"],"fallback":"display"},"Sree Krushnadevaraya":{"weight":["regular"],"fallback":"serif"},"Trykker":{"weight":["regular"],"fallback":"serif"},"Kufam":{"weight":["regular","500","600","700","800","900","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"display"},"Diplomata SC":{"weight":["regular"],"fallback":"display"},"Poor Story":{"weight":["regular"],"fallback":"display"},"Sirin Stencil":{"weight":["regular"],"fallback":"display"},"Kavivanar":{"weight":["regular"],"fallback":"handwriting"},"Syne Mono":{"weight":["regular"],"fallback":"monospace"},"Metal Mania":{"weight":["regular"],"fallback":"display"},"Arbutus":{"weight":["regular"],"fallback":"display"},"Unlock":{"weight":["regular"],"fallback":"display"},"MuseoModerno":{"weight":["100","200","300","regular","500","600","700","800","900"],"fallback":"display"},"Glass Antiqua":{"weight":["regular"],"fallback":"display"},"Miniver":{"weight":["regular"],"fallback":"display"},"Griffy":{"weight":["regular"],"fallback":"display"},"Bokor":{"weight":["regular"],"fallback":"display"},"Felipa":{"weight":["regular"],"fallback":"handwriting"},"Inika":{"weight":["regular","700"],"fallback":"serif"},"Princess Sofia":{"weight":["regular"],"fallback":"handwriting"},"Mrs Sheppards":{"weight":["regular"],"fallback":"handwriting"},"Monofett":{"weight":["regular"],"fallback":"display"},"Sahitya":{"weight":["regular","700"],"fallback":"serif"},"Dela Gothic One":{"weight":["regular"],"fallback":"display"},"Shippori Mincho B1":{"weight":["regular","500","600","700","800"],"fallback":"serif"},"Beth Ellen":{"weight":["regular"],"fallback":"handwriting"},"Lancelot":{"weight":["regular"],"fallback":"display"},"Rhodium Libre":{"weight":["regular"],"fallback":"serif"},"Fraunces":{"weight":["100","200","300","regular","500","600","700","800","900","100italic","200italic","300italic","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"serif"},"Hachi Maru Pop":{"weight":["regular"],"fallback":"handwriting"},"Snippet":{"weight":["regular"],"fallback":"sans-serif"},"Content":{"weight":["regular","700"],"fallback":"display"},"Revalia":{"weight":["regular"],"fallback":"display"},"Diplomata":{"weight":["regular"],"fallback":"display"},"Libre Barcode 128 Text":{"weight":["regular"],"fallback":"display"},"Jacques Francois Shadow":{"weight":["regular"],"fallback":"display"},"Long Cang":{"weight":["regular"],"fallback":"handwriting"},"Caesar Dressing":{"weight":["regular"],"fallback":"display"},"Odor Mean Chey":{"weight":["regular"],"fallback":"display"},"Jolly Lodger":{"weight":["regular"],"fallback":"display"},"Texturina":{"weight":["100","200","300","regular","500","600","700","800","900","100italic","200italic","300italic","italic","500italic","600italic","700italic","800italic","900italic"],"fallback":"serif"},"DotGothic16":{"weight":["regular"],"fallback":"sans-serif"},"Ewert":{"weight":["regular"],"fallback":"display"},"Romanesco":{"weight":["regular"],"fallback":"handwriting"},"Kantumruy":{"weight":["300","regular","700"],"fallback":"sans-serif"},"Asset":{"weight":["regular"],"fallback":"display"},"Odibee Sans":{"weight":["regular"],"fallback":"display"},"Emblema One":{"weight":["regular"],"fallback":"display"},"Kdam Thmor":{"weight":["regular"],"fallback":"display"},"Dr Sugiyama":{"weight":["regular"],"fallback":"handwriting"},"Bahiana":{"weight":["regular"],"fallback":"display"},"GFS Neohellenic":{"weight":["regular","italic","700","700italic"],"fallback":"sans-serif"},"Oldenburg":{"weight":["regular"],"fallback":"display"},"Molle":{"weight":["italic"],"fallback":"handwriting"},"Ravi Prakash":{"weight":["regular"],"fallback":"display"},"Gayathri":{"weight":["100","regular","700"],"fallback":"sans-serif"},"Almendra SC":{"weight":["regular"],"fallback":"serif"},"Varta":{"weight":["300","regular","500","600","700"],"fallback":"sans-serif"},"Risque":{"weight":["regular"],"fallback":"display"},"Sansita Swashed":{"weight":["300","regular","500","600","700","800","900"],"fallback":"display"},"Kiwi Maru":{"weight":["300","regular","500"],"fallback":"serif"},"Dangrek":{"weight":["regular"],"fallback":"display"},"Devonshire":{"weight":["regular"],"fallback":"handwriting"},"Big Shoulders Stencil Text":{"weight":["100","300","regular","500","600","700","800","900"],"fallback":"display"},"Jim Nightshade":{"weight":["regular"],"fallback":"handwriting"},"Smythe":{"weight":["regular"],"fallback":"display"},"Stick":{"weight":["regular"],"fallback":"sans-serif"},"Lexend Mega":{"weight":["regular"],"fallback":"sans-serif"},"Siemreap":{"weight":["regular"],"fallback":"display"},"Londrina Shadow":{"weight":["regular"],"fallback":"display"},"Train One":{"weight":["regular"],"fallback":"display"},"IM Fell Great Primer SC":{"weight":["regular"],"fallback":"serif"},"Barriecito":{"weight":["regular"],"fallback":"display"},"Underdog":{"weight":["regular"],"fallback":"display"},"Stalinist One":{"weight":["regular"],"fallback":"display"},"Mr Bedfort":{"weight":["regular"],"fallback":"handwriting"},"Freehand":{"weight":["regular"],"fallback":"display"},"MedievalSharp":{"weight":["regular"],"fallback":"display"},"Lexend Giga":{"weight":["regular"],"fallback":"sans-serif"},"Keania One":{"weight":["regular"],"fallback":"display"},"Peddana":{"weight":["regular"],"fallback":"serif"},"Galindo":{"weight":["regular"],"fallback":"display"},"Fascinate":{"weight":["regular"],"fallback":"display"},"Londrina Sketch":{"weight":["regular"],"fallback":"display"},"Gupter":{"weight":["regular","500","700"],"fallback":"serif"},"Nova Slim":{"weight":["regular"],"fallback":"display"},"Snowburst One":{"weight":["regular"],"fallback":"display"},"ZCOOL KuaiLe":{"weight":["regular"],"fallback":"display"},"Plaster":{"weight":["regular"],"fallback":"display"},"Fascinate Inline":{"weight":["regular"],"fallback":"display"},"Newsreader":{"weight":["200","300","regular","500","600","700","800","200italic","300italic","italic","500italic","600italic","700italic","800italic"],"fallback":"serif"},"Purple Purse":{"weight":["regular"],"fallback":"display"},"Sedgwick Ave Display":{"weight":["regular"],"fallback":"handwriting"},"Jacques Francois":{"weight":["regular"],"fallback":"serif"},"Almendra Display":{"weight":["regular"],"fallback":"display"},"Irish Grover":{"weight":["regular"],"fallback":"display"},"Kumar One Outline":{"weight":["regular"],"fallback":"display"},"Andika New Basic":{"weight":["regular","italic","700","700italic"],"fallback":"sans-serif"},"Libre Barcode 39 Extended":{"weight":["regular"],"fallback":"display"},"Taprom":{"weight":["regular"],"fallback":"display"},"Miss Fajardose":{"weight":["regular"],"fallback":"handwriting"},"IM Fell Double Pica SC":{"weight":["regular"],"fallback":"serif"},"Macondo":{"weight":["regular"],"fallback":"display"},"Ruge Boogie":{"weight":["regular"],"fallback":"handwriting"},"Sunshiney":{"weight":["regular"],"fallback":"handwriting"},"Brygada 1918":{"weight":["regular","500","600","700","italic","500italic","600italic","700italic"],"fallback":"serif"},"Grenze":{"weight":["100","100italic","200","200italic","300","300italic","regular","italic","500","500italic","600","600italic","700","700italic","800","800italic","900","900italic"],"fallback":"serif"},"Erica One":{"weight":["regular"],"fallback":"display"},"Seymour One":{"weight":["regular"],"fallback":"sans-serif"},"Supermercado One":{"weight":["regular"],"fallback":"display"},"Zhi Mang Xing":{"weight":["regular"],"fallback":"handwriting"},"Butterfly Kids":{"weight":["regular"],"fallback":"handwriting"},"Kirang Haerang":{"weight":["regular"],"fallback":"display"},"Federant":{"weight":["regular"],"fallback":"display"},"Liu Jian Mao Cao":{"weight":["regular"],"fallback":"handwriting"},"Chenla":{"weight":["regular"],"fallback":"display"},"Hanalei":{"weight":["regular"],"fallback":"display"},"Langar":{"weight":["regular"],"fallback":"display"},"Trochut":{"weight":["regular","italic","700"],"fallback":"display"},"Smokum":{"weight":["regular"],"fallback":"display"},"Black And White Picture":{"weight":["regular"],"fallback":"sans-serif"},"Preahvihear":{"weight":["regular"],"fallback":"display"},"Bungee Outline":{"weight":["regular"],"fallback":"display"},"Astloch":{"weight":["regular","700"],"fallback":"display"},"Fasthand":{"weight":["regular"],"fallback":"serif"},"Akaya Telivigala":{"weight":["regular"],"fallback":"display"},"Inria Sans":{"weight":["300","300italic","regular","italic","700","700italic"],"fallback":"sans-serif"},"Bonbon":{"weight":["regular"],"fallback":"handwriting"},"Combo":{"weight":["regular"],"fallback":"display"},"Nova Script":{"weight":["regular"],"fallback":"display"},"Sofadi One":{"weight":["regular"],"fallback":"display"},"Passero One":{"weight":["regular"],"fallback":"display"},"Suwannaphum":{"weight":["regular"],"fallback":"display"},"Miltonian Tattoo":{"weight":["regular"],"fallback":"display"},"Bungee Hairline":{"weight":["regular"],"fallback":"display"},"Gidugu":{"weight":["regular"],"fallback":"sans-serif"},"Geostar Fill":{"weight":["regular"],"fallback":"display"},"Nerko One":{"weight":["regular"],"fallback":"handwriting"},"Lacquer":{"weight":["regular"],"fallback":"display"},"Butcherman":{"weight":["regular"],"fallback":"display"},"Sevillana":{"weight":["regular"],"fallback":"display"},"Nova Oval":{"weight":["regular"],"fallback":"display"},"Aubrey":{"weight":["regular"],"fallback":"display"},"Akaya Kanadaka":{"weight":["regular"],"fallback":"display"},"Nova Cut":{"weight":["regular"],"fallback":"display"},"Vibes":{"weight":["regular"],"fallback":"display"},"Miltonian":{"weight":["regular"],"fallback":"display"},"Moulpali":{"weight":["regular"],"fallback":"display"},"BioRhyme Expanded":{"weight":["200","300","regular","700","800"],"fallback":"serif"},"Bahianita":{"weight":["regular"],"fallback":"display"},"Suravaram":{"weight":["regular"],"fallback":"serif"},"Fruktur":{"weight":["regular"],"fallback":"display"},"Single Day":{"weight":["regular"],"fallback":"display"},"Imbue":{"weight":["100","200","300","regular","500","600","700","800","900"],"fallback":"serif"},"Lexend Tera":{"weight":["regular"],"fallback":"sans-serif"},"Big Shoulders Inline Text":{"weight":["100","300","regular","500","600","700","800","900"],"fallback":"display"},"Dhurjati":{"weight":["regular"],"fallback":"sans-serif"},"Warnes":{"weight":["regular"],"fallback":"display"},"Kenia":{"weight":["regular"],"fallback":"display"},"Lexend Peta":{"weight":["regular"],"fallback":"sans-serif"},"Big Shoulders Stencil Display":{"weight":["100","300","regular","500","600","700","800","900"],"fallback":"display"},"Geostar":{"weight":["regular"],"fallback":"display"},"Big Shoulders Inline Display":{"weight":["100","300","regular","500","600","700","800","900"],"fallback":"display"},"Oi":{"weight":["regular"],"fallback":"display"},"Xanh Mono":{"weight":["regular","italic"],"fallback":"monospace"},"Viaoda Libre":{"weight":["regular"],"fallback":"display"},"Truculenta":{"weight":["100","200","300","regular","500","600","700","800","900"],"fallback":"sans-serif"},"Syne Tactile":{"weight":["regular"],"fallback":"display"},"Trispace":{"weight":["100","200","300","regular","500","600","700","800"],"fallback":"sans-serif"},"Ballet":{"weight":["regular"],"fallback":"handwriting"},"Benne":{"weight":["regular"],"fallback":"serif"}}');
 
 /***/ })
 

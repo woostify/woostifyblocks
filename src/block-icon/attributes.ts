@@ -15,32 +15,18 @@ import {
     Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
 import {
-    WCB_ICON_PANEL_LAYOUT,
-    WCB_ICON_PANEL_LAYOUT_DEMO,
-} from "./WcbIconPanelLayout";
+    WCB_ICON_BOX_PANEL_ICON,
+    WCB_ICON_BOX_PANEL_ICON_DEMO,
+} from "./WcbIconPanelIcon";
 import {
     WCB_ICON_PANEL_PRESET,
     WCB_ICON_PANEL_PRESET_DEMO,
 } from "./WcbIconPanelPreset";
-import {
-    WCB_ICON_PANEL_STYLE_DIMENSION,
-    WCB_ICON_PANEL_STYLE_DIMENSION_DEMO,
-} from "./WcbIconPanel_StyleDimension";
 
 import {
-    WCB_ICON_PANEL_DATE,
-    WCB_ICON_PANEL_DATE_DEMO,
-} from "./WcbIconPanelIcon";
-
-import {
-    WCB_ICON_PANEL_STYLE_TITLE,
-    WCB_ICON_PANEL_STYLE_TITLE_DEMO,
-} from "./WcbIconPanel_StyleTitle";
-
-import {
-    WCB_ICON_PANEL_STYLE_NUMBER,
-    WCB_ICON_PANEL_STYLE_NUMBER_DEMO,
-} from "./WcbIconPanel_StyleNumber";
+    WCB_ICON_PANEL_STYLE_ICON,
+    WCB_ICON_PANEL_STYLE_ICON_DEMO,
+} from "./WcbIconPanel_StyleIcon";
 
 import {
     WCB_BUTTON_PANEL_STYLE_BACKGROUND,
@@ -65,15 +51,12 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
     minlabel: string;
     seclabel: string;
     //
-    general_layout: WCB_ICON_PANEL_LAYOUT;
     general_preset: WCB_ICON_PANEL_PRESET;
-    general_date: WCB_ICON_PANEL_DATE;
-    style_label: WCB_ICON_PANEL_STYLE_TITLE;
+    general_icon: WCB_ICON_BOX_PANEL_ICON;
     style_background: WCB_BUTTON_PANEL_STYLE_BACKGROUND;
-    style_number: WCB_ICON_PANEL_STYLE_NUMBER;
+    style_icon: WCB_ICON_PANEL_STYLE_ICON;
     style_border: WCB_BUTTON_PANEL_STYLE_BORDER;
     style_boxshadow: WCB_BUTTON_PANEL_STYLE_BOXSHADOW;
-    style_dimension: WCB_ICON_PANEL_STYLE_DIMENSION;
     //
     advance_responsiveCondition: MyResponsiveConditionControlData;
     advance_zIndex: MyZIndexControlData;
@@ -90,53 +73,19 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
         type: "string",
         default: "",
     },
-
-    // THE ATTRS OF BLOCK HERE
-    daylabel: {
-        type: "string",
-        source: "html",
-        selector: ".wcb-icon__daylabel",
-        default: "DAYS",
-    },
-    hrslabel: {
-        type: "string",
-        source: "html",
-        selector: ".wcb-icon__hrslabel",
-        default: "HOURS",
-    },
-    minlabel: {
-        type: "string",
-        source: "html",
-        selector: ".wcb-icon__minlabel",
-        default: "MINUTES",
-    },
-    seclabel: {
-        type: "string",
-        source: "html",
-        selector: ".wcb-icon__seclabel",
-        default: "SECONDS",
-    },
     //
 
-    general_layout: {
+    general_icon: {
         type: "object",
-        default: WCB_ICON_PANEL_LAYOUT_DEMO,
+        default: WCB_ICON_BOX_PANEL_ICON_DEMO,
     },
     general_preset: {
         type: "object",
         default: WCB_ICON_PANEL_PRESET_DEMO,
     },
-    general_date: {
+    style_icon: {
         type: "object",
-        default: WCB_ICON_PANEL_DATE_DEMO,
-    },
-    style_label: {
-        type: "object",
-        default: WCB_ICON_PANEL_STYLE_TITLE_DEMO,
-    },
-    style_number: {
-        type: "object",
-        default: WCB_ICON_PANEL_STYLE_NUMBER_DEMO,
+        default: WCB_ICON_PANEL_STYLE_ICON_DEMO,
     },
     style_background: {
         type: "object",
@@ -150,11 +99,6 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
         type: "object",
         default: WCB_BUTTON_PANEL_STYLE_BOXSHADOW_DEMO,
     },
-    style_dimension: {
-        type: "object",
-        default: WCB_ICON_PANEL_STYLE_DIMENSION_DEMO,
-    },
-
     // ADVANCE
     advance_responsiveCondition: {
         type: "object",

@@ -10,11 +10,8 @@ import GlobalCss from "./GlobalCss";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
-import WcbIconPanelLayout from "./WcbIconPanelLayout";
-import WcbIconPanelDate from "./WcbIconPanelIcon";
-import WcbIconPanel_StyleTitle from "./WcbIconPanel_StyleTitle";
-import WcbIconPanel_StyleNumber from "./WcbIconPanel_StyleNumber";
-import WcbIconPanel_StyleDimension from "./WcbIconPanel_StyleDimension";
+import WcbIconPanelIcon from "./WcbIconPanelIcon";
+import WcbIconPanel_StyleIcon from "./WcbIconPanel_StyleIcon";
 import WcbIconPanelPreset from "./WcbIconPanelPreset";
 import WcbButtonPanel_StyleBorder, {
 	WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_1,
@@ -55,19 +52,12 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const {
 		advance_responsiveCondition,
 		advance_zIndex,
-		daylabel,
-		hrslabel,
-		minlabel,
-		seclabel,
-		general_date,
 		uniqueId,
-		general_layout,
-		style_label,
-		style_number,
+		general_icon,
+		style_icon,
 		style_background,
 		style_border,
 		style_boxshadow,
-		style_dimension,
 		general_preset,
 		advance_motionEffect,
 	} = attributes;
@@ -96,34 +86,19 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			case "General":
 				return (
 					<>
-						<WcbIconPanelDate
-							onToggle={() => handleTogglePanel("General", "Timer End Date & Time", true)}
-							initialOpen={tabGeneralIsPanelOpen === "Timer End Date & Time" ||
-								tabGeneralIsPanelOpen === "first"}
-							opened={tabGeneralIsPanelOpen === "Timer End Date & Time" || undefined}
+						<WcbIconPanelIcon
+							onToggle={() => handleTogglePanel("General", "Icon")}
+							initialOpen={tabGeneralIsPanelOpen === "Icon"}
+							opened={tabGeneralIsPanelOpen === "Icon" || undefined}
 							//
 							setAttr__={(data) => {
 								return setAttributes({
-									general_date: data
+									general_icon: data,
 								});
 							}}
-							panelData={general_date}
+							panelData={general_icon}
 						/>
-						<WcbIconPanelLayout
-							onToggle={() => handleTogglePanel("General", "Layout")}
-							initialOpen={tabGeneralIsPanelOpen === "Layout"}
-							opened={tabGeneralIsPanelOpen === "Layout" || undefined}
-							//
-							setAttr__={(data) => {
-								setAttributes({
-									general_layout: data,
-									general_preset: {
-										preset: "",
-									},
-								});
-							}}
-							panelData={general_layout}
-						/>
+						
 						<WcbIconPanelPreset
 							onToggle={() => handleTogglePanel("General", "Preset")}
 							initialOpen={
@@ -162,40 +137,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			case "Styles":
 				return (
 					<>
-						<WcbIconPanel_StyleDimension
-							onToggle={() => handleTogglePanel("Styles", "_StyleDimension")}
-							initialOpen={tabStylesIsPanelOpen === "_StyleDimension" ||
-							tabStylesIsPanelOpen === "first"}
-							opened={tabStylesIsPanelOpen === "_StyleDimension" || undefined}
-							//
-							setAttr__={(data) => {
-								setAttributes({ style_dimension: data });
-							}}
-							panelData={style_dimension}
-						/>
-
-						<WcbIconPanel_StyleNumber
-							onToggle={() => handleTogglePanel("Styles", "_StyleNumber", true)}
+						<WcbIconPanel_StyleIcon
+							onToggle={() => handleTogglePanel("Styles", "_StyleIcon", true)}
 							initialOpen={tabStylesIsPanelOpen === "_StyleTitle"}
-							opened={tabStylesIsPanelOpen === "_StyleNumber" || undefined}
+							opened={tabStylesIsPanelOpen === "_StyleIcon" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ style_number: data });
+								setAttributes({ style_icon: data });
 							}}
-							panelData={style_number}
-						/>
-
-						<WcbIconPanel_StyleTitle
-							onToggle={() => handleTogglePanel("Styles", "_StyleTitle", true)}
-							initialOpen={
-								tabStylesIsPanelOpen === "_StyleTitle"
-							}
-							opened={tabStylesIsPanelOpen === "_StyleTitle" || undefined}
-							//
-							setAttr__={(data) => {
-								setAttributes({ style_label: data });
-							}}
-							panelData={style_label}
+							panelData={style_icon}
 						/>
 
 						<WcbButtonPanel_StyleBackground
@@ -206,7 +156,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							setAttr__={(data) => {
 								setAttributes({
 									style_background: data,
-									general_preset: { ...general_preset, preset: "" },
+									general_preset: { ...general_preset, preset: "wcb-icon-1" },
 								});
 							}}
 							panelData={style_background}
@@ -220,7 +170,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							setAttr__={(data) => {
 								setAttributes({
 									style_border: data,
-									general_preset: { ...general_preset, preset: "" },
+									general_preset: { ...general_preset, preset: "wcb-icon-1" },
 								});
 							}}
 							panelData={style_border}
@@ -234,7 +184,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							setAttr__={(data) => {
 								setAttributes({
 									style_boxshadow: data,
-									general_preset: { ...general_preset, preset: "" },
+									general_preset: { ...general_preset, preset: "wcb-icon-1" },
 								});
 							}}
 							panelData={style_boxshadow}
@@ -268,13 +218,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			uniqueId,
 			advance_responsiveCondition,
 			advance_zIndex,
-			general_layout,
+			general_icon,
 			general_preset,
-			general_date,
 			style_background,
-			style_dimension,
-			style_label,
-			style_number,
+			style_icon,
 			style_border,
 			style_boxshadow,
 			advance_motionEffect,
@@ -283,13 +230,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		uniqueId,
 		advance_responsiveCondition,
 		advance_zIndex,
-		general_layout,
+		general_icon,
 		general_preset,
-		general_date,
 		style_background,
-		style_dimension,
-		style_label,
-		style_number,
+		style_icon,
 		style_border,
 		style_boxshadow,
 		advance_motionEffect,
@@ -313,63 +257,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 				{/* CHILD CONTENT  */}
 
-				<div className={`wcb-icon__content ${general_preset.preset}`}>
-					{general_date.show_day && (
-						<div className="wcb-icon__box">
-							<div className="wcb-icon__number wcb-icon-day"></div>
-							{general_date.enableLabel && (
-								<RichText
-									tagName="div"
-									value={daylabel}
-									allowedFormats={[]}
-									onChange={(content) => setAttributes({ daylabel: content })}
-									className="wcb-icon__label wcb-icon__daylabel"
-								/>
-							)}
-						</div>
-					)}
-					{general_date.show_hour && (
-						<div className="wcb-icon__box">
-							<div className="wcb-icon__number wcb-icon-hrs"></div>
-							{general_date.enableLabel && (
-								<RichText
-									tagName="div"
-									value={hrslabel}
-									allowedFormats={[]}
-									onChange={(content) => setAttributes({ hrslabel: content })}
-									className="wcb-icon__label wcb-icon__hrslabel"
-								/>
-							)}
-						</div>
-					)}
-
-					{general_date.show_minute && (
-						<div className="wcb-icon__box">
-							<div className="wcb-icon__number wcb-icon-mins"></div>
-							{general_date.enableLabel && (
-								<RichText
-									tagName="div"
-									value={minlabel}
-									allowedFormats={[]}
-									onChange={(content) => setAttributes({ minlabel: content })}
-									className="wcb-icon__label wcb-icon__minlabel"
-								/>
-							)}
-						</div>
-					)}
-					<div className="wcb-icon__box">
-						<div className="wcb-icon__number wcb-icon-secs"></div>
-						{general_date.enableLabel && (
-							<RichText
-								tagName="div"
-								value={seclabel}
-								allowedFormats={[]}
-								onChange={(content) => setAttributes({ seclabel: content })}
-								className="wcb-icon__label wcb-icon__seclabel"
-							/>
-						)}
-					</div>
-				</div>
 			</div>
 		</MyCacheProvider>
 	);

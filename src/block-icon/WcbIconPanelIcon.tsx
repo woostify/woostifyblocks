@@ -1,32 +1,29 @@
-import { PanelBody, ToggleControl } from "@wordpress/components";
+import { PanelBody, ToggleControl, RangeControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
-import React, { FC } from "react";
-import MySelect from "../components/controls/MySelect";
+import React, { FC, CSSProperties } from "react";
+import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
+import MyTextAlignControl, {
+	TextAlignment,
+} from "../components/controls/MyTextAlignControl/MyTextAlignControl";
+import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
+import useGetDeviceType from "../hooks/useGetDeviceType";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import MyLabelControl from "../components/controls/MyLabelControl/MyLabelControl";
+
 import SelecIcon, {
 	DEFAULT_MY_ICON,
 	MyIcon,
 } from "../components/controls/SelectIcon/SelecIcon";
-import { Option } from "../types";
 
 export interface WCB_ICON_BOX_PANEL_ICON {
-	enableIcon: boolean;
+	size: HasResponsive<number>;
+	alignment: HasResponsive<TextAlignment>;
 	icon: MyIcon;
-	iconPosition:
-		| "top"
-		| "left"
-		| "right"
-		| "leftOfTitle"
-		| "rightOfTitle"
-		| "bellowTitle";
-	stackOn: "none" | "tablet" | "mobile";
-	verticalAlignment: "top" | "middle";
 }
 
 export const WCB_ICON_BOX_PANEL_ICON_DEMO: WCB_ICON_BOX_PANEL_ICON = {
-	enableIcon: true,
-	iconPosition: "top",
-	stackOn: "none",
-	verticalAlignment: "top",
+	size: { Desktop: 20 },
+	alignment: { Desktop: "center" },
 	icon: {
 		...DEFAULT_MY_ICON,
 		iconName: "lni-checkmark-circle",
@@ -46,27 +43,31 @@ const WcbIconBoxPanelIcon: FC<Props> = ({
 	onToggle,
 	opened,
 }) => {
-	const { enableIcon, icon, iconPosition, stackOn, verticalAlignment } =
+	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
+
+	const { icon, alignment, size } =
 		panelData;
 	//
-	const PLANS_DEMO: Option<WCB_ICON_BOX_PANEL_ICON["iconPosition"]>[] = [
-		{ value: "top", label: "Top" },
-		{ value: "left", label: "Left" },
-		{ value: "right", label: "Right" },
-		{ value: "leftOfTitle", label: "Left Of Title" },
-		{ value: "rightOfTitle", label: "Right Of Title" },
-		{ value: "bellowTitle", label: "Bellow Title" },
-	];
-	const STACK_ON_DEMO: Option<WCB_ICON_BOX_PANEL_ICON["stackOn"]>[] = [
-		{ value: "none", label: "None" },
-		{ value: "tablet", label: "Tablet" },
-		{ value: "mobile", label: "Mobile" },
-	];
-	const VERTICAL_DEMO: Option<WCB_ICON_BOX_PANEL_ICON["verticalAlignment"]>[] =
-		[
-			{ value: "top", label: "Top" },
-			{ value: "middle", label: "Middle" },
-		];
+	const { currentDeviceValue: TEXT_ALIGNMENT } = getValueFromAttrsResponsives(
+		alignment,
+		deviceType
+	);
+	//
+	const handleChangeTextAlignment = (selected: CSSProperties["textAlign"]) => {
+		setAttr__({
+			...panelData,
+			alignment: {
+				...alignment,
+				[deviceType]: selected,
+			},
+		});
+	};
+	//
+	
+	const { currentDeviceValue: currentSize } = getValueFromAttrsResponsives(
+		size,
+		deviceType
+	);
 
 	return (
 		<PanelBody
@@ -84,6 +85,29 @@ const WcbIconBoxPanelIcon: FC<Props> = ({
 							icon: value,
 						});
 					}}
+				/>
+
+				<RangeControl
+					label={
+						<MyLabelControl hasResponsive>{__("Size", "wcb")}</MyLabelControl>
+					}
+					value={currentSize || 16}
+					onChange={(value) => {
+						setAttr__({
+							...panelData,
+							size: {
+								...size,
+								[deviceType]: value,
+							},
+						});
+					}}
+					min={2}
+					max={200}
+				/>
+
+				<MyTextAlignControl
+					textAlignment={TEXT_ALIGNMENT}
+					onChange={handleChangeTextAlignment}
 				/>
 			</div>
 		</PanelBody>

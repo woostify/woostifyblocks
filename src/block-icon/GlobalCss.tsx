@@ -18,11 +18,9 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const {
 		uniqueId,
 		// ATTRS OF BLOCK
-		general_layout,
-		style_dimension,
-		style_label,
+		general_icon,
 		style_background,
-		style_number,
+		style_icon,
 		style_border,
 		style_boxshadow,
 		general_preset,
@@ -51,19 +49,9 @@ const GlobalCss: FC<Props> = (attrs) => {
 		};
 	};
 
-	// ------------------- LABEL
-	const getInner__Label_typography = () => {
-		const { typography } = style_label;
-
-		return getTypographyStyles({
-			typography,
-			className: LABEL_CLASSNAME,
-		});
-	};
-
 	// ------------------- NUMBER
 	const getInner__Number_typography = () => {
-		const { typography } = style_number;
+		const { typography } = style_icon;
 
 		return getTypographyStyles({
 			typography,
@@ -71,39 +59,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 		});
 	};
 
-	const {
-		value_Desktop: textAlignment_Desktop,
-		value_Tablet: textAlignment_tablet,
-		value_Mobile: textAlignment_mobile,
-	} = getValueFromAttrsResponsives(general_layout.textAlignment);
-
-	const {
-		value_Desktop: flexDirection_Desktop,
-		value_Tablet: flexDirection_tablet,
-		value_Mobile: flexDirection_mobile,
-	} = getValueFromAttrsResponsives(general_layout.flexDirection);
-
-	// FLEX COL
-	let ALIGN_ITEMS: HasResponsive<CSSProperties["justifyContent"]> = {
-		Desktop:
-			textAlignment_Desktop === "left"
-				? "start"
-				: textAlignment_Desktop === "right"
-					? "end"
-					: "center",
-		Tablet:
-			textAlignment_tablet === "left"
-				? "start"
-				: textAlignment_tablet === "right"
-					? "end"
-					: "center",
-		Mobile:
-			textAlignment_mobile === "left"
-				? "start"
-				: textAlignment_mobile === "right"
-					? "end"
-					: "center",
-	};
 
 	if (!uniqueId) {
 		return null;
@@ -128,101 +83,18 @@ const GlobalCss: FC<Props> = (attrs) => {
 					boxShadow: style_boxshadow,
 				})}
 			/>
-			{/* INNER  */}
-			<Global
-				styles={[
-					getStyleObjectFromResponsiveAttr({
-						className: CONTENT_CLASSNAME,
-						value: general_layout.textAlignment,
-						prefix: "textAlign",
-					}),
+		
 
-					getStyleObjectFromResponsiveAttr({
-						className: CONTENT_CLASSNAME,
-						value: ALIGN_ITEMS,
-						prefix: "justifyContent",
-					}),
-
-					getStyleObjectFromResponsiveAttr({
-						className: CONTENT_CLASSNAME,
-						value: general_layout.flexDirection,
-						prefix: "flexDirection",
-					}),
-
-					getStyleObjectFromResponsiveAttr({
-						className: BOX_CLASSNAME + '+ div',
-						value: style_dimension.gap_boxes,
-						prefix: "marginLeft",
-					}),
-
-					getStyleObjectFromResponsiveAttr({
-						className: BOX_CLASSNAME,
-						value: style_dimension.width_box,
-						prefix: "width",
-					}),
-
-					getBackgroundColorGradientStyles({
-						className: BOX_CLASSNAME,
-						background: style_background.normal,
-						backgroundHover: style_background.hover,
-					})
-
-				]}
-			/>
-
-			{ general_preset.preset != 'wcb-icon-5' && (
-				<Global
-					styles={
-						getStyleObjectFromResponsiveAttr({
-							className: BOX_CLASSNAME,
-							value: style_dimension.width_box,
-							prefix: "height",
-						})
-					}
-				/>
-			)}
-
-			<Global
-				styles={getStyleObjectFromResponsiveAttr({
-					className: WRAP_CLASSNAME,
-					value: general_layout.contentWidth,
-					prefix: "width",
-				})}
-			/>
-			{/* Flex css */}
-			<Global
-				styles={getFlexPropertiesStyles({
-					flexProperties: general_layout.flexDirection,
-					className: CONTENT_CLASSNAME,
-				})}
-			/>
-
-			{/* LABEL CSS */}
-			<Global styles={[
-				getInner__Label_typography(),
-				{
-					[LABEL_CLASSNAME]: {
-						color: style_label.textColor,
-					},
-				},
-			]} />
-
-			{/* NUMBER CSS */}
+			{/* ICON CSS */}
 			<Global styles={[
 				getInner__Number_typography(),
 				{
 					[NUMBER_CLASSNAME]: {
-						color: style_number.textColor,
+						color: style_icon.textColor,
 					},
 				},
 			]} />
-			<Global
-				styles={getStyleObjectFromResponsiveAttr({
-					className: NUMBER_CLASSNAME,
-					value: style_dimension.gap_number,
-					prefix: "marginBottom",
-				})}
-			/>
+			
 			{/* ADVANCE  */}
 			<Global
 				styles={getAdvanveDivWrapStyles({

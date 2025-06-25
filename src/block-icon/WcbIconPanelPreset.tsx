@@ -7,7 +7,7 @@ import ResetButton from "../components/controls/ResetButton";
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import { ICON_PRESET } from "./types";
 export interface WCB_ICON_PANEL_PRESET {
-	preset: "wcb-icon-1" | "wcb-icon-2" | "wcb-icon-3" | "wcb-icon-4" | "wcb-icon-5" | "";
+	preset: "wcb-icon-1" | "wcb-icon-2" | "wcb-icon-3" | "wcb-icon-4";
 }
 
 export const WCB_ICON_PANEL_PRESET_DEMO: WCB_ICON_PANEL_PRESET = {
