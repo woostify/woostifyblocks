@@ -26,7 +26,7 @@ export interface WCB_ICON_LIST_PANEL_LAYOUT {
 
 export const WCB_ICON_LIST_PANEL_LAYOUT_DEMO: WCB_ICON_LIST_PANEL_LAYOUT = {
     layout: "vertical",
-    textAlignment: { Desktop: "left" },
+    textAlignment: { Desktop: "left" , Tablet: "left", Mobile: "left" },
     headingTag: "p",
     enablePrefix: false,
     enableTitle: true,
@@ -64,6 +64,7 @@ const WcbIconListPanelLayout: FC<Props> = ({
         setAttr__({
             ...panelData,
             textAlignment: {
+                ...textAlignment,
                 [deviceType]: selected,
             },
         });

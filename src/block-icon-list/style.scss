@@ -42,10 +42,10 @@
     &__container {
         width: 100%;
         display: flex;
-        gap: 1rem; // Khoảng cách giữa các items
+        gap: 1rem; // distamce between icon and content
     }
 
-    // Styles cho từng item
+    // Styles for the icon list
     .wcb-icon-list__icon-wrap {
         display: flex;
         align-items: center;

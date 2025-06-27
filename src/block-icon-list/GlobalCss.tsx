@@ -7,6 +7,8 @@ import getStyleObjectFromResponsiveAttr from "../utils/getStyleObjectFromRespons
 import getTypographyStyles from "../utils/getTypographyStyles";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { WcbAttrsForSave } from "./Save";
+import useGetDeviceType from "../hooks/useGetDeviceType";
+import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 
 interface Props extends WcbAttrsForSave {}
 
@@ -25,7 +27,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 		style_dimension,
 		advance_motionEffect,
 	} = attrs;
-	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
+	// Get current device type
+	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
 	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
 	const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-icon-list__icon-wrap`;
@@ -34,6 +37,24 @@ const GlobalCss: FC<Props> = (attrs) => {
 	if (!uniqueId) {
 		return null;
 	}
+
+	// Get text alignment for current device
+	const currentTextAlignment = general_layout.textAlignment[deviceType] || general_layout.textAlignment.Desktop || "left";
+
+	// Convert text alignment to flex alignment
+	const getFlexAlignment = (alignment: string) => {
+		switch (alignment) {
+			case "center":
+				return "center";
+			case "right":
+				return "flex-end";
+			case "left":
+			default:
+				return "flex-start";
+		}
+	};
+
+	const flexAlignment = getFlexAlignment(currentTextAlignment);
 
 	return (
 		<>
@@ -63,68 +84,24 @@ const GlobalCss: FC<Props> = (attrs) => {
 									? "flex"
 									: "block",
 						},
-
-						[`@media (min-width: ${media_tablet})`]: {
-							flexDirection:
-								general_icon.stackOn === "mobile" ? "row" : undefined,
-						},
-
-						[`@media (min-width: ${media_desktop})`]: {
-							flexDirection: "row",
-						},
 				},
-				getStyleObjectFromResponsiveAttr({
-					className: INNER_CLASSNAME,
-					value: general_layout.textAlignment,
-					prefix: "textAlign",
-				}),
 			]}/>
 
+			{/* CONTENT ALIGNMENT - Device specific */}
 			<Global styles={[
 				{
 					[`${CONTENT_CLASSNAME}`]: {
-							display: "flex",
-							flexDirection: general_layout.layout === "vertical" ? "column" : "row",
-							...(general_layout.layout === "vertical"
-								? {
-										alignItems:
-											general_layout.textAlignment.Desktop === "center" ||
-											general_layout.textAlignment.Mobile === "center" ||
-											general_layout.textAlignment.Tablet === "center"
-												? "center"
-												: general_layout.textAlignment.Desktop === "left" ||
-												general_layout.textAlignment.Mobile === "left" ||
-												general_layout.textAlignment.Tablet === "left"
-												? "flex-start"
-												: general_layout.textAlignment.Desktop === "right" ||
-												general_layout.textAlignment.Mobile === "right" ||
-												general_layout.textAlignment.Tablet === "right"
-												? "flex-end"
-												: undefined,
+						display: "flex",
+						flexDirection: general_layout.layout === "vertical" ? "column" : "row",
+						...(general_layout.layout === "vertical"
+							? {
+									alignItems: flexAlignment,
 								}
-								: {
-										justifyContent:
-											general_layout.textAlignment.Desktop === "center" ||
-											general_layout.textAlignment.Mobile === "center" ||
-											general_layout.textAlignment.Tablet === "center"
-												? "center"
-												: general_layout.textAlignment.Desktop === "left" ||
-												general_layout.textAlignment.Mobile === "left" ||
-												general_layout.textAlignment.Tablet === "left"
-												? "flex-start"
-												: general_layout.textAlignment.Desktop === "right" ||
-												general_layout.textAlignment.Mobile === "right" ||
-												general_layout.textAlignment.Tablet === "right"
-												? "flex-end"
-												: undefined,
+							: {
+									justifyContent: flexAlignment,
 								}),
-						},
+					},
 				},
-				getStyleObjectFromResponsiveAttr({
-					className: INNER_CLASSNAME,
-					value: general_layout.textAlignment,
-					prefix: "textAlign",
-				}),
 			]}/>
 
 			<Global

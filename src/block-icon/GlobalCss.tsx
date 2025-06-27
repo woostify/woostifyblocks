@@ -29,7 +29,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 		style_dimension,
 		advance_motionEffect,
 	} = attrs;
-	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
 	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}][data-block-type="icon-item"]`;
 	const ICON_CLASS = `${WRAP_CLASSNAME} .wcb-icon-list__icon`;
@@ -37,38 +36,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject[] => {
 		return [
-			getStyleObjectFromResponsiveAttr({
-				className: WRAP_CLASSNAME,
-				value: general_layout.textAlignment,
-				prefix: "textAlign",
-			}),
-							{
-					[`${WRAP_CLASSNAME}`]: {
-					
-					flexDirection:
-						general_icon.stackOn === "mobile" ||
-						general_icon.stackOn === "tablet" ? "column-reverse" : "column",
-
-					
-					".wcb-icon-list__content": {
-						display: "flex",
-						flexDirection:  general_layout.layout === "vertical" ? "column" : "row",
-						alignItems:
-							general_layout.textAlignment.Desktop ===  "center" 
-							|| general_layout.textAlignment.Mobile ===  "center" 
-							|| general_layout.textAlignment.Tablet ===  "center"
-								? "center" :
-							general_layout.textAlignment.Desktop === "left" 
-							|| general_layout.textAlignment.Mobile === "left"
-							|| general_layout.textAlignment.Tablet === "left"
-								? "flex-start" :
-							general_layout.textAlignment.Desktop === "right" 
-							|| general_layout.textAlignment.Mobile === "right"
-							|| general_layout.textAlignment.Tablet === "right"
-								? "flex-end" 
-								: undefined,
-					},
-
+			{
+				[`${WRAP_CLASSNAME}`]: {
 					".wcb-icon-list__icon-wrap, .wcb-icon-list__content": {
 						alignSelf:
 							general_icon.verticalAlignment === "middle"
@@ -86,15 +55,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 							general_icon.iconPosition === "rightOfTitle"
 								? "flex"
 								: "block",
-					},
-
-					[`@media (min-width: ${media_tablet})`]: {
-						flexDirection:
-							general_icon.stackOn === "mobile" ? "row" : undefined,
-					},
-
-					[`@media (min-width: ${media_desktop})`]: {
-						flexDirection: "row",
 					},
 				},
 			},

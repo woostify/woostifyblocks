@@ -38,37 +38,9 @@ const GlobalCssChild: FC<Props> = (attrs) => {
 	// ------------------- WRAP DIV với higher specificity
 	const getDivWrapStyles = (): CSSObject[] => {
 		return [
-			getStyleObjectFromResponsiveAttr({
-				className: WRAP_CLASSNAME,
-				value: general_layout.textAlignment,
-				prefix: "textAlign",
-			}),
 			{
 				// Inline style with specificity max level
 				[`${WRAP_CLASSNAME}.wcb-icon-list__wrap`]: {
-					flexDirection:
-						general_icon.stackOn === "mobile" ||
-						general_icon.stackOn === "tablet" ? "column-reverse" : "column",
-
-					".wcb-icon-list__content": {
-						display: "flex",
-						flexDirection: general_layout.layout === "vertical" ? "column" : "row",
-						alignItems:
-							general_layout.textAlignment.Desktop === "center" 
-							|| general_layout.textAlignment.Mobile === "center" 
-							|| general_layout.textAlignment.Tablet === "center"
-								? "center" :
-							general_layout.textAlignment.Desktop === "left" 
-							|| general_layout.textAlignment.Mobile === "left"
-							|| general_layout.textAlignment.Tablet === "left"
-								? "flex-start" :
-							general_layout.textAlignment.Desktop === "right" 
-							|| general_layout.textAlignment.Mobile === "right"
-							|| general_layout.textAlignment.Tablet === "right"
-								? "flex-end" 
-								: undefined,
-					},
-
 					".wcb-icon-list__icon-wrap, .wcb-icon-list__content": {
 						alignSelf:
 							general_icon.verticalAlignment === "middle"
@@ -86,15 +58,6 @@ const GlobalCssChild: FC<Props> = (attrs) => {
 							general_icon.iconPosition === "rightOfTitle"
 								? "flex"
 								: "block",
-					},
-
-					[`@media (min-width: ${media_tablet})`]: {
-						flexDirection:
-							general_icon.stackOn === "mobile" ? "row" : undefined,
-					},
-
-					[`@media (min-width: ${media_desktop})`]: {
-						flexDirection: "row",
 					},
 				},
 			},
