@@ -202,3 +202,10 @@ function wcb_block_countdown_renderCallback($attributes, $content)
     wp_enqueue_script__block_commoncss_frontend_styles();
     return $content;
 }
+
+//============================================= block 1 ===============================================================
+function wcb_block_icon_renderCallback($attributes, $content)
+{
+    wp_enqueue_script__block_commoncss_frontend_styles();
+    return $content;
+}

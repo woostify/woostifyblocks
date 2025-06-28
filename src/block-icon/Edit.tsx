@@ -11,43 +11,32 @@ import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import WcbIconPanelIcon from "./WcbIconPanelIcon";
-import WcbIconPanel_StyleIcon from "./WcbIconPanel_StyleIcon";
 import WcbIconPanelPreset from "./WcbIconPanelPreset";
-import WcbButtonPanel_StyleBorder, {
-	WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_1,
-	WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_2,
-	WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_3,
-	WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_4,
-	WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_5,
-} from "./WcbButtonPanel_StyleBorder";
-import WcbButtonPanel_StyleBackground, {
-	WCB_BUTTON_PANEL_STYLE_BACKGROUND_PRESET_1,
-	WCB_BUTTON_PANEL_STYLE_BACKGROUND_PRESET_3,
-	WCB_BUTTON_PANEL_STYLE_BACKGROUND_DEMO_WHITE,
-} from "./WcbButtonPanel_StyleBackground";
-import WcbButtonPanel_StyleBoxshadow from "./WcbButtonPanel_StyleBoxshadow";
+import MyIconFull from "../components/controls/MyIconFull";
+
+import WcbIconPanel_StyleIcon, {
+	WCB_ICON_PANEL_STYLE_ICON_DEMO,
+	WCB_ICON_PANEL_STYLE_ICON_LIGHT_DEMO,
+} from "./WcbIconPanel_StyleIcon";
+
+import WcbIconPanel_StyleBorder, {
+	WCB_ICON_PANEL_STYLE_BORDER_DEMO_ROUND,
+	WCB_ICON_PANEL_STYLE_BORDER_DEMO_WHITE,
+	WCB_ICON_PANEL_STYLE_BORDER_DEMO_SECONDARY,
+	WCB_ICON_PANEL_STYLE_BORDER_DEMO_PRIMARY
+} from "./WcbIconPanel_StyleBorder";
+import WcbIconPanel_StyleBackground, {
+	WCB_ICON_PANEL_STYLE_BACKGROUND_PRESET_1,
+	WCB_ICON_PANEL_STYLE_BACKGROUND_PRESET_3,
+	WCB_ICON_PANEL_STYLE_BACKGROUND_DEMO_WHITE,
+} from "./WcbIconPanel_StyleBackground";
+import WcbIconPanel_StyleBoxshadow from "./WcbIconPanel_StyleBoxshadow";
+import WcbIconPanel_StyleDimension from "./WcbIconPanel_StyleDimension";
 import { WcbAttrsForSave } from "./Save";
 import MyCacheProvider from "../components/MyCacheProvider";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
-	if (props.attributes.cover) {
-		return (
-			<div
-				className="flex justify-center items-center"
-				style={{ width: "100%", height: "100%" }}
-			>
-				<div
-					className="svg-container"
-					style={{
-						width: "400px",
-						height: "300px",
-					}}
-					dangerouslySetInnerHTML={{ __html: props.attributes.cover }}
-				></div>
-			</div>
-		);
-	}
 	const { attributes, setAttributes, clientId } = props;
 	const {
 		advance_responsiveCondition,
@@ -58,6 +47,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_background,
 		style_border,
 		style_boxshadow,
+		style_dimension,
 		general_preset,
 		advance_motionEffect,
 	} = attributes;
@@ -94,6 +84,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							setAttr__={(data) => {
 								return setAttributes({
 									general_icon: data,
+									general_preset: { ...general_preset, preset: "wcb-icon-1" },
 								});
 							}}
 							panelData={general_icon}
@@ -114,20 +105,24 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								setAttributes({
 									style_border:
 										preset === "wcb-icon-1"
-											? WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_1
+											? WCB_ICON_PANEL_STYLE_BORDER_DEMO_ROUND
 											: preset === "wcb-icon-2"
-											? WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_2
+											? WCB_ICON_PANEL_STYLE_BORDER_DEMO_WHITE
 											: preset === "wcb-icon-3"
-											? WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_3
+											? WCB_ICON_PANEL_STYLE_BORDER_DEMO_SECONDARY
 											: preset === "wcb-icon-4"
-											? WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_4
-											: WCB_BUTTON_PANEL_STYLE_BORDER_PRESET_5,
+											? WCB_ICON_PANEL_STYLE_BORDER_DEMO_PRIMARY
+											: WCB_ICON_PANEL_STYLE_BORDER_DEMO_ROUND,
 									style_background:
 										preset === "wcb-icon-1"
-										? WCB_BUTTON_PANEL_STYLE_BACKGROUND_PRESET_1
+										? WCB_ICON_PANEL_STYLE_BACKGROUND_PRESET_1
 										: preset === "wcb-icon-3"
-										? WCB_BUTTON_PANEL_STYLE_BACKGROUND_PRESET_3
-										: WCB_BUTTON_PANEL_STYLE_BACKGROUND_DEMO_WHITE,
+										? WCB_ICON_PANEL_STYLE_BACKGROUND_PRESET_3
+										: WCB_ICON_PANEL_STYLE_BACKGROUND_DEMO_WHITE,
+									style_icon:
+										preset === "wcb-icon-1" || preset === "wcb-icon-3"
+											? WCB_ICON_PANEL_STYLE_ICON_DEMO
+											: WCB_ICON_PANEL_STYLE_ICON_LIGHT_DEMO,
 								});
 							}}
 							panelData={general_preset}
@@ -143,12 +138,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							opened={tabStylesIsPanelOpen === "_StyleIcon" || undefined}
 							//
 							setAttr__={(data) => {
-								setAttributes({ style_icon: data });
+								setAttributes({ 
+									style_icon: data,
+									general_preset: { ...general_preset, preset: "wcb-icon-1" },
+								});
 							}}
 							panelData={style_icon}
 						/>
 
-						<WcbButtonPanel_StyleBackground
+						<WcbIconPanel_StyleBackground
 							onToggle={() => handleTogglePanel("Styles", "_StyleBackground")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleBackground"}
 							opened={tabStylesIsPanelOpen === "_StyleBackground" || undefined}
@@ -162,7 +160,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							panelData={style_background}
 						/>
 
-						<WcbButtonPanel_StyleBorder
+						<WcbIconPanel_StyleBorder
 							onToggle={() => handleTogglePanel("Styles", "_StyleBorder")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleBorder"}
 							opened={tabStylesIsPanelOpen === "_StyleBorder" || undefined}
@@ -176,7 +174,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							panelData={style_border}
 						/>
 
-						<WcbButtonPanel_StyleBoxshadow
+						<WcbIconPanel_StyleBoxshadow
 							onToggle={() => handleTogglePanel("Styles", "_StyleBoxshadow")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleBoxshadow"}
 							opened={tabStylesIsPanelOpen === "_StyleBoxshadow" || undefined}
@@ -188,6 +186,20 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								});
 							}}
 							panelData={style_boxshadow}
+						/>
+
+						<WcbIconPanel_StyleDimension
+							onToggle={() => handleTogglePanel("Styles", "_StyleDimension")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleDimension"}
+							opened={tabStylesIsPanelOpen === "_StyleDimension" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ 
+									style_dimension: data,
+									general_preset: { ...general_preset, preset: "wcb-icon-1" },
+								});
+							}}
+							panelData={style_dimension}
 						/>
 						
 					</>
@@ -224,6 +236,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			style_icon,
 			style_border,
 			style_boxshadow,
+			style_dimension,
 			advance_motionEffect,
 		};
 	}, [
@@ -236,6 +249,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_icon,
 		style_border,
 		style_boxshadow,
+		style_dimension,
 		advance_motionEffect,
 	]);
 
@@ -255,8 +269,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				{/* CSS IN JS */}
 				<GlobalCss {...WcbAttrsForSave()} />
 
-				{/* CHILD CONTENT  */}
-
+				{/* ICON CONTENT  */}
+				<div className="wcb-icon__content">
+					<MyIconFull icon={general_icon.icon} />
+				</div>
 			</div>
 		</MyCacheProvider>
 	);

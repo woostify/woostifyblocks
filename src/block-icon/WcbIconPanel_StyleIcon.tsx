@@ -14,7 +14,12 @@ export interface WCB_ICON_PANEL_STYLE_ICON {
 
 export const WCB_ICON_PANEL_STYLE_ICON_DEMO: WCB_ICON_PANEL_STYLE_ICON = {
 	color: "#fff",
-	hoverColor: "#fff",
+	hoverColor: "",
+};
+
+export const WCB_ICON_PANEL_STYLE_ICON_LIGHT_DEMO: WCB_ICON_PANEL_STYLE_ICON = {
+	color: "#d1d5db",
+	hoverColor: "",
 };
 
 interface Props

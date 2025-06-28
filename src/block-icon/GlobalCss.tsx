@@ -7,10 +7,11 @@ import { getAdvanveDivWrapStyles } from "../block-container/getAdvanveStyles";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import getFlexPropertiesStyles from "../utils/getFlexPropertiesStyles";
 import getStyleObjectFromResponsiveAttr from "../utils/getStyleObjectFromResponsiveAttr";
-import getTypographyStyles from "../utils/getTypographyStyles";
+import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { WcbAttrsForSave } from "./Save";
+import checkResponsiveValueForOptimizeCSS from "../utils/checkResponsiveValueForOptimizeCSS";
 
 interface Props extends WcbAttrsForSave { }
 
@@ -23,6 +24,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		style_icon,
 		style_border,
 		style_boxshadow,
+		style_dimension,
 		general_preset,
 		//
 		advance_responsiveCondition,
@@ -34,31 +36,45 @@ const GlobalCss: FC<Props> = (attrs) => {
 
 	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
 	const CONTENT_CLASSNAME = `${WRAP_CLASSNAME} .wcb-icon__content`;
-	const LABEL_CLASSNAME = `${WRAP_CLASSNAME} .wcb-icon__label`;
-	const NUMBER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-icon__number`;
-	const BOX_CLASSNAME = `${WRAP_CLASSNAME} .wcb-icon__box`;
 
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject => {
+		const { alignment } = general_icon;
+		console.log(alignment);
+		const { value_Desktop, value_Mobile, value_Tablet } =
+			getValueFromAttrsResponsives<React.CSSProperties["textAlign"]>(
+				alignment
+			);
+		//
+		const {
+			mobile_v: value_Mobile_new,
+			tablet_v: value_Tablet_new,
+			desktop_v: value_Desktop_new,
+		} = checkResponsiveValueForOptimizeCSS({
+			mobile_v: value_Mobile,
+			tablet_v: value_Tablet,
+			desktop_v: value_Desktop,
+		});
 		return {
-			[`${WRAP_CLASSNAME}`]: {
-				[`@media (min-width: ${media_tablet})`]: {},
-				[`@media (min-width: ${media_desktop})`]: {},
-				[`@media (min-width: ${media_desktop})`]: {},
-			},
+			[`${WRAP_CLASSNAME}`]:
+				value_Mobile_new || value_Tablet_new || value_Desktop_new
+					? {
+							textAlign: value_Mobile_new,
+
+							[`@media (min-width: ${media_tablet})`]: value_Tablet_new
+								? {
+										textAlign: value_Tablet_new,
+								  }
+								: undefined,
+							[`@media (min-width: ${media_desktop})`]: value_Desktop_new
+								? {
+										textAlign: value_Desktop_new,
+								  }
+								: undefined,
+					  }
+					: undefined,
 		};
 	};
-
-	// ------------------- NUMBER
-	const getInner__Number_typography = () => {
-		const { typography } = style_icon;
-
-		return getTypographyStyles({
-			typography,
-			className: NUMBER_CLASSNAME,
-		});
-	};
-
 
 	if (!uniqueId) {
 		return null;
@@ -68,10 +84,19 @@ const GlobalCss: FC<Props> = (attrs) => {
 		<>
 			{<Global styles={getDivWrapStyles()} />}
 
+			{/* BACKGROUND  */}
+			<Global
+				styles={getBackgroundColorGradientStyles({
+					className: CONTENT_CLASSNAME,
+					background: style_background.normal,
+					backgroundHover: style_background.hover,
+				})}
+			/>
+
 			{/* BORDER  */}
 			<Global
 				styles={getBorderStyles({
-					className: BOX_CLASSNAME,
+					className: CONTENT_CLASSNAME,
 					border: style_border,
 					isWithRadius: true,
 				})}
@@ -79,21 +104,43 @@ const GlobalCss: FC<Props> = (attrs) => {
 			{/* BOXSHADOW  */}
 			<Global
 				styles={getBoxShadowStyles({
-					className: BOX_CLASSNAME,
+					className: CONTENT_CLASSNAME,
 					boxShadow: style_boxshadow,
 				})}
-			/>
-		
+			/>		
 
 			{/* ICON CSS */}
-			<Global styles={[
-				getInner__Number_typography(),
-				{
-					[NUMBER_CLASSNAME]: {
-						color: style_icon.textColor,
+			<Global
+				styles={[
+					getPaddingMarginStyles({
+						className: WRAP_CLASSNAME,
+						margin: style_dimension.margin,
+					}),
+					getPaddingMarginStyles({
+						className: `${WRAP_CLASSNAME} .wcb-icon__content`,
+						padding: style_dimension.padding,
+					}),
+					getBorderStyles({
+						border: style_icon,
+						className: `${WRAP_CLASSNAME} .wcb-icon__content`,
+						isWithRadius: true,
+					}),
+					getStyleObjectFromResponsiveAttr({
+						className: `${WRAP_CLASSNAME} .wcb-icon-full`,
+						value: general_icon.size,
+						prefix: "width",
+						prefix_2: "fontSize",
+					}),
+					{
+						[`${CONTENT_CLASSNAME} .wcb-icon-full`]: {
+							color: style_icon.color
+						},
+						[`${CONTENT_CLASSNAME}:hover .wcb-icon-full`]: {
+							color: style_icon.hoverColor,
+						}
 					},
-				},
-			]} />
+				]}
+			/>
 			
 			{/* ADVANCE  */}
 			<Global
@@ -102,7 +149,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 					advance_responsiveCondition,
 					advance_zIndex,
 					className: CONTENT_CLASSNAME,
-					defaultDisplay: "flex",
+					defaultDisplay: "inline-block",
 				})}
 			/>
 		</>

@@ -15,8 +15,8 @@ import {
     Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
 import {
-    WCB_ICON_BOX_PANEL_ICON,
-    WCB_ICON_BOX_PANEL_ICON_DEMO,
+    WCB_ICON_PANEL_ICON,
+    WCB_ICON_PANEL_ICON_DEMO,
 } from "./WcbIconPanelIcon";
 import {
     WCB_ICON_PANEL_PRESET,
@@ -29,19 +29,24 @@ import {
 } from "./WcbIconPanel_StyleIcon";
 
 import {
-    WCB_BUTTON_PANEL_STYLE_BACKGROUND,
-    WCB_BUTTON_PANEL_STYLE_BACKGROUND_DEMO,
-} from "./WcbButtonPanel_StyleBackground";
+    WCB_ICON_PANEL_STYLE_BACKGROUND,
+    WCB_ICON_PANEL_STYLE_BACKGROUND_DEMO,
+} from "./WcbIconPanel_StyleBackground";
 
 import {
-    WCB_BUTTON_PANEL_STYLE_BORDER,
-    WCB_BUTTON_PANEL_STYLE_BORDER_DEMO,
-} from "./WcbButtonPanel_StyleBorder";
+    WCB_ICON_PANEL_STYLE_BORDER,
+    WCB_ICON_PANEL_STYLE_BORDER_DEMO,
+} from "./WcbIconPanel_StyleBorder";
 
 import {
-    WCB_BUTTON_PANEL_STYLE_BOXSHADOW,
-    WCB_BUTTON_PANEL_STYLE_BOXSHADOW_DEMO,
-} from "./WcbButtonPanel_StyleBoxshadow";
+    WCB_ICON_PANEL_STYLE_BOXSHADOW,
+    WCB_ICON_PANEL_STYLE_BOXSHADOW_DEMO,
+} from "./WcbIconPanel_StyleBoxshadow";
+
+import {
+	WCB_ICON_PANEL_STYLE_DIMENSION,
+	WCB_ICON_PANEL_STYLE_DIMENSION_DEMO,
+} from "./WcbIconPanel_StyleDimension";
 
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
     cover: string;
@@ -52,11 +57,12 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
     seclabel: string;
     //
     general_preset: WCB_ICON_PANEL_PRESET;
-    general_icon: WCB_ICON_BOX_PANEL_ICON;
-    style_background: WCB_BUTTON_PANEL_STYLE_BACKGROUND;
+    general_icon: WCB_ICON_PANEL_ICON;
+    style_background: WCB_ICON_PANEL_STYLE_BACKGROUND;
     style_icon: WCB_ICON_PANEL_STYLE_ICON;
-    style_border: WCB_BUTTON_PANEL_STYLE_BORDER;
-    style_boxshadow: WCB_BUTTON_PANEL_STYLE_BOXSHADOW;
+    style_border: WCB_ICON_PANEL_STYLE_BORDER;
+    style_boxshadow: WCB_ICON_PANEL_STYLE_BOXSHADOW;
+    style_dimension: WCB_ICON_PANEL_STYLE_DIMENSION;
     //
     advance_responsiveCondition: MyResponsiveConditionControlData;
     advance_zIndex: MyZIndexControlData;
@@ -77,7 +83,7 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 
     general_icon: {
         type: "object",
-        default: WCB_ICON_BOX_PANEL_ICON_DEMO,
+        default: WCB_ICON_PANEL_ICON_DEMO,
     },
     general_preset: {
         type: "object",
@@ -89,15 +95,19 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
     },
     style_background: {
         type: "object",
-        default: WCB_BUTTON_PANEL_STYLE_BACKGROUND_DEMO,
+        default: WCB_ICON_PANEL_STYLE_BACKGROUND_DEMO,
     },
     style_border: {
         type: "object",
-        default: WCB_BUTTON_PANEL_STYLE_BORDER_DEMO,
+        default: WCB_ICON_PANEL_STYLE_BORDER_DEMO,
     },
     style_boxshadow: {
         type: "object",
-        default: WCB_BUTTON_PANEL_STYLE_BOXSHADOW_DEMO,
+        default: WCB_ICON_PANEL_STYLE_BOXSHADOW_DEMO,
+    },
+    style_dimension: {
+        type: "object",
+        default: WCB_ICON_PANEL_STYLE_DIMENSION_DEMO,
     },
     // ADVANCE
     advance_responsiveCondition: {

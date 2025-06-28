@@ -6,22 +6,22 @@ import MyBoxShadowControl, {
 } from "../components/controls/MyBoxShadowControl/MyBoxShadowControl";
 import { MY_BOX_SHADOW_CONTROL_DEMO } from "../components/controls/MyBoxShadowControl/types";
 
-export interface WCB_BUTTON_PANEL_STYLE_BOXSHADOW
+export interface WCB_ICON_PANEL_STYLE_BOXSHADOW
 	extends MyBoxShadowControlData {}
 
-export const WCB_BUTTON_PANEL_STYLE_BOXSHADOW_DEMO: WCB_BUTTON_PANEL_STYLE_BOXSHADOW =
+export const WCB_ICON_PANEL_STYLE_BOXSHADOW_DEMO: WCB_ICON_PANEL_STYLE_BOXSHADOW =
 	{
 		...MY_BOX_SHADOW_CONTROL_DEMO,
 	};
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
-	panelData: WCB_BUTTON_PANEL_STYLE_BOXSHADOW;
-	setAttr__: (data: WCB_BUTTON_PANEL_STYLE_BOXSHADOW) => void;
+	panelData: WCB_ICON_PANEL_STYLE_BOXSHADOW;
+	setAttr__: (data: WCB_ICON_PANEL_STYLE_BOXSHADOW) => void;
 }
 
-const WcbButtonPanel_StyleBoxshadow: FC<Props> = ({
-	panelData = WCB_BUTTON_PANEL_STYLE_BOXSHADOW_DEMO,
+const WcbIconPanel_StyleBoxshadow: FC<Props> = ({
+	panelData = WCB_ICON_PANEL_STYLE_BOXSHADOW_DEMO,
 	setAttr__,
 	initialOpen,
 	onToggle,
@@ -42,4 +42,4 @@ const WcbButtonPanel_StyleBoxshadow: FC<Props> = ({
 	);
 };
 
-export default WcbButtonPanel_StyleBoxshadow;
+export default WcbIconPanel_StyleBoxshadow;

@@ -15,29 +15,29 @@ import SelecIcon, {
 	MyIcon,
 } from "../components/controls/SelectIcon/SelecIcon";
 
-export interface WCB_ICON_BOX_PANEL_ICON {
+export interface WCB_ICON_PANEL_ICON {
 	size: HasResponsive<number>;
 	alignment: HasResponsive<TextAlignment>;
 	icon: MyIcon;
 }
 
-export const WCB_ICON_BOX_PANEL_ICON_DEMO: WCB_ICON_BOX_PANEL_ICON = {
+export const WCB_ICON_PANEL_ICON_DEMO: WCB_ICON_PANEL_ICON = {
 	size: { Desktop: 20 },
 	alignment: { Desktop: "center" },
 	icon: {
 		...DEFAULT_MY_ICON,
-		iconName: "lni-checkmark-circle",
+		iconName: "lni-star-filled",
 	},
 };
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
-	panelData: WCB_ICON_BOX_PANEL_ICON;
-	setAttr__: (data: WCB_ICON_BOX_PANEL_ICON) => void;
+	panelData: WCB_ICON_PANEL_ICON;
+	setAttr__: (data: WCB_ICON_PANEL_ICON) => void;
 }
 
 const WcbIconBoxPanelIcon: FC<Props> = ({
-	panelData = WCB_ICON_BOX_PANEL_ICON_DEMO,
+	panelData = WCB_ICON_PANEL_ICON_DEMO,
 	setAttr__,
 	initialOpen,
 	onToggle,

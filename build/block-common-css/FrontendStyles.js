@@ -6619,6 +6619,9 @@ const classes = [{
   D: ".wcb-counter-box__wrap.wcb-update-div",
   C: react__WEBPACK_IMPORTED_MODULE_1___default().lazy(() => Promise.resolve(/*! import() */).then(__webpack_require__.bind(__webpack_require__, /*! ../block-counter/GlobalCss */ "./src/block-counter/GlobalCss.tsx"))),
   F: _block_counter_FrontendStyles__WEBPACK_IMPORTED_MODULE_9__.animateProgressElements
+}, {
+  D: ".wcb-icon__wrap.wcb-update-div",
+  C: react__WEBPACK_IMPORTED_MODULE_1___default().lazy(() => __webpack_require__.e(/*! import() */ "src_block-icon_GlobalCss_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../block-icon/GlobalCss */ "./src/block-icon/GlobalCss.tsx")))
 }];
 classes.forEach(_ref => {
   let {
