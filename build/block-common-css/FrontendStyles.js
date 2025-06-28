@@ -2306,29 +2306,35 @@ function initCountDown(elem, props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "animateProgressElements": () => (/* binding */ animateProgressElements)
+/* harmony export */   "animateProgressElements": () => (/* binding */ animateProgressElements),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "react-dom");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _GlobalCss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./GlobalCss */ "./src/block-counter/GlobalCss.tsx");
-
+/* harmony import */ var _GlobalCss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./GlobalCss */ "./src/block-counter/GlobalCss.tsx");
 
 
 
 const FrontendStyles = attrs => {
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_3__["default"], attrs);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_2__["default"], attrs);
 };
 
-// Animation logic for circle and bar layouts
-function animateProgressElements() {
-  // Target all circle and bar wrappers
-  const circleWrappers = document.querySelectorAll(".wcb-icon-box__progress-circle-wrap");
-  const barWrappers = document.querySelectorAll(".wcb-icon-box__progress-bar-wrap");
-  const numberWrappers = document.querySelectorAll(".wcb-icon-box__number");
+// Animation logic for individual counter element
+function animateCounterElement(counterBlock) {
+  // Check if already animated to prevent re-animation
+  if (counterBlock.getAttribute("data-animated") === "true") {
+    return;
+  }
+
+  // Mark as animated
+  counterBlock.setAttribute("data-animated", "true");
+
+  // Target circle, bar, and number wrappers within this specific counter block
+  const circleWrappers = counterBlock.querySelectorAll(".wcb-icon-box__progress-circle-wrap");
+  const barWrappers = counterBlock.querySelectorAll(".wcb-icon-box__progress-bar-wrap");
+  const numberWrappers = counterBlock.querySelectorAll(".wcb-icon-box__number[data-start-number]");
 
   // Animate circles
   circleWrappers.forEach(wrapper => {
@@ -2336,6 +2342,7 @@ function animateProgressElements() {
     const endNumber = parseInt(wrapper.getAttribute("data-end-number") || "0");
     const animationDuration = parseInt(wrapper.getAttribute("data-animation-duration") || "1500");
     const decimalPlaces = parseInt(wrapper.getAttribute("data-decimal-places") || "0");
+    const numberPrefix = wrapper.getAttribute("data-number-prefix") || "";
     const numberSuffix = wrapper.getAttribute("data-number-suffix") || "";
     const circle = wrapper.querySelector(".wcb-icon-box__progress-circle");
     const numberDisplay = wrapper.querySelector(".wcb-icon-box__number");
@@ -2343,23 +2350,28 @@ function animateProgressElements() {
     const radius = 150 - 5 * 2; // Same as in renderProgressCircle
     const circumference = radius * 2 * Math.PI;
     const maxValue = 100;
+    if (startNumber === endNumber) {
+      const progress = endNumber / maxValue * 100;
+      const strokeDashoffset = circumference - progress / 100 * circumference;
+      circle.style.strokeDashoffset = strokeDashoffset.toString();
+      numberDisplay.innerHTML = `${numberPrefix}${endNumber.toFixed(decimalPlaces)}${numberSuffix}`;
+      return;
+    }
     let current = startNumber;
-    const incrementTime = animationDuration / (endNumber - startNumber || 1);
+    const incrementTime = animationDuration / Math.abs(endNumber - startNumber);
     const updateCircle = () => {
       const progress = (current - startNumber) / (endNumber - startNumber) * (endNumber / maxValue) * 100;
       const strokeDashoffset = circumference - progress / 100 * circumference;
       circle.style.strokeDashoffset = strokeDashoffset.toString();
-      numberDisplay.textContent = `${current.toFixed(decimalPlaces)}${numberSuffix}`;
-      if (current < endNumber) {
-        current += 1;
+      numberDisplay.innerHTML = `${numberPrefix}${current.toFixed(decimalPlaces)}${numberSuffix}`;
+      if (startNumber < endNumber && current < endNumber || startNumber > endNumber && current > endNumber) {
+        current += startNumber < endNumber ? 1 : -1;
         setTimeout(updateCircle, incrementTime);
       } else {
-        numberDisplay.textContent = `${endNumber.toFixed(decimalPlaces)}${numberSuffix}`;
+        numberDisplay.innerHTML = `${numberPrefix}${endNumber.toFixed(decimalPlaces)}${numberSuffix}`;
       }
     };
-    if (startNumber !== endNumber) {
-      updateCircle();
-    }
+    updateCircle();
   });
 
   // Animate bars
@@ -2367,6 +2379,8 @@ function animateProgressElements() {
     const startNumber = parseInt(wrapper.getAttribute("data-start-number") || "0");
     const endNumber = parseInt(wrapper.getAttribute("data-end-number") || "0");
     const animationDuration = parseInt(wrapper.getAttribute("data-animation-duration") || "1500");
+    const numberPrefix = wrapper.getAttribute("data-number-prefix") || "";
+    const numberSuffix = wrapper.getAttribute("data-number-suffix") || "";
     const bar = wrapper.querySelector(".wcb-icon-box__progress-bar");
     const numberDisplay = wrapper.querySelector(".wcb-icon-box__number");
     const numberValue = wrapper.querySelector(".wcb-icon-box__number-value");
@@ -2374,25 +2388,29 @@ function animateProgressElements() {
     numberDisplay.style.marginTop = "12px";
     numberDisplay.style.marginBottom = "12px";
     const maxValue = 100;
+    if (startNumber === endNumber) {
+      const widthPercentage = endNumber / maxValue * 100;
+      bar.style.width = `${widthPercentage}%`;
+      numberValue.innerHTML = `${endNumber}`;
+      return;
+    }
     let current = startNumber;
-    const incrementTime = animationDuration / (endNumber - startNumber || 1);
+    const incrementTime = animationDuration / Math.abs(endNumber - startNumber);
     const updateBar = () => {
       const progress = (current - startNumber) / (endNumber - startNumber) * endNumber;
       const widthPercentage = progress / maxValue * 100;
       bar.style.width = `${widthPercentage}%`;
-      numberValue.textContent = `${Math.round(progress)}`;
-      if (current < endNumber) {
-        current += 1;
+      numberValue.innerHTML = `${Math.round(progress)}`;
+      if (startNumber < endNumber && current < endNumber || startNumber > endNumber && current > endNumber) {
+        current += startNumber < endNumber ? 1 : -1;
         setTimeout(updateBar, incrementTime);
       } else {
         bar.style.width = `${endNumber / maxValue * 100}%`;
-        numberValue.textContent = `${Math.round(endNumber)}`;
+        numberValue.innerHTML = `${Math.round(endNumber)}`;
       }
     };
-    if (startNumber !== endNumber) {
-      numberValue.textContent = `${startNumber}`;
-      updateBar();
-    }
+    numberValue.innerHTML = `${startNumber}`;
+    updateBar();
   });
 
   // Animate numbers
@@ -2403,40 +2421,68 @@ function animateProgressElements() {
     const decimalPlaces = parseInt(wrapper.getAttribute("data-decimal-places") || "0");
     const numberDisplay = wrapper.querySelector(".wcb-icon-box__number-value");
     if (!numberDisplay) return;
+    if (startNumber === endNumber) {
+      numberDisplay.innerHTML = `${endNumber.toFixed(decimalPlaces)}`;
+      return;
+    }
     let current = startNumber;
-    const incrementTime = animationDuration / (endNumber - startNumber || 1);
+    const incrementTime = animationDuration / Math.abs(endNumber - startNumber);
     const updateNumber = () => {
-      numberDisplay.textContent = `${current.toFixed(decimalPlaces)}`;
-      if (current < endNumber) {
-        current += 1;
+      numberDisplay.innerHTML = `${current.toFixed(decimalPlaces)}`;
+      if (startNumber < endNumber && current < endNumber || startNumber > endNumber && current > endNumber) {
+        current += startNumber < endNumber ? 1 : -1;
         setTimeout(updateNumber, incrementTime);
       } else {
-        numberDisplay.textContent = `${endNumber.toFixed(decimalPlaces)}`;
+        numberDisplay.innerHTML = `${endNumber.toFixed(decimalPlaces)}`;
       }
     };
-    if (startNumber !== endNumber) {
-      updateNumber();
-    }
+    updateNumber();
   });
 }
-;
 
-// Run the animation logic after the DOM is updated
-const divsToUpdate = document.querySelectorAll(".wcb-counter-box__wrap.wcb-update-div");
-divsToUpdate.forEach(div => {
-  const preEl = div.querySelector(`pre[data-wcb-block-attrs=${div.id}]`);
-  const divRenderCssEl = div.querySelector(`div[data-wcb-global-styles=${div.id}]`);
-  if (!preEl || !preEl.innerText || !divRenderCssEl) {
-    return;
+// Setup Intersection Observer for scroll trigger
+function animateProgressElements() {
+  // Function to initialize when DOM is ready
+  const initializeAnimation = () => {
+    // Use specific selector for counter blocks
+    const counterBlocks = document.querySelectorAll(".wcb-counter-box__wrap:not(.wcb-update-div)");
+
+    // Check if IntersectionObserver is supported
+    if (!window.IntersectionObserver) {
+      counterBlocks.forEach(animateCounterElement);
+      return;
+    }
+
+    // Create intersection observer
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounterElement(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2,
+      // Trigger when 20% of the element is visible
+      rootMargin: "0px 0px -100px 0px" // Start 100px before element enters viewport
+    });
+
+    // Observe all counter blocks
+    counterBlocks.forEach(block => {
+      observer.observe(block);
+    });
+  };
+
+  // Check if DOM is already loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(initializeAnimation, 100); // Small delay to ensure dynamic content is loaded
+    });
+  } else {
+    setTimeout(initializeAnimation, 100);
   }
-  const props = JSON.parse(preEl?.innerText);
-  react_dom__WEBPACK_IMPORTED_MODULE_2___default().render((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(FrontendStyles, props), divRenderCssEl);
-
-  // Run animation after rendering
-  animateProgressElements();
-  div.classList.remove("wcb-update-div");
-  preEl.remove();
-});
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FrontendStyles);
 
 /***/ }),
 

@@ -3064,6 +3064,8 @@ const Edit = props => {
       advance_responsiveCondition,
       advance_zIndex,
       general_layout,
+      endNumber,
+      designation,
       style_title,
       style_desination,
       style_description,
@@ -3072,7 +3074,7 @@ const Edit = props => {
       general_icon,
       advance_motionEffect
     };
-  }, [uniqueId, advance_responsiveCondition, advance_zIndex, general_layout, style_title, style_desination, style_description, style_Icon, style_dimension, general_icon, advance_motionEffect]);
+  }, [uniqueId, advance_responsiveCondition, advance_zIndex, general_layout, endNumber, designation, style_title, style_desination, style_description, style_Icon, style_dimension, general_icon, advance_motionEffect]);
   const renderIcon = () => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, general_icon.enableIcon && general_layout.type !== "circle" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "wcb-icon-box__icon-wrap"
@@ -3352,6 +3354,7 @@ function save(_ref) {
     general_layout,
     description,
     designation,
+    endNumber,
     style_description,
     style_desination,
     style_Icon,
@@ -3365,6 +3368,8 @@ function save(_ref) {
     advance_responsiveCondition,
     advance_zIndex,
     general_layout,
+    endNumber,
+    designation,
     style_description,
     style_desination,
     style_Icon,
@@ -3541,7 +3546,7 @@ function save(_ref) {
     "data-decimal-places": general_layout?.decimalNumber || "0"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, general_layout.numberPrefix), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     className: "wcb-icon-box__number-value"
-  }, formatNumber(general_layout.endNumber, general_layout?.decimalNumber)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, general_layout.numberSuffix)), general_layout.type === "circle" && renderProgressCircle(), general_layout.type === "bar" && renderProgressBar()), (general_icon.iconPosition === "rightOfTitle" || general_icon.iconPosition === "bellowTitle") && general_layout.type !== "circle" && general_layout.type !== "bar" && renderIcon()), general_layout.enableDescription && general_layout.type !== "circle" && general_layout.type !== "bar" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.RichText.Content, {
+  }, formatNumber(general_layout.startNumber, general_layout?.decimalNumber)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, general_layout.numberSuffix)), general_layout.type === "circle" && renderProgressCircle(), general_layout.type === "bar" && renderProgressBar()), (general_icon.iconPosition === "rightOfTitle" || general_icon.iconPosition === "bellowTitle") && general_layout.type !== "circle" && general_layout.type !== "bar" && renderIcon()), general_layout.enableDescription && general_layout.type !== "circle" && general_layout.type !== "bar" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.RichText.Content, {
     tagName: "div",
     value: description,
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Description..."),
