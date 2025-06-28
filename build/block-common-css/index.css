@@ -1557,6 +1557,9 @@ video {
 .inline-block {
   display: inline-block !important;
 }
+.inline {
+  display: inline !important;
+}
 .flex {
   display: flex !important;
 }
