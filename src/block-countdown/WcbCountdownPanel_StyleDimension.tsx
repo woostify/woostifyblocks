@@ -26,7 +26,7 @@ export const WCB_COUNTDOWN_PANEL_STYLE_DIMENSION_DEMO: WCB_COUNTDOWN_PANEL_STYLE
 		Mobile: "65px"
 	},
 	gap_number: {
-		Desktop: "1px",
+		Desktop: "0px",
 		Tablet: "0px",
 		Mobile: "0px"
 	},
@@ -111,7 +111,7 @@ const WcbCountdownPanel_StyleDimension: FC<Props> = ({
 								},
 							});
 						}}
-						value={currentGapNumber || "1"}
+						value={currentGapNumber || "0"}
 						label={__("Spacing between number and label", "wcb")}
 					/>
 
