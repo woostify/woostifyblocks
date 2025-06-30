@@ -1,6 +1,11 @@
 import { __ } from "@wordpress/i18n";
-import { RichText, useBlockProps } from "@wordpress/block-editor";
-import React, { useEffect, FC, useCallback, useRef } from "react";
+import { RichText, useBlockProps,
+	BlockControls,
+	// @ts-ignore
+	__experimentalLinkControl as LinkControl,
+ } from "@wordpress/block-editor";
+import React, { useEffect, FC, useCallback, useRef, useState } from "react";
+import { getProtocol, prependHTTP } from '@wordpress/url';
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
 	InspectorControlsTabs,
@@ -35,9 +40,12 @@ import WcbIconPanel_StyleDimension from "./WcbIconPanel_StyleDimension";
 import { WcbAttrsForSave } from "./Save";
 import MyCacheProvider from "../components/MyCacheProvider";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
+import { Popover, ToolbarButton } from "@wordpress/components";
+import { link, linkOff } from "@wordpress/icons";
+import { displayShortcut } from "@wordpress/keycodes";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
-	const { attributes, setAttributes, clientId } = props;
+	const { attributes, setAttributes, clientId, isSelected } = props;
 	const {
 		advance_responsiveCondition,
 		advance_zIndex,
@@ -51,7 +59,19 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		general_preset,
 		advance_motionEffect,
 	} = attributes;
+
+	const {
+		enableLink,
+		addNofollowToLink,
+		link,
+		openInNewWindow,
+	} = general_icon;
+
 	//  COMMON HOOKS
+
+	const [popoverAnchor, setPopoverAnchor] = useState(null);
+	const [isEditingURL, setIsEditingURL] = useState(false);
+
 	const ref = useRef<HTMLDivElement>(null);
 	const wrapBlockProps = useBlockProps({ ref });
 	const {
@@ -61,6 +81,28 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		tabStylesIsPanelOpen,
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
+
+
+	const isURLSet = !!general_icon.link;
+	var url = general_icon.link;
+	const opensInNewTab = general_icon.openInNewWindow;
+
+	function startEditing(event) {
+		event.preventDefault();
+		setIsEditingURL(true);
+	}
+
+	function unlink() {
+		setAttributes({
+			general_icon: {
+				...general_icon,
+				link: "",
+				openInNewWindow: false,
+				addNofollowToLink: false,
+			},
+		});
+		setIsEditingURL(false);
+	}
 
 	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
@@ -253,6 +295,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		advance_motionEffect,
 	]);
 
+	const HtmlTag = enableLink ? "a" : "div";
+	if ( '' !== url ) {
+		url = getProtocol( url ) ? url : prependHTTP( url );
+	}
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
@@ -269,10 +315,72 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				{/* CSS IN JS */}
 				<GlobalCss {...WcbAttrsForSave()} />
 
+				{/* @ts-ignore */}
+				<BlockControls group="block">
+					{!isURLSet && (
+						<ToolbarButton
+							name="link"
+							icon={link}
+							title={__("Link")}
+							shortcut={displayShortcut.primary("k")}
+							onClick={startEditing}
+						/>
+					)}
+					{isURLSet && (
+						<ToolbarButton
+							name="link"
+							icon={linkOff}
+							title={__("Unlink")}
+							shortcut={displayShortcut.primaryShift("k")}
+							onClick={unlink}
+							isActive={true}
+						/>
+					)}
+				</BlockControls>
+
+				{isSelected && (isEditingURL || isURLSet) && (
+					<Popover
+						position="bottom center"
+						onClose={() => {
+							setIsEditingURL(false);
+						}}
+						// @ts-ignore
+						anchor={popoverAnchor}
+						focusOnMount={isEditingURL ? "firstElement" : false}
+						__unstableSlotName={"__unstable-block-tools-after"}
+						shift
+					>
+						<LinkControl
+							className="wp-block-navigation-link__inline-link-input"
+							value={{ url, opensInNewTab }}
+							onChange={({
+								url: newURL = "",
+								opensInNewTab: newOpensInNewTab,
+							}) => {
+								setAttributes({
+									general_icon: {
+										...general_icon,
+										link: newURL,
+										openInNewWindow: newOpensInNewTab,
+									},
+								});
+							}}
+							onRemove={() => {
+								unlink();
+							}}
+							forceIsEditingLink={isEditingURL}
+						/>
+					</Popover>
+				)}
+
 				{/* ICON CONTENT  */}
-				<div className="wcb-icon__content">
+				<HtmlTag className="wcb-icon__content"
+					target={openInNewWindow ? "_blank" : undefined}
+					href={enableLink ? url : undefined}
+					rel={addNofollowToLink ? "noopener noreferrer" : undefined}
+				>
 					<MyIconFull icon={general_icon.icon} />
-				</div>
+				</HtmlTag>
 			</div>
 		</MyCacheProvider>
 	);

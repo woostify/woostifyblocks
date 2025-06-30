@@ -1,5 +1,7 @@
 import { PanelBody, ToggleControl, RangeControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
+// @ts-ignore
+import { __experimentalLinkControl as LinkControl } from "@wordpress/block-editor";
 import React, { FC, CSSProperties } from "react";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
 import MyTextAlignControl, {
@@ -19,6 +21,10 @@ export interface WCB_ICON_PANEL_ICON {
 	size: HasResponsive<number>;
 	alignment: HasResponsive<TextAlignment>;
 	icon: MyIcon;
+	enableLink: boolean;
+	link: string;
+	openInNewWindow: boolean;
+	addNofollowToLink: boolean;
 }
 
 export const WCB_ICON_PANEL_ICON_DEMO: WCB_ICON_PANEL_ICON = {
@@ -28,6 +34,10 @@ export const WCB_ICON_PANEL_ICON_DEMO: WCB_ICON_PANEL_ICON = {
 		...DEFAULT_MY_ICON,
 		iconName: "lni-star-filled",
 	},
+	enableLink: false,
+	link: "",
+	openInNewWindow: false,
+	addNofollowToLink: true,
 };
 
 interface Props
@@ -45,7 +55,7 @@ const WcbIconBoxPanelIcon: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
-	const { icon, alignment, size } =
+	const { icon, alignment, size, enableLink, link, openInNewWindow, addNofollowToLink } =
 		panelData;
 	//
 	const { currentDeviceValue: TEXT_ALIGNMENT } = getValueFromAttrsResponsives(
@@ -68,7 +78,7 @@ const WcbIconBoxPanelIcon: FC<Props> = ({
 		size,
 		deviceType
 	);
-
+	const url = panelData.link;
 	return (
 		<PanelBody
 			initialOpen={initialOpen}
@@ -109,6 +119,59 @@ const WcbIconBoxPanelIcon: FC<Props> = ({
 					textAlignment={TEXT_ALIGNMENT}
 					onChange={handleChangeTextAlignment}
 				/>
+
+				<ToggleControl
+					label={__("Link", "wcb")}
+					checked={enableLink}
+					className="mb-0"
+					onChange={(checked) => {
+						setAttr__({ ...panelData, enableLink: checked });
+					}}
+				/>
+
+				{
+					enableLink && (
+						<>
+							<LinkControl
+								className="WcbButtonPanelContent__inline-link-input"
+								value={{ url }}
+								onChange={({
+									url: newURL = "",
+								}) => {
+									setAttr__({
+										...panelData,
+										link: newURL,
+									});
+								}}
+								onRemove={() => {
+									setAttr__({
+										...panelData,
+										link: "",
+										openInNewWindow: false,
+										addNofollowToLink: false,
+									});
+								}}
+							/>
+
+							<ToggleControl
+								label={__('Add "nofollow" to link', "wcb")}
+								checked={addNofollowToLink}
+								onChange={(checked) => {
+									setAttr__({ ...panelData, addNofollowToLink: checked });
+								}}
+							/>
+			
+							<ToggleControl
+								label={__("Open in new windown", "wcb")}
+								checked={openInNewWindow}
+								onChange={(checked) => {
+									setAttr__({ ...panelData, openInNewWindow: checked });
+								}}
+							/>
+							
+						</>
+					)
+				}
 			</div>
 		</PanelBody>
 	);

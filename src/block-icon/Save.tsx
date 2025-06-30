@@ -4,6 +4,7 @@ import { useBlockProps } from "@wordpress/block-editor";
 import { WcbAttrs } from "./attributes";
 import SaveCommon from "../components/SaveCommon";
 import MyIconFull from "../components/controls/MyIconFull";
+import { getProtocol, prependHTTP } from '@wordpress/url';
 import "./style.scss";
 
 export interface WcbAttrsForSave
@@ -25,6 +26,15 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	} = attributes;
 	//
 
+	const {
+		enableLink,
+		addNofollowToLink,
+		link,
+		openInNewWindow,
+	} = general_icon;
+
+	// 
+
 	const newAttrForSave: WcbAttrsForSave = {
 		uniqueId,
 		advance_responsiveCondition,
@@ -42,7 +52,11 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const wrapBlockProps = useBlockProps.save({
 		className: "wcb-icon__wrap",
 	});
-
+	const HtmlTag = enableLink ? "a" : "div";
+	var url = general_icon.link;
+	if ( '' !== url ) {
+		url = getProtocol( url ) ? url : prependHTTP( url );
+	}
 	return (
 		<SaveCommon
 			{...wrapBlockProps}
@@ -51,9 +65,13 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		>
 			{/* CHILD CONTENT  */}
 
-			<div className="wcb-icon__content">
+			<HtmlTag className="wcb-icon__content"
+				target={openInNewWindow ? "_blank" : undefined}
+				href={enableLink ? url : undefined}
+				rel={addNofollowToLink ? "noopener noreferrer" : undefined}
+			>
 				<MyIconFull icon={general_icon.icon} />
-			</div>
+			</HtmlTag>
 		</SaveCommon>
 	);
 }
