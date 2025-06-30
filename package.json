@@ -55,6 +55,7 @@
 		"sass": "^1.60.0",
 		"scroll-snap-slider": "barthy-koeln/scroll-snap-slider",
 		"slick-carousel": "^1.8.1",
+		"swiper": "^11.2.6",
 		"tailwindcss": "^3.2.7",
 		"use-deep-compare-effect": "^1.8.1"
 	}
