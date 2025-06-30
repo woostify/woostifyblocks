@@ -73,7 +73,7 @@ const WcbTestimonialsPanelGeneral: FC<Props> = ({
 		>
 			<div className={"space-y-5"}>
 				<RangeControl
-					label={__("Number of Sliders", "wcb")}
+					label={__("Number of Testimonials", "wcb")}
 					value={numberofTestimonials}
 					onChange={(value) => {
 						setAttr__({ ...panelData, numberofTestimonials: value || 1 });

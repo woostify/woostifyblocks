@@ -1,6 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
-import { useSelect, useDispatch } from "@wordpress/data";
+import { useDispatch, useSelect } from "@wordpress/data";
+import { createBlock } from "@wordpress/blocks";
 import React, { useEffect, FC, useCallback, useRef } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
@@ -30,8 +31,8 @@ import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
-
-function SampleNextArrow(props) {
+// Arrow components for slider
+function SampleNextArrow(props: any) {
 	const { className, style, onClick } = props;
 	return (
 		<div
@@ -82,9 +83,9 @@ function SamplePrevArrow(props) {
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
 	const {
+		uniqueId,
 		advance_responsiveCondition,
 		advance_zIndex,
-		uniqueId,
 		general_general,
 		general_images,
 		general_carousel,
@@ -118,7 +119,12 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		});
 	}, [UNIQUE_ID]);
 
-	// Get inner blocks and selection state for Spectra-like editing
+	/**
+	 * Parent-Child Synchronization
+	 */
+	const { insertBlock, removeBlock } = useDispatch("core/block-editor");
+
+	// Get inner blocks and selected block
 	const { innerBlocks, selectedBlockClientId } = useSelect((select: any) => {
 		const { getBlocks, getSelectedBlockClientId } = select("core/block-editor");
 		return {
@@ -127,7 +133,31 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		};
 	}, [clientId]);
 
-	const { selectBlock } = useDispatch("core/block-editor") as any;
+	// Add useEffect to monitor numberofTestimonials changes and update inner blocks accordingly
+	useEffect(() => {
+		const targetNumber = general_general.numberofTestimonials || 3;
+		const currentNumber = innerBlocks.length;
+
+		if (currentNumber === targetNumber) {
+			return; // No change needed
+		}
+
+		if (currentNumber < targetNumber) {
+			// Add blocks
+			const blocksToAdd = targetNumber - currentNumber;
+			for (let i = 0; i < blocksToAdd; i++) {
+				const newBlock = wp.blocks.createBlock("wcb/slider-child");
+				insertBlock(newBlock, innerBlocks.length + i, clientId);
+			}
+		} else if (currentNumber > targetNumber) {
+			// Remove blocks from the end
+			const blocksToRemove = currentNumber - targetNumber;
+			const clientIdsToRemove = innerBlocks.slice(-blocksToRemove);
+			clientIdsToRemove.forEach(childClientId => {
+				removeBlock(childClientId);
+			});
+		}
+	}, [general_general.numberofTestimonials, innerBlocks.length, clientId, insertBlock, removeBlock]);
 
 	const renderTabBodyPanels = (tab: InspectorControlsTabs[number]) => {
 		switch (tab.name) {
@@ -263,49 +293,14 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		}
 	};
 
-	// Render editable slider child - direct inline editing like Spectra
-	const renderEditableSliderChild = (block: any, index: number) => {
-		const isChildSelected = selectedBlockClientId === block.clientId;
-		const blockType = wp.blocks?.getBlockType?.(block.name);
-		const BlockEdit = blockType?.edit;
-		
-		return (
-			<div 
-				key={block.clientId} 
-				className={`wcb-slider__item ${isChildSelected ? 'is-child-selected' : ''}`}
-				onClick={(e) => {
-					// When clicking on child, select it to show its inspector controls
-					if (!isChildSelected) {
-						e.stopPropagation();
-						selectBlock(block.clientId);
-					}
-				}}
-			>
-				<div className="wcb-slider__item-background">
-					<div className="wcb-slider__item-wrap-inner">
-						<div className="wcb-slider__item-inner">
-							<div className={`wcb-slider-child__wrap ${block.attributes?.uniqueId || ''}`}>
-								{/* Direct inline editing - render the actual block edit component */}
-								<BlockEdit
-									attributes={block.attributes}
-									setAttributes={(newAttributes: any) => {
-										wp.data.dispatch("core/block-editor").updateBlockAttributes(
-											block.clientId,
-											newAttributes
-										);
-									}}
-									clientId={block.clientId}
-									isSelected={isChildSelected}
-								/>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		);
-	};
+	// InnerBlocks configuration
+	const ALLOWED_BLOCKS = ["wcb/slider-child"];
+	
+	const innerBlocksTemplate: any[] = [
+		...Array(general_general.numberofTestimonials || 3).keys()
+	].map(() => ["wcb/slider-child"]);
 
-	const renderEditContent = () => {
+	const renderSliderContent = () => {
 		const {
 			animationDuration,
 			autoplaySpeed,
@@ -337,41 +332,53 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			pauseOnHover: hoverpause,
 		};
 
-		// If no inner blocks, show template like FAQ block
+		// If no inner blocks, show template  
 		if (innerBlocks.length === 0) {
 			return (
-				<div className="wcb-slider__wrap-items">
-					<InnerBlocks
-						allowedBlocks={["wcb/slider-child"]}
-						template={[
-							["wcb/slider-child"],
-							["wcb/slider-child"],
-							["wcb/slider-child"],
-						]}
-						templateLock={false}
-						renderAppender={isSelected ? InnerBlocks.DefaultBlockAppender : undefined}
-					/>
-				</div>
+				<InnerBlocks
+					allowedBlocks={ALLOWED_BLOCKS}
+					template={innerBlocksTemplate}
+					templateLock={false}
+					renderAppender={isSelected ? InnerBlocks.DefaultBlockAppender : undefined}
+				/>
 			);
 		}
 
-		// Spectra-like experience: Always show slider with editable content
+		// Show slider with individual child blocks
 		return (
-			<div className="wcb-slider__wrap-items">
-				<Slider {...settings}>
-					{innerBlocks.map(renderEditableSliderChild)}
-				</Slider>
-				{/* Hidden InnerBlocks for appender when selected */}
-				{isSelected && (
-					<div style={{ display: 'none' }}>
-						<InnerBlocks
-							allowedBlocks={["wcb/slider-child"]}
-							templateLock={false}
-							renderAppender={() => <InnerBlocks.DefaultBlockAppender />}
-						/>
-					</div>
-				)}
-			</div>
+			<Slider {...settings}>
+				{innerBlocks.map((block) => {
+					const blockType = wp.blocks?.getBlockType?.(block.name);
+					const BlockEdit = blockType?.edit;
+					const isChildSelected = selectedBlockClientId === block.clientId;
+					
+					return (
+						<div key={block.clientId} className="wcb-slider__item">
+							<div className="wcb-slider__item-background">
+								<div className="wcb-slider__item-wrap-inner">
+									<div className="wcb-slider__item-inner">
+										<div className={`wcb-slider-child__wrap ${block.attributes?.uniqueId || ''}`}>
+											{BlockEdit && (
+												<BlockEdit
+													attributes={block.attributes}
+													setAttributes={(newAttributes: any) => {
+														wp.data.dispatch("core/block-editor").updateBlockAttributes(
+															block.clientId,
+															newAttributes
+														);
+													}}
+													clientId={block.clientId}
+													isSelected={isChildSelected}
+												/>
+											)}
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					);
+				})}
+			</Slider>
 		);
 	};
 
@@ -409,30 +416,26 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		advance_motionEffect,
 	]);
 
-	// Check if a child block is selected
-	const isChildBlockSelected = innerBlocks.some(block => block.clientId === selectedBlockClientId);
-	const shouldShowParentControls = isSelected || (!isChildBlockSelected && selectedBlockClientId === clientId);
-
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-slider__wrap ${uniqueId} ${isChildBlockSelected ? 'has-child-selected' : ''}`}
+				className={`${wrapBlockProps?.className} wcb-slider__wrap ${uniqueId}`}
 				data-uniqueid={uniqueId}
 			>
-				{/* CONTROL SETTINGS - Only show when parent is selected, not when child is selected */}
-				{shouldShowParentControls && (
-					<HOCInspectorControls
-						renderTabPanels={renderTabBodyPanels}
-						uniqueId={uniqueId}
-					/>
-				)}
-
+				{/* CONTROL SETTINGS */}
+				<HOCInspectorControls
+					renderTabPanels={renderTabBodyPanels}
+					uniqueId={uniqueId}
+				/>
+				
 				{/* CSS IN JS */}
 				<GlobalCss {...WcbAttrsForSave()} />
 
 				{/* CHILD CONTENT */}
-				{renderEditContent()}
+				<div className="wcb-slider__wrap-items">
+					{renderSliderContent()}
+				</div>
 			</div>
 		</MyCacheProvider>
 	);

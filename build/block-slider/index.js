@@ -10445,6 +10445,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// Arrow components for slider
 function SampleNextArrow(props) {
   const {
     className,
@@ -10501,9 +10502,9 @@ const Edit = props => {
     isSelected
   } = props;
   const {
+    uniqueId,
     advance_responsiveCondition,
     advance_zIndex,
-    uniqueId,
     general_general,
     general_images,
     general_carousel,
@@ -10537,7 +10538,15 @@ const Edit = props => {
     });
   }, [UNIQUE_ID]);
 
-  // Get inner blocks and selection state for Spectra-like editing
+  /**
+   * Parent-Child Synchronization
+   */
+  const {
+    insertBlock,
+    removeBlock
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useDispatch)("core/block-editor");
+
+  // Get inner blocks and selected block
   const {
     innerBlocks,
     selectedBlockClientId
@@ -10551,9 +10560,30 @@ const Edit = props => {
       selectedBlockClientId: getSelectedBlockClientId()
     };
   }, [clientId]);
-  const {
-    selectBlock
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useDispatch)("core/block-editor");
+
+  // Add useEffect to monitor numberofTestimonials changes and update inner blocks accordingly
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const targetNumber = general_general.numberofTestimonials || 3;
+    const currentNumber = innerBlocks.length;
+    if (currentNumber === targetNumber) {
+      return; // No change needed
+    }
+    if (currentNumber < targetNumber) {
+      // Add blocks
+      const blocksToAdd = targetNumber - currentNumber;
+      for (let i = 0; i < blocksToAdd; i++) {
+        const newBlock = wp.blocks.createBlock("wcb/slider-child");
+        insertBlock(newBlock, innerBlocks.length + i, clientId);
+      }
+    } else if (currentNumber > targetNumber) {
+      // Remove blocks from the end
+      const blocksToRemove = currentNumber - targetNumber;
+      const clientIdsToRemove = innerBlocks.slice(-blocksToRemove);
+      clientIdsToRemove.forEach(childClientId => {
+        removeBlock(childClientId);
+      });
+    }
+  }, [general_general.numberofTestimonials, innerBlocks.length, clientId, insertBlock, removeBlock]);
   const renderTabBodyPanels = tab => {
     switch (tab.name) {
       case "General":
@@ -10675,39 +10705,10 @@ const Edit = props => {
     }
   };
 
-  // Render editable slider child - direct inline editing like Spectra
-  const renderEditableSliderChild = (block, index) => {
-    const isChildSelected = selectedBlockClientId === block.clientId;
-    const blockType = wp.blocks?.getBlockType?.(block.name);
-    const BlockEdit = blockType?.edit;
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      key: block.clientId,
-      className: `wcb-slider__item ${isChildSelected ? 'is-child-selected' : ''}`,
-      onClick: e => {
-        // When clicking on child, select it to show its inspector controls
-        if (!isChildSelected) {
-          e.stopPropagation();
-          selectBlock(block.clientId);
-        }
-      }
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "wcb-slider__item-background"
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "wcb-slider__item-wrap-inner"
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "wcb-slider__item-inner"
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `wcb-slider-child__wrap ${block.attributes?.uniqueId || ''}`
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockEdit, {
-      attributes: block.attributes,
-      setAttributes: newAttributes => {
-        wp.data.dispatch("core/block-editor").updateBlockAttributes(block.clientId, newAttributes);
-      },
-      clientId: block.clientId,
-      isSelected: isChildSelected
-    }))))));
-  };
-  const renderEditContent = () => {
+  // InnerBlocks configuration
+  const ALLOWED_BLOCKS = ["wcb/slider-child"];
+  const innerBlocksTemplate = [...Array(general_general.numberofTestimonials || 3).keys()].map(() => ["wcb/slider-child"]);
+  const renderSliderContent = () => {
     const {
       animationDuration,
       autoplaySpeed,
@@ -10739,32 +10740,43 @@ const Edit = props => {
       pauseOnHover: hoverpause
     };
 
-    // If no inner blocks, show template like FAQ block
+    // If no inner blocks, show template  
     if (innerBlocks.length === 0) {
-      return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "wcb-slider__wrap-items"
-      }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
-        allowedBlocks: ["wcb/slider-child"],
-        template: [["wcb/slider-child"], ["wcb/slider-child"], ["wcb/slider-child"]],
+      return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
+        allowedBlocks: ALLOWED_BLOCKS,
+        template: innerBlocksTemplate,
         templateLock: false,
         renderAppender: isSelected ? _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.DefaultBlockAppender : undefined
-      }));
+      });
     }
 
-    // Spectra-like experience: Always show slider with editable content
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "wcb-slider__wrap-items"
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_slick__WEBPACK_IMPORTED_MODULE_21__["default"], {
+    // Show slider with individual child blocks
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_slick__WEBPACK_IMPORTED_MODULE_21__["default"], {
       ...settings
-    }, innerBlocks.map(renderEditableSliderChild)), isSelected && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      style: {
-        display: 'none'
-      }
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
-      allowedBlocks: ["wcb/slider-child"],
-      templateLock: false,
-      renderAppender: () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.DefaultBlockAppender, null)
-    })));
+    }, innerBlocks.map(block => {
+      const blockType = wp.blocks?.getBlockType?.(block.name);
+      const BlockEdit = blockType?.edit;
+      const isChildSelected = selectedBlockClientId === block.clientId;
+      return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        key: block.clientId,
+        className: "wcb-slider__item"
+      }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        className: "wcb-slider__item-background"
+      }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        className: "wcb-slider__item-wrap-inner"
+      }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        className: "wcb-slider__item-inner"
+      }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        className: `wcb-slider-child__wrap ${block.attributes?.uniqueId || ''}`
+      }, BlockEdit && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockEdit, {
+        attributes: block.attributes,
+        setAttributes: newAttributes => {
+          wp.data.dispatch("core/block-editor").updateBlockAttributes(block.clientId, newAttributes);
+        },
+        clientId: block.clientId,
+        isSelected: isChildSelected
+      }))))));
+    }));
   };
   const WcbAttrsForSave = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(() => {
     return {
@@ -10784,22 +10796,20 @@ const Edit = props => {
       advance_motionEffect
     };
   }, [uniqueId, advance_responsiveCondition, advance_zIndex, general_general, style_dimension, general_carousel, general_images, style_arrowAndDots, style_backgroundAndBorder, style_company, style_content, style_image, style_name, advance_motionEffect]);
-
-  // Check if a child block is selected
-  const isChildBlockSelected = innerBlocks.some(block => block.clientId === selectedBlockClientId);
-  const shouldShowParentControls = isSelected || !isChildBlockSelected && selectedBlockClientId === clientId;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_20__["default"], {
     uniqueKey: clientId
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...wrapBlockProps,
-    className: `${wrapBlockProps?.className} wcb-slider__wrap ${uniqueId} ${isChildBlockSelected ? 'has-child-selected' : ''}`,
+    className: `${wrapBlockProps?.className} wcb-slider__wrap ${uniqueId}`,
     "data-uniqueid": uniqueId
-  }, shouldShowParentControls && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_3__["default"], {
     renderTabPanels: renderTabBodyPanels,
     uniqueId: uniqueId
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_4__["default"], {
     ...WcbAttrsForSave()
-  }), renderEditContent()));
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "wcb-slider__wrap-items"
+  }, renderSliderContent())));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
 
@@ -11283,7 +11293,7 @@ const WcbTestimonialsPanelGeneral = ({
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "space-y-5"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Number of Testimonials", "wcb"),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Number of Sliders", "wcb"),
     value: numberofTestimonials,
     onChange: value => {
       setAttr__({
