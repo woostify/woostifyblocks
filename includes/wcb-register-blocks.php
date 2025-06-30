@@ -382,7 +382,7 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
 
         // ICON CHILD
         register_block_type(
-            WCB_BUILD_PATH . '/block-icon',
+            WCB_BUILD_PATH . '/block-icon-child',
             [
                 "render_callback"     => "wcb_block_icon_renderCallback",
                 "ancestor"              => (($wcb_blocks_enable_disable['wcb/icon'] ?? "") !== 'disabled')  ? null : WCB_UNIQUE_NAME,

@@ -94,7 +94,7 @@ const classes: {
 	},
 	{
 		D: ".wcb-icon-list__wrap.wcb-update-div[data-block-type='icon-item']",
-		C: React.lazy(() => import("../block-icon/GlobalCss")),
+		C: React.lazy(() => import("../block-icon-child/GlobalCss")),
 	},
 ];
 
