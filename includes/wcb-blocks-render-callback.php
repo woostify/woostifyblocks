@@ -208,6 +208,7 @@ function wcb_block_countdown_renderCallback($attributes, $content)
     wp_enqueue_script__block_commoncss_frontend_styles();
     return $content;
 }
+<<<<<<< HEAD
 
 //============================================= block 1 ===============================================================
 function wcb_block_icon_list_renderCallback($attributes, $content)
@@ -224,3 +225,5 @@ function wcb_block_icon_renderCallback($attributes, $content)
     wp_enqueue_script__block_commoncss_frontend_styles();
     return $content;
 }
+=======
+>>>>>>> 378e888d (fix bug when edit to slider)

@@ -6,38 +6,43 @@ import {
 	MyTypographyControlData,
 	TYPOGRAPHY_CONTROL_DEMO,
 } from "../components/controls/MyTypographyControl/types";
-import MyDisclosure from "../components/controls/MyDisclosure";
 import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
+import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
-import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
-import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
 
-export interface WCB_ICON_LIST_PANEL_STYLE_DESIGNATION {
+export interface WCB_SLIDER_PANEL_STYLE_NAME {
 	typography: MyTypographyControlData;
 	textColor: string;
 	marginBottom: HasResponsive<string>;
 }
 
-export const WCB_ICON_LIST_PANEL_STYLE_DESIGNATION_DEMO: WCB_ICON_LIST_PANEL_STYLE_DESIGNATION =
+export const WCB_SLIDER_PANEL_STYLE_NAME_DEMO: WCB_SLIDER_PANEL_STYLE_NAME =
 	{
 		typography: {
 			...TYPOGRAPHY_CONTROL_DEMO,
-			fontSizes: { Desktop: "0rem" },
+			appearance: {
+				...TYPOGRAPHY_CONTROL_DEMO.appearance,
+				style: {
+					...TYPOGRAPHY_CONTROL_DEMO.appearance.style,
+					fontWeight: 500,
+				},
+			},
 		},
-		textColor: "#6b7280",
+		textColor: "",
 		marginBottom: { Desktop: "0.5rem" },
 	};
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
-	panelData: WCB_ICON_LIST_PANEL_STYLE_DESIGNATION;
-	setAttr__: (data: WCB_ICON_LIST_PANEL_STYLE_DESIGNATION) => void;
+	panelData: WCB_SLIDER_PANEL_STYLE_NAME;
+	setAttr__: (data: WCB_SLIDER_PANEL_STYLE_NAME) => void;
 }
 
-const WcbIconListPanel_StyleDesignation: FC<Props> = ({
-	panelData = WCB_ICON_LIST_PANEL_STYLE_DESIGNATION_DEMO,
+const WcbTestimonialsPanel_StyleName: FC<Props> = ({
+	panelData = WCB_SLIDER_PANEL_STYLE_NAME_DEMO,
 	setAttr__,
 	initialOpen,
 	onToggle,
@@ -45,20 +50,28 @@ const WcbIconListPanel_StyleDesignation: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	const { typography, textColor, marginBottom } = panelData;
-
-	const { currentDeviceValue: MARGIN_BOTTOM } = getValueFromAttrsResponsives(
-		marginBottom,
-		deviceType
-	);
+	const { currentDeviceValue: currentMarginBottom } =
+		getValueFromAttrsResponsives(marginBottom, deviceType);
 	//
 	return (
 		<PanelBody
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Prefix", "wcb")}
+			title={__("Name", "wcb")}
 		>
-			<div className="space-y-2.5">
+			<div className="space-y-5">
+				<MyColorPicker
+					label={__("Color", "wcb")}
+					onChange={(value) => {
+						setAttr__({
+							...panelData,
+							textColor: value,
+						});
+					}}
+					color={textColor}
+					disableAlpha
+				/>
 				<MyTypographyControl
 					typographyControl={typography}
 					setAttrs__typography={(typography) => {
@@ -69,35 +82,22 @@ const WcbIconListPanel_StyleDesignation: FC<Props> = ({
 					}}
 				/>
 
-				<MyDisclosure defaultOpen label="More styles">
-					<MyColorPicker
-						onChange={(color) => {
-							setAttr__({
-								...panelData,
-								textColor: color,
-							});
-						}}
-						color={textColor}
-					/>
-
-					<MySpacingSizesControl
-						onChange={(value) => {
-							setAttr__({
-								...panelData,
-								marginBottom: {
-									...marginBottom,
-									[deviceType]: value,
-								},
-							});
-						}}
-						value={MARGIN_BOTTOM || ""}
-						label={__("Margin bottom", "wcb")}
-						hasResponsive
-					/>
-				</MyDisclosure>
+				<MySpacingSizesControl
+					onChange={(value) => {
+						setAttr__({
+							...panelData,
+							marginBottom: {
+								...marginBottom,
+								[deviceType]: value,
+							},
+						});
+					}}
+					value={currentMarginBottom || ""}
+					label={__("Margin bottom", "wcb")}
+				/>
 			</div>
 		</PanelBody>
 	);
 };
 
-export default WcbIconListPanel_StyleDesignation;
+export default WcbTestimonialsPanel_StyleName;

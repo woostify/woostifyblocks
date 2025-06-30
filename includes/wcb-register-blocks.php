@@ -387,6 +387,7 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
                 "view_script_handles" => []
             ]
         );
+<<<<<<< HEAD
 
         register_block_type(
             WCB_BUILD_PATH . '/block-icon-list',
@@ -416,5 +417,7 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
                 "view_script_handles" => []
             ]
         );
+=======
+>>>>>>> 378e888d (fix bug when edit to slider)
     }
 }

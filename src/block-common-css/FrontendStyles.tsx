@@ -94,6 +94,7 @@ const classes: {
 		C: React.lazy(() => import("../block-slider/GlobalCss")),
 		F: initCarouselForWcbSliders,
 	},
+<<<<<<< HEAD
 	{
 		D: ".wcb-slider-child__wrap.wcb-update-div",
 		C: React.lazy(() => import("../block-slider-child/GlobalCss")),
@@ -110,6 +111,8 @@ const classes: {
 		D: ".wcb-icon__wrap.wcb-update-div",
 		C: React.lazy(() => import("../block-icon/GlobalCss")),
 	},
+=======
+>>>>>>> 378e888d (fix bug when edit to slider)
 ];
        
 classes.forEach(({ D, C, F }) => {
