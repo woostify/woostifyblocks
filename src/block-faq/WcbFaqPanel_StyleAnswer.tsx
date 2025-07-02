@@ -83,13 +83,6 @@ const WcbFaqPanel_StyleAnswer: FC<Props> = ({
 						}}
 						color={color}
 					/>
-					<MyColorPicker
-						label={__("Background color", "wcb")}
-						onChange={(value) => {
-							setAttr__({ ...panelData, backgroundColor: value });
-						}}
-						color={backgroundColor}
-					/>
 
 					<BoxControl
 						label={
