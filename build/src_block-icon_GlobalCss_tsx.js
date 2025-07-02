@@ -63,7 +63,6 @@ const GlobalCss = attrs => {
     const {
       alignment
     } = general_icon;
-    console.log(alignment);
     const {
       value_Desktop,
       value_Mobile,
@@ -135,6 +134,9 @@ const GlobalCss = attrs => {
       },
       [`${CONTENT_CLASSNAME}:hover .wcb-icon-full`]: {
         color: style_icon.hoverColor
+      },
+      [`${WRAP_CLASSNAME} .wcb-icon__content`]: {
+        cursor: general_icon.enableLink ? 'pointer' : ''
       }
     }]
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
