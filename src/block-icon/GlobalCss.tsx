@@ -40,7 +40,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject => {
 		const { alignment } = general_icon;
-		console.log(alignment);
 		const { value_Desktop, value_Mobile, value_Tablet } =
 			getValueFromAttrsResponsives<React.CSSProperties["textAlign"]>(
 				alignment
@@ -137,8 +136,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 						},
 						[`${CONTENT_CLASSNAME}:hover .wcb-icon-full`]: {
 							color: style_icon.hoverColor,
-						}
-					},
+						},
+						[`${WRAP_CLASSNAME} .wcb-icon__content`]: {
+							cursor: general_icon.enableLink ? 'pointer' : '',
+						},
+					}
 				]}
 			/>
 			
