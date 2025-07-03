@@ -45,13 +45,13 @@ const getContainerAttrsByFlexWrap = (
 			...FLEX_PROPERTIES_CONTROL_DEMO,
 			flexDirection: {
 				Desktop: flexDirection,
-				Tablet: "column",
+				Tablet: "row",
 			},
 			flexWrap: {
-				Desktop: "wrap",
+				Desktop: "nowrap",
 			},
-			alignItems: { Desktop: "stretch" },
-			justifyContent: { Desktop: "start" },
+			alignItems: { Desktop: "center" },
+			justifyContent: { Desktop: "center" },
 		},
 	};
 };
