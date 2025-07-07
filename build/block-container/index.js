@@ -2735,9 +2735,11 @@ const ContainerEdit = props => {
       title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Dimension", "wcb")
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_controls_MyDimensionsControl_MyDimensionsControl__WEBPACK_IMPORTED_MODULE_11__["default"], {
       dimensionControl: attributes.styles_dimensions,
-      setAttrs__dimensions: data => setAttributes({
-        styles_dimensions: data
-      })
+      setAttrs__dimensions: data => {
+        setAttributes({
+          styles_dimensions: data
+        });
+      }
     }));
   };
   const renderTabBodyPanels = tab => {
@@ -3072,6 +3074,7 @@ const GlobalCss = attrs => {
   } = ___WEBPACK_IMPORTED_MODULE_8__.DEMO_WCB_GLOBAL_VARIABLES;
   const WRAP_CLASSNAME = `.wcb-container__wrap.${uniqueId}[data-uniqueid=${uniqueId}]`;
   const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-container__inner`;
+  const INNER_CLASSNAME_CHILD = `${WRAP_CLASSNAME} .wcb-container__inner .is_wcb_container_child`;
 
   // ------------------- WRAP DIV
   const getDivWrapStyles = () => {
@@ -3845,14 +3848,17 @@ const blokcContainerAttrs = {
     type: "object",
     default: {
       ..._components_controls_MyFlexPropertiesControl_types__WEBPACK_IMPORTED_MODULE_5__.FLEX_PROPERTIES_CONTROL_DEMO,
+      flexDirection: {
+        Desktop: "row"
+      },
       alignItems: {
-        Desktop: "stretch"
+        Desktop: "center"
       },
       justifyContent: {
-        Desktop: "start"
+        Desktop: "center"
       },
       flexWrap: {
-        Desktop: "wrap"
+        Desktop: "nowrap"
       }
     }
   },
@@ -4190,16 +4196,16 @@ const getContainerAttrsByFlexWrap = function () {
       ..._components_controls_MyFlexPropertiesControl_types__WEBPACK_IMPORTED_MODULE_3__.FLEX_PROPERTIES_CONTROL_DEMO,
       flexDirection: {
         Desktop: flexDirection,
-        Tablet: "column"
+        Tablet: "row"
       },
       flexWrap: {
-        Desktop: "wrap"
+        Desktop: "nowrap"
       },
       alignItems: {
-        Desktop: "stretch"
+        Desktop: "center"
       },
       justifyContent: {
-        Desktop: "start"
+        Desktop: "center"
       }
     }
   };
@@ -9072,33 +9078,33 @@ const getPaddingMarginStyles = _ref => {
   });
   return _emotion_react__WEBPACK_IMPORTED_MODULE_3__.css`
 		body ${className} {
-			padding-top: ${padding_Mobile_top};
-			padding-right: ${padding_Mobile_right};
-			padding-bottom: ${padding_Mobile_bottom};
-			padding-left: ${padding_Mobile_left};
-			margin-top: ${margin_Mobile_top};
-			margin-right: ${margin_Mobile_right};
-			margin-bottom: ${margin_Mobile_bottom};
-			margin-left: ${margin_Mobile_left};
+			padding-top: ${padding_Mobile_top} !important;
+			padding-right: ${padding_Mobile_right} !important;
+			padding-bottom: ${padding_Mobile_bottom} !important;
+			padding-left: ${padding_Mobile_left} !important;
+			margin-top: ${margin_Mobile_top} !important;
+			margin-right: ${margin_Mobile_right} !important;
+			margin-bottom: ${margin_Mobile_bottom} !important;
+			margin-left: ${margin_Mobile_left} !important;
 			@media (min-width: ${media_tablet}) {
-				padding-top: ${padding_Tablet_top};
-				padding-right: ${padding_Tablet_right};
-				padding-bottom: ${padding_Tablet_bottom};
-				padding-left: ${padding_Tablet_left};
-				margin-top: ${margin_Tablet_top};
-				margin-right: ${margin_Tablet_right};
-				margin-bottom: ${margin_Tablet_bottom};
-				margin-left: ${margin_Tablet_left};
+				padding-top: ${padding_Tablet_top} !important;
+				padding-right: ${padding_Tablet_right} !important;
+				padding-bottom: ${padding_Tablet_bottom} !important;
+				padding-left: ${padding_Tablet_left} !important;
+				margin-top: ${margin_Tablet_top} !important;
+				margin-right: ${margin_Tablet_right} !important;
+				margin-bottom: ${margin_Tablet_bottom} !important;
+				margin-left: ${margin_Tablet_left} !important;
 			}
 			@media (min-width: ${media_desktop}) {
-				padding-top: ${padding_Desktop_top};
-				padding-right: ${padding_Desktop_right};
-				padding-bottom: ${padding_Desktop_bottom};
-				padding-left: ${padding_Desktop_left};
-				margin-top: ${margin_Desktop_top};
-				margin-right: ${margin_Desktop_right};
-				margin-bottom: ${margin_Desktop_bottom};
-				margin-left: ${margin_Desktop_left};
+				padding-top: ${padding_Desktop_top} !important;
+				padding-right: ${padding_Desktop_right} !important;
+				padding-bottom: ${padding_Desktop_bottom} !important;
+				padding-left: ${padding_Desktop_left} !important;
+				margin-top: ${margin_Desktop_top} !important;
+				margin-right: ${margin_Desktop_right} !important;
+				margin-bottom: ${margin_Desktop_bottom} !important;
+				margin-left: ${margin_Desktop_left} !important;
 			}
 		}
 	`;

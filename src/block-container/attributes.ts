@@ -89,9 +89,10 @@ export const blokcContainerAttrs: AttrsGenericType<BlockWCBContainerAttrs> = {
 		type: "object",
 		default: {
 			...FLEX_PROPERTIES_CONTROL_DEMO,
-			alignItems: { Desktop: "stretch" },
-			justifyContent: { Desktop: "start" },
-			flexWrap: { Desktop: "wrap" },
+			flexDirection: { Desktop: "row" },
+			alignItems: { Desktop: "center" },
+			justifyContent: { Desktop: "center" },
+			flexWrap: { Desktop: "nowrap" },
 		},
 	},
 	styles_color: {
