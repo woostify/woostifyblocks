@@ -3,7 +3,8 @@ import {
 	useBlockProps,
 	RichText,
 } from "@wordpress/block-editor";
-import React, { useEffect, FC } from "react";
+import React, { useEffect, FC, useState, useRef } from "react";
+import { useSelect } from "@wordpress/data";
 import { WcbAttrs } from "./attributes";
 import { EditProps } from "../block-container/Edit";
 import "./editor.scss";
@@ -23,6 +24,32 @@ import WcbTestimonialsPanel_StyleImage, { WCB_SLIDER_PANEL_STYLE_IMAGE_DEMO } fr
 import WcbTestimonialsPanel_StyleBackground, { WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO } from "./WcbSliderPanel_StyleBackground";
 import WcbTestimonialsPanel_StyleDimension, { WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO } from "./WcbSliderPanel_StyleDimension";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
+
+// Global style registry to ensure only one style instance exists
+const styleRegistry = new Set<string>();
+
+// Custom hook to ensure only one style instance exists
+const useUniqueStyleInstance = (uniqueId: string) => {
+	const [isRegistered, setIsRegistered] = useState(false);
+	
+	useEffect(() => {
+		// If this uniqueId is not in registry, register it
+		if (!styleRegistry.has(uniqueId)) {
+			styleRegistry.add(uniqueId);
+			setIsRegistered(true);
+		}
+		
+		// Cleanup function to remove from registry when component unmounts
+		return () => {
+			if (styleRegistry.has(uniqueId)) {
+				styleRegistry.delete(uniqueId);
+				setIsRegistered(false);
+			}
+		};
+	}, [uniqueId]);
+	
+	return isRegistered;
+};
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
@@ -49,6 +76,17 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		tabStylesIsPanelOpen,
 		handleTogglePanel,
 	} = useSetBlockPanelInfo(uniqueId);
+	
+	// Ensure only one style instance exists
+	const isUniqueStyleInstance = useUniqueStyleInstance(uniqueId);
+	
+	// Debug: Log when style instance is created
+	useEffect(() => {
+		if (isUniqueStyleInstance) {
+			console.log(`🎨 Style instance created for: ${uniqueId}`);
+			console.log(`📊 Total active style instances: ${styleRegistry.size}`);
+		}
+	}, [isUniqueStyleInstance, uniqueId]);
 
 	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
@@ -62,13 +100,70 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		switch (tab.name) {
 			case "General":
 				return (
-						<div className="wcb-control-item">
-							<h3>{__("Image", "wcb")}</h3>
-							<MyMediaUploadCheck
-								onChange={(data) => setAttributes({ image: data })}
-								imageData={image}
-							/>
-						</div>
+					<>
+						<WcbTestimonialsPanel_StyleName
+							onToggle={() => handleTogglePanel("Styles", "_StyleName", true)}
+							initialOpen={
+								tabStylesIsPanelOpen === "_StyleName" ||
+								tabStylesIsPanelOpen === "first"
+							}
+							opened={tabStylesIsPanelOpen === "_StyleName" || undefined}
+							setAttr__={(data) => {
+								setAttributes({ style_name: data });
+							}}
+							panelData={style_name || WCB_SLIDER_PANEL_STYLE_NAME_DEMO}
+						/>
+						
+						<WcbTestimonialsPanel_StyleContent
+							onToggle={() => handleTogglePanel("Styles", "_StyleContent")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleContent"}
+							opened={tabStylesIsPanelOpen === "_StyleContent" || undefined}
+							setAttr__={(data) => {
+								setAttributes({ style_content: data });
+							}}
+							panelData={style_content || WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO}
+						/>
+						
+						<WcbTestimonialsPanel_StyleCompany
+							onToggle={() => handleTogglePanel("Styles", "_StyleCompany")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleCompany"}
+							opened={tabStylesIsPanelOpen === "_StyleCompany" || undefined}
+							setAttr__={(data) => {
+								setAttributes({ style_company: data });
+							}}
+							panelData={style_company || WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO}
+						/>
+						
+						<WcbTestimonialsPanel_StyleImage
+							onToggle={() => handleTogglePanel("Styles", "_StyleImage")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleImage"}
+							opened={tabStylesIsPanelOpen === "_StyleImage" || undefined}
+							setAttr__={(data) => {
+								setAttributes({ style_image: data });
+							}}
+							panelData={style_image || WCB_SLIDER_PANEL_STYLE_IMAGE_DEMO}
+						/>
+						
+						<WcbTestimonialsPanel_StyleBackground
+							onToggle={() => handleTogglePanel("Styles", "_StyleBackground")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleBackground"}
+							opened={tabStylesIsPanelOpen === "_StyleBackground" || undefined}
+							setAttr__={(data) => {
+								setAttributes({ style_backgroundAndBorder: data });
+							}}
+							panelData={style_backgroundAndBorder || WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO}
+						/>
+						<WcbTestimonialsPanel_StyleDimension
+							onToggle={() => handleTogglePanel("Styles", "_StyleDimension")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleDimension"}
+							opened={tabStylesIsPanelOpen === "_StyleDimension" || undefined}
+							//
+							setAttr__={(data) => {
+								setAttributes({ style_dimension: data });
+							}}
+							panelData={style_dimension || WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO}
+						/>
+					</>
 				);
 			case "Styles":
 				return (
@@ -164,17 +259,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				className={`${wrapBlockProps?.className} wcb-slider-child__wrap ${uniqueId}`}
 				data-uniqueid={uniqueId}
 			>
-				{/* Global CSS */}
-				<GlobalCss 
-					uniqueId={uniqueId}
-					style_name={style_name}
-					style_content={style_content}
-					style_company={style_company}
-					style_image={style_image}
-					style_backgroundAndBorder={style_backgroundAndBorder}
-				/>
 
-				{/* Inspector Controls */}
+				{/* Inspector Controls - Only show when this child is actually selected and is unique instance */}
 				{isSelected && (
 					<HOCInspectorControls
 						uniqueId={uniqueId}
