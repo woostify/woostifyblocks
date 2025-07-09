@@ -1,15 +1,6 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-<<<<<<< HEAD
-/***/ "./src/block-common-css/FrontendStyles.tsx":
-/*!*************************************************!*\
-  !*** ./src/block-common-css/FrontendStyles.tsx ***!
-  \*************************************************/
-/***/ (() => {
-
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/src/block-common-css/FrontendStyles.tsx: Unexpected token (97:1)\n\n\u001b[0m \u001b[90m  95 |\u001b[39m \t\t\u001b[33mF\u001b[39m\u001b[33m:\u001b[39m initCarouselForWcbSliders\u001b[33m,\u001b[39m\n \u001b[90m  96 |\u001b[39m \t}\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  97 |\u001b[39m \u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\n \u001b[90m     |\u001b[39m  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  98 |\u001b[39m \t{\n \u001b[90m  99 |\u001b[39m \t\t\u001b[33mD\u001b[39m\u001b[33m:\u001b[39m \u001b[32m\".wcb-slider-child__wrap.wcb-update-div\"\u001b[39m\u001b[33m,\u001b[39m\n \u001b[90m 100 |\u001b[39m \t\t\u001b[33mC\u001b[39m\u001b[33m:\u001b[39m \u001b[33mReact\u001b[39m\u001b[33m.\u001b[39mlazy(() \u001b[33m=>\u001b[39m \u001b[36mimport\u001b[39m(\u001b[32m\"../block-slider-child/GlobalCss\"\u001b[39m))\u001b[33m,\u001b[39m\u001b[0m\n    at constructor (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:360:19)\n    at TypeScriptParserMixin.raise (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:6613:19)\n    at TypeScriptParserMixin.unexpected (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:6633:16)\n    at TypeScriptParserMixin.jsxParseIdentifier (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:4575:12)\n    at TypeScriptParserMixin.jsxParseNamespacedName (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:4582:23)\n    at TypeScriptParserMixin.jsxParseElementName (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:4591:21)\n    at TypeScriptParserMixin.jsxParseOpeningElementAt (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:4667:22)\n    at TypeScriptParserMixin.jsxParseElementAt (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:4692:33)\n    at TypeScriptParserMixin.jsxParseElement (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:4755:17)\n    at TypeScriptParserMixin.parseExprAtom (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:4765:19)\n    at TypeScriptParserMixin.parseExprSubscripts (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:10992:23)\n    at TypeScriptParserMixin.parseUpdate (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:10977:21)\n    at TypeScriptParserMixin.parseMaybeUnary (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:10957:23)\n    at TypeScriptParserMixin.parseMaybeUnary (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:9779:18)\n    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:10810:61)\n    at TypeScriptParserMixin.parseExprOps (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:10815:23)\n    at TypeScriptParserMixin.parseMaybeConditional (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:10792:23)\n    at TypeScriptParserMixin.parseMaybeAssign (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:10745:21)\n    at /Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:9717:39\n    at TypeScriptParserMixin.tryParse (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:6922:20)\n    at TypeScriptParserMixin.parseMaybeAssign (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:9717:18)\n    at /Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:10714:39\n    at TypeScriptParserMixin.allowInAnd (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:12334:12)\n    at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:10714:17)\n    at TypeScriptParserMixin.parseExprListItem (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:12093:18)\n    at TypeScriptParserMixin.parseExprList (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:12068:22)\n    at TypeScriptParserMixin.parseArrayLike (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:11975:26)\n    at TypeScriptParserMixin.parseArrayLike (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:9200:24)\n    at TypeScriptParserMixin.parseExprAtom (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:11246:23)\n    at TypeScriptParserMixin.parseExprAtom (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:4770:20)\n    at TypeScriptParserMixin.parseExprSubscripts (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:10992:23)\n    at TypeScriptParserMixin.parseUpdate (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:10977:21)\n    at TypeScriptParserMixin.parseMaybeUnary (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:10957:23)\n    at TypeScriptParserMixin.parseMaybeUnary (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:9779:18)\n    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:10810:61)\n    at TypeScriptParserMixin.parseExprOps (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:10815:23)\n    at TypeScriptParserMixin.parseMaybeConditional (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:10792:23)\n    at TypeScriptParserMixin.parseMaybeAssign (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:10745:21)\n    at TypeScriptParserMixin.parseMaybeAssign (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:9728:20)\n    at /Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:10714:39\n    at TypeScriptParserMixin.allowInAnd (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:12329:16)\n    at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:10714:17)\n    at TypeScriptParserMixin.parseVar (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:13260:91)\n    at TypeScriptParserMixin.parseVarStatement (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:13106:10)\n    at TypeScriptParserMixin.parseVarStatement (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:9424:31)\n    at TypeScriptParserMixin.parseStatementContent (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:12727:23)\n    at TypeScriptParserMixin.parseStatementContent (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:9454:18)\n    at TypeScriptParserMixin.parseStatementLike (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:12644:17)\n    at TypeScriptParserMixin.parseModuleItem (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:12621:17)\n    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/phamvantho/Documents/work-space/Me/code/wordpress/wp-data/wp-content/plugins/woostifyblocks/node_modules/@babel/parser/lib/index.js:13192:36)");
-=======
 /***/ "./node_modules/@babel/runtime/helpers/esm/extends.js":
 /*!************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/extends.js ***!
@@ -5129,6 +5120,11 @@ function initCarouselForWcbSliders(div, props) {
   if (typeof jQuery !== "function") {
     return;
   }
+
+  // Safety check: Return early if this is a slider child or missing required props
+  if (!props.general_carousel || !props.general_general) {
+    return;
+  }
   const {
     animationDuration,
     autoplaySpeed,
@@ -5137,13 +5133,13 @@ function initCarouselForWcbSliders(div, props) {
     rewind,
     showArrowsDots,
     adaptiveHeight
-  } = props.general_carousel;
+  } = props.general_carousel || {};
   const {
     colGap,
     columns,
     numberofTestimonials,
     textAlignment
-  } = props.general_general;
+  } = props.general_general || {};
   const {
     value_Desktop: col_desktop,
     value_Tablet: col_tablet,
@@ -5183,8 +5179,20 @@ function initCarouselForWcbSliders(div, props) {
       }
     }]
   };
-  // @ts-ignore
-  $(`.${dataUniqueid} .wcb-slider__wrap-items`)?.slick?.(settings);
+  const targetSelector = `.${dataUniqueid} .wcb-slider__wrap-items`;
+  const targetElement = $(targetSelector);
+  if (targetElement.length === 0) {
+    return;
+  }
+  if (targetElement.children().length === 0) {
+    return;
+  }
+  try {
+    // @ts-ignore
+    targetElement.slick(settings);
+  } catch (error) {
+    console.error('🎠 Slider initialization failed:', error);
+  }
 }
 
 /***/ }),
@@ -6318,6 +6326,72 @@ module.exports = window["wp"]["api"];
 
 /***/ }),
 
+/***/ "@wordpress/block-editor":
+/*!*************************************!*\
+  !*** external ["wp","blockEditor"] ***!
+  \*************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["blockEditor"];
+
+/***/ }),
+
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["components"];
+
+/***/ }),
+
+/***/ "@wordpress/data":
+/*!******************************!*\
+  !*** external ["wp","data"] ***!
+  \******************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["data"];
+
+/***/ }),
+
+/***/ "@wordpress/element":
+/*!*********************************!*\
+  !*** external ["wp","element"] ***!
+  \*********************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["element"];
+
+/***/ }),
+
+/***/ "@wordpress/i18n":
+/*!******************************!*\
+  !*** external ["wp","i18n"] ***!
+  \******************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["i18n"];
+
+/***/ }),
+
+/***/ "@wordpress/primitives":
+/*!************************************!*\
+  !*** external ["wp","primitives"] ***!
+  \************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["primitives"];
+
+/***/ }),
+
 /***/ "jquery":
 /*!*************************!*\
   !*** external "jQuery" ***!
@@ -6359,21 +6433,11 @@ module.exports = window["React"];
 
 "use strict";
 module.exports = window["ReactDOM"];
->>>>>>> b22df83d (fix: select child but trigger parent)
 
 /***/ })
 
 /******/ 	});
 /************************************************************************/
-<<<<<<< HEAD
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
-/******/ 	var __webpack_exports__ = {};
-/******/ 	__webpack_modules__["./src/block-common-css/FrontendStyles.tsx"]();
-/******/ 	
-=======
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
 /******/ 	
@@ -6453,7 +6517,7 @@ module.exports = window["ReactDOM"];
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.miniCssF = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return undefined;
+/******/ 			return "" + chunkId + ".css";
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -6552,6 +6616,92 @@ module.exports = window["ReactDOM"];
 /******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
 /******/ 		scriptUrl = scriptUrl.replace(/^blob:/, "").replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
 /******/ 		__webpack_require__.p = scriptUrl + "../";
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/css loading */
+/******/ 	(() => {
+/******/ 		if (typeof document === "undefined") return;
+/******/ 		var createStylesheet = (chunkId, fullhref, oldTag, resolve, reject) => {
+/******/ 			var linkTag = document.createElement("link");
+/******/ 		
+/******/ 			linkTag.rel = "stylesheet";
+/******/ 			linkTag.type = "text/css";
+/******/ 			if (__webpack_require__.nc) {
+/******/ 				linkTag.nonce = __webpack_require__.nc;
+/******/ 			}
+/******/ 			var onLinkComplete = (event) => {
+/******/ 				// avoid mem leaks.
+/******/ 				linkTag.onerror = linkTag.onload = null;
+/******/ 				if (event.type === 'load') {
+/******/ 					resolve();
+/******/ 				} else {
+/******/ 					var errorType = event && event.type;
+/******/ 					var realHref = event && event.target && event.target.href || fullhref;
+/******/ 					var err = new Error("Loading CSS chunk " + chunkId + " failed.\n(" + errorType + ": " + realHref + ")");
+/******/ 					err.name = "ChunkLoadError";
+/******/ 					err.code = "CSS_CHUNK_LOAD_FAILED";
+/******/ 					err.type = errorType;
+/******/ 					err.request = realHref;
+/******/ 					if (linkTag.parentNode) linkTag.parentNode.removeChild(linkTag)
+/******/ 					reject(err);
+/******/ 				}
+/******/ 			}
+/******/ 			linkTag.onerror = linkTag.onload = onLinkComplete;
+/******/ 			linkTag.href = fullhref;
+/******/ 		
+/******/ 		
+/******/ 			if (oldTag) {
+/******/ 				oldTag.parentNode.insertBefore(linkTag, oldTag.nextSibling);
+/******/ 			} else {
+/******/ 				document.head.appendChild(linkTag);
+/******/ 			}
+/******/ 			return linkTag;
+/******/ 		};
+/******/ 		var findStylesheet = (href, fullhref) => {
+/******/ 			var existingLinkTags = document.getElementsByTagName("link");
+/******/ 			for(var i = 0; i < existingLinkTags.length; i++) {
+/******/ 				var tag = existingLinkTags[i];
+/******/ 				var dataHref = tag.getAttribute("data-href") || tag.getAttribute("href");
+/******/ 				if(tag.rel === "stylesheet" && (dataHref === href || dataHref === fullhref)) return tag;
+/******/ 			}
+/******/ 			var existingStyleTags = document.getElementsByTagName("style");
+/******/ 			for(var i = 0; i < existingStyleTags.length; i++) {
+/******/ 				var tag = existingStyleTags[i];
+/******/ 				var dataHref = tag.getAttribute("data-href");
+/******/ 				if(dataHref === href || dataHref === fullhref) return tag;
+/******/ 			}
+/******/ 		};
+/******/ 		var loadStylesheet = (chunkId) => {
+/******/ 			return new Promise((resolve, reject) => {
+/******/ 				var href = __webpack_require__.miniCssF(chunkId);
+/******/ 				var fullhref = __webpack_require__.p + href;
+/******/ 				if(findStylesheet(href, fullhref)) return resolve();
+/******/ 				createStylesheet(chunkId, fullhref, null, resolve, reject);
+/******/ 			});
+/******/ 		}
+/******/ 		// object to store loaded CSS chunks
+/******/ 		var installedCssChunks = {
+/******/ 			"block-common-css/FrontendStyles": 0
+/******/ 		};
+/******/ 		
+/******/ 		__webpack_require__.f.miniCss = (chunkId, promises) => {
+/******/ 			var cssChunks = {"src_block-slider-child_WcbSliderPanel_ButtonPreset_tsx-src_block-slider-child_WcbSliderPanel_-46e9f2":1};
+/******/ 			if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
+/******/ 			else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
+/******/ 				promises.push(installedCssChunks[chunkId] = loadStylesheet(chunkId).then(() => {
+/******/ 					installedCssChunks[chunkId] = 0;
+/******/ 				}, (e) => {
+/******/ 					delete installedCssChunks[chunkId];
+/******/ 					throw e;
+/******/ 				}));
+/******/ 			}
+/******/ 		};
+/******/ 		
+/******/ 		// no hmr
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
@@ -6739,6 +6889,15 @@ const classes = [{
   C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => __webpack_require__.e(/*! import() */ "src_block-slider_GlobalCss_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../block-slider/GlobalCss */ "./src/block-slider/GlobalCss.tsx"))),
   F: _block_slider_FrontendStyles__WEBPACK_IMPORTED_MODULE_5__.initCarouselForWcbSliders
 }, {
+  D: ".wcb-slider-child__wrap.wcb-update-div",
+  C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_heroicons_react_24_outline_ChevronDownIcon_js-node_modules_heroicons_rea-55bfae"), __webpack_require__.e("src_block-slider-child_WcbSliderPanel_ButtonPreset_tsx-src_block-slider-child_WcbSliderPanel_-46e9f2")]).then(__webpack_require__.bind(__webpack_require__, /*! ../block-slider-child/GlobalCss */ "./src/block-slider-child/GlobalCss.tsx")))
+}, {
+  D: ".wcb-icon-list__wrap.wcb-update-div",
+  C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => __webpack_require__.e(/*! import() */ "src_block-icon-list_GlobalCss_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../block-icon-list/GlobalCss */ "./src/block-icon-list/GlobalCss.tsx")))
+}, {
+  D: ".wcb-icon-list__wrap.wcb-update-div[data-block-type='icon-item']",
+  C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => __webpack_require__.e(/*! import() */ "src_block-icon-child_GlobalCss_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../block-icon-child/GlobalCss */ "./src/block-icon-child/GlobalCss.tsx")))
+}, {
   D: ".wcb-icon__wrap.wcb-update-div",
   C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => __webpack_require__.e(/*! import() */ "src_block-icon_GlobalCss_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../block-icon/GlobalCss */ "./src/block-icon/GlobalCss.tsx")))
 }];
@@ -6782,7 +6941,6 @@ function renderToDom(divsToUpdate, GlobalCss, funcRunOnEl) {
 }
 })();
 
->>>>>>> b22df83d (fix: select child but trigger parent)
 /******/ })()
 ;
 //# sourceMappingURL=FrontendStyles.js.map

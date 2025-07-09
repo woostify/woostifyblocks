@@ -9083,7 +9083,7 @@ const WcbTeamPanel_StyleDescription = ({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   WCB_SLIDER_PANEL_STYLE_NAME_DEMO: () => (/* binding */ WCB_SLIDER_PANEL_STYLE_NAME_DEMO),
+/* harmony export */   WCB_ICON_LIST_PANEL_STYLE_DESIGNATION_DEMO: () => (/* binding */ WCB_ICON_LIST_PANEL_STYLE_DESIGNATION_DEMO),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
@@ -9094,10 +9094,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_controls_MyTypographyControl_MyTypographyControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/controls/MyTypographyControl/MyTypographyControl */ "./src/components/controls/MyTypographyControl/MyTypographyControl.tsx");
 /* harmony import */ var _components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyTypographyControl/types */ "./src/components/controls/MyTypographyControl/types.ts");
-/* harmony import */ var _components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyColorPicker/MyColorPicker */ "./src/components/controls/MyColorPicker/MyColorPicker.tsx");
+/* harmony import */ var _components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/MyDisclosure */ "./src/components/controls/MyDisclosure.tsx");
 /* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
-/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+/* harmony import */ var _components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/controls/MyColorPicker/MyColorPicker */ "./src/components/controls/MyColorPicker/MyColorPicker.tsx");
 /* harmony import */ var _components_controls_MySpacingSizesControl_MySpacingSizesControl__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/controls/MySpacingSizesControl/MySpacingSizesControl */ "./src/components/controls/MySpacingSizesControl/MySpacingSizesControl.tsx");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
 
 
 
@@ -9108,24 +9109,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const WCB_SLIDER_PANEL_STYLE_NAME_DEMO = {
+
+const WCB_ICON_LIST_PANEL_STYLE_DESIGNATION_DEMO = {
   typography: {
     ..._components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_4__.TYPOGRAPHY_CONTROL_DEMO,
-    appearance: {
-      ..._components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_4__.TYPOGRAPHY_CONTROL_DEMO.appearance,
-      style: {
-        ..._components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_4__.TYPOGRAPHY_CONTROL_DEMO.appearance.style,
-        fontWeight: 500
-      }
+    fontSizes: {
+      Desktop: "0rem"
     }
   },
-  textColor: "",
+  textColor: "#6b7280",
   marginBottom: {
     Desktop: "0.5rem"
   }
 };
-const WcbTestimonialsPanel_StyleName = ({
-  panelData = WCB_SLIDER_PANEL_STYLE_NAME_DEMO,
+const WcbIconListPanel_StyleDesignation = ({
+  panelData = WCB_ICON_LIST_PANEL_STYLE_DESIGNATION_DEMO,
   setAttr__,
   initialOpen,
   onToggle,
@@ -9138,27 +9136,17 @@ const WcbTestimonialsPanel_StyleName = ({
     marginBottom
   } = panelData;
   const {
-    currentDeviceValue: currentMarginBottom
-  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__["default"])(marginBottom, deviceType);
+    currentDeviceValue: MARGIN_BOTTOM
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_9__["default"])(marginBottom, deviceType);
   //
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     initialOpen: initialOpen,
     onToggle: onToggle,
     opened: opened,
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Name", "wcb")
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Prefix", "wcb")
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "space-y-5"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Color", "wcb"),
-    onChange: value => {
-      setAttr__({
-        ...panelData,
-        textColor: value
-      });
-    },
-    color: textColor,
-    disableAlpha: true
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTypographyControl_MyTypographyControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    className: "space-y-2.5"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTypographyControl_MyTypographyControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
     typographyControl: typography,
     setAttrs__typography: typography => {
       setAttr__({
@@ -9166,6 +9154,17 @@ const WcbTestimonialsPanel_StyleName = ({
         typography
       });
     }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    defaultOpen: true,
+    label: "More styles"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    onChange: color => {
+      setAttr__({
+        ...panelData,
+        textColor: color
+      });
+    },
+    color: textColor
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MySpacingSizesControl_MySpacingSizesControl__WEBPACK_IMPORTED_MODULE_8__["default"], {
     onChange: value => {
       setAttr__({
@@ -9176,11 +9175,12 @@ const WcbTestimonialsPanel_StyleName = ({
         }
       });
     },
-    value: currentMarginBottom || "",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Margin bottom", "wcb")
-  })));
+    value: MARGIN_BOTTOM || "",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Margin bottom", "wcb"),
+    hasResponsive: true
+  }))));
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WcbTestimonialsPanel_StyleName);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WcbIconListPanel_StyleDesignation);
 
 /***/ }),
 

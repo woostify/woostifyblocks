@@ -2230,8 +2230,6 @@ var weakMemoize = function weakMemoize(func) {
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./node_modules/@headlessui/react/dist/components/description/description.js":
 /*!***********************************************************************************!*\
   !*** ./node_modules/@headlessui/react/dist/components/description/description.js ***!
@@ -2283,7 +2281,6 @@ var q=(o=>(o[o.Open=0]="Open",o[o.Closed=1]="Closed",o))(q||{}),z=(t=>(t[t.Toggl
 
 /***/ }),
 
->>>>>>> b22df83d (fix: select child but trigger parent)
 /***/ "./node_modules/@headlessui/react/dist/components/keyboard.js":
 /*!********************************************************************!*\
   !*** ./node_modules/@headlessui/react/dist/components/keyboard.js ***!
@@ -2300,8 +2297,6 @@ var o=(r=>(r.Space=" ",r.Enter="Enter",r.Escape="Escape",r.Backspace="Backspace"
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./node_modules/@headlessui/react/dist/components/label/label.js":
 /*!***********************************************************************!*\
   !*** ./node_modules/@headlessui/react/dist/components/label/label.js ***!
@@ -2325,7 +2320,6 @@ let d=(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(null);function u(){le
 
 /***/ }),
 
->>>>>>> b22df83d (fix: select child but trigger parent)
 /***/ "./node_modules/@headlessui/react/dist/components/menu/menu.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/@headlessui/react/dist/components/menu/menu.js ***!
@@ -2361,8 +2355,6 @@ var pe=(r=>(r[r.Open=0]="Open",r[r.Closed=1]="Closed",r))(pe||{}),ce=(r=>(r[r.Po
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./node_modules/@headlessui/react/dist/components/radio-group/radio-group.js":
 /*!***********************************************************************************!*\
   !*** ./node_modules/@headlessui/react/dist/components/radio-group/radio-group.js ***!
@@ -2399,7 +2391,6 @@ var Ge=(t=>(t[t.RegisterOption=0]="RegisterOption",t[t.UnregisterOption=1]="Unre
 
 /***/ }),
 
->>>>>>> b22df83d (fix: select child but trigger parent)
 /***/ "./node_modules/@headlessui/react/dist/components/tabs/tabs.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/@headlessui/react/dist/components/tabs/tabs.js ***!
@@ -2482,8 +2473,6 @@ function d(t,...e){t&&e.length>0&&t.classList.add(...e)}function v(t,...e){t&&e.
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./node_modules/@headlessui/react/dist/hooks/use-controllable.js":
 /*!***********************************************************************!*\
   !*** ./node_modules/@headlessui/react/dist/hooks/use-controllable.js ***!
@@ -2502,7 +2491,6 @@ function T(l,r,c){let[i,s]=(0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(c),e=
 
 /***/ }),
 
->>>>>>> b22df83d (fix: select child but trigger parent)
 /***/ "./node_modules/@headlessui/react/dist/hooks/use-disposables.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/@headlessui/react/dist/hooks/use-disposables.js ***!
@@ -2963,8 +2951,6 @@ let f=["[contentEditable=true]","[tabindex]","a[href]","area[href]","button:not(
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./node_modules/@headlessui/react/dist/utils/form.js":
 /*!***********************************************************!*\
   !*** ./node_modules/@headlessui/react/dist/utils/form.js ***!
@@ -2982,7 +2968,6 @@ function e(n={},r=null,t=[]){for(let[i,o]of Object.entries(n))f(t,s(r,i),o);retu
 
 /***/ }),
 
->>>>>>> b22df83d (fix: select child but trigger parent)
 /***/ "./node_modules/@headlessui/react/dist/utils/match.js":
 /*!************************************************************!*\
   !*** ./node_modules/@headlessui/react/dist/utils/match.js ***!
@@ -3092,8 +3077,6 @@ const s=react__WEBPACK_IMPORTED_MODULE_0__.createContext(null);function a(){retu
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./node_modules/@headlessui/react/dist/utils/start-transition.js":
 /*!***********************************************************************!*\
   !*** ./node_modules/@headlessui/react/dist/utils/start-transition.js ***!
@@ -3111,7 +3094,6 @@ var t;let a=(t=react__WEBPACK_IMPORTED_MODULE_0__.startTransition)!=null?t:funct
 
 /***/ }),
 
->>>>>>> b22df83d (fix: select child but trigger parent)
 /***/ "./node_modules/@heroicons/react/24/outline/ChevronDownIcon.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/@heroicons/react/24/outline/ChevronDownIcon.js ***!
@@ -3256,37 +3238,6 @@ module.exports = ForwardRef;
 
 /***/ }),
 
-<<<<<<< HEAD
-/***/ "./node_modules/@wordpress/icons/build-module/library/link-off.js":
-/*!************************************************************************!*\
-  !*** ./node_modules/@wordpress/icons/build-module/library/link-off.js ***!
-  \************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
-/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
-
-
-/**
- * WordPress dependencies
- */
-
-const linkOff = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
-  xmlns: "http://www.w3.org/2000/svg",
-  viewBox: "0 0 24 24"
-}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
-  d: "M15.6 7.3h-.7l1.6-3.5-.9-.4-3.9 8.5H9v1.5h2l-1.3 2.8H8.4c-2 0-3.7-1.7-3.7-3.7s1.7-3.7 3.7-3.7H10V7.3H8.4c-2.9 0-5.2 2.3-5.2 5.2 0 2.9 2.3 5.2 5.2 5.2H9l-1.4 3.2.9.4 5.7-12.5h1.4c2 0 3.7 1.7 3.7 3.7s-1.7 3.7-3.7 3.7H14v1.5h1.6c2.9 0 5.2-2.3 5.2-5.2 0-2.9-2.4-5.2-5.2-5.2z"
-}));
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (linkOff);
-//# sourceMappingURL=link-off.js.map
-=======
 /***/ "./node_modules/@heroicons/react/24/outline/FunnelIcon.js":
 /*!****************************************************************!*\
   !*** ./node_modules/@heroicons/react/24/outline/FunnelIcon.js ***!
@@ -3392,7 +3343,38 @@ function PaintBrushIcon({
 
 const ForwardRef = React.forwardRef(PaintBrushIcon);
 module.exports = ForwardRef;
->>>>>>> b22df83d (fix: select child but trigger parent)
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/link-off.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/link-off.js ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const linkOff = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M15.6 7.3h-.7l1.6-3.5-.9-.4-3.9 8.5H9v1.5h2l-1.3 2.8H8.4c-2 0-3.7-1.7-3.7-3.7s1.7-3.7 3.7-3.7H10V7.3H8.4c-2.9 0-5.2 2.3-5.2 5.2 0 2.9 2.3 5.2 5.2 5.2H9l-1.4 3.2.9.4 5.7-12.5h1.4c2 0 3.7 1.7 3.7 3.7s-1.7 3.7-3.7 3.7H14v1.5h1.6c2.9 0 5.2-2.3 5.2-5.2 0-2.9-2.4-5.2-5.2-5.2z"
+}));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (linkOff);
+//# sourceMappingURL=link-off.js.map
 
 /***/ }),
 
@@ -7107,7 +7089,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-<<<<<<< HEAD
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
@@ -7119,45 +7100,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./editor.scss */ "./src/block-icon/editor.scss");
 /* harmony import */ var _hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/useSetBlockPanelInfo */ "./src/hooks/useSetBlockPanelInfo.ts");
 /* harmony import */ var _components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/AdvancePanelCommon */ "./src/components/AdvancePanelCommon.tsx");
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanelIcon'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanelPreset'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-/* harmony import */ var _components_controls_MyIconFull__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/controls/MyIconFull */ "./src/components/controls/MyIconFull.tsx");
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleIcon'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleBorder'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleBackground'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleBoxshadow'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleDimension'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-/* harmony import */ var _components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/MyCacheProvider */ "./src/components/MyCacheProvider.tsx");
-/* harmony import */ var _utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../utils/converUniqueIdToAnphaKey */ "./src/utils/converUniqueIdToAnphaKey.ts");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/link-off.js");
-/* harmony import */ var _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @wordpress/keycodes */ "@wordpress/keycodes");
-/* harmony import */ var _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_wordpress_keycodes__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _WcbIconPanelIcon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./WcbIconPanelIcon */ "./src/block-icon/WcbIconPanelIcon.tsx");
+/* harmony import */ var _WcbIconPanelPreset__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./WcbIconPanelPreset */ "./src/block-icon/WcbIconPanelPreset.tsx");
+/* harmony import */ var _components_controls_MyIconFull__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/controls/MyIconFull */ "./src/components/controls/MyIconFull.tsx");
+/* harmony import */ var _WcbIconPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./WcbIconPanel_StyleIcon */ "./src/block-icon/WcbIconPanel_StyleIcon.tsx");
+/* harmony import */ var _WcbIconPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./WcbIconPanel_StyleBorder */ "./src/block-icon/WcbIconPanel_StyleBorder.tsx");
+/* harmony import */ var _WcbIconPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./WcbIconPanel_StyleBackground */ "./src/block-icon/WcbIconPanel_StyleBackground.tsx");
+/* harmony import */ var _WcbIconPanel_StyleBoxshadow__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./WcbIconPanel_StyleBoxshadow */ "./src/block-icon/WcbIconPanel_StyleBoxshadow.tsx");
+/* harmony import */ var _WcbIconPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./WcbIconPanel_StyleDimension */ "./src/block-icon/WcbIconPanel_StyleDimension.tsx");
+/* harmony import */ var _components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../components/MyCacheProvider */ "./src/components/MyCacheProvider.tsx");
+/* harmony import */ var _utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../utils/converUniqueIdToAnphaKey */ "./src/utils/converUniqueIdToAnphaKey.ts");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_19__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/link-off.js");
+/* harmony import */ var _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @wordpress/keycodes */ "@wordpress/keycodes");
+/* harmony import */ var _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(_wordpress_keycodes__WEBPACK_IMPORTED_MODULE_20__);
 
 
 
 
 
-=======
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/HOCInspectorControls */ "./src/components/HOCInspectorControls.tsx");
-/* harmony import */ var _GlobalCss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./GlobalCss */ "./src/block-icon/GlobalCss.tsx");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/block-icon/editor.scss");
-/* harmony import */ var _hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/useSetBlockPanelInfo */ "./src/hooks/useSetBlockPanelInfo.ts");
-/* harmony import */ var _components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/AdvancePanelCommon */ "./src/components/AdvancePanelCommon.tsx");
-/* harmony import */ var _WcbIconPanelIcon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./WcbIconPanelIcon */ "./src/block-icon/WcbIconPanelIcon.tsx");
-/* harmony import */ var _WcbIconPanelPreset__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WcbIconPanelPreset */ "./src/block-icon/WcbIconPanelPreset.tsx");
-/* harmony import */ var _components_controls_MyIconFull__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/controls/MyIconFull */ "./src/components/controls/MyIconFull.tsx");
-/* harmony import */ var _WcbIconPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./WcbIconPanel_StyleIcon */ "./src/block-icon/WcbIconPanel_StyleIcon.tsx");
-/* harmony import */ var _WcbIconPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./WcbIconPanel_StyleBorder */ "./src/block-icon/WcbIconPanel_StyleBorder.tsx");
-/* harmony import */ var _WcbIconPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./WcbIconPanel_StyleBackground */ "./src/block-icon/WcbIconPanel_StyleBackground.tsx");
-/* harmony import */ var _WcbIconPanel_StyleBoxshadow__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./WcbIconPanel_StyleBoxshadow */ "./src/block-icon/WcbIconPanel_StyleBoxshadow.tsx");
-/* harmony import */ var _WcbIconPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./WcbIconPanel_StyleDimension */ "./src/block-icon/WcbIconPanel_StyleDimension.tsx");
-/* harmony import */ var _components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/MyCacheProvider */ "./src/components/MyCacheProvider.tsx");
-/* harmony import */ var _utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../utils/converUniqueIdToAnphaKey */ "./src/utils/converUniqueIdToAnphaKey.ts");
->>>>>>> b22df83d (fix: select child but trigger parent)
 
 
 
@@ -7180,12 +7142,8 @@ const Edit = props => {
   const {
     attributes,
     setAttributes,
-<<<<<<< HEAD
     clientId,
     isSelected
-=======
-    clientId
->>>>>>> b22df83d (fix: select child but trigger parent)
   } = props;
   const {
     advance_responsiveCondition,
@@ -7200,7 +7158,6 @@ const Edit = props => {
     general_preset,
     advance_motionEffect
   } = attributes;
-<<<<<<< HEAD
   const {
     enableLink,
     addNofollowToLink,
@@ -7214,11 +7171,6 @@ const Edit = props => {
   const [isEditingURL, setIsEditingURL] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const ref = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const wrapBlockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
-=======
-  //  COMMON HOOKS
-  const ref = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  const wrapBlockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
->>>>>>> b22df83d (fix: select child but trigger parent)
     ref
   });
   const {
@@ -7227,7 +7179,6 @@ const Edit = props => {
     tabGeneralIsPanelOpen,
     tabStylesIsPanelOpen,
     handleTogglePanel
-<<<<<<< HEAD
   } = (0,_hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_7__["default"])(uniqueId);
   const isURLSet = !!general_icon.link;
   var url = general_icon.link;
@@ -7247,30 +7198,19 @@ const Edit = props => {
     });
     setIsEditingURL(false);
   }
-=======
-  } = (0,_hooks_useSetBlockPanelInfo__WEBPACK_IMPORTED_MODULE_5__["default"])(uniqueId);
->>>>>>> b22df83d (fix: select child but trigger parent)
 
   // make uniqueid
   const UNIQUE_ID = wrapBlockProps.id;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     setAttributes({
-<<<<<<< HEAD
-      uniqueId: (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_12__["default"])(UNIQUE_ID)
-=======
-      uniqueId: (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_16__["default"])(UNIQUE_ID)
->>>>>>> b22df83d (fix: select child but trigger parent)
+      uniqueId: (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_18__["default"])(UNIQUE_ID)
     });
   }, [UNIQUE_ID, attributes]);
   //
   const renderTabBodyPanels = tab => {
     switch (tab.name) {
       case "General":
-<<<<<<< HEAD
-        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanelIcon'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
-=======
-        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconPanelIcon__WEBPACK_IMPORTED_MODULE_7__["default"], {
->>>>>>> b22df83d (fix: select child but trigger parent)
+        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconPanelIcon__WEBPACK_IMPORTED_MODULE_9__["default"], {
           onToggle: () => handleTogglePanel("General", "Icon"),
           initialOpen: tabGeneralIsPanelOpen === "Icon",
           opened: tabGeneralIsPanelOpen === "Icon" || undefined
@@ -7286,11 +7226,7 @@ const Edit = props => {
             });
           },
           panelData: general_icon
-<<<<<<< HEAD
-        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanelPreset'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
-=======
-        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconPanelPreset__WEBPACK_IMPORTED_MODULE_8__["default"], {
->>>>>>> b22df83d (fix: select child but trigger parent)
+        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconPanelPreset__WEBPACK_IMPORTED_MODULE_10__["default"], {
           onToggle: () => handleTogglePanel("General", "Preset"),
           initialOpen: tabGeneralIsPanelOpen === "Preset",
           opened: tabGeneralIsPanelOpen === "Preset" || undefined
@@ -7304,25 +7240,15 @@ const Edit = props => {
               general_preset: data
             });
             setAttributes({
-<<<<<<< HEAD
-              style_border: preset === "wcb-icon-1" ? Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleBorder'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) : preset === "wcb-icon-2" ? Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleBorder'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) : preset === "wcb-icon-3" ? Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleBorder'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) : preset === "wcb-icon-4" ? Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleBorder'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) : Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleBorder'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
-              style_background: preset === "wcb-icon-1" ? Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleBackground'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) : preset === "wcb-icon-3" ? Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleBackground'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) : Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleBackground'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
-              style_icon: preset === "wcb-icon-1" || preset === "wcb-icon-3" ? Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleIcon'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) : Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleIcon'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
-=======
-              style_border: preset === "wcb-icon-1" ? _WcbIconPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_11__.WCB_ICON_PANEL_STYLE_BORDER_DEMO_ROUND : preset === "wcb-icon-2" ? _WcbIconPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_11__.WCB_ICON_PANEL_STYLE_BORDER_DEMO_WHITE : preset === "wcb-icon-3" ? _WcbIconPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_11__.WCB_ICON_PANEL_STYLE_BORDER_DEMO_SECONDARY : preset === "wcb-icon-4" ? _WcbIconPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_11__.WCB_ICON_PANEL_STYLE_BORDER_DEMO_PRIMARY : _WcbIconPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_11__.WCB_ICON_PANEL_STYLE_BORDER_DEMO_ROUND,
-              style_background: preset === "wcb-icon-1" ? _WcbIconPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_12__.WCB_ICON_PANEL_STYLE_BACKGROUND_PRESET_1 : preset === "wcb-icon-3" ? _WcbIconPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_12__.WCB_ICON_PANEL_STYLE_BACKGROUND_PRESET_3 : _WcbIconPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_12__.WCB_ICON_PANEL_STYLE_BACKGROUND_DEMO_WHITE,
-              style_icon: preset === "wcb-icon-1" || preset === "wcb-icon-3" ? _WcbIconPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_10__.WCB_ICON_PANEL_STYLE_ICON_DEMO : _WcbIconPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_10__.WCB_ICON_PANEL_STYLE_ICON_LIGHT_DEMO
->>>>>>> b22df83d (fix: select child but trigger parent)
+              style_border: preset === "wcb-icon-1" ? _WcbIconPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_13__.WCB_ICON_PANEL_STYLE_BORDER_DEMO_ROUND : preset === "wcb-icon-2" ? _WcbIconPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_13__.WCB_ICON_PANEL_STYLE_BORDER_DEMO_WHITE : preset === "wcb-icon-3" ? _WcbIconPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_13__.WCB_ICON_PANEL_STYLE_BORDER_DEMO_SECONDARY : preset === "wcb-icon-4" ? _WcbIconPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_13__.WCB_ICON_PANEL_STYLE_BORDER_DEMO_PRIMARY : _WcbIconPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_13__.WCB_ICON_PANEL_STYLE_BORDER_DEMO_ROUND,
+              style_background: preset === "wcb-icon-1" ? _WcbIconPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_14__.WCB_ICON_PANEL_STYLE_BACKGROUND_PRESET_1 : preset === "wcb-icon-3" ? _WcbIconPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_14__.WCB_ICON_PANEL_STYLE_BACKGROUND_PRESET_3 : _WcbIconPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_14__.WCB_ICON_PANEL_STYLE_BACKGROUND_DEMO_WHITE,
+              style_icon: preset === "wcb-icon-1" || preset === "wcb-icon-3" ? _WcbIconPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_12__.WCB_ICON_PANEL_STYLE_ICON_DEMO : _WcbIconPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_12__.WCB_ICON_PANEL_STYLE_ICON_LIGHT_DEMO
             });
           },
           panelData: general_preset
         }));
       case "Styles":
-<<<<<<< HEAD
-        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleIcon'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
-=======
-        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_10__["default"], {
->>>>>>> b22df83d (fix: select child but trigger parent)
+        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_12__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleIcon", true),
           initialOpen: tabStylesIsPanelOpen === "_StyleTitle",
           opened: tabStylesIsPanelOpen === "_StyleIcon" || undefined
@@ -7338,11 +7264,7 @@ const Edit = props => {
             });
           },
           panelData: style_icon
-<<<<<<< HEAD
-        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleBackground'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
-=======
-        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_12__["default"], {
->>>>>>> b22df83d (fix: select child but trigger parent)
+        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_14__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleBackground"),
           initialOpen: tabStylesIsPanelOpen === "_StyleBackground",
           opened: tabStylesIsPanelOpen === "_StyleBackground" || undefined
@@ -7358,11 +7280,7 @@ const Edit = props => {
             });
           },
           panelData: style_background
-<<<<<<< HEAD
-        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleBorder'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
-=======
-        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_11__["default"], {
->>>>>>> b22df83d (fix: select child but trigger parent)
+        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_13__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleBorder"),
           initialOpen: tabStylesIsPanelOpen === "_StyleBorder",
           opened: tabStylesIsPanelOpen === "_StyleBorder" || undefined
@@ -7378,11 +7296,7 @@ const Edit = props => {
             });
           },
           panelData: style_border
-<<<<<<< HEAD
-        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleBoxshadow'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
-=======
-        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconPanel_StyleBoxshadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
->>>>>>> b22df83d (fix: select child but trigger parent)
+        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconPanel_StyleBoxshadow__WEBPACK_IMPORTED_MODULE_15__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleBoxshadow"),
           initialOpen: tabStylesIsPanelOpen === "_StyleBoxshadow",
           opened: tabStylesIsPanelOpen === "_StyleBoxshadow" || undefined
@@ -7398,11 +7312,7 @@ const Edit = props => {
             });
           },
           panelData: style_boxshadow
-<<<<<<< HEAD
-        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleDimension'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
-=======
-        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_14__["default"], {
->>>>>>> b22df83d (fix: select child but trigger parent)
+        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbIconPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_16__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleDimension"),
           initialOpen: tabStylesIsPanelOpen === "_StyleDimension",
           opened: tabStylesIsPanelOpen === "_StyleDimension" || undefined
@@ -7420,11 +7330,7 @@ const Edit = props => {
           panelData: style_dimension
         }));
       case "Advances":
-<<<<<<< HEAD
         return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_8__["default"], {
-=======
-        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_6__["default"], {
->>>>>>> b22df83d (fix: select child but trigger parent)
           advance_motionEffect: advance_motionEffect,
           advance_responsiveCondition: attributes.advance_responsiveCondition,
           advance_zIndex: attributes.advance_zIndex,
@@ -7451,21 +7357,16 @@ const Edit = props => {
       advance_motionEffect
     };
   }, [uniqueId, advance_responsiveCondition, advance_zIndex, general_icon, general_preset, style_background, style_icon, style_border, style_boxshadow, style_dimension, advance_motionEffect]);
-<<<<<<< HEAD
   const HtmlTag = enableLink ? "a" : "div";
   if ('' !== url) {
     url = (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_3__.getProtocol)(url) ? url : (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_3__.prependHTTP)(url);
   }
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_11__["default"], {
-=======
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_15__["default"], {
->>>>>>> b22df83d (fix: select child but trigger parent)
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_17__["default"], {
     uniqueKey: clientId
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...wrapBlockProps,
     className: `${wrapBlockProps?.className} wcb-icon__wrap ${uniqueId}`,
     "data-uniqueid": uniqueId
-<<<<<<< HEAD
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_4__["default"], {
     renderTabPanels: renderTabBodyPanels,
     uniqueId: uniqueId
@@ -7473,20 +7374,20 @@ const Edit = props => {
     ...WcbAttrsForSave()
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, {
     group: "block"
-  }, !isURLSet && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__.ToolbarButton, {
+  }, !isURLSet && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_19__.ToolbarButton, {
     name: "link",
     icon: link,
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Link"),
-    shortcut: _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_14__.displayShortcut.primary("k"),
+    shortcut: _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_20__.displayShortcut.primary("k"),
     onClick: startEditing
-  }), isURLSet && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__.ToolbarButton, {
+  }), isURLSet && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_19__.ToolbarButton, {
     name: "link",
-    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_15__["default"],
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_21__["default"],
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Unlink"),
-    shortcut: _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_14__.displayShortcut.primaryShift("k"),
+    shortcut: _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_20__.displayShortcut.primaryShift("k"),
     onClick: unlink,
     isActive: true
-  })), isSelected && (isEditingURL || isURLSet) && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__.Popover, {
+  })), isSelected && (isEditingURL || isURLSet) && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_19__.Popover, {
     position: "bottom center",
     onClose: () => {
       setIsEditingURL(false);
@@ -7524,17 +7425,7 @@ const Edit = props => {
     target: openInNewWindow ? "_blank" : undefined,
     href: enableLink ? url : undefined,
     rel: addNofollowToLink ? "noopener noreferrer" : undefined
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyIconFull__WEBPACK_IMPORTED_MODULE_10__["default"], {
-=======
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_HOCInspectorControls__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    renderTabPanels: renderTabBodyPanels,
-    uniqueId: uniqueId
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    ...WcbAttrsForSave()
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wcb-icon__content"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyIconFull__WEBPACK_IMPORTED_MODULE_9__["default"], {
->>>>>>> b22df83d (fix: select child but trigger parent)
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyIconFull__WEBPACK_IMPORTED_MODULE_11__["default"], {
     icon: general_icon.icon
   }))));
 };
@@ -7605,10 +7496,6 @@ const GlobalCss = attrs => {
     const {
       alignment
     } = general_icon;
-<<<<<<< HEAD
-=======
-    console.log(alignment);
->>>>>>> b22df83d (fix: select child but trigger parent)
     const {
       value_Desktop,
       value_Mobile,
@@ -7680,12 +7567,9 @@ const GlobalCss = attrs => {
       },
       [`${CONTENT_CLASSNAME}:hover .wcb-icon-full`]: {
         color: style_icon.hoverColor
-<<<<<<< HEAD
       },
       [`${WRAP_CLASSNAME} .wcb-icon__content`]: {
         cursor: general_icon.enableLink ? 'pointer' : ''
-=======
->>>>>>> b22df83d (fix: select child but trigger parent)
       }
     }]
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
@@ -7719,14 +7603,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_SaveCommon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/SaveCommon */ "./src/components/SaveCommon.tsx");
 /* harmony import */ var _components_controls_MyIconFull__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/controls/MyIconFull */ "./src/components/controls/MyIconFull.tsx");
-<<<<<<< HEAD
 /* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/url */ "@wordpress/url");
 /* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_url__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style.scss */ "./src/block-icon/style.scss");
 
-=======
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "./src/block-icon/style.scss");
->>>>>>> b22df83d (fix: select child but trigger parent)
 
 
 
@@ -7751,7 +7631,6 @@ function save({
   } = attributes;
   //
 
-<<<<<<< HEAD
   const {
     enableLink,
     addNofollowToLink,
@@ -7761,8 +7640,6 @@ function save({
 
   // 
 
-=======
->>>>>>> b22df83d (fix: select child but trigger parent)
   const newAttrForSave = {
     uniqueId,
     advance_responsiveCondition,
@@ -7780,28 +7657,20 @@ function save({
   const wrapBlockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
     className: "wcb-icon__wrap"
   });
-<<<<<<< HEAD
   const HtmlTag = enableLink ? "a" : "div";
   var url = general_icon.link;
   if ('' !== url) {
     url = (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_4__.getProtocol)(url) ? url : (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_4__.prependHTTP)(url);
   }
-=======
->>>>>>> b22df83d (fix: select child but trigger parent)
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_SaveCommon__WEBPACK_IMPORTED_MODULE_2__["default"], {
     ...wrapBlockProps,
     attributes: newAttrForSave,
     uniqueId: uniqueId
-<<<<<<< HEAD
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(HtmlTag, {
     className: "wcb-icon__content",
     target: openInNewWindow ? "_blank" : undefined,
     href: enableLink ? url : undefined,
     rel: addNofollowToLink ? "noopener noreferrer" : undefined
-=======
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wcb-icon__content"
->>>>>>> b22df83d (fix: select child but trigger parent)
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyIconFull__WEBPACK_IMPORTED_MODULE_3__["default"], {
     icon: general_icon.icon
   })));
@@ -7809,8 +7678,6 @@ function save({
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./src/block-icon/WcbIconPanelIcon.tsx":
 /*!*********************************************!*\
   !*** ./src/block-icon/WcbIconPanelIcon.tsx ***!
@@ -7829,13 +7696,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/controls/MyTextAlignControl/MyTextAlignControl */ "./src/components/controls/MyTextAlignControl/MyTextAlignControl.tsx");
-/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
-/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
-/* harmony import */ var _components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/controls/MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
-/* harmony import */ var _components_controls_SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/controls/SelectIcon/SelecIcon */ "./src/components/controls/SelectIcon/SelecIcon.tsx");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/controls/MyTextAlignControl/MyTextAlignControl */ "./src/components/controls/MyTextAlignControl/MyTextAlignControl.tsx");
+/* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
+/* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
+/* harmony import */ var _components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/controls/MyLabelControl/MyLabelControl */ "./src/components/controls/MyLabelControl/MyLabelControl.tsx");
+/* harmony import */ var _components_controls_SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/controls/SelectIcon/SelecIcon */ "./src/components/controls/SelectIcon/SelecIcon.tsx");
 
 
+
+// @ts-ignore
 
 
 
@@ -7851,9 +7722,13 @@ const WCB_ICON_PANEL_ICON_DEMO = {
     Desktop: "center"
   },
   icon: {
-    ..._components_controls_SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_7__.DEFAULT_MY_ICON,
+    ..._components_controls_SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_8__.DEFAULT_MY_ICON,
     iconName: "lni-star-filled"
-  }
+  },
+  enableLink: false,
+  link: "",
+  openInNewWindow: false,
+  addNofollowToLink: true
 };
 const WcbIconBoxPanelIcon = ({
   panelData = WCB_ICON_PANEL_ICON_DEMO,
@@ -7862,16 +7737,20 @@ const WcbIconBoxPanelIcon = ({
   onToggle,
   opened
 }) => {
-  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_4__["default"])() || "Desktop";
+  const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_5__["default"])() || "Desktop";
   const {
     icon,
     alignment,
-    size
+    size,
+    enableLink,
+    link,
+    openInNewWindow,
+    addNofollowToLink
   } = panelData;
   //
   const {
     currentDeviceValue: TEXT_ALIGNMENT
-  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_5__["default"])(alignment, deviceType);
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(alignment, deviceType);
   //
   const handleChangeTextAlignment = selected => {
     setAttr__({
@@ -7886,7 +7765,8 @@ const WcbIconBoxPanelIcon = ({
 
   const {
     currentDeviceValue: currentSize
-  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_5__["default"])(size, deviceType);
+  } = (0,_utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_6__["default"])(size, deviceType);
+  const url = panelData.link;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     initialOpen: initialOpen,
     onToggle: onToggle,
@@ -7894,7 +7774,7 @@ const WcbIconBoxPanelIcon = ({
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Icon", "wcb")
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "space-y-5"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_SelectIcon_SelecIcon__WEBPACK_IMPORTED_MODULE_8__["default"], {
     iconData: icon,
     onChange: value => {
       setAttr__({
@@ -7903,7 +7783,7 @@ const WcbIconBoxPanelIcon = ({
       });
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
-    label: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    label: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
       hasResponsive: true
     }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Size", "wcb")),
     value: currentSize || 16,
@@ -7918,10 +7798,59 @@ const WcbIconBoxPanelIcon = ({
     },
     min: 2,
     max: 200
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTextAlignControl_MyTextAlignControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
     textAlignment: TEXT_ALIGNMENT,
     onChange: handleChangeTextAlignment
-  })));
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Link", "wcb"),
+    checked: enableLink,
+    className: "mb-0",
+    onChange: checked => {
+      setAttr__({
+        ...panelData,
+        enableLink: checked
+      });
+    }
+  }), enableLink && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.__experimentalLinkControl, {
+    className: "WcbButtonPanelContent__inline-link-input",
+    value: {
+      url
+    },
+    onChange: ({
+      url: newURL = ""
+    }) => {
+      setAttr__({
+        ...panelData,
+        link: newURL
+      });
+    },
+    onRemove: () => {
+      setAttr__({
+        ...panelData,
+        link: "",
+        openInNewWindow: false,
+        addNofollowToLink: false
+      });
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Add "nofollow" to link', "wcb"),
+    checked: addNofollowToLink,
+    onChange: checked => {
+      setAttr__({
+        ...panelData,
+        addNofollowToLink: checked
+      });
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Open in new windown", "wcb"),
+    checked: openInNewWindow,
+    onChange: checked => {
+      setAttr__({
+        ...panelData,
+        openInNewWindow: checked
+      });
+    }
+  }))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WcbIconBoxPanelIcon);
 
@@ -8428,7 +8357,6 @@ const WcbIconPanel_StyleIcon = ({
 
 /***/ }),
 
->>>>>>> b22df83d (fix: select child but trigger parent)
 /***/ "./src/block-icon/attributes.ts":
 /*!**************************************!*\
   !*** ./src/block-icon/attributes.ts ***!
@@ -8443,15 +8371,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/controls/MyMotionEffectControl/MyMotionEffectControl */ "./src/components/controls/MyMotionEffectControl/MyMotionEffectControl.tsx");
 /* harmony import */ var _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl */ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx");
 /* harmony import */ var _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/controls/MyZIndexControl/MyZIndexControl */ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx");
-<<<<<<< HEAD
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanelIcon'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanelPreset'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleIcon'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleBackground'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleBorder'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleBoxshadow'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleDimension'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-=======
 /* harmony import */ var _WcbIconPanelIcon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WcbIconPanelIcon */ "./src/block-icon/WcbIconPanelIcon.tsx");
 /* harmony import */ var _WcbIconPanelPreset__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./WcbIconPanelPreset */ "./src/block-icon/WcbIconPanelPreset.tsx");
 /* harmony import */ var _WcbIconPanel_StyleIcon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WcbIconPanel_StyleIcon */ "./src/block-icon/WcbIconPanel_StyleIcon.tsx");
@@ -8459,7 +8378,6 @@ Object(function webpackMissingModule() { var e = new Error("Cannot find module '
 /* harmony import */ var _WcbIconPanel_StyleBorder__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./WcbIconPanel_StyleBorder */ "./src/block-icon/WcbIconPanel_StyleBorder.tsx");
 /* harmony import */ var _WcbIconPanel_StyleBoxshadow__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WcbIconPanel_StyleBoxshadow */ "./src/block-icon/WcbIconPanel_StyleBoxshadow.tsx");
 /* harmony import */ var _WcbIconPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./WcbIconPanel_StyleDimension */ "./src/block-icon/WcbIconPanel_StyleDimension.tsx");
->>>>>>> b22df83d (fix: select child but trigger parent)
 
 
 
@@ -8483,33 +8401,6 @@ const blokc1Attrs = {
 
   general_icon: {
     type: "object",
-<<<<<<< HEAD
-    default: Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanelIcon'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
-  },
-  general_preset: {
-    type: "object",
-    default: Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanelPreset'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
-  },
-  style_icon: {
-    type: "object",
-    default: Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleIcon'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
-  },
-  style_background: {
-    type: "object",
-    default: Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleBackground'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
-  },
-  style_border: {
-    type: "object",
-    default: Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleBorder'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
-  },
-  style_boxshadow: {
-    type: "object",
-    default: Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleBoxshadow'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
-  },
-  style_dimension: {
-    type: "object",
-    default: Object(function webpackMissingModule() { var e = new Error("Cannot find module './WcbIconPanel_StyleDimension'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
-=======
     default: _WcbIconPanelIcon__WEBPACK_IMPORTED_MODULE_3__.WCB_ICON_PANEL_ICON_DEMO
   },
   general_preset: {
@@ -8535,7 +8426,6 @@ const blokc1Attrs = {
   style_dimension: {
     type: "object",
     default: _WcbIconPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_9__.WCB_ICON_PANEL_STYLE_DIMENSION_DEMO
->>>>>>> b22df83d (fix: select child but trigger parent)
   },
   // ADVANCE
   advance_responsiveCondition: {
@@ -8700,8 +8590,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./src/block-icon/types.ts":
 /*!*********************************!*\
   !*** ./src/block-icon/types.ts ***!
@@ -8729,7 +8617,6 @@ const ICON_PRESET = [{
 
 /***/ }),
 
->>>>>>> b22df83d (fix: select child but trigger parent)
 /***/ "./src/components/AdvancePanelCommon.tsx":
 /*!***********************************************!*\
   !*** ./src/components/AdvancePanelCommon.tsx ***!
@@ -8802,8 +8689,6 @@ const AdvancePanelCommon = ({
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./src/components/CheckIcon.tsx":
 /*!**************************************!*\
   !*** ./src/components/CheckIcon.tsx ***!
@@ -8842,7 +8727,6 @@ function CheckIcon(props) {
 
 /***/ }),
 
->>>>>>> b22df83d (fix: select child but trigger parent)
 /***/ "./src/components/HOCInspectorControls.tsx":
 /*!*************************************************!*\
   !*** ./src/components/HOCInspectorControls.tsx ***!
@@ -9172,8 +9056,6 @@ function SaveCommon({
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./src/components/controls/MyBackgroundControl/MyBackgroundNoImageControl.tsx":
 /*!************************************************************************************!*\
   !*** ./src/components/controls/MyBackgroundControl/MyBackgroundNoImageControl.tsx ***!
@@ -9768,7 +9650,6 @@ const MyBoxShadowControl = ({
 
 /***/ }),
 
->>>>>>> b22df83d (fix: select child but trigger parent)
 /***/ "./src/components/controls/MyBoxShadowControl/getBoxShadowStyles.ts":
 /*!**************************************************************************!*\
   !*** ./src/components/controls/MyBoxShadowControl/getBoxShadowStyles.ts ***!
@@ -9803,8 +9684,6 @@ const getShadowStyleValueFromTwPreset = (presetClass, color = "") => {
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./src/components/controls/MyBoxShadowControl/types.ts":
 /*!*************************************************************!*\
   !*** ./src/components/controls/MyBoxShadowControl/types.ts ***!
@@ -9841,7 +9720,6 @@ const MY_BOX_SHADOW_CONTROL_DEMO = {
 
 /***/ }),
 
->>>>>>> b22df83d (fix: select child but trigger parent)
 /***/ "./src/components/controls/MyButton.tsx":
 /*!**********************************************!*\
   !*** ./src/components/controls/MyButton.tsx ***!
@@ -9873,8 +9751,6 @@ const MyButton = ({
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./src/components/controls/MyColorPicker/MyColorPicker.tsx":
 /*!*****************************************************************!*\
   !*** ./src/components/controls/MyColorPicker/MyColorPicker.tsx ***!
@@ -10284,7 +10160,6 @@ const MyDisclosure = ({
 
 /***/ }),
 
->>>>>>> b22df83d (fix: select child but trigger parent)
 /***/ "./src/components/controls/MyIcon.tsx":
 /*!********************************************!*\
   !*** ./src/components/controls/MyIcon.tsx ***!
@@ -10811,8 +10686,6 @@ const MyMyMotionEffectData = ({
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./src/components/controls/MyRadioGroup.tsx":
 /*!**************************************************!*\
   !*** ./src/components/controls/MyRadioGroup.tsx ***!
@@ -10957,7 +10830,6 @@ function MyRadioGroup({
 
 /***/ }),
 
->>>>>>> b22df83d (fix: select child but trigger parent)
 /***/ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx":
 /*!***********************************************************************************************!*\
   !*** ./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx ***!
@@ -11189,8 +11061,6 @@ const MySelect = ({
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./src/components/controls/MyTextAlignControl/MyTextAlignControl.tsx":
 /*!***************************************************************************!*\
   !*** ./src/components/controls/MyTextAlignControl/MyTextAlignControl.tsx ***!
@@ -11232,7 +11102,6 @@ const MyTextAlignControl = ({
 
 /***/ }),
 
->>>>>>> b22df83d (fix: select child but trigger parent)
 /***/ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx":
 /*!*********************************************************************!*\
   !*** ./src/components/controls/MyZIndexControl/MyZIndexControl.tsx ***!
@@ -11939,17 +11808,13 @@ const checkResponsiveValueForOptimizeCSS = ({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-<<<<<<< HEAD
 /* harmony export */   converClientIdToUniqueClass: () => (/* binding */ converClientIdToUniqueClass),
-=======
->>>>>>> b22df83d (fix: select child but trigger parent)
 /* harmony export */   "default": () => (/* binding */ converUniqueIdToAnphaKey)
 /* harmony export */ });
 function converUniqueIdToAnphaKey(text, prefix = "wcb-") {
   if (!text) {
     return (prefix + "converniquedreturnnull" + Date.now() + Math.random()).replace(/\./g, "-");
   }
-<<<<<<< HEAD
 
   // Convert clientId to a valid CSS class name
   // Example: "a1b2c3d4-e5f6-7890" -> "wcb-a1b2c3d4e5f67890"
@@ -11977,11 +11842,6 @@ function converClientIdToUniqueClass(clientId, prefix = "wcb-") {
   // Convert to positive number and base36 (alphanumeric)
   const shortId = Math.abs(hash).toString(36);
   return prefix + shortId;
-=======
-  return prefix + text.replace(/ /g, "").replace(/\d/g, "")
-  // text.substring(2, 9).replace(/-/g, "").replace(/ /g, "").replace(/\d/g, "")
-  ;
->>>>>>> b22df83d (fix: select child but trigger parent)
 }
 
 /***/ }),
@@ -12677,7 +12537,6 @@ module.exports = window["wp"]["i18n"];
 
 /***/ }),
 
-<<<<<<< HEAD
 /***/ "@wordpress/keycodes":
 /*!**********************************!*\
   !*** external ["wp","keycodes"] ***!
@@ -12689,8 +12548,6 @@ module.exports = window["wp"]["keycodes"];
 
 /***/ }),
 
-=======
->>>>>>> b22df83d (fix: select child but trigger parent)
 /***/ "@wordpress/primitives":
 /*!************************************!*\
   !*** external ["wp","primitives"] ***!
@@ -12702,7 +12559,6 @@ module.exports = window["wp"]["primitives"];
 
 /***/ }),
 
-<<<<<<< HEAD
 /***/ "@wordpress/url":
 /*!*****************************!*\
   !*** external ["wp","url"] ***!
@@ -12714,8 +12570,6 @@ module.exports = window["wp"]["url"];
 
 /***/ }),
 
-=======
->>>>>>> b22df83d (fix: select child but trigger parent)
 /***/ "jquery":
 /*!*************************!*\
   !*** external "jQuery" ***!

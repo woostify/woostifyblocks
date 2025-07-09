@@ -1,6 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import { PanelBody } from "@wordpress/components";
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import MyTypographyControl from "../components/controls/MyTypographyControl/MyTypographyControl";
 import {
 	MyTypographyControlData,
@@ -14,37 +14,70 @@ import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
 import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 
-export interface WCB_ICON_LIST_PANEL_STYLE_DESIGNATION {
+export interface WCB_ICON_LIST_PANEL_STYLE_TITLE {
 	typography: MyTypographyControlData;
 	textColor: string;
+	textColorHover: string;
 	marginBottom: HasResponsive<string>;
 }
 
-export const WCB_ICON_LIST_PANEL_STYLE_DESIGNATION_DEMO: WCB_ICON_LIST_PANEL_STYLE_DESIGNATION =
-	{
-		typography: {
-			...TYPOGRAPHY_CONTROL_DEMO,
-			fontSizes: { Desktop: "0rem" },
-		},
-		textColor: "#6b7280",
-		marginBottom: { Desktop: "0.5rem" },
-	};
+export const WCB_ICON_LIST_PANEL_STYLE_TITLE_DEMO: WCB_ICON_LIST_PANEL_STYLE_TITLE =
+{
+	typography: TYPOGRAPHY_CONTROL_DEMO,
+	textColor: "#171717",
+	textColorHover: "#171717",
+	marginBottom: { Desktop: "" },
+};
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
-	panelData: WCB_ICON_LIST_PANEL_STYLE_DESIGNATION;
-	setAttr__: (data: WCB_ICON_LIST_PANEL_STYLE_DESIGNATION) => void;
+	panelData: WCB_ICON_LIST_PANEL_STYLE_TITLE;
+	setAttr__: (data: WCB_ICON_LIST_PANEL_STYLE_TITLE) => void;
 }
 
-const WcbIconListPanel_StyleDesignation: FC<Props> = ({
-	panelData = WCB_ICON_LIST_PANEL_STYLE_DESIGNATION_DEMO,
+const WcbIconListPanel_StyleTitle: FC<Props> = ({
+	panelData = WCB_ICON_LIST_PANEL_STYLE_TITLE_DEMO,
 	setAttr__,
 	initialOpen,
 	onToggle,
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { typography, textColor, marginBottom } = panelData;
+	const { typography, textColor, textColorHover, marginBottom } = panelData;
+
+	// Normalize typography appearance.style to ensure it's always an object
+	useEffect(() => {
+		let needsUpdate = false;
+		let updatedTypography = { ...typography };
+
+		// Fix appearance.style if it's an array
+		if (typography?.appearance?.style && Array.isArray(typography.appearance.style)) {
+			updatedTypography.appearance = {
+				...typography.appearance,
+				style: {},
+			};
+			needsUpdate = true;
+		}
+
+		// Fix lineHeight if it's an array
+		if (typography?.lineHeight && Array.isArray(typography.lineHeight)) {
+			updatedTypography.lineHeight = { Desktop: undefined };
+			needsUpdate = true;
+		}
+
+		// Fix letterSpacing if it's an array
+		if (typography?.letterSpacing && Array.isArray(typography.letterSpacing)) {
+			updatedTypography.letterSpacing = { Desktop: undefined };
+			needsUpdate = true;
+		}
+
+		if (needsUpdate) {
+			setAttr__({
+				...panelData,
+				typography: updatedTypography,
+			});
+		}
+	}, [typography?.appearance?.style, typography?.lineHeight, typography?.letterSpacing, panelData, setAttr__]);
 
 	const { currentDeviceValue: MARGIN_BOTTOM } = getValueFromAttrsResponsives(
 		marginBottom,
@@ -56,7 +89,7 @@ const WcbIconListPanel_StyleDesignation: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Prefix", "wcb")}
+			title={__("Title", "wcb")}
 		>
 			<div className="space-y-2.5">
 				<MyTypographyControl
@@ -80,17 +113,25 @@ const WcbIconListPanel_StyleDesignation: FC<Props> = ({
 						color={textColor}
 					/>
 
+					<MyColorPicker
+						label={__("Hover color", "wcb")}
+						onChange={(value) => {
+							setAttr__({ ...panelData, textColorHover: value });
+						}}
+						color={textColorHover}
+					/>
+
 					<MySpacingSizesControl
 						onChange={(value) => {
 							setAttr__({
 								...panelData,
 								marginBottom: {
-									...marginBottom,
+									...marginBottom,   
 									[deviceType]: value,
 								},
 							});
 						}}
-						value={MARGIN_BOTTOM || ""}
+						value={MARGIN_BOTTOM || "0rem"}
 						label={__("Margin bottom", "wcb")}
 						hasResponsive
 					/>
@@ -100,4 +141,4 @@ const WcbIconListPanel_StyleDesignation: FC<Props> = ({
 	);
 };
 
-export default WcbIconListPanel_StyleDesignation;
+export default WcbIconListPanel_StyleTitle;
