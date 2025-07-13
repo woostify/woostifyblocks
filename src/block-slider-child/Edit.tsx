@@ -43,7 +43,7 @@ export {
 };
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
-	const { attributes, setAttributes, clientId, isSelected, index } = props;
+	const { attributes, setAttributes, clientId, isSelected } = props;
 	const {
 		uniqueId,
 		content,
@@ -69,9 +69,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
-
-	// Child components don't need Inspector Controls anymore
-	// Parent component will handle all Inspector Controls
 
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
@@ -107,7 +104,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 									<RichText
 										tagName="h4"
 										placeholder={__("Enter name...", "wcb")}
-										value={`${name}` + " " + `${index}`} // Append index to ensure unique names
+										value={`${name}`}
 										onChange={(value) => setAttributes({ name: value })}
 									/>
 								</div>

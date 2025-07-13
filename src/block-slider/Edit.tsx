@@ -480,7 +480,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 	// Memoized child component to prevent multiple renders
 	const MemoizedChildBlock = useMemo(() => {
-		return React.memo(({ block, isSelected, onSelect , index}: any) => {
+		return React.memo(({ block, isSelected, onSelect}: any) => {
 			const blockType = wp.blocks?.getBlockType?.(block.name);
 			const BlockEdit = blockType?.edit;
 			
@@ -506,7 +506,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 											}}
 											clientId={block.clientId}
 											isSelected={isSelected}
-											index={index} // Pass index if needed
 										/>
 									)}
 								</div>
@@ -515,13 +514,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					</div>
 				</div>
 			);
-		}, (prevProps, nextProps) => {
-			// Custom comparison function to prevent unnecessary re-renders
-			return prevProps.isSelected === nextProps.isSelected && 
-					prevProps.block.clientId === nextProps.block.clientId &&
-					JSON.stringify(prevProps.block.attributes) === JSON.stringify(nextProps.block.attributes);
-		});
-	}, []);
+		}
+	)}, []);
 
 	const renderSliderContent = useCallback(() => {
 		const {
@@ -576,13 +570,12 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					setSelectedChildId(null);
 				}}
 			>
-			{innerBlocks.map((index: number, block: any) =>
+			{innerBlocks.map((block: any) =>
 				<MemoizedChildBlock
 					key={block.clientId}
 					block={block}
 					isSelected={!isParentSelected && (selectedChildId != null && selectedChildId === block.clientId)}
 					onSelect={handleChildSelect}
-					index={index + 1} // Assuming index is used for some purpose
 				/>
 			)}
 			</Slider>
