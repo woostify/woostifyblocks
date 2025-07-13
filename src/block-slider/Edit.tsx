@@ -495,19 +495,17 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 						<div className="wcb-slider__item-wrap-inner">
 							<div className="wcb-slider__item-inner">
 								<div className={`wcb-slider-child__wrap ${block.attributes?.uniqueId || ''}`}>
-									{BlockEdit && (
-										<BlockEdit
-											attributes={block.attributes}
-											setAttributes={(newAttributes: any) => {
-												wp.data.dispatch("core/block-editor").updateBlockAttributes(
-													block.clientId,
-													newAttributes
-												);
-											}}
-											clientId={block.clientId}
-											isSelected={isSelected}
-										/>
-									)}
+									<BlockEdit
+										attributes={block.attributes}
+										setAttributes={(newAttributes: any) => {
+											wp.data.dispatch("core/block-editor").updateBlockAttributes(
+												block.clientId,
+												newAttributes
+											);
+										}}
+										clientId={block.clientId}
+										isSelected={isSelected}
+									/>
 								</div>
 							</div>
 						</div>
