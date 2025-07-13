@@ -30,7 +30,7 @@ interface Props
 	setAttr__: (data: WCB_SLIDER_PANEL_CAROUSEL) => void;
 }
 
-const WcbTestimonialsPanelCarousel: FC<Props> = ({
+const WcbSlidersPanelCarousel: FC<Props> = ({
 	panelData = WCB_SLIDER_PANEL_CAROUSEL_DEMO,
 	setAttr__,
 	initialOpen,
@@ -52,7 +52,7 @@ const WcbTestimonialsPanelCarousel: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Carousel", "wcb")}
+			title={__("Slider", "wcb")}
 		>
 			<div className={"space-y-5"}>
 				<ToggleControl
@@ -143,4 +143,4 @@ const WcbTestimonialsPanelCarousel: FC<Props> = ({
 	);
 };
 
-export default WcbTestimonialsPanelCarousel;
+export default WcbSlidersPanelCarousel;

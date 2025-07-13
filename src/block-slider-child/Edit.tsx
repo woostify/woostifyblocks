@@ -42,8 +42,8 @@ export {
 	AdvancePanelCommon
 };
 
-const Edit: FC<EditProps<WcbAttrs>> = (props) => {
-	const { attributes, setAttributes, clientId, isSelected } = props;
+const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
+	const { attributes, setAttributes, clientId, isSelected, index } = props;
 	const {
 		uniqueId,
 		content,
@@ -104,7 +104,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 									<RichText
 										tagName="h4"
 										placeholder={__("Enter name...", "wcb")}
-										value={`${name}`}
+										value={`${name}` + " " + `${index}`}
 										onChange={(value) => setAttributes({ name: value })}
 									/>
 								</div>

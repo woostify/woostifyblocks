@@ -38,7 +38,7 @@ interface Props
 	numberOfItems: number;
 }
 
-const WcbTestimonialsPanelImages: FC<Props> = ({
+const WcbSlidersPanelImages: FC<Props> = ({
 	panelData = WCB_SLIDER_PANEL_IMAGES_DEMO,
 	setAttr__,
 	numberOfItems = 1,
@@ -182,4 +182,4 @@ const WcbTestimonialsPanelImages: FC<Props> = ({
 	);
 };
 
-export default WcbTestimonialsPanelImages;
+export default WcbSlidersPanelImages;

@@ -13,8 +13,7 @@ import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import WcbTestimonialsPanelGeneral from "./WcbSliderPanelGeneral";
-import WcbTestimonialsPanelImages from "./WcbSliderPanelImages";
-import WcbTestimonialsPanelCarousel from "./WcbSliderPanelCarousel";
+import WcbSlidersPanelCarousel from "./WcbSliderPanelCarousel";
 import WcbTestimonialsPanel_StyleName from "./WcbSliderPanel_StyleName";
 import WcbTestimonialsPanel_StyleContent from "./WcbSliderPanel_StyleContent";
 import WcbTestimonialsPanel_StyleCompany from "./WcbSliderPanel_StyleCompany";
@@ -199,20 +198,20 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				case "General":
 					return (
 						<>
-							<ChildStyleName
-								onToggle={() => childPanelInfo.handleTogglePanel("Styles", "_StyleName", true)}
+							<ChildStyleImage
+								onToggle={() => childPanelInfo.handleTogglePanel("Styles", "_StyleImage")}
 								initialOpen={
-									childPanelInfo.tabStylesIsPanelOpen === "_StyleName" ||
+									childPanelInfo.tabStylesIsPanelOpen === "_StyleImage" ||
 									childPanelInfo.tabStylesIsPanelOpen === "first"
 								}
-								opened={childPanelInfo.tabStylesIsPanelOpen === "_StyleName" || undefined}
+								opened={childPanelInfo.tabStylesIsPanelOpen === "_StyleImage" || undefined}
 								setAttr__={(data) => {
 									wp.data.dispatch("core/block-editor").updateBlockAttributes(
 										selectedChildBlock.clientId,
-										{ style_name: data }
+										{ style_image: data }
 									);
 								}}
-								panelData={childAttrs.style_name || WCB_SLIDER_PANEL_STYLE_NAME_DEMO}
+								panelData={childAttrs.style_image || WCB_SLIDER_PANEL_STYLE_IMAGE_DEMO}
 							/>
 							
 							<ChildStyleContent
@@ -272,19 +271,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 									);
 								}}
 								panelData={childAttrs.style_company || WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO}
-							/>
-							
-							<ChildStyleImage
-								onToggle={() => childPanelInfo.handleTogglePanel("Styles", "_StyleImage")}
-								initialOpen={childPanelInfo.tabStylesIsPanelOpen === "_StyleImage"}
-								opened={childPanelInfo.tabStylesIsPanelOpen === "_StyleImage" || undefined}
-								setAttr__={(data) => {
-									wp.data.dispatch("core/block-editor").updateBlockAttributes(
-										selectedChildBlock.clientId,
-										{ style_image: data }
-									);
-								}}
-								panelData={childAttrs.style_image || WCB_SLIDER_PANEL_STYLE_IMAGE_DEMO}
 							/>
 							
 							<ChildStyleBackground
@@ -354,21 +340,11 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							}}
 							panelData={general_general}
 						/>
-
-						<WcbTestimonialsPanelImages
-							onToggle={() => handleTogglePanel("General", "PanelImages")}
-							initialOpen={tabGeneralIsPanelOpen === "PanelImages"}
-							opened={tabGeneralIsPanelOpen === "PanelImages" || undefined}
-							setAttr__={(data) => {
-								setAttributes({ general_images: data });
-							}}
-							panelData={general_images}
-							numberOfItems={innerBlocks.length}
-						/>
-
-						<WcbTestimonialsPanelCarousel
+						<WcbSlidersPanelCarousel
 							onToggle={() => handleTogglePanel("General", "Carousel")}
-							initialOpen={tabGeneralIsPanelOpen === "Carousel"}
+							initialOpen={
+								tabGeneralIsPanelOpen === "Carousel"
+							}
 							opened={tabGeneralIsPanelOpen === "Carousel" || undefined}
 							setAttr__={(data) => {
 								setAttributes({
@@ -403,6 +379,15 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							}}
 							panelData={style_content}
 						/>
+						<WcbTestimonialsPanel_StyleBackground
+							onToggle={() => handleTogglePanel("Styles", "_StyleBackground")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleBackground"}
+							opened={tabStylesIsPanelOpen === "_StyleBackground" || undefined}
+							setAttr__={(data) => {
+								setAttributes({ style_backgroundAndBorder: data });
+							}}
+							panelData={style_backgroundAndBorder}
+						/>
 						<WcbTestimonialsPanel_StyleCompany
 							onToggle={() => handleTogglePanel("Styles", "_StyleCompany")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleCompany"}
@@ -412,15 +397,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							}}
 							panelData={style_company}
 						/>
-						<WcbTestimonialsPanel_StyleImage
-							onToggle={() => handleTogglePanel("Styles", "_StyleImage")}
-							initialOpen={tabStylesIsPanelOpen === "_StyleImage"}
-							opened={tabStylesIsPanelOpen === "_StyleImage" || undefined}
-							setAttr__={(data) => {
-								setAttributes({ style_image: data });
-							}}
-							panelData={style_image}
-						/>
 						<WcbTestimonialsPanel_StyleArrowDots
 							onToggle={() => handleTogglePanel("Styles", "_StyleArrowDots")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleArrowDots"}
@@ -429,15 +405,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								setAttributes({ style_arrowAndDots: data });
 							}}
 							panelData={style_arrowAndDots}
-						/>
-						<WcbTestimonialsPanel_StyleBackground
-							onToggle={() => handleTogglePanel("Styles", "_StyleBackground")}
-							initialOpen={tabStylesIsPanelOpen === "_StyleBackground"}
-							opened={tabStylesIsPanelOpen === "_StyleBackground" || undefined}
-							setAttr__={(data) => {
-								setAttributes({ style_backgroundAndBorder: data });
-							}}
-							panelData={style_backgroundAndBorder}
 						/>
 						<WcbTestimonialsPanel_StyleDimension
 							onToggle={() => handleTogglePanel("Styles", "_StyleDimension")}
@@ -480,7 +447,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 	// Memoized child component to prevent multiple renders
 	const MemoizedChildBlock = useMemo(() => {
-		return React.memo(({ block, isSelected, onSelect}: any) => {
+		return React.memo(({ block, isSelected, onSelect, index}: any) => {
 			const blockType = wp.blocks?.getBlockType?.(block.name);
 			const BlockEdit = blockType?.edit;
 			
@@ -505,6 +472,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 										}}
 										clientId={block.clientId}
 										isSelected={isSelected}
+										index={index} // Pass index to child for unique identification
 									/>
 								</div>
 							</div>
@@ -568,12 +536,13 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					setSelectedChildId(null);
 				}}
 			>
-			{innerBlocks.map((block: any) =>
+			{innerBlocks.map((block: any, index: number) =>
 				<MemoizedChildBlock
 					key={block.clientId}
 					block={block}
 					isSelected={!isParentSelected && (selectedChildId != null && selectedChildId === block.clientId)}
 					onSelect={handleChildSelect}
+					index={index + 1} // Pass index to child for unique identification
 				/>
 			)}
 			</Slider>
