@@ -17,7 +17,7 @@ export interface WCB_SLIDER_PANEL_IMAGE {
 	image: MediaUploadData;
 	imageSize: string;
 	isShowImage: boolean;
-	imagePosition: "top" | "left" | "bottom" | "right";
+	imagePosition: "above-title" | "blow-title" | "left" | "bottom" | "right";
 	stackOn: "none" | "tablet" | "mobile";
 	imageAlignSelf: "flex-start" | "center" | "flex-end";
 }
@@ -28,7 +28,7 @@ export const WCB_SLIDER_PANEL_IMAGE_DEMO: WCB_SLIDER_PANEL_IMAGE = {
 	image: INIT_IMAGE_DATA_UPLOAD_DEMO,
 	imageSize: "thumbnail",
 	isShowImage: true,
-	imagePosition: "top",
+	imagePosition: "above-title",
 	stackOn: "none",
 	imageAlignSelf: "center",
 };
@@ -56,7 +56,6 @@ const WcbSliderPanelImage: FC<Props> = ({
 		imageAlignSelf,
 	} = panelData;
 	//
-	const { imageSizeOptions } = useGetImageSizeOptions();
 
 	const renderSelectImage = () => {
 		if (!isShowImage) {
@@ -91,17 +90,19 @@ const WcbSliderPanelImage: FC<Props> = ({
 	};
 
 	const renderSettingsImage = () => {
-		const POSTION_PLANS: MyRadioItem<WCB_SLIDER_PANEL_IMAGE["imagePosition"]>[] =[
-			{ name: "top", icon: "Top" },
-			{ name: "left", icon: "Left" },
-			{ name: "right", icon: "Right" },
-			{ name: "bottom", icon: "Bottom" },
+		const IMAGE_SIZE_OPTIONS = [
+			{ label: "Thumbnail", value: "thumbnail" },
+			{ label: "Full", value: "full" },
 		];
-		const STACKON_PLANS: MyRadioItem<WCB_SLIDER_PANEL_IMAGE["stackOn"]>[] = [
-			{ name: "none", icon: "None" },
-			{ name: "tablet", icon: "Tablet" },
-			{ name: "mobile", icon: "Mobile" },
+
+		const POSITION_OPTIONS = [
+			{ label: "Above Title", value: "above-title" },
+			{ label: "Below Title", value: "blow-title" },
+			{ label: "Left", value: "left" },
+			{ label: "Right", value: "right" },
+			{ label: "Bottom", value: "bottom" },
 		];
+
 		const ALIGNSELF_PLANS: MyRadioItem<
 			WCB_SLIDER_PANEL_IMAGE["imageAlignSelf"]
 		>[] = [
@@ -124,13 +125,13 @@ const WcbSliderPanelImage: FC<Props> = ({
 					<>
 						<MySelect
 							value={imageSize}
-							options={imageSizeOptions}
+							options={IMAGE_SIZE_OPTIONS}
 							label={__("Image size", "wcb")}
 							onChange={(size) => {
 								setAttr__({ ...panelData, imageSize: size });
 							}}
 						/>
-						<MyRadioGroup
+						<MySelect
 							label="Position"
 							onChange={(selected) =>
 								setAttr__({
@@ -139,23 +140,10 @@ const WcbSliderPanelImage: FC<Props> = ({
 								})
 							}
 							value={imagePosition}
-							plans={POSTION_PLANS}
-							hasResponsive={false}
+							options={POSITION_OPTIONS}
 						/>
 						{(imagePosition === "left" || imagePosition === "right") && (
 							<>
-								<MyRadioGroup
-									label="Stack on"
-									onChange={(selected) =>
-										setAttr__({
-											...panelData,
-											stackOn: selected as any,
-										})
-									}
-									value={stackOn}
-									plans={STACKON_PLANS}
-									hasResponsive={false}
-								/>
 								<MyRadioGroup
 									label="Image align self"
 									onChange={(selected) =>

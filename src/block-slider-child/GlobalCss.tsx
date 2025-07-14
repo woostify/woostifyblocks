@@ -1,101 +1,215 @@
+import { Global, CSSObject } from "@emotion/react";
 import React, { FC } from "react";
-import {
-	WCB_SLIDER_PANEL_STYLE_NAME,
-} from "../block-slider/WcbSliderPanel_StyleName";
-import {
-	WCB_SLIDER_PANEL_STYLE_COMPANY,
-} from "../block-slider/WcbSliderPanel_StyleCompany";
-import {
-	WCB_SLIDER_PANEL_IMAGE,
-} from "../block-slider-child/WcbSliderPanel_StyleImage";
-import {
-	WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER,
-} from "../block-slider/WcbSliderPanel_StyleBackground";
+import { getAdvanveDivWrapStyles } from "../block-container/getAdvanveStyles";
+import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
+import getSingleDimensionStyles from "../utils/getSingleDimensionStyles";
+import getTypographyStyles from "../utils/getTypographyStyles";
+import getBorderRadiusStyles from "../utils/getBorderRadiusStyles";
+import getBorderStyles from "../utils/getBorderStyles";
+import getStyleObjectFromResponsiveAttr from "../utils/getStyleObjectFromResponsiveAttr";
+import getStyleBackground from "../utils/getStyleBackground";
+import { WcbAttrsForSave } from "./Save";
 
-interface Props {
-	uniqueId: string;
-	style_name?: WCB_SLIDER_PANEL_STYLE_NAME;
-	style_content?: WCB_SLIDER_PANEL_STYLE_NAME; // reusing name styles for content
-	style_company?: WCB_SLIDER_PANEL_STYLE_COMPANY;
-	style_image?: WCB_SLIDER_PANEL_IMAGE;
-	style_backgroundAndBorder?: WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER;
-}
+interface Props extends WcbAttrsForSave {}
 
-const GlobalCss: FC<Props> = ({
-	uniqueId,
-	style_name,
-	style_content,
-	style_company,
-	style_image,
-}) => {
-	// Generate basic CSS styles
-	let css = '';
+const GlobalCss: FC<Props> = (attrs) => {
+	const {
+		uniqueId,
+		// ATTRS OF BLOCK
+		style_backgroundAndBorder,
+		style_company,
+		style_content,
+		style_dimension,
+		style_name,
+		style_image,
+		//
+		advance_responsiveCondition,
+		advance_zIndex,
+		advance_motionEffect,
+	} = attrs;
 
-	// Base star styles
-	css += `
-		.${uniqueId} .wcb-star {
-			color: #fbbf24;
-			font-size: 1rem;
-		}
-		.${uniqueId} .wcb-star:not(.active) {
-			color: #d1d5db;
-		}
-		.${uniqueId} .wcb-slider-child__rating {
-			margin-bottom: 1rem;
-		}
-	`;
+	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
+	const ITEM_CLASSNAME = `${WRAP_CLASSNAME} .wcb-slider-child__item`;
+	const ITEM_NAME = `${WRAP_CLASSNAME} .wcb-slider-child__name`;
+	const ITEM_CONTENT = `${WRAP_CLASSNAME} .wcb-slider-child__content`;
+	const ITEM_COMPANY = `${WRAP_CLASSNAME} .wcb-slider-child__company`;
+	const ITEM_IMAGE = `${WRAP_CLASSNAME} .wcb-slider-child__image`;
 
-	// Name styles
-	if (style_name) {
-		const { textColor, typography } = style_name;
-		css += `
-			.${uniqueId} .wcb-slider-child__name {
-				${textColor ? `color: ${textColor};` : ''}
-				${typography?.appearance?.style?.fontWeight ? `font-weight: ${typography.appearance.style.fontWeight};` : ''}
-				${typography?.appearance?.style?.fontSize ? `font-size: ${typography.appearance.style.fontSize}px;` : ''}
-				margin-bottom: 0.25rem;
-			}
-		`;
+	// ------------------- WRAP DIV
+	const getDivWrapStyles = (): CSSObject[] => {
+		return [
+			// Basic styling for the slider child item
+			{
+				[ITEM_CLASSNAME]: {
+					display: "flex",
+					flexDirection: "column",
+				},
+			},
+		];
+	};
+
+	if (!uniqueId) {
+		return null;
 	}
 
-	// Content styles
-	if (style_content) {
-		const { textColor, typography } = style_content;
-		css += `
-			.${uniqueId} .wcb-slider-child__content {
-				${textColor ? `color: ${textColor};` : ''}
-				${typography?.appearance?.style?.fontWeight ? `font-weight: ${typography.appearance.style.fontWeight};` : ''}
-				${typography?.appearance?.style?.fontSize ? `font-size: ${typography.appearance.style.fontSize}px;` : ''}
-				margin-bottom: 1rem;
-			}
-		`;
-	}
+	return (
+		<>
+			<Global styles={getDivWrapStyles()} />
 
-	// Company styles
-	if (style_company) {
-		const { textColor, typography } = style_company;
-		css += `
-			.${uniqueId} .wcb-slider-child__company {
-				${textColor ? `color: ${textColor};` : 'color: #6b7280;'}
-				${typography?.appearance?.style?.fontWeight ? `font-weight: ${typography.appearance.style.fontWeight};` : ''}
-				${typography?.appearance?.style?.fontSize ? `font-size: ${typography.appearance.style.fontSize}px;` : ''}
-			}
-		`;
-	}
+			{/* ITEM NAME  */}
+			{style_name && (
+				<Global
+					styles={[
+						getTypographyStyles({
+							typography: style_name.typography,
+							className: ITEM_NAME,
+						}),
+						getSingleDimensionStyles({
+							value: style_name.marginBottom,
+							className: ITEM_NAME,
+							prefix: "marginBottom",
+						}),
+						{
+							[ITEM_NAME]: {
+								color: style_name.textColor,
+							},
+						},
+					]}
+				/>
+			)}
 
-	// Image styles
-	if (style_image) {
-		css += `
-			.${uniqueId} .wcb-slider-child__item-image img {
-				width: 60px;
-				height: 60px;
-				border-radius: 50%;
-				object-fit: cover;
-			}
-		`;
-	}
+			{/* ITEM CONTENT  */}
+			{style_content && (
+				<Global
+					styles={[
+						getTypographyStyles({
+							typography: style_content.typography,
+							className: ITEM_CONTENT,
+						}),
+						getSingleDimensionStyles({
+							value: style_content.marginBottom,
+							className: ITEM_CONTENT,
+							prefix: "marginBottom",
+						}),
+						{
+							[ITEM_CONTENT]: {
+								color: style_content.textColor,
+							},
+						},
+					]}
+				/>
+			)}
 
-	return css ? <style>{css}</style> : null;
+			{/* ITEM COMPANY  */}
+			{style_company && (
+				<Global
+					styles={[
+						getTypographyStyles({
+							typography: style_company.typography,
+							className: ITEM_COMPANY,
+						}),
+						{
+							[ITEM_COMPANY]: {
+								color: style_company.textColor,
+							},
+						},
+					]}
+				/>
+			)}
+
+			{/* ITEM WRAP  */}
+			{style_backgroundAndBorder && (
+				<Global
+					styles={[
+						getBorderStyles({
+							border: style_backgroundAndBorder.border,
+							className: ITEM_CLASSNAME,
+							isWithRadius: true,
+						}),
+						getStyleBackground({
+							className: `${ITEM_CLASSNAME} .wcb-slider-child__item-background`,
+							styles_background: style_backgroundAndBorder.background,
+						}),
+					]}
+				/>
+			)}
+
+			{/* PADDING STYLES */}
+			{style_dimension && (
+				<Global
+					styles={[
+						getPaddingMarginStyles({
+							className: `${WRAP_CLASSNAME} .wcb-slider-child__item-inner`,
+							padding: style_dimension.padding,
+						}),
+					]}
+				/>
+			)}
+
+			{/* IMAGE STYLES */}
+			{ style_image && style_image.isShowImage && style_image?.image?.mediaId && (
+				style_image.imagePosition === "above-title" || 
+				style_image.imagePosition === "blow-title" || 
+				style_image.imagePosition === "bottom") ? (
+					<Global
+						styles={[
+							{
+								[`${WRAP_CLASSNAME} .wcb-slider-child__content-image`]:
+									{
+										display: "flex",
+										flexDirection: "column",
+										alignItems: "center",
+								},
+								[`${WRAP_CLASSNAME} .wcb-slider-child__image`]:
+									{
+										alignSelf: style_image.imageAlignSelf,
+										width: style_image.imageSize === "thumbnail" ? "100px" : "100%",
+										height: style_image.imageSize === "thumbnail" ? "100px" : "100%",
+										objectFit: "cover",
+										margin: "auto",
+									},
+							},
+						]}
+					/>
+			) : null}
+
+			{ style_image && style_image.isShowImage && style_image?.image?.mediaId && (
+				style_image.imagePosition === "left" || 
+				style_image.imagePosition === "right") ? (
+					<Global
+						styles={[
+							{
+								[`${WRAP_CLASSNAME} .wcb-slider-child__item-wrap-inner`]:
+									{
+										display: "flex",
+										flexDirection: "row",
+										gap: "10px",
+									},
+
+								[`${WRAP_CLASSNAME} .wcb-slider-child__image`]:
+									{
+										display: "block",
+										width: style_image.imageSize === "thumbnail" ? "100px" : "100%",
+										height: style_image.imageSize === "thumbnail" ? "100px" : "100%",
+										objectFit: "cover",
+									},
+							},
+						]}
+					/>
+			) : null}
+
+			{/* ADVANCE  */}
+			<Global
+				styles={getAdvanveDivWrapStyles({
+					advance_motionEffect,
+					advance_responsiveCondition,
+					advance_zIndex,
+					className: WRAP_CLASSNAME,
+					defaultDisplay: "block",
+				})}
+			/>
+		</>
+	);
 };
 
-export default GlobalCss; 
+export default React.memo(GlobalCss);

@@ -10389,19 +10389,19 @@ const getAdvanveDivWrapStyles = ({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   AdvancePanelCommon: () => (/* reexport safe */ _components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_14__["default"]),
-/* harmony export */   WCB_SLIDER_PANEL_IMAGE_DEMO: () => (/* reexport safe */ _WcbSliderPanel_StyleImage__WEBPACK_IMPORTED_MODULE_11__.WCB_SLIDER_PANEL_IMAGE_DEMO),
-/* harmony export */   WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO: () => (/* reexport safe */ _WcbSliderPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_12__.WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO),
-/* harmony export */   WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO: () => (/* reexport safe */ _WcbSliderPanel_StyleCompany__WEBPACK_IMPORTED_MODULE_10__.WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO),
-/* harmony export */   WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO: () => (/* reexport safe */ _WcbSliderPanel_StyleContent__WEBPACK_IMPORTED_MODULE_9__.WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO),
-/* harmony export */   WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO: () => (/* reexport safe */ _WcbSliderPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_13__.WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO),
-/* harmony export */   WCB_SLIDER_PANEL_STYLE_NAME_DEMO: () => (/* reexport safe */ _WcbSliderPanel_StyleName__WEBPACK_IMPORTED_MODULE_8__.WCB_SLIDER_PANEL_STYLE_NAME_DEMO),
-/* harmony export */   WcbTestimonialsPanel_StyleBackground: () => (/* reexport safe */ _WcbSliderPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_12__["default"]),
-/* harmony export */   WcbTestimonialsPanel_StyleCompany: () => (/* reexport safe */ _WcbSliderPanel_StyleCompany__WEBPACK_IMPORTED_MODULE_10__["default"]),
-/* harmony export */   WcbTestimonialsPanel_StyleContent: () => (/* reexport safe */ _WcbSliderPanel_StyleContent__WEBPACK_IMPORTED_MODULE_9__["default"]),
-/* harmony export */   WcbTestimonialsPanel_StyleDimension: () => (/* reexport safe */ _WcbSliderPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_13__["default"]),
-/* harmony export */   WcbTestimonialsPanel_StyleImage: () => (/* reexport safe */ _WcbSliderPanel_StyleImage__WEBPACK_IMPORTED_MODULE_11__["default"]),
-/* harmony export */   WcbTestimonialsPanel_StyleName: () => (/* reexport safe */ _WcbSliderPanel_StyleName__WEBPACK_IMPORTED_MODULE_8__["default"]),
+/* harmony export */   AdvancePanelCommon: () => (/* reexport safe */ _components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_13__["default"]),
+/* harmony export */   WCB_SLIDER_PANEL_IMAGE_DEMO: () => (/* reexport safe */ _WcbSliderPanel_StyleImage__WEBPACK_IMPORTED_MODULE_10__.WCB_SLIDER_PANEL_IMAGE_DEMO),
+/* harmony export */   WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO: () => (/* reexport safe */ _WcbSliderPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_11__.WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO),
+/* harmony export */   WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO: () => (/* reexport safe */ _WcbSliderPanel_StyleCompany__WEBPACK_IMPORTED_MODULE_9__.WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO),
+/* harmony export */   WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO: () => (/* reexport safe */ _WcbSliderPanel_StyleContent__WEBPACK_IMPORTED_MODULE_8__.WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO),
+/* harmony export */   WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO: () => (/* reexport safe */ _WcbSliderPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_12__.WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO),
+/* harmony export */   WCB_SLIDER_PANEL_STYLE_NAME_DEMO: () => (/* reexport safe */ _WcbSliderPanel_StyleName__WEBPACK_IMPORTED_MODULE_7__.WCB_SLIDER_PANEL_STYLE_NAME_DEMO),
+/* harmony export */   WcbTestimonialsPanel_StyleBackground: () => (/* reexport safe */ _WcbSliderPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_11__["default"]),
+/* harmony export */   WcbTestimonialsPanel_StyleCompany: () => (/* reexport safe */ _WcbSliderPanel_StyleCompany__WEBPACK_IMPORTED_MODULE_9__["default"]),
+/* harmony export */   WcbTestimonialsPanel_StyleContent: () => (/* reexport safe */ _WcbSliderPanel_StyleContent__WEBPACK_IMPORTED_MODULE_8__["default"]),
+/* harmony export */   WcbTestimonialsPanel_StyleDimension: () => (/* reexport safe */ _WcbSliderPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_12__["default"]),
+/* harmony export */   WcbTestimonialsPanel_StyleImage: () => (/* reexport safe */ _WcbSliderPanel_StyleImage__WEBPACK_IMPORTED_MODULE_10__["default"]),
+/* harmony export */   WcbTestimonialsPanel_StyleName: () => (/* reexport safe */ _WcbSliderPanel_StyleName__WEBPACK_IMPORTED_MODULE_7__["default"]),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
@@ -10413,16 +10413,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/block-slider-child/editor.scss");
 /* harmony import */ var _components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/MyCacheProvider */ "./src/components/MyCacheProvider.tsx");
 /* harmony import */ var _utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/converUniqueIdToAnphaKey */ "./src/utils/converUniqueIdToAnphaKey.ts");
-/* harmony import */ var _components_controls_MyMediaUploadCheck__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/controls/MyMediaUploadCheck */ "./src/components/controls/MyMediaUploadCheck.tsx");
-/* harmony import */ var _GlobalCss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./GlobalCss */ "./src/block-slider-child/GlobalCss.tsx");
-/* harmony import */ var _WcbSliderPanel_StyleName__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WcbSliderPanel_StyleName */ "./src/block-slider-child/WcbSliderPanel_StyleName.tsx");
-/* harmony import */ var _WcbSliderPanel_StyleContent__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./WcbSliderPanel_StyleContent */ "./src/block-slider-child/WcbSliderPanel_StyleContent.tsx");
-/* harmony import */ var _WcbSliderPanel_StyleCompany__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./WcbSliderPanel_StyleCompany */ "./src/block-slider-child/WcbSliderPanel_StyleCompany.tsx");
-/* harmony import */ var _WcbSliderPanel_StyleImage__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./WcbSliderPanel_StyleImage */ "./src/block-slider-child/WcbSliderPanel_StyleImage.tsx");
-/* harmony import */ var _WcbSliderPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./WcbSliderPanel_StyleBackground */ "./src/block-slider-child/WcbSliderPanel_StyleBackground.tsx");
-/* harmony import */ var _WcbSliderPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./WcbSliderPanel_StyleDimension */ "./src/block-slider-child/WcbSliderPanel_StyleDimension.tsx");
-/* harmony import */ var _components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/AdvancePanelCommon */ "./src/components/AdvancePanelCommon.tsx");
-
+/* harmony import */ var _GlobalCss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./GlobalCss */ "./src/block-slider-child/GlobalCss.tsx");
+/* harmony import */ var _WcbSliderPanel_StyleName__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./WcbSliderPanel_StyleName */ "./src/block-slider-child/WcbSliderPanel_StyleName.tsx");
+/* harmony import */ var _WcbSliderPanel_StyleContent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WcbSliderPanel_StyleContent */ "./src/block-slider-child/WcbSliderPanel_StyleContent.tsx");
+/* harmony import */ var _WcbSliderPanel_StyleCompany__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./WcbSliderPanel_StyleCompany */ "./src/block-slider-child/WcbSliderPanel_StyleCompany.tsx");
+/* harmony import */ var _WcbSliderPanel_StyleImage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./WcbSliderPanel_StyleImage */ "./src/block-slider-child/WcbSliderPanel_StyleImage.tsx");
+/* harmony import */ var _WcbSliderPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./WcbSliderPanel_StyleBackground */ "./src/block-slider-child/WcbSliderPanel_StyleBackground.tsx");
+/* harmony import */ var _WcbSliderPanel_StyleDimension__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./WcbSliderPanel_StyleDimension */ "./src/block-slider-child/WcbSliderPanel_StyleDimension.tsx");
+/* harmony import */ var _components_AdvancePanelCommon__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/AdvancePanelCommon */ "./src/components/AdvancePanelCommon.tsx");
 
 
 
@@ -10455,7 +10453,8 @@ const Edit = props => {
     content,
     name,
     callToAction,
-    image
+    image,
+    style_image
   } = attributes;
 
   //  COMMON HOOKS
@@ -10468,13 +10467,22 @@ const Edit = props => {
       uniqueId: (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_5__["default"])(UNIQUE_ID)
     });
   }, [UNIQUE_ID]);
+  const renderImage = () => {
+    return style_image && style_image.isShowImage && style_image.image?.mediaId ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "wcb-slider-child__content-image"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      className: "wcb-slider-child__image",
+      src: style_image.image.mediaUrl,
+      alt: ""
+    })) : null;
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_4__["default"], {
     uniqueKey: clientId
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...wrapBlockProps,
     className: `${wrapBlockProps?.className} wcb-slider-child__wrap ${uniqueId}`,
     "data-uniqueid": uniqueId
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_GlobalCss__WEBPACK_IMPORTED_MODULE_6__["default"], {
     ...attributes
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wcb-slider-child__item"
@@ -10482,31 +10490,18 @@ const Edit = props => {
     className: "wcb-slider-child__item-background"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wcb-slider-child__item-wrap-inner"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, style_image && style_image.imagePosition === "left" && renderImage(), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wcb-slider-child__item-inner"
-  }, image?.mediaUrl && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wcb-slider-child__item-image"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyMediaUploadCheck__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    onChange: data => {
-      const newImage = data?.[0] || {
-        url: "",
-        alt: ""
-      };
-      setAttributes({
-        image: newImage
-      });
-    },
-    imageData: image
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, style_image && style_image.imagePosition === "above-title" && renderImage(), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wcb-slider-child__name"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "h4",
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enter name...", "wcb"),
-    value: `${name}` + " " + `${index}`,
+    value: name,
     onChange: value => setAttributes({
       name: value
     })
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  })), style_image && style_image.imagePosition === "blow-title" && renderImage(), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wcb-slider-child__content"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "p",
@@ -10526,7 +10521,7 @@ const Edit = props => {
     onChange: value => setAttributes({
       callToAction: value
     })
-  })))))))));
+  }))), style_image && style_image.imagePosition === "bottom" && renderImage()), style_image && style_image.imagePosition === "right" && renderImage())))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
 
@@ -10545,93 +10540,149 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
+/* harmony import */ var _block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../block-container/getAdvanveStyles */ "./src/block-container/getAdvanveStyles.ts");
+/* harmony import */ var _utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/getPaddingMarginStyles */ "./src/utils/getPaddingMarginStyles.ts");
+/* harmony import */ var _utils_getSingleDimensionStyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getSingleDimensionStyles */ "./src/utils/getSingleDimensionStyles.ts");
+/* harmony import */ var _utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/getTypographyStyles */ "./src/utils/getTypographyStyles.ts");
+/* harmony import */ var _utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/getBorderStyles */ "./src/utils/getBorderStyles.ts");
+/* harmony import */ var _utils_getStyleBackground__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/getStyleBackground */ "./src/utils/getStyleBackground.tsx");
 
 
-const GlobalCss = ({
-  uniqueId,
-  style_name,
-  style_content,
-  style_company,
-  style_image
-}) => {
-  // Generate basic CSS styles
-  let css = '';
 
-  // Base star styles
-  css += `
-		.${uniqueId} .wcb-star {
-			color: #fbbf24;
-			font-size: 1rem;
-		}
-		.${uniqueId} .wcb-star:not(.active) {
-			color: #d1d5db;
-		}
-		.${uniqueId} .wcb-slider-child__rating {
-			margin-bottom: 1rem;
-		}
-	`;
 
-  // Name styles
-  if (style_name) {
-    const {
-      textColor,
-      typography
-    } = style_name;
-    css += `
-			.${uniqueId} .wcb-slider-child__name {
-				${textColor ? `color: ${textColor};` : ''}
-				${typography?.appearance?.style?.fontWeight ? `font-weight: ${typography.appearance.style.fontWeight};` : ''}
-				${typography?.appearance?.style?.fontSize ? `font-size: ${typography.appearance.style.fontSize}px;` : ''}
-				margin-bottom: 0.25rem;
-			}
-		`;
+
+
+
+
+
+const GlobalCss = attrs => {
+  const {
+    uniqueId,
+    // ATTRS OF BLOCK
+    style_backgroundAndBorder,
+    style_company,
+    style_content,
+    style_dimension,
+    style_name,
+    style_image,
+    //
+    advance_responsiveCondition,
+    advance_zIndex,
+    advance_motionEffect
+  } = attrs;
+  const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
+  const ITEM_CLASSNAME = `${WRAP_CLASSNAME} .wcb-slider-child__item`;
+  const ITEM_NAME = `${WRAP_CLASSNAME} .wcb-slider-child__name`;
+  const ITEM_CONTENT = `${WRAP_CLASSNAME} .wcb-slider-child__content`;
+  const ITEM_COMPANY = `${WRAP_CLASSNAME} .wcb-slider-child__company`;
+  const ITEM_IMAGE = `${WRAP_CLASSNAME} .wcb-slider-child__image`;
+
+  // ------------------- WRAP DIV
+  const getDivWrapStyles = () => {
+    return [
+    // Basic styling for the slider child item
+    {
+      [ITEM_CLASSNAME]: {
+        display: "flex",
+        flexDirection: "column"
+      }
+    }];
+  };
+  if (!uniqueId) {
+    return null;
   }
-
-  // Content styles
-  if (style_content) {
-    const {
-      textColor,
-      typography
-    } = style_content;
-    css += `
-			.${uniqueId} .wcb-slider-child__content {
-				${textColor ? `color: ${textColor};` : ''}
-				${typography?.appearance?.style?.fontWeight ? `font-weight: ${typography.appearance.style.fontWeight};` : ''}
-				${typography?.appearance?.style?.fontSize ? `font-size: ${typography.appearance.style.fontSize}px;` : ''}
-				margin-bottom: 1rem;
-			}
-		`;
-  }
-
-  // Company styles
-  if (style_company) {
-    const {
-      textColor,
-      typography
-    } = style_company;
-    css += `
-			.${uniqueId} .wcb-slider-child__company {
-				${textColor ? `color: ${textColor};` : 'color: #6b7280;'}
-				${typography?.appearance?.style?.fontWeight ? `font-weight: ${typography.appearance.style.fontWeight};` : ''}
-				${typography?.appearance?.style?.fontSize ? `font-size: ${typography.appearance.style.fontSize}px;` : ''}
-			}
-		`;
-  }
-
-  // Image styles
-  if (style_image) {
-    css += `
-			.${uniqueId} .wcb-slider-child__item-image img {
-				width: 60px;
-				height: 60px;
-				border-radius: 50%;
-				object-fit: cover;
-			}
-		`;
-  }
-  return css ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, css) : null;
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
+    styles: getDivWrapStyles()
+  }), style_name && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
+    styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
+      typography: style_name.typography,
+      className: ITEM_NAME
+    }), (0,_utils_getSingleDimensionStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
+      value: style_name.marginBottom,
+      className: ITEM_NAME,
+      prefix: "marginBottom"
+    }), {
+      [ITEM_NAME]: {
+        color: style_name.textColor
+      }
+    }]
+  }), style_content && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
+    styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
+      typography: style_content.typography,
+      className: ITEM_CONTENT
+    }), (0,_utils_getSingleDimensionStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
+      value: style_content.marginBottom,
+      className: ITEM_CONTENT,
+      prefix: "marginBottom"
+    }), {
+      [ITEM_CONTENT]: {
+        color: style_content.textColor
+      }
+    }]
+  }), style_company && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
+    styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
+      typography: style_company.typography,
+      className: ITEM_COMPANY
+    }), {
+      [ITEM_COMPANY]: {
+        color: style_company.textColor
+      }
+    }]
+  }), style_backgroundAndBorder && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
+    styles: [(0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
+      border: style_backgroundAndBorder.border,
+      className: ITEM_CLASSNAME,
+      isWithRadius: true
+    }), (0,_utils_getStyleBackground__WEBPACK_IMPORTED_MODULE_6__["default"])({
+      className: `${ITEM_CLASSNAME} .wcb-slider-child__item-background`,
+      styles_background: style_backgroundAndBorder.background
+    })]
+  }), style_dimension && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
+    styles: [(0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_2__["default"])({
+      className: `${WRAP_CLASSNAME} .wcb-slider-child__item-inner`,
+      padding: style_dimension.padding
+    })]
+  }), style_image && style_image.isShowImage && style_image?.image?.mediaId && (style_image.imagePosition === "above-title" || style_image.imagePosition === "blow-title" || style_image.imagePosition === "bottom") ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
+    styles: [{
+      [`${WRAP_CLASSNAME} .wcb-slider-child__content-image`]: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
+      },
+      [`${WRAP_CLASSNAME} .wcb-slider-child__image`]: {
+        alignSelf: style_image.imageAlignSelf,
+        width: style_image.imageSize === "thumbnail" ? "100px" : "100%",
+        height: style_image.imageSize === "thumbnail" ? "100px" : "100%",
+        objectFit: "cover",
+        margin: "auto"
+      }
+    }]
+  }) : null, style_image && style_image.isShowImage && style_image?.image?.mediaId && (style_image.imagePosition === "left" || style_image.imagePosition === "right") ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
+    styles: [{
+      [`${WRAP_CLASSNAME} .wcb-slider-child__item-wrap-inner`]: {
+        display: "flex",
+        flexDirection: "row",
+        gap: "10px"
+      },
+      [`${WRAP_CLASSNAME} .wcb-slider-child__image`]: {
+        display: "block",
+        width: style_image.imageSize === "thumbnail" ? "100px" : "100%",
+        height: style_image.imageSize === "thumbnail" ? "100px" : "100%",
+        objectFit: "cover"
+      }
+    }]
+  }) : null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_7__.Global, {
+    styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_1__.getAdvanveDivWrapStyles)({
+      advance_motionEffect,
+      advance_responsiveCondition,
+      advance_zIndex,
+      className: WRAP_CLASSNAME,
+      defaultDisplay: "block"
+    })
+  }));
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GlobalCss);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (react__WEBPACK_IMPORTED_MODULE_0___default().memo(GlobalCss));
 
 /***/ }),
 
@@ -11004,8 +11055,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/controls/MyRadioGroup */ "./src/components/controls/MyRadioGroup.tsx");
 /* harmony import */ var _components_controls_MySelect__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/controls/MySelect */ "./src/components/controls/MySelect.tsx");
 /* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
-/* harmony import */ var _hooks_useGetImageSizeOptions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../hooks/useGetImageSizeOptions */ "./src/hooks/useGetImageSizeOptions.ts");
-
 
 
 
@@ -11021,7 +11070,7 @@ const WCB_SLIDER_PANEL_IMAGE_DEMO = {
   image: _components_controls_MyBackgroundControl_MyBackgroundControl__WEBPACK_IMPORTED_MODULE_4__.INIT_IMAGE_DATA_UPLOAD_DEMO,
   imageSize: "thumbnail",
   isShowImage: true,
-  imagePosition: "top",
+  imagePosition: "above-title",
   stackOn: "none",
   imageAlignSelf: "center"
 };
@@ -11042,9 +11091,7 @@ const WcbSliderPanelImage = ({
     imageAlignSelf
   } = panelData;
   //
-  const {
-    imageSizeOptions
-  } = (0,_hooks_useGetImageSizeOptions__WEBPACK_IMPORTED_MODULE_10__["default"])();
+
   const renderSelectImage = () => {
     if (!isShowImage) {
       return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_HelpText__WEBPACK_IMPORTED_MODULE_3__["default"], null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Please enable the "Show Image" field to select images for testimonials...', "wcb"));
@@ -11064,28 +11111,28 @@ const WcbSliderPanelImage = ({
     })));
   };
   const renderSettingsImage = () => {
-    const POSTION_PLANS = [{
-      name: "top",
-      icon: "Top"
+    const IMAGE_SIZE_OPTIONS = [{
+      label: "Thumbnail",
+      value: "thumbnail"
     }, {
-      name: "left",
-      icon: "Left"
-    }, {
-      name: "right",
-      icon: "Right"
-    }, {
-      name: "bottom",
-      icon: "Bottom"
+      label: "Full",
+      value: "full"
     }];
-    const STACKON_PLANS = [{
-      name: "none",
-      icon: "None"
+    const POSITION_OPTIONS = [{
+      label: "Above Title",
+      value: "above-title"
     }, {
-      name: "tablet",
-      icon: "Tablet"
+      label: "Below Title",
+      value: "blow-title"
     }, {
-      name: "mobile",
-      icon: "Mobile"
+      label: "Left",
+      value: "left"
+    }, {
+      label: "Right",
+      value: "right"
+    }, {
+      label: "Bottom",
+      value: "bottom"
     }];
     const ALIGNSELF_PLANS = [{
       name: "flex-start",
@@ -11108,7 +11155,7 @@ const WcbSliderPanelImage = ({
       checked: isShowImage
     }), isShowImage ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MySelect__WEBPACK_IMPORTED_MODULE_8__["default"], {
       value: imageSize,
-      options: imageSizeOptions,
+      options: IMAGE_SIZE_OPTIONS,
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Image size", "wcb"),
       onChange: size => {
         setAttr__({
@@ -11116,25 +11163,15 @@ const WcbSliderPanelImage = ({
           imageSize: size
         });
       }
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MySelect__WEBPACK_IMPORTED_MODULE_8__["default"], {
       label: "Position",
       onChange: selected => setAttr__({
         ...panelData,
         imagePosition: selected
       }),
       value: imagePosition,
-      plans: POSTION_PLANS,
-      hasResponsive: false
+      options: POSITION_OPTIONS
     }), (imagePosition === "left" || imagePosition === "right") && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: "Stack on",
-      onChange: selected => setAttr__({
-        ...panelData,
-        stackOn: selected
-      }),
-      value: stackOn,
-      plans: STACKON_PLANS,
-      hasResponsive: false
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyRadioGroup__WEBPACK_IMPORTED_MODULE_7__["default"], {
       label: "Image align self",
       onChange: selected => setAttr__({
         ...panelData,
@@ -17277,46 +17314,6 @@ const useGetDeviceType = () => {
   return deviceType;
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useGetDeviceType);
-
-/***/ }),
-
-/***/ "./src/hooks/useGetImageSizeOptions.ts":
-/*!*********************************************!*\
-  !*** ./src/hooks/useGetImageSizeOptions.ts ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ useGetImageSizeOptions)
-/* harmony export */ });
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-
-
-function useGetImageSizeOptions() {
-  const {
-    imageSizes
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_0__.useSelect)(select => {
-    const settings = select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.store).getSettings();
-    return {
-      imageSizes: settings.imageSizes
-    };
-  }, []);
-  const imageSizeOptions = imageSizes?.map(({
-    name,
-    slug
-  }) => ({
-    value: slug,
-    label: name
-  })) || [];
-  return {
-    imageSizeOptions
-  };
-}
 
 /***/ }),
 

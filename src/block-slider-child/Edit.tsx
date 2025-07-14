@@ -9,7 +9,6 @@ import { EditProps } from "../block-container/Edit";
 import "./editor.scss";
 import MyCacheProvider from "../components/MyCacheProvider";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
-import MyMediaUploadCheck from "../components/controls/MyMediaUploadCheck";
 import GlobalCss from "./GlobalCss";
 // Import style panels
 import WcbTestimonialsPanel_StyleName, { WCB_SLIDER_PANEL_STYLE_NAME_DEMO } from "./WcbSliderPanel_StyleName";
@@ -45,6 +44,7 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 		name,
 		callToAction,
 		image,
+		style_image
 	} = attributes;
 	
 	//  COMMON HOOKS
@@ -57,6 +57,18 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
+
+	const renderImage = () => {
+		return style_image && style_image.isShowImage && style_image.image?.mediaId ? (
+			<div className="wcb-slider-child__content-image">
+				<img
+					className="wcb-slider-child__image"
+					src={style_image.image.mediaUrl}
+					alt=""
+				/>
+			</div>
+		) : null;
+	};
 
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
@@ -72,30 +84,35 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 				<div className="wcb-slider-child__item">
 					<div className="wcb-slider-child__item-background">
 						<div className="wcb-slider-child__item-wrap-inner">
+							{
+								(style_image && 
+								style_image.imagePosition === "left") &&
+								renderImage()
+							}
 							<div className="wcb-slider-child__item-inner">
-
-								{/* Image */}
-								{image?.mediaUrl && (
-									<div className="wcb-slider-child__item-image">
-										<MyMediaUploadCheck
-											onChange={(data) => {
-												const newImage = data?.[0] || { url: "", alt: "" };
-												setAttributes({ image: newImage });
-											}}
-											imageData={image}
-										/>
-									</div>
-								)}
+								{/* Image */}	
+								{
+									(style_image && 
+									style_image.imagePosition === "above-title") &&
+									renderImage()
+								}
 
 								{/* Name */}
 								<div className="wcb-slider-child__name">
 									<RichText
 										tagName="h4"
 										placeholder={__("Enter name...", "wcb")}
-										value={`${name}` + " " + `${index}`}
+										value={name}
 										onChange={(value) => setAttributes({ name: value })}
 									/>
 								</div>
+
+								{/* Image */}	
+								{
+									(style_image && 
+									style_image.imagePosition === "blow-title") &&
+									renderImage()
+								}
 
 								{/* Content */}
 								<div className="wcb-slider-child__content">
@@ -118,7 +135,18 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 										/>
 									</div>
 								</div>
+								
+								{/* Image */}	
+								{(style_image &&
+									style_image.imagePosition === "bottom") &&
+									renderImage()}
+
 							</div>
+							{
+								(style_image && 
+								style_image.imagePosition === "right") &&
+								renderImage()
+							}
 						</div>
 					</div>
 				</div>

@@ -2,6 +2,8 @@ import React from "react";
 import { RichText, useBlockProps } from "@wordpress/block-editor";
 import { WcbAttrs } from "./attributes";
 
+export interface WcbAttrsForSave extends WcbAttrs {}
+
 export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const {
 		uniqueId,
