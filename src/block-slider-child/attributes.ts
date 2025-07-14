@@ -4,28 +4,22 @@ import {
 } from "../block-container/attributes";
 import { MediaUploadData } from "../components/controls/MyMediaUploadCheck";
 import { INIT_IMAGE_DATA_UPLOAD_DEMO } from "../components/controls/MyBackgroundControl/MyBackgroundControl";
-// Import style types from parent slider
+// Import style types from shared types to avoid circular dependency
 import {
 	WCB_SLIDER_PANEL_STYLE_NAME,
 	WCB_SLIDER_PANEL_STYLE_NAME_DEMO,
-} from "../block-slider/WcbSliderPanel_StyleName";
-import { WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO } from "../block-slider/WcbSliderPanel_StyleContent";
-import {
+	WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO,
 	WCB_SLIDER_PANEL_STYLE_COMPANY,
 	WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO,
-} from "../block-slider/WcbSliderPanel_StyleCompany";
-import {
-	WCB_SLIDER_PANEL_STYLE_IMAGE,
-	WCB_SLIDER_PANEL_STYLE_IMAGE_DEMO,
-} from "../block-slider/WcbSliderPanel_StyleImage";
-import {
 	WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER,
 	WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
-} from "../block-slider/WcbSliderPanel_StyleBackground";
-import {
 	WCB_SLIDER_PANEL_STYLE_DIMENSION,
 	WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO,
-} from "../block-slider/WcbSliderPanel_StyleDimension";
+} from "../block-slider/types";
+import {
+	WCB_SLIDER_PANEL_IMAGE,
+	WCB_SLIDER_PANEL_IMAGE_DEMO,
+} from "./WcbSliderPanel_StyleImage";
 import {
 	MY_MOTION_EFFECT_DEMO,
 	MyMotionEffectData,
@@ -50,9 +44,9 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	//
 	// Style attributes that can be inherited from parent
 	style_name?: WCB_SLIDER_PANEL_STYLE_NAME;
-	style_content?: WCB_SLIDER_PANEL_STYLE_NAME;
+	style_content?: WCB_SLIDER_PANEL_STYLE_NAME; // Keep as NAME type for now to match parent
 	style_company?: WCB_SLIDER_PANEL_STYLE_COMPANY;
-	style_image?: WCB_SLIDER_PANEL_STYLE_IMAGE;
+	style_image?: WCB_SLIDER_PANEL_IMAGE;
 	style_backgroundAndBorder?: WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER;
 	style_dimension: WCB_SLIDER_PANEL_STYLE_DIMENSION;
 	// Advance attributes
@@ -86,9 +80,15 @@ const blockAttrs: AttrsGenericType<WcbAttrs> = {
 		selector: ".wcb-slider-child__company",
 		default: "Read More",
 	},
+
+	// Image and rating attributes
 	image: {
 		type: "object",
 		default: INIT_IMAGE_DATA_UPLOAD_DEMO,
+	},
+	rating: {
+		type: "number",
+		default: 5,
 	},
 
 	// Style attributes (optional - only used when not inheriting from parent)
@@ -109,7 +109,7 @@ const blockAttrs: AttrsGenericType<WcbAttrs> = {
 
 	style_image: {
 		type: "object",
-		default: WCB_SLIDER_PANEL_STYLE_IMAGE_DEMO,
+		default: WCB_SLIDER_PANEL_IMAGE_DEMO,
 	},
 
 	style_backgroundAndBorder: {

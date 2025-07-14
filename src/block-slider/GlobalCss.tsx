@@ -22,7 +22,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 		style_company,
 		style_content,
 		style_dimension,
-		style_image,
 		style_name,
 		//
 		advance_responsiveCondition,
@@ -108,31 +107,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 					{
 						[ITEM_COMPANY]: {
 							color: style_company.textColor,
-						},
-					},
-				]}
-			/>
-
-			{/* ITEM IMAGE  */}
-			<Global
-				styles={[
-					getPaddingMarginStyles({
-						padding: style_image.padding,
-						className: ITEM_IMAGE,
-					}),
-					getBorderRadiusStyles({
-						radius: style_image.radius,
-						className: `${ITEM_IMAGE} img`,
-					}),
-					getStyleObjectFromResponsiveAttr({
-						className: `${ITEM_IMAGE} img`,
-						prefix: "height",
-						prefix_2: "width",
-						value: style_image.imageSize,
-					}),
-					{
-						[`${ITEM_IMAGE} img`]: {
-							objectFit: style_image.objectFit,
 						},
 					},
 				]}

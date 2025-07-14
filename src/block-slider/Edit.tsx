@@ -17,7 +17,6 @@ import WcbSlidersPanelCarousel from "./WcbSliderPanelCarousel";
 import WcbTestimonialsPanel_StyleName from "./WcbSliderPanel_StyleName";
 import WcbTestimonialsPanel_StyleContent from "./WcbSliderPanel_StyleContent";
 import WcbTestimonialsPanel_StyleCompany from "./WcbSliderPanel_StyleCompany";
-import WcbTestimonialsPanel_StyleImage from "./WcbSliderPanel_StyleImage";
 import WcbTestimonialsPanel_StyleArrowDots from "./WcbSliderPanel_StyleArrowDots";
 import WcbTestimonialsPanel_StyleBackground from "./WcbSliderPanel_StyleBackground";
 import WcbTestimonialsPanel_StyleDimension from "./WcbSliderPanel_StyleDimension";
@@ -30,21 +29,25 @@ import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
-// Import child panel components
+// Import child panel components using shared types to avoid circular dependency
 import {
 	WcbTestimonialsPanel_StyleName as ChildStyleName,
-	WCB_SLIDER_PANEL_STYLE_NAME_DEMO,
 	WcbTestimonialsPanel_StyleContent as ChildStyleContent,
-	WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO,
 	WcbTestimonialsPanel_StyleCompany as ChildStyleCompany,
-	WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO,
 	WcbTestimonialsPanel_StyleImage as ChildStyleImage,
-	WCB_SLIDER_PANEL_STYLE_IMAGE_DEMO,
 	WcbTestimonialsPanel_StyleBackground as ChildStyleBackground,
-	WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
 	WcbTestimonialsPanel_StyleDimension as ChildStyleDimension,
-	WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO,
 } from "../block-slider-child/Edit";
+
+// Import demo constants from shared types
+import {
+	WCB_SLIDER_PANEL_STYLE_NAME_DEMO,
+	WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO,
+	WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO,
+	WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
+	WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO,
+} from "./types";
+import { WCB_SLIDER_PANEL_IMAGE_DEMO } from "../block-slider-child/WcbSliderPanel_StyleImage";
 
 // Arrow components for slider
 function SampleNextArrow(props: any) {
@@ -71,7 +74,7 @@ function SampleNextArrow(props: any) {
 	);
 }
 
-function SamplePrevArrow(props) {
+function SamplePrevArrow(props: any) {
 	const { className, style, onClick } = props;
 	return (
 		<div
@@ -102,12 +105,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_general,
-		general_images,
 		general_carousel,
 		style_name,
 		style_content,
 		style_company,
-		style_image,
 		style_arrowAndDots,
 		style_backgroundAndBorder,
 		style_dimension,
@@ -199,19 +200,19 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					return (
 						<>
 							<ChildStyleImage
-								onToggle={() => childPanelInfo.handleTogglePanel("Styles", "_StyleImage")}
-								initialOpen={
-									childPanelInfo.tabStylesIsPanelOpen === "_StyleImage" ||
+								onToggle={() => handleTogglePanel("General", "PanelImages")}
+								initialOpen={tabGeneralIsPanelOpen === "PanelImages" ||
 									childPanelInfo.tabStylesIsPanelOpen === "first"
 								}
-								opened={childPanelInfo.tabStylesIsPanelOpen === "_StyleImage" || undefined}
+								opened={tabGeneralIsPanelOpen === "PanelImages" || undefined}
+								//
 								setAttr__={(data) => {
 									wp.data.dispatch("core/block-editor").updateBlockAttributes(
 										selectedChildBlock.clientId,
 										{ style_image: data }
 									);
 								}}
-								panelData={childAttrs.style_image || WCB_SLIDER_PANEL_STYLE_IMAGE_DEMO}
+								panelData={childAttrs.style_image || WCB_SLIDER_PANEL_IMAGE_DEMO}
 							/>
 							
 							<ChildStyleContent
@@ -564,12 +565,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			general_general,
 			style_dimension,
 			general_carousel,
-			general_images,
 			style_arrowAndDots,
 			style_backgroundAndBorder,
 			style_company,
 			style_content,
-			style_image,
 			style_name,
 			advance_motionEffect,
 		};
@@ -580,12 +579,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		general_general,
 		style_dimension,
 		general_carousel,
-		general_images,
 		style_arrowAndDots,
 		style_backgroundAndBorder,
 		style_company,
 		style_content,
-		style_image,
 		style_name,
 		advance_motionEffect,
 	]);

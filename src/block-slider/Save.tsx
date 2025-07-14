@@ -13,14 +13,12 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		advance_zIndex,
 		general_general,
 		general_carousel,
-		general_images,
 		style_arrowAndDots,
 		style_backgroundAndBorder,
 		style_dimension,
 		style_name,
 		style_content,
 		style_company,
-		style_image,
 		advance_motionEffect,
 	} = attributes;
 
@@ -30,14 +28,12 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		advance_zIndex,
 		general_general,
 		general_carousel,
-		general_images,
 		style_arrowAndDots,
 		style_backgroundAndBorder,
 		style_dimension,
 		style_name,
 		style_content,
 		style_company,
-		style_image,
 		advance_motionEffect,
 	};
 

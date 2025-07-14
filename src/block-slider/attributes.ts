@@ -23,10 +23,7 @@ import {
 	WCB_SLIDER_PANEL_GENERAL,
 	WCB_SLIDER_PANEL_GENERAL_DEMO,
 } from "./WcbSliderPanelGeneral";
-import {
-	WCB_SLIDER_PANEL_IMAGES,
-	WCB_SLIDER_PANEL_IMAGES_DEMO,
-} from "./WcbSliderPanelImages";
+
 import {
 	WCB_SLIDER_PANEL_STYLE_ARROW_DOTS,
 	WCB_SLIDER_PANEL_STYLE_ARROW_DOTS_DEMO,
@@ -39,15 +36,15 @@ import {
 	WCB_SLIDER_PANEL_STYLE_COMPANY,
 	WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO,
 } from "./WcbSliderPanel_StyleCompany";
-import { WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO } from "./WcbSliderPanel_StyleContent";
+import { 
+	WCB_SLIDER_PANEL_STYLE_CONTENT,
+	WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO 
+} from "./WcbSliderPanel_StyleContent";
 import {
 	WCB_SLIDER_PANEL_STYLE_DIMENSION,
 	WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO,
 } from "./WcbSliderPanel_StyleDimension";
-import {
-	WCB_SLIDER_PANEL_STYLE_IMAGE,
-	WCB_SLIDER_PANEL_STYLE_IMAGE_DEMO,
-} from "./WcbSliderPanel_StyleImage";
+
 import {
 	WCB_SLIDER_PANEL_STYLE_NAME,
 	WCB_SLIDER_PANEL_STYLE_NAME_DEMO,
@@ -57,13 +54,11 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	//
 	general_general: WCB_SLIDER_PANEL_GENERAL;
-	general_images: WCB_SLIDER_PANEL_IMAGES;
 	general_carousel: WCB_SLIDER_PANEL_CAROUSEL;
 	//
 	style_name: WCB_SLIDER_PANEL_STYLE_NAME;
-	style_content: WCB_SLIDER_PANEL_STYLE_NAME;
+	style_content: WCB_SLIDER_PANEL_STYLE_CONTENT;
 	style_company: WCB_SLIDER_PANEL_STYLE_COMPANY;
-	style_image: WCB_SLIDER_PANEL_STYLE_IMAGE;
 	style_arrowAndDots: WCB_SLIDER_PANEL_STYLE_ARROW_DOTS;
 	style_backgroundAndBorder: WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER;
 	style_dimension: WCB_SLIDER_PANEL_STYLE_DIMENSION;
@@ -86,10 +81,6 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		type: "object",
 		default: WCB_SLIDER_PANEL_GENERAL_DEMO,
 	},
-	general_images: {
-		type: "object",
-		default: WCB_SLIDER_PANEL_IMAGES_DEMO,
-	},
 	general_carousel: {
 		type: "object",
 		default: WCB_SLIDER_PANEL_CAROUSEL_DEMO,
@@ -106,10 +97,6 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	style_company: {
 		type: "object",
 		default: WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO,
-	},
-	style_image: {
-		type: "object",
-		default: WCB_SLIDER_PANEL_STYLE_IMAGE_DEMO,
 	},
 	style_arrowAndDots: {
 		type: "object",

@@ -3,24 +3,19 @@ import {
 	useBlockProps,
 	RichText,
 } from "@wordpress/block-editor";
-import React, { useEffect, FC, useState, useRef } from "react";
-import { useSelect } from "@wordpress/data";
+import React, { useEffect, FC } from "react";
 import { WcbAttrs } from "./attributes";
 import { EditProps } from "../block-container/Edit";
 import "./editor.scss";
-import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import MyCacheProvider from "../components/MyCacheProvider";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 import MyMediaUploadCheck from "../components/controls/MyMediaUploadCheck";
-import HOCInspectorControls, {
-	InspectorControlsTabs,
-} from "../components/HOCInspectorControls";
 import GlobalCss from "./GlobalCss";
 // Import style panels
 import WcbTestimonialsPanel_StyleName, { WCB_SLIDER_PANEL_STYLE_NAME_DEMO } from "./WcbSliderPanel_StyleName";
 import WcbTestimonialsPanel_StyleContent, { WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO } from "./WcbSliderPanel_StyleContent";
 import WcbTestimonialsPanel_StyleCompany, { WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO } from "./WcbSliderPanel_StyleCompany";
-import WcbTestimonialsPanel_StyleImage, { WCB_SLIDER_PANEL_STYLE_IMAGE_DEMO } from "./WcbSliderPanel_StyleImage";
+import WcbTestimonialsPanel_StyleImage, { WCB_SLIDER_PANEL_IMAGE_DEMO } from "./WcbSliderPanel_StyleImage";
 import WcbTestimonialsPanel_StyleBackground, { WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO } from "./WcbSliderPanel_StyleBackground";
 import WcbTestimonialsPanel_StyleDimension, { WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO } from "./WcbSliderPanel_StyleDimension";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
@@ -34,7 +29,7 @@ export {
 	WcbTestimonialsPanel_StyleCompany,
 	WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO,
 	WcbTestimonialsPanel_StyleImage,
-	WCB_SLIDER_PANEL_STYLE_IMAGE_DEMO,
+	WCB_SLIDER_PANEL_IMAGE_DEMO,
 	WcbTestimonialsPanel_StyleBackground,
 	WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
 	WcbTestimonialsPanel_StyleDimension,
@@ -50,13 +45,6 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 		name,
 		callToAction,
 		image,
-		style_name,
-		style_content,
-		style_company,
-		style_image,
-		style_backgroundAndBorder,
-		style_dimension,
-		advance_motionEffect,
 	} = attributes;
 	
 	//  COMMON HOOKS

@@ -6,8 +6,8 @@ import {
 	WCB_SLIDER_PANEL_STYLE_COMPANY,
 } from "../block-slider/WcbSliderPanel_StyleCompany";
 import {
-	WCB_SLIDER_PANEL_STYLE_IMAGE,
-} from "../block-slider/WcbSliderPanel_StyleImage";
+	WCB_SLIDER_PANEL_IMAGE,
+} from "../block-slider-child/WcbSliderPanel_StyleImage";
 import {
 	WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER,
 } from "../block-slider/WcbSliderPanel_StyleBackground";
@@ -17,7 +17,7 @@ interface Props {
 	style_name?: WCB_SLIDER_PANEL_STYLE_NAME;
 	style_content?: WCB_SLIDER_PANEL_STYLE_NAME; // reusing name styles for content
 	style_company?: WCB_SLIDER_PANEL_STYLE_COMPANY;
-	style_image?: WCB_SLIDER_PANEL_STYLE_IMAGE;
+	style_image?: WCB_SLIDER_PANEL_IMAGE;
 	style_backgroundAndBorder?: WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER;
 }
 
@@ -27,7 +27,6 @@ const GlobalCss: FC<Props> = ({
 	style_content,
 	style_company,
 	style_image,
-	style_backgroundAndBorder,
 }) => {
 	// Generate basic CSS styles
 	let css = '';
@@ -92,18 +91,6 @@ const GlobalCss: FC<Props> = ({
 				height: 60px;
 				border-radius: 50%;
 				object-fit: cover;
-			}
-		`;
-	}
-
-	// Background styles
-	if (style_backgroundAndBorder) {
-		const { background, border } = style_backgroundAndBorder;
-		css += `
-			.${uniqueId} .wcb-slider-child__item {
-				padding: 1rem;
-				${background?.color ? `background-color: ${background.color};` : ''}
-				${border?.color ? `border: 1px solid ${border.color};` : ''}
 			}
 		`;
 	}

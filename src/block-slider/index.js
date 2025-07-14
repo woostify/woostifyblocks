@@ -17,8 +17,8 @@ import "./style.scss";
 /**
  * Internal dependencies
  */
-const { Fragment } = wp.element;
-const { withSelect } = wp.data;
+import { Fragment } from "@wordpress/element";
+import { withSelect } from "@wordpress/data";
 import Edit from "./Edit";
 import save from "./Save";
 import metadata from "./block.json";
