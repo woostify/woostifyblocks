@@ -1,7 +1,6 @@
 /*  */
 /*  */
 .wcb-slider__wrap {
-	padding: 32px;
 
 	.slick-dots {
 		position: relative;
@@ -39,6 +38,7 @@
 	}
 	.wcb-slider__item-wrap-inner {
 		display: flex;
+		margin: auto;
 	}
 }
 
@@ -53,6 +53,7 @@
 	align-items: flex-start;
 	flex-shrink: 0;
 }
+
 .wcb-slider__item-user {
 	display: inline-flex;
 	align-items: center;

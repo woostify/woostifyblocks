@@ -12,6 +12,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		callToAction,
 		image,
 		rating,
+		style_image,
 	} = attributes;
 
 	const blockProps = useBlockProps.save({
@@ -20,18 +21,15 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	});
 
 	const renderImage = () => {
-		if (!image.mediaId) {
-			return null;
-		}
-		return (
-			<div className="wcb-slider-child__image">
+		return style_image && style_image.isShowImage && style_image.image?.mediaId ? (
+			<div className="wcb-slider-child__content-image">
 				<img
-					src={image.mediaUrl}
+					className="wcb-slider-child__image"
+					src={style_image.image.mediaUrl}
 					alt=""
-					srcSet={image.mediaSrcSet}
 				/>
 			</div>
-		);
+		) : null;
 	};
 
 	return (
@@ -39,35 +37,67 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			<div className="wcb-slider-child__item">
 				<div className="wcb-slider-child__item-background">
 					<div className="wcb-slider-child__item-wrap-inner">
-						{/* IMAGE */}
-						{renderImage()}
-
+						{
+							(style_image && 
+							style_image.imagePosition === "left") &&
+							renderImage()
+						}
 						<div className="wcb-slider-child__item-inner">
+							{/* Image */}	
+							{
+								(style_image && 
+								style_image.imagePosition === "above-title") &&
+								renderImage()
+							}
+
 							{/* NAME */}
-							<RichText.Content
-								tagName="div"
-								className="wcb-slider-child__name"
-								value={name}
-							/>
+							<div className="wcb-slider-child__name">
+								<RichText.Content
+									tagName="h4"
+									value={name}
+								/>
+							</div>
+							
+							{/* Image */}	
+							{
+								(style_image && 
+								style_image.imagePosition === "blow-title") &&
+								renderImage()
+							}
 
-							<div className="wcb-slider-child__item-user">
-								<div className="wcb-slider-child__item-nameandcompany">
-									{/* CONTENT */}
-									<RichText.Content
-										tagName="div"
-										className="wcb-slider-child__content"
-										value={content}
-									/>
 
-									{/* COMPANY */}
+							{/* Content */}
+							<div className="wcb-slider-child__content">
+								<RichText.Content
+									tagName="p"
+									value={content}
+								/>
+							</div>
+
+							{/* Call to Action */}
+							<div className="wcb-slider-child__btn">
+								<div className="wcb-slider-child__btn-inner">
 									<RichText.Content
-										tagName="div"
-										className="wcb-slider-child__company"
+										tagName="span"
 										value={callToAction}
 									/>
 								</div>
 							</div>
+
+							{/* Image */}	
+							{
+								(style_image &&
+								style_image.imagePosition === "bottom") &&
+								renderImage()
+							}
+
 						</div>
+						{/* Image */}	
+						{
+							(style_image && 
+							style_image.imagePosition === "right") &&
+							renderImage()
+						}
 					</div>
 				</div>
 			</div>

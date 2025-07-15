@@ -49,6 +49,10 @@ import {
 	WCB_SLIDER_PANEL_STYLE_NAME,
 	WCB_SLIDER_PANEL_STYLE_NAME_DEMO,
 } from "./WcbSliderPanel_StyleName";
+import {
+	WCB_SLIDER_PANEL_STYLE_BOXSHADOW,
+	WCB_SLIDER_PANEL_STYLE_BOXSHADOW_DEMO,
+} from "./WcbSliderPanel_StyleBoxshadow"
 
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
@@ -61,6 +65,7 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	style_company: WCB_SLIDER_PANEL_STYLE_COMPANY;
 	style_arrowAndDots: WCB_SLIDER_PANEL_STYLE_ARROW_DOTS;
 	style_backgroundAndBorder: WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER;
+	style_boxshadow: WCB_SLIDER_PANEL_STYLE_BOXSHADOW; // New box shadow style
 	style_dimension: WCB_SLIDER_PANEL_STYLE_DIMENSION;
 	//
 	advance_responsiveCondition: MyResponsiveConditionControlData;
@@ -109,6 +114,10 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	style_dimension: {
 		type: "object",
 		default: WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO,
+	},
+	style_boxshadow: {
+		type: "object",
+		default: WCB_SLIDER_PANEL_STYLE_BOXSHADOW_DEMO,
 	},
 	// ADVANCE
 	advance_responsiveCondition: {

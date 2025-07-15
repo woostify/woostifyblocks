@@ -4,9 +4,7 @@ import { getAdvanveDivWrapStyles } from "../block-container/getAdvanveStyles";
 import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
 import getSingleDimensionStyles from "../utils/getSingleDimensionStyles";
 import getTypographyStyles from "../utils/getTypographyStyles";
-import getBorderRadiusStyles from "../utils/getBorderRadiusStyles";
 import getBorderStyles from "../utils/getBorderStyles";
-import getStyleObjectFromResponsiveAttr from "../utils/getStyleObjectFromResponsiveAttr";
 import getStyleBackground from "../utils/getStyleBackground";
 import { WcbAttrsForSave } from "./Save";
 

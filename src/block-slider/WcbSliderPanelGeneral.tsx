@@ -32,7 +32,7 @@ interface Props
 	setAttr__: (data: WCB_SLIDER_PANEL_GENERAL) => void;
 }
 
-const WcbTestimonialsPanelGeneral: FC<Props> = ({
+const WcbSlidersPanelGeneral: FC<Props> = ({
 	panelData = WCB_SLIDER_PANEL_GENERAL_DEMO,
 	setAttr__,
 	initialOpen,
@@ -126,4 +126,4 @@ const WcbTestimonialsPanelGeneral: FC<Props> = ({
 	);
 };
 
-export default WcbTestimonialsPanelGeneral;
+export default WcbSlidersPanelGeneral;

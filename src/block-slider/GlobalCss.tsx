@@ -2,12 +2,10 @@ import { Global, CSSObject } from "@emotion/react";
 import React, { FC } from "react";
 import { getAdvanveDivWrapStyles } from "../block-container/getAdvanveStyles";
 import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
-import getSingleDimensionStyles from "../utils/getSingleDimensionStyles";
-import getTypographyStyles from "../utils/getTypographyStyles";
-import getBorderRadiusStyles from "../utils/getBorderRadiusStyles";
 import getBorderStyles from "../utils/getBorderStyles";
 import getStyleObjectFromResponsiveAttr from "../utils/getStyleObjectFromResponsiveAttr";
 import getStyleBackground from "../utils/getStyleBackground";
+import getBoxShadowStyles from "../utils/getBoxShadowStyles";
 import { WcbAttrsForSave } from "./Save";
 
 interface Props extends WcbAttrsForSave {}
@@ -19,10 +17,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 		general_general,
 		style_arrowAndDots,
 		style_backgroundAndBorder,
-		style_company,
-		style_content,
 		style_dimension,
-		style_name,
+		style_boxshadow,
 		//
 		advance_responsiveCondition,
 		advance_zIndex,
@@ -31,10 +27,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 
 	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
 	const ITEM_CLASSNAME = `${WRAP_CLASSNAME} .wcb-slider__item`;
-	const ITEM_NAME = `${WRAP_CLASSNAME} .wcb-slider__item-name`;
-	const ITEM_CONTENT = `${WRAP_CLASSNAME} .wcb-slider__item-content`;
-	const ITEM_COMPANY = `${WRAP_CLASSNAME} .wcb-slider__item-company`;
-	const ITEM_IMAGE = `${WRAP_CLASSNAME} .wcb-slider__item-image`;
 	const SLICK_ARROW = `${WRAP_CLASSNAME} .slick-arrow`;
 	const SLICK_DOTS = `${WRAP_CLASSNAME} .slick-dots`;
 
@@ -56,61 +48,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 	return (
 		<>
 			<Global styles={getDivWrapStyles()} />
-
-			{/* ITEM NAME  */}
-			<Global
-				styles={[
-					getTypographyStyles({
-						typography: style_name.typography,
-						className: ITEM_NAME,
-					}),
-					getSingleDimensionStyles({
-						value: style_name.marginBottom,
-						className: ITEM_NAME,
-						prefix: "marginBottom",
-					}),
-					{
-						[ITEM_NAME]: {
-							color: style_name.textColor,
-						},
-					},
-				]}
-			/>
-
-			{/* ITEM CONTENT  */}
-			<Global
-				styles={[
-					getTypographyStyles({
-						typography: style_content.typography,
-						className: ITEM_CONTENT,
-					}),
-					getSingleDimensionStyles({
-						value: style_content.marginBottom,
-						className: ITEM_CONTENT,
-						prefix: "marginBottom",
-					}),
-					{
-						[ITEM_CONTENT]: {
-							color: style_content.textColor,
-						},
-					},
-				]}
-			/>
-
-			{/* ITEM COMPANY  */}
-			<Global
-				styles={[
-					getTypographyStyles({
-						typography: style_company.typography,
-						className: ITEM_COMPANY,
-					}),
-					{
-						[ITEM_COMPANY]: {
-							color: style_company.textColor,
-						},
-					},
-				]}
-			/>
 
 			{/* ITEM WRAP  */}
 			<Global
@@ -140,6 +77,14 @@ const GlobalCss: FC<Props> = (attrs) => {
 						styles_background: style_backgroundAndBorder.background,
 					}),
 				]}
+			/>
+
+			{/* BOXSHADOW  */}
+			<Global
+				styles={getBoxShadowStyles({
+					className: ITEM_CLASSNAME,
+					boxShadow: style_boxshadow,
+				})}
 			/>
 
 			{/* SLICK ARROW & DOTS  */}

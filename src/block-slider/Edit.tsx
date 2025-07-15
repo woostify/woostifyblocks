@@ -1,7 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
 import { useDispatch, useSelect } from "@wordpress/data";
-import { createBlock } from "@wordpress/blocks";
 import React, { useEffect, FC, useCallback, useRef, useState, useMemo } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
@@ -12,14 +11,12 @@ import GlobalCss from "./GlobalCss";
 import "./editor.scss";
 import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
-import WcbTestimonialsPanelGeneral from "./WcbSliderPanelGeneral";
+import WcbSlidersPanelGeneral from "./WcbSliderPanelGeneral";
 import WcbSlidersPanelCarousel from "./WcbSliderPanelCarousel";
-import WcbTestimonialsPanel_StyleName from "./WcbSliderPanel_StyleName";
-import WcbTestimonialsPanel_StyleContent from "./WcbSliderPanel_StyleContent";
-import WcbTestimonialsPanel_StyleCompany from "./WcbSliderPanel_StyleCompany";
 import WcbTestimonialsPanel_StyleArrowDots from "./WcbSliderPanel_StyleArrowDots";
 import WcbTestimonialsPanel_StyleBackground from "./WcbSliderPanel_StyleBackground";
 import WcbTestimonialsPanel_StyleDimension from "./WcbSliderPanel_StyleDimension";
+import WcbSliderPanel_StyleBoxshadow from "./WcbSliderPanel_StyleBoxshadow";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
@@ -111,6 +108,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_company,
 		style_arrowAndDots,
 		style_backgroundAndBorder,
+		style_boxshadow,
 		style_dimension,
 		advance_motionEffect,
 	} = attributes;
@@ -329,7 +327,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			case "General":
 				return (
 					<>
-						<WcbTestimonialsPanelGeneral
+						<WcbSlidersPanelGeneral
 							onToggle={() => handleTogglePanel("General", "Heading", true)}
 							initialOpen={
 								tabGeneralIsPanelOpen === "Heading" ||
@@ -359,27 +357,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			case "Styles":
 				return (
 					<>
-						<WcbTestimonialsPanel_StyleName
-							onToggle={() => handleTogglePanel("Styles", "_StyleName", true)}
-							initialOpen={
-								tabStylesIsPanelOpen === "_StyleName" ||
-								tabStylesIsPanelOpen === "first"
-							}
-							opened={tabStylesIsPanelOpen === "_StyleName" || undefined}
-							setAttr__={(data) => {
-								setAttributes({ style_name: data });
-							}}
-							panelData={style_name}
-						/>
-						<WcbTestimonialsPanel_StyleContent
-							onToggle={() => handleTogglePanel("Styles", "_StyleContent")}
-							initialOpen={tabStylesIsPanelOpen === "_StyleContent"}
-							opened={tabStylesIsPanelOpen === "_StyleContent" || undefined}
-							setAttr__={(data) => {
-								setAttributes({ style_content: data });
-							}}
-							panelData={style_content}
-						/>
 						<WcbTestimonialsPanel_StyleBackground
 							onToggle={() => handleTogglePanel("Styles", "_StyleBackground")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleBackground"}
@@ -389,14 +366,17 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							}}
 							panelData={style_backgroundAndBorder}
 						/>
-						<WcbTestimonialsPanel_StyleCompany
-							onToggle={() => handleTogglePanel("Styles", "_StyleCompany")}
-							initialOpen={tabStylesIsPanelOpen === "_StyleCompany"}
-							opened={tabStylesIsPanelOpen === "_StyleCompany" || undefined}
+						<WcbSliderPanel_StyleBoxshadow
+							onToggle={() => handleTogglePanel("Styles", "_StyleBoxshadow")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleBoxshadow"}
+							opened={tabStylesIsPanelOpen === "_StyleBoxshadow" || undefined}
+							//
 							setAttr__={(data) => {
-								setAttributes({ style_company: data });
+								setAttributes({
+									style_boxshadow: data,
+								});
 							}}
-							panelData={style_company}
+							panelData={style_boxshadow}
 						/>
 						<WcbTestimonialsPanel_StyleArrowDots
 							onToggle={() => handleTogglePanel("Styles", "_StyleArrowDots")}
@@ -570,6 +550,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			style_company,
 			style_content,
 			style_name,
+			style_boxshadow,
 			advance_motionEffect,
 		};
 	}, [
@@ -584,6 +565,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_company,
 		style_content,
 		style_name,
+		style_boxshadow,
 		advance_motionEffect,
 	]);
 
@@ -614,9 +596,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				<GlobalCss {...WcbAttrsForSave()} />
 
 				{/* CHILD CONTENT */}
-				<div className="wcb-slider__wrap-items">
-					{renderSliderContent()}
-				</div>
+				{renderSliderContent()}
 			</div>
 		</MyCacheProvider>
 	);

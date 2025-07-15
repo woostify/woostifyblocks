@@ -95,6 +95,10 @@ const classes: {
 		F: initCarouselForWcbSliders,
 	},
 	{
+		D: ".wcb-slider-child__wrap.wcb-update-div",
+		C: React.lazy(() => import("../block-slider-child/GlobalCss")),
+	},
+	{
 		D: ".wcb-icon__wrap.wcb-update-div",
 		C: React.lazy(() => import("../block-icon/GlobalCss")),
 	},

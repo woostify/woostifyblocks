@@ -84,6 +84,7 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 				<div className="wcb-slider-child__item">
 					<div className="wcb-slider-child__item-background">
 						<div className="wcb-slider-child__item-wrap-inner">
+							{/* Image */}	
 							{
 								(style_image && 
 								style_image.imagePosition === "left") &&
@@ -137,11 +138,14 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 								</div>
 								
 								{/* Image */}	
-								{(style_image &&
+								{
+								(style_image &&
 									style_image.imagePosition === "bottom") &&
-									renderImage()}
+									renderImage()
+								}
 
 							</div>
+							{/* Image */}	
 							{
 								(style_image && 
 								style_image.imagePosition === "right") &&
