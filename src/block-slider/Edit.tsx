@@ -512,7 +512,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		const settings: Settings = {
 			infinite: rewind,
 			speed: animationDuration || 500,
-			autoplay: isAutoPlay,
+			autoplay: false,
 			autoplaySpeed,
 			slidesToShow: Number(currentColumns) || 1,
 			slidesToScroll: 1,
