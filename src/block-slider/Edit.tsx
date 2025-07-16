@@ -17,6 +17,7 @@ import WcbTestimonialsPanel_StyleArrowDots from "./WcbSliderPanel_StyleArrowDots
 import WcbTestimonialsPanel_StyleBackground from "./WcbSliderPanel_StyleBackground";
 import WcbTestimonialsPanel_StyleDimension from "./WcbSliderPanel_StyleDimension";
 import WcbSliderPanel_StyleBoxshadow from "./WcbSliderPanel_StyleBoxshadow";
+import WcbSlidersPanel_StyleVerticalAlignment, {WCB_SLIDERS_BOX_PANEL_STYLE_VERTICAL_ALIGNMENT_DEMO} from "./WcbSlidersPanel_StyleVerticalAlignment";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";
@@ -106,6 +107,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_name,
 		style_content,
 		style_company,
+		style_verticalAlignment,
 		style_arrowAndDots,
 		style_backgroundAndBorder,
 		style_boxshadow,
@@ -156,29 +158,41 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 	// Add useEffect to monitor numberofTestimonials changes and update inner blocks accordingly
 	useEffect(() => {
-		const targetNumber = general_general.numberofTestimonials || 3;
-		const currentNumber = innerBlocks.length;
+		// Add a small delay to avoid conflicts with InnerBlocks initialization
+		const timeoutId = setTimeout(() => {
+			const targetNumber = general_general.numberofTestimonials || 3;
+			const currentNumber = innerBlocks.length;
 
-		if (currentNumber === targetNumber) {
-			return; // No change needed
-		}
-
-		if (currentNumber < targetNumber) {
-			// Add blocks
-			const blocksToAdd = targetNumber - currentNumber;
-			for (let i = 0; i < blocksToAdd; i++) {
-				const newBlock = wp.blocks.createBlock("wcb/slider-child");
-				insertBlock(newBlock, innerBlocks.length + i, clientId);
+			// Only proceed if there's a real difference and blocks are actually loaded
+			if (currentNumber === targetNumber || !targetNumber) {
+				return; // No change needed
 			}
-		} else if (currentNumber > targetNumber) {
-			// Remove blocks from the end
-			const blocksToRemove = currentNumber - targetNumber;
-			const clientIdsToRemove = innerBlocks.slice(-blocksToRemove);
-			clientIdsToRemove.forEach(childClientId => {
-				removeBlock(childClientId);
-			});
-		}
-	}, [general_general.numberofTestimonials, innerBlocks.length, clientId, insertBlock, removeBlock]);
+
+			// Prevent running during initial load when innerBlocks might be empty
+			if (currentNumber === 0 && targetNumber > 0) {
+				// Let InnerBlocks handle initial template creation
+				return;
+			}
+
+			if (currentNumber < targetNumber) {
+				// Add blocks
+				const blocksToAdd = targetNumber - currentNumber;
+				for (let i = 0; i < blocksToAdd; i++) {
+					const newBlock = wp.blocks.createBlock("wcb/slider-child");
+					insertBlock(newBlock, currentNumber + i, clientId);
+				}
+			} else if (currentNumber > targetNumber) {
+				// Remove blocks from the end
+				const blocksToRemove = currentNumber - targetNumber;
+				const clientIdsToRemove = innerBlocks.slice(-blocksToRemove).map(block => block.clientId);
+				clientIdsToRemove.forEach(childClientId => {
+					removeBlock(childClientId);
+				});
+			}
+		}, 100); // Small delay to prevent race conditions
+
+		return () => clearTimeout(timeoutId);
+	}, [general_general.numberofTestimonials, innerBlocks.length]); // Simplified dependency array
 
 	// Get selected child block if any
 	const selectedChildBlock = !isParentSelected && selectedChildId 
@@ -357,6 +371,18 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			case "Styles":
 				return (
 					<>
+						<WcbSlidersPanel_StyleVerticalAlignment
+							onToggle={() => handleTogglePanel("Styles", "_StyleVerticalAlignment")}
+							initialOpen={tabStylesIsPanelOpen === "_StyleVerticalAlignment" ||
+								tabStylesIsPanelOpen === "first"}
+							opened={tabStylesIsPanelOpen === "_StyleVerticalAlignment" || undefined}
+							setAttr__={(data) => {
+								setAttributes({
+									style_verticalAlignment: data,
+								});
+							}}
+							panelData={style_verticalAlignment || WCB_SLIDERS_BOX_PANEL_STYLE_VERTICAL_ALIGNMENT_DEMO} // Provide a default object if undefined
+						/>
 						<WcbTestimonialsPanel_StyleBackground
 							onToggle={() => handleTogglePanel("Styles", "_StyleBackground")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleBackground"}
@@ -422,9 +448,11 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	// InnerBlocks configuration
 	const ALLOWED_BLOCKS = ["wcb/slider-child"];
 	
-	const innerBlocksTemplate: any[] = [
-		...Array(general_general.numberofTestimonials || 3).keys()
-	].map(() => ["wcb/slider-child"]);
+	// Use useMemo to prevent unnecessary template recreation
+	const innerBlocksTemplate: any[] = useMemo(() => {
+		const targetNumber = general_general.numberofTestimonials || 3;
+		return [...Array(targetNumber).keys()].map(() => ["wcb/slider-child"]);
+	}, [general_general.numberofTestimonials]);
 
 	// Memoized child component to prevent multiple renders
 	const MemoizedChildBlock = useMemo(() => {
@@ -484,7 +512,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		const settings: Settings = {
 			infinite: rewind,
 			speed: animationDuration || 500,
-			autoplay: false,
+			autoplay: isAutoPlay,
 			autoplaySpeed,
 			slidesToShow: Number(currentColumns) || 1,
 			slidesToScroll: 1,
@@ -496,6 +524,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			pauseOnHover: hoverpause,
 		};
 
+		// If no inner blocks or blocks count doesn't match target, show template
+		const targetNumber = general_general.numberofTestimonials || 3;
 		// If no inner blocks, show template  
 		if (innerBlocks.length === 0) {
 			return (
@@ -545,6 +575,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			general_general,
 			style_dimension,
 			general_carousel,
+			style_verticalAlignment,
 			style_arrowAndDots,
 			style_backgroundAndBorder,
 			style_company,
@@ -560,6 +591,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		general_general,
 		style_dimension,
 		general_carousel,
+		style_verticalAlignment,
 		style_arrowAndDots,
 		style_backgroundAndBorder,
 		style_company,

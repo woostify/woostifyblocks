@@ -16,7 +16,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 	} = attributes;
 
 	const blockProps = useBlockProps.save({
-		className: `wcb-slider-child__wrap ${uniqueId}`,
+		className: `wcb-slider-child__wrap ${uniqueId} wcb-update-div`,
 		"data-uniqueid": uniqueId,
 	});
 

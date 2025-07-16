@@ -19,6 +19,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		style_backgroundAndBorder,
 		style_dimension,
 		style_boxshadow,
+		style_verticalAlignment,
 		//
 		advance_responsiveCondition,
 		advance_zIndex,
@@ -27,6 +28,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 
 	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
 	const ITEM_CLASSNAME = `${WRAP_CLASSNAME} .wcb-slider__item`;
+	const ITEM_INNER_CLASSNAME = `${ITEM_CLASSNAME} .wcb-slider__item-inner`;
 	const SLICK_ARROW = `${WRAP_CLASSNAME} .slick-arrow`;
 	const SLICK_DOTS = `${WRAP_CLASSNAME} .slick-dots`;
 
@@ -111,6 +113,19 @@ const GlobalCss: FC<Props> = (attrs) => {
 						},
 					},
 				]}
+			/>
+
+			{/* VERTICAL ALIGNMENT  */}
+			<Global
+				styles={{
+					[`${ITEM_INNER_CLASSNAME}`]: {
+						paddingTop: style_verticalAlignment?.verticalAlignment === "top"
+							? "-4rem"
+							: style_verticalAlignment?.verticalAlignment === "middle"
+							? "0px"
+							: "4rem",
+					},
+				}}
 			/>
 
 			{/* ADVANCE  */}

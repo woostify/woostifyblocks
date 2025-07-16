@@ -53,6 +53,10 @@ import {
 	WCB_SLIDER_PANEL_STYLE_BOXSHADOW,
 	WCB_SLIDER_PANEL_STYLE_BOXSHADOW_DEMO,
 } from "./WcbSliderPanel_StyleBoxshadow"
+import {
+	WCB_SLIDERS_BOX_PANEL_STYLE_VERTICAL_ALIGNMENT,
+	WCB_SLIDERS_BOX_PANEL_STYLE_VERTICAL_ALIGNMENT_DEMO,
+} from "./WcbSlidersPanel_StyleVerticalAlignment";
 
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
@@ -63,6 +67,7 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	style_name: WCB_SLIDER_PANEL_STYLE_NAME;
 	style_content: WCB_SLIDER_PANEL_STYLE_CONTENT;
 	style_company: WCB_SLIDER_PANEL_STYLE_COMPANY;
+	style_verticalAlignment?: WCB_SLIDERS_BOX_PANEL_STYLE_VERTICAL_ALIGNMENT;
 	style_arrowAndDots: WCB_SLIDER_PANEL_STYLE_ARROW_DOTS;
 	style_backgroundAndBorder: WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER;
 	style_boxshadow: WCB_SLIDER_PANEL_STYLE_BOXSHADOW; // New box shadow style
@@ -102,6 +107,10 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	style_company: {
 		type: "object",
 		default: WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO,
+	},
+	style_verticalAlignment: {
+		type: "object",
+		default: WCB_SLIDERS_BOX_PANEL_STYLE_VERTICAL_ALIGNMENT_DEMO,
 	},
 	style_arrowAndDots: {
 		type: "object",
