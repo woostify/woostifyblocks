@@ -68,8 +68,6 @@ const WcbDatePanelGenera: FC<Props> = ({
 							value={min}
 							type="date"
 							onChange={(nextValue) => {
-								console.log(11, { nextValue });
-
 								setAttr__({ ...panelData, min: nextValue });
 							}}
 						/>

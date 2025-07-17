@@ -36,15 +36,6 @@ const WcbPluginSidebar = (props) => {
 
 	const colorGradientSettings = useMultipleOriginColorsAndGradients();
 
-	console.log(11, "____WcbPluginSidebar____log", {
-		props,
-		themePalette,
-		defaultPalette,
-		colorGradientSettings,
-		mycolors,
-		nweww: window.wcbGlobalVariables.customColorPallete,
-	});
-
 	// update save setting to database options via ajax
 	const handleUpdateSettings = (newColors: typeof mycolors) => {
 		if (typeof jQuery !== "function") {
@@ -75,7 +66,6 @@ const WcbPluginSidebar = (props) => {
 	};
 
 	const handleChangeCustomColor = (color: string, index: number) => {
-		console.log(111111);
 
 		if (!color) {
 			const newcolors = mycolors.filter((_, j) => j !== index);

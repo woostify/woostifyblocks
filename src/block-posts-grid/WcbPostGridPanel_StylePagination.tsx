@@ -83,7 +83,6 @@ const WcbPostGridPanel_StylePagination: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	const { mainStyle, marginTop, justifyContent } = panelData;
-	console.log(1, { mainStyle });
 
 	const MARGIN_TOP =
 		marginTop[deviceType] || marginTop.Tablet || marginTop.Desktop;

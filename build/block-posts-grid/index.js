@@ -2644,9 +2644,6 @@ const getAdvanveDivWrapStyles = _ref => {
   try {
     const thisELs = document.querySelectorAll(className);
     if (advance_motionEffect && advance_motionEffect.entranceAnimation && thisELs && thisELs.length) {
-      console.log(222, {
-        thisELs
-      });
       thisELs.forEach(element => {
         // remove old class
         const regex = /\banimate__\S+/g;
@@ -3573,9 +3570,6 @@ const GlobalCss = attrs => {
   if (!uniqueId) {
     return null;
   }
-  console.log(22323, {
-    advance_motionEffect
-  });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
     styles: getDivWrapStyles()
   }), general_pagination.isShowPagination ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
@@ -5100,9 +5094,6 @@ const WcbPostGridPanel_StylePagination = _ref => {
     marginTop,
     justifyContent
   } = panelData;
-  console.log(1, {
-    mainStyle
-  });
   const MARGIN_TOP = marginTop[deviceType] || marginTop.Tablet || marginTop.Desktop;
   //
   //
@@ -8097,9 +8088,6 @@ const MyMyMotionEffectData = _ref => {
     onChange,
     data
   } = _ref;
-  console.log(22, "-----MyMyMotionEffectData-----", {
-    data
-  });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "space-y-4"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MySelect__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -8369,10 +8357,6 @@ const MyQueryControls = _ref => {
       ...accumulator,
       [category.name]: category
     }), {})) !== null && _termList$reduce !== void 0 ? _termList$reduce : {};
-    console.log(111, {
-      termSuggestions,
-      tokens
-    });
     const hasNoSuggestion = tokens.some(token => typeof token === "string" && !termSuggestions[token]);
     if (hasNoSuggestion) {
       return;
@@ -10491,10 +10475,6 @@ const loadGoogleFont = fontName => {
         }
         const link = createLinkTagWithGoogleFont(fontName);
         head.appendChild(link);
-        console.log(321, "________load-gg-font_____", {
-          fontName,
-          link
-        });
       }
     };
     const headElement = (0,___WEBPACK_IMPORTED_MODULE_0__.getDocumentHead)();

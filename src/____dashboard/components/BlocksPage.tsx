@@ -30,13 +30,6 @@ const BlocksPage: FC<Props> = ({
 		})()
 	);
 
-	console.log(211, {
-		initWcbBlocksList,
-		initWcbBlocksEnableDisable,
-		blocksStatus,
-		blocksList,
-	});
-
 	const handleDisableEnableBlocks = (obj: any) => {
 		if (typeof jQuery !== "function") {
 			return;

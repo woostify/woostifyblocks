@@ -198,8 +198,6 @@ const MyQueryControls: FC<Props> = ({
 				{}
 			) ?? {};
 
-		console.log(111, { termSuggestions, tokens });
-
 		const hasNoSuggestion = tokens.some(
 			(token) => typeof token === "string" && !termSuggestions[token]
 		);

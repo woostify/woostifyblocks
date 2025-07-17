@@ -18,7 +18,6 @@ divsToUpdate.forEach((div) => {
 	const preEl = div.querySelector(
 		`pre[data-wcb-block-attrs=${div.id}]`
 	) as HTMLElement | null;
-	console.log('preEl' + preEl);
 	const divRenderCssEl = div.querySelector(
 		`div[data-wcb-global-styles=${div.id}]`
 	) as HTMLElement | null;

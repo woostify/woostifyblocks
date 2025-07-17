@@ -189,8 +189,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		advance_motionEffect,
 	]);
 
-	// console.log(4, "---- CTA edit  ---" + uniqueId);
-
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div

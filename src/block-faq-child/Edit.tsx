@@ -59,7 +59,6 @@ const Edit: FC<
 	//
 
 	useEffect(() => {
-		console.log(12, "------ FAQ CHILD setAttributes ON useEffect --------");
 
 		setAttributes({
 			layout: context["wcb/faq_general"]?.layout,

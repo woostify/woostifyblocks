@@ -84,7 +84,6 @@ interface Props {
 }
 
 const MyMyMotionEffectData: FC<Props> = ({ onChange, data }) => {
-	console.log(22, "-----MyMyMotionEffectData-----", { data });
 
 	return (
 		<div className="space-y-4">

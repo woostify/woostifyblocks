@@ -60,7 +60,6 @@ export function handleSubmitFormForWcbForm(div: Element, props: Props) {
 				beforeSend: function () {},
 				success: function (response) {
 					// This is OK code
-					console.log(99, "-----------OK", { props, response, formData });
 					$(`.${dataUniqueid}` + " .wcb-form__successMessageText").css(
 						"display",
 						"block"
@@ -101,10 +100,6 @@ export function handleSubmitFormForWcbForm(div: Element, props: Props) {
 						action: "submit",
 					})
 					.then(function (token) {
-						console.log(123, {
-							token,
-							key: DEMO_WCB_GLOBAL_VARIABLES.reCAPTCHA_v3_site_key,
-						});
 						handleAjaxAction();
 					});
 			});

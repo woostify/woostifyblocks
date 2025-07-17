@@ -49,10 +49,6 @@ const Edit: FC<
 
 	//
 	useEffect(() => {
-		console.log(12, "------ FAQ CHILD setAttributes ON useEffect --------");
-		// setAttributes({
-		// 	enableSeparator: context["wcb/faq_general"]?.enableSeparator,
-		// });
 	}, [context["wcb/faq_general"], context["wcb/faq_icon"], blockIndex]);
 
 	//

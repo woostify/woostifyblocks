@@ -23,7 +23,6 @@ xxxxxxxxxxxxxx(divsToUpdateButton, GlobalCssButton);
 xxxxxxxxxxxxxx(divsToUpdateCTA, GlobalCssCTALazy);
 
 function xxxxxxxxxxxxxx(divsToUpdate, GlobalCss) {
-	console.log(111);
 
 	divsToUpdate.forEach((div) => {
 		const preEl = div.querySelector(

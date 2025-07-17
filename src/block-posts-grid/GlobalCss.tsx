@@ -300,8 +300,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 		return null;
 	}
 
-	console.log(22323, { advance_motionEffect });
-
 	return (
 		<>
 			<Global styles={getDivWrapStyles()} />

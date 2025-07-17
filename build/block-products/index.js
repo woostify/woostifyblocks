@@ -2676,9 +2676,6 @@ const getAdvanveDivWrapStyles = _ref => {
   try {
     const thisELs = document.querySelectorAll(className);
     if (advance_motionEffect && advance_motionEffect.entranceAnimation && thisELs && thisELs.length) {
-      console.log(222, {
-        thisELs
-      });
       thisELs.forEach(element => {
         // remove old class
         const regex = /\banimate__\S+/g;
@@ -6347,23 +6344,9 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
-// console.log(999, { allSettings: getAllWcSettings() });
-
 //
 const PRODUCT_TITLE_ID = "WCB_PRODUCT_TITLE_ID";
 const PRODUCT_TEMPLATE_ID = "WCB_PRODUCT_TEMPLATE_ID";
-
-// export function getSetting<T>(
-// 	name: string,
-// 	fallback: unknown = false,
-// 	filter = (val: unknown, fb: unknown) =>
-// 		typeof val !== "undefined" ? val : fb
-// ) {
-// 	console.log(1);
-// 	const allSettings = getAllWcSettings();
-// 	const value = name in allSettings ? allSettings[name] : fallback;
-// 	return filter(value, fallback) as T;
-// }
 
 /**
  * Returns an object without a key.
@@ -9672,9 +9655,6 @@ const MyMyMotionEffectData = _ref => {
     onChange,
     data
   } = _ref;
-  console.log(22, "-----MyMyMotionEffectData-----", {
-    data
-  });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "space-y-4"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MySelect__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -11556,10 +11536,6 @@ const loadGoogleFont = fontName => {
         }
         const link = createLinkTagWithGoogleFont(fontName);
         head.appendChild(link);
-        console.log(321, "________load-gg-font_____", {
-          fontName,
-          link
-        });
       }
     };
     const headElement = (0,___WEBPACK_IMPORTED_MODULE_0__.getDocumentHead)();

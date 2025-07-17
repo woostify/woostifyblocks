@@ -2212,9 +2212,6 @@ const getAdvanveDivWrapStyles = _ref => {
   try {
     const thisELs = document.querySelectorAll(className);
     if (advance_motionEffect && advance_motionEffect.entranceAnimation && thisELs && thisELs.length) {
-      console.log(222, {
-        thisELs
-      });
       thisELs.forEach(element => {
         // remove old class
         const regex = /\banimate__\S+/g;
@@ -2776,11 +2773,6 @@ function handleSubmitFormForWcbForm(div, props) {
         beforeSend: function () {},
         success: function (response) {
           // This is OK code
-          console.log(99, "-----------OK", {
-            props,
-            response,
-            formData
-          });
           $(`.${dataUniqueid}` + " .wcb-form__successMessageText").css("display", "block");
           $(`.${dataUniqueid}` + " .wcb-form__errorMessageText").css("display", "none");
           if (props?.general_general?.confirmationType === "url-text" && props?.general_general?.successRedirectUrl) {
@@ -2801,10 +2793,6 @@ function handleSubmitFormForWcbForm(div, props) {
         grecaptcha.execute(___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES.reCAPTCHA_v3_site_key, {
           action: "submit"
         }).then(function (token) {
-          console.log(123, {
-            token,
-            key: ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES.reCAPTCHA_v3_site_key
-          });
           handleAjaxAction();
         });
       });
@@ -3477,10 +3465,6 @@ const loadGoogleFont = fontName => {
         }
         const link = createLinkTagWithGoogleFont(fontName);
         head.appendChild(link);
-        console.log(321, "________load-gg-font_____", {
-          fontName,
-          link
-        });
       }
     };
     const headElement = (0,___WEBPACK_IMPORTED_MODULE_0__.getDocumentHead)();

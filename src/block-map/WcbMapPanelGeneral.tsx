@@ -50,7 +50,6 @@ const WcbMapPanelGeneral: FC<Props> = ({
 	);
 
 	const debounce_fun = _.debounce(function (data: WCB_MAP_PANEL_GENERAL) {
-		console.log("Function debounced after 300ms!", { data });
 		setAttr__(data);
 	}, 500);
 

@@ -10,23 +10,11 @@ import { getAllWcSettings } from "./settings-init";
  */
 import { QueryBlockAttributes } from "./types";
 
-// console.log(999, { allSettings: getAllWcSettings() });
 
 //
 export const PRODUCT_TITLE_ID = "WCB_PRODUCT_TITLE_ID";
 export const PRODUCT_TEMPLATE_ID = "WCB_PRODUCT_TEMPLATE_ID";
 
-// export function getSetting<T>(
-// 	name: string,
-// 	fallback: unknown = false,
-// 	filter = (val: unknown, fb: unknown) =>
-// 		typeof val !== "undefined" ? val : fb
-// ) {
-// 	console.log(1);
-// 	const allSettings = getAllWcSettings();
-// 	const value = name in allSettings ? allSettings[name] : fallback;
-// 	return filter(value, fallback) as T;
-// }
 
 /**
  * Returns an object without a key.

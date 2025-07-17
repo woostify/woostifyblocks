@@ -92,7 +92,6 @@ interface AllSettings extends Record<string, unknown> {
 const getAllWcSettings = (): AllSettings => {
 	const globalSharedSettings =
 		typeof window.wcSettings === "object" ? window.wcSettings : {};
-	console.log(12, { globalSharedSettings });
 
 	return {
 		...defaults,
