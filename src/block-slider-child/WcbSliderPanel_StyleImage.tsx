@@ -11,9 +11,19 @@ import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import MySelect from "../components/controls/MySelect";
 import useGetDeviceType from "../hooks/useGetDeviceType";
-import useGetImageSizeOptions from "../hooks/useGetImageSizeOptions";
+import SelecIcon, { MyIcon, DEFAULT_MY_ICON, } from "../components/controls/SelectIcon/SelecIcon";
+import { Option } from "../types";
 
 export interface WCB_SLIDER_PANEL_IMAGE {
+	enableIcon: boolean;
+	icon: MyIcon;
+	iconPosition:
+		| "top"
+		| "left"
+		| "right"
+		| "leftOfTitle"
+		| "rightOfTitle"
+		| "bellowTitle";
 	image: MediaUploadData;
 	imageSize: string;
 	isShowImage: boolean;
@@ -25,6 +35,12 @@ export interface WCB_SLIDER_PANEL_IMAGE {
 type TabsHere = "Setting" | "SelectImage";
 
 export const WCB_SLIDER_PANEL_IMAGE_DEMO: WCB_SLIDER_PANEL_IMAGE = {
+	enableIcon: false,
+	icon: {
+		...DEFAULT_MY_ICON,
+		iconName: "lni-checkmark-circle",
+	},
+	iconPosition: "top",
 	image: INIT_IMAGE_DATA_UPLOAD_DEMO,
 	imageSize: "thumbnail",
 	isShowImage: true,
@@ -48,14 +64,25 @@ const WcbSliderPanelImage: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	const {
+		enableIcon,
+		icon,
+		iconPosition,
 		image,
 		imagePosition,
 		isShowImage,
 		imageSize,
-		stackOn,
 		imageAlignSelf,
 	} = panelData;
 	//
+	//
+	const PLANS_DEMO: Option<WCB_SLIDER_PANEL_IMAGE["iconPosition"]>[] = [
+		{ value: "top", label: "Top" },
+		{ value: "left", label: "Left" },
+		{ value: "right", label: "Right" },
+		{ value: "leftOfTitle", label: "Left Of Title" },
+		{ value: "rightOfTitle", label: "Right Of Title" },
+		{ value: "bellowTitle", label: "Bellow Title" },
+	];
 
 	const renderSelectImage = () => {
 		if (!isShowImage) {
@@ -185,17 +212,64 @@ const WcbSliderPanelImage: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Image", "wcb")}
+			title={__("Image/Icon", "wcb")}
 		>
 			<div className={"space-y-5"}>
-				<TabPanel
-					className={`wcb-bodyControls__panel`}
-					activeClass="active-tab"
-					initialTabName="Setting"
-					tabs={TABS}
-				>
-					{renderTabContent}
-				</TabPanel>
+
+				<ToggleControl
+					label={__("Enable Icon", "wcb")}
+					checked={enableIcon}
+					className="mb-0"
+					onChange={(checked) => {
+						setAttr__({ ...panelData, enableIcon: checked });
+					}}
+				/>
+
+				{enableIcon ? (
+					<>
+						<SelecIcon
+							iconData={icon}
+							onChange={(value) => {
+								setAttr__({
+									...panelData,
+									icon: value,
+								});
+							}}
+						/>
+						<MySelect
+							label={__("Position", "wcb")}
+							options={PLANS_DEMO}
+							value={iconPosition}
+							onChange={(value) => {
+								let newData: WCB_SLIDER_PANEL_IMAGE = {
+									...panelData,
+									iconPosition:
+										value as WCB_SLIDER_PANEL_IMAGE["iconPosition"],
+								};
+								if (iconPosition !== "left" && iconPosition !== "right") {
+									newData = {
+										...panelData,
+										iconPosition:
+											value as WCB_SLIDER_PANEL_IMAGE["iconPosition"],
+										stackOn: "none",
+									};
+								}
+								setAttr__(newData);
+							}}
+						/>
+					</>
+				) : (
+					<TabPanel
+						className={`wcb-bodyControls__panel`}
+						activeClass="active-tab"
+						initialTabName="Setting"
+						tabs={TABS}
+					>
+						{renderTabContent}
+					</TabPanel>
+				)}
+
+
 			</div>
 		</PanelBody>
 	);

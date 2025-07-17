@@ -29,12 +29,15 @@ import "slick-carousel/slick/slick-theme.css";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 // Import child panel components using shared types to avoid circular dependency
 import {
-	WcbTestimonialsPanel_StyleName as ChildStyleName,
-	WcbTestimonialsPanel_StyleContent as ChildStyleContent,
+	WcbSlidersPanel_StyleName as ChildStyleName,
+	WcbSlidersPanel_StyleContent as ChildStyleContent,
 	WcbTestimonialsPanel_StyleCompany as ChildStyleCompany,
 	WcbTestimonialsPanel_StyleImage as ChildStyleImage,
 	WcbTestimonialsPanel_StyleBackground as ChildStyleBackground,
 	WcbTestimonialsPanel_StyleDimension as ChildStyleDimension,
+	WcbSliderButtonPanelPreset as ChildStyleButtonPreset,
+	WcbSliderLayoutPanelPreset as ChildStyleLayoutPreset,
+	WcbSliderSparatorPanel as ChildStyleSparator
 } from "../block-slider-child/Edit";
 
 // Import demo constants from shared types
@@ -238,6 +241,45 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 									);
 								}}
 								panelData={childAttrs.style_content || WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO}
+							/>
+
+							<ChildStyleSparator
+								onToggle={() => childPanelInfo.handleTogglePanel("Styles", "_StyleSparator")}
+								initialOpen={childPanelInfo.tabStylesIsPanelOpen === "_StyleSparator"}
+								opened={childPanelInfo.tabStylesIsPanelOpen === "_StyleSparator" || undefined}
+								setAttr__={(data) => {
+									wp.data.dispatch("core/block-editor").updateBlockAttributes(
+										selectedChildBlock.clientId,
+										{ style_sparator: data }
+									);
+								}}
+								panelData={childAttrs.style_sparator}
+							/>
+
+							<ChildStyleButtonPreset
+								onToggle={() => childPanelInfo.handleTogglePanel("Styles", "_StyleButtonPreset")}
+								initialOpen={childPanelInfo.tabStylesIsPanelOpen === "_StyleButtonPreset"}
+								opened={childPanelInfo.tabStylesIsPanelOpen === "_StyleButtonPreset" || undefined}
+								setAttr__={(data) => {
+									wp.data.dispatch("core/block-editor").updateBlockAttributes(
+										selectedChildBlock.clientId,
+										{ style_buttonPreset: data }
+									);
+								}}
+								panelData={childAttrs.style_buttonPreset}
+							/>
+
+							<ChildStyleLayoutPreset
+								onToggle={() => childPanelInfo.handleTogglePanel("Styles", "_StyleLayoutPreset")}
+								initialOpen={childPanelInfo.tabStylesIsPanelOpen === "_StyleLayoutPreset"}
+								opened={childPanelInfo.tabStylesIsPanelOpen === "_StyleLayoutPreset" || undefined}
+								setAttr__={(data) => {
+									wp.data.dispatch("core/block-editor").updateBlockAttributes(
+										selectedChildBlock.clientId,
+										{ style_layoutPreset: data }
+									);
+								}}
+								panelData={childAttrs.style_layoutPreset}
 							/>
 						</>
 					);

@@ -11,19 +11,22 @@ import MyCacheProvider from "../components/MyCacheProvider";
 import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 import GlobalCss from "./GlobalCss";
 // Import style panels
-import WcbTestimonialsPanel_StyleName, { WCB_SLIDER_PANEL_STYLE_NAME_DEMO } from "./WcbSliderPanel_StyleName";
-import WcbTestimonialsPanel_StyleContent, { WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO } from "./WcbSliderPanel_StyleContent";
+import WcbSlidersPanel_StyleName, { WCB_SLIDER_PANEL_STYLE_NAME_DEMO } from "./WcbSliderPanel_StyleName";
+import WcbSlidersPanel_StyleContent, { WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO } from "./WcbSliderPanel_StyleContent";
 import WcbTestimonialsPanel_StyleCompany, { WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO } from "./WcbSliderPanel_StyleCompany";
 import WcbTestimonialsPanel_StyleImage, { WCB_SLIDER_PANEL_IMAGE_DEMO } from "./WcbSliderPanel_StyleImage";
 import WcbTestimonialsPanel_StyleBackground, { WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO } from "./WcbSliderPanel_StyleBackground";
 import WcbTestimonialsPanel_StyleDimension, { WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO } from "./WcbSliderPanel_StyleDimension";
+import WcbSliderButtonPanelPreset, { WCB_SLIDER_BUTTON_PANEL_PRESET_DEMO } from "./WcbSliderPanel_ButtonPreset";
+import WcbSliderLayoutPanelPreset, { WCB_SLIDER_LAYOUT_PANEL_PRESET_DEMO } from "./WcbSliderPanel_LayoutPreset";
+import WcbSliderSparatorPanel, { WCB_SLIDER_BOX_PANEL_STYLE_SPARATOR_DEMO } from "./WcbSliderPanel_StyleSparator";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 
 // Export the panel components and demos for parent component to use
 export {
-	WcbTestimonialsPanel_StyleName,
+	WcbSlidersPanel_StyleName,
 	WCB_SLIDER_PANEL_STYLE_NAME_DEMO,
-	WcbTestimonialsPanel_StyleContent,
+	WcbSlidersPanel_StyleContent,
 	WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO,
 	WcbTestimonialsPanel_StyleCompany,
 	WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO,
@@ -33,6 +36,12 @@ export {
 	WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
 	WcbTestimonialsPanel_StyleDimension,
 	WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO,
+	WcbSliderButtonPanelPreset,
+	WCB_SLIDER_BUTTON_PANEL_PRESET_DEMO,
+	WcbSliderLayoutPanelPreset,
+	WCB_SLIDER_LAYOUT_PANEL_PRESET_DEMO,
+	WCB_SLIDER_BOX_PANEL_STYLE_SPARATOR_DEMO,
+	WcbSliderSparatorPanel,
 	AdvancePanelCommon
 };
 

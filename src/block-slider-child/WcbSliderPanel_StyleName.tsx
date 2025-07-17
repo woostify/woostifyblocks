@@ -41,7 +41,7 @@ interface Props
 	setAttr__: (data: WCB_SLIDER_PANEL_STYLE_NAME) => void;
 }
 
-const WcbTestimonialsPanel_StyleName: FC<Props> = ({
+const WcbSlidersPanel_StyleName: FC<Props> = ({
 	panelData = WCB_SLIDER_PANEL_STYLE_NAME_DEMO,
 	setAttr__,
 	initialOpen,
@@ -100,4 +100,4 @@ const WcbTestimonialsPanel_StyleName: FC<Props> = ({
 	);
 };
 
-export default WcbTestimonialsPanel_StyleName;
+export default WcbSlidersPanel_StyleName;
