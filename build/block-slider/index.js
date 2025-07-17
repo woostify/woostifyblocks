@@ -13348,8 +13348,7 @@ const WcbTestimonialsPanel_StyleCompany = ({
         textColor: value
       });
     },
-    color: textColor,
-    disableAlpha: true
+    color: textColor
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTypographyControl_MyTypographyControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
     typographyControl: typography,
     setAttrs__typography: typography => {
@@ -13442,8 +13441,7 @@ const WcbSlidersPanel_StyleContent = ({
         textColor: value
       });
     },
-    color: textColor,
-    disableAlpha: true
+    color: textColor
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTypographyControl_MyTypographyControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
     typographyControl: typography,
     setAttrs__typography: typography => {
@@ -13883,8 +13881,7 @@ const WcbSlidersPanel_StyleName = ({
         textColor: value
       });
     },
-    color: textColor,
-    disableAlpha: true
+    color: textColor
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTypographyControl_MyTypographyControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
     typographyControl: typography,
     setAttrs__typography: typography => {
@@ -15878,8 +15875,7 @@ const WcbTestimonialsPanel_StyleName = ({
         textColor: value
       });
     },
-    color: textColor,
-    disableAlpha: true
+    color: textColor
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyTypographyControl_MyTypographyControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
     typographyControl: typography,
     setAttrs__typography: typography => {

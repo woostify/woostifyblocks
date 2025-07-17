@@ -70,7 +70,6 @@ const WcbSlidersPanel_StyleName: FC<Props> = ({
 						});
 					}}
 					color={textColor}
-					disableAlpha
 				/>
 				<MyTypographyControl
 					typographyControl={typography}

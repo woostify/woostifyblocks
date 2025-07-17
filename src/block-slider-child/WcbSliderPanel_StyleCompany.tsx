@@ -51,7 +51,6 @@ const WcbTestimonialsPanel_StyleCompany: FC<Props> = ({
 						});
 					}}
 					color={textColor}
-					disableAlpha
 				/>
 
 				<MyTypographyControl
