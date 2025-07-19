@@ -25,7 +25,7 @@ interface Props
 	setAttr__: (data: WCB_SLIDER_BOX_PANEL_STYLE_SPARATOR) => void;
 }
 
-const WcbSlidersPanel_StyleSparator: FC<Props> = ({
+const WcbSlidersPanel_StyleSeparator: FC<Props> = ({
 	panelData = WCB_SLIDER_BOX_PANEL_STYLE_SPARATOR_DEMO,
 	setAttr__,
 	initialOpen,
@@ -57,7 +57,7 @@ const WcbSlidersPanel_StyleSparator: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Sparator", "wcb")}
+			title={__("Separator", "wcb")}
 		>
 			<div className={"space-y-5"}>
 				
@@ -90,4 +90,4 @@ const WcbSlidersPanel_StyleSparator: FC<Props> = ({
 	);
 };
 
-export default WcbSlidersPanel_StyleSparator;
+export default WcbSlidersPanel_StyleSeparator;

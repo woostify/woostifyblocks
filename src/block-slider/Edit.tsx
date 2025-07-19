@@ -37,8 +37,12 @@ import {
 	WcbTestimonialsPanel_StyleDimension as ChildStyleDimension,
 	WcbSliderButtonPanelPreset as ChildStyleButtonPreset,
 	WcbSliderLayoutPanelPreset as ChildStyleLayoutPreset,
-	WcbSliderSparatorPanel as ChildStyleSparator
+	WcbSlidersPanel_StyleSeparator as ChildStyleSparator
 } from "../block-slider-child/Edit";
+
+// Import separator demo constant
+import { WCB_SLIDER_BOX_PANEL_STYLE_SPARATOR_DEMO } from "../block-slider-child/WcbSliderPanel_StyleSeparator";
+import { WCB_SLIDER_LAYOUT_PANEL_PRESET_DEMO } from "../block-slider-child/WcbSliderPanel_LayoutPreset";
 
 // Import demo constants from shared types
 import {
@@ -49,6 +53,9 @@ import {
 	WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO,
 } from "./types";
 import { WCB_SLIDER_PANEL_IMAGE_DEMO } from "../block-slider-child/WcbSliderPanel_StyleImage";
+import {
+	WCB_SLIDER_BUTTON_PANEL_PRESET_DEMO
+} from "../block-slider-child/WcbSliderPanel_ButtonPreset";
 
 // Arrow components for slider
 function SampleNextArrow(props: any) {
@@ -253,7 +260,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 										{ style_sparator: data }
 									);
 								}}
-								panelData={childAttrs.style_sparator}
+								panelData={childAttrs.style_sparator || WCB_SLIDER_BOX_PANEL_STYLE_SPARATOR_DEMO}
 							/>
 
 							<ChildStyleButtonPreset
@@ -266,7 +273,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 										{ style_buttonPreset: data }
 									);
 								}}
-								panelData={childAttrs.style_buttonPreset}
+								panelData={childAttrs.style_buttonPreset || WCB_SLIDER_BUTTON_PANEL_PRESET_DEMO}
 							/>
 
 							<ChildStyleLayoutPreset
@@ -279,7 +286,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 										{ style_layoutPreset: data }
 									);
 								}}
-								panelData={childAttrs.style_layoutPreset}
+								panelData={childAttrs.style_layoutPreset || WCB_SLIDER_LAYOUT_PANEL_PRESET_DEMO}
 							/>
 						</>
 					);

@@ -7,6 +7,16 @@ import getTypographyStyles from "../utils/getTypographyStyles";
 import getBorderStyles from "../utils/getBorderStyles";
 import getStyleBackground from "../utils/getStyleBackground";
 import { WcbAttrsForSave } from "./Save";
+import {
+	WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_1,
+	WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_2,
+	WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_3,
+	WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_4,
+	WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_5,
+	WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_6,
+	WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_7,
+	WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_8,
+} from "./WcbSliderPanel_ButtonPreset";
 
 interface Props extends WcbAttrsForSave {}
 
@@ -20,6 +30,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 		style_dimension,
 		style_name,
 		style_image,
+		style_buttonPreset,
+		style_layoutPreset,
 		//
 		advance_responsiveCondition,
 		advance_zIndex,
@@ -28,10 +40,63 @@ const GlobalCss: FC<Props> = (attrs) => {
 
 	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
 	const ITEM_CLASSNAME = `${WRAP_CLASSNAME} .wcb-slider-child__item`;
+	const ITEM_CLASSNAME_INNER = `${WRAP_CLASSNAME} .wcb-slider-child__item-inner`
 	const ITEM_NAME = `${WRAP_CLASSNAME} .wcb-slider-child__name`;
 	const ITEM_CONTENT = `${WRAP_CLASSNAME} .wcb-slider-child__content`;
 	const ITEM_COMPANY = `${WRAP_CLASSNAME} .wcb-slider-child__company`;
 	const ITEM_IMAGE = `${WRAP_CLASSNAME} .wcb-slider-child__image`;
+	const CALL_TO_ACTION = `${WRAP_CLASSNAME} .wcb-slider-child__btn`;
+	const CALL_TO_ACTION_INNER = `${WRAP_CLASSNAME} .wcb-slider-child__btn-inner`;
+
+	// ------------------- HELPER FUNCTIONS
+	const getButtonBorderFromPreset = () => {
+		if (!style_buttonPreset) return {};
+		
+		switch (style_buttonPreset.preset) {
+			case "wcb-button-1":
+				return WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_1;
+			case "wcb-button-2":
+				return WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_2;
+			case "wcb-button-3":
+				return WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_3;
+			case "wcb-button-4":
+				return WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_4;
+			case "wcb-button-5":
+				return WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_5;
+			case "wcb-button-6":
+				return WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_6;
+			case "wcb-button-7":
+				return WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_7;
+			case "wcb-button-8":
+				return WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_8;
+			default:
+				return WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_1;
+		}
+	};
+
+	const getButtonBackgroundFromPreset = (): string => {
+		if (!style_buttonPreset) return "#121314";
+		switch (style_buttonPreset.preset) {
+			case "wcb-button-1":
+				return "#121314";
+			case "wcb-button-2":
+				return "#121314";
+			case "wcb-button-3":
+				return "#121314";
+			case "wcb-button-4":
+				return "#121314";
+			case "wcb-button-5":
+				return "#909090";
+			case "wcb-button-6":
+				return "#909090";
+			case "wcb-button-7":
+				return "#909090";
+			case "wcb-button-8":
+				return "#909090";
+			default:
+				return "#121314";
+		}
+	};
 
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject[] => {
@@ -50,9 +115,41 @@ const GlobalCss: FC<Props> = (attrs) => {
 		return null;
 	}
 
+	// Debug removed - block working properly
+
 	return (
 		<>
 			<Global styles={getDivWrapStyles()} />
+
+			{/* BUTTON BORDER  */}
+			<Global
+				styles={getBorderStyles({
+					className: CALL_TO_ACTION_INNER,
+					border: getButtonBorderFromPreset(),
+					isWithRadius: true,
+				})}
+			/>
+
+			{/* INNER  */}
+			<Global
+				styles={[
+					{
+						[ITEM_CLASSNAME_INNER]: {
+							justifyItems: `${
+									style_layoutPreset?.preset === "wcb-layout-2" ||
+									style_layoutPreset?.preset === "wcb-layout-3" ||
+									style_layoutPreset?.preset === "wcb-layout-5" ?
+									"start" : "center"
+							}`
+						},
+						[CALL_TO_ACTION_INNER]: {
+							backgroundColor: `${getButtonBackgroundFromPreset()} !important`,
+							width: "10rem",
+							height: "2.5rem",
+						},
+					},
+				]}
+			/>
 
 			{/* ITEM NAME  */}
 			{style_name && (

@@ -117,10 +117,10 @@ const WcbSlidersPanelGeneral: FC<Props> = ({
 					hasResponsive
 				/>
 
-				<MyTextAlignControl
+				{/* <MyTextAlignControl
 					textAlignment={currentTextAlignment || undefined}
 					onChange={handleChangeTextAlignment}
-				/>
+				/> */}
 			</div>
 		</PanelBody>
 	);

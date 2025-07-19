@@ -32,6 +32,8 @@ import {
 	MyZIndexControlData,
 	Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
+import { WCB_SLIDER_BUTTON_PANEL_PRESET, WCB_SLIDER_BUTTON_PANEL_PRESET_DEMO } from "./WcbSliderPanel_ButtonPreset";
+import { WCB_SLIDER_LAYOUT_PANEL_PRESET, WCB_SLIDER_LAYOUT_PANEL_PRESET_DEMO } from "./WcbSliderPanel_LayoutPreset";
 
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
@@ -49,6 +51,9 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	style_image?: WCB_SLIDER_PANEL_IMAGE;
 	style_backgroundAndBorder?: WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER;
 	style_dimension: WCB_SLIDER_PANEL_STYLE_DIMENSION;
+	style_buttonPreset?: WCB_SLIDER_BUTTON_PANEL_PRESET;
+	style_layoutPreset?: WCB_SLIDER_LAYOUT_PANEL_PRESET;
+	// style_sparator?: WCB_SLIDER_BOX_PANEL_STYLE_SPARATOR;
 	// Advance attributes
 	advance_zIndex: MyZIndexControlData;
 	advance_responsiveCondition: MyResponsiveConditionControlData;
@@ -121,6 +126,23 @@ const blockAttrs: AttrsGenericType<WcbAttrs> = {
 		type: "object",
 		default: WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO,
 	},
+
+	style_buttonPreset: {
+		type: "object",
+		default: {
+			preset: "wcb-button-1",
+		},
+	},
+
+	style_layoutPreset: {
+		type: "object",
+		default: WCB_SLIDER_LAYOUT_PANEL_PRESET_DEMO
+	},
+
+	// style_sparator: {
+	// 	type: "object",
+	// 	default: WCB_SLIDER_BOX_PANEL_STYLE_SPARATOR_DEMO,
+	// },
 
 	// ADVANCE
 	advance_responsiveCondition: {

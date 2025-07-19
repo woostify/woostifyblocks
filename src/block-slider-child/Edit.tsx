@@ -19,7 +19,8 @@ import WcbTestimonialsPanel_StyleBackground, { WCB_SLIDER_PANEL_STYLE_BACKGROUND
 import WcbTestimonialsPanel_StyleDimension, { WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO } from "./WcbSliderPanel_StyleDimension";
 import WcbSliderButtonPanelPreset, { WCB_SLIDER_BUTTON_PANEL_PRESET_DEMO } from "./WcbSliderPanel_ButtonPreset";
 import WcbSliderLayoutPanelPreset, { WCB_SLIDER_LAYOUT_PANEL_PRESET_DEMO } from "./WcbSliderPanel_LayoutPreset";
-import WcbSliderSparatorPanel, { WCB_SLIDER_BOX_PANEL_STYLE_SPARATOR_DEMO } from "./WcbSliderPanel_StyleSparator";
+import WcbSlidersPanel_StyleSeparator, { WCB_SLIDER_BOX_PANEL_STYLE_SPARATOR_DEMO } from "./WcbSliderPanel_StyleSeparator";
+import MyIcon from "../components/controls/MyIcon";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 
 // Export the panel components and demos for parent component to use
@@ -41,19 +42,21 @@ export {
 	WcbSliderLayoutPanelPreset,
 	WCB_SLIDER_LAYOUT_PANEL_PRESET_DEMO,
 	WCB_SLIDER_BOX_PANEL_STYLE_SPARATOR_DEMO,
-	WcbSliderSparatorPanel,
+	WcbSlidersPanel_StyleSeparator,
 	AdvancePanelCommon
 };
 
 const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
+	debugger
 	const { attributes, setAttributes, clientId, isSelected, index } = props;
 	const {
 		uniqueId,
 		content,
 		name,
 		callToAction,
-		image,
-		style_image
+		style_image,
+		style_buttonPreset,
+		style_layoutPreset
 	} = attributes;
 	
 	//  COMMON HOOKS
@@ -79,6 +82,14 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 		) : null;
 	};
 
+	const renderIconButton = () => {
+		return <MyIcon icon={"lni-arrow-right"} className="wcb-button__icon" />;
+	};
+
+	const renderIconTop = () => {
+		return <MyIcon icon={"lni-checkmark-circle"} className="wcb-button__icon" />
+	}
+
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
@@ -99,7 +110,16 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 								style_image.imagePosition === "left") &&
 								renderImage()
 							}
-							<div className="wcb-slider-child__item-inner">
+							<div className={`wcb-slider-child__item-inner 
+								${
+									// style_layoutPreset?.preset === "wcb-layout-2" ||
+									// style_layoutPreset?.preset === "wcb-layout-3" ||
+									// style_layoutPreset?.preset === "wcb-layout-5" ?
+									// "justify-items-start" : "justify-items-center"
+									""
+								}
+							`}
+							>
 								{/* Image */}	
 								{
 									(style_image && 
@@ -109,6 +129,12 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 
 								{/* Name */}
 								<div className="wcb-slider-child__name">
+									{
+										style_layoutPreset?.preset === "wcb-layout-1" || 
+										style_layoutPreset?.preset === "wcb-layout-2" ||
+										style_layoutPreset?.preset === "wcb-layout-3" ?
+										renderIconTop() : null
+									}
 									<RichText
 										tagName="h4"
 										placeholder={__("Enter name...", "wcb")}
@@ -125,7 +151,13 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 								}
 
 								{/* Content */}
-								<div className="wcb-slider-child__content">
+								<div className={`wcb-slider-child__content ${
+										style_layoutPreset?.preset === "wcb-layout-2" ||
+										style_layoutPreset?.preset === "wcb-layout-3" ||
+										style_layoutPreset?.preset === "wcb-layout-5" ?
+										"text-start" : "text-center"
+									}
+								`}>
 									<RichText
 										tagName="p"
 										placeholder={__("Enter content...", "wcb")}
@@ -135,16 +167,24 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 								</div>
 
 								{/* Call to Action */}
-								<div className="wcb-slider-child__btn">
-									<div className="wcb-slider-child__btn-inner">
-										<RichText
-											tagName="span"
-											placeholder={__("Enter call to action...", "wcb")}
-											value={callToAction}
-											onChange={(value) => setAttributes({ callToAction: value })}
-										/>
-									</div>
-								</div>
+								{
+									style_layoutPreset?.preset === "wcb-layout-3" ?
+									null : 								
+										<div className="wcb-slider-child__btn">
+											<div className="wcb-slider-child__btn-inner">
+												<RichText
+													tagName="span"
+													placeholder={__("Enter call to action...", "wcb")}
+													value={callToAction}
+													onChange={(value) => setAttributes({ callToAction: value })}
+												/>
+												{
+													style_buttonPreset?.preset === 'wcb-button-4' || style_buttonPreset?.preset === 'wcb-button-8' ?
+													renderIconButton() : null
+												}
+											</div>
+										</div>
+								}
 								
 								{/* Image */}	
 								{
