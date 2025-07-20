@@ -18,7 +18,7 @@ export const WCB_SLIDER_PANEL_CAROUSEL_DEMO: WCB_SLIDER_PANEL_CAROUSEL =
 		animationDuration: 500,
 		autoplaySpeed: 3000,
 		hoverpause: true,
-		isAutoPlay: true,
+		isAutoPlay: false,
 		rewind: true,
 		adaptiveHeight: true,
 		showArrowsDots: "Both",

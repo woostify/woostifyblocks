@@ -44,7 +44,7 @@ interface Props
 	setAttr__: (data: WCB_SLIDER_PANEL_STYLE_ARROW_DOTS) => void;
 }
 
-const WcbTestimonialsPanel_StyleArrowDots: FC<Props> = ({
+const WcbSlidersPanel_StyleArrowDots: FC<Props> = ({
 	panelData = WCB_SLIDER_PANEL_STYLE_ARROW_DOTS_DEMO,
 	setAttr__,
 	initialOpen,
@@ -116,4 +116,4 @@ const WcbTestimonialsPanel_StyleArrowDots: FC<Props> = ({
 	);
 };
 
-export default WcbTestimonialsPanel_StyleArrowDots;
+export default WcbSlidersPanel_StyleArrowDots;

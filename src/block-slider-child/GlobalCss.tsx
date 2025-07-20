@@ -234,23 +234,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 				/>
 			)}
 
-			{/* ITEM COMPANY  */}
-			{style_company && (
-				<Global
-					styles={[
-						getTypographyStyles({
-							typography: style_company.typography,
-							className: ITEM_COMPANY,
-						}),
-						{
-							[ITEM_COMPANY]: {
-								color: `${style_company.textColor} !important`,
-							},
-						},
-					]}
-				/>
-			)}
-
 			{/* ITEM WRAP  */}
 			{style_backgroundAndBorder && (
 				<Global

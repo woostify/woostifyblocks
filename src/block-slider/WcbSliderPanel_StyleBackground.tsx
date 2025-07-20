@@ -30,7 +30,7 @@ interface Props
 	setAttr__: (data: WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER) => void;
 }
 
-const WcbTestimonialsPanel_StyleBackground: FC<Props> = ({
+const WcbSlidersPanel_StyleBackground: FC<Props> = ({
 	panelData = WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
 	setAttr__,
 	initialOpen,
@@ -69,4 +69,4 @@ const WcbTestimonialsPanel_StyleBackground: FC<Props> = ({
 	);
 };
 
-export default WcbTestimonialsPanel_StyleBackground;
+export default WcbSlidersPanel_StyleBackground;

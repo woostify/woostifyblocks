@@ -35,7 +35,7 @@ interface Props
 	setAttr__: (data: WCB_SLIDER_PANEL_STYLE_DIMENSION) => void;
 }
 
-const WcbTestimonialsPanel_StyleDimension: FC<Props> = ({
+const WcbSlidersPanel_StyleDimension: FC<Props> = ({
 	panelData = WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO,
 	setAttr__,
 	initialOpen,
@@ -80,4 +80,4 @@ const WcbTestimonialsPanel_StyleDimension: FC<Props> = ({
 	);
 };
 
-export default WcbTestimonialsPanel_StyleDimension;
+export default WcbSlidersPanel_StyleDimension;

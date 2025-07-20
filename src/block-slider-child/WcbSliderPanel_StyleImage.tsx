@@ -64,12 +64,12 @@ const WcbSliderPanelImage: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	const {
-		enableIcon,
+		enableIcon = false,
 		icon,
 		iconPosition,
 		image,
 		imagePosition,
-		isShowImage,
+		isShowImage = true,
 		imageSize,
 		imageAlignSelf,
 	} = panelData;
@@ -216,6 +216,7 @@ const WcbSliderPanelImage: FC<Props> = ({
 		>
 			<div className={"space-y-5"}>
 
+				{/* TODO: Will continue to coding when merge phase 1
 				<ToggleControl
 					label={__("Enable Icon", "wcb")}
 					checked={enableIcon}
@@ -223,7 +224,7 @@ const WcbSliderPanelImage: FC<Props> = ({
 					onChange={(checked) => {
 						setAttr__({ ...panelData, enableIcon: checked });
 					}}
-				/>
+				/> */}
 
 				{enableIcon ? (
 					<>

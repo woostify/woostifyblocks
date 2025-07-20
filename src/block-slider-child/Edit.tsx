@@ -13,10 +13,9 @@ import GlobalCss from "./GlobalCss";
 // Import style panels
 import WcbSlidersPanel_StyleName, { WCB_SLIDER_PANEL_STYLE_NAME_DEMO } from "./WcbSliderPanel_StyleName";
 import WcbSlidersPanel_StyleContent, { WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO } from "./WcbSliderPanel_StyleContent";
-import WcbTestimonialsPanel_StyleCompany, { WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO } from "./WcbSliderPanel_StyleCompany";
-import WcbTestimonialsPanel_StyleImage, { WCB_SLIDER_PANEL_IMAGE_DEMO } from "./WcbSliderPanel_StyleImage";
-import WcbTestimonialsPanel_StyleBackground, { WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO } from "./WcbSliderPanel_StyleBackground";
-import WcbTestimonialsPanel_StyleDimension, { WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO } from "./WcbSliderPanel_StyleDimension";
+import WcbSlidersPanel_StyleImage, { WCB_SLIDER_PANEL_IMAGE_DEMO } from "./WcbSliderPanel_StyleImage";
+import WcbSlidersPanel_StyleBackground, { WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO } from "./WcbSliderPanel_StyleBackground";
+import WcbSlidersPanel_StyleDimension, { WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO } from "./WcbSliderPanel_StyleDimension";
 import WcbSliderButtonPanelPreset, { WCB_SLIDER_BUTTON_PANEL_PRESET_DEMO } from "./WcbSliderPanel_ButtonPreset";
 import WcbSliderLayoutPanelPreset, { WCB_SLIDER_LAYOUT_PANEL_PRESET_DEMO } from "./WcbSliderPanel_LayoutPreset";
 import WcbSlidersPanel_StyleSeparator, { WCB_SLIDER_BOX_PANEL_STYLE_SPARATOR_DEMO } from "./WcbSliderPanel_StyleSeparator";
@@ -29,13 +28,11 @@ export {
 	WCB_SLIDER_PANEL_STYLE_NAME_DEMO,
 	WcbSlidersPanel_StyleContent,
 	WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO,
-	WcbTestimonialsPanel_StyleCompany,
-	WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO,
-	WcbTestimonialsPanel_StyleImage,
+	WcbSlidersPanel_StyleImage,
 	WCB_SLIDER_PANEL_IMAGE_DEMO,
-	WcbTestimonialsPanel_StyleBackground,
+	WcbSlidersPanel_StyleBackground,
 	WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
-	WcbTestimonialsPanel_StyleDimension,
+	WcbSlidersPanel_StyleDimension,
 	WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO,
 	WcbSliderButtonPanelPreset,
 	WCB_SLIDER_BUTTON_PANEL_PRESET_DEMO,
@@ -130,7 +127,7 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 										renderIconTop() : null
 									}
 									<RichText
-										tagName="h4"
+										tagName="div"
 										placeholder={__("Enter name...", "wcb")}
 										value={name}
 										onChange={(value) => setAttributes({ name: value })}
@@ -153,7 +150,7 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 									}
 								`}>
 									<RichText
-										tagName="p"
+										tagName="div"
 										placeholder={__("Enter content...", "wcb")}
 										value={content}
 										onChange={(value) => setAttributes({ content: value })}
@@ -167,7 +164,7 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 										<div className="wcb-slider-child__btn">
 											<div className="wcb-slider-child__btn-inner">
 												<RichText
-													tagName="span"
+													tagName="div"
 													placeholder={__("Enter call to action...", "wcb")}
 													value={callToAction}
 													onChange={(value) => setAttributes({ callToAction: value })}

@@ -13,9 +13,9 @@ import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import WcbSlidersPanelGeneral from "./WcbSliderPanelGeneral";
 import WcbSlidersPanelCarousel from "./WcbSliderPanelCarousel";
-import WcbTestimonialsPanel_StyleArrowDots from "./WcbSliderPanel_StyleArrowDots";
-import WcbTestimonialsPanel_StyleBackground from "./WcbSliderPanel_StyleBackground";
-import WcbTestimonialsPanel_StyleDimension from "./WcbSliderPanel_StyleDimension";
+import WcbSlidersPanel_StyleArrowDots from "./WcbSliderPanel_StyleArrowDots";
+import WcbSlidersPanel_StyleBackground from "./WcbSliderPanel_StyleBackground";
+import WcbSlidersPanel_StyleDimension from "./WcbSliderPanel_StyleDimension";
 import WcbSliderPanel_StyleBoxshadow from "./WcbSliderPanel_StyleBoxshadow";
 import WcbSlidersPanel_StyleVerticalAlignment, {WCB_SLIDERS_BOX_PANEL_STYLE_VERTICAL_ALIGNMENT_DEMO} from "./WcbSlidersPanel_StyleVerticalAlignment";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
@@ -31,10 +31,9 @@ import converUniqueIdToAnphaKey, { converClientIdToUniqueClass } from "../utils/
 import {
 	WcbSlidersPanel_StyleName as ChildStyleName,
 	WcbSlidersPanel_StyleContent as ChildStyleContent,
-	WcbTestimonialsPanel_StyleCompany as ChildStyleCompany,
-	WcbTestimonialsPanel_StyleImage as ChildStyleImage,
-	WcbTestimonialsPanel_StyleBackground as ChildStyleBackground,
-	WcbTestimonialsPanel_StyleDimension as ChildStyleDimension,
+	WcbSlidersPanel_StyleImage as ChildStyleImage,
+	WcbSlidersPanel_StyleBackground as ChildStyleBackground,
+	WcbSlidersPanel_StyleDimension as ChildStyleDimension,
 	WcbSliderButtonPanelPreset as ChildStyleButtonPreset,
 	WcbSliderLayoutPanelPreset as ChildStyleLayoutPreset,
 	WcbSlidersPanel_StyleSeparator as ChildStyleSparator
@@ -48,7 +47,6 @@ import { WCB_SLIDER_LAYOUT_PANEL_PRESET_DEMO } from "../block-slider-child/WcbSl
 import {
 	WCB_SLIDER_PANEL_STYLE_NAME_DEMO,
 	WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO,
-	WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO,
 	WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
 	WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO,
 } from "./types";
@@ -254,18 +252,20 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								panelData={childAttrs.style_content || WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO}
 							/>
 
-							<ChildStyleSparator
-								onToggle={() => childPanelInfo.handleTogglePanel("Styles", "_StyleSparator")}
-								initialOpen={childPanelInfo.tabStylesIsPanelOpen === "_StyleSparator"}
-								opened={childPanelInfo.tabStylesIsPanelOpen === "_StyleSparator" || undefined}
-								setAttr__={(data) => {
-									wp.data.dispatch("core/block-editor").updateBlockAttributes(
-										selectedChildBlock.clientId,
-										{ style_sparator: data }
-									);
-								}}
-								panelData={childAttrs.style_sparator || WCB_SLIDER_BOX_PANEL_STYLE_SPARATOR_DEMO}
-							/>
+							{/* TODO: Will continue coding when merge phase 1
+								<ChildStyleSparator
+									onToggle={() => childPanelInfo.handleTogglePanel("Styles", "_StyleSparator")}
+									initialOpen={childPanelInfo.tabStylesIsPanelOpen === "_StyleSparator"}
+									opened={childPanelInfo.tabStylesIsPanelOpen === "_StyleSparator" || undefined}
+									setAttr__={(data) => {
+										wp.data.dispatch("core/block-editor").updateBlockAttributes(
+											selectedChildBlock.clientId,
+											{ style_sparator: data }
+										);
+									}}
+									panelData={childAttrs.style_sparator || WCB_SLIDER_BOX_PANEL_STYLE_SPARATOR_DEMO}
+								/> 
+							*/}
 
 							<ChildStyleButtonPreset
 								onToggle={() => childPanelInfo.handleTogglePanel("Styles", "_StyleButtonPreset")}
@@ -423,7 +423,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							}}
 							panelData={style_verticalAlignment || WCB_SLIDERS_BOX_PANEL_STYLE_VERTICAL_ALIGNMENT_DEMO} // Provide a default object if undefined
 						/>
-						<WcbTestimonialsPanel_StyleBackground
+						<WcbSlidersPanel_StyleBackground
 							onToggle={() => handleTogglePanel("Styles", "_StyleBackground")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleBackground"}
 							opened={tabStylesIsPanelOpen === "_StyleBackground" || undefined}
@@ -444,7 +444,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							}}
 							panelData={style_boxshadow}
 						/>
-						<WcbTestimonialsPanel_StyleArrowDots
+						<WcbSlidersPanel_StyleArrowDots
 							onToggle={() => handleTogglePanel("Styles", "_StyleArrowDots")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleArrowDots"}
 							opened={tabStylesIsPanelOpen === "_StyleArrowDots" || undefined}
@@ -453,7 +453,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							}}
 							panelData={style_arrowAndDots}
 						/>
-						<WcbTestimonialsPanel_StyleDimension
+						<WcbSlidersPanel_StyleDimension
 							onToggle={() => handleTogglePanel("Styles", "_StyleDimension")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleDimension"}
 							opened={tabStylesIsPanelOpen === "_StyleDimension" || undefined}
@@ -582,9 +582,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		return (
 			<Slider {...settings} 
 				afterChange={(e) => {
-					console.log('Slider afterChange - selecting parent');
-					setIsParentSelected(true);
-					setSelectedChildId(null);
+						console.log('Slider afterChange - selecting parent');
+						setIsParentSelected(true);
+						setSelectedChildId(null);
 				}}
 			>
 			{innerBlocks.map((block: any, index: number) =>
