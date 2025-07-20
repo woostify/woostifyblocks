@@ -8,7 +8,7 @@ import { WcbAttrs } from "./attributes";
 import { EditProps } from "../block-container/Edit";
 import "./editor.scss";
 import MyCacheProvider from "../components/MyCacheProvider";
-import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
+import converUniqueIdToAnphaKey, { converClientIdToUniqueClass } from "../utils/converUniqueIdToAnphaKey";
 import GlobalCss from "./GlobalCss";
 // Import style panels
 import WcbSlidersPanel_StyleName, { WCB_SLIDER_PANEL_STYLE_NAME_DEMO } from "./WcbSliderPanel_StyleName";
@@ -47,7 +47,6 @@ export {
 };
 
 const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
-	debugger
 	const { attributes, setAttributes, clientId, isSelected, index } = props;
 	const {
 		uniqueId,
@@ -61,6 +60,9 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 	
 	//  COMMON HOOKS
 	const wrapBlockProps = useBlockProps();
+	
+	// Generate unique CSS class from clientId
+	const uniqueClientClass = converClientIdToUniqueClass(clientId);
 	
 	// make uniqueid
 	const UNIQUE_ID = wrapBlockProps.id;
@@ -94,12 +96,13 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-slider-child__wrap ${uniqueId}`}
+				className={`${wrapBlockProps?.className} wcb-slider-child__wrap ${uniqueId} ${uniqueClientClass}`}
 				data-uniqueid={uniqueId}
+				data-clientid={clientId}
 			>
 
-				{/* CSS in JS - Only render styles once for each unique instance */}
-				<GlobalCss {...attributes} />
+				{/* CSS in JS - Use clientID for unique styling */}
+				<GlobalCss {...attributes} clientID={clientId}/>
 				
 				<div className="wcb-slider-child__item">
 					<div className="wcb-slider-child__item-background">
@@ -110,16 +113,7 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 								style_image.imagePosition === "left") &&
 								renderImage()
 							}
-							<div className={`wcb-slider-child__item-inner 
-								${
-									// style_layoutPreset?.preset === "wcb-layout-2" ||
-									// style_layoutPreset?.preset === "wcb-layout-3" ||
-									// style_layoutPreset?.preset === "wcb-layout-5" ?
-									// "justify-items-start" : "justify-items-center"
-									""
-								}
-							`}
-							>
+							<div className="wcb-slider-child__item-inner">
 								{/* Image */}	
 								{
 									(style_image && 

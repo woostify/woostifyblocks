@@ -2,10 +2,14 @@ import React from "react";
 import { RichText, useBlockProps } from "@wordpress/block-editor";
 import { WcbAttrs } from "./attributes";
 import MyIcon from "../components/controls/MyIcon";
+import GlobalCss from "./GlobalCss";
+import { converClientIdToUniqueClass } from "../utils/converUniqueIdToAnphaKey";
 
-export interface WcbAttrsForSave extends WcbAttrs {}
+export interface WcbAttrsForSave extends WcbAttrs {
+	clientID?: string; // Add clientID to save interface
+}
 
-export default function save({ attributes }: { attributes: WcbAttrs }) {
+export default function save({ attributes, context }: { attributes: WcbAttrs & { clientID?: string }, context?: any }) {
 	const {
 		uniqueId,
 		content,
@@ -14,11 +18,17 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_image,
 		style_buttonPreset,
 		style_layoutPreset,
+		clientID, // Get clientID if passed
 	} = attributes;
 
+	// For save component, we'll use a fallback approach since clientId might not be available
+	// The CSS will still work with uniqueId as fallback
+	const uniqueClientClass = clientID ? converClientIdToUniqueClass(clientID) : `fallback-${uniqueId}`;
+
 	const blockProps = useBlockProps.save({
-		className: `wcb-slider-child__wrap ${uniqueId} wcb-update-div`,
+		className: `wcb-slider-child__wrap ${uniqueId} ${uniqueClientClass} wcb-update-div`,
 		"data-uniqueid": uniqueId,
+		"data-clientid": clientID || 'not-available',
 	});
 
 	const renderImage = () => {
@@ -43,6 +53,16 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 	return (
 		<div {...blockProps}>
+			{/* 
+				CSS SCOPING STRUCTURE:
+				- Using clientId-based CSS classes for unique styling
+				- Each slider child has unique CSS selector based on clientId
+				- Fallback to uniqueId if clientId not available
+			*/}
+			
+			{/* Render CSS for this specific slider child instance */}
+			<GlobalCss {...attributes} clientID={clientID} />
+			
 			<div className="wcb-slider-child__item">
 				<div className="wcb-slider-child__item-background">
 					<div className="wcb-slider-child__item-wrap-inner">

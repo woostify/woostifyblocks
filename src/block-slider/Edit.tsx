@@ -26,7 +26,7 @@ import { WcbAttrsForSave } from "./Save";
 import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
+import converUniqueIdToAnphaKey, { converClientIdToUniqueClass } from "../utils/converUniqueIdToAnphaKey";
 // Import child panel components using shared types to avoid circular dependency
 import {
 	WcbSlidersPanel_StyleName as ChildStyleName,
@@ -144,6 +144,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
+	
+	// Generate CSS-safe class from clientId for reliable parent identification
+	const parentCssClass = converClientIdToUniqueClass(clientId);
+	
 	const [isParentSelected, setIsParentSelected] = useState(true);
 	const [selectedChildId, setSelectedChildId] = useState<string | null>(clientId);
 
@@ -320,19 +324,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 									);
 								}}
 								panelData={childAttrs.style_content || WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO}
-							/>
-							
-							<ChildStyleCompany
-								onToggle={() => childPanelInfo.handleTogglePanel("Styles", "_StyleCompany")}
-								initialOpen={childPanelInfo.tabStylesIsPanelOpen === "_StyleCompany"}
-								opened={childPanelInfo.tabStylesIsPanelOpen === "_StyleCompany" || undefined}
-								setAttr__={(data) => {
-									wp.data.dispatch("core/block-editor").updateBlockAttributes(
-										selectedChildBlock.clientId,
-										{ style_company: data }
-									);
-								}}
-								panelData={childAttrs.style_company || WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO}
 							/>
 							
 							<ChildStyleBackground
@@ -654,7 +645,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
-				className={`${wrapBlockProps?.className} wcb-slider__wrap ${uniqueId}`}
+				className={`${wrapBlockProps?.className} wcb-slider__wrap ${uniqueId} ${parentCssClass}`}
 				data-uniqueid={uniqueId}
 				onClick={(e) => {
 					// Nếu click trực tiếp vào div cha (không phải con)

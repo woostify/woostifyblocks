@@ -1,5 +1,5 @@
 import { Global, CSSObject } from "@emotion/react";
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { getAdvanveDivWrapStyles } from "../block-container/getAdvanveStyles";
 import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
 import getSingleDimensionStyles from "../utils/getSingleDimensionStyles";
@@ -7,6 +7,7 @@ import getTypographyStyles from "../utils/getTypographyStyles";
 import getBorderStyles from "../utils/getBorderStyles";
 import getStyleBackground from "../utils/getStyleBackground";
 import { WcbAttrsForSave } from "./Save";
+import { converClientIdToUniqueClass } from "../utils/converUniqueIdToAnphaKey";
 import {
 	WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_1,
 	WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_2,
@@ -18,11 +19,16 @@ import {
 	WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_8,
 } from "./WcbSliderPanel_ButtonPreset";
 
-interface Props extends WcbAttrsForSave {}
+interface Props extends WcbAttrsForSave {
+	parentUniqueId?: string | null; // Keep for backward compatibility
+	clientID?: string; // New: Use clientId for unique CSS selectors
+}
 
 const GlobalCss: FC<Props> = (attrs) => {
 	const {
 		uniqueId,
+		parentUniqueId: propParentUniqueId,
+		clientID, // Get clientID prop
 		// ATTRS OF BLOCK
 		style_backgroundAndBorder,
 		style_company,
@@ -38,7 +44,40 @@ const GlobalCss: FC<Props> = (attrs) => {
 		advance_motionEffect,
 	} = attrs;
 
-	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
+	// Generate unique CSS class from clientID
+	const uniqueCssClass = clientID ? converClientIdToUniqueClass(clientID) : uniqueId;
+
+	// For parent detection, try to get parent clientId from context
+	const [detectedParentUniqueId, setDetectedParentUniqueId] = useState<string | null>(null);
+
+	// Effect to detect parent uniqueId from DOM when not provided as prop
+	useEffect(() => {
+		if (!propParentUniqueId && typeof document !== 'undefined' && clientID) {
+			// Try to find the current element and its parent using clientID-based class
+			const currentElement = document.querySelector(`.${uniqueCssClass}`);
+			if (currentElement) {
+				// Find parent slider block
+				const parentElement = currentElement.closest('.wcb-slider__wrap');
+				if (parentElement) {
+					// Extract parent class that looks like wcb-xxxxx
+					const classList = Array.from(parentElement.classList);
+					const parentCssClass = classList.find(cls => cls.startsWith('wcb-') && cls !== uniqueCssClass);
+					if (parentCssClass) {
+						setDetectedParentUniqueId(parentCssClass);
+					}
+				}
+			}
+		}
+	}, [uniqueCssClass, propParentUniqueId, clientID]);
+
+	// Use propParentUniqueId first, then detectedParentUniqueId, fallback to null
+	const parentUniqueId = propParentUniqueId || detectedParentUniqueId;
+
+	// Create scoped CSS selector using clientID-based unique class
+	const WRAP_CLASSNAME = parentUniqueId 
+		? `.wcb-slider__wrap.${parentUniqueId} .wcb-slider-child__wrap.${uniqueCssClass}`
+		: `.wcb-slider-child__wrap.${uniqueCssClass}`;
+	
 	const ITEM_CLASSNAME = `${WRAP_CLASSNAME} .wcb-slider-child__item`;
 	const ITEM_CLASSNAME_INNER = `${WRAP_CLASSNAME} .wcb-slider-child__item-inner`
 	const ITEM_NAME = `${WRAP_CLASSNAME} .wcb-slider-child__name`;
@@ -166,7 +205,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 						}),
 						{
 							[ITEM_NAME]: {
-								color: style_name.textColor,
+								color: `${style_name.textColor} !important`,
 							},
 						},
 					]}
@@ -188,7 +227,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 						}),
 						{
 							[ITEM_CONTENT]: {
-								color: style_content.textColor,
+								color: `${style_content.textColor} !important`,
 							},
 						},
 					]}
@@ -205,7 +244,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 						}),
 						{
 							[ITEM_COMPANY]: {
-								color: style_company.textColor,
+								color: `${style_company.textColor} !important`,
 							},
 						},
 					]}
