@@ -48,7 +48,7 @@ export default function save({
 		advance_motionEffect,
 	};
 	//
-
+	console.log('heading4', heading);
 	const renderSeparator = () => {
 		return general_content.showSeparator ? (
 			<div className="wcb-heading__separator-wrap">
@@ -56,8 +56,6 @@ export default function save({
 			</div>
 		) : null;
 	};
-
-	console.log('heading', heading);
 
 	//
 	const wrapBlockProps = useBlockProps.save({ className: "wcb-heading__wrap" });
@@ -75,7 +73,7 @@ export default function save({
 					<RichText.Content
 						tagName={general_content.headingTag || "h2"}
 						className="wcb-heading__heading"
-						value={heading}
+						value={heading + 'header4'}
 					/>
 				) : null}
 

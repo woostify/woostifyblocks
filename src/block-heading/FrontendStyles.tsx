@@ -22,10 +22,11 @@ divsToUpdate.forEach((div) => {
 	const divRenderCssEl = div.querySelector(
 		`div[data-wcb-global-styles=${div.id}]`
 	) as HTMLElement | null;
-
+	
 	if (!preEl || !preEl.innerText || !divRenderCssEl) {
 		return;
 	}
+	
 	//
 	const props = JSON.parse(preEl?.innerText);
 	//

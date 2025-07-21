@@ -30,7 +30,7 @@ export default function save({
 		styles_border,
 	} = attributes;
 	//
-
+	console.log('heading3', heading);
 	const newAttrForSave: WcbAttrsForSave = {
 		uniqueId,
 		advance_responsiveCondition,
@@ -71,7 +71,7 @@ export default function save({
 					<RichText.Content
 						tagName={general_content.headingTag || "h2"}
 						className="wcb-heading__heading"
-						value={heading}
+						value={heading + "header3"}
 					/>
 				) : null}
 
