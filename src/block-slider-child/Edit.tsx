@@ -52,7 +52,8 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 		callToAction,
 		style_image,
 		style_buttonPreset,
-		style_layoutPreset
+		style_layoutPreset,
+		clientID, // Get existing clientID from attributes
 	} = attributes;
 	
 	//  COMMON HOOKS
@@ -68,6 +69,15 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
+
+	// Save clientId to attributes so Save component can use it
+	useEffect(() => {
+		if (clientId && clientId !== clientID) {
+			setAttributes({
+				clientID: clientId,
+			});
+		}
+	}, [clientId, clientID, setAttributes]);
 
 	const renderImage = () => {
 		return style_image && style_image.isShowImage && style_image.image?.mediaId ? (

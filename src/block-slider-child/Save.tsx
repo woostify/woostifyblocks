@@ -24,7 +24,7 @@ export interface WcbAttrsForSave extends WcbAttrs {
 	clientID?: string;
 }
 
-export default function save({ attributes, context }: { attributes: WcbAttrs & { clientID?: string }, context?: any }) {
+export default function save({ attributes, context }: { attributes: WcbAttrs, context?: any }) {
 	const {
 		uniqueId,
 		content,
@@ -47,8 +47,9 @@ export default function save({ attributes, context }: { attributes: WcbAttrs & {
 		advance_motionEffect,
 	} = attributes;
 
-	const uniqueClientClass = clientID ? converClientIdToUniqueClass(clientID) : `fallback-${uniqueId}`;
-
+	// Generate unique CSS class from clientID or fallback to uniqueId
+	const uniqueCssClass = clientID ? converClientIdToUniqueClass(clientID) : uniqueId;
+	
 	// Create complete attributes object for frontend CSS system
 	const newAttrForSave: WcbAttrsForSave = {
 		uniqueId,
@@ -99,7 +100,7 @@ export default function save({ attributes, context }: { attributes: WcbAttrs & {
 					<div className="wcb-slider__item-inner">
 						{/* Child content wrapper with frontend CSS system - timing is now fixed */}
 						<div 
-							className={`wcb-slider-child__wrap ${uniqueId} ${uniqueClientClass} wcb-update-div`}
+							className={`wcb-slider-child__wrap ${uniqueId} ${uniqueCssClass} wcb-update-div`}
 							data-uniqueid={uniqueId}
 							data-clientid={clientID || 'not-available'}
 						>

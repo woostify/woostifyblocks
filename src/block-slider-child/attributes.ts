@@ -37,6 +37,7 @@ import { WCB_SLIDER_LAYOUT_PANEL_PRESET, WCB_SLIDER_LAYOUT_PANEL_PRESET_DEMO } f
 
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
+	clientID?: string; // Add clientID for Save component
 	content: string;
 	name: string;
 	callToAction: string;
@@ -62,6 +63,11 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
 
 const blockAttrs: AttrsGenericType<WcbAttrs> = {
 	uniqueId: {
+		type: "string",
+		default: "",
+	},
+
+	clientID: {
 		type: "string",
 		default: "",
 	},
