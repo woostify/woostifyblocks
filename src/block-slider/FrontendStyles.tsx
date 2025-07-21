@@ -11,6 +11,12 @@ export function initCarouselForWcbSliders(div: Element, props: Props) {
 	if (typeof jQuery !== "function") {
 		return;
 	}
+
+	// Safety check: Return early if this is a slider child or missing required props
+	if (!props.general_carousel || !props.general_general) {
+		return;
+	}
+
 	const {
 		animationDuration,
 		autoplaySpeed,
@@ -19,9 +25,9 @@ export function initCarouselForWcbSliders(div: Element, props: Props) {
 		rewind,
 		showArrowsDots,
 		adaptiveHeight,
-	} = props.general_carousel;
+	} = props.general_carousel || {};
 	const { colGap, columns, numberofTestimonials, textAlignment } =
-		props.general_general;
+		props.general_general || {};
 
 	const {
 		value_Desktop: col_desktop,
@@ -67,6 +73,22 @@ export function initCarouselForWcbSliders(div: Element, props: Props) {
 			},
 		],
 	};
-	// @ts-ignore
-	$(`.${dataUniqueid} .wcb-slider__wrap-items`)?.slick?.(settings);
+
+	const targetSelector = `.${dataUniqueid} .wcb-slider__wrap-items`;
+	const targetElement = $(targetSelector);
+	
+	if (targetElement.length === 0) {
+		return;
+	}
+
+	if (targetElement.children().length === 0) {
+		return;
+	}
+
+	try {
+		// @ts-ignore
+		targetElement.slick(settings);
+	} catch (error) {
+		console.error('🎠 Slider initialization failed:', error);
+	}
 }

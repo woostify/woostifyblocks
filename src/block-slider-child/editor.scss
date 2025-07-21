@@ -1,4 +1,15 @@
+@import "./style";
+
+/* Ensure editor styles match frontend styles */
 .wcb-slider-child__btn {
     display: flex;
     justify-content: center;
+}
+
+/* Override any Gutenberg editor styles that might interfere */
+.wp-block[data-type="wcb/slider-child"] {
+	.wcb-slider-child__wrap {
+		/* Ensure consistent styling between editor and frontend */
+		/* All styles should come from GlobalCss component */
+	}
 }

@@ -580,23 +580,25 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 		// Show slider with individual child blocks
 		return (
-			<Slider {...settings} 
-				afterChange={(e) => {
-						console.log('Slider afterChange - selecting parent');
-						setIsParentSelected(true);
-						setSelectedChildId(null);
-				}}
-			>
-			{innerBlocks.map((block: any, index: number) =>
-				<MemoizedChildBlock
-					key={block.clientId}
-					block={block}
-					isSelected={!isParentSelected && (selectedChildId != null && selectedChildId === block.clientId)}
-					onSelect={handleChildSelect}
-					index={index + 1} // Pass index to child for unique identification
-				/>
-			)}
-			</Slider>
+			<div className="wcb-slider__wrap-items">
+				<Slider {...settings} 
+					afterChange={(e) => {
+							console.log('Slider afterChange - selecting parent');
+							setIsParentSelected(true);
+							setSelectedChildId(null);
+					}}
+				>
+				{innerBlocks.map((block: any, index: number) =>
+					<MemoizedChildBlock
+						key={block.clientId}
+						block={block}
+						isSelected={!isParentSelected && (selectedChildId != null && selectedChildId === block.clientId)}
+						onSelect={handleChildSelect}
+						index={index + 1} // Pass index to child for unique identification
+					/>
+				)}
+				</Slider>
+			</div>
 		);
 	}, [
 		innerBlocks,

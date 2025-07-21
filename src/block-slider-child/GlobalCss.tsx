@@ -1,5 +1,5 @@
 import { Global, CSSObject } from "@emotion/react";
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import { getAdvanveDivWrapStyles } from "../block-container/getAdvanveStyles";
 import getPaddingMarginStyles from "../utils/getPaddingMarginStyles";
 import getSingleDimensionStyles from "../utils/getSingleDimensionStyles";
@@ -27,11 +27,9 @@ interface Props extends WcbAttrsForSave {
 const GlobalCss: FC<Props> = (attrs) => {
 	const {
 		uniqueId,
-		parentUniqueId: propParentUniqueId,
 		clientID, // Get clientID prop
 		// ATTRS OF BLOCK
 		style_backgroundAndBorder,
-		style_company,
 		style_content,
 		style_dimension,
 		style_name,
@@ -44,48 +42,35 @@ const GlobalCss: FC<Props> = (attrs) => {
 		advance_motionEffect,
 	} = attrs;
 
-	// Generate unique CSS class from clientID
+	// Generate unique CSS class from clientID or fallback to uniqueId
 	const uniqueCssClass = clientID ? converClientIdToUniqueClass(clientID) : uniqueId;
 
-	// For parent detection, try to get parent clientId from context
-	const [detectedParentUniqueId, setDetectedParentUniqueId] = useState<string | null>(null);
-
-	// Effect to detect parent uniqueId from DOM when not provided as prop
-	useEffect(() => {
-		if (!propParentUniqueId && typeof document !== 'undefined' && clientID) {
-			// Try to find the current element and its parent using clientID-based class
-			const currentElement = document.querySelector(`.${uniqueCssClass}`);
-			if (currentElement) {
-				// Find parent slider block
-				const parentElement = currentElement.closest('.wcb-slider__wrap');
-				if (parentElement) {
-					// Extract parent class that looks like wcb-xxxxx
-					const classList = Array.from(parentElement.classList);
-					const parentCssClass = classList.find(cls => cls.startsWith('wcb-') && cls !== uniqueCssClass);
-					if (parentCssClass) {
-						setDetectedParentUniqueId(parentCssClass);
-					}
-				}
-			}
-		}
-	}, [uniqueCssClass, propParentUniqueId, clientID]);
-
-	// Use propParentUniqueId first, then detectedParentUniqueId, fallback to null
-	const parentUniqueId = propParentUniqueId || detectedParentUniqueId;
-
-	// Create scoped CSS selector using clientID-based unique class
-	const WRAP_CLASSNAME = parentUniqueId 
-		? `.wcb-slider__wrap.${parentUniqueId} .wcb-slider-child__wrap.${uniqueCssClass}`
-		: `.wcb-slider-child__wrap.${uniqueCssClass}`;
+	// Create robust CSS selectors that work in all scenarios
+	const WRAP_CLASSNAME_UNIVERSAL = `.wcb-slider-child__wrap.${uniqueCssClass}`;
+	const WRAP_CLASSNAME_SCOPED = `.wcb-slider__wrap .wcb-slider-child__wrap.${uniqueCssClass}`;
 	
-	const ITEM_CLASSNAME = `${WRAP_CLASSNAME} .wcb-slider-child__item`;
-	const ITEM_CLASSNAME_INNER = `${WRAP_CLASSNAME} .wcb-slider-child__item-inner`
-	const ITEM_NAME = `${WRAP_CLASSNAME} .wcb-slider-child__name`;
-	const ITEM_CONTENT = `${WRAP_CLASSNAME} .wcb-slider-child__content`;
-	const ITEM_COMPANY = `${WRAP_CLASSNAME} .wcb-slider-child__company`;
-	const ITEM_IMAGE = `${WRAP_CLASSNAME} .wcb-slider-child__image`;
-	const CALL_TO_ACTION = `${WRAP_CLASSNAME} .wcb-slider-child__btn`;
-	const CALL_TO_ACTION_INNER = `${WRAP_CLASSNAME} .wcb-slider-child__btn-inner`;
+	// Create comprehensive dual selectors that handle various wrapper scenarios
+	const createRobustSelector = (childSelector: string) => [
+		// Direct targeting (most reliable for save mode)
+		`${WRAP_CLASSNAME_UNIVERSAL} ${childSelector}`,
+		// Scoped targeting (for edit mode context)
+		`${WRAP_CLASSNAME_SCOPED} ${childSelector}`,
+		// Additional targeting for potential slider wrapper scenarios
+		`${WRAP_CLASSNAME_UNIVERSAL} .wcb-slider__item ${childSelector}`,
+		`${WRAP_CLASSNAME_SCOPED} .wcb-slider__item ${childSelector}`,
+		// Even more specific for deeply nested scenarios
+		`${WRAP_CLASSNAME_UNIVERSAL} .wcb-slider__item .wcb-slider__item-inner ${childSelector}`,
+		`${WRAP_CLASSNAME_SCOPED} .wcb-slider__item .wcb-slider__item-inner ${childSelector}`
+	].join(', ');
+
+	// Create CSS selectors using robust approach
+	const ITEM_CLASSNAME = createRobustSelector('.wcb-slider-child__item');
+	const ITEM_CLASSNAME_INNER = createRobustSelector('.wcb-slider-child__item-inner');
+	const ITEM_NAME = createRobustSelector('.wcb-slider-child__name');
+	const ITEM_CONTENT = createRobustSelector('.wcb-slider-child__content');
+	const ITEM_IMAGE = createRobustSelector('.wcb-slider-child__image');
+	const CALL_TO_ACTION = createRobustSelector('.wcb-slider-child__btn');
+	const CALL_TO_ACTION_INNER = createRobustSelector('.wcb-slider-child__btn-inner');
 
 	// ------------------- HELPER FUNCTIONS
 	const getButtonBorderFromPreset = () => {
@@ -140,7 +125,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject[] => {
 		return [
-			// Basic styling for the slider child item
+			// Basic styling for the slider child item using robust selectors
 			{
 				[ITEM_CLASSNAME]: {
 					display: "flex",
@@ -153,8 +138,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 	if (!uniqueId) {
 		return null;
 	}
-
-	// Debug removed - block working properly
 
 	return (
 		<>
@@ -244,7 +227,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 							isWithRadius: true,
 						}),
 						getStyleBackground({
-							className: `${ITEM_CLASSNAME} .wcb-slider-child__item-background`,
+							className: createRobustSelector('.wcb-slider-child__item-background'),
 							styles_background: style_backgroundAndBorder.background,
 						}),
 					]}
@@ -256,7 +239,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 				<Global
 					styles={[
 						getPaddingMarginStyles({
-							className: `${WRAP_CLASSNAME} .wcb-slider-child__item-inner`,
+							className: createRobustSelector('.wcb-slider-child__item-inner'),
 							padding: style_dimension.padding,
 						}),
 					]}
@@ -271,13 +254,13 @@ const GlobalCss: FC<Props> = (attrs) => {
 					<Global
 						styles={[
 							{
-								[`${WRAP_CLASSNAME} .wcb-slider-child__content-image`]:
+								[createRobustSelector('.wcb-slider-child__content-image')]:
 									{
 										display: "flex",
 										flexDirection: "column",
 										alignItems: "center",
 								},
-								[`${WRAP_CLASSNAME} .wcb-slider-child__image`]:
+								[createRobustSelector('.wcb-slider-child__image')]:
 									{
 										alignSelf: style_image.imageAlignSelf,
 										width: style_image.imageSize === "thumbnail" ? "100px" : "100%",
@@ -296,14 +279,14 @@ const GlobalCss: FC<Props> = (attrs) => {
 					<Global
 						styles={[
 							{
-								[`${WRAP_CLASSNAME} .wcb-slider-child__item-wrap-inner`]:
+								[createRobustSelector('.wcb-slider-child__item-wrap-inner')]:
 									{
 										display: "flex",
 										flexDirection: "row",
 										gap: "10px",
 									},
 
-								[`${WRAP_CLASSNAME} .wcb-slider-child__image`]:
+								[createRobustSelector('.wcb-slider-child__image')]:
 									{
 										display: "block",
 										width: style_image.imageSize === "thumbnail" ? "100px" : "100%",
@@ -321,7 +304,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 					advance_motionEffect,
 					advance_responsiveCondition,
 					advance_zIndex,
-					className: WRAP_CLASSNAME,
+					className: WRAP_CLASSNAME_UNIVERSAL,
 					defaultDisplay: "block",
 				})}
 			/>
