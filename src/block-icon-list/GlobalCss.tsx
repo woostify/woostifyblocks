@@ -7,8 +7,8 @@ import getStyleObjectFromResponsiveAttr from "../utils/getStyleObjectFromRespons
 import getTypographyStyles from "../utils/getTypographyStyles";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { WcbAttrsForSave } from "./Save";
-import useGetDeviceType from "../hooks/useGetDeviceType";
-import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import checkResponsiveValueForOptimizeCSS from "../utils/checkResponsiveValueForOptimizeCSS";
 
 interface Props extends WcbAttrsForSave {}
 
@@ -28,8 +28,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		advance_motionEffect,
 	} = attrs;
 	// Get current device type
-	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-
+	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
 	const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-icon-list__icon-wrap`;
 	const CONTENT_CLASSNAME = `${WRAP_CLASSNAME} .wcb-icon-list__content`;
@@ -37,9 +36,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 	if (!uniqueId) {
 		return null;
 	}
-
-	// Get text alignment for current device
-	const currentTextAlignment = general_layout.textAlignment[deviceType] || general_layout.textAlignment.Desktop || "left";
 
 	// Convert text alignment to flex alignment
 	const getFlexAlignment = (alignment: string) => {
@@ -54,7 +50,21 @@ const GlobalCss: FC<Props> = (attrs) => {
 		}
 	};
 
-	const flexAlignment = getFlexAlignment(currentTextAlignment);
+	const { textAlignment } = general_layout;
+
+	const { value_Desktop, value_Mobile, value_Tablet } = getValueFromAttrsResponsives<React.CSSProperties["textAlign"]>(
+		textAlignment
+	);
+
+	const {
+		mobile_v: value_Mobile_new,
+		tablet_v: value_Tablet_new,
+		desktop_v: value_Desktop_new,
+	} = checkResponsiveValueForOptimizeCSS({
+		mobile_v: value_Mobile,
+		tablet_v: value_Tablet,
+		desktop_v: value_Desktop,
+	});
 
 	return (
 		<>
@@ -93,13 +103,36 @@ const GlobalCss: FC<Props> = (attrs) => {
 					[`${CONTENT_CLASSNAME}`]: {
 						display: "flex",
 						flexDirection: general_layout.layout === "vertical" ? "column" : "row",
-						...(general_layout.layout === "vertical"
+
+						...(value_Mobile_new || value_Tablet_new || value_Desktop_new
+						? general_layout.layout === "vertical"
 							? {
-									alignItems: flexAlignment,
+								alignItems: getFlexAlignment(value_Mobile_new),
+								[`@media (min-width: ${media_tablet})`]: value_Tablet_new
+								? {
+									alignItems: getFlexAlignment(value_Tablet_new),
 								}
+								: undefined,
+								[`@media (min-width: ${media_desktop})`]: value_Desktop_new
+								? {
+									alignItems: getFlexAlignment(value_Desktop_new),
+								}
+								: undefined,
+							}
 							: {
-									justifyContent: flexAlignment,
-								}),
+								justifyContent: getFlexAlignment(value_Mobile_new),
+								[`@media (min-width: ${media_tablet})`]: value_Tablet_new
+								? {
+									justifyContent: getFlexAlignment(value_Tablet_new),
+								}
+								: undefined,
+								[`@media (min-width: ${media_desktop})`]: value_Desktop_new
+								? {
+									justifyContent: getFlexAlignment(value_Desktop_new),
+								}
+								: undefined,
+							}
+						: {}),
 					},
 				},
 			]}/>

@@ -11,19 +11,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../block-container/getAdvanveStyles */ "./src/block-container/getAdvanveStyles.ts");
-/* harmony import */ var _utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getPaddingMarginStyles */ "./src/utils/getPaddingMarginStyles.ts");
-/* harmony import */ var _utils_getSingleDimensionStyles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/getSingleDimensionStyles */ "./src/utils/getSingleDimensionStyles.ts");
-/* harmony import */ var _utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/getTypographyStyles */ "./src/utils/getTypographyStyles.ts");
-/* harmony import */ var _utils_getBorderRadiusStyles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/getBorderRadiusStyles */ "./src/utils/getBorderRadiusStyles.ts");
-/* harmony import */ var _utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/getBorderStyles */ "./src/utils/getBorderStyles.ts");
-/* harmony import */ var _utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/getStyleObjectFromResponsiveAttr */ "./src/utils/getStyleObjectFromResponsiveAttr.ts");
-/* harmony import */ var _utils_getStyleBackground__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/getStyleBackground */ "./src/utils/getStyleBackground.tsx");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
+/* harmony import */ var _block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../block-container/getAdvanveStyles */ "./src/block-container/getAdvanveStyles.ts");
+/* harmony import */ var _utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/getPaddingMarginStyles */ "./src/utils/getPaddingMarginStyles.ts");
+/* harmony import */ var _utils_getSingleDimensionStyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getSingleDimensionStyles */ "./src/utils/getSingleDimensionStyles.ts");
+/* harmony import */ var _utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/getTypographyStyles */ "./src/utils/getTypographyStyles.ts");
+/* harmony import */ var _utils_getBorderRadiusStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/getBorderRadiusStyles */ "./src/utils/getBorderRadiusStyles.ts");
+/* harmony import */ var _utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/getBorderStyles */ "./src/utils/getBorderStyles.ts");
+/* harmony import */ var _utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/getStyleObjectFromResponsiveAttr */ "./src/utils/getStyleObjectFromResponsiveAttr.ts");
+/* harmony import */ var _utils_getStyleBackground__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/getStyleBackground */ "./src/utils/getStyleBackground.tsx");
 
 
 
@@ -65,7 +63,7 @@ const GlobalCss = attrs => {
 
   // ------------------- WRAP DIV
   const getDivWrapStyles = () => {
-    return [(0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_8__["default"])({
+    return [(0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
       value: general_general.textAlignment,
       className: `${ITEM_CLASSNAME}`,
       prefix: "textAlign"
@@ -74,13 +72,13 @@ const GlobalCss = attrs => {
   if (!uniqueId) {
     return null;
   }
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
     styles: getDivWrapStyles()
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
-    styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+    styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
       typography: style_name.typography,
       className: ITEM_NAME
-    }), (0,_utils_getSingleDimensionStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
+    }), (0,_utils_getSingleDimensionStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
       value: style_name.marginBottom,
       className: ITEM_NAME,
       prefix: "marginBottom"
@@ -89,11 +87,11 @@ const GlobalCss = attrs => {
         color: style_name.textColor
       }
     }]
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
-    styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+    styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
       typography: style_content.typography,
       className: ITEM_CONTENT
-    }), (0,_utils_getSingleDimensionStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
+    }), (0,_utils_getSingleDimensionStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
       value: style_content.marginBottom,
       className: ITEM_CONTENT,
       prefix: "marginBottom"
@@ -102,8 +100,8 @@ const GlobalCss = attrs => {
         color: style_content.textColor
       }
     }]
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
-    styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+    styles: [(0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
       typography: style_company.typography,
       className: ITEM_COMPANY
     }), {
@@ -111,14 +109,14 @@ const GlobalCss = attrs => {
         color: style_company.textColor
       }
     }]
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
-    styles: [(0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+    styles: [(0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_2__["default"])({
       padding: style_image.padding,
       className: ITEM_IMAGE
-    }), (0,_utils_getBorderRadiusStyles__WEBPACK_IMPORTED_MODULE_6__["default"])({
+    }), (0,_utils_getBorderRadiusStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
       radius: style_image.radius,
       className: `${ITEM_IMAGE} img`
-    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_8__["default"])({
+    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
       className: `${ITEM_IMAGE} img`,
       prefix: "height",
       prefix_2: "width",
@@ -128,29 +126,29 @@ const GlobalCss = attrs => {
         objectFit: style_image.objectFit
       }
     }]
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
-    styles: [(0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_7__["default"])({
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+    styles: [(0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_6__["default"])({
       border: style_backgroundAndBorder.border,
       className: ITEM_CLASSNAME,
       isWithRadius: true
-    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_8__["default"])({
+    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
       className: ITEM_CLASSNAME,
       value: general_general.colGap,
       prefix: "paddingLeft",
       prefix_2: "paddingRight"
-    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_8__["default"])({
+    }), (0,_utils_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_7__["default"])({
       className: ITEM_CLASSNAME,
       value: style_arrowAndDots.dotsMarginTop,
       prefix: "marginBottom"
-    }), (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
+    }), (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_2__["default"])({
       className: `${WRAP_CLASSNAME} .wcb-testimonials__item-inner`,
       padding: style_dimension.padding
-    }), (0,_utils_getStyleBackground__WEBPACK_IMPORTED_MODULE_9__["default"])({
+    }), (0,_utils_getStyleBackground__WEBPACK_IMPORTED_MODULE_8__["default"])({
       className: `${ITEM_CLASSNAME} .wcb-testimonials__item-background`,
       styles_background: style_backgroundAndBorder.background
     })]
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
-    styles: [(0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_7__["default"])({
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+    styles: [(0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_6__["default"])({
       border: style_arrowAndDots.border,
       className: SLICK_ARROW,
       isWithRadius: true
@@ -167,8 +165,8 @@ const GlobalCss = attrs => {
         }
       }
     }]
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
-    styles: [(0,_utils_getSingleDimensionStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+    styles: [(0,_utils_getSingleDimensionStyles__WEBPACK_IMPORTED_MODULE_3__["default"])({
       value: style_rating.marginBottom,
       className: ITEM_RATING,
       prefix: "marginBottom"
@@ -177,8 +175,8 @@ const GlobalCss = attrs => {
         color: style_rating.color
       }
     }]
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
-    styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_2__.getAdvanveDivWrapStyles)({
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+    styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_1__.getAdvanveDivWrapStyles)({
       advance_motionEffect,
       advance_responsiveCondition,
       advance_zIndex,
@@ -187,7 +185,7 @@ const GlobalCss = attrs => {
     })
   }));
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (react__WEBPACK_IMPORTED_MODULE_1___default().memo(GlobalCss));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (react__WEBPACK_IMPORTED_MODULE_0___default().memo(GlobalCss));
 
 /***/ }),
 
@@ -201,12 +199,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-const getBackgroundColorGradientStyles = _ref => {
-  let {
-    className,
-    background,
-    backgroundHover
-  } = _ref;
+const getBackgroundColorGradientStyles = ({
+  className,
+  background,
+  backgroundHover
+}) => {
   const {
     bgType,
     color,
@@ -271,12 +268,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getStyleObjectFromResponsiveAttr */ "./src/utils/getStyleObjectFromResponsiveAttr.ts");
 
-const getSingleDimensionStyles = _ref => {
-  let {
-    className,
-    prefix,
-    value
-  } = _ref;
+const getSingleDimensionStyles = ({
+  className,
+  prefix,
+  value
+}) => {
   return (0,_getStyleObjectFromResponsiveAttr__WEBPACK_IMPORTED_MODULE_0__["default"])({
     className,
     prefix,
@@ -305,11 +301,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function getStyleBackground(_ref) {
-  let {
-    styles_background,
-    className
-  } = _ref;
+function getStyleBackground({
+  styles_background,
+  className
+}) {
   const WRAP_CLASSNAME = className;
   const {
     media_desktop,
