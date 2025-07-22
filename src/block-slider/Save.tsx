@@ -1,9 +1,7 @@
 import React from "react";
 import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
 import { WcbAttrs } from "./attributes";
-import SaveCommon from "../components/SaveCommon";
 import GlobalCss from "./GlobalCss";
-import { converClientIdToUniqueClass } from "../utils/converUniqueIdToAnphaKey";
 import { WCB_SLIDER_PANEL_GENERAL_DEMO } from "./WcbSliderPanelGeneral";
 import { WCB_SLIDER_PANEL_CAROUSEL_DEMO } from "./WcbSliderPanelCarousel";
 import { WCB_SLIDER_PANEL_STYLE_ARROW_DOTS_DEMO } from "./WcbSliderPanel_StyleArrowDots";
@@ -24,6 +22,7 @@ export interface WcbAttrsForSave extends WcbAttrs {}
 export default function save({ attributes }: { attributes: WcbAttrs }) {
 	const {
 		uniqueId,
+		sliders,
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_general,
@@ -41,6 +40,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 
 	const newAttrForSave: WcbAttrsForSave = {
 		uniqueId,
+		sliders,
 		advance_responsiveCondition: advance_responsiveCondition || RESPONSIVE_CONDITON_DEMO,
 		advance_zIndex: advance_zIndex || Z_INDEX_DEMO,
 		general_general: general_general || WCB_SLIDER_PANEL_GENERAL_DEMO,

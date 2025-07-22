@@ -55,6 +55,8 @@ import {
 	WCB_SLIDER_BUTTON_PANEL_PRESET_DEMO
 } from "../block-slider-child/WcbSliderPanel_ButtonPreset";
 
+export const SLIDER_ITEM_DEMO: string[] = ["wcb/slider-child"];
+
 // Arrow components for slider
 function SampleNextArrow(props: any) {
 	const { className, style, onClick } = props;
@@ -108,6 +110,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
 	const {
 		uniqueId,
+		sliders,
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_general,
@@ -148,7 +151,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	
 	const [isParentSelected, setIsParentSelected] = useState(true);
 	const [selectedChildId, setSelectedChildId] = useState<string | null>(clientId);
-
+	
 	/**
 	 * Parent-Child Synchronization
 	 */
@@ -485,14 +488,13 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		}
 	};
 
-	// InnerBlocks configuration
-	const ALLOWED_BLOCKS = ["wcb/slider-child"];
-	
 	// Use useMemo to prevent unnecessary template recreation
-	const innerBlocksTemplate: any[] = useMemo(() => {
-		const targetNumber = general_general.numberofTestimonials || 3;
-		return [...Array(targetNumber).keys()].map(() => ["wcb/slider-child"]);
-	}, [general_general.numberofTestimonials]);
+	const innerBlocksTemplate: any[] = useMemo(
+		() => [...Array(general_general.numberofTestimonials || 3).keys()].map(
+			(_, index) => sliders[index] || SLIDER_ITEM_DEMO
+		),
+		[general_general.numberofTestimonials, sliders]
+	)
 
 	// Memoized child component to prevent multiple renders
 	const MemoizedChildBlock = useMemo(() => {
@@ -570,7 +572,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		if (innerBlocks.length === 0) {
 			return (
 				<InnerBlocks
-					allowedBlocks={ALLOWED_BLOCKS}
+					allowedBlocks={SLIDER_ITEM_DEMO}
 					template={innerBlocksTemplate}
 					templateLock={false}
 					renderAppender={isSelected ? InnerBlocks.DefaultBlockAppender : undefined}
@@ -612,6 +614,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {
 		return {
 			uniqueId,
+			sliders,
 			advance_responsiveCondition,
 			advance_zIndex,
 			general_general,
@@ -628,6 +631,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		};
 	}, [
 		uniqueId,
+		sliders,
 		advance_responsiveCondition,
 		advance_zIndex,
 		general_general,
@@ -650,7 +654,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				className={`${wrapBlockProps?.className} wcb-slider__wrap ${uniqueId} ${parentCssClass}`}
 				data-uniqueid={uniqueId}
 				onClick={(e) => {
-					// Nếu click trực tiếp vào div cha (không phải con)
+					// If you click directly on the father Div (not your child)
 					if (e.target === e.currentTarget) {
 						console.log('Parent: Selecting parent block');
 						setIsParentSelected(true);

@@ -60,6 +60,7 @@ import {
 
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
+	sliders: string[][];
 	//
 	general_general: WCB_SLIDER_PANEL_GENERAL;
 	general_carousel: WCB_SLIDER_PANEL_CAROUSEL;
@@ -82,6 +83,15 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	uniqueId: {
 		type: "string",
 		default: "",
+	},
+
+	sliders: {
+		type: "array",
+		default: [
+			["wcb/slider-child"],
+			["wcb/slider-child"],
+			["wcb/slider-child"]
+		]
 	},
 
 	// testimonials moved to individual slider-child blocks
