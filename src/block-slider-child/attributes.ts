@@ -88,7 +88,7 @@ const blockAttrs: AttrsGenericType<WcbAttrs> = {
 	callToAction: {
 		type: "string",
 		source: "html",
-		selector: ".wcb-slider-child__company",
+		selector: ".wcb-slider-child__btn",
 		default: "Read More",
 	},
 
