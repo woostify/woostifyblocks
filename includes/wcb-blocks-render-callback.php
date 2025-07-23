@@ -204,6 +204,25 @@ function wcb_block_countdown_renderCallback($attributes, $content)
 }
 
 //============================================= block 1 ===============================================================
+function wcb_block_icon_list_renderCallback($attributes, $content)
+{
+    // if (!is_admin()) {
+    //     wp_enqueue_script('wcb_block_icon_box_renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-icon-box/FrontendStyles.js', array('wp-element'), null, true);
+    // }
+    wp_enqueue_script__block_commoncss_frontend_styles();
+    return $content;
+}
+
+//============================================= block 1 ===============================================================
+function wcb_block_icon_child_renderCallback($attributes, $content)
+{
+    // if (!is_admin()) {
+    //     wp_enqueue_script('wcb_block_button__renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-button/FrontendStyles.js', array('wp-element'), null, true);
+    // }
+    wp_enqueue_script__block_commoncss_frontend_styles();
+    return $content;
+}
+
 function wcb_block_icon_renderCallback($attributes, $content)
 {
     wp_enqueue_script__block_commoncss_frontend_styles();
