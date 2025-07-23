@@ -87,6 +87,31 @@
 		padding: 0.25rem 0.75rem;
 		text-align: center;
 		text-transform: uppercase;
+		// Fix WooCommerce styles causing vertical text
+		writing-mode: initial;
+		text-orientation: initial;
+		display: inline-block;
+		white-space: nowrap;
+		
+		// Ensure content displays horizontally  
+		span {
+			display: inline;
+			writing-mode: initial;
+			text-orientation: initial;
+			background-color: inherit;
+		}
+		
+		// Target specific span classes that might override
+		span.onsale,
+		.onsale {
+			margin-top: -0.75rem;
+			margin-left: -0.75rem;
+			padding-left: 0.75rem;
+			padding-right: 0.75rem;
+			background-color: inherit;
+			color: inherit;
+			display: inline;
+		}
 	}
 
 	/* RATING */
