@@ -50,8 +50,8 @@ const getContainerAttrsByFlexWrap = (
 			flexWrap: {
 				Desktop: "nowrap",
 			},
-			alignItems: { Desktop: "center" },
-			justifyContent: { Desktop: "center" },
+			alignItems: { Desktop: "stretch" },
+			justifyContent: { Desktop: "flex-start" },
 		},
 	};
 };

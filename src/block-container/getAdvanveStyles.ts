@@ -31,7 +31,6 @@ export const getAdvanveDivWrapStyles = ({
 			thisELs &&
 			thisELs.length
 		) {
-			console.log(222, { thisELs });
 			thisELs.forEach((element) => {
 				// remove old class
 				const regex = /\banimate__\S+/g;
