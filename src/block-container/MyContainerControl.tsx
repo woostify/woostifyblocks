@@ -210,6 +210,7 @@ const MyContainerControl: FC<Props> = ({
 				onChange={handleChangeOverflow}
 				contentClassName="capitalize mt-3"
 				value={overflow}
+				hasResponsive={false}
 			/>
 		);
 	};

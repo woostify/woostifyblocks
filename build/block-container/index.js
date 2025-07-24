@@ -5754,7 +5754,8 @@ const MyContainerControl = ({
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Overflow", "wcb"),
       onChange: handleChangeOverflow,
       contentClassName: "capitalize mt-3",
-      value: overflow
+      value: overflow,
+      hasResponsive: false
     });
   };
   const renderContentBoxWidth = () => {
