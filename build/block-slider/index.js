@@ -12796,7 +12796,8 @@ const Edit = props => {
   }, style_layoutPreset?.preset === "wcb-layout-1" || style_layoutPreset?.preset === "wcb-layout-2" || style_layoutPreset?.preset === "wcb-layout-3" ? renderIconTop() : null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "div",
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enter name...", "wcb"),
-    value: name,
+    value: `${name}` + " " + `${index}` // Append index to ensure unique names
+    ,
     onChange: value => setAttributes({
       name: value
     })

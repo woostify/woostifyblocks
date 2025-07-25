@@ -1,5 +1,5 @@
 "use strict";
-(globalThis["webpackChunkwoostifyblocks"] = globalThis["webpackChunkwoostifyblocks"] || []).push([["src_block-slider-child_WcbSliderPanel_ButtonPreset_tsx-src_block-slider-child_WcbSliderPanel_-46e9f2"],{
+(globalThis["webpackChunkwoostifyblocks"] = globalThis["webpackChunkwoostifyblocks"] || []).push([["src_block-slider-child_WcbSliderPanel_ButtonPreset_tsx"],{
 
 /***/ "./public/lineicons-free-basic/icon-font/unicodesMap.json":
 /*!****************************************************************!*\
@@ -6851,4 +6851,4 @@ function getStyleBackground({
 /***/ })
 
 }]);
-//# sourceMappingURL=src_block-slider-child_WcbSliderPanel_ButtonPreset_tsx-src_block-slider-child_WcbSliderPanel_-46e9f2.js.map
+//# sourceMappingURL=src_block-slider-child_WcbSliderPanel_ButtonPreset_tsx.js.map

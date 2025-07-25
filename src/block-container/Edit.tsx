@@ -24,6 +24,7 @@ export type ContainerEditProps<T, C = any> = {
 	setAttributes: (newAttributes: Partial<T>) => void;
 	clientId: string;
 	isSelected: boolean;
+	index?: number;
 	context: C;
 	className: string;
 	insertBlocksAfter: Function;

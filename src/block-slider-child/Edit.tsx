@@ -139,7 +139,7 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 									<RichText
 										tagName="div"
 										placeholder={__("Enter name...", "wcb")}
-										value={name}
+										value={`${name}` + " " + `${index}`} // Append index to ensure unique names
 										onChange={(value) => setAttributes({ name: value })}
 									/>
 								</div>
