@@ -35,9 +35,20 @@
   display: none;
 }
 
+<<<<<<< HEAD
 .wcb-slider__item .wcb-slider__item-wrap-inner {
   display: flex;
   margin: auto;
+=======
+.wcb-slider__item {
+  position: relative;
+}
+.wcb-slider__item .wcb-slider__item-background {
+  position: relative;
+}
+.wcb-slider__item .wcb-slider__item-wrap-inner {
+  display: flex;
+>>>>>>> b22df83d (fix: select child but trigger parent)
 }
 
 .wcb-slider__item-inner {
