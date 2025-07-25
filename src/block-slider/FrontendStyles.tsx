@@ -73,6 +73,7 @@ export function initCarouselForWcbSliders(div: Element, props: Props) {
 			},
 		],
 	};
+<<<<<<< HEAD
 
 	const targetSelector = `.${dataUniqueid} .wcb-slider__wrap-items`;
 	const targetElement = $(targetSelector);
@@ -91,4 +92,8 @@ export function initCarouselForWcbSliders(div: Element, props: Props) {
 	} catch (error) {
 		console.error('🎠 Slider initialization failed:', error);
 	}
+=======
+	// @ts-ignore
+	$(`.${dataUniqueid} .wcb-slider__wrap-items`)?.slick?.(settings);
+>>>>>>> 86a3aa8a (fix bug)
 }
