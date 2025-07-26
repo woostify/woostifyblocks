@@ -1,2 +1,36 @@
-.wcb-products__wrap{display:block !important}.wcb-block-products-editor-swithToScrollSnapX__None .wcb-products__list{row-gap:1rem;-moz-column-gap:1rem;column-gap:1rem;display:grid;grid-template-columns:repeat(2, minmax(0, 1fr))}.tinvwl-tooltip{display:none}.tinvwl-after-add-to-cart{margin-top:10px}.wcb-products__product .wcb-products__product-onsale span.onsale,.wcb-products__product .wcb-products__product-onsale .onsale{padding-right:0rem !important}
-.MySpacingSizesControl .components-base-control__field{margin-bottom:0}
+/*!*******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/block-products/editor.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************/
+.wcb-products__wrap {
+  display: block !important;
+}
+
+/* FOR PREVIEW */
+.wcb-block-products-editor-swithToScrollSnapX__None .wcb-products__list {
+  row-gap: 1rem;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.tinvwl-tooltip {
+  display: none;
+}
+
+.tinvwl-after-add-to-cart {
+  margin-top: 10px;
+}
+
+.wcb-products__product .wcb-products__product-onsale span.onsale,
+.wcb-products__product .wcb-products__product-onsale .onsale {
+  padding-right: 0rem !important;
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/components/controls/MySpacingSizesControl/styles.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************/
+.MySpacingSizesControl .components-base-control__field {
+  margin-bottom: 0;
+}
+
+/*# sourceMappingURL=index.css.map*/
