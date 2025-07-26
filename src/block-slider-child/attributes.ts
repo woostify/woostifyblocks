@@ -17,8 +17,8 @@ import {
 	WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO,
 } from "../block-slider/types";
 import {
-	WCB_SLIDER_PANEL_IMAGE,
-	WCB_SLIDER_PANEL_IMAGE_DEMO,
+	WCB_SLIDER_PANEL_IMAGE_OR_ICON,
+	WCB_SLIDER_PANEL_IMAGE_OR_ICON_DEMO,
 } from "./WcbSliderPanel_StyleImage";
 import {
 	MY_MOTION_EFFECT_DEMO,
@@ -35,6 +35,7 @@ import {
 import { WCB_SLIDER_BUTTON_PANEL_PRESET, WCB_SLIDER_BUTTON_PANEL_PRESET_DEMO } from "./WcbSliderPanel_ButtonPreset";
 import { WCB_SLIDER_LAYOUT_PANEL_PRESET, WCB_SLIDER_LAYOUT_PANEL_PRESET_DEMO } from "./WcbSliderPanel_LayoutPreset";
 
+
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	clientID?: string; // Add clientID for Save component
@@ -49,7 +50,7 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	style_name?: WCB_SLIDER_PANEL_STYLE_NAME;
 	style_content?: WCB_SLIDER_PANEL_STYLE_NAME; // Keep as NAME type for now to match parent
 	style_company?: WCB_SLIDER_PANEL_STYLE_COMPANY;
-	style_image?: WCB_SLIDER_PANEL_IMAGE;
+	style_image?: WCB_SLIDER_PANEL_IMAGE_OR_ICON;
 	style_backgroundAndBorder?: WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER;
 	style_dimension: WCB_SLIDER_PANEL_STYLE_DIMENSION;
 	style_buttonPreset?: WCB_SLIDER_BUTTON_PANEL_PRESET;
@@ -120,7 +121,7 @@ const blockAttrs: AttrsGenericType<WcbAttrs> = {
 
 	style_image: {
 		type: "object",
-		default: WCB_SLIDER_PANEL_IMAGE_DEMO,
+		default: WCB_SLIDER_PANEL_IMAGE_OR_ICON_DEMO,
 	},
 
 	style_backgroundAndBorder: {

@@ -11,19 +11,52 @@ import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import MySelect from "../components/controls/MySelect";
 import useGetDeviceType from "../hooks/useGetDeviceType";
-import SelecIcon, { MyIcon, DEFAULT_MY_ICON, } from "../components/controls/SelectIcon/SelecIcon";
+import SelecIcon, { MyIcon } from "../components/controls/SelectIcon/SelecIcon";
+import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
+import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
+import MyDisclosure from "../components/controls/MyDisclosure";
+import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
+import MyDimensionsNoGapControl from "../components/controls/MyDimensionsControl/MyDimensionsNoGapControl";
+import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
+import {
+	MyDimensionsNoGapControlData,
+	MY_DIMENSIONS_NO_GAP_CONTROL_DEMO,
+} from "../components/controls/MyDimensionsControl/types";
+import {
+	MyBorderControlData,
+	MY_BORDER_CONTROL_DEMO,
+} from "../components/controls/MyBorderControl/types";
 import { Option } from "../types";
+import {
+	DEFAULT_MEDIA_UPLOAD,
+} from "../components/controls/MyMediaUploadCheck";
 
-export interface WCB_SLIDER_PANEL_IMAGE {
+
+export const DEFAULT_MY_TOP_ICON: MyIcon = {
+	type: "icon",
+	iconName: "lni-checkmark-circle",
+	imageData: DEFAULT_MEDIA_UPLOAD,
+	svgCode: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+	<path stroke-linecap="round" stroke-linejoin="round" d="M6 13.5V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 9.75V10.5" />
+  </svg>`,
+};
+
+export interface WCB_SLIDER_PANEL_IMAGE_OR_ICON {
 	enableIcon: boolean;
 	icon: MyIcon;
 	iconPosition:
 		| "top"
 		| "left"
 		| "right"
-		| "leftOfTitle"
-		| "rightOfTitle"
+		// | "leftOfTitle"
+		// | "rightOfTitle"
 		| "bellowTitle";
+	iconColor: string;
+	iconHoverColor: string;
+	iconSize: HasResponsive<string>;
+	iconDimensions: MyDimensionsNoGapControlData;
+	iconBorder: MyBorderControlData;
+	// Image style properties
 	image: MediaUploadData;
 	imageSize: string;
 	isShowImage: boolean;
@@ -34,10 +67,10 @@ export interface WCB_SLIDER_PANEL_IMAGE {
 
 type TabsHere = "Setting" | "SelectImage";
 
-export const WCB_SLIDER_PANEL_IMAGE_DEMO: WCB_SLIDER_PANEL_IMAGE = {
+export const WCB_SLIDER_PANEL_IMAGE_OR_ICON_DEMO: WCB_SLIDER_PANEL_IMAGE_OR_ICON = {
 	enableIcon: false,
 	icon: {
-		...DEFAULT_MY_ICON,
+		...DEFAULT_MY_TOP_ICON,
 		iconName: "lni-checkmark-circle",
 	},
 	iconPosition: "top",
@@ -47,16 +80,44 @@ export const WCB_SLIDER_PANEL_IMAGE_DEMO: WCB_SLIDER_PANEL_IMAGE = {
 	imagePosition: "above-title",
 	stackOn: "none",
 	imageAlignSelf: "center",
+	// Icon style properties
+	iconColor: "#334155",
+	iconHoverColor: "",
+	iconSize: { 
+		Desktop: "1.5rem" ,
+		Tablet: "1.5rem",
+		Mobile: "1.5rem",
+	},
+	iconDimensions: {
+		...MY_DIMENSIONS_NO_GAP_CONTROL_DEMO,
+		margin: {
+			Desktop: {
+				top: "",
+				left: "",
+				right: "",
+				bottom: "",
+			},
+		},
+		padding: {
+			Desktop: {
+				bottom: "",
+				left: "",
+				right: "",
+				top: "",
+			},
+		},
+	},
+	iconBorder: MY_BORDER_CONTROL_DEMO,
 };
 
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
-	panelData: WCB_SLIDER_PANEL_IMAGE;
-	setAttr__: (data: WCB_SLIDER_PANEL_IMAGE) => void;
+	panelData: WCB_SLIDER_PANEL_IMAGE_OR_ICON;
+	setAttr__: (data: WCB_SLIDER_PANEL_IMAGE_OR_ICON) => void;
 }
 
 const WcbSliderPanelImage: FC<Props> = ({
-	panelData = WCB_SLIDER_PANEL_IMAGE_DEMO,
+	panelData = WCB_SLIDER_PANEL_IMAGE_OR_ICON_DEMO,
 	setAttr__,
 	initialOpen,
 	onToggle,
@@ -72,15 +133,18 @@ const WcbSliderPanelImage: FC<Props> = ({
 		isShowImage = true,
 		imageSize,
 		imageAlignSelf,
+		iconColor, iconHoverColor, iconSize, iconDimensions, iconBorder 
 	} = panelData;
+	
+	const currentIconSize = iconSize[deviceType];
 	//
 	//
-	const PLANS_DEMO: Option<WCB_SLIDER_PANEL_IMAGE["iconPosition"]>[] = [
+	const PLANS_DEMO: Option<WCB_SLIDER_PANEL_IMAGE_OR_ICON["iconPosition"]>[] = [
 		{ value: "top", label: "Top" },
 		{ value: "left", label: "Left" },
 		{ value: "right", label: "Right" },
-		{ value: "leftOfTitle", label: "Left Of Title" },
-		{ value: "rightOfTitle", label: "Right Of Title" },
+		// { value: "leftOfTitle", label: "Left Of Title" },
+		// { value: "rightOfTitle", label: "Right Of Title" },
 		{ value: "bellowTitle", label: "Bellow Title" },
 	];
 
@@ -131,7 +195,7 @@ const WcbSliderPanelImage: FC<Props> = ({
 		];
 
 		const ALIGNSELF_PLANS: MyRadioItem<
-			WCB_SLIDER_PANEL_IMAGE["imageAlignSelf"]
+			WCB_SLIDER_PANEL_IMAGE_OR_ICON["imageAlignSelf"]
 		>[] = [
 			{ name: "flex-start", icon: "Flex start" },
 			{ name: "center", icon: "Center" },
@@ -216,7 +280,7 @@ const WcbSliderPanelImage: FC<Props> = ({
 		>
 			<div className={"space-y-5"}>
 
-				{/* TODO: Will continue to coding when merge phase 1
+				{/* TODO: Will continue to coding when merge phase 1 */}
 				<ToggleControl
 					label={__("Enable Icon", "wcb")}
 					checked={enableIcon}
@@ -224,7 +288,7 @@ const WcbSliderPanelImage: FC<Props> = ({
 					onChange={(checked) => {
 						setAttr__({ ...panelData, enableIcon: checked });
 					}}
-				/> */}
+				/>
 
 				{enableIcon ? (
 					<>
@@ -242,22 +306,78 @@ const WcbSliderPanelImage: FC<Props> = ({
 							options={PLANS_DEMO}
 							value={iconPosition}
 							onChange={(value) => {
-								let newData: WCB_SLIDER_PANEL_IMAGE = {
+								let newData: WCB_SLIDER_PANEL_IMAGE_OR_ICON = {
 									...panelData,
 									iconPosition:
-										value as WCB_SLIDER_PANEL_IMAGE["iconPosition"],
+										value as WCB_SLIDER_PANEL_IMAGE_OR_ICON["iconPosition"],
 								};
 								if (iconPosition !== "left" && iconPosition !== "right") {
 									newData = {
 										...panelData,
 										iconPosition:
-											value as WCB_SLIDER_PANEL_IMAGE["iconPosition"],
+											value as WCB_SLIDER_PANEL_IMAGE_OR_ICON["iconPosition"],
 										stackOn: "none",
 									};
 								}
 								setAttr__(newData);
 							}}
 						/>
+
+						<div className="space-y-5">
+						<MySpacingSizesControl
+							onChange={(value) => {
+								setAttr__({
+									...panelData,
+									iconSize: {
+										...iconSize,
+										[deviceType]: value,
+									},
+								});
+							}}
+							value={currentIconSize || ""}
+							label={__("Icon size", "wcb")}
+							hasResponsive
+						/>
+
+						<MyColorPicker
+							onChange={(color) => {
+								setAttr__({
+									...panelData,
+									iconColor: color,
+								});
+							}}
+							color={iconColor}
+						/>
+						<MyColorPicker
+							onChange={(color) => {
+								setAttr__({
+									...panelData,
+									iconHoverColor: color,
+								});
+							}}
+							color={iconHoverColor}
+							label={__("Hover color", "wcb")}
+						/>
+
+						<div className="space-y-4">
+							<MyDisclosure label="Border">
+								<MyBorderControl
+									borderControl={iconBorder}
+									setAttrs__border={(data) => {
+										setAttr__({ ...panelData, iconBorder: data });
+									}}
+								/>
+							</MyDisclosure>
+							<MyDisclosure label="Dimensions">
+								<MyDimensionsNoGapControl
+									dimensionControl={iconDimensions}
+									setAttrs__dimensions={(data) => {
+										setAttr__({ ...panelData, iconDimensions: data });
+									}}
+								/>
+							</MyDisclosure>
+						</div>
+					</div>
 					</>
 				) : (
 					<TabPanel

@@ -13,7 +13,7 @@ import GlobalCss from "./GlobalCss";
 // Import style panels
 import WcbSlidersPanel_StyleName, { WCB_SLIDER_PANEL_STYLE_NAME_DEMO } from "./WcbSliderPanel_StyleName";
 import WcbSlidersPanel_StyleContent, { WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO } from "./WcbSliderPanel_StyleContent";
-import WcbSlidersPanel_StyleImage, { WCB_SLIDER_PANEL_IMAGE_DEMO } from "./WcbSliderPanel_StyleImage";
+import WcbSlidersPanel_StyleImage, { WCB_SLIDER_PANEL_IMAGE_OR_ICON_DEMO , DEFAULT_MY_TOP_ICON} from "./WcbSliderPanel_StyleImage";
 import WcbSlidersPanel_StyleBackground, { WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO } from "./WcbSliderPanel_StyleBackground";
 import WcbSlidersPanel_StyleDimension, { WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO } from "./WcbSliderPanel_StyleDimension";
 import WcbSliderButtonPanelPreset, { WCB_SLIDER_BUTTON_PANEL_PRESET_DEMO } from "./WcbSliderPanel_ButtonPreset";
@@ -21,6 +21,7 @@ import WcbSliderLayoutPanelPreset, { WCB_SLIDER_LAYOUT_PANEL_PRESET_DEMO } from 
 import WcbSlidersPanel_StyleSeparator, { WCB_SLIDER_BOX_PANEL_STYLE_SPARATOR_DEMO } from "./WcbSliderPanel_StyleSeparator";
 import MyIcon from "../components/controls/MyIcon";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
+import MyIconFull from "../components/controls/MyIconFull";
 
 // Export the panel components and demos for parent component to use
 export {
@@ -29,7 +30,7 @@ export {
 	WcbSlidersPanel_StyleContent,
 	WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO,
 	WcbSlidersPanel_StyleImage,
-	WCB_SLIDER_PANEL_IMAGE_DEMO,
+	WCB_SLIDER_PANEL_IMAGE_OR_ICON_DEMO,
 	WcbSlidersPanel_StyleBackground,
 	WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
 	WcbSlidersPanel_StyleDimension,
@@ -96,8 +97,42 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 	};
 
 	const renderIconTop = () => {
-		return <MyIcon icon={"lni-checkmark-circle"} className="wcb-button__icon" />
+		return (
+			<div className="wcb-top__icon-wrap flex justify-center">
+				<div className="wcb-top__icon">
+					<MyIconFull icon={style_image?.enableIcon && style_image?.icon ? style_image.icon : DEFAULT_MY_TOP_ICON} />
+				</div>
+			</div>
+		);
 	}
+
+	// Helper functions to determine icon rendering
+	const shouldRenderIconTop = () => {
+		const isStandardLayout = ["wcb-layout-1", "wcb-layout-2", "wcb-layout-3"].includes(style_layoutPreset?.preset || "");
+		const isCustomLayout = !style_layoutPreset?.preset;
+		
+		if (isStandardLayout) {
+			// Standard layouts: show icon top when disabled OR when enabled with top position
+			return !style_image?.enableIcon || (style_image?.enableIcon && style_image?.iconPosition === "top" || style_image?.iconPosition === "left" || style_image?.iconPosition === "right");
+		}
+		
+		if (isCustomLayout) {
+			// Custom layout: show icon top only when enabled with top position
+			return style_image?.enableIcon && (style_image?.iconPosition === "top" || style_image?.iconPosition === "left" || style_image?.iconPosition === "right");
+		}
+		
+		return false;
+	};
+
+	const shouldRenderIconBelowTitle = () => {
+		const isStandardLayout = ["wcb-layout-1", "wcb-layout-2", "wcb-layout-3"].includes(style_layoutPreset?.preset || "");
+		const isCustomLayout = !style_layoutPreset?.preset;
+		
+		// Both standard and custom layouts: show below title when enabled with bellowTitle position
+		return (isStandardLayout || isCustomLayout) && 
+			   style_image?.enableIcon && 
+			   (style_image?.iconPosition === "bellowTitle");
+	};
 
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
@@ -128,20 +163,20 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 									renderImage()
 								}
 
-								{/* Name */}
-								<div className="wcb-slider-child__name">
-									{
-										style_layoutPreset?.preset === "wcb-layout-1" || 
-										style_layoutPreset?.preset === "wcb-layout-2" ||
-										style_layoutPreset?.preset === "wcb-layout-3" ?
-										renderIconTop() : null
-									}
-									<RichText
-										tagName="div"
-										placeholder={__("Enter name...", "wcb")}
-										value={`${name}` + " " + `${index}`} // Append index to ensure unique names
-										onChange={(value) => setAttributes({ name: value })}
-									/>
+								<div className={`${style_image?.iconPosition === "left" || style_image?.iconPosition === "right" ? "flex gap-4" : ""}`}>
+									{/* Icon Top */}
+									{shouldRenderIconTop() && renderIconTop()}
+									{/* Name */}
+									<div className={`wcb-slider-child__name`}>
+										<RichText
+											tagName="div"
+											placeholder={__("Enter name...", "wcb")}
+											value={name} // + " " + `${index}`} // Append index to ensure unique names
+											onChange={(value) => setAttributes({ name: value })}
+										/>
+									</div>
+									{/* Icon Below Title */}
+									{shouldRenderIconBelowTitle() && renderIconTop()}
 								</div>
 
 								{/* Image */}	
@@ -153,12 +188,17 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 
 								{/* Content */}
 								<div className={`wcb-slider-child__content ${
-										style_layoutPreset?.preset === "wcb-layout-2" ||
-										style_layoutPreset?.preset === "wcb-layout-3" ||
-										style_layoutPreset?.preset === "wcb-layout-5" ?
-										"text-start" : "text-center"
-									}
-								`}>
+										(
+											style_layoutPreset?.preset === "wcb-layout-2" ||
+											style_layoutPreset?.preset === "wcb-layout-3" ||
+											style_layoutPreset?.preset === "wcb-layout-5" ||
+											style_image?.iconPosition === "left"
+										)
+											? "text-start"
+											: style_image?.iconPosition === "right"
+											? "text-end"
+											: "text-center"
+									}`}>
 									<RichText
 										tagName="div"
 										placeholder={__("Enter content...", "wcb")}

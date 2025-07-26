@@ -50,7 +50,7 @@ import {
 	WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
 	WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO,
 } from "./types";
-import { WCB_SLIDER_PANEL_IMAGE_DEMO } from "../block-slider-child/WcbSliderPanel_StyleImage";
+import { WCB_SLIDER_PANEL_IMAGE_OR_ICON_DEMO } from "../block-slider-child/WcbSliderPanel_StyleImage";
 import {
 	WCB_SLIDER_BUTTON_PANEL_PRESET_DEMO
 } from "../block-slider-child/WcbSliderPanel_ButtonPreset";
@@ -239,7 +239,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 										{ style_image: data }
 									);
 								}}
-								panelData={childAttrs.style_image || WCB_SLIDER_PANEL_IMAGE_DEMO}
+								panelData={childAttrs.style_image || WCB_SLIDER_PANEL_IMAGE_OR_ICON_DEMO}
 							/>
 							
 							<ChildStyleContent

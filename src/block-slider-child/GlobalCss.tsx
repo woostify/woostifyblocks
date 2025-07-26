@@ -18,6 +18,7 @@ import {
 	WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_7,
 	WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_8,
 } from "./WcbSliderPanel_ButtonPreset";
+import getStyleObjectFromResponsiveAttr from "../utils/getStyleObjectFromResponsiveAttr";
 
 interface Props extends WcbAttrsForSave {
 	parentUniqueId?: string | null; // Keep for backward compatibility
@@ -71,6 +72,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const ITEM_IMAGE = createRobustSelector('.wcb-slider-child__image');
 	const CALL_TO_ACTION = createRobustSelector('.wcb-slider-child__btn');
 	const CALL_TO_ACTION_INNER = createRobustSelector('.wcb-slider-child__btn-inner');
+	const ITEM_TOP_ICON_WRAP = createRobustSelector('.wcb-top__icon-wrap');
+	const ITEM_TOP_ICON = createRobustSelector('.wcb-top__icon');
 
 	// ------------------- HELPER FUNCTIONS
 	const getButtonBorderFromPreset = () => {
@@ -159,9 +162,13 @@ const GlobalCss: FC<Props> = (attrs) => {
 						[ITEM_CLASSNAME_INNER]: {
 							justifyItems: `${
 									style_layoutPreset?.preset === "wcb-layout-2" ||
+									style_image?.iconPosition === "left" ||
 									style_layoutPreset?.preset === "wcb-layout-3" ||
 									style_layoutPreset?.preset === "wcb-layout-5" ?
-									"start" : "center"
+									"start" : 
+									style_image?.iconPosition === "right" ?
+									"end" :
+									"center"
 							}`
 						},
 						[CALL_TO_ACTION_INNER]: {
@@ -172,6 +179,41 @@ const GlobalCss: FC<Props> = (attrs) => {
 					},
 				]}
 			/>
+
+			{/* --------- ICON --------- */}
+			{style_image?.enableIcon ? (
+				<Global
+					styles={[
+						getPaddingMarginStyles({
+							className: ITEM_TOP_ICON_WRAP,
+							margin: style_image?.iconDimensions.margin,
+						}),
+						getPaddingMarginStyles({
+							className: ITEM_TOP_ICON_WRAP,
+							padding: style_image?.iconDimensions.padding,
+						}),
+						getBorderStyles({
+							border: style_image?.iconBorder,
+							className: ITEM_TOP_ICON_WRAP,
+							isWithRadius: true,
+						}),
+						getStyleObjectFromResponsiveAttr({
+							className: ITEM_TOP_ICON,
+							value: style_image?.iconSize,
+							prefix: "width",
+							prefix_2: "fontSize",
+						}),
+						{
+							[`${ITEM_TOP_ICON} .wcb-icon-full`]: {
+								color: style_image?.iconColor,
+								":hover": {
+									color: style_image?.iconHoverColor,
+								},
+							},
+						},
+					]}
+				/>
+			) : null}
 
 			{/* ITEM NAME  */}
 			{style_name && (
