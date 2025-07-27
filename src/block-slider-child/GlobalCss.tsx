@@ -8,17 +8,13 @@ import getBorderStyles from "../utils/getBorderStyles";
 import getStyleBackground from "../utils/getStyleBackground";
 import { WcbAttrsForSave } from "./Save";
 import { converClientIdToUniqueClass } from "../utils/converUniqueIdToAnphaKey";
-import {
-	WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_1,
-	WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_2,
-	WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_3,
-	WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_4,
-	WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_5,
-	WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_6,
-	WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_7,
-	WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_8,
-} from "./WcbSliderPanel_ButtonPreset";
+import { STYLES_BG_NO_IMAGE_DEMO } from "../components/controls/MyBackgroundControl/MyBackgroundNoImageControl";
+import { TYPOGRAPHY_CONTROL_DEMO } from "../components/controls/MyTypographyControl/types";
 import getStyleObjectFromResponsiveAttr from "../utils/getStyleObjectFromResponsiveAttr";
+import getBackgroundColorGradientStyles from "../utils/getBackgroundColorGradientStyles";
+import {
+	MY_BORDER_CONTROL_DEMO,
+} from "../components/controls/MyBorderControl/types";
 
 interface Props extends WcbAttrsForSave {
 	parentUniqueId?: string | null; // Keep for backward compatibility
@@ -32,6 +28,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		// ATTRS OF BLOCK
 		style_backgroundAndBorder,
 		style_content,
+		style_callToActionButton,
 		style_dimension,
 		style_name,
 		style_image,
@@ -72,58 +69,9 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const ITEM_IMAGE = createRobustSelector('.wcb-slider-child__image');
 	const CALL_TO_ACTION = createRobustSelector('.wcb-slider-child__btn');
 	const CALL_TO_ACTION_INNER = createRobustSelector('.wcb-slider-child__btn-inner');
+	const CALL_TO_ACTION_TEXT = createRobustSelector('.wcb-slider-child__btn-text');
 	const ITEM_TOP_ICON_WRAP = createRobustSelector('.wcb-top__icon-wrap');
 	const ITEM_TOP_ICON = createRobustSelector('.wcb-top__icon');
-
-	// ------------------- HELPER FUNCTIONS
-	const getButtonBorderFromPreset = () => {
-		if (!style_buttonPreset) return {};
-		
-		switch (style_buttonPreset.preset) {
-			case "wcb-button-1":
-				return WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_1;
-			case "wcb-button-2":
-				return WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_2;
-			case "wcb-button-3":
-				return WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_3;
-			case "wcb-button-4":
-				return WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_4;
-			case "wcb-button-5":
-				return WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_5;
-			case "wcb-button-6":
-				return WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_6;
-			case "wcb-button-7":
-				return WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_7;
-			case "wcb-button-8":
-				return WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_8;
-			default:
-				return WCB_SLIDER_BUTTON_PANEL_STYLE_BORDER_PRESET_1;
-		}
-	};
-
-	const getButtonBackgroundFromPreset = (): string => {
-		if (!style_buttonPreset) return "#121314";
-		switch (style_buttonPreset.preset) {
-			case "wcb-button-1":
-				return "#121314";
-			case "wcb-button-2":
-				return "#121314";
-			case "wcb-button-3":
-				return "#121314";
-			case "wcb-button-4":
-				return "#121314";
-			case "wcb-button-5":
-				return "#909090";
-			case "wcb-button-6":
-				return "#909090";
-			case "wcb-button-7":
-				return "#909090";
-			case "wcb-button-8":
-				return "#909090";
-			default:
-				return "#121314";
-		}
-	};
 
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject[] => {
@@ -145,40 +93,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 	return (
 		<>
 			<Global styles={getDivWrapStyles()} />
-
-			{/* BUTTON BORDER  */}
-			<Global
-				styles={getBorderStyles({
-					className: CALL_TO_ACTION_INNER,
-					border: getButtonBorderFromPreset(),
-					isWithRadius: true,
-				})}
-			/>
-
-			{/* INNER  */}
-			<Global
-				styles={[
-					{
-						[ITEM_CLASSNAME_INNER]: {
-							justifyItems: `${
-									style_layoutPreset?.preset === "wcb-layout-2" ||
-									style_image?.iconPosition === "left" ||
-									style_layoutPreset?.preset === "wcb-layout-3" ||
-									style_layoutPreset?.preset === "wcb-layout-5" ?
-									"start" : 
-									style_image?.iconPosition === "right" ?
-									"end" :
-									"center"
-							}`
-						},
-						[CALL_TO_ACTION_INNER]: {
-							backgroundColor: `${getButtonBackgroundFromPreset()} !important`,
-							width: "10rem",
-							height: "2.5rem",
-						},
-					},
-				]}
-			/>
 
 			{/* --------- ICON --------- */}
 			{style_image?.enableIcon ? (
@@ -258,6 +172,90 @@ const GlobalCss: FC<Props> = (attrs) => {
 					]}
 				/>
 			)}
+
+			{/* STYLE LayoutPreset for call to action */}
+			<Global
+				styles={[
+					{
+						[ITEM_CLASSNAME_INNER]: {
+							justifyItems: `${
+									style_layoutPreset?.preset === "wcb-layout-2" ||
+									style_image?.iconPosition === "left" ||
+									style_layoutPreset?.preset === "wcb-layout-3" ||
+									style_layoutPreset?.preset === "wcb-layout-5" ||
+									style_content?.textAlignment?.Desktop === "left" ?
+									"start" : 
+									style_image?.iconPosition === "right" ||
+									style_content?.textAlignment?.Desktop === "right" ?
+									"end" :
+									"center"
+							}`
+						},
+						[CALL_TO_ACTION_INNER]: {
+							// backgroundColor: `${getButtonBackgroundFromPreset()} !important`,
+							// width: "10rem",
+							// height: "2.5rem",
+						},
+					},
+				]}
+			/>
+
+			{/* TEXT for call to action */}
+			<Global
+				styles={[
+					getTypographyStyles({
+						className: CALL_TO_ACTION_TEXT,
+						typography: style_callToActionButton?.typographyText ?? TYPOGRAPHY_CONTROL_DEMO,
+					}),
+					{
+						[CALL_TO_ACTION_TEXT]: {
+							color: style_callToActionButton?.colorText ?? "#ffffff",
+						},
+						// BUTTON HOVER
+						[CALL_TO_ACTION_INNER]: {
+							":hover": {
+								".wcb-slider-child__btn-text": {
+									color: style_callToActionButton?.hoverColorText,
+								},
+							},
+						},
+					},
+				]}
+			/>
+
+			{/* BACKGROUND for call to action */}
+			<Global
+				styles={getBackgroundColorGradientStyles({
+					className: CALL_TO_ACTION_INNER,
+					background: style_callToActionButton?.normalBackground ?? STYLES_BG_NO_IMAGE_DEMO,
+					backgroundHover: style_callToActionButton?.hoverBackground ?? STYLES_BG_NO_IMAGE_DEMO,
+				})}
+			/>
+
+			{/* BORDER for call to action */}
+			<Global
+				styles={getBorderStyles({
+					className: CALL_TO_ACTION_INNER,
+					border: {
+						mainSettings: style_callToActionButton?.mainSettings ?? MY_BORDER_CONTROL_DEMO.mainSettings,
+						hoverColor: style_callToActionButton?.hoverColor ?? "#121314",
+						radius: style_callToActionButton?.radius ?? MY_BORDER_CONTROL_DEMO.radius,
+					},
+					isWithRadius: true,
+				})}
+			/>
+
+			{/* DIMENSION for call to action */}
+			<Global
+				styles={[
+					getPaddingMarginStyles({
+						className: CALL_TO_ACTION_INNER,
+						padding: style_callToActionButton?.padding,
+						margin: style_callToActionButton?.margin,
+					}),
+				]}
+			/>
+
 
 			{/* ITEM WRAP  */}
 			{style_backgroundAndBorder && (

@@ -9,8 +9,6 @@ import {
 	WCB_SLIDER_PANEL_STYLE_NAME,
 	WCB_SLIDER_PANEL_STYLE_NAME_DEMO,
 	WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO,
-	WCB_SLIDER_PANEL_STYLE_COMPANY,
-	WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO,
 	WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER,
 	WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
 	WCB_SLIDER_PANEL_STYLE_DIMENSION,
@@ -32,8 +30,13 @@ import {
 	MyZIndexControlData,
 	Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
-import { WCB_SLIDER_BUTTON_PANEL_PRESET, WCB_SLIDER_BUTTON_PANEL_PRESET_DEMO } from "./WcbSliderPanel_ButtonPreset";
+import { WCB_SLIDER_BUTTON_PANEL_PRESET } from "./WcbSliderPanel_ButtonPreset";
 import { WCB_SLIDER_LAYOUT_PANEL_PRESET, WCB_SLIDER_LAYOUT_PANEL_PRESET_DEMO } from "./WcbSliderPanel_LayoutPreset";
+import {
+	WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON,
+	WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_DEMO,
+} from "./WcbSliderPanel_StyleCallToActionButton";
+import { WCB_SLIDER_PANEL_STYLE_CONTENT } from "./WcbSliderPanel_StyleContent";
 
 
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
@@ -48,8 +51,8 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	//
 	// Style attributes that can be inherited from parent
 	style_name?: WCB_SLIDER_PANEL_STYLE_NAME;
-	style_content?: WCB_SLIDER_PANEL_STYLE_NAME; // Keep as NAME type for now to match parent
-	style_company?: WCB_SLIDER_PANEL_STYLE_COMPANY;
+	style_content?: WCB_SLIDER_PANEL_STYLE_CONTENT; // Keep as NAME type for now to match parent
+	style_callToActionButton?: WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON; // New attribute for call to action button
 	style_image?: WCB_SLIDER_PANEL_IMAGE_OR_ICON;
 	style_backgroundAndBorder?: WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER;
 	style_dimension: WCB_SLIDER_PANEL_STYLE_DIMENSION;
@@ -114,9 +117,9 @@ const blockAttrs: AttrsGenericType<WcbAttrs> = {
 		default: WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO,
 	},
 
-	style_company: {
+	style_callToActionButton: {
 		type: "object",
-		default: WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO,
+		default: WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_DEMO,
 	},
 
 	style_image: {

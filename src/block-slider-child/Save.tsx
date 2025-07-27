@@ -9,7 +9,6 @@ import _ from "lodash";
 // Import default values from style panels
 import { WCB_SLIDER_PANEL_STYLE_NAME_DEMO } from "./WcbSliderPanel_StyleName";
 import { WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO } from "./WcbSliderPanel_StyleContent";
-import { WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO } from "./WcbSliderPanel_StyleCompany";
 import { WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO } from "./WcbSliderPanel_StyleBackground";
 import { WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO } from "./WcbSliderPanel_StyleDimension";
 import { WCB_SLIDER_PANEL_IMAGE_OR_ICON_DEMO, DEFAULT_MY_TOP_ICON } from "./WcbSliderPanel_StyleImage";
@@ -19,6 +18,7 @@ import { RESPONSIVE_CONDITON_DEMO } from "../components/controls/MyResponsiveCon
 import { Z_INDEX_DEMO } from "../components/controls/MyZIndexControl/MyZIndexControl";
 import { MY_MOTION_EFFECT_DEMO } from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
 import { INIT_IMAGE_DATA_UPLOAD_DEMO } from "../components/controls/MyBackgroundControl/MyBackgroundControl";
+import { WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_DEMO } from "./WcbSliderPanel_StyleCallToActionButton";
 import MyIconFull from "../components/controls/MyIconFull";
 
 export interface WcbAttrsForSave extends WcbAttrs {
@@ -34,12 +34,12 @@ export default function save({ attributes, context }: { attributes: WcbAttrs, co
 		image,
 		rating,
 		style_image,
+		style_callToActionButton,
 		style_buttonPreset,
 		style_layoutPreset,
 		clientID,
 		// Include all other attributes for complete styling
 		style_backgroundAndBorder,
-		style_company,
 		style_content,
 		style_dimension,
 		style_name,
@@ -60,10 +60,10 @@ export default function save({ attributes, context }: { attributes: WcbAttrs, co
 		image: image || INIT_IMAGE_DATA_UPLOAD_DEMO,
 		rating: rating || 5,
 		style_image: style_image || WCB_SLIDER_PANEL_IMAGE_OR_ICON_DEMO,
+		style_callToActionButton: style_callToActionButton || WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_DEMO,
 		style_buttonPreset: style_buttonPreset || WCB_SLIDER_BUTTON_PANEL_PRESET_DEMO,
 		style_layoutPreset: style_layoutPreset || WCB_SLIDER_LAYOUT_PANEL_PRESET_DEMO,
 		style_backgroundAndBorder: style_backgroundAndBorder || WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO,
-		style_company: style_company || WCB_SLIDER_PANEL_STYLE_COMPANY_DEMO,
 		style_content: style_content || WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO,
 		style_dimension: style_dimension || WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO,
 		style_name: style_name || WCB_SLIDER_PANEL_STYLE_NAME_DEMO,
@@ -192,10 +192,15 @@ export default function save({ attributes, context }: { attributes: WcbAttrs, co
 														style_layoutPreset?.preset === "wcb-layout-2" ||
 														style_layoutPreset?.preset === "wcb-layout-3" ||
 														style_layoutPreset?.preset === "wcb-layout-5" ||
-														style_image?.iconPosition === "left"
+														style_image?.iconPosition === "left" ||
+														style_content?.textAlignment?.Desktop === "left"
 													)
 														? "text-start"
-														: style_image?.iconPosition === "right"
+														: 
+													(
+														style_image?.iconPosition === "right" ||
+														style_content?.textAlignment?.Desktop === "right"
+													)
 														? "text-end"
 														: "text-center"
 												}`}>
@@ -214,6 +219,7 @@ export default function save({ attributes, context }: { attributes: WcbAttrs, co
 														<RichText.Content
 															tagName="div"
 															value={callToAction}
+															className="wcb-slider-child__btn-text"
 														/>
 														{
 															style_buttonPreset?.preset === 'wcb-button-4' || style_buttonPreset?.preset === 'wcb-button-8' ?

@@ -31,13 +31,26 @@ import converUniqueIdToAnphaKey, { converClientIdToUniqueClass } from "../utils/
 import {
 	WcbSlidersPanel_StyleName as ChildStyleName,
 	WcbSlidersPanel_StyleContent as ChildStyleContent,
+	WcbSliderPanel_StyleCallToActionButton as ChildStyleCallToActionButton,
 	WcbSlidersPanel_StyleImage as ChildStyleImage,
 	WcbSlidersPanel_StyleBackground as ChildStyleBackground,
 	WcbSlidersPanel_StyleDimension as ChildStyleDimension,
 	WcbSliderButtonPanelPreset as ChildStyleButtonPreset,
 	WcbSliderLayoutPanelPreset as ChildStyleLayoutPreset,
-	WcbSlidersPanel_StyleSeparator as ChildStyleSparator
+	WcbSlidersPanel_StyleSeparator as ChildStyleSparator,
+	WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_DEMO
 } from "../block-slider-child/Edit";
+
+// Import CallToAction presets
+import {
+	WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_PRESET_2,
+	WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_PRESET_3,
+	WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_PRESET_4,
+	WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_PRESET_5,
+	WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_PRESET_6,
+	WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_PRESET_7,
+	WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_PRESET_8,
+} from "../block-slider-child/WcbSliderPanel_StyleCallToActionButton";
 
 // Import separator demo constant
 import { WCB_SLIDER_BOX_PANEL_STYLE_SPARATOR_DEMO } from "../block-slider-child/WcbSliderPanel_StyleSeparator";
@@ -275,9 +288,43 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								initialOpen={childPanelInfo.tabStylesIsPanelOpen === "_StyleButtonPreset"}
 								opened={childPanelInfo.tabStylesIsPanelOpen === "_StyleButtonPreset" || undefined}
 								setAttr__={(data) => {
+									// Update button preset
 									wp.data.dispatch("core/block-editor").updateBlockAttributes(
 										selectedChildBlock.clientId,
-										{ style_buttonPreset: data }
+										{ 
+											style_buttonPreset: data 
+										}
+									);
+									
+									// Auto-update style_callToActionButton based on preset
+									const getCallToActionStyleFromPreset = (preset: string) => {
+										switch (preset) {
+											case "wcb-button-1":
+												return WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_DEMO;
+											case "wcb-button-2":
+												return WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_PRESET_2;
+											case "wcb-button-3":
+												return WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_PRESET_3;
+											case "wcb-button-4":
+												return WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_PRESET_4;
+											case "wcb-button-5":
+												return WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_PRESET_5;
+											case "wcb-button-6":
+												return WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_PRESET_6;
+											case "wcb-button-7":
+												return WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_PRESET_7;
+											case "wcb-button-8":
+												return WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_PRESET_8;
+											default:
+												return WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_DEMO;
+										}
+									};
+									
+									wp.data.dispatch("core/block-editor").updateBlockAttributes(
+										selectedChildBlock.clientId,
+										{ 
+											style_callToActionButton: getCallToActionStyleFromPreset(data.preset)
+										}
 									);
 								}}
 								panelData={childAttrs.style_buttonPreset || WCB_SLIDER_BUTTON_PANEL_PRESET_DEMO}
@@ -327,6 +374,20 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 									);
 								}}
 								panelData={childAttrs.style_content || WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO}
+							/>
+
+							<ChildStyleCallToActionButton 
+								onToggle={() => handleTogglePanel("Styles", "_StyleCallToActionButton")}
+								initialOpen={tabGeneralIsPanelOpen === "_StyleCallToActionButton"}
+								opened={tabGeneralIsPanelOpen === "_StyleCallToActionButton" || undefined}
+								//
+								setAttr__={(data) => {
+									wp.data.dispatch("core/block-editor").updateBlockAttributes(
+										selectedChildBlock.clientId,
+										{ style_callToActionButton: data }
+									);
+								}}
+								panelData={childAttrs.style_callToActionButton || WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_DEMO}
 							/>
 							
 							<ChildStyleBackground

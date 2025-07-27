@@ -426,10 +426,6 @@
 
 .wcb-slider-child__btn-inner {
   display: flex;
-  background-color: #121314;
-  color: white;
-  width: 10rem;
-  height: 50px;
   align-items: center;
   justify-content: center;
 }

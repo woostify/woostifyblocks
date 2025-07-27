@@ -94,8 +94,6 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 		]
 	},
 
-	// testimonials moved to individual slider-child blocks
-
 	// THE ATTRS OF BLOCK HERE
 	general_general: {
 		type: "object",

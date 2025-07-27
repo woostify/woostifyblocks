@@ -19,6 +19,7 @@ import WcbSlidersPanel_StyleDimension, { WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO }
 import WcbSliderButtonPanelPreset, { WCB_SLIDER_BUTTON_PANEL_PRESET_DEMO } from "./WcbSliderPanel_ButtonPreset";
 import WcbSliderLayoutPanelPreset, { WCB_SLIDER_LAYOUT_PANEL_PRESET_DEMO } from "./WcbSliderPanel_LayoutPreset";
 import WcbSlidersPanel_StyleSeparator, { WCB_SLIDER_BOX_PANEL_STYLE_SPARATOR_DEMO } from "./WcbSliderPanel_StyleSeparator";
+import WcbSliderPanel_StyleCallToActionButton, { WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_DEMO } from "./WcbSliderPanel_StyleCallToActionButton"
 import MyIcon from "../components/controls/MyIcon";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import MyIconFull from "../components/controls/MyIconFull";
@@ -29,6 +30,8 @@ export {
 	WCB_SLIDER_PANEL_STYLE_NAME_DEMO,
 	WcbSlidersPanel_StyleContent,
 	WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO,
+	WcbSliderPanel_StyleCallToActionButton,
+	WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_DEMO,
 	WcbSlidersPanel_StyleImage,
 	WCB_SLIDER_PANEL_IMAGE_OR_ICON_DEMO,
 	WcbSlidersPanel_StyleBackground,
@@ -45,12 +48,14 @@ export {
 };
 
 const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
+	debugger
 	const { attributes, setAttributes, clientId, isSelected, index } = props;
 	const {
 		uniqueId,
 		content,
 		name,
 		callToAction,
+		style_content,
 		style_image,
 		style_buttonPreset,
 		style_layoutPreset,
@@ -93,7 +98,7 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 	};
 
 	const renderIconButton = () => {
-		return <MyIcon icon={"lni-arrow-right"} className="wcb-button__icon" />;
+		return <MyIcon icon={"lni-arrow-right"} className="wcb-slider-child__btn-text"/>;
 	};
 
 	const renderIconTop = () => {
@@ -192,10 +197,15 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 											style_layoutPreset?.preset === "wcb-layout-2" ||
 											style_layoutPreset?.preset === "wcb-layout-3" ||
 											style_layoutPreset?.preset === "wcb-layout-5" ||
-											style_image?.iconPosition === "left"
+											style_image?.iconPosition === "left" ||
+											style_content?.textAlignment?.Desktop === "left"
 										)
 											? "text-start"
-											: style_image?.iconPosition === "right"
+											: 
+										(	
+											style_image?.iconPosition === "right" || 
+											style_content?.textAlignment?.Desktop === "right"
+										)
 											? "text-end"
 											: "text-center"
 									}`}>
@@ -218,6 +228,7 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 													placeholder={__("Enter call to action...", "wcb")}
 													value={callToAction}
 													onChange={(value) => setAttributes({ callToAction: value })}
+													className="wcb-slider-child__btn-text"
 												/>
 												{
 													style_buttonPreset?.preset === 'wcb-button-4' || style_buttonPreset?.preset === 'wcb-button-8' ?
