@@ -6084,13 +6084,13 @@ const blokcContainerAttrs = {
     default: {
       ..._components_controls_MyFlexPropertiesControl_types__WEBPACK_IMPORTED_MODULE_5__.FLEX_PROPERTIES_CONTROL_DEMO,
       flexDirection: {
-        Desktop: "row"
+        Desktop: "column"
       },
       alignItems: {
-        Desktop: "center"
+        Desktop: "stretch"
       },
       justifyContent: {
-        Desktop: "center"
+        Desktop: "flex-start"
       },
       flexWrap: {
         Desktop: "nowrap"
@@ -6447,7 +6447,7 @@ const RenderIcon = props => {
     className: "grid grid-rows-2 grid-cols-12 w-14 h-8 p-0.5 bg-[#007cba] gap-0.5 rounded-sm"
   }, props.children));
 };
-const getContainerAttrsByFlexWrap = (flexWrap = "nowrap", flexDirection = "row") => {
+const getContainerAttrsByFlexWrap = (flexWrap = "nowrap", flexDirection = "column", alignItems = "stretch", justifyContent = "flex-start") => {
   const attrsDefault = Object.keys(_attributes__WEBPACK_IMPORTED_MODULE_3__["default"]).reduce((previousValue, currentValue, currentIndex) => {
     return {
       ...previousValue,
@@ -6463,13 +6463,13 @@ const getContainerAttrsByFlexWrap = (flexWrap = "nowrap", flexDirection = "row")
         Tablet: "row"
       },
       flexWrap: {
-        Desktop: "nowrap"
+        Desktop: flexWrap
       },
       alignItems: {
-        Desktop: "stretch"
+        Desktop: alignItems
       },
       justifyContent: {
-        Desktop: "flex-start"
+        Desktop: justifyContent
       }
     }
   };
@@ -6494,10 +6494,10 @@ const variations = [{
   icon: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(RenderIcon, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "col-span-12 row-span-2 bg-white"
   })),
-  innerBlocks: [],
+  innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("100%")]],
   scope: ["block"],
   isDefault: true,
-  attributes: getContainerAttrsByFlexWrap("nowrap", "column")
+  attributes: getContainerAttrsByFlexWrap("nowrap", "row")
 }, {
   name: "two-columns-equal",
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("50 / 50"),
@@ -6509,7 +6509,7 @@ const variations = [{
   })),
   innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("50%")], ["wcb/container", getContainerBoxAttrsByWidth("50%")]],
   scope: ["block"],
-  attributes: getContainerAttrsByFlexWrap("nowrap")
+  attributes: getContainerAttrsByFlexWrap("nowrap", "row")
 }, {
   name: "two-columns-33-66",
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("33 / 66"),
@@ -6521,7 +6521,7 @@ const variations = [{
   })),
   innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("66.66%")]],
   scope: ["block"],
-  attributes: getContainerAttrsByFlexWrap("nowrap")
+  attributes: getContainerAttrsByFlexWrap("nowrap", "row")
 }, {
   name: "two-columns-66-33",
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("66 / 33"),
@@ -6533,7 +6533,7 @@ const variations = [{
   })),
   innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("66.66%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")]],
   scope: ["block"],
-  attributes: getContainerAttrsByFlexWrap("nowrap")
+  attributes: getContainerAttrsByFlexWrap("nowrap", "row")
 }, {
   name: "three-columns-equal",
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("33 / 33 / 33"),
@@ -6547,7 +6547,7 @@ const variations = [{
   })),
   innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")]],
   scope: ["block"],
-  attributes: getContainerAttrsByFlexWrap("nowrap")
+  attributes: getContainerAttrsByFlexWrap("nowrap", "row")
 }, {
   name: "four-columns-equal",
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("25 / 25 / 25 / 25"),
@@ -6563,7 +6563,7 @@ const variations = [{
   })),
   innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("25%")], ["wcb/container", getContainerBoxAttrsByWidth("25%")], ["wcb/container", getContainerBoxAttrsByWidth("25%")], ["wcb/container", getContainerBoxAttrsByWidth("25%")]],
   scope: ["block"],
-  attributes: getContainerAttrsByFlexWrap("nowrap")
+  attributes: getContainerAttrsByFlexWrap("nowrap", "row")
 }, {
   name: "three-columns-25-50-25",
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("25 / 50 / 25"),
@@ -6577,7 +6577,7 @@ const variations = [{
   })),
   innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("25%")], ["wcb/container", getContainerBoxAttrsByWidth("50%")], ["wcb/container", getContainerBoxAttrsByWidth("25%")]],
   scope: ["block"],
-  attributes: getContainerAttrsByFlexWrap("nowrap")
+  attributes: getContainerAttrsByFlexWrap("nowrap", "row")
 },
 // TWO ROW - FLEX WRAP
 {
@@ -6591,7 +6591,7 @@ const variations = [{
   })),
   innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("100%")], ["wcb/container", getContainerBoxAttrsByWidth("100%")]],
   scope: ["block"],
-  attributes: getContainerAttrsByFlexWrap("wrap")
+  attributes: getContainerAttrsByFlexWrap("wrap", "row")
 }, {
   name: "two-rows-50-50-2full",
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("50 / 50 / 100"),
@@ -6605,7 +6605,7 @@ const variations = [{
   })),
   innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("50%")], ["wcb/container", getContainerBoxAttrsByWidth("50%")], ["wcb/container", getContainerBoxAttrsByWidth("100%")]],
   scope: ["block"],
-  attributes: getContainerAttrsByFlexWrap("wrap")
+  attributes: getContainerAttrsByFlexWrap("wrap", "row")
 }, {
   name: "two-rows-33-33-33-50x2",
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("33 x 3 / 50 x 2"),
@@ -6623,7 +6623,7 @@ const variations = [{
   })),
   innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("50%")], ["wcb/container", getContainerBoxAttrsByWidth("50%")]],
   scope: ["block"],
-  attributes: getContainerAttrsByFlexWrap("wrap")
+  attributes: getContainerAttrsByFlexWrap("wrap", "row")
 }, {
   name: "two-rows-33-66",
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("33 / 66 / x2"),
@@ -6639,7 +6639,7 @@ const variations = [{
   })),
   innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("66.66%")], ["wcb/container", getContainerBoxAttrsByWidth("66.66%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")]],
   scope: ["block"],
-  attributes: getContainerAttrsByFlexWrap("wrap")
+  attributes: getContainerAttrsByFlexWrap("wrap", "row")
 }, {
   name: "two-rows-50-50",
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("50 / 50 / x2"),
@@ -6655,7 +6655,7 @@ const variations = [{
   })),
   innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("50%")], ["wcb/container", getContainerBoxAttrsByWidth("50%")], ["wcb/container", getContainerBoxAttrsByWidth("50%")], ["wcb/container", getContainerBoxAttrsByWidth("50%")]],
   scope: ["block"],
-  attributes: getContainerAttrsByFlexWrap("wrap")
+  attributes: getContainerAttrsByFlexWrap("wrap", "row")
 }, {
   name: "two-rows-66-33",
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("66 / 33 / x2"),
@@ -6671,7 +6671,7 @@ const variations = [{
   })),
   innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("66.66%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("66.66%")]],
   scope: ["block"],
-  attributes: getContainerAttrsByFlexWrap("wrap")
+  attributes: getContainerAttrsByFlexWrap("wrap", "row")
 }, {
   name: "two-rows-25-50-25",
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("25 / 50 / 25 / x2"),
@@ -6691,7 +6691,7 @@ const variations = [{
   })),
   innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("25%")], ["wcb/container", getContainerBoxAttrsByWidth("50%")], ["wcb/container", getContainerBoxAttrsByWidth("25%")], ["wcb/container", getContainerBoxAttrsByWidth("25%")], ["wcb/container", getContainerBoxAttrsByWidth("50%")], ["wcb/container", getContainerBoxAttrsByWidth("25%")]],
   scope: ["block"],
-  attributes: getContainerAttrsByFlexWrap("wrap")
+  attributes: getContainerAttrsByFlexWrap("wrap", "row")
 }, {
   name: "two-rows-33-equal",
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("33 / 33 / 33 "),
@@ -6711,7 +6711,7 @@ const variations = [{
   })),
   innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")], ["wcb/container", getContainerBoxAttrsByWidth("33.33%")]],
   scope: ["block"],
-  attributes: getContainerAttrsByFlexWrap("wrap")
+  attributes: getContainerAttrsByFlexWrap("wrap", "row")
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (variations);
 

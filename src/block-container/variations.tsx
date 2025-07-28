@@ -28,7 +28,9 @@ const RenderIcon = (props) => {
 
 const getContainerAttrsByFlexWrap = (
 	flexWrap: React.CSSProperties["flexWrap"] = "nowrap",
-	flexDirection: React.CSSProperties["flexDirection"] = "row"
+	flexDirection: React.CSSProperties["flexDirection"] = "column",
+	alignItems: React.CSSProperties["alignItems"] = "stretch",
+	justifyContent: React.CSSProperties["justifyContent"] = "flex-start"
 ): BlockWCBContainerAttrs => {
 	const attrsDefault = Object.keys(blokcContainerAttrs).reduce(
 		(previousValue, currentValue, currentIndex: number) => {
@@ -48,10 +50,10 @@ const getContainerAttrsByFlexWrap = (
 				Tablet: "row",
 			},
 			flexWrap: {
-				Desktop: "nowrap",
+				Desktop: flexWrap,
 			},
-			alignItems: { Desktop: "stretch" },
-			justifyContent: { Desktop: "flex-start" },
+			alignItems: { Desktop: alignItems },
+			justifyContent: { Desktop: justifyContent },
 		},
 	};
 };
@@ -96,10 +98,12 @@ export const variations: {
 				<div className="col-span-12 row-span-2 bg-white"></div>
 			</RenderIcon>
 		),
-		innerBlocks: [],
+		innerBlocks: [
+			["wcb/container", getContainerBoxAttrsByWidth("100%")],
+		],
 		scope: ["block"],
 		isDefault: true,
-		attributes: getContainerAttrsByFlexWrap("nowrap", "column"),
+		attributes: getContainerAttrsByFlexWrap("nowrap", "row"),
 	},
 	{
 		name: "two-columns-equal",
@@ -116,7 +120,7 @@ export const variations: {
 			["wcb/container", getContainerBoxAttrsByWidth("50%")],
 		],
 		scope: ["block"],
-		attributes: getContainerAttrsByFlexWrap("nowrap"),
+		attributes: getContainerAttrsByFlexWrap("nowrap", "row"),
 	},
 	{
 		name: "two-columns-33-66",
@@ -133,7 +137,7 @@ export const variations: {
 			["wcb/container", getContainerBoxAttrsByWidth("66.66%")],
 		],
 		scope: ["block"],
-		attributes: getContainerAttrsByFlexWrap("nowrap"),
+		attributes: getContainerAttrsByFlexWrap("nowrap", "row"),
 	},
 	{
 		name: "two-columns-66-33",
@@ -150,7 +154,7 @@ export const variations: {
 			["wcb/container", getContainerBoxAttrsByWidth("33.33%")],
 		],
 		scope: ["block"],
-		attributes: getContainerAttrsByFlexWrap("nowrap"),
+		attributes: getContainerAttrsByFlexWrap("nowrap", "row"),
 	},
 	{
 		name: "three-columns-equal",
@@ -169,7 +173,7 @@ export const variations: {
 			["wcb/container", getContainerBoxAttrsByWidth("33.33%")],
 		],
 		scope: ["block"],
-		attributes: getContainerAttrsByFlexWrap("nowrap"),
+		attributes: getContainerAttrsByFlexWrap("nowrap", "row"),
 	},
 	{
 		name: "four-columns-equal",
@@ -190,7 +194,7 @@ export const variations: {
 			["wcb/container", getContainerBoxAttrsByWidth("25%")],
 		],
 		scope: ["block"],
-		attributes: getContainerAttrsByFlexWrap("nowrap"),
+		attributes: getContainerAttrsByFlexWrap("nowrap", "row"),
 	},
 	{
 		name: "three-columns-25-50-25",
@@ -209,7 +213,7 @@ export const variations: {
 			["wcb/container", getContainerBoxAttrsByWidth("25%")],
 		],
 		scope: ["block"],
-		attributes: getContainerAttrsByFlexWrap("nowrap"),
+		attributes: getContainerAttrsByFlexWrap("nowrap", "row"),
 	},
 
 	// TWO ROW - FLEX WRAP
@@ -228,7 +232,7 @@ export const variations: {
 			["wcb/container", getContainerBoxAttrsByWidth("100%")],
 		],
 		scope: ["block"],
-		attributes: getContainerAttrsByFlexWrap("wrap"),
+		attributes: getContainerAttrsByFlexWrap("wrap", "row"),
 	},
 	{
 		name: "two-rows-50-50-2full",
@@ -247,7 +251,7 @@ export const variations: {
 			["wcb/container", getContainerBoxAttrsByWidth("100%")],
 		],
 		scope: ["block"],
-		attributes: getContainerAttrsByFlexWrap("wrap"),
+		attributes: getContainerAttrsByFlexWrap("wrap", "row"),
 	},
 	{
 		name: "two-rows-33-33-33-50x2",
@@ -270,7 +274,7 @@ export const variations: {
 			["wcb/container", getContainerBoxAttrsByWidth("50%")],
 		],
 		scope: ["block"],
-		attributes: getContainerAttrsByFlexWrap("wrap"),
+		attributes: getContainerAttrsByFlexWrap("wrap", "row"),
 	},
 	{
 		name: "two-rows-33-66",
@@ -291,7 +295,7 @@ export const variations: {
 			["wcb/container", getContainerBoxAttrsByWidth("33.33%")],
 		],
 		scope: ["block"],
-		attributes: getContainerAttrsByFlexWrap("wrap"),
+		attributes: getContainerAttrsByFlexWrap("wrap", "row"),
 	},
 	{
 		name: "two-rows-50-50",
@@ -312,7 +316,7 @@ export const variations: {
 			["wcb/container", getContainerBoxAttrsByWidth("50%")],
 		],
 		scope: ["block"],
-		attributes: getContainerAttrsByFlexWrap("wrap"),
+		attributes: getContainerAttrsByFlexWrap("wrap", "row"),
 	},
 	{
 		name: "two-rows-66-33",
@@ -333,7 +337,7 @@ export const variations: {
 			["wcb/container", getContainerBoxAttrsByWidth("66.66%")],
 		],
 		scope: ["block"],
-		attributes: getContainerAttrsByFlexWrap("wrap"),
+		attributes: getContainerAttrsByFlexWrap("wrap", "row"),
 	},
 	{
 		name: "two-rows-25-50-25",
@@ -358,7 +362,7 @@ export const variations: {
 			["wcb/container", getContainerBoxAttrsByWidth("25%")],
 		],
 		scope: ["block"],
-		attributes: getContainerAttrsByFlexWrap("wrap"),
+		attributes: getContainerAttrsByFlexWrap("wrap", "row"),
 	},
 	{
 		name: "two-rows-33-equal",
@@ -383,7 +387,7 @@ export const variations: {
 			["wcb/container", getContainerBoxAttrsByWidth("33.33%")],
 		],
 		scope: ["block"],
-		attributes: getContainerAttrsByFlexWrap("wrap"),
+		attributes: getContainerAttrsByFlexWrap("wrap", "row"),
 	},
 ];
 
