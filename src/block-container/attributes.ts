@@ -91,7 +91,7 @@ export const blokcContainerAttrs: AttrsGenericType<BlockWCBContainerAttrs> = {
 			...FLEX_PROPERTIES_CONTROL_DEMO,
 			flexDirection: { Desktop: "column" },
 			alignItems: { Desktop: "stretch" },
-			justifyContent: { Desktop: "flex-start" },
+			justifyContent: { Desktop: "space-around" },
 			flexWrap: { Desktop: "nowrap" },
 		},
 	},

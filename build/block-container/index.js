@@ -6090,7 +6090,7 @@ const blokcContainerAttrs = {
         Desktop: "stretch"
       },
       justifyContent: {
-        Desktop: "flex-start"
+        Desktop: "space-around"
       },
       flexWrap: {
         Desktop: "nowrap"
@@ -6447,7 +6447,7 @@ const RenderIcon = props => {
     className: "grid grid-rows-2 grid-cols-12 w-14 h-8 p-0.5 bg-[#007cba] gap-0.5 rounded-sm"
   }, props.children));
 };
-const getContainerAttrsByFlexWrap = (flexWrap = "nowrap", flexDirection = "column", alignItems = "stretch", justifyContent = "flex-start") => {
+const getContainerAttrsByFlexWrap = (flexWrap = "nowrap", flexDirection = "column", alignItems = "stretch", justifyContent = "space-around") => {
   const attrsDefault = Object.keys(_attributes__WEBPACK_IMPORTED_MODULE_3__["default"]).reduce((previousValue, currentValue, currentIndex) => {
     return {
       ...previousValue,
