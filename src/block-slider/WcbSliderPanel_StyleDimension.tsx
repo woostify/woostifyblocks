@@ -22,8 +22,8 @@ export const WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO: WCB_SLIDER_PANEL_STYLE_DIMEN
 		padding: {
 			Desktop: {
 				top: "1rem",
-				left: "1rem",
-				right: "1rem",
+				left: "0rem",
+				right: "0rem",
 				bottom: "1rem",
 			},
 		},

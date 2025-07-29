@@ -75,7 +75,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 						padding: style_dimension.padding,
 					}),
 					getStyleBackground({
-						className: `${ITEM_CLASSNAME} .wcb-slider__item-background`,
+						className: `${WRAP_CLASSNAME} .wcb-slider__wrap-items`,
 						styles_background: style_backgroundAndBorder.background,
 					}),
 				]}
