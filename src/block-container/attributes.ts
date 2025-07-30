@@ -92,7 +92,7 @@ export const blokcContainerAttrs: AttrsGenericType<BlockWCBContainerAttrs> = {
 			flexDirection: { Desktop: "column" },
 			alignItems: { Desktop: "stretch" },
 			justifyContent: { Desktop: "space-around" },
-			flexWrap: { Desktop: "nowrap" },
+			flexWrap: { Desktop: "nowrap", Mobile: "wrap" },
 		},
 	},
 	styles_color: {

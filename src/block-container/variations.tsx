@@ -51,6 +51,7 @@ const getContainerAttrsByFlexWrap = (
 			},
 			flexWrap: {
 				Desktop: flexWrap,
+				Mobile: "wrap"
 			},
 			alignItems: { Desktop: alignItems },
 			justifyContent: { Desktop: justifyContent },

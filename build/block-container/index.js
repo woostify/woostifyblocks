@@ -6093,7 +6093,8 @@ const blokcContainerAttrs = {
         Desktop: "space-around"
       },
       flexWrap: {
-        Desktop: "nowrap"
+        Desktop: "nowrap",
+        Mobile: "wrap"
       }
     }
   },
@@ -6463,7 +6464,8 @@ const getContainerAttrsByFlexWrap = (flexWrap = "nowrap", flexDirection = "colum
         Tablet: "row"
       },
       flexWrap: {
-        Desktop: flexWrap
+        Desktop: flexWrap,
+        Mobile: "wrap"
       },
       alignItems: {
         Desktop: alignItems
