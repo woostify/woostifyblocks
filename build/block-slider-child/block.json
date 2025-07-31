@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "wcb/slider-child",
+  "version": "0.1.0",
+  "title": "Slider child",
+  "category": "wcb-blocks",
+  "usesContext": [
+    "wcb/slider_general",
+    "wcb/slider_images"
+  ],
+  "parent": [
+    "wcb/slider"
+  ],
+  "icon": "- wcb-block-editor-block-icon lni lni-image text-xl",
+  "description": "Individual slider item with customizable content and styling.",
+  "supports": {
+    "html": false
+  },
+  "textdomain": "wcb-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}
