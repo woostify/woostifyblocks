@@ -27,7 +27,6 @@ const WcbSliderLayoutPanelPreset: FC<Props> = ({
 	onToggle,
 	opened,
 }) => {
-	debugger
 	const setPreset = (preset: WCB_SLIDER_LAYOUT_PANEL_PRESET["preset"]) => {
 		setAttr__({ preset: preset });
 	};

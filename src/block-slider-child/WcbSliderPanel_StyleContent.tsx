@@ -49,7 +49,6 @@ const WcbSlidersPanel_StyleContent: FC<Props> = ({
 	onToggle,
 	opened,
 }) => {
-	debugger
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	const { typography, textColor, marginBottom, textAlignment } = panelData;
 	const { currentDeviceValue: currentMarginBottom } =

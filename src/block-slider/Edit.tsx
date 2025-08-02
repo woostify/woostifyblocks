@@ -1,5 +1,6 @@
 import { __ } from "@wordpress/i18n";
-import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
+import { useBlockProps, InnerBlocks, // @ts-ignore
+	useInnerBlocksProps } from "@wordpress/block-editor";
 import { useDispatch, useSelect } from "@wordpress/data";
 import React, { useEffect, FC, useCallback, useRef, useState, useMemo } from "react";
 import { WcbAttrs } from "./attributes";
@@ -37,7 +38,7 @@ import {
 	WcbSlidersPanel_StyleDimension as ChildStyleDimension,
 	WcbSliderButtonPanelPreset as ChildStyleButtonPreset,
 	WcbSliderLayoutPanelPreset as ChildStyleLayoutPreset,
-	WcbSlidersPanel_StyleSeparator as ChildStyleSparator,
+	// WcbSlidersPanel_StyleSeparator as ChildStyleSparator,
 	WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_DEMO
 } from "../block-slider-child/Edit";
 
@@ -163,12 +164,12 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const parentCssClass = converClientIdToUniqueClass(clientId);
 	
 	const [isParentSelected, setIsParentSelected] = useState(true);
-	const [selectedChildId, setSelectedChildId] = useState<string | null>(clientId);
+	const [selectedChildId, setSelectedChildId] = useState<string | null>(null);
 	
 	/**
 	 * Parent-Child Synchronization
 	 */
-	const { insertBlock, removeBlock } = useDispatch("core/block-editor");
+	const { insertBlock, removeBlock, selectBlock } = useDispatch("core/block-editor");
 
 	// Get inner blocks and selected block
 	const { innerBlocks } = useSelect((select: any) => {
@@ -178,10 +179,36 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		};
 	}, [clientId]);
 
+	// Initialize blocks after innerBlocks is available
+	useEffect(() => {
+		const targetNumber = general_general.numberofTestimonials || 3;
+		const currentNumber = innerBlocks.length;
+
+		if (currentNumber === 0 && targetNumber > 0) {
+			const timeoutId = setTimeout(() => {
+				for (let i = 0; i < targetNumber; i++) {
+					const newBlock = wp.blocks.createBlock("wcb/slider-child");
+					insertBlock(newBlock, i, clientId);
+				}
+			}, 100);
+			return () => clearTimeout(timeoutId);
+		}
+
+		// Force parent selection after adding inner blocks
+        selectBlock(clientId);
+        setIsParentSelected(true);
+        setSelectedChildId(null);
+	}, [clientId, insertBlock, general_general.numberofTestimonials, innerBlocks.length]);
+
 	// Handle child selection
 	const handleChildSelect = (childClientId: string) => {
 		setIsParentSelected(false);
 		setSelectedChildId(childClientId);
+		
+		// // Reset slider to first slide when child is selected (similar to Spectra)
+		// if (sliderRef.current && innerBlocks.length > 0) {
+		// 	sliderRef.current.slickGoTo(0, false);
+		// }
 	};
 
 	// Add useEffect to monitor numberofTestimonials changes and update inner blocks accordingly
@@ -217,6 +244,11 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					removeBlock(childClientId);
 				});
 			}
+
+			// Force parent selection after modifying inner blocks
+			selectBlock(clientId);
+			setIsParentSelected(true);
+			setSelectedChildId(null);
 		}, 100); // Small delay to prevent race conditions
 
 		return () => clearTimeout(timeoutId);
@@ -550,12 +582,20 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	};
 
 	// Use useMemo to prevent unnecessary template recreation
-	const innerBlocksTemplate: any[] = useMemo(
-		() => [...Array(general_general.numberofTestimonials || 3).keys()].map(
-			(_, index) => sliders[index] || SLIDER_ITEM_DEMO
-		),
-		[general_general.numberofTestimonials, sliders]
-	)
+	const innerBlocksTemplate: any[] = [
+		SLIDER_ITEM_DEMO,
+		SLIDER_ITEM_DEMO,
+		SLIDER_ITEM_DEMO
+	]
+
+	const innerBlocksProps = useInnerBlocksProps(
+		{
+			allowedBlocks: SLIDER_ITEM_DEMO,
+			template: innerBlocksTemplate,
+			renderAppender: false,
+			orientation: 'horizontal',
+		}
+	);
 
 	// Memoized child component to prevent multiple renders
 	const MemoizedChildBlock = useMemo(() => {
@@ -564,7 +604,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			const BlockEdit = blockType?.edit;
 			
 			return (
-				<div className="wcb-slider__item" 
+				<div className="wcb-slider__item" key={index + "-"} 
 					onClick={(e) => {
 						e.stopPropagation();
 						onSelect(block.clientId);
@@ -595,7 +635,32 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		}
 	)}, []);
 
-	const renderSliderContent = useCallback(() => {
+	// const sliderRef = useRef<Slider>(null);
+	
+	// // Reset slider to first slide when block is selected (similar to Spectra logic)
+	// useEffect(() => {
+	// 	if (sliderRef.current && innerBlocks.length > 0 && isSelected) {
+	// 		// Reset to first slide without animation when block is selected
+	// 		sliderRef.current.slickGoTo(0, false);
+			
+	// 		// Resume autoplay if enabled
+	// 		if (general_carousel.isAutoPlay) {
+	// 			sliderRef.current.slickPlay();
+	// 		}
+	// 	}
+	// }, [isSelected, innerBlocks.length, general_carousel.isAutoPlay]);
+	
+	// Handle inner blocks changes
+	// useEffect(() => {
+	// 	if (sliderRef.current && innerBlocks.length > 0) {
+	// 		sliderRef.current.slickGoTo(0, true); // Đưa về slide đầu tiên mà không animate
+	// 		if (general_carousel.isAutoPlay) {
+	// 			sliderRef.current.slickPlay();
+	// 		}
+	// 	}
+	// }, [innerBlocks.length, general_carousel.isAutoPlay]);
+
+	const renderSliderContent = () => {
 		const {
 			animationDuration,
 			autoplaySpeed,
@@ -616,8 +681,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			infinite: rewind,
 			speed: animationDuration || 500,
 			autoplay: isAutoPlay,
+			// centerMode: true,
 			autoplaySpeed,
-			slidesToShow: Number(currentColumns) || 1,
+			slidesToShow: currentColumns,
 			slidesToScroll: 1,
 			nextArrow: <SampleNextArrow />,
 			prevArrow: <SamplePrevArrow />,
@@ -625,31 +691,42 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			arrows: showArrowsDots !== "Dot",
 			adaptiveHeight: adaptiveHeight,
 			pauseOnHover: hoverpause,
+			pauseOnFocus: true,
+			accessibility: false,
+			initialSlide: 0,
+			// Disable touch/swipe in editor mode to prevent accidental slide changes
+			swipe: false,
+			touchMove: false,
+			draggable: false,
 		};
 
 		// If no inner blocks or blocks count doesn't match target, show template
-		const targetNumber = general_general.numberofTestimonials || 3;
 		// If no inner blocks, show template  
 		if (innerBlocks.length === 0) {
+			console.log("render setting slider with template");
 			return (
-				<InnerBlocks
-					allowedBlocks={SLIDER_ITEM_DEMO}
-					template={innerBlocksTemplate}
-					templateLock={false}
-					renderAppender={isSelected ? InnerBlocks.DefaultBlockAppender : undefined}
-				/>
+				<div className="wcb-slider__wrap-items">
+					<Slider 
+						// ref={ sliderRef } 
+						{...settings} 
+					>
+						<div {...innerBlocksProps} />
+						{/* <InnerBlocks
+							allowedBlocks={SLIDER_ITEM_DEMO}
+							template={innerBlocksTemplate}
+							templateLock={false}
+							renderAppender={isSelected ? InnerBlocks.DefaultBlockAppender : undefined} /> */}
+					</Slider>
+				</div>
 			);
 		}
 
 		// Show slider with individual child blocks
 		return (
 			<div className="wcb-slider__wrap-items">
-				<Slider {...settings} 
-					afterChange={(e) => {
-							console.log('Slider afterChange - selecting parent');
-							setIsParentSelected(true);
-							setSelectedChildId(null);
-					}}
+				<Slider 
+					// ref={ sliderRef } 
+					{...settings}
 				>
 				{innerBlocks.map((block: any, index: number) =>
 					<MemoizedChildBlock
@@ -663,14 +740,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				</Slider>
 			</div>
 		);
-	}, [
-		innerBlocks,
-		innerBlocksTemplate,
-		isSelected,
-		handleChildSelect,
-		isParentSelected,
-		selectedChildId
-	]);
+	};
 
 	const WcbAttrsForSave = useCallback((): WcbAttrsForSave => {
 		return {
@@ -708,20 +778,22 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		advance_motionEffect,
 	]);
 
+	const handleParentClick = useCallback((e: React.MouseEvent) => {
+		if (e.target === e.currentTarget && !isParentSelected) {
+			console.log('Parent: Selecting parent block');
+			selectBlock(clientId);
+			setIsParentSelected(true);
+			setSelectedChildId(null);
+		}
+	}, [isParentSelected, clientId]);
+
 	return (
 		<MyCacheProvider uniqueKey={clientId}>
 			<div
 				{...wrapBlockProps}
 				className={`${wrapBlockProps?.className} wcb-slider__wrap ${uniqueId} ${parentCssClass}`}
 				data-uniqueid={uniqueId}
-				onClick={(e) => {
-					// If you click directly on the father Div (not your child)
-					if (e.target === e.currentTarget) {
-						console.log('Parent: Selecting parent block');
-						setIsParentSelected(true);
-						setSelectedChildId(null);
-					}
-				}}
+				onClick={handleParentClick}
 			>
 				{/* CONTROL SETTINGS - Show when parent is selected OR when child is selected */}
 				{(isParentSelected || selectedChildBlock) && (

@@ -48,7 +48,6 @@ export {
 };
 
 const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
-	debugger
 	const { attributes, setAttributes, clientId, isSelected, index } = props;
 	const {
 		uniqueId,

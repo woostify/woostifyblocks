@@ -9,6 +9,7 @@
 /* Override any Gutenberg editor styles that might interfere */
 .wp-block[data-type="wcb/slider-child"] {
 	.wcb-slider-child__wrap {
+		width: 100%;
 		/* Ensure consistent styling between editor and frontend */
 		/* All styles should come from GlobalCss component */
 	}
