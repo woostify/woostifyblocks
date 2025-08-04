@@ -138,6 +138,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							}}
 							panelData={general_layout}
 						/>
+						
 						<WcbCountdownPanelPreset
 							onToggle={() => handleTogglePanel("General", "Preset")}
 							initialOpen={
