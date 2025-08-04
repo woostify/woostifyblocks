@@ -99,9 +99,7 @@ export const variations: {
 				<div className="col-span-12 row-span-2 bg-white"></div>
 			</RenderIcon>
 		),
-		innerBlocks: [
-			["wcb/container", getContainerBoxAttrsByWidth("100%")],
-		],
+		innerBlocks: [],
 		scope: ["block"],
 		isDefault: true,
 		attributes: getContainerAttrsByFlexWrap("nowrap", "row"),

@@ -6496,7 +6496,7 @@ const variations = [{
   icon: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(RenderIcon, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "col-span-12 row-span-2 bg-white"
   })),
-  innerBlocks: [["wcb/container", getContainerBoxAttrsByWidth("100%")]],
+  innerBlocks: [],
   scope: ["block"],
   isDefault: true,
   attributes: getContainerAttrsByFlexWrap("nowrap", "row")
