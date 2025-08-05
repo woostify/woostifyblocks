@@ -6087,10 +6087,10 @@ const blokcContainerAttrs = {
         Desktop: "column"
       },
       alignItems: {
-        Desktop: "stretch"
+        Desktop: "start"
       },
       justifyContent: {
-        Desktop: "space-around"
+        Desktop: "center"
       },
       flexWrap: {
         Desktop: "nowrap",
@@ -6448,7 +6448,7 @@ const RenderIcon = props => {
     className: "grid grid-rows-2 grid-cols-12 w-14 h-8 p-0.5 bg-[#007cba] gap-0.5 rounded-sm"
   }, props.children));
 };
-const getContainerAttrsByFlexWrap = (flexWrap = "nowrap", flexDirection = "column", alignItems = "stretch", justifyContent = "space-around") => {
+const getContainerAttrsByFlexWrap = (flexWrap = "nowrap", flexDirection = "column", alignItems = "start", justifyContent = "center") => {
   const attrsDefault = Object.keys(_attributes__WEBPACK_IMPORTED_MODULE_3__["default"]).reduce((previousValue, currentValue, currentIndex) => {
     return {
       ...previousValue,
@@ -6499,7 +6499,7 @@ const variations = [{
   innerBlocks: [],
   scope: ["block"],
   isDefault: true,
-  attributes: getContainerAttrsByFlexWrap("nowrap", "row")
+  attributes: getContainerAttrsByFlexWrap("nowrap", "column", "start", "center")
 }, {
   name: "two-columns-equal",
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("50 / 50"),
