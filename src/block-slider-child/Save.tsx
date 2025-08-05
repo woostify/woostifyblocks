@@ -86,7 +86,12 @@ export default function save({ attributes, context }: { attributes: WcbAttrs, co
 	};
 
 	const renderIconButton = () => {
-		return <MyIcon icon={"lni-arrow-right"} className="wcb-button__icon" />;
+		return (
+			<MyIcon
+				icon={style_buttonPreset?.enableIcon ? (style_buttonPreset?.icon?.iconName ?? "lni-arrow-right") : "lni-arrow-right"}
+				className="wcb-slider-child__btn-text ml-2"
+			/>
+		);
 	};
 
 	const renderIconTop = () => {
@@ -97,6 +102,44 @@ export default function save({ attributes, context }: { attributes: WcbAttrs, co
 				</div>
 			</div>
 		);
+	}
+
+	const renderCallToAction = (preset: any, enableIcon: any) => {
+		return (
+			<div className="wcb-slider-child__btn-inner">
+				<RichText.Content
+					tagName="div"
+					value={callToAction}
+					className="wcb-slider-child__btn-text"
+				/>
+				{
+					preset === 'wcb-button-4' || preset === 'wcb-button-8' || enableIcon ?
+					renderIconButton() : null
+				}
+			</div>
+		)
+	}
+
+	const renderCallToActionLink = (preset: any, enableIcon: any, link: any, openInNewWindow: any) => {
+		return (
+			<div className="wcb-slider-child__btn-inner">
+				<a
+					className="wcb-slider-child__btn-inner__link"
+					href={link}
+					target={openInNewWindow ? "_blank" : "_self"}
+				>
+					<RichText.Content
+							tagName="div"
+							value={callToAction}
+							className="wcb-slider-child__btn-text"
+						/>
+						{
+							preset === 'wcb-button-4' || preset === 'wcb-button-8' || enableIcon ?
+							renderIconButton() : null
+						}
+				</a>
+			</div>
+		)
 	}
 
 	// Helper functions to determine icon rendering
@@ -212,21 +255,22 @@ export default function save({ attributes, context }: { attributes: WcbAttrs, co
 
 											{/* Call to Action */}
 											{
-												style_layoutPreset?.preset === "wcb-layout-3" ?
-												null : 								
-												<div className="wcb-slider-child__btn">
-													<div className="wcb-slider-child__btn-inner">
-														<RichText.Content
-															tagName="div"
-															value={callToAction}
-															className="wcb-slider-child__btn-text"
-														/>
-														{
-															style_buttonPreset?.preset === 'wcb-button-4' || style_buttonPreset?.preset === 'wcb-button-8' ?
-															renderIconButton() : null
-														}
-													</div>
-												</div>
+												style_layoutPreset?.preset === "wcb-layout-3" ? null : (
+													style_buttonPreset?.link ? (
+														// <a
+														// 	style={{
+														// 		display: "inline-block",
+														// 	}}
+														// 	href={style_buttonPreset.link}
+														// 	target={style_buttonPreset.openInNewWindow ? "_blank" : "_self"}
+														// >
+														// 	{renderCallToAction(style_buttonPreset.preset, style_buttonPreset.enableIcon)}
+														// </a>
+														renderCallToActionLink(style_buttonPreset.preset, style_buttonPreset.enableIcon, style_buttonPreset.link, style_buttonPreset.openInNewWindow)
+													) : (
+														renderCallToAction(style_buttonPreset?.preset, style_buttonPreset?.enableIcon)
+													)
+												)
 											}
 
 											{/* Image */}	

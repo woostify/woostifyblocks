@@ -97,7 +97,12 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 	};
 
 	const renderIconButton = () => {
-		return <MyIcon icon={"lni-arrow-right"} className="wcb-slider-child__btn-text"/>;
+		return (
+			<MyIcon
+				icon={style_buttonPreset?.enableIcon ? (style_buttonPreset?.icon?.iconName ?? "lni-arrow-right") : "lni-arrow-right"}
+				className="wcb-slider-child__btn-text ml-2"
+			/>
+		);
 	};
 
 	const renderIconTop = () => {
@@ -220,20 +225,18 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 								{
 									style_layoutPreset?.preset === "wcb-layout-3" ?
 									null : 								
-										<div className="wcb-slider-child__btn">
-											<div className="wcb-slider-child__btn-inner">
-												<RichText
-													tagName="div"
-													placeholder={__("Enter call to action...", "wcb")}
-													value={callToAction}
-													onChange={(value) => setAttributes({ callToAction: value })}
-													className="wcb-slider-child__btn-text"
-												/>
-												{
-													style_buttonPreset?.preset === 'wcb-button-4' || style_buttonPreset?.preset === 'wcb-button-8' ?
-													renderIconButton() : null
-												}
-											</div>
+										<div className="wcb-slider-child__btn-inner">
+											<RichText
+												tagName="div"
+												placeholder={__("Enter call to action...", "wcb")}
+												value={callToAction}
+												onChange={(value) => setAttributes({ callToAction: value })}
+												className="wcb-slider-child__btn-text"
+											/>
+											{
+												style_buttonPreset?.preset === 'wcb-button-4' || style_buttonPreset?.preset === 'wcb-button-8' || style_buttonPreset?.enableIcon ?
+												renderIconButton() : null
+											}
 										</div>
 								}
 								

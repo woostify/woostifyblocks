@@ -79,20 +79,20 @@ const blockAttrs: AttrsGenericType<WcbAttrs> = {
 	// THE ATTRS OF SLIDER CHILD CONTENT HERE
 	content: {
 		type: "string",
-		source: "html",
+		// source: "html",
 		selector: ".wcb-slider-child__content",
 		default: "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
 	},
 	name: {
 		type: "string",
-		source: "html",
+		// source: "html",
 		selector: ".wcb-slider-child__name",
 		default: "Slider",
 	},
 	callToAction: {
 		type: "string",
-		source: "html",
-		selector: ".wcb-slider-child__btn",
+		// source: "html",
+		selector: ".wcb-slider-child__btn-inner",
 		default: "Read More",
 	},
 

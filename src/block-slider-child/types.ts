@@ -10,7 +10,6 @@ export type {
 } from "../block-slider/types";
 
 // Export child-specific types
-export type { WCB_SLIDER_PANEL_IMAGE } from "./WcbSliderPanel_StyleImage";
 export type { WcbAttrs } from "./attributes";
 
 // Export panel components for external usage

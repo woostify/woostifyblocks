@@ -67,7 +67,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const ITEM_NAME = createRobustSelector('.wcb-slider-child__name');
 	const ITEM_CONTENT = createRobustSelector('.wcb-slider-child__content');
 	const ITEM_IMAGE = createRobustSelector('.wcb-slider-child__image');
-	const CALL_TO_ACTION = createRobustSelector('.wcb-slider-child__btn');
 	const CALL_TO_ACTION_INNER = createRobustSelector('.wcb-slider-child__btn-inner');
 	const CALL_TO_ACTION_TEXT = createRobustSelector('.wcb-slider-child__btn-text');
 	const ITEM_TOP_ICON_WRAP = createRobustSelector('.wcb-top__icon-wrap');

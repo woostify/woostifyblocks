@@ -25,6 +25,10 @@ import {
 	MY_DIMENSIONS_NO_GAP_CONTROL_DEMO,
 } from "../components/controls/MyDimensionsControl/types";
 import MyDimensionsNoGapControl from "../components/controls/MyDimensionsControl/MyDimensionsNoGapControl";
+import SelecIcon, {
+	MyIcon,
+	DEFAULT_MY_ICON,
+} from "../components/controls/SelectIcon/SelecIcon";
 
 export interface WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON extends MyDimensionsNoGapControlData, MyBorderControlData {
 	typographyText: MyTypographyControlData;
@@ -33,6 +37,8 @@ export interface WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON extends MyDimensio
 	normalBackground: BackgroundNoImageControlData;
 	hoverBackground: BackgroundNoImageControlData;
 }
+
+
 
 export const WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_DEMO: WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON =
 	{
