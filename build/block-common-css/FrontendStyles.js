@@ -6629,6 +6629,12 @@ const classes = [{
   C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => Promise.resolve(/*! import() */).then(__webpack_require__.bind(__webpack_require__, /*! ../block-counter/GlobalCss */ "./src/block-counter/GlobalCss.tsx"))),
   F: _block_counter_FrontendStyles__WEBPACK_IMPORTED_MODULE_8__.animateProgressElements
 }, {
+  D: ".wcb-icon-list__wrap.wcb-update-div",
+  C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => __webpack_require__.e(/*! import() */ "src_block-icon-list_GlobalCss_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../block-icon-list/GlobalCss */ "./src/block-icon-list/GlobalCss.tsx")))
+}, {
+  D: ".wcb-icon-list__wrap.wcb-update-div[data-block-type='icon-item']",
+  C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => __webpack_require__.e(/*! import() */ "src_block-icon-child_GlobalCss_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../block-icon-child/GlobalCss */ "./src/block-icon-child/GlobalCss.tsx")))
+}, {
   D: ".wcb-icon__wrap.wcb-update-div",
   C: react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => __webpack_require__.e(/*! import() */ "src_block-icon_GlobalCss_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../block-icon/GlobalCss */ "./src/block-icon/GlobalCss.tsx")))
 }];
