@@ -46,11 +46,4 @@ body .wcb-container__wrap .wcb-container__inner {
   flex: 0 1 auto;
 }
 
-/* Nested containers should not have gap for their children */
-.wcb-container__wrap.is_wcb_container_child .wcb-container__inner {
-  -moz-column-gap: 0 !important;
-       column-gap: 0 !important;
-  row-gap: 0 !important;
-}
-
 /*# sourceMappingURL=style-index.css.map*/
