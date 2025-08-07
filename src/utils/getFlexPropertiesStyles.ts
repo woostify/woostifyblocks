@@ -3,7 +3,6 @@ import { HasResponsive } from "../components/controls/MyBackgroundControl/types"
 import { MyFlexPropertiesControlData } from "../components/controls/MyFlexPropertiesControl/types";
 import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import getValueFromAttrsResponsives from "./getValueFromAttrsResponsives";
-import checkResponsiveValueForOptimizeCSS from "./checkResponsiveValueForOptimizeCSS";
 
 interface FlexProperties extends Partial<MyFlexPropertiesControlData> {
 	colunmGap?: HasResponsive<string>;
@@ -70,101 +69,44 @@ const getFlexPropertiesStyles = ({
 	} = getValueFromAttrsResponsives(rowGap);
 	//
 
-	//
-	const {
-		mobile_v: flexDirection_Mobile_new,
-		tablet_v: flexDirection_Tablet_new,
-		desktop_v: flexDirection_Desktop_new,
-	} = checkResponsiveValueForOptimizeCSS({
-		mobile_v: flexDirection_Mobile,
-		tablet_v: flexDirection_Tablet,
-		desktop_v: flexDirection_Desktop,
-	});
-	const {
-		mobile_v: alignItems_Mobile_new,
-		tablet_v: alignItems_Tablet_new,
-		desktop_v: alignItems_Desktop_new,
-	} = checkResponsiveValueForOptimizeCSS({
-		mobile_v: alignItems_Mobile,
-		tablet_v: alignItems_Tablet,
-		desktop_v: alignItems_Desktop,
-	});
-	const {
-		mobile_v: flexWrap_Mobile_new,
-		tablet_v: flexWrap_Tablet_new,
-		desktop_v: flexWrap_Desktop_new,
-	} = checkResponsiveValueForOptimizeCSS({
-		mobile_v: flexWrap_Mobile,
-		tablet_v: flexWrap_Tablet,
-		desktop_v: flexWrap_Desktop,
-	});
-	const {
-		mobile_v: justifyContent_Mobile_new,
-		tablet_v: justifyContent_Tablet_new,
-		desktop_v: justifyContent_Desktop_new,
-	} = checkResponsiveValueForOptimizeCSS({
-		mobile_v: justifyContent_Mobile,
-		tablet_v: justifyContent_Tablet,
-		desktop_v: justifyContent_Desktop,
-	});
-	const {
-		mobile_v: colunmGap_Mobile_new,
-		tablet_v: colunmGap_Tablet_new,
-		desktop_v: colunmGap_Desktop_new,
-	} = checkResponsiveValueForOptimizeCSS({
-		mobile_v: colunmGap_Mobile,
-		tablet_v: colunmGap_Tablet,
-		desktop_v: colunmGap_Desktop,
-	});
-	const {
-		mobile_v: rowGap_Mobile_new,
-		tablet_v: rowGap_Tablet_new,
-		desktop_v: rowGap_Desktop_new,
-	} = checkResponsiveValueForOptimizeCSS({
-		mobile_v: rowGap_Mobile,
-		tablet_v: rowGap_Tablet,
-		desktop_v: rowGap_Desktop,
-	});
-	//
-
 	return {
 		[`${className}`]: {
-			flexDirection: flexDirection_Mobile_new,
-			alignItems: alignItems_Mobile_new,
-			flexWrap: flexWrap_Mobile_new,
-			justifyContent: justifyContent_Mobile_new,
-			columnGap: colunmGap_Mobile_new,
-			rowGap: rowGap_Mobile_new,
+			flexDirection: flexDirection_Mobile,
+			alignItems: alignItems_Mobile,
+			flexWrap: flexWrap_Mobile,
+			justifyContent: justifyContent_Mobile,
+			columnGap: colunmGap_Mobile,
+			rowGap: rowGap_Mobile,
 			[`@media (min-width: ${media_tablet})`]:
-				flexDirection_Tablet_new ||
-				alignItems_Tablet_new ||
-				flexWrap_Tablet_new ||
-				justifyContent_Tablet_new ||
-				colunmGap_Tablet_new ||
-				rowGap_Tablet_new
+				flexDirection_Tablet ||
+				alignItems_Tablet ||
+				flexWrap_Tablet ||
+				justifyContent_Tablet ||
+				colunmGap_Tablet ||
+				rowGap_Tablet
 					? {
-							flexDirection: flexDirection_Tablet_new,
-							alignItems: alignItems_Tablet_new,
-							flexWrap: flexWrap_Tablet_new,
-							justifyContent: justifyContent_Tablet_new,
-							columnGap: colunmGap_Tablet_new,
-							rowGap: rowGap_Tablet_new,
+							flexDirection: flexDirection_Tablet,
+							alignItems: alignItems_Tablet,
+							flexWrap: flexWrap_Tablet,
+							justifyContent: justifyContent_Tablet,
+							columnGap: colunmGap_Tablet,
+							rowGap: rowGap_Tablet,
 					  }
 					: undefined,
 			[`@media (min-width: ${media_desktop})`]:
-				flexDirection_Desktop_new ||
-				alignItems_Desktop_new ||
-				flexWrap_Desktop_new ||
-				justifyContent_Desktop_new ||
-				colunmGap_Desktop_new ||
-				rowGap_Desktop_new
+				flexDirection_Desktop ||
+				alignItems_Desktop ||
+				flexWrap_Desktop ||
+				justifyContent_Desktop ||
+				colunmGap_Desktop ||
+				rowGap_Desktop
 					? {
-							flexDirection: flexDirection_Desktop_new,
-							alignItems: alignItems_Desktop_new,
-							flexWrap: flexWrap_Desktop_new,
-							justifyContent: justifyContent_Desktop_new,
-							columnGap: colunmGap_Desktop_new,
-							rowGap: rowGap_Desktop_new,
+							flexDirection: flexDirection_Desktop,
+							alignItems: alignItems_Desktop,
+							flexWrap: flexWrap_Desktop,
+							justifyContent: justifyContent_Desktop,
+							columnGap: colunmGap_Desktop,
+							rowGap: rowGap_Desktop,
 					  }
 					: undefined,
 		},
