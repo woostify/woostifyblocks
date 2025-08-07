@@ -69,6 +69,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const ITEM_IMAGE = createRobustSelector('.wcb-slider-child__image');
 	const CALL_TO_ACTION_INNER = createRobustSelector('.wcb-slider-child__btn-inner');
 	const CALL_TO_ACTION_TEXT = createRobustSelector('.wcb-slider-child__btn-text');
+	const CALL_TO_ACTION_TEXT_SPACING = createRobustSelector('.wcb-slider-child__btn_spacing');
 	const ITEM_TOP_ICON_WRAP = createRobustSelector('.wcb-top__icon-wrap');
 	const ITEM_TOP_ICON = createRobustSelector('.wcb-top__icon');
 
@@ -210,6 +211,18 @@ const GlobalCss: FC<Props> = (attrs) => {
 						[CALL_TO_ACTION_TEXT]: {
 							color: style_callToActionButton?.colorText ?? "#ffffff",
 						},
+						[CALL_TO_ACTION_TEXT_SPACING]: 
+							style_buttonPreset?.iconPosition === "afterTitle"
+								? { marginRight: style_buttonPreset?.iconSpacing?.Desktop ?? "0px" }
+								: { marginLeft: style_buttonPreset?.iconSpacing?.Desktop ?? "0px" },
+						// [CALL_TO_ACTION_TEXT_SPACING]: 
+						// 	style_buttonPreset?.iconPosition === "afterTitle"
+						// 		? { marginRight: style_buttonPreset?.iconSpacing?.Tablet ?? "0px" }
+						// 		: { marginLeft: style_buttonPreset?.iconSpacing?.Tablet ?? "0px" },
+						// [CALL_TO_ACTION_TEXT_SPACING]: 
+						// 	style_buttonPreset?.iconPosition === "afterTitle"
+						// 		? { marginRight: style_buttonPreset?.iconSpacing?.Mobile ?? "0px" }
+						// 		: { marginLeft: style_buttonPreset?.iconSpacing?.Mobile ?? "0px" },
 						// BUTTON HOVER
 						[CALL_TO_ACTION_INNER]: {
 							":hover": {

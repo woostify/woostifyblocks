@@ -226,16 +226,28 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 									style_layoutPreset?.preset === "wcb-layout-3" ?
 									null : 								
 										<div className="wcb-slider-child__btn-inner">
+											{
+												style_buttonPreset?.iconPosition === "beforeTitle" && 
+												(
+													style_buttonPreset?.preset === 'wcb-button-4' || 
+													style_buttonPreset?.preset === 'wcb-button-8' || 
+													style_buttonPreset?.enableIcon
+												) ? renderIconButton() : null
+											}
 											<RichText
 												tagName="div"
 												placeholder={__("Enter call to action...", "wcb")}
 												value={callToAction}
 												onChange={(value) => setAttributes({ callToAction: value })}
-												className="wcb-slider-child__btn-text"
+												className="wcb-slider-child__btn-text wcb-slider-child__btn_spacing"
 											/>
 											{
-												style_buttonPreset?.preset === 'wcb-button-4' || style_buttonPreset?.preset === 'wcb-button-8' || style_buttonPreset?.enableIcon ?
-												renderIconButton() : null
+												style_buttonPreset?.iconPosition === "afterTitle" && 
+												(
+													style_buttonPreset?.preset === 'wcb-button-4' || 
+													style_buttonPreset?.preset === 'wcb-button-8' || 
+													style_buttonPreset?.enableIcon
+												) ? renderIconButton() : null
 											}
 										</div>
 								}

@@ -321,7 +321,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								opened={childPanelInfo.tabStylesIsPanelOpen === "_StyleButtonPreset" || undefined}
 								setAttr__={(data) => {
 									// Update button preset
-									wp.data.dispatch("core/block-editor").updateBlockAttributes(
+									wp.data.dispatch("core/block-editor").updateBlockAttributes(										
 										selectedChildBlock.clientId,
 										{ 
 											style_buttonPreset: data 

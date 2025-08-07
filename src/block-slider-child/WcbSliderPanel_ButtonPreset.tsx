@@ -11,6 +11,14 @@ import SelecIcon, {
 // @ts-ignore
 import { __experimentalLinkControl as LinkControl } from '@wordpress/block-editor';
 import {DEFAULT_MEDIA_UPLOAD} from "../components/controls/MyMediaUploadCheck";
+import { Option } from "../types";
+import MySelect from "../components/controls/MySelect";
+import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
+import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
+import useGetDeviceType from "../hooks/useGetDeviceType";
+import { get } from "lodash";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 
 export interface WCB_SLIDER_BUTTON_PANEL_PRESET {
 	preset: "wcb-button-1" | "wcb-button-2" | "wcb-button-3" | "wcb-button-4" | "wcb-button-5" | "wcb-button-6" | "wcb-button-7" | "wcb-button-8" | "";
@@ -18,6 +26,10 @@ export interface WCB_SLIDER_BUTTON_PANEL_PRESET {
 	icon: MyIcon;
 	link: string;
 	openInNewWindow?: boolean;
+	iconPosition:
+		| "beforeTitle"
+		| "afterTitle";
+	iconSpacing: HasResponsive<string>;
 }
 
 export const WCB_SLIDER_BUTTON_PANEL_PRESET_DEMO: WCB_SLIDER_BUTTON_PANEL_PRESET = {
@@ -29,6 +41,8 @@ export const WCB_SLIDER_BUTTON_PANEL_PRESET_DEMO: WCB_SLIDER_BUTTON_PANEL_PRESET
 	},
 	link: "",
 	openInNewWindow: false,
+	iconPosition: "afterTitle",
+	iconSpacing: { Desktop: "5px" },
 };
 
 interface Props
@@ -44,12 +58,29 @@ const WcbSliderButtonPanelPreset: FC<Props> = ({
 	onToggle,
 	opened,
 }) => {
-	const { enableIcon, icon, openInNewWindow, link, preset } =
-		panelData;
+	const { enableIcon, icon, openInNewWindow, link, iconPosition, iconSpacing } = panelData;
 
 	const setPreset = (preset: WCB_SLIDER_BUTTON_PANEL_PRESET["preset"]) => {
+		if (preset === "wcb-button-4" || preset === "wcb-button-8") {
+			setAttr__({
+				...panelData,
+				enableIcon: true,
+			});
+		}
 		setAttr__({ ...panelData, preset });
 	};
+
+	const ICON_POSITION_DEMO: Option<WCB_SLIDER_BUTTON_PANEL_PRESET["iconPosition"]>[] = [
+		{ value: "beforeTitle", label: "Before Text" },
+		{ value: "afterTitle", label: "After Text" },
+	];
+
+	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
+
+	const { currentDeviceValue: currentIconSpacing } = getValueFromAttrsResponsives(
+		iconSpacing,
+		deviceType
+	);
 
 	const renderRadioPreset = () => {
 		return (
@@ -99,10 +130,19 @@ const WcbSliderButtonPanelPreset: FC<Props> = ({
 					label={__("Show Icon", "wcb")}
 					checked={enableIcon}
 					onChange={(checked) => {
-						setAttr__({ 
-							...panelData,
-							enableIcon: checked
-						});
+						if (checked === true) {
+							setAttr__({ 
+								...panelData, 
+								preset: "wcb-button-4",
+								enableIcon: checked
+							});
+						} else {
+							setAttr__({ 
+								...panelData, 
+								preset: "wcb-button-1",
+								enableIcon: checked
+							});
+						}
 					}}
 				/>
 
@@ -156,6 +196,40 @@ const WcbSliderButtonPanelPreset: FC<Props> = ({
 						});
 					}}
 				/>
+
+				{enableIcon && (
+					<>
+						<MySelect
+							label={__("Icon Position", "Wcb")}
+							options={ICON_POSITION_DEMO}
+							value={iconPosition}
+							onChange={(value) => {
+								let newData: WCB_SLIDER_BUTTON_PANEL_PRESET = {
+									...panelData,
+									iconPosition:
+										value as WCB_SLIDER_BUTTON_PANEL_PRESET["iconPosition"],
+								};
+								setAttr__(newData);
+							}}
+						/>
+
+						<MySpacingSizesControl
+							onChange={(value) => {
+								setAttr__({
+									...panelData,
+									iconSpacing: {
+										...iconSpacing,
+										[deviceType]: value,
+									},
+								});
+							}}
+							value={currentIconSpacing || "0"}
+							label={"Icon Spacing"}
+							hasResponsive
+						/>
+					</>
+				)}
+
 			</div>
 		</PanelBody>
 	);

@@ -104,23 +104,35 @@ export default function save({ attributes, context }: { attributes: WcbAttrs, co
 		);
 	}
 
-	const renderCallToAction = (preset: any, enableIcon: any) => {
+	const renderCallToAction = (preset: any, enableIcon: any, iconPosition: any) => {
 		return (
 			<div className="wcb-slider-child__btn-inner">
+				{
+					iconPosition === 'beforeTitle' && 
+					(
+						preset === 'wcb-button-4' || 
+						preset === 'wcb-button-8' || 
+						enableIcon
+					) ? renderIconButton() : null
+				}
 				<RichText.Content
 					tagName="div"
 					value={callToAction}
-					className="wcb-slider-child__btn-text"
+					className="wcb-slider-child__btn-text wcb-slider-child__btn_spacing"
 				/>
 				{
-					preset === 'wcb-button-4' || preset === 'wcb-button-8' || enableIcon ?
-					renderIconButton() : null
+					iconPosition === 'afterTitle' && 
+					(
+						preset === 'wcb-button-4' || 
+						preset === 'wcb-button-8' || 
+						enableIcon
+					) ? renderIconButton() : null
 				}
 			</div>
 		)
 	}
 
-	const renderCallToActionLink = (preset: any, enableIcon: any, link: any, openInNewWindow: any) => {
+	const renderCallToActionLink = (preset: any, enableIcon: any, iconPosition: any, link: any, openInNewWindow: any) => {
 		return (
 			<div className="wcb-slider-child__btn-inner">
 				<a
@@ -128,15 +140,31 @@ export default function save({ attributes, context }: { attributes: WcbAttrs, co
 					href={link}
 					target={openInNewWindow ? "_blank" : "_self"}
 				>
+					{
+						iconPosition === 'beforeTitle' && 
+						(
+							preset === 'wcb-button-4' || 
+							preset === 'wcb-button-8' || 
+							enableIcon
+						) ? renderIconButton() : null
+					}
 					<RichText.Content
-							tagName="div"
-							value={callToAction}
-							className="wcb-slider-child__btn-text"
-						/>
-						{
-							preset === 'wcb-button-4' || preset === 'wcb-button-8' || enableIcon ?
-							renderIconButton() : null
-						}
+						tagName="div"
+						value={callToAction}
+						className="wcb-slider-child__btn-text wcb-slider-child__btn_spacing"
+					/>
+					{
+						iconPosition === 'afterTitle' && 
+						(
+							preset === 'wcb-button-4' || 
+							preset === 'wcb-button-8' || 
+							enableIcon
+						) ? renderIconButton() : null
+					}
+					{/* {
+						preset === 'wcb-button-4' || preset === 'wcb-button-8' || enableIcon ?
+						renderIconButton() : null
+					} */}
 				</a>
 			</div>
 		)
@@ -266,9 +294,9 @@ export default function save({ attributes, context }: { attributes: WcbAttrs, co
 														// >
 														// 	{renderCallToAction(style_buttonPreset.preset, style_buttonPreset.enableIcon)}
 														// </a>
-														renderCallToActionLink(style_buttonPreset.preset, style_buttonPreset.enableIcon, style_buttonPreset.link, style_buttonPreset.openInNewWindow)
+														renderCallToActionLink(style_buttonPreset.preset, style_buttonPreset.enableIcon, style_buttonPreset.iconPosition, style_buttonPreset.link, style_buttonPreset.openInNewWindow)
 													) : (
-														renderCallToAction(style_buttonPreset?.preset, style_buttonPreset?.enableIcon)
+														renderCallToAction(style_buttonPreset?.preset, style_buttonPreset?.enableIcon, style_buttonPreset?.iconPosition)
 													)
 												)
 											}

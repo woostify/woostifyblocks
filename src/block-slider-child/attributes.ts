@@ -30,13 +30,19 @@ import {
 	MyZIndexControlData,
 	Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
-import { WCB_SLIDER_BUTTON_PANEL_PRESET } from "./WcbSliderPanel_ButtonPreset";
 import { WCB_SLIDER_LAYOUT_PANEL_PRESET, WCB_SLIDER_LAYOUT_PANEL_PRESET_DEMO } from "./WcbSliderPanel_LayoutPreset";
 import {
 	WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON,
 	WCB_SLIDER_PANEL_STYLE_CALL_TO_ACTION_BUTTON_DEMO,
 } from "./WcbSliderPanel_StyleCallToActionButton";
 import { WCB_SLIDER_PANEL_STYLE_CONTENT } from "./WcbSliderPanel_StyleContent";
+import { 
+	WCB_SLIDER_BUTTON_PANEL_PRESET,
+	WCB_SLIDER_BUTTON_PANEL_PRESET_DEMO 
+} from "./WcbSliderPanel_ButtonPreset";
+import {
+	DEFAULT_MY_ICON,
+} from "../components/controls/SelectIcon/SelecIcon";
 
 
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
@@ -139,8 +145,18 @@ const blockAttrs: AttrsGenericType<WcbAttrs> = {
 
 	style_buttonPreset: {
 		type: "object",
+		// default: WCB_SLIDER_BUTTON_PANEL_PRESET_DEMO,
 		default: {
 			preset: "wcb-button-1",
+			enableIcon: false,
+			icon: {
+				...DEFAULT_MY_ICON,
+				iconName: "lni-arrow-right",
+			},
+			link: "",
+			openInNewWindow: false,
+			iconPosition: "afterTitle",
+			iconSpacing: { Desktop: "5px" },
 		},
 	},
 
