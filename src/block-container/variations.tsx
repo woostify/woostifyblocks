@@ -29,7 +29,7 @@ const RenderIcon = (props) => {
 const getContainerAttrsByFlexWrap = (
 	flexWrap: React.CSSProperties["flexWrap"] = "nowrap",
 	flexDirection: React.CSSProperties["flexDirection"] = "column",
-	alignItems: React.CSSProperties["alignItems"] = "start",
+	alignItems: React.CSSProperties["alignItems"] = "stretch",
 	justifyContent: React.CSSProperties["justifyContent"] = "center"
 ): BlockWCBContainerAttrs => {
 	const attrsDefault = Object.keys(blokcContainerAttrs).reduce(
@@ -102,7 +102,7 @@ export const variations: {
 		innerBlocks: [],
 		scope: ["block"],
 		isDefault: true,
-		attributes: getContainerAttrsByFlexWrap("nowrap", "column", "start", "center"),
+		attributes: getContainerAttrsByFlexWrap("nowrap", "column", "stretch", "center"),
 	},
 	{
 		name: "two-columns-equal",
