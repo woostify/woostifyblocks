@@ -65,15 +65,15 @@ const GlobalCss: FC<Props> = (attrs) => {
 						prefix: "paddingLeft",
 						prefix_2: "paddingRight",
 					}),
-					getStyleObjectFromResponsiveAttr({
-						className: ITEM_CLASSNAME,
-						value: style_arrowAndDots.dotsMarginTop,
-						prefix: "marginBottom",
-					}),
-					getPaddingMarginStyles({
-						className: `${WRAP_CLASSNAME} .wcb-slider__item-inner`,
-						padding: style_dimension.padding,
-					}),
+					// getStyleObjectFromResponsiveAttr({
+					// 	className: ITEM_CLASSNAME,
+					// 	value: style_arrowAndDots.dotsMarginTop,
+					// 	prefix: "marginBottom",
+					// }),
+					// getPaddingMarginStyles({
+					// 	className: `${WRAP_CLASSNAME} .wcb-slider__item-inner`,
+					// 	padding: style_dimension.padding,
+					// }),
 					getStyleBackground({
 						className: `${WRAP_CLASSNAME} .wcb-slider__wrap-items`,
 						styles_background: style_backgroundAndBorder.background,

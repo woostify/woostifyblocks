@@ -2,9 +2,7 @@ import { RadioGroup } from "@headlessui/react";
 import { PanelBody } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC, CSSProperties } from "react";
-import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import ResetButton from "../components/controls/ResetButton";
-import useGetDeviceType from "../hooks/useGetDeviceType";
 import { SLIDER_LAYOUT_PRESET } from "./types";
 export interface WCB_SLIDER_LAYOUT_PANEL_PRESET {
 	preset: "wcb-layout-1" | "wcb-layout-2" | "wcb-layout-3" | "wcb-layout-4" | "wcb-layout-5" | "";

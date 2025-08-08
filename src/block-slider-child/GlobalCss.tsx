@@ -279,7 +279,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 							isWithRadius: true,
 						}),
 						getStyleBackground({
-							className: createRobustSelector('.wcb-slider-child__item-background'),
+							className: ITEM_CLASSNAME,
 							styles_background: style_backgroundAndBorder.background,
 						}),
 					]}

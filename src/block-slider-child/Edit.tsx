@@ -13,7 +13,11 @@ import GlobalCss from "./GlobalCss";
 // Import style panels
 import WcbSlidersPanel_StyleName, { WCB_SLIDER_PANEL_STYLE_NAME_DEMO } from "./WcbSliderPanel_StyleName";
 import WcbSlidersPanel_StyleContent, { WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO } from "./WcbSliderPanel_StyleContent";
-import WcbSlidersPanel_StyleImage, { WCB_SLIDER_PANEL_IMAGE_OR_ICON_DEMO , DEFAULT_MY_TOP_ICON} from "./WcbSliderPanel_StyleImage";
+import WcbSlidersPanel_StyleImage, { 
+	WCB_SLIDER_PANEL_IMAGE_OR_ICON_DEMO, 
+	WCB_SLIDER_PANEL_IMAGE_OR_ICON_DEMO_PRESET_1, 
+	DEFAULT_MY_TOP_ICON
+} from "./WcbSliderPanel_StyleImage";
 import WcbSlidersPanel_StyleBackground, { WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO } from "./WcbSliderPanel_StyleBackground";
 import WcbSlidersPanel_StyleDimension, { WCB_SLIDER_PANEL_STYLE_DIMENSION_DEMO } from "./WcbSliderPanel_StyleDimension";
 import WcbSliderButtonPanelPreset, { WCB_SLIDER_BUTTON_PANEL_PRESET_DEMO } from "./WcbSliderPanel_ButtonPreset";
@@ -23,6 +27,7 @@ import WcbSliderPanel_StyleCallToActionButton, { WCB_SLIDER_PANEL_STYLE_CALL_TO_
 import MyIcon from "../components/controls/MyIcon";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import MyIconFull from "../components/controls/MyIconFull";
+
 
 // Export the panel components and demos for parent component to use
 export {

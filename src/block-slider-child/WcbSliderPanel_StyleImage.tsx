@@ -110,6 +110,11 @@ export const WCB_SLIDER_PANEL_IMAGE_OR_ICON_DEMO: WCB_SLIDER_PANEL_IMAGE_OR_ICON
 	iconBorder: MY_BORDER_CONTROL_DEMO,
 };
 
+export const WCB_SLIDER_PANEL_IMAGE_OR_ICON_DEMO_PRESET_1: WCB_SLIDER_PANEL_IMAGE_OR_ICON = {
+	...WCB_SLIDER_PANEL_IMAGE_OR_ICON_DEMO,
+	enableIcon: true,
+};
+
 interface Props
 	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
 	panelData: WCB_SLIDER_PANEL_IMAGE_OR_ICON;
