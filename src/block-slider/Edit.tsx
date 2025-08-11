@@ -703,7 +703,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		// If no inner blocks or blocks count doesn't match target, show template
 		// If no inner blocks, show template  
 		if (innerBlocks.length === 0) {
-			console.log("render setting slider with template");
 			return (
 				<div className="wcb-slider__wrap-items">
 					<Slider 

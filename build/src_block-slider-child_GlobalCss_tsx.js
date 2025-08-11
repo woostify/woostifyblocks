@@ -114,8 +114,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const GlobalCss = attrs => {
-  var _style_buttonPreset$i, _style_callToActionBu, _style_callToActionBu2, _style_buttonPreset$i2, _style_buttonPreset$i3, _style_callToActionBu3, _style_callToActionBu4, _style_callToActionBu5, _style_callToActionBu6, _style_callToActionBu7;
-  debugger;
+  var _style_callToActionBu, _style_callToActionBu2, _style_buttonPreset$i, _style_buttonPreset$i2, _style_callToActionBu3, _style_callToActionBu4, _style_callToActionBu5, _style_callToActionBu6, _style_callToActionBu7;
   const {
     uniqueId,
     clientID,
@@ -197,23 +196,12 @@ const GlobalCss = attrs => {
       value: style_image?.iconSize,
       prefix: "width",
       prefix_2: "fontSize"
-    }),
-    // getStyleObjectFromResponsiveAttr({
-    // 	className: CALL_TO_ACTION_TEXT,
-    // 	value: style_buttonPreset?.iconSpacing ?? { Desktop: null, Tablet: null, Mobile: null },
-    // 	prefix: "marginRight",
-    // 	prefix_2: "marginLeft",
-    // }),
-    {
+    }), {
       [`${ITEM_TOP_ICON} .wcb-icon-full`]: {
         color: style_image?.iconColor,
         ":hover": {
           color: style_image?.iconHoverColor
         }
-      }
-    }, {
-      [CALL_TO_ACTION_TEXT]: {
-        marginRight: (_style_buttonPreset$i = style_buttonPreset?.iconSpacing?.Desktop) !== null && _style_buttonPreset$i !== void 0 ? _style_buttonPreset$i : "0px"
       }
     }]
   }) : null, style_name && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_13__.Global, {
@@ -262,9 +250,9 @@ const GlobalCss = attrs => {
         color: (_style_callToActionBu2 = style_callToActionButton?.colorText) !== null && _style_callToActionBu2 !== void 0 ? _style_callToActionBu2 : "#ffffff"
       },
       [CALL_TO_ACTION_TEXT_SPACING]: style_buttonPreset?.iconPosition === "afterTitle" ? {
-        marginRight: (_style_buttonPreset$i2 = style_buttonPreset?.iconSpacing?.Desktop) !== null && _style_buttonPreset$i2 !== void 0 ? _style_buttonPreset$i2 : "0px"
+        marginRight: (_style_buttonPreset$i = style_buttonPreset?.iconSpacing?.Desktop) !== null && _style_buttonPreset$i !== void 0 ? _style_buttonPreset$i : "0px"
       } : {
-        marginLeft: (_style_buttonPreset$i3 = style_buttonPreset?.iconSpacing?.Desktop) !== null && _style_buttonPreset$i3 !== void 0 ? _style_buttonPreset$i3 : "0px"
+        marginLeft: (_style_buttonPreset$i2 = style_buttonPreset?.iconSpacing?.Desktop) !== null && _style_buttonPreset$i2 !== void 0 ? _style_buttonPreset$i2 : "0px"
       },
       // [CALL_TO_ACTION_TEXT_SPACING]: 
       // 	style_buttonPreset?.iconPosition === "afterTitle"
@@ -311,7 +299,7 @@ const GlobalCss = attrs => {
       className: ITEM_CLASSNAME,
       isWithRadius: true
     }), (0,_utils_getStyleBackground__WEBPACK_IMPORTED_MODULE_6__["default"])({
-      className: createRobustSelector('.wcb-slider-child__item-background'),
+      className: ITEM_CLASSNAME,
       styles_background: style_backgroundAndBorder.background
     })]
   }), style_dimension && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_13__.Global, {

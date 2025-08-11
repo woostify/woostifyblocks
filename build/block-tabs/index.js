@@ -8875,7 +8875,7 @@ const WcbTabsPanelPreset = ({
   const renderPresetItem = item => {
     if (item.name === "carousel-simple") {
       return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "w-full h-full overflow-hidden flex items-center justify-center border border-[#dadada] text-[#898e95] bg-[#f0f0f1]  transition-[background,box-shadow] duration-75 ease-in rounded-[5px_5px_5px_5px]"
+        className: "w-full h-full overflow-hidden flex items-center justify-center border border-[#dadada] text-[#898e95] bg-[#f0f0f1] \r transition-[background,box-shadow] duration-75 ease-in rounded-[5px_5px_5px_5px]"
       }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         xmlns: "http://www.w3.org/2000/svg",
         width: "325",
@@ -8918,7 +8918,7 @@ const WcbTabsPanelPreset = ({
     }
     if (item.name === "carousel-solid") {
       return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "w-full h-full overflow-hidden flex items-center justify-center border border-[#dadada] text-[#898e95] bg-[#f0f0f1]  transition-[background,box-shadow] duration-75 ease-in rounded-[5px_5px_5px_5px]"
+        className: "w-full h-full overflow-hidden flex items-center justify-center border border-[#dadada] text-[#898e95] bg-[#f0f0f1] \r transition-[background,box-shadow] duration-75 ease-in rounded-[5px_5px_5px_5px]"
       }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         xmlns: "http://www.w3.org/2000/svg",
         width: "325",
@@ -8961,7 +8961,7 @@ const WcbTabsPanelPreset = ({
     }
     if (item.name === "grid-simple") {
       return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "w-full h-full overflow-hidden flex items-center justify-center border border-[#dadada] text-[#898e95] bg-[#f0f0f1]  transition-[background,box-shadow] duration-75 ease-in rounded-[5px_5px_5px_5px]"
+        className: "w-full h-full overflow-hidden flex items-center justify-center border border-[#dadada] text-[#898e95] bg-[#f0f0f1] \r transition-[background,box-shadow] duration-75 ease-in rounded-[5px_5px_5px_5px]"
       }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         xmlns: "http://www.w3.org/2000/svg",
         width: "325",
@@ -9008,7 +9008,7 @@ const WcbTabsPanelPreset = ({
     }
     if (item.name === "grid-solid") {
       return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "w-full h-full overflow-hidden flex items-center justify-center border border-[#dadada] text-[#898e95] bg-[#f0f0f1]  transition-[background,box-shadow] duration-75 ease-in rounded-[5px_5px_5px_5px]"
+        className: "w-full h-full overflow-hidden flex items-center justify-center border border-[#dadada] text-[#898e95] bg-[#f0f0f1] \r transition-[background,box-shadow] duration-75 ease-in rounded-[5px_5px_5px_5px]"
       }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         xmlns: "http://www.w3.org/2000/svg",
         width: "325",
