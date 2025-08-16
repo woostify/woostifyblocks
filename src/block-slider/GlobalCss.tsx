@@ -65,11 +65,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 						prefix: "paddingLeft",
 						prefix_2: "paddingRight",
 					}),
-					getStyleObjectFromResponsiveAttr({
-						className: ITEM_CLASSNAME,
-						value: style_arrowAndDots.dotsMarginTop,
-						prefix: "marginBottom",
-					}),
 					getPaddingMarginStyles({
 						className: `${WRAP_CLASSNAME} .wcb-slider__item-inner`,
 						padding: style_dimension.padding,
@@ -102,9 +97,9 @@ const GlobalCss: FC<Props> = (attrs) => {
 							width: style_arrowAndDots.arrowSize,
 							height: style_arrowAndDots.arrowSize,
 							color: style_arrowAndDots.color,
+							background: style_arrowAndDots.backgroundColor,
 						},
 					},
-
 					{
 						[`${SLICK_DOTS} li`]: {
 							"button:before": {
@@ -112,6 +107,17 @@ const GlobalCss: FC<Props> = (attrs) => {
 							},
 						},
 					},
+					{
+						[`${SLICK_ARROW}`]: {
+							backgroundColor: style_arrowAndDots.backgroundColor,
+						},
+					},
+					{
+						[`${SLICK_DOTS}`]: {
+							position: "absolute",
+							bottom: style_arrowAndDots.dotsMarginTop.Desktop,
+						}
+					}
 				]}
 			/>
 

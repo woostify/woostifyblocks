@@ -266,14 +266,14 @@ export default function save({ attributes, context }: { attributes: WcbAttrs, co
 														style_image?.iconPosition === "left" ||
 														style_content?.textAlignment?.Desktop === "left"
 													)
-														? "text-start"
+														? "wcb-slider-child__content_start"
 														: 
 													(
 														style_image?.iconPosition === "right" ||
 														style_content?.textAlignment?.Desktop === "right"
 													)
-														? "text-end"
-														: "text-center"
+														? "wcb-slider-child__content_end"
+														: "wcb-slider-child__content_center"
 												}`}>
 												<RichText.Content
 													tagName="div"

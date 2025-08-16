@@ -1,5 +1,5 @@
 .wcb-slider-child__wrap {
-	width: 100%;;
+	width: 100%;
 	.wcb-slider-child__item {
 		width: 100%;
 		// position: relative;
@@ -55,4 +55,16 @@
 .wcb-slider-child__btn-inner__link {
 	display: flex;
 	align-items: center;
+}
+
+.wcb-slider-child__content_start {
+	text-align: start;
+}
+
+.wcb-slider-child__content_end {
+	text-align: end;
+}
+
+.wcb-slider-child__content_center {
+	text-align: center;
 }

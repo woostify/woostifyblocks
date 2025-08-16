@@ -19,6 +19,7 @@ export interface WCB_SLIDER_PANEL_STYLE_ARROW_DOTS {
 	border: MyBorderControlData;
 	dotsMarginTop: HasResponsive<string>;
 	color: string;
+	backgroundColor: string;
 }
 export const WCB_SLIDER_PANEL_STYLE_ARROW_DOTS_DEMO: WCB_SLIDER_PANEL_STYLE_ARROW_DOTS =
 	{
@@ -34,8 +35,9 @@ export const WCB_SLIDER_PANEL_STYLE_ARROW_DOTS_DEMO: WCB_SLIDER_PANEL_STYLE_ARRO
 			hoverColor: "#6b7280",
 			radius: { Desktop: "99px" },
 		},
-		dotsMarginTop: { Desktop: "1rem" },
+		dotsMarginTop: { Desktop: "-30px" },
 		color: "#374151",
+		backgroundColor: "#fff",
 	};
 
 interface Props
@@ -52,7 +54,7 @@ const WcbSlidersPanel_StyleArrowDots: FC<Props> = ({
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { arrowSize, border, dotsMarginTop, color } = panelData;
+	const { arrowSize, border, dotsMarginTop, color, backgroundColor } = panelData;
 	const { currentDeviceValue: currentDotsMarginTop } =
 		getValueFromAttrsResponsives(dotsMarginTop, deviceType);
 	//
@@ -98,11 +100,13 @@ const WcbSlidersPanel_StyleArrowDots: FC<Props> = ({
 							},
 						});
 					}}
+					minCustomValue={-200}
 					value={currentDotsMarginTop || "2rem"}
 					label={__("Dots Margin top", "wcb")}
 				/>
 
 				<MyColorPicker
+					label={__("Color", "wcb")}
 					onChange={(value) => {
 						setAttr__({
 							...panelData,
@@ -110,6 +114,17 @@ const WcbSlidersPanel_StyleArrowDots: FC<Props> = ({
 						});
 					}}
 					color={color}
+				/>
+
+				<MyColorPicker
+					label={__("Background Color", "wcb")}
+					onChange={(value) => {
+						setAttr__({
+							...panelData,
+							backgroundColor: value,
+						});
+					}}
+					color={backgroundColor}
 				/>
 			</div>
 		</PanelBody>
