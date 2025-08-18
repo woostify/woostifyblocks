@@ -157,6 +157,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							general_general.placeQuery?.replace?.(/ /g, "+") ||
 							"Eiffel+Tower,Paris+France"
 						}`}
+						style={{ pointerEvents: "none" }}
 					></iframe>
 				</div>
 			</div>
