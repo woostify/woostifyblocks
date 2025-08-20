@@ -266,6 +266,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		// If child block is selected, render child panels
 		if (selectedChildBlock) {
 			const childAttrs = selectedChildBlock.attributes;
+			wp.data.dispatch("core/block-editor").updateBlockAttributes(
+				selectedChildBlock.clientId,
+				childAttrs
+			);
 			
 			switch (tab.name) {
 				case "General":
@@ -367,6 +371,111 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								initialOpen={childPanelInfo.tabStylesIsPanelOpen === "_StyleLayoutPreset"}
 								opened={childPanelInfo.tabStylesIsPanelOpen === "_StyleLayoutPreset" || undefined}
 								setAttr__={(data) => {
+									switch (data.preset) {
+										case "wcb-layout-1":
+											wp.data.dispatch("core/block-editor").updateBlockAttributes(
+												selectedChildBlock.clientId,
+												{ 
+													style_image: {
+														...childAttrs.style_image,
+														enableIcon: true,
+													},
+													style_content: {
+														...childAttrs.style_content,
+														textAlignment: {
+															[deviceType]: "center",
+														}
+													}
+												}
+											);
+											break;
+										case "wcb-layout-2":
+											wp.data.dispatch("core/block-editor").updateBlockAttributes(
+												selectedChildBlock.clientId,
+												{ 
+													style_image: {
+														...childAttrs.style_image,
+														enableIcon: true,
+													},
+													style_content: {
+														...childAttrs.style_content,
+														textAlignment: {
+															[deviceType]: "left",
+														}
+													}
+												}
+											);
+											break;
+										case "wcb-layout-3":
+											wp.data.dispatch("core/block-editor").updateBlockAttributes(
+												selectedChildBlock.clientId,
+												{
+													style_image: {
+														...childAttrs.style_image,
+														enableIcon: true,
+													},
+													style_content: {
+														...childAttrs.style_content,
+														textAlignment: {
+															[deviceType]: "left",
+														}
+													}
+												}
+											);
+											break;
+										case "wcb-layout-4":
+											wp.data.dispatch("core/block-editor").updateBlockAttributes(
+												selectedChildBlock.clientId,
+												{
+													style_image: {
+														...childAttrs.style_image,
+														enableIcon: false,
+													},
+													style_content: {
+														...childAttrs.style_content,
+														textAlignment: {
+															[deviceType]: "center",
+														}
+													}
+												}
+											);
+											break;
+										case "wcb-layout-5":
+											wp.data.dispatch("core/block-editor").updateBlockAttributes(
+												selectedChildBlock.clientId,
+												{
+													style_image: {
+														...childAttrs.style_image,
+														enableIcon: false,
+													},
+													style_content: {
+														...childAttrs.style_content,
+														textAlignment: {
+															[deviceType]: "left",
+														}
+													}
+												}
+											);
+											break;
+										default:
+											wp.data.dispatch("core/block-editor").updateBlockAttributes(
+												selectedChildBlock.clientId,
+												{
+													style_image: {
+														...childAttrs.style_image,
+														// enableIcon: false,
+													},
+													style_content: {
+														...childAttrs.style_content,
+														// textAlignment: {
+														// 	[deviceType]: "center",
+														// }
+													}
+												}
+											);
+											break;
+									}
+									// Update layout preset
 									wp.data.dispatch("core/block-editor").updateBlockAttributes(
 										selectedChildBlock.clientId,
 										{ style_layoutPreset: data }
@@ -600,65 +709,113 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	// Memoized child component to prevent multiple renders
 	const MemoizedChildBlock = useMemo(() => {
 		return React.memo(({ block, isSelected, onSelect, index}: any) => {
-			const blockType = wp.blocks?.getBlockType?.(block.name);
-			const BlockEdit = blockType?.edit;
-			
-			return (
+				const blockType = wp.blocks?.getBlockType?.(block.name);
+				const BlockEdit = blockType?.edit;
+
+				return (
 				<div className="wcb-slider__item" key={index + "-"} 
-					onClick={(e) => {
-						e.stopPropagation();
-						onSelect(block.clientId);
-					}}
-				>
-					<div className="wcb-slider__item-background">
-						<div className="wcb-slider__item-wrap-inner">
-							<div className="wcb-slider__item-inner">
+						onClick={(e) => {
+							e.stopPropagation();
+							onSelect(block.clientId);
+						}}
+					>
+						<div className="wcb-slider__item-background">
+							<div className="wcb-slider__item-wrap-inner">
+								<div className="wcb-slider__item-inner">
 								<div className={`wcb-slider-child__wrap ${block.attributes?.uniqueId || ''}`}>
-									<BlockEdit
-										attributes={block.attributes}
-										setAttributes={(newAttributes: any) => {
+										<BlockEdit
+											attributes={block.attributes}
+											setAttributes={(newAttributes: any) => {
 											wp.data.dispatch("core/block-editor").updateBlockAttributes(
-												block.clientId,
-												newAttributes
-											);
-										}}
-										clientId={block.clientId}
-										isSelected={isSelected}
-										index={index} // Pass index to child for unique identification
-									/>
+														block.clientId,
+														newAttributes
+													);
+											}}
+											clientId={block.clientId}
+											isSelected={isSelected}
+											index={index} // Pass index to child for unique identification
+										/>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			);
-		}
-	)}, []);
+				);
+			},
+			(prevProps, nextProps) => {
+				// Only rerender when attributes or selection change
+				if (prevProps.isSelected !== nextProps.isSelected) return false;
+				if (prevProps.block.clientId !== nextProps.block.clientId) return false;
 
-	// const sliderRef = useRef<Slider>(null);
-	
-	// // Reset slider to first slide when block is selected (similar to Spectra logic)
-	// useEffect(() => {
-	// 	if (sliderRef.current && innerBlocks.length > 0 && isSelected) {
-	// 		// Reset to first slide without animation when block is selected
-	// 		sliderRef.current.slickGoTo(0, false);
-			
-	// 		// Resume autoplay if enabled
-	// 		if (general_carousel.isAutoPlay) {
-	// 			sliderRef.current.slickPlay();
-	// 		}
-	// 	}
-	// }, [isSelected, innerBlocks.length, general_carousel.isAutoPlay]);
-	
-	// Handle inner blocks changes
-	// useEffect(() => {
-	// 	if (sliderRef.current && innerBlocks.length > 0) {
-	// 		sliderRef.current.slickGoTo(0, true); // Đưa về slide đầu tiên mà không animate
-	// 		if (general_carousel.isAutoPlay) {
-	// 			sliderRef.current.slickPlay();
-	// 		}
-	// 	}
-	// }, [innerBlocks.length, general_carousel.isAutoPlay]);
+				// compare attributes shallow
+				const prevAttrs = prevProps.block.attributes;
+				const nextAttrs = nextProps.block.attributes;
+
+				const keys = Object.keys({ ...prevAttrs, ...nextAttrs });
+				for (const key of keys) {
+					if (prevAttrs[key] !== nextAttrs[key]) {
+						return false; // rerender if any attribute differs
+					}
+				}
+
+				return true; // keep the same component if no changes
+			}
+		);
+	}, []);
+
+	useEffect(() => {
+		// Get all DOM slider wrapper
+		const sliders = document.querySelectorAll(".wcb-slider__wrap");
+
+		sliders.forEach((slider) => {
+			const items = slider.querySelectorAll<HTMLElement>(
+				".wcb-slider-child__item-inner"
+			);
+
+			if (items.length > 0) {
+				// Reset padding before calculating
+				items.forEach((item) => {
+					item.style.paddingTop = "";
+					item.style.paddingRight = "";
+					item.style.paddingBottom = "";
+					item.style.paddingLeft = "";
+				});
+
+				// Find max padding value by site
+				let maxPaddingTop = 0;
+				let maxPaddingRight = 0;
+				let maxPaddingBottom = 0;
+				let maxPaddingLeft = 0;
+
+				items.forEach((item) => {
+					const style = window.getComputedStyle(item);
+					maxPaddingTop = Math.max(maxPaddingTop, parseFloat(style.paddingTop));
+					maxPaddingRight = Math.max(maxPaddingRight, parseFloat(style.paddingRight));
+					maxPaddingBottom = Math.max(maxPaddingBottom, parseFloat(style.paddingBottom));
+					maxPaddingLeft = Math.max(maxPaddingLeft, parseFloat(style.paddingLeft));
+				});
+
+				// Assign padding for sync
+				items.forEach((item: any) => {
+					item.style.paddingTop = `${maxPaddingTop}px !important`;
+					item.style.paddingRight = `${maxPaddingRight}px !important`;
+					item.style.paddingBottom = `${maxPaddingBottom}px !important`;
+					item.style.paddingLeft = `${maxPaddingLeft}px !important`;
+				});
+
+				// Sync hight
+				let maxHeight = 0;
+				items.forEach((item) => {
+					item.style.height = "auto"; // reset before calculating
+					maxHeight = Math.max(maxHeight, item.offsetHeight);
+				});
+
+				items.forEach((item:any) => {
+					item.style.height = `${maxHeight}px`;
+				});
+			}
+		});
+	});
 
 	const renderSliderContent = () => {
 		const {

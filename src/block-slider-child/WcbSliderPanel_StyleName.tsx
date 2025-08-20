@@ -58,7 +58,7 @@ const WcbSlidersPanel_StyleName: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Name", "wcb")}
+			title={__("Title", "wcb")}
 		>
 			<div className="space-y-5">
 				<MyColorPicker

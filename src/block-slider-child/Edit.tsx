@@ -3,7 +3,7 @@ import {
 	useBlockProps,
 	RichText,
 } from "@wordpress/block-editor";
-import React, { useEffect, FC } from "react";
+import React, { useEffect, FC, memo } from "react";
 import { WcbAttrs } from "./attributes";
 import { EditProps } from "../block-container/Edit";
 import "./editor.scss";
@@ -15,7 +15,6 @@ import WcbSlidersPanel_StyleName, { WCB_SLIDER_PANEL_STYLE_NAME_DEMO } from "./W
 import WcbSlidersPanel_StyleContent, { WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO } from "./WcbSliderPanel_StyleContent";
 import WcbSlidersPanel_StyleImage, { 
 	WCB_SLIDER_PANEL_IMAGE_OR_ICON_DEMO, 
-	WCB_SLIDER_PANEL_IMAGE_OR_ICON_DEMO_PRESET_1, 
 	DEFAULT_MY_TOP_ICON
 } from "./WcbSliderPanel_StyleImage";
 import WcbSlidersPanel_StyleBackground, { WCB_SLIDER_PANEL_STYLE_BACKGROUND_BORDER_DEMO } from "./WcbSliderPanel_StyleBackground";
@@ -52,7 +51,7 @@ export {
 	AdvancePanelCommon
 };
 
-const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
+const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = memo((props) => {
 	const { attributes, setAttributes, clientId, isSelected, index } = props;
 	const {
 		uniqueId,
@@ -277,6 +276,6 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = (props) => {
 			</div>
 		</MyCacheProvider>
 	);
-};
+});
 
 export default Edit;
