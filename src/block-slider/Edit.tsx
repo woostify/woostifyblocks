@@ -214,21 +214,21 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	// Add useEffect to monitor numberofTestimonials changes and update inner blocks accordingly
 	useEffect(() => {
 		// Add a small delay to avoid conflicts with InnerBlocks initialization
+		const targetNumber = general_general.numberofTestimonials || 3;
+		const currentNumber = innerBlocks.length;
+
+		// Only proceed if there's a real difference and blocks are actually loaded
+		if (currentNumber === targetNumber || !targetNumber) {
+			return; // No change needed
+		}
+
+		// Prevent running during initial load when innerBlocks might be empty
+		if (currentNumber === 0 && targetNumber > 0) {
+			// Let InnerBlocks handle initial template creation
+			return;
+		}
+
 		const timeoutId = setTimeout(() => {
-			const targetNumber = general_general.numberofTestimonials || 3;
-			const currentNumber = innerBlocks.length;
-
-			// Only proceed if there's a real difference and blocks are actually loaded
-			if (currentNumber === targetNumber || !targetNumber) {
-				return; // No change needed
-			}
-
-			// Prevent running during initial load when innerBlocks might be empty
-			if (currentNumber === 0 && targetNumber > 0) {
-				// Let InnerBlocks handle initial template creation
-				return;
-			}
-
 			if (currentNumber < targetNumber) {
 				// Add blocks
 				const blocksToAdd = targetNumber - currentNumber;
@@ -283,10 +283,19 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								opened={tabGeneralIsPanelOpen === "PanelImages" || undefined}
 								//
 								setAttr__={(data) => {
+									// Always update image/icon data
 									wp.data.dispatch("core/block-editor").updateBlockAttributes(
 										selectedChildBlock.clientId,
 										{ style_image: data }
 									);
+
+									// If icon is disabled, reset layout preset to demo
+									if (data && (data.enableIcon === false || data.enableIcon === true)) {
+										wp.data.dispatch("core/block-editor").updateBlockAttributes(
+											selectedChildBlock.clientId,
+											{ style_layoutPreset: WCB_SLIDER_LAYOUT_PANEL_PRESET_DEMO }
+										);
+									}
 								}}
 								panelData={childAttrs.style_image || WCB_SLIDER_PANEL_IMAGE_OR_ICON_DEMO}
 							/>
@@ -300,6 +309,14 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 										selectedChildBlock.clientId,
 										{ style_content: data }
 									);
+
+									// If textAlignment, reset layout preset to demo
+									if (data && (data.textAlignment)) {
+										wp.data.dispatch("core/block-editor").updateBlockAttributes(
+											selectedChildBlock.clientId,
+											{ style_layoutPreset: WCB_SLIDER_LAYOUT_PANEL_PRESET_DEMO }
+										);
+									}
 								}}
 								panelData={childAttrs.style_content || WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO}
 							/>
