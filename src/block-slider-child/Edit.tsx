@@ -126,12 +126,12 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = memo((props) => {
 		
 		if (isStandardLayout) {
 			// Standard layouts: show icon top when disabled OR when enabled with top position
-			return !style_image?.enableIcon || (style_image?.enableIcon && style_image?.iconPosition === "top" || style_image?.iconPosition === "left" || style_image?.iconPosition === "right");
+			return !style_image?.enableIcon || (style_image?.enableIcon && style_image?.iconPosition === "top");
 		}
 		
 		if (isCustomLayout) {
 			// Custom layout: show icon top only when enabled with top position
-			return style_image?.enableIcon && (style_image?.iconPosition === "top" || style_image?.iconPosition === "left" || style_image?.iconPosition === "right");
+			return style_image?.enableIcon && (style_image?.iconPosition === "top");
 		}
 		
 		return false;
@@ -162,12 +162,18 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = memo((props) => {
 				<div className="wcb-slider-child__item">
 					<div className="wcb-slider-child__item-background">
 						<div className="wcb-slider-child__item-wrap-inner">
+							<div className={`${
+								style_image?.iconPosition === "left" || style_image?.iconPosition === "right"
+								? "flex gap-4"
+								: ""
+							}`}>
 							{/* Image */}	
 							{
 								(style_image && 
 								style_image.imagePosition === "left") &&
 								renderImage()
 							}
+							{ style_image?.iconPosition === "left" && renderIconTop() }
 							<div className="wcb-slider-child__item-inner">
 								{/* Image */}	
 								{
@@ -176,21 +182,19 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = memo((props) => {
 									renderImage()
 								}
 
-								<div className={`${style_image?.iconPosition === "left" || style_image?.iconPosition === "right" ? "flex gap-4" : ""}`}>
-									{/* Icon Top */}
-									{shouldRenderIconTop() && renderIconTop()}
-									{/* Name */}
-									<div className={`wcb-slider-child__name`}>
-										<RichText
-											tagName="div"
-											placeholder={__("Enter name...", "wcb")}
-											value={name} // + " " + `${index}`} // Append index to ensure unique names
-											onChange={(value) => setAttributes({ name: value })}
-										/>
-									</div>
-									{/* Icon Below Title */}
-									{shouldRenderIconBelowTitle() && renderIconTop()}
+								{/* Icon Top */}
+								{shouldRenderIconTop() && renderIconTop()}
+								{/* Name */}
+								<div className={`wcb-slider-child__name`}>
+									<RichText
+										tagName="div"
+										placeholder={__("Enter name...", "wcb")}
+										value={name} // + " " + `${index}`} // Append index to ensure unique names
+										onChange={(value) => setAttributes({ name: value })}
+									/>
 								</div>
+								{/* Icon Below Title */}
+								{shouldRenderIconBelowTitle() && renderIconTop()}
 
 								{/* Image */}	
 								{
@@ -264,12 +268,14 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = memo((props) => {
 								}
 
 							</div>
+							{ style_image?.iconPosition === "right" && renderIconTop() }
 							{/* Image */}	
 							{
 								(style_image && 
 								style_image.imagePosition === "right") &&
 								renderImage()
 							}
+							</div>
 						</div>
 					</div>
 				</div>
