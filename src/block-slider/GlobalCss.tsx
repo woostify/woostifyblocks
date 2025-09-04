@@ -31,6 +31,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const ITEM_INNER_CLASSNAME = `${ITEM_CLASSNAME} .wcb-slider__item-inner`;
 	const SLICK_ARROW = `${WRAP_CLASSNAME} .slick-arrow`;
 	const SLICK_DOTS = `${WRAP_CLASSNAME} .slick-dots`;
+	const SLICK_PREV = `${WRAP_CLASSNAME} .slick-prev`;
+	const SLICK_NEXT = `${WRAP_CLASSNAME} .slick-next`;
 
 	// ------------------- WRAP DIV
 	const getDivWrapStyles = (): CSSObject[] => {
@@ -116,6 +118,16 @@ const GlobalCss: FC<Props> = (attrs) => {
 						[`${SLICK_DOTS}`]: {
 							position: "absolute",
 							bottom: style_arrowAndDots.dotsMarginTop.Desktop,
+						}
+					},
+					{
+						[`${SLICK_PREV}`]: {
+							left: style_arrowAndDots.arrowDistance.Desktop,
+						}
+					}
+					,{
+						[`${SLICK_NEXT}`]: {
+							right: style_arrowAndDots.arrowDistance.Desktop,
 						}
 					}
 				]}

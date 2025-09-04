@@ -783,6 +783,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	useEffect(() => {
 		// Get all DOM slider wrapper
 		const sliders = document.querySelectorAll(".wcb-slider__wrap");
+		const sliderItemInner = document.querySelectorAll(".wcb-slider__item-inner");
 
 		sliders.forEach((slider) => {
 			const items = slider.querySelectorAll<HTMLElement>(
@@ -827,8 +828,11 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					maxHeight = Math.max(maxHeight, item.offsetHeight);
 				});
 
-				items.forEach((item:any) => {
+				sliderItemInner.forEach((item:any) => {
 					item.style.height = `${maxHeight}px`;
+					item.style.display = "flex";
+					item.style.alignItems = "center";
+					item.style.justifyContent = "center";
 				});
 			}
 		});

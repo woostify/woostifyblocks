@@ -17,6 +17,7 @@ import MyDisclosure from "../components/controls/MyDisclosure";
 export interface WCB_SLIDER_PANEL_STYLE_ARROW_DOTS {
 	arrowSize: string;
 	border: MyBorderControlData;
+	arrowDistance: HasResponsive<string>;
 	dotsMarginTop: HasResponsive<string>;
 	color: string;
 	backgroundColor: string;
@@ -35,6 +36,7 @@ export const WCB_SLIDER_PANEL_STYLE_ARROW_DOTS_DEMO: WCB_SLIDER_PANEL_STYLE_ARRO
 			hoverColor: "#6b7280",
 			radius: { Desktop: "99px" },
 		},
+		arrowDistance: { Desktop: "-10px" },
 		dotsMarginTop: { Desktop: "-30px" },
 		color: "#374151",
 		backgroundColor: "#fff",
@@ -54,7 +56,7 @@ const WcbSlidersPanel_StyleArrowDots: FC<Props> = ({
 	opened,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
-	const { arrowSize, border, dotsMarginTop, color, backgroundColor } = panelData;
+	const { arrowSize, border, arrowDistance, dotsMarginTop, color, backgroundColor } = panelData;
 	const { currentDeviceValue: currentDotsMarginTop } =
 		getValueFromAttrsResponsives(dotsMarginTop, deviceType);
 	//
@@ -89,6 +91,21 @@ const WcbSlidersPanel_StyleArrowDots: FC<Props> = ({
 						}}
 					/>
 				</MyDisclosure>
+
+				<MySpacingSizesControl
+					onChange={(value) => {
+						setAttr__({
+							...panelData,
+							arrowDistance: {
+								...arrowDistance,
+								[deviceType]: value,
+							},
+						});
+					}}
+					minCustomValue={-100}
+					value={getValueFromAttrsResponsives(arrowDistance, deviceType).currentDeviceValue || "2rem"}
+					label={__("Arrow Distance from Edges", "wcb")}
+				/>
 
 				<MySpacingSizesControl
 					onChange={(value) => {
