@@ -164,7 +164,7 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = memo((props) => {
 						<div className="wcb-slider-child__item-wrap-inner">
 							<div className={`${
 								style_image?.iconPosition === "left" || style_image?.iconPosition === "right"
-								? "flex gap-4"
+								? "icon-position__flex gap-4"
 								: ""
 							}`}>
 							{/* Image */}	
