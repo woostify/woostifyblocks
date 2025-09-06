@@ -10,6 +10,7 @@ import "./editor.scss";
 import MyCacheProvider from "../components/MyCacheProvider";
 import converUniqueIdToAnphaKey, { converClientIdToUniqueClass } from "../utils/converUniqueIdToAnphaKey";
 import GlobalCss from "./GlobalCss";
+import useGetDeviceType from "../hooks/useGetDeviceType";
 // Import style panels
 import WcbSlidersPanel_StyleName, { WCB_SLIDER_PANEL_STYLE_NAME_DEMO } from "./WcbSliderPanel_StyleName";
 import WcbSlidersPanel_StyleContent, { WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO } from "./WcbSliderPanel_StyleContent";
@@ -53,6 +54,7 @@ export {
 
 const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = memo((props) => {
 	const { attributes, setAttributes, clientId, isSelected, index } = props;
+	const deviceType = useGetDeviceType() || "Desktop";
 	const {
 		uniqueId,
 		content,
@@ -157,7 +159,7 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = memo((props) => {
 			>
 
 				{/* CSS in JS - Use clientID for unique styling */}
-				<GlobalCss {...attributes} clientID={clientId}/>
+				<GlobalCss {...attributes} clientID={clientId} deviceType={deviceType}/>
 				
 				<div className="wcb-slider-child__item">
 					<div className="wcb-slider-child__item-background">
@@ -205,21 +207,38 @@ const Edit: FC<EditProps<WcbAttrs> & { index?: number }> = memo((props) => {
 
 								{/* Content */}
 								<div className={`wcb-slider-child__content ${
-										(
-											style_layoutPreset?.preset === "wcb-layout-2" ||
-											style_layoutPreset?.preset === "wcb-layout-3" ||
-											style_layoutPreset?.preset === "wcb-layout-5" ||
-											style_image?.iconPosition === "left" ||
-											style_content?.textAlignment?.Desktop === "left"
-										)
-											? "text-start"
-											: 
-										(	
-											style_image?.iconPosition === "right" || 
-											style_content?.textAlignment?.Desktop === "right"
-										)
-											? "text-end"
-											: "text-center"
+										(() => {
+											// Check for layout presets and icon positions first (these override text alignment)
+											if (style_layoutPreset?.preset === "wcb-layout-2" ||
+												style_layoutPreset?.preset === "wcb-layout-3" ||
+												style_layoutPreset?.preset === "wcb-layout-5" ||
+												style_image?.iconPosition === "left") {
+												return "text-start";
+											}
+											
+											if (style_image?.iconPosition === "right") {
+												return "text-end";
+											}
+											
+											// Use deviceType to determine current device and apply appropriate alignment
+											const mobileAlign = style_content?.textAlignment?.Mobile;
+											const tabletAlign = style_content?.textAlignment?.Tablet;
+											const desktopAlign = style_content?.textAlignment?.Desktop;
+											
+											// Apply responsive logic based on current device type
+											let alignment;
+											if (deviceType === "Mobile") {
+												alignment = mobileAlign || tabletAlign || desktopAlign;
+											} else if (deviceType === "Tablet") {
+												alignment = tabletAlign || desktopAlign;
+											} else {
+												alignment = desktopAlign;
+											}
+											
+											if (alignment === "left") return "text-start";
+											if (alignment === "right") return "text-end";
+											return "text-center";
+										})()
 									}`}>
 									<RichText
 										tagName="div"

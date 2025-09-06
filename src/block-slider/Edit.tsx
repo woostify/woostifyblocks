@@ -321,21 +321,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								panelData={childAttrs.style_content || WCB_SLIDER_PANEL_STYLE_CONTENT_DEMO}
 							/>
 
-							{/* TODO: Will continue coding when merge phase 1
-								<ChildStyleSparator
-									onToggle={() => childPanelInfo.handleTogglePanel("Styles", "_StyleSparator")}
-									initialOpen={childPanelInfo.tabStylesIsPanelOpen === "_StyleSparator"}
-									opened={childPanelInfo.tabStylesIsPanelOpen === "_StyleSparator" || undefined}
-									setAttr__={(data) => {
-										wp.data.dispatch("core/block-editor").updateBlockAttributes(
-											selectedChildBlock.clientId,
-											{ style_sparator: data }
-										);
-									}}
-									panelData={childAttrs.style_sparator || WCB_SLIDER_BOX_PANEL_STYLE_SPARATOR_DEMO}
-								/> 
-							*/}
-
 							<ChildStyleButtonPreset
 								onToggle={() => childPanelInfo.handleTogglePanel("Styles", "_StyleButtonPreset")}
 								initialOpen={childPanelInfo.tabStylesIsPanelOpen === "_StyleButtonPreset"}
@@ -480,13 +465,9 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 												{
 													style_image: {
 														...childAttrs.style_image,
-														// enableIcon: false,
 													},
 													style_content: {
 														...childAttrs.style_content,
-														// textAlignment: {
-														// 	[deviceType]: "center",
-														// }
 													}
 												}
 											);
@@ -906,13 +887,13 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 					{...settings}
 				>
 				{innerBlocks.map((block: any, index: number) =>
-					<MemoizedChildBlock
-						key={block.clientId}
-						block={block}
-						isSelected={!isParentSelected && (selectedChildId != null && selectedChildId === block.clientId)}
-						onSelect={handleChildSelect}
+								<MemoizedChildBlock
+									key={block.clientId}
+									block={block}
+									isSelected={!isParentSelected && (selectedChildId != null && selectedChildId === block.clientId)}
+									onSelect={handleChildSelect}
 						index={index + 1} // Pass index to child for unique identification
-					/>
+								/>
 				)}
 				</Slider>
 			</div>
@@ -957,7 +938,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 	const handleParentClick = useCallback((e: React.MouseEvent) => {
 		if (e.target === e.currentTarget && !isParentSelected) {
-			console.log('Parent: Selecting parent block');
 			selectBlock(clientId);
 			setIsParentSelected(true);
 			setSelectedChildId(null);

@@ -19,12 +19,14 @@ import {
 interface Props extends WcbAttrsForSave {
 	parentUniqueId?: string | null; // Keep for backward compatibility
 	clientID?: string; // New: Use clientId for unique CSS selectors
+	deviceType?: string; // Current device type (Mobile, Tablet, Desktop)
 }
 
 const GlobalCss: FC<Props> = (attrs) => {
 	const {
 		uniqueId,
 		clientID, // Get clientID prop
+		deviceType, // Get deviceType prop
 		// ATTRS OF BLOCK
 		style_backgroundAndBorder,
 		style_content,
@@ -178,19 +180,39 @@ const GlobalCss: FC<Props> = (attrs) => {
 				styles={[
 					{
 						[ITEM_CLASSNAME_INNER]: {
-							justifyItems: `${
-									style_layoutPreset?.preset === "wcb-layout-2" ||
-									style_image?.iconPosition === "left" ||
+							justifyItems: (() => {
+								const mobileAlign = style_content?.textAlignment?.Mobile;
+								const tabletAlign = style_content?.textAlignment?.Tablet;
+								const desktopAlign = style_content?.textAlignment?.Desktop;
+								
+								// Check for layout presets and icon positions first
+								if (style_layoutPreset?.preset === "wcb-layout-2" ||
 									style_layoutPreset?.preset === "wcb-layout-3" ||
 									style_layoutPreset?.preset === "wcb-layout-5" ||
-									style_content?.textAlignment?.Desktop === "left" ?
-									"start" : 
-									style_image?.iconPosition === "right" ||
-									style_content?.textAlignment?.Desktop === "right" ?
-									"end" :
-									"center"
-							}`
+									style_image?.iconPosition === "left") {
+									return "start";
+								}
+								
+								if (style_image?.iconPosition === "right") {
+									return "end";
+								}
+								
+								// Use deviceType to determine current device and apply appropriate alignment
+								let alignment;
+								if (deviceType === "Mobile") {
+									alignment = mobileAlign || tabletAlign || desktopAlign;
+								} else if (deviceType === "Tablet") {
+									alignment = tabletAlign || desktopAlign;
+								} else {
+									alignment = desktopAlign;
+								}
+								
+								if (alignment === "left") return "start";
+								if (alignment === "right") return "end";
+								return "center";
+							})(),
 						},
+						
 						[CALL_TO_ACTION_INNER]: {
 							// backgroundColor: `${getButtonBackgroundFromPreset()} !important`,
 							// width: "10rem",
