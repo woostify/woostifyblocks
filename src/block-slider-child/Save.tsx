@@ -275,24 +275,6 @@ export default function save({ attributes, context }: { attributes: WcbAttrs, co
 														if (style_image?.iconPosition === "right") {
 															return "wcb-slider-child__content_end";
 														}
-														
-														// For frontend, we'll use CSS classes that handle responsive behavior
-														// The CSS will use media queries to handle different breakpoints
-														const mobileAlign = style_content?.textAlignment?.Mobile;
-														const tabletAlign = style_content?.textAlignment?.Tablet;
-														const desktopAlign = style_content?.textAlignment?.Desktop;
-														
-														// If all breakpoints have the same value, use that class
-														if (mobileAlign === tabletAlign && tabletAlign === desktopAlign) {
-															if (mobileAlign === "left") return "wcb-slider-child__content_start";
-															if (mobileAlign === "right") return "wcb-slider-child__content_end";
-															return "wcb-slider-child__content_center";
-														}
-														
-														// If values differ, use the mobile value as default and let CSS handle responsive behavior
-														if (mobileAlign === "left") return "wcb-slider-child__content_start";
-														if (mobileAlign === "right") return "wcb-slider-child__content_end";
-														return "wcb-slider-child__content_center";
 													})()
 												}`}>
 												<RichText.Content

@@ -170,6 +170,41 @@ const GlobalCss: FC<Props> = (attrs) => {
 							[ITEM_CONTENT]: {
 								color: `${style_content.textColor} !important`,
 							},
+							// Mobile
+							[`@media (max-width: 767px)`]: {
+								[ITEM_CONTENT]: {
+									textAlign:
+									style_content?.textAlignment?.Mobile === "left"
+										? "start"
+										: style_content?.textAlignment?.Mobile === "right"
+										? "end"
+										: "center",
+								},
+							},
+
+							// Tablet
+							[`@media (min-width: 768px) and (max-width: 1023px)`]: {
+								[ITEM_CONTENT]: {
+									textAlign:
+									style_content?.textAlignment?.Tablet === "left"
+										? "start"
+										: style_content?.textAlignment?.Tablet === "right"
+										? "end"
+										: "center",
+								},
+							},
+
+							// Desktop
+							[`@media (min-width: 1024px)`]: {
+								[ITEM_CONTENT]: {
+									textAlign:
+									style_content?.textAlignment?.Desktop === "left"
+										? "start"
+										: style_content?.textAlignment?.Desktop === "right"
+										? "end"
+										: "center",
+								},
+							},
 						},
 					]}
 				/>
@@ -181,38 +216,61 @@ const GlobalCss: FC<Props> = (attrs) => {
 					{
 						[ITEM_CLASSNAME_INNER]: {
 							justifyItems: (() => {
-								const mobileAlign = style_content?.textAlignment?.Mobile;
-								const tabletAlign = style_content?.textAlignment?.Tablet;
-								const desktopAlign = style_content?.textAlignment?.Desktop;
-								
-								// Check for layout presets and icon positions first
-								if (style_layoutPreset?.preset === "wcb-layout-2" ||
-									style_layoutPreset?.preset === "wcb-layout-3" ||
-									style_layoutPreset?.preset === "wcb-layout-5" ||
-									style_image?.iconPosition === "left") {
-									return "start";
-								}
-								
-								if (style_image?.iconPosition === "right") {
-									return "end";
-								}
-								
-								// Use deviceType to determine current device and apply appropriate alignment
-								let alignment;
-								if (deviceType === "Mobile") {
-									alignment = mobileAlign || tabletAlign || desktopAlign;
-								} else if (deviceType === "Tablet") {
-									alignment = tabletAlign || desktopAlign;
-								} else {
-									alignment = desktopAlign;
-								}
-								
-								if (alignment === "left") return "start";
-								if (alignment === "right") return "end";
-								return "center";
+							if (
+								style_layoutPreset?.preset === "wcb-layout-2" ||
+								style_layoutPreset?.preset === "wcb-layout-3" ||
+								style_layoutPreset?.preset === "wcb-layout-5" ||
+								style_image?.iconPosition === "left"
+							) {
+								return "start";
+							}
+
+							if (style_image?.iconPosition === "right") {
+								return "end";
+							}
+
+							return undefined; // fallback
 							})(),
 						},
-						
+					},
+					{
+						// Mobile
+						[`@media (max-width: 767px)`]: {
+							[ITEM_CLASSNAME_INNER]: {
+								justifyItems:
+									style_content?.textAlignment?.Mobile === "left"
+									? "start"
+									: style_content?.textAlignment?.Mobile === "right"
+									? "end"
+									: "center",
+								},
+							},
+
+						// Tablet
+						[`@media (min-width: 768px) and (max-width: 1023px)`]: {
+							[ITEM_CLASSNAME_INNER]: {
+								justifyItems:
+									style_content?.textAlignment?.Tablet === "left"
+									? "start"
+									: style_content?.textAlignment?.Tablet === "right"
+									? "end"
+									: "center",
+								},
+							},
+
+						// Desktop
+						[`@media (min-width: 1024px)`]: {
+							[ITEM_CLASSNAME_INNER]: {
+								justifyItems:
+									style_content?.textAlignment?.Desktop === "left"
+									? "start"
+									: style_content?.textAlignment?.Desktop === "right"
+									? "end"
+									: "center",
+								},
+							},
+					},
+					{
 						[CALL_TO_ACTION_INNER]: {
 							// backgroundColor: `${getButtonBackgroundFromPreset()} !important`,
 							// width: "10rem",

@@ -43,14 +43,9 @@
 	}
 	.wcb-slider__item-wrap-inner {
 		display: flex;
-		margin: auto;
+		justify-content: center; /* Center horizontally */
+		align-items: center; /* Center vertically */
 	}
-}
-
-.wcb-slider__item-inner {
-	margin: 0 auto;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 .wcb-slider__item-image {
@@ -67,4 +62,11 @@
 .wcb-slider__wrap-items {
 	padding-top: 1rem;
 	padding-bottom: 1rem;
+}
+
+.slick-list {
+    display: flex;
+	justify-content: center;
+    align-items: center; /* Center items vertically */
+	height: unset !important;
 }

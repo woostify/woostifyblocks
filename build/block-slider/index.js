@@ -13049,38 +13049,59 @@ const GlobalCss = attrs => {
     }), {
       [ITEM_CONTENT]: {
         color: `${style_content.textColor} !important`
+      },
+      // Mobile
+      [`@media (max-width: 767px)`]: {
+        [ITEM_CONTENT]: {
+          textAlign: style_content?.textAlignment?.Mobile === "left" ? "start" : style_content?.textAlignment?.Mobile === "right" ? "end" : "center"
+        }
+      },
+      // Tablet
+      [`@media (min-width: 768px) and (max-width: 1023px)`]: {
+        [ITEM_CONTENT]: {
+          textAlign: style_content?.textAlignment?.Tablet === "left" ? "start" : style_content?.textAlignment?.Tablet === "right" ? "end" : "center"
+        }
+      },
+      // Desktop
+      [`@media (min-width: 1024px)`]: {
+        [ITEM_CONTENT]: {
+          textAlign: style_content?.textAlignment?.Desktop === "left" ? "start" : style_content?.textAlignment?.Desktop === "right" ? "end" : "center"
+        }
       }
     }]
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_13__.Global, {
     styles: [{
       [ITEM_CLASSNAME_INNER]: {
         justifyItems: (() => {
-          const mobileAlign = style_content?.textAlignment?.Mobile;
-          const tabletAlign = style_content?.textAlignment?.Tablet;
-          const desktopAlign = style_content?.textAlignment?.Desktop;
-
-          // Check for layout presets and icon positions first
           if (style_layoutPreset?.preset === "wcb-layout-2" || style_layoutPreset?.preset === "wcb-layout-3" || style_layoutPreset?.preset === "wcb-layout-5" || style_image?.iconPosition === "left") {
             return "start";
           }
           if (style_image?.iconPosition === "right") {
             return "end";
           }
-
-          // Use deviceType to determine current device and apply appropriate alignment
-          let alignment;
-          if (deviceType === "Mobile") {
-            alignment = mobileAlign || tabletAlign || desktopAlign;
-          } else if (deviceType === "Tablet") {
-            alignment = tabletAlign || desktopAlign;
-          } else {
-            alignment = desktopAlign;
-          }
-          if (alignment === "left") return "start";
-          if (alignment === "right") return "end";
-          return "center";
+          return undefined; // fallback
         })()
+      }
+    }, {
+      // Mobile
+      [`@media (max-width: 767px)`]: {
+        [ITEM_CLASSNAME_INNER]: {
+          justifyItems: style_content?.textAlignment?.Mobile === "left" ? "start" : style_content?.textAlignment?.Mobile === "right" ? "end" : "center"
+        }
       },
+      // Tablet
+      [`@media (min-width: 768px) and (max-width: 1023px)`]: {
+        [ITEM_CLASSNAME_INNER]: {
+          justifyItems: style_content?.textAlignment?.Tablet === "left" ? "start" : style_content?.textAlignment?.Tablet === "right" ? "end" : "center"
+        }
+      },
+      // Desktop
+      [`@media (min-width: 1024px)`]: {
+        [ITEM_CLASSNAME_INNER]: {
+          justifyItems: style_content?.textAlignment?.Desktop === "left" ? "start" : style_content?.textAlignment?.Desktop === "right" ? "end" : "center"
+        }
+      }
+    }, {
       [CALL_TO_ACTION_INNER]: {
         // backgroundColor: `${getButtonBackgroundFromPreset()} !important`,
         // width: "10rem",
@@ -13418,24 +13439,6 @@ function save({
       if (style_image?.iconPosition === "right") {
         return "wcb-slider-child__content_end";
       }
-
-      // For frontend, we'll use CSS classes that handle responsive behavior
-      // The CSS will use media queries to handle different breakpoints
-      const mobileAlign = style_content?.textAlignment?.Mobile;
-      const tabletAlign = style_content?.textAlignment?.Tablet;
-      const desktopAlign = style_content?.textAlignment?.Desktop;
-
-      // If all breakpoints have the same value, use that class
-      if (mobileAlign === tabletAlign && tabletAlign === desktopAlign) {
-        if (mobileAlign === "left") return "wcb-slider-child__content_start";
-        if (mobileAlign === "right") return "wcb-slider-child__content_end";
-        return "wcb-slider-child__content_center";
-      }
-
-      // If values differ, use the mobile value as default and let CSS handle responsive behavior
-      if (mobileAlign === "left") return "wcb-slider-child__content_start";
-      if (mobileAlign === "right") return "wcb-slider-child__content_end";
-      return "wcb-slider-child__content_center";
     })()}`
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "div",
@@ -15628,7 +15631,7 @@ const Edit = props => {
 
   // Generate CSS-safe class from clientId for reliable parent identification
   const parentCssClass = (0,_utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_21__.converClientIdToUniqueClass)(clientId);
-  const [isParentSelected, setIsParentSelected] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
+  const [isParentSelected, setIsParentSelected] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [selectedChildId, setSelectedChildId] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
 
   /**
@@ -15670,7 +15673,7 @@ const Edit = props => {
     selectBlock(clientId);
     setIsParentSelected(true);
     setSelectedChildId(null);
-  }, [clientId, insertBlock, general_general.numberofTestimonials, innerBlocks.length]);
+  }, [general_general.numberofTestimonials, innerBlocks.length]);
 
   // Handle child selection
   const handleChildSelect = childClientId => {
@@ -16170,7 +16173,7 @@ const Edit = props => {
         // Sync hight
         let maxHeight = 0;
         items.forEach(item => {
-          item.style.height = "auto"; // reset before calculating
+          // item.style.height = "auto"; // reset before calculating
           maxHeight = Math.max(maxHeight, item.offsetHeight);
         });
         sliderItemInner.forEach(item => {

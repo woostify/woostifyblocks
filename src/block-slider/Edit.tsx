@@ -163,7 +163,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	// Generate CSS-safe class from clientId for reliable parent identification
 	const parentCssClass = converClientIdToUniqueClass(clientId);
 	
-	const [isParentSelected, setIsParentSelected] = useState(true);
+	const [isParentSelected, setIsParentSelected] = useState(false);
 	const [selectedChildId, setSelectedChildId] = useState<string | null>(null);
 	
 	/**
@@ -198,7 +198,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
         selectBlock(clientId);
         setIsParentSelected(true);
         setSelectedChildId(null);
-	}, [clientId, insertBlock, general_general.numberofTestimonials, innerBlocks.length]);
+	}, [general_general.numberofTestimonials, innerBlocks.length]);
 
 	// Handle child selection
 	const handleChildSelect = (childClientId: string) => {
@@ -239,8 +239,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			} else if (currentNumber > targetNumber) {
 				// Remove blocks from the end
 				const blocksToRemove = currentNumber - targetNumber;
-				const clientIdsToRemove = innerBlocks.slice(-blocksToRemove).map(block => block.clientId);
-				clientIdsToRemove.forEach(childClientId => {
+				const clientIdsToRemove = innerBlocks.slice(-blocksToRemove).map((block: { clientId: any; }) => block.clientId);
+				clientIdsToRemove.forEach((childClientId: any) => {
 					removeBlock(childClientId);
 				});
 			}
@@ -256,7 +256,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 	// Get selected child block if any
 	const selectedChildBlock = !isParentSelected && selectedChildId 
-		? innerBlocks.find(block => block.clientId === selectedChildId)
+		? innerBlocks.find((block: { clientId: string; }) => block.clientId === selectedChildId)
 		: null;
 
 	// Hook for child panel state management
@@ -805,7 +805,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				// Sync hight
 				let maxHeight = 0;
 				items.forEach((item) => {
-					item.style.height = "auto"; // reset before calculating
+					// item.style.height = "auto"; // reset before calculating
 					maxHeight = Math.max(maxHeight, item.offsetHeight);
 				});
 
