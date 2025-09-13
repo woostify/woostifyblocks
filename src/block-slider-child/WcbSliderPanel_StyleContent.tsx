@@ -79,7 +79,7 @@ const WcbSlidersPanel_StyleContent: FC<Props> = ({
 		>
 			<div className="space-y-5">
 				<MyTextAlignControl
-                    textAlignment={TEXT_ALIGNMENT}
+                    textAlignment={textAlignment?.[deviceType] || undefined}
                     onChange={handleChangeTextAlignment}
                 />
 				
