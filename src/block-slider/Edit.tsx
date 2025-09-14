@@ -1,7 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import { useBlockProps, InnerBlocks, // @ts-ignore
 	useInnerBlocksProps } from "@wordpress/block-editor";
-import { useDispatch, useSelect } from "@wordpress/data";
+import { use, useDispatch, useSelect } from "@wordpress/data";
 import React, { useEffect, FC, useCallback, useRef, useState, useMemo } from "react";
 import { WcbAttrs } from "./attributes";
 import HOCInspectorControls, {
@@ -163,9 +163,32 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	// Generate CSS-safe class from clientId for reliable parent identification
 	const parentCssClass = converClientIdToUniqueClass(clientId);
 	
-	const [isParentSelected, setIsParentSelected] = useState(false);
+	const [isParentSelected, setIsParentSelected] = useState(true);
 	const [selectedChildId, setSelectedChildId] = useState<string | null>(null);
+	const [deviceTypeState, setDeviceTypeState] = useState<ResponsiveDevices>("Desktop");
+	const [isChangeDeviceType, setIsChangeDeviceType] = useState<boolean>(false);
 	
+	// Persist selectedChildId across device type changes and UI reloads using localStorage
+	const getStoredSelectedChildId = (): string | null => {
+		try {
+			return localStorage.getItem(`wcb-slider-selected-child-${clientId}`);
+		} catch {
+			return null;
+		}
+	};
+	
+	const setStoredSelectedChildId = (childId: string | null) => {
+		try {
+			if (childId) {
+				localStorage.setItem(`wcb-slider-selected-child-${clientId}`, childId);
+			} else {
+				localStorage.removeItem(`wcb-slider-selected-child-${clientId}`);
+			}
+		} catch {
+			// Ignore localStorage errors
+		}
+	};
+
 	/**
 	 * Parent-Child Synchronization
 	 */
@@ -178,6 +201,24 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			innerBlocks: getBlocks(clientId) || [],
 		};
 	}, [clientId]);
+
+	useEffect(() => {
+		if (deviceTypeState !== deviceType) {
+			setIsChangeDeviceType(true);
+			// Restore selectedChildId from localStorage when device type changes
+			const storedChildId = getStoredSelectedChildId();
+			if (storedChildId) {
+				const childExists = innerBlocks.some((block: any) => block.clientId === storedChildId);
+				if (childExists) {
+					setSelectedChildId(storedChildId);
+					setIsParentSelected(false);
+				} else {
+					setStoredSelectedChildId(null);
+				}
+			}
+		}
+		setDeviceTypeState(deviceType);
+	}, [deviceType]);
 
 	// Initialize blocks after innerBlocks is available
 	useEffect(() => {
@@ -196,14 +237,27 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 		// Force parent selection after adding inner blocks
         selectBlock(clientId);
-        setIsParentSelected(true);
-        setSelectedChildId(null);
+		const storedChildId = getStoredSelectedChildId();
+		if (storedChildId) {
+			const childExists = innerBlocks.some((block: any) => block.clientId === storedChildId);
+			if (childExists) {
+				setSelectedChildId(storedChildId);
+				setIsParentSelected(false);
+			} else {
+				setIsParentSelected(true);
+				setSelectedChildId(null);
+				setStoredSelectedChildId(null);
+			}
+		}
+
 	}, [general_general.numberofTestimonials, innerBlocks.length]);
 
 	// Handle child selection
 	const handleChildSelect = (childClientId: string) => {
 		setIsParentSelected(false);
 		setSelectedChildId(childClientId);
+		// Persist the selection in localStorage for device type changes and UI reloads
+		setStoredSelectedChildId(childClientId);
 		
 		// // Reset slider to first slide when child is selected (similar to Spectra)
 		// if (sliderRef.current && innerBlocks.length > 0) {
@@ -247,8 +301,11 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 
 			// Force parent selection after modifying inner blocks
 			selectBlock(clientId);
-			setIsParentSelected(true);
-			setSelectedChildId(null);
+			if (!isChangeDeviceType) {
+				setIsParentSelected(true);
+				setSelectedChildId(null);
+				setStoredSelectedChildId(null);
+			}
 		}, 100); // Small delay to prevent race conditions
 
 		return () => clearTimeout(timeoutId);
@@ -941,6 +998,8 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			selectBlock(clientId);
 			setIsParentSelected(true);
 			setSelectedChildId(null);
+			// Clear the stored selection when parent is selected
+			setStoredSelectedChildId(null);
 		}
 	}, [isParentSelected, clientId]);
 

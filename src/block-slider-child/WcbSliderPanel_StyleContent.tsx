@@ -92,6 +92,7 @@ const WcbSlidersPanel_StyleContent: FC<Props> = ({
 						});
 					}}
 					color={textColor}
+					// @ts-ignore
 					disableAlpha={true}
 				/>
 
