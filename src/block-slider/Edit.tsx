@@ -143,6 +143,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	const ref = useRef<HTMLDivElement>(null);
 	const wrapBlockProps = useBlockProps({ ref });
+	const sliderRef = useRef<any>(null);
 
 	const {
 		tabIsOpen,
@@ -876,6 +877,23 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		});
 	});
 
+	// Force Slick recalc & reset after InnerBlocks render
+	useEffect(() => {
+		if (sliderRef.current && innerBlocks.length > 0) {
+			const total = innerBlocks.length;
+
+			// Trick: go to external range then back to 0
+			sliderRef.current.slickGoTo(total + 1, true);
+
+			setTimeout(() => {
+				if (sliderRef.current) {
+					sliderRef.current.slickGoTo(0, true); // reset about slide 0
+					sliderRef.current.innerSlider.onWindowResized(); // force calc width/transform
+				}
+			}, 500); // delay for DOM keep render
+		}
+	}, [innerBlocks.length]);
+
 	const renderSliderContent = () => {
 		const {
 			animationDuration,
@@ -897,7 +915,6 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			infinite: rewind,
 			speed: animationDuration || 500,
 			autoplay: isAutoPlay,
-			// centerMode: true,
 			autoplaySpeed,
 			slidesToShow: currentColumns,
 			slidesToScroll: 1,
@@ -914,6 +931,35 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			swipe: false,
 			touchMove: false,
 			draggable: false,
+			// slider center config
+			centerMode: false,
+			// centerPadding: "0px",
+			// useCSS: true,
+			// variableWidth: true,
+			// responsive: [
+			// 	{
+			// 		breakpoint: 1024,
+			// 		settings: {
+			// 			slidesToShow: currentColumns,
+			// 			slidesToScroll: 1,
+			// 		}
+			// 	},
+			// 	{
+			// 		breakpoint: 600,
+			// 		settings: {
+			// 			slidesToShow: currentColumns,
+			// 			slidesToScroll: 1,
+			// 			initialSlide: 0
+			// 		}
+			// 	},
+			// 	{
+			// 		breakpoint: 480,
+			// 		settings: {
+			// 			slidesToShow: currentColumns,
+			// 			slidesToScroll: 1
+			// 		}
+			// 	}
+			// ]
 		};
 
 		// If no inner blocks or blocks count doesn't match target, show template
@@ -922,7 +968,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			return (
 				<div className="wcb-slider__wrap-items">
 					<Slider 
-						// ref={ sliderRef } 
+						ref={ sliderRef } 
 						{...settings} 
 					>
 						<div {...innerBlocksProps} />
@@ -940,18 +986,18 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		return (
 			<div className="wcb-slider__wrap-items">
 				<Slider 
-					// ref={ sliderRef } 
+					ref={ sliderRef } 
 					{...settings}
 				>
-				{innerBlocks.map((block: any, index: number) =>
-								<MemoizedChildBlock
-									key={block.clientId}
-									block={block}
-									isSelected={!isParentSelected && (selectedChildId != null && selectedChildId === block.clientId)}
-									onSelect={handleChildSelect}
-						index={index + 1} // Pass index to child for unique identification
-								/>
-				)}
+					{innerBlocks.map((block: any, index: number) =>
+						<MemoizedChildBlock
+							key={block.clientId}
+							block={block}
+							isSelected={!isParentSelected && (selectedChildId != null && selectedChildId === block.clientId)}
+							onSelect={handleChildSelect}
+							index={index + 1} // Pass index to child for unique identification
+						/>
+					)}
 				</Slider>
 			</div>
 		);
