@@ -13,6 +13,37 @@ interface Params {
 	defaultDisplay?: React.CSSProperties["display"];
 }
 
+// Base overlay for hidden preview
+const hiddenPreviewOverlay = css`
+	position: relative;
+
+	&:before {
+		content: "";
+		display: block;
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		background: -o-repeating-linear-gradient(
+			325deg,
+			rgba(0, 0, 0, 0.3),
+			rgba(0, 0, 0, 0.05) 1px,
+			transparent 2px,
+			transparent 9px
+		);
+		background: repeating-linear-gradient(
+			125deg,
+			rgba(0, 0, 0, 0.3),
+			rgba(0, 0, 0, 0.05) 1px,
+			transparent 2px,
+			transparent 9px
+		);
+		border: 1px solid rgba(0, 0, 0, 0.02);
+		background-color: rgba(255, 255, 255, 0.6);
+		z-index: 9997;
+	}
+`;
+
 export const getAdvanveDivWrapStyles = ({
 	advance_motionEffect,
 	advance_zIndex,
@@ -76,26 +107,28 @@ export const getAdvanveDivWrapStyles = ({
 		desktop_v: advance_responsiveCondition.isHiddenOnDesktop,
 	});
 
+	// Helper
+	const getHiddenCss = (isHidden: any) => {
+		if (isHidden === "") return "";
+		return isHidden ? hiddenPreviewOverlay : css`display: ${defaultDisplay};`;
+	};
+
 	return css`
 		${className} {
-			display: ${isHiddenOnMobile ? "none" : defaultDisplay};
 			visibility: visible;
-			z-index: ${zIndexMobile};
-			@media (min-width: ${media_tablet}) {
-				z-index: ${zIndexTablet};
-				display: ${isHiddenOnTablet !== ""
-					? isHiddenOnTablet
-						? "none"
-						: defaultDisplay
-					: ""};
-			}
 			@media (min-width: ${media_desktop}) {
 				z-index: ${zIndexDesktop};
-				display: ${isHiddenOnDesktop !== ""
-					? isHiddenOnDesktop
-						? "none"
-						: defaultDisplay
-					: ""};
+				${getHiddenCss(advance_responsiveCondition.isHiddenOnDesktop)}
+			}
+
+			@media (min-width: ${media_tablet}) and (max-width: ${media_desktop}) {
+				z-index: ${zIndexTablet};
+				${getHiddenCss(advance_responsiveCondition.isHiddenOnTablet)}
+			}
+
+			@media (max-width: ${media_tablet}) {
+				z-index: ${zIndexMobile};
+				${getHiddenCss(advance_responsiveCondition.isHiddenOnMobile)}
 			}
 		}
 	`;

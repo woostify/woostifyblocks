@@ -9,7 +9,13 @@ interface Props<T = any> {
 	uniqueId: string;
 	HtmlTag?: React.ElementType<any>;
 	children: ReactNode;
-	attributes: WcbAttrsCommonFromWp & T;
+	attributes: (WcbAttrsCommonFromWp & T) & {
+		advance_responsiveCondition?: {
+			isHiddenOnDesktop?: boolean;
+			isHiddenOnTablet?: boolean;
+			isHiddenOnMobile?: boolean;
+		};
+	};
 }
 
 function SaveCommon<T>({
@@ -66,10 +72,17 @@ function SaveCommon<T>({
 		});
 	}
 
+	const rc = attributes?.advance_responsiveCondition || {};
+	const responsiveClasses = [
+		rc?.isHiddenOnDesktop ? 'wcb-hide-desktop' : '',
+		rc?.isHiddenOnTablet ? 'wcb-hide-tab' : '',
+		rc?.isHiddenOnMobile ? 'wcb-hide-mob' : '',
+	].filter(Boolean).join(' ');
+
 	return (
 		<HtmlTag
 			{...props}
-			className={`wcb-cm wcb-update-div ${className.trim()} ${uniqueId.trim()}`}
+			className={`wcb-cm wcb-update-div ${responsiveClasses} ${className.trim()} ${uniqueId.trim()}`}
 			id={id || attributes?.anchor}
 			data-uniqueid={uniqueId}
 			data-is-wcb-save-common
