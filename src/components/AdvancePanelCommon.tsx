@@ -23,7 +23,7 @@ interface Props {
 	advance_responsiveCondition: MyResponsiveConditionControlData;
 	advance_zIndex: MyZIndexControlData;
 	advance_motionEffect?: MyMotionEffectData;
-	setAttributes: (data) => void;
+	setAttributes: (data: any) => void;
 	children?: ReactNode;
 }
 
