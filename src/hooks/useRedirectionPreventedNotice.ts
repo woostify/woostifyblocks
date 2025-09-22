@@ -14,13 +14,16 @@ export default function useRedirectionPreventedNotice({
 	uniqueNoticeId,
 }: params) {
 	const { createWarningNotice, removeNotice } = useDispatch(noticeStore);
+	// @ts-ignore
 	let noticeId;
 	const instanceId = useInstanceId(ComponentName);
-	const showRedirectionPreventedNotice = (event) => {
+	const showRedirectionPreventedNotice = (event: any) => {
 		event.preventDefault();
 		// Remove previous warning if any, to show one at a time per block.
+		// @ts-ignore
 		removeNotice(noticeId);
 		noticeId = `${uniqueNoticeId}/${instanceId}`;
+		// @ts-ignore
 		createWarningNotice(__("Links are disabled in the editor."), {
 			id: noticeId,
 			type: "snackbar",

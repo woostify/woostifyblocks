@@ -54,35 +54,47 @@ export const getAdvanveDivWrapStyles = ({
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 	//
 	//
+	// Trigger animation only when in viewport
 	try {
-		const thisELs = document.querySelectorAll(className);
-		if (
-			advance_motionEffect &&
-			advance_motionEffect.entranceAnimation &&
-			thisELs &&
-			thisELs.length
-		) {
-			console.log(222, { thisELs });
-			thisELs.forEach((element) => {
-				// remove old class
-				const regex = /\banimate__\S+/g;
-				const classRemoved = element?.className.replace(regex, "");
-				element.setAttribute("class", classRemoved);
+		if (advance_motionEffect?.entranceAnimation) {
+			const thisELs = document.querySelectorAll(className);
 
-				// add new class
-				setTimeout(() => {
-					element?.classList.add(
-						"animate__animated",
-						`animate__${advance_motionEffect?.entranceAnimation}`,
-						`animate__${advance_motionEffect?.animationDuration}`,
-						`animate__delay-${advance_motionEffect?.animationDelay}ms`,
-						`animate__repeat-${advance_motionEffect?.repeat}`
-					);
-				}, 50);
-			});
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							const element = entry.target as HTMLElement;
+
+							// remove old animation classes
+							const regex = /\banimate__\S+/g;
+							const classRemoved = element?.className.replace(regex, "");
+							element.setAttribute("class", classRemoved);
+
+							// add new animation classes
+							setTimeout(() => {
+								element?.classList.add(
+									"animate__animated",
+									`animate__${advance_motionEffect?.entranceAnimation}`,
+									`animate__${advance_motionEffect?.animationDuration}`,
+									`animate__delay-${advance_motionEffect?.animationDelay}ms`,
+									`animate__repeat-${advance_motionEffect?.repeat}`
+								);
+							}, 50);
+
+							// optional: stop observing after first animation
+							observer.unobserve(element);
+						}
+					});
+				},
+				{
+					threshold: 0.2, // trigger when 20% visible
+				}
+			);
+
+			thisELs.forEach((el) => observer.observe(el));
 		}
 	} catch (error) {
-		console.log(123, "error, advance_motionEffect", error);
+		console.log("error, advance_motionEffect", error);
 	}
 
 	const {
@@ -102,8 +114,11 @@ export const getAdvanveDivWrapStyles = ({
 		tablet_v: isHiddenOnTablet,
 		desktop_v: isHiddenOnDesktop,
 	} = checkResponsiveValueForOptimizeCSS({
+		// @ts-ignore
 		mobile_v: advance_responsiveCondition.isHiddenOnMobile,
+		// @ts-ignore
 		tablet_v: advance_responsiveCondition.isHiddenOnTablet,
+		// @ts-ignore
 		desktop_v: advance_responsiveCondition.isHiddenOnDesktop,
 	});
 
