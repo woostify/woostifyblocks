@@ -28,7 +28,15 @@
 
 	.slick-track {
 		min-width: 0px;
+		display: flex !important;
+    	align-items: center;
 	}
+
+	.wcb-slider__wrap-items {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
 }
 
 .wcb-slider__item-inner {

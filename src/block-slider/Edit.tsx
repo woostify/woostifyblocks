@@ -894,6 +894,39 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		}
 	}, [innerBlocks.length]);
 
+	// 3. ✅ Thêm method để force recalc khi cần
+	const forceSliderRecalc = useCallback(() => {
+		if (sliderRef.current && innerBlocks.length > 0) {
+			// Force Slick to recalculate dimensions
+			// sliderRef.current.slick('setPosition');
+			
+			// Reset về slide đầu tiên với animation false
+			setTimeout(() => {
+				if (sliderRef.current) {
+					sliderRef.current.slickGoTo(0, false);
+				}
+			}, 100);
+		}
+	}, []);
+
+	// 4. ✅ Gọi forceSliderRecalc khi cần thiết
+	useEffect(() => {
+		if (sliderRef.current && innerBlocks.length > 0) {
+			// Thay thế logic cũ bằng cách đơn giản hơn
+			forceSliderRecalc();
+		}
+	}, [innerBlocks.length, forceSliderRecalc]);
+
+	// 5. ✅ Thêm resize handler để đảm bảo slider luôn căn giữa
+	useEffect(() => {
+		const handleResize = () => {
+			forceSliderRecalc();
+		};
+		
+		window.addEventListener('resize', handleResize);
+		return () => window.removeEventListener('resize', handleResize);
+	}, [forceSliderRecalc]);
+
 	const renderSliderContent = () => {
 		const {
 			animationDuration,
@@ -928,38 +961,44 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			accessibility: false,
 			initialSlide: 0,
 			// Disable touch/swipe in editor mode to prevent accidental slide changes
-			swipe: false,
-			touchMove: false,
-			draggable: false,
+			swipe: true,
+			touchMove: true,
+			draggable: true,
 			// slider center config
-			centerMode: false,
-			// centerPadding: "0px",
+			centerMode: true,
+			centerPadding: "0px",
+			useTransform: true,
 			// useCSS: true,
 			// variableWidth: true,
-			// responsive: [
-			// 	{
-			// 		breakpoint: 1024,
-			// 		settings: {
-			// 			slidesToShow: currentColumns,
-			// 			slidesToScroll: 1,
-			// 		}
-			// 	},
-			// 	{
-			// 		breakpoint: 600,
-			// 		settings: {
-			// 			slidesToShow: currentColumns,
-			// 			slidesToScroll: 1,
-			// 			initialSlide: 0
-			// 		}
-			// 	},
-			// 	{
-			// 		breakpoint: 480,
-			// 		settings: {
-			// 			slidesToShow: currentColumns,
-			// 			slidesToScroll: 1
-			// 		}
-			// 	}
-			// ]
+			responsive: [
+				{
+					breakpoint: 1024,
+					settings: {
+						slidesToShow: currentColumns,
+						slidesToScroll: 1,
+						centerMode: true,
+                		centerPadding: "0px"
+					}
+				},
+				{
+					breakpoint: 600,
+					settings: {
+						slidesToShow: currentColumns,
+						slidesToScroll: 1,
+						centerMode: true,
+                		centerPadding: "0px"
+					}
+				},
+				{
+					breakpoint: 480,
+					settings: {
+						slidesToShow: currentColumns,
+						slidesToScroll: 1,
+						centerMode: true,
+                		centerPadding: "0px"
+					}
+				}
+			]
 		};
 
 		// If no inner blocks or blocks count doesn't match target, show template
