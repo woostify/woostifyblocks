@@ -155,7 +155,7 @@ const WcbProductsPanelContent: FC<Props> = ({
 					<MyHeadingTagControl
 						tag={titleHtmlTag}
 						label={__("Title HTML tag", "wcb")}
-						onChange={(tag) => setAttr__({ ...panelData, titleHtmlTag: tag })}
+						onChange={(tag: any) => setAttr__({ ...panelData, titleHtmlTag: tag })}
 					/>
 				) : null}
 

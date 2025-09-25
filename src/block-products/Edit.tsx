@@ -1,6 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import { BlockControls, useBlockProps } from "@wordpress/block-editor";
 import React, { useEffect, FC, useCallback, useMemo } from "react";
+// @ts-ignore
 import ServerSideRender from "@wordpress/server-side-render";
 import { WcbAttrs } from "./attributes";
 import { settings } from "@wordpress/icons";
@@ -22,12 +23,9 @@ import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
-import WcbProducstPanelSortingAndFiltering, {
-	WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
-} from "./WcbProducstPanelSortingAndFiltering";
+import WcbProducstPanelSortingAndFiltering from "./WcbProducstPanelSortingAndFiltering";
 import {
 	PanelBody,
-	Placeholder,
 	Spinner,
 	withSpokenMessages,
 } from "@wordpress/components";
@@ -49,16 +47,13 @@ import WcbProductsPanel_StyleTitle, {
 import WcbProductsPanel_StyleFeaturedImage, {
 	WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO,
 } from "./WcbProductsPanel_StyleFeaturedImage";
-import WcbProductsPanel_StyleLayout, {
-	WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO,
-} from "./WcbProductsPanel_StyleLayout";
+import WcbProductsPanel_StyleLayout from "./WcbProductsPanel_StyleLayout";
 import WcbProductsPanel_StyleAddToCartBtn, {
 	WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO,
 } from "./WcbProductsPanel_StyleAddToCartBtn";
 import WcbProductsPanel_StylePagination, {
 	WCB_PRODUCTS_PANEL_STYLE_PAGINATION_DEMO,
 } from "./WcbProductsPanel_StylePagination";
-import { Icon, file } from "@wordpress/icons";
 import WcbProductsPanel_StyleSaleBadge, {
 	WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO,
 } from "./WcbProductsPanel_StyleSaleBadge";
@@ -73,10 +68,14 @@ import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 import WcbProductsPanel_StyleCategory, {
 	WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
 } from "./WcbProductsPanel_StyleCategory";
-import { MY_BORDER_CONTROL_DEMO } from "../components/controls/MyBorderControl/types";
 import { RESPONSIVE_CONDITON_DEMO } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
 import { Z_INDEX_DEMO } from "../components/controls/MyZIndexControl/MyZIndexControl";
 import { MY_MOTION_EFFECT_DEMO } from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
+import { 
+	buildStyleBorderDefault, 
+	buildStyleLayoutDefault, 
+	buildGeneralContractDefault,
+	buildSortingAndFilteringDefault} from "./WcbThemeDefaults";
 
 interface Props extends EditProps<WcbAttrs> {}
 
@@ -126,44 +125,20 @@ const Edit: FC<Props> = (props) => {
 	useEffect(() => {
 		// If already initialized, do nothing
 		if (attributes.style_layout) return;
-		// @ts-ignore
-		const theme = (window as any).WCB_THEME_DEFAULTS;
-		const attrLayout = (attributes.style_layout || {}) as Partial<typeof WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO>;
-		const styleLayoutDefault: typeof WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO = {
-			...WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO,
-			...attrLayout,
-			numberOfColumn: {
-				Desktop:
-					theme?.product_per_row?.desktop ??
-					attrLayout.numberOfColumn?.Desktop ??
-					WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO.numberOfColumn.Desktop,
-				Tablet:
-					theme?.product_per_row?.tablet ??
-					attrLayout.numberOfColumn?.Tablet ??
-					WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO.numberOfColumn.Tablet,
-				Mobile:
-					theme?.product_per_row?.mobile ??
-					attrLayout.numberOfColumn?.Mobile ??
-					WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO.numberOfColumn.Mobile,
-			},
-		};
+
 		const DEFAULT: Omit<WcbAttrs, "uniqueId"> = {
 			style_addToCardBtn: WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO,
-			style_border: MY_BORDER_CONTROL_DEMO,
+			style_border: buildStyleBorderDefault(attributes.style_layout as any),
 			style_featuredImage: WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO,
-			style_layout: styleLayoutDefault,
+			style_layout: buildStyleLayoutDefault(attributes.style_border as any),
 			style_pagination: WCB_PRODUCTS_PANEL_STYLE_PAGINATION_DEMO,
 			style_price: WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO,
 			style_rating: WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO,
 			style_saleBadge: WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO,
 			style_category: WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
 			style_title: WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
-			general_sortingAndFiltering: {
-				...WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
-				// @ts-ignore
-				numberOfItems: (window as any)?.WCB_THEME_DEFAULTS?.product_per_page || WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO.numberOfItems,
-			},
-			general_content: WCB_PRODUCTS_PANEL_COTENT_DEMO,
+			general_sortingAndFiltering: buildSortingAndFilteringDefault(general_sortingAndFiltering as any),
+			general_content: buildGeneralContractDefault(general_content as any),
 			general_featuredImage: WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO,
 			general_addToCartBtn: WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO,
 			general_pagination: WCB_PRODUCTS_PANEL_PAGINATION_DEMO,
@@ -472,7 +447,7 @@ const Edit: FC<Props> = (props) => {
 									labelPosition="edge"
 									min={1}
 									max={100}
-									onChange={(value) => {
+									onChange={(value: any) => {
 										if (isNaN(value) || value < 1 || value > 100) {
 											return;
 										}
@@ -497,7 +472,7 @@ const Edit: FC<Props> = (props) => {
 									labelPosition="edge"
 									min={0}
 									max={100}
-									onChange={(value) => {
+									onChange={(value: any) => {
 										if (isNaN(value) || value < 0 || value > 100) {
 											return;
 										}
@@ -547,7 +522,7 @@ const Edit: FC<Props> = (props) => {
 									label={__("Max page to show")}
 									labelPosition="edge"
 									min={0}
-									onChange={(value) => {
+									onChange={(value: any) => {
 										if (isNaN(value) || value < 0) {
 											return;
 										}

@@ -1,0 +1,24 @@
+import { TextAlignment} from "../components/controls/MyTextAlignControl/MyTextAlignControl";
+
+export type ThemeDefaults = {
+    product_per_row?: { desktop?: number; tablet?: number; mobile?: number };
+    product_per_page?: number;
+    shop_archive_border?: { style?: string; width?: number; color?: string };
+    shop_archive_product_content?: {
+        title_flag?: boolean;
+        category_flag?: string;
+        rating_flag?: string;
+        price_flag?: string;
+        quantity_flag?: string;
+        equal_flag?: string;
+        align?: TextAlignment;
+        min_height?: number;
+    };
+    
+};
+  
+export function getThemeDefaults(): ThemeDefaults {
+    // @ts-ignore
+    const win = window as any;
+    return win?.WCB_THEME_DEFAULTS || {};
+}

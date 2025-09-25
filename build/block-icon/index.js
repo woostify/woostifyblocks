@@ -11147,7 +11147,9 @@ const MyTextAlignControl = ({
     className: className
     // @ts-ignore
     ,
-    onChange: onChange,
+    onChange: onChange
+    // @ts-ignore
+    ,
     value: textAlignment || "",
     hasResponsive: hasResponsive,
     label: label

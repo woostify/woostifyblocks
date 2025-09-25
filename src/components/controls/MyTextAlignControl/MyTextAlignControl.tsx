@@ -24,6 +24,7 @@ const MyTextAlignControl: FC<Props> = ({
 			className={className}
 			// @ts-ignore
 			onChange={onChange}
+			// @ts-ignore
 			value={textAlignment || ""}
 			hasResponsive={hasResponsive}
 			label={label}

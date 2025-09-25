@@ -5626,14 +5626,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _WcbProductsPanel_StyleRating__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./WcbProductsPanel_StyleRating */ "./src/block-products/WcbProductsPanel_StyleRating.tsx");
 /* harmony import */ var _utils_converUniqueIdToAnphaKey__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../utils/converUniqueIdToAnphaKey */ "./src/utils/converUniqueIdToAnphaKey.ts");
 /* harmony import */ var _WcbProductsPanel_StyleCategory__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./WcbProductsPanel_StyleCategory */ "./src/block-products/WcbProductsPanel_StyleCategory.tsx");
-/* harmony import */ var _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../components/controls/MyBorderControl/types */ "./src/components/controls/MyBorderControl/types.ts");
-/* harmony import */ var _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl */ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx");
-/* harmony import */ var _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../components/controls/MyZIndexControl/MyZIndexControl */ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx");
-/* harmony import */ var _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../components/controls/MyMotionEffectControl/MyMotionEffectControl */ "./src/components/controls/MyMotionEffectControl/MyMotionEffectControl.tsx");
+/* harmony import */ var _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl */ "./src/components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl.tsx");
+/* harmony import */ var _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../components/controls/MyZIndexControl/MyZIndexControl */ "./src/components/controls/MyZIndexControl/MyZIndexControl.tsx");
+/* harmony import */ var _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../components/controls/MyMotionEffectControl/MyMotionEffectControl */ "./src/components/controls/MyMotionEffectControl/MyMotionEffectControl.tsx");
+/* harmony import */ var _WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./WcbThemeDefaults */ "./src/block-products/WcbThemeDefaults.ts");
 
 
 
 
+// @ts-ignore
 
 
 
@@ -5711,44 +5712,27 @@ const Edit = props => {
     });
   }, [UNIQUE_ID]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    var _ref, _theme$product_per_ro, _ref2, _theme$product_per_ro2, _ref3, _theme$product_per_ro3;
     // If already initialized, do nothing
     if (attributes.style_layout) return;
-    // @ts-ignore
-    const theme = window.WCB_THEME_DEFAULTS;
-    const attrLayout = attributes.style_layout || {};
-    const styleLayoutDefault = {
-      ..._WcbProductsPanel_StyleLayout__WEBPACK_IMPORTED_MODULE_18__.WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO,
-      ...attrLayout,
-      numberOfColumn: {
-        Desktop: (_ref = (_theme$product_per_ro = theme?.product_per_row?.desktop) !== null && _theme$product_per_ro !== void 0 ? _theme$product_per_ro : attrLayout.numberOfColumn?.Desktop) !== null && _ref !== void 0 ? _ref : _WcbProductsPanel_StyleLayout__WEBPACK_IMPORTED_MODULE_18__.WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO.numberOfColumn.Desktop,
-        Tablet: (_ref2 = (_theme$product_per_ro2 = theme?.product_per_row?.tablet) !== null && _theme$product_per_ro2 !== void 0 ? _theme$product_per_ro2 : attrLayout.numberOfColumn?.Tablet) !== null && _ref2 !== void 0 ? _ref2 : _WcbProductsPanel_StyleLayout__WEBPACK_IMPORTED_MODULE_18__.WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO.numberOfColumn.Tablet,
-        Mobile: (_ref3 = (_theme$product_per_ro3 = theme?.product_per_row?.mobile) !== null && _theme$product_per_ro3 !== void 0 ? _theme$product_per_ro3 : attrLayout.numberOfColumn?.Mobile) !== null && _ref3 !== void 0 ? _ref3 : _WcbProductsPanel_StyleLayout__WEBPACK_IMPORTED_MODULE_18__.WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO.numberOfColumn.Mobile
-      }
-    };
     const DEFAULT = {
       style_addToCardBtn: _WcbProductsPanel_StyleAddToCartBtn__WEBPACK_IMPORTED_MODULE_19__.WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO,
-      style_border: _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_27__.MY_BORDER_CONTROL_DEMO,
+      style_border: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_30__.buildStyleBorderDefault)(attributes.style_layout),
       style_featuredImage: _WcbProductsPanel_StyleFeaturedImage__WEBPACK_IMPORTED_MODULE_17__.WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO,
-      style_layout: styleLayoutDefault,
+      style_layout: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_30__.buildStyleLayoutDefault)(attributes.style_border),
       style_pagination: _WcbProductsPanel_StylePagination__WEBPACK_IMPORTED_MODULE_20__.WCB_PRODUCTS_PANEL_STYLE_PAGINATION_DEMO,
       style_price: _WcbProductsPanel_StylePrice__WEBPACK_IMPORTED_MODULE_23__.WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO,
       style_rating: _WcbProductsPanel_StyleRating__WEBPACK_IMPORTED_MODULE_24__.WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO,
       style_saleBadge: _WcbProductsPanel_StyleSaleBadge__WEBPACK_IMPORTED_MODULE_21__.WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO,
       style_category: _WcbProductsPanel_StyleCategory__WEBPACK_IMPORTED_MODULE_26__.WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
       style_title: _WcbProductsPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_16__.WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
-      general_sortingAndFiltering: {
-        ..._WcbProducstPanelSortingAndFiltering__WEBPACK_IMPORTED_MODULE_11__.WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
-        // @ts-ignore
-        numberOfItems: window?.WCB_THEME_DEFAULTS?.product_per_page || _WcbProducstPanelSortingAndFiltering__WEBPACK_IMPORTED_MODULE_11__.WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO.numberOfItems
-      },
-      general_content: _WcbProductsPanelContent__WEBPACK_IMPORTED_MODULE_12__.WCB_PRODUCTS_PANEL_COTENT_DEMO,
+      general_sortingAndFiltering: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_30__.buildSortingAndFilteringDefault)(general_sortingAndFiltering),
+      general_content: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_30__.buildGeneralContractDefault)(general_content),
       general_featuredImage: _WcbProductsPanelFeaturedImage__WEBPACK_IMPORTED_MODULE_13__.WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO,
       general_addToCartBtn: _WcbProductsPanelButton__WEBPACK_IMPORTED_MODULE_14__.WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO,
       general_pagination: _WcbProductsPanelPagination__WEBPACK_IMPORTED_MODULE_15__.WCB_PRODUCTS_PANEL_PAGINATION_DEMO,
-      advance_responsiveCondition: _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_28__.RESPONSIVE_CONDITON_DEMO,
-      advance_zIndex: _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_29__.Z_INDEX_DEMO,
-      advance_motionEffect: _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_30__.MY_MOTION_EFFECT_DEMO
+      advance_responsiveCondition: _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_27__.RESPONSIVE_CONDITON_DEMO,
+      advance_zIndex: _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_28__.Z_INDEX_DEMO,
+      advance_motionEffect: _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_29__.MY_MOTION_EFFECT_DEMO
     };
     setAttributes({
       ...DEFAULT
@@ -5759,7 +5743,7 @@ const Edit = props => {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (!advance_motionEffect) {
       setAttributes({
-        advance_motionEffect: _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_30__.MY_MOTION_EFFECT_DEMO
+        advance_motionEffect: _components_controls_MyMotionEffectControl_MyMotionEffectControl__WEBPACK_IMPORTED_MODULE_29__.MY_MOTION_EFFECT_DEMO
       });
     }
   }, [advance_motionEffect]);
@@ -8985,6 +8969,89 @@ const WcbProductsPanel_StyleTitle = ({
   }))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WcbProductsPanel_StyleTitle);
+
+/***/ }),
+
+/***/ "./src/block-products/WcbThemeDefaults.ts":
+/*!************************************************!*\
+  !*** ./src/block-products/WcbThemeDefaults.ts ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   buildGeneralContractDefault: () => (/* binding */ buildGeneralContractDefault),
+/* harmony export */   buildSortingAndFilteringDefault: () => (/* binding */ buildSortingAndFilteringDefault),
+/* harmony export */   buildStyleBorderDefault: () => (/* binding */ buildStyleBorderDefault),
+/* harmony export */   buildStyleLayoutDefault: () => (/* binding */ buildStyleLayoutDefault)
+/* harmony export */ });
+/* harmony import */ var _block_products_WcbProductsPanel_StyleLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../block-products/WcbProductsPanel_StyleLayout */ "./src/block-products/WcbProductsPanel_StyleLayout.tsx");
+/* harmony import */ var _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/controls/MyBorderControl/types */ "./src/components/controls/MyBorderControl/types.ts");
+/* harmony import */ var _utils_themeDefaults__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/themeDefaults */ "./src/utils/themeDefaults.ts");
+/* harmony import */ var _WcbProducstPanelSortingAndFiltering__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WcbProducstPanelSortingAndFiltering */ "./src/block-products/WcbProducstPanelSortingAndFiltering.tsx");
+/* harmony import */ var _WcbProductsPanelContent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./WcbProductsPanelContent */ "./src/block-products/WcbProductsPanelContent.tsx");
+
+
+
+
+
+function buildStyleLayoutDefault(attr) {
+  var _ref, _theme$product_per_ro, _ref2, _theme$product_per_ro2, _ref3, _theme$product_per_ro3, _ref4, _theme$shop_archive_p;
+  const theme = (0,_utils_themeDefaults__WEBPACK_IMPORTED_MODULE_2__.getThemeDefaults)();
+  return {
+    ..._block_products_WcbProductsPanel_StyleLayout__WEBPACK_IMPORTED_MODULE_0__.WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO,
+    ...(attr || {}),
+    numberOfColumn: {
+      Desktop: (_ref = (_theme$product_per_ro = theme.product_per_row?.desktop) !== null && _theme$product_per_ro !== void 0 ? _theme$product_per_ro : attr?.numberOfColumn?.Desktop) !== null && _ref !== void 0 ? _ref : _block_products_WcbProductsPanel_StyleLayout__WEBPACK_IMPORTED_MODULE_0__.WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO.numberOfColumn.Desktop,
+      Tablet: (_ref2 = (_theme$product_per_ro2 = theme.product_per_row?.tablet) !== null && _theme$product_per_ro2 !== void 0 ? _theme$product_per_ro2 : attr?.numberOfColumn?.Tablet) !== null && _ref2 !== void 0 ? _ref2 : _block_products_WcbProductsPanel_StyleLayout__WEBPACK_IMPORTED_MODULE_0__.WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO.numberOfColumn.Tablet,
+      Mobile: (_ref3 = (_theme$product_per_ro3 = theme.product_per_row?.mobile) !== null && _theme$product_per_ro3 !== void 0 ? _theme$product_per_ro3 : attr?.numberOfColumn?.Mobile) !== null && _ref3 !== void 0 ? _ref3 : _block_products_WcbProductsPanel_StyleLayout__WEBPACK_IMPORTED_MODULE_0__.WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO.numberOfColumn.Mobile
+    },
+    textAlignment: (_ref4 = (_theme$shop_archive_p = theme.shop_archive_product_content?.align) !== null && _theme$shop_archive_p !== void 0 ? _theme$shop_archive_p : attr?.textAlignment) !== null && _ref4 !== void 0 ? _ref4 : _block_products_WcbProductsPanel_StyleLayout__WEBPACK_IMPORTED_MODULE_0__.WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO.textAlignment
+  };
+}
+function buildStyleBorderDefault(attr) {
+  var _attr$mainSettings;
+  const theme = (0,_utils_themeDefaults__WEBPACK_IMPORTED_MODULE_2__.getThemeDefaults)();
+  const style = theme.shop_archive_border?.style;
+  const color = theme.shop_archive_border?.color;
+  const widthPx = theme.shop_archive_border?.width != null ? `${theme.shop_archive_border.width}px` : undefined;
+  const base = (_attr$mainSettings = attr?.mainSettings) !== null && _attr$mainSettings !== void 0 ? _attr$mainSettings : _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_1__.MY_BORDER_CONTROL_DEMO.mainSettings;
+  const resolved = style && style !== "none" ? {
+    color: color !== null && color !== void 0 ? color : base.color,
+    style: style !== null && style !== void 0 ? style : base.style,
+    width: widthPx !== null && widthPx !== void 0 ? widthPx : base.width
+  } : base;
+  return {
+    ..._components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_1__.MY_BORDER_CONTROL_DEMO,
+    ...(attr || {}),
+    mainSettings: resolved
+  };
+}
+
+// Build general_sortingAndFiltering with theme numberOfItems
+function buildSortingAndFilteringDefault(attr) {
+  const theme = (0,_utils_themeDefaults__WEBPACK_IMPORTED_MODULE_2__.getThemeDefaults)();
+  return {
+    ..._WcbProducstPanelSortingAndFiltering__WEBPACK_IMPORTED_MODULE_3__.WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
+    ...(attr || {}),
+    numberOfItems: theme.product_per_page || attr?.numberOfItems || _WcbProducstPanelSortingAndFiltering__WEBPACK_IMPORTED_MODULE_3__.WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO.numberOfItems
+  };
+}
+function buildGeneralContractDefault(attr) {
+  var _attr$isShowTitle, _attr$isShowCategory, _attr$isShowRating, _attr$isShowPrice;
+  const theme = (0,_utils_themeDefaults__WEBPACK_IMPORTED_MODULE_2__.getThemeDefaults)();
+  const content = theme.shop_archive_product_content;
+  const toBool = (v, def) => v === undefined ? def : v === true || v === '1' || v === 1;
+  return {
+    ..._WcbProductsPanelContent__WEBPACK_IMPORTED_MODULE_4__.WCB_PRODUCTS_PANEL_COTENT_DEMO,
+    ...(attr || {}),
+    isShowTitle: toBool(content?.title_flag, (_attr$isShowTitle = attr?.isShowTitle) !== null && _attr$isShowTitle !== void 0 ? _attr$isShowTitle : _WcbProductsPanelContent__WEBPACK_IMPORTED_MODULE_4__.WCB_PRODUCTS_PANEL_COTENT_DEMO.isShowTitle),
+    isShowCategory: toBool(content?.category_flag, (_attr$isShowCategory = attr?.isShowCategory) !== null && _attr$isShowCategory !== void 0 ? _attr$isShowCategory : _WcbProductsPanelContent__WEBPACK_IMPORTED_MODULE_4__.WCB_PRODUCTS_PANEL_COTENT_DEMO.isShowCategory),
+    isShowRating: toBool(content?.rating_flag, (_attr$isShowRating = attr?.isShowRating) !== null && _attr$isShowRating !== void 0 ? _attr$isShowRating : _WcbProductsPanelContent__WEBPACK_IMPORTED_MODULE_4__.WCB_PRODUCTS_PANEL_COTENT_DEMO.isShowRating),
+    isShowPrice: toBool(content?.price_flag, (_attr$isShowPrice = attr?.isShowPrice) !== null && _attr$isShowPrice !== void 0 ? _attr$isShowPrice : _WcbProductsPanelContent__WEBPACK_IMPORTED_MODULE_4__.WCB_PRODUCTS_PANEL_COTENT_DEMO.isShowPrice)
+  };
+}
 
 /***/ }),
 
@@ -13087,7 +13154,9 @@ const MyTextAlignControl = ({
     className: className
     // @ts-ignore
     ,
-    onChange: onChange,
+    onChange: onChange
+    // @ts-ignore
+    ,
     value: textAlignment || "",
     hasResponsive: hasResponsive,
     label: label
@@ -15010,6 +15079,25 @@ const JSToCSS = JS => {
   }
   return cssString;
 };
+
+/***/ }),
+
+/***/ "./src/utils/themeDefaults.ts":
+/*!************************************!*\
+  !*** ./src/utils/themeDefaults.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getThemeDefaults: () => (/* binding */ getThemeDefaults)
+/* harmony export */ });
+function getThemeDefaults() {
+  // @ts-ignore
+  const win = window;
+  return win?.WCB_THEME_DEFAULTS || {};
+}
 
 /***/ }),
 
