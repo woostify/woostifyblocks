@@ -19,6 +19,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		general_addToCartBtn,
 		general_content,
 		general_pagination,
+		general_featuredImage,
 		style_addToCardBtn,
 		style_featuredImage,
 		style_layout,
@@ -41,6 +42,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const LIST_CLASS = `${WRAP_CLASSNAME} .wcb-products__list`;
 	const POST_CARD_CLASS = `${WRAP_CLASSNAME} .wcb-products__product`;
 	const ADD_TO_CART_BTN = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart a`;
+	const PRODUCT_IMAGE_CLASS = `${WRAP_CLASSNAME} .wcb-products__product-image`;
 
 	// ------------------- WRAP DIV
 
@@ -657,6 +659,21 @@ const GlobalCss: FC<Props> = (attrs) => {
 					/>
 				</>
 			) : null}
+
+			{/* Product image settings */}
+			{
+				general_featuredImage?.hoverType !== "none" && (
+					<Global 
+						styles={{
+							[`${PRODUCT_IMAGE_CLASS}`]: {
+								":hover": {
+									transition: `all 0.3s ease-in-out`,
+								}
+							},
+						}}
+					/>
+				)
+			}
 
 			{/* ADVANCE  */}
 			<Global

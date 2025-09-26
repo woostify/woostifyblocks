@@ -40,6 +40,7 @@ const GlobalCss = attrs => {
     general_addToCartBtn,
     general_content,
     general_pagination,
+    general_featuredImage,
     style_addToCardBtn,
     style_featuredImage,
     style_layout,
@@ -63,6 +64,7 @@ const GlobalCss = attrs => {
   const LIST_CLASS = `${WRAP_CLASSNAME} .wcb-products__list`;
   const POST_CARD_CLASS = `${WRAP_CLASSNAME} .wcb-products__product`;
   const ADD_TO_CART_BTN = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart a`;
+  const PRODUCT_IMAGE_CLASS = `${WRAP_CLASSNAME} .wcb-products__product-image`;
 
   // ------------------- WRAP DIV
 
@@ -540,7 +542,15 @@ const GlobalCss = attrs => {
       className: ADD_TO_CART_BTN,
       padding: style_addToCardBtn.padding
     })
-  })) : null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  })) : null, general_featuredImage?.hoverType !== "none" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+    styles: {
+      [`${PRODUCT_IMAGE_CLASS}`]: {
+        ":hover": {
+          transition: `all 0.3s ease-in-out`
+        }
+      }
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
     styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_1__.getAdvanveDivWrapStyles)({
       advance_motionEffect,
       advance_responsiveCondition,

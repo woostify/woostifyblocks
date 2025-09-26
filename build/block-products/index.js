@@ -5717,7 +5717,7 @@ const Edit = props => {
     const DEFAULT = {
       style_addToCardBtn: _WcbProductsPanel_StyleAddToCartBtn__WEBPACK_IMPORTED_MODULE_19__.WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO,
       style_border: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_30__.buildStyleBorderDefault)(attributes.style_layout),
-      style_featuredImage: _WcbProductsPanel_StyleFeaturedImage__WEBPACK_IMPORTED_MODULE_17__.WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO,
+      style_featuredImage: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_30__.buildStyleFeaturedImageDefault)(_WcbProductsPanel_StyleFeaturedImage__WEBPACK_IMPORTED_MODULE_17__.WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO),
       style_layout: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_30__.buildStyleLayoutDefault)(attributes.style_border),
       style_pagination: _WcbProductsPanel_StylePagination__WEBPACK_IMPORTED_MODULE_20__.WCB_PRODUCTS_PANEL_STYLE_PAGINATION_DEMO,
       style_price: _WcbProductsPanel_StylePrice__WEBPACK_IMPORTED_MODULE_23__.WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO,
@@ -5727,7 +5727,7 @@ const Edit = props => {
       style_title: _WcbProductsPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_16__.WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
       general_sortingAndFiltering: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_30__.buildSortingAndFilteringDefault)(general_sortingAndFiltering),
       general_content: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_30__.buildGeneralContractDefault)(general_content),
-      general_featuredImage: _WcbProductsPanelFeaturedImage__WEBPACK_IMPORTED_MODULE_13__.WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO,
+      general_featuredImage: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_30__.buildGeneralFeaturedImageDefault)(_WcbProductsPanelFeaturedImage__WEBPACK_IMPORTED_MODULE_13__.WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO),
       general_addToCartBtn: _WcbProductsPanelButton__WEBPACK_IMPORTED_MODULE_14__.WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO,
       general_pagination: _WcbProductsPanelPagination__WEBPACK_IMPORTED_MODULE_15__.WCB_PRODUCTS_PANEL_PAGINATION_DEMO,
       advance_responsiveCondition: _components_controls_MyResponsiveConditionControl_MyResponsiveConditionControl__WEBPACK_IMPORTED_MODULE_27__.RESPONSIVE_CONDITON_DEMO,
@@ -6171,6 +6171,7 @@ const GlobalCss = attrs => {
     general_addToCartBtn,
     general_content,
     general_pagination,
+    general_featuredImage,
     style_addToCardBtn,
     style_featuredImage,
     style_layout,
@@ -6194,6 +6195,7 @@ const GlobalCss = attrs => {
   const LIST_CLASS = `${WRAP_CLASSNAME} .wcb-products__list`;
   const POST_CARD_CLASS = `${WRAP_CLASSNAME} .wcb-products__product`;
   const ADD_TO_CART_BTN = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart a`;
+  const PRODUCT_IMAGE_CLASS = `${WRAP_CLASSNAME} .wcb-products__product-image`;
 
   // ------------------- WRAP DIV
 
@@ -6671,7 +6673,15 @@ const GlobalCss = attrs => {
       className: ADD_TO_CART_BTN,
       padding: style_addToCardBtn.padding
     })
-  })) : null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  })) : null, general_featuredImage?.hoverType !== "none" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+    styles: {
+      [`${PRODUCT_IMAGE_CLASS}`]: {
+        ":hover": {
+          transition: `all 0.3s ease-in-out`
+        }
+      }
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
     styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_1__.getAdvanveDivWrapStyles)({
       advance_motionEffect,
       advance_responsiveCondition,
@@ -8982,8 +8992,10 @@ const WcbProductsPanel_StyleTitle = ({
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   buildGeneralContractDefault: () => (/* binding */ buildGeneralContractDefault),
+/* harmony export */   buildGeneralFeaturedImageDefault: () => (/* binding */ buildGeneralFeaturedImageDefault),
 /* harmony export */   buildSortingAndFilteringDefault: () => (/* binding */ buildSortingAndFilteringDefault),
 /* harmony export */   buildStyleBorderDefault: () => (/* binding */ buildStyleBorderDefault),
+/* harmony export */   buildStyleFeaturedImageDefault: () => (/* binding */ buildStyleFeaturedImageDefault),
 /* harmony export */   buildStyleLayoutDefault: () => (/* binding */ buildStyleLayoutDefault)
 /* harmony export */ });
 /* harmony import */ var _block_products_WcbProductsPanel_StyleLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../block-products/WcbProductsPanel_StyleLayout */ "./src/block-products/WcbProductsPanel_StyleLayout.tsx");
@@ -8991,6 +9003,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_themeDefaults__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/themeDefaults */ "./src/utils/themeDefaults.ts");
 /* harmony import */ var _WcbProducstPanelSortingAndFiltering__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WcbProducstPanelSortingAndFiltering */ "./src/block-products/WcbProducstPanelSortingAndFiltering.tsx");
 /* harmony import */ var _WcbProductsPanelContent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./WcbProductsPanelContent */ "./src/block-products/WcbProductsPanelContent.tsx");
+/* harmony import */ var _WcbProductsPanelFeaturedImage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WcbProductsPanelFeaturedImage */ "./src/block-products/WcbProductsPanelFeaturedImage.tsx");
+/* harmony import */ var _WcbProductsPanel_StyleFeaturedImage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./WcbProductsPanel_StyleFeaturedImage */ "./src/block-products/WcbProductsPanel_StyleFeaturedImage.tsx");
+
+
 
 
 
@@ -9050,6 +9066,38 @@ function buildGeneralContractDefault(attr) {
     isShowCategory: toBool(content?.category_flag, (_attr$isShowCategory = attr?.isShowCategory) !== null && _attr$isShowCategory !== void 0 ? _attr$isShowCategory : _WcbProductsPanelContent__WEBPACK_IMPORTED_MODULE_4__.WCB_PRODUCTS_PANEL_COTENT_DEMO.isShowCategory),
     isShowRating: toBool(content?.rating_flag, (_attr$isShowRating = attr?.isShowRating) !== null && _attr$isShowRating !== void 0 ? _attr$isShowRating : _WcbProductsPanelContent__WEBPACK_IMPORTED_MODULE_4__.WCB_PRODUCTS_PANEL_COTENT_DEMO.isShowRating),
     isShowPrice: toBool(content?.price_flag, (_attr$isShowPrice = attr?.isShowPrice) !== null && _attr$isShowPrice !== void 0 ? _attr$isShowPrice : _WcbProductsPanelContent__WEBPACK_IMPORTED_MODULE_4__.WCB_PRODUCTS_PANEL_COTENT_DEMO.isShowPrice)
+  };
+}
+function buildGeneralFeaturedImageDefault(attr) {
+  var _ref5, _content$hover;
+  const theme = (0,_utils_themeDefaults__WEBPACK_IMPORTED_MODULE_2__.getThemeDefaults)();
+  const content = theme.shop_archive_product_image;
+  return {
+    ..._WcbProductsPanelFeaturedImage__WEBPACK_IMPORTED_MODULE_5__.WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO,
+    ...(attr || {}),
+    hoverType: (_ref5 = (_content$hover = content?.hover) !== null && _content$hover !== void 0 ? _content$hover : attr?.hoverType) !== null && _ref5 !== void 0 ? _ref5 : _WcbProductsPanelFeaturedImage__WEBPACK_IMPORTED_MODULE_5__.WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO.hoverType
+  };
+}
+function buildStyleFeaturedImageDefault(attr) {
+  var _attr$border$mainSett;
+  const theme = (0,_utils_themeDefaults__WEBPACK_IMPORTED_MODULE_2__.getThemeDefaults)();
+  const style = theme.shop_archive_product_image?.style;
+  const color = theme.shop_archive_product_image?.color;
+  const widthPx = theme.shop_archive_product_image?.width != null ? `${theme.shop_archive_product_image.width}px` : undefined;
+  const base = (_attr$border$mainSett = attr?.border?.mainSettings) !== null && _attr$border$mainSett !== void 0 ? _attr$border$mainSett : _WcbProductsPanel_StyleFeaturedImage__WEBPACK_IMPORTED_MODULE_6__.WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO.border.mainSettings;
+  const resolved = style && style !== "none" ? {
+    color: color !== null && color !== void 0 ? color : base.color,
+    style: style !== null && style !== void 0 ? style : base.style,
+    width: widthPx !== null && widthPx !== void 0 ? widthPx : base.width
+  } : base;
+  return {
+    ..._WcbProductsPanel_StyleFeaturedImage__WEBPACK_IMPORTED_MODULE_6__.WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO,
+    ...(attr || {}),
+    border: {
+      ..._WcbProductsPanel_StyleFeaturedImage__WEBPACK_IMPORTED_MODULE_6__.WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO.border,
+      ...(attr?.border || {}),
+      mainSettings: resolved
+    }
   };
 }
 

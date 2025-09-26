@@ -5,6 +5,8 @@ import { MY_BORDER_CONTROL_DEMO } from "../components/controls/MyBorderControl/t
 import { getThemeDefaults } from "../utils/themeDefaults";
 import { WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO } from "./WcbProducstPanelSortingAndFiltering";
 import { WCB_PRODUCTS_PANEL_COTENT_DEMO } from "./WcbProductsPanelContent";
+import {  WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO } from "./WcbProductsPanelFeaturedImage";
+import { WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO } from "./WcbProductsPanel_StyleFeaturedImage";
   
 export function buildStyleLayoutDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO>) {
     const theme = getThemeDefaults();
@@ -87,5 +89,39 @@ export function buildGeneralContractDefault(attr?: Partial<typeof WCB_PRODUCTS_P
             content?.price_flag,
             attr?.isShowPrice ?? WCB_PRODUCTS_PANEL_COTENT_DEMO.isShowPrice
         ),
+    };
+}
+
+export function buildGeneralFeaturedImageDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO>) {
+    const theme = getThemeDefaults();
+    const content = theme.shop_archive_product_image;
+    return {
+        ...WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO,
+        ...(attr || {}),
+        hoverType: 
+            content?.hover ?? 
+            attr?.hoverType ?? 
+            WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO.hoverType,
+    };
+}
+
+export function buildStyleFeaturedImageDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO>) {
+    const theme = getThemeDefaults();
+    const style = theme.shop_archive_product_image?.style;
+    const color = theme.shop_archive_product_image?.color;
+    const widthPx = theme.shop_archive_product_image?.width != null ? 
+        `${theme.shop_archive_product_image.width}px` : undefined;
+
+    const base = (attr?.border?.mainSettings ?? WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO.border.mainSettings) as any;
+    const resolved = style && style !== "none"
+        ? { 
+            color: color ?? base.color, 
+            style: style ?? base.style, 
+            width: widthPx ?? base.width }
+        : base;
+
+    return { 
+        ...WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO, ...(attr || {}),
+        border: { ...WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO.border, ...(attr?.border || {}), mainSettings: resolved } 
     };
 }

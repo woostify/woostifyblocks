@@ -14,6 +14,12 @@ export type ThemeDefaults = {
         align?: TextAlignment;
         min_height?: number;
     };
+    shop_archive_product_image?: {
+        style?: string;
+        width?: number;
+        color?: string;
+        hover?: "swap" | "zoom" | "none";
+    }
     
 };
   
