@@ -20,7 +20,11 @@ export type ThemeDefaults = {
         color?: string;
         hover?: "swap" | "zoom" | "none";
     }
-    
+    shop_archive_sale_tag?: {
+        bg_color?: string;
+        text_color?: string;
+        position?: string;
+    }
 };
   
 export function getThemeDefaults(): ThemeDefaults {

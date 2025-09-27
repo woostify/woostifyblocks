@@ -5722,7 +5722,7 @@ const Edit = props => {
       style_pagination: _WcbProductsPanel_StylePagination__WEBPACK_IMPORTED_MODULE_20__.WCB_PRODUCTS_PANEL_STYLE_PAGINATION_DEMO,
       style_price: _WcbProductsPanel_StylePrice__WEBPACK_IMPORTED_MODULE_23__.WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO,
       style_rating: _WcbProductsPanel_StyleRating__WEBPACK_IMPORTED_MODULE_24__.WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO,
-      style_saleBadge: _WcbProductsPanel_StyleSaleBadge__WEBPACK_IMPORTED_MODULE_21__.WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO,
+      style_saleBadge: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_30__.buildStyleSaleBadgeDefault)(style_saleBadge),
       style_category: _WcbProductsPanel_StyleCategory__WEBPACK_IMPORTED_MODULE_26__.WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
       style_title: _WcbProductsPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_16__.WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
       general_sortingAndFiltering: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_30__.buildSortingAndFilteringDefault)(general_sortingAndFiltering),
@@ -8996,7 +8996,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   buildSortingAndFilteringDefault: () => (/* binding */ buildSortingAndFilteringDefault),
 /* harmony export */   buildStyleBorderDefault: () => (/* binding */ buildStyleBorderDefault),
 /* harmony export */   buildStyleFeaturedImageDefault: () => (/* binding */ buildStyleFeaturedImageDefault),
-/* harmony export */   buildStyleLayoutDefault: () => (/* binding */ buildStyleLayoutDefault)
+/* harmony export */   buildStyleLayoutDefault: () => (/* binding */ buildStyleLayoutDefault),
+/* harmony export */   buildStyleSaleBadgeDefault: () => (/* binding */ buildStyleSaleBadgeDefault)
 /* harmony export */ });
 /* harmony import */ var _block_products_WcbProductsPanel_StyleLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../block-products/WcbProductsPanel_StyleLayout */ "./src/block-products/WcbProductsPanel_StyleLayout.tsx");
 /* harmony import */ var _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/controls/MyBorderControl/types */ "./src/components/controls/MyBorderControl/types.ts");
@@ -9005,6 +9006,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _WcbProductsPanelContent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./WcbProductsPanelContent */ "./src/block-products/WcbProductsPanelContent.tsx");
 /* harmony import */ var _WcbProductsPanelFeaturedImage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WcbProductsPanelFeaturedImage */ "./src/block-products/WcbProductsPanelFeaturedImage.tsx");
 /* harmony import */ var _WcbProductsPanel_StyleFeaturedImage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./WcbProductsPanel_StyleFeaturedImage */ "./src/block-products/WcbProductsPanel_StyleFeaturedImage.tsx");
+/* harmony import */ var _WcbProductsPanel_StyleSaleBadge__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./WcbProductsPanel_StyleSaleBadge */ "./src/block-products/WcbProductsPanel_StyleSaleBadge.tsx");
+
 
 
 
@@ -9098,6 +9101,17 @@ function buildStyleFeaturedImageDefault(attr) {
       ...(attr?.border || {}),
       mainSettings: resolved
     }
+  };
+}
+function buildStyleSaleBadgeDefault(attr) {
+  var _ref6, _saleTag$bg_color, _ref7, _saleTag$text_color;
+  const theme = (0,_utils_themeDefaults__WEBPACK_IMPORTED_MODULE_2__.getThemeDefaults)();
+  const saleTag = theme.shop_archive_sale_tag;
+  return {
+    ..._WcbProductsPanel_StyleSaleBadge__WEBPACK_IMPORTED_MODULE_7__.WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO,
+    ...(attr || {}),
+    backgroundColor: (_ref6 = (_saleTag$bg_color = saleTag?.bg_color) !== null && _saleTag$bg_color !== void 0 ? _saleTag$bg_color : attr?.backgroundColor) !== null && _ref6 !== void 0 ? _ref6 : _WcbProductsPanel_StyleSaleBadge__WEBPACK_IMPORTED_MODULE_7__.WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO.backgroundColor,
+    textColor: (_ref7 = (_saleTag$text_color = saleTag?.text_color) !== null && _saleTag$text_color !== void 0 ? _saleTag$text_color : attr?.textColor) !== null && _ref7 !== void 0 ? _ref7 : _WcbProductsPanel_StyleSaleBadge__WEBPACK_IMPORTED_MODULE_7__.WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO.textColor
   };
 }
 

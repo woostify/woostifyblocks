@@ -29,7 +29,12 @@ add_action('enqueue_block_editor_assets', function () {
 			'width' => (int)($woostify['shop_page_product_image_border_width'] ?? 0),
 			'color' => $woostify['shop_page_product_image_border_color'] ?? '#000',
 			'hover' => $woostify['shop_page_product_image_hover'] ?? 'none',
-		]
+		],
+		'shop_archive_sale_tag' => [
+			'bg_color'   => $woostify['shop_page_sale_bg_color'] ?? '#0c4a6e',
+			'text_color' => $woostify['shop_page_sale_color'] ?? '#f0f9ff',
+			'position'   => $woostify['shop_page_sale_tag_position'] ?? 'top-left',
+		],
 	];
 	error_log('[WCB_THEME_DEFAULTS]' . print_r($data, true));
 	wp_add_inline_script('wp-blocks', 'window.WCB_THEME_DEFAULTS='.wp_json_encode($data).';', 'before');

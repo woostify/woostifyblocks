@@ -7,6 +7,7 @@ import { WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO } from "./WcbProducstPanelS
 import { WCB_PRODUCTS_PANEL_COTENT_DEMO } from "./WcbProductsPanelContent";
 import {  WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO } from "./WcbProductsPanelFeaturedImage";
 import { WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO } from "./WcbProductsPanel_StyleFeaturedImage";
+import { WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO } from "./WcbProductsPanel_StyleSaleBadge";
   
 export function buildStyleLayoutDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO>) {
     const theme = getThemeDefaults();
@@ -123,5 +124,22 @@ export function buildStyleFeaturedImageDefault(attr?: Partial<typeof WCB_PRODUCT
     return { 
         ...WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO, ...(attr || {}),
         border: { ...WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO.border, ...(attr?.border || {}), mainSettings: resolved } 
+    };
+}
+
+export function buildStyleSaleBadgeDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO>) {
+    const theme = getThemeDefaults();
+    const saleTag = theme.shop_archive_sale_tag;
+    return {
+        ...WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO,
+        ...(attr || {}),
+        backgroundColor: 
+            saleTag?.bg_color ?? 
+            attr?.backgroundColor ?? 
+            WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO.backgroundColor,
+        textColor: 
+            saleTag?.text_color ?? 
+            attr?.textColor ?? 
+            WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO.textColor,
     };
 }

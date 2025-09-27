@@ -77,7 +77,8 @@ import {
 	buildGeneralContractDefault,
 	buildSortingAndFilteringDefault,
 	buildGeneralFeaturedImageDefault,
-	buildStyleFeaturedImageDefault
+	buildStyleFeaturedImageDefault,
+	buildStyleSaleBadgeDefault
 } from "./WcbThemeDefaults";
 
 interface Props extends EditProps<WcbAttrs> {}
@@ -137,7 +138,7 @@ const Edit: FC<Props> = (props) => {
 			style_pagination: WCB_PRODUCTS_PANEL_STYLE_PAGINATION_DEMO,
 			style_price: WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO,
 			style_rating: WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO,
-			style_saleBadge: WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO,
+			style_saleBadge: buildStyleSaleBadgeDefault(style_saleBadge as any),
 			style_category: WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
 			style_title: WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
 			general_sortingAndFiltering: buildSortingAndFilteringDefault(general_sortingAndFiltering as any),
