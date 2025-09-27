@@ -8,6 +8,8 @@ import { WCB_PRODUCTS_PANEL_COTENT_DEMO } from "./WcbProductsPanelContent";
 import {  WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO } from "./WcbProductsPanelFeaturedImage";
 import { WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO } from "./WcbProductsPanel_StyleFeaturedImage";
 import { WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO } from "./WcbProductsPanel_StyleSaleBadge";
+import { WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO } from "./WcbProductsPanel_StyleTitle";
+import { WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO } from "./WcbProductsPanel_StylePrice";
   
 export function buildStyleLayoutDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO>) {
     const theme = getThemeDefaults();
@@ -141,5 +143,67 @@ export function buildStyleSaleBadgeDefault(attr?: Partial<typeof WCB_PRODUCTS_PA
             saleTag?.text_color ?? 
             attr?.textColor ?? 
             WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO.textColor,
+    };
+}
+
+export function buildStyleTitleDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO>) {
+    const theme = getThemeDefaults();
+    const general = theme.shop_archive_general_design;
+    return {
+        ...WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
+        ...(attr || {}),
+        textColor: 
+            general?.title_color ?? 
+            attr?.textColor ?? 
+            WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO.textColor,
+        typography: {
+            ...WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO.typography,
+            ...(attr?.typography || {}),
+            fontSizes: {
+                Desktop: 
+                    (general?.title_font_size != null ? `${general.title_font_size.desktop}px` : undefined) ??
+                    attr?.typography?.fontSizes?.Desktop ??
+                    WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO.typography.fontSizes.Desktop,
+                Tablet: 
+                    (general?.title_font_size != null ? `${general.title_font_size.tablet}px` : undefined) ??
+                    attr?.typography?.fontSizes?.Tablet ??
+                    WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO.typography.fontSizes.Tablet,
+                Mobile: 
+                    (general?.title_font_size != null ? `${general.title_font_size.mobile}px` : undefined) ??
+                    attr?.typography?.fontSizes?.Mobile ??
+                    WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO.typography.fontSizes.Mobile,
+            },
+        },
+    };
+}
+
+export function buildStylePriceDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO>) {
+    const theme = getThemeDefaults();
+    const general = theme.shop_archive_general_design;
+    return {
+        ...WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO,
+        ...(attr || {}),
+        textColor: 
+            general?.price_color ?? 
+            attr?.textColor ??
+            WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO.textColor,
+        typography: {
+            ...WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO.typography,
+            ...(attr?.typography || {}),
+            fontSizes: {
+                Desktop: 
+                    (general?.price_font_size != null ? `${general.price_font_size.desktop}px` : undefined) ??
+                    attr?.typography?.fontSizes?.Desktop ??
+                    WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO.typography.fontSizes.Desktop,
+                Tablet: 
+                    (general?.price_font_size != null ? `${general.price_font_size.tablet}px` : undefined) ??
+                    attr?.typography?.fontSizes?.Tablet ??
+                    WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO.typography.fontSizes.Tablet,
+                Mobile: 
+                    (general?.price_font_size != null ? `${general.price_font_size.mobile}px` : undefined) ??
+                    attr?.typography?.fontSizes?.Mobile ??
+                    WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO.typography.fontSizes.Mobile,
+            },
+        },
     };
 }

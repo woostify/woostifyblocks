@@ -5720,11 +5720,11 @@ const Edit = props => {
       style_featuredImage: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_30__.buildStyleFeaturedImageDefault)(_WcbProductsPanel_StyleFeaturedImage__WEBPACK_IMPORTED_MODULE_17__.WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO),
       style_layout: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_30__.buildStyleLayoutDefault)(attributes.style_border),
       style_pagination: _WcbProductsPanel_StylePagination__WEBPACK_IMPORTED_MODULE_20__.WCB_PRODUCTS_PANEL_STYLE_PAGINATION_DEMO,
-      style_price: _WcbProductsPanel_StylePrice__WEBPACK_IMPORTED_MODULE_23__.WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO,
+      style_price: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_30__.buildStylePriceDefault)(_WcbProductsPanel_StylePrice__WEBPACK_IMPORTED_MODULE_23__.WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO),
       style_rating: _WcbProductsPanel_StyleRating__WEBPACK_IMPORTED_MODULE_24__.WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO,
       style_saleBadge: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_30__.buildStyleSaleBadgeDefault)(style_saleBadge),
       style_category: _WcbProductsPanel_StyleCategory__WEBPACK_IMPORTED_MODULE_26__.WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
-      style_title: _WcbProductsPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_16__.WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
+      style_title: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_30__.buildStyleTitleDefault)(_WcbProductsPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_16__.WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO),
       general_sortingAndFiltering: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_30__.buildSortingAndFilteringDefault)(general_sortingAndFiltering),
       general_content: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_30__.buildGeneralContractDefault)(general_content),
       general_featuredImage: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_30__.buildGeneralFeaturedImageDefault)(_WcbProductsPanelFeaturedImage__WEBPACK_IMPORTED_MODULE_13__.WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO),
@@ -8912,7 +8912,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO = {
-  typography: _components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_4__.TYPOGRAPHY_CONTROL_DEMO,
+  typography: _components_controls_MyTypographyControl_types__WEBPACK_IMPORTED_MODULE_4__.TYPOGRAPHY_CONTROL_PRODUCT_DEMO,
   textColor: "#171717",
   marginBottom: {
     Desktop: "0.75rem"
@@ -8997,7 +8997,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   buildStyleBorderDefault: () => (/* binding */ buildStyleBorderDefault),
 /* harmony export */   buildStyleFeaturedImageDefault: () => (/* binding */ buildStyleFeaturedImageDefault),
 /* harmony export */   buildStyleLayoutDefault: () => (/* binding */ buildStyleLayoutDefault),
-/* harmony export */   buildStyleSaleBadgeDefault: () => (/* binding */ buildStyleSaleBadgeDefault)
+/* harmony export */   buildStylePriceDefault: () => (/* binding */ buildStylePriceDefault),
+/* harmony export */   buildStyleSaleBadgeDefault: () => (/* binding */ buildStyleSaleBadgeDefault),
+/* harmony export */   buildStyleTitleDefault: () => (/* binding */ buildStyleTitleDefault)
 /* harmony export */ });
 /* harmony import */ var _block_products_WcbProductsPanel_StyleLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../block-products/WcbProductsPanel_StyleLayout */ "./src/block-products/WcbProductsPanel_StyleLayout.tsx");
 /* harmony import */ var _components_controls_MyBorderControl_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/controls/MyBorderControl/types */ "./src/components/controls/MyBorderControl/types.ts");
@@ -9007,6 +9009,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _WcbProductsPanelFeaturedImage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WcbProductsPanelFeaturedImage */ "./src/block-products/WcbProductsPanelFeaturedImage.tsx");
 /* harmony import */ var _WcbProductsPanel_StyleFeaturedImage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./WcbProductsPanel_StyleFeaturedImage */ "./src/block-products/WcbProductsPanel_StyleFeaturedImage.tsx");
 /* harmony import */ var _WcbProductsPanel_StyleSaleBadge__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./WcbProductsPanel_StyleSaleBadge */ "./src/block-products/WcbProductsPanel_StyleSaleBadge.tsx");
+/* harmony import */ var _WcbProductsPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WcbProductsPanel_StyleTitle */ "./src/block-products/WcbProductsPanel_StyleTitle.tsx");
+/* harmony import */ var _WcbProductsPanel_StylePrice__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./WcbProductsPanel_StylePrice */ "./src/block-products/WcbProductsPanel_StylePrice.tsx");
+
+
 
 
 
@@ -9112,6 +9118,44 @@ function buildStyleSaleBadgeDefault(attr) {
     ...(attr || {}),
     backgroundColor: (_ref6 = (_saleTag$bg_color = saleTag?.bg_color) !== null && _saleTag$bg_color !== void 0 ? _saleTag$bg_color : attr?.backgroundColor) !== null && _ref6 !== void 0 ? _ref6 : _WcbProductsPanel_StyleSaleBadge__WEBPACK_IMPORTED_MODULE_7__.WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO.backgroundColor,
     textColor: (_ref7 = (_saleTag$text_color = saleTag?.text_color) !== null && _saleTag$text_color !== void 0 ? _saleTag$text_color : attr?.textColor) !== null && _ref7 !== void 0 ? _ref7 : _WcbProductsPanel_StyleSaleBadge__WEBPACK_IMPORTED_MODULE_7__.WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO.textColor
+  };
+}
+function buildStyleTitleDefault(attr) {
+  var _ref8, _general$title_color, _ref9, _ref0, _ref1, _ref10, _ref11, _ref12;
+  const theme = (0,_utils_themeDefaults__WEBPACK_IMPORTED_MODULE_2__.getThemeDefaults)();
+  const general = theme.shop_archive_general_design;
+  return {
+    ..._WcbProductsPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_8__.WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
+    ...(attr || {}),
+    textColor: (_ref8 = (_general$title_color = general?.title_color) !== null && _general$title_color !== void 0 ? _general$title_color : attr?.textColor) !== null && _ref8 !== void 0 ? _ref8 : _WcbProductsPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_8__.WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO.textColor,
+    typography: {
+      ..._WcbProductsPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_8__.WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO.typography,
+      ...(attr?.typography || {}),
+      fontSizes: {
+        Desktop: (_ref9 = (_ref0 = general?.title_font_size != null ? `${general.title_font_size.desktop}px` : undefined) !== null && _ref0 !== void 0 ? _ref0 : attr?.typography?.fontSizes?.Desktop) !== null && _ref9 !== void 0 ? _ref9 : _WcbProductsPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_8__.WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO.typography.fontSizes.Desktop,
+        Tablet: (_ref1 = (_ref10 = general?.title_font_size != null ? `${general.title_font_size.tablet}px` : undefined) !== null && _ref10 !== void 0 ? _ref10 : attr?.typography?.fontSizes?.Tablet) !== null && _ref1 !== void 0 ? _ref1 : _WcbProductsPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_8__.WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO.typography.fontSizes.Tablet,
+        Mobile: (_ref11 = (_ref12 = general?.title_font_size != null ? `${general.title_font_size.mobile}px` : undefined) !== null && _ref12 !== void 0 ? _ref12 : attr?.typography?.fontSizes?.Mobile) !== null && _ref11 !== void 0 ? _ref11 : _WcbProductsPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_8__.WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO.typography.fontSizes.Mobile
+      }
+    }
+  };
+}
+function buildStylePriceDefault(attr) {
+  var _ref13, _general$price_color, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19;
+  const theme = (0,_utils_themeDefaults__WEBPACK_IMPORTED_MODULE_2__.getThemeDefaults)();
+  const general = theme.shop_archive_general_design;
+  return {
+    ..._WcbProductsPanel_StylePrice__WEBPACK_IMPORTED_MODULE_9__.WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO,
+    ...(attr || {}),
+    textColor: (_ref13 = (_general$price_color = general?.price_color) !== null && _general$price_color !== void 0 ? _general$price_color : attr?.textColor) !== null && _ref13 !== void 0 ? _ref13 : _WcbProductsPanel_StylePrice__WEBPACK_IMPORTED_MODULE_9__.WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO.textColor,
+    typography: {
+      ..._WcbProductsPanel_StylePrice__WEBPACK_IMPORTED_MODULE_9__.WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO.typography,
+      ...(attr?.typography || {}),
+      fontSizes: {
+        Desktop: (_ref14 = (_ref15 = general?.price_font_size != null ? `${general.price_font_size.desktop}px` : undefined) !== null && _ref15 !== void 0 ? _ref15 : attr?.typography?.fontSizes?.Desktop) !== null && _ref14 !== void 0 ? _ref14 : _WcbProductsPanel_StylePrice__WEBPACK_IMPORTED_MODULE_9__.WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO.typography.fontSizes.Desktop,
+        Tablet: (_ref16 = (_ref17 = general?.price_font_size != null ? `${general.price_font_size.tablet}px` : undefined) !== null && _ref17 !== void 0 ? _ref17 : attr?.typography?.fontSizes?.Tablet) !== null && _ref16 !== void 0 ? _ref16 : _WcbProductsPanel_StylePrice__WEBPACK_IMPORTED_MODULE_9__.WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO.typography.fontSizes.Tablet,
+        Mobile: (_ref18 = (_ref19 = general?.price_font_size != null ? `${general.price_font_size.mobile}px` : undefined) !== null && _ref19 !== void 0 ? _ref19 : attr?.typography?.fontSizes?.Mobile) !== null && _ref18 !== void 0 ? _ref18 : _WcbProductsPanel_StylePrice__WEBPACK_IMPORTED_MODULE_9__.WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO.typography.fontSizes.Mobile
+      }
+    }
   };
 }
 
@@ -13595,13 +13639,31 @@ const MyTypographyControl = ({
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   FONT_SIZES_DEMO: () => (/* binding */ FONT_SIZES_DEMO),
-/* harmony export */   TYPOGRAPHY_CONTROL_DEMO: () => (/* binding */ TYPOGRAPHY_CONTROL_DEMO)
+/* harmony export */   TYPOGRAPHY_CONTROL_DEMO: () => (/* binding */ TYPOGRAPHY_CONTROL_DEMO),
+/* harmony export */   TYPOGRAPHY_CONTROL_PRODUCT_DEMO: () => (/* binding */ TYPOGRAPHY_CONTROL_PRODUCT_DEMO)
 /* harmony export */ });
 /* harmony import */ var _SelectFontAppearance__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../SelectFontAppearance */ "./src/components/controls/SelectFontAppearance.tsx");
 
 const TYPOGRAPHY_CONTROL_DEMO = {
   fontSizes: {
     Desktop: ""
+  },
+  appearance: _SelectFontAppearance__WEBPACK_IMPORTED_MODULE_0__.FONT_APPEARANCE_OPTIONS[0],
+  textDecoration: undefined,
+  textTransform: undefined,
+  lineHeight: {
+    Desktop: undefined
+  },
+  letterSpacing: {
+    Desktop: undefined
+  },
+  fontFamily: undefined
+};
+const TYPOGRAPHY_CONTROL_PRODUCT_DEMO = {
+  fontSizes: {
+    Desktop: "",
+    Tablet: "",
+    Mobile: ""
   },
   appearance: _SelectFontAppearance__WEBPACK_IMPORTED_MODULE_0__.FONT_APPEARANCE_OPTIONS[0],
   textDecoration: undefined,

@@ -78,7 +78,9 @@ import {
 	buildSortingAndFilteringDefault,
 	buildGeneralFeaturedImageDefault,
 	buildStyleFeaturedImageDefault,
-	buildStyleSaleBadgeDefault
+	buildStyleSaleBadgeDefault,
+	buildStyleTitleDefault,
+	buildStylePriceDefault
 } from "./WcbThemeDefaults";
 
 interface Props extends EditProps<WcbAttrs> {}
@@ -136,11 +138,11 @@ const Edit: FC<Props> = (props) => {
 			style_featuredImage: buildStyleFeaturedImageDefault(WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO as any),
 			style_layout: buildStyleLayoutDefault(attributes.style_border as any),
 			style_pagination: WCB_PRODUCTS_PANEL_STYLE_PAGINATION_DEMO,
-			style_price: WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO,
+			style_price: buildStylePriceDefault(WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO as any),
 			style_rating: WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO,
 			style_saleBadge: buildStyleSaleBadgeDefault(style_saleBadge as any),
 			style_category: WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
-			style_title: WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
+			style_title: buildStyleTitleDefault(WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO as any),
 			general_sortingAndFiltering: buildSortingAndFilteringDefault(general_sortingAndFiltering as any),
 			general_content: buildGeneralContractDefault(general_content as any),
 			general_featuredImage: buildGeneralFeaturedImageDefault(WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO as any),

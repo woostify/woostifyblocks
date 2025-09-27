@@ -10895,13 +10895,31 @@ const MyTypographyControl = ({
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   FONT_SIZES_DEMO: () => (/* binding */ FONT_SIZES_DEMO),
-/* harmony export */   TYPOGRAPHY_CONTROL_DEMO: () => (/* binding */ TYPOGRAPHY_CONTROL_DEMO)
+/* harmony export */   TYPOGRAPHY_CONTROL_DEMO: () => (/* binding */ TYPOGRAPHY_CONTROL_DEMO),
+/* harmony export */   TYPOGRAPHY_CONTROL_PRODUCT_DEMO: () => (/* binding */ TYPOGRAPHY_CONTROL_PRODUCT_DEMO)
 /* harmony export */ });
 /* harmony import */ var _SelectFontAppearance__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../SelectFontAppearance */ "./src/components/controls/SelectFontAppearance.tsx");
 
 const TYPOGRAPHY_CONTROL_DEMO = {
   fontSizes: {
     Desktop: ""
+  },
+  appearance: _SelectFontAppearance__WEBPACK_IMPORTED_MODULE_0__.FONT_APPEARANCE_OPTIONS[0],
+  textDecoration: undefined,
+  textTransform: undefined,
+  lineHeight: {
+    Desktop: undefined
+  },
+  letterSpacing: {
+    Desktop: undefined
+  },
+  fontFamily: undefined
+};
+const TYPOGRAPHY_CONTROL_PRODUCT_DEMO = {
+  fontSizes: {
+    Desktop: "",
+    Tablet: "",
+    Mobile: ""
   },
   appearance: _SelectFontAppearance__WEBPACK_IMPORTED_MODULE_0__.FONT_APPEARANCE_OPTIONS[0],
   textDecoration: undefined,

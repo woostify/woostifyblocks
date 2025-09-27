@@ -25,6 +25,20 @@ export type ThemeDefaults = {
         text_color?: string;
         position?: string;
     }
+    shop_archive_general_design?: {
+        title_color?: string;
+        title_font_size?: {
+            desktop?: number;
+            tablet?: number;
+            mobile?: number;
+        };
+        price_color?: string;
+        price_font_size?: {
+            desktop?: number;
+            tablet?: number;
+            mobile?: number;
+        };
+    }
 };
   
 export function getThemeDefaults(): ThemeDefaults {

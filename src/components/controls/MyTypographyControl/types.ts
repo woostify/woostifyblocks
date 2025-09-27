@@ -14,8 +14,19 @@ export type MyTypographyControlData = {
 	letterSpacing: HasResponsive<CSSProperties["letterSpacing"]>;
 	fontFamily: CSSProperties["fontFamily"];
 };
+
 export const TYPOGRAPHY_CONTROL_DEMO: MyTypographyControlData = {
 	fontSizes: { Desktop: "" },
+	appearance: FONT_APPEARANCE_OPTIONS[0],
+	textDecoration: undefined,
+	textTransform: undefined,
+	lineHeight: { Desktop: undefined },
+	letterSpacing: { Desktop: undefined },
+	fontFamily: undefined,
+};
+
+export const TYPOGRAPHY_CONTROL_PRODUCT_DEMO: MyTypographyControlData = {
+	fontSizes: { Desktop: "", Tablet: "", Mobile: "" },
 	appearance: FONT_APPEARANCE_OPTIONS[0],
 	textDecoration: undefined,
 	textTransform: undefined,

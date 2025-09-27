@@ -35,6 +35,20 @@ add_action('enqueue_block_editor_assets', function () {
 			'text_color' => $woostify['shop_page_sale_color'] ?? '#f0f9ff',
 			'position'   => $woostify['shop_page_sale_tag_position'] ?? 'top-left',
 		],
+		'shop_archive_general_design' => [
+			'title_color'       => $woostify['shop_page_product_title_color'] ?? '#000',
+			'title_font_size'   => [
+				'desktop' => (int)($woostify['shop_page_product_title_font_size'] ?? 14),
+				'tablet'  => (int)($woostify['shop_page_product_title_tablet_font_size'] ?? 14),
+				'mobile'  => (int)($woostify['shop_page_product_title_mobile_font_size'] ?? 14),
+			],
+			'price_color'      => $woostify['shop_page_product_price_color'] ?? '#000',
+			'price_font_size' => [
+				'desktop' => (int)($woostify['shop_page_product_price_font_size'] ?? 18),
+				'tablet'  => (int)($woostify['shop_page_product_price_tablet_font_size'] ?? 14),
+				'mobile'  => (int)($woostify['shop_page_product_price_mobile_font_size'] ?? 14),
+			],
+		]
 	];
 	error_log('[WCB_THEME_DEFAULTS]' . print_r($data, true));
 	wp_add_inline_script('wp-blocks', 'window.WCB_THEME_DEFAULTS='.wp_json_encode($data).';', 'before');
