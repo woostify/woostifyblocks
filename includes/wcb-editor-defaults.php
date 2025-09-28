@@ -48,6 +48,14 @@ add_action('enqueue_block_editor_assets', function () {
 				'tablet'  => (int)($woostify['shop_page_product_price_tablet_font_size'] ?? 14),
 				'mobile'  => (int)($woostify['shop_page_product_price_mobile_font_size'] ?? 14),
 			],
+		],
+		'shop_archive_add_to_cart_btn' => [
+			'text_color' => $woostify['shop_page_button_cart_color'] ?? '#fff',
+			'bg_color'   => $woostify['shop_page_button_cart_background'] ?? '#0c4a6e',
+			'hover_text_color' => $woostify['shop_page_button_color_hover'] ?? '#fff',
+			'hover_bg_color'   => $woostify['shop_page_button_background_hover'] ?? '#094771',
+			'border_radius'    => (int)($woostify['shop_page_button_border_radius'] ?? 0),
+			'position'         => $woostify['shop_page_add_to_cart_button_position'] ?? 'bottom-visible',
 		]
 	];
 	error_log('[WCB_THEME_DEFAULTS]' . print_r($data, true));

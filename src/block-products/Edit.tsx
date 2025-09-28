@@ -29,9 +29,7 @@ import {
 	Spinner,
 	withSpokenMessages,
 } from "@wordpress/components";
-import WcbProductsPanelContent, {
-	WCB_PRODUCTS_PANEL_COTENT_DEMO,
-} from "./WcbProductsPanelContent";
+import WcbProductsPanelContent from "./WcbProductsPanelContent";
 import WcbProductsPanelFeaturedImage, {
 	WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO,
 } from "./WcbProductsPanelFeaturedImage";
@@ -80,7 +78,9 @@ import {
 	buildStyleFeaturedImageDefault,
 	buildStyleSaleBadgeDefault,
 	buildStyleTitleDefault,
-	buildStylePriceDefault
+	buildStylePriceDefault,
+	buildStyleAddToCartBtnDefault,
+	buildGeneralAddToCartBtnDefault
 } from "./WcbThemeDefaults";
 
 interface Props extends EditProps<WcbAttrs> {}
@@ -133,7 +133,7 @@ const Edit: FC<Props> = (props) => {
 		if (attributes.style_layout) return;
 
 		const DEFAULT: Omit<WcbAttrs, "uniqueId"> = {
-			style_addToCardBtn: WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO,
+			style_addToCardBtn: buildStyleAddToCartBtnDefault(WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO as any),
 			style_border: buildStyleBorderDefault(attributes.style_layout as any),
 			style_featuredImage: buildStyleFeaturedImageDefault(WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO as any),
 			style_layout: buildStyleLayoutDefault(attributes.style_border as any),
@@ -146,7 +146,7 @@ const Edit: FC<Props> = (props) => {
 			general_sortingAndFiltering: buildSortingAndFilteringDefault(general_sortingAndFiltering as any),
 			general_content: buildGeneralContractDefault(general_content as any),
 			general_featuredImage: buildGeneralFeaturedImageDefault(WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO as any),
-			general_addToCartBtn: WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO,
+			general_addToCartBtn: buildGeneralAddToCartBtnDefault(WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO as any),
 			general_pagination: WCB_PRODUCTS_PANEL_PAGINATION_DEMO,
 			advance_responsiveCondition: RESPONSIVE_CONDITON_DEMO,
 			advance_zIndex: Z_INDEX_DEMO,

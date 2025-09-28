@@ -39,6 +39,14 @@ export type ThemeDefaults = {
             mobile?: number;
         };
     }
+    shop_archive_add_to_cart_btn?: {
+        text_color?: string;
+        bg_color?: string;
+        hover_text_color?: string;
+        hover_bg_color?: string;
+        border_radius?: number;
+        position?: string;
+    }
 };
   
 export function getThemeDefaults(): ThemeDefaults {

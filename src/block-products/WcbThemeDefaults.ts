@@ -10,6 +10,8 @@ import { WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO } from "./WcbProductsPanel
 import { WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO } from "./WcbProductsPanel_StyleSaleBadge";
 import { WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO } from "./WcbProductsPanel_StyleTitle";
 import { WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO } from "./WcbProductsPanel_StylePrice";
+import { WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO } from "./WcbProductsPanel_StyleAddToCartBtn";
+import { WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO } from "./WcbProductsPanelButton";
   
 export function buildStyleLayoutDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO>) {
     const theme = getThemeDefaults();
@@ -205,5 +207,73 @@ export function buildStylePriceDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_
                     WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO.typography.fontSizes.Mobile,
             },
         },
+    };
+}
+
+export function buildStyleAddToCartBtnDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO>) {
+    const theme = getThemeDefaults();
+    const addToCartBtn = theme.shop_archive_add_to_cart_btn;
+    return {
+        ...WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO,
+        ...(attr || {}),
+        colorAndBackgroundColor: {
+            ...WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO.colorAndBackgroundColor,
+            ...(attr?.colorAndBackgroundColor || {}),
+            Normal: {
+                color: 
+                    addToCartBtn?.text_color ?? 
+                    attr?.colorAndBackgroundColor?.Normal?.color ?? 
+                    WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO.colorAndBackgroundColor?.Normal?.color,
+                backgroundColor: 
+                    addToCartBtn?.bg_color ?? 
+                    attr?.colorAndBackgroundColor?.Normal?.backgroundColor ?? 
+                    WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO.colorAndBackgroundColor?.Normal?.backgroundColor,
+            },
+            Hover: {
+                color: 
+                    addToCartBtn?.hover_text_color ?? 
+                    attr?.colorAndBackgroundColor?.Hover?.color ?? 
+                    WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO.colorAndBackgroundColor?.Hover?.color,
+                backgroundColor: 
+                    addToCartBtn?.hover_bg_color ?? 
+                    attr?.colorAndBackgroundColor?.Hover?.backgroundColor ?? 
+                    WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO.colorAndBackgroundColor?.Hover?.backgroundColor,
+            }
+        },
+        border: {
+            ...WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO.border,
+            ...(attr?.border || {}),
+            radius: {
+                Desktop:
+                    (addToCartBtn?.border_radius != null ? `${addToCartBtn.border_radius}px` : undefined) ??
+                    attr?.border?.radius?.Desktop ??
+                    WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO.border.radius.Desktop,
+                Tablet:
+                    (addToCartBtn?.border_radius != null ? `${addToCartBtn.border_radius}px` : undefined) ??
+                    attr?.border?.radius?.Tablet ??
+                    WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO.border.radius.Tablet,
+                Mobile:
+                    (addToCartBtn?.border_radius != null ? `${addToCartBtn.border_radius}px` : undefined) ??
+                    attr?.border?.radius?.Mobile ??
+                    WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO.border.radius.Mobile,
+            }
+        }
+    };
+}
+
+export function buildGeneralAddToCartBtnDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO>) {
+    const theme = getThemeDefaults();
+    const addToCartBtn = theme.shop_archive_add_to_cart_btn;
+    return {
+        ...WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO,
+        ...(attr || {}),
+        isShowButton: 
+            addToCartBtn?.position === 'none' ? false : 
+            attr?.isShowButton ?? 
+            WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO.isShowButton,
+        position: 
+            addToCartBtn?.position === 'image' ? 'inside image' : 
+            attr?.position ?? 
+            WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO.position,
     };
 }
