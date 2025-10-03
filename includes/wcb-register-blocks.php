@@ -46,6 +46,9 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
                         'general_sortingAndFiltering' => array(
                             'type'      => 'object',
                         ),
+                        'general_layout' => array(
+                            'type'      => 'object',
+                        ),
                         'general_content' => array(
                             'type'      => 'object',
                         ),

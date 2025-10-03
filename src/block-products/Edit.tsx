@@ -69,6 +69,9 @@ import WcbProductsPanel_StyleCategory, {
 import { RESPONSIVE_CONDITON_DEMO } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
 import { Z_INDEX_DEMO } from "../components/controls/MyZIndexControl/MyZIndexControl";
 import { MY_MOTION_EFFECT_DEMO } from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
+import WcbProducstPanelGeneralLayout, {
+	WCB_PRODUCTS_PANEL_GENERAL_LAYOUT_DEMO
+} from "./WcbProducstPanel_GeneralLayout";	
 import { 
 	buildStyleBorderDefault, 
 	buildStyleLayoutDefault, 
@@ -94,6 +97,7 @@ const Edit: FC<Props> = (props) => {
 		general_sortingAndFiltering,
 		uniqueId,
 		general_content,
+		general_layout,
 		general_featuredImage,
 		general_addToCartBtn,
 		general_pagination,
@@ -145,6 +149,7 @@ const Edit: FC<Props> = (props) => {
 			style_title: buildStyleTitleDefault(WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO as any),
 			general_sortingAndFiltering: buildSortingAndFilteringDefault(general_sortingAndFiltering as any),
 			general_content: buildGeneralContractDefault(general_content as any),
+			general_layout: WCB_PRODUCTS_PANEL_GENERAL_LAYOUT_DEMO,
 			general_featuredImage: buildGeneralFeaturedImageDefault(WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO as any),
 			general_addToCartBtn: buildGeneralAddToCartBtnDefault(WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO as any),
 			general_pagination: WCB_PRODUCTS_PANEL_PAGINATION_DEMO,
@@ -195,6 +200,22 @@ const Edit: FC<Props> = (props) => {
 								panelData={general_sortingAndFiltering}
 							/>
 						)}
+						{
+							general_layout && (
+								<WcbProducstPanelGeneralLayout
+									onToggle={() =>
+										handleTogglePanel("General", "Layout")
+									}
+									initialOpen={tabGeneralIsPanelOpen === "Layout"}
+									opened={tabGeneralIsPanelOpen === "Layout" || undefined}
+									//
+									setAttr__={(data) => {
+										setAttributes({ general_layout: data });
+									}}
+									panelData={general_layout}
+								/>
+							)
+						}
 						{general_content && (
 							<WcbProductsPanelContent
 								onToggle={() => handleTogglePanel("General", "Content")}
@@ -270,136 +291,142 @@ const Edit: FC<Props> = (props) => {
 							/>
 						)}
 
-						{general_featuredImage?.isShowFeaturedImage && style_featuredImage && (
-							<WcbProductsPanel_StyleFeaturedImage
-								onToggle={() =>
-									handleTogglePanel("Styles", "_StyleFeaturedImage")
-								}
-								initialOpen={tabStylesIsPanelOpen === "_StyleFeaturedImage"}
-								opened={
-									tabStylesIsPanelOpen === "_StyleFeaturedImage" || undefined
-								}
-								//
-								setAttr__={(data) => {
-									setAttributes({ style_featuredImage: data });
-								}}
-								panelData={style_featuredImage}
-								imagePosition="top"
-							/>
-						)}
+						{
+							general_layout?.generalLayout != "customizer" && (
+								<>
+									{general_featuredImage?.isShowFeaturedImage && style_featuredImage && (
+										<WcbProductsPanel_StyleFeaturedImage
+											onToggle={() =>
+												handleTogglePanel("Styles", "_StyleFeaturedImage")
+											}
+											initialOpen={tabStylesIsPanelOpen === "_StyleFeaturedImage"}
+											opened={
+												tabStylesIsPanelOpen === "_StyleFeaturedImage" || undefined
+											}
+											//
+											setAttr__={(data) => {
+												setAttributes({ style_featuredImage: data });
+											}}
+											panelData={style_featuredImage}
+											imagePosition="top"
+										/>
+									)}
 
-						{general_content?.isShowCategory && style_category && (
-							<WcbProductsPanel_StyleCategory
-								onToggle={() => handleTogglePanel("Styles", "_StyleCategory")}
-								initialOpen={tabStylesIsPanelOpen === "_StyleCategory"}
-								opened={tabStylesIsPanelOpen === "_StyleCategory" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({ style_category: data });
-								}}
-								panelData={style_category}
-							/>
-						)}
+									{general_content?.isShowCategory && style_category && (
+										<WcbProductsPanel_StyleCategory
+											onToggle={() => handleTogglePanel("Styles", "_StyleCategory")}
+											initialOpen={tabStylesIsPanelOpen === "_StyleCategory"}
+											opened={tabStylesIsPanelOpen === "_StyleCategory" || undefined}
+											//
+											setAttr__={(data) => {
+												setAttributes({ style_category: data });
+											}}
+											panelData={style_category}
+										/>
+									)}
 
-						{general_content?.isShowTitle && style_title && (
-							<WcbProductsPanel_StyleTitle
-								onToggle={() => handleTogglePanel("Styles", "_StyleTitle")}
-								initialOpen={tabStylesIsPanelOpen === "_StyleTitle"}
-								opened={tabStylesIsPanelOpen === "_StyleTitle" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({ style_title: data });
-								}}
-								panelData={style_title}
-							/>
-						)}
+									{general_content?.isShowTitle && style_title && (
+										<WcbProductsPanel_StyleTitle
+											onToggle={() => handleTogglePanel("Styles", "_StyleTitle")}
+											initialOpen={tabStylesIsPanelOpen === "_StyleTitle"}
+											opened={tabStylesIsPanelOpen === "_StyleTitle" || undefined}
+											//
+											setAttr__={(data) => {
+												setAttributes({ style_title: data });
+											}}
+											panelData={style_title}
+										/>
+									)}
 
-						{general_content?.isShowSaleBadge && style_saleBadge && (
-							<WcbProductsPanel_StyleSaleBadge
-								onToggle={() => handleTogglePanel("Styles", "_StyleSaleBadge")}
-								initialOpen={tabStylesIsPanelOpen === "_StyleSaleBadge"}
-								opened={tabStylesIsPanelOpen === "_StyleSaleBadge" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({ style_saleBadge: data });
-								}}
-								panelData={style_saleBadge}
-							/>
-						)}
+									{general_content?.isShowSaleBadge && style_saleBadge && (
+										<WcbProductsPanel_StyleSaleBadge
+											onToggle={() => handleTogglePanel("Styles", "_StyleSaleBadge")}
+											initialOpen={tabStylesIsPanelOpen === "_StyleSaleBadge"}
+											opened={tabStylesIsPanelOpen === "_StyleSaleBadge" || undefined}
+											//
+											setAttr__={(data) => {
+												setAttributes({ style_saleBadge: data });
+											}}
+											panelData={style_saleBadge}
+										/>
+									)}
 
-						{general_content?.isShowRating && style_rating && (
-							<WcbProductsPanel_StyleRating
-								onToggle={() => handleTogglePanel("Styles", "_StyleRating")}
-								initialOpen={tabStylesIsPanelOpen === "_StyleRating"}
-								opened={tabStylesIsPanelOpen === "_StyleRating" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({ style_rating: data });
-								}}
-								panelData={style_rating}
-							/>
-						)}
+									{general_content?.isShowRating && style_rating && (
+										<WcbProductsPanel_StyleRating
+											onToggle={() => handleTogglePanel("Styles", "_StyleRating")}
+											initialOpen={tabStylesIsPanelOpen === "_StyleRating"}
+											opened={tabStylesIsPanelOpen === "_StyleRating" || undefined}
+											//
+											setAttr__={(data) => {
+												setAttributes({ style_rating: data });
+											}}
+											panelData={style_rating}
+										/>
+									)}
 
-						{general_content?.isShowPrice && style_price && (
-							<WcbProductsPanel_StylePrice
-								onToggle={() => handleTogglePanel("Styles", "_StylePrice")}
-								initialOpen={tabStylesIsPanelOpen === "_StylePrice"}
-								opened={tabStylesIsPanelOpen === "_StylePrice" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({ style_price: data });
-								}}
-								panelData={style_price}
-							/>
-						)}
+									{general_content?.isShowPrice && style_price && (
+										<WcbProductsPanel_StylePrice
+											onToggle={() => handleTogglePanel("Styles", "_StylePrice")}
+											initialOpen={tabStylesIsPanelOpen === "_StylePrice"}
+											opened={tabStylesIsPanelOpen === "_StylePrice" || undefined}
+											//
+											setAttr__={(data) => {
+												setAttributes({ style_price: data });
+											}}
+											panelData={style_price}
+										/>
+									)}
 
-						{general_addToCartBtn?.isShowButton && style_addToCardBtn && (
-							<WcbProductsPanel_StyleAddToCartBtn
-								onToggle={() =>
-									handleTogglePanel("Styles", "_StyleAddToCartBtn")
-								}
-								initialOpen={tabStylesIsPanelOpen === "_StyleAddToCartBtn"}
-								opened={
-									tabStylesIsPanelOpen === "_StyleAddToCartBtn" || undefined
-								}
-								//
-								setAttr__={(data) => {
-									setAttributes({ style_addToCardBtn: data });
-								}}
-								panelData={style_addToCardBtn}
-							/>
-						)}
+									{general_addToCartBtn?.isShowButton && style_addToCardBtn && (
+										<WcbProductsPanel_StyleAddToCartBtn
+											onToggle={() =>
+												handleTogglePanel("Styles", "_StyleAddToCartBtn")
+											}
+											initialOpen={tabStylesIsPanelOpen === "_StyleAddToCartBtn"}
+											opened={
+												tabStylesIsPanelOpen === "_StyleAddToCartBtn" || undefined
+											}
+											//
+											setAttr__={(data) => {
+												setAttributes({ style_addToCardBtn: data });
+											}}
+											panelData={style_addToCardBtn}
+										/>
+									)}
 
-						{general_pagination?.isShowPagination && style_pagination && (
-							<WcbProductsPanel_StylePagination
-								onToggle={() => handleTogglePanel("Styles", "_StylePagination")}
-								initialOpen={tabStylesIsPanelOpen === "_StylePagination"}
-								opened={
-									tabStylesIsPanelOpen === "_StylePagination" || undefined
-								}
-								//
-								setAttr__={(data) => {
-									setAttributes({ style_pagination: data });
-								}}
-								panelData={style_pagination}
-							/>
-						)}
+									{general_pagination?.isShowPagination && style_pagination && (
+										<WcbProductsPanel_StylePagination
+											onToggle={() => handleTogglePanel("Styles", "_StylePagination")}
+											initialOpen={tabStylesIsPanelOpen === "_StylePagination"}
+											opened={
+												tabStylesIsPanelOpen === "_StylePagination" || undefined
+											}
+											//
+											setAttr__={(data) => {
+												setAttributes({ style_pagination: data });
+											}}
+											panelData={style_pagination}
+										/>
+									)}
 
-						<PanelBody
-							onToggle={() => handleTogglePanel("Styles", "StyleBorder")}
-							initialOpen={tabStylesIsPanelOpen === "StyleBorder"}
-							opened={tabStylesIsPanelOpen === "StyleBorder" || undefined}
-							title={__("Border", "wcb")}
-						>
-							{style_border && (
-								<MyBorderControl
-									borderControl={style_border}
-									setAttrs__border={(data) =>
-										setAttributes({ style_border: data })
-									}
-								/>
-							)}
-						</PanelBody>
+									<PanelBody
+										onToggle={() => handleTogglePanel("Styles", "StyleBorder")}
+										initialOpen={tabStylesIsPanelOpen === "StyleBorder"}
+										opened={tabStylesIsPanelOpen === "StyleBorder" || undefined}
+										title={__("Border", "wcb")}
+									>
+										{style_border && (
+											<MyBorderControl
+												borderControl={style_border}
+												setAttrs__border={(data) =>
+													setAttributes({ style_border: data })
+												}
+											/>
+										)}
+									</PanelBody>
+								</>
+							)
+						}
 					</>
 				);
 			case "Advances":
@@ -584,6 +611,7 @@ const Edit: FC<Props> = (props) => {
 		advance_zIndex,
 		general_sortingAndFiltering,
 		general_content,
+		general_layout,
 		general_featuredImage,
 		general_addToCartBtn,
 		general_pagination,
