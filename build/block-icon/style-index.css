@@ -1,1 +1,11 @@
-.wcb-icon__content{display:inline-block}.wcb-icon__content i{display:block}
+/*!**************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/block-icon/style.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************/
+.wcb-icon__content {
+  display: inline-block;
+}
+.wcb-icon__content i {
+  display: block;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

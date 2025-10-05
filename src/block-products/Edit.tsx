@@ -290,9 +290,8 @@ const Edit: FC<Props> = (props) => {
 								panelData={style_layout}
 							/>
 						)}
-
 						{
-							general_layout?.generalLayout != "customizer" && (
+							general_layout?.isCustomizerGeneralLayout == true && (
 								<>
 									{general_featuredImage?.isShowFeaturedImage && style_featuredImage && (
 										<WcbProductsPanel_StyleFeaturedImage

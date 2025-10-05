@@ -4,14 +4,15 @@ import {
 } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import React, { FC } from "react";
+import { ToggleControl } from "@wordpress/components";
 
 export interface WCB_PRODUCTS_PANEL_GENERAL_LAYOUT {
-	generalLayout: "customizer" | "custom";
+	isCustomizerGeneralLayout: boolean;
 }
 
 export const WCB_PRODUCTS_PANEL_GENERAL_LAYOUT_DEMO: WCB_PRODUCTS_PANEL_GENERAL_LAYOUT =
 	{
-		generalLayout: "customizer",
+		isCustomizerGeneralLayout: false,
 	};
 
 interface Props
@@ -28,6 +29,8 @@ const WcbProducstPanelGeneralLayout: FC<Props> = ({
 	opened,
 }) => {
 
+	const { isCustomizerGeneralLayout } = panelData;
+
 	return (
 		<PanelBody
 			className={"space-y-5"}
@@ -36,20 +39,12 @@ const WcbProducstPanelGeneralLayout: FC<Props> = ({
 			opened={opened}
 			title={__("Layout", "wcb")}
 		>
-			<SelectControl
-				label={__("Design", "wcb")}
-				value={panelData.generalLayout}
-				options={[
-					{
-						label: __("Inherit from Thems Settings", "wcb"),
-						value: "customizer",
-					},
-					{
-						label: __("Custom", "wcb"),
-						value: "custom",
-					},
-				]}
-				onChange={(generalLayout) => setAttr__({ ...panelData, generalLayout })}
+			<ToggleControl
+				label={__("Custom style", "wcb")}
+				onChange={(checked) =>
+					setAttr__({ ...panelData, isCustomizerGeneralLayout: checked })
+				}
+				checked={isCustomizerGeneralLayout}
 			/>
 		</PanelBody>
 	);

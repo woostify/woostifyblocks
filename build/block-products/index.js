@@ -5851,7 +5851,7 @@ const Edit = props => {
             });
           },
           panelData: style_layout
-        }), general_layout?.generalLayout != "customizer" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, general_featuredImage?.isShowFeaturedImage && style_featuredImage && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanel_StyleFeaturedImage__WEBPACK_IMPORTED_MODULE_17__["default"], {
+        }), general_layout?.isCustomizerGeneralLayout == true && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, general_featuredImage?.isShowFeaturedImage && style_featuredImage && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanel_StyleFeaturedImage__WEBPACK_IMPORTED_MODULE_17__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleFeaturedImage"),
           initialOpen: tabStylesIsPanelOpen === "_StyleFeaturedImage",
           opened: tabStylesIsPanelOpen === "_StyleFeaturedImage" || undefined
@@ -7357,8 +7357,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 const WCB_PRODUCTS_PANEL_GENERAL_LAYOUT_DEMO = {
-  generalLayout: "customizer"
+  isCustomizerGeneralLayout: false
 };
 const WcbProducstPanelGeneralLayout = ({
   panelData = WCB_PRODUCTS_PANEL_GENERAL_LAYOUT_DEMO,
@@ -7367,26 +7368,22 @@ const WcbProducstPanelGeneralLayout = ({
   onToggle,
   opened
 }) => {
+  const {
+    isCustomizerGeneralLayout
+  } = panelData;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     className: "space-y-5",
     initialOpen: initialOpen,
     onToggle: onToggle,
     opened: opened,
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Layout", "wcb")
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Design", "wcb"),
-    value: panelData.generalLayout,
-    options: [{
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Inherit from Thems Settings", "wcb"),
-      value: "customizer"
-    }, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Custom", "wcb"),
-      value: "custom"
-    }],
-    onChange: generalLayout => setAttr__({
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Custom style", "wcb"),
+    onChange: checked => setAttr__({
       ...panelData,
-      generalLayout
-    })
+      isCustomizerGeneralLayout: checked
+    }),
+    checked: isCustomizerGeneralLayout
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WcbProducstPanelGeneralLayout);
