@@ -20,6 +20,8 @@ function wcb_block_products__renderCallback($attributes, $content)
     ob_start();
     $loop = new WP_Query($args);
 
+    error_log('WP_Query $loop: ' . var_export($loop, true));
+
     if (!$loop->have_posts()) {
         return '';
     }
@@ -89,7 +91,7 @@ function wcb_block_products__renderCallback($attributes, $content)
 // 
 function wcb_block_products__render_product($product, $attributes, $index)
 {
-
+    error_log('Rendering attributes: ' . var_export($attributes, true));
     $data = (object) array(
         'permalink' => esc_url($product->get_permalink()),
         'image'     => "",
@@ -277,27 +279,34 @@ function wcb_block_products__add_percentage_to_sale_badge($product)
 
         $percentage    = round(100 - ($sale_price / $regular_price * 100)) . '%';
     }
-    return '<span class="onsale">' . esc_html__('SALE', 'wcb') . ' ' . $percentage . '</span>';
+    return '<span class="onsale">' . esc_html__('-', 'wcb') . ' ' . $percentage . '</span>';
 }
 
 
 function wcb_block_products__get_sale_badge_html($product,  $showSaleBadgeDiscoutPercent)
 {
+     error_log('var_export showSaleBadgeDiscoutPercent: ' . var_export($showSaleBadgeDiscoutPercent, true));
 
     if (!$product->is_on_sale()) {
         return;
     }
 
-    if (wcb__is_enabled($showSaleBadgeDiscoutPercent)) {
+    $woostify = get_option('woostify_setting') ?: [];
+    $is_show_sale_percent = $woostify['shop_page_sale_percent'];
+
+    error_log('woostify resolved: ' . var_export($woostify, true));
+    error_log('shop_page_sale_percentage: ' . var_export($woostify['shop_page_sale_percentage'] ?? null, true));
+    error_log('get_stock_status resolved: ' . var_export($product->get_stock_status(), true));
+
+    if ($product->is_on_sale() && $is_show_sale_percent) {
         return '<div class="wcb-products__product-salebadge"><div class="wcb-products__product-onsale wc-block-grid__product-onsale">
-        ' . wcb_block_products__add_percentage_to_sale_badge($product) . '
-        <span class="screen-reader-text">' . esc_html__('Product on sale', 'wcb') . '</span>
-    </div></div>';
+            ' . wcb_block_products__add_percentage_to_sale_badge($product) . '
+            <span class="screen-reader-text">' . esc_html__('Product on sale', 'wcb') . '</span>
+        </div></div>';
     }
 
-
     return '<div class="wcb-products__product-salebadge"><div class="wcb-products__product-onsale wc-block-grid__product-onsale">
-			<span aria-hidden="true">' . esc_html__('Sale', 'wcb') . '</span>
+			<span aria-hidden="true">' . esc_html__($woostify['shop_page_sale_text'] ?? 'Sale', 'wcb') . '</span>
 			<span class="screen-reader-text">' . esc_html__('Product on sale', 'wcb') . '</span>
 		</div></div>';
 }
@@ -539,6 +548,7 @@ if (!function_exists("wcb_block_products_set_block_query_args")) :
 
     function wcb_block_products_set_block_query_args(&$query_args, $filtersAttrs)
     {
+        error_log('$filtersAttrs isOnSale' . print_r($filtersAttrs['isOnSale'], true));
         if (wcb__is_enabled($filtersAttrs['isOnSale'] ?? "")) {
             $query_args['post__in'] = array_merge(array(0), wc_get_product_ids_on_sale_myself());
         }

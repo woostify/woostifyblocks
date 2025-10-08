@@ -5789,7 +5789,7 @@ const Edit = props => {
             });
           },
           panelData: general_layout
-        }), general_content && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanelContent__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        }), general_layout?.isCustomizerGeneralLayout == true && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, general_content && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanelContent__WEBPACK_IMPORTED_MODULE_12__["default"], {
           onToggle: () => handleTogglePanel("General", "Content"),
           initialOpen: tabGeneralIsPanelOpen === "Content",
           opened: tabGeneralIsPanelOpen === "Content" || undefined
@@ -5825,7 +5825,7 @@ const Edit = props => {
             });
           },
           panelData: general_addToCartBtn
-        }), general_pagination && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanelPagination__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        })), general_pagination && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbProductsPanelPagination__WEBPACK_IMPORTED_MODULE_15__["default"], {
           onToggle: () => handleTogglePanel("General", "Pagination"),
           initialOpen: tabGeneralIsPanelOpen === "Pagination",
           opened: tabGeneralIsPanelOpen === "Pagination" || undefined
@@ -7751,7 +7751,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const WCB_PRODUCTS_PANEL_PAGINATION_DEMO = {
-  isShowPagination: true,
+  isShowPagination: false,
   pageLimit: 0,
   previousText: "",
   nextText: "",

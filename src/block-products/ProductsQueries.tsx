@@ -13,7 +13,7 @@ const ProductsQueries = () => {
 			action: "wcb_get_product_filters",
 			data: "ProductsQueries",
 		};
-		jQuery.post(ajaxurl, data, function (response) {
+		jQuery.post((window as any).ajaxurl, data, function (response) {
 			console.log(123, "Got this from the server: ", { data, response });
 			setProductHtmls(response.data);
 			setLoading(false);

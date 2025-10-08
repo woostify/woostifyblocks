@@ -216,46 +216,53 @@ const Edit: FC<Props> = (props) => {
 								/>
 							)
 						}
-						{general_content && (
-							<WcbProductsPanelContent
-								onToggle={() => handleTogglePanel("General", "Content")}
-								initialOpen={tabGeneralIsPanelOpen === "Content"}
-								opened={tabGeneralIsPanelOpen === "Content" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({ general_content: data });
-								}}
-								panelData={general_content}
-							/>
-						)}
-						{general_featuredImage && (
-							<WcbProductsPanelFeaturedImage
-								onToggle={() =>
-									handleTogglePanel("General", "PostFeaturedImage")
-								}
-								initialOpen={tabGeneralIsPanelOpen === "PostFeaturedImage"}
-								opened={
-									tabGeneralIsPanelOpen === "PostFeaturedImage" || undefined
-								}
-								//
-								setAttr__={(data) => {
-									setAttributes({ general_featuredImage: data });
-								}}
-								panelData={general_featuredImage}
-							/>
-						)}
-						{general_addToCartBtn && (
-							<WcbProductsPanelButton
-								onToggle={() => handleTogglePanel("General", "Button")}
-								initialOpen={tabGeneralIsPanelOpen === "Button"}
-								opened={tabGeneralIsPanelOpen === "Button" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({ general_addToCartBtn: data });
-								}}
-								panelData={general_addToCartBtn}
-							/>
-						)}
+						{
+							general_layout?.isCustomizerGeneralLayout == true && (
+								<>
+									{general_content && (
+										<WcbProductsPanelContent
+											onToggle={() => handleTogglePanel("General", "Content")}
+											initialOpen={tabGeneralIsPanelOpen === "Content"}
+											opened={tabGeneralIsPanelOpen === "Content" || undefined}
+											//
+											setAttr__={(data) => {
+												setAttributes({ general_content: data });
+											}}
+											panelData={general_content}
+										/>
+									)}
+									{general_featuredImage && (
+										<WcbProductsPanelFeaturedImage
+											onToggle={() =>
+												handleTogglePanel("General", "PostFeaturedImage")
+											}
+											initialOpen={tabGeneralIsPanelOpen === "PostFeaturedImage"}
+											opened={
+												tabGeneralIsPanelOpen === "PostFeaturedImage" || undefined
+											}
+											//
+											setAttr__={(data) => {
+												setAttributes({ general_featuredImage: data });
+											}}
+											panelData={general_featuredImage}
+										/>
+									)}
+									{general_addToCartBtn && (
+										<WcbProductsPanelButton
+											onToggle={() => handleTogglePanel("General", "Button")}
+											initialOpen={tabGeneralIsPanelOpen === "Button"}
+											opened={tabGeneralIsPanelOpen === "Button" || undefined}
+											//
+											setAttr__={(data) => {
+												setAttributes({ general_addToCartBtn: data });
+											}}
+											panelData={general_addToCartBtn}
+										/>
+									)}
+								</>
+							)
+						}
+						
 						{general_pagination && (
 							<WcbProductsPanelPagination
 								onToggle={() => handleTogglePanel("General", "Pagination")}

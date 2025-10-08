@@ -2,7 +2,7 @@ import { addQueryArgs } from "@wordpress/url";
 import apiFetch from "@wordpress/api-fetch";
 import { flatten, uniqBy } from "lodash";
 
-export const getProduct = (productId) => {
+export const getProduct = (productId: String) => {
 	return apiFetch({
 		path: `/wc/store/v1/products/${productId}`,
 	});
@@ -17,7 +17,7 @@ export const getCategories = (queryArgs = {}) => {
 	});
 };
 
-export const getCategory = (categoryId) => {
+export const getCategory = (categoryId: String) => {
 	return apiFetch({
 		path: `wc/store/v1/products/categories/${categoryId}`,
 	});
@@ -56,7 +56,7 @@ export const getProductTags = ({ selected = [], search = "" }) => {
 	);
 };
 
-export const formatError = async (error) => {
+export const formatError = async (error: any) => {
 	if (typeof error.json === "function") {
 		try {
 			const parsedError = await error.json();
@@ -64,7 +64,7 @@ export const formatError = async (error) => {
 				message: parsedError.message,
 				type: parsedError.type || "api",
 			};
-		} catch (e) {
+		} catch (e: any) {
 			return {
 				message: e.message,
 				type: "general",
@@ -84,7 +84,7 @@ export const getAttributes = () => {
 	});
 };
 
-export const getTerms = (attribute) => {
+export const getTerms = (attribute: any) => {
 	return apiFetch({
 		path: `wc/store/v1/products/attributes/${attribute}/terms`,
 	});
