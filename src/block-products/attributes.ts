@@ -60,6 +60,7 @@ import {
 	WCB_PRODUCTS_PANEL_GENERAL_LAYOUT,
 	WCB_PRODUCTS_PANEL_GENERAL_LAYOUT_DEMO
 } from "./WcbProducstPanel_GeneralLayout";
+import { WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK } from "./WcbProductsPanel_StyleOutOfStock";
 
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
@@ -79,6 +80,7 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	style_addToCardBtn?: WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN;
 	style_pagination?: WCB_PRODUCTS_PANEL_STYLE_PAGINATION;
 	style_saleBadge?: WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE;
+	style_outOfStock?: WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK;
 	style_border?: MyBorderControlData;
 	style_price?: WCB_PRODUCTS_PANEL_STYLE_PRICE;
 	style_rating?: WCB_PRODUCTS_PANEL_STYLE_RATING;

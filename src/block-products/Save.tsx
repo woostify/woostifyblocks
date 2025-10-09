@@ -26,6 +26,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_price,
 		style_rating,
 		style_saleBadge,
+		style_outOfStock,
 		style_title,
 		advance_motionEffect,
 		style_category,
@@ -94,6 +95,10 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_saleBadge: style_saleBadge ? {
 			...style_saleBadge,
 			typography: ensureTypographyConsistency(style_saleBadge.typography)
+		} : undefined,
+		style_outOfStock: style_outOfStock ? {
+			...style_outOfStock,
+			typography: ensureTypographyConsistency(style_outOfStock.typography)
 		} : undefined,
 		style_title: style_title ? {
 			...style_title,

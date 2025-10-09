@@ -91,7 +91,7 @@ function wcb_block_products__renderCallback($attributes, $content)
 // 
 function wcb_block_products__render_product($product, $attributes, $index)
 {
-    error_log('Rendering attributes: ' . var_export($attributes, true));
+    error_log('Rendering product: ' . var_export($product, true));
     $data = (object) array(
         'permalink' => esc_url($product->get_permalink()),
         'image'     => "",
@@ -100,6 +100,7 @@ function wcb_block_products__render_product($product, $attributes, $index)
         'rating'    => "",
         'price'     => "",
         'badge'     => "",
+        'out_of_stock' => "",
         'button'    => "",
         'categories'    => "",
     );
@@ -134,6 +135,8 @@ function wcb_block_products__render_product($product, $attributes, $index)
         $data->categories = wcb_block_products__get_category_html($product);
     }
 
+    $data->out_of_stock = wcb_block_products__get_out_of_stock_html($product);
+
     $btnInsideImage = ($attributes['general_addToCartBtn']['position'] ?? "") === "inside image";
     $saleInsideImage = ($attributes['general_content']['saleBadgePosition'] ?? "") === "Inside image";
     $classes = "wcb-products__product ";
@@ -151,6 +154,9 @@ function wcb_block_products__render_product($product, $attributes, $index)
     $classes .= $saleInsideImage ? " wcb-products__product--onsaleInsideImage" : "";
     $saleBadge1 = $saleInsideImage ? $data->badge : "";
     $saleBadge2 = $saleInsideImage ?   "" : $data->badge;
+    // out of stock
+    $classes .= $saleInsideImage ? " wcb-products__product--onsaleInsideImage" : "";
+    $saleOutOfStock = $data->out_of_stock ? : "";
     // 
     $isSwapHover = $data->gallery_image_1 ? "<div class=\"wcb-products__product-galley_image_1\">{$data->gallery_image_1}</div>" : '';
     // 
@@ -161,7 +167,6 @@ function wcb_block_products__render_product($product, $attributes, $index)
         }
     }
 
-
     return apply_filters(
         'woocommerce_blocks_product_grid_item_html',
         "<div class=\"scroll-snap-slide {$classes}\" data-index=\"{$index}\">
@@ -171,6 +176,7 @@ function wcb_block_products__render_product($product, $attributes, $index)
                         {$isSwapHover}
                     </a>
                     {$saleBadge1}
+                    {$saleOutOfStock}
                     {$btn1}
                 </div>
                 {$data->categories}
@@ -285,8 +291,6 @@ function wcb_block_products__add_percentage_to_sale_badge($product)
 
 function wcb_block_products__get_sale_badge_html($product,  $showSaleBadgeDiscoutPercent)
 {
-     error_log('var_export showSaleBadgeDiscoutPercent: ' . var_export($showSaleBadgeDiscoutPercent, true));
-
     if (!$product->is_on_sale()) {
         return;
     }
@@ -311,6 +315,21 @@ function wcb_block_products__get_sale_badge_html($product,  $showSaleBadgeDiscou
 		</div></div>';
 }
 
+function wcb_block_products__get_out_of_stock_html($product)
+{
+    $woostify = get_option('woostify_setting') ?: [];
+
+    error_log('woostify resolved: ' . var_export($woostify, true));
+    error_log('shop_page_sale_percentage: ' . var_export($woostify['shop_page_sale_percentage'] ?? null, true));
+    error_log('get_stock_status resolved: ' . var_export($product->get_stock_status(), true));
+
+    if ($product->get_stock_status() === 'outofstock') {
+        return '<div class="wcb-products__product-outofstock-badge"><div class="wcb-products__product-on-outofstock wc-block-grid__product-outofstock">
+                    <span aria-hidden="true">' . esc_html__($woostify['shop_page_out_of_stock_text'] ?? 'Sold Out', 'wcb') . '</span>
+                    <span class="screen-reader-text">' . esc_html__('Product on sale', 'wcb') . '</span>
+                </div></div>';
+    }
+}
 
 function wcb_block_products__get_button_html($product)
 {

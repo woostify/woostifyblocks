@@ -78,6 +78,11 @@
 			@apply absolute left-2 top-2 z-10;
 		}
 	}
+	&.wcb-products__product--onsaleInsideImage {
+		.wcb-products__product-outofstock-badge {
+			@apply absolute left-2 top-2 z-10;
+		}
+	}
 
 	.wcb-products__product-rating {
 		display: inline-block;
@@ -86,7 +91,6 @@
 		border: none;
 		padding: 0.25rem 0.75rem;
 		text-align: center;
-		text-transform: uppercase;
 		// Fix WooCommerce styles causing vertical text
 		writing-mode: initial;
 		text-orientation: initial;
@@ -111,6 +115,25 @@
 			background-color: inherit;
 			color: inherit;
 			display: inline;
+		}
+	}
+	.wcb-products__product-on-outofstock {
+		border: none;
+		padding: 2px 6px;
+		text-align: center;
+		// text-transform: uppercase;
+		// Fix WooCommerce styles causing vertical text
+		writing-mode: initial;
+		text-orientation: initial;
+		display: inline-block;
+		white-space: nowrap;
+		
+		// Ensure content displays horizontally  
+		span {
+			display: inline;
+			writing-mode: initial;
+			text-orientation: initial;
+			background-color: inherit;
 		}
 	}
 

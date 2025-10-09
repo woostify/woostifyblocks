@@ -53,7 +53,6 @@ import WcbProductsPanel_StylePagination, {
 	WCB_PRODUCTS_PANEL_STYLE_PAGINATION_DEMO,
 } from "./WcbProductsPanel_StylePagination";
 import WcbProductsPanel_StyleSaleBadge, {
-	WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO,
 } from "./WcbProductsPanel_StyleSaleBadge";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
 import WcbProductsPanel_StylePrice, {
@@ -72,6 +71,7 @@ import { MY_MOTION_EFFECT_DEMO } from "../components/controls/MyMotionEffectCont
 import WcbProducstPanelGeneralLayout, {
 	WCB_PRODUCTS_PANEL_GENERAL_LAYOUT_DEMO
 } from "./WcbProducstPanel_GeneralLayout";	
+import WcbProductsPanel_StyleOutOfStock, { WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO } from "./WcbProductsPanel_StyleOutOfStock";
 import { 
 	buildStyleBorderDefault, 
 	buildStyleLayoutDefault, 
@@ -107,6 +107,7 @@ const Edit: FC<Props> = (props) => {
 		style_addToCardBtn,
 		style_pagination,
 		style_saleBadge,
+		style_outOfStock,
 		style_border,
 		style_price,
 		style_rating,
@@ -145,6 +146,7 @@ const Edit: FC<Props> = (props) => {
 			style_price: buildStylePriceDefault(WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO as any),
 			style_rating: WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO,
 			style_saleBadge: buildStyleSaleBadgeDefault(style_saleBadge as any),
+			style_outOfStock: WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO,
 			style_category: WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
 			style_title: buildStyleTitleDefault(WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO as any),
 			general_sortingAndFiltering: buildSortingAndFilteringDefault(general_sortingAndFiltering as any),
@@ -356,7 +358,20 @@ const Edit: FC<Props> = (props) => {
 											panelData={style_saleBadge}
 										/>
 									)}
-
+									{
+										general_content?.isShowOutOfStock && style_outOfStock && (
+											<WcbProductsPanel_StyleOutOfStock
+												onToggle={() => handleTogglePanel("Styles", "_StyleOutOfStock")}
+												initialOpen={tabStylesIsPanelOpen === "_StyleOutOfStock"}
+												opened={tabStylesIsPanelOpen === "_StyleOutOfStock" || undefined}
+												//
+												setAttr__={(data) => {
+													setAttributes({ style_outOfStock: data });
+												}}
+												panelData={style_outOfStock}
+											/>
+										)
+									}
 									{general_content?.isShowRating && style_rating && (
 										<WcbProductsPanel_StyleRating
 											onToggle={() => handleTogglePanel("Styles", "_StyleRating")}
@@ -601,6 +616,7 @@ const Edit: FC<Props> = (props) => {
 			style_addToCardBtn,
 			style_pagination,
 			style_saleBadge,
+			style_outOfStock,
 			style_border,
 			style_price,
 			style_rating,
@@ -627,6 +643,7 @@ const Edit: FC<Props> = (props) => {
 		style_addToCardBtn,
 		style_pagination,
 		style_saleBadge,
+		style_outOfStock,
 		style_border,
 		style_price,
 		style_rating,

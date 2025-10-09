@@ -26,6 +26,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		style_pagination,
 		style_title,
 		style_saleBadge,
+		style_outOfStock,
 		style_border,
 		style_price,
 		style_rating,
@@ -271,6 +272,13 @@ const GlobalCss: FC<Props> = (attrs) => {
 			cssProperty: style_saleBadge.marginBottom,
 		});
 		const {
+			value_mobile: outofstockBadgeMarginBottom_mobile,
+			value_tablet: outofstockBadgeMarginBottom_tablet,
+			value_desktop: outofstockBadgeMarginBottom_desktop,
+		} = getCssProperyHasResponsive<string>({
+			cssProperty: style_outOfStock.marginBottom,
+		});
+		const {
 			value_mobile: featuredImageMarginBottom_mobile,
 			value_tablet: featuredImageMarginBottom_tablet,
 			value_desktop: featuredImageMarginBottom_desktop,
@@ -317,6 +325,15 @@ const GlobalCss: FC<Props> = (attrs) => {
 			mobile_v: saleBadgeMarginBottom_mobile,
 			tablet_v: saleBadgeMarginBottom_tablet,
 			desktop_v: saleBadgeMarginBottom_desktop,
+		});
+		const {
+			mobile_v: outofstockBadgeMarginBottom_mobile_new,
+			tablet_v: outofstockBadgeMarginBottom_tablet_new,
+			desktop_v: outofstockBadgeMarginBottom_desktop_new,
+		} = checkResponsiveValueForOptimizeCSS({
+			mobile_v: outofstockBadgeMarginBottom_mobile,
+			tablet_v: outofstockBadgeMarginBottom_tablet,
+			desktop_v: outofstockBadgeMarginBottom_desktop,
 		});
 		const {
 			mobile_v: featuredImageMarginBottom_mobile_new,
@@ -403,6 +420,13 @@ const GlobalCss: FC<Props> = (attrs) => {
 							backgroundColor: style_saleBadge.backgroundColor,
 						},
 					},
+					".wcb-products__product-outofstock-badge": {
+						marginBottom: outofstockBadgeMarginBottom_mobile_new,
+						".wcb-products__product-on-outofstock": {
+							color: style_outOfStock.textColor,
+							backgroundColor: style_outOfStock.backgroundColor,
+						},
+					},
 					".wcb-products__product-price": {
 						marginBottom: priceMarginBottom_mobile_new,
 						color: style_price.textColor,
@@ -415,7 +439,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 						titleMarginBottom_tablet_new ||
 						saleBadgeMarginBottom_tablet_new ||
 						priceMarginBottom_tablet_new ||
-						ratingMarginBottom_tablet_new
+						ratingMarginBottom_tablet_new ||
+						outofstockBadgeMarginBottom_tablet_new
 							? {
 									".wcb-products__product-title": titleMarginBottom_tablet_new
 										? {
@@ -434,6 +459,12 @@ const GlobalCss: FC<Props> = (attrs) => {
 													marginBottom: saleBadgeMarginBottom_tablet_new,
 											  }
 											: undefined,
+									".wcb-products__product-outofstock-badge":
+										outofstockBadgeMarginBottom_tablet_new
+											? {
+													marginBottom: outofstockBadgeMarginBottom_tablet_new,
+											  }
+											: undefined,
 									".wcb-products__product-price": priceMarginBottom_tablet_new
 										? {
 												marginBottom: priceMarginBottom_tablet_new,
@@ -450,7 +481,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 						titleMarginBottom_desktop_new ||
 						saleBadgeMarginBottom_desktop_new ||
 						priceMarginBottom_desktop_new ||
-						ratingMarginBottom_desktop_new
+						ratingMarginBottom_desktop_new ||
+						outofstockBadgeMarginBottom_desktop_new
 							? {
 									".wcb-products__product-title": titleMarginBottom_desktop_new
 										? {
@@ -467,6 +499,12 @@ const GlobalCss: FC<Props> = (attrs) => {
 										saleBadgeMarginBottom_desktop_new
 											? {
 													marginBottom: saleBadgeMarginBottom_desktop_new,
+											  }
+											: undefined,
+									".wcb-products__product-outofstock-badge":
+										outofstockBadgeMarginBottom_desktop_new
+											? {
+													marginBottom: outofstockBadgeMarginBottom_desktop_new,
 											  }
 											: undefined,
 									".wcb-products__product-price": priceMarginBottom_desktop_new
@@ -592,6 +630,16 @@ const GlobalCss: FC<Props> = (attrs) => {
 					styles={getTypographyStyles({
 						className: WRAP_CLASSNAME + " .wcb-products__product-onsale",
 						typography: style_saleBadge.typography,
+					})}
+				/>
+			)}
+
+			{/* OUT OF STOCK BADGE */}
+			{general_content.isShowOutOfStock && (
+				<Global
+					styles={getTypographyStyles({
+						className: WRAP_CLASSNAME + " .wcb-products__product-on-outofstock",
+						typography: style_outOfStock.typography,
 					})}
 				/>
 			)}
