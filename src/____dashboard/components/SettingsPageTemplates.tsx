@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import MyToggle from "./MyToggle";
-import _ from "lodash";
+import debounce from "lodash/debounce";
 
 interface Props {
 	allSettings: typeof window.wcbGlobalVariables;
@@ -8,7 +8,7 @@ interface Props {
 }
 
 const SettingsPageTemplates: FC<Props> = ({ allSettings, onChange }) => {
-	const debounce_fun = _.debounce(function (data: Props["allSettings"]) {
+	const debounce_fun = debounce(function (data: Props["allSettings"]) {
 		console.log("Function debounced after 300ms!", { data });
 		onChange(data);
 	}, 300);

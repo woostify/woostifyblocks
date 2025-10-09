@@ -16,7 +16,7 @@ const InputNumber: FC<Props> = ({
 	...props
 }) => {
 	return (
-		<div className="flex items-center justify-between space-x-3">
+		<div className="gap-4 flex lg:flex-row flex-col lg:items-center items-start justify-between">
 			<div className="flex-1 max-w-2xl">
 				<label
 					htmlFor={id}
@@ -31,7 +31,7 @@ const InputNumber: FC<Props> = ({
 					/>
 				)}
 			</div>
-			<div className="min-w-[140px] max-w-[180px] flex-shrink-0 relative mt-1 rounded-md">
+			<div className="min-w-[140px] max-w-[180px] flex-shrink-0 relative mt-1 ml-0 rounded-md">
 				{unit && (
 					<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
 						<span className="text-gray-500 sm:text-sm">{unit}</span>

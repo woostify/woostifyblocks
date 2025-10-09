@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import InputNumber from "./InputNumber";
 import MyToggle from "./MyToggle";
 import { Wcb_theme_layout_global_settings } from "../../types";
-import _ from "lodash";
+import debounce from "lodash/debounce";
 
 interface Props {
 	allSettings: typeof window.wcbGlobalVariables;
@@ -15,7 +15,7 @@ const SettingsPageEditorOptions: FC<Props> = ({
 	onChange,
 	themeLayoutGlobal,
 }) => {
-	const debounce_fun = _.debounce(function (data: Props["allSettings"]) {
+	const debounce_fun = debounce(function (data: Props["allSettings"]) {
 		console.log("Function debounced after 300ms!", { data });
 		onChange(data);
 	}, 300);
@@ -32,6 +32,9 @@ const SettingsPageEditorOptions: FC<Props> = ({
 		subStr =
 			"<br /><i> Leave it blank to always use the default value </i>" + subStr;
 	}
+
+	console.log( allSettings );
+	
 
 	return (
 		<div className="divide-y">
@@ -54,15 +57,33 @@ const SettingsPageEditorOptions: FC<Props> = ({
 					}}
 				/>
 			</div>
-			{/* <div className="py-8 wcb-field-disabled">
+			<div className="py-8">
+				<MyToggle
+					label="Button - Inherit From Theme"
+					desc='Enable the "Inherit From Theme" option to make all buttons in Spectra blocks across your website inherit their styles from the theme.'
+					id="MyToggle_ButtonInheritFromTheme"
+					checked={allSettings.buttonInheritFromTheme === "true"}
+					onChange={(checked) => {
+						debounce_fun({
+							...allSettings,
+							buttonInheritFromTheme: checked ? "true" : "false",
+						});
+					}}
+				/>
+			</div>
+			<div className="py-8">
 				<InputNumber
 					label="Container Padding"
 					desc="This setting will apply default padding in the Container Block."
 					id="InputNumber_ContainerPadding"
 					placeholder="10"
+					value={String(parseInt(allSettings.containerPadding || ""))}
+					onChange={(e) => {
+						onChange({ ...allSettings, containerPadding: e + "px" });
+					}}
 				/>
-			</div> */}
-			{/* <div className="py-8">
+			</div>
+			<div className="py-8">
 				<InputNumber
 					label="Container Elements Gap"
 					desc="This setting will apply default Row & Column Gaps in the Container Block."
@@ -73,7 +94,19 @@ const SettingsPageEditorOptions: FC<Props> = ({
 						onChange({ ...allSettings, containerElementsGap: e + "px" });
 					}}
 				/>
-			</div> */}
+			</div>
+			<div className="py-8">
+				<InputNumber
+					label="Blocks Editor Spacing"
+					desc="This setting will apply spacing in between all blocks inside block editor."
+					id="InputNumber_BlocksEditorSpacing"
+					placeholder="0"
+					value={String(parseInt(allSettings.blocksEditorSpacing || ""))}
+					onChange={(e) => {
+						onChange({ ...allSettings, blocksEditorSpacing: e + "px" });
+					}}
+				/>
+			</div>
 			{/* <div className="py-8">
 				<MyToggle
 					checked
@@ -83,7 +116,7 @@ const SettingsPageEditorOptions: FC<Props> = ({
 					id="MyToggle_CollapsePanels"
 				/>
 			</div> */}
-			<div className="py-8 wcb-field-disabled">
+			{/* <div className="py-8 wcb-field-disabled">
 				<MyToggle
 					checked={allSettings.enableCopyPasteStyles === "true"}
 					disabled={!!"wcb-field-disabled"}
@@ -97,7 +130,7 @@ const SettingsPageEditorOptions: FC<Props> = ({
 					desc='Enable the "Copy Paste Styles" option to have the ability to copy & paste Woostify & Core Gutenberg Blocks Styles.'
 					id="MyToggle_CopyPasteStyles"
 				/>
-			</div>
+			</div> */}
 		</div>
 	);
 };

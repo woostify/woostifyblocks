@@ -62,7 +62,7 @@ const App: FC<Props> = ({
 	const setHistoryStateParams = (path: Path) => {
 		let queryParams = new URLSearchParams(window.location.search);
 		queryParams.set("path", path);
-
+		
 		if (path !== "settings") {
 			queryParams.delete("tab");
 		}
