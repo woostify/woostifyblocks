@@ -46,7 +46,7 @@ const SettingsPageEditorOptions: FC<Props> = ({
 						subStr
 					}
 					id="InputNumber_DefaultContentWidth"
-					defaultValue={String(parseInt(allSettings.defaultContentWidth || ""))}
+					defaultValue={String(parseInt(allSettings.defaultContentWidth || "1140px"))}
 					placeholder={`${parseInt(themeLayoutGlobal?.contentSize || "650")}`}
 					onChange={(e) => {
 						const newV = e ? e + "px" : "";
@@ -77,7 +77,7 @@ const SettingsPageEditorOptions: FC<Props> = ({
 					desc="This setting will apply default padding in the Container Block."
 					id="InputNumber_ContainerPadding"
 					placeholder="10"
-					value={String(parseInt(allSettings.containerPadding || ""))}
+					value={String(parseInt(allSettings.containerPadding || "10px"))}
 					onChange={(e) => {
 						onChange({ ...allSettings, containerPadding: e + "px" });
 					}}
@@ -89,7 +89,7 @@ const SettingsPageEditorOptions: FC<Props> = ({
 					desc="This setting will apply default Row & Column Gaps in the Container Block."
 					id="InputNumber_ContainerElementsGap"
 					placeholder="10"
-					value={String(parseInt(allSettings.containerElementsGap || ""))}
+					value={String(parseInt(allSettings.containerElementsGap || "10px"))}
 					onChange={(e) => {
 						onChange({ ...allSettings, containerElementsGap: e + "px" });
 					}}
@@ -101,7 +101,7 @@ const SettingsPageEditorOptions: FC<Props> = ({
 					desc="This setting will apply spacing in between all blocks inside block editor."
 					id="InputNumber_BlocksEditorSpacing"
 					placeholder="0"
-					value={String(parseInt(allSettings.blocksEditorSpacing || ""))}
+					value={String(parseInt(allSettings.blocksEditorSpacing || "0px"))}
 					onChange={(e) => {
 						onChange({ ...allSettings, blocksEditorSpacing: e + "px" });
 					}}

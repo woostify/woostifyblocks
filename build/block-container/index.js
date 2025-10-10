@@ -5313,7 +5313,10 @@ const GlobalCss = attrs => {
   } = attrs;
   const {
     media_desktop,
-    media_tablet
+    media_tablet,
+    defaultContentWidth,
+    containerPadding,
+    containerElementsGap
   } = ___WEBPACK_IMPORTED_MODULE_7__.DEMO_WCB_GLOBAL_VARIABLES;
   const WRAP_CLASSNAME = `.wcb-container__wrap.${uniqueId}[data-uniqueid=${uniqueId}]`;
   const INNER_CLASSNAME = `${WRAP_CLASSNAME} .wcb-container__inner`;
@@ -5365,6 +5368,7 @@ const GlobalCss = attrs => {
 
     return [{
       [WRAP_CLASSNAME]: {
+        padding: containerPadding || "",
         color: styles_color,
         overflow: overflow,
         //
@@ -5479,7 +5483,7 @@ const GlobalCss = attrs => {
     }
     if (!contentBoxWidth.Desktop) {
       contentBoxWidth = {
-        Desktop: ___WEBPACK_IMPORTED_MODULE_7__.DEMO_WCB_GLOBAL_VARIABLES.defaultContentWidth || ""
+        Desktop: defaultContentWidth || ""
       };
     }
     const {
@@ -5501,6 +5505,8 @@ const GlobalCss = attrs => {
     }
     return {
       [INNER_CLASSNAME]: {
+        rowGap: containerElementsGap || "",
+        columnGap: containerElementsGap || "",
         maxWidth: contentBoxWidthMobile_new,
         [`@media (min-width: ${media_tablet})`]: contentBoxWidthTablet_new ? {
           maxWidth: contentBoxWidthTablet_new

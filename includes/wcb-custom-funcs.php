@@ -73,8 +73,11 @@ if (!function_exists('wcb_get_default_blocks_settings')) :
             'reCAPTCHA_v3_secret_key'   => '',
             'reCAPTCHA_v2_site_key'     => '',
             'reCAPTCHA_v2_secret_key'   => '',
-            'defaultContentWidth'       => '',
+            'defaultContentWidth'       => '1140px',
+            'buttonInheritFromTheme'    => 'false',
             'containerPadding'          => '10px',
+            'containerElementsGap'      => '10px',
+            'blocksEditorSpacing'       => '',
             'enableTemplatesButton'     => 'true',
             'enableCopyPasteStyles'     => 'true',
             // new 1
