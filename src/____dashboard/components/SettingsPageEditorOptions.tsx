@@ -16,7 +16,7 @@ const SettingsPageEditorOptions: FC<Props> = ({
 	themeLayoutGlobal,
 }) => {
 	const debounce_fun = debounce(function (data: Props["allSettings"]) {
-		console.log("Function debounced after 300ms!", { data });
+		// console.log("Function debounced after 300ms!", { data });
 		onChange(data);
 	}, 300);
 
@@ -31,10 +31,7 @@ const SettingsPageEditorOptions: FC<Props> = ({
 		}
 		subStr =
 			"<br /><i> Leave it blank to always use the default value </i>" + subStr;
-	}
-
-	console.log( allSettings );
-	
+	}	
 
 	return (
 		<div className="divide-y">

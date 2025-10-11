@@ -1,6 +1,8 @@
 import "jquery";
 import { Wcb_theme_layout_global_settings } from "./types";
 
+import styleEditor from "./styleEditor";
+
 declare global {
 	var wp: any | undefined;
 	var grecaptcha: any | undefined;
@@ -12,6 +14,9 @@ declare global {
 		reCAPTCHA_v2_site_key?: string;
 		reCAPTCHA_v2_secret_key?: string;
 		defaultContentWidth?: string;
+		containerPadding?: string;
+		containerElementsGap?: string;
+		blocksEditorSpacing?: string;
 		enableTemplatesButton?: "true" | "false";
 		enableCopyPasteStyles?: "true" | "false";
 		// containerElementsGap?: string;
@@ -33,6 +38,10 @@ const INIT_WCB_GLOBAL_VARIABLES: typeof window.wcbGlobalVariables = {
 	reCAPTCHA_v2_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
 	// se sd khi pick container lan dau tien / or khi truong contentWidth cua container khong duoc nhap
 	defaultContentWidth: window?.wcbLayoutGlobalSettings?.contentSize || "",
+	containerPadding: "10px",
+	containerElementsGap: "10px",
+	blocksEditorSpacing: "0px",
+	customColorPallete: [],
 	enableTemplatesButton: "true",
 	enableCopyPasteStyles: "false",
 };
@@ -44,5 +53,9 @@ export const DEMO_WCB_GLOBAL_VARIABLES: typeof window.wcbGlobalVariables = {
 		window.wcbGlobalVariables?.defaultContentWidth ||
 		window.wcbLayoutGlobalSettings?.contentSize,
 };
+
+wp.domReady(() => {
+  styleEditor(DEMO_WCB_GLOBAL_VARIABLES);
+});
 
 export const ___wcb_global = 1;

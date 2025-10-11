@@ -2666,9 +2666,7 @@ const SettingsPageEditorOptions = ({
   themeLayoutGlobal
 }) => {
   const debounce_fun = lodash_debounce__WEBPACK_IMPORTED_MODULE_3___default()(function (data) {
-    console.log("Function debounced after 300ms!", {
-      data
-    });
+    // console.log("Function debounced after 300ms!", { data });
     onChange(data);
   }, 300);
 
@@ -2682,7 +2680,6 @@ const SettingsPageEditorOptions = ({
     }
     subStr = "<br /><i> Leave it blank to always use the default value </i>" + subStr;
   }
-  console.log(allSettings);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "divide-y"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {

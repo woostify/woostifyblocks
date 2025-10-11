@@ -5488,6 +5488,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _styleEditor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styleEditor */ "./src/styleEditor.ts");
+
 
 const INIT_WCB_GLOBAL_VARIABLES = {
   media_tablet: "768px",
@@ -5498,6 +5500,10 @@ const INIT_WCB_GLOBAL_VARIABLES = {
   reCAPTCHA_v2_secret_key: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
   // se sd khi pick container lan dau tien / or khi truong contentWidth cua container khong duoc nhap
   defaultContentWidth: window?.wcbLayoutGlobalSettings?.contentSize || "",
+  containerPadding: "10px",
+  containerElementsGap: "10px",
+  blocksEditorSpacing: "0px",
+  customColorPallete: [],
   enableTemplatesButton: "true",
   enableCopyPasteStyles: "false"
 };
@@ -5506,6 +5512,9 @@ const DEMO_WCB_GLOBAL_VARIABLES = {
   ...(window.wcbGlobalVariables || {}),
   defaultContentWidth: window.wcbGlobalVariables?.defaultContentWidth || window.wcbLayoutGlobalSettings?.contentSize
 };
+wp.domReady(() => {
+  (0,_styleEditor__WEBPACK_IMPORTED_MODULE_1__["default"])(DEMO_WCB_GLOBAL_VARIABLES);
+});
 const ___wcb_global = 1;
 
 /***/ }),
@@ -11579,6 +11588,79 @@ const useSetBlockPanelInfo = uniqueId => {
   };
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useSetBlockPanelInfo);
+
+/***/ }),
+
+/***/ "./src/styleEditor.ts":
+/*!****************************!*\
+  !*** ./src/styleEditor.ts ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const generateEditorSpacingCSS = (spacing = '0px') => `
+  /* Desktop */
+  .edit-post-visual-editor .editor-styles-wrapper .edit-post-visual-editor__post-title-wrapper
+    > * + *:not(p),
+  .edit-post-visual-editor .editor-styles-wrapper
+    .block-editor-block-list__layout.is-root-container
+    > * + *:not(p) {
+    margin-block-start: ${spacing} !important;
+    margin-top: ${spacing} !important;
+  }
+
+  body.block-editor-iframe__body.editor-styles-wrapper
+    .is-root-container.wp-site-blocks
+    > * + *,
+  body.block-editor-iframe__body.editor-styles-wrapper .is-layout-flow > * + *,
+  body.block-editor-iframe__body.editor-styles-wrapper
+    .is-layout-constrained
+    > * + * {
+    margin-block-start: ${spacing} !important;
+    margin-top: ${spacing} !important;
+  }
+
+  /* Tablet */
+  @media (max-width: 768px) {
+    .editor-styles-wrapper
+      > .block-editor-block-list__layout.is-root-container
+      > .wp-block
+      + .wp-block:not(p) {
+      margin-block-start: ${spacing} !important;
+      margin-top: ${spacing} !important;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 480px) {
+    .editor-styles-wrapper
+      > .block-editor-block-list__layout.is-root-container
+      > .wp-block
+      + .wp-block:not(p) {
+      margin-block-start: ${spacing} !important;
+      margin-top: ${spacing} !important;
+    }
+  }
+`;
+const styleEditor = globals => {
+  // Fallback to 0px if not provided
+  const blocksEditorSpacing = globals?.blocksEditorSpacing;
+  const spacingValue = blocksEditorSpacing == '' ? 0 : blocksEditorSpacing;
+  const spacing = typeof spacingValue === 'number' ? `${spacingValue}px` : spacingValue;
+  const cssString = generateEditorSpacingCSS(spacing);
+  let styleNode = document.getElementById('wcb-blocks-editor-custom-style');
+  if (!styleNode) {
+    styleNode = document.createElement('style');
+    styleNode.id = 'wcb-blocks-editor-custom-style';
+    document.head.appendChild(styleNode);
+  }
+  styleNode.textContent = cssString;
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (styleEditor);
 
 /***/ }),
 

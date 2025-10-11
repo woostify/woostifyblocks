@@ -77,7 +77,7 @@ if (!function_exists('wcb_get_default_blocks_settings')) :
             'buttonInheritFromTheme'    => 'false',
             'containerPadding'          => '10px',
             'containerElementsGap'      => '10px',
-            'blocksEditorSpacing'       => '',
+            'blocksEditorSpacing'       => '0px',
             'enableTemplatesButton'     => 'true',
             'enableCopyPasteStyles'     => 'true',
             // new 1
