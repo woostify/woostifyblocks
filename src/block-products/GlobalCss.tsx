@@ -162,6 +162,49 @@ const GlobalCss: FC<Props> = (attrs) => {
 								: `repeat(${numberOfColumn_desktop}, minmax(0, 1fr))`,
 							// ------ end setting snap scroll x
 						},
+						// SALE BADGE positioning
+						...(style_saleBadge?.position === "top-left"
+							? {
+									".wcb-products__product--onsaleInsideImage .wcb-products__product-salebadge": {
+										position: "absolute",
+										left: "0.5rem",  // Tailwind left-2
+										top: "0.5rem",   // Tailwind top-2
+										zIndex: 10,
+									},
+							}
+							: {
+									".wcb-products__product--onsaleInsideImage .wcb-products__product-salebadge": {
+										position: "absolute",
+										right: "0.5rem",
+										top: "0.5rem",
+										zIndex: 10,
+									},
+							}),
+
+						// OUT OF STOCK BADGE positioning
+						...(style_outOfStock.postion === "top-left"
+							? {
+									".wcb-products__product--onsaleInsideImage .wcb-products__product-outofstock-badge": {
+										position: "absolute",
+										left: "0.5rem",
+										top: "0.5rem",
+										zIndex: 10,
+									},
+							}
+							: style_outOfStock.postion === "top-right"
+							? {
+									".wcb-products__product--onsaleInsideImage .wcb-products__product-outofstock-badge": {
+										position: "absolute",
+										right: "0.5rem",
+										top: "0.5rem",
+										zIndex: 10,
+									},
+							}
+							: {
+									".wcb-products__product--onsaleInsideImage .wcb-products__product-outofstock-badge": {
+										display: "none",
+									},
+							}),
 					},
 				}}
 			/>

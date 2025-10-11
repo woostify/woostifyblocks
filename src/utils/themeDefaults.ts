@@ -19,12 +19,17 @@ export type ThemeDefaults = {
         width?: number;
         color?: string;
         hover?: "swap" | "zoom" | "none";
-    }
+    };
     shop_archive_sale_tag?: {
         bg_color?: string;
         text_color?: string;
         position?: string;
-    }
+    };
+    shop_archive_out_of_stock?: {
+        bg_color?: string;
+        text_color?: string;
+        position?: string;
+    };
     shop_archive_general_design?: {
         title_color?: string;
         title_font_size?: {
@@ -38,7 +43,7 @@ export type ThemeDefaults = {
             tablet?: number;
             mobile?: number;
         };
-    }
+    };
     shop_archive_add_to_cart_btn?: {
         text_color?: string;
         bg_color?: string;
@@ -46,7 +51,7 @@ export type ThemeDefaults = {
         hover_bg_color?: string;
         border_radius?: number;
         position?: string;
-    }
+    };
 };
   
 export function getThemeDefaults(): ThemeDefaults {

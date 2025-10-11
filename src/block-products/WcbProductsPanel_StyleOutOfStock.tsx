@@ -20,6 +20,7 @@ export interface WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK {
 	textColor: string;
 	backgroundColor: string;
 	marginBottom: HasResponsive<string>;
+	postion: "top-left" | "top-right" | "none";
 }
 
 export const WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO: WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK =
@@ -39,6 +40,7 @@ export const WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO: WCB_PRODUCTS_PANEL_STYL
 		backgroundColor: "#cf2e2e",
 		textColor: "#f0f9ff",
 		marginBottom: { Desktop: "0.65rem" },
+		postion: "top-left",
 	};
 
 interface Props

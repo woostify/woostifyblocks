@@ -12,6 +12,7 @@ import { WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO } from "./WcbProductsPanel_StyleTit
 import { WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO } from "./WcbProductsPanel_StylePrice";
 import { WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO } from "./WcbProductsPanel_StyleAddToCartBtn";
 import { WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO } from "./WcbProductsPanelButton";
+import { WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO } from "./WcbProductsPanel_StyleOutOfStock";
   
 export function buildStyleLayoutDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO>) {
     const theme = getThemeDefaults();
@@ -134,6 +135,19 @@ export function buildStyleFeaturedImageDefault(attr?: Partial<typeof WCB_PRODUCT
 export function buildStyleSaleBadgeDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO>) {
     const theme = getThemeDefaults();
     const saleTag = theme.shop_archive_sale_tag;
+
+    	// Get the base position value from theme or attr
+	const rawPosition =
+		saleTag?.position ??
+		attr?.position ??
+		WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO.postion;
+
+	// Convert to standardized values
+	const convertedPosition =
+		rawPosition === "left"
+			? "top-left"
+			: "top-right";
+
     return {
         ...WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO,
         ...(attr || {}),
@@ -145,8 +159,43 @@ export function buildStyleSaleBadgeDefault(attr?: Partial<typeof WCB_PRODUCTS_PA
             saleTag?.text_color ?? 
             attr?.textColor ?? 
             WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO.textColor,
+        position: convertedPosition,
     };
 }
+
+export function buildStyleOutOfStockDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO>) {
+	const theme = getThemeDefaults();
+	const outOfStock = theme.shop_archive_out_of_stock;
+
+	// Get the base position value from theme or attr
+	const rawPosition =
+		outOfStock?.position ??
+		attr?.postion ??
+		WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO.postion;
+
+	// Convert to standardized values
+	const convertedPosition =
+		rawPosition === "left"
+			? "top-left"
+			: rawPosition === "right"
+			? "top-right"
+			: "none";
+
+	return {
+		...WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO,
+		...(attr || {}),
+		backgroundColor:
+			outOfStock?.bg_color ??
+			attr?.backgroundColor ??
+			WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO.backgroundColor,
+		textColor:
+			outOfStock?.text_color ??
+			attr?.textColor ??
+			WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO.textColor,
+		postion: convertedPosition, // Use the mapped value
+	};
+}
+
 
 export function buildStyleTitleDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO>) {
     const theme = getThemeDefaults();

@@ -35,6 +35,11 @@ add_action('enqueue_block_editor_assets', function () {
 			'text_color' => $woostify['shop_page_sale_color'] ?? '#f0f9ff',
 			'position'   => $woostify['shop_page_sale_tag_position'] ?? 'top-left',
 		],
+		'shop_archive_out_of_stock' => [
+			'bg_color'   => $woostify['shop_page_out_of_stock_bg_color'] ?? '#0c4a6e',
+			'text_color' => $woostify['shop_page_out_of_stock_color'] ?? '#f0f9ff',
+			'position'   => $woostify['shop_page_out_of_stock_position'] ?? 'left',
+		],
 		'shop_archive_general_design' => [
 			'title_color'       => $woostify['shop_page_product_title_color'] ?? '#000',
 			'title_font_size'   => [

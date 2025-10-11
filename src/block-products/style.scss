@@ -73,16 +73,16 @@
 			}
 		}
 	}
-	&.wcb-products__product--onsaleInsideImage {
-		.wcb-products__product-salebadge {
-			@apply absolute left-2 top-2 z-10;
-		}
-	}
-	&.wcb-products__product--onsaleInsideImage {
-		.wcb-products__product-outofstock-badge {
-			@apply absolute left-2 top-2 z-10;
-		}
-	}
+	// &.wcb-products__product--onsaleInsideImage {
+	// 	.wcb-products__product-salebadge {
+	// 		@apply absolute left-2 top-2 z-10;
+	// 	}
+	// }
+	// &.wcb-products__product--onsaleInsideImage {
+	// 	.wcb-products__product-outofstock-badge {
+	// 		@apply absolute left-2 top-2 z-10;
+	// 	}
+	// }
 
 	.wcb-products__product-rating {
 		display: inline-block;
