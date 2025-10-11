@@ -12,8 +12,12 @@ import { WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO } from "./WcbProductsPanel_StyleTit
 import { WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO } from "./WcbProductsPanel_StylePrice";
 import { WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO } from "./WcbProductsPanel_StyleAddToCartBtn";
 import { WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO } from "./WcbProductsPanelButton";
-import { WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO } from "./WcbProductsPanel_StyleOutOfStock";
-  
+import {
+	WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO,
+} from "./WcbProductsPanel_StyleOutOfStock";
+import type { WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK } from "./WcbProductsPanel_StyleOutOfStock";
+import type { WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE } from "./WcbProductsPanel_StyleSaleBadge"; 
+
 export function buildStyleLayoutDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO>) {
     const theme = getThemeDefaults();
     return {
@@ -140,10 +144,10 @@ export function buildStyleSaleBadgeDefault(attr?: Partial<typeof WCB_PRODUCTS_PA
 	const rawPosition =
 		saleTag?.position ??
 		attr?.position ??
-		WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO.postion;
+		WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO.position;
 
 	// Convert to standardized values
-	const convertedPosition =
+	const convertedPosition: WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE["position"] =
 		rawPosition === "left"
 			? "top-left"
 			: "top-right";
@@ -170,11 +174,11 @@ export function buildStyleOutOfStockDefault(attr?: Partial<typeof WCB_PRODUCTS_P
 	// Get the base position value from theme or attr
 	const rawPosition =
 		outOfStock?.position ??
-		attr?.postion ??
-		WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO.postion;
+		attr?.position ??
+		WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO.position;
 
-	// Convert to standardized values
-	const convertedPosition =
+	// Convert to standardized values while keeping the literal union type
+	const convertedPosition: WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK["position"] =
 		rawPosition === "left"
 			? "top-left"
 			: rawPosition === "right"

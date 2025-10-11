@@ -147,7 +147,7 @@ const Edit: FC<Props> = (props) => {
 			style_price: buildStylePriceDefault(WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO as any),
 			style_rating: WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO,
 			style_saleBadge: buildStyleSaleBadgeDefault(style_saleBadge as any),
-			style_outOfStock: buildStyleOutOfStockDefault(WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO as any),
+			style_outOfStock: buildStyleOutOfStockDefault(style_outOfStock as any),
 			style_category: WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
 			style_title: buildStyleTitleDefault(WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO as any),
 			general_sortingAndFiltering: buildSortingAndFilteringDefault(general_sortingAndFiltering as any),
