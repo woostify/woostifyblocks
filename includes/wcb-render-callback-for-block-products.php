@@ -203,22 +203,40 @@ function wcb_block_products__get_image_gallery_image_1_html($product)
     return wp_get_attachment_image($attachment_ids[0], 'full');
 }
 
-
 function wcb_block_products__get_image_html($product)
 {
-
     $attr = array(
         'alt' => '',
     );
 
+    // Get the image alt text (use the product name as a fallback)
     if ($product->get_image_id()) {
         $image_alt = get_post_meta($product->get_image_id(), '_wp_attachment_image_alt', true);
-        $attr      = array(
+        $attr = array(
             'alt' => ($image_alt ? $image_alt : $product->get_name()),
         );
     }
 
-    return '<div class="wcb-products__product-image wc-block-grid__product-image">' . $product->get_image('woocommerce_thumbnail', $attr) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+    // Get Woostify theme settings
+    $woostify = get_option('woostify_setting') ?: [];
+
+    // Get image height from theme setting, default to 300 if not set
+    $imageHeight = !empty($woostify['shop_page_product_image_height'])
+        ? intval($woostify['shop_page_product_image_height'])
+        : 300;
+
+    // Get the default WooCommerce thumbnail HTML
+    $image_html = $product->get_image('woocommerce_thumbnail', $attr);
+
+    // Add inline style to control rendered height
+    // This forces the browser to display the image at that height
+    $style = 'style="height:' . esc_attr($imageHeight) . 'px; width:auto; object-fit:cover;"';
+
+    // Inject the style attribute into the <img> tag
+    $image_html = preg_replace('/<img(.*?)>/', '<img$1 ' . $style . '>', $image_html);
+
+    // Return the final HTML wrapped in a container
+    return '<div class="wcb-products__product-image wc-block-grid__product-image">' . $image_html . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
 

@@ -16,16 +16,11 @@
 .wcb-products__wrap .wcb-products__product-image-link__zoom .wcb-products__product-image{
   position: relative;
   display: block;
-  aspect-ratio: 1 / 1;
   overflow: hidden;
 }
 .wcb-products__wrap .wcb-products__product-image-link__zoom img{
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  height: 100%;
+  position: static;
+  height: auto;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -70,6 +65,8 @@
 } */
 .wcb-products__product {
   font-size: 16px;
+  height: auto;
+  display: inline-block;
   /* RATING */
   /*  */
 }

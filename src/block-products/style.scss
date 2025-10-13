@@ -14,7 +14,7 @@
 			}
 
 			img {
-				@apply absolute inset-0 w-full h-full object-cover transition-transform duration-300;
+				@apply w-auto h-auto object-cover transition-transform duration-300;
 			}
 
 			&:hover {
@@ -56,6 +56,8 @@
 
 .wcb-products__product {
 	font-size: 16px;
+	height: auto;
+	display: inline-block;
 
 	&.wcb-products__product--btnInsideImage {
 		.wcb-products__product-featured {

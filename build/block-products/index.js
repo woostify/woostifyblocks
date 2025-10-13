@@ -5729,7 +5729,7 @@ const Edit = props => {
       style_price: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_32__.buildStylePriceDefault)(_WcbProductsPanel_StylePrice__WEBPACK_IMPORTED_MODULE_23__.WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO),
       style_rating: _WcbProductsPanel_StyleRating__WEBPACK_IMPORTED_MODULE_24__.WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO,
       style_saleBadge: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_32__.buildStyleSaleBadgeDefault)(style_saleBadge),
-      style_outOfStock: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_32__.buildStyleOutOfStockDefault)(_WcbProductsPanel_StyleOutOfStock__WEBPACK_IMPORTED_MODULE_31__.WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO),
+      style_outOfStock: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_32__.buildStyleOutOfStockDefault)(style_outOfStock),
       style_category: _WcbProductsPanel_StyleCategory__WEBPACK_IMPORTED_MODULE_26__.WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
       style_title: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_32__.buildStyleTitleDefault)(_WcbProductsPanel_StyleTitle__WEBPACK_IMPORTED_MODULE_16__.WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO),
       general_sortingAndFiltering: (0,_WcbThemeDefaults__WEBPACK_IMPORTED_MODULE_32__.buildSortingAndFilteringDefault)(general_sortingAndFiltering),
@@ -6326,7 +6326,7 @@ const GlobalCss = attrs => {
               left: "0.5rem",
               // Tailwind left-2
               top: "0.5rem",
-              // Tailwind top-2
+              // Tailwind top-
               zIndex: 10
             }
           } : {
@@ -6338,14 +6338,14 @@ const GlobalCss = attrs => {
             }
           }),
           // OUT OF STOCK BADGE positioning
-          ...(style_outOfStock.postion === "top-left" ? {
+          ...(style_outOfStock.position === "top-left" ? {
             ".wcb-products__product--onsaleInsideImage .wcb-products__product-outofstock-badge": {
               position: "absolute",
               left: "0.5rem",
               top: "0.5rem",
               zIndex: 10
             }
-          } : style_outOfStock.postion === "top-right" ? {
+          } : style_outOfStock.position === "top-right" ? {
             ".wcb-products__product--onsaleInsideImage .wcb-products__product-outofstock-badge": {
               position: "absolute",
               right: "0.5rem",
@@ -8575,7 +8575,7 @@ const WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO = {
   marginBottom: {
     Desktop: "0.65rem"
   },
-  postion: "top-left"
+  position: "top-left"
 };
 const WcbProductsPanel_StyleOutOfStock = ({
   panelData = WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO,
@@ -9427,7 +9427,7 @@ function buildStyleSaleBadgeDefault(attr) {
   const saleTag = theme.shop_archive_sale_tag;
 
   // Get the base position value from theme or attr
-  const rawPosition = (_ref6 = (_saleTag$position = saleTag?.position) !== null && _saleTag$position !== void 0 ? _saleTag$position : attr?.postion) !== null && _ref6 !== void 0 ? _ref6 : _WcbProductsPanel_StyleOutOfStock__WEBPACK_IMPORTED_MODULE_12__.WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO.postion;
+  const rawPosition = (_ref6 = (_saleTag$position = saleTag?.position) !== null && _saleTag$position !== void 0 ? _saleTag$position : attr?.position) !== null && _ref6 !== void 0 ? _ref6 : _WcbProductsPanel_StyleSaleBadge__WEBPACK_IMPORTED_MODULE_7__.WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO.position;
 
   // Convert to standardized values
   const convertedPosition = rawPosition === "left" ? "top-left" : "top-right";
@@ -9445,9 +9445,9 @@ function buildStyleOutOfStockDefault(attr) {
   const outOfStock = theme.shop_archive_out_of_stock;
 
   // Get the base position value from theme or attr
-  const rawPosition = (_ref9 = (_outOfStock$position = outOfStock?.position) !== null && _outOfStock$position !== void 0 ? _outOfStock$position : attr?.postion) !== null && _ref9 !== void 0 ? _ref9 : _WcbProductsPanel_StyleOutOfStock__WEBPACK_IMPORTED_MODULE_12__.WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO.postion;
+  const rawPosition = (_ref9 = (_outOfStock$position = outOfStock?.position) !== null && _outOfStock$position !== void 0 ? _outOfStock$position : attr?.position) !== null && _ref9 !== void 0 ? _ref9 : _WcbProductsPanel_StyleOutOfStock__WEBPACK_IMPORTED_MODULE_12__.WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO.position;
 
-  // Convert to standardized values
+  // Convert to standardized values while keeping the literal union type
   const convertedPosition = rawPosition === "left" ? "top-left" : rawPosition === "right" ? "top-right" : "none";
   return {
     ..._WcbProductsPanel_StyleOutOfStock__WEBPACK_IMPORTED_MODULE_12__.WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO,

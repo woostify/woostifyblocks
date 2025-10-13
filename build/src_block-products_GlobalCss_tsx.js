@@ -162,7 +162,7 @@ const GlobalCss = attrs => {
               left: "0.5rem",
               // Tailwind left-2
               top: "0.5rem",
-              // Tailwind top-2
+              // Tailwind top-
               zIndex: 10
             }
           } : {
@@ -174,14 +174,14 @@ const GlobalCss = attrs => {
             }
           }),
           // OUT OF STOCK BADGE positioning
-          ...(style_outOfStock.postion === "top-left" ? {
+          ...(style_outOfStock.position === "top-left" ? {
             ".wcb-products__product--onsaleInsideImage .wcb-products__product-outofstock-badge": {
               position: "absolute",
               left: "0.5rem",
               top: "0.5rem",
               zIndex: 10
             }
-          } : style_outOfStock.postion === "top-right" ? {
+          } : style_outOfStock.position === "top-right" ? {
             ".wcb-products__product--onsaleInsideImage .wcb-products__product-outofstock-badge": {
               position: "absolute",
               right: "0.5rem",
