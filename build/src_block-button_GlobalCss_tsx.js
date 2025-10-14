@@ -49,6 +49,18 @@ const GlobalCss = attrs => {
     advance_responsiveCondition,
     advance_zIndex
   } = attrs;
+  const WCB_GLOBAL_VARIABLES = window.wcbGlobalVariables;
+  const {
+    buttonInheritFromTheme,
+    buttonTheme
+  } = WCB_GLOBAL_VARIABLES;
+  style_background.normal.color = buttonInheritFromTheme === 'true' ? buttonTheme.backgroundColor : style_background.normal.color;
+  style_background.hover.color = buttonInheritFromTheme === 'true' ? buttonTheme.backgroundColorHover : style_background.hover.color;
+  style_text.color = buttonInheritFromTheme === 'true' ? buttonTheme.textColor : style_text.color;
+  style_text.hoverColor = buttonInheritFromTheme === 'true' ? buttonTheme.textColorHover : style_text.hoverColor;
+  style_border.radius.Desktop = buttonInheritFromTheme === 'true' ? buttonTheme.borderRadius : style_border.radius.Desktop;
+  style_border.radius.Tablet = buttonInheritFromTheme === 'true' ? buttonTheme.borderRadius : style_border.radius.Tablet;
+  style_border.radius.Mobile = buttonInheritFromTheme === 'true' ? buttonTheme.borderRadius : style_border.radius.Mobile;
   const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
   const BUTTON_CLASSNAME = `${WRAP_CLASSNAME} .wcb-button__main`;
   const BUTTON_TEXT = `${WRAP_CLASSNAME} .wcb-button__text`;

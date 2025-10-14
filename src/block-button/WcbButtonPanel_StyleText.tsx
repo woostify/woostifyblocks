@@ -58,6 +58,7 @@ const WcbButtonPanel_StyleText: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	const { typography, color, hoverColor } = panelData;
+	const WCB_GLOBAL_VARIABLES: typeof window.wcbGlobalVariables = window.wcbGlobalVariables;
 	return (
 		<PanelBody
 			initialOpen={initialOpen}
@@ -76,23 +77,25 @@ const WcbButtonPanel_StyleText: FC<Props> = ({
 					}}
 				/>
 
-				<MyDisclosure defaultOpen label={__("Colors", "wcb")}>
-					<MyColorPicker
-						onChange={(color) => {
-							setAttr__({ ...panelData, color });
-						}}
-						color={color}
-						label={__("Color", "wcb")}
-					/>
+				{WCB_GLOBAL_VARIABLES.buttonInheritFromTheme !== "true" && (	
+					<MyDisclosure defaultOpen label={__("Colors", "wcb")}>
+						<MyColorPicker
+							onChange={(color) => {
+								setAttr__({ ...panelData, color });
+							}}
+							color={color}
+							label={__("Color", "wcb")}
+						/>
 
-					<MyColorPicker
-						onChange={(color) => {
-							setAttr__({ ...panelData, hoverColor: color });
-						}}
-						color={hoverColor}
-						label={__("Hover color", "wcb")}
-					/>
-				</MyDisclosure>
+						<MyColorPicker
+							onChange={(color) => {
+								setAttr__({ ...panelData, hoverColor: color });
+							}}
+							color={hoverColor}
+							label={__("Hover color", "wcb")}
+						/>
+					</MyDisclosure>
+				)}
 			</div>
 		</PanelBody>
 	);

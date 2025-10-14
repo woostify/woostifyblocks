@@ -7805,7 +7805,8 @@ const Button = (0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)((props, ref) =>
     style_dimension,
     style_icon,
     style_text,
-    uniqueId
+    uniqueId,
+    wcb_global_variables
   } = attributes;
   const {
     enableIcon,
@@ -7831,7 +7832,7 @@ const Button = (0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)((props, ref) =>
       ...otherProps,
       // @ts-ignore
       ref: ref,
-      className: `wcb-button__main ${enableIcon ? `wcb-button__main-icon-${iconPosition}` : ""} ${general_preset.preset ? `wcb-button__main--${general_preset.preset}` : ""}`
+      className: `wcb-button__main ${enableIcon ? `wcb-button__main-icon-${iconPosition}` : ""} ${general_preset.preset ? `wcb-button__main--${general_preset.preset}` : ""} ${wcb_global_variables.buttonInheritFromTheme === "true" ? 'wcb-button__main--inherit-from-theme' : ''}`
       //
       ,
       target: openInNewWindow ? "_blank" : undefined,
@@ -7938,7 +7939,8 @@ const Edit = props => {
     style_background,
     style_border,
     style_boxshadow,
-    style_dimension
+    style_dimension,
+    wcb_global_variables
   } = attributes;
   //  COMMON HOOKS
 
@@ -8073,7 +8075,7 @@ const Edit = props => {
             });
           },
           panelData: style_icon
-        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbButtonPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        }), wcb_global_variables.buttonInheritFromTheme !== "true" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_WcbButtonPanel_StyleBackground__WEBPACK_IMPORTED_MODULE_12__["default"], {
           onToggle: () => handleTogglePanel("Styles", "_StyleBackground"),
           initialOpen: tabStylesIsPanelOpen === "_StyleBackground",
           opened: tabStylesIsPanelOpen === "_StyleBackground" || undefined
@@ -8292,6 +8294,18 @@ const GlobalCss = attrs => {
     advance_responsiveCondition,
     advance_zIndex
   } = attrs;
+  const WCB_GLOBAL_VARIABLES = window.wcbGlobalVariables;
+  const {
+    buttonInheritFromTheme,
+    buttonTheme
+  } = WCB_GLOBAL_VARIABLES;
+  style_background.normal.color = buttonInheritFromTheme === 'true' ? buttonTheme.backgroundColor : style_background.normal.color;
+  style_background.hover.color = buttonInheritFromTheme === 'true' ? buttonTheme.backgroundColorHover : style_background.hover.color;
+  style_text.color = buttonInheritFromTheme === 'true' ? buttonTheme.textColor : style_text.color;
+  style_text.hoverColor = buttonInheritFromTheme === 'true' ? buttonTheme.textColorHover : style_text.hoverColor;
+  style_border.radius.Desktop = buttonInheritFromTheme === 'true' ? buttonTheme.borderRadius : style_border.radius.Desktop;
+  style_border.radius.Tablet = buttonInheritFromTheme === 'true' ? buttonTheme.borderRadius : style_border.radius.Tablet;
+  style_border.radius.Mobile = buttonInheritFromTheme === 'true' ? buttonTheme.borderRadius : style_border.radius.Mobile;
   const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
   const BUTTON_CLASSNAME = `${WRAP_CLASSNAME} .wcb-button__main`;
   const BUTTON_TEXT = `${WRAP_CLASSNAME} .wcb-button__text`;
@@ -8421,7 +8435,8 @@ function save({
     style_boxshadow,
     style_dimension,
     style_icon,
-    style_text
+    style_text,
+    wcb_global_variables
   } = attributes;
   //
 
@@ -9336,6 +9351,7 @@ const WcbButtonPanel_StyleText = ({
     color,
     hoverColor
   } = panelData;
+  const WCB_GLOBAL_VARIABLES = window.wcbGlobalVariables;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     initialOpen: initialOpen,
     onToggle: onToggle,
@@ -9351,7 +9367,7 @@ const WcbButtonPanel_StyleText = ({
         typography
       });
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), WCB_GLOBAL_VARIABLES.buttonInheritFromTheme !== "true" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyDisclosure__WEBPACK_IMPORTED_MODULE_7__["default"], {
     defaultOpen: true,
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Colors", "wcb")
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_controls_MyColorPicker_MyColorPicker__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -9409,6 +9425,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const WCB_GLOBAL_VARIABLES = window.wcbGlobalVariables;
 const blokc1Attrs = {
   uniqueId: {
     type: "string",
@@ -9461,6 +9478,10 @@ const blokc1Attrs = {
   advance_zIndex: {
     type: "object",
     default: _components_controls_MyZIndexControl_MyZIndexControl__WEBPACK_IMPORTED_MODULE_1__.Z_INDEX_DEMO
+  },
+  wcb_global_variables: {
+    type: "object",
+    default: WCB_GLOBAL_VARIABLES
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (blokc1Attrs);
@@ -10454,6 +10475,7 @@ const MyBorderControl = ({
   setAttrs__border
 }) => {
   const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_6__["default"])() || "Desktop";
+  const WCB_GLOBAL_VARIABLES = window.wcbGlobalVariables;
   //
   const {
     mainSettings: mainSettingsProps,
@@ -10518,7 +10540,7 @@ const MyBorderControl = ({
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Hover border color", "wcb"),
     onChange: handleChangeBorderHoverColor,
     color: hoverColorProps
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), WCB_GLOBAL_VARIABLES.buttonInheritFromTheme !== "true" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "MyBorderControl__BorderRadiusControl"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_5__["default"], {
     className: "mb-2",

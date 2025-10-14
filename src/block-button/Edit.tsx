@@ -57,6 +57,7 @@ import { link, linkOff } from "@wordpress/icons";
 import { displayShortcut } from "@wordpress/keycodes";
 
 const Edit: FC<EditProps<WcbAttrs>> = (props) => {
+	
 	const { attributes, setAttributes, clientId, isSelected } = props;
 	const {
 		advance_responsiveCondition,
@@ -71,6 +72,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 		style_border,
 		style_boxshadow,
 		style_dimension,
+		wcb_global_variables,
 	} = attributes;
 	//  COMMON HOOKS
 
@@ -242,19 +244,21 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							panelData={style_icon}
 						/>
 
-						<WcbButtonPanel_StyleBackground
-							onToggle={() => handleTogglePanel("Styles", "_StyleBackground")}
-							initialOpen={tabStylesIsPanelOpen === "_StyleBackground"}
-							opened={tabStylesIsPanelOpen === "_StyleBackground" || undefined}
-							//
-							setAttr__={(data) => {
-								setAttributes({
-									style_background: data,
-									general_preset: { ...general_preset, preset: "" },
-								});
-							}}
-							panelData={style_background}
-						/>
+						{wcb_global_variables.buttonInheritFromTheme !== "true" && (	
+							<WcbButtonPanel_StyleBackground
+								onToggle={() => handleTogglePanel("Styles", "_StyleBackground")}
+								initialOpen={tabStylesIsPanelOpen === "_StyleBackground"}
+								opened={tabStylesIsPanelOpen === "_StyleBackground" || undefined}
+								//
+								setAttr__={(data) => {
+									setAttributes({
+										style_background: data,
+										general_preset: { ...general_preset, preset: "" },
+									});
+								}}
+								panelData={style_background}
+							/>
+						)}
 
 						<WcbButtonPanel_StyleBorder
 							onToggle={() => handleTogglePanel("Styles", "_StyleBorder")}

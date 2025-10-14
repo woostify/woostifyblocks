@@ -14769,6 +14769,7 @@ const MyBorderControl = ({
   setAttrs__border
 }) => {
   const deviceType = (0,_hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_6__["default"])() || "Desktop";
+  const WCB_GLOBAL_VARIABLES = window.wcbGlobalVariables;
   //
   const {
     mainSettings: mainSettingsProps,
@@ -14833,7 +14834,7 @@ const MyBorderControl = ({
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Hover border color", "wcb"),
     onChange: handleChangeBorderHoverColor,
     color: hoverColorProps
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), WCB_GLOBAL_VARIABLES.buttonInheritFromTheme !== "true" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "MyBorderControl__BorderRadiusControl"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MyLabelControl_MyLabelControl__WEBPACK_IMPORTED_MODULE_5__["default"], {
     className: "mb-2",

@@ -66,6 +66,8 @@ endif;
 if (!function_exists('wcb_get_default_blocks_settings')) :
     function wcb_get_default_blocks_settings()
     {
+        $options = woostify_options( false );
+
         return [
             'media_tablet'              => '768px',
             'media_desktop'             => '1024px',
@@ -85,6 +87,13 @@ if (!function_exists('wcb_get_default_blocks_settings')) :
                 ["name" => "white", "color" => "#fff"],
                 ["name" => "black", "color" => "#000"],
                 ["name" => "blue", "color" => "#00f"],
+            ],
+            'buttonTheme'            => [
+                'backgroundColor' => esc_attr( $options['button_background_color'] ),
+                'backgroundColorHover' => esc_attr( $options['button_hover_background_color'] ),
+                'textColor' => esc_attr( $options['button_text_color'] ),
+                'textColorHover' => esc_attr( $options['button_hover_text_color'] ),
+                'borderRadius' => esc_attr( $options['buttons_border_radius'] ) . 'px',
             ],
         ];
     }
