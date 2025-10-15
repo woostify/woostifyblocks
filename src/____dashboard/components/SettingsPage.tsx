@@ -23,21 +23,21 @@ const TABS: Tab[] = [
 		label: "Editor options",
 		icon: Cog6ToothIcon,
 	},
-	{
-		name: "templates",
-		label: "Templates",
-		icon: RectangleGroupIcon,
-	},
-	{
-		name: "block-settings",
-		label: "Block settings",
-		icon: Squares2X2Icon,
-	},
-	{
-		name: "performance",
-		label: "Performance",
-		icon: RocketLaunchIcon,
-	},
+	// {
+	// 	name: "templates",
+	// 	label: "Templates",
+	// 	icon: RectangleGroupIcon,
+	// },
+	// {
+	// 	name: "block-settings",
+	// 	label: "Block settings",
+	// 	icon: Squares2X2Icon,
+	// },
+	// {
+	// 	name: "performance",
+	// 	label: "Performance",
+	// 	icon: RocketLaunchIcon,
+	// },
 ];
 
 interface Props {
