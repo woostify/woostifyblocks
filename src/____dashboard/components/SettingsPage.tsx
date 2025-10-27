@@ -9,6 +9,7 @@ import SettingsPageEditorOptions from "./SettingsPageEditorOptions";
 import toast, { Toaster } from "react-hot-toast";
 import SettingsPageTemplates from "./SettingsPageTemplates";
 import SettingsPageBlockSettings from "./SettingsPageBlockSettings";
+import SettingsPageAssetGeneration from "./SettingPageAssetGeneration";
 import { Wcb_theme_layout_global_settings } from "../../types";
 
 interface Tab {
@@ -22,6 +23,11 @@ const TABS: Tab[] = [
 		name: "editor-options",
 		label: "Editor options",
 		icon: Cog6ToothIcon,
+	},
+	{
+		name: "asset-generation",
+		label: "Asset Generation",
+		icon: RectangleGroupIcon,
 	},
 	// {
 	// 	name: "templates",
@@ -140,6 +146,15 @@ const SettingsPage: FC<Props> = ({ initData, themeLayoutGlobal }) => {
 						allSettings={allSettings}
 					/>
 				);
+			case "asset-generation":
+				return (
+					<SettingsPageAssetGeneration
+						onChange={(data) => {
+							handleUpdateSettings(data);
+						}}
+						allSettings={allSettings}
+					/>
+				);
 			case "templates":
 				return (
 					<SettingsPageTemplates
@@ -149,7 +164,6 @@ const SettingsPage: FC<Props> = ({ initData, themeLayoutGlobal }) => {
 						allSettings={allSettings}
 					/>
 				);
-
 			case "block-settings":
 				return (
 					<SettingsPageBlockSettings
@@ -159,7 +173,6 @@ const SettingsPage: FC<Props> = ({ initData, themeLayoutGlobal }) => {
 						allSettings={allSettings}
 					/>
 				);
-
 			default:
 				return <div className="text-lg font-medium">Coming soon ...</div>;
 		}
