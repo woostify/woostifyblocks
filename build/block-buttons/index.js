@@ -6835,14 +6835,69 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _hooks_useCreateCacheEmotion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../hooks/useCreateCacheEmotion */ "./src/hooks/useCreateCacheEmotion.ts");
 /* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-element-6a883da9.browser.esm.js");
+/* harmony import */ var _emotion_cache__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/cache */ "./node_modules/@emotion/cache/dist/emotion-cache.browser.esm.js");
 /* harmony import */ var _hooks_useGetDeviceType__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../hooks/useGetDeviceType */ "./src/hooks/useGetDeviceType.ts");
 
 
 
 
 
+const useCreateEmotionCache = function (key = "wcb-custom-cache-key") {
+  const [cache, setCache] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const useRefReact = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    let observer = null;
+    let tries = 0;
+    const createIframeCache = iframe => {
+      const iframeHead = iframe?.contentDocument?.head;
+      if (!iframeHead) return;
+      const newCache = (0,_emotion_cache__WEBPACK_IMPORTED_MODULE_1__["default"])({
+        key,
+        container: iframeHead
+      });
+      setCache(newCache);
+    };
+    const watchIframe = () => {
+      const iframe = document.querySelector('iframe[name="editor-canvas"]');
+      if (!iframe) {
+        if (tries < 20) {
+          tries++;
+          setTimeout(watchIframe, 150); // retry for up to ~3s
+        }
+        return;
+      }
+      if (iframe.contentDocument?.readyState === "complete") {
+        createIframeCache(iframe);
+      } else {
+        iframe.addEventListener("load", () => createIframeCache(iframe), {
+          once: true
+        });
+      }
+    };
+
+    // Initial attach
+    watchIframe();
+
+    // Watch for iframe changes (device switch)
+    observer = new MutationObserver(() => {
+      const iframe = document.querySelector('iframe[name="editor-canvas"]');
+      if (iframe && iframe !== cache?.container?.ownerDocument?.defaultView?.frameElement) {
+        tries = 0;
+        watchIframe();
+      }
+    });
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+    return () => observer?.disconnect();
+  }, []);
+  return {
+    cache,
+    useRefReact
+  };
+};
 const MyCacheProvider = ({
   children,
   uniqueKey = "uniqueid"
@@ -6852,17 +6907,18 @@ const MyCacheProvider = ({
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, children);
   }
   const KEY = uniqueKey.replace(/[0-9]/g, "").replace(/ /g, "").toLocaleLowerCase();
+
+  // const { myCache, ref } = useCreateCacheEmotion("wcb-key-cache");	
   const {
-    myCache,
-    ref
-  } = (0,_hooks_useCreateCacheEmotion__WEBPACK_IMPORTED_MODULE_1__["default"])("wcb-key-cache");
+    cache,
+    useRefReact
+  } = useCreateEmotionCache("wcb-key-cache");
+  if (!cache) {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, children);
+  }
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_3__.C, {
-    value: myCache
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("head", {
-    hidden: true,
-    className: "hidden",
-    ref: ref
-  }), children);
+    value: cache
+  }, children);
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(MyCacheProvider));
 
@@ -9246,38 +9302,6 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_0__.createReduxStore)(
 });
 (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_0__.register)(store);
 
-
-/***/ }),
-
-/***/ "./src/hooks/useCreateCacheEmotion.ts":
-/*!********************************************!*\
-  !*** ./src/hooks/useCreateCacheEmotion.ts ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _emotion_cache__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/cache */ "./node_modules/@emotion/cache/dist/emotion-cache.browser.esm.js");
-
-
-const useCreateCacheEmotion = (key = "wcb-custom-cache-key") => {
-  // DIEU NAY GIUP EMOTION GLOBAL CSS DUOC IMPORT TRONG MOBILE IFRAME!!!
-  const ref = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  const cache = (0,_emotion_cache__WEBPACK_IMPORTED_MODULE_1__["default"])({
-    key,
-    container: ref.current || undefined
-  });
-  return {
-    myCache: cache,
-    ref
-  };
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useCreateCacheEmotion);
 
 /***/ }),
 

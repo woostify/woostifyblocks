@@ -1,1 +1,1 @@
-{"version":3,"file":"block-faq-child/style-index.css","mappings":";;;AAAA;EACC;EACA;AACD,C","sources":["webpack://woostifyblocks/./src/block-faq-child/style.scss"],"sourcesContent":[".wcb-faq-child__wrap {\r\n\twidth: 100%;\r\n\tmax-width: 100%;\r\n}\r\n"],"names":[],"sourceRoot":""}
+{"version":3,"file":"block-faq-child/style-index.css","mappings":";;;AAAA;EACC;EACA;AACD,C","sources":["webpack://woostifyblocks/./src/block-faq-child/style.scss"],"sourcesContent":[".wcb-faq-child__wrap {\n\twidth: 100%;\n\tmax-width: 100%;\n}\n"],"names":[],"sourceRoot":""}
