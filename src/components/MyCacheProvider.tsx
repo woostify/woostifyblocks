@@ -25,7 +25,7 @@ const useCreateEmotionCache = function (key = "wcb-custom-cache-key") {
 
 			const newCache = createCache({
 				key,
-				container: iframeHead,
+				container: iframeHead || useRefReact.current || undefined,
 			});
 			setCache(newCache);
 		};
@@ -81,16 +81,16 @@ const MyCacheProvider: FC<Props> = ({ children, uniqueKey = "uniqueid" }) => {
 		.replace(/ /g, "")
 		.toLocaleLowerCase();
 
-	// const { myCache, ref } = useCreateCacheEmotion("wcb-key-cache");	
+	const { myCache, ref } = useCreateCacheEmotion("wcb-key-cache");
 	const { cache, useRefReact } = useCreateEmotionCache("wcb-key-cache");
-
+	
 	if (!cache) {
 		return <>{children}</>;
 	}
 
 	return (
 		<CacheProvider value={cache}>
-			{/* <head hidden className="hidden" ref={ref}></head> */}
+			<head hidden className="hidden" ref={ref}></head>
 			{children}
 		</CacheProvider>
 	);
