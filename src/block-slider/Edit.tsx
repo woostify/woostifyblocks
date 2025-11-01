@@ -672,7 +672,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 			case "Styles":
 				return (
 					<>
-						<WcbSlidersPanel_StyleVerticalAlignment
+						{/* <WcbSlidersPanel_StyleVerticalAlignment
 							onToggle={() => handleTogglePanel("Styles", "_StyleVerticalAlignment")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleVerticalAlignment" ||
 								tabStylesIsPanelOpen === "first"}
@@ -683,7 +683,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								});
 							}}
 							panelData={style_verticalAlignment || WCB_SLIDERS_BOX_PANEL_STYLE_VERTICAL_ALIGNMENT_DEMO} // Provide a default object if undefined
-						/>
+						/> */}
 						<WcbSlidersPanel_StyleBackground
 							onToggle={() => handleTogglePanel("Styles", "_StyleBackground")}
 							initialOpen={tabStylesIsPanelOpen === "_StyleBackground"}
@@ -769,17 +769,20 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				const BlockEdit = blockType?.edit;
 
 				return (
-				<div className="wcb-slider__item" key={index + "-"} 
+				<div 
+					// className="wcb-slider__item" 
+					key={index + "-"} 
 						onClick={(e) => {
 							e.stopPropagation();
 							onSelect(block.clientId);
 						}}
 					>
-						<div className="wcb-slider__item-background">
+						{/* <div className="wcb-slider__item-background">
 							<div className="wcb-slider__item-wrap-inner">
-								<div className="wcb-slider__item-inner">
-								<div className={`wcb-slider-child__wrap ${block.attributes?.uniqueId || ''}`}>
+								<div className="wcb-slider__item-inner"> */}
+								{/* <div className={`wcb-slider-child__wrap ${block.attributes?.uniqueId || ''}`}> */}
 										<BlockEdit
+									        className={`${block.attributes?.uniqueId || ''}`}
 											attributes={block.attributes}
 											setAttributes={(newAttributes: any) => {
 											wp.data.dispatch("core/block-editor").updateBlockAttributes(
@@ -792,10 +795,10 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 											index={index} // Pass index to child for unique identification
 										/>
 									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+								// </div>
+					// 		</div>
+					// 	</div>
+					// </div>
 				);
 			},
 			(prevProps, nextProps) => {
@@ -1079,6 +1082,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 	]);
 
 	const handleParentClick = useCallback((e: React.MouseEvent) => {
+		console.log('handleParentClick', e.target, e.currentTarget, isParentSelected);
 		if (e.target === e.currentTarget && !isParentSelected) {
 			selectBlock(clientId);
 			setIsParentSelected(true);

@@ -1,7 +1,7 @@
 /*  */
 /*  */
 .wcb-slider__wrap {
-	padding: 32px;
+	padding: 48px !important;
 
 	.slick-dots li {
 		margin: 0px;
@@ -72,6 +72,13 @@
 }
 
 .wcb-slider__wrap-items {
-	padding-top: 1rem;
-	padding-bottom: 1rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+
+.slick-list {
+    display: flex;
+	justify-content: center;
+    align-items: center; /* Center items vertically */
+	height: unset !important;
 }

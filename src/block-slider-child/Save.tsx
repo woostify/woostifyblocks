@@ -200,10 +200,12 @@ export default function save({ attributes, context }: { attributes: WcbAttrs, co
 
 	// Clean structure for slick + frontend CSS system with correct timing
 	return (
-		<div className="wcb-slider__item">
-			<div className="wcb-slider__item-background">
-				<div className="wcb-slider__item-wrap-inner">
-					<div className="wcb-slider__item-inner">
+		<div 
+			// className="wcb-slider__item"
+		>
+			{/* <div className="wcb-slider__item-background"> */}
+				{/* <div className="wcb-slider__item-wrap-inner"> */}
+					{/* <div className="wcb-slider__item-inner"> */}
 						{/* Child content wrapper with frontend CSS system - timing is now fixed */}
 						<div 
 							className={`wcb-slider-child__wrap ${uniqueId} ${uniqueCssClass} wcb-update-div`}
@@ -322,9 +324,9 @@ export default function save({ attributes, context }: { attributes: WcbAttrs, co
 								</div>
 							</div>
 						</div>
-					</div>
+					{/* </div>
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 } 

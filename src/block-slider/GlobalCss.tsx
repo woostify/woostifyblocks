@@ -26,9 +26,9 @@ const GlobalCss: FC<Props> = (attrs) => {
 		advance_motionEffect,
 	} = attrs;
 
-	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
-	const ITEM_CLASSNAME = `${WRAP_CLASSNAME} .wcb-slider__item`;
-	const ITEM_INNER_CLASSNAME = `${ITEM_CLASSNAME} .wcb-slider__item-inner`;
+	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid="${uniqueId}"]`;
+	const ITEM_CLASSNAME = `${WRAP_CLASSNAME}.wcb-slider__wrap`;
+	// const ITEM_INNER_CLASSNAME = `${ITEM_CLASSNAME} .wcb-slider__item-inner`;
 	const SLICK_ARROW = `${WRAP_CLASSNAME} .slick-arrow`;
 	const SLICK_DOTS = `${WRAP_CLASSNAME} .slick-dots`;
 	const SLICK_PREV = `${WRAP_CLASSNAME} .slick-prev`;
@@ -68,11 +68,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 						prefix_2: "paddingRight",
 					}),
 					getPaddingMarginStyles({
-						className: `${WRAP_CLASSNAME} .wcb-slider__item-inner`,
+						className: `${WRAP_CLASSNAME}`,
 						padding: style_dimension.padding,
 					}),
 					getStyleBackground({
-						className: `${WRAP_CLASSNAME} .wcb-slider__wrap-items`,
+						className: ITEM_CLASSNAME,
 						styles_background: style_backgroundAndBorder.background,
 					}),
 				]}
@@ -134,7 +134,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 			/>
 
 			{/* VERTICAL ALIGNMENT  */}
-			<Global
+			{/* <Global
 				styles={{
 					[`${ITEM_INNER_CLASSNAME}`]: {
 						paddingTop: style_verticalAlignment?.verticalAlignment === "top"
@@ -144,7 +144,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 							: "4rem",
 					},
 				}}
-			/>
+			/> */}
 
 			{/* ADVANCE  */}
 			<Global
