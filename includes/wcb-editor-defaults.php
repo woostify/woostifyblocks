@@ -60,7 +60,7 @@ add_action('enqueue_block_editor_assets', function () {
 			'hover_text_color' => $woostify['shop_page_button_color_hover'] ?? '#fff',
 			'hover_bg_color'   => $woostify['shop_page_button_background_hover'] ?? '#094771',
 			'border_radius'    => (int)($woostify['shop_page_button_border_radius'] ?? 0),
-			'position'         => $woostify['shop_page_add_to_cart_button_position'] ?? 'bottom-visible',
+			'position'         => $woostify['shop_page_add_to_cart_button_position'] === 'image' ? 'inside image' : $woostify['shop_page_add_to_cart_button_position'] ?? 'none',
 		]
 	];
 	error_log('[WCB_THEME_DEFAULTS]' . print_r($data, true));

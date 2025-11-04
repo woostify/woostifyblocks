@@ -138,6 +138,7 @@ function wcb_block_products__render_product($product, $attributes, $index)
     $data->out_of_stock = wcb_block_products__get_out_of_stock_html($product);
 
     $btnInsideImage = ($attributes['general_addToCartBtn']['position'] ?? "") === "inside image";
+    $btnIconAddToCart = ($attributes['general_addToCartBtn']['position'] ?? "") === "icon";
     $saleInsideImage = ($attributes['general_content']['saleBadgePosition'] ?? "") === "Inside image";
     $classes = "wcb-products__product ";
 
@@ -148,6 +149,7 @@ function wcb_block_products__render_product($product, $attributes, $index)
 
     // button
     $classes .= $btnInsideImage ? " wcb-products__product--btnInsideImage" : "";
+    $classes .= $btnIconAddToCart ? " wcb-products__product--btnIconAddToCart" : "";
     $btn1 = $btnInsideImage ? $data->button : "";
     $btn2 = $btnInsideImage ?   "" : $data->button;
     // sale badge

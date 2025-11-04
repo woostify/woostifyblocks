@@ -6229,6 +6229,7 @@ const GlobalCss = attrs => {
   const LIST_CLASS = `${WRAP_CLASSNAME} .wcb-products__list`;
   const POST_CARD_CLASS = `${WRAP_CLASSNAME} .wcb-products__product`;
   const ADD_TO_CART_BTN = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart a`;
+  const ADD_TO_CART_BTN_ICON = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart-icon`;
   const PRODUCT_IMAGE_CLASS = `${WRAP_CLASSNAME} .wcb-products__product-image`;
 
   // ------------------- WRAP DIV
@@ -6653,7 +6654,7 @@ const GlobalCss = attrs => {
       isWithRadius: true
     })];
   };
-  const getPostCardStyles_AddToCart = () => {
+  const getPostCardStyles_AddToCart = position => {
     const {
       backgroundColor,
       color
@@ -6685,8 +6686,9 @@ const GlobalCss = attrs => {
     //
     return {
       [ADD_TO_CART_BTN]: {
+        display: position === "icon" ? "none" : "block",
         color,
-        backgroundColor,
+        backgroundColor: position === "bottm visible" || position === "inside image" ? backgroundColor : "#fff",
         marginBottom: marginBottom_mobile_new,
         ":hover": {
           color: color_h,
@@ -6701,6 +6703,21 @@ const GlobalCss = attrs => {
       },
       [`${ADD_TO_CART_BTN}.added`]: {
         display: "none"
+      },
+      [ADD_TO_CART_BTN_ICON]: {
+        color,
+        backgroundColor,
+        marginBottom: marginBottom_mobile_new,
+        ":hover": {
+          color: color_h,
+          backgroundColor: backgroundColor_h
+        },
+        [`@media (min-width: ${media_tablet})`]: marginBottom_tablet_new ? {
+          marginBottom: marginBottom_tablet_new
+        } : undefined,
+        [`@media (min-width: ${media_desktop})`]: marginBottom_desktop_new ? {
+          marginBottom: marginBottom_desktop_new
+        } : undefined
       }
     };
   };
@@ -6761,9 +6778,9 @@ const GlobalCss = attrs => {
       border: style_border,
       isWithRadius: true
     })
-  }), general_addToCartBtn.isShowButton ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
-    styles: getPostCardStyles_AddToCart()
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), general_addToCartBtn.isShowButton ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === "bottm visible" || general_addToCartBtn?.position === "inside image" || general_addToCartBtn?.position === "icon" ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+    styles: getPostCardStyles_AddToCart(general_addToCartBtn?.position)
+  }) : null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
     styles: (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
       className: ADD_TO_CART_BTN,
       typography: style_addToCardBtn.typography
@@ -7530,6 +7547,12 @@ const WcbProductsPanelButton = ({
   }, {
     name: "bottom",
     icon: "Bottom"
+  }, {
+    name: "bottm visible",
+    icon: "Bottom visible"
+  }, {
+    name: "icon",
+    icon: "Icon"
   }];
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     initialOpen: initialOpen,
@@ -9526,14 +9549,16 @@ function buildStyleAddToCartBtnDefault(attr) {
   };
 }
 function buildGeneralAddToCartBtnDefault(attr) {
-  var _attr$isShowButton, _attr$position;
+  var _attr$isShowButton, _ref34, _addToCartBtn$positio;
   const theme = (0,_utils_themeDefaults__WEBPACK_IMPORTED_MODULE_2__.getThemeDefaults)();
   const addToCartBtn = theme.shop_archive_add_to_cart_btn;
   return {
     ..._WcbProductsPanelButton__WEBPACK_IMPORTED_MODULE_11__.WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO,
     ...(attr || {}),
     isShowButton: addToCartBtn?.position === 'none' ? false : (_attr$isShowButton = attr?.isShowButton) !== null && _attr$isShowButton !== void 0 ? _attr$isShowButton : _WcbProductsPanelButton__WEBPACK_IMPORTED_MODULE_11__.WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO.isShowButton,
-    position: addToCartBtn?.position === 'image' ? 'inside image' : (_attr$position = attr?.position) !== null && _attr$position !== void 0 ? _attr$position : _WcbProductsPanelButton__WEBPACK_IMPORTED_MODULE_11__.WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO.position
+    position: addToCartBtn?.position === 'bottom-visible' ? 'bottm visible' : addToCartBtn?.position === 'image' ? 'inside image' : addToCartBtn?.position === 'icon' ? 'icon' : addToCartBtn?.position === 'bottom' ? 'bottom' : // Default to 'bottom' if no position is specified
+    // This is consistent with the default in WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO
+    (_ref34 = (_addToCartBtn$positio = addToCartBtn?.position) !== null && _addToCartBtn$positio !== void 0 ? _addToCartBtn$positio : attr?.position) !== null && _ref34 !== void 0 ? _ref34 : _WcbProductsPanelButton__WEBPACK_IMPORTED_MODULE_11__.WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO.position
   };
 }
 

@@ -43,6 +43,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const LIST_CLASS = `${WRAP_CLASSNAME} .wcb-products__list`;
 	const POST_CARD_CLASS = `${WRAP_CLASSNAME} .wcb-products__product`;
 	const ADD_TO_CART_BTN = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart a`;
+	const ADD_TO_CART_BTN_ICON = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart-icon`;
 	const PRODUCT_IMAGE_CLASS = `${WRAP_CLASSNAME} .wcb-products__product-image`;
 
 	// ------------------- WRAP DIV
@@ -574,7 +575,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		];
 	};
 
-	const getPostCardStyles_AddToCart = (): CSSObject => {
+	const getPostCardStyles_AddToCart = (position: string): CSSObject => {
 		const { backgroundColor, color } =
 			style_addToCardBtn.colorAndBackgroundColor.Normal;
 		const { backgroundColor: backgroundColor_h, color: color_h } =
@@ -600,8 +601,9 @@ const GlobalCss: FC<Props> = (attrs) => {
 		//
 		return {
 			[ADD_TO_CART_BTN]: {
+				display: position === "icon" ? "none" : "block",
 				color,
-				backgroundColor,
+				backgroundColor: (position === "bottm visible" || position === "inside image")  ? backgroundColor : "#fff",
 				marginBottom: marginBottom_mobile_new,
 				":hover": {
 					color: color_h,
@@ -620,6 +622,25 @@ const GlobalCss: FC<Props> = (attrs) => {
 			},
 			[`${ADD_TO_CART_BTN}.added`]: {
 				display: "none",
+			},
+			[ADD_TO_CART_BTN_ICON]: {
+				color,
+				backgroundColor,
+				marginBottom: marginBottom_mobile_new,
+				":hover": {
+					color: color_h,
+					backgroundColor: backgroundColor_h,
+				},
+				[`@media (min-width: ${media_tablet})`]: marginBottom_tablet_new
+					? {
+							marginBottom: marginBottom_tablet_new,
+					  }
+					: undefined,
+				[`@media (min-width: ${media_desktop})`]: marginBottom_desktop_new
+					? {
+							marginBottom: marginBottom_desktop_new,
+					  }
+					: undefined,
 			}
 		};
 	};
@@ -727,7 +748,16 @@ const GlobalCss: FC<Props> = (attrs) => {
 			{/* ADD TO CART BUTTON */}
 			{general_addToCartBtn.isShowButton ? (
 				<>
-					<Global styles={getPostCardStyles_AddToCart()} />
+					<>
+					{
+						(general_addToCartBtn?.position === "bottom" || 
+							general_addToCartBtn?.position === "bottm visible" || 
+								general_addToCartBtn?.position === "inside image" ||
+								general_addToCartBtn?.position === "icon") ? (
+							<Global styles={getPostCardStyles_AddToCart(general_addToCartBtn?.position)} />
+						) : null
+					}
+					</>
 
 					<Global
 						styles={getTypographyStyles({

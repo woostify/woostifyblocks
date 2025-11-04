@@ -16,12 +16,12 @@
 .wcb-products__wrap .wcb-products__product-image-link__zoom .wcb-products__product-image{
   position: relative;
   display: block;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
 }
 .wcb-products__wrap .wcb-products__product-image-link__zoom img{
-  position: static;
   height: auto;
-  width: 100%;
+  width: auto;
   -o-object-fit: cover;
      object-fit: cover;
   transition-property: transform;
@@ -88,6 +88,25 @@
 .wcb-products__product.wcb-products__product--btnInsideImage:hover .wcb-products__product-add-to-cart{
   visibility: visible;
   opacity: 1;
+}
+.wcb-products__product.wcb-products__product--btnIconAddToCart {
+  background-image: url(../images/add-to-card-removebg-preview.dba57ce2.png);
+  background-size: 20%;
+  background-position: top right; /* canh góc trên bên phải */
+  background-repeat: no-repeat;
+}
+.wcb-products__product.wcb-products__product--btnIconAddToCart::after {
+  content: "";
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 3rem;
+  height: 3rem;
+  background-image: url(../images/add-to-card-removebg-preview.dba57ce2.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
 }
 .wcb-products__product .wcb-products__product-rating {
   display: inline-block;
