@@ -52,6 +52,10 @@ export type ThemeDefaults = {
         border_radius?: number;
         position?: string;
     };
+    shop_archive_wishlist_btn?: {
+        position?: 'top-right' | 'bottom-right' | 'none';
+        style?:  'yith' | 'ti';
+    }
 };
   
 export function getThemeDefaults(): ThemeDefaults {

@@ -61,8 +61,13 @@ add_action('enqueue_block_editor_assets', function () {
 			'hover_bg_color'   => $woostify['shop_page_button_background_hover'] ?? '#094771',
 			'border_radius'    => (int)($woostify['shop_page_button_border_radius'] ?? 0),
 			'position'         => $woostify['shop_page_add_to_cart_button_position'] === 'image' ? 'inside image' : $woostify['shop_page_add_to_cart_button_position'] ?? 'none',
-		]
+		],
+		'shop_archive_wishlist_btn' => [
+			'position' => $woostify['shop_page_wishlist_position'] ?? 'none',
+			'style'    => $woostify['shop_page_wishlist_support_plugin'] ?? 'yith',
+		],
 	];
+	error_log('[shop_page_wishlist_position]' . print_r($woostify['shop_page_wishlist_position'], true));
 	error_log('[WCB_THEME_DEFAULTS]' . print_r($data, true));
 	wp_add_inline_script('wp-blocks', 'window.WCB_THEME_DEFAULTS='.wp_json_encode($data).';', 'before');
 });

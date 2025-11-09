@@ -17,6 +17,7 @@ import {
 } from "./WcbProductsPanel_StyleOutOfStock";
 import type { WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK } from "./WcbProductsPanel_StyleOutOfStock";
 import type { WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE } from "./WcbProductsPanel_StyleSaleBadge"; 
+import { WCB_PRODUCTS_PANEL_STYLE_WISHLIST_BUTTON_DEMO } from "./WcbProductsPanel_StyleWishListButton";
 
 export function buildStyleLayoutDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO>) {
     const theme = getThemeDefaults();
@@ -333,5 +334,22 @@ export function buildGeneralAddToCartBtnDefault(attr?: Partial<typeof WCB_PRODUC
             addToCartBtn?.position ??
             attr?.position ?? 
             WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO.position,
+    };
+}
+
+export function buildStyleWishlistButtonDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_WISHLIST_BUTTON_DEMO>) {
+    const theme = getThemeDefaults();
+    const wishlistBtn = theme.shop_archive_wishlist_btn;
+    return {
+        ...WCB_PRODUCTS_PANEL_STYLE_WISHLIST_BUTTON_DEMO,
+        ...(attr || {}),
+        position: 
+            wishlistBtn?.position ?? 
+            attr?.position ?? 
+            WCB_PRODUCTS_PANEL_STYLE_WISHLIST_BUTTON_DEMO.position,
+        style:
+            wishlistBtn?.style ??
+            attr?.style ??
+            WCB_PRODUCTS_PANEL_STYLE_WISHLIST_BUTTON_DEMO.style,
     };
 }

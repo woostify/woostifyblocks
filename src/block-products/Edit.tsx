@@ -84,7 +84,8 @@ import {
 	buildStyleTitleDefault,
 	buildStylePriceDefault,
 	buildStyleAddToCartBtnDefault,
-	buildGeneralAddToCartBtnDefault
+	buildGeneralAddToCartBtnDefault,
+	buildStyleWishlistButtonDefault
 } from "./WcbThemeDefaults";
 
 interface Props extends EditProps<WcbAttrs> {}
@@ -112,6 +113,7 @@ const Edit: FC<Props> = (props) => {
 		style_border,
 		style_price,
 		style_rating,
+		style_wishlistBtn,
 		advance_motionEffect,
 		style_category,
 	} = attributes;
@@ -150,11 +152,12 @@ const Edit: FC<Props> = (props) => {
 			style_outOfStock: buildStyleOutOfStockDefault(style_outOfStock as any),
 			style_category: WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
 			style_title: buildStyleTitleDefault(WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO as any),
+			style_wishlistBtn: buildStyleWishlistButtonDefault(attributes.style_wishlistBtn as any),
 			general_sortingAndFiltering: buildSortingAndFilteringDefault(general_sortingAndFiltering as any),
 			general_content: buildGeneralContractDefault(general_content as any),
 			general_layout: WCB_PRODUCTS_PANEL_GENERAL_LAYOUT_DEMO,
 			general_featuredImage: buildGeneralFeaturedImageDefault(WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO as any),
-			general_addToCartBtn: buildGeneralAddToCartBtnDefault(WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO as any),
+			general_addToCartBtn: buildGeneralAddToCartBtnDefault(WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO as any) as any,
 			general_pagination: WCB_PRODUCTS_PANEL_PAGINATION_DEMO,
 			advance_responsiveCondition: RESPONSIVE_CONDITON_DEMO,
 			advance_zIndex: Z_INDEX_DEMO,
@@ -175,6 +178,18 @@ const Edit: FC<Props> = (props) => {
 			setAttributes({ style_category: WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO });
 		}
 	}, [style_category]);
+
+	useEffect(() => {
+		const hasWishlistConfig =
+			style_wishlistBtn && Object.keys(style_wishlistBtn).length > 0;
+		if (!hasWishlistConfig) {
+			setAttributes({
+				style_wishlistBtn: buildStyleWishlistButtonDefault(
+					attributes.style_wishlistBtn as any
+				),
+			});
+		}
+	}, [style_wishlistBtn]);
 	//
 
 	//
@@ -621,6 +636,7 @@ const Edit: FC<Props> = (props) => {
 			style_border,
 			style_price,
 			style_rating,
+			style_wishlistBtn,
 			advance_motionEffect,
 			style_category,
 		};
@@ -648,6 +664,7 @@ const Edit: FC<Props> = (props) => {
 		style_border,
 		style_price,
 		style_rating,
+		style_wishlistBtn,
 		advance_motionEffect,
 		style_category,
 	]);
@@ -661,6 +678,7 @@ const Edit: FC<Props> = (props) => {
 			general_featuredImage,
 			general_addToCartBtn,
 			general_pagination,
+			style_wishlistBtn,
 		};
 	}, [
 		uniqueId,
@@ -670,6 +688,7 @@ const Edit: FC<Props> = (props) => {
 		general_featuredImage,
 		general_addToCartBtn,
 		general_pagination,
+		style_wishlistBtn,
 	]);
 
 	const WcbAttrsForSaveValue = WcbAttrsForSave();

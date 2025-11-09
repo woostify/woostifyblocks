@@ -91,6 +91,9 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
                         'style_category' => array(
                             'type'      => 'object',
                         ),
+                        'style_wishlistBtn' => array(
+                            'type'      => 'object',
+                        ),
                         'advance_responsiveCondition' => array(
                             'type'      => 'object',
                         ),

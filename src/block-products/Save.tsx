@@ -28,6 +28,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_saleBadge,
 		style_outOfStock,
 		style_title,
+		style_wishlistBtn,
 		advance_motionEffect,
 		style_category,
 	} = attributes;
@@ -109,6 +110,7 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 			...style_category,
 			typography: ensureTypographyConsistency(style_category.typography)
 		} : undefined,
+		style_wishlistBtn: ensureObjectStructure(style_wishlistBtn),
 	};
 	//
 	const blockProps = useBlockProps.save({

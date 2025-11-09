@@ -7,6 +7,7 @@ function wcb_block_products__renderCallback($attributes, $content)
     // 
     $sortingAndFilteringAttrs = $attributes['general_sortingAndFiltering'] ?? [];
     $uniqueId =  $attributes['uniqueId'] ?? "";
+
     $className =  $attributes['className'] ?? "";
     $align =  $attributes['align'] ?? "";
     if (!empty($align)) {
@@ -140,6 +141,17 @@ function wcb_block_products__render_product($product, $attributes, $index)
     $btnInsideImage = ($attributes['general_addToCartBtn']['position'] ?? "") === "inside image";
     $btnIconAddToCart = ($attributes['general_addToCartBtn']['position'] ?? "") === "icon";
     $saleInsideImage = ($attributes['general_content']['saleBadgePosition'] ?? "") === "Inside image";
+
+    $btnWishListTopRight = false;
+    $btnWishListBottomRight = false;
+    if ($attributes['style_wishlistBtn']['position'] === "top-right" && $attributes['style_wishlistBtn']['style'] === "ti") {
+        $btnWishListTopRight = true;
+    }
+
+    if ($attributes['style_wishlistBtn']['position'] === "bottom-right" && $attributes['style_wishlistBtn']['style'] === "ti") {
+        $btnWishListBottomRight = true;     
+    }   
+
     $classes = "wcb-products__product ";
 
     if (!wcb__is_enabled($attributes['general_featuredImage']['isShowFeaturedImage'] ?? "")) {
@@ -159,6 +171,9 @@ function wcb_block_products__render_product($product, $attributes, $index)
     // out of stock
     $classes .= $saleInsideImage ? " wcb-products__product--onsaleInsideImage" : "";
     $saleOutOfStock = $data->out_of_stock ? : "";
+    // wishlist button
+    $classes .= $btnWishListTopRight ? " wcb-products__product--wishlistTopRight" : "";
+    $classes .= $btnWishListBottomRight ? " wcb-products__product--wishlistBottomRight" : "";
     // 
     $isSwapHover = $data->gallery_image_1 ? "<div class=\"wcb-products__product-galley_image_1\">{$data->gallery_image_1}</div>" : '';
     // 
@@ -176,6 +191,7 @@ function wcb_block_products__render_product($product, $attributes, $index)
                     <a href=\"{$data->permalink}\" class=\"{$featuredClasses}\">
                         {$data->image}
                         {$isSwapHover}
+                        <div class=\"wcb-products__product--wishlistTopRight--item wcb-products__product--wishlistBottomRight--item \"></div>
                     </a>
                     {$saleBadge1}
                     {$saleOutOfStock}

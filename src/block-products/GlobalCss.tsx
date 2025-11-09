@@ -31,6 +31,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		style_price,
 		style_rating,
 		style_category,
+		style_wishlistBtn,
 		//
 		advance_responsiveCondition,
 		advance_zIndex,
@@ -42,6 +43,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const WRAP_CLASSNAME = `.${uniqueId}[data-uniqueid=${uniqueId}]`;
 	const LIST_CLASS = `${WRAP_CLASSNAME} .wcb-products__list`;
 	const POST_CARD_CLASS = `${WRAP_CLASSNAME} .wcb-products__product`;
+	const ADD_TO_CART_BTN_BG = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart`;
 	const ADD_TO_CART_BTN = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart a`;
 	const ADD_TO_CART_BTN_ICON = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart-icon`;
 	const PRODUCT_IMAGE_CLASS = `${WRAP_CLASSNAME} .wcb-products__product-image`;
@@ -419,6 +421,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 		return [
 			{
 				[POST_CARD_CLASS]: {
+					display: "flex",
+					flexDirection: "column",
 					position: "relative",
 					height: !style_layout.isEqualHeight ? "max-content" : undefined,
 					textAlign: style_layout.textAlignment,
@@ -600,6 +604,9 @@ const GlobalCss: FC<Props> = (attrs) => {
 		});
 		//
 		return {
+			[ADD_TO_CART_BTN_BG]: {
+				justifyContent: "center",
+			},
 			[ADD_TO_CART_BTN]: {
 				display: position === "icon" ? "none" : "block",
 				color,
@@ -619,6 +626,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 							marginBottom: marginBottom_desktop_new,
 					  }
 					: undefined,
+				// textTransform: "uppercase",
+				fontWeight: 600,
 			},
 			[`${ADD_TO_CART_BTN}.added`]: {
 				display: "none",
