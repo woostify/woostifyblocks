@@ -185,12 +185,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 			};
 		}
 
-		if (!contentBoxWidth.Desktop) {
+		if (!contentBoxWidth.Desktop && !contentBoxWidth.Tablet && !contentBoxWidth.Mobile ) {
 			contentBoxWidth = {
 				Desktop: DEMO_WCB_GLOBAL_VARIABLES.defaultContentWidth || "",
 			};
 		}
-
 		const {
 			value_Desktop: contentBoxWidthDesktop,
 			value_Tablet: contentBoxWidthTablet,
@@ -206,7 +205,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 			tablet_v: contentBoxWidthTablet,
 			desktop_v: contentBoxWidthDesktop,
 		});
-
 		if (
 			!contentBoxWidthMobile_new &&
 			!contentBoxWidthTablet_new &&

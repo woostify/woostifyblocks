@@ -5480,7 +5480,7 @@ const GlobalCss = attrs => {
         }
       };
     }
-    if (!contentBoxWidth.Desktop) {
+    if (!contentBoxWidth.Desktop && !contentBoxWidth.Tablet && !contentBoxWidth.Mobile) {
       contentBoxWidth = {
         Desktop: ___WEBPACK_IMPORTED_MODULE_7__.DEMO_WCB_GLOBAL_VARIABLES.defaultContentWidth || ""
       };
