@@ -9,6 +9,7 @@ import SettingsPageEditorOptions from "./SettingsPageEditorOptions";
 import toast, { Toaster } from "react-hot-toast";
 import SettingsPageTemplates from "./SettingsPageTemplates";
 import SettingsPageBlockSettings from "./SettingsPageBlockSettings";
+import SettingsPageAssetGeneration from "./SettingPageAssetGeneration";
 import { Wcb_theme_layout_global_settings } from "../../types";
 
 interface Tab {
@@ -24,20 +25,25 @@ const TABS: Tab[] = [
 		icon: Cog6ToothIcon,
 	},
 	{
-		name: "templates",
-		label: "Templates",
+		name: "asset-generation",
+		label: "Asset Generation",
 		icon: RectangleGroupIcon,
 	},
-	{
-		name: "block-settings",
-		label: "Block settings",
-		icon: Squares2X2Icon,
-	},
-	{
-		name: "performance",
-		label: "Performance",
-		icon: RocketLaunchIcon,
-	},
+	// {
+	// 	name: "templates",
+	// 	label: "Templates",
+	// 	icon: RectangleGroupIcon,
+	// },
+	// {
+	// 	name: "block-settings",
+	// 	label: "Block settings",
+	// 	icon: Squares2X2Icon,
+	// },
+	// {
+	// 	name: "performance",
+	// 	label: "Performance",
+	// 	icon: RocketLaunchIcon,
+	// },
 ];
 
 interface Props {
@@ -140,6 +146,15 @@ const SettingsPage: FC<Props> = ({ initData, themeLayoutGlobal }) => {
 						allSettings={allSettings}
 					/>
 				);
+			case "asset-generation":
+				return (
+					<SettingsPageAssetGeneration
+						onChange={(data) => {
+							handleUpdateSettings(data);
+						}}
+						allSettings={allSettings}
+					/>
+				);
 			case "templates":
 				return (
 					<SettingsPageTemplates
@@ -149,7 +164,6 @@ const SettingsPage: FC<Props> = ({ initData, themeLayoutGlobal }) => {
 						allSettings={allSettings}
 					/>
 				);
-
 			case "block-settings":
 				return (
 					<SettingsPageBlockSettings
@@ -159,7 +173,6 @@ const SettingsPage: FC<Props> = ({ initData, themeLayoutGlobal }) => {
 						allSettings={allSettings}
 					/>
 				);
-
 			default:
 				return <div className="text-lg font-medium">Coming soon ...</div>;
 		}

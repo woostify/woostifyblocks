@@ -42,6 +42,9 @@ import {
 	WCB_BUTTON_PANEL_STYLE_TEXT,
 	WCB_BUTTON_PANEL_STYLE_TEXT_DEMO,
 } from "./WcbButtonPanel_StyleText";
+
+const WCB_GLOBAL_VARIABLES: typeof window.wcbGlobalVariables = window.wcbGlobalVariables;
+
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 	content: string;
@@ -113,6 +116,11 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	advance_zIndex: {
 		type: "object",
 		default: Z_INDEX_DEMO,
+	},
+
+	wcb_global_variables: {
+		type: "object",
+		default: WCB_GLOBAL_VARIABLES,
 	},
 };
 

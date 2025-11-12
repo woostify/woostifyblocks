@@ -29,6 +29,7 @@ const MyBorderControl: FC<Props> = ({
 	setAttrs__border,
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
+	const WCB_GLOBAL_VARIABLES: typeof window.wcbGlobalVariables = window.wcbGlobalVariables;
 	//
 	const {
 		mainSettings: mainSettingsProps,
@@ -104,24 +105,25 @@ const MyBorderControl: FC<Props> = ({
 				onChange={handleChangeBorderHoverColor}
 				color={hoverColorProps}
 			/>
-
-			<div className="MyBorderControl__BorderRadiusControl">
-				<MyLabelControl className="mb-2" hasResponsive>
-					{__("Border radius", "wcb")}
-				</MyLabelControl>
-				<BorderRadiusControl
-					values={RADIUS}
-					onChange={(value) => {
-						handleChangeBorderRadius(value);
-					}}
-					label={""}
-					// label={
-					// 	<MyLabelControl className="" hasResponsive>
-					// 		{__("Border radius", "wcb")}
-					// 	</MyLabelControl>
-					// }
-				/>
-			</div>
+			{WCB_GLOBAL_VARIABLES.buttonInheritFromTheme !== "true" && (	
+				<div className="MyBorderControl__BorderRadiusControl">
+					<MyLabelControl className="mb-2" hasResponsive>
+						{__("Border radius", "wcb")}
+					</MyLabelControl>
+					<BorderRadiusControl
+						values={RADIUS}
+						onChange={(value) => {
+							handleChangeBorderRadius(value);
+						}}
+						label={""}
+						// label={
+						// 	<MyLabelControl className="" hasResponsive>
+						// 		{__("Border radius", "wcb")}
+						// 	</MyLabelControl>
+						// }
+					/>
+				</div>
+			)}
 		</div>
 	);
 };

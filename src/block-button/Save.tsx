@@ -23,9 +23,10 @@ export default function save({ attributes }: { attributes: WcbAttrs }) {
 		style_dimension,
 		style_icon,
 		style_text,
+		wcb_global_variables,
 	} = attributes;
 	//
-
+	
 	const newAttrForSave: WcbAttrsForSave = {
 		anchor,
 		uniqueId,

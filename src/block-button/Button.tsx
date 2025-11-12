@@ -24,6 +24,7 @@ const Button: FC<Props> = forwardRef((props, ref) => {
 		style_icon,
 		style_text,
 		uniqueId,
+		wcb_global_variables,
 	} = attributes;
 	const {
 		enableIcon,
@@ -44,7 +45,7 @@ const Button: FC<Props> = forwardRef((props, ref) => {
 
 	const renderButton = () => {
 		const HtmlTag = isEdit ? "div" : "a";
-
+		
 		return (
 			<HtmlTag
 				{...otherProps}
@@ -56,7 +57,7 @@ const Button: FC<Props> = forwardRef((props, ref) => {
 					general_preset.preset
 						? `wcb-button__main--${general_preset.preset}`
 						: ""
-				}`}
+				} ${wcb_global_variables.buttonInheritFromTheme === "true" ? 'wcb-button__main--inherit-from-theme' : ''}`}
 				//
 				target={openInNewWindow ? "_blank" : undefined}
 				href={!isEdit ? link : undefined}
