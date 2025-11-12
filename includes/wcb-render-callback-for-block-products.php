@@ -282,7 +282,7 @@ function wcb_block_products__get_rating_html($product)
 
     if ($rating_count > 0) {
         $label = sprintf(__('Rated %s out of 5', 'woocommerce'), $average);
-        $html  = '<div class="wcb-products__product-rating wc-block-components-product-rating__stars wc-block-grid__product-rating__stars" role="img" aria-label="' . esc_attr($label) . '">' . wc_get_star_rating_html($average, $rating_count) . '</div>';
+        $html  = '<div class="wcb-products__product-rating-wrap"><div class="wcb-products__product-rating wc-block-components-product-rating__stars wc-block-grid__product-rating__stars" role="img" aria-label="' . esc_attr($label) . '">' . wc_get_star_rating_html($average, $rating_count) . '</div></div>';
         return $html;
     }
     return '';
@@ -393,11 +393,19 @@ function wcb_block_products__get_add_to_cart($product)
         $attributes['class'] .= ' ajax_add_to_cart';
     }
 
+    $icon_url = trailingslashit(WCB_URI) . 'public/images/add-to-cart-btn.svg';
+    $icon_markup = sprintf(
+        '<span class="wcb-products__add-to-cart-icon" aria-hidden="true"><img src="%s" alt="" role="presentation" /></span>',
+        esc_url($icon_url)
+    );
+    $label_markup = '<span class="wcb-products__add-to-cart-label">' . esc_html($product->add_to_cart_text()) . '</span>';
+
     return sprintf(
-        '<a href="%s" %s>%s</a>',
+        '<a href="%s" %s>%s%s</a>',
         esc_url($product->add_to_cart_url()),
         wc_implode_html_attributes($attributes),
-        esc_html($product->add_to_cart_text())
+        $icon_markup,
+        $label_markup
     );
 }
 

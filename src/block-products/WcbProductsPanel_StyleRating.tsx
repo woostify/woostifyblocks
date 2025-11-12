@@ -16,7 +16,7 @@ export interface WCB_PRODUCTS_PANEL_STYLE_RATING {
 
 export const WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO: WCB_PRODUCTS_PANEL_STYLE_RATING =
 	{
-		color: "#FF8B00",
+		color: "#ffc400",
 		marginBottom: { Desktop: "0.25rem" },
 	};
 

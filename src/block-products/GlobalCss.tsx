@@ -627,7 +627,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 					  }
 					: undefined,
 				// textTransform: "uppercase",
-				fontWeight: 600,
+				// fontWeight: 600,
 			},
 			[`${ADD_TO_CART_BTN}.added`]: {
 				display: "none",

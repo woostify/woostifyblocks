@@ -78,11 +78,6 @@
 	}
 
 	&.wcb-products__product--btnIconAddToCart {
-		background-image: url('../../public/images/add-to-cart.svg');
-		background-size: 20%;
-		background-position: top right; /* canh góc trên bên phải */
-		background-repeat: no-repeat;
-
 		&::after {
 			content: "";
 			position: absolute;
@@ -281,6 +276,10 @@
 	}
 
 	/* RATING */
+	.wcb-products__product-rating-wrap{
+		display: flex;
+		justify-content: center;
+	}
 	.wc-block-components-product-rating__stars {
 		font-family: star;
 		font-size: 1em;
@@ -340,6 +339,10 @@
 	margin-top: 0;
 }
 
+.wcb-products__product-title a {
+		font-weight: 400;
+}
+
 .wcb-products__product-image {
 	img {
 		width: 100%;
@@ -371,6 +374,15 @@
 	.added_to_cart .woostify-svg-icon {
 		display: none;
 	}
+}
+
+.wcb-products__product-add-to-cart a {
+	display: flex !important;
+	gap: 4px;
+}
+
+.wcb-products__add-to-cart-icon {
+	align-self: center;
 }
 
 /*  */
