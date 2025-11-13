@@ -5,7 +5,7 @@ import MyRadioGroup, { MyRadioItem } from "../components/controls/MyRadioGroup";
 
 export interface WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN {
 	isShowButton: boolean;
-	position: "bottom" | "inside image" | "bottm visible" | "icon" | "none";
+	position: "bottom" | "inside image" | "bottom visible" | "icon" | "none";
 }
 
 export const WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO: WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN =
@@ -34,7 +34,7 @@ const WcbProductsPanelButton: FC<Props> = ({
 	>[] = [
 		{ name: "inside image", icon: "Inside image" },
 		{ name: "bottom", icon: "Bottom" },
-		{ name: "bottm visible", icon: "Bottom visible" },
+		{ name: "bottom visible", icon: "Bottom visible" },
 		{ name: "icon", icon: "Icon" },
 	];
 	return (

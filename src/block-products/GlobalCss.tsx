@@ -47,6 +47,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const ADD_TO_CART_BTN = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart a`;
 	const ADD_TO_CART_BTN_ICON = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart-icon`;
 	const PRODUCT_IMAGE_CLASS = `${WRAP_CLASSNAME} .wcb-products__product-image`;
+	const PRODUCT_PRICE_CLASS = `${POST_CARD_CLASS} .wcb-products__product-price`;
 
 	// ------------------- WRAP DIV
 
@@ -427,6 +428,24 @@ const GlobalCss: FC<Props> = (attrs) => {
 					height: !style_layout.isEqualHeight ? "max-content" : undefined,
 					textAlign: style_layout.textAlignment,
 					backgroundColor: style_layout.backgroundColor,
+					".wcb-products__add-to-cart-icon": {
+						display: general_addToCartBtn?.position === "bottom" ? "none" : "block",
+					},
+					":hover": {
+						".wcb-products__product-price": {
+							display: general_addToCartBtn?.position === "bottom" ? "none" : "block",
+						},
+						//TODO: handle style in edit page
+						".wcb-products__product-add-to-cart": {
+							backgroundColor: general_addToCartBtn?.position === "bottom" ? "#fff" : "inherit",
+							"span": {
+								color: general_addToCartBtn?.position === "bottom" ? "black" : style_addToCardBtn?.colorAndBackgroundColor?.Normal.color,
+							},
+							".wcb-products__add-to-cart-icon": {
+								display: general_addToCartBtn?.position === "bottom" ? "block" : "block",
+							}
+						}
+					},
 
 					// ".wcb-products__product-image":
 					".wcb-products__product-image-link":
@@ -606,15 +625,18 @@ const GlobalCss: FC<Props> = (attrs) => {
 		return {
 			[ADD_TO_CART_BTN_BG]: {
 				justifyContent: "center",
+				":hover span": {
+					color: color_h ? color_h : "white",
+				}
 			},
 			[ADD_TO_CART_BTN]: {
 				display: position === "icon" ? "none" : "block",
 				color,
-				backgroundColor: (position === "bottm visible" || position === "inside image")  ? backgroundColor : "#fff",
+				backgroundColor: (position === "bottom visible" || position === "inside image")  ? backgroundColor : "#fff",
 				marginBottom: marginBottom_mobile_new,
 				":hover": {
 					color: color_h,
-					backgroundColor: backgroundColor_h,
+					backgroundColor: (position === "bottom visible" || position === "inside image" || position === "icon") ? backgroundColor_h : "#fff !important",
 				},
 				[`@media (min-width: ${media_tablet})`]: marginBottom_tablet_new
 					? {
@@ -650,7 +672,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 							marginBottom: marginBottom_desktop_new,
 					  }
 					: undefined,
-			}
+			},
 		};
 	};
 
@@ -760,7 +782,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 					<>
 					{
 						(general_addToCartBtn?.position === "bottom" || 
-							general_addToCartBtn?.position === "bottm visible" || 
+							general_addToCartBtn?.position === "bottom visible" || 
 								general_addToCartBtn?.position === "inside image" ||
 								general_addToCartBtn?.position === "icon") ? (
 							<Global styles={getPostCardStyles_AddToCart(general_addToCartBtn?.position)} />

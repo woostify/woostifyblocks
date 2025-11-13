@@ -325,7 +325,7 @@ export function buildGeneralAddToCartBtnDefault(attr?: Partial<typeof WCB_PRODUC
             addToCartBtn?.position === 'none' ? false : 
             (attr?.isShowButton ?? WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO.isShowButton),
         position: 
-            addToCartBtn?.position === 'bottom-visible' ? 'bottm visible' :
+            addToCartBtn?.position === 'bottom-visible' ? 'bottom visible' :
             addToCartBtn?.position === 'image' ? 'inside image' :
             addToCartBtn?.position === 'icon' ? 'icon' :
             addToCartBtn?.position === 'bottom' ? 'bottom' :

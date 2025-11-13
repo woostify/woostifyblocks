@@ -6234,6 +6234,9 @@ const GlobalCss = attrs => {
     advance_zIndex,
     advance_motionEffect
   } = attrs;
+  console.log('====================================');
+  console.log("style_addToCardBtn", general_addToCartBtn);
+  console.log('====================================');
   const {
     media_desktop,
     media_tablet
@@ -6245,6 +6248,7 @@ const GlobalCss = attrs => {
   const ADD_TO_CART_BTN = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart a`;
   const ADD_TO_CART_BTN_ICON = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart-icon`;
   const PRODUCT_IMAGE_CLASS = `${WRAP_CLASSNAME} .wcb-products__product-image`;
+  const PRODUCT_PRICE_CLASS = `${POST_CARD_CLASS} .wcb-products__product-price`;
 
   // ------------------- WRAP DIV
 
@@ -6579,6 +6583,24 @@ const GlobalCss = attrs => {
         height: !style_layout.isEqualHeight ? "max-content" : undefined,
         textAlign: style_layout.textAlignment,
         backgroundColor: style_layout.backgroundColor,
+        ".wcb-products__add-to-cart-icon": {
+          display: general_addToCartBtn?.position === "bottom" ? "none" : "block"
+        },
+        ":hover": {
+          ".wcb-products__product-price": {
+            display: general_addToCartBtn?.position === "bottom" ? "none" : "block"
+          },
+          //TODO: handle style in edit page
+          ".wcb-products__product-add-to-cart": {
+            backgroundColor: general_addToCartBtn?.position === "bottom" ? "#fff" : "inherit",
+            "span": {
+              color: general_addToCartBtn?.position === "bottom" ? "black" : style_addToCardBtn?.colorAndBackgroundColor?.Normal.color
+            },
+            ".wcb-products__add-to-cart-icon": {
+              display: general_addToCartBtn?.position === "bottom" ? "block" : "block"
+            }
+          }
+        },
         // ".wcb-products__product-image":
         ".wcb-products__product-image-link": featuredImageMarginBottom_mobile_new || featuredImageMarginBottom_tablet_new || featuredImageMarginBottom_desktop_new ? {
           marginBottom: featuredImageMarginBottom_mobile_new,
@@ -6701,17 +6723,27 @@ const GlobalCss = attrs => {
     });
     //
     return {
+      [POST_CARD_CLASS]: {
+        "&:hover": {
+          [PRODUCT_PRICE_CLASS]: {
+            display: position === "bottom" ? "none" : "block"
+          }
+        }
+      },
       [ADD_TO_CART_BTN_BG]: {
-        justifyContent: "center"
+        justifyContent: "center",
+        ":hover span": {
+          color: color_h ? color_h : "white"
+        }
       },
       [ADD_TO_CART_BTN]: {
         display: position === "icon" ? "none" : "block",
         color,
-        backgroundColor: position === "bottm visible" || position === "inside image" ? backgroundColor : "#fff",
+        backgroundColor: position === "bottom visible" || position === "inside image" ? backgroundColor : "#fff",
         marginBottom: marginBottom_mobile_new,
         ":hover": {
           color: color_h,
-          backgroundColor: backgroundColor_h
+          backgroundColor: position === "bottom visible" || position === "inside image" || position === "icon" ? backgroundColor_h : "#fff !important"
         },
         [`@media (min-width: ${media_tablet})`]: marginBottom_tablet_new ? {
           marginBottom: marginBottom_tablet_new
@@ -6799,7 +6831,7 @@ const GlobalCss = attrs => {
       border: style_border,
       isWithRadius: true
     })
-  }), general_addToCartBtn.isShowButton ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === "bottm visible" || general_addToCartBtn?.position === "inside image" || general_addToCartBtn?.position === "icon" ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), general_addToCartBtn.isShowButton ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === "bottom visible" || general_addToCartBtn?.position === "inside image" || general_addToCartBtn?.position === "icon" ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
     styles: getPostCardStyles_AddToCart(general_addToCartBtn?.position)
   }) : null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
     styles: (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
@@ -7571,7 +7603,7 @@ const WcbProductsPanelButton = ({
     name: "bottom",
     icon: "Bottom"
   }, {
-    name: "bottm visible",
+    name: "bottom visible",
     icon: "Bottom visible"
   }, {
     name: "icon",
@@ -9600,7 +9632,7 @@ function buildGeneralAddToCartBtnDefault(attr) {
     ..._WcbProductsPanelButton__WEBPACK_IMPORTED_MODULE_11__.WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO,
     ...(attr || {}),
     isShowButton: addToCartBtn?.position === 'none' ? false : (_attr$isShowButton = attr?.isShowButton) !== null && _attr$isShowButton !== void 0 ? _attr$isShowButton : _WcbProductsPanelButton__WEBPACK_IMPORTED_MODULE_11__.WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO.isShowButton,
-    position: addToCartBtn?.position === 'bottom-visible' ? 'bottm visible' : addToCartBtn?.position === 'image' ? 'inside image' : addToCartBtn?.position === 'icon' ? 'icon' : addToCartBtn?.position === 'bottom' ? 'bottom' : // Default to 'bottom' if no position is specified
+    position: addToCartBtn?.position === 'bottom-visible' ? 'bottom visible' : addToCartBtn?.position === 'image' ? 'inside image' : addToCartBtn?.position === 'icon' ? 'icon' : addToCartBtn?.position === 'bottom' ? 'bottom' : // Default to 'bottom' if no position is specified
     // This is consistent with the default in WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO
     (_ref34 = (_addToCartBtn$positio = addToCartBtn?.position) !== null && _addToCartBtn$positio !== void 0 ? _addToCartBtn$positio : attr?.position) !== null && _ref34 !== void 0 ? _ref34 : _WcbProductsPanelButton__WEBPACK_IMPORTED_MODULE_11__.WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO.position
   };

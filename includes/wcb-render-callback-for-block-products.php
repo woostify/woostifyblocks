@@ -129,7 +129,7 @@ function wcb_block_products__render_product($product, $attributes, $index)
         $data->price = wcb_block_products__get_price_html($product);
     }
     if (wcb__is_enabled($attributes['general_addToCartBtn']['isShowButton'] ?? "")) {
-        $data->button = wcb_block_products__get_button_html($product);
+        $data->button = wcb_block_products__get_button_html($product, $attributes);
     }
 
     if (wcb__is_enabled($attributes['general_content']['isShowCategory'] ?? "")) {
@@ -367,14 +367,14 @@ function wcb_block_products__get_out_of_stock_html($product)
     }
 }
 
-function wcb_block_products__get_button_html($product)
+function wcb_block_products__get_button_html($product, $attributes)
 {
 
-    return '<div class="wcb-products__product-add-to-cart wp-block-button wc-block-grid__product-add-to-cart">' . wcb_block_products__get_add_to_cart($product) . '</div>';
+    return '<div class="wcb-products__product-add-to-cart wp-block-button wc-block-grid__product-add-to-cart">' . wcb_block_products__get_add_to_cart($product, $attributes) . '</div>';
 }
 
 
-function wcb_block_products__get_add_to_cart($product)
+function wcb_block_products__get_add_to_cart($product, $attributesFromBlock)
 {
     $attributes = array(
         'aria-label'       => $product->add_to_cart_description(),
@@ -393,7 +393,14 @@ function wcb_block_products__get_add_to_cart($product)
         $attributes['class'] .= ' ajax_add_to_cart';
     }
 
-    $icon_url = trailingslashit(WCB_URI) . 'public/images/add-to-cart-btn.svg';
+    $icon_url = trailingslashit(WCB_URI) . 
+        (
+            ($attributesFromBlock['general_addToCartBtn']['position'] === "inside image" 
+            || $attributesFromBlock['general_addToCartBtn']['position'] === "bottom visible") 
+                ? 'public/images/add-to-cart-btn-white.svg' 
+                : 'public/images/add-to-cart-btn-black.svg'
+        );
+
     $icon_markup = sprintf(
         '<span class="wcb-products__add-to-cart-icon" aria-hidden="true"><img src="%s" alt="" role="presentation" /></span>',
         esc_url($icon_url)
