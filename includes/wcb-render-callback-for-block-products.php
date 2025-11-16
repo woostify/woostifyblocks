@@ -184,6 +184,23 @@ function wcb_block_products__render_product($product, $attributes, $index)
         }
     }
 
+    $topRightIconsHtml = '';
+    if ($btnIconAddToCart || $btnWishListTopRight) {
+        $topRightItems = array();
+
+        if ($btnIconAddToCart) {
+            $topRightItems[] = '<div class="wcb-products__product--btnIconAddToCart--item"></div>';
+        }
+
+        if ($btnWishListTopRight) {
+            $topRightItems[] = '<div class="wcb-products__product--wishlistTopRight--item"></div>';
+        }
+
+        $topRightIconsHtml = '<div class="wcb-products__product--topRight">' . implode('', $topRightItems) . '</div>';
+    }
+
+    $bottomRightIconHtml = $btnWishListBottomRight ? '<div class="wcb-products__product--wishlistBottomRight--item"></div>' : '';
+
     return apply_filters(
         'woocommerce_blocks_product_grid_item_html',
         "<div class=\"scroll-snap-slide {$classes}\" data-index=\"{$index}\">
@@ -191,7 +208,8 @@ function wcb_block_products__render_product($product, $attributes, $index)
                     <a href=\"{$data->permalink}\" class=\"{$featuredClasses}\">
                         {$data->image}
                         {$isSwapHover}
-                        <div class=\"wcb-products__product--wishlistTopRight--item wcb-products__product--wishlistBottomRight--item \"></div>
+                        {$topRightIconsHtml}
+                        {$bottomRightIconHtml}
                     </a>
                     {$saleBadge1}
                     {$saleOutOfStock}
@@ -393,18 +411,33 @@ function wcb_block_products__get_add_to_cart($product, $attributesFromBlock)
         $attributes['class'] .= ' ajax_add_to_cart';
     }
 
-    $icon_url = trailingslashit(WCB_URI) . 
-        (
-            ($attributesFromBlock['general_addToCartBtn']['position'] === "inside image" 
-            || $attributesFromBlock['general_addToCartBtn']['position'] === "bottom visible") 
-                ? 'public/images/add-to-cart-btn-white.svg' 
-                : 'public/images/add-to-cart-btn-black.svg'
-        );
+    // NEW: get color from block attributes
+    $svg_color = $attributesFromBlock['style_addToCardBtn']['colorAndBackgroundColor']['Normal']['color'] ?? '#000000';
 
-    $icon_markup = sprintf(
-        '<span class="wcb-products__add-to-cart-icon" aria-hidden="true"><img src="%s" alt="" role="presentation" /></span>',
-        esc_url($icon_url)
-    );
+    // NEW: inline SVG with color
+    $icon_markup = '
+        <span class="wcb-products__add-to-cart-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
+                <path 
+                    fill="' . esc_attr($svg_color) . '"
+                    d="m 14.176,12.5 c 0.965,0 1.75,0.785 1.75,1.75 0,0.965 -0.785,1.75 -1.75,1.75 -0.965,0 -1.75,-0.785 -1.75,-1.75 0,-0.965 0.785,-1.75 1.75,-1.75 z m 0,2.5 c 0.414,0 0.75,-0.337 0.75,-0.75 0,-0.413 -0.336,-0.75 -0.75,-0.75 -0.414,0 -0.75,0.337 -0.75,0.75 0,0.413 0.336,0.75 0.75,0.75 z m -8.5,-2.5 c 0.965,0 1.75,0.785 1.75,1.75 0,0.965 -0.785,1.75 -1.75,1.75 -0.965,0 -1.75,-0.785 -1.75,-1.75 0,-0.965 0.785,-1.75 1.75,-1.75 z m 0,2.5 c 0.414,0 0.75,-0.337 0.75,-0.75 0,-0.413 -0.336,-0.75 -0.75,-0.75 -0.414,0 -0.75,0.337 -0.75,0.75 0,0.413 0.336,0.75 0.75,0.75 z M 3.555,2 3.857,4 H 17 l -1.118,8.036 H 3.969 L 2.931,4.573 2.695,3 H -0.074 V 2 Z M 4,5 4.139,6 H 15.713 L 15.852,5 Z M 15.012,11.036 15.573,7 H 4.278 l 0.561,4.036 z"
+                ></path>
+            </svg>
+        </span>';
+
+    // $icon_url = trailingslashit(WCB_URI) . 
+    //     (
+    //         ($attributesFromBlock['general_addToCartBtn']['position'] === "inside image" 
+    //         || $attributesFromBlock['general_addToCartBtn']['position'] === "bottom visible") 
+    //             ? 'public/images/add-to-cart-btn-white.svg' 
+    //             : 'public/images/add-to-cart-btn-black.svg'
+    //     );
+
+    // $icon_markup = sprintf(
+    //     '<span class="wcb-products__add-to-cart-icon" aria-hidden="true"><img src="%s" alt="" role="presentation" /></span>',
+    //     esc_url($icon_url)
+    // );
+    
     $label_markup = '<span class="wcb-products__add-to-cart-label">' . esc_html($product->add_to_cart_text()) . '</span>';
 
     return sprintf(

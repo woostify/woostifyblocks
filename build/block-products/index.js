@@ -6138,9 +6138,10 @@ const Edit = props => {
       general_featuredImage,
       general_addToCartBtn,
       general_pagination,
-      style_wishlistBtn
+      style_wishlistBtn,
+      style_addToCardBtn
     };
-  }, [uniqueId, className, general_sortingAndFiltering, general_content, general_featuredImage, general_addToCartBtn, general_pagination, style_wishlistBtn]);
+  }, [uniqueId, className, general_sortingAndFiltering, general_content, general_featuredImage, general_addToCartBtn, general_pagination, style_wishlistBtn, style_addToCardBtn]);
   const WcbAttrsForSaveValue = WcbAttrsForSave();
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_MyCacheProvider__WEBPACK_IMPORTED_MODULE_10__["default"], {
     uniqueKey: clientId
@@ -6189,7 +6190,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @emotion/react */ "./node_modules/@emotion/react/dist/emotion-react.browser.esm.js");
 /* harmony import */ var _block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../block-container/getAdvanveStyles */ "./src/block-container/getAdvanveStyles.ts");
 /* harmony import */ var _utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/getBorderStyles */ "./src/utils/getBorderStyles.ts");
 /* harmony import */ var _utils_getCssProperyHasResponsive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getCssProperyHasResponsive */ "./src/utils/getCssProperyHasResponsive.ts");
@@ -6198,6 +6199,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../________ */ "./src/________.ts");
 /* harmony import */ var _utils_getValueFromAttrsResponsives__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/getValueFromAttrsResponsives */ "./src/utils/getValueFromAttrsResponsives.ts");
 /* harmony import */ var _utils_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/checkResponsiveValueForOptimizeCSS */ "./src/utils/checkResponsiveValueForOptimizeCSS.ts");
+/* harmony import */ var _base_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./base-utils */ "./src/block-products/base-utils.ts");
+
+/* eslint-disable camelcase -- block attributes intentionally use snake_case names */
 
 
 
@@ -6235,7 +6239,7 @@ const GlobalCss = attrs => {
     advance_motionEffect
   } = attrs;
   console.log('====================================');
-  console.log("style_addToCardBtn", general_addToCartBtn);
+  console.log("style_addToCardBtn", style_addToCardBtn);
   console.log('====================================');
   const {
     media_desktop,
@@ -6281,7 +6285,7 @@ const GlobalCss = attrs => {
     const isSnapScrollDesktop = swithToScrollSnapX === "Desktop";
     const isSnapScrollTablet = isSnapScrollDesktop || swithToScrollSnapX === "Tablet";
     const isSnapScrollMobile = isSnapScrollTablet || swithToScrollSnapX === "Mobile";
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
       styles: {
         [`${WRAP_CLASSNAME} .indicators`]: {
           display: isSnapScrollMobile ? "block" : "none",
@@ -6460,6 +6464,7 @@ const GlobalCss = attrs => {
 
   //
   const getPostCardWrapStyles = () => {
+    var _ref;
     const {
       value_mobile: titleMarginBottom_mobile,
       value_tablet: titleMarginBottom_tablet,
@@ -6577,6 +6582,138 @@ const GlobalCss = attrs => {
     //
     return [{
       [POST_CARD_CLASS]: {
+        fontSize: "16px",
+        height: "auto",
+        display: "inline-block",
+        position: "relative",
+        ".wcb-products__product--topRight": {
+          position: "absolute",
+          top: 0,
+          right: 0,
+          zIndex: 3
+        },
+        "&.wcb-products__product--btnIconAddToCart:hover": {
+          ".wcb-products__product--btnIconAddToCart--item": {
+            position: "absolute",
+            top: 0,
+            right: 0,
+            width: "2.5rem",
+            height: "2.5rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: style_addToCardBtn?.colorAndBackgroundColor?.Normal?.backgroundColor ? style_addToCardBtn?.colorAndBackgroundColor?.Normal?.backgroundColor : "#ffffff",
+            transformOrigin: "top right",
+            transition: "transform 0.2s ease, box-shadow 0.2s",
+            zIndex: 2,
+            marginTop: "0px !important",
+            borderRadius: (_ref = style_addToCardBtn?.border?.radius?.Desktop) !== null && _ref !== void 0 ? _ref : "0px",
+            "&::after": {
+              content: '""',
+              width: "1.2rem",
+              height: "1.2rem",
+              backgroundImage: (0,_base_utils__WEBPACK_IMPORTED_MODULE_9__.svgToDataUrl)(`${(0,_base_utils__WEBPACK_IMPORTED_MODULE_9__.SHOPPING_CART_SVG)(style_addToCardBtn?.colorAndBackgroundColor?.Normal?.color)}`),
+              margin: "auto",
+              transformOrigin: "top right",
+              zIndex: 1,
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              pointerEvents: "none"
+            }
+          },
+          ".wcb-products__product--btnIconAddToCart--item:hover": {
+            position: "absolute",
+            top: 0,
+            right: 0,
+            width: "2.5rem",
+            height: "2.5rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: style_addToCardBtn?.colorAndBackgroundColor?.Normal?.backgroundColor ? style_addToCardBtn?.colorAndBackgroundColor?.Hover?.backgroundColor : "#474747",
+            marginTop: "0px !important",
+            "&::after": {
+              content: '""',
+              width: "1.2rem",
+              height: "1.2rem",
+              backgroundImage: `url(${(0,_base_utils__WEBPACK_IMPORTED_MODULE_9__.SHOPPING_CART_SVG)(style_addToCardBtn?.colorAndBackgroundColor?.Hover?.color)})`,
+              margin: "auto",
+              zIndex: 1,
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              pointerEvents: "none"
+            }
+          }
+        },
+        "&.wcb-products__product--wishlistTopRight:hover": {
+          ".wcb-products__product--wishlistTopRight--item": {
+            position: "absolute",
+            top: general_addToCartBtn?.position === "icon" && style_wishlistBtn?.position === "top-right" ? "2.5rem" : 0,
+            right: 0,
+            width: "2.5rem",
+            height: "2.5rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "#ffffff",
+            textDecoration: "none",
+            transformOrigin: "top right",
+            transition: "transform 0.2s ease, box-shadow 0.2s ease",
+            zIndex: 2,
+            "&::before": {
+              content: '"\\e909"',
+              //TODO: content: '"\\e908"',
+              color: "#000",
+              margin: "auto",
+              position: "relative",
+              zIndex: 1,
+              display: "inline-block",
+              fontFamily: "tinvwl-webfont !important",
+              speak: "none",
+              fontStyle: "normal",
+              fontWeight: 400,
+              fontVariant: "normal",
+              textTransform: "none",
+              lineHeight: 1,
+              WebkitFontSmoothing: "antialiased",
+              MozOsxFontSmoothing: "grayscale",
+              fontSize: "20px",
+              verticalAlign: "sub"
+            },
+            "&.tinvwl-product-in-list::before": {
+              color: "#ffffff"
+            }
+          },
+          ".wcb-products__product--wishlistTopRight--item:hover": {
+            color: "#ffffff",
+            background: "#474747",
+            "&::before": {
+              content: '"\\e909"',
+              //TODO: content: '"\\e908"',
+              color: "#ffffff",
+              margin: "auto",
+              position: "relative",
+              zIndex: 1,
+              display: "inline-block",
+              fontFamily: "tinvwl-webfont !important",
+              speak: "none",
+              fontStyle: "normal",
+              fontWeight: 400,
+              fontVariant: "normal",
+              textTransform: "none",
+              lineHeight: 1,
+              WebkitFontSmoothing: "antialiased",
+              MozOsxFontSmoothing: "grayscale",
+              fontSize: "20px",
+              verticalAlign: "sub"
+            }
+          }
+        }
+      }
+    }, {
+      [POST_CARD_CLASS]: {
         display: "flex",
         flexDirection: "column",
         position: "relative",
@@ -6594,10 +6731,10 @@ const GlobalCss = attrs => {
           ".wcb-products__product-add-to-cart": {
             backgroundColor: general_addToCartBtn?.position === "bottom" ? "#fff" : "inherit",
             "span": {
-              color: general_addToCartBtn?.position === "bottom" ? "black" : style_addToCardBtn?.colorAndBackgroundColor?.Normal.color
+              color: style_addToCardBtn?.colorAndBackgroundColor?.Normal.color
             },
             ".wcb-products__add-to-cart-icon": {
-              display: general_addToCartBtn?.position === "bottom" ? "block" : "block"
+              display: "block"
             }
           }
         },
@@ -6723,13 +6860,6 @@ const GlobalCss = attrs => {
     });
     //
     return {
-      [POST_CARD_CLASS]: {
-        "&:hover": {
-          [PRODUCT_PRICE_CLASS]: {
-            display: position === "bottom" ? "none" : "block"
-          }
-        }
-      },
       [ADD_TO_CART_BTN_BG]: {
         justifyContent: "center",
         ":hover span": {
@@ -6777,79 +6907,79 @@ const GlobalCss = attrs => {
   if (!uniqueId) {
     return null;
   }
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, renderDivListWrapStyle(), general_content.isShowTitle && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, renderDivListWrapStyle(), general_content.isShowTitle && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
       className: WRAP_CLASSNAME + " .wcb-products__product-title",
       typography: style_title.typography
     })
-  }), general_content.isShowCategory && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), general_content.isShowCategory && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
       className: WRAP_CLASSNAME + " .wcb-products__product-categories",
       typography: style_category.typography
     })
-  }), general_content.isShowRating && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), general_content.isShowRating && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getDivWrapStyles_Rating()
-  }), general_content.isShowPrice && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), general_content.isShowPrice && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
       className: WRAP_CLASSNAME + " .wcb-products__product-price",
       typography: style_price.typography
     })
-  }), general_content.isShowSaleBadge && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), general_content.isShowSaleBadge && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
       className: WRAP_CLASSNAME + " .wcb-products__product-onsale",
       typography: style_saleBadge.typography
     })
-  }), general_content.isShowOutOfStock && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), general_content.isShowOutOfStock && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
       className: WRAP_CLASSNAME + " .wcb-products__product-on-outofstock",
       typography: style_outOfStock.typography
     })
-  }), general_pagination.isShowPagination ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), general_pagination.isShowPagination ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getDivWrapStyles_Pagination()
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_2__["default"])({
       className: `${WRAP_CLASSNAME} .wcb-products__pagination .page-numbers`,
       border: style_pagination.mainStyle.Normal.border,
       isWithRadius: true
     })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_2__["default"])({
       className: `${WRAP_CLASSNAME} .wcb-products__pagination .page-numbers.current`,
       border: style_pagination.mainStyle.Active.border,
       isWithRadius: true
     })
-  })) : null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  })) : null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getPostCardWrapStyles()
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
       className: POST_CARD_CLASS,
       padding: style_layout.padding
     })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_2__["default"])({
       className: `${POST_CARD_CLASS}`,
       border: style_border,
       isWithRadius: true
     })
-  }), general_addToCartBtn.isShowButton ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === "bottom visible" || general_addToCartBtn?.position === "inside image" || general_addToCartBtn?.position === "icon" ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), general_addToCartBtn.isShowButton ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === "bottom visible" || general_addToCartBtn?.position === "inside image" || general_addToCartBtn?.position === "icon" ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: getPostCardStyles_AddToCart(general_addToCartBtn?.position)
-  }) : null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }) : null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: (0,_utils_getTypographyStyles__WEBPACK_IMPORTED_MODULE_5__["default"])({
       className: ADD_TO_CART_BTN,
       typography: style_addToCardBtn.typography
     })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: (0,_utils_getBorderStyles__WEBPACK_IMPORTED_MODULE_2__["default"])({
       className: ADD_TO_CART_BTN,
       border: style_addToCardBtn.border,
       isWithRadius: true
     })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: (0,_utils_getPaddingMarginStyles__WEBPACK_IMPORTED_MODULE_4__["default"])({
       className: ADD_TO_CART_BTN,
       padding: style_addToCardBtn.padding
     })
-  })) : null, general_featuredImage?.hoverType !== "none" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  })) : null, general_featuredImage?.hoverType !== "none" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: {
       [`${PRODUCT_IMAGE_CLASS}`]: {
         ":hover": {
@@ -6857,7 +6987,7 @@ const GlobalCss = attrs => {
         }
       }
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_9__.Global, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_emotion_react__WEBPACK_IMPORTED_MODULE_10__.Global, {
     styles: (0,_block_container_getAdvanveStyles__WEBPACK_IMPORTED_MODULE_1__.getAdvanveDivWrapStyles)({
       advance_motionEffect,
       advance_responsiveCondition,
@@ -9754,6 +9884,75 @@ const blokc1Attrs = {
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (blokc1Attrs);
+
+/***/ }),
+
+/***/ "./src/block-products/base-utils.ts":
+/*!******************************************!*\
+  !*** ./src/block-products/base-utils.ts ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   DEFAULT_PRODUCT_LIST_LAYOUT: () => (/* binding */ DEFAULT_PRODUCT_LIST_LAYOUT),
+/* harmony export */   SHOPPING_CART_SVG: () => (/* binding */ SHOPPING_CART_SVG),
+/* harmony export */   getProductLayoutConfig: () => (/* binding */ getProductLayoutConfig),
+/* harmony export */   svgToDataUrl: () => (/* binding */ svgToDataUrl)
+/* harmony export */ });
+/**
+ * The default layout built from the default template.
+ */
+const DEFAULT_PRODUCT_LIST_LAYOUT = [["core/paragraph"], ["core/heading"], ["core/buttons"]
+//
+// ['core/paragraph', { imageSizing: 'cropped' }],
+// [ 'woocommerce/product-title' ],
+// [ 'woocommerce/product-price' ],
+// [ 'woocommerce/product-rating' ],
+// [ 'woocommerce/product-button' ],
+];
+
+/**
+ * Converts innerblocks to a list of layout configs.
+ *
+ * @param {Object[]} innerBlocks Inner block components.
+ */
+const getProductLayoutConfig = innerBlocks => {
+  if (!innerBlocks || innerBlocks.length === 0) {
+    return [];
+  }
+  return innerBlocks.map(block => {
+    return [block.name, {
+      ...block.attributes,
+      product: undefined,
+      children: block.innerBlocks.length > 0 ? getProductLayoutConfig(block.innerBlocks) : []
+    }];
+  });
+};
+const SHOPPING_CART_SVG = color => {
+  return `<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" width="17" height="17" viewBox="0 0 17 17" id="svg50" sodipodi:docname="shopping-cart-2.svg" inkscape:version="1.0.2-2 (e86c870879, 2021-01-15)">
+				<metadata id="metadata56">
+					<rdf:rdf>
+					<cc:work rdf:about="">
+						<dc:format>image/svg+xml</dc:format>
+						<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"></dc:type>
+						<dc:title></dc:title>
+					</cc:work>
+					</rdf:rdf>
+				</metadata>
+				<defs id="defs54"></defs>
+				<sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="2400" inkscape:window-height="1271" id="namedview52" showgrid="false" inkscape:zoom="48.823529" inkscape:cx="8.5" inkscape:cy="8.5" inkscape:window-x="2391" inkscape:window-y="-9" inkscape:window-maximized="1" inkscape:current-layer="svg50"></sodipodi:namedview>
+				<g id="g46" transform="matrix(-1,0,0,1,16.926,0)"></g>
+				<path d="m 14.176,12.5 c 0.965,0 1.75,0.785 1.75,1.75 0,0.965 -0.785,1.75 -1.75,1.75 -0.965,0 -1.75,-0.785 -1.75,-1.75 0,-0.965 0.785,-1.75 1.75,-1.75 z m 0,2.5 c 0.414,0 0.75,-0.337 0.75,-0.75 0,-0.413 -0.336,-0.75 -0.75,-0.75 -0.414,0 -0.75,0.337 -0.75,0.75 0,0.413 0.336,0.75 0.75,0.75 z m -8.5,-2.5 c 0.965,0 1.75,0.785 1.75,1.75 0,0.965 -0.785,1.75 -1.75,1.75 -0.965,0 -1.75,-0.785 -1.75,-1.75 0,-0.965 0.785,-1.75 1.75,-1.75 z m 0,2.5 c 0.414,0 0.75,-0.337 0.75,-0.75 0,-0.413 -0.336,-0.75 -0.75,-0.75 -0.414,0 -0.75,0.337 -0.75,0.75 0,0.413 0.336,0.75 0.75,0.75 z M 3.555,2 3.857,4 H 17 l -1.118,8.036 H 3.969 L 2.931,4.573 2.695,3 H -0.074 V 2 Z M 4,5 4.139,6 H 15.713 L 15.852,5 Z M 15.012,11.036 15.573,7 H 4.278 l 0.561,4.036 z" 
+				fill="${color}"
+				id="path48"></path>
+			</svg>`;
+};
+const svgToDataUrl = svgString => {
+  const encoded = encodeURIComponent(svgString).replace(/'/g, '%27').replace(/"/g, '%22');
+  return `url("data:image/svg+xml,${encoded}")`;
+};
 
 /***/ }),
 

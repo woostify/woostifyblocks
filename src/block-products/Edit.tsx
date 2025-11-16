@@ -679,6 +679,7 @@ const Edit: FC<Props> = (props) => {
 			general_addToCartBtn,
 			general_pagination,
 			style_wishlistBtn,
+			style_addToCardBtn,
 		};
 	}, [
 		uniqueId,
@@ -689,6 +690,7 @@ const Edit: FC<Props> = (props) => {
 		general_addToCartBtn,
 		general_pagination,
 		style_wishlistBtn,
+		style_addToCardBtn,
 	]);
 
 	const WcbAttrsForSaveValue = WcbAttrsForSave();

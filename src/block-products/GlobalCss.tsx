@@ -1,4 +1,5 @@
-import { Global, CSSObject } from "@emotion/react";
+/* eslint-disable camelcase -- block attributes intentionally use snake_case names */
+import { Global, CSSObject, css } from "@emotion/react";
 import React, { FC } from "react";
 import { getAdvanveDivWrapStyles } from "../block-container/getAdvanveStyles";
 import getBorderStyles from "../utils/getBorderStyles";
@@ -9,6 +10,7 @@ import { DEMO_WCB_GLOBAL_VARIABLES } from "../________";
 import { WcbAttrsForSave } from "./Save";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import checkResponsiveValueForOptimizeCSS from "../utils/checkResponsiveValueForOptimizeCSS";
+import { SHOPPING_CART_SVG, svgToDataUrl } from "./base-utils";
 
 interface Props extends Required<WcbAttrsForSave> {}
 
@@ -422,6 +424,143 @@ const GlobalCss: FC<Props> = (attrs) => {
 		return [
 			{
 				[POST_CARD_CLASS]: {
+					fontSize: "16px",
+					height: "auto",
+					display: "inline-block",
+					position: "relative",
+					".wcb-products__product--topRight": {
+						position: "absolute",
+						top: 0,
+						right: 0,
+						zIndex: 3,
+					},
+					"&.wcb-products__product--btnIconAddToCart:hover": {
+						".wcb-products__product--btnIconAddToCart--item": {
+							position: "absolute",
+							top: 0,
+							right: 0,
+							width: "2.5rem",
+							height: "2.5rem",
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "center",
+							background: style_addToCardBtn?.colorAndBackgroundColor?.Normal?.backgroundColor ? 
+								style_addToCardBtn?.colorAndBackgroundColor?.Normal?.backgroundColor : "#ffffff",
+							transformOrigin: "top right",
+							transition: "transform 0.2s ease, box-shadow 0.2s",
+							zIndex: 2,
+							marginTop: "0px !important",
+							borderRadius: (style_addToCardBtn?.border?.radius?.Desktop as any) ?? "0px",
+							"&::after": {
+								content: '""',
+								width: "1.2rem",
+								height: "1.2rem",
+								backgroundImage: svgToDataUrl(
+									`${SHOPPING_CART_SVG(style_addToCardBtn?.colorAndBackgroundColor?.Normal?.color as any)}`
+								),
+								margin: "auto",
+								transformOrigin: "top right",
+								zIndex: 1,
+								backgroundSize: "contain",
+								backgroundRepeat: "no-repeat",
+								backgroundPosition: "center",
+								pointerEvents: "none",
+							},
+						},
+						".wcb-products__product--btnIconAddToCart--item:hover": {
+							position: "absolute",
+							top: 0,
+							right: 0,
+							width: "2.5rem",
+							height: "2.5rem",
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "center",
+							background: style_addToCardBtn?.colorAndBackgroundColor?.Normal?.backgroundColor ? 
+								style_addToCardBtn?.colorAndBackgroundColor?.Hover?.backgroundColor : "#474747",
+							marginTop: "0px !important",
+							"&::after": {
+								content: '""',
+								width: "1.2rem",
+								height: "1.2rem",
+								backgroundImage: `url(${SHOPPING_CART_SVG(style_addToCardBtn?.colorAndBackgroundColor?.Hover?.color as any)})`,
+								margin: "auto",
+								zIndex: 1,
+								backgroundSize: "contain",
+								backgroundRepeat: "no-repeat",
+								backgroundPosition: "center",
+								pointerEvents: "none",
+							},
+						},
+					},
+					"&.wcb-products__product--wishlistTopRight:hover": {
+						".wcb-products__product--wishlistTopRight--item": {
+							position: "absolute",
+							top: (general_addToCartBtn?.position === "icon" && style_wishlistBtn?.position === "top-right") ? "2.5rem" : 0,
+							right: 0,
+							width: "2.5rem",
+							height: "2.5rem",
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "center",
+							background: "#ffffff",
+							textDecoration: "none",
+							transformOrigin: "top right",
+							transition: "transform 0.2s ease, box-shadow 0.2s ease",
+							zIndex: 2,
+							"&::before": {
+								content: '"\\e909"',
+								//TODO: content: '"\\e908"',
+								color: "#000",
+								margin: "auto",
+								position: "relative",
+								zIndex: 1,
+								display: "inline-block",
+								fontFamily: "tinvwl-webfont !important",
+								speak: "none",
+								fontStyle: "normal",
+								fontWeight: 400,
+								fontVariant: "normal",
+								textTransform: "none",
+								lineHeight: 1,
+								WebkitFontSmoothing: "antialiased",
+								MozOsxFontSmoothing: "grayscale",
+								fontSize: "20px",
+								verticalAlign: "sub",
+							},
+							"&.tinvwl-product-in-list::before": {
+								color: "#ffffff",
+							},
+						},
+						".wcb-products__product--wishlistTopRight--item:hover": {
+							color: "#ffffff",
+							background: "#474747",
+							"&::before": {
+								content: '"\\e909"',
+								//TODO: content: '"\\e908"',
+								color: "#ffffff",
+								margin: "auto",
+								position: "relative",
+								zIndex: 1,
+								display: "inline-block",
+								fontFamily: "tinvwl-webfont !important",
+								speak: "none",
+								fontStyle: "normal",
+								fontWeight: 400,
+								fontVariant: "normal",
+								textTransform: "none",
+								lineHeight: 1,
+								WebkitFontSmoothing: "antialiased",
+								MozOsxFontSmoothing: "grayscale",
+								fontSize: "20px",
+								verticalAlign: "sub",
+							},
+						},
+					},
+				},
+			},
+			{
+				[POST_CARD_CLASS]: {
 					display: "flex",
 					flexDirection: "column",
 					position: "relative",
@@ -439,12 +578,12 @@ const GlobalCss: FC<Props> = (attrs) => {
 						".wcb-products__product-add-to-cart": {
 							backgroundColor: general_addToCartBtn?.position === "bottom" ? "#fff" : "inherit",
 							"span": {
-								color: general_addToCartBtn?.position === "bottom" ? "black" : style_addToCardBtn?.colorAndBackgroundColor?.Normal.color,
+								color: (style_addToCardBtn?.colorAndBackgroundColor?.Normal.color as any),
 							},
 							".wcb-products__add-to-cart-icon": {
-								display: general_addToCartBtn?.position === "bottom" ? "block" : "block",
+								display: "block",
 							}
-						}
+						},
 					},
 
 					// ".wcb-products__product-image":

@@ -17,7 +17,7 @@ if (!function_exists("wcb__my_scripts_method")) {
             )
         );
         wp_localize_script(
-            'jquery',
+            'jquery', 
             'wcbLayoutGlobalSettings',
             wcb__get_layout_global_settings()
         );
