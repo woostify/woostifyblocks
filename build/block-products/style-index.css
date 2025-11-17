@@ -113,12 +113,10 @@
   align-items: center;
   justify-content: center;
   background: linear-gradient(180deg, #ffffff 0%, #f3f4f6 100%);
-  box-shadow: 0 0.75rem 1.75rem rgba(15, 23, 42, 0.18);
   text-decoration: none;
   transform-origin: bottom right;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   z-index: 2;
-  margin-top: 0px !important;
   border-radius: 50%;
 }
 .wcb-products__product.wcb-products__product--wishlistBottomRight .wcb-products__product--wishlistBottomRight--item:hover {
@@ -126,32 +124,31 @@
   box-shadow: 0 0.5rem 1.25rem rgba(15, 23, 42, 0.24);
 }
 .wcb-products__product.wcb-products__product--wishlistBottomRight .wcb-products__product--wishlistBottomRight--item::before {
-  content: "♥";
-  font-size: 1.25rem;
-  color: #000;
-  transition: color 0.2s ease;
-  margin: auto;
-  position: relative;
+  content: "\e908";
+  margin: "auto";
+  position: "relative";
+  z-index: 1;
+  display: "inline-block";
+  font-family: "tinvwl-webfont";
+  font-style: "normal";
+  font-weight: 400;
+  font-variant: "normal";
+  text-transform: "none";
+  line-height: 1;
+  font-size: "20px";
+  vertical-align: "sub";
+}
+.wcb-products__product.wcb-products__product--wishlistBottomRight .wcb-products__product--wishlistBottomRight--item:hover {
+  background: #000;
   z-index: 1;
 }
 .wcb-products__product.wcb-products__product--wishlistBottomRight .wcb-products__product--wishlistBottomRight--item:hover::before {
-  color: #000;
+  content: "\e909";
+  color: #ffffff;
+  z-index: 2;
 }
 .wcb-products__product.wcb-products__product--wishlistBottomRight .wcb-products__product--wishlistBottomRight--item.tinvwl-product-in-list::before {
   color: #000;
-}
-.wcb-products__product.wcb-products__product--wishlistBottomRight .wcb-products__product--wishlistBottomRight--item .tinvwl_add_to_wishlist-text {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-  margin-top: 0px;
-}
-.wcb-products__product.wcb-products__product--wishlistBottomRight .wcb-products__product--wishlistBottomRight--item .tinvwl-after-add-to-cart {
-  margin-top: 0px !important;
 }
 .wcb-products__product .wcb-products__product-rating {
   display: inline-block;

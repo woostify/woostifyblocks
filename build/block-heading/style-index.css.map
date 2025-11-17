@@ -1,1 +1,0 @@
-{"version":3,"file":"block-heading/style-index.css","mappings":";;;AAAA;;EAEC;AACD;;AAEA;EACC;AACD,C","sources":["webpack://woostifyblocks/./src/block-heading/style.scss"],"sourcesContent":[".wcb-heading__heading,\n.wcb-heading__subHeading {\n\tmargin: 0;\n}\n\n.wcb-heading__separator {\n\tdisplay: inline-block;\n}\n"],"names":[],"sourceRoot":""}

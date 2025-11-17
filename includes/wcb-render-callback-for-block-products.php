@@ -413,6 +413,10 @@ function wcb_block_products__get_add_to_cart($product, $attributesFromBlock)
 
     // NEW: get color from block attributes
     $svg_color = $attributesFromBlock['style_addToCardBtn']['colorAndBackgroundColor']['Normal']['color'] ?? '#000000';
+    $hover_svg_color = $attributesFromBlock['style_addToCardBtn']['colorAndBackgroundColor']['Hover']['color'] ?? '#000000';
+
+    // product specific class for hover color change
+    $product_class = 'wcb-add-to-cart-icon-' . $product->get_id();
 
     // NEW: inline SVG with color
     $icon_markup = '
@@ -424,32 +428,27 @@ function wcb_block_products__get_add_to_cart($product, $attributesFromBlock)
                 ></path>
             </svg>
         </span>';
-
-    // $icon_url = trailingslashit(WCB_URI) . 
-    //     (
-    //         ($attributesFromBlock['general_addToCartBtn']['position'] === "inside image" 
-    //         || $attributesFromBlock['general_addToCartBtn']['position'] === "bottom visible") 
-    //             ? 'public/images/add-to-cart-btn-white.svg' 
-    //             : 'public/images/add-to-cart-btn-black.svg'
-    //     );
-
-    // $icon_markup = sprintf(
-    //     '<span class="wcb-products__add-to-cart-icon" aria-hidden="true"><img src="%s" alt="" role="presentation" /></span>',
-    //     esc_url($icon_url)
-    // );
     
     $label_markup = '<span class="wcb-products__add-to-cart-label">' . esc_html($product->add_to_cart_text()) . '</span>';
 
-    return sprintf(
-        '<a href="%s" %s>%s%s</a>',
+    // Inline CSS for hover color change
+    $inline_css = "
+        <style>
+            .{$product_class}:hover svg path {
+                fill: {$hover_svg_color} !important;
+                transition: fill 0.3s ease;
+            }
+        </style>
+    ";
+
+    return $inline_css . sprintf(
+        '<a class="' . esc_attr($product_class) . '" href="%s" %s>%s%s</a>',
         esc_url($product->add_to_cart_url()),
         wc_implode_html_attributes($attributes),
         $icon_markup,
         $label_markup
     );
 }
-
-
 
 // ===============================
 

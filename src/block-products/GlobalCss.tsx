@@ -436,8 +436,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 					},
 					"&.wcb-products__product--btnIconAddToCart:hover": {
 						".wcb-products__product--btnIconAddToCart--item": {
-							position: "absolute",
-							top: 0,
+							position: "relative",
+							top: "-2.5rem",
 							right: 0,
 							width: "2.5rem",
 							height: "2.5rem",
@@ -446,8 +446,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 							justifyContent: "center",
 							background: style_addToCardBtn?.colorAndBackgroundColor?.Normal?.backgroundColor ? 
 								style_addToCardBtn?.colorAndBackgroundColor?.Normal?.backgroundColor : "#ffffff",
-							transformOrigin: "top right",
-							transition: "transform 0.2s ease, box-shadow 0.2s",
+							// transformOrigin: "top right",
+							// transition: "transform 0.2s ease, box-shadow 0.2s",
+							/* ===  Animation === */
+							transform: "translateY(2.5rem)",
+							transition: "transform 0.8s ease, opacity 0.8s ease",
 							zIndex: 2,
 							marginTop: "0px !important",
 							borderRadius: (style_addToCardBtn?.border?.radius?.Desktop as any) ?? "0px",
@@ -468,14 +471,6 @@ const GlobalCss: FC<Props> = (attrs) => {
 							},
 						},
 						".wcb-products__product--btnIconAddToCart--item:hover": {
-							position: "absolute",
-							top: 0,
-							right: 0,
-							width: "2.5rem",
-							height: "2.5rem",
-							display: "flex",
-							alignItems: "center",
-							justifyContent: "center",
 							background: style_addToCardBtn?.colorAndBackgroundColor?.Normal?.backgroundColor ? 
 								style_addToCardBtn?.colorAndBackgroundColor?.Hover?.backgroundColor : "#474747",
 							marginTop: "0px !important",
@@ -483,7 +478,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 								content: '""',
 								width: "1.2rem",
 								height: "1.2rem",
-								backgroundImage: `url(${SHOPPING_CART_SVG(style_addToCardBtn?.colorAndBackgroundColor?.Hover?.color as any)})`,
+								backgroundImage: svgToDataUrl(`${SHOPPING_CART_SVG(style_addToCardBtn?.colorAndBackgroundColor?.Hover?.color as any)}`),
 								margin: "auto",
 								zIndex: 1,
 								backgroundSize: "contain",
@@ -495,8 +490,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 					},
 					"&.wcb-products__product--wishlistTopRight:hover": {
 						".wcb-products__product--wishlistTopRight--item": {
-							position: "absolute",
-							top: (general_addToCartBtn?.position === "icon" && style_wishlistBtn?.position === "top-right") ? "2.5rem" : 0,
+							position: (general_addToCartBtn?.position === "icon" && style_wishlistBtn?.position === "top-right") ? "absolute" : "relative",
+							top: (general_addToCartBtn?.position === "icon" && style_wishlistBtn?.position === "top-right") ? "0" : "-2.5rem",
 							right: 0,
 							width: "2.5rem",
 							height: "2.5rem",
@@ -505,8 +500,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 							justifyContent: "center",
 							background: "#ffffff",
 							textDecoration: "none",
-							transformOrigin: "top right",
-							transition: "transform 0.2s ease, box-shadow 0.2s ease",
+							// transformOrigin: "top bottom",
+							// transition: "transform 2s ease",
+							/* ===  Animation === */
+							transform: "translateY(2.5rem)",
+							transition: "transform 0.8s ease, opacity 0.8s ease",
 							zIndex: 2,
 							"&::before": {
 								content: '"\\e909"',
@@ -568,7 +566,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 					textAlign: style_layout.textAlignment,
 					backgroundColor: style_layout.backgroundColor,
 					".wcb-products__add-to-cart-icon": {
-						display: general_addToCartBtn?.position === "bottom" ? "none" : "block",
+						display: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === "icon") ? "none" : "block",
+					},
+					".wcb-products__add-to-cart-label": {
+						display: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === "icon") ? "none" : "block",
 					},
 					":hover": {
 						".wcb-products__product-price": {
@@ -581,9 +582,17 @@ const GlobalCss: FC<Props> = (attrs) => {
 								color: (style_addToCardBtn?.colorAndBackgroundColor?.Normal.color as any),
 							},
 							".wcb-products__add-to-cart-icon": {
-								display: "block",
+								display: general_addToCartBtn?.position === "icon" ? "none" :  "block",
+							},
+							".wcb-products__add-to-cart-label": {
+								display: general_addToCartBtn?.position === "icon" ? "none" : "block",
 							}
 						},
+						".wcb-products__product-add-to-cart:hover": {
+							"span": {
+								color: (style_addToCardBtn?.colorAndBackgroundColor?.Hover.color as any),
+							},
+						}
 					},
 
 					// ".wcb-products__product-image":
@@ -769,12 +778,12 @@ const GlobalCss: FC<Props> = (attrs) => {
 				}
 			},
 			[ADD_TO_CART_BTN]: {
-				display: position === "icon" ? "none" : "block",
+				display: (position === "icon" || position === "bottom") ? "none" : "block",
 				color,
 				backgroundColor: (position === "bottom visible" || position === "inside image")  ? backgroundColor : "#fff",
 				marginBottom: marginBottom_mobile_new,
 				":hover": {
-					color: color_h,
+					color: color_h ? `${color_h} !important` : undefined,
 					backgroundColor: (position === "bottom visible" || position === "inside image" || position === "icon") ? backgroundColor_h : "#fff !important",
 				},
 				[`@media (min-width: ${media_tablet})`]: marginBottom_tablet_new
