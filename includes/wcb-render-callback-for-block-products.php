@@ -266,7 +266,7 @@ function wcb_block_products__get_image_html($product)
 
     // Add inline style to control rendered height
     // This forces the browser to display the image at that height
-    $style = 'style="height:' . esc_attr($imageHeight) . 'px; width:auto; object-fit:cover;"';
+    $style = 'style="height:' . esc_attr($imageHeight) . 'px; object-fit:cover;"';
 
     // Inject the style attribute into the <img> tag
     $image_html = preg_replace('/<img(.*?)>/', '<img$1 ' . $style . '>', $image_html);

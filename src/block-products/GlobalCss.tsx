@@ -450,7 +450,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 							// transition: "transform 0.2s ease, box-shadow 0.2s",
 							/* ===  Animation === */
 							transform: "translateY(2.5rem)",
-							transition: "transform 0.8s ease, opacity 0.8s ease",
+							transition: "transform 0.3s ease, opacity 0.3s ease",
 							zIndex: 2,
 							marginTop: "0px !important",
 							borderRadius: (style_addToCardBtn?.border?.radius?.Desktop as any) ?? "0px",
@@ -504,7 +504,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 							// transition: "transform 2s ease",
 							/* ===  Animation === */
 							transform: "translateY(2.5rem)",
-							transition: "transform 0.8s ease, opacity 0.8s ease",
+							transition: "transform 0.3s ease, opacity 0.3s ease",
 							zIndex: 2,
 							"&::before": {
 								content: '"\\e909"',
@@ -573,7 +573,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 					},
 					":hover": {
 						".wcb-products__product-price": {
-							display: general_addToCartBtn?.position === "bottom" ? "none" : "block",
+							transform: general_addToCartBtn?.position === "bottom" ? "translateY(-10px)" : "unset",
+							opacity: general_addToCartBtn?.position === "bottom" ? 0 : "unset",
+							transition: general_addToCartBtn?.position === "bottom" ? "all 0.4s ease" : "unset",
+							// display: general_addToCartBtn?.position === "bottom" ? "none" : "block",
 						},
 						//TODO: handle style in edit page
 						".wcb-products__product-add-to-cart": {
@@ -583,9 +586,15 @@ const GlobalCss: FC<Props> = (attrs) => {
 							},
 							".wcb-products__add-to-cart-icon": {
 								display: general_addToCartBtn?.position === "icon" ? "none" :  "block",
+								transform: general_addToCartBtn?.position === "bottom" ? "translateY(-20px)" : "unset",
+								opacity: general_addToCartBtn?.position === "bottom" ? 1 : "unset",
+								transition: general_addToCartBtn?.position === "bottom" ? "all 0.4s ease" : "unset",
 							},
 							".wcb-products__add-to-cart-label": {
 								display: general_addToCartBtn?.position === "icon" ? "none" : "block",
+								transform:general_addToCartBtn?.position === "bottom" ? "translateY(-20px)" : "unset",
+								opacity: general_addToCartBtn?.position === "bottom" ? 1 : "unset",
+								transition: general_addToCartBtn?.position === "bottom" ? "all 0.4s ease" : "unset",
 							}
 						},
 						".wcb-products__product-add-to-cart:hover": {
