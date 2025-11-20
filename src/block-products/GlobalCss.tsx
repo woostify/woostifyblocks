@@ -450,7 +450,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 							// transition: "transform 0.2s ease, box-shadow 0.2s",
 							/* ===  Animation === */
 							transform: "translateY(2.5rem)",
-							transition: "transform 0.3s ease, opacity 0.3s ease",
+							transition: "transform 0.2s ease-in-out",
 							zIndex: 2,
 							marginTop: "0px !important",
 							borderRadius: (style_addToCardBtn?.border?.radius?.Desktop as any) ?? "0px",
@@ -565,17 +565,22 @@ const GlobalCss: FC<Props> = (attrs) => {
 					height: !style_layout.isEqualHeight ? "max-content" : undefined,
 					textAlign: style_layout.textAlignment,
 					backgroundColor: style_layout.backgroundColor,
-					".wcb-products__add-to-cart-icon": {
-						display: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === "icon") ? "none" : "block",
+					".wcb-products__add-to-cart-icon, .wcb-products__add-to-cart-label": {
+						// display: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === "icon") ? "none" : "block",
+						opacity: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === 'icon') ? 0 : "unset",
+						transform: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === 'icon') ? "translateY(10px)" : "unset",
+						transition: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === 'icon') ? "all 0.2s ease-in-out" : "unset",
 					},
-					".wcb-products__add-to-cart-label": {
-						display: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === "icon") ? "none" : "block",
+					".wcb-products__product-price": {
+						opacity: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === 'icon') ? 1 : "unset",
+						transform:  (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === 'icon') ? "translateY(0)" : "unset",
+						transition: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === 'icon') ? "all 0.2s ease-in-out" : "unset",
 					},
 					":hover": {
 						".wcb-products__product-price": {
 							transform: general_addToCartBtn?.position === "bottom" ? "translateY(-10px)" : "unset",
 							opacity: general_addToCartBtn?.position === "bottom" ? 0 : "unset",
-							transition: general_addToCartBtn?.position === "bottom" ? "all 0.4s ease" : "unset",
+							transition: general_addToCartBtn?.position === "bottom" ? "all 0.2s ease-in-out" : "unset",
 							// display: general_addToCartBtn?.position === "bottom" ? "none" : "block",
 						},
 						//TODO: handle style in edit page
@@ -584,17 +589,12 @@ const GlobalCss: FC<Props> = (attrs) => {
 							"span": {
 								color: (style_addToCardBtn?.colorAndBackgroundColor?.Normal.color as any),
 							},
-							".wcb-products__add-to-cart-icon": {
-								display: general_addToCartBtn?.position === "icon" ? "none" :  "block",
-								transform: general_addToCartBtn?.position === "bottom" ? "translateY(-20px)" : "unset",
-								opacity: general_addToCartBtn?.position === "bottom" ? 1 : "unset",
-								transition: general_addToCartBtn?.position === "bottom" ? "all 0.4s ease" : "unset",
-							},
-							".wcb-products__add-to-cart-label": {
-								display: general_addToCartBtn?.position === "icon" ? "none" : "block",
-								transform:general_addToCartBtn?.position === "bottom" ? "translateY(-20px)" : "unset",
-								opacity: general_addToCartBtn?.position === "bottom" ? 1 : "unset",
-								transition: general_addToCartBtn?.position === "bottom" ? "all 0.4s ease" : "unset",
+							".wcb-products__add-to-cart-icon, .wcb-products__add-to-cart-label": {
+								// display: general_addToCartBtn?.position === "icon" ? "none" : "block",
+								transform:general_addToCartBtn?.position === "bottom" ? "translateY(-30px)" : "unset",
+								opacity: 
+									general_addToCartBtn?.position === "bottom" ? 1 : general_addToCartBtn?.position === "icon" ? 0 : "unset",
+								transition: general_addToCartBtn?.position === "bottom" ? "all 0.2s ease-in-out" : "unset",
 							}
 						},
 						".wcb-products__product-add-to-cart:hover": {
