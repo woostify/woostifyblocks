@@ -565,22 +565,27 @@ const GlobalCss: FC<Props> = (attrs) => {
 					height: !style_layout.isEqualHeight ? "max-content" : undefined,
 					textAlign: style_layout.textAlignment,
 					backgroundColor: style_layout.backgroundColor,
+					".wcb-products__price-button-wrapper": {
+						height: "40px",
+						lineHeight: "36px",
+						overflow: "hidden",
+					},
 					".wcb-products__add-to-cart-icon, .wcb-products__add-to-cart-label": {
-						// display: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === "icon") ? "none" : "block",
-						opacity: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === 'icon') ? 0 : "unset",
-						transform: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === 'icon') ? "translateY(10px)" : "unset",
-						transition: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === 'icon') ? "all 0.2s ease-in-out" : "unset",
+						display: (general_addToCartBtn?.position === "icon") ? "none" : "block",
+						// opacity: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === 'icon') ? 0 : "unset",
+						transform: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === 'icon') ? "translateY(0px)" : "unset",
+						transition: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === 'icon') ? "all 0.3s ease-in-out" : "unset",
 					},
 					".wcb-products__product-price": {
-						opacity: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === 'icon') ? 1 : "unset",
-						transform:  (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === 'icon') ? "translateY(0)" : "unset",
-						transition: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === 'icon') ? "all 0.2s ease-in-out" : "unset",
+						// opacity: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === 'icon') ? 1 : "unset",
+						transform:  (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === 'icon') ? "translateY(0px)" : "unset",
+						transition: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === 'icon') ? "all 0.3s ease-in-out" : "unset",
 					},
 					":hover": {
 						".wcb-products__product-price": {
-							transform: general_addToCartBtn?.position === "bottom" ? "translateY(-10px)" : "unset",
-							opacity: general_addToCartBtn?.position === "bottom" ? 0 : "unset",
-							transition: general_addToCartBtn?.position === "bottom" ? "all 0.2s ease-in-out" : "unset",
+							// opacity: general_addToCartBtn?.position === "bottom" ? 0 : "unset",
+							transform: general_addToCartBtn?.position === "bottom" ? "translateY(-30px)" : "unset",
+							transition: general_addToCartBtn?.position === "bottom" ? "all 0.3s ease-in-out" : "unset",
 							// display: general_addToCartBtn?.position === "bottom" ? "none" : "block",
 						},
 						//TODO: handle style in edit page
@@ -591,10 +596,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 							},
 							".wcb-products__add-to-cart-icon, .wcb-products__add-to-cart-label": {
 								// display: general_addToCartBtn?.position === "icon" ? "none" : "block",
-								transform:general_addToCartBtn?.position === "bottom" ? "translateY(-30px)" : "unset",
+								transform:general_addToCartBtn?.position === "bottom" ? "translateY(-60px)" : "unset",
 								opacity: 
 									general_addToCartBtn?.position === "bottom" ? 1 : general_addToCartBtn?.position === "icon" ? 0 : "unset",
-								transition: general_addToCartBtn?.position === "bottom" ? "all 0.2s ease-in-out" : "unset",
+								transition: general_addToCartBtn?.position === "bottom" ? "all 0.3s ease-in-out" : "unset",
+								// clipPath: general_addToCartBtn?.position === "bottom" ? "inset(0 0 0 0)" : general_addToCartBtn?.position === "icon" ? "inset(100% 0 0 0)" : "unset",
 							}
 						},
 						".wcb-products__product-add-to-cart:hover": {

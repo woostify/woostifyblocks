@@ -125,11 +125,34 @@ function wcb_block_products__render_product($product, $attributes, $index)
     if (wcb__is_enabled($attributes['general_content']['isShowSaleBadge'] ?? "")) {
         $data->badge = wcb_block_products__get_sale_badge_html($product, $attributes['general_content']['showSaleBadgeDiscoutPercent'] ?? false);
     }
-    if (wcb__is_enabled($attributes['general_content']['isShowPrice'] ?? "")) {
-        $data->price = wcb_block_products__get_price_html($product);
-    }
-    if (wcb__is_enabled($attributes['general_addToCartBtn']['isShowButton'] ?? "")) {
-        $data->button = wcb_block_products__get_button_html($product, $attributes);
+
+    if ($attributes['general_addToCartBtn']['position'] === "bottom") {
+        $price_html  = '';
+        $button_html = '';
+
+        if (wcb__is_enabled($attributes['general_content']['isShowPrice'] ?? "")) {
+            $price_html = $data->price = wcb_block_products__get_price_html($product);
+        }
+        if (wcb__is_enabled($attributes['general_addToCartBtn']['isShowButton'] ?? "")) {
+            $button_html = $data->button = wcb_block_products__get_button_html($product, $attributes);
+        }
+
+        $data->price = "";
+        $data->button = "";
+
+        $data->price_button_group = "
+            <div class=\"wcb-products__price-button-wrapper\">
+                {$price_html}
+                {$button_html}
+            </div>
+        ";
+    } else {
+        if (wcb__is_enabled($attributes['general_content']['isShowPrice'] ?? "")) {
+            $data->price = wcb_block_products__get_price_html($product);
+        }
+        if (wcb__is_enabled($attributes['general_addToCartBtn']['isShowButton'] ?? "")) {
+            $data->button = wcb_block_products__get_button_html($product, $attributes);
+        }
     }
 
     if (wcb__is_enabled($attributes['general_content']['isShowCategory'] ?? "")) {
@@ -219,8 +242,7 @@ function wcb_block_products__render_product($product, $attributes, $index)
                 {$data->title}
 				{$saleBadge2}
 				{$data->rating}
-				{$data->price}
-               {$btn2}
+				" . ($data->price_button_group ?? ($data->price . $btn2)) . "
 			</div>",
         $data,
         $product
@@ -410,7 +432,7 @@ function wcb_block_products__get_add_to_cart($product, $attributesFromBlock)
     ) {
         $attributes['class'] .= ' ajax_add_to_cart';
     }
-
+    
     // NEW: get color from block attributes
     $svg_color = $attributesFromBlock['style_addToCardBtn']['colorAndBackgroundColor']['Normal']['color'] ?? '#000000';
     $hover_svg_color = $attributesFromBlock['style_addToCardBtn']['colorAndBackgroundColor']['Hover']['color'] ?? '#000000';
