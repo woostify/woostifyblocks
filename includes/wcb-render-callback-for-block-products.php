@@ -185,15 +185,19 @@ function wcb_block_products__render_product($product, $attributes, $index)
     // button
     $classes .= $btnInsideImage ? " wcb-products__product--btnInsideImage" : "";
     $classes .= $btnIconAddToCart ? " wcb-products__product--btnIconAddToCart" : "";
+
     $btn1 = $btnInsideImage ? $data->button : "";
     $btn2 = $btnInsideImage ?   "" : $data->button;
+
     // sale badge
     $classes .= $saleInsideImage ? " wcb-products__product--onsaleInsideImage" : "";
     $saleBadge1 = $saleInsideImage ? $data->badge : "";
     $saleBadge2 = $saleInsideImage ?   "" : $data->badge;
+
     // out of stock
     $classes .= $saleInsideImage ? " wcb-products__product--onsaleInsideImage" : "";
     $saleOutOfStock = $data->out_of_stock ? : "";
+
     // wishlist button
     $classes .= $btnWishListTopRight ? " wcb-products__product--wishlistTopRight" : "";
     $classes .= $btnWishListBottomRight ? " wcb-products__product--wishlistBottomRight" : "";
@@ -210,19 +214,47 @@ function wcb_block_products__render_product($product, $attributes, $index)
     $topRightIconsHtml = '';
     if ($btnIconAddToCart || $btnWishListTopRight) {
         $topRightItems = array();
-
+        $product_id = esc_attr($product->get_id());
         if ($btnIconAddToCart) {
-            $topRightItems[] = '<div class="wcb-products__product--btnIconAddToCart--item"></div>';
+            // AJAX add to cart URL
+            $add_to_cart_url = esc_url($product->add_to_cart_url());
+            // TODO: handle load to add to cart class
+            $ajax_class = ($product->supports('ajax_add_to_cart') &&
+                $product->is_purchasable() &&
+                ($product->is_in_stock() || $product->backorders_allowed())) ? ' ajax_add_to_cart' : '';
+
+            $topRightItems[] = '
+                <a
+                    href="' . $add_to_cart_url . '"
+                    data-product_id="' . $product_id . '"
+                    data-quantity="1"
+                    class="wcb-products__product--btnIconAddToCart--item add_to_cart_button ' . $ajax_class . '"
+                    rel="nofollow"
+                ></a>';
         }
 
         if ($btnWishListTopRight) {
-            $topRightItems[] = '<div class="wcb-products__product--wishlistTopRight--item"></div>';
+            $topRightItems[] = 
+                '<button 
+                    class="wcb-products__product--wishlistTopRight--item tinvwl_add_to_wishlist_button tinvwl-addtowishlist"
+                    data-tinv-wl-list="[]"
+                    data-tinv-wl-product="' . $product_id . '"
+                    data-tinv-wl-action="add"
+                    type="button"
+                ></button>';
         }
 
         $topRightIconsHtml = '<div class="wcb-products__product--topRight">' . implode('', $topRightItems) . '</div>';
     }
 
-    $bottomRightIconHtml = $btnWishListBottomRight ? '<div class="wcb-products__product--wishlistBottomRight--item"></div>' : '';
+    $bottomRightIconHtml = $btnWishListBottomRight ? 
+        '<button 
+            class="wcb-products__product--wishlistBottomRight--item tinvwl_add_to_wishlist_button tinvwl-addtowishlist"
+            data-tinv-wl-list="[]"
+            data-tinv-wl-product="' . $product_id . '"
+            data-tinv-wl-action="add"
+            type="button"
+        ></button>' : '';
 
     return apply_filters(
         'woocommerce_blocks_product_grid_item_html',
@@ -230,10 +262,10 @@ function wcb_block_products__render_product($product, $attributes, $index)
 				<div class=\"wcb-products__product-featured \">
                     <a href=\"{$data->permalink}\" class=\"{$featuredClasses}\">
                         {$data->image}
-                        {$isSwapHover}
-                        {$topRightIconsHtml}
-                        {$bottomRightIconHtml}
+                        {$isSwapHover}   
                     </a>
+                    {$topRightIconsHtml}
+                    {$bottomRightIconHtml}
                     {$saleBadge1}
                     {$saleOutOfStock}
                     {$btn1}

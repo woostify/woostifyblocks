@@ -428,11 +428,16 @@ const GlobalCss: FC<Props> = (attrs) => {
 					height: "auto",
 					display: "inline-block",
 					position: "relative",
+					overflow: "hidden",
+					// Style Add to cart button - position: top right - icon
 					".wcb-products__product--topRight": {
 						position: "absolute",
 						top: 0,
 						right: 0,
 						zIndex: 3,
+					},
+					".added_to_cart": {
+						display: "none",
 					},
 					"&.wcb-products__product--btnIconAddToCart:hover": {
 						".wcb-products__product--btnIconAddToCart--item": {
@@ -506,6 +511,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 							transform: "translateY(2.5rem)",
 							transition: "transform 0.3s ease, opacity 0.3s ease",
 							zIndex: 2,
+							border: "none",
 							"&::before": {
 								content: '"\\e909"',
 								//TODO: content: '"\\e908"',
