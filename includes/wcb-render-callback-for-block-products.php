@@ -186,8 +186,9 @@ function wcb_block_products__render_product($product, $attributes, $index)
     $classes .= $btnInsideImage ? " wcb-products__product--btnInsideImage" : "";
     $classes .= $btnIconAddToCart ? " wcb-products__product--btnIconAddToCart" : "";
 
-    $btn1 = $btnInsideImage ? $data->button : "";
-    $btn2 = $btnInsideImage ?   "" : $data->button;
+    // Add to Wishlist default
+    // $btn1 = $btnInsideImage ? $data->button : "";
+    $btn2 = $data->button;
 
     // sale badge
     $classes .= $saleInsideImage ? " wcb-products__product--onsaleInsideImage" : "";
@@ -199,6 +200,23 @@ function wcb_block_products__render_product($product, $attributes, $index)
     $saleOutOfStock = $data->out_of_stock ? : "";
 
     // wishlist button
+    global $wpdb;
+
+    $product_id = $product->get_id();
+    $variation_id = $product->is_type('variation') ? $product->get_id() : 0;
+
+    $table = $wpdb->prefix . 'tinvwl_items';
+
+    $is_in_wishlist = (bool) $wpdb->get_var(
+        $wpdb->prepare(
+            "SELECT COUNT(*) FROM $table WHERE product_id = %d AND variation_id = %d",
+            $product_id,
+            $variation_id
+        )
+    );
+
+    $wishlist_active_class = $is_in_wishlist ? ' is-in-wishlist' : '';
+
     $classes .= $btnWishListTopRight ? " wcb-products__product--wishlistTopRight" : "";
     $classes .= $btnWishListBottomRight ? " wcb-products__product--wishlistBottomRight" : "";
     // 
@@ -212,9 +230,9 @@ function wcb_block_products__render_product($product, $attributes, $index)
     }
 
     $topRightIconsHtml = '';
+    $product_id_attr = esc_attr($product_id);
     if ($btnIconAddToCart || $btnWishListTopRight) {
         $topRightItems = array();
-        $product_id = esc_attr($product->get_id());
         if ($btnIconAddToCart) {
             // AJAX add to cart URL
             $add_to_cart_url = esc_url($product->add_to_cart_url());
@@ -226,7 +244,7 @@ function wcb_block_products__render_product($product, $attributes, $index)
             $topRightItems[] = '
                 <a
                     href="' . $add_to_cart_url . '"
-                    data-product_id="' . $product_id . '"
+                    data-product_id="' . $product_id_attr . '"
                     data-quantity="1"
                     class="wcb-products__product--btnIconAddToCart--item add_to_cart_button ' . $ajax_class . '"
                     rel="nofollow"
@@ -236,9 +254,9 @@ function wcb_block_products__render_product($product, $attributes, $index)
         if ($btnWishListTopRight) {
             $topRightItems[] = 
                 '<button 
-                    class="wcb-products__product--wishlistTopRight--item tinvwl_add_to_wishlist_button tinvwl-addtowishlist"
+                    class="wcb-products__product--wishlistTopRight--item tinvwl_add_to_wishlist_button tinvwl-addtowishlist' . $wishlist_active_class . '"
                     data-tinv-wl-list="[]"
-                    data-tinv-wl-product="' . $product_id . '"
+                    data-tinv-wl-product="' . $product_id_attr . '"
                     data-tinv-wl-action="add"
                     type="button"
                 ></button>';
@@ -249,9 +267,9 @@ function wcb_block_products__render_product($product, $attributes, $index)
 
     $bottomRightIconHtml = $btnWishListBottomRight ? 
         '<button 
-            class="wcb-products__product--wishlistBottomRight--item tinvwl_add_to_wishlist_button tinvwl-addtowishlist"
+            class="wcb-products__product--wishlistBottomRight--item tinvwl_add_to_wishlist_button tinvwl-addtowishlist' . $wishlist_active_class . '"
             data-tinv-wl-list="[]"
-            data-tinv-wl-product="' . $product_id . '"
+            data-tinv-wl-product="' . $product_id_attr . '"
             data-tinv-wl-action="add"
             type="button"
         ></button>' : '';
@@ -268,7 +286,6 @@ function wcb_block_products__render_product($product, $attributes, $index)
                     {$bottomRightIconHtml}
                     {$saleBadge1}
                     {$saleOutOfStock}
-                    {$btn1}
                 </div>
                 {$data->categories}
                 {$data->title}
@@ -559,8 +576,6 @@ if (!function_exists("wcb_block_products_parse_query_args")) :
         return $query_args;
     }
 endif;
-
-
 
 if (!function_exists("wcb_block_products_set_ordering_query_args")) :
 

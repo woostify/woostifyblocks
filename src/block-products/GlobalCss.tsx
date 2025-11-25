@@ -532,8 +532,12 @@ const GlobalCss: FC<Props> = (attrs) => {
 								fontSize: "20px",
 								verticalAlign: "sub",
 							},
+							"&.is-in-wishlist::before": {
+								content: '"\\e908"',
+								color: "#000",
+							},
 							"&.tinvwl-product-in-list::before": {
-								color: "#ffffff",
+									color: "#ffffff",
 							},
 						},
 						".wcb-products__product--wishlistTopRight--item:hover": {
@@ -559,6 +563,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 								fontSize: "20px",
 								verticalAlign: "sub",
 							},
+							"&.is-in-wishlist::before": {
+								content: '"\\e908"',
+								color: "#ffffff",
+							}
 						},
 					},
 				},

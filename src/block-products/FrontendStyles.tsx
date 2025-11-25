@@ -6,9 +6,42 @@ import { WcbAttrsForSave } from "./Save";
 interface Props extends WcbAttrsForSave {}
 
 export function initCarouselForWcbProducts(div: Element, props: Props) {
+	// 1> Handle Wishlist Click
+	const handleWishlistClick = () => {
+		const dataUniqueid = div.getAttribute("data-uniqueid") || "";
+		
+		// Sure every block only register listener one time
+		if (!(window as any).__wcbWishlistListeners) {
+			(window as any).__wcbWishlistListeners = new Set();
+		}
+		// Avoid attach multi for the same block
+		if (!(window as any).__wcbWishlistListeners.has(dataUniqueid)) {
+			(window as any).__wcbWishlistListeners.add(dataUniqueid);
+			
+			document.addEventListener("click", (e) => {
+				const target = e.target as HTMLElement;
+				const btnBottomRight = target.closest(
+					`.${dataUniqueid} .wcb-products__product--wishlistBottomRight--item`
+				);
+				const btnTopRight = target.closest(
+					`.${dataUniqueid} .wcb-products__product--wishlistTopRight--item`
+				);
+
+				if (!btnBottomRight && !btnTopRight) return;
+				if (btnTopRight) {
+					btnTopRight.classList.add("is-in-wishlist");
+				}
+				if (btnBottomRight) {
+					btnBottomRight.classList.add("is-in-wishlist");
+				}
+			});
+		}
+	}
+
 	const handleCarouselForWcbProducts = () => {
 		const dataUniqueid = div.getAttribute("data-uniqueid") || "";
 
+		// Handle Carousel
 		const sliderMultiElement = document.querySelector(
 			`.${dataUniqueid} .scroll-snap-slider.-multi`
 		);
@@ -64,7 +97,7 @@ export function initCarouselForWcbProducts(div: Element, props: Props) {
 		updateArrows();
 	};
 
-	//
+	// Observe DOM changes to ensure the block is fully loaded
 	const domObserver = new MutationObserver(() => {
 		if (
 			document.querySelector(
@@ -73,6 +106,7 @@ export function initCarouselForWcbProducts(div: Element, props: Props) {
 		) {
 			domObserver.disconnect();
 			setTimeout(() => {
+				handleWishlistClick();
 				handleCarouselForWcbProducts();
 			}, 500);
 		}
