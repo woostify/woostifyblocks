@@ -436,10 +436,35 @@ const GlobalCss: FC<Props> = (attrs) => {
 						right: 0,
 						zIndex: 3,
 					},
-					".added_to_cart": {
-						display: "none",
+					"&.wcb-products__product--btnIconAddToCart .added_to_cart": {
+						position: "relative",
+						top: "-2rem",
+						right: "-84px",
+						transform: "translateY(2.5rem)",
+						transition: "transform 0.2s ease-in-out",
+						zIndex: 2,
+						marginTop: "0px !important",
+						background: "#3a3a3a",
 					},
 					"&.wcb-products__product--btnIconAddToCart:hover": {
+						".added_to_cart span:not(.woostify-svg-icon)": {
+							display: "none",
+						},
+						".added_to_cart .woostify-svg-icon": {
+							position: "relative",
+							top: "-7px",
+							right: "9px",
+							transform: "translateY(2.5rem)",
+							transition: "transform 0.2s ease-in-out",
+							width: "2.5rem",
+							height: "2.5rem",
+							alignItems: "center",
+							justifyContent: "center",
+							background: "#3a3a3a",
+						},
+						".added_to_cart .woostify-svg-icon svg": {
+							color: "#ffffff",
+						},
 						".wcb-products__product--btnIconAddToCart--item": {
 							position: "relative",
 							top: "-2.5rem",
@@ -474,6 +499,14 @@ const GlobalCss: FC<Props> = (attrs) => {
 								backgroundPosition: "center",
 								pointerEvents: "none",
 							},
+						},
+						".wcb-products__product--btnIconAddToCart--item.added": {
+							display: "none",
+							content: "none",
+						},
+						".wcb-products__product--btnIconAddToCart--item.added::after": {
+							display: "none",
+							content: "none",
 						},
 						".wcb-products__product--btnIconAddToCart--item:hover": {
 							background: style_addToCardBtn?.colorAndBackgroundColor?.Normal?.backgroundColor ? 
