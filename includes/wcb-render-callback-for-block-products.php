@@ -474,13 +474,9 @@ function wcb_block_products__get_add_to_cart($product, $attributesFromBlock)
         'class'            => 'wp-block-button__link ' . (function_exists('wc_wp_theme_get_element_class_name') ? wc_wp_theme_get_element_class_name('button') : '') . ' add_to_cart_button',
     );
 
-    if (
-        $product->supports('ajax_add_to_cart') &&
+    $ajax_class = ($product->supports('ajax_add_to_cart') &&
         $product->is_purchasable() &&
-        ($product->is_in_stock() || $product->backorders_allowed())
-    ) {
-        $attributes['class'] .= ' ajax_add_to_cart';
-    }
+        ($product->is_in_stock() || $product->backorders_allowed())) ? ' ajax_add_to_cart' : '';
     
     // NEW: get color from block attributes
     $svg_color = $attributesFromBlock['style_addToCardBtn']['colorAndBackgroundColor']['Normal']['color'] ?? '#000000';
@@ -513,9 +509,17 @@ function wcb_block_products__get_add_to_cart($product, $attributesFromBlock)
     ";
 
     return $inline_css . sprintf(
-        '<a class="' . esc_attr($product_class) . '" href="%s" %s>%s%s</a>',
+        '<a 
+            href="%s"
+            data-product_id="%s"
+            data-quantity="1"
+            class="add_to_cart_button %s %s"
+            rel="nofollow"
+        >%s%s</a>',
         esc_url($product->add_to_cart_url()),
-        wc_implode_html_attributes($attributes),
+        esc_attr($product->get_id()),
+        esc_attr($product_class),
+        esc_attr($ajax_class),
         $icon_markup,
         $label_markup
     );

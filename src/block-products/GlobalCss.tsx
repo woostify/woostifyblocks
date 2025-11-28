@@ -48,6 +48,9 @@ const GlobalCss: FC<Props> = (attrs) => {
 	const ADD_TO_CART_BTN_BG = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart`;
 	const ADD_TO_CART_BTN = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart a`;
 	const ADD_TO_CART_BTN_ICON = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart-icon`;
+	const ADD_TO_CART_BTN_VIEW_CARD_BG = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart added_to_cart`;
+	const ADD_TO_CART_VIEW_CARD_BTN = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart a.added_to_cart`;
+	const ADD_TO_CART_BTN_VIEW_CARD_ICON = `${WRAP_CLASSNAME} .wcb-products__product-add-to-cart-icon`;
 	const PRODUCT_IMAGE_CLASS = `${WRAP_CLASSNAME} .wcb-products__product-image`;
 	const PRODUCT_PRICE_CLASS = `${POST_CARD_CLASS} .wcb-products__product-price`;
 
@@ -453,7 +456,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 						".added_to_cart .woostify-svg-icon": {
 							position: "relative",
 							top: "-7px",
-							right: "9px",
+							right: "9.6px",
 							transform: "translateY(2.5rem)",
 							transition: "transform 0.2s ease-in-out",
 							width: "2.5rem",
@@ -643,7 +646,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 							},
 							".wcb-products__add-to-cart-icon, .wcb-products__add-to-cart-label": {
 								// display: general_addToCartBtn?.position === "icon" ? "none" : "block",
-								transform:general_addToCartBtn?.position === "bottom" ? "translateY(-60px)" : "unset",
+								transform: general_addToCartBtn?.position === "bottom" ? "translateY(-60px)" : "unset",
 								opacity: 
 									general_addToCartBtn?.position === "bottom" ? 1 : general_addToCartBtn?.position === "icon" ? 0 : "unset",
 								transition: general_addToCartBtn?.position === "bottom" ? "all 0.3s ease-in-out" : "unset",
@@ -651,9 +654,15 @@ const GlobalCss: FC<Props> = (attrs) => {
 							}
 						},
 						".wcb-products__product-add-to-cart:hover": {
-							"span": {
+							".add_to_cart_button span": {
 								color: (style_addToCardBtn?.colorAndBackgroundColor?.Hover.color as any),
 							},
+							"span.woostify-svg-icon svg": {
+								color: "#FFFFFF !important",
+							}
+						},
+						"span.woostify-svg-icon svg": {
+							color: "#FFFFFF !important",
 						}
 					},
 
@@ -834,6 +843,9 @@ const GlobalCss: FC<Props> = (attrs) => {
 		//
 		return {
 			[ADD_TO_CART_BTN_BG]: {
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center",
 				justifyContent: "center",
 				":hover span": {
 					color: color_h ? color_h : "white",
@@ -860,6 +872,22 @@ const GlobalCss: FC<Props> = (attrs) => {
 					: undefined,
 				// textTransform: "uppercase",
 				// fontWeight: 600,
+			},
+			[ADD_TO_CART_VIEW_CARD_BTN]: {
+				backgroundColor: "#1346AF !important",
+				color: "#FFFFFF !important",
+				borderRadius: "20px !important",
+				padding: "4px !important",
+				width: "9rem !important",
+				":hover": {
+					backgroundColor: "#3a3a3a !important",
+					color: "#FFFFFF !important",
+					borderRadius: "20px !important",
+					padding: "4px !important",
+					"svg path": {
+						fill: "#FFFFFF !important",
+					}
+				}
 			},
 			[`${ADD_TO_CART_BTN}.added`]: {
 				display: "none",
