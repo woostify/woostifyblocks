@@ -38,6 +38,43 @@ export function initCarouselForWcbProducts(div: Element, props: Props) {
 		}
 	}
 
+	// 2. Handle add style hidden for add to cart button
+	const handleAddToCartStyleHidden = () => {
+		const dataUniqueid = div.getAttribute("data-uniqueid") || "";
+
+		// Only attach listener 1 time / block
+		if (!(window as any).__wcbAddToCartLayout2Listeners) {
+			(window as any).__wcbAddToCartLayout2Listeners = new Set();
+		}
+		if ((window as any).__wcbAddToCartLayout2Listeners.has(dataUniqueid)) return;
+		(window as any).__wcbAddToCartLayout2Listeners.add(dataUniqueid);
+
+		document.addEventListener("click", (e) => {
+			const target = e.target as HTMLElement;
+
+			// Find button add-to-cart depence on block
+			const btn = target.closest(
+				`.${dataUniqueid} .wcb-products__product-add-to-cart .add_to_cart_button`
+			) as HTMLElement | null;
+
+			if (!btn) return;
+
+			// 1. Add class
+			btn.classList.add("wcb-products__product-style-hidden-btn-add-to-cart");
+
+			// 2. Show view cart trong cùng block
+			const parent = btn.closest(
+				`.${dataUniqueid} .wcb-products__product-add-to-cart`
+			) as HTMLElement | null;
+			if (!parent) return;
+
+			const viewCart = parent.querySelector(".added_to_cart") as HTMLElement | null;
+			if (viewCart) {
+				viewCart.classList.add("visible");
+			}
+		});
+	};
+
 	const handleCarouselForWcbProducts = () => {
 		const dataUniqueid = div.getAttribute("data-uniqueid") || "";
 
@@ -108,6 +145,7 @@ export function initCarouselForWcbProducts(div: Element, props: Props) {
 			setTimeout(() => {
 				handleWishlistClick();
 				handleCarouselForWcbProducts();
+				handleAddToCartStyleHidden();
 			}, 500);
 		}
 	});

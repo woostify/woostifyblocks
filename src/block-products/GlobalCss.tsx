@@ -620,6 +620,10 @@ const GlobalCss: FC<Props> = (attrs) => {
 						lineHeight: "36px",
 						overflow: "hidden",
 					},
+					// Style layout bottom add to cart button
+					".wcb-products__product-style-hidden-btn-add-to-cart": {
+						display: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === "inside image") ? "none !important" : "unset",
+					},
 					".wcb-products__add-to-cart-icon, .wcb-products__add-to-cart-label": {
 						display: (general_addToCartBtn?.position === "icon") ? "none" : "block",
 						// opacity: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === 'icon') ? 0 : "unset",
@@ -630,6 +634,12 @@ const GlobalCss: FC<Props> = (attrs) => {
 						// opacity: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === 'icon') ? 1 : "unset",
 						transform:  (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === 'icon') ? "translateY(0px)" : "unset",
 						transition: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === 'icon') ? "all 0.3s ease-in-out" : "unset",
+					},
+					".added_to_cart": {
+						transform: (general_addToCartBtn?.position === "bottom") ? "translateY(92px)" : "unset",
+						opacity: 
+							(general_addToCartBtn?.position === "bottom") ? 0 : "unset",
+						transition: (general_addToCartBtn?.position === "bottom") ? "all 0.3s ease-in-out" : "unset",
 					},
 					":hover": {
 						".wcb-products__product-price": {
@@ -651,18 +661,24 @@ const GlobalCss: FC<Props> = (attrs) => {
 									general_addToCartBtn?.position === "bottom" ? 1 : general_addToCartBtn?.position === "icon" ? 0 : "unset",
 								transition: general_addToCartBtn?.position === "bottom" ? "all 0.3s ease-in-out" : "unset",
 								// clipPath: general_addToCartBtn?.position === "bottom" ? "inset(0 0 0 0)" : general_addToCartBtn?.position === "icon" ? "inset(100% 0 0 0)" : "unset",
-							}
+							},
+							".added_to_cart": {
+								transform: general_addToCartBtn?.position === "bottom" ? "translateY(60px)" : "unset",
+								opacity: 
+									general_addToCartBtn?.position === "bottom" ? 1 : "unset",
+								transition: general_addToCartBtn?.position === "bottom" ? "all 0.3s ease-in-out" : "unset",
+							},
 						},
 						".wcb-products__product-add-to-cart:hover": {
 							".add_to_cart_button span": {
 								color: (style_addToCardBtn?.colorAndBackgroundColor?.Hover.color as any),
 							},
 							"span.woostify-svg-icon svg": {
-								color: "#FFFFFF !important",
+								color: general_addToCartBtn?.position === "bottom" ? "#2b2b2b !important" : "#FFFFFF !important",
 							}
 						},
 						"span.woostify-svg-icon svg": {
-							color: "#FFFFFF !important",
+							color: general_addToCartBtn?.position === "bottom" ? "#2b2b2b !important" : "#FFFFFF !important",
 						}
 					},
 
@@ -873,19 +889,22 @@ const GlobalCss: FC<Props> = (attrs) => {
 				// textTransform: "uppercase",
 				// fontWeight: 600,
 			},
+			// Style layout 2 - Add to cart button at bottom
 			[ADD_TO_CART_VIEW_CARD_BTN]: {
-				backgroundColor: "#1346AF !important",
-				color: "#FFFFFF !important",
+				position: position === "bottom" ? "relative" : "unset",
+				top: position === "bottom" ? "-112px !important" : "unset",
+				backgroundColor: position === "bottom" ? "unset" : "#1346AF !important",
+				color: position === "bottom" ? "#2b2b2b !important" : "#FFFFFF !important",
 				borderRadius: "20px !important",
 				padding: "4px !important",
 				width: "9rem !important",
 				":hover": {
-					backgroundColor: "#3a3a3a !important",
-					color: "#FFFFFF !important",
+					backgroundColor: position === "bottom" ? "unset" : "#3a3a3a !important",
+					color: position === "bottom" ? "#1346AF !important" : "#FFFFFF !important",
 					borderRadius: "20px !important",
 					padding: "4px !important",
 					"svg path": {
-						fill: "#FFFFFF !important",
+						fill: position === "bottom" ? "#1346AF !important" : "#FFFFFF !important",
 					}
 				}
 			},
