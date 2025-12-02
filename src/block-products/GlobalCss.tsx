@@ -623,6 +623,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 					// Style layout bottom add to cart button
 					".wcb-products__product-style-hidden-btn-add-to-cart": {
 						display: (general_addToCartBtn?.position === "bottom" || general_addToCartBtn?.position === "inside image") ? "none !important" : "unset",
+						alignItems: "center",
 					},
 					".wcb-products__add-to-cart-icon, .wcb-products__add-to-cart-label": {
 						display: (general_addToCartBtn?.position === "icon") ? "none" : "block",
@@ -668,6 +669,11 @@ const GlobalCss: FC<Props> = (attrs) => {
 									general_addToCartBtn?.position === "bottom" ? 1 : "unset",
 								transition: general_addToCartBtn?.position === "bottom" ? "all 0.3s ease-in-out" : "unset",
 							},
+						},
+						".wcb-products__product-add-to-cart .add_to_cart_button--loading": {
+							".wcb-products__add-to-cart-icon": {
+								display: "none !important",
+							}
 						},
 						".wcb-products__product-add-to-cart:hover": {
 							".add_to_cart_button span": {

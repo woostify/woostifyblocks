@@ -64,6 +64,21 @@
 	}
 } */
 
+.add_to_cart_button--loading::before {
+	content: "" !important; 
+	z-index: 2; 
+	// position: absolute; 
+	border: 1px solid #ddd; 
+	border-top-color: #222; 
+	border-radius: 50%; 
+	height: 14px; 
+	width: 14px; 
+	top: calc( 50% ); 
+	left: calc( 50% ); 
+	transform: translateY(-50%) translateX(-50%); 
+	animation: circle-loading 0.35s linear infinite;
+}
+
 .wcb-products__product {
 	font-size: 16px;
 	height: auto;

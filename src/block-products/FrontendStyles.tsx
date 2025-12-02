@@ -60,7 +60,7 @@ export function initCarouselForWcbProducts(div: Element, props: Props) {
 			if (!btn) return;
 
 			// 1. Add class
-			btn.classList.add("wcb-products__product-style-hidden-btn-add-to-cart");
+			btn.classList.add("wcb-products__product-style-hidden-btn-add-to-cart", "add_to_cart_button--loading");
 
 			// 2. Show view cart trong cùng block
 			const parent = btn.closest(
@@ -72,6 +72,44 @@ export function initCarouselForWcbProducts(div: Element, props: Props) {
 			if (viewCart) {
 				viewCart.classList.add("visible");
 			}
+
+			// Delay 500ms rồi remove
+			setTimeout(() => {
+				btn.classList.remove("add_to_cart_button--loading");
+			}, 500);
+		});
+	};
+
+	// 3. Handle loading for add to cart button
+	const handleAddToCartIsLoading = () => {
+		debugger
+		const dataUniqueid = div.getAttribute("data-uniqueid") || "";
+
+		// Only attach listener 1 time / block
+		if (!(window as any).__wcbAddToCartLayout2Listeners) {
+			(window as any).__wcbAddToCartLayout2Listeners = new Set();
+		}
+		if ((window as any).__wcbAddToCartLayout2Listeners.has(dataUniqueid)) return;
+		(window as any).__wcbAddToCartLayout2Listeners.add(dataUniqueid);
+
+		document.addEventListener("click", (e) => {
+			debugger
+			const target = e.target as HTMLElement;
+
+			// Find button add-to-cart depence on block
+			const btn = target.closest(
+				`.${dataUniqueid} .wcb-products__product--btnIconAddToCart--item`
+			) as HTMLElement | null;
+
+			if (!btn) return;
+
+			// 1. Add class
+			btn.classList.add("add_to_cart_button--loading");
+
+			// Delay 500ms rồi remove
+			// setTimeout(() => {
+			// 	btn.classList.remove("add_to_cart_button--loading");
+			// }, 500);
 		});
 	};
 
@@ -146,6 +184,7 @@ export function initCarouselForWcbProducts(div: Element, props: Props) {
 				handleWishlistClick();
 				handleCarouselForWcbProducts();
 				handleAddToCartStyleHidden();
+				handleAddToCartIsLoading();
 			}, 500);
 		}
 	});
