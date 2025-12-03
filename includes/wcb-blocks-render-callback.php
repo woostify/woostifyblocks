@@ -189,6 +189,18 @@ if (!function_exists('wp_enqueue_script__block_commoncss_frontend_styles')) :
     {
         if (!is_admin()) {
             wp_enqueue_script('wcb_block_commoncss_renderCallbackScript', plugin_dir_url(WCB_FILE) . 'build/block-common-css/FrontendStyles.js', $deps, WCB_VERSION, true);
+
+            // Expose theme defaults on the frontend so JS helpers can read them.
+            static $wcb_theme_defaults_enqueued = false;
+            if (!$wcb_theme_defaults_enqueued && function_exists('wcb_get_theme_defaults_data')) {
+                $data = wcb_get_theme_defaults_data();
+                wp_add_inline_script(
+                    'wcb_block_commoncss_renderCallbackScript',
+                    'window.WCB_THEME_DEFAULTS=' . wp_json_encode($data) . ';',
+                    'before'
+                );
+                $wcb_theme_defaults_enqueued = true;
+            }
         }
     }
 endif;

@@ -528,6 +528,15 @@ const GlobalCss: FC<Props> = (attrs) => {
 								pointerEvents: "none",
 							},
 						},
+						// Style loading display is none for top right icon add to cart button
+						".add_to_cart_button--loading.wcb-products__product--btnIconAddToCart--item:hover": {
+							background: style_addToCardBtn?.colorAndBackgroundColor?.Normal?.backgroundColor ? 
+								style_addToCardBtn?.colorAndBackgroundColor?.Hover?.backgroundColor : "#474747",
+							marginTop: "0px !important",
+							"&::after": {
+								display: "none",
+							},
+						},
 					},
 					"&.wcb-products__product--wishlistTopRight:hover": {
 						".wcb-products__product--wishlistTopRight--item": {
