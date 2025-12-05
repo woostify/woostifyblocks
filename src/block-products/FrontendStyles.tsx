@@ -7,7 +7,7 @@ import { getThemeDefaults } from "../utils/themeDefaults";
 interface Props extends WcbAttrsForSave {}
 
 export function initCarouselForWcbProducts(div: Element, props: Props) {
-	// 1> Handle Wishlist Click
+	// 1. Handle Wishlist Click
 	const handleWishlistClick = () => {
 		const dataUniqueid = div.getAttribute("data-uniqueid") || "";
 		
@@ -98,6 +98,32 @@ export function initCarouselForWcbProducts(div: Element, props: Props) {
 		});
 	};
 
+	/**
+	 * Check button add to cart is loading state
+	 * 
+	 * @param buttonEl HTMLButtonElement
+	 * @returns boolean
+	 */
+	const checkIsLoadingAddToCart = (buttonEl: HTMLElement): boolean => {
+		if (!buttonEl) return false;
+
+		const label = buttonEl.querySelector(".wcb-products__add-to-cart-label");
+		const text = label?.innerText?.trim();
+		
+		return text === "Add to cart";
+	}
+
+	/**
+	 * Check button add to cart has class ajax_add_to_cart
+	 * 
+	 * @param buttonEl HTMLButtonElement
+	 * @returns boolean
+	 */
+	const hasAjaxAddToCartClass = (buttonEl): boolean => {
+		if (!buttonEl) return false;
+		return buttonEl.classList.contains("ajax_add_to_cart");
+	};
+
 	// 3. Handle add style is loading for add to cart button
 	const handleAddToCartIsLoading = () => {
 		const dataUniqueid = div.getAttribute("data-uniqueid") || "";
@@ -129,28 +155,33 @@ export function initCarouselForWcbProducts(div: Element, props: Props) {
 			
 				switch (addToCartBtn?.position) {
 					case 'bottom-visible':
-						btnLayoutBottomVisible.classList.add("add_to_cart_button--loading");
+						if (checkIsLoadingAddToCart(btnLayoutBottomVisible)){
+							btnLayoutBottomVisible.classList.add("add_to_cart_button--loading");
+						}
 						break;
 					case 'inside image':
-						btnLayoutBottomVisible?.classList.add("add_to_cart_button__insite-image--loading");
+						if (checkIsLoadingAddToCart(btnLayoutBottomVisible)){
+							btnLayoutBottomVisible?.classList.add("add_to_cart_button__insite-image--loading");
+						}
 						break;
 					case 'bottom':
-						// Do nothing
-						const iconWrapper = btnLayoutBottomVisible.querySelector('.wcb-products__add-to-cart-icon');
-
-						if (iconWrapper) {
+						if (checkIsLoadingAddToCart(btnLayoutBottomVisible)){
+							const iconWrapper = btnLayoutBottomVisible.querySelector('.wcb-products__add-to-cart-icon');
 							// Delete SVG if have
-							const svg = iconWrapper.querySelector("svg");
-							if (svg) {
-								svg.remove();
+							if (iconWrapper) {
+								const svg = iconWrapper.querySelector("svg");
+								if (svg) {
+									svg.remove();
+								}
+								iconWrapper.classList.add("add_to_cart_button__style-bottom-visible--loading");
 							}
-
-							iconWrapper.classList.add("add_to_cart_button__style-bottom-visible--loading");
 						}
 						break;
 					case 'icon':
 						// Do nothing
-						btnLayoutTopRightIcon?.classList.add("add_to_cart_button--loading");
+						if (hasAjaxAddToCartClass(btnLayoutTopRightIcon)) {
+							btnLayoutTopRightIcon?.classList.add("add_to_cart_button--loading");
+						}
 						break;
 					default:
 						// Do nothing
@@ -188,7 +219,7 @@ export function initCarouselForWcbProducts(div: Element, props: Props) {
 					if (btnLayoutBottomVisible) {
 						btnLayoutBottomVisible.classList.remove("add_to_cart_button--loading");
 					    btnLayoutBottomVisible.classList.remove("add_to_cart_button__style-bottom-visible--loading");
-						btnLayoutBottomVisible.classList.remove()("add_to_cart_button__insite-image--loading");
+						btnLayoutBottomVisible.classList.remove("add_to_cart_button__insite-image--loading");
 					} 
 					if (btnLayoutTopRightIcon) {
 						btnLayoutTopRightIcon.classList.remove("add_to_cart_button--loading");
