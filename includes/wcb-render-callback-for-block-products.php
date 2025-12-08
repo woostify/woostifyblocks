@@ -1,7 +1,214 @@
 <?php
 
+/**
+ * Apply current theme defaults to block attributes so already-saved blocks
+ * pick up Customizer changes on render.
+ */
+function wcb_block_products_apply_theme_defaults($attributes)
+{
+    if (!function_exists('wcb_get_theme_defaults_data')) {
+        return $attributes;
+    }
+
+    $theme = wcb_get_theme_defaults_data();
+
+    $to_bool = function ($value, $default) {
+        if ($value === null) {
+            return $default;
+        }
+        return $value === true || $value === '1' || $value === 1 || $value === 'true';
+    };
+
+    // Style layout
+    $style_layout = $attributes['style_layout'] ?? [];
+    $style_layout['numberOfColumn'] = [
+        'Desktop' => $theme['product_per_row']['desktop'] ?? ($style_layout['numberOfColumn']['Desktop'] ?? null),
+        'Tablet'  => $theme['product_per_row']['tablet'] ?? ($style_layout['numberOfColumn']['Tablet'] ?? null),
+        'Mobile'  => $theme['product_per_row']['mobile'] ?? ($style_layout['numberOfColumn']['Mobile'] ?? null),
+    ];
+    if (isset($theme['shop_archive_product_content']['align'])) {
+        $style_layout['textAlignment'] = $theme['shop_archive_product_content']['align'];
+    }
+    $attributes['style_layout'] = $style_layout;
+
+    // Border
+    $border = $attributes['style_border']['mainSettings'] ?? [];
+    $border_style = $theme['shop_archive_border']['style'] ?? null;
+    if ($border_style && $border_style !== 'none') {
+        $attributes['style_border']['mainSettings'] = [
+            'color' => $theme['shop_archive_border']['color'] ?? ($border['color'] ?? null),
+            'style' => $border_style ?? ($border['style'] ?? null),
+            'width' => isset($theme['shop_archive_border']['width']) ? $theme['shop_archive_border']['width'] . 'px' : ($border['width'] ?? null),
+        ];
+    }
+
+    // Sorting & filtering
+    $attributes['general_sortingAndFiltering'] = array_merge(
+        $attributes['general_sortingAndFiltering'] ?? [],
+        [
+            'numberOfItems' => $theme['product_per_page'] ?? ($attributes['general_sortingAndFiltering']['numberOfItems'] ?? null),
+        ]
+    );
+
+    // Content visibility flags
+    $content = $theme['shop_archive_product_content'] ?? [];
+    $attributes['general_content'] = array_merge(
+        $attributes['general_content'] ?? [],
+        [
+            'isShowTitle' => $to_bool($content['title_flag'] ?? null, $attributes['general_content']['isShowTitle'] ?? null),
+            'isShowCategory' => $to_bool($content['category_flag'] ?? null, $attributes['general_content']['isShowCategory'] ?? null),
+            'isShowRating' => $to_bool($content['rating_flag'] ?? null, $attributes['general_content']['isShowRating'] ?? null),
+            'isShowPrice' => $to_bool($content['price_flag'] ?? null, $attributes['general_content']['isShowPrice'] ?? null),
+        ]
+    );
+
+    // Featured image hover
+    $attributes['general_featuredImage'] = array_merge(
+        $attributes['general_featuredImage'] ?? [],
+        [
+            'hoverType' => $theme['shop_archive_product_image']['hover'] ?? ($attributes['general_featuredImage']['hoverType'] ?? null),
+        ]
+    );
+
+    // Featured image border
+    $featured_border = $attributes['style_featuredImage']['border']['mainSettings'] ?? [];
+    $fi_style = $theme['shop_archive_product_image']['style'] ?? null;
+    if ($fi_style && $fi_style !== 'none') {
+        $attributes['style_featuredImage']['border']['mainSettings'] = [
+            'color' => $theme['shop_archive_product_image']['color'] ?? ($featured_border['color'] ?? null),
+            'style' => $fi_style ?? ($featured_border['style'] ?? null),
+            'width' => isset($theme['shop_archive_product_image']['width']) ? $theme['shop_archive_product_image']['width'] . 'px' : ($featured_border['width'] ?? null),
+        ];
+    }
+
+    // Sale badge
+    $sale = $theme['shop_archive_sale_tag'] ?? [];
+    $sale_position = $sale['position'] ?? ($attributes['style_saleBadge']['position'] ?? 'top-right');
+    $attributes['style_saleBadge'] = array_merge(
+        $attributes['style_saleBadge'] ?? [],
+        [
+            'backgroundColor' => $sale['bg_color'] ?? ($attributes['style_saleBadge']['backgroundColor'] ?? null),
+            'textColor' => $sale['text_color'] ?? ($attributes['style_saleBadge']['textColor'] ?? null),
+            'position' => $sale_position === 'left' ? 'top-left' : 'top-right',
+        ]
+    );
+
+    // Out of stock badge
+    $outofstock = $theme['shop_archive_out_of_stock'] ?? [];
+    $raw_out_position = $outofstock['position'] ?? ($attributes['style_outOfStock']['position'] ?? 'none');
+    $mapped_out_position = $raw_out_position === 'left'
+        ? 'top-left'
+        : ($raw_out_position === 'right' ? 'top-right' : 'none');
+    $attributes['style_outOfStock'] = array_merge(
+        $attributes['style_outOfStock'] ?? [],
+        [
+            'backgroundColor' => $outofstock['bg_color'] ?? ($attributes['style_outOfStock']['backgroundColor'] ?? null),
+            'textColor' => $outofstock['text_color'] ?? ($attributes['style_outOfStock']['textColor'] ?? null),
+            'position' => $mapped_out_position,
+        ]
+    );
+
+    // Title styles
+    $general_design = $theme['shop_archive_general_design'] ?? [];
+    $attributes['style_title'] = array_merge(
+        $attributes['style_title'] ?? [],
+        [
+            'textColor' => $general_design['title_color'] ?? ($attributes['style_title']['textColor'] ?? null),
+            'typography' => array_merge(
+                $attributes['style_title']['typography'] ?? [],
+                [
+                    'fontSizes' => [
+                        'Desktop' => isset($general_design['title_font_size']['desktop']) ? $general_design['title_font_size']['desktop'] . 'px' : ($attributes['style_title']['typography']['fontSizes']['Desktop'] ?? null),
+                        'Tablet' => isset($general_design['title_font_size']['tablet']) ? $general_design['title_font_size']['tablet'] . 'px' : ($attributes['style_title']['typography']['fontSizes']['Tablet'] ?? null),
+                        'Mobile' => isset($general_design['title_font_size']['mobile']) ? $general_design['title_font_size']['mobile'] . 'px' : ($attributes['style_title']['typography']['fontSizes']['Mobile'] ?? null),
+                    ],
+                ]
+            ),
+        ]
+    );
+
+    // Price styles
+    $attributes['style_price'] = array_merge(
+        $attributes['style_price'] ?? [],
+        [
+            'textColor' => $general_design['price_color'] ?? ($attributes['style_price']['textColor'] ?? null),
+            'typography' => array_merge(
+                $attributes['style_price']['typography'] ?? [],
+                [
+                    'fontSizes' => [
+                        'Desktop' => isset($general_design['price_font_size']['desktop']) ? $general_design['price_font_size']['desktop'] . 'px' : ($attributes['style_price']['typography']['fontSizes']['Desktop'] ?? null),
+                        'Tablet' => isset($general_design['price_font_size']['tablet']) ? $general_design['price_font_size']['tablet'] . 'px' : ($attributes['style_price']['typography']['fontSizes']['Tablet'] ?? null),
+                        'Mobile' => isset($general_design['price_font_size']['mobile']) ? $general_design['price_font_size']['mobile'] . 'px' : ($attributes['style_price']['typography']['fontSizes']['Mobile'] ?? null),
+                    ],
+                ]
+            ),
+        ]
+    );
+
+    // Add to cart styles
+    $atc = $theme['shop_archive_add_to_cart_btn'] ?? [];
+    $existing_colors = $attributes['style_addToCardBtn']['colorAndBackgroundColor'] ?? [];
+    $attributes['style_addToCardBtn'] = array_merge(
+        $attributes['style_addToCardBtn'] ?? [],
+        [
+            'colorAndBackgroundColor' => array_merge(
+                $existing_colors,
+                [
+                    'Normal' => [
+                        'color' => $atc['text_color'] ?? ($existing_colors['Normal']['color'] ?? null),
+                        'backgroundColor' => $atc['bg_color'] ?? ($existing_colors['Normal']['backgroundColor'] ?? null),
+                    ],
+                    'Hover' => [
+                        'color' => $atc['hover_text_color'] ?? ($existing_colors['Hover']['color'] ?? null),
+                        'backgroundColor' => $atc['hover_bg_color'] ?? ($existing_colors['Hover']['backgroundColor'] ?? null),
+                    ],
+                ]
+            ),
+            'border' => array_merge(
+                $attributes['style_addToCardBtn']['border'] ?? [],
+                [
+                    'radius' => [
+                        'Desktop' => isset($atc['border_radius']) ? $atc['border_radius'] . 'px' : ($attributes['style_addToCardBtn']['border']['radius']['Desktop'] ?? null),
+                        'Tablet' => isset($atc['border_radius']) ? $atc['border_radius'] . 'px' : ($attributes['style_addToCardBtn']['border']['radius']['Tablet'] ?? null),
+                        'Mobile' => isset($atc['border_radius']) ? $atc['border_radius'] . 'px' : ($attributes['style_addToCardBtn']['border']['radius']['Mobile'] ?? null),
+                    ],
+                ]
+            ),
+        ]
+    );
+
+    // Add to cart general settings
+    $attributes['general_addToCartBtn'] = array_merge(
+        $attributes['general_addToCartBtn'] ?? [],
+        [
+            'isShowButton' => ($atc['position'] ?? '') === 'none'
+                ? false
+                : ($attributes['general_addToCartBtn']['isShowButton'] ?? true),
+            'position' => ($atc['position'] ?? '') === 'bottom-visible' ? 'bottom visible'
+                : (($atc['position'] ?? '') === 'image' ? 'inside image'
+                    : (($atc['position'] ?? '') === 'icon' ? 'icon'
+                        : (($atc['position'] ?? '') === 'bottom' ? 'bottom'
+                            : (($atc['position'] ?? null) ?: ($attributes['general_addToCartBtn']['position'] ?? null))))),
+        ]
+    );
+
+    // Wishlist button
+    $wishlist = $theme['shop_archive_wishlist_btn'] ?? [];
+    $attributes['style_wishlistBtn'] = array_merge(
+        $attributes['style_wishlistBtn'] ?? [],
+        [
+            'position' => $wishlist['position'] ?? ($attributes['style_wishlistBtn']['position'] ?? null),
+            'style' => $wishlist['style'] ?? ($attributes['style_wishlistBtn']['style'] ?? null),
+        ]
+    );
+
+    return $attributes;
+}
+
 function wcb_block_products__renderCallback($attributes, $content)
 {
+    // Re-apply theme defaults on render so saved blocks stay in sync with Customizer changes.
+    $attributes = wcb_block_products_apply_theme_defaults($attributes);
 
     wp_enqueue_script__block_commoncss_frontend_styles();
     // 
@@ -29,7 +236,19 @@ function wcb_block_products__renderCallback($attributes, $content)
 
 ?>
 
-    <?php echo $content; ?>
+    <?php
+        // Update the serialized attributes inside the saved content so frontend CSS uses refreshed defaults.
+        if (!empty($uniqueId)) {
+            $json = esc_html(wp_json_encode($attributes));
+            $content = preg_replace(
+                '/(<pre[^>]*data-wcb-block-attrs=["\']?' . preg_quote($uniqueId, '/') . '["\']?[^>]*>)(.*?)(<\/pre>)/s',
+                '$1' . $json . '$3',
+                $content
+            );
+        }
+
+        echo $content;
+    ?>
     <div class="wcb-products__wrap <?php echo esc_attr($uniqueId); ?> <?php echo esc_attr($className); ?>" data-uniqueid="<?php echo esc_attr($uniqueId); ?>">
 
         <?php

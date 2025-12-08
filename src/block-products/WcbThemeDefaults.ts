@@ -18,6 +18,7 @@ import {
 import type { WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK } from "./WcbProductsPanel_StyleOutOfStock";
 import type { WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE } from "./WcbProductsPanel_StyleSaleBadge"; 
 import { WCB_PRODUCTS_PANEL_STYLE_WISHLIST_BUTTON_DEMO } from "./WcbProductsPanel_StyleWishListButton";
+import type { WcbAttrsForSave } from "./Save";
 
 export function buildStyleLayoutDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO>) {
     const theme = getThemeDefaults();
@@ -352,4 +353,45 @@ export function buildStyleWishlistButtonDefault(attr?: Partial<typeof WCB_PRODUC
             attr?.style ??
             WCB_PRODUCTS_PANEL_STYLE_WISHLIST_BUTTON_DEMO.style,
     };
+}
+
+/**
+ * Re-apply the latest theme defaults to an attributes object.
+ * This lets already-saved blocks pick up Customizer changes on view render.
+ */
+export function mergeProductAttrsWithThemeDefaults(
+	attr?: Partial<WcbAttrsForSave>
+): WcbAttrsForSave {
+	const base = (attr || {}) as WcbAttrsForSave;
+
+	return {
+		...base,
+		// General
+		general_sortingAndFiltering: buildSortingAndFilteringDefault(
+			base.general_sortingAndFiltering as any
+		),
+		general_content: buildGeneralContractDefault(base.general_content as any),
+		general_featuredImage: buildGeneralFeaturedImageDefault(
+			base.general_featuredImage as any
+		),
+		general_addToCartBtn: buildGeneralAddToCartBtnDefault(
+			base.general_addToCartBtn as any
+		) as any,
+		// Styles
+		style_layout: buildStyleLayoutDefault(base.style_layout as any),
+		style_border: buildStyleBorderDefault(base.style_border as any),
+		style_featuredImage: buildStyleFeaturedImageDefault(
+			base.style_featuredImage as any
+		),
+		style_saleBadge: buildStyleSaleBadgeDefault(base.style_saleBadge as any),
+		style_outOfStock: buildStyleOutOfStockDefault(base.style_outOfStock as any),
+		style_title: buildStyleTitleDefault(base.style_title as any),
+		style_price: buildStylePriceDefault(base.style_price as any),
+		style_addToCardBtn: buildStyleAddToCartBtnDefault(
+			base.style_addToCardBtn as any
+		),
+		style_wishlistBtn: buildStyleWishlistButtonDefault(
+			base.style_wishlistBtn as any
+		),
+	};
 }
