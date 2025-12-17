@@ -21,6 +21,7 @@ const useSetBlockPanelInfo = (uniqueId: string) => {
 			return {
 				blockStores: select(
 					WCB_STORE_PANELS
+					// @ts-ignore
 				)?.getBlockPanelInfo() as WcbPanelStoreState,
 			};
 		},

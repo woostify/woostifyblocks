@@ -3,6 +3,7 @@
     text-align: center;
 }
 .wcb-countdown__content {
+    display: flex;
     &:not(&.wcb-countdown-5){
         .wcb-countdown__box {
             display: flex;

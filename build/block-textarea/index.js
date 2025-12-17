@@ -775,7 +775,9 @@ const useSetBlockPanelInfo = uniqueId => {
     blockStores
   } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useSelect)(select => {
     return {
-      blockStores: select(_data__WEBPACK_IMPORTED_MODULE_2__.WCB_STORE_PANELS)?.getBlockPanelInfo()
+      blockStores: select(_data__WEBPACK_IMPORTED_MODULE_2__.WCB_STORE_PANELS
+      // @ts-ignore
+      )?.getBlockPanelInfo()
     };
   }, [uniqueId]);
   const {

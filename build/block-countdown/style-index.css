@@ -6,6 +6,9 @@
   text-align: center;
 }
 
+.wcb-countdown__content {
+  display: flex;
+}
 .wcb-countdown__content:not(.wcb-countdown__content.wcb-countdown-5) .wcb-countdown__box {
   display: flex;
   flex-direction: column;

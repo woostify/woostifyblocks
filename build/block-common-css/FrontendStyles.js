@@ -4140,6 +4140,36 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// Base overlay for hidden preview
+const hiddenPreviewOverlay = (0,_emotion_react__WEBPACK_IMPORTED_MODULE_2__.css)`
+	position: relative;
+
+	&:before {
+		content: "";
+		display: block;
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		background: -o-repeating-linear-gradient(
+			325deg,
+			rgba(0, 0, 0, 0.3),
+			rgba(0, 0, 0, 0.05) 1px,
+			transparent 2px,
+			transparent 9px
+		);
+		background: repeating-linear-gradient(
+			125deg,
+			rgba(0, 0, 0, 0.3),
+			rgba(0, 0, 0, 0.05) 1px,
+			transparent 2px,
+			transparent 9px
+		);
+		border: 1px solid rgba(0, 0, 0, 0.02);
+		background-color: rgba(255, 255, 255, 0.6);
+		z-index: 9997;
+	}
+`;
 const getAdvanveDivWrapStyles = ({
   advance_motionEffect,
   advance_zIndex,
@@ -4153,23 +4183,36 @@ const getAdvanveDivWrapStyles = ({
   } = ___WEBPACK_IMPORTED_MODULE_0__.DEMO_WCB_GLOBAL_VARIABLES;
   //
   //
+  // Trigger animation only when in viewport
   try {
-    const thisELs = document.querySelectorAll(className);
-    if (advance_motionEffect && advance_motionEffect.entranceAnimation && thisELs && thisELs.length) {
-      thisELs.forEach(element => {
-        // remove old class
-        const regex = /\banimate__\S+/g;
-        const classRemoved = element?.className.replace(regex, "");
-        element.setAttribute("class", classRemoved);
+    if (advance_motionEffect?.entranceAnimation) {
+      const thisELs = document.querySelectorAll(className);
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const element = entry.target;
 
-        // add new class
-        setTimeout(() => {
-          element?.classList.add("animate__animated", `animate__${advance_motionEffect?.entranceAnimation}`, `animate__${advance_motionEffect?.animationDuration}`, `animate__delay-${advance_motionEffect?.animationDelay}ms`, `animate__repeat-${advance_motionEffect?.repeat}`);
-        }, 50);
+            // remove old animation classes
+            const regex = /\banimate__\S+/g;
+            const classRemoved = element?.className.replace(regex, "");
+            element.setAttribute("class", classRemoved);
+
+            // add new animation classes
+            setTimeout(() => {
+              element?.classList.add("animate__animated", `animate__${advance_motionEffect?.entranceAnimation}`, `animate__${advance_motionEffect?.animationDuration}`, `animate__delay-${advance_motionEffect?.animationDelay}ms`, `animate__repeat-${advance_motionEffect?.repeat}`);
+            }, 50);
+
+            // optional: stop observing after first animation
+            observer.unobserve(element);
+          }
+        });
+      }, {
+        threshold: 0.2 // trigger when 20% visible
       });
+      thisELs.forEach(el => observer.observe(el));
     }
   } catch (error) {
-    console.log(123, "error, advance_motionEffect", error);
+    console.log("error, advance_motionEffect", error);
   }
   const {
     mobile_v: zIndexMobile,
@@ -4187,22 +4230,35 @@ const getAdvanveDivWrapStyles = ({
     tablet_v: isHiddenOnTablet,
     desktop_v: isHiddenOnDesktop
   } = (0,_utils_checkResponsiveValueForOptimizeCSS__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    // @ts-ignore
     mobile_v: advance_responsiveCondition.isHiddenOnMobile,
+    // @ts-ignore
     tablet_v: advance_responsiveCondition.isHiddenOnTablet,
+    // @ts-ignore
     desktop_v: advance_responsiveCondition.isHiddenOnDesktop
   });
+
+  // Helper
+  const getHiddenCss = isHidden => {
+    if (isHidden === "") return "";
+    return isHidden ? hiddenPreviewOverlay : (0,_emotion_react__WEBPACK_IMPORTED_MODULE_2__.css)`display: ${defaultDisplay};`;
+  };
   return (0,_emotion_react__WEBPACK_IMPORTED_MODULE_2__.css)`
 		${className} {
-			display: ${isHiddenOnMobile ? "none" : defaultDisplay};
 			visibility: visible;
-			z-index: ${zIndexMobile};
-			@media (min-width: ${media_tablet}) {
-				z-index: ${zIndexTablet};
-				display: ${isHiddenOnTablet !== "" ? isHiddenOnTablet ? "none" : defaultDisplay : ""};
-			}
 			@media (min-width: ${media_desktop}) {
 				z-index: ${zIndexDesktop};
-				display: ${isHiddenOnDesktop !== "" ? isHiddenOnDesktop ? "none" : defaultDisplay : ""};
+				${getHiddenCss(advance_responsiveCondition.isHiddenOnDesktop)}
+			}
+
+			@media (min-width: ${media_tablet}) and (max-width: ${media_desktop}) {
+				z-index: ${zIndexTablet};
+				${getHiddenCss(advance_responsiveCondition.isHiddenOnTablet)}
+			}
+
+			@media (max-width: ${media_tablet}) {
+				z-index: ${zIndexMobile};
+				${getHiddenCss(advance_responsiveCondition.isHiddenOnMobile)}
 			}
 		}
 	`;
