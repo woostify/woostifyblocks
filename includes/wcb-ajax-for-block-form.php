@@ -42,3 +42,38 @@ function wcb_form_action_init()
     wp_send_json_success('OK');
     wp_die();
 }
+
+add_action('wp_ajax_wcb_get_product_gallery', 'wcb_get_product_gallery_init');
+add_action('wp_ajax_nopriv_wcb_get_product_gallery', 'wcb_get_product_gallery_init');
+function wcb_get_product_gallery_init()
+{
+    $product_id = $_POST['product_id'] ?? 0;
+    if (!$product_id) {
+        wp_send_json_error('Invalid product ID');
+        wp_die();
+    }
+
+    $product = wc_get_product($product_id);
+    if (!$product) {
+        wp_send_json_error('Product not found');
+        wp_die();
+    }
+
+    $gallery_images = $product->get_gallery_image_ids();
+    if (empty($gallery_images)) {
+        wp_send_json_success(['html' => '']);
+        wp_die();
+    }
+
+    ob_start();
+    foreach ($gallery_images as $image_id) {
+        $image_url = wp_get_attachment_image_url($image_id, 'full');
+        if ($image_url) {
+            echo '<img src="' . esc_url($image_url) . '" alt="' . esc_attr($product->get_name()) . '" />';
+        }
+    }
+    $html = ob_get_clean();
+
+    wp_send_json_success(['html' => $html]);
+    wp_die();
+}

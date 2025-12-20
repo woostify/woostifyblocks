@@ -85,7 +85,8 @@ import {
 	buildStylePriceDefault,
 	buildStyleAddToCartBtnDefault,
 	buildGeneralAddToCartBtnDefault,
-	buildStyleWishlistButtonDefault
+	buildStyleWishlistButtonDefault,
+	buildStyleQuickViewButtonDefault,
 } from "./WcbThemeDefaults";
 
 interface Props extends EditProps<WcbAttrs> {}
@@ -114,6 +115,7 @@ const Edit: FC<Props> = (props) => {
 		style_price,
 		style_rating,
 		style_wishlistBtn,
+		style_quickViewBtn,
 		advance_motionEffect,
 		style_category,
 	} = attributes;
@@ -153,6 +155,7 @@ const Edit: FC<Props> = (props) => {
 			style_category: WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
 			style_title: buildStyleTitleDefault(WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO as any),
 			style_wishlistBtn: buildStyleWishlistButtonDefault(attributes.style_wishlistBtn as any),
+			style_quickViewBtn: buildStyleQuickViewButtonDefault(attributes.style_quickViewBtn as any),
 			general_sortingAndFiltering: buildSortingAndFilteringDefault(general_sortingAndFiltering as any),
 			general_content: buildGeneralContractDefault(general_content as any),
 			general_layout: WCB_PRODUCTS_PANEL_GENERAL_LAYOUT_DEMO,
@@ -637,6 +640,7 @@ const Edit: FC<Props> = (props) => {
 			style_price,
 			style_rating,
 			style_wishlistBtn,
+			style_quickViewBtn,
 			advance_motionEffect,
 			style_category,
 		};
@@ -665,6 +669,7 @@ const Edit: FC<Props> = (props) => {
 		style_price,
 		style_rating,
 		style_wishlistBtn,
+		style_quickViewBtn,
 		advance_motionEffect,
 		style_category,
 	]);
@@ -679,6 +684,7 @@ const Edit: FC<Props> = (props) => {
 			general_addToCartBtn,
 			general_pagination,
 			style_wishlistBtn,
+			style_quickViewBtn,
 			style_addToCardBtn,
 		};
 	}, [
@@ -690,6 +696,7 @@ const Edit: FC<Props> = (props) => {
 		general_addToCartBtn,
 		general_pagination,
 		style_wishlistBtn,
+		style_quickViewBtn,
 		style_addToCardBtn,
 	]);
 

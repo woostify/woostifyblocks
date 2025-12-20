@@ -39,6 +39,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		style_rating,
 		style_category,
 		style_wishlistBtn,
+		style_quickViewBtn,
 		//
 		advance_responsiveCondition,
 		advance_zIndex,
@@ -444,6 +445,75 @@ const GlobalCss: FC<Props> = (attrs) => {
 						right: 0,
 						zIndex: 3,
 					},
+					".wcb-products__product--quickViewBottomImage--item": {
+						display: style_quickViewBtn?.position === "bottom-image" ? "none !important" : 
+								 style_quickViewBtn?.position === "center-image" ? "none !important" : "unset",
+						position: "absolute",
+						top: "-10rem",
+						right: "0rem"
+					},
+					":hover": {
+						".wcb-products__product--quickViewBottomImage--item": {
+							display: "flex !important",
+							alignItems: "center !important",
+							justifyContent: "center !important",
+							padding: 
+								style_quickViewBtn?.position === "bottom-image" ? "0.5rem !important" : 
+								style_quickViewBtn?.position === "center-image" ? "0.5rem 1.4rem !important" : "auto",
+							// transition: "transform 0.2s ease-in-out",
+							gap: "6px !important",
+							position: "absolute",
+							bottom: 
+								style_quickViewBtn?.position === "bottom-image" ? "10px !important" :
+								style_quickViewBtn?.position === "center-image" ? "6rem" : "auto",
+							top: 
+								(general_addToCartBtn?.position === "icon" && style_wishlistBtn?.position === "top-right" && style_quickViewBtn?.position === "top-right") || 
+								(general_addToCartBtn?.position === "icon" && style_wishlistBtn?.position !== "top-right" && style_quickViewBtn?.position === "top-right") ?  "0rem" :
+								(general_addToCartBtn?.position !== "icon" && style_wishlistBtn?.position === "top-right" && style_quickViewBtn?.position === "top-right") || 
+								(general_addToCartBtn?.position !== "icon" && style_wishlistBtn?.position !== "top-right" && style_quickViewBtn?.position === "top-right") ? "-2.5rem" : "auto",
+							right: 
+								style_quickViewBtn?.position === "bottom-image" ? "0 !important" : 
+								style_quickViewBtn?.position === "center-image" ? "50%" : 
+								style_quickViewBtn?.position === "top-right" ? "0px" : "auto",
+							width: 
+								style_quickViewBtn?.position === "bottom-image" ? "100%" : 
+								style_quickViewBtn?.position === "center-image" ? "auto" : 
+								style_quickViewBtn?.position === "top-right" ? "2.48rem" : "unset",
+							transform: 
+								style_quickViewBtn?.position === "center-image" ? "translateX(50%)" : 
+								style_quickViewBtn?.position === "top-right" ? "translateY(2.5rem)" : "none",
+							height: 
+								style_quickViewBtn?.position === "center-image" ? "12%" : 
+								style_quickViewBtn?.position === "top-right" ? "2.48rem" : "auto",
+							backgroundColor: style_quickViewBtn?.bg_color,
+							borderRadius: 
+								style_quickViewBtn?.position === "top-right"  ? `${style_quickViewBtn?.border_radius}px` : 
+								style_quickViewBtn?.position === "center-image" ? `27px` : "0px",
+							zIndex: 10,
+
+							transition: "transform 0.3s ease, opacity 0.3s ease",
+
+							color: style_quickViewBtn?.text_color,
+							".wcb-products__product--quickViewBottomImage__text": {
+								color: "inherit",
+							},
+
+							"svg": {
+								color: "inherit",
+							},
+
+							":hover": {
+								color: style_quickViewBtn?.hover_text_color ? style_quickViewBtn?.hover_text_color : "#fff",
+								".wcb-products__product--quickViewBottomImage__text": {
+									color: "inherit",
+								},
+
+								"svg": {
+									color: "inherit",
+								}
+							}
+						},
+					},
 					"&.wcb-products__product--btnIconAddToCart .added_to_cart": {
 						position: "relative",
 						top: "-2rem",
@@ -546,7 +616,9 @@ const GlobalCss: FC<Props> = (attrs) => {
 					"&.wcb-products__product--wishlistTopRight:hover": {
 						".wcb-products__product--wishlistTopRight--item": {
 							position: (general_addToCartBtn?.position === "icon" && style_wishlistBtn?.position === "top-right") ? "absolute" : "relative",
-							top: (general_addToCartBtn?.position === "icon" && style_wishlistBtn?.position === "top-right") ? "0" : "-2.5rem",
+							top: (general_addToCartBtn?.position === "icon" && style_wishlistBtn?.position === "top-right" && style_quickViewBtn?.position !== "top-right") ? "0" : 
+								 (general_addToCartBtn?.position === "icon" && style_wishlistBtn?.position === "top-right" && style_quickViewBtn?.position === "top-right") ? "2.48rem" : 
+								 (general_addToCartBtn?.position !== "icon" && style_wishlistBtn?.position === "top-right" && style_quickViewBtn?.position === "top-right") ? "0" : "-2.5rem",
 							right: 0,
 							width: "2.5rem",
 							height: "2.5rem",

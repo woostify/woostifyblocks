@@ -19,6 +19,7 @@ import type { WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK } from "./WcbProductsPanel_S
 import type { WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE } from "./WcbProductsPanel_StyleSaleBadge"; 
 import { WCB_PRODUCTS_PANEL_STYLE_WISHLIST_BUTTON_DEMO } from "./WcbProductsPanel_StyleWishListButton";
 import type { WcbAttrsForSave } from "./Save";
+import { WCB_PRODUCTS_PANEL_STYLE_QUICKVIEW_BUTTON_DEMO } from "./WcbProductsPanel_StyleQuickViewButton";
 
 export function buildStyleLayoutDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO>) {
     const theme = getThemeDefaults();
@@ -355,6 +356,47 @@ export function buildStyleWishlistButtonDefault(attr?: Partial<typeof WCB_PRODUC
     };
 }
 
+export function buildStyleQuickViewButtonDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_QUICKVIEW_BUTTON_DEMO>) {
+    const theme = getThemeDefaults();
+    const quickViewBtn = theme.shop_quick_view_btn;
+    return {
+        ...WCB_PRODUCTS_PANEL_STYLE_QUICKVIEW_BUTTON_DEMO,
+        ...(attr || {}),
+        enabled:
+            quickViewBtn?.enabled ??
+            attr?.enabled ??
+            WCB_PRODUCTS_PANEL_STYLE_QUICKVIEW_BUTTON_DEMO.enabled,
+        position:
+            quickViewBtn?.position ??
+            attr?.position ??
+            WCB_PRODUCTS_PANEL_STYLE_QUICKVIEW_BUTTON_DEMO.position,
+        show_icon:
+            quickViewBtn?.show_icon ??
+            attr?.show_icon ??
+            WCB_PRODUCTS_PANEL_STYLE_QUICKVIEW_BUTTON_DEMO.show_icon,
+        bg_color:
+            quickViewBtn?.bg_color ??
+            attr?.bg_color ??
+            WCB_PRODUCTS_PANEL_STYLE_QUICKVIEW_BUTTON_DEMO.bg_color,
+        text_color:
+            quickViewBtn?.text_color ??
+            attr?.text_color ??
+            WCB_PRODUCTS_PANEL_STYLE_QUICKVIEW_BUTTON_DEMO.text_color,
+        hover_bg_color:
+            quickViewBtn?.hover_bg_color ??
+            attr?.hover_bg_color ??
+            WCB_PRODUCTS_PANEL_STYLE_QUICKVIEW_BUTTON_DEMO.hover_bg_color,
+        hover_text_color:
+            quickViewBtn?.hover_text_color ??
+            attr?.hover_text_color ??
+            WCB_PRODUCTS_PANEL_STYLE_QUICKVIEW_BUTTON_DEMO.hover_text_color,
+        border_radius:
+            quickViewBtn?.border_radius ??
+            attr?.border_radius ??
+            WCB_PRODUCTS_PANEL_STYLE_QUICKVIEW_BUTTON_DEMO.border_radius,
+    };
+}
+
 /**
  * Re-apply the latest theme defaults to an attributes object.
  * This lets already-saved blocks pick up Customizer changes on view render.
@@ -393,5 +435,8 @@ export function mergeProductAttrsWithThemeDefaults(
 		style_wishlistBtn: buildStyleWishlistButtonDefault(
 			base.style_wishlistBtn as any
 		),
+        style_quickViewBtn: buildStyleQuickViewButtonDefault(
+            base.style_quickViewBtn as any
+        )
 	};
 }

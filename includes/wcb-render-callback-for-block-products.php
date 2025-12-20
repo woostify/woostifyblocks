@@ -202,6 +202,15 @@ function wcb_block_products_apply_theme_defaults($attributes)
         ]
     );
 
+    // Quick view button
+    $quickview = $theme['shop_quick_view_btn'] ?? [];
+    $attributes['style_quickViewBtn'] = array_merge(
+        $attributes['style_quickViewBtn'] ?? [],
+        [
+            'position' => $quickview['position'] ?? ($attributes['style_quickViewBtn']['position'] ?? null),
+        ]
+    );
+
     return $attributes;
 }
 
@@ -311,7 +320,8 @@ function wcb_block_products__renderCallback($attributes, $content)
 // 
 function wcb_block_products__render_product($product, $attributes, $index)
 {
-    error_log('Rendering product: ' . var_export($product, true));
+    error_log('Rendering product: ' . var_export($product->get_id(), true));
+    error_log('Gallery IDs: ' . var_export($product->get_gallery_image_ids(), true));
     $data = (object) array(
         'permalink' => esc_url($product->get_permalink()),
         'image'     => "",
@@ -383,6 +393,7 @@ function wcb_block_products__render_product($product, $attributes, $index)
     $btnInsideImage = ($attributes['general_addToCartBtn']['position'] ?? "") === "inside image";
     $btnIconAddToCart = ($attributes['general_addToCartBtn']['position'] ?? "") === "icon";
     $saleInsideImage = ($attributes['general_content']['saleBadgePosition'] ?? "") === "Inside image";
+    $btnQuickViewBottomImage = ($attributes['style_quickViewBtn']['position'] ?? "") === "bottom-image" || ($attributes['style_quickViewBtn']['position'] ?? "") === "center-image" || ($attributes['style_quickViewBtn']['position'] ?? "") === "top-right";
 
     $btnWishListTopRight = false;
     $btnWishListBottomRight = false;
@@ -492,6 +503,10 @@ function wcb_block_products__render_product($product, $attributes, $index)
             data-tinv-wl-action="add"
             type="button"
         ></button>' : '';
+    
+    // Quick view button at bottom of image
+    $btnQuickViewBottomImageHtml = $btnQuickViewBottomImage ? 
+        wcb_block_products__build_quick_view_html($product_id_attr, $attributes['style_quickViewBtn']['position']) : '';
 
     return apply_filters(
         'woocommerce_blocks_product_grid_item_html',
@@ -503,6 +518,7 @@ function wcb_block_products__render_product($product, $attributes, $index)
                     </a>
                     {$topRightIconsHtml}
                     {$bottomRightIconHtml}
+                    {$btnQuickViewBottomImageHtml}
                     {$saleBadge1}
                     {$saleOutOfStock}
                 </div>
@@ -517,6 +533,33 @@ function wcb_block_products__render_product($product, $attributes, $index)
     );
 }
 
+function wcb_block_products__build_quick_view_html( $product_id_attr, $position ) {
+
+    $html  = '<button 
+        class="wcb-products__product--quickViewBottomImage--item product-quick-view-btn"
+        data-product_id="' . esc_attr( $product_id_attr ) . '"
+        data-pid="' . esc_attr( $product_id_attr ) . '"
+        type="button"
+        aria-haspopup="dialog"
+    >';
+
+    $html .= '
+        <span class="wcb-products__product--quickViewBottomImage-svg__icon icon-eye">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
+                <path d="M16.965 8.817c-1.284-3.267-4.687-5.463-8.465-5.463s-7.181 2.196-8.465 5.463c-0.046 0.117-0.046 0.248 0 0.365 1.285 3.268 4.687 5.464 8.465 5.464s7.18-2.195 8.465-5.463c0.047-0.118 0.047-0.248 0-0.366zM8.5 13.646c-3.298 0-6.269-1.859-7.459-4.646 1.189-2.787 4.16-4.646 7.459-4.646s6.27 1.859 7.459 4.646c-1.19 2.786-4.161 4.646-7.459 4.646zM8.5 5.357c-2.009 0-3.643 1.634-3.643 3.643s1.634 3.643 3.644 3.643c2.008 0 3.643-1.634 3.643-3.643s-1.635-3.643-3.644-3.643zM8.5 11.643c-1.458 0-2.644-1.186-2.644-2.643s1.187-2.643 2.644-2.643c1.457 0 2.643 1.186 2.643 2.643s-1.185 2.643-2.643 2.643z" fill="currentColor"></path>
+            </svg>
+        </span>';
+
+    if ( $position !== 'top-right' ) {
+        $html .= '<span class="wcb-products__product--quickViewBottomImage__text">'
+            . esc_html__( 'Quick View', 'woostify-pro' ) .
+        '</span>';
+    }
+
+    $html .= '</button>';
+
+    return $html;
+}
 
 //  
 function wcb_block_products__get_image_gallery_image_1_html($product)
@@ -684,15 +727,6 @@ function wcb_block_products__get_button_html($product, $attributes)
 
 function wcb_block_products__get_add_to_cart($product, $attributesFromBlock)
 {
-    $attributes = array(
-        'aria-label'       => $product->add_to_cart_description(),
-        'data-quantity'    => '1',
-        'data-product_id'  => $product->get_id(),
-        'data-product_sku' => $product->get_sku(),
-        'rel'              => 'nofollow',
-        'class'            => 'wp-block-button__link ' . (function_exists('wc_wp_theme_get_element_class_name') ? wc_wp_theme_get_element_class_name('button') : '') . ' add_to_cart_button',
-    );
-
     $ajax_class = ($product->supports('ajax_add_to_cart') &&
         $product->is_purchasable() &&
         ($product->is_in_stock() || $product->backorders_allowed())) ? ' ajax_add_to_cart' : '';

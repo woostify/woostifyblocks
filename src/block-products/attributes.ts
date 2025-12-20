@@ -62,6 +62,7 @@ import {
 } from "./WcbProducstPanel_GeneralLayout";
 import { WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK } from "./WcbProductsPanel_StyleOutOfStock";
 import { WCB_PRODUCTS_PANEL_STYLE_WISHLIST_BUTTON } from "./WcbProductsPanel_StyleWishListButton";
+import { WCB_PRODUCTS_PANEL_STYLE_QUICKVIEW_BUTTON } from "./WcbProductsPanel_StyleQuickViewButton";
 
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
@@ -86,6 +87,7 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	style_price?: WCB_PRODUCTS_PANEL_STYLE_PRICE;
 	style_rating?: WCB_PRODUCTS_PANEL_STYLE_RATING;
 	style_wishlistBtn?: WCB_PRODUCTS_PANEL_STYLE_WISHLIST_BUTTON; // to do
+	style_quickViewBtn?: WCB_PRODUCTS_PANEL_STYLE_QUICKVIEW_BUTTON;
 	//
 	advance_responsiveCondition?: MyResponsiveConditionControlData;
 	advance_zIndex?: MyZIndexControlData;
@@ -167,6 +169,10 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	style_wishlistBtn: {
 		type: "object",
 		// default: WCB_PRODUCTS_PANEL_STYLE_WISHLIST_BUTTON_DEMO,
+	},
+	style_quickViewBtn: {
+		type: "object",
+		// default: WCB_PRODUCTS_PANEL_STYLE_QUICKVIEW_BUTTON_DEMO,
 	},
 
 	// ADVANCE
