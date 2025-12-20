@@ -6,6 +6,29 @@ if (!function_exists('wcb_get_theme_defaults_data')) {
 	 */
 	function wcb_get_theme_defaults_data() {
 		$woostify = get_option('woostify_setting') ?: [];
+		$woostify_pro = get_option('woostify_pro_options') ?: [];
+
+		$add_to_cart_position = $woostify['shop_page_add_to_cart_button_position'] ?? null;
+		if ($add_to_cart_position === 'image') {
+			$add_to_cart_position = 'inside image';
+		}
+
+		// Wishlist defaults (Woostify supports multiple plugins).
+		$wishlist_support_plugin = $woostify['shop_page_wishlist_support_plugin'] ?? null;
+		if (!$wishlist_support_plugin) {
+			if (defined('TINVWL_FVERSION') || class_exists('TInvWL_Public_Add_To_Wishlist') || class_exists('TInvWL_Plugin')) {
+				$wishlist_support_plugin = 'ti';
+			} elseif (defined('YITH_WCWL') || class_exists('YITH_WCWL')) {
+				$wishlist_support_plugin = 'yith';
+			} else {
+				$wishlist_support_plugin = 'yith';
+			}
+		}
+
+		// Quick view defaults (Woostify Pro).
+		$quick_view_enabled = get_option('woostify_wc_quick_view') === 'activated' || defined('WOOSTIFY_PRO_QUICK_VIEW');
+		$quick_view_position = $woostify_pro['shop_page_quick_view_position'] ?? 'top-right';
+		$quick_view_radius = (int)($woostify_pro['shop_product_quick_view_radius'] ?? 0);
 
 		return [
 			'product_per_row' => [
@@ -65,11 +88,21 @@ if (!function_exists('wcb_get_theme_defaults_data')) {
 				'hover_text_color' => $woostify['shop_page_button_color_hover'] ?? '#fff',
 				'hover_bg_color'   => $woostify['shop_page_button_background_hover'] ?? '#094771',
 				'border_radius'    => (int)($woostify['shop_page_button_border_radius'] ?? 0),
-				'position'         => $woostify['shop_page_add_to_cart_button_position'] === 'image' ? 'inside image' : $woostify['shop_page_add_to_cart_button_position'] ?? 'none',
+				'position'         => $add_to_cart_position ?? 'none',
 			],
 			'shop_archive_wishlist_btn' => [
 				'position' => $woostify['shop_page_wishlist_position'] ?? 'none',
-				'style'    => $woostify['shop_page_wishlist_support_plugin'] ?? 'yith',
+				'style'    => $wishlist_support_plugin,
+			],
+			'shop_quick_view_btn' => [
+				'enabled'          => $quick_view_enabled,
+				'position'         => $quick_view_position,
+				'show_icon'        => (bool)($woostify_pro['shop_product_quick_view_icon'] ?? true),
+				'bg_color'         => $woostify_pro['shop_product_quick_view_background'] ?? '',
+				'text_color'       => $woostify_pro['shop_product_quick_view_color'] ?? '',
+				'hover_bg_color'   => $woostify_pro['shop_product_quick_view_bg_hover'] ?? '',
+				'hover_text_color' => $woostify_pro['shop_product_quick_view_c_hover'] ?? '',
+				'border_radius'    => $quick_view_radius,
 			],
 		];
 	}

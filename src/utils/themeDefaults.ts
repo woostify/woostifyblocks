@@ -55,7 +55,17 @@ export type ThemeDefaults = {
     shop_archive_wishlist_btn?: {
         position?: 'top-right' | 'bottom-right' | 'none';
         style?:  'yith' | 'ti';
-    }
+    };
+    shop_quick_view_btn?: {
+        enabled?: boolean;
+        position?: 'bottom-image' | 'top-right' | 'center-image' | 'none';
+        show_icon?: boolean;
+        bg_color?: string;
+        text_color?: string;
+        hover_bg_color?: string;
+        hover_text_color?: string;
+        border_radius?: number;
+    };
 };
   
 export function getThemeDefaults(): ThemeDefaults {

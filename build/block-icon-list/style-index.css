@@ -1,1 +1,61 @@
-.wcb-icon-list__content{flex-grow:1}.wcb-icon-list__icon-wrap{flex-shrink:0;gap:1rem}.wcb-icon-list__icon{display:flex;margin:1rem}.wcb-icon-list__content-title{flex-grow:0;margin:1rem;margin:auto}.wcb-icon-list__heading{margin:0}.wcb-icon-list__separator{display:inline-block}.wcb-icon-list__content-wrap{flex-grow:1}.wcb-icon-list__image{flex-shrink:0;display:inline-block}.wcb-icon-list__wrap{width:100%}.wcb-icon-list__container{width:100%;display:flex;gap:1rem}.wcb-icon-list .wcb-icon-list__icon-wrap{display:flex;align-items:center}.wcb-icon-list .wcb-icon-list__content{flex:1}.wcb-icon-list .wcb-icon-list__content-title-wrap{display:flex;align-items:center}
+/*!*******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/block-icon-list/style.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************/
+.wcb-icon-list__content {
+  flex-grow: 1;
+}
+
+.wcb-icon-list__icon-wrap {
+  flex-shrink: 0;
+  gap: 1rem;
+}
+
+.wcb-icon-list__icon {
+  display: flex;
+  margin: 1rem;
+}
+
+.wcb-icon-list__content-title {
+  flex-grow: 0;
+  margin: 1rem;
+  margin: auto;
+}
+
+.wcb-icon-list__heading {
+  margin: 0;
+}
+
+.wcb-icon-list__separator {
+  display: inline-block;
+}
+
+.wcb-icon-list__content-wrap {
+  flex-grow: 1;
+}
+
+.wcb-icon-list__image {
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.wcb-icon-list__wrap {
+  width: 100%;
+}
+.wcb-icon-list__container {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+.wcb-icon-list .wcb-icon-list__icon-wrap {
+  display: flex;
+  align-items: center;
+}
+.wcb-icon-list .wcb-icon-list__content {
+  flex: 1;
+}
+.wcb-icon-list .wcb-icon-list__content-title-wrap {
+  display: flex;
+  align-items: center;
+}
+
+/*# sourceMappingURL=style-index.css.map*/
