@@ -105,33 +105,33 @@ const getPaddingMarginStyles = ({ className, padding, margin }: Params) => {
 
 	return css`
 		body ${className} {
-			padding-top: ${padding_Mobile_top};
-			padding-right: ${padding_Mobile_right};
-			padding-bottom: ${padding_Mobile_bottom};
-			padding-left: ${padding_Mobile_left};
-			margin-top: ${margin_Mobile_top};
-			margin-right: ${margin_Mobile_right};
-			margin-bottom: ${margin_Mobile_bottom};
-			margin-left: ${margin_Mobile_left};
+			padding-top: ${padding_Mobile_top} !important;
+			padding-right: ${padding_Mobile_right} !important;
+			padding-bottom: ${padding_Mobile_bottom} !important;
+			padding-left: ${padding_Mobile_left} !important;
+			margin-top: ${margin_Mobile_top} !important;
+			margin-right: ${margin_Mobile_right} !important;
+			margin-bottom: ${margin_Mobile_bottom} !important;
+			margin-left: ${margin_Mobile_left} !important;
 			@media (min-width: ${media_tablet}) {
-				padding-top: ${padding_Tablet_top};
-				padding-right: ${padding_Tablet_right};
-				padding-bottom: ${padding_Tablet_bottom};
-				padding-left: ${padding_Tablet_left};
-				margin-top: ${margin_Tablet_top};
-				margin-right: ${margin_Tablet_right};
-				margin-bottom: ${margin_Tablet_bottom};
-				margin-left: ${margin_Tablet_left};
+				padding-top: ${padding_Tablet_top} !important;
+				padding-right: ${padding_Tablet_right} !important;
+				padding-bottom: ${padding_Tablet_bottom} !important;
+				padding-left: ${padding_Tablet_left} !important;
+				margin-top: ${margin_Tablet_top} !important;
+				margin-right: ${margin_Tablet_right} !important;
+				margin-bottom: ${margin_Tablet_bottom} !important;
+				margin-left: ${margin_Tablet_left} !important;
 			}
 			@media (min-width: ${media_desktop}) {
-				padding-top: ${padding_Desktop_top};
-				padding-right: ${padding_Desktop_right};
-				padding-bottom: ${padding_Desktop_bottom};
-				padding-left: ${padding_Desktop_left};
-				margin-top: ${margin_Desktop_top};
-				margin-right: ${margin_Desktop_right};
-				margin-bottom: ${margin_Desktop_bottom};
-				margin-left: ${margin_Desktop_left};
+				padding-top: ${padding_Desktop_top} !important;
+				padding-right: ${padding_Desktop_right} !important;
+				padding-bottom: ${padding_Desktop_bottom} !important;
+				padding-left: ${padding_Desktop_left} !important;
+				margin-top: ${margin_Desktop_top} !important;
+				margin-right: ${margin_Desktop_right} !important;
+				margin-bottom: ${margin_Desktop_bottom} !important;
+				margin-left: ${margin_Desktop_left} !important;
 			}
 		}
 	`;
