@@ -11,15 +11,17 @@ import { WcbAttrsForSave } from "./Save";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import checkResponsiveValueForOptimizeCSS from "../utils/checkResponsiveValueForOptimizeCSS";
 import { SHOPPING_CART_SVG, svgToDataUrl } from "./base-utils";
-import { mergeProductAttrsWithThemeDefaults } from "./WcbThemeDefaults";
+// TODO: Enable after fix load frontend issue
+// import { mergeProductAttrsWithThemeDefaults } from "./WcbThemeDefaults";
 
 interface Props extends Required<WcbAttrsForSave> {}
 
 const GlobalCss: FC<Props> = (attrs) => {
-	const mergedAttrs = useMemo(
-		() => mergeProductAttrsWithThemeDefaults(attrs),
-		[attrs]
-	);
+	// TODO: Enable after fix load frontend issue
+	// const mergedAttrs = useMemo(
+	// 	() => mergeProductAttrsWithThemeDefaults(attrs),
+	// 	[attrs]
+	// );
 	const {
 		uniqueId,
 		// ATTRS OF BLOCK
@@ -44,7 +46,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		advance_responsiveCondition,
 		advance_zIndex,
 		advance_motionEffect,
-	} = mergedAttrs;
+	} = attrs;
 
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
