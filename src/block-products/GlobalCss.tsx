@@ -1,6 +1,6 @@
 /* eslint-disable camelcase -- block attributes intentionally use snake_case names */
 import { Global, CSSObject, css } from "@emotion/react";
-import React, { FC, useMemo } from "react";
+import React, { FC } from "react";
 import { getAdvanveDivWrapStyles } from "../block-container/getAdvanveStyles";
 import getBorderStyles from "../utils/getBorderStyles";
 import getCssProperyHasResponsive from "../utils/getCssProperyHasResponsive";
@@ -11,15 +11,10 @@ import { WcbAttrsForSave } from "./Save";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import checkResponsiveValueForOptimizeCSS from "../utils/checkResponsiveValueForOptimizeCSS";
 import { SHOPPING_CART_SVG, svgToDataUrl } from "./base-utils";
-import { mergeProductAttrsWithThemeDefaults } from "./WcbThemeDefaults";
 
 interface Props extends Required<WcbAttrsForSave> {}
 
 const GlobalCss: FC<Props> = (attrs) => {
-	const mergedAttrs = useMemo(
-		() => mergeProductAttrsWithThemeDefaults(attrs),
-		[attrs]
-	);
 	const {
 		uniqueId,
 		// ATTRS OF BLOCK
@@ -43,7 +38,7 @@ const GlobalCss: FC<Props> = (attrs) => {
 		advance_responsiveCondition,
 		advance_zIndex,
 		advance_motionEffect,
-	} = mergedAttrs;
+	} = attrs;
 
 	const { media_desktop, media_tablet } = DEMO_WCB_GLOBAL_VARIABLES;
 
