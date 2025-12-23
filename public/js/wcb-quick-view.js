@@ -4,7 +4,7 @@ jQuery(document).on('mouseenter', '.product-quick-view-btn', function () {
 
     if ($btn.data('loaded')) return;
 
-    jQuery.post(ajaxurl, {
+    jQuery.post({
         action: 'wcb_get_product_gallery',
         product_id: productId,
     }, function (res) {
@@ -60,10 +60,4 @@ const observer = new MutationObserver(function(mutations) {
             });
         }
     });
-});
-
-// Start observing
-observer.observe(document.body, {
-    childList: true,
-    subtree: true
 });
