@@ -36,8 +36,8 @@ export const WCB_SLIDER_PANEL_STYLE_ARROW_DOTS_DEMO: WCB_SLIDER_PANEL_STYLE_ARRO
 			hoverColor: "#6b7280",
 			radius: { Desktop: "99px" },
 		},
-		arrowDistance: { Desktop: "-10px" },
-		dotsMarginTop: { Desktop: "-30px" },
+		arrowDistance: { Desktop: "0px" },
+		dotsMarginTop: { Desktop: "0px" },
 		color: "#374151",
 		backgroundColor: "#fff",
 	};

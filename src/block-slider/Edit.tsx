@@ -18,7 +18,6 @@ import WcbSlidersPanel_StyleArrowDots from "./WcbSliderPanel_StyleArrowDots";
 import WcbSlidersPanel_StyleBackground from "./WcbSliderPanel_StyleBackground";
 import WcbSlidersPanel_StyleDimension from "./WcbSliderPanel_StyleDimension";
 import WcbSliderPanel_StyleBoxshadow from "./WcbSliderPanel_StyleBoxshadow";
-import WcbSlidersPanel_StyleVerticalAlignment, {WCB_SLIDERS_BOX_PANEL_STYLE_VERTICAL_ALIGNMENT_DEMO} from "./WcbSlidersPanel_StyleVerticalAlignment";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
 import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
 import useGetDeviceType from "../hooks/useGetDeviceType";

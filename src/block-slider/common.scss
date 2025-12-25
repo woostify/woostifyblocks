@@ -1,7 +1,7 @@
 /*  */
 /*  */
 .wcb-slider__wrap {
-	padding: 48px !important;
+	padding: 28px !important;
 
 	.slick-dots li {
 		margin: 0px;
@@ -12,7 +12,7 @@
 
 	.slick-prev,
 	.slick-next {
-		z-index: 3;
+		z-index: 1000 !important;
 		color: black;
 		padding: 0.5rem;
 		width: unset;

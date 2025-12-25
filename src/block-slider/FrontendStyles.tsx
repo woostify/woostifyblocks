@@ -74,7 +74,7 @@ export function initCarouselForWcbSliders(div: Element, props: Props) {
 		],
 	};
 
-	const targetSelector = `.${dataUniqueid}.wcb-slider__wrap`;
+	const targetSelector = `.${dataUniqueid} .wcb-slider__wrap-items`;
 	const targetElement = $(targetSelector);
 	
 	if (targetElement.length === 0) {
