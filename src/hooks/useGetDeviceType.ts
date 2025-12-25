@@ -13,6 +13,7 @@ const useGetDeviceType = () => {
 		}
 
 		return {
+			// @ts-ignore
 			deviceType: getPreviewDeviceType(),
 		};
 	}, []);

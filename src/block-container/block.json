@@ -9,8 +9,7 @@
 	"description": "Create beautiful layouts with flexbox powered container block.",
 	"supports": {
 		"html": false,
-		"anchor": true,
-		"align": ["wide", "full"]
+		"anchor": true
 	},
 	"textdomain": "wcb-blocks",
 	"editorScript": "file:./index.js",
