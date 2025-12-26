@@ -339,6 +339,4 @@ const ButtonsEdit = (props) => {
 	return <Component {...props} />;
 };
 
-console.log("buttons__inner____");
-
 export default ButtonsEdit;

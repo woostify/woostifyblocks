@@ -1,0 +1,151 @@
+import { __ } from "@wordpress/i18n";
+import { PanelBody } from "@wordpress/components";
+import React, { FC } from "react";
+import MyColorPicker from "../components/controls/MyColorPicker/MyColorPicker";
+import { HasResponsive } from "../components/controls/MyBackgroundControl/types";
+import { ResponsiveDevices } from "../components/controls/MyResponsiveToggle/MyResponsiveToggle";
+import useGetDeviceType from "../hooks/useGetDeviceType";
+import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";
+import MySpacingSizesControl from "../components/controls/MySpacingSizesControl/MySpacingSizesControl";
+import {
+	MyBorderControlData,
+	MY_BORDER_CONTROL_DEMO,
+} from "../components/controls/MyBorderControl/types";
+import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
+import MyDisclosure from "../components/controls/MyDisclosure";
+
+export interface WCB_SLIDER_PANEL_STYLE_ARROW_DOTS {
+	arrowSize: string;
+	border: MyBorderControlData;
+	arrowDistance: HasResponsive<string>;
+	dotsMarginTop: HasResponsive<string>;
+	color: string;
+	backgroundColor: string;
+}
+export const WCB_SLIDER_PANEL_STYLE_ARROW_DOTS_DEMO: WCB_SLIDER_PANEL_STYLE_ARROW_DOTS =
+	{
+		arrowSize: "1.25rem",
+		border: {
+			...MY_BORDER_CONTROL_DEMO,
+			mainSettings: {
+				...MY_BORDER_CONTROL_DEMO.mainSettings,
+				style: "solid",
+				width: "1px",
+				color: "#d1d5db",
+			},
+			hoverColor: "#6b7280",
+			radius: { Desktop: "99px" },
+		},
+		arrowDistance: { Desktop: "0px" },
+		dotsMarginTop: { Desktop: "0px" },
+		color: "#374151",
+		backgroundColor: "#fff",
+	};
+
+interface Props
+	extends Pick<PanelBody.Props, "onToggle" | "opened" | "initialOpen"> {
+	panelData: WCB_SLIDER_PANEL_STYLE_ARROW_DOTS;
+	setAttr__: (data: WCB_SLIDER_PANEL_STYLE_ARROW_DOTS) => void;
+}
+
+const WcbSlidersPanel_StyleArrowDots: FC<Props> = ({
+	panelData = WCB_SLIDER_PANEL_STYLE_ARROW_DOTS_DEMO,
+	setAttr__,
+	initialOpen,
+	onToggle,
+	opened,
+}) => {
+	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
+	const { arrowSize, border, arrowDistance, dotsMarginTop, color, backgroundColor } = panelData;
+	const { currentDeviceValue: currentDotsMarginTop } =
+		getValueFromAttrsResponsives(dotsMarginTop, deviceType);
+	//
+	return (
+		<PanelBody
+			initialOpen={initialOpen}
+			onToggle={onToggle}
+			opened={opened}
+			title={__("Arrow & Dots", "wcb")}
+		>
+			<div className="space-y-5">
+				<MyDisclosure defaultOpen label="Arrow settings">
+					<MySpacingSizesControl
+						onChange={(value) => {
+							setAttr__({
+								...panelData,
+								arrowSize: value,
+							});
+						}}
+						value={arrowSize || "2rem"}
+						hasResponsive={false}
+						label={__("Arrow size", "wcb")}
+					/>
+
+					<MyBorderControl
+						borderControl={border}
+						setAttrs__border={(border: MyBorderControlData) => {
+							setAttr__({
+								...panelData,
+								border,
+							});
+						}}
+					/>
+				</MyDisclosure>
+
+				<MySpacingSizesControl
+					onChange={(value) => {
+						setAttr__({
+							...panelData,
+							arrowDistance: {
+								...arrowDistance,
+								[deviceType]: value,
+							},
+						});
+					}}
+					minCustomValue={-100}
+					value={getValueFromAttrsResponsives(arrowDistance, deviceType).currentDeviceValue || "2rem"}
+					label={__("Arrow Distance from Edges", "wcb")}
+				/>
+
+				<MySpacingSizesControl
+					onChange={(value) => {
+						setAttr__({
+							...panelData,
+							dotsMarginTop: {
+								...dotsMarginTop,
+								[deviceType]: value,
+							},
+						});
+					}}
+					minCustomValue={-200}
+					value={currentDotsMarginTop || "2rem"}
+					label={__("Dots Margin top", "wcb")}
+				/>
+
+				<MyColorPicker
+					label={__("Color", "wcb")}
+					onChange={(value) => {
+						setAttr__({
+							...panelData,
+							color: value,
+						});
+					}}
+					color={color}
+				/>
+
+				<MyColorPicker
+					label={__("Background Color", "wcb")}
+					onChange={(value) => {
+						setAttr__({
+							...panelData,
+							backgroundColor: value,
+						});
+					}}
+					color={backgroundColor}
+				/>
+			</div>
+		</PanelBody>
+	);
+};
+
+export default WcbSlidersPanel_StyleArrowDots;
