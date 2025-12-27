@@ -33,11 +33,11 @@ export const MY_COLOR_BGCOLOR_CONTROL_DEMO = {
 export const MY_COLOR_BGCOLOR_CONTROL_FOR_BUTTON_DEMO = {
 	Normal: {
 		color: "#fff",
-		backgroundColor: "#0ea5e9",
+		backgroundColor: "#1346af",
 	},
 	Hover: {
 		color: "#fff",
-		backgroundColor: "#0284c7",
+		backgroundColor: "#3a3a3a",
 	},
 };
 

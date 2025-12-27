@@ -86,7 +86,7 @@ const WcbProducstPanelSortingAndFiltering: FC<Props> = ({
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
-	const STOCK_STATUS_OPTIONS = get_STOCK_STATUS_OPTIONS();
+	const STOCK_STATUS_OPTIONS = get_STOCK_STATUS_OPTIONS() as Record<string, string>;
 
 	const renderSelectOrderBy = () => {
 		const OPTIONS: {
@@ -192,7 +192,7 @@ const WcbProducstPanelSortingAndFiltering: FC<Props> = ({
 							});
 						}}
 						onChange={(value) => {
-							const ids = value.map(({ id }) => id);
+							const ids = value.map(({ id }) => String(id));
 							setAttr__({
 								...panelData,
 								categories: ids,
@@ -212,7 +212,7 @@ const WcbProducstPanelSortingAndFiltering: FC<Props> = ({
 							});
 						}}
 						onChange={(value) => {
-							const ids = value.map(({ id }) => id);
+							const ids = value.map(({ id }) => String(id));
 							setAttr__({
 								...panelData,
 								tags: ids,
@@ -246,7 +246,7 @@ const WcbProducstPanelSortingAndFiltering: FC<Props> = ({
 			<InputControl
 				value={panelData.keyword}
 				label={__("KEYWORD", "wcb")}
-				onChange={(nextValue) =>
+				onChange={(nextValue: any) =>
 					setAttr__({ ...panelData, keyword: nextValue })
 				}
 			/>
@@ -296,7 +296,7 @@ const WcbProducstPanelSortingAndFiltering: FC<Props> = ({
 			<InputControl
 				value={panelData.emptyMessage}
 				label={__("Message when Posts Not Found", "wcb")}
-				onChange={(nextValue) =>
+				onChange={(nextValue: any) =>
 					setAttr__({ ...panelData, emptyMessage: nextValue })
 				}
 			/>

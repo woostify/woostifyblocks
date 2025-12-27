@@ -120,8 +120,13 @@ classes.forEach(({ D, C, F }) => {
 	}
 });
 
-// ---
-
+/**
+ * Renders the GlobalCss component to the DOM and optionally executes a function on each element.
+ * 
+ * @param {NodeListOf<Element>} divsToUpdate - The divs to update.
+ * @param {React.LazyExoticComponent<React.NamedExoticComponent<any>>} GlobalCss - The GlobalCss component to render.
+ * @param {(el: Element, props: any) => void} [funcRunOnEl] - Optional function to run on each element after rendering.
+ */
 function renderToDom(
 	divsToUpdate: NodeListOf<Element>,
 	GlobalCss: React.LazyExoticComponent<React.NamedExoticComponent<any>>,

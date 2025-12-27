@@ -1,11 +1,11 @@
-import { ScrollSnapSlider } from "./ScrollSnapSlider";
+import { ScrollSnapSlider, ScrollSnapSliderOptions } from "./ScrollSnapSlider";
 
 export class CustomPlugin extends ScrollSnapSlider {
 	/**
 	 * Pass any config here
 	 * @param {*} config
 	 */
-	constructor(element, enabled = true, plugins = []) {
+	constructor(element: ScrollSnapSliderOptions, enabled = true, plugins = []) {
 		super(element, enabled, plugins);
 	}
 
@@ -23,7 +23,7 @@ export class CustomPlugin extends ScrollSnapSlider {
 	 * @param {ScrollSnapSlider} slider
 	 * @override
 	 */
-	enable(slider) {
+	enable(slider: any) {
 		// TODO methods stub
 	}
 

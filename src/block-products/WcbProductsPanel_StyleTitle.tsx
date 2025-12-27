@@ -4,7 +4,7 @@ import React, { FC } from "react";
 import MyTypographyControl from "../components/controls/MyTypographyControl/MyTypographyControl";
 import {
 	MyTypographyControlData,
-	TYPOGRAPHY_CONTROL_DEMO,
+	TYPOGRAPHY_CONTROL_PRODUCT_DEMO,
 } from "../components/controls/MyTypographyControl/types";
 import MyDisclosure from "../components/controls/MyDisclosure";
 import MyUnitControl from "../components/controls/MyUnitControl";
@@ -23,7 +23,7 @@ export interface WCB_PRODUCTS_PANEL_STYLE_TITLE {
 
 export const WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO: WCB_PRODUCTS_PANEL_STYLE_TITLE =
 	{
-		typography: TYPOGRAPHY_CONTROL_DEMO,
+		typography: TYPOGRAPHY_CONTROL_PRODUCT_DEMO,
 		textColor: "#171717",
 		marginBottom: { Desktop: "0.75rem" },
 	};

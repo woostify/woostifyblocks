@@ -82,7 +82,7 @@ const ProductCategoryControl: FC<Props> = ({
 			});
 	}, []);
 
-	const renderItem = (args) => {
+	const renderItem = (args: any) => {
 		const { item, search, depth = 0 } = args;
 
 		const accessibleName = !item.breadcrumbs.length
@@ -146,7 +146,7 @@ const ProductCategoryControl: FC<Props> = ({
 		list: __("Product Categories", "wcb"),
 		noItems: __("Your store doesn't have any product categories.", "wcb"),
 		search: __("Search for product categories", "wcb"),
-		selected: (n) =>
+		selected: (n: any) =>
 			sprintf(
 				/* translators: %d is the count of selected categories. */
 				_n("%d category selected", "%d categories selected", n, "wcb"),

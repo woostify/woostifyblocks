@@ -15,6 +15,7 @@ export interface WCB_PRODUCTS_PANEL_COTENT {
 	isShowRating: boolean;
 	isShowSKU: boolean;
 	isShowSaleBadge: boolean;
+	isShowOutOfStock: boolean;
 	isShowTitle: boolean;
 	isShowCategory: boolean;
 	titleHtmlTag: HtmlTagsType;
@@ -36,6 +37,7 @@ export const WCB_PRODUCTS_PANEL_COTENT_DEMO: WCB_PRODUCTS_PANEL_COTENT = {
 	isShowPrice: true,
 	isShowRating: true,
 	isShowSaleBadge: true,
+	isShowOutOfStock: true,
 	isShowSKU: true,
 	isShowCategory: true,
 	showSaleBadgeDiscoutPercent: false,
@@ -155,7 +157,7 @@ const WcbProductsPanelContent: FC<Props> = ({
 					<MyHeadingTagControl
 						tag={titleHtmlTag}
 						label={__("Title HTML tag", "wcb")}
-						onChange={(tag) => setAttr__({ ...panelData, titleHtmlTag: tag })}
+						onChange={(tag: any) => setAttr__({ ...panelData, titleHtmlTag: tag })}
 					/>
 				) : null}
 

@@ -23,10 +23,8 @@ import {
 import useGetDeviceType from "../hooks/useGetDeviceType";
 import MyColorBackgroundColorControl, {
 	MyColorBackgroundColorControlData,
-	MY_COLOR_BGCOLOR_CONTROL_DEMO,
 	MY_COLOR_BGCOLOR_CONTROL_FOR_BUTTON_DEMO,
 } from "../components/controls/MyColorBackgroundColorControl/MyColorBackgroundColorControl";
-import { MyTabsForColor } from "../types";
 import MyUnitControl from "../components/controls/MyUnitControl";
 import { MY_GAP_UNITS } from "../components/controls/MyDimensionsControl/MyDimensionsControl";
 import getValueFromAttrsResponsives from "../utils/getValueFromAttrsResponsives";

@@ -6,6 +6,7 @@
 require WCB_PATH . 'includes/wcb-render-callback-for-block-posts-grid.php';
 require WCB_PATH . 'includes/wcb-render-callback-for-block-products.php';
 require WCB_PATH . 'includes/wcb-ajax-for-block-form.php';
+require WCB_PATH . 'includes/wcb-editor-defaults.php';
 // 
 
 add_action('init', 'wcb_create_blocks_gutenberg_init');
@@ -43,6 +44,9 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
                             'default'   => '',
                         ),
                         'general_sortingAndFiltering' => array(
+                            'type'      => 'object',
+                        ),
+                        'general_layout' => array(
                             'type'      => 'object',
                         ),
                         'general_content' => array(
@@ -85,6 +89,12 @@ if (!function_exists("wcb_create_blocks_gutenberg_init")) {
                             'type'      => 'object',
                         ),
                         'style_category' => array(
+                            'type'      => 'object',
+                        ),
+                        'style_wishlistBtn' => array(
+                            'type'      => 'object',
+                        ),
+                        'style_quickViewBtn' => array(
                             'type'      => 'object',
                         ),
                         'advance_responsiveCondition' => array(

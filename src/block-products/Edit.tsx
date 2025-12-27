@@ -1,6 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import { BlockControls, useBlockProps } from "@wordpress/block-editor";
 import React, { useEffect, FC, useCallback, useMemo } from "react";
+// @ts-ignore
 import ServerSideRender from "@wordpress/server-side-render";
 import { WcbAttrs } from "./attributes";
 import { settings } from "@wordpress/icons";
@@ -22,18 +23,13 @@ import useSetBlockPanelInfo from "../hooks/useSetBlockPanelInfo";
 import AdvancePanelCommon from "../components/AdvancePanelCommon";
 import MyCacheProvider from "../components/MyCacheProvider";
 import { WcbAttrsForSave } from "./Save";
-import WcbProducstPanelSortingAndFiltering, {
-	WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
-} from "./WcbProducstPanelSortingAndFiltering";
+import WcbProducstPanelSortingAndFiltering from "./WcbProducstPanelSortingAndFiltering";
 import {
 	PanelBody,
-	Placeholder,
 	Spinner,
 	withSpokenMessages,
 } from "@wordpress/components";
-import WcbProductsPanelContent, {
-	WCB_PRODUCTS_PANEL_COTENT_DEMO,
-} from "./WcbProductsPanelContent";
+import WcbProductsPanelContent from "./WcbProductsPanelContent";
 import WcbProductsPanelFeaturedImage, {
 	WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO,
 } from "./WcbProductsPanelFeaturedImage";
@@ -49,18 +45,14 @@ import WcbProductsPanel_StyleTitle, {
 import WcbProductsPanel_StyleFeaturedImage, {
 	WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO,
 } from "./WcbProductsPanel_StyleFeaturedImage";
-import WcbProductsPanel_StyleLayout, {
-	WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO,
-} from "./WcbProductsPanel_StyleLayout";
+import WcbProductsPanel_StyleLayout from "./WcbProductsPanel_StyleLayout";
 import WcbProductsPanel_StyleAddToCartBtn, {
 	WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO,
 } from "./WcbProductsPanel_StyleAddToCartBtn";
 import WcbProductsPanel_StylePagination, {
 	WCB_PRODUCTS_PANEL_STYLE_PAGINATION_DEMO,
 } from "./WcbProductsPanel_StylePagination";
-import { Icon, file } from "@wordpress/icons";
 import WcbProductsPanel_StyleSaleBadge, {
-	WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO,
 } from "./WcbProductsPanel_StyleSaleBadge";
 import MyBorderControl from "../components/controls/MyBorderControl/MyBorderControl";
 import WcbProductsPanel_StylePrice, {
@@ -73,10 +65,29 @@ import converUniqueIdToAnphaKey from "../utils/converUniqueIdToAnphaKey";
 import WcbProductsPanel_StyleCategory, {
 	WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
 } from "./WcbProductsPanel_StyleCategory";
-import { MY_BORDER_CONTROL_DEMO } from "../components/controls/MyBorderControl/types";
 import { RESPONSIVE_CONDITON_DEMO } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
 import { Z_INDEX_DEMO } from "../components/controls/MyZIndexControl/MyZIndexControl";
 import { MY_MOTION_EFFECT_DEMO } from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
+import WcbProducstPanelGeneralLayout, {
+	WCB_PRODUCTS_PANEL_GENERAL_LAYOUT_DEMO
+} from "./WcbProducstPanel_GeneralLayout";	
+import WcbProductsPanel_StyleOutOfStock, { WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO } from "./WcbProductsPanel_StyleOutOfStock";
+import { 
+	buildStyleBorderDefault, 
+	buildStyleLayoutDefault, 
+	buildGeneralContractDefault,
+	buildSortingAndFilteringDefault,
+	buildGeneralFeaturedImageDefault,
+	buildStyleFeaturedImageDefault,
+	buildStyleSaleBadgeDefault,
+	buildStyleOutOfStockDefault,
+	buildStyleTitleDefault,
+	buildStylePriceDefault,
+	buildStyleAddToCartBtnDefault,
+	buildGeneralAddToCartBtnDefault,
+	buildStyleWishlistButtonDefault,
+	buildStyleQuickViewButtonDefault,
+} from "./WcbThemeDefaults";
 
 interface Props extends EditProps<WcbAttrs> {}
 
@@ -89,6 +100,7 @@ const Edit: FC<Props> = (props) => {
 		general_sortingAndFiltering,
 		uniqueId,
 		general_content,
+		general_layout,
 		general_featuredImage,
 		general_addToCartBtn,
 		general_pagination,
@@ -98,9 +110,12 @@ const Edit: FC<Props> = (props) => {
 		style_addToCardBtn,
 		style_pagination,
 		style_saleBadge,
+		style_outOfStock,
 		style_border,
 		style_price,
 		style_rating,
+		style_wishlistBtn,
+		style_quickViewBtn,
 		advance_motionEffect,
 		style_category,
 	} = attributes;
@@ -122,27 +137,30 @@ const Edit: FC<Props> = (props) => {
 			uniqueId: converUniqueIdToAnphaKey(UNIQUE_ID),
 		});
 	}, [UNIQUE_ID]);
-	//
 
 	useEffect(() => {
-		if (style_layout) {
-			return;
-		}
+		// If already initialized, do nothing
+		if (attributes.style_layout) return;
+
 		const DEFAULT: Omit<WcbAttrs, "uniqueId"> = {
-			style_addToCardBtn: WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO,
-			style_border: MY_BORDER_CONTROL_DEMO,
-			style_featuredImage: WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO,
-			style_layout: WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO,
+			style_addToCardBtn: buildStyleAddToCartBtnDefault(WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO as any),
+			style_border: buildStyleBorderDefault(attributes.style_layout as any),
+			style_featuredImage: buildStyleFeaturedImageDefault(WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO as any),
+			style_layout: buildStyleLayoutDefault(attributes.style_border as any),
 			style_pagination: WCB_PRODUCTS_PANEL_STYLE_PAGINATION_DEMO,
-			style_price: WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO,
+			style_price: buildStylePriceDefault(WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO as any),
 			style_rating: WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO,
-			style_saleBadge: WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO,
+			style_saleBadge: buildStyleSaleBadgeDefault(style_saleBadge as any),
+			style_outOfStock: buildStyleOutOfStockDefault(style_outOfStock as any),
 			style_category: WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
-			style_title: WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
-			general_sortingAndFiltering: WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
-			general_content: WCB_PRODUCTS_PANEL_COTENT_DEMO,
-			general_featuredImage: WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO,
-			general_addToCartBtn: WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO,
+			style_title: buildStyleTitleDefault(WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO as any),
+			style_wishlistBtn: buildStyleWishlistButtonDefault(attributes.style_wishlistBtn as any),
+			style_quickViewBtn: buildStyleQuickViewButtonDefault(attributes.style_quickViewBtn as any),
+			general_sortingAndFiltering: buildSortingAndFilteringDefault(general_sortingAndFiltering as any),
+			general_content: buildGeneralContractDefault(general_content as any),
+			general_layout: WCB_PRODUCTS_PANEL_GENERAL_LAYOUT_DEMO,
+			general_featuredImage: buildGeneralFeaturedImageDefault(WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO as any),
+			general_addToCartBtn: buildGeneralAddToCartBtnDefault(WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO as any) as any,
 			general_pagination: WCB_PRODUCTS_PANEL_PAGINATION_DEMO,
 			advance_responsiveCondition: RESPONSIVE_CONDITON_DEMO,
 			advance_zIndex: Z_INDEX_DEMO,
@@ -151,6 +169,7 @@ const Edit: FC<Props> = (props) => {
 
 		setAttributes({ ...DEFAULT });
 	}, [style_layout]);
+	
 	//
 	useEffect(() => {
 		if (!advance_motionEffect) {
@@ -162,6 +181,18 @@ const Edit: FC<Props> = (props) => {
 			setAttributes({ style_category: WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO });
 		}
 	}, [style_category]);
+
+	useEffect(() => {
+		const hasWishlistConfig =
+			style_wishlistBtn && Object.keys(style_wishlistBtn).length > 0;
+		if (!hasWishlistConfig) {
+			setAttributes({
+				style_wishlistBtn: buildStyleWishlistButtonDefault(
+					attributes.style_wishlistBtn as any
+				),
+			});
+		}
+	}, [style_wishlistBtn]);
 	//
 
 	//
@@ -190,46 +221,69 @@ const Edit: FC<Props> = (props) => {
 								panelData={general_sortingAndFiltering}
 							/>
 						)}
-						{general_content && (
-							<WcbProductsPanelContent
-								onToggle={() => handleTogglePanel("General", "Content")}
-								initialOpen={tabGeneralIsPanelOpen === "Content"}
-								opened={tabGeneralIsPanelOpen === "Content" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({ general_content: data });
-								}}
-								panelData={general_content}
-							/>
-						)}
-						{general_featuredImage && (
-							<WcbProductsPanelFeaturedImage
-								onToggle={() =>
-									handleTogglePanel("General", "PostFeaturedImage")
-								}
-								initialOpen={tabGeneralIsPanelOpen === "PostFeaturedImage"}
-								opened={
-									tabGeneralIsPanelOpen === "PostFeaturedImage" || undefined
-								}
-								//
-								setAttr__={(data) => {
-									setAttributes({ general_featuredImage: data });
-								}}
-								panelData={general_featuredImage}
-							/>
-						)}
-						{general_addToCartBtn && (
-							<WcbProductsPanelButton
-								onToggle={() => handleTogglePanel("General", "Button")}
-								initialOpen={tabGeneralIsPanelOpen === "Button"}
-								opened={tabGeneralIsPanelOpen === "Button" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({ general_addToCartBtn: data });
-								}}
-								panelData={general_addToCartBtn}
-							/>
-						)}
+						{
+							general_layout && (
+								<WcbProducstPanelGeneralLayout
+									onToggle={() =>
+										handleTogglePanel("General", "Layout")
+									}
+									initialOpen={tabGeneralIsPanelOpen === "Layout"}
+									opened={tabGeneralIsPanelOpen === "Layout" || undefined}
+									//
+									setAttr__={(data) => {
+										setAttributes({ general_layout: data });
+									}}
+									panelData={general_layout}
+								/>
+							)
+						}
+						{
+							general_layout?.isCustomizerGeneralLayout == true && (
+								<>
+									{general_content && (
+										<WcbProductsPanelContent
+											onToggle={() => handleTogglePanel("General", "Content")}
+											initialOpen={tabGeneralIsPanelOpen === "Content"}
+											opened={tabGeneralIsPanelOpen === "Content" || undefined}
+											//
+											setAttr__={(data) => {
+												setAttributes({ general_content: data });
+											}}
+											panelData={general_content}
+										/>
+									)}
+									{general_featuredImage && (
+										<WcbProductsPanelFeaturedImage
+											onToggle={() =>
+												handleTogglePanel("General", "PostFeaturedImage")
+											}
+											initialOpen={tabGeneralIsPanelOpen === "PostFeaturedImage"}
+											opened={
+												tabGeneralIsPanelOpen === "PostFeaturedImage" || undefined
+											}
+											//
+											setAttr__={(data) => {
+												setAttributes({ general_featuredImage: data });
+											}}
+											panelData={general_featuredImage}
+										/>
+									)}
+									{general_addToCartBtn && (
+										<WcbProductsPanelButton
+											onToggle={() => handleTogglePanel("General", "Button")}
+											initialOpen={tabGeneralIsPanelOpen === "Button"}
+											opened={tabGeneralIsPanelOpen === "Button" || undefined}
+											//
+											setAttr__={(data) => {
+												setAttributes({ general_addToCartBtn: data });
+											}}
+											panelData={general_addToCartBtn}
+										/>
+									)}
+								</>
+							)
+						}
+						
 						{general_pagination && (
 							<WcbProductsPanelPagination
 								onToggle={() => handleTogglePanel("General", "Pagination")}
@@ -264,137 +318,155 @@ const Edit: FC<Props> = (props) => {
 								panelData={style_layout}
 							/>
 						)}
+						{
+							general_layout?.isCustomizerGeneralLayout == true && (
+								<>
+									{general_featuredImage?.isShowFeaturedImage && style_featuredImage && (
+										<WcbProductsPanel_StyleFeaturedImage
+											onToggle={() =>
+												handleTogglePanel("Styles", "_StyleFeaturedImage")
+											}
+											initialOpen={tabStylesIsPanelOpen === "_StyleFeaturedImage"}
+											opened={
+												tabStylesIsPanelOpen === "_StyleFeaturedImage" || undefined
+											}
+											//
+											setAttr__={(data) => {
+												setAttributes({ style_featuredImage: data });
+											}}
+											panelData={style_featuredImage}
+											imagePosition="top"
+										/>
+									)}
 
-						{general_featuredImage?.isShowFeaturedImage && style_featuredImage && (
-							<WcbProductsPanel_StyleFeaturedImage
-								onToggle={() =>
-									handleTogglePanel("Styles", "_StyleFeaturedImage")
-								}
-								initialOpen={tabStylesIsPanelOpen === "_StyleFeaturedImage"}
-								opened={
-									tabStylesIsPanelOpen === "_StyleFeaturedImage" || undefined
-								}
-								//
-								setAttr__={(data) => {
-									setAttributes({ style_featuredImage: data });
-								}}
-								panelData={style_featuredImage}
-								imagePosition="top"
-							/>
-						)}
+									{general_content?.isShowCategory && style_category && (
+										<WcbProductsPanel_StyleCategory
+											onToggle={() => handleTogglePanel("Styles", "_StyleCategory")}
+											initialOpen={tabStylesIsPanelOpen === "_StyleCategory"}
+											opened={tabStylesIsPanelOpen === "_StyleCategory" || undefined}
+											//
+											setAttr__={(data) => {
+												setAttributes({ style_category: data });
+											}}
+											panelData={style_category}
+										/>
+									)}
 
-						{general_content?.isShowCategory && style_category && (
-							<WcbProductsPanel_StyleCategory
-								onToggle={() => handleTogglePanel("Styles", "_StyleCategory")}
-								initialOpen={tabStylesIsPanelOpen === "_StyleCategory"}
-								opened={tabStylesIsPanelOpen === "_StyleCategory" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({ style_category: data });
-								}}
-								panelData={style_category}
-							/>
-						)}
+									{general_content?.isShowTitle && style_title && (
+										<WcbProductsPanel_StyleTitle
+											onToggle={() => handleTogglePanel("Styles", "_StyleTitle")}
+											initialOpen={tabStylesIsPanelOpen === "_StyleTitle"}
+											opened={tabStylesIsPanelOpen === "_StyleTitle" || undefined}
+											//
+											setAttr__={(data) => {
+												setAttributes({ style_title: data });
+											}}
+											panelData={style_title}
+										/>
+									)}
 
-						{general_content?.isShowTitle && style_title && (
-							<WcbProductsPanel_StyleTitle
-								onToggle={() => handleTogglePanel("Styles", "_StyleTitle")}
-								initialOpen={tabStylesIsPanelOpen === "_StyleTitle"}
-								opened={tabStylesIsPanelOpen === "_StyleTitle" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({ style_title: data });
-								}}
-								panelData={style_title}
-							/>
-						)}
-
-						{general_content?.isShowSaleBadge && style_saleBadge && (
-							<WcbProductsPanel_StyleSaleBadge
-								onToggle={() => handleTogglePanel("Styles", "_StyleSaleBadge")}
-								initialOpen={tabStylesIsPanelOpen === "_StyleSaleBadge"}
-								opened={tabStylesIsPanelOpen === "_StyleSaleBadge" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({ style_saleBadge: data });
-								}}
-								panelData={style_saleBadge}
-							/>
-						)}
-
-						{general_content?.isShowRating && style_rating && (
-							<WcbProductsPanel_StyleRating
-								onToggle={() => handleTogglePanel("Styles", "_StyleRating")}
-								initialOpen={tabStylesIsPanelOpen === "_StyleRating"}
-								opened={tabStylesIsPanelOpen === "_StyleRating" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({ style_rating: data });
-								}}
-								panelData={style_rating}
-							/>
-						)}
-
-						{general_content?.isShowPrice && style_price && (
-							<WcbProductsPanel_StylePrice
-								onToggle={() => handleTogglePanel("Styles", "_StylePrice")}
-								initialOpen={tabStylesIsPanelOpen === "_StylePrice"}
-								opened={tabStylesIsPanelOpen === "_StylePrice" || undefined}
-								//
-								setAttr__={(data) => {
-									setAttributes({ style_price: data });
-								}}
-								panelData={style_price}
-							/>
-						)}
-
-						{general_addToCartBtn?.isShowButton && style_addToCardBtn && (
-							<WcbProductsPanel_StyleAddToCartBtn
-								onToggle={() =>
-									handleTogglePanel("Styles", "_StyleAddToCartBtn")
-								}
-								initialOpen={tabStylesIsPanelOpen === "_StyleAddToCartBtn"}
-								opened={
-									tabStylesIsPanelOpen === "_StyleAddToCartBtn" || undefined
-								}
-								//
-								setAttr__={(data) => {
-									setAttributes({ style_addToCardBtn: data });
-								}}
-								panelData={style_addToCardBtn}
-							/>
-						)}
-
-						{general_pagination?.isShowPagination && style_pagination && (
-							<WcbProductsPanel_StylePagination
-								onToggle={() => handleTogglePanel("Styles", "_StylePagination")}
-								initialOpen={tabStylesIsPanelOpen === "_StylePagination"}
-								opened={
-									tabStylesIsPanelOpen === "_StylePagination" || undefined
-								}
-								//
-								setAttr__={(data) => {
-									setAttributes({ style_pagination: data });
-								}}
-								panelData={style_pagination}
-							/>
-						)}
-
-						<PanelBody
-							onToggle={() => handleTogglePanel("Styles", "StyleBorder")}
-							initialOpen={tabStylesIsPanelOpen === "StyleBorder"}
-							opened={tabStylesIsPanelOpen === "StyleBorder" || undefined}
-							title={__("Border", "wcb")}
-						>
-							{style_border && (
-								<MyBorderControl
-									borderControl={style_border}
-									setAttrs__border={(data) =>
-										setAttributes({ style_border: data })
+									{general_content?.isShowSaleBadge && style_saleBadge && (
+										<WcbProductsPanel_StyleSaleBadge
+											onToggle={() => handleTogglePanel("Styles", "_StyleSaleBadge")}
+											initialOpen={tabStylesIsPanelOpen === "_StyleSaleBadge"}
+											opened={tabStylesIsPanelOpen === "_StyleSaleBadge" || undefined}
+											//
+											setAttr__={(data) => {
+												setAttributes({ style_saleBadge: data });
+											}}
+											panelData={style_saleBadge}
+										/>
+									)}
+									{
+										general_content?.isShowOutOfStock && style_outOfStock && (
+											<WcbProductsPanel_StyleOutOfStock
+												onToggle={() => handleTogglePanel("Styles", "_StyleOutOfStock")}
+												initialOpen={tabStylesIsPanelOpen === "_StyleOutOfStock"}
+												opened={tabStylesIsPanelOpen === "_StyleOutOfStock" || undefined}
+												//
+												setAttr__={(data) => {
+													setAttributes({ style_outOfStock: data });
+												}}
+												panelData={style_outOfStock}
+											/>
+										)
 									}
-								/>
-							)}
-						</PanelBody>
+									{general_content?.isShowRating && style_rating && (
+										<WcbProductsPanel_StyleRating
+											onToggle={() => handleTogglePanel("Styles", "_StyleRating")}
+											initialOpen={tabStylesIsPanelOpen === "_StyleRating"}
+											opened={tabStylesIsPanelOpen === "_StyleRating" || undefined}
+											//
+											setAttr__={(data) => {
+												setAttributes({ style_rating: data });
+											}}
+											panelData={style_rating}
+										/>
+									)}
+
+									{general_content?.isShowPrice && style_price && (
+										<WcbProductsPanel_StylePrice
+											onToggle={() => handleTogglePanel("Styles", "_StylePrice")}
+											initialOpen={tabStylesIsPanelOpen === "_StylePrice"}
+											opened={tabStylesIsPanelOpen === "_StylePrice" || undefined}
+											//
+											setAttr__={(data) => {
+												setAttributes({ style_price: data });
+											}}
+											panelData={style_price}
+										/>
+									)}
+
+									{general_addToCartBtn?.isShowButton && style_addToCardBtn && (
+										<WcbProductsPanel_StyleAddToCartBtn
+											onToggle={() =>
+												handleTogglePanel("Styles", "_StyleAddToCartBtn")
+											}
+											initialOpen={tabStylesIsPanelOpen === "_StyleAddToCartBtn"}
+											opened={
+												tabStylesIsPanelOpen === "_StyleAddToCartBtn" || undefined
+											}
+											//
+											setAttr__={(data) => {
+												setAttributes({ style_addToCardBtn: data });
+											}}
+											panelData={style_addToCardBtn}
+										/>
+									)}
+
+									{general_pagination?.isShowPagination && style_pagination && (
+										<WcbProductsPanel_StylePagination
+											onToggle={() => handleTogglePanel("Styles", "_StylePagination")}
+											initialOpen={tabStylesIsPanelOpen === "_StylePagination"}
+											opened={
+												tabStylesIsPanelOpen === "_StylePagination" || undefined
+											}
+											//
+											setAttr__={(data) => {
+												setAttributes({ style_pagination: data });
+											}}
+											panelData={style_pagination}
+										/>
+									)}
+
+									<PanelBody
+										onToggle={() => handleTogglePanel("Styles", "StyleBorder")}
+										initialOpen={tabStylesIsPanelOpen === "StyleBorder"}
+										opened={tabStylesIsPanelOpen === "StyleBorder" || undefined}
+										title={__("Border", "wcb")}
+									>
+										{style_border && (
+											<MyBorderControl
+												borderControl={style_border}
+												setAttrs__border={(data) =>
+													setAttributes({ style_border: data })
+												}
+											/>
+										)}
+									</PanelBody>
+								</>
+							)
+						}
 					</>
 				);
 			case "Advances":
@@ -448,7 +520,7 @@ const Edit: FC<Props> = (props) => {
 									labelPosition="edge"
 									min={1}
 									max={100}
-									onChange={(value) => {
+									onChange={(value: any) => {
 										if (isNaN(value) || value < 1 || value > 100) {
 											return;
 										}
@@ -473,7 +545,7 @@ const Edit: FC<Props> = (props) => {
 									labelPosition="edge"
 									min={0}
 									max={100}
-									onChange={(value) => {
+									onChange={(value: any) => {
 										if (isNaN(value) || value < 0 || value > 100) {
 											return;
 										}
@@ -523,7 +595,7 @@ const Edit: FC<Props> = (props) => {
 									label={__("Max page to show")}
 									labelPosition="edge"
 									min={0}
-									onChange={(value) => {
+									onChange={(value: any) => {
 										if (isNaN(value) || value < 0) {
 											return;
 										}
@@ -563,9 +635,12 @@ const Edit: FC<Props> = (props) => {
 			style_addToCardBtn,
 			style_pagination,
 			style_saleBadge,
+			style_outOfStock,
 			style_border,
 			style_price,
 			style_rating,
+			style_wishlistBtn,
+			style_quickViewBtn,
 			advance_motionEffect,
 			style_category,
 		};
@@ -579,6 +654,7 @@ const Edit: FC<Props> = (props) => {
 		advance_zIndex,
 		general_sortingAndFiltering,
 		general_content,
+		general_layout,
 		general_featuredImage,
 		general_addToCartBtn,
 		general_pagination,
@@ -588,9 +664,12 @@ const Edit: FC<Props> = (props) => {
 		style_addToCardBtn,
 		style_pagination,
 		style_saleBadge,
+		style_outOfStock,
 		style_border,
 		style_price,
 		style_rating,
+		style_wishlistBtn,
+		style_quickViewBtn,
 		advance_motionEffect,
 		style_category,
 	]);
@@ -604,6 +683,9 @@ const Edit: FC<Props> = (props) => {
 			general_featuredImage,
 			general_addToCartBtn,
 			general_pagination,
+			style_wishlistBtn,
+			style_quickViewBtn,
+			style_addToCardBtn,
 		};
 	}, [
 		uniqueId,
@@ -613,6 +695,9 @@ const Edit: FC<Props> = (props) => {
 		general_featuredImage,
 		general_addToCartBtn,
 		general_pagination,
+		style_wishlistBtn,
+		style_quickViewBtn,
+		style_addToCardBtn,
 	]);
 
 	const WcbAttrsForSaveValue = WcbAttrsForSave();

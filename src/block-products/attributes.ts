@@ -3,82 +3,73 @@ import {
 	WcbAttrsCommonFromWp,
 } from "../block-container/attributes";
 import {
-	MY_BORDER_CONTROL_DEMO,
 	MyBorderControlData,
 } from "../components/controls/MyBorderControl/types";
 import {
-	MY_MOTION_EFFECT_DEMO,
 	MyMotionEffectData,
 } from "../components/controls/MyMotionEffectControl/MyMotionEffectControl";
 import {
 	MyResponsiveConditionControlData,
-	RESPONSIVE_CONDITON_DEMO,
 } from "../components/controls/MyResponsiveConditionControl/MyResponsiveConditionControl";
 import {
 	MyZIndexControlData,
-	Z_INDEX_DEMO,
 } from "../components/controls/MyZIndexControl/MyZIndexControl";
 import {
 	WCB_PRODUCTS_PANEL_SORTINGANDFILTERING,
-	WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
 } from "./WcbProducstPanelSortingAndFiltering";
 import {
 	WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN,
-	WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO,
 } from "./WcbProductsPanelButton";
 import {
 	WCB_PRODUCTS_PANEL_COTENT,
-	WCB_PRODUCTS_PANEL_COTENT_DEMO,
 } from "./WcbProductsPanelContent";
 import {
 	WCB_PRODUCTS_PANEL_FEATURED_IMAGE,
-	WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO,
 } from "./WcbProductsPanelFeaturedImage";
 import {
 	WCB_PRODUCTS_PANEL_PAGINATION,
-	WCB_PRODUCTS_PANEL_PAGINATION_DEMO,
 } from "./WcbProductsPanelPagination";
 import {
 	WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN,
-	WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO,
 } from "./WcbProductsPanel_StyleAddToCartBtn";
 import {
 	WCB_PRODUCTS_PANEL_STYLE_CATEGORY,
-	WCB_PRODUCTS_PANEL_STYLE_CATEGORY_DEMO,
 } from "./WcbProductsPanel_StyleCategory";
 import {
 	WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE,
-	WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO,
 } from "./WcbProductsPanel_StyleFeaturedImage";
 import {
 	WCB_PRODUCTS_PANEL_STYLE_LAYOUT,
-	WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO,
 } from "./WcbProductsPanel_StyleLayout";
 import {
 	WCB_PRODUCTS_PANEL_STYLE_PAGINATION,
-	WCB_PRODUCTS_PANEL_STYLE_PAGINATION_DEMO,
 } from "./WcbProductsPanel_StylePagination";
 import {
 	WCB_PRODUCTS_PANEL_STYLE_PRICE,
-	WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO,
 } from "./WcbProductsPanel_StylePrice";
 import {
 	WCB_PRODUCTS_PANEL_STYLE_RATING,
-	WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO,
 } from "./WcbProductsPanel_StyleRating";
 import {
 	WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE,
-	WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO,
 } from "./WcbProductsPanel_StyleSaleBadge";
 import {
 	WCB_PRODUCTS_PANEL_STYLE_TITLE,
-	WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO,
 } from "./WcbProductsPanel_StyleTitle";
+import {
+	WCB_PRODUCTS_PANEL_GENERAL_LAYOUT,
+	WCB_PRODUCTS_PANEL_GENERAL_LAYOUT_DEMO
+} from "./WcbProducstPanel_GeneralLayout";
+import { WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK } from "./WcbProductsPanel_StyleOutOfStock";
+import { WCB_PRODUCTS_PANEL_STYLE_WISHLIST_BUTTON } from "./WcbProductsPanel_StyleWishListButton";
+import { WCB_PRODUCTS_PANEL_STYLE_QUICKVIEW_BUTTON } from "./WcbProductsPanel_StyleQuickViewButton";
+
 export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	uniqueId: string;
 
 	//
 	general_sortingAndFiltering?: WCB_PRODUCTS_PANEL_SORTINGANDFILTERING;
+	general_layout?: WCB_PRODUCTS_PANEL_GENERAL_LAYOUT;
 	general_content?: WCB_PRODUCTS_PANEL_COTENT;
 	general_featuredImage?: WCB_PRODUCTS_PANEL_FEATURED_IMAGE;
 	general_addToCartBtn?: WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN;
@@ -91,9 +82,12 @@ export interface WcbAttrs extends WcbAttrsCommonFromWp {
 	style_addToCardBtn?: WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN;
 	style_pagination?: WCB_PRODUCTS_PANEL_STYLE_PAGINATION;
 	style_saleBadge?: WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE;
+	style_outOfStock?: WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK;
 	style_border?: MyBorderControlData;
 	style_price?: WCB_PRODUCTS_PANEL_STYLE_PRICE;
 	style_rating?: WCB_PRODUCTS_PANEL_STYLE_RATING;
+	style_wishlistBtn?: WCB_PRODUCTS_PANEL_STYLE_WISHLIST_BUTTON; // to do
+	style_quickViewBtn?: WCB_PRODUCTS_PANEL_STYLE_QUICKVIEW_BUTTON;
 	//
 	advance_responsiveCondition?: MyResponsiveConditionControlData;
 	advance_zIndex?: MyZIndexControlData;
@@ -110,6 +104,10 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	general_sortingAndFiltering: {
 		type: "object",
 		// default: WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO,
+	},
+	general_layout: {
+		type: "object",
+		default: WCB_PRODUCTS_PANEL_GENERAL_LAYOUT_DEMO,
 	},
 	general_content: {
 		type: "object",
@@ -167,6 +165,14 @@ const blokc1Attrs: AttrsGenericType<WcbAttrs> = {
 	style_rating: {
 		type: "object",
 		// default: WCB_PRODUCTS_PANEL_STYLE_RATING_DEMO,
+	},
+	style_wishlistBtn: {
+		type: "object",
+		// default: WCB_PRODUCTS_PANEL_STYLE_WISHLIST_BUTTON_DEMO,
+	},
+	style_quickViewBtn: {
+		type: "object",
+		// default: WCB_PRODUCTS_PANEL_STYLE_QUICKVIEW_BUTTON_DEMO,
 	},
 
 	// ADVANCE
