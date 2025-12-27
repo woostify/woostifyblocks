@@ -110,7 +110,7 @@ function MyRadioGroup<T>({
 		}
 	}, [value]);
 
-	const handleChangeRadio = (value) => {
+	const handleChangeRadio = (value: any) => {
 		setSelected(value);
 		onChange(value);
 	};

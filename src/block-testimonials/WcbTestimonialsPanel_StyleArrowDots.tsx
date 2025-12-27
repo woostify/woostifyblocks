@@ -34,7 +34,7 @@ export const WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS_DEMO: WCB_TESTIMONIALS_PANE
 			hoverColor: "#6b7280",
 			radius: { Desktop: "99px" },
 		},
-		dotsMarginTop: { Desktop: "1rem" },
+		dotsMarginTop: { Desktop: "8px" },
 		color: "#374151",
 	};
 
