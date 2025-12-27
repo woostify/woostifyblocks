@@ -54,7 +54,7 @@ const observer = new MutationObserver(function(mutations) {
             mutation.addedNodes.forEach(function(node) {
                 if (node.nodeType === Node.ELEMENT_NODE) {
                     if (node.id === 'quick-view-gallery' || node.querySelector('#quick-view-gallery')) {
-                        setTimeout(initQuickViewSlider, 100);
+                        setTimeout(initQuickViewSlider, 200);
                     }
                 }
             });

@@ -467,7 +467,8 @@ const GlobalCss: FC<Props> = (attrs) => {
 							position: "absolute",
 							bottom: 
 								style_quickViewBtn?.position === "bottom-image" ? "10px !important" :
-								style_quickViewBtn?.position === "center-image" ? "6rem" : "auto",
+								(style_quickViewBtn?.position === "center-image" && general_addToCartBtn?.position === "icon") ? "10rem" :
+								(style_quickViewBtn?.position === "center-image" && general_addToCartBtn?.position !== "icon") ? "6rem" : "auto",
 							top: 
 								(general_addToCartBtn?.position === "icon" && style_wishlistBtn?.position === "top-right" && style_quickViewBtn?.position === "top-right") || 
 								(general_addToCartBtn?.position === "icon" && style_wishlistBtn?.position !== "top-right" && style_quickViewBtn?.position === "top-right") ?  "0rem" :

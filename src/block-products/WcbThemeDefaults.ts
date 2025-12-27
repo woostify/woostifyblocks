@@ -18,10 +18,14 @@ import {
 import type { WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK } from "./WcbProductsPanel_StyleOutOfStock";
 import type { WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE } from "./WcbProductsPanel_StyleSaleBadge"; 
 import { WCB_PRODUCTS_PANEL_STYLE_WISHLIST_BUTTON_DEMO } from "./WcbProductsPanel_StyleWishListButton";
-// TODO: Enable after fix load frontend issue
-// import type { WcbAttrsForSave } from "./Save";
 import { WCB_PRODUCTS_PANEL_STYLE_QUICKVIEW_BUTTON_DEMO } from "./WcbProductsPanel_StyleQuickViewButton";
 
+/**
+ * Builds style_layout with theme numberOfColumn and textAlignment.
+ * 
+ * @param {Partial<typeof WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO>} [attr] - Attributes to override.
+ * @returns {typeof WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO} Attributes with theme defaults applied.
+ */
 export function buildStyleLayoutDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_LAYOUT_DEMO>) {
     const theme = getThemeDefaults();
     return {
@@ -48,6 +52,12 @@ export function buildStyleLayoutDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL
     };
 }
   
+/**
+ * Builds style_border with theme border styles.
+ * 
+ * @param {Partial<typeof MY_BORDER_CONTROL_DEMO>} [attr] - Attributes to override.
+ * @returns {typeof MY_BORDER_CONTROL_DEMO} Attributes with theme defaults applied.
+ */
 export function buildStyleBorderDefault(attr?: Partial<typeof MY_BORDER_CONTROL_DEMO>) {
     const theme = getThemeDefaults();
     const style = theme.shop_archive_border?.style;
@@ -64,7 +74,12 @@ export function buildStyleBorderDefault(attr?: Partial<typeof MY_BORDER_CONTROL_
     return { ...MY_BORDER_CONTROL_DEMO, ...(attr || {}), mainSettings: resolved };
 }
 
-// Build general_sortingAndFiltering with theme numberOfItems
+/**
+ * Builds general_sortingAndFiltering with theme numberOfItems.
+ * 
+ * @param {Partial<typeof WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO>} [attr] - Attributes to override.
+ * @returns {typeof WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO} Attributes with theme defaults applied.
+ */
 export function buildSortingAndFilteringDefault(
     attr?: Partial<typeof WCB_PRODUCTS_PANEL_SORTINGANDFILTERING_DEMO>
 ) {
@@ -79,6 +94,12 @@ export function buildSortingAndFilteringDefault(
     };
 }
 
+/**
+ * Builds general_content with theme content flags.
+ * 
+ * @param {Partial<typeof WCB_PRODUCTS_PANEL_COTENT_DEMO>} [attr] - Attributes to override.
+ * @returns {typeof WCB_PRODUCTS_PANEL_COTENT_DEMO} Attributes with theme defaults applied.
+ */
 export function buildGeneralContractDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_COTENT_DEMO>) {
     const theme = getThemeDefaults();
     const content = theme.shop_archive_product_content;
@@ -106,6 +127,12 @@ export function buildGeneralContractDefault(attr?: Partial<typeof WCB_PRODUCTS_P
     };
 }
 
+/**
+ * Builds general_featuredImage with theme hover type.
+ * 
+ * @param {Partial<typeof WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO>} [attr] - Attributes to override.
+ * @returns {typeof WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO} Attributes with theme defaults applied.
+ */
 export function buildGeneralFeaturedImageDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_FEATURED_IMAGE_DEMO>) {
     const theme = getThemeDefaults();
     const content = theme.shop_archive_product_image;
@@ -119,6 +146,12 @@ export function buildGeneralFeaturedImageDefault(attr?: Partial<typeof WCB_PRODU
     };
 }
 
+/**
+ * Builds style_featuredImage with theme border styles.
+ * 
+ * @param {Partial<typeof WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO>} [attr] - Attributes to override.
+ * @returns {typeof WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO} Attributes with theme defaults applied.
+ */
 export function buildStyleFeaturedImageDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_FEATURED_IMAGE_DEMO>) {
     const theme = getThemeDefaults();
     const style = theme.shop_archive_product_image?.style;
@@ -140,6 +173,12 @@ export function buildStyleFeaturedImageDefault(attr?: Partial<typeof WCB_PRODUCT
     };
 }
 
+/**
+ * Builds style_saleBadge with theme styles.
+ * 
+ * @param {Partial<typeof WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO>} [attr] - Attributes to override.
+ * @returns {typeof WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO} Attributes with theme defaults applied.
+ */
 export function buildStyleSaleBadgeDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_SALE_BADGE_DEMO>) {
     const theme = getThemeDefaults();
     const saleTag = theme.shop_archive_sale_tag;
@@ -171,6 +210,12 @@ export function buildStyleSaleBadgeDefault(attr?: Partial<typeof WCB_PRODUCTS_PA
     };
 }
 
+/**
+ * Builds style_outOfStock with theme styles.
+ * 
+ * @param {Partial<typeof WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO>} [attr] - Attributes to override.
+ * @returns {typeof WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO} Attributes with theme defaults applied.
+ */
 export function buildStyleOutOfStockDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO>) {
 	const theme = getThemeDefaults();
 	const outOfStock = theme.shop_archive_out_of_stock;
@@ -200,11 +245,16 @@ export function buildStyleOutOfStockDefault(attr?: Partial<typeof WCB_PRODUCTS_P
 			outOfStock?.text_color ??
 			attr?.textColor ??
 			WCB_PRODUCTS_PANEL_STYLE_OUT_OF_STOCK_DEMO.textColor,
-		postion: convertedPosition, // Use the mapped value
+		position: convertedPosition, // Use the mapped value
 	};
 }
 
-
+/**
+ * Builds style_title with theme title styles.
+ * 
+ * @param {Partial<typeof WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO>} [attr] - Attributes to override.
+ * @returns {typeof WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO} Attributes with theme defaults applied.
+ */
 export function buildStyleTitleDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_TITLE_DEMO>) {
     const theme = getThemeDefaults();
     const general = theme.shop_archive_general_design;
@@ -236,6 +286,12 @@ export function buildStyleTitleDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_
     };
 }
 
+/**
+ * Builds style_price with theme price styles.
+ * 
+ * @param {Partial<typeof WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO>} [attr] - Attributes to override.
+ * @returns {typeof WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO} Attributes with theme defaults applied.
+ */
 export function buildStylePriceDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_PRICE_DEMO>) {
     const theme = getThemeDefaults();
     const general = theme.shop_archive_general_design;
@@ -267,6 +323,12 @@ export function buildStylePriceDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_
     };
 }
 
+/**
+ * Builds style_addToCartBtn with theme styles.
+ * 
+ * @param {Partial<typeof WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO>} [attr] - Attributes to override.
+ * @returns {typeof WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO} Attributes with theme defaults applied.
+ */
 export function buildStyleAddToCartBtnDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_ADD_TO_CART_BTN_DEMO>) {
     const theme = getThemeDefaults();
     const addToCartBtn = theme.shop_archive_add_to_cart_btn;
@@ -318,6 +380,12 @@ export function buildStyleAddToCartBtnDefault(attr?: Partial<typeof WCB_PRODUCTS
     };
 }
 
+/**
+ * Builds general_addToCartBtn with theme styles.
+ * 
+ * @param {Partial<typeof WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO>} [attr] - Attributes to override.
+ * @returns {typeof WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO} Attributes with theme defaults applied.
+ */
 export function buildGeneralAddToCartBtnDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_ADD_TO_CART_BTN_DEMO>) {
     const theme = getThemeDefaults();
     const addToCartBtn = theme.shop_archive_add_to_cart_btn;
@@ -340,6 +408,12 @@ export function buildGeneralAddToCartBtnDefault(attr?: Partial<typeof WCB_PRODUC
     };
 }
 
+/**
+ * Builds style_wishlistButton with theme styles.
+ * 
+ * @param {Partial<typeof WCB_PRODUCTS_PANEL_STYLE_WISHLIST_BUTTON_DEMO>} [attr] - Attributes to override.
+ * @returns {typeof WCB_PRODUCTS_PANEL_STYLE_WISHLIST_BUTTON_DEMO} Attributes with theme defaults applied.
+ */
 export function buildStyleWishlistButtonDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_WISHLIST_BUTTON_DEMO>) {
     const theme = getThemeDefaults();
     const wishlistBtn = theme.shop_archive_wishlist_btn;
@@ -357,6 +431,12 @@ export function buildStyleWishlistButtonDefault(attr?: Partial<typeof WCB_PRODUC
     };
 }
 
+/**
+ * Builds style_quickViewButton with theme styles.
+ * 
+ * @param {Partial<typeof WCB_PRODUCTS_PANEL_STYLE_QUICKVIEW_BUTTON_DEMO>} [attr] - Attributes to override.
+ * @returns {typeof WCB_PRODUCTS_PANEL_STYLE_QUICKVIEW_BUTTON_DEMO} Attributes with theme defaults applied.
+ */
 export function buildStyleQuickViewButtonDefault(attr?: Partial<typeof WCB_PRODUCTS_PANEL_STYLE_QUICKVIEW_BUTTON_DEMO>) {
     const theme = getThemeDefaults();
     const quickViewBtn = theme.shop_quick_view_btn;
@@ -398,47 +478,3 @@ export function buildStyleQuickViewButtonDefault(attr?: Partial<typeof WCB_PRODU
     };
 }
 
-// TODO: Enable after fix load frontend issue
-// /**
-//  * Re-apply the latest theme defaults to an attributes object.
-//  * This lets already-saved blocks pick up Customizer changes on view render.
-//  */
-// export function mergeProductAttrsWithThemeDefaults(
-// 	attr?: Partial<WcbAttrsForSave>
-// ): WcbAttrsForSave {
-// 	const base = (attr || {}) as WcbAttrsForSave;
-
-// 	return {
-// 		...base,
-// 		// General
-// 		general_sortingAndFiltering: buildSortingAndFilteringDefault(
-// 			base.general_sortingAndFiltering as any
-// 		),
-// 		general_content: buildGeneralContractDefault(base.general_content as any),
-// 		general_featuredImage: buildGeneralFeaturedImageDefault(
-// 			base.general_featuredImage as any
-// 		),
-// 		general_addToCartBtn: buildGeneralAddToCartBtnDefault(
-// 			base.general_addToCartBtn as any
-// 		) as any,
-// 		// Styles
-// 		style_layout: buildStyleLayoutDefault(base.style_layout as any),
-// 		style_border: buildStyleBorderDefault(base.style_border as any),
-// 		style_featuredImage: buildStyleFeaturedImageDefault(
-// 			base.style_featuredImage as any
-// 		),
-// 		style_saleBadge: buildStyleSaleBadgeDefault(base.style_saleBadge as any),
-// 		style_outOfStock: buildStyleOutOfStockDefault(base.style_outOfStock as any),
-// 		style_title: buildStyleTitleDefault(base.style_title as any),
-// 		style_price: buildStylePriceDefault(base.style_price as any),
-// 		style_addToCardBtn: buildStyleAddToCartBtnDefault(
-// 			base.style_addToCardBtn as any
-// 		),
-// 		style_wishlistBtn: buildStyleWishlistButtonDefault(
-// 			base.style_wishlistBtn as any
-// 		),
-//         style_quickViewBtn: buildStyleQuickViewButtonDefault(
-//             base.style_quickViewBtn as any
-//         )
-// 	};
-// }

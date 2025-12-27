@@ -14,9 +14,10 @@ export const DEFAULT_PRODUCT_LIST_LAYOUT = [
 ];
 
 /**
- * Converts innerblocks to a list of layout configs.
- *
- * @param {Object[]} innerBlocks Inner block components.
+ * Get product layout config from innerBlocks
+ * 
+ * @param innerBlocks inner blocks of the products block
+ * @returns Inner blocks config array
  */
 export const getProductLayoutConfig = (innerBlocks: any) => {
 	if (!innerBlocks || innerBlocks.length === 0) {
@@ -38,6 +39,12 @@ export const getProductLayoutConfig = (innerBlocks: any) => {
 	});
 };
 
+/**
+ * Returns the shopping cart SVG with a specified color.
+ *
+ * @param color The fill color for the SVG.
+ * @returns The SVG string with the specified color.
+ */
 export const SHOPPING_CART_SVG = (color: string) => {
 	return `<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" width="17" height="17" viewBox="0 0 17 17" id="svg50" sodipodi:docname="shopping-cart-2.svg" inkscape:version="1.0.2-2 (e86c870879, 2021-01-15)">
 				<metadata id="metadata56">
@@ -58,6 +65,12 @@ export const SHOPPING_CART_SVG = (color: string) => {
 			</svg>`
 }
 
+/**
+ * Convert SVG string to data URL
+ * 
+ * @param svgString The SVG string to convert.
+ * @returns Data URL representation of the SVG.
+ */
 export const svgToDataUrl = (svgString: string): string => {
   const encoded = encodeURIComponent(svgString)
     .replace(/'/g, '%27')

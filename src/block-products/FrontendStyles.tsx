@@ -6,6 +6,12 @@ import { getThemeDefaults } from "../utils/themeDefaults";
 
 interface Props extends WcbAttrsForSave {}
 
+/**
+ * Initialize carousel for WCB Products block
+ * 
+ * @param div div element of the block
+ * @param props peoperties of the block
+ */
 export function initCarouselForWcbProducts(div: Element, props: Props) {
 	// 1. Handle Wishlist Click
 	const handleWishlistClick = () => {
