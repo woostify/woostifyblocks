@@ -1,6 +1,6 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
-  "apiVersion": 3,
+  "apiVersion": 2,
   "name": "wcb/container",
   "version": "0.1.0",
   "title": "Container",
@@ -9,11 +9,7 @@
   "description": "Create beautiful layouts with flexbox powered container block.",
   "supports": {
     "html": false,
-    "anchor": true,
-    "align": [
-      "wide",
-      "full"
-    ]
+    "anchor": true
   },
   "textdomain": "wcb-blocks",
   "editorScript": "file:./index.js",

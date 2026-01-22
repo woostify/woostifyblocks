@@ -1,1 +1,0 @@
-{"version":3,"file":"block-map/style-index.css","mappings":";;;AACC;;IAAA;;IAAA;AAAA;;AAGA;;IAAA;;IAAA;;IAAA;;IAAA;AAAA,C","sources":["webpack://boostify-blocks/./src/block-map/style.scss"],"sourcesContent":[".wcb-map__wrap {\r\n\t@apply overflow-hidden z-10;\r\n}\r\n.wcb-map__inner {\r\n\t@apply w-full h-[400px] overflow-hidden z-10;\r\n}\r\n"],"names":[],"sourceRoot":""}

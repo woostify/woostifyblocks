@@ -1,1 +1,0 @@
-{"version":3,"file":"block-heading/style-index.css","mappings":";;;AAAA;;EAEC;AACD;;AAEA;EACC;AACD,C","sources":["webpack://boostify-blocks/./src/block-heading/style.scss"],"sourcesContent":[".wcb-heading__heading,\r\n.wcb-heading__subHeading {\r\n\tmargin: 0;\r\n}\r\n\r\n.wcb-heading__separator {\r\n\tdisplay: inline-block;\r\n}\r\n"],"names":[],"sourceRoot":""}

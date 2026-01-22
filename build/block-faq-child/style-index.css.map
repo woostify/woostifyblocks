@@ -1,1 +1,0 @@
-{"version":3,"file":"block-faq-child/style-index.css","mappings":";;;AAAA;EACC;EACA;AACD,C","sources":["webpack://boostify-blocks/./src/block-faq-child/style.scss"],"sourcesContent":[".wcb-faq-child__wrap {\r\n\twidth: 100%;\r\n\tmax-width: 100%;\r\n}\r\n"],"names":[],"sourceRoot":""}

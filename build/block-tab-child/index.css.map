@@ -1,1 +1,0 @@
-{"version":3,"file":"block-tab-child/index.css","mappings":";;;AAAA;EACC;AACD,C","sources":["webpack://boostify-blocks/./src/block-tab-child/editor.scss"],"sourcesContent":[".wp-block .wcb-tab-child__wrap {\r\n\tmax-width: 100% !important;\r\n}\r\n"],"names":[],"sourceRoot":""}

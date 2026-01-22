@@ -1,1 +1,0 @@
-{"version":3,"file":"block-buttons/index.css","mappings":";;;;;;;AACC;EACC;AAAF,C","sources":["webpack://boostify-blocks/./src/components/controls/MySpacingSizesControl/styles.scss"],"sourcesContent":[".MySpacingSizesControl {\r\n\t.components-base-control__field {\r\n\t\tmargin-bottom: 0;\r\n\t}\r\n}\r\n"],"names":[],"sourceRoot":""}

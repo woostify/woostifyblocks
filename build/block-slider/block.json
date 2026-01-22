@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "wcb/slider",
+  "version": "0.1.0",
+  "title": "Slider",
+  "category": "wcb-blocks",
+  "icon": "- wcb-block-editor-block-icon lni lni-quotation",
+  "description": "Create beautiful sliders with slider block.",
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "align": [
+      "full",
+      "wide"
+    ]
+  },
+  "textdomain": "wcb-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}
