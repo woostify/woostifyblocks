@@ -46,18 +46,18 @@ const WcbTogglePanelGeneral: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("General", "wcb")}
+			title={__("General", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<InputControl
-					label={__("TRUE STATE", "wcb")}
+					label={__("TRUE STATE", "boostify-blocks")}
 					value={trueState}
 					onChange={(nextValue) => {
 						setAttr__({ ...panelData, trueState: nextValue });
 					}}
 				/>
 				<InputControl
-					label={__("False STATE", "wcb")}
+					label={__("False STATE", "boostify-blocks")}
 					value={falseState}
 					onChange={(nextValue) => {
 						setAttr__({ ...panelData, falseState: nextValue });
@@ -65,7 +65,7 @@ const WcbTogglePanelGeneral: FC<Props> = ({
 				/>
 
 				<MyRadioGroup
-					label={__("Layout", "wcb")}
+					label={__("Layout", "boostify-blocks")}
 					value={layout}
 					onChange={(value) => {
 						setAttr__({
@@ -81,14 +81,14 @@ const WcbTogglePanelGeneral: FC<Props> = ({
 				/>
 
 				<ToggleControl
-					label={__("Required", "wcb")}
+					label={__("Required", "boostify-blocks")}
 					checked={isRequired}
 					onChange={(isChecked) => {
 						setAttr__({ ...panelData, isRequired: isChecked });
 					}}
 				/>
 				<ToggleControl
-					label={__("Default state ON", "wcb")}
+					label={__("Default state ON", "boostify-blocks")}
 					checked={isDefaultON}
 					onChange={(isChecked) => {
 						setAttr__({ ...panelData, isDefaultON: isChecked });

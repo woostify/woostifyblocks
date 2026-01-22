@@ -32,7 +32,7 @@ const WcbIconPanel_StyleBoxshadow: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Box shadow", "wcb")}
+			title={__("Box shadow", "boostify-blocks")}
 		>
 			<MyBoxShadowControl
 				boxShadowControl={panelData}

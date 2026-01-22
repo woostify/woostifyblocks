@@ -88,7 +88,7 @@ const WcbTestimonialsPanel_StyleImage: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Image", "wcb")}
+			title={__("Image", "boostify-blocks")}
 		>
 			<div className="space-y-5">
 				<MySpacingSizesControl
@@ -103,11 +103,11 @@ const WcbTestimonialsPanel_StyleImage: FC<Props> = ({
 					}}
 					value={currentImageSize || "2rem"}
 					hasResponsive
-					label={__("Image size", "wcb")}
+					label={__("Image size", "boostify-blocks")}
 				/>
 
 				<MySelect
-					label={__("Object Fit", "Wcb")}
+					label={__("Object Fit", "boostify-blocks")}
 					options={OBJECT_FIT_DEMO}
 					value={objectFit}
 					onChange={(value) => {
@@ -132,7 +132,7 @@ const WcbTestimonialsPanel_StyleImage: FC<Props> = ({
 					}}
 					label={
 						<MyLabelControl className="" hasResponsive>
-							{__("Border radius", "wcb")}
+							{__("Border radius", "boostify-blocks")}
 						</MyLabelControl>
 					}
 				/>
@@ -140,7 +140,7 @@ const WcbTestimonialsPanel_StyleImage: FC<Props> = ({
 				<BoxControl
 					label={
 						<MyLabelControl className="" hasResponsive>
-							{__("Padding", "wcb")}
+							{__("Padding", "boostify-blocks")}
 						</MyLabelControl>
 					}
 					values={currentPadding}

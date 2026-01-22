@@ -39,20 +39,20 @@ const WCBTypographyControl = (props) => {
 		{ label: "700", value: "700" },
 		{ label: "800", value: "800" },
 		{ label: "900", value: "900" },
-		{ label: __("Default", "wcb"), value: "" },
-		{ label: __("Normal", "wcb"), value: "normal" },
-		{ label: __("Bold", "wcb"), value: "bold" },
+		{ label: __("Default", "boostify-blocks"), value: "" },
+		{ label: __("Normal", "boostify-blocks"), value: "normal" },
+		{ label: __("Bold", "boostify-blocks"), value: "bold" },
 	];
 
 	const textTransformList = [
-		{ label: __("Default", "wcb"), value: "" },
-		{ label: __("Uppercase", "wcb"), value: "uppercase" },
-		{ label: __("Lowercase", "wcb"), value: "lowercase" },
+		{ label: __("Default", "boostify-blocks"), value: "" },
+		{ label: __("Uppercase", "boostify-blocks"), value: "uppercase" },
+		{ label: __("Lowercase", "boostify-blocks"), value: "lowercase" },
 		{
-			label: __("Capitalize", "wcb"),
+			label: __("Capitalize", "boostify-blocks"),
 			value: "capitalize",
 		},
-		{ label: __("Normal", "wcb"), value: "none" },
+		{ label: __("Normal", "boostify-blocks"), value: "none" },
 	];
 
 	const { onChangeFontSize } = props;
@@ -65,7 +65,7 @@ const WCBTypographyControl = (props) => {
 			/>
 			<ResponsiveDisplay>
 				<WoostifyBaseControl
-					label={__("Size", "wcb")}
+					label={__("Size", "boostify-blocks")}
 					responsive={["desktop", "tablet", "mobile"]}
 					units={props.fontSizeUnits || ["px", "em"]}
 					selectedUnit={props.fontSizeUnit || "px"}
@@ -85,7 +85,7 @@ const WCBTypographyControl = (props) => {
 			</ResponsiveDisplay>
 			<ResponsiveDisplay device="tablet">
 				<WoostifyBaseControl
-					label={__("Size", "wcb")}
+					label={__("Size", "boostify-blocks")}
 					responsive={["desktop", "tablet", "mobile"]}
 					units={props.fontSizeUnits || ["px", "em"]}
 					selectedUnit={props.fontSizeUnitTablet || "px"}
@@ -105,7 +105,7 @@ const WCBTypographyControl = (props) => {
 			</ResponsiveDisplay>
 			<ResponsiveDisplay device="mobile">
 				<WoostifyBaseControl
-					label={__("Size", "wcb")}
+					label={__("Size", "boostify-blocks")}
 					responsive={["desktop", "tablet", "mobile"]}
 					units={props.fontSizeUnits || ["px", "em"]}
 					selectedUnit={props.fontSizeUnitMobile || "px"}
@@ -125,7 +125,7 @@ const WCBTypographyControl = (props) => {
 			</ResponsiveDisplay>
 			<SelectControl
 				value={props.fontWeight || ""}
-				label={__("Weight", "wcb")}
+				label={__("Weight", "boostify-blocks")}
 				options={fontWeightList}
 				onChange={(val) => {
 					setSelectedFontWeight(val);
@@ -134,7 +134,7 @@ const WCBTypographyControl = (props) => {
 			/>
 			<SelectControl
 				value={props.textTransform || ""}
-				label={__("Transform", "wcb")}
+				label={__("Transform", "boostify-blocks")}
 				options={textTransformList}
 				onChange={(val) => {
 					setSelectedTextTransform(val);
@@ -143,19 +143,19 @@ const WCBTypographyControl = (props) => {
 			/>
 			<SelectControl
 				value={props.fontStyle || ""}
-				label={__("Style", "wcb")}
+				label={__("Style", "boostify-blocks")}
 				options={[
-					{ label: __("Default", "wcb"), value: "" },
+					{ label: __("Default", "boostify-blocks"), value: "" },
 					{
-						label: __("Normal", "wcb"),
+						label: __("Normal", "boostify-blocks"),
 						value: "normal",
 					},
 					{
-						label: __("Italic", "wcb"),
+						label: __("Italic", "boostify-blocks"),
 						value: "italic",
 					},
 					{
-						label: __("Oblique", "wcb"),
+						label: __("Oblique", "boostify-blocks"),
 						value: "oblique",
 					},
 				]}
@@ -166,7 +166,7 @@ const WCBTypographyControl = (props) => {
 			/>
 			<ResponsiveDisplay>
 				<WoostifyBaseControl
-					label={__("Line-Height", "wcb")}
+					label={__("Line-Height", "boostify-blocks")}
 					responsive={["desktop", "tablet", "mobile"]}
 					units={props.fontSizeUnits || ["px", "em"]}
 					selectedUnit={props.lineHeightUnit || "px"}
@@ -186,7 +186,7 @@ const WCBTypographyControl = (props) => {
 			</ResponsiveDisplay>
 			<ResponsiveDisplay device="tablet">
 				<WoostifyBaseControl
-					label={__("Line-Height", "wcb")}
+					label={__("Line-Height", "boostify-blocks")}
 					responsive={["desktop", "tablet", "mobile"]}
 					units={props.fontSizeUnits || ["px", "em"]}
 					selectedUnit={props.lineHeightUnitTablet || "px"}
@@ -206,7 +206,7 @@ const WCBTypographyControl = (props) => {
 			</ResponsiveDisplay>
 			<ResponsiveDisplay device="mobile">
 				<WoostifyBaseControl
-					label={__("Line-Height", "wcb")}
+					label={__("Line-Height", "boostify-blocks")}
 					responsive={["desktop", "tablet", "mobile"]}
 					units={props.fontSizeUnits || ["px", "em"]}
 					selectedUnit={props.lineHeightUnitMobile || "px"}
@@ -226,7 +226,7 @@ const WCBTypographyControl = (props) => {
 			</ResponsiveDisplay>
 			<ResponsiveDisplay>
 				<WoostifyBaseControl
-					label={__("Letter Spacing", "wcb")}
+					label={__("Letter Spacing", "boostify-blocks")}
 					responsive={["desktop", "tablet", "mobile"]}
 				>
 					<RangeControl
@@ -244,7 +244,7 @@ const WCBTypographyControl = (props) => {
 			</ResponsiveDisplay>
 			<ResponsiveDisplay device="tablet">
 				<WoostifyBaseControl
-					label={__("Letter Spacing", "wcb")}
+					label={__("Letter Spacing", "boostify-blocks")}
 					responsive={["desktop", "tablet", "mobile"]}
 				>
 					<RangeControl
@@ -262,7 +262,7 @@ const WCBTypographyControl = (props) => {
 			</ResponsiveDisplay>
 			<ResponsiveDisplay device="mobile">
 				<WoostifyBaseControl
-					label={__("Letter Spacing", "wcb")}
+					label={__("Letter Spacing", "boostify-blocks")}
 					responsive={["desktop", "tablet", "mobile"]}
 				>
 					<RangeControl

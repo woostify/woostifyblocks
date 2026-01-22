@@ -255,7 +255,7 @@ const WcbIconListPanel_StyleIcons: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Icon", "wcb")}
+			title={__("Icon", "boostify-blocks")}
 		>
 			<div className="space-y-5">
 				<MySpacingSizesControl
@@ -269,7 +269,7 @@ const WcbIconListPanel_StyleIcons: FC<Props> = ({
 						});
 					}}
 					value={currentIconSize || ""}
-					label={__("Icon size", "wcb")}
+					label={__("Icon size", "boostify-blocks")}
 					hasResponsive
 				/>
 
@@ -290,7 +290,7 @@ const WcbIconListPanel_StyleIcons: FC<Props> = ({
 						});
 					}}
 					color={hoverColor}
-					label={__("Hover color", "wcb")}
+					label={__("Hover color", "boostify-blocks")}
 				/>
 
 				<div className="space-y-4">

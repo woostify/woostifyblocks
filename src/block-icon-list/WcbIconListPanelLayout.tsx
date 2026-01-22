@@ -80,11 +80,11 @@ const WcbIconListPanelLayout: FC<Props> = ({
             initialOpen={initialOpen}
             onToggle={onToggle}
             opened={opened}
-            title={__("Content", "wcb")}
+            title={__("Content", "boostify-blocks")}
         >
             <div className="space-y-5">
                 <MySelect
-                    label={__("Layout", "Wcb")}
+                    label={__("Layout", "boostify-blocks")}
                     options={PLANS_DEMO}
                     value={layout}
                     onChange={(value) => {
@@ -101,7 +101,7 @@ const WcbIconListPanelLayout: FC<Props> = ({
                 />
 
                 <ToggleControl
-                    label={__("Enable title", "wcb")}
+                    label={__("Enable title", "boostify-blocks")}
                     checked={enableTitle}
                     className="mb-0"
                     onChange={(checked) => {

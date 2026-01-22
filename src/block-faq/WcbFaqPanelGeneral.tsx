@@ -124,12 +124,12 @@ const WcbFaqPanelGeneral: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("General", "wcb")}
+			title={__("General", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<MyRadioGroup
 					hasResponsive={false}
-					label={__("Layout", "wcb")}
+					label={__("Layout", "boostify-blocks")}
 					onChange={(value) => {
 						setAttr__({
 							...panelData,
@@ -163,7 +163,7 @@ const WcbFaqPanelGeneral: FC<Props> = ({
 					<RangeControl
 						label={
 							<MyLabelControl hasResponsive className="">
-								{__("Columns", "wcb")}
+								{__("Columns", "boostify-blocks")}
 							</MyLabelControl>
 						}
 						value={COLUMNS || 2}

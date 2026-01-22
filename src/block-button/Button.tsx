@@ -72,14 +72,14 @@ const Button: FC<Props> = forwardRef((props, ref) => {
 						value={content}
 						allowedFormats={["core/bold", "core/italic"]}
 						onChange={onChangeText}
-						placeholder={__("Button", "wcb")}
+						placeholder={__("Button", "boostify-blocks")}
 					/>
 				) : (
 					<RichText.Content
 						tagName="div"
 						className={`wcb-button__text ${isHiddenText ? "sr-only" : ""}`}
 						value={content}
-						placeholder={__("Button", "wcb")}
+						placeholder={__("Button", "boostify-blocks")}
 					/>
 				)}
 				{iconPosition === "right" && renderIcon()}

@@ -85,12 +85,12 @@ const WcbFormPanelGeneral: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("General", "wcb")}
+			title={__("General", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<ToggleControl
 					checked={isShowLabel}
-					label={__("Display label", "wcb")}
+					label={__("Display label", "boostify-blocks")}
 					onChange={(e) => {
 						setAttr__({
 							...panelData,
@@ -142,10 +142,10 @@ const WcbFormPanelGeneral: FC<Props> = ({
 				{confirmationType === "message" && (
 					<>
 						<TextareaControl
-							label={__("SUCCESS MESSAGE TEXT", "wcb")}
+							label={__("SUCCESS MESSAGE TEXT", "boostify-blocks")}
 							help={__(
 								"Enter a message you want to display after successfull form submission",
-								"wcb"
+								"boostify-blocks"
 							)}
 							value={successMessageText}
 							onChange={(value) => {
@@ -156,10 +156,10 @@ const WcbFormPanelGeneral: FC<Props> = ({
 							}}
 						/>
 						<TextareaControl
-							label={__("ERROR MESSAGE TEXT", "wcb")}
+							label={__("ERROR MESSAGE TEXT", "boostify-blocks")}
 							help={__(
 								"Enter a message you want to display after unsuccessfull form submission",
-								"wcb"
+								"boostify-blocks"
 							)}
 							value={errorMessageText}
 							onChange={(value) => {
@@ -174,7 +174,7 @@ const WcbFormPanelGeneral: FC<Props> = ({
 
 				{confirmationType === "url-text" && (
 					<InputControl
-						label={__("SUCCESS REDIRECT URL", "wcb")}
+						label={__("SUCCESS REDIRECT URL", "boostify-blocks")}
 						value={successRedirectUrl}
 						onChange={(value) => {
 							setAttr__({

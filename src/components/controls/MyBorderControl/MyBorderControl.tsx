@@ -100,14 +100,14 @@ const MyBorderControl: FC<Props> = ({
 			/>
 
 			<MyColorPicker
-				label={__("Hover border color", "wcb")}
+				label={__("Hover border color", "boostify-blocks")}
 				onChange={handleChangeBorderHoverColor}
 				color={hoverColorProps}
 			/>
 
 			<div className="MyBorderControl__BorderRadiusControl">
 				<MyLabelControl className="mb-2" hasResponsive>
-					{__("Border radius", "wcb")}
+					{__("Border radius", "boostify-blocks")}
 				</MyLabelControl>
 				<BorderRadiusControl
 					values={RADIUS}
@@ -117,7 +117,7 @@ const MyBorderControl: FC<Props> = ({
 					label={""}
 					// label={
 					// 	<MyLabelControl className="" hasResponsive>
-					// 		{__("Border radius", "wcb")}
+					// 		{__("Border radius", "boostify-blocks")}
 					// 	</MyLabelControl>
 					// }
 				/>

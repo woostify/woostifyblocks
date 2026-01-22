@@ -43,11 +43,11 @@ const WcbTestimonialsPanel_StyleContent: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Content", "wcb")}
+			title={__("Content", "boostify-blocks")}
 		>
 			<div className="space-y-5">
 				<MyColorPicker
-					label={__("Color", "wcb")}
+					label={__("Color", "boostify-blocks")}
 					onChange={(value) => {
 						setAttr__({
 							...panelData,
@@ -79,7 +79,7 @@ const WcbTestimonialsPanel_StyleContent: FC<Props> = ({
 						});
 					}}
 					value={currentMarginBottom || ""}
-					label={__("Margin bottom", "wcb")}
+					label={__("Margin bottom", "boostify-blocks")}
 				/>
 			</div>
 		</PanelBody>

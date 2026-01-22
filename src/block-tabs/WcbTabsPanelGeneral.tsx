@@ -114,10 +114,10 @@ const WcbTabsPanelGeneral: FC<Props> = ({
 
 
     return (
-        <PanelBody initialOpen={initialOpen} onToggle={onToggle} opened={opened} title={__("General", "wcb")}>
+        <PanelBody initialOpen={initialOpen} onToggle={onToggle} opened={opened} title={__("General", "boostify-blocks")}>
             <div className="space-y-5">
                 <MySelect
-                    label={__("Style", "Wcb")}
+                    label={__("Style", "boostify-blocks")}
                     options={filteredStyleOptions}
                     value={style}
                     onChange={(value) => {
@@ -129,7 +129,7 @@ const WcbTabsPanelGeneral: FC<Props> = ({
                 />
                 <MyRadioGroup
                     hasResponsive={false}
-                    label={__("Layout", "wcb")}
+                    label={__("Layout", "boostify-blocks")}
                     onChange={(value) => setAttr__({ ...panelData, layout: value as WCB_TAGS_PANEL_GENERAL["layout"] })}
                     value={layout}
                     plans={PLANS_DEMO}
@@ -149,7 +149,7 @@ const WcbTabsPanelGeneral: FC<Props> = ({
                 />
                 {layout === "grid" && (
                     <RangeControl
-                        label={<MyLabelControl hasResponsive>{__("Columns", "wcb")}</MyLabelControl>}
+                        label={<MyLabelControl hasResponsive>{__("Columns", "boostify-blocks")}</MyLabelControl>}
                         value={COLUMNS || 2}
                         onChange={(value) => setAttr__({ ...panelData, columns: { ...columns, [deviceType]: value } })}
                         min={1}

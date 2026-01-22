@@ -59,7 +59,7 @@ const WcbTeamPanelLayout: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Layout", "wcb")}
+			title={__("Layout", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<MyTextAlignControl

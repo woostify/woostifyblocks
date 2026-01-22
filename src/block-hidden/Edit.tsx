@@ -97,7 +97,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 				name={UNIQUE_NAME}
 			/>
 			<HelpText>
-				{__("This field will be hidden in the front end.", "wcb")}
+				{__("This field will be hidden in the front end.", "boostify-blocks")}
 			</HelpText>
 		</div>
 		// </CacheProvider>

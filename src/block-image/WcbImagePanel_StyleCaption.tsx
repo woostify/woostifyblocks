@@ -67,7 +67,7 @@ const WcbImagePanel_StyleCaption: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Caption", "wcb")}
+			title={__("Caption", "boostify-blocks")}
 		>
 			<div className="space-y-2.5">
 				<MyTypographyControl
@@ -93,7 +93,7 @@ const WcbImagePanel_StyleCaption: FC<Props> = ({
 				<BoxControl
 					label={
 						<MyLabelControl hasResponsive className="">
-							{__("Margin", "wcb")}
+							{__("Margin", "boostify-blocks")}
 						</MyLabelControl>
 					}
 					values={currentMargin}

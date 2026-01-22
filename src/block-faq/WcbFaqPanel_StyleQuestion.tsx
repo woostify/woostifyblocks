@@ -51,8 +51,8 @@ export const PANEL_COLOR_TABS: {
 	name: TabHere;
 	title: string;
 }[] = [
-	{ name: "Normal", title: __("Normal", "wcb") },
-	{ name: "Hover", title: __("Hover/Active", "wcb") },
+	{ name: "Normal", title: __("Normal", "boostify-blocks") },
+	{ name: "Hover", title: __("Hover/Active", "boostify-blocks") },
 ];
 
 interface Props
@@ -88,14 +88,14 @@ const WcbFaqPanel_StyleQuestion: FC<Props> = ({
 			return (
 				<div className="space-y-4">
 					<MyColorPicker
-						label={__("Color", "wcb")}
+						label={__("Color", "boostify-blocks")}
 						onChange={(value) => {
 							setAttr__({ ...panelData, color: value });
 						}}
 						color={color}
 					/>
 					<MyColorPicker
-						label={__("Background color", "wcb")}
+						label={__("Background color", "boostify-blocks")}
 						onChange={(value) => {
 							setAttr__({ ...panelData, backgroundColor: value });
 						}}
@@ -108,14 +108,14 @@ const WcbFaqPanel_StyleQuestion: FC<Props> = ({
 			return (
 				<div className="space-y-4">
 					<MyColorPicker
-						label={__("Color", "wcb")}
+						label={__("Color", "boostify-blocks")}
 						onChange={(value) => {
 							setAttr__({ ...panelData, colorHover: value });
 						}}
 						color={colorHover}
 					/>
 					<MyColorPicker
-						label={__("Background color", "wcb")}
+						label={__("Background color", "boostify-blocks")}
 						onChange={(value) => {
 							setAttr__({ ...panelData, backgroundColorHover: value });
 						}}
@@ -132,7 +132,7 @@ const WcbFaqPanel_StyleQuestion: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Question", "wcb")}
+			title={__("Question", "boostify-blocks")}
 		>
 			<div className={"space-y-3.5"}>
 				<MyTypographyControl
@@ -142,13 +142,13 @@ const WcbFaqPanel_StyleQuestion: FC<Props> = ({
 					}}
 				/>
 
-				<MyDisclosure defaultOpen label={__("Colors & Padding", "wcb")}>
+				<MyDisclosure defaultOpen label={__("Colors & Padding", "boostify-blocks")}>
 					<MyTabPanel tabs={PANEL_COLOR_TABS}>{renderColorTab}</MyTabPanel>
 
 					<BoxControl
 						label={
 							<MyLabelControl className="" hasResponsive>
-								{__("Padding", "wcb")}
+								{__("Padding", "boostify-blocks")}
 							</MyLabelControl>
 						}
 						values={currentPadding}

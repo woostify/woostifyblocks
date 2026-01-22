@@ -80,11 +80,11 @@ const WcbTabsPanelTabTitle: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Tab title", "wcb")}
+			title={__("Tab title", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<MySelect
-					label={__("Init Open tab", "Wcb")}
+					label={__("Init Open tab", "boostify-blocks")}
 					options={OPTION_INIT_OPEN_TAB_DEMO}
 					value={initOpenTab}
 					onChange={(value) => {
@@ -97,7 +97,7 @@ const WcbTabsPanelTabTitle: FC<Props> = ({
 
 				<MyRadioGroup
 					hasResponsive={false}
-					label={__("Tab Alignment", "wcb")}
+					label={__("Tab Alignment", "boostify-blocks")}
 					onChange={(value) => {
 						setAttr__({
 							...panelData,
@@ -109,7 +109,7 @@ const WcbTabsPanelTabTitle: FC<Props> = ({
 				/>
 				<MyRadioGroup
 					hasResponsive={false}
-					label={__("Text Alignment", "wcb")}
+					label={__("Text Alignment", "boostify-blocks")}
 					onChange={(value) => {
 						setAttr__({
 							...panelData,
@@ -142,7 +142,7 @@ const WcbTabsPanelTabTitle: FC<Props> = ({
 
 						<MyRadioGroup
 							hasResponsive={false}
-							label={__("Icon Position", "wcb")}
+							label={__("Icon Position", "boostify-blocks")}
 							onChange={(value) => {
 								setAttr__({
 									...panelData,

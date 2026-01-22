@@ -49,11 +49,11 @@ const WcbProductsPanel_StyleRating: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Rating", "wcb")}
+			title={__("Rating", "boostify-blocks")}
 		>
 			<div className="space-y-2.5">
 				<MyColorPicker
-					label={__("Color", "wcb")}
+					label={__("Color", "boostify-blocks")}
 					onChange={(value) => {
 						setAttr__({
 							...panelData,
@@ -75,7 +75,7 @@ const WcbProductsPanel_StyleRating: FC<Props> = ({
 					}}
 					value={MARGIN_BOTTOM || ""}
 					units={MY_GAP_UNITS}
-					label={__("Margin bottom", "wcb")}
+					label={__("Margin bottom", "boostify-blocks")}
 					hasResponsive
 				/>
 			</div>

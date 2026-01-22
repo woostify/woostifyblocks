@@ -39,11 +39,11 @@ const WcbTestimonialsPanel_StyleCompany: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Company", "wcb")}
+			title={__("Company", "boostify-blocks")}
 		>
 			<div className="space-y-5">
 				<MyColorPicker
-					label={__("Color", "wcb")}
+					label={__("Color", "boostify-blocks")}
 					onChange={(value) => {
 						setAttr__({
 							...panelData,

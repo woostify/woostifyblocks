@@ -47,7 +47,7 @@ const AdvancePanelCommon: FC<Props> = ({
 					opened={
 						tabAdvancesIsPanelOpen === "MyMyMotionEffectControl" || undefined
 					}
-					title={__("Motion Effect", "wcb")}
+					title={__("Motion Effect", "boostify-blocks")}
 				>
 					<MyMyMotionEffectControl
 						data={advance_motionEffect}
@@ -59,7 +59,7 @@ const AdvancePanelCommon: FC<Props> = ({
 				onToggle={() => handleTogglePanel("Advances", "Responsive Conditions")}
 				initialOpen={tabAdvancesIsPanelOpen === "Responsive Conditions"}
 				opened={tabAdvancesIsPanelOpen === "Responsive Conditions" || undefined}
-				title={__("Responsive Conditions", "wcb")}
+				title={__("Responsive Conditions", "boostify-blocks")}
 			>
 				<MyResponsiveConditionControl
 					responsiveConditionControl={advance_responsiveCondition}
@@ -72,7 +72,7 @@ const AdvancePanelCommon: FC<Props> = ({
 				onToggle={() => handleTogglePanel("Advances", "Z-Index")}
 				initialOpen={tabAdvancesIsPanelOpen === "Z-Index"}
 				opened={tabAdvancesIsPanelOpen === "Z-Index" || undefined}
-				title={__("Z-Index", "wcb")}
+				title={__("Z-Index", "boostify-blocks")}
 			>
 				<MyZIndexControl
 					zIndexControl={advance_zIndex}

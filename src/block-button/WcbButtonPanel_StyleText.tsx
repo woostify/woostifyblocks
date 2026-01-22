@@ -63,7 +63,7 @@ const WcbButtonPanel_StyleText: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Text", "wcb")}
+			title={__("Text", "boostify-blocks")}
 		>
 			<div className={"space-y-4"}>
 				<MyTypographyControl
@@ -76,13 +76,13 @@ const WcbButtonPanel_StyleText: FC<Props> = ({
 					}}
 				/>
 
-				<MyDisclosure defaultOpen label={__("Colors", "wcb")}>
+				<MyDisclosure defaultOpen label={__("Colors", "boostify-blocks")}>
 					<MyColorPicker
 						onChange={(color) => {
 							setAttr__({ ...panelData, color });
 						}}
 						color={color}
-						label={__("Color", "wcb")}
+						label={__("Color", "boostify-blocks")}
 					/>
 
 					<MyColorPicker
@@ -90,7 +90,7 @@ const WcbButtonPanel_StyleText: FC<Props> = ({
 							setAttr__({ ...panelData, hoverColor: color });
 						}}
 						color={hoverColor}
-						label={__("Hover color", "wcb")}
+						label={__("Hover color", "boostify-blocks")}
 					/>
 				</MyDisclosure>
 			</div>

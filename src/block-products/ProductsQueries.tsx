@@ -10,7 +10,7 @@ const ProductsQueries = () => {
 	const handleAjaxGetProducts = () => {
 		setLoading(true);
 		const data = {
-			action: "wcb_get_product_filters",
+			action: "boostify_blocks_get_product_filters",
 			data: "ProductsQueries",
 		};
 		jQuery.post(ajaxurl, data, function (response) {

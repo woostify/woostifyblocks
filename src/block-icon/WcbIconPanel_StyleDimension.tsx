@@ -49,7 +49,7 @@ const WcbIconBoxPanel_StyleDimension: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Dimension", "wcb")}
+			title={__("Dimension", "boostify-blocks")}
 		>
 			<div className="space-y-5">
 				<MyDimensionsNoGapControl

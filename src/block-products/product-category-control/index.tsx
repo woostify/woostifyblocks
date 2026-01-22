@@ -26,15 +26,15 @@ export const PRODUCT_CATS_OPERATOR_OPTIONS: {
 	value: ProductTaxOperator;
 }[] = [
 	{
-		label: __("Any selected categories", "wcb"),
+		label: __("Any selected categories", "boostify-blocks"),
 		value: "any",
 	},
 	{
-		label: __("All selected categories", "wcb"),
+		label: __("All selected categories", "boostify-blocks"),
 		value: "all",
 	},
 	{
-		label: __("Not in all selected categories", "wcb"),
+		label: __("Not in all selected categories", "boostify-blocks"),
 		value: "not_in",
 	},
 ];
@@ -96,7 +96,7 @@ const ProductCategoryControl: FC<Props> = ({
 						"%1$s, has %2$d review",
 						"%1$s, has %2$d reviews",
 						item.review_count,
-						"wcb"
+						"boostify-blocks"
 					),
 					accessibleName,
 					item.review_count
@@ -107,7 +107,7 @@ const ProductCategoryControl: FC<Props> = ({
 						"%1$s, has %2$d product",
 						"%1$s, has %2$d products",
 						item.count,
-						"wcb"
+						"boostify-blocks"
 					),
 					accessibleName,
 					item.count
@@ -116,12 +116,12 @@ const ProductCategoryControl: FC<Props> = ({
 		const listItemCountLabel = showReviewCount
 			? sprintf(
 					/* translators: %d is the count of reviews. */
-					_n("%d review", "%d reviews", item.review_count, "wcb"),
+					_n("%d review", "%d reviews", item.review_count, "boostify-blocks"),
 					item.review_count
 			  )
 			: sprintf(
 					/* translators: %d is the count of products. */
-					_n("%d product", "%d products", item.count, "wcb"),
+					_n("%d product", "%d products", item.count, "boostify-blocks"),
 					item.count
 			  );
 		return (
@@ -142,17 +142,17 @@ const ProductCategoryControl: FC<Props> = ({
 	};
 
 	const messages = {
-		clear: __("Clear all product categories", "wcb"),
-		list: __("Product Categories", "wcb"),
-		noItems: __("Your store doesn't have any product categories.", "wcb"),
-		search: __("Search for product categories", "wcb"),
+		clear: __("Clear all product categories", "boostify-blocks"),
+		list: __("Product Categories", "boostify-blocks"),
+		noItems: __("Your store doesn't have any product categories.", "boostify-blocks"),
+		search: __("Search for product categories", "boostify-blocks"),
 		selected: (n) =>
 			sprintf(
 				/* translators: %d is the count of selected categories. */
-				_n("%d category selected", "%d categories selected", n, "wcb"),
+				_n("%d category selected", "%d categories selected", n, "boostify-blocks"),
 				n
 			),
-		updated: __("Category search results updated.", "wcb"),
+		updated: __("Category search results updated.", "boostify-blocks"),
 	};
 
 	if (error) {
@@ -184,8 +184,8 @@ const ProductCategoryControl: FC<Props> = ({
 				<div hidden={selected.length < 1}>
 					<SelectControl
 						className="woocommerce-product-categories__operator"
-						label={__("Display products matching", "wcb")}
-						help={__("Select the operator of the category items.", "wcb")}
+						label={__("Display products matching", "boostify-blocks")}
+						help={__("Select the operator of the category items.", "boostify-blocks")}
 						value={operator}
 						onChange={onOperatorChange}
 						options={PRODUCT_CATS_OPERATOR_OPTIONS}

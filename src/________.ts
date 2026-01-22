@@ -20,6 +20,7 @@ declare global {
 	var wcbFrontendAjaxObject: {
 		ajaxurl: string;
 		homeUrl: string;
+		nonce: string;
 	};
 	var wcbLayoutGlobalSettings: Wcb_theme_layout_global_settings;
 }

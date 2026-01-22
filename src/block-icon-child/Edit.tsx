@@ -104,12 +104,12 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 						/>
 
 						<PanelBody
-							title={__("Link settings", "wcb")}
+							title={__("Link settings", "boostify-blocks")}
 							initialOpen={tabGeneralIsPanelOpen === "Link"}
 							onToggle={() => handleTogglePanel("General", "Link")}
 						>
 							<div className="space-y-5">
-								<MyLabelControl className="mb-0">{__("Link", "wcb")}</MyLabelControl>
+								<MyLabelControl className="mb-0">{__("Link", "boostify-blocks")}</MyLabelControl>
 
 								<LinkControl
 									className="WcbButtonPanelContent__inline-link-input"
@@ -131,7 +131,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								/>
 
 								<ToggleControl
-									label={__("Open in new tab", "wcb")}
+									label={__("Open in new tab", "boostify-blocks")}
 									checked={openInNewWindow}
 									onChange={(checked) => {
 										setAttributes({ openInNewWindow: checked });
@@ -139,7 +139,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 								/>
 
 								<ToggleControl
-									label={__("Add nofollow", "wcb")}
+									label={__("Add nofollow", "boostify-blocks")}
 									checked={addNofollowToLink}
 									onChange={(checked) => {
 										setAttributes({ addNofollowToLink: checked });

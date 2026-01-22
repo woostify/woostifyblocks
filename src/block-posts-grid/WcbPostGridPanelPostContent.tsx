@@ -36,11 +36,11 @@ const WcbPostGridPanelPostContent: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Post content settings", "wcb")}
+			title={__("Post content settings", "boostify-blocks")}
 		>
 			<div className="space-y-5">
 				<ToggleControl
-					label={__("Post content", "wcb")}
+					label={__("Post content", "boostify-blocks")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowPostContent: checked })
 					}
@@ -67,7 +67,7 @@ const WcbPostGridPanelPostContent: FC<Props> = ({
 
 				{isShowPostContent && contentType === "excerpt" ? (
 					<RangeControl
-						label={__("MAX NUMBER OF WORDS IN EXCERPT", "wcb")}
+						label={__("MAX NUMBER OF WORDS IN EXCERPT", "boostify-blocks")}
 						value={excerptWordsNumber}
 						onChange={(e) => {
 							setAttr__({ ...panelData, excerptWordsNumber: e || 1 });

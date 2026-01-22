@@ -1,4 +1,25 @@
-.wcb-select__wrap label {-webkit-user-select: none;-moz-user-select: none;user-select: none
-}.wcb-select__option {display: inline-flex;align-items: center
-}.wcb-select__option-label {margin-left: 0.5rem
+/*!****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/block-select/style.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************/
+.wcb-select__wrap label {
+
+    -webkit-user-select: none;
+
+       -moz-user-select: none;
+
+            user-select: none
 }
+
+.wcb-select__option {
+
+    display: inline-flex;
+
+    align-items: center
+}
+
+.wcb-select__option-label {
+
+    margin-left: 0.5rem
+}
+
+/*# sourceMappingURL=style-index.css.map*/

@@ -102,7 +102,7 @@ const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 					tabStylesIsPanelOpen === "first"
 				}
 				opened={tabStylesIsPanelOpen === "Background" || undefined}
-				title={__("Background", "wcb")}
+				title={__("Background", "boostify-blocks")}
 			>
 				<MyBackgroundControl
 					backgroundControl={attributes.styles_background}
@@ -118,7 +118,7 @@ const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 		return (
 			<PanelBody
 				initialOpen={tabStylesIsPanelOpen === "Color"}
-				title={__("Color", "wcb")}
+				title={__("Color", "boostify-blocks")}
 				onToggle={() => handleTogglePanel("Styles", "Color")}
 				opened={tabStylesIsPanelOpen === "Styles" || undefined}
 			>
@@ -136,7 +136,7 @@ const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 				onToggle={() => handleTogglePanel("Styles", "Border")}
 				initialOpen={tabStylesIsPanelOpen === "Border"}
 				opened={tabStylesIsPanelOpen === "Border" || undefined}
-				title={__("Border", "wcb")}
+				title={__("Border", "boostify-blocks")}
 			>
 				<MyBorderControl
 					borderControl={attributes.styles_border}
@@ -152,7 +152,7 @@ const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 				onToggle={() => handleTogglePanel("Styles", "Box Shadow")}
 				initialOpen={tabStylesIsPanelOpen === "Box Shadow"}
 				opened={tabStylesIsPanelOpen === "Box Shadow" || undefined}
-				title={__("Box Shadow", "wcb")}
+				title={__("Box Shadow", "boostify-blocks")}
 			>
 				<MyBoxShadowControl
 					boxShadowControl={attributes.styles_boxShadow}
@@ -170,13 +170,12 @@ const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 				onToggle={() => handleTogglePanel("Styles", "Dimension")}
 				initialOpen={tabStylesIsPanelOpen === "Dimension"}
 				opened={tabStylesIsPanelOpen === "Dimension" || undefined}
-				title={__("Dimension", "wcb")}
+				title={__("Dimension", "boostify-blocks")}
 			>
 				<MyDimensionsControl
 					dimensionControl={attributes.styles_dimensions}
-					setAttrs__dimensions={(data) => {
-							setAttributes({ styles_dimensions: data })
-						}
+					setAttrs__dimensions={(data) =>
+						setAttributes({ styles_dimensions: data })
 					}
 				/>
 			</PanelBody>
@@ -189,7 +188,7 @@ const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 				return (
 					<>
 						<PanelBody
-							title={__("Container", "wcb")}
+							title={__("Container", "boostify-blocks")}
 							onToggle={() => handleTogglePanel("General", "Container", true)}
 							initialOpen={
 								tabGeneralIsPanelOpen === "Container" ||
@@ -221,7 +220,7 @@ const ContainerEdit: FC<ContainerEditProps<BlockWCBContainerAttrs>> = (
 							onToggle={() => handleTogglePanel("General", "Flex Properties")}
 							initialOpen={tabGeneralIsPanelOpen === "Flex Properties"}
 							opened={tabGeneralIsPanelOpen === "Flex Properties" || undefined}
-							title={__("Flex Properties", "wcb")}
+							title={__("Flex Properties", "boostify-blocks")}
 						>
 							<MyFlexPropertiesControl
 								flexPropertiesControl={attributes.general_flexProperties}

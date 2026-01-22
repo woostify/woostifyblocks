@@ -57,12 +57,12 @@ const WcbProductsPanel_StyleFeaturedImage: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Product image", "wcb")}
+			title={__("Product image", "boostify-blocks")}
 		>
 			<div className="space-y-5">
 				{/* {imagePosition === "background" && (
 					<MyColorPicker
-						label={__("Background overlay", "wcb")}
+						label={__("Background overlay", "boostify-blocks")}
 						onChange={(color) => {
 							setAttr__({
 								...panelData,
@@ -98,7 +98,7 @@ const WcbProductsPanel_StyleFeaturedImage: FC<Props> = ({
 							}}
 							value={MARGIN_BOTTOM || ""}
 							units={MY_GAP_UNITS}
-							label={__("Margin bottom", "wcb")}
+							label={__("Margin bottom", "boostify-blocks")}
 							hasResponsive
 							className="flex-col space-y-2"
 						/>

@@ -23,7 +23,7 @@ interface Props {
 
 const MyUnitControl: FC<Props> = ({
 	className = "",
-	label = __("Column Gap", "wcb"),
+	label = __("Column Gap", "boostify-blocks"),
 	hasResponsive,
 	onChange,
 	value,

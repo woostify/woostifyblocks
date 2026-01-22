@@ -46,7 +46,7 @@ const WcbHeadingPanelDimension: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Dimension", "wcb")}
+			title={__("Dimension", "boostify-blocks")}
 		>
 			<MyDimensionsNoGapControl
 				dimensionControl={dimension}

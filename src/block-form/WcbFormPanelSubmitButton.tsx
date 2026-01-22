@@ -68,7 +68,7 @@ const WcbFormPanelSubmitButton: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Submit button", "wcb")}
+			title={__("Submit button", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<MyRadioGroup

@@ -15,7 +15,7 @@ export interface WCB_PRODUCTS_PANEL_PAGINATION {
 
 export const WCB_PRODUCTS_PANEL_PAGINATION_DEMO: WCB_PRODUCTS_PANEL_PAGINATION =
 	{
-		isShowPagination: true,
+		isShowPagination: false,
 		pageLimit: 0,
 		previousText: "",
 		nextText: "",
@@ -95,7 +95,7 @@ const WcbProductsPanelPagination: FC<Props> = ({
 				<InputControl
 					value={panelData.previousText}
 					label={__("Previous text", "wcb")}
-					onChange={(nextValue) =>
+					onChange={(nextValue: any) =>
 						setAttr__({ ...panelData, previousText: nextValue })
 					}
 				/>
@@ -103,7 +103,7 @@ const WcbProductsPanelPagination: FC<Props> = ({
 				<InputControl
 					value={panelData.nextText}
 					label={__("Next text", "wcb")}
-					onChange={(nextValue) =>
+					onChange={(nextValue: any) =>
 						setAttr__({ ...panelData, nextText: nextValue })
 					}
 				/>

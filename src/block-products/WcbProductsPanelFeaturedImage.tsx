@@ -61,11 +61,11 @@ const WcbProductsPanelFeaturedImage: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Product image settings", "wcb")}
+			title={__("Product image settings", "boostify-blocks")}
 		>
 			<div className={"space-y-5 "}>
 				<ToggleControl
-					label={__("Product image", "wcb")}
+					label={__("Product image", "boostify-blocks")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowFeaturedImage: checked })
 					}
@@ -90,12 +90,12 @@ const WcbProductsPanelFeaturedImage: FC<Props> = ({
 
 				{isShowFeaturedImage ? (
 					<ToggleControl
-						label={__("Link to Product Page", "wcb")}
+						label={__("Link to Product Page", "boostify-blocks")}
 						onChange={(checked) =>
 							setAttr__({ ...panelData, linkCompleteBox: checked })
 						}
 						checked={linkCompleteBox}
-						help={__("Links the image to the single product listing", "wcb")}
+						help={__("Links the image to the single product listing", "boostify-blocks")}
 					/>
 				) : null}
 

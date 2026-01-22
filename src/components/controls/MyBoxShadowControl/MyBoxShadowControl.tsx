@@ -45,8 +45,8 @@ const PanelTab: {
 	name: TabsHere;
 	title: string;
 }[] = [
-	{ name: "Normal", title: __("Normal", "wcb") },
-	{ name: "Hover", title: __("Hover", "wcb") },
+	{ name: "Normal", title: __("Normal", "boostify-blocks") },
+	{ name: "Hover", title: __("Hover", "boostify-blocks") },
 ];
 const MyBoxShadowControl: FC<Props> = ({
 	className = "",
@@ -135,7 +135,7 @@ const MyBoxShadowControl: FC<Props> = ({
 		return (
 			<RadioGroup value={presetClass} onChange={setShadowPreset}>
 				<RadioGroup.Label className="relative flex items-center justify-between">
-					<span>{__("Select Preset", "wcb")}</span>
+					<span>{__("Select Preset", "boostify-blocks")}</span>
 					<ResetButton onClick={() => setShadowPreset("")} />
 				</RadioGroup.Label>
 				<div className={"relative p-3 bg-slate-50 mt-3 rounded-lg"}>
@@ -171,7 +171,7 @@ const MyBoxShadowControl: FC<Props> = ({
 	const renderBlurRange = () => {
 		return (
 			<RangeControl
-				label={__("Blur", "wcb")}
+				label={__("Blur", "boostify-blocks")}
 				value={blur}
 				onChange={setBlur}
 				min={0}
@@ -182,7 +182,7 @@ const MyBoxShadowControl: FC<Props> = ({
 	const renderSpreadRange = () => {
 		return (
 			<RangeControl
-				label={__("Spread", "wcb")}
+				label={__("Spread", "boostify-blocks")}
 				value={spread}
 				onChange={setSpread}
 				min={-100}
@@ -193,7 +193,7 @@ const MyBoxShadowControl: FC<Props> = ({
 	const renderVerticalRange = () => {
 		return (
 			<RangeControl
-				label={__("Vertical", "wcb")}
+				label={__("Vertical", "boostify-blocks")}
 				value={vertical}
 				onChange={setVertical}
 				min={-100}
@@ -204,7 +204,7 @@ const MyBoxShadowControl: FC<Props> = ({
 	const renderHorizontalRange = () => {
 		return (
 			<RangeControl
-				label={__("Horizontal", "wcb")}
+				label={__("Horizontal", "boostify-blocks")}
 				className="mb-0"
 				value={horizontal}
 				onChange={setHorizontal}
@@ -216,7 +216,7 @@ const MyBoxShadowControl: FC<Props> = ({
 	const renderPositionRadioGroup = () => {
 		return (
 			<div className="flex items-center justify-between">
-				<p>{__("Position", "wcb")}</p>
+				<p>{__("Position", "boostify-blocks")}</p>
 				<WPRadioGroup onChange={handleChangePosition} checked={position}>
 					{BOX_SHADOW_POSITON.map((item) => (
 						<WPRadio value={item} key={item} className="capitalize">
@@ -230,7 +230,7 @@ const MyBoxShadowControl: FC<Props> = ({
 	const renderShadowColorPicker = () => {
 		return (
 			<MyColorPicker
-				label={__("Color", "wcb")}
+				label={__("Color", "boostify-blocks")}
 				onChange={handleChangeColor}
 				color={color}
 			/>

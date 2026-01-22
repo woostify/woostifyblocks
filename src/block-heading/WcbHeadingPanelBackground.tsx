@@ -35,7 +35,7 @@ const WcbHeadingPanelBackground: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Background", "wcb")}
+			title={__("Background", "boostify-blocks")}
 		>
 			<MyBackgroundNoImageControl
 				backgroundControl={background}

@@ -72,7 +72,7 @@ const WcbTeamPanel_StyleImage: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Image", "wcb")}
+			title={__("Image", "boostify-blocks")}
 		>
 			<div className="space-y-5">
 				<MySpacingSizesControl
@@ -87,13 +87,13 @@ const WcbTeamPanel_StyleImage: FC<Props> = ({
 					}}
 					value={currentImageSize || "2rem"}
 					hasResponsive
-					label={__("Image size", "wcb")}
+					label={__("Image size", "boostify-blocks")}
 				/>
 
 				<BoxControl
 					label={
 						<MyLabelControl className="" hasResponsive>
-							{__("Margin", "wcb")}
+							{__("Margin", "boostify-blocks")}
 						</MyLabelControl>
 					}
 					values={currentMargin}
@@ -108,7 +108,7 @@ const WcbTeamPanel_StyleImage: FC<Props> = ({
 					}}
 				/>
 
-				<MyDisclosure label={__("Border", "wcb")} defaultOpen>
+				<MyDisclosure label={__("Border", "boostify-blocks")} defaultOpen>
 					<MyBorderControl
 						borderControl={border}
 						setAttrs__border={(data) => {

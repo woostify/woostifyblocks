@@ -49,7 +49,7 @@ const MyHeadingTagControl: FC<Props> = ({
 	onChange,
 	tag,
 	className,
-	label = __("Heading tag", "wcb"),
+	label = __("Heading tag", "boostify-blocks"),
 }) => {
 	return (
 		<MyRadioGroup

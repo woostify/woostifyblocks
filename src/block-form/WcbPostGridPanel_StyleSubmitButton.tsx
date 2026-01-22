@@ -96,7 +96,7 @@ const WcbPostGridPanel_StyleSubmitButton: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Submit button", "wcb")}
+			title={__("Submit button", "boostify-blocks")}
 		>
 			<div className="space-y-2.5">
 				<MyDisclosure defaultOpen label="Colors">
@@ -121,7 +121,7 @@ const WcbPostGridPanel_StyleSubmitButton: FC<Props> = ({
 					<BoxControl
 						label={
 							<MyLabelControl className="" hasResponsive>
-								{__("Padding", "wcb")}
+								{__("Padding", "boostify-blocks")}
 							</MyLabelControl>
 						}
 						values={padding}
@@ -138,7 +138,7 @@ const WcbPostGridPanel_StyleSubmitButton: FC<Props> = ({
 					<BoxControl
 						label={
 							<MyLabelControl className="" hasResponsive>
-								{__("margin", "wcb")}
+								{__("margin", "boostify-blocks")}
 							</MyLabelControl>
 						}
 						values={margin}

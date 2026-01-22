@@ -58,6 +58,7 @@ const WcbPluginSidebar = (props) => {
 
 		const data = {
 			action: "wcb_dashboard_blocks_update_settings",
+			nonce: (window as any)?.boostifyBlocksFrontendAjaxObject?.nonce,
 			settings: newSettings,
 		};
 		setUpdateStatus("loading");
@@ -109,7 +110,7 @@ const WcbPluginSidebar = (props) => {
 	return (
 		<>
 			<Panel header="">
-				<PanelBody title={__("Color Palette", "wcb")} initialOpen={true}>
+				<PanelBody title={__("Color Palette", "boostify-blocks")} initialOpen={true}>
 					<PanelRow>
 						<div className="flex flex-col gap-4">
 							{colorGradientSettings?.colors?.map((item, index) => {
@@ -138,12 +139,12 @@ const WcbPluginSidebar = (props) => {
 							<div className="flex flex-col gap-2">
 								<div>
 									<h2 className="uppercase text-[11px] font-medium m-0">
-										{__("Add custom colors", "wcb")}
+										{__("Add custom colors", "boostify-blocks")}
 									</h2>
 									<HelpText>
 										{__(
 											"The custom colors will show up in your ColorPicker component.",
-											"wcb"
+											"boostify-blocks"
 										)}
 									</HelpText>
 								</div>
@@ -174,7 +175,7 @@ const WcbPluginSidebar = (props) => {
 										disabled={updateStatus === "loading"}
 									>
 										<span className="sr-only">
-											{__("Add new color", "wcb")}
+											{__("Add new color", "boostify-blocks")}
 										</span>
 										{updateStatus === "loading" ? (
 											<div className="w-7 h-7 flex items-center justify-center">
@@ -200,10 +201,10 @@ const WcbPluginSidebar = (props) => {
 									</button>
 								</div>
 								<Notice status="warning" className="m-0" isDismissible={false}>
-									<strong>{__("Note: ", "wcb")}</strong>
+									<strong>{__("Note: ", "boostify-blocks")}</strong>
 									{__(
 										"After customizing this color you need to reload the page (f5) so that the changes can properly update into the ColorPicker components.",
-										"wcb"
+										"boostify-blocks"
 									)}
 								</Notice>
 							</div>

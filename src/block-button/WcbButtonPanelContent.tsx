@@ -113,12 +113,12 @@ const WcbButtonPanelContent: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Content", "wcb")}
+			title={__("Content", "boostify-blocks")}
 			className="WcbButtonPanelContent"
 		>
 			<div className={"space-y-5"}>
 				<ToggleControl
-					label={__("Enable Icon", "wcb")}
+					label={__("Enable Icon", "boostify-blocks")}
 					checked={enableIcon}
 					className="mb-0"
 					onChange={(checked) => {
@@ -140,7 +140,7 @@ const WcbButtonPanelContent: FC<Props> = ({
 							/>
 
 							<MyRadioGroup
-								label={__("Icon position", "wcb")}
+								label={__("Icon position", "boostify-blocks")}
 								value={iconPosition}
 								onChange={(value) => {
 									setAttr__({
@@ -156,7 +156,7 @@ const WcbButtonPanelContent: FC<Props> = ({
 				}
 
 				<div>
-					<MyLabelControl className="mb-0">{__("Link", "wcb")}</MyLabelControl>
+					<MyLabelControl className="mb-0">{__("Link", "boostify-blocks")}</MyLabelControl>
 
 					<LinkControl
 						className="WcbButtonPanelContent__inline-link-input"
@@ -181,7 +181,7 @@ const WcbButtonPanelContent: FC<Props> = ({
 				</div>
 
 				{/* <TextControl
-					label={__("Link", "wcb")}
+					label={__("Link", "boostify-blocks")}
 					type="text"
 					value={link}
 					onChange={(value) => {
@@ -190,7 +190,7 @@ const WcbButtonPanelContent: FC<Props> = ({
 				/>
 
 				<ToggleControl
-					label={__("Open in new window", "wcb")}
+					label={__("Open in new window", "boostify-blocks")}
 					checked={openInNewWindow}
 					onChange={(checked) => {
 						setAttr__({ ...panelData, openInNewWindow: checked });
@@ -198,7 +198,7 @@ const WcbButtonPanelContent: FC<Props> = ({
 				/> */}
 
 				<ToggleControl
-					label={__('Add "nofollow" to link', "wcb")}
+					label={__('Add "nofollow" to link', "boostify-blocks")}
 					checked={addNofollowToLink}
 					onChange={(checked) => {
 						setAttr__({ ...panelData, addNofollowToLink: checked });
@@ -206,14 +206,14 @@ const WcbButtonPanelContent: FC<Props> = ({
 				/>
 
 				<ToggleControl
-					label={__("Hidden text", "wcb")}
+					label={__("Hidden text", "boostify-blocks")}
 					checked={isHiddenText}
 					onChange={(checked) => {
 						setAttr__({ ...panelData, isHiddenText: checked });
 					}}
 				/>
 				<ToggleControl
-					label={__("Open in new windown", "wcb")}
+					label={__("Open in new windown", "boostify-blocks")}
 					checked={openInNewWindow}
 					onChange={(checked) => {
 						setAttr__({ ...panelData, openInNewWindow: checked });

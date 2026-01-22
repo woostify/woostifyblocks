@@ -69,7 +69,7 @@ const WcbCountdownPanel_StyleDimension: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Boxes", "wcb")}
+			title={__("Boxes", "boostify-blocks")}
 		>
 			<div className="space-y-5">
 				<div>
@@ -84,7 +84,7 @@ const WcbCountdownPanel_StyleDimension: FC<Props> = ({
 							});
 						}}
 						value={currentGapBox || "40"}
-						label={__("Spacing between boxes", "wcb")}
+						label={__("Spacing between boxes", "boostify-blocks")}
 					/>
 
 					<MySpacingSizesControl
@@ -98,7 +98,7 @@ const WcbCountdownPanel_StyleDimension: FC<Props> = ({
 							});
 						}}
 						value={currentWidthBox || "150"}
-						label={__("Width of a box", "wcb")}
+						label={__("Width of a box", "boostify-blocks")}
 					/>
 
 					<MySpacingSizesControl
@@ -112,7 +112,7 @@ const WcbCountdownPanel_StyleDimension: FC<Props> = ({
 							});
 						}}
 						value={currentGapNumber || "0"}
-						label={__("Spacing between number and label", "wcb")}
+						label={__("Spacing between number and label", "boostify-blocks")}
 					/>
 
 				</div>

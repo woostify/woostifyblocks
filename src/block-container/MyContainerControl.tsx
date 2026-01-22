@@ -171,7 +171,7 @@ const MyContainerControl: FC<Props> = ({
 		return (
 			<MyRadioGroup
 				plans={plans}
-				label={__("Container Width", "wcb")}
+				label={__("Container Width", "boostify-blocks")}
 				onChange={handleChangeContainerWidthType}
 				contentClassName="capitalize mt-3"
 				value={containerWidthType}
@@ -189,7 +189,7 @@ const MyContainerControl: FC<Props> = ({
 		return (
 			<MyRadioGroup
 				plans={plans}
-				label={__("Content Width", "wcb")}
+				label={__("Content Width", "boostify-blocks")}
 				onChange={handleChangeContenWidthType}
 				contentClassName="capitalize mt-3"
 				value={contentWidthType}
@@ -206,11 +206,10 @@ const MyContainerControl: FC<Props> = ({
 		return (
 			<MyRadioGroup
 				plans={plans}
-				label={__("Overflow", "wcb")}
+				label={__("Overflow", "boostify-blocks")}
 				onChange={handleChangeOverflow}
 				contentClassName="capitalize mt-3"
 				value={overflow}
-				hasResponsive={false}
 			/>
 		);
 	};
@@ -221,7 +220,7 @@ const MyContainerControl: FC<Props> = ({
 				<MySpacingSizesControl
 					onChange={handleChangeContentBoxWidth}
 					value={CONTENT_BOX_WIDTH || "0"}
-					label={__("Content Box Width", "wcb")}
+					label={__("Content Box Width", "boostify-blocks")}
 					hasResponsive={true}
 					units={MY_HORIZOLTAL_UNITS}
 					customUnitsValueSettings={MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE}
@@ -241,7 +240,7 @@ const MyContainerControl: FC<Props> = ({
 			<MySpacingSizesControl
 				onChange={handleChangeCustomWidth}
 				value={CUSTOM_WIDTH || "0"}
-				label={__("Custom Width", "wcb")}
+				label={__("Custom Width", "boostify-blocks")}
 				hasResponsive={true}
 				units={MY_HORIZOLTAL_UNITS}
 				customUnitsValueSettings={MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE}
@@ -254,7 +253,7 @@ const MyContainerControl: FC<Props> = ({
 			<MySpacingSizesControl
 				onChange={handleChangeMinHeight}
 				value={MIN_HEIGHT || "0"}
-				label={__("Minimum Height", "wcb")}
+				label={__("Minimum Height", "boostify-blocks")}
 				hasResponsive={true}
 				units={MY_VERTICAL_UNITS}
 				customUnitsValueSettings={MY_CUSTOM_UNITS_VALUE_SETTINGS__LARGE}
@@ -284,7 +283,7 @@ const MyContainerControl: FC<Props> = ({
 			<div className="flow-root">
 				<div className="flex justify-between items-center -mb-3">
 					<MyLabelControl className="mb-4">
-						{__("HTML Tag", "wcb")}
+						{__("HTML Tag", "boostify-blocks")}
 					</MyLabelControl>
 					<SelectControl
 						label={""}

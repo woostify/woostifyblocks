@@ -55,7 +55,7 @@ const WcbAcceptPanelGeneral: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("General", "wcb")}
+			title={__("General", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<TextareaControl
@@ -67,14 +67,14 @@ const WcbAcceptPanelGeneral: FC<Props> = ({
 				/>
 
 				<ToggleControl
-					label={__("Required", "wcb")}
+					label={__("Required", "boostify-blocks")}
 					checked={isRequired}
 					onChange={(isChecked) => {
 						setAttr__({ ...panelData, isRequired: isChecked });
 					}}
 				/>
 				<ToggleControl
-					label={__("Enable Privacy Link", "wcb")}
+					label={__("Enable Privacy Link", "boostify-blocks")}
 					checked={enablePrivacyLink}
 					onChange={(isChecked) => {
 						setAttr__({ ...panelData, enablePrivacyLink: isChecked });
@@ -84,14 +84,14 @@ const WcbAcceptPanelGeneral: FC<Props> = ({
 				{enablePrivacyLink && (
 					<>
 						<InputControl
-							label={__("LINK LABEL", "wcb")}
+							label={__("LINK LABEL", "boostify-blocks")}
 							value={linkLabel}
 							onChange={(nextValue) => {
 								setAttr__({ ...panelData, linkLabel: nextValue });
 							}}
 						/>
 						<InputControl
-							label={__("LINK", "wcb")}
+							label={__("LINK", "boostify-blocks")}
 							value={linkHref}
 							type="date"
 							onChange={(nextValue) => {
@@ -100,7 +100,7 @@ const WcbAcceptPanelGeneral: FC<Props> = ({
 						/>
 
 						<ToggleControl
-							label={__("Open in new tab", "wcb")}
+							label={__("Open in new tab", "boostify-blocks")}
 							checked={openInNewTab}
 							onChange={(isChecked) => {
 								setAttr__({ ...panelData, openInNewTab: isChecked });

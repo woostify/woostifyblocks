@@ -41,11 +41,11 @@ const WcbEmailPanelGeneral: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("General", "wcb")}
+			title={__("General", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<SelectControl
-					label={__("Autocomplete", "wcb")}
+					label={__("Autocomplete", "boostify-blocks")}
 					value={autocomplete}
 					onChange={(selection) => {
 						setAttr__({
@@ -56,12 +56,12 @@ const WcbEmailPanelGeneral: FC<Props> = ({
 					// @ts-ignore
 					__nextHasNoMarginBottom
 				>
-					<option value="off">{__("Off", "wcb")}</option>
-					<option value="email">{__("Email", "wcb")}</option>
+					<option value="off">{__("Off", "boostify-blocks")}</option>
+					<option value="email">{__("Email", "boostify-blocks")}</option>
 				</SelectControl>
 
 				<InputControl
-					label={__("PLACEHOLDER", "wcb")}
+					label={__("PLACEHOLDER", "boostify-blocks")}
 					value={placeholder}
 					onChange={(nextValue) => {
 						setAttr__({ ...panelData, placeholder: nextValue });
@@ -69,7 +69,7 @@ const WcbEmailPanelGeneral: FC<Props> = ({
 				/>
 
 				<ToggleControl
-					label={__("Required", "wcb")}
+					label={__("Required", "boostify-blocks")}
 					checked={isRequired}
 					onChange={(isChecked) => {
 						setAttr__({ ...panelData, isRequired: isChecked });

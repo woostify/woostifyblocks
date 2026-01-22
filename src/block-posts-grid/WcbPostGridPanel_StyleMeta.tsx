@@ -78,7 +78,7 @@ const WcbPostGridPanel_StyleMeta: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Meta", "wcb")}
+			title={__("Meta", "boostify-blocks")}
 		>
 			<div className="space-y-2.5">
 				<MyTypographyControl
@@ -104,7 +104,7 @@ const WcbPostGridPanel_StyleMeta: FC<Props> = ({
 
 				<MyDisclosure defaultOpen label="More styles">
 					<MyColorPicker
-						label={__("Author color", "wcb")}
+						label={__("Author color", "boostify-blocks")}
 						onChange={(color) => {
 							setAttr__({
 								...panelData,
@@ -114,7 +114,7 @@ const WcbPostGridPanel_StyleMeta: FC<Props> = ({
 						color={authorColor}
 					/>
 					<MyColorPicker
-						label={__("Date/comment color", "wcb")}
+						label={__("Date/comment color", "boostify-blocks")}
 						onChange={(color) => {
 							setAttr__({
 								...panelData,
@@ -136,7 +136,7 @@ const WcbPostGridPanel_StyleMeta: FC<Props> = ({
 						}}
 						value={MARGIN_BOTTOM || ""}
 						units={MY_GAP_UNITS}
-						label={__("Margin bottom", "wcb")}
+						label={__("Margin bottom", "boostify-blocks")}
 						hasResponsive
 						className="flex-col space-y-2"
 					/>

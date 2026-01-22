@@ -30,9 +30,7 @@ const MyResponsiveToggle: FC<Props> = ({
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 
 	const { __experimentalSetPreviewDeviceType: setPreviewDeviceType } =
-		dispatch("core/edit-post") as {
-			__experimentalSetPreviewDeviceType: (device: ResponsiveDevices) => void;
-		};
+		dispatch("core/edit-post");
 
 	const handleSetDeviceType = useCallback((dv: ResponsiveDevices) => {
 		setPreviewDeviceType(DEVICE_TYPES[dv]);
@@ -45,7 +43,10 @@ const MyResponsiveToggle: FC<Props> = ({
 			case "Tablet":
 				return <DeviceTabletIcon className={className} aria-hidden="true" />;
 			case "Mobile":
-				return <DevicePhoneMobileIcon className={className} aria-hidden="true" />;
+				return (
+					<DevicePhoneMobileIcon className={className} aria-hidden="true" />
+				);
+
 			default:
 				return null;
 		}

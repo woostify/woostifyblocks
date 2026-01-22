@@ -42,13 +42,13 @@ const MyZIndexControl: FC<Props> = ({
 			<RangeControl
 				help={__(
 					"Above setting will only take effect once you are on the live page, and not while you're editing.",
-					"wcb"
+					"boostify-blocks"
 				)}
 				// @ts-ignore
 				value={undefined}
 				label={
 					<MyLabelControl className="" hasResponsive>
-						{__("Z-Index", "wcb")}
+						{__("Z-Index", "boostify-blocks")}
 					</MyLabelControl>
 				}
 				allowReset

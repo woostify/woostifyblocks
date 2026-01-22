@@ -13,12 +13,12 @@ import WCBGlobalColors from './colors';
 import { renderGlobalStyle } from '../../utils';
 
 const sidebarName = 'woostify-block-sidebar';
-const sidebarTitle = __('Woostify Block Settings', 'wcb');
+const sidebarTitle = __('Boostify Block Settings', 'boostify-blocks');
 const sidebarIcon = 'smiley';
 
 let saveSettingsTime = null;
 
-const WoostifyBlockSidebarContent = (props) => {
+const BoostifyBlockSidebarContent = (props) => {
 	const [typoSettings, setTypoSettings] = useState([]);
 
 	const TYPO_LIST = [
@@ -66,13 +66,13 @@ const WoostifyBlockSidebarContent = (props) => {
 	return (
 		<Fragment>
 			<PanelBody
-				title={__('Global Color Palette', 'wcb')}
+				title={__('Global Color Palette', 'boostify-blocks')}
 				initialOpen={true}
 			>
 				<WCBGlobalColors />
 			</PanelBody>
 			<PanelBody
-				title={__('Global Typography', 'wcb')}
+				title={__('Global Typography', 'boostify-blocks')}
 				initialOpen={false}
 			>
 				{TYPO_LIST.map(({ label, tag }, index) => {
@@ -93,7 +93,7 @@ const WoostifyBlockSidebarContent = (props) => {
 	);
 };
 
-const WoostifyBlockPluginSidebar = () => {
+const BoostifyBlockPluginSidebar = () => {
 	return (
 		<Fragment>
 			<PluginSidebarMoreMenuItem target={sidebarName} icon={sidebarIcon}>
@@ -105,7 +105,7 @@ const WoostifyBlockPluginSidebar = () => {
 				icon={sidebarIcon}
 			>
 				<div className="woostify-block-sidebar-content">
-					<WoostifyBlockSidebarContent />
+					<BoostifyBlockSidebarContent />
 				</div>
 			</PluginSidebar>
 		</Fragment>
@@ -113,5 +113,5 @@ const WoostifyBlockPluginSidebar = () => {
 };
 
 registerPlugin(sidebarName, {
-	render: WoostifyBlockPluginSidebar,
+	render: BoostifyBlockPluginSidebar,
 });

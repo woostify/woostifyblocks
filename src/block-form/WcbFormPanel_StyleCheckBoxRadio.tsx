@@ -113,8 +113,8 @@ const WcbFormPanel_StyleCheckBoxRadio: FC<Props> = ({
 		name: TabsHere;
 		title: string;
 	}[] = [
-		{ name: "Normal", title: __("Normal", "wcb") },
-		{ name: "Active", title: __("Active", "wcb") },
+		{ name: "Normal", title: __("Normal", "boostify-blocks") },
+		{ name: "Active", title: __("Active", "boostify-blocks") },
 	];
 	const initialTabName: TabsHere = "Normal";
 
@@ -123,13 +123,13 @@ const WcbFormPanel_StyleCheckBoxRadio: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Checkbox/Toogle/Radio", "wcb")}
+			title={__("Checkbox/Toogle/Radio", "boostify-blocks")}
 		>
 			<div className={"space-y-4"}>
 				<MyDisclosure label="Sizes" defaultOpen className="space-y-5">
 					<MySpacingSizesControl
 						value={checkboxRadioSizeCurrent || "1rem"}
-						label={__("Checkbox/Radio size", "wcb")}
+						label={__("Checkbox/Radio size", "boostify-blocks")}
 						onChange={(value) => {
 							setAttr__({
 								...panelData,
@@ -141,7 +141,7 @@ const WcbFormPanel_StyleCheckBoxRadio: FC<Props> = ({
 						}}
 					/>
 					<RangeControl
-						label={__("Toggle size", "wcb")}
+						label={__("Toggle size", "boostify-blocks")}
 						value={toggleSizeCurrent || 1}
 						step={0.1}
 						onChange={(value) =>
@@ -168,7 +168,7 @@ const WcbFormPanel_StyleCheckBoxRadio: FC<Props> = ({
 						{(tab) => (
 							<div className="space-y-4">
 								<MyColorPicker
-									label={__("Color", "wcb")}
+									label={__("Color", "boostify-blocks")}
 									color={colors[tab.name as TabsHere].backgroundColor}
 									onChange={(value) => {
 										setAttr__({
@@ -184,7 +184,7 @@ const WcbFormPanel_StyleCheckBoxRadio: FC<Props> = ({
 									}}
 								/>
 								{/* <MyColorPicker
-									label={__("Element color", "wcb")}
+									label={__("Element color", "boostify-blocks")}
 									color={colors[tab.name as TabsHere].color}
 									onChange={(value) => {
 										setAttr__({
@@ -219,7 +219,7 @@ const WcbFormPanel_StyleCheckBoxRadio: FC<Props> = ({
 					<HelpText>
 						{__(
 							"Border radius will be applied to Radio & Toggle only when the layout for those blocks is set to Square.",
-							"wcb"
+							"boostify-blocks"
 						)}
 					</HelpText>
 				</MyDisclosure>

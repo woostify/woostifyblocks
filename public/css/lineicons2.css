@@ -2,16 +2,16 @@
 
 @font-face {
 	font-family: "LineIcons";
-	src: url("../wp-content/plugins/woostifyblocks/public/lineicons-free-basic/icon-font/fonts/LineIcons.eot");
-	src: url("../wp-content/plugins/woostifyblocks/public/lineicons-free-basic/icon-font/fonts/LineIcons.eot")
+	src: url("../lineicons-free-basic/icon-font/fonts/LineIcons.eot");
+	src: url("../lineicons-free-basic/icon-font/fonts/LineIcons.eot")
 			format("embedded-opentype"),
-		url("../wp-content/plugins/woostifyblocks/public/lineicons-free-basic/icon-font/fonts/LineIcons.woff2")
+		url("../lineicons-free-basic/icon-font/fonts/LineIcons.woff2")
 			format("woff2"),
-		url("../wp-content/plugins/woostifyblocks/public/lineicons-free-basic/icon-font/fonts/LineIcons.woff")
+		url("../lineicons-free-basic/icon-font/fonts/LineIcons.woff")
 			format("woff"),
-		url("../wp-content/plugins/woostifyblocks/public/lineicons-free-basic/icon-font/fonts/LineIcons.ttf")
+		url("../lineicons-free-basic/icon-font/fonts/LineIcons.ttf")
 			format("truetype"),
-		url("../wp-content/plugins/woostifyblocks/public/lineicons-free-basic/icon-font/fonts/LineIcons.svg")
+		url("../lineicons-free-basic/icon-font/fonts/LineIcons.svg")
 			format("svg");
 	font-weight: normal;
 	font-style: normal;

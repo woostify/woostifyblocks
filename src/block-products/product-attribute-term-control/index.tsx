@@ -21,15 +21,15 @@ export const PRODUCT_ATTRS_OPERATOR_OPTIONS: {
 	value: ProductTaxOperator;
 }[] = [
 	{
-		label: __("Any selected attributes", "wcb"),
+		label: __("Any selected attributes", "boostify-blocks"),
 		value: "any",
 	},
 	{
-		label: __("All selected attributes", "wcb"),
+		label: __("All selected attributes", "boostify-blocks"),
 		value: "all",
 	},
 	{
-		label: __("Not in all selected attributes", "wcb"),
+		label: __("Not in all selected attributes", "boostify-blocks"),
 		value: "not_in",
 	},
 ];
@@ -81,7 +81,7 @@ const ProductAttributeTermControl = ({
 					name={`attributes-${instanceId}`}
 					countLabel={sprintf(
 						/* translators: %d is the count of terms. */
-						_n("%d term", "%d terms", item.count, "wcb"),
+						_n("%d term", "%d terms", item.count, "boostify-blocks"),
 						item.count
 					)}
 					aria-label={sprintf(
@@ -90,7 +90,7 @@ const ProductAttributeTermControl = ({
 							"%1$s, has %2$d term",
 							"%1$s, has %2$d terms",
 							item.count,
-							"wcb"
+							"boostify-blocks"
 						),
 						item.name,
 						item.count
@@ -108,7 +108,7 @@ const ProductAttributeTermControl = ({
 				className={classNames(...classes, "has-count")}
 				countLabel={sprintf(
 					/* translators: %d is the count of products. */
-					_n("%d product", "%d products", item.count, "wcb"),
+					_n("%d product", "%d products", item.count, "boostify-blocks"),
 					item.count
 				)}
 				aria-label={sprintf(
@@ -117,7 +117,7 @@ const ProductAttributeTermControl = ({
 						"%1$s, has %2$d product",
 						"%1$s, has %2$d products",
 						item.count,
-						"wcb"
+						"boostify-blocks"
 					),
 					itemName,
 					item.count
@@ -130,17 +130,17 @@ const ProductAttributeTermControl = ({
 	const currentList = [...attributes, ...currentTerms];
 
 	const messages = {
-		clear: __("Clear all product attributes", "wcb"),
-		list: __("Product Attributes", "wcb"),
-		noItems: __("Your store doesn't have any product attributes.", "wcb"),
-		search: __("Search for product attributes", "wcb"),
+		clear: __("Clear all product attributes", "boostify-blocks"),
+		list: __("Product Attributes", "boostify-blocks"),
+		noItems: __("Your store doesn't have any product attributes.", "boostify-blocks"),
+		search: __("Search for product attributes", "boostify-blocks"),
 		selected: (n) =>
 			sprintf(
 				/* translators: %d is the count of attributes selected. */
-				_n("%d attribute selected", "%d attributes selected", n, "wcb"),
+				_n("%d attribute selected", "%d attributes selected", n, "boostify-blocks"),
 				n
 			),
-		updated: __("Product attribute search results updated.", "wcb"),
+		updated: __("Product attribute search results updated.", "boostify-blocks"),
 	};
 
 	if (error) {
@@ -169,8 +169,8 @@ const ProductAttributeTermControl = ({
 				<div hidden={selected.length < 1}>
 					<SelectControl
 						className="woocommerce-product-attributes__operator"
-						label={__("Display products matching", "wcb")}
-						help={__("Select the operator of the attribute items.", "wcb")}
+						label={__("Display products matching", "boostify-blocks")}
+						help={__("Select the operator of the attribute items.", "boostify-blocks")}
 						value={operator}
 						onChange={onOperatorChange}
 						options={PRODUCT_ATTRS_OPERATOR_OPTIONS}

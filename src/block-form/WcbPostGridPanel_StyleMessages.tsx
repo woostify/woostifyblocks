@@ -74,8 +74,8 @@ const WcbPostGridPanel_StyleMessages: FC<Props> = ({
 		name: TabsHere;
 		title: string;
 	}[] = [
-		{ name: "Success", title: __("Success", "wcb") },
-		{ name: "Error", title: __("Error", "wcb") },
+		{ name: "Success", title: __("Success", "boostify-blocks") },
+		{ name: "Error", title: __("Error", "boostify-blocks") },
 	];
 
 	const {
@@ -100,7 +100,7 @@ const WcbPostGridPanel_StyleMessages: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Messages", "wcb")}
+			title={__("Messages", "boostify-blocks")}
 		>
 			<div className="space-y-4">
 				<MyTypographyControl
@@ -122,7 +122,7 @@ const WcbPostGridPanel_StyleMessages: FC<Props> = ({
 					{(tab) => (
 						<div className="space-y-5">
 							<MyColorPicker
-								label={__("Text color", "wcb")}
+								label={__("Text color", "boostify-blocks")}
 								color={panelData[tab.name as TabsHere].color}
 								onChange={(value) => {
 									setAttr__({
@@ -135,7 +135,7 @@ const WcbPostGridPanel_StyleMessages: FC<Props> = ({
 								}}
 							/>
 							<MyColorPicker
-								label={__("Background color", "wcb")}
+								label={__("Background color", "boostify-blocks")}
 								color={panelData[tab.name as TabsHere].backgroundColor}
 								onChange={(value) => {
 									setAttr__({
@@ -163,7 +163,7 @@ const WcbPostGridPanel_StyleMessages: FC<Props> = ({
 								<BoxControl
 									label={
 										<MyLabelControl className="" hasResponsive>
-											{__("margin", "wcb")}
+											{__("margin", "boostify-blocks")}
 										</MyLabelControl>
 									}
 									values={margin}

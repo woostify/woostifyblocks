@@ -50,7 +50,7 @@ const WcbPostsGridPanelSortingAndFiltering: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Sorting and filtering", "wcb")}
+			title={__("Sorting and filtering", "boostify-blocks")}
 		>
 			<MyQueryControls
 				queriesControl={panelData.queries}
@@ -62,7 +62,7 @@ const WcbPostsGridPanelSortingAndFiltering: FC<Props> = ({
 			{/*  */}
 			<RangeControl
 				label={
-					<MyLabelControl hasResponsive>{__("Columns", "wcb")}</MyLabelControl>
+					<MyLabelControl hasResponsive>{__("Columns", "boostify-blocks")}</MyLabelControl>
 				}
 				value={currentNumberOfColumn || 1}
 				onChange={(number) => {
@@ -80,7 +80,7 @@ const WcbPostsGridPanelSortingAndFiltering: FC<Props> = ({
 			/>
 
 			<ToggleControl
-				label={__("Equal height", "wcb")}
+				label={__("Equal height", "boostify-blocks")}
 				checked={panelData.isEqualHeight}
 				onChange={(checked) => {
 					setAttr__({ ...panelData, isEqualHeight: checked });
@@ -89,7 +89,7 @@ const WcbPostsGridPanelSortingAndFiltering: FC<Props> = ({
 
 			<InputControl
 				value={panelData.emptyMessage}
-				label={__("Message when Posts Not Found", "wcb")}
+				label={__("Message when Posts Not Found", "boostify-blocks")}
 				onChange={(nextValue) =>
 					setAttr__({ ...panelData, emptyMessage: nextValue })
 				}

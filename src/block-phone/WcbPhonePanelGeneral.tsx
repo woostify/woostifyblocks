@@ -43,11 +43,11 @@ const WcbPhonePanelGeneral: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("General", "wcb")}
+			title={__("General", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<SelectControl
-					label={__("Autocomplete", "wcb")}
+					label={__("Autocomplete", "boostify-blocks")}
 					value={autocomplete}
 					onChange={(selection) => {
 						setAttr__({
@@ -58,12 +58,12 @@ const WcbPhonePanelGeneral: FC<Props> = ({
 					// @ts-ignore
 					__nextHasNoMarginBottom
 				>
-					<option value="off">{__("Off", "wcb")}</option>
-					<option value="tel-national">{__("Phone", "wcb")}</option>
+					<option value="off">{__("Off", "boostify-blocks")}</option>
+					<option value="tel-national">{__("Phone", "boostify-blocks")}</option>
 				</SelectControl>
 
 				<SelectControl
-					label={__("Pattern", "wcb")}
+					label={__("Pattern", "boostify-blocks")}
 					value={pattern}
 					onChange={(selection) => {
 						setAttr__({
@@ -74,14 +74,14 @@ const WcbPhonePanelGeneral: FC<Props> = ({
 					// @ts-ignore
 					__nextHasNoMarginBottom
 				>
-					<option value="">{__("None", "wcb")}</option>
+					<option value="">{__("None", "boostify-blocks")}</option>
 					<option value="[0-9]{3}-?[0-9]{2}-?[0-9]{3}">123-45-678</option>
 					<option value="[0-9]{3}-?[0-9]{3}-?[0-9]{4}">123-456-7890</option>
 					<option value="[0-9]{3}s?[0-9]{3}s?[0-9]{4}">123 456 7890</option>
 				</SelectControl>
 
 				<InputControl
-					label={__("PLACEHOLDER", "wcb")}
+					label={__("PLACEHOLDER", "boostify-blocks")}
 					value={placeholder}
 					onChange={(nextValue) => {
 						setAttr__({ ...panelData, placeholder: nextValue });
@@ -89,7 +89,7 @@ const WcbPhonePanelGeneral: FC<Props> = ({
 				/>
 
 				<ToggleControl
-					label={__("Required", "wcb")}
+					label={__("Required", "boostify-blocks")}
 					checked={isRequired}
 					onChange={(isChecked) => {
 						setAttr__({ ...panelData, isRequired: isChecked });

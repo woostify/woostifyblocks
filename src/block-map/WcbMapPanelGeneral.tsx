@@ -59,15 +59,15 @@ const WcbMapPanelGeneral: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("General", "wcb")}
+			title={__("General", "boostify-blocks")}
 		>
 			<div className={"WcbMapPanelGeneral space-y-5"}>
 				<div>
-					<MyLabelControl>{__("Location", "wcb")}</MyLabelControl>
+					<MyLabelControl>{__("Location", "boostify-blocks")}</MyLabelControl>
 					<input
 						type="text"
 						className="w-full text-sm"
-						placeholder={__("Enter a location", "wcb")}
+						placeholder={__("Enter a location", "boostify-blocks")}
 						defaultValue={placeQuery}
 						onChange={(e) => {
 							debounce_fun({ ...panelData, placeQuery: e.currentTarget.value });
@@ -76,7 +76,7 @@ const WcbMapPanelGeneral: FC<Props> = ({
 				</div>
 
 				<MyRadioGroup
-					label={__("Map Type", "wcb")}
+					label={__("Map Type", "boostify-blocks")}
 					hasResponsive={false}
 					// "roadmap" | "satellite";
 					plans={[
@@ -93,13 +93,13 @@ const WcbMapPanelGeneral: FC<Props> = ({
 				/>
 
 				<MySelect
-					label={__("Language", "wcb")}
+					label={__("Language", "boostify-blocks")}
 					onChange={(value) => {
 						setAttr__({ ...panelData, language: value });
 					}}
 					value={language}
 				>
-					<option value="">{__("Change map language", "wcb")}</option>
+					<option value="">{__("Change map language", "boostify-blocks")}</option>
 					<option value="af">AFRIKAANS</option>
 					<option value="sq">ALBANIAN</option>
 					<option value="am">AMHARIC</option>
@@ -184,14 +184,14 @@ const WcbMapPanelGeneral: FC<Props> = ({
 				</MySelect>
 
 				<RangeControl
-					label={__("Zoom", "wcb")}
+					label={__("Zoom", "boostify-blocks")}
 					value={zoom}
 					onChange={(value) => setAttr__({ ...panelData, zoom: value || 1 })}
 					min={1}
 					max={22}
 				/>
 				<MySpacingSizesControl
-					label={__("Height", "wcb")}
+					label={__("Height", "boostify-blocks")}
 					hasResponsive
 					onChange={(data) => {
 						setAttr__({

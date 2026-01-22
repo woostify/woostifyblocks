@@ -67,7 +67,7 @@ const WcbPostGridPanel_StyleTaxonomy: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Taxonomy", "wcb")}
+			title={__("Taxonomy", "boostify-blocks")}
 		>
 			<div className="space-y-2.5">
 				<MyTypographyControl
@@ -82,7 +82,7 @@ const WcbPostGridPanel_StyleTaxonomy: FC<Props> = ({
 
 				<MyDisclosure defaultOpen label="More styles">
 					<MyColorPicker
-						label={__("Color", "wcb")}
+						label={__("Color", "boostify-blocks")}
 						onChange={(color) => {
 							setAttr__({
 								...panelData,
@@ -93,7 +93,7 @@ const WcbPostGridPanel_StyleTaxonomy: FC<Props> = ({
 					/>
 
 					<MyColorPicker
-						label={__("Background", "wcb")}
+						label={__("Background", "boostify-blocks")}
 						onChange={(color) => {
 							setAttr__({
 								...panelData,
@@ -115,7 +115,7 @@ const WcbPostGridPanel_StyleTaxonomy: FC<Props> = ({
 						}}
 						value={MARGIN_BOTTOM || ""}
 						units={MY_GAP_UNITS}
-						label={__("Margin bottom", "wcb")}
+						label={__("Margin bottom", "boostify-blocks")}
 						hasResponsive
 						className="flex-col space-y-2"
 					/>

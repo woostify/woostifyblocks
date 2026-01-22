@@ -15,8 +15,8 @@ export const PANEL_COLOR_TABS: {
 	name: MyTabsForColor;
 	title: string;
 }[] = [
-	{ name: "Normal", title: __("Normal", "wcb") },
-	{ name: "Hover", title: __("Hover", "wcb") },
+	{ name: "Normal", title: __("Normal", "boostify-blocks") },
+	{ name: "Hover", title: __("Hover", "boostify-blocks") },
 ];
 
 export const MY_COLOR_BGCOLOR_CONTROL_DEMO = {
@@ -81,14 +81,14 @@ const MyColorBackgroundColorControl: FC<Props> = ({
 			<div className="space-y-3.5">
 				{typeof color !== undefined ? (
 					<MyColorPicker
-						label={__("Color", "wcb")}
+						label={__("Color", "boostify-blocks")}
 						onChange={(value) => handleChangeColor(tabName, value)}
 						color={color}
 					/>
 				) : null}
 				{typeof backgroundColor !== undefined ? (
 					<MyColorPicker
-						label={__("Background color", "wcb")}
+						label={__("Background color", "boostify-blocks")}
 						onChange={(value) => handleChangeBackgroundColor(tabName, value)}
 						color={backgroundColor}
 					/>

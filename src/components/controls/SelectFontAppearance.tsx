@@ -113,7 +113,7 @@ const SelectFontAppearance: FC<Props> = ({ onChange, value }) => {
 		<CustomSelectControl
 			//  @ts-ignore
 			__nextUnconstrainedWidth
-			label={__("Appearance", "wcb")}
+			label={__("Appearance", "boostify-blocks")}
 			options={FONT_APPEARANCE_OPTIONS}
 			onChange={onChange}
 			value={value}

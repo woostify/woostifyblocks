@@ -86,10 +86,10 @@ const WcbFaqPanel_StyleContainer: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Container", "wcb")}
+			title={__("Container", "boostify-blocks")}
 		>
 			<div className={"space-y-3.5"}>
-				<MyDisclosure defaultOpen label={__("Background", "wcb")}>
+				<MyDisclosure defaultOpen label={__("Background", "boostify-blocks")}>
 					<MyBackgroundNoImageControl
 						backgroundControl={background}
 						setAttrs__backgroundControl={(value) => {
@@ -97,7 +97,7 @@ const WcbFaqPanel_StyleContainer: FC<Props> = ({
 						}}
 					/>
 				</MyDisclosure>
-				<MyDisclosure label={__("Border ", "wcb")}>
+				<MyDisclosure label={__("Border ", "boostify-blocks")}>
 					<MyBorderControl
 						borderControl={border}
 						setAttrs__border={(value) => {
@@ -105,7 +105,7 @@ const WcbFaqPanel_StyleContainer: FC<Props> = ({
 						}}
 					/>
 				</MyDisclosure>
-				<MyDisclosure label={__("Dimension", "wcb")}>
+				<MyDisclosure label={__("Dimension", "boostify-blocks")}>
 					<MySpacingSizesControl
 						onChange={(value) => {
 							setAttr__({
@@ -117,7 +117,7 @@ const WcbFaqPanel_StyleContainer: FC<Props> = ({
 							});
 						}}
 						value={currentRowGap || "0"}
-						label={__("Row Gap", "wcb")}
+						label={__("Row Gap", "boostify-blocks")}
 					/>
 					<div>
 						<MySpacingSizesControl
@@ -131,12 +131,12 @@ const WcbFaqPanel_StyleContainer: FC<Props> = ({
 								});
 							}}
 							value={currentColunmGap || "0"}
-							label={__("Column Gap", "wcb")}
+							label={__("Column Gap", "boostify-blocks")}
 						/>
 						<HelpText>
 							{__(
 								"Applicable in case the style of the FAQ is set to Grid",
-								"wcb"
+								"boostify-blocks"
 							)}
 						</HelpText>
 					</div>
@@ -145,7 +145,7 @@ const WcbFaqPanel_StyleContainer: FC<Props> = ({
 						label="Equal height"
 						help={__(
 							"Applicable in case the style of the FAQ is set to Grid",
-							"wcb"
+							"boostify-blocks"
 						)}
 						checked={equalHeight}
 						onChange={(checked) => {

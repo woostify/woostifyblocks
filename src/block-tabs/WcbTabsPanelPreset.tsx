@@ -278,7 +278,7 @@ const WcbTabsPanelPreset: FC<Props> = ({
         return (
             <RadioGroup value={panelData.preset} onChange={setPreset}>
 				<RadioGroup.Label className="relative flex items-center justify-between ">
-					<span>{__("Select Preset", "wcb")}</span>
+					<span>{__("Select Preset", "boostify-blocks")}</span>
                     <ResetButton onClick={() => setPreset("")} />
                 </RadioGroup.Label>
 				<div className={"relative p-3 bg-slate-50 mt-3 rounded-lg"}>
@@ -309,7 +309,7 @@ const WcbTabsPanelPreset: FC<Props> = ({
             initialOpen={initialOpen}
             onToggle={onToggle}
             opened={opened}
-            title={__("Preset", "wcb")}
+            title={__("Preset", "boostify-blocks")}
         >
             {renderRadioPreset()}
         </PanelBody>

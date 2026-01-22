@@ -36,18 +36,18 @@ const WcbHiddenPanelGeneral: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("General", "wcb")}
+			title={__("General", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<InputControl
-					label={__("Name", "wcb")}
+					label={__("Name", "boostify-blocks")}
 					value={name}
 					onChange={(nextValue) => {
 						setAttr__({ ...panelData, name: nextValue });
 					}}
 				/>
 				<InputControl
-					label={__("Value", "wcb")}
+					label={__("Value", "boostify-blocks")}
 					value={value}
 					onChange={(nextValue) => {
 						setAttr__({ ...panelData, value: nextValue });

@@ -52,11 +52,11 @@ const WcbTestimonialsPanelCarousel: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Carousel", "wcb")}
+			title={__("Carousel", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<ToggleControl
-					label={__("Pause on hover", "wcb")}
+					label={__("Pause on hover", "boostify-blocks")}
 					checked={hoverpause}
 					onChange={(checked) => {
 						setAttr__({
@@ -66,7 +66,7 @@ const WcbTestimonialsPanelCarousel: FC<Props> = ({
 					}}
 				/>
 				<ToggleControl
-					label={__("Autoplay", "wcb")}
+					label={__("Autoplay", "boostify-blocks")}
 					checked={isAutoPlay}
 					onChange={(checked) => {
 						setAttr__({
@@ -77,7 +77,7 @@ const WcbTestimonialsPanelCarousel: FC<Props> = ({
 				/>
 
 				<RangeControl
-					label={__("Autoplay speed (ms)", "wcb")}
+					label={__("Autoplay speed (ms)", "boostify-blocks")}
 					value={autoplaySpeed}
 					onChange={(value) => {
 						setAttr__({ ...panelData, autoplaySpeed: value || 2000 });
@@ -87,7 +87,7 @@ const WcbTestimonialsPanelCarousel: FC<Props> = ({
 				/>
 
 				<ToggleControl
-					label={__("Infinite loop", "wcb")}
+					label={__("Infinite loop", "boostify-blocks")}
 					checked={rewind}
 					onChange={(checked) => {
 						setAttr__({
@@ -98,10 +98,10 @@ const WcbTestimonialsPanelCarousel: FC<Props> = ({
 				/>
 
 				<ToggleControl
-					label={__("Adaptive height", "wcb")}
+					label={__("Adaptive height", "boostify-blocks")}
 					help={__(
 						"Enables adaptive height for single slide horizontal carousels.",
-						"wcb"
+						"boostify-blocks"
 					)}
 					checked={adaptiveHeight}
 					onChange={(checked) => {
@@ -113,7 +113,7 @@ const WcbTestimonialsPanelCarousel: FC<Props> = ({
 				/>
 
 				<RangeControl
-					label={__("Transition speed (ms)", "wcb")}
+					label={__("Transition speed (ms)", "boostify-blocks")}
 					value={animationDuration}
 					onChange={(value) => {
 						setAttr__({ ...panelData, animationDuration: value || 1 });
@@ -123,7 +123,7 @@ const WcbTestimonialsPanelCarousel: FC<Props> = ({
 				/>
 
 				<MyRadioGroup
-					label={__("Show arrows & dots", "wcb")}
+					label={__("Show arrows & dots", "boostify-blocks")}
 					onChange={(value) => {
 						setAttr__({
 							...panelData,

@@ -42,7 +42,7 @@ interface Props {
 const SelecIcon: FC<Props> = ({
 	onChange,
 	iconData,
-	label = __("Icon:", "wcb"),
+	label = __("Icon:", "boostify-blocks"),
 }) => {
 	const [query, setQuery] = useState("");
 	const [isCorrectSvgCode, setIsCorrectSvgCode] = useState(
@@ -143,7 +143,7 @@ const SelecIcon: FC<Props> = ({
 					onChange={(event) => setQuery(event.target.value)}
 					type="text"
 					className="block w-full py-1.5 pl-10 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-gray-800 border-transparent text-white"
-					placeholder={__("Search for an icon...", "wcb")}
+					placeholder={__("Search for an icon...", "boostify-blocks")}
 					defaultValue={query}
 					name="icon-query"
 					autoFocus
@@ -226,10 +226,10 @@ const SelecIcon: FC<Props> = ({
 					className="Wcb-SelectIcon__textarea text-slate-200"
 					help={
 						!svgCodeState || isCorrectSvgCode ? (
-							__("Enter your SVG code here", "wcb")
+							__("Enter your SVG code here", "boostify-blocks")
 						) : (
 							<p className="text-red-500">
-								{__("Please write a valid SVG code", "wcb")}
+								{__("Please write a valid SVG code", "boostify-blocks")}
 							</p>
 						)
 					}
@@ -316,7 +316,7 @@ const SelecIcon: FC<Props> = ({
 						<MyIconFull
 							icon={iconData}
 							className="w-6 h-6 text-[24px] flex items-center "
-							renderIfNone={<strong>{__("None", "wcb")}</strong>}
+							renderIfNone={<strong>{__("None", "boostify-blocks")}</strong>}
 						/>
 					</button>
 					<ResetButton

@@ -1,33 +1,11 @@
 <?php
-function wcb_var_dump($value)
-{
-    echo '<p style="color:red; padding: 50px 200px">';
-    echo ('-----------start--wcb_var_dump-----------------');
-    echo ('<br />');
-    echo ('<br />');
-    echo ('<br />');
-    var_dump($value);
-    echo ('<br />');
-    echo ('<br />');
-    echo ('<br />');
-    echo ('-----------end--wcb_var_dump-----------------');
-    echo '</p>';
-};
-
-function wcb_var_export($value)
-{
-    echo '<pre style="color:red;"><code>';
-    echo ('-----------start--wcb_var_dump-----------------');
-    echo ('-----------start--vcb_var_export-----------------');
-    echo ('<br />');
-    var_export($value);
-    echo ('<br />');
-    echo ('-----------end--vcb_var_export-----------------');
-    echo '</code></pre>';
-};
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+// Debug helpers removed for production safety.
 // 
-if (!function_exists('wcb_get_wcb_block_type_list')) :
-    function wcb_get_wcb_block_type_list()
+if (!function_exists('boostify_blocks_get_block_type_list')) :
+    function boostify_blocks_get_block_type_list()
     {
         $blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
         $wcbBlockList = [];
@@ -49,10 +27,10 @@ if (!function_exists('wcb_get_wcb_block_type_list')) :
 endif;
 
 // 
-if (!function_exists('wcb_get_wcb_block_name_enable_init')) :
-    function wcb_get_wcb_block_name_enable_init()
+if (!function_exists('boostify_blocks_get_block_name_enable_init')) :
+    function boostify_blocks_get_block_name_enable_init()
     {
-        $blocks = wcb_get_wcb_block_type_list();
+        $blocks = boostify_blocks_get_block_type_list();
         $wcbBlockName = [];
         foreach ($blocks as $key => $value) {
             $wcbBlockName[$value['name']] = 'enabled';
@@ -63,8 +41,8 @@ if (!function_exists('wcb_get_wcb_block_name_enable_init')) :
 endif;
 
 //
-if (!function_exists('wcb_get_default_blocks_settings')) :
-    function wcb_get_default_blocks_settings()
+if (!function_exists('boostify_blocks_get_default_blocks_settings')) :
+    function boostify_blocks_get_default_blocks_settings()
     {
         return [
             'media_tablet'              => '768px',
@@ -88,8 +66,8 @@ if (!function_exists('wcb_get_default_blocks_settings')) :
 endif;
 
 // 
-if (!function_exists("wcb_pagination_bar")) {
-    function wcb_pagination_bar($the_query, $attrPagination)
+if (!function_exists("boostify_blocks_pagination_bar")) {
+    function boostify_blocks_pagination_bar($the_query, $attrPagination)
     {
         $nextPreIcons =  [
             "none" => 'None',
@@ -130,8 +108,8 @@ if (!function_exists("wcb_pagination_bar")) {
 }
 
 // 
-if (!function_exists("wcb__is_enabled")) :
-    function wcb__is_enabled($variable)
+if (!function_exists("boostify_blocks_is_enabled")) :
+    function boostify_blocks_is_enabled($variable)
     {
         if (!isset($variable)) return null;
         return filter_var($variable, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
@@ -140,8 +118,8 @@ endif;
 
 
 // 
-if (!function_exists("wcb__get_layout_global_settings")) :
-    function wcb__get_layout_global_settings()
+if (!function_exists("boostify_blocks_get_layout_global_settings")) :
+    function boostify_blocks_get_layout_global_settings()
     {
         $wcb_layout_global_settings = wp_get_global_settings(['layout']);
         // IF USING WOOSTIFYBLOCKS THEME

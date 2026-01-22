@@ -78,7 +78,7 @@ const WcbPostGridPanel_StyleLayout: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Layout", "wcb")}
+			title={__("Layout", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<MyTextAlignControl
@@ -88,7 +88,7 @@ const WcbPostGridPanel_StyleLayout: FC<Props> = ({
 				/>
 
 				<MyColorPicker
-					label={__("Background color", "wcb")}
+					label={__("Background color", "boostify-blocks")}
 					onChange={handleChangeBgColor}
 					color={backgroundColor}
 				/>
@@ -101,7 +101,7 @@ const WcbPostGridPanel_StyleLayout: FC<Props> = ({
 							...data,
 						});
 					}}
-					paddingLabel={__("Padding content", "wcb")}
+					paddingLabel={__("Padding content", "boostify-blocks")}
 				/>
 			</div>
 		</PanelBody>

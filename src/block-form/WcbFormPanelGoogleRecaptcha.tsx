@@ -44,12 +44,12 @@ const WcbFormPanelGoogleRecaptcha: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Google reCAPTCHA", "wcb")}
+			title={__("Google reCAPTCHA", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<ToggleControl
 					checked={enableReCaptcha}
-					label={__("Enable reCAPTCHA", "wcb")}
+					label={__("Enable reCAPTCHA", "boostify-blocks")}
 					onChange={(e) => {
 						setAttr__({
 							...panelData,
@@ -73,10 +73,10 @@ const WcbFormPanelGoogleRecaptcha: FC<Props> = ({
 							hasResponsive={false}
 						/>
 						<Notice status="warning" className="m-0" isDismissible={false}>
-							<strong>{__("P.S. ", "wcb")}</strong>
+							<strong>{__("P.S. ", "boostify-blocks")}</strong>
 							{__(
 								" Note that If you are using two forms on the same page with the different reCAPTCHA versions (V2 checkbox and V3), it will create conflicts between the versions. Kindly avoid using different versions on same page.",
-								"wcb"
+								"boostify-blocks"
 							)}
 						</Notice>
 					</>

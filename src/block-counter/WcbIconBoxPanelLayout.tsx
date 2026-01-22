@@ -98,7 +98,7 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Layout", "wcb")}
+			title={__("Layout", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<MyTextAlignControl
@@ -127,7 +127,7 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 				/> */}
 
 				<TextControl
-					label={__("Starting Number", "wcb")}
+					label={__("Starting Number", "boostify-blocks")}
 					type="number"
 					value={startNumber}
 					onChange={(value) => {
@@ -136,7 +136,7 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 				/>
 
 				<TextControl
-					label={__("Ending Number", "wcb")}
+					label={__("Ending Number", "boostify-blocks")}
 					type="number"
 					value={endNumber}
 					onChange={(value) => {
@@ -145,7 +145,7 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 				/>
 				
 				<TextControl
-					label={__("Decimal Places", "wcb")}
+					label={__("Decimal Places", "boostify-blocks")}
 					type="number"
 					value={decimalNumber}
 					onChange={(value) => {
@@ -154,7 +154,7 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 				/>
 
 				<TextControl
-					label={__("Number Prefix", "wcb")}
+					label={__("Number Prefix", "boostify-blocks")}
 					type="text"
 					value={numberPrefix}
 					onChange={(value) => {
@@ -163,7 +163,7 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 				/>
 
 				<TextControl
-					label={__("Number Suffix", "wcb")}
+					label={__("Number Suffix", "boostify-blocks")}
 					type="text"
 					value={numberSuffix}
 					onChange={(value) => {
@@ -172,7 +172,7 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 				/>
 
 				<TextControl
-					label={__("Animation Duration", "wcb")}
+					label={__("Animation Duration", "boostify-blocks")}
 					type="number"
 					value={animationDuration}
 					onChange={(value) => {
@@ -195,7 +195,7 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 				/>
 
 				<ToggleControl
-					label={__("Enable description", "wcb")}
+					label={__("Enable description", "boostify-blocks")}
 					checked={enableDescription}
 					className="mb-0"
 					onChange={(checked) => {

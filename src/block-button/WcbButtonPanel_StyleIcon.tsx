@@ -45,12 +45,12 @@ const WcbButtonPanel_StyleIcon: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Icon", "wcb")}
+			title={__("Icon", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<RangeControl
 					label={
-						<MyLabelControl hasResponsive>{__("Size", "wcb")}</MyLabelControl>
+						<MyLabelControl hasResponsive>{__("Size", "boostify-blocks")}</MyLabelControl>
 					}
 					value={currentSize || 16}
 					onChange={(value) => {
@@ -71,7 +71,7 @@ const WcbButtonPanel_StyleIcon: FC<Props> = ({
 						setAttr__({ ...panelData, color });
 					}}
 					color={color}
-					label={__("Color", "wcb")}
+					label={__("Color", "boostify-blocks")}
 				/>
 
 				<MyColorPicker
@@ -79,7 +79,7 @@ const WcbButtonPanel_StyleIcon: FC<Props> = ({
 						setAttr__({ ...panelData, hoverColor: color });
 					}}
 					color={hoverColor}
-					label={__("Hover color", "wcb")}
+					label={__("Hover color", "boostify-blocks")}
 				/>
 			</div>
 		</PanelBody>

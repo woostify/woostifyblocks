@@ -101,7 +101,7 @@ const WcbHeadingPanelContent: FC<Props> = ({
 	return (
 		<PanelBody
 			className={"space-y-5"}
-			title={__("Content", "wcb")}
+			title={__("Content", "boostify-blocks")}
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
@@ -114,18 +114,18 @@ const WcbHeadingPanelContent: FC<Props> = ({
 			<MyHeadingTagControl tag={headingTag} onChange={handleChangeTag} />
 			{/*  */}
 			<ToggleControl
-				label={__("Show Heading", "wcb")}
+				label={__("Show Heading", "boostify-blocks")}
 				checked={showHeading}
 				onChange={toggleHeading}
 			/>
 
 			<ToggleControl
-				label={__("Show Sub-heading", "wcb")}
+				label={__("Show Sub-heading", "boostify-blocks")}
 				checked={showSubHeading}
 				onChange={toggleSubHeading}
 			/>
 			<ToggleControl
-				label={__("Show Separator", "wcb")}
+				label={__("Show Separator", "boostify-blocks")}
 				checked={showSeparator}
 				onChange={toggleSeparator}
 			/>
@@ -134,7 +134,7 @@ const WcbHeadingPanelContent: FC<Props> = ({
 					plans={PLANS_SEPARATOR_POSTION}
 					value={separatorPosition}
 					hasResponsive={false}
-					label={__("Separator position", "wcb")}
+					label={__("Separator position", "boostify-blocks")}
 					onChange={(value) => {
 						setAttr__panelContentData({
 							...panelContentData,

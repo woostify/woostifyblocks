@@ -77,7 +77,7 @@ const WcbPostGridPanelPostMeta: FC<Props> = ({
 		return (
 			<MyDisclosure label="Taxonomy" defaultOpen>
 				<ToggleControl
-					label={__("Show taxonomy", "wcb")}
+					label={__("Show taxonomy", "boostify-blocks")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowTaxonomy: checked })
 					}
@@ -121,7 +121,7 @@ const WcbPostGridPanelPostMeta: FC<Props> = ({
 				{taxonomyStyle === "Normal" ? (
 					<InputControl
 						value={taxonomyDivider}
-						label={__("Separator", "wcb")}
+						label={__("Separator", "boostify-blocks")}
 						onChange={(value) =>
 							setAttr__({ ...panelData, taxonomyDivider: value })
 						}
@@ -129,7 +129,7 @@ const WcbPostGridPanelPostMeta: FC<Props> = ({
 				) : null}
 
 				<ToggleControl
-					label={__("Show icon", "wcb")}
+					label={__("Show icon", "boostify-blocks")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowTaxonomyIcon: checked })
 					}
@@ -144,11 +144,11 @@ const WcbPostGridPanelPostMeta: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Post meta settings", "wcb")}
+			title={__("Post meta settings", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<ToggleControl
-					label={__("Show title", "wcb")}
+					label={__("Show title", "boostify-blocks")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowTitle: checked })
 					}
@@ -158,13 +158,13 @@ const WcbPostGridPanelPostMeta: FC<Props> = ({
 				{isShowTitle ? (
 					<MyHeadingTagControl
 						tag={titleHtmlTag}
-						label={__("Title HTML tag", "wcb")}
+						label={__("Title HTML tag", "boostify-blocks")}
 						onChange={(tag) => setAttr__({ ...panelData, titleHtmlTag: tag })}
 					/>
 				) : null}
 
 				<ToggleControl
-					label={__("Show author", "wcb")}
+					label={__("Show author", "boostify-blocks")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowAuthor: checked })
 					}
@@ -172,7 +172,7 @@ const WcbPostGridPanelPostMeta: FC<Props> = ({
 				/>
 
 				<ToggleControl
-					label={__("Show date", "wcb")}
+					label={__("Show date", "boostify-blocks")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowDate: checked })
 					}
@@ -180,7 +180,7 @@ const WcbPostGridPanelPostMeta: FC<Props> = ({
 				/>
 
 				<ToggleControl
-					label={__("Show comment", "wcb")}
+					label={__("Show comment", "boostify-blocks")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowComment: checked })
 					}
@@ -188,7 +188,7 @@ const WcbPostGridPanelPostMeta: FC<Props> = ({
 				/>
 
 				<ToggleControl
-					label={__("Show Meta icon", "wcb")}
+					label={__("Show Meta icon", "boostify-blocks")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowMetaIcon: checked })
 					}

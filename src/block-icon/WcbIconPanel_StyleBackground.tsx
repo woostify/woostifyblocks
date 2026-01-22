@@ -42,8 +42,8 @@ const PanelTab: {
 	name: TabsHere;
 	title: string;
 }[] = [
-	{ name: "normal", title: __("Normal", "wcb") },
-	{ name: "hover", title: __("Hover", "wcb") },
+	{ name: "normal", title: __("Normal", "boostify-blocks") },
+	{ name: "hover", title: __("Hover", "boostify-blocks") },
 ];
 
 const WcbIconPanel_StyleBackground: FC<Props> = ({
@@ -59,7 +59,7 @@ const WcbIconPanel_StyleBackground: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Background", "wcb")}
+			title={__("Background", "boostify-blocks")}
 		>
 			<TabPanel
 				className={`wcb-bodyControls__panel `}

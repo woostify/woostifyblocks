@@ -59,7 +59,7 @@ const WcbHeadingPanelHeading: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Heading", "wcb")}
+			title={__("Heading", "boostify-blocks")}
 		>
 			<div className="space-y-2.5">
 				<MyTypographyControl
@@ -101,7 +101,7 @@ const WcbHeadingPanelHeading: FC<Props> = ({
 						});
 					}}
 					value={MARGIN_BOTTOM || ""}
-					label={__("Margin bottom", "wcb")}
+					label={__("Margin bottom", "boostify-blocks")}
 					hasResponsive
 				/>
 			</div>

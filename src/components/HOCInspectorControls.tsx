@@ -45,7 +45,7 @@ export const INSPECTOR_CONTROLS_TABS: InspectorControlsTabs = [
 						strokeLinejoin="round"
 					/>
 				</svg>
-				<div>{__("General", "wcb")}</div>
+				<div>{__("General", "boostify-blocks")}</div>
 			</div>
 		),
 	},
@@ -97,7 +97,7 @@ export const INSPECTOR_CONTROLS_TABS: InspectorControlsTabs = [
 						strokeLinecap="round"
 					/>
 				</svg>
-				<div>{__("Styles", "wcb")}</div>
+				<div>{__("Styles", "boostify-blocks")}</div>
 			</div>
 		),
 	},
@@ -123,7 +123,7 @@ export const INSPECTOR_CONTROLS_TABS: InspectorControlsTabs = [
 						strokeLinejoin="round"
 					/>
 				</svg>
-				<div>{__("Advances", "wcb")}</div>
+				<div>{__("Advances", "boostify-blocks")}</div>
 			</div>
 		),
 	},

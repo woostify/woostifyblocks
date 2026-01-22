@@ -41,11 +41,11 @@ const WcbDatePanelGenera: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("General", "wcb")}
+			title={__("General", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<ToggleControl
-					label={__("Required", "wcb")}
+					label={__("Required", "boostify-blocks")}
 					checked={isRequired}
 					onChange={(isChecked) => {
 						setAttr__({ ...panelData, isRequired: isChecked });
@@ -53,8 +53,8 @@ const WcbDatePanelGenera: FC<Props> = ({
 				/>
 
 				<ToggleControl
-					label={__("Additional Validation", "wcb")}
-					help={__("Helps to set range of calender", "wcb")}
+					label={__("Additional Validation", "boostify-blocks")}
+					help={__("Helps to set range of calender", "boostify-blocks")}
 					checked={additionalValidation}
 					onChange={(isChecked) => {
 						setAttr__({ ...panelData, additionalValidation: isChecked });
@@ -64,7 +64,7 @@ const WcbDatePanelGenera: FC<Props> = ({
 				{additionalValidation && (
 					<>
 						<InputControl
-							label={__("Min", "wcb")}
+							label={__("Min", "boostify-blocks")}
 							value={min}
 							type="date"
 							onChange={(nextValue) => {
@@ -74,7 +74,7 @@ const WcbDatePanelGenera: FC<Props> = ({
 							}}
 						/>
 						<InputControl
-							label={__("Max", "wcb")}
+							label={__("Max", "boostify-blocks")}
 							value={max}
 							type="date"
 							onChange={(nextValue) => {

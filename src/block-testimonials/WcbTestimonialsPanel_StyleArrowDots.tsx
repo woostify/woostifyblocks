@@ -34,7 +34,7 @@ export const WCB_TESTIMONIALS_PANEL_STYLE_ARROW_DOTS_DEMO: WCB_TESTIMONIALS_PANE
 			hoverColor: "#6b7280",
 			radius: { Desktop: "99px" },
 		},
-		dotsMarginTop: { Desktop: "8px" },
+		dotsMarginTop: { Desktop: "1rem" },
 		color: "#374151",
 	};
 
@@ -61,7 +61,7 @@ const WcbTestimonialsPanel_StyleArrowDots: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Arrow & Dots", "wcb")}
+			title={__("Arrow & Dots", "boostify-blocks")}
 		>
 			<div className="space-y-5">
 				<MyDisclosure defaultOpen label="Arrow settings">
@@ -74,7 +74,7 @@ const WcbTestimonialsPanel_StyleArrowDots: FC<Props> = ({
 						}}
 						value={arrowSize || "2rem"}
 						hasResponsive={false}
-						label={__("Arrow size", "wcb")}
+						label={__("Arrow size", "boostify-blocks")}
 					/>
 
 					<MyBorderControl
@@ -99,7 +99,7 @@ const WcbTestimonialsPanel_StyleArrowDots: FC<Props> = ({
 						});
 					}}
 					value={currentDotsMarginTop || "2rem"}
-					label={__("Dots Margin top", "wcb")}
+					label={__("Dots Margin top", "boostify-blocks")}
 				/>
 
 				<MyColorPicker

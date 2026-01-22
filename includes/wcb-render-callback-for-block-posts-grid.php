@@ -1,9 +1,12 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 //============================================= block 1 ===============================================================
-function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
+function boostify_blocks_block_posts_grid_render_callback($attributes, $content, $block)
 {
 
-    wp_enqueue_script__block_commoncss_frontend_styles();
+    boostify_blocks_enqueue_script_block_commoncss_frontend_styles();
     // 
 
     $DEFAULT_ATTRS = [
@@ -320,8 +323,8 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
         'paged'                 => $paged
     ]);
 
-    if (!function_exists("wcb_block_posts_grid__render_taxonomy")) {
-        function wcb_block_posts_grid__render_taxonomy($queries, $attributes, $modifiedClass = "")
+    if (!function_exists("boostify_blocks_block_posts_grid_render_taxonomy")) {
+        function boostify_blocks_block_posts_grid_render_taxonomy($queries, $attributes, $modifiedClass = "")
         {
             $isShow = boolval($attributes['general_postMeta']['isShowTaxonomy'] ?? false);
             if (!$isShow) {
@@ -332,7 +335,7 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
 
                 $term_links = [];
                 foreach ($post_taxs as $term) {
-                    $term_links[] = '<a href="' . esc_attr(get_term_link($term->slug, $queries["taxonomySlug"])) . '">' . __($term->name) . '</a>';
+                    $term_links[] = '<a href="' . esc_attr(get_term_link($term->slug, $queries["taxonomySlug"])) . '">' . esc_html($term->name) . '</a>';
                 };
 
                 $all_terms = join('', $term_links);
@@ -340,7 +343,7 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
                     $all_terms = join(', ', $term_links);
                 };
 
-                echo '<div class="wcbPostCard__taxonomies wcbPostCard__taxonomies--' . esc_attr($modifiedClass) . esc_attr($attributes['general_postMeta']['taxonomyStyle'] === "Highlighted" ? " wcbPostCard__taxonomies--highlighted" : "") . '">' . __($all_terms) . '</div>';
+                echo '<div class="wcbPostCard__taxonomies wcbPostCard__taxonomies--' . esc_attr($modifiedClass) . esc_attr($attributes['general_postMeta']['taxonomyStyle'] === "Highlighted" ? " wcbPostCard__taxonomies--highlighted" : "") . '">' . wp_kses_post($all_terms) . '</div>';
 
             endif;
         }
@@ -349,7 +352,7 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
     ob_start();
 ?>
     <!-- CONTENT FOR RENDER CSSS @EMOTION -->
-    <?php echo $content; ?>
+    <?php echo wp_kses_post($content); ?>
 
     <!-- RENDER FOLLOW BY EDIT.TSX -->
     <div class="wcb-posts-grid__wrap <?php echo esc_attr($uniqueId); ?> <?php echo esc_attr($className); ?>" data-uniqueid="<?php echo esc_attr($uniqueId); ?>">
@@ -367,7 +370,7 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
                     <div class="wcbPostCard wcbPostCard--image-<?php echo esc_attr($featuredImagePosition); ?>">
 
                         <!-- card - FUll link  -->
-                        <a class="wcbPostCard__completeLink" href="<?php echo get_permalink(); ?>"></a>
+                        <a class="wcbPostCard__completeLink" href="<?php echo esc_url(get_permalink()); ?>"></a>
 
                         <!-- Post Thumbnail -->
                         <?php if ($hasFeaturedImage) : ?>
@@ -379,7 +382,7 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
                                     ($attributes['general_postMeta']["taxonomyPosition"] ?? "Inside featured image") === "Inside featured image" &&
                                     $featuredImagePosition !== "background"
                                 ) {
-                                    wcb_block_posts_grid__render_taxonomy($queries, $attributes, "Insidefeaturedimage");
+                                    boostify_blocks_block_posts_grid_render_taxonomy($queries, $attributes, "Insidefeaturedimage");
                                 }; ?>
 
                             </div>
@@ -394,16 +397,19 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
                             <?php
 
                             if (($attributes['general_postMeta']['taxonomyPosition'] ?? "Below featured image") === "Below featured image" || !$hasFeaturedImage ||  $featuredImagePosition === 'background') {
-                                wcb_block_posts_grid__render_taxonomy($queries, $attributes,);
+                                boostify_blocks_block_posts_grid_render_taxonomy($queries, $attributes,);
                             }; ?>
 
                             <!-- TITLE -->
                             <?php if ($attributes['general_postMeta']['isShowTitle'] ?? true) : ?>
-                                <?php echo '<' . ($attributes['general_postMeta']['titleHtmlTag'] ?? "h4") . ' class="wcbPostCard__title" >' ?>
+                            <?php 
+                                $titleHtmlTag = $attributes['general_postMeta']['titleHtmlTag'] ?? "h4";
+                                echo sprintf('<%1$s class="wcbPostCard__title">', tag_escape($titleHtmlTag));
+                            ?>
                                 <a href="<?php the_permalink(); ?>">
                                     <?php the_title(); ?>
                                 </a>
-                                <?php echo '</' . ($attributes['general_postMeta']['titleHtmlTag'] ?? "h4") . '>' ?>
+                                <?php echo sprintf('</%1$s>', tag_escape($titleHtmlTag)); ?>
                             <?php endif; ?>
 
 
@@ -411,7 +417,8 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
                                 <!-- FULL POST CONTENT -->
                                 <?php if (($attributes['general_postContent']['contentType'] ?? "excerpt") === "Full post") {
                                     echo '<div class="wcbPostCard__fullContent">';
-                                    echo the_content();
+                                    // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Core WordPress hook.
+                                    echo wp_kses_post(apply_filters('the_content', (string) get_the_content()));
                                     echo '</div>';
                                 };  ?>
 
@@ -425,12 +432,12 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
                                         $firsthalf = array_slice($split, 0, $words_to_show_first);
                                         $output = '<p class="wcbPostCard__excerpt" >';
                                         $output .= implode(' ', $firsthalf);
-                                        $output .= esc_html__('...');
+                                        $output .= esc_html__('...', 'boostify-blocks');
                                         $output .= '</p>';
                                     } else {
                                         $output = '<p class="wcbPostCard__excerpt">'  .   $excerpt . '</p>';
                                     }
-                                    echo $output;
+                                    echo wp_kses_post($output);
                                 }; ?>
                             <?php endif; ?>
 
@@ -488,7 +495,7 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
                                                 </svg>
 
                                             </span>
-                                            <?php echo get_comments_number(); ?>
+                                            <?php echo esc_html(get_comments_number()); ?>
                                         </span>
                                     <?php endif; ?>
                                 </div>
@@ -509,9 +516,9 @@ function wcb_block_posts_grid__renderCallback($attributes, $content, $block)
         </div>
 
         <!-- pagination here -->
-        <?php if (wcb__is_enabled($attributes['general_pagination']['isShowPagination'] ?? "false")) : ?>
+        <?php if (boostify_blocks_is_enabled($attributes['general_pagination']['isShowPagination'] ?? "false")) : ?>
             <div class="wcb-posts-grid__pagination">
-                <?php wcb_pagination_bar($the_query, $attributes['general_pagination']); ?>
+                <?php boostify_blocks_pagination_bar($the_query, $attributes['general_pagination']); ?>
             </div>
         <?php endif; ?>
 

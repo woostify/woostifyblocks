@@ -66,8 +66,8 @@ export const PANEL_COLOR_TABS: {
 	name: TabHere;
 	title: string;
 }[] = [
-	{ name: "Normal", title: __("Normal", "wcb") },
-	{ name: "Active", title: __("Active", "wcb") },
+	{ name: "Normal", title: __("Normal", "boostify-blocks") },
+	{ name: "Active", title: __("Active", "boostify-blocks") },
 ];
 
 interface Props
@@ -117,14 +117,14 @@ const WcbTabsPanel_StyleTitle: FC<Props> = ({
 			return (
 				<div className="space-y-4">
 					<MyColorPicker
-						label={__("Color", "wcb")}
+						label={__("Color", "boostify-blocks")}
 						onChange={(value) => {
 							setAttr__({ ...panelData, color: value });
 						}}
 						color={color}
 					/>
 					<MyColorPicker
-						label={__("Background color", "wcb")}
+						label={__("Background color", "boostify-blocks")}
 						onChange={(value) => {
 							setAttr__({ ...panelData, backgroundColor: value });
 						}}
@@ -137,14 +137,14 @@ const WcbTabsPanel_StyleTitle: FC<Props> = ({
 			return (
 				<div className="space-y-4">
 					<MyColorPicker
-						label={__("Color", "wcb")}
+						label={__("Color", "boostify-blocks")}
 						onChange={(value) => {
 							setAttr__({ ...panelData, colorActive: value });
 						}}
 						color={colorActive}
 					/>
 					<MyColorPicker
-						label={__("Background color", "wcb")}
+						label={__("Background color", "boostify-blocks")}
 						onChange={(value) => {
 							setAttr__({ ...panelData, backgroundColorActive: value });
 						}}
@@ -186,7 +186,7 @@ const WcbTabsPanel_StyleTitle: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Title", "wcb")}
+			title={__("Title", "boostify-blocks")}
 		>
 			<div className={"space-y-3.5"}>
 				<MyTypographyControl
@@ -196,7 +196,7 @@ const WcbTabsPanel_StyleTitle: FC<Props> = ({
 					}}
 				/>
 
-				<MyDisclosure label={__("Colors", "wcb")}>
+				<MyDisclosure label={__("Colors", "boostify-blocks")}>
 					<MyTabPanel tabs={PANEL_COLOR_TABS}>{renderColorTab}</MyTabPanel>
 				</MyDisclosure>
 				
@@ -204,17 +204,17 @@ const WcbTabsPanel_StyleTitle: FC<Props> = ({
 					// Render border settings only if the style is not horizontalStyle2
 					// If style is horizontalStyle2, use default CSS from GlobalCss file
 					style !== "horizontalStyle2" && (
-						<MyDisclosure label={__("Border", "wcb")}>
+						<MyDisclosure label={__("Border", "boostify-blocks")}>
 							<MyTabPanel tabs={PANEL_COLOR_TABS}>{renderBorderTab}</MyTabPanel>
 						</MyDisclosure>
 					)
 				}
 
-				<MyDisclosure label={__("Dimension", "wcb")}>
+				<MyDisclosure label={__("Dimension", "boostify-blocks")}>
 					<BoxControl
 						label={
 							<MyLabelControl className="" hasResponsive>
-								{__("Padding", "wcb")}
+								{__("Padding", "boostify-blocks")}
 							</MyLabelControl>
 						}
 						values={currentPadding}
@@ -240,7 +240,7 @@ const WcbTabsPanel_StyleTitle: FC<Props> = ({
 							});
 						}}
 						value={currentRowGap || "0"}
-						label={__("Row Gap", "wcb")}
+						label={__("Row Gap", "boostify-blocks")}
 					/>
 					<div>
 						<MySpacingSizesControl
@@ -254,7 +254,7 @@ const WcbTabsPanel_StyleTitle: FC<Props> = ({
 								});
 							}}
 							value={currentColunmGap || "0"}
-							label={__("Column Gap", "wcb")}
+							label={__("Column Gap", "boostify-blocks")}
 						/>
 					</div>
 				</MyDisclosure>

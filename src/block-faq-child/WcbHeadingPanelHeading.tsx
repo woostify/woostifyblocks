@@ -54,7 +54,7 @@ const WcbHeadingPanelHeading: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Panel Heading", "wcb")}
+			title={__("Panel Heading", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<MyTextAlignControl

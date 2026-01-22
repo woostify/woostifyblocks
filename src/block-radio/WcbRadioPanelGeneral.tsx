@@ -39,11 +39,11 @@ const WcbRadioPanelGeneral: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("General", "wcb")}
+			title={__("General", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<MyRadioGroup
-					label={__("Layout", "wcb")}
+					label={__("Layout", "boostify-blocks")}
 					value={layout}
 					onChange={(value) => {
 						setAttr__({
@@ -58,7 +58,7 @@ const WcbRadioPanelGeneral: FC<Props> = ({
 					hasResponsive={false}
 				/>
 				<ToggleControl
-					label={__("Required", "wcb")}
+					label={__("Required", "boostify-blocks")}
 					checked={isRequired}
 					onChange={(isChecked) => {
 						setAttr__({ ...panelData, isRequired: isChecked });

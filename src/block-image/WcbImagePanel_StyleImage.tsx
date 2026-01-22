@@ -79,10 +79,10 @@ const WcbImagePanel_StyleImage: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Image", "wcb")}
+			title={__("Image", "boostify-blocks")}
 		>
 			<div className={"space-y-4"}>
-				<MyDisclosure defaultOpen label={__("Border", "wcb")}>
+				<MyDisclosure defaultOpen label={__("Border", "boostify-blocks")}>
 					<MyBorderControl
 						borderControl={border}
 						setAttrs__border={(data) => {
@@ -93,7 +93,7 @@ const WcbImagePanel_StyleImage: FC<Props> = ({
 						}}
 					/>
 				</MyDisclosure>
-				<MyDisclosure label={__("Box shadow", "wcb")}>
+				<MyDisclosure label={__("Box shadow", "boostify-blocks")}>
 					<MyBoxShadowControl
 						boxShadowControl={boxShadow}
 						setAttrs__boxShadow={(data) => {
@@ -108,7 +108,7 @@ const WcbImagePanel_StyleImage: FC<Props> = ({
 				<BoxControl
 					label={
 						<MyLabelControl hasResponsive className="">
-							{__("Margin", "wcb")}
+							{__("Margin", "boostify-blocks")}
 						</MyLabelControl>
 					}
 					values={currentMargin}
@@ -125,7 +125,7 @@ const WcbImagePanel_StyleImage: FC<Props> = ({
 				<BoxControl
 					label={
 						<MyLabelControl hasResponsive className="">
-							{__("Padding", "wcb")}
+							{__("Padding", "boostify-blocks")}
 						</MyLabelControl>
 					}
 					values={currentPadding}

@@ -39,7 +39,7 @@ const WcbButtonPanelPreset: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Preset", "wcb")}
+			title={__("Preset", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<MyButtonPresetControl

@@ -167,7 +167,7 @@ const WcbImagePanelSettings: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Settings", "wcb")}
+			title={__("Settings", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<MyRadioGroup
@@ -198,7 +198,7 @@ const WcbImagePanelSettings: FC<Props> = ({
 					plans={PLANS_LAYOUT}
 					value={panelData.layout}
 					hasResponsive={false}
-					label={__("Layout", "wcb")}
+					label={__("Layout", "boostify-blocks")}
 					onChange={(value) => {
 						setAttr__({
 							...panelData,
@@ -212,7 +212,7 @@ const WcbImagePanelSettings: FC<Props> = ({
 						plans={PLANS_CONTENT_ALIGNMENT}
 						value={panelData.contentAlignment}
 						hasResponsive={false}
-						label={__("Content alignment", "wcb")}
+						label={__("Content alignment", "boostify-blocks")}
 						onChange={(value) => {
 							setAttr__({
 								...panelData,
@@ -273,7 +273,7 @@ const WcbImagePanelSettings: FC<Props> = ({
 				</MyDisclosure>
 
 				<MySelect
-					label={__("Object Fit", "wcb")}
+					label={__("Object Fit", "boostify-blocks")}
 					hasResponsive
 					onChange={(value) => {
 						setAttr__({
@@ -289,7 +289,7 @@ const WcbImagePanelSettings: FC<Props> = ({
 				/>
 
 				<MySelect
-					label={__("On Hover Image", "wcb")}
+					label={__("On Hover Image", "boostify-blocks")}
 					onChange={(value) => {
 						setAttr__({
 							...panelData,
@@ -302,7 +302,7 @@ const WcbImagePanelSettings: FC<Props> = ({
 
 				{panelData.layout !== "overlay" && (
 					<ToggleControl
-						label={__("Enable caption", "wcb")}
+						label={__("Enable caption", "boostify-blocks")}
 						checked={enableCaption}
 						onChange={toggleEnableCaption}
 					/>
@@ -311,7 +311,7 @@ const WcbImagePanelSettings: FC<Props> = ({
 					<MyTextAlignControl
 						textAlignment={CAPTION_ALIGNMENT}
 						onChange={handleChangeCaptionAlignment}
-						label={__("Caption alignment", "wcb")}
+						label={__("Caption alignment", "boostify-blocks")}
 					/>
 				)}
 			</div>

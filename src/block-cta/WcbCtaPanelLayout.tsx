@@ -77,7 +77,7 @@ const WcbCtaPanelLayout: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Layout", "wcb")}
+			title={__("Layout", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<MyTextAlignControl
@@ -95,7 +95,7 @@ const WcbCtaPanelLayout: FC<Props> = ({
 
 				<div>
 					<MyRadioGroup
-						label={__("Flex Direction", "wcb")}
+						label={__("Flex Direction", "boostify-blocks")}
 						onChange={(value) => {
 							setAttr__({
 								...panelData,
@@ -119,7 +119,7 @@ const WcbCtaPanelLayout: FC<Props> = ({
 				/>
 
 				<MySpacingSizesControl
-					label={__("Content width", "wcb")}
+					label={__("Content width", "boostify-blocks")}
 					onChange={(value) => {
 						setAttr__({
 							...panelData,

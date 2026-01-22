@@ -332,7 +332,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 							value={attributes.btnSubmitText} // Any existing content, either from the database or an attribute default
 							allowedFormats={["core/bold", "core/italic"]} // Allow the content to be made bold or italic, but do not allow other formatting options
 							onChange={(content) => setAttributes({ btnSubmitText: content })} // Store updated content as a block attribute
-							placeholder={__("Submit", "wcb")} // Display this text before any content has been added by the user
+							placeholder={__("Submit", "boostify-blocks")} // Display this text before any content has been added by the user
 						/>
 					</div>
 				</div>
@@ -346,7 +346,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 						<HelpText>
 							{__(
 								"(Success message: Only show on the frontend when the form submit is successful.)",
-								"wcb"
+								"boostify-blocks"
 							)}
 						</HelpText>
 					</div>
@@ -357,7 +357,7 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
 						<HelpText>
 							{__(
 								"(Error message: Only show on the frontend when the form submit is error.)",
-								"wcb"
+								"boostify-blocks"
 							)}
 						</HelpText>
 					</div>

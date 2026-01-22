@@ -47,23 +47,23 @@ const WcbFormPanelAction: FC<Props> = ({
 		name: TabsHere;
 		title: string;
 	}[] = [
-		{ name: "To", title: __("To", "wcb") },
-		{ name: "CC", title: __("CC", "wcb") },
-		{ name: "BCC", title: __("BCC", "wcb") },
+		{ name: "To", title: __("To", "boostify-blocks") },
+		{ name: "CC", title: __("CC", "boostify-blocks") },
+		{ name: "BCC", title: __("BCC", "boostify-blocks") },
 	];
 	return (
 		<PanelBody
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Action", "wcb")}
+			title={__("Action", "boostify-blocks")}
 		>
 			<div className="space-y-5">
 				<Notice status="warning" className="m-0" isDismissible={false}>
-					<strong>{__("Note: ", "wcb")}</strong>
+					<strong>{__("Note: ", "boostify-blocks")}</strong>
 					{__(
 						" It is required to enter an email ID to receive the data submitted via Form. Else you will not receive any data.",
-						"wcb"
+						"boostify-blocks"
 					)}
 				</Notice>
 				<TabPanel
@@ -74,9 +74,9 @@ const WcbFormPanelAction: FC<Props> = ({
 				>
 					{(tab) => (
 						<InputControl
-							label={__("Email", "wcb")}
+							label={__("Email", "boostify-blocks")}
 							type="email"
-							placeholder={__("email@example.com", "wcb")}
+							placeholder={__("email@example.com", "boostify-blocks")}
 							value={main[tab.name as TabsHere].email}
 							onChange={(nextValue) => {
 								setAttr__({
@@ -95,7 +95,7 @@ const WcbFormPanelAction: FC<Props> = ({
 				</TabPanel>
 
 				<InputControl
-					label={__("SUBJECT", "wcb")}
+					label={__("SUBJECT", "boostify-blocks")}
 					value={subject}
 					onChange={(nextValue) => {
 						setAttr__({

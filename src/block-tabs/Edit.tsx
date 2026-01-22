@@ -284,14 +284,14 @@ const Edit: FC<EditProps<WcbAttrs>> = (props) => {
             }}
         >
             <PlusIcon className="w-5 h-5" />
-            <span className="ml-2.5">{__("Add tab", "wcb")}</span>
+            <span className="ml-2.5">{__("Add tab", "boostify-blocks")}</span>
         </button>
     );
 
     const renderRemoveBtn = (item: BlockTabTitleItem, index: number) => (
         <button
             className="absolute bottom-full left-1/2 -translate-x-1/2 hidden group-hover:flex flex-shrink-0 items-center justify-center rounded-md h-8 w-8 bg-red-50 hover:bg-red-100 text-red-600"
-            title={__("Remove", "wcb")}
+            title={__("Remove", "boostify-blocks")}
             onClick={() => {
                 const newTitles = titles.filter((j) => j.id !== item.id).map((t, i) => ({ ...t, dataTabIndex: i }));
                 removeBlock(childInnerBlocks?.[index]?.clientId);

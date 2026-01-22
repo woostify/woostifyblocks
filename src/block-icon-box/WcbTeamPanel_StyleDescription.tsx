@@ -53,7 +53,7 @@ const WcbTeamPanel_StyleDescription: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Description", "wcb")}
+			title={__("Description", "boostify-blocks")}
 		>
 			<div className="space-y-2.5">
 				<MyTypographyControl
@@ -88,7 +88,7 @@ const WcbTeamPanel_StyleDescription: FC<Props> = ({
 							});
 						}}
 						value={MARGIN_BOTTOM || ""}
-						label={__("Margin bottom", "wcb")}
+						label={__("Margin bottom", "boostify-blocks")}
 						hasResponsive
 					/>
 				</MyDisclosure>

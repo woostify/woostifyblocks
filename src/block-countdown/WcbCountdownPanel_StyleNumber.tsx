@@ -54,7 +54,7 @@ const WcbCountdownPanel_StyleNumber: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Number", "wcb")}
+			title={__("Number", "boostify-blocks")}
 		>
 			<div className="space-y-2.5">
 				<MyTypographyControl

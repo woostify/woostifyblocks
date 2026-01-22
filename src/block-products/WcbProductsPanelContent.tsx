@@ -76,7 +76,7 @@ const WcbProductsPanelContent: FC<Props> = ({
 		return (
 			<MyDisclosure label="Sale badge" defaultOpen>
 				<ToggleControl
-					label={__("Sale badge", "wcb")}
+					label={__("Sale badge", "boostify-blocks")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowSaleBadge: checked })
 					}
@@ -84,7 +84,7 @@ const WcbProductsPanelContent: FC<Props> = ({
 				/>
 
 				<ToggleControl
-					label={__("Show discount percentage", "wcb")}
+					label={__("Show discount percentage", "boostify-blocks")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, showSaleBadgeDiscoutPercent: checked })
 					}
@@ -132,11 +132,11 @@ const WcbProductsPanelContent: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Content", "wcb")}
+			title={__("Content", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<ToggleControl
-					label={__("Product category", "wcb")}
+					label={__("Product category", "boostify-blocks")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowCategory: checked })
 					}
@@ -144,7 +144,7 @@ const WcbProductsPanelContent: FC<Props> = ({
 				/>
 
 				<ToggleControl
-					label={__("Product title", "wcb")}
+					label={__("Product title", "boostify-blocks")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowTitle: checked })
 					}
@@ -154,13 +154,13 @@ const WcbProductsPanelContent: FC<Props> = ({
 				{isShowTitle ? (
 					<MyHeadingTagControl
 						tag={titleHtmlTag}
-						label={__("Title HTML tag", "wcb")}
+						label={__("Title HTML tag", "boostify-blocks")}
 						onChange={(tag) => setAttr__({ ...panelData, titleHtmlTag: tag })}
 					/>
 				) : null}
 
 				<ToggleControl
-					label={__("Product price", "wcb")}
+					label={__("Product price", "boostify-blocks")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowPrice: checked })
 					}
@@ -171,7 +171,7 @@ const WcbProductsPanelContent: FC<Props> = ({
 					renderSaleDisclosure()
 				) : (
 					<ToggleControl
-						label={__("Sale badge", "wcb")}
+						label={__("Sale badge", "boostify-blocks")}
 						onChange={(checked) =>
 							setAttr__({ ...panelData, isShowSaleBadge: checked })
 						}
@@ -180,7 +180,7 @@ const WcbProductsPanelContent: FC<Props> = ({
 				)}
 
 				<ToggleControl
-					label={__("Product rating", "wcb")}
+					label={__("Product rating", "boostify-blocks")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowRating: checked })
 					}
@@ -188,7 +188,7 @@ const WcbProductsPanelContent: FC<Props> = ({
 				/>
 
 				{/* <ToggleControl
-					label={__("Add to Cart button", "wcb")}
+					label={__("Add to Cart button", "boostify-blocks")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowAddToCartBtn: checked })
 					}

@@ -1,1 +1,60 @@
-.wcb-countdown__box{position:relative;text-align:center}.wcb-countdown__content{display:flex}.wcb-countdown__content:not(.wcb-countdown__content.wcb-countdown-5) .wcb-countdown__box{display:flex;flex-direction:column;aspect-ratio:1}.wcb-countdown__content.wcb-countdown-1 .wcb-countdown__box{border-radius:50%;background-color:#f0f0f1}.wcb-countdown__content.wcb-countdown-2 .wcb-countdown__box{border-radius:50%;border:1px solid #333}.wcb-countdown__content.wcb-countdown-3 .wcb-countdown__box{border-radius:4px;color:#fff;background-color:#2b2b2b}.wcb-countdown__content.wcb-countdown-4 .wcb-countdown__box{border-radius:4px;border:1px solid rgba(33,33,33,.67)}.wcb-countdown__content.wcb-countdown-5 .wcb-countdown__box .wcb-countdown__number{display:inline-block;margin-right:5px}.wcb-countdown__content.wcb-countdown-5 .wcb-countdown__label{display:inline-block}.wcb-countdown__content .wcb-countdown__box{justify-content:center}.wcb-countdown__content .wcb-justify-center{justify-content:center}.wcb-countdown__content .wcb-justify-end{justify-content:end}.wcb-countdown__content .wcb-justify-start{justify-content:start}.wcb-countdown__content .wcb-flex-col{flex-direction:column}.wcb-countdown__content .wcb-flex-row{flex-direction:row}
+/*!*******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/block-countdown/style.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************/
+.wcb-countdown__box {
+  position: relative;
+  text-align: center;
+}
+
+.wcb-countdown__content {
+  display: flex;
+}
+.wcb-countdown__content:not(.wcb-countdown__content.wcb-countdown-5) .wcb-countdown__box {
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 1;
+}
+.wcb-countdown__content.wcb-countdown-1 .wcb-countdown__box {
+  border-radius: 50%;
+  background-color: #f0f0f1;
+}
+.wcb-countdown__content.wcb-countdown-2 .wcb-countdown__box {
+  border-radius: 50%;
+  border: 1px solid #333333;
+}
+.wcb-countdown__content.wcb-countdown-3 .wcb-countdown__box {
+  border-radius: 4px;
+  color: #fff;
+  background-color: #2B2B2B;
+}
+.wcb-countdown__content.wcb-countdown-4 .wcb-countdown__box {
+  border-radius: 4px;
+  border: 1px solid rgba(33, 33, 33, 0.67);
+}
+.wcb-countdown__content.wcb-countdown-5 .wcb-countdown__box .wcb-countdown__number {
+  display: inline-block;
+  margin-right: 5px;
+}
+.wcb-countdown__content.wcb-countdown-5 .wcb-countdown__label {
+  display: inline-block;
+}
+.wcb-countdown__content .wcb-countdown__box {
+  justify-content: center;
+}
+.wcb-countdown__content .wcb-justify-center {
+  justify-content: center;
+}
+.wcb-countdown__content .wcb-justify-end {
+  justify-content: end;
+}
+.wcb-countdown__content .wcb-justify-start {
+  justify-content: start;
+}
+.wcb-countdown__content .wcb-flex-col {
+  flex-direction: column;
+}
+.wcb-countdown__content .wcb-flex-row {
+  flex-direction: row;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

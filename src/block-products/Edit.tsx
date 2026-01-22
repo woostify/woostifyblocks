@@ -384,7 +384,7 @@ const Edit: FC<Props> = (props) => {
 							onToggle={() => handleTogglePanel("Styles", "StyleBorder")}
 							initialOpen={tabStylesIsPanelOpen === "StyleBorder"}
 							opened={tabStylesIsPanelOpen === "StyleBorder" || undefined}
-							title={__("Border", "wcb")}
+							title={__("Border", "boostify-blocks")}
 						>
 							{style_border && (
 								<MyBorderControl
@@ -496,7 +496,7 @@ const Edit: FC<Props> = (props) => {
 						<BaseControl id="3">
 							{general_pagination && (
 								<ToggleControl
-									label={__("Show pagination", "wcb")}
+									label={__("Show pagination", "boostify-blocks")}
 									onChange={(checked) =>
 										setAttributes({
 											general_pagination: {
@@ -514,7 +514,7 @@ const Edit: FC<Props> = (props) => {
 								id="4"
 								help={__(
 									"Limit the pages you want to show, even if the query has more results. To show all pages use 0 (zero).",
-									"wcb"
+									"boostify-blocks"
 								)}
 							>
 								<NumberControl
@@ -659,10 +659,10 @@ export default withSpokenMessages(Edit);
 const EmptyPlaceholder = () => (
 	// <Placeholder
 	// 	icon={<Icon icon={file} />}
-	// 	label={__("Woostify block Products", "wcb")}
+	// 	label={__("Woostify block Products", "boostify-blocks")}
 	// 	className="wc-block-products-grid wc-block-products-category"
 	// >
-	// 	{__("No products were found that matched your selection.", "wcb")}
+	// 	{__("No products were found that matched your selection.", "boostify-blocks")}
 	// </Placeholder>
 	<></>
 );

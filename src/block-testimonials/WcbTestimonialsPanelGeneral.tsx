@@ -69,11 +69,11 @@ const WcbTestimonialsPanelGeneral: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("General", "wcb")}
+			title={__("General", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<RangeControl
-					label={__("Number of Testimonials", "wcb")}
+					label={__("Number of Testimonials", "boostify-blocks")}
 					value={numberofTestimonials}
 					onChange={(value) => {
 						setAttr__({ ...panelData, numberofTestimonials: value || 1 });
@@ -85,7 +85,7 @@ const WcbTestimonialsPanelGeneral: FC<Props> = ({
 				<RangeControl
 					label={
 						<MyLabelControl hasResponsive>
-							{__("Columns", "wcb")}
+							{__("Columns", "boostify-blocks")}
 						</MyLabelControl>
 					}
 					value={currentColumns || 1}

@@ -85,15 +85,15 @@ const WcbTeamPanelSocials: FC<Props> = ({
 		name: TabsHere;
 		title: string;
 	}[] = [
-		{ name: "Settings", title: __("Settings", "wcb") },
-		{ name: "Socials", title: __("Socials", "wcb") },
+		{ name: "Settings", title: __("Settings", "boostify-blocks") },
+		{ name: "Socials", title: __("Socials", "boostify-blocks") },
 	];
 
 	const renderSettings = () => {
 		return (
 			<div className="space-y-5">
 				<ToggleControl
-					label={__("Enable Socials", "wcb")}
+					label={__("Enable Socials", "boostify-blocks")}
 					checked={enableSocials}
 					onChange={(checked) => {
 						setAttr__({ ...panelData, enableSocials: checked });
@@ -102,7 +102,7 @@ const WcbTeamPanelSocials: FC<Props> = ({
 				{enableSocials && (
 					<>
 						<ToggleControl
-							label={__("Open Links in New Window", "wcb")}
+							label={__("Open Links in New Window", "boostify-blocks")}
 							checked={openLinkInNewTab}
 							onChange={(checked) => {
 								setAttr__({ ...panelData, openLinkInNewTab: checked });
@@ -137,7 +137,7 @@ const WcbTeamPanelSocials: FC<Props> = ({
 				<HelpText>
 					{__(
 						'Please enable the "Enable Socials" field to settings socials...',
-						"wcb"
+						"boostify-blocks"
 					)}
 				</HelpText>
 			);
@@ -148,7 +148,7 @@ const WcbTeamPanelSocials: FC<Props> = ({
 					return (
 						<div key={index + "--"}>
 							<MyLabelControl>
-								{`${__("Social", "wcb")} ${index + 1}`}
+								{`${__("Social", "boostify-blocks")} ${index + 1}`}
 							</MyLabelControl>
 							<div className="p-3 border rounded-lg space-y-3">
 								<SelecIcon
@@ -169,7 +169,7 @@ const WcbTeamPanelSocials: FC<Props> = ({
 									}}
 								/>
 								<TextControl
-									label={__("Social URL", "wcb")}
+									label={__("Social URL", "boostify-blocks")}
 									placeholder="https://example.com"
 									value={social.url}
 									type="text"
@@ -209,7 +209,7 @@ const WcbTeamPanelSocials: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Socials", "wcb")}
+			title={__("Socials", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<TabPanel

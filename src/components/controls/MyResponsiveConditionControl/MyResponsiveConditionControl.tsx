@@ -49,18 +49,18 @@ const MyResponsiveConditionControl: FC<Props> = ({
 	return (
 		<div className={className}>
 			<ToggleControl
-				label={__("Hide on Desktop", "wcb")}
+				label={__("Hide on Desktop", "boostify-blocks")}
 				checked={isHiddenOnDesktop}
 				onChange={toggleHiddenOnDesktop}
 				className="mb-0"
 			/>
 			<ToggleControl
-				label={__("Hide on Tablet", "wcb")}
+				label={__("Hide on Tablet", "boostify-blocks")}
 				checked={isHiddenOnTablet}
 				onChange={toggleHiddenOnTablet}
 			/>
 			<ToggleControl
-				label={__("Hide on Mobile", "wcb")}
+				label={__("Hide on Mobile", "boostify-blocks")}
 				checked={isHiddenOnMobile}
 				onChange={toggleHiddenOnMobile}
 			/>

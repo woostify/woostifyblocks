@@ -73,11 +73,11 @@ const WcbIconBoxPanelIcon: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Icon", "wcb")}
+			title={__("Icon", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<ToggleControl
-					label={__("Enable Icon", "wcb")}
+					label={__("Enable Icon", "boostify-blocks")}
 					checked={enableIcon}
 					className="mb-0"
 					onChange={(checked) => {
@@ -98,7 +98,7 @@ const WcbIconBoxPanelIcon: FC<Props> = ({
 						/>
 
 						<MySelect
-							label={__("Position", "Wcb")}
+							label={__("Position", "boostify-blocks")}
 							options={PLANS_DEMO}
 							value={iconPosition}
 							onChange={(value) => {
@@ -121,7 +121,7 @@ const WcbIconBoxPanelIcon: FC<Props> = ({
 						/>
 						{(iconPosition === "left" || iconPosition === "right") && (
 							<MySelect
-								label={__("Stack On", "Wcb")}
+								label={__("Stack On", "boostify-blocks")}
 								options={STACK_ON_DEMO}
 								value={stackOn}
 								onChange={(value) => {
@@ -137,7 +137,7 @@ const WcbIconBoxPanelIcon: FC<Props> = ({
 							iconPosition === "leftOfTitle" ||
 							iconPosition === "rightOfTitle") && (
 							<MySelect
-								label={__("Vertical Alignment", "Wcb")}
+								label={__("Vertical Alignment", "boostify-blocks")}
 								options={VERTICAL_DEMO}
 								value={verticalAlignment}
 								onChange={(value) => {

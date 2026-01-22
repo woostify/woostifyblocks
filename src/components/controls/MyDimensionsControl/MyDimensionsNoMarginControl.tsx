@@ -27,7 +27,7 @@ const MyDimensionsNoMarginControl: FC<Props> = ({
 	className = "space-y-5",
 	dimensionControl = MY_DIMENSIONS_NO_MARGIN_CONTROL_DEMO,
 	setAttrs__dimensions,
-	paddingLabel = __("Padding", "wcb"),
+	paddingLabel = __("Padding", "boostify-blocks"),
 }) => {
 	const deviceType: ResponsiveDevices = useGetDeviceType() || "Desktop";
 	//
@@ -92,12 +92,12 @@ const MyDimensionsNoMarginControl: FC<Props> = ({
 			<MySpacingSizesControl
 				onChange={setRowGrap}
 				value={rowGap || "0"}
-				label={__("Row Gap", "wcb")}
+				label={__("Row Gap", "boostify-blocks")}
 			/>
 			<MySpacingSizesControl
 				onChange={setColumnGap}
 				value={colunmGap || "0"}
-				label={__("Column Gap", "wcb")}
+				label={__("Column Gap", "boostify-blocks")}
 			/>
 
 			<BoxControl

@@ -1,7 +1,10 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 //
-if (!function_exists('wcb_get_wcb_all_patterns_data')) :
-    function wcb_get_wcb_all_patterns_data()
+if (!function_exists('boostify_blocks_get_all_patterns_data')) :
+    function boostify_blocks_get_all_patterns_data()
     {
         return [
             'heading' => [

@@ -88,7 +88,7 @@ const WcbButtonPanel_StyleDemension: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Dimension", "wcb")}
+			title={__("Dimension", "boostify-blocks")}
 		>
 			<div className="space-y-5">
 				<MyDimensionsNoGapControl
@@ -107,10 +107,10 @@ const WcbButtonPanel_StyleDemension: FC<Props> = ({
 							});
 						}}
 						value={currentColgap || "0"}
-						label={__("Gap between text & icon", "wcb")}
+						label={__("Gap between text & icon", "boostify-blocks")}
 					/>
 					<HelpText>
-						{__("Spacing between text and icon if any.", "wcb")}
+						{__("Spacing between text and icon if any.", "boostify-blocks")}
 					</HelpText>
 				</div>
 			</div>

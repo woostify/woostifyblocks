@@ -40,11 +40,11 @@ const WcbCountdownPanelDate: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Timer End Date & Time", "wcb")}
+			title={__("Timer End Date & Time", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<ToggleControl
-					label={__("Enable label", "wcb")}
+					label={__("Enable label", "boostify-blocks")}
 					checked={enableLabel}
 					className="mb-0"
 					onChange={(checked) => {
@@ -61,7 +61,7 @@ const WcbCountdownPanelDate: FC<Props> = ({
 					}}
 				/>
 				<ToggleControl
-					label={__("Show Days", "wcb")}
+					label={__("Show Days", "boostify-blocks")}
 					checked={show_day}
 					className="mb-0"
 					onChange={(checked) => {
@@ -70,7 +70,7 @@ const WcbCountdownPanelDate: FC<Props> = ({
 				/>
 				{!show_day && (
 					<ToggleControl
-						label={__("Show Hours", "wcb")}
+						label={__("Show Hours", "boostify-blocks")}
 						checked={show_hour}
 						className="mb-0"
 						onChange={(checked) => {
@@ -80,7 +80,7 @@ const WcbCountdownPanelDate: FC<Props> = ({
 				)}
 				{!show_hour && (
 					<ToggleControl
-						label={__("Show Minutes", "wcb")}
+						label={__("Show Minutes", "boostify-blocks")}
 						checked={show_minute}
 						className="mb-0"
 						onChange={(checked) => {

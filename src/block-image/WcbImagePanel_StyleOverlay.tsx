@@ -49,7 +49,7 @@ const WcbImagePanel_StyleOverlay: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Overlay", "wcb")}
+			title={__("Overlay", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<MyColorPicker
@@ -69,7 +69,7 @@ const WcbImagePanel_StyleOverlay: FC<Props> = ({
 				<HelpText>
 					{__(
 						"Let's customize the opacity of the background right inside the color-picker popover",
-						"wcb"
+						"boostify-blocks"
 					)}
 				</HelpText>
 			</div>

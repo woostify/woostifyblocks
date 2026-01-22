@@ -54,7 +54,7 @@ const WcbProductsPanel_StyleTitle: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Title", "wcb")}
+			title={__("Title", "boostify-blocks")}
 		>
 			<div className="space-y-2.5">
 				<MyTypographyControl
@@ -90,7 +90,7 @@ const WcbProductsPanel_StyleTitle: FC<Props> = ({
 						}}
 						value={MARGIN_BOTTOM || ""}
 						units={MY_GAP_UNITS}
-						label={__("Margin bottom", "wcb")}
+						label={__("Margin bottom", "boostify-blocks")}
 						hasResponsive
 						className="flex-col space-y-2"
 					/>

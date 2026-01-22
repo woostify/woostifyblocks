@@ -41,11 +41,11 @@ const WcbInputPanelGeneral: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("General", "wcb")}
+			title={__("General", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<SelectControl
-					label={__("Autocomplete", "wcb")}
+					label={__("Autocomplete", "boostify-blocks")}
 					value={autocomplete}
 					onChange={(selection) => {
 						setAttr__({
@@ -56,30 +56,30 @@ const WcbInputPanelGeneral: FC<Props> = ({
 					// @ts-ignore
 					__nextHasNoMarginBottom
 				>
-					<option value="off">{__("Off", "wcb")}</option>
-					<option value="name">{__("Full Name", "wcb")}</option>
-					<optgroup label={__("Name Breakdown", "wcb")}>
-						<option value="honorific-prefix">{__("Prefix", "wcb")}</option>
-						<option value="given-name">{__("First Name", "wcb")}</option>
-						<option value="additional-name">{__("Middle Name", "wcb")}</option>
-						<option value="family-name">{__("Last Name", "wcb")}</option>
-						<option value="honorific-suffix">{__("Suffix", "wcb")}</option>
+					<option value="off">{__("Off", "boostify-blocks")}</option>
+					<option value="name">{__("Full Name", "boostify-blocks")}</option>
+					<optgroup label={__("Name Breakdown", "boostify-blocks")}>
+						<option value="honorific-prefix">{__("Prefix", "boostify-blocks")}</option>
+						<option value="given-name">{__("First Name", "boostify-blocks")}</option>
+						<option value="additional-name">{__("Middle Name", "boostify-blocks")}</option>
+						<option value="family-name">{__("Last Name", "boostify-blocks")}</option>
+						<option value="honorific-suffix">{__("Suffix", "boostify-blocks")}</option>
 					</optgroup>
-					<option value="username">{__("Username", "wcb")}</option>
-					<option value="nickname">{__("Nickname", "wcb")}</option>
-					<option value="organization">{__("Company Name", "wcb")}</option>
-					<option value="organization-title">{__("Job Title", "wcb")}</option>
-					<optgroup label={__("Address Lines", "wcb")}>
-						<option value="address-line1">{__("Address Line 1", "wcb")}</option>
-						<option value="address-line2">{__("Address Line 2", "wcb")}</option>
-						<option value="address-line3">{__("Address Line 3", "wcb")}</option>
+					<option value="username">{__("Username", "boostify-blocks")}</option>
+					<option value="nickname">{__("Nickname", "boostify-blocks")}</option>
+					<option value="organization">{__("Company Name", "boostify-blocks")}</option>
+					<option value="organization-title">{__("Job Title", "boostify-blocks")}</option>
+					<optgroup label={__("Address Lines", "boostify-blocks")}>
+						<option value="address-line1">{__("Address Line 1", "boostify-blocks")}</option>
+						<option value="address-line2">{__("Address Line 2", "boostify-blocks")}</option>
+						<option value="address-line3">{__("Address Line 3", "boostify-blocks")}</option>
 					</optgroup>
-					<option value="country-name">{__("Country", "wcb")}</option>
-					<option value="postal-code">{__("Postal / ZIP Code", "wcb")}</option>
+					<option value="country-name">{__("Country", "boostify-blocks")}</option>
+					<option value="postal-code">{__("Postal / ZIP Code", "boostify-blocks")}</option>
 				</SelectControl>
 
 				<InputControl
-					label={__("PLACEHOLDER", "wcb")}
+					label={__("PLACEHOLDER", "boostify-blocks")}
 					value={placeholder}
 					onChange={(nextValue) => {
 						setAttr__({ ...panelData, placeholder: nextValue });
@@ -87,7 +87,7 @@ const WcbInputPanelGeneral: FC<Props> = ({
 				/>
 
 				<ToggleControl
-					label={__("Required", "wcb")}
+					label={__("Required", "boostify-blocks")}
 					checked={isRequired}
 					onChange={(isChecked) => {
 						setAttr__({ ...panelData, isRequired: isChecked });

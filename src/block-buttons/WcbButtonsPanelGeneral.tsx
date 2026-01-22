@@ -139,7 +139,7 @@ const WcbButtonsPanelGeneral: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("General", "wcb")}
+			title={__("General", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<MyRadioGroup
@@ -155,7 +155,7 @@ const WcbButtonsPanelGeneral: FC<Props> = ({
 					value={currentAlignment || ""}
 					plans={PLANS_alignment}
 					hasResponsive
-					label={__("Overall Alignment", "wcb")}
+					label={__("Overall Alignment", "boostify-blocks")}
 				/>
 
 				<div>
@@ -169,12 +169,12 @@ const WcbButtonsPanelGeneral: FC<Props> = ({
 						value={stackOrientation || ""}
 						plans={PLANS_stackOrientation}
 						hasResponsive={false}
-						label={__("Stack Orientation", "wcb")}
+						label={__("Stack Orientation", "boostify-blocks")}
 					/>
 					<HelpText>
 						{__(
 							"Note: Choose on what breakpoint the buttons will stack.",
-							"wcb"
+							"boostify-blocks"
 						)}
 					</HelpText>
 				</div>
@@ -191,13 +191,13 @@ const WcbButtonsPanelGeneral: FC<Props> = ({
 							});
 						}}
 						value={currentGap || "0"}
-						label={__("Gap", "wcb")}
+						label={__("Gap", "boostify-blocks")}
 					/>
-					<HelpText>{__("Spacing between buttons.", "wcb")}</HelpText>
+					<HelpText>{__("Spacing between buttons.", "boostify-blocks")}</HelpText>
 				</div>
 
 				<MySelect
-					label={__("Buttons Size", "wcb")}
+					label={__("Buttons Size", "boostify-blocks")}
 					labelClass="flex-[1.3]"
 					hasResponsive
 					onChange={(value) => {

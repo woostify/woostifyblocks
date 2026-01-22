@@ -40,11 +40,11 @@ const WcbProductsPanelButton: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Add to Cart button", "wcb")}
+			title={__("Add to Cart button", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<ToggleControl
-					label={__("Add to Cart button", "wcb")}
+					label={__("Add to Cart button", "boostify-blocks")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowButton: checked })
 					}

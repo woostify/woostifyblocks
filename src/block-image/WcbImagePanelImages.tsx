@@ -50,7 +50,7 @@ const WcbImagePanelImages: FC<Props> = ({
 				<HelpText>
 					{__(
 						'Please enable the "Show Image" field to select images for testimonials...',
-						"wcb"
+						"boostify-blocks"
 					)}
 				</HelpText>
 			);
@@ -60,7 +60,7 @@ const WcbImagePanelImages: FC<Props> = ({
 			<div className={"space-y-5"}>
 				<div>
 					<MyLabelControl hasResponsive={false}>
-						{__("Choose Image", "wcb")}
+						{__("Choose Image", "boostify-blocks")}
 					</MyLabelControl>
 					<MyMediaUploadCheck
 						imageData={image}
@@ -80,7 +80,7 @@ const WcbImagePanelImages: FC<Props> = ({
 		name: TabsHere;
 		title: string;
 	}[] = [
-		{ name: "SelectImages", title: __("Select Images", "wcb") },
+		{ name: "SelectImages", title: __("Select Images", "boostify-blocks") },
 	];
 
 	return (
@@ -88,7 +88,7 @@ const WcbImagePanelImages: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Images", "wcb")}
+			title={__("Images", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<TabPanel

@@ -46,7 +46,7 @@ const MyLinkColorControl: FC<Props> = ({
 		const { color } = linkColorControl[tabName];
 		return (
 			<MyColorPicker
-				label={__("Color", "wcb")}
+				label={__("Color", "boostify-blocks")}
 				onChange={(value) => handleChangeColor(tabName, value)}
 				color={color}
 			/>

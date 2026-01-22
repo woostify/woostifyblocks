@@ -56,7 +56,7 @@ const WcbTestimonialsPanelRating: FC<Props> = ({
 				<HelpText>
 					{__(
 						'Please enable the "Show Rating" for testimonials...',
-						"wcb"
+						"boostify-blocks"
 					)}
 				</HelpText>
 			);
@@ -68,7 +68,7 @@ const WcbTestimonialsPanelRating: FC<Props> = ({
 					return (
 						<div key={index + "--rating"}>
 							<MyLabelControl hasResponsive={false}>
-								{__("Number star", "wcb")} {index + 1}
+								{__("Number star", "boostify-blocks")} {index + 1}
 							</MyLabelControl>
 							<RangeControl
 								label=''
@@ -106,7 +106,7 @@ const WcbTestimonialsPanelRating: FC<Props> = ({
 		return (
 			<div className={"space-y-5"}>
 				<ToggleControl
-					label={__("Show rating", "wcb")}
+					label={__("Show rating", "boostify-blocks")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowRating: checked })
 					}
@@ -143,15 +143,15 @@ const WcbTestimonialsPanelRating: FC<Props> = ({
 		name: TabsHere;
 		title: string;
 	}[] = [
-		{ name: "Settings", title: __("Settings", "wcb") },
-		{ name: "NumberStars", title: __("Number Stars", "wcb") },
+		{ name: "Settings", title: __("Settings", "boostify-blocks") },
+		{ name: "NumberStars", title: __("Number Stars", "boostify-blocks") },
 	];
 	return (
 		<PanelBody
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Rating", "wcb")}
+			title={__("Rating", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<TabPanel

@@ -30,12 +30,12 @@ const BlocksPage: FC<Props> = ({
 		})()
 	);
 
-	console.log(211, {
-		initWcbBlocksList,
-		initWcbBlocksEnableDisable,
-		blocksStatus,
-		blocksList,
-	});
+	// console.log(211, {
+	// 	initWcbBlocksList,
+	// 	initWcbBlocksEnableDisable,
+	// 	blocksStatus,
+	// 	blocksList,
+	// });
 
 	const handleDisableEnableBlocks = (obj: any) => {
 		if (typeof jQuery !== "function") {
@@ -48,6 +48,7 @@ const BlocksPage: FC<Props> = ({
 		setBlocksStatus(newBlocksStatus);
 		const data = {
 			action: "wcb_dashboard_blocks_disable_enable",
+			nonce: (window as any)?.boostifyBlocksFrontendAjaxObject?.nonce,
 			blocksStatus: newBlocksStatus,
 		};
 		toast.promise(

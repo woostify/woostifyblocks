@@ -55,7 +55,7 @@ const WCBColorOption = (props) => {
 
 WCBColorOption.defaultProps = {
 	color: '#f5f5f5',
-	name: __('Untitled', 'wcb'),
+	name: __('Untitled', 'boostify-blocks'),
 	locked: false,
 	onClick: () => {},
 };
@@ -65,7 +65,7 @@ const WCBAddColorButton = (props) => (
 		{...props}
 		isSecondary
 		className="wcb-global-settings-color-picker__add-icon"
-		label={__('Add New Color', 'wcb')}
+		label={__('Add New Color', 'boostify-blocks')}
 		icon={'plus-alt2'}
 	/>
 );
@@ -120,7 +120,7 @@ const WCBGlobalColors = (props) => {
 			...select('core/block-editor').getSettings().colors,
 			{
 				name: sprintf(
-					__('Custom Color %s', 'wcb'),
+					__('Custom Color %s', 'boostify-blocks'),
 					newIndex
 				),
 				slug: `wcb-global-color-${slugId}`,
@@ -178,7 +178,7 @@ const WCBGlobalColors = (props) => {
 		<Fragment>
 			<WoostifyBaseControl
 				className={classNames}
-				label={__('Default Colors', 'wcb')}
+				label={__('Default Colors', 'boostify-blocks')}
 			>
 				{colors.map((color, index) => {
 					if (!isPlainObject(color)) {
@@ -206,7 +206,7 @@ const WCBGlobalColors = (props) => {
 			</WoostifyBaseControl>
 			<WoostifyBaseControl
 				className={classNames}
-				label={__('WCB Custom Colors', 'wcb')}
+				label={__('WCB Custom Colors', 'boostify-blocks')}
 			>
 				{colors.map((color, index) => {
 					if (!isPlainObject(color)) {
@@ -246,7 +246,7 @@ const WCBGlobalColors = (props) => {
 										className="components-color-picker__input-field"
 										label={__(
 											'Color Name',
-											'wcb'
+											'boostify-blocks'
 										)}
 									>
 										<input

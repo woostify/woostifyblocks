@@ -66,7 +66,7 @@ const WcbIconBoxPanel_StyleSeparator: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Separator", "wcb")}
+			title={__("Separator", "boostify-blocks")}
 		>
 			<div className="space-y-5">
 				<MySpacingSizesControl
@@ -80,7 +80,7 @@ const WcbIconBoxPanel_StyleSeparator: FC<Props> = ({
 							},
 						});
 					}}
-					label={__("Custom Width", "wcb")}
+					label={__("Custom Width", "boostify-blocks")}
 				/>
 				<BorderControl
 					label={__("Border styles")}
@@ -105,7 +105,7 @@ const WcbIconBoxPanel_StyleSeparator: FC<Props> = ({
 						});
 					}}
 					value={MARGIN_BOTTOM || ""}
-					label={__("Margin bottom", "wcb")}
+					label={__("Margin bottom", "boostify-blocks")}
 					hasResponsive
 				/>
 			</div>

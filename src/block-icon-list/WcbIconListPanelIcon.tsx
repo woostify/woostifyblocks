@@ -53,7 +53,7 @@ const WcbIconListPanelIcon: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Icon", "wcb")}
+			title={__("Icon", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<SelecIcon
@@ -67,7 +67,7 @@ const WcbIconListPanelIcon: FC<Props> = ({
 				/>
 
 				<MySelect
-					label={__("Position", "Wcb")}
+					label={__("Position", "boostify-blocks")}
 					options={PLANS_DEMO}
 					value={iconPosition}
 					onChange={(value) => {

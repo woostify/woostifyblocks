@@ -64,7 +64,7 @@ const WcbTeamPanelImages: FC<Props> = ({
 				<HelpText>
 					{__(
 						'Please enable the "Show Image" field to select images for testimonials...',
-						"wcb"
+						"boostify-blocks"
 					)}
 				</HelpText>
 			);
@@ -74,7 +74,7 @@ const WcbTeamPanelImages: FC<Props> = ({
 			<div className={"space-y-5"}>
 				<div>
 					<MyLabelControl hasResponsive={false}>
-						{__("Choose Image", "wcb")}
+						{__("Choose Image", "boostify-blocks")}
 					</MyLabelControl>
 					<MyMediaUploadCheck
 						imageData={image}
@@ -114,7 +114,7 @@ const WcbTeamPanelImages: FC<Props> = ({
 		return (
 			<div className={"space-y-5"}>
 				<ToggleControl
-					label={__("Show image", "wcb")}
+					label={__("Show image", "boostify-blocks")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowImage: checked })
 					}
@@ -126,7 +126,7 @@ const WcbTeamPanelImages: FC<Props> = ({
 						<MySelect
 							value={imageSize}
 							options={imageSizeOptions}
-							label={__("Image size", "wcb")}
+							label={__("Image size", "boostify-blocks")}
 							onChange={(size) => {
 								setAttr__({ ...panelData, imageSize: size });
 							}}
@@ -189,8 +189,8 @@ const WcbTeamPanelImages: FC<Props> = ({
 		name: TabsHere;
 		title: string;
 	}[] = [
-		{ name: "Settings", title: __("Settings", "wcb") },
-		{ name: "SelectImages", title: __("Select Images", "wcb") },
+		{ name: "Settings", title: __("Settings", "boostify-blocks") },
+		{ name: "SelectImages", title: __("Select Images", "boostify-blocks") },
 	];
 
 	return (
@@ -198,7 +198,7 @@ const WcbTeamPanelImages: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Images", "wcb")}
+			title={__("Images", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<TabPanel

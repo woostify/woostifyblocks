@@ -37,7 +37,7 @@ const WcbButtonsPanel_StyleText: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Text", "wcb")}
+			title={__("Text", "boostify-blocks")}
 		>
 			<div className={"space-y-4"}>
 				<MyTypographyControl

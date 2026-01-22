@@ -29,7 +29,7 @@ const MaxPageToShowInput: FC<Props> = ({ value, onChange }) => {
 				<HelpText>
 					{__(
 						"Limit the pages you want to show, even if the query has more results. To show all pages use 0 (zero).",
-						"wcb"
+						"boostify-blocks"
 					)}
 				</HelpText>
 			</div>

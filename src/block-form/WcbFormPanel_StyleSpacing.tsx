@@ -81,13 +81,13 @@ const WcbFormPanel_StyleSpacing: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Spacing", "wcb")}
+			title={__("Spacing", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<BoxControl
 					label={
 						<MyLabelControl className="" hasResponsive>
-							{__("Form padding", "wcb")}
+							{__("Form padding", "boostify-blocks")}
 						</MyLabelControl>
 					}
 					values={padding}
@@ -115,7 +115,7 @@ const WcbFormPanel_StyleSpacing: FC<Props> = ({
 				<MySpacingSizesControl
 					value={rowGap || "1rem"}
 					hasResponsive
-					label={__("Row spacing", "wcb")}
+					label={__("Row spacing", "boostify-blocks")}
 					onChange={(value) => {
 						setAttr__({
 							...panelData,
@@ -130,7 +130,7 @@ const WcbFormPanel_StyleSpacing: FC<Props> = ({
 				<MySpacingSizesControl
 					value={labelBottomMargin || "1rem"}
 					hasResponsive
-					label={__("Label margin bottom", "wcb")}
+					label={__("Label margin bottom", "boostify-blocks")}
 					onChange={(value) => {
 						setAttr__({
 							...panelData,

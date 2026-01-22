@@ -37,11 +37,11 @@ const WcbPostGridPanelReadMoreLink: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Read more link", "wcb")}
+			title={__("Read more link", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<ToggleControl
-					label={__("Show Read more link", "wcb")}
+					label={__("Show Read more link", "boostify-blocks")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowReadmore: checked })
 					}
@@ -50,7 +50,7 @@ const WcbPostGridPanelReadMoreLink: FC<Props> = ({
 
 				{isShowReadmore ? (
 					<ToggleControl
-						label={__("Open links in new tab", "wcb")}
+						label={__("Open links in new tab", "boostify-blocks")}
 						onChange={(checked) =>
 							setAttr__({ ...panelData, isOpenInNewTab: checked })
 						}
@@ -61,7 +61,7 @@ const WcbPostGridPanelReadMoreLink: FC<Props> = ({
 				{isShowReadmore ? (
 					<InputControl
 						value={text}
-						label={__("Text", "wcb")}
+						label={__("Text", "boostify-blocks")}
 						onChange={(nextValue) =>
 							setAttr__({ ...panelData, text: nextValue || "" })
 						}

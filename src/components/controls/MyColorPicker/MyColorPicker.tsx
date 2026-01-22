@@ -15,7 +15,7 @@ interface Props {
 
 const MyColorPicker: FC<Props> = ({
 	className = "",
-	label = __("Color", "wcb"),
+	label = __("Color", "boostify-blocks"),
 	// default value color - co the la cac gia tri hex string
 	color = "#000",
 	onChange,

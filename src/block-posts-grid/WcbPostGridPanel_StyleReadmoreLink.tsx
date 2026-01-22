@@ -95,7 +95,7 @@ const WcbPostGridPanel_StyleReadmoreLink: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Read more link", "wcb")}
+			title={__("Read more link", "boostify-blocks")}
 		>
 			<div className="space-y-2.5">
 				<MyTypographyControl
@@ -127,7 +127,7 @@ const WcbPostGridPanel_StyleReadmoreLink: FC<Props> = ({
 					<BoxControl
 						label={
 							<MyLabelControl className="" hasResponsive>
-								{__("Padding", "wcb")}
+								{__("Padding", "boostify-blocks")}
 							</MyLabelControl>
 						}
 						values={padding}
@@ -154,7 +154,7 @@ const WcbPostGridPanel_StyleReadmoreLink: FC<Props> = ({
 						}}
 						value={MARGIN_BOTTOM || ""}
 						units={MY_GAP_UNITS}
-						label={__("Margin bottom", "wcb")}
+						label={__("Margin bottom", "boostify-blocks")}
 						hasResponsive
 					/>
 				</MyDisclosure>

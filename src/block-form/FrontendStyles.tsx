@@ -53,6 +53,7 @@ export function handleSubmitFormForWcbForm(div: Element, props: Props) {
 				url: wcbFrontendAjaxObject.ajaxurl, //Đường dẫn chứa hàm xử lý dữ liệu. Mặc định của WP như vậy
 				data: {
 					action: "wcbform_action", //Tên action
+					nonce: wcbFrontendAjaxObject.nonce,
 					formData,
 					mailInfo,
 				},

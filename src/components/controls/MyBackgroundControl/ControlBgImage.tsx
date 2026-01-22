@@ -44,7 +44,7 @@ const ControlBgImage: FC<Props> = ({
 			<>
 				<PanelRow className="w-full">
 					<div className="w-full">
-						<MyLabelControl hasResponsive>{__("Image", "wcb")}</MyLabelControl>
+						<MyLabelControl hasResponsive>{__("Image", "boostify-blocks")}</MyLabelControl>
 						<MyMediaUploadCheck
 							onChange={(data) => setImageData(data)}
 							imageData={imageData}
@@ -56,7 +56,7 @@ const ControlBgImage: FC<Props> = ({
 						<PanelRow className="w-full">
 							<div className="w-full ">
 								<MyLabelControl hasResponsive>
-									{__("Image Position", "wcb")}
+									{__("Image Position", "boostify-blocks")}
 								</MyLabelControl>
 								<FocalPointPicker
 									className="mt-2.5"
@@ -73,7 +73,7 @@ const ControlBgImage: FC<Props> = ({
 						{/* Background attachment select setting */}
 						<PanelRow className="w-full ">
 							<MySelect
-								label={__("Attachment", "wcb")}
+								label={__("Attachment", "boostify-blocks")}
 								hasResponsive
 								hideLabelFromVision
 								options={BG_ATTACHMENT_OPTIONS}
@@ -88,7 +88,7 @@ const ControlBgImage: FC<Props> = ({
 						{/* Background repeat select setting */}
 						<PanelRow className="w-full ">
 							<MySelect
-								label={__("Repeat", "wcb")}
+								label={__("Repeat", "boostify-blocks")}
 								hasResponsive
 								hideLabelFromVision
 								defaultValue={bgImageRepeat}
@@ -103,7 +103,7 @@ const ControlBgImage: FC<Props> = ({
 						{/* Background Size select setting */}
 						<PanelRow className="w-full ">
 							<MySelect
-								label={__("Size", "wcb")}
+								label={__("Size", "boostify-blocks")}
 								hasResponsive
 								hideLabelFromVision
 								defaultValue={bgImageSize}

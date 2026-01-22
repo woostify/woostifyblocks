@@ -45,7 +45,7 @@ const WcbTestimonialsPanel_StyleBackground: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Background & Border", "wcb")}
+			title={__("Background & Border", "boostify-blocks")}
 		>
 			<div className="space-y-5">
 				<MyDisclosure defaultOpen label="Background">

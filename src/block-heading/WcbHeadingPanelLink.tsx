@@ -35,7 +35,7 @@ const WcbHeadingPanelLink: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Link color", "wcb")}
+			title={__("Link color", "boostify-blocks")}
 		>
 			<MyLinkColorControl
 				linkColorControl={linkColor}

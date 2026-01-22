@@ -89,7 +89,7 @@ const MyButtonPresetControl: FC<Props> = ({
 		return (
 			<RadioGroup value={value} onChange={setPreset}>
 				<RadioGroup.Label className="relative flex items-center justify-between">
-					<span>{__("Select Preset", "wcb")}</span>
+					<span>{__("Select Preset", "boostify-blocks")}</span>
 					<ResetButton onClick={() => setPreset("")} />
 				</RadioGroup.Label>
 				<div className={"relative p-3 bg-slate-50 mt-3 rounded-lg w-80"}>
@@ -127,11 +127,11 @@ const MyButtonPresetControl: FC<Props> = ({
 						className="flex items-center space-x-4 p-2.5 ring-2 ring-slate-200 rounded-lg min-h-[60px] hover:ring-slate-300 cursor-pointer select-none"
 						onClick={onToggle}
 					>
-						<span className="flex-shrink-0">{__("Preset:", "wcb")}</span>
+						<span className="flex-shrink-0">{__("Preset:", "boostify-blocks")}</span>
 						{selectedPreset ? (
 							renderButton(selectedPreset)
 						) : (
-							<strong>{__("None", "wcb")}</strong>
+							<strong>{__("None", "boostify-blocks")}</strong>
 						)}
 					</div>
 					<ResetButton onClick={() => setPreset("")} />

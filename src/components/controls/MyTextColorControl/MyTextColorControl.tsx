@@ -69,7 +69,7 @@ const MyTextColorControl: FC<Props> = ({
 	const renderTypeGroupBtn = () => {
 		return (
 			<div className="w-full flex justify-between items-center">
-				<p className="flex-1">{__("Text color", "wcb")}</p>
+				<p className="flex-1">{__("Text color", "boostify-blocks")}</p>
 				<div className="flex gap-1">
 					{TEXT_COLOR_TYPES.map((item, index) => {
 						const active = item.name === colorType;

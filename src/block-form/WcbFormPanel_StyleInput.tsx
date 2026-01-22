@@ -178,9 +178,9 @@ const WcbFormPanel_StyleInput: FC<Props> = ({
 		name: TabsHere;
 		title: string;
 	}[] = [
-		{ name: "Normal", title: __("Normal", "wcb") },
-		{ name: "Hover", title: __("Hover", "wcb") },
-		{ name: "Active", title: __("Active", "wcb") },
+		{ name: "Normal", title: __("Normal", "boostify-blocks") },
+		{ name: "Hover", title: __("Hover", "boostify-blocks") },
+		{ name: "Active", title: __("Active", "boostify-blocks") },
 	];
 	const initialTabName: TabsHere = "Normal";
 
@@ -189,7 +189,7 @@ const WcbFormPanel_StyleInput: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Input", "wcb")}
+			title={__("Input", "boostify-blocks")}
 		>
 			<div className={"space-y-4"}>
 				<TabPanel
@@ -201,7 +201,7 @@ const WcbFormPanel_StyleInput: FC<Props> = ({
 					{(tab) => (
 						<div className="space-y-3.5">
 							<MyColorPicker
-								label={__("Placeholder color", "wcb")}
+								label={__("Placeholder color", "boostify-blocks")}
 								color={bgAndPlaceholder[tab.name as TabsHere].placeholderColor}
 								onChange={(value) => {
 									setAttr__({
@@ -217,7 +217,7 @@ const WcbFormPanel_StyleInput: FC<Props> = ({
 								}}
 							/>
 							<MyColorPicker
-								label={__("Background color", "wcb")}
+								label={__("Background color", "boostify-blocks")}
 								color={bgAndPlaceholder[tab.name as TabsHere].backgroundColor}
 								onChange={(value) => {
 									setAttr__({
@@ -238,7 +238,7 @@ const WcbFormPanel_StyleInput: FC<Props> = ({
 				<div className={"space-y-3.5"}>
 					<MyDisclosure label="Color, Border & Padding" className="space-y-5">
 						<MyColorPicker
-							label={__("Color", "wcb")}
+							label={__("Color", "boostify-blocks")}
 							color={textColor}
 							onChange={(value) => {
 								setAttr__({
@@ -260,7 +260,7 @@ const WcbFormPanel_StyleInput: FC<Props> = ({
 						<BoxControl
 							label={
 								<MyLabelControl className="" hasResponsive>
-									{__("Padding", "wcb")}
+									{__("Padding", "boostify-blocks")}
 								</MyLabelControl>
 							}
 							values={padding}

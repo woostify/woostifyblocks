@@ -78,7 +78,7 @@ const WcbHeadingPanelHighlight: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Highlight", "wcb")}
+			title={__("Highlight", "boostify-blocks")}
 		>
 			<div className="space-y-2.5">
 				<MyTypographyControl
@@ -101,7 +101,7 @@ const WcbHeadingPanelHighlight: FC<Props> = ({
 					<BoxControl
 						label={
 							<MyLabelControl className="" hasResponsive>
-								{__("Padding", "wcb")}
+								{__("Padding", "boostify-blocks")}
 							</MyLabelControl>
 						}
 						values={padding}

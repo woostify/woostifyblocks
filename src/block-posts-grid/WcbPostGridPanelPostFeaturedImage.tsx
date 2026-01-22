@@ -68,11 +68,11 @@ const WcbPostGridPanelPostFeaturedImage: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Featured image settings", "wcb")}
+			title={__("Featured image settings", "boostify-blocks")}
 		>
 			<div className={"space-y-5 "}>
 				<ToggleControl
-					label={__("Show featured image", "wcb")}
+					label={__("Show featured image", "boostify-blocks")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowFeaturedImage: checked })
 					}
@@ -83,7 +83,7 @@ const WcbPostGridPanelPostFeaturedImage: FC<Props> = ({
 					<MySelect
 						value={featuredImageSize}
 						options={imageSizeOptions}
-						label={__("Image size", "wcb")}
+						label={__("Image size", "boostify-blocks")}
 						onChange={(size) => {
 							setAttr__({ ...panelData, featuredImageSize: size });
 						}}
@@ -111,14 +111,14 @@ const WcbPostGridPanelPostFeaturedImage: FC<Props> = ({
 
 				{isShowFeaturedImage ? (
 					<ToggleControl
-						label={__("Link Complete Box", "wcb")}
+						label={__("Link Complete Box", "boostify-blocks")}
 						onChange={(checked) =>
 							setAttr__({ ...panelData, linkCompleteBox: checked })
 						}
 						checked={linkCompleteBox}
 						help={__(
 							"When enabled, the link to the article page will cover the entire card",
-							"wcb"
+							"boostify-blocks"
 						)}
 					/>
 				) : null}

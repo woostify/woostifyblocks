@@ -50,7 +50,7 @@ const WcbFormPanel_StyleLabel: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Label", "wcb")}
+			title={__("Label", "boostify-blocks")}
 		>
 			<div className={"space-y-4"}>
 				<MyTypographyControl
@@ -64,7 +64,7 @@ const WcbFormPanel_StyleLabel: FC<Props> = ({
 				/>
 				<MyDisclosure defaultOpen label="Color">
 					<MyColorPicker
-						label={__("Color", "wcb")}
+						label={__("Color", "boostify-blocks")}
 						onChange={(value) => {
 							setAttr__({
 								...panelData,
@@ -74,7 +74,7 @@ const WcbFormPanel_StyleLabel: FC<Props> = ({
 						color={textColor}
 					/>
 					<MyColorPicker
-						label={__("Hover Color", "wcb")}
+						label={__("Hover Color", "boostify-blocks")}
 						onChange={(value) => {
 							setAttr__({
 								...panelData,

@@ -50,7 +50,7 @@ const WcbTeamPanel_StyleSocialIcons: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Social icons", "wcb")}
+			title={__("Social icons", "boostify-blocks")}
 		>
 			<div className="space-y-5">
 				<MySpacingSizesControl
@@ -64,7 +64,7 @@ const WcbTeamPanel_StyleSocialIcons: FC<Props> = ({
 						});
 					}}
 					value={currentIconSize || ""}
-					label={__("Icon size", "wcb")}
+					label={__("Icon size", "boostify-blocks")}
 					hasResponsive
 				/>
 
@@ -79,7 +79,7 @@ const WcbTeamPanel_StyleSocialIcons: FC<Props> = ({
 						});
 					}}
 					value={currentIconSpacing || ""}
-					label={__("Icon spacing", "wcb")}
+					label={__("Icon spacing", "boostify-blocks")}
 					hasResponsive
 				/>
 
@@ -100,7 +100,7 @@ const WcbTeamPanel_StyleSocialIcons: FC<Props> = ({
 						});
 					}}
 					color={hoverColor}
-					label={__("Hover color", "wcb")}
+					label={__("Hover color", "boostify-blocks")}
 				/>
 			</div>
 		</PanelBody>

@@ -109,7 +109,7 @@ const WcbProductsPanel_StyleLayout: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Layout", "wcb")}
+			title={__("Layout", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<MyTextAlignControl
@@ -119,7 +119,7 @@ const WcbProductsPanel_StyleLayout: FC<Props> = ({
 				/>
 
 				<MyColorPicker
-					label={__("Background color", "wcb")}
+					label={__("Background color", "boostify-blocks")}
 					onChange={handleChangeBgColor}
 					color={backgroundColor}
 				/>
@@ -128,7 +128,7 @@ const WcbProductsPanel_StyleLayout: FC<Props> = ({
 				<RangeControl
 					label={
 						<MyLabelControl hasResponsive>
-							{__("Columns", "wcb")}
+							{__("Columns", "boostify-blocks")}
 						</MyLabelControl>
 					}
 					value={currentNumberOfColumn || 1}
@@ -164,7 +164,7 @@ const WcbProductsPanel_StyleLayout: FC<Props> = ({
 						<HelpText>
 							{__(
 								"Device selection to start switching from layout GRID to layout is a scroll able row.",
-								"wcb"
+								"boostify-blocks"
 							)}
 						</HelpText>
 					</div>
@@ -184,12 +184,12 @@ const WcbProductsPanel_StyleLayout: FC<Props> = ({
 									});
 								}}
 								value={currentPeekAfter || "0"}
-								label={__("Peek After", "wcb")}
+								label={__("Peek After", "boostify-blocks")}
 							/>
 							<HelpText>
 								{__(
 									"The value of the future viewports which have to be visible in the current view.",
-									"wcb"
+									"boostify-blocks"
 								)}
 							</HelpText>
 						</div>
@@ -204,18 +204,18 @@ const WcbProductsPanel_StyleLayout: FC<Props> = ({
 							...data,
 						});
 					}}
-					paddingLabel={__("Padding content", "wcb")}
+					paddingLabel={__("Padding content", "boostify-blocks")}
 				/>
 
 				<ToggleControl
-					label={__("Equal height", "wcb")}
+					label={__("Equal height", "boostify-blocks")}
 					checked={panelData.isEqualHeight}
 					onChange={(checked) => {
 						setAttr__({ ...panelData, isEqualHeight: checked });
 					}}
 					help={__(
 						"The product cards will have the same height, suitable when you set the border or background",
-						"wcb"
+						"boostify-blocks"
 					)}
 				/>
 			</div>

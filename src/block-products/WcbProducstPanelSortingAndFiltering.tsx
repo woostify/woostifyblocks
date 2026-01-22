@@ -94,47 +94,47 @@ const WcbProducstPanelSortingAndFiltering: FC<Props> = ({
 			value: ProductOrderBy;
 		}[] = [
 			{
-				label: __("ID", "wcb"),
+				label: __("ID", "boostify-blocks"),
 				value: "ID",
 			},
 			{
-				label: __("Date", "wcb"),
+				label: __("Date", "boostify-blocks"),
 				value: "date ID",
 			},
 			{
-				label: __("Title", "wcb"),
+				label: __("Title", "boostify-blocks"),
 				value: "title",
 			},
 			{
-				label: __("Menu order", "wcb"),
+				label: __("Menu order", "boostify-blocks"),
 				value: "menu_order title",
 			},
 			{
-				label: __("Popularity", "wcb"),
+				label: __("Popularity", "boostify-blocks"),
 				value: "popularity",
 			},
 			{
-				label: __("Price", "wcb"),
+				label: __("Price", "boostify-blocks"),
 				value: "price",
 			},
 
 			{
-				label: __("Rating", "wcb"),
+				label: __("Rating", "boostify-blocks"),
 				value: "rating",
 			},
 			{
-				label: __("Relevance", "wcb"),
+				label: __("Relevance", "boostify-blocks"),
 				value: "relevance",
 			},
 			{
-				label: __("Random", "wcb"),
+				label: __("Random", "boostify-blocks"),
 				value: "rand",
 			},
 		];
 
 		return (
 			<SelectControl
-				label={__("Order products by", "wcb")}
+				label={__("Order products by", "boostify-blocks")}
 				value={panelData.orderBy}
 				options={OPTIONS}
 				onChange={(orderby) => setAttr__({ ...panelData, orderBy: orderby })}
@@ -148,20 +148,20 @@ const WcbProducstPanelSortingAndFiltering: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Sorting and filtering", "wcb")}
+			title={__("Sorting and filtering", "boostify-blocks")}
 		>
 			{renderSelectOrderBy()}
 
 			<SelectControl
-				label={__("Order", "wcb")}
+				label={__("Order", "boostify-blocks")}
 				value={panelData.order}
 				options={[
 					{
-						label: __("DESC", "wcb"),
+						label: __("DESC", "boostify-blocks"),
 						value: "DESC",
 					},
 					{
-						label: __("ASC", "wcb"),
+						label: __("ASC", "boostify-blocks"),
 						value: "ASC",
 					},
 				]}
@@ -169,7 +169,7 @@ const WcbProducstPanelSortingAndFiltering: FC<Props> = ({
 			/>
 
 			<ToggleControl
-				label={__("Show only products on sale", "wcb")}
+				label={__("Show only products on sale", "boostify-blocks")}
 				checked={!!panelData.isOnSale}
 				onChange={(isOnSale) => {
 					setAttr__({
@@ -245,14 +245,14 @@ const WcbProducstPanelSortingAndFiltering: FC<Props> = ({
 
 			<InputControl
 				value={panelData.keyword}
-				label={__("KEYWORD", "wcb")}
+				label={__("KEYWORD", "boostify-blocks")}
 				onChange={(nextValue) =>
 					setAttr__({ ...panelData, keyword: nextValue })
 				}
 			/>
 
 			<FormTokenField
-				label={__("Stock status", "wcb")}
+				label={__("Stock status", "boostify-blocks")}
 				onChange={(statusLabels) => {
 					const __woocommerceStockStatus = statusLabels
 						.map(getStockStatusIdByLabel)
@@ -278,7 +278,7 @@ const WcbProducstPanelSortingAndFiltering: FC<Props> = ({
 			<RangeControl
 				label={
 					<MyLabelControl hasResponsive>
-						{__("Number of items", "wcb")}
+						{__("Number of items", "boostify-blocks")}
 					</MyLabelControl>
 				}
 				value={panelData.numberOfItems}
@@ -295,7 +295,7 @@ const WcbProducstPanelSortingAndFiltering: FC<Props> = ({
 
 			<InputControl
 				value={panelData.emptyMessage}
-				label={__("Message when Posts Not Found", "wcb")}
+				label={__("Message when Posts Not Found", "boostify-blocks")}
 				onChange={(nextValue) =>
 					setAttr__({ ...panelData, emptyMessage: nextValue })
 				}

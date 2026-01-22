@@ -98,7 +98,7 @@ const MyFlexPropertiesControl: FC<Props> = ({
 	const renderFlexDirectionType = () => {
 		return (
 			<MyRadioGroup
-				label={__("Flex Direction", "wcb")}
+				label={__("Flex Direction", "boostify-blocks")}
 				// @ts-ignore
 				onChange={handleChangeFlexDirectionType}
 				plans={PLANS_FLEX_DIRECTIONS_DEMO}
@@ -110,7 +110,7 @@ const MyFlexPropertiesControl: FC<Props> = ({
 	const renderFlexAlignItems = () => {
 		return (
 			<MyRadioGroup
-				label={__("Align Items", "wcb")}
+				label={__("Align Items", "boostify-blocks")}
 				// @ts-ignore
 				onChange={handleChangeAlignItems}
 				plans={PLANS_FLEX_ALIGNITEMS_DEMO}
@@ -122,7 +122,7 @@ const MyFlexPropertiesControl: FC<Props> = ({
 	const renderFlexJustifyContent = () => {
 		return (
 			<MyRadioGroup
-				label={__("Justify Content", "wcb")}
+				label={__("Justify Content", "boostify-blocks")}
 				// @ts-ignore
 				onChange={handleChangeJustifyContent}
 				plans={PLANS_FLEX_JUSTIFY_CONTENT_DEMO}
@@ -134,7 +134,7 @@ const MyFlexPropertiesControl: FC<Props> = ({
 	const renderFlexWrap = () => {
 		return (
 			<MyRadioGroup
-				label={__("Flex Wrap", "wcb")}
+				label={__("Flex Wrap", "boostify-blocks")}
 				// @ts-ignore
 				onChange={handleChangeFlexWrap}
 				plans={PLANS_FLEX_WRAP_DEMO}

@@ -217,7 +217,7 @@ const MyBackgroundControl: FC<Props> = ({
 	const renderTypeGroupBtn = () => {
 		return (
 			<PanelRow className="w-full flex justify-between items-center">
-				<p className="flex-1">{__("Type", "wcb")}</p>
+				<p className="flex-1">{__("Type", "boostify-blocks")}</p>
 				<div className="flex gap-1">
 					{bgTypesPlans.map((item) => {
 						const active = item.name === bgType;
@@ -246,7 +246,7 @@ const MyBackgroundControl: FC<Props> = ({
 			<PanelRow className="w-full ">
 				<MyTabs
 					tabs={OVERLAY_TYPES}
-					label={__("Overlay Type", "wcb")}
+					label={__("Overlay Type", "boostify-blocks")}
 					tabSelected={overlayType}
 					onChangeSelected={handleChangeOverlayType}
 				>

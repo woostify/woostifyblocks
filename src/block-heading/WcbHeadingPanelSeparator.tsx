@@ -65,7 +65,7 @@ const WcbHeadingPanelSeparator: FC<Props> = ({
 		return (
 			<div className="flex items-center justify-between">
 				<MyLabelControl className="flex-shrink-0" hasResponsive>
-					{__("Custom Width", "wcb")}
+					{__("Custom Width", "boostify-blocks")}
 				</MyLabelControl>
 				<UnitControl
 					className="flex-grow ml-3"
@@ -90,7 +90,7 @@ const WcbHeadingPanelSeparator: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Separator", "wcb")}
+			title={__("Separator", "boostify-blocks")}
 		>
 			<div className="space-y-5">
 				{renderCustomWidth()}
@@ -117,7 +117,7 @@ const WcbHeadingPanelSeparator: FC<Props> = ({
 						});
 					}}
 					value={MARGIN_BOTTOM || ""}
-					label={__("Margin bottom", "wcb")}
+					label={__("Margin bottom", "boostify-blocks")}
 					hasResponsive
 				/>
 			</div>

@@ -89,7 +89,7 @@ const WcbIconListPanel_StyleTitle: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Title", "wcb")}
+			title={__("Title", "boostify-blocks")}
 		>
 			<div className="space-y-2.5">
 				<MyTypographyControl
@@ -114,7 +114,7 @@ const WcbIconListPanel_StyleTitle: FC<Props> = ({
 					/>
 
 					<MyColorPicker
-						label={__("Hover color", "wcb")}
+						label={__("Hover color", "boostify-blocks")}
 						onChange={(value) => {
 							setAttr__({ ...panelData, textColorHover: value });
 						}}
@@ -132,7 +132,7 @@ const WcbIconListPanel_StyleTitle: FC<Props> = ({
 							});
 						}}
 						value={MARGIN_BOTTOM || "0rem"}
-						label={__("Margin bottom", "wcb")}
+						label={__("Margin bottom", "boostify-blocks")}
 						hasResponsive
 					/>
 				</MyDisclosure>

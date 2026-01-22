@@ -68,7 +68,7 @@ const WcbPostGridPanelPagination: FC<Props> = ({
 	const renderRadioIcons = () => {
 		return (
 			<MyRadioGroup
-				label={__("Prev & Next Icons", "wcb")}
+				label={__("Prev & Next Icons", "boostify-blocks")}
 				onChange={(name) => {
 					setAttr__({ ...panelData, iconName: name as any });
 				}}
@@ -94,7 +94,7 @@ const WcbPostGridPanelPagination: FC<Props> = ({
 
 				<InputControl
 					value={panelData.previousText}
-					label={__("Previous text", "wcb")}
+					label={__("Previous text", "boostify-blocks")}
 					onChange={(nextValue) =>
 						setAttr__({ ...panelData, previousText: nextValue })
 					}
@@ -102,7 +102,7 @@ const WcbPostGridPanelPagination: FC<Props> = ({
 
 				<InputControl
 					value={panelData.nextText}
-					label={__("Next text", "wcb")}
+					label={__("Next text", "boostify-blocks")}
 					onChange={(nextValue) =>
 						setAttr__({ ...panelData, nextText: nextValue })
 					}
@@ -118,11 +118,11 @@ const WcbPostGridPanelPagination: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Pagination", "wcb")}
+			title={__("Pagination", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<ToggleControl
-					label={__("Show pagination", "wcb")}
+					label={__("Show pagination", "boostify-blocks")}
 					onChange={(checked) =>
 						setAttr__({ ...panelData, isShowPagination: checked })
 					}

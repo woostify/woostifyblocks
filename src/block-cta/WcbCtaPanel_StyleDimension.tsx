@@ -64,7 +64,7 @@ const WcbCtaPanel_StyleDimension: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Dimension", "wcb")}
+			title={__("Dimension", "boostify-blocks")}
 		>
 			<div className="space-y-5">
 				<MyDimensionsNoGapControl
@@ -83,10 +83,10 @@ const WcbCtaPanel_StyleDimension: FC<Props> = ({
 							});
 						}}
 						value={currentColgap || "0"}
-						label={__("Gap between content & button", "wcb")}
+						label={__("Gap between content & button", "boostify-blocks")}
 					/>
 					<HelpText>
-						{__("Spacing between content and button.", "wcb")}
+						{__("Spacing between content and button.", "boostify-blocks")}
 					</HelpText>
 				</div>
 			</div>

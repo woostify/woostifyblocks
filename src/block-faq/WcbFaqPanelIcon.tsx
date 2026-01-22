@@ -50,11 +50,11 @@ const WcbFaqPanelIcon: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Icon", "wcb")}
+			title={__("Icon", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<ToggleControl
-					label={__("Enable Icon", "wcb")}
+					label={__("Enable Icon", "boostify-blocks")}
 					checked={enableIcon}
 					className="mb-0"
 					onChange={(checked) => {
@@ -64,7 +64,7 @@ const WcbFaqPanelIcon: FC<Props> = ({
 				{enableIcon && (
 					<>
 						<SelecIcon
-							label={__("Active Icon:", "wcb")}
+							label={__("Active Icon:", "boostify-blocks")}
 							iconData={icon}
 							onChange={(value) => {
 								setAttr__({
@@ -75,7 +75,7 @@ const WcbFaqPanelIcon: FC<Props> = ({
 						/>
 
 						<SelecIcon
-							label={__("Inactive Icon:", "wcb")}
+							label={__("Inactive Icon:", "boostify-blocks")}
 							iconData={inactiveIcon || DEFAULT_MY_ICON}
 							onChange={(value) => {
 								setAttr__({
@@ -86,7 +86,7 @@ const WcbFaqPanelIcon: FC<Props> = ({
 						/>
 
 						<MyRadioGroup
-							label={__("Icon position", "wcb")}
+							label={__("Icon position", "boostify-blocks")}
 							value={iconPosition}
 							onChange={(value) => {
 								setAttr__({

@@ -74,7 +74,7 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Layout", "wcb")}
+			title={__("Layout", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<MyTextAlignControl
@@ -83,7 +83,7 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 				/>
 
 				<ToggleControl
-					label={__("Enable prefix", "wcb")}
+					label={__("Enable prefix", "boostify-blocks")}
 					checked={enablePrefix}
 					className="mb-0"
 					onChange={(checked) => {
@@ -91,7 +91,7 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 					}}
 				/>
 				<ToggleControl
-					label={__("Enable title", "wcb")}
+					label={__("Enable title", "boostify-blocks")}
 					checked={enableTitle}
 					className="mb-0"
 					onChange={(checked) => {
@@ -109,7 +109,7 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 				)}
 
 				<ToggleControl
-					label={__("Enable description", "wcb")}
+					label={__("Enable description", "boostify-blocks")}
 					checked={enableDescription}
 					className="mb-0"
 					onChange={(checked) => {
@@ -118,7 +118,7 @@ const WcbIconBoxPanelLayout: FC<Props> = ({
 				/>
 
 				<ToggleControl
-					label={__("Enable CTA button", "wcb")}
+					label={__("Enable CTA button", "boostify-blocks")}
 					checked={enableCTAButton}
 					className="mb-0"
 					onChange={(checked) => {

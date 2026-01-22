@@ -84,7 +84,7 @@ const WcbIconBoxPanelIcon: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Icon", "wcb")}
+			title={__("Icon", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<SelecIcon
@@ -99,7 +99,7 @@ const WcbIconBoxPanelIcon: FC<Props> = ({
 
 				<RangeControl
 					label={
-						<MyLabelControl hasResponsive>{__("Size", "wcb")}</MyLabelControl>
+						<MyLabelControl hasResponsive>{__("Size", "boostify-blocks")}</MyLabelControl>
 					}
 					value={currentSize || 16}
 					onChange={(value) => {
@@ -121,7 +121,7 @@ const WcbIconBoxPanelIcon: FC<Props> = ({
 				/>
 
 				<ToggleControl
-					label={__("Link", "wcb")}
+					label={__("Link", "boostify-blocks")}
 					checked={enableLink}
 					className="mb-0"
 					onChange={(checked) => {
@@ -154,7 +154,7 @@ const WcbIconBoxPanelIcon: FC<Props> = ({
 							/>
 
 							<ToggleControl
-								label={__('Add "nofollow" to link', "wcb")}
+								label={__('Add "nofollow" to link', "boostify-blocks")}
 								checked={addNofollowToLink}
 								onChange={(checked) => {
 									setAttr__({ ...panelData, addNofollowToLink: checked });
@@ -162,7 +162,7 @@ const WcbIconBoxPanelIcon: FC<Props> = ({
 							/>
 			
 							<ToggleControl
-								label={__("Open in new windown", "wcb")}
+								label={__("Open in new windown", "boostify-blocks")}
 								checked={openInNewWindow}
 								onChange={(checked) => {
 									setAttr__({ ...panelData, openInNewWindow: checked });

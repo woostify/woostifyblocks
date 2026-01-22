@@ -76,7 +76,7 @@ const WcbButtonPanel_StyleBorder: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Border", "wcb")}
+			title={__("Border", "boostify-blocks")}
 		>
 			<MyBorderControl
 				borderControl={panelData}

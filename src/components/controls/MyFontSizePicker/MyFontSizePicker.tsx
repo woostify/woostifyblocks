@@ -59,7 +59,7 @@ export default function MyFontSizePicker() {
 // 			<div className="flex items-center justify-between">
 // 				{label === undefined ? (
 // 					<MyLabelControl className="" hasResponsive>
-// 						{__("Size", "wcb")}
+// 						{__("Size", "boostify-blocks")}
 // 					</MyLabelControl>
 // 				) : (
 // 					label

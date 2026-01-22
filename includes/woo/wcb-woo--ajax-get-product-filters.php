@@ -1,9 +1,11 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+add_action('wp_ajax_boostify_blocks_get_product_filters', 'boostify_blocks_ajax_get_product_filters');
+add_action('wp_ajax_nopriv_boostify_blocks_get_product_filters', 'boostify_blocks_ajax_get_product_filters');
 
-add_action('wp_ajax_wcb_get_product_filters', 'wcb_woo__ajax_get_product_filters');
-add_action('wp_ajax_nopriv_wcb_get_product_filters', 'wcb_woo__ajax_get_product_filters');
-
-function wcb_woo__ajax_get_product_filters()
+function boostify_blocks_ajax_get_product_filters()
 {
     $args = array(
         'post_type'      => 'product', // product, not products
@@ -19,7 +21,7 @@ function wcb_woo__ajax_get_product_filters()
         }
     } else {
         // handle not found by yourself or
-        do_action('woocommerce_no_products_found');
+        do_action('woocommerce_no_products_found'); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
     }
 
     $content = ob_get_clean();
@@ -30,7 +32,7 @@ function wcb_woo__ajax_get_product_filters()
 }
 
 
-function wcb_woo___get_product_filters_no_ajax()
+function boostify_blocks_get_product_filters_no_ajax()
 {
     $args = array(
         'post_type'      => 'product', // product, not products
@@ -46,7 +48,7 @@ function wcb_woo___get_product_filters_no_ajax()
         }
     } else {
         // handle not found by yourself or
-        do_action('woocommerce_no_products_found');
+        do_action('woocommerce_no_products_found'); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
     }
 
     $content = ob_get_clean();

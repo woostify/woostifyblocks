@@ -50,11 +50,11 @@ const WcbIconListPanelSeparator: FC<Props> = ({
 			initialOpen={initialOpen}
 			onToggle={onToggle}
 			opened={opened}
-			title={__("Separator", "wcb")}
+			title={__("Separator", "boostify-blocks")}
 		>
 			<div className={"space-y-5"}>
 				<ToggleControl
-					label={__("Enable separator", "wcb")}
+					label={__("Enable separator", "boostify-blocks")}
 					checked={enableSeparator}
 					className="mb-0"
 					onChange={(checked) => {
@@ -64,7 +64,7 @@ const WcbIconListPanelSeparator: FC<Props> = ({
 
 				{enableSeparator && (
 					<MySelect
-						label={__("Position", "Wcb")}
+						label={__("Position", "boostify-blocks")}
 						options={PLANS_DEMO}
 						value={position}
 						onChange={(value) => {
