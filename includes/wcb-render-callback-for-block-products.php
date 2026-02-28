@@ -132,9 +132,11 @@ function wcb_block_products__render_product($product, $attributes, $index)
         $data->categories = wcb_block_products__get_category_html($product);
     }
 
+    $button_quantity_html = wcb_block_products__get_button_quantity_html($product);
+
     $btnInsideImage = ($attributes['general_addToCartBtn']['position'] ?? "") === "inside image";
     $saleInsideImage = ($attributes['general_content']['saleBadgePosition'] ?? "") === "Inside image";
-    $classes = "wcb-products__product ";
+    $classes = "wcb-products__product product-loop-wrapper";
 
     if (!wcb__is_enabled($attributes['general_featuredImage']['isShowFeaturedImage'] ?? "")) {
         $btnInsideImage = false;
@@ -171,12 +173,15 @@ function wcb_block_products__render_product($product, $attributes, $index)
                     {$saleBadge1}
                     {$btn1}
                 </div>
+                <div class=\"wcb-products__product-content \">
                 {$data->categories}
                 {$data->title}
 				{$saleBadge2}
 				{$data->rating}
 				{$data->price}
-               {$btn2}
+                {$button_quantity_html}
+                {$btn2}
+               </div>
 			</div>",
         $data,
         $product
@@ -300,6 +305,42 @@ function wcb_block_products__get_sale_badge_html($product,  $showSaleBadgeDiscou
 			<span aria-hidden="true">' . esc_html__('Sale', 'wcb') . '</span>
 			<span class="screen-reader-text">' . esc_html__('Product on sale', 'wcb') . '</span>
 		</div></div>';
+}
+
+
+function wcb_block_products__get_button_quantity_html($product) {
+    $options = woostify_options( false );
+
+    if ( empty($options['shop_page_product_quantity']) ) {
+        return;
+    }
+
+    if ( $product->is_sold_individually() || ! $product->is_purchasable() ) {
+        return;
+    }
+
+    if ( 'variable' === $product->get_type() || 'external' === $product->get_type() ) {
+        return;
+    }
+
+    if ( $product->get_stock_status() == 'outofstock' ) {
+        return;
+    }
+
+    $html = '';
+
+    $html .= '<div class="wcb-products__product-qty loop-product-qty" data-stock_status="' . esc_attr( $product->get_stock_status() ) . '" data-product_type="' . esc_attr( $product->get_type() ) . '">';
+    $html .= woocommerce_quantity_input(
+        array(
+            'min_value' => 1,
+            'max_value' => $product->backorders_allowed() ? '' : $product->get_stock_quantity(),
+        ),
+        $product,
+        false
+    );
+    $html .= '</div>';
+
+    return $html; // phpcs:ignore.
 }
 
 

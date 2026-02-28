@@ -1,1 +1,127 @@
-.wcb-posts-grid__wrap{display:none}.wcbPostCard--image-left{display:flex;flex-direction:row}.wcbPostCard--image-right{display:flex;flex-direction:row-reverse}.wcbPostCard--image-right .wcbPostCard__featuredImage,.wcbPostCard--image-left .wcbPostCard__featuredImage{flex-shrink:0;flex-basis:25%}.wcbPostCard--image-right .wcbPostCard__content,.wcbPostCard--image-left .wcbPostCard__content{flex:1}.wcbPostCard--image-background .wcbPostCard__featuredImage{position:absolute;inset:0}.wcbPostCard--image-background .wcbPostCard__featuredImage img{width:100%;height:100%;-o-object-fit:cover;object-fit:cover}.wcbPostCard__content{position:relative}.wcbPostCard__featuredImage{position:relative}.wcbPostCard__featuredImage img{display:block;width:100%}.wcbPostCard__featuredImage-overlay{position:absolute;inset:0}.wcbPostCard__title{word-wrap:break-word}.wcbPostCard__title,.wcbPostCard__excerpt{margin-top:0}.wcbPostCard__taxonomies{overflow-wrap:normal}.wcbPostCard__taxonomies--Insidefeaturedimage{position:absolute;z-index:1;bottom:12px;left:1rem}.wcbPostCard__taxonomies--highlighted>a{display:inline-block;margin-right:4px;margin-bottom:4px;padding:4px 10px;font-size:12px;text-decoration:none}.wcbPostCard__readmoreLink{display:inline-flex}.wcbPostCard__meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap}.wcbPostCard__meta-author{display:flex;align-items:center;line-height:1;margin-right:1rem;margin-bottom:4px;margin-top:4px}.wcbPostCard__meta-author-name{text-transform:capitalize}.wcbPostCard__meta-icon{margin-right:4px;display:inline-flex;align-items:center}.wcbPostCard__meta-date-and-comments{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;line-height:1}.wcbPostCard__meta-date-and-comments>*{margin-bottom:4px;margin-top:4px;margin-right:8px}.wcbPostCard__meta-date,.wcbPostCard__meta-comment{display:inline-flex;align-items:center}
+/*!********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/block-posts-grid/style.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************/
+.wcb-posts-grid__wrap {
+  display: none;
+}
+
+.wcbPostCard--image-left {
+  display: flex;
+  flex-direction: row;
+}
+.wcbPostCard--image-right {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.wcbPostCard--image-right .wcbPostCard__featuredImage, .wcbPostCard--image-left .wcbPostCard__featuredImage {
+  flex-shrink: 0;
+  flex-basis: 25%;
+}
+.wcbPostCard--image-right .wcbPostCard__content, .wcbPostCard--image-left .wcbPostCard__content {
+  flex: 1;
+}
+.wcbPostCard--image-background .wcbPostCard__featuredImage {
+  position: absolute;
+  inset: 0;
+}
+.wcbPostCard--image-background .wcbPostCard__featuredImage img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.wcbPostCard__content {
+  position: relative;
+}
+
+.wcbPostCard__featuredImage {
+  position: relative;
+}
+.wcbPostCard__featuredImage img {
+  display: block;
+  width: 100%;
+}
+
+.wcbPostCard__featuredImage-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.wcbPostCard__title {
+  word-wrap: break-word;
+}
+
+.wcbPostCard__title,
+.wcbPostCard__excerpt {
+  margin-top: 0;
+}
+
+.wcbPostCard__taxonomies {
+  overflow-wrap: normal;
+}
+.wcbPostCard__taxonomies--Insidefeaturedimage {
+  position: absolute;
+  z-index: 1;
+  bottom: 12px;
+  left: 1rem;
+}
+.wcbPostCard__taxonomies--highlighted > a {
+  display: inline-block;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.wcbPostCard__readmoreLink {
+  display: inline-flex;
+}
+
+.wcbPostCard__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.wcbPostCard__meta-author {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  margin-right: 1rem;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+
+.wcbPostCard__meta-author-name {
+  text-transform: capitalize;
+}
+
+.wcbPostCard__meta-icon {
+  margin-right: 4px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.wcbPostCard__meta-date-and-comments {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  line-height: 1;
+}
+.wcbPostCard__meta-date-and-comments > * {
+  margin-bottom: 4px;
+  margin-top: 4px;
+  margin-right: 8px;
+}
+
+.wcbPostCard__meta-date,
+.wcbPostCard__meta-comment {
+  display: inline-flex;
+  align-items: center;
+}
+
+/*# sourceMappingURL=style-index.css.map*/
